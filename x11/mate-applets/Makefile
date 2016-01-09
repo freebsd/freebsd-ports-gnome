@@ -19,7 +19,6 @@ LIB_DEPENDS=	libgtop-2.0.so:${PORTSDIR}/devel/libgtop \
 		libhal.so:${PORTSDIR}/sysutils/hal \
 		libupower-glib.so:${PORTSDIR}/sysutils/upower \
 		libnotify.so:${PORTSDIR}/devel/libnotify
-RUN_DEPENDS=	gucharmap:${PORTSDIR}/deskutils/gucharmap
 
 PORTSCOUT=	limitw:1,even
 
@@ -52,6 +51,7 @@ OPTIONS_DEFINE=	MATEGTK3
 MATEGTK3_DESC=	build agains gtk3
 MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30,gtksourceview3,libwnck3
+MATEGTK3_RUN_DEPENDS=	gucharmap:${PORTSDIR}/deskutils/gucharmap
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20,gtksourceview2,libwnck
 
