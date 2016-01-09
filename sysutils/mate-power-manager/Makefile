@@ -15,7 +15,6 @@ BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool \
 LIB_DEPENDS=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra \
 		libdbus-1.so:${PORTSDIR}/devel/dbus \
 		libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib \
-		libunique-1.0.so:${PORTSDIR}/x11-toolkits/unique \
 		libupower-glib.so:${PORTSDIR}/sysutils/upower \
 		libnotify.so:${PORTSDIR}/devel/libnotify
 RUN_DEPENDS=	pkexec:${PORTSDIR}/sysutils/polkit \
@@ -46,6 +45,14 @@ MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MMATEGTK3}
+LIB_DEPENDS+=	libunique-3.0.so:${PORTSDIR}/x11-toolkits/libunique3
+.else
+LIB_DEPENDS+=	libunique-1.0.so:${PORTSDIR}/x11-toolkits/unique
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|docbook2man|docbook2man_disabled|g" \
