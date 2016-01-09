@@ -18,8 +18,6 @@ RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:${PORTSDIR}/misc/iso-co
 
 PORTSCOUT=	limitw:1,even
 
-BROKEN=		Doesn't build with clang
-
 USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
 		shebangfix tar:xz
 USE_MATE=	desktop
@@ -53,7 +51,7 @@ MATEGTK3_USE_OFF=	GNOME=gtk20,pygobject,gtksourceview2,pygtk2,pygtksourceview
 .if ${PORT_OPTIONS:MMATEGTK3}
 PLIST_SUB+=	PYTHON="@comment "
 .else
-USES=		python:2
+USES+=		python:2
 PLIST_SUB+=	PYTHON=""
 .endif
 

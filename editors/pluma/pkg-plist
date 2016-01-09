@@ -60,6 +60,7 @@ lib/pluma/plugins/libsort.so
 lib/pluma/plugins/libspell.so
 lib/pluma/plugins/libtaglist.so
 lib/pluma/plugins/libtime.so
+lib/pluma/plugins/libtrailsave.so
 lib/pluma/plugins/modelines.pluma-plugin
 %%PYTHON%%lib/pluma/plugins/pythonconsole.pluma-plugin
 %%PYTHON%%lib/pluma/plugins/pythonconsole/__init__.py
@@ -131,6 +132,7 @@ lib/pluma/plugins/sort.pluma-plugin
 lib/pluma/plugins/spell.pluma-plugin
 lib/pluma/plugins/taglist.pluma-plugin
 lib/pluma/plugins/time.pluma-plugin
+lib/pluma/plugins/trailsave.pluma-plugin
 libdata/pkgconfig/pluma.pc
 libexec/pluma/pluma-bugreport.sh
 man/man1/pluma.1.gz
