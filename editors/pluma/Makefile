@@ -42,7 +42,7 @@ OPTIONS_DEFINE=	MATEGTK3
 
 MATEGTK3_DESC=	build agains gtk3
 MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0 --disable-python
-MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_USE=	GNOME=gtk30,gtksourceview3
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20,pygobject,gtksourceview2,pygtk2,pygtksourceview
 
