@@ -10,8 +10,6 @@ DIST_SUBDIR=	mate
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	MATE system monitor program
 
-BROKEN=		doesn build with clang
-
 BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool
 LIB_DEPENDS=	libgtop-2.0.so:${PORTSDIR}/devel/libgtop \
 		libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib
@@ -22,7 +20,7 @@ USES=		alias gettext gmake pathfix pkgconfig tar:xz
 USE_MATE=	icontheme
 USE_GNOME=	intlhack librsvg2 libxml2
 GNU_CONFIGURE=	yes
-CONFIGURE_ENV=	LIBS="-lutil"
+CONFIGURE_ENV=	LIBS="-lutil" DATADIRNAME="share"
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
