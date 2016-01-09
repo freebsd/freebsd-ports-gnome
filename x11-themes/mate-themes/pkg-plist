@@ -3525,6 +3525,7 @@ share/themes/BlackMATE/gtk-3.0/assets/pane-separator-grip-hover.svg
 share/themes/BlackMATE/gtk-3.0/assets/pane-separator-grip-vertical-hover.svg
 share/themes/BlackMATE/gtk-3.0/assets/pane-separator-grip-vertical.svg
 share/themes/BlackMATE/gtk-3.0/assets/pane-separator-grip.svg
+share/themes/BlackMATE/gtk-3.0/assets/panel-grid.svg
 share/themes/BlackMATE/gtk-3.0/assets/primary-toolbar-button-active-border-dark.svg
 share/themes/BlackMATE/gtk-3.0/assets/primary-toolbar-raised-button-border-dark.svg
 share/themes/BlackMATE/gtk-3.0/assets/progressbar-border-dark.svg
@@ -4096,6 +4097,7 @@ share/themes/ContrastHigh/gtk-2.0/gtkrc
 share/themes/ContrastHigh/gtk-3.0/gtk-widgets.css
 share/themes/ContrastHigh/gtk-3.0/gtk.css
 share/themes/ContrastHigh/gtk-3.0/mate-applications.css
+share/themes/ContrastHigh/gtk-3.0/other-applications.css
 share/themes/ContrastHigh/gtk-3.0/resize-grip.svg
 share/themes/ContrastHigh/gtk-3.0/settings.ini
 share/themes/ContrastHigh/index.theme
@@ -4233,6 +4235,7 @@ share/themes/ContrastHighInverse/gtk-2.0/gtkrc
 share/themes/ContrastHighInverse/gtk-3.0/gtk-widgets.css
 share/themes/ContrastHighInverse/gtk-3.0/gtk.css
 share/themes/ContrastHighInverse/gtk-3.0/mate-applications.css
+share/themes/ContrastHighInverse/gtk-3.0/other-applications.css
 share/themes/ContrastHighInverse/gtk-3.0/resize-grip.svg
 share/themes/ContrastHighInverse/gtk-3.0/settings.ini
 share/themes/ContrastHighInverse/index.theme
