@@ -12,8 +12,7 @@ COMMENT=	Window manager for the adult in you
 
 BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool \
 		zenity>=3.0.0:${PORTSDIR}/x11/zenity
-LIB_DEPENDS=	libstartup-notification-1.so:${PORTSDIR}/x11/startup-notification \
-		libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra
+LIB_DEPENDS=	libstartup-notification-1.so:${PORTSDIR}/x11/startup-notification
 RUN_DEPENDS=	zenity>=3.0.0:${PORTSDIR}/x11/zenity
 
 PORTSCOUT=	limitw:1,even
@@ -37,5 +36,13 @@ MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MMATEGTK3}
+LIB_DEPENDS+=	libcanberra-gtk3.so:${PORTSDIR}/audio/libcanberra-gtk3
+.else
+LIB_DEPENDS+=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra
+.endif
 
 .include <bsd.port.mk>

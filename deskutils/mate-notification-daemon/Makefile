@@ -15,7 +15,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libdbus-1.so:${PORTSDIR}/devel/dbus \
 		libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib \
-		libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra \
 		libnotify.so:${PORTSDIR}/devel/libnotify
 
 PORTSCOUT=	limitw:1,even
@@ -40,5 +39,13 @@ MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30,libwnck3
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20,libwnck
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MMATEGTK3}
+LIB_DEPENDS+=	libcanberra-gtk3.so:${PORTSDIR}/audio/libcanberra-gtk3
+.else
+LIB_DEPENDS+=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra
+.endif
 
 .include <bsd.port.mk>
