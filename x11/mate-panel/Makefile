@@ -19,7 +19,7 @@ USES=		gettext gmake libtool pathfix pkgconfig python tar:xz
 USE_MATE=	desktop libmateweather  menus
 USE_XORG=	ice sm x11 xau xrandr
 USE_GNOME=	cairo dconf gdkpixbuf2 glib20 \
-		intlhack introspection:build librsvg2 pango libwnck
+		intlhack introspection:build librsvg2 pango
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-network-manager \
@@ -45,9 +45,9 @@ OPTIONS_DEFINE=	MATEGTK3
 
 MATEGTK3_DESC=	build agains gtk3
 MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
-MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_USE=	GNOME=gtk30,libwnck3
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
-MATEGTK3_USE_OFF=	GNOME=gtk20
+MATEGTK3_USE_OFF=	GNOME=gtk20,libwnck
 
 .include <bsd.port.options.mk>
 
