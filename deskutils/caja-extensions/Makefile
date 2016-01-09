@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	caja-extensions
-PORTVERSION=	1.10.0
+PORTVERSION=	1.12.0
 CATEGORIES=	deskutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -25,5 +25,13 @@ INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.Caja.Sendto.gschema.xml \
 		org.mate.caja-open-terminal.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
 
 .include <bsd.port.mk>

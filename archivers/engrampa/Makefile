@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	engrampa
-PORTVERSION=	1.10.1
+PORTVERSION=	1.12.0
 CATEGORIES=	archivers mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -20,17 +20,24 @@ USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
 		tar:xz
 USE_MATE=	caja
 USE_XORG=	sm
-USE_GNOME=	glib20 gtk20 intlhack
+USE_GNOME=	glib20 intlhack
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-packagekit \
-		--with-gtk=2.0
+CONFIGURE_ARGS=	--disable-packagekit
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.engrampa.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-notification-daemon
-PORTVERSION=	1.10.1
+PORTVERSION=	1.12.1
 CATEGORIES=	deskutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -22,16 +22,23 @@ PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake libtool pathfix pkgconfig tar:xz
 USE_XORG=	x11
-USE_GNOME=	glib20 gtk20 librsvg2 intlhack libwnck
+USE_GNOME=	glib20 librsvg2 intlhack
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-dbus-services=${PREFIX}/share/dbus-1/services \
-		--disable-static \
-		--with-gtk=2.0
+		--disable-static
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.NotificationDaemon.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30,libwnck3
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20,libwnck
 
 .include <bsd.port.mk>

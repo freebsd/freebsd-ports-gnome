@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pluma
-PORTVERSION=	1.10.2
+PORTVERSION=	1.12.1
 CATEGORIES=	editors mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -18,16 +18,16 @@ RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:${PORTSDIR}/misc/iso-co
 
 PORTSCOUT=	limitw:1,even
 
+BROKEN=		Doesn't build with clang
+
 USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
-		python:2 shebangfix tar:xz
+		shebangfix tar:xz
 USE_MATE=	desktop
 USE_XORG=	sm x11
-USE_GNOME=	gtk20 gtksourceview2 gvfs intlhack libxml2 \
-		pygobject pygtk2 pygtksourceview
+USE_GNOME=	gvfs intlhack libxml2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-gtk-doc \
-		--with-gtk=2.0 \
 		--with-html-dir=${PREFIX}/share/doc
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -39,5 +39,22 @@ SHEBANG_FILES=	${WRKSRC}/plugins/externaltools/data/search-recursive.tool.in \
 GLIB_SCHEMAS=	org.mate.pluma.gschema.xml \
 		org.mate.pluma.plugins.filebrowser.gschema.xml \
 		org.mate.pluma.plugins.time.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0 --disable-python
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20,pygobject,gtksourceview2,pygtk2,pygtksourceview
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MMATEGTK3}
+PLIST_SUB+=	PYTHON="@comment "
+.else
+USES=		python:2
+PLIST_SUB+=	PYTHON=""
+.endif
 
 .include <bsd.port.mk>

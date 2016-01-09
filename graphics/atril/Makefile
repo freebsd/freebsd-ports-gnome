@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	atril
-PORTVERSION=	1.10.2
+PORTVERSION=	1.12.1
 PORTREVISION?=	0
 CATEGORIES=	graphics print mate
 MASTER_SITES=	MATE
@@ -16,8 +16,6 @@ BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool
 LIB_DEPENDS=	libpoppler-glib.so:${PORTSDIR}/graphics/poppler-glib \
 		libspectre.so:${PORTSDIR}/print/libspectre
 
-RUN_DEPENDS=	${LOCALBASE}/share/icons/hicolor/index.theme:${PORTSDIR}/misc/hicolor-icon-theme \
-
 PORTSCOUT=	limitw:1,even
 SLAVEPORT?=	no
 
@@ -25,11 +23,10 @@ USES=		desktop-file-utils gettext gmake libtool pathfix \
 		pkgconfig tar:xz
 USE_MATE=	icontheme
 USE_XORG=	sm
-USE_GNOME=	cairo gtk20 intlhack libxml2
+USE_GNOME=	cairo intlhack libxml2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-gtk=2.0 \
-		--disable-static
+CONFIGURE_ARGS=	--disable-static
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -45,7 +42,7 @@ USE_MATE+=	desktop
 
 GLIB_SCHEMAS=	org.mate.Atril.gschema.xml
 
-OPTIONS_DEFINE=	CAJA COMICS DJVU DVI EPUB KEYRING T1LIB XPS
+OPTIONS_DEFINE=	CAJA COMICS DJVU DVI EPUB KEYRING T1LIB XPS MATEGTK3
 OPTIONS_DEFAULT=CAJA COMICS EPUB KEYRING XPS
 DVI_DESC=	DVI viewer support
 T1LIB_DESC=	T1LIB for TYPE1 fonts to DVI (Enables DVI)
@@ -68,9 +65,23 @@ KEYRING_LIB_DEPENDS=	libsecret-1.so:${PORTSDIR}/security/libsecret
 XPS_CONFIGURE_ENABLE=	xps
 XPS_LIB_DEPENDS=	libgxps.so:${PORTSDIR}/graphics/libgxps
 EPUB_CONFIGURE_ENABLE=	epub
-EPUB_LIB_DEPENDS=	libwebkitgtk-1.0.so:${PORTSDIR}/www/webkit-gtk2
+#EPUB_LIB_DEPENDS=	libwebkitgtk-1.0.so:${PORTSDIR}/www/webkit-gtk2
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
 
 .include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MEPUB}
+.if ${PORT_OPTIONS:MMATEGTK3}
+LIB_DEPENDS+=	libwebkit2gtk-4.0.so:${PORTSDIR}/www/webkit2-gtk3
+.else
+LIB_DEPENDS+=	libwebkitgtk-1.0.so:${PORTSDIR}/www/webkit-gtk2
+.endif
+.endif
 
 .if ${SLAVEPORT} == lite
 CONFIGURE_ARGS+=--disable-dbus
