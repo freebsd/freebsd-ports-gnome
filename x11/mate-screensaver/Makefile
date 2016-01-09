@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-screensaver
-PORTVERSION=	1.10.2
+PORTVERSION=	1.12.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -20,11 +20,10 @@ USES=		gettext gmake pathfix pkgconfig tar:xz
 USE_GL=		gl
 USE_MATE=	desktop libmatekbd menus
 USE_XORG=	ice sm x11 xext xtst xxf86misc xxf86vm xscrnsaver
-USE_GNOME=	glib20 gtk20 intlhack
+USE_GNOME=	glib20 intlhack
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-xscreensaverdir=${XSCREENSAVER_DIR} \
 		--with-xscreensaverhackdir=${LOCALBASE}/bin/xscreensaver-hacks \
-		--with-gtk=2.0 \
 		--with-console-kit=yes \
 		--with-systemd=no
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -39,7 +38,7 @@ SCREENSAVER_DIR=	share/applications/screensavers
 
 XSCREENSAVER_EXCLUDE=	"(popsquares.xml)"
 
-OPTIONS_DEFINE=	PAM XSCREENSAVER
+OPTIONS_DEFINE=	PAM XSCREENSAVER MATEGTK3
 OPTIONS_DEFAULT=PAM
 PAM_DESC=	Pluggable Authentication Module support
 
@@ -51,6 +50,12 @@ PAM_RUN_DEPENDS=	pam_helper:${PORTSDIR}/security/pam_helper
 PAM_CONFIGURE_ON=--enable-authentication-scheme=helper \
 		--with-passwd-helper=${LOCALBASE}/bin/pam_helper
 PAM_CONFIGURE_OFF=--disable-pam
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
 
 .include <bsd.port.options.mk>
 

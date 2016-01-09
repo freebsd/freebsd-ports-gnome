@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-applets
-PORTVERSION=	1.10.3
-PORTREVISION=	1
+PORTVERSION=	1.12.1
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -27,8 +26,8 @@ PORTSCOUT=	limitw:1,even
 USES=		autoreconf:build gettext gmake libtool pathfix pkgconfig python tar:xz
 USE_MATE=	desktop icontheme libmateweather panel polkit settingsdaemon
 USE_XORG=	x11
-USE_GNOME=	gdkpixbuf2 gtksourceview2 introspection:build \
-		libxml2 libxslt pygobject pygobject3 libwnck intlhack
+USE_GNOME=	gdkpixbuf2 introspection:build \
+		libxml2 libxslt pygobject pygobject3 intlhack
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
@@ -47,6 +46,14 @@ GLIB_SCHEMAS=	org.mate.panel.applet.charpick.gschema.xml \
 
 FIX_APPLETS=	accessx-status battstat charpick drivemount geyes \
 		invest-applet/data multiload stickynotes trashapplet
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30,gtksourceview3,libwnck3
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20,gtksourceview2,libwnck
 
 .include <bsd.port.pre.mk>
 

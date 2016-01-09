@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-power-manager
-PORTVERSION=	1.10.2
+PORTVERSION=	1.12.1
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -26,7 +26,7 @@ PORTSCOUT=	limitw:1,even
 USES=		execinfo gettext gmake libtool pathfix pkgconfig tar:xz
 USE_MATE=	panel
 USE_XORG=	x11 xext xproto xrandr xrender
-USE_GNOME=	cairo glib20 gtk20 intlhack
+USE_GNOME=	cairo glib20 intlhack
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 CONFIGURE_ENV=	LIBS="-lexecinfo"
@@ -38,6 +38,14 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.power-manager.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|docbook2man|docbook2man_disabled|g" \

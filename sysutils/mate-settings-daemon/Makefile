@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-settings-daemon
-PORTVERSION=	1.10.2
+PORTVERSION=	1.12.1
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -24,12 +24,11 @@ PORTSCOUT=	limitw:1,even
 USES=		gettext gmake libtool pathfix pkgconfig tar:xz
 USE_MATE=	desktop libmatekbd
 USE_XORG=	xxf86misc
-USE_GNOME=	dconf gtk20 intlhack
+USE_GNOME=	dconf intlhack
 USE_LDCONFIG=	yes
 USE_GSTREAMER=	good
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-dbus-services=${PREFIX}/share/dbus-1/services \
-		--with-gtk=2.0 \
 		--disable-static
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -58,10 +57,16 @@ GLIB_SCHEMAS=	org.mate.SettingsDaemon.plugins.a11y-keyboard.gschema.xml \
 		org.mate.peripherals-smartcard.gschema.xml \
 		org.mate.peripherals-touchpad.gschema.xml
 
-OPTIONS_DEFINE=	PULSEAUDIO
+OPTIONS_DEFINE=	PULSEAUDIO MATEGTK3
 OPTIONS_SUB=	yes
 
 PULSEAUDIO_CONFIGURE_ENABLE=	pulseaudio
 PULSEAUDIO_LIB_DEPENDS=		libpulse.so:${PORTSDIR}/audio/pulseaudio
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
 
 .include <bsd.port.mk>

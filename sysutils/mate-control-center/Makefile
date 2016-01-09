@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-control-center
-PORTVERSION=	1.10.1
+PORTVERSION=	1.12.0
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -14,7 +14,6 @@ BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool
 LIB_DEPENDS=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra \
 		libdbus-1.so:${PORTSDIR}/devel/dbus \
 		libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib \
-		libunique-1.0.so:${PORTSDIR}/x11-toolkits/unique \
 		libxklavier.so:${PORTSDIR}/x11/libxklavier \
 		libpolkit-gobject-1.so:${PORTSDIR}/sysutils/polkit
 
@@ -24,12 +23,11 @@ USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
 		shared-mime-info tar:xz
 USE_MATE=	desktop libmatekbd marco menus settingsdaemon
 USE_XORG=	x11 xcursor xext xxf86misc xft xi xrandr xscrnsaver
-USE_GNOME=	dconf glib20 gtk20 intlhack libxml2 librsvg2 \
+USE_GNOME=	dconf glib20 intlhack libxml2 librsvg2 \
 		pango
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--enable-appindicator=no \
-		--with-gtk=2.0
+CONFIGURE_ARGS=	--enable-appindicator=no
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -37,6 +35,21 @@ INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.control-center.gschema.xml \
 		org.mate.control-center.keybinding.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_LIB_DEPENDS=	libunique-3.0.so:${PORTSDIR}/x11-toolkits/libunique3
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:NMATEGTK3}
+LIB_DEPENDS+=	libunique-1.0.so:${PORTSDIR}/x11-toolkits/unique
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|' \

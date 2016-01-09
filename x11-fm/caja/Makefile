@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	caja
-PORTVERSION=	1.10.3
+PORTVERSION=	1.12.1
 CATEGORIES=	x11-fm mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -22,12 +22,11 @@ USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
 		shared-mime-info tar:xz
 USE_MATE=	desktop icontheme:run
 USE_XORG=	ice x11 xrender
-USE_GNOME=	glib20 gtk20 intltool introspection:build \
+USE_GNOME=	glib20 intltool introspection:build \
 		libxml2 pango
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-packagekit \
-		--with-gtk=2.0 \
 		--disable-gtk-doc \
 		--with-html-dir=${PREFIX}/share/doc
 INSTALLS_ICONS=	yes
@@ -37,6 +36,15 @@ INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.caja.gschema.xml \
 		org.mate.media-handling.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
+
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/caja/extensions-2.0

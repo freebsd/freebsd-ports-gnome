@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-session-manager
-PORTVERSION=	1.10.2
-PORTREVISION=	1
+PORTVERSION=	1.12.1
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -21,10 +20,9 @@ PORTSCOUT=	limitw:1,even
 USES=		execinfo gettext gmake libtool pathfix pkgconfig tar:xz
 USE_MATE=	desktop
 USE_XORG=	ice sm xau xext xrandr xrender xtrans xtst
-USE_GNOME=	gtk20 intlhack librsvg2 libxslt pango
+USE_GNOME=	intlhack librsvg2 libxslt pango
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-docbook-docs \
-		--with-gtk=2.0 \
 		--enable-upower \
 		--with-systemd=no
 INSTALLS_ICONS=	yes
@@ -32,5 +30,13 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.session.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
 
 .include <bsd.port.mk>

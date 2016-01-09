@@ -2,13 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	mate-system-monitor
-PORTVERSION=	1.10.1
+PORTVERSION=	1.12.1
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	MATE system monitor program
+
+BROKEN=		doesn build with clang
 
 BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool
 LIB_DEPENDS=	libgtop-2.0.so:${PORTSDIR}/devel/libgtop \
@@ -18,8 +20,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		alias gettext gmake pathfix pkgconfig tar:xz
 USE_MATE=	icontheme
-USE_GNOME=	gtk20 gtkmm24 intlhack librsvg2 libwnck libxml2
-CONFIGURE_ARGS=	--with-gtk=2.0
+USE_GNOME=	intlhack librsvg2 libxml2
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	LIBS="-lutil"
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -27,5 +28,13 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.system-monitor.enums.xml \
 		org.mate.system-monitor.gschema.xml
+
+OPTIONS_DEFINE=	MATEGTK3
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30,gtkmm30,libwnck3
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20,gtkmm24,libwnck
 
 .include <bsd.port.mk>

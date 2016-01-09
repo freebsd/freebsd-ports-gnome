@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	eom
-PORTVERSION=	1.10.3
+PORTVERSION=	1.12.0
 CATEGORIES=	graphics mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -18,12 +18,11 @@ USES=		desktop-file-utils gettext gmake jpeg libtool pathfix pkgconfig \
 		tar:xz
 USE_MATE=	desktop icontheme
 USE_XORG=	x11
-USE_GNOME=	gdkpixbuf2 glib20 gtk20 intltool librsvg2 libxml2
+USE_GNOME=	gdkpixbuf2 glib20 intltool librsvg2 libxml2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--disable-gtk-doc \
 		--with-html-dir=${PREFIX}/share/doc \
 		--disable-introspection \
-		--with-gtk=2.0 \
 		--disable-python \
 		--without-cms
 INSTALLS_ICONS=	yes
@@ -34,10 +33,16 @@ INSTALL_TARGET=	install-strip
 GLIB_SCHEMAS=	org.mate.eom.gschema.xml \
 		org.mate.eom.enums.xml
 
-OPTIONS_DEFINE=	EXIF EXEMPI
+OPTIONS_DEFINE=	EXIF EXEMPI MATEGTK3
 OPTIONS_DEFAULT=EXIF EXEMPI
 EXIF_DESC=	Digital camera file meta-data support
 EXEMPI_DESC=	XMP support
+
+MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
+MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
+MATEGTK3_USE_OFF=	GNOME=gtk20
 
 .include <bsd.port.options.mk>
 
