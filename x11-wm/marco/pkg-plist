@@ -1,6 +1,6 @@
 bin/marco
 bin/marco-message
-bin/marco-theme-viewer
+%%NO_MATEGTK3%%bin/marco-theme-viewer
 bin/marco-window-demo
 include/marco-1/marco-private/boxes.h
 include/marco-1/marco-private/common.h

@@ -12,7 +12,8 @@ COMMENT=	Window manager for the adult in you
 
 BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool \
 		zenity>=3.0.0:${PORTSDIR}/x11/zenity
-LIB_DEPENDS=	libstartup-notification-1.so:${PORTSDIR}/x11/startup-notification
+LIB_DEPENDS=	libstartup-notification-1.so:${PORTSDIR}/x11/startup-notification \
+		libgtop-2.0.so:${PORTSDIR}/devel/libgtop
 RUN_DEPENDS=	zenity>=3.0.0:${PORTSDIR}/x11/zenity
 
 PORTSCOUT=	limitw:1,even
@@ -29,6 +30,7 @@ INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.marco.gschema.xml
 
+OPTIONS_SUB=	yes
 OPTIONS_DEFINE= MATEGTK3
 
 MATEGTK3_DESC=	build agains gtk3
