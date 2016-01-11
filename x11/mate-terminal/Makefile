@@ -17,7 +17,7 @@ PORTSCOUT=	limitw:1,even
 USES=		gettext gmake pathfix pkgconfig shebangfix tar:xz
 USE_MATE=	desktop
 USE_XORG=	sm x11
-USE_GNOME=	dconf intlhack vte3
+USE_GNOME=	dconf intlhack
 SHEBANG_FILES=	mate-terminal.wrapper
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -29,8 +29,8 @@ OPTIONS_DEFINE=	MATEGTK3
 
 MATEGTK3_DESC=	build agains gtk3
 MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
-MATEGTK3_USE=	GNOME=gtk30
+MATEGTK3_USE=	GNOME=gtk30,vte3
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
-MATEGTK3_USE_OFF=	GNOME=gtk20
+MATEGTK3_USE_OFF=	GNOME=gtk20,vte
 
 .include <bsd.port.mk>
