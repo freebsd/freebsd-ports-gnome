@@ -3988,6 +3988,7 @@
     SUBDIR += py-darcsver
     SUBDIR += py-dateutil
     SUBDIR += py-dbus
+    SUBDIR += py-debtcollector
     SUBDIR += py-decorator
     SUBDIR += py-decoratortools
     SUBDIR += py-defusedxml
@@ -4076,7 +4077,7 @@
     SUBDIR += py-hgsubversion
     SUBDIR += py-hgtools
     SUBDIR += py-humanize
-    SUBIDR += py-hypothesis
+    SUBDIR += py-hypothesis
     SUBDIR += py-icalendar
     SUBDIR += py-ice
     SUBDIR += py-icu
@@ -4145,6 +4146,7 @@
     SUBDIR += py-mock
     SUBDIR += py-mongoengine
     SUBDIR += py-mongokit
+    SUBDIR += py-monotonic
     SUBDIR += py-more-itertools
     SUBDIR += py-mox
     SUBDIR += py-msgpack
@@ -5075,6 +5077,7 @@
     SUBDIR += rubygem-sugar-high
     SUBDIR += rubygem-sumbur
     SUBDIR += rubygem-sundawg_country_codes
+    SUBDIR += rubygem-svn2git
     SUBDIR += rubygem-sysinfo
     SUBDIR += rubygem-systemu
     SUBDIR += rubygem-table_print
