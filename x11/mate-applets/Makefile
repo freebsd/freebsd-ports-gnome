@@ -43,8 +43,8 @@ GLIB_SCHEMAS=	org.mate.panel.applet.charpick.gschema.xml \
 		org.mate.panel.applet.timer.gschema.xml \
 		org.mate.stickynotes.gschema.xml
 
-FIX_APPLETS=	accessx-status battstat charpick drivemount geyes \
-		invest-applet/data multiload stickynotes trashapplet
+FIX_APPLETS=	accessx-status battstat \
+		invest-applet/data stickynotes trashapplet
 
 OPTIONS_DEFINE=	MATEGTK3
 
@@ -82,6 +82,10 @@ post-patch:
 .for dir in ${FIX_APPLETS}
 	@${REINPLACE_CMD} -e 's|@LIBEXECDIR@/|@LIBEXECDIR@/mate-|g' \
 		${WRKSRC}/${dir}/org.mate.*
+.endfor
+.for dir in command timerapplet
+	@${REINPLACE_CMD} -e 's|(libexecdir)/|(libexecdir)/mate-|g' \
+		${WRKSRC}/${dir}/Makefile.in
 .endfor
 
 .include <bsd.port.post.mk>
