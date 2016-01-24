@@ -6,8 +6,8 @@ While background might not work, at least it doesn't crash now.
 -kwm
 
 --- libmate-panel-applet/mate-panel-applet.c.orig	2015-11-30 08:37:55.000000000 +0100
-+++ libmate-panel-applet/mate-panel-applet.c	2016-01-10 11:53:19.628092000 +0100
-@@ -1788,6 +1788,11 @@
++++ libmate-panel-applet/mate-panel-applet.c	2016-01-22 13:18:55.408888000 +0100
+@@ -1788,6 +1788,11 @@ mate_panel_applet_change_background(Mate
  	GdkWindow* window = gtk_widget_get_window(GTK_WIDGET(applet));
  	gtk_widget_set_app_paintable(GTK_WIDGET(applet),TRUE);
  	_mate_panel_applet_apply_css(GTK_WIDGET(applet->priv->plug),type);

@@ -3,6 +3,7 @@
 
 PORTNAME=	mate-applets
 PORTVERSION=	1.12.1
+PORTREVISION=	1
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -30,7 +31,6 @@ USE_GNOME=	gdkpixbuf2 introspection:build \
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
-CONFIGURE_ARGS=	--disable-networkmanager
 CONFIGURE_ENV=	OS_SYS="/usr/include"
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-lpthread -L${LOCALBASE}/lib
