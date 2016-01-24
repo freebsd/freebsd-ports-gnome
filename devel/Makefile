@@ -412,7 +412,6 @@
     SUBDIR += dyncall
     SUBDIR += e00compr
     SUBDIR += e2fsprogs-libss
-    SUBDIR += e_dbus
     SUBDIR += easygit
     SUBDIR += eblob
     SUBDIR += ebnf2yacc
@@ -468,6 +467,7 @@
     SUBDIR += eric4
     SUBDIR += eric6
     SUBDIR += eris
+    SUBDIR += erlang-backoff
     SUBDIR += erlang-bbmustache
     SUBDIR += erlang-bear
     SUBDIR += erlang-certifi
@@ -1185,6 +1185,7 @@
     SUBDIR += libfirm
     SUBDIR += libfortuna
     SUBDIR += libfreefare
+    SUBDIR += libfsntfs
     SUBDIR += libftdi
     SUBDIR += libftdi1
     SUBDIR += libfwsi
@@ -4114,6 +4115,7 @@
     SUBDIR += py-kaptan
     SUBDIR += py-kayako
     SUBDIR += py-kazoo
+    SUBDIR += py-keystoneauth1
     SUBDIR += py-kid
     SUBDIR += py-kjbuckets
     SUBDIR += py-kqueue
@@ -4176,6 +4178,9 @@
     SUBDIR += py-optik
     SUBDIR += py-orbit
     SUBDIR += py-ordereddict
+    SUBDIR += py-oslo.i18n
+    SUBDIR += py-oslo.serialization
+    SUBDIR += py-oslo.utils
     SUBDIR += py-palm
     SUBDIR += py-parsedatetime
     SUBDIR += py-path.py
@@ -4392,6 +4397,7 @@
     SUBDIR += py-twistedCore
     SUBDIR += py-twistedFlow
     SUBDIR += py-twistedRunner
+    SUBDIR += py-txaio
     SUBDIR += py-tzlocal
     SUBDIR += py-ua_parser
     SUBDIR += py-ujson
@@ -4764,6 +4770,7 @@
     SUBDIR += rubygem-cri
     SUBDIR += rubygem-cucumber
     SUBDIR += rubygem-cucumber-core
+    SUBDIR += rubygem-cucumber-wire
     SUBDIR += rubygem-curses
     SUBDIR += rubygem-cyoi
     SUBDIR += rubygem-daemon_controller
@@ -4794,6 +4801,7 @@
     SUBDIR += rubygem-enumerize
     SUBDIR += rubygem-equalizer
     SUBDIR += rubygem-errand
+    SUBDIR += rubygem-event-bus
     SUBDIR += rubygem-eventmachine
     SUBDIR += rubygem-excon
     SUBDIR += rubygem-execjs

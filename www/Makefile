@@ -1588,6 +1588,7 @@
     SUBDIR += py-django16-tastypie
     SUBDIR += py-django17
     SUBDIR += py-django18
+    SUBDIR += py-django19
     SUBDIR += py-django_compressor
     SUBDIR += py-djangotoolbox
     SUBDIR += py-djblets
@@ -2054,6 +2055,7 @@
     SUBDIR += sitecopy
     SUBDIR += siteframe
     SUBDIR += skytemplate
+    SUBDIR += slowcgi
     SUBDIR += smarty2
     SUBDIR += smarty3
     SUBDIR += smb_auth
@@ -2337,7 +2339,6 @@
     SUBDIR += xpi-linkification
     SUBDIR += xpi-live_http_headers
     SUBDIR += xpi-live_pagerank
-    SUBDIR += xpi-locale-switcher
     SUBDIR += xpi-menueditor
     SUBDIR += xpi-mldonkey
     SUBDIR += xpi-modify_headers

@@ -117,6 +117,9 @@
     SUBDIR += movingmotif
     SUBDIR += mowitz
     SUBDIR += mygui
+    SUBDIR += mygui-dummy
+    SUBDIR += mygui-ogre
+    SUBDIR += mygui-opengl
     SUBDIR += neXtaw
     SUBDIR += nucleo
     SUBDIR += ocaml-lablgtk2
@@ -232,6 +235,7 @@
     SUBDIR += rubygem-pango
     SUBDIR += rubygem-poppler
     SUBDIR += rubygem-vte
+    SUBDIR += rubygem-vte3
     SUBDIR += scintilla
     SUBDIR += sdl_pango
     SUBDIR += shared-desktop-ontologies

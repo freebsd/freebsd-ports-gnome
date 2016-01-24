@@ -3,7 +3,7 @@
 
 PORTNAME=	graphviz
 PORTVERSION=	2.38.0
-PORTREVISION=	10
+PORTREVISION=	11
 CATEGORIES=	graphics tk
 MASTER_SITES=	http://www.graphviz.org/pub/graphviz/ARCHIVE/
 
@@ -16,8 +16,6 @@ LIB_DEPENDS=	libltdl.so:${PORTSDIR}/devel/libltdl \
 		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig \
 		libexpat.so:${PORTSDIR}/textproc/expat2 \
 		libgd.so:${PORTSDIR}/${GD_PORT}
-
-BROKEN_FreeBSD_11=	namespace collision
 
 USES=		bison cpe gmake jpeg libtool:keepla pkgconfig pathfix shebangfix
 GNU_CONFIGURE=	yes
@@ -298,6 +296,10 @@ post-patch:
 	${REINPLACE_CMD} -e 's|GTS_LIBS)|GTS_LIBS) $$(MATH_LIBS)|' \
 		${WRKSRC}/cmd/smyrna/Makefile.in
 	${CP} ${WRKSRC}/lib/cgraph/cgraph.h ${WRKSRC}/plugin/ming/
+.if ${OSVERSION} >= 1100093
+	${REINPLACE_CMD} -e 's|SF_FLAGS|SFIO_FLAGS|g' \
+		${WRKSRC}/lib/sfio/*.[ch]
+.endif
 .if ! ${PORT_OPTIONS:MDOCS}
 	${REINPLACE_CMD} -e 's| install-txtDATA$$||' \
 		${WRKSRC}/Makefile.in
