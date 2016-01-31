@@ -1,4 +1,5 @@
 etc/xdg/menus/mate-applications.menu
+etc/xdg/menus/mate-preferences-categories.menu
 etc/xdg/menus/mate-settings.menu
 include/mate-menus/matemenu-tree.h
 lib/girepository-1.0/MateMenu-2.0.typelib
