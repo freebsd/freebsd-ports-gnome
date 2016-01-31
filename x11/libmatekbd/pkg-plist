@@ -16,7 +16,6 @@ lib/libmatekbdui.so.4
 lib/libmatekbdui.so.4.2.0
 libdata/pkgconfig/libmatekbd.pc
 libdata/pkgconfig/libmatekbdui.pc
-share/MateConf/gsettings/matekbd.convert
 share/gir-1.0/Matekbd-1.0.gir
 %%DATADIR%%/ui/show-layout.ui
 share/locale/am/LC_MESSAGES/libmatekbd.mo
