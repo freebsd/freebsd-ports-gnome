@@ -136,7 +136,6 @@ lib/pluma/plugins/trailsave.pluma-plugin
 libdata/pkgconfig/pluma.pc
 libexec/pluma/pluma-bugreport.sh
 man/man1/pluma.1.gz
-share/MateConf/gsettings/pluma.convert
 share/appdata/pluma.appdata.xml
 share/applications/pluma.desktop
 %%PORTDOCS%%%%DOCSDIR%%/PlumaMessage.html
@@ -147,7 +146,6 @@ share/applications/pluma.desktop
 %%PORTDOCS%%%%DOCSDIR%%/home.png
 %%PORTDOCS%%%%DOCSDIR%%/index.html
 %%PORTDOCS%%%%DOCSDIR%%/index.sgml
-%%PORTDOCS%%%%DOCSDIR%%/left-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/left.png
 %%PORTDOCS%%%%DOCSDIR%%/pluma-PlumaPrintJob.html
 %%PORTDOCS%%%%DOCSDIR%%/pluma-pluma-app.html
@@ -171,10 +169,8 @@ share/applications/pluma.desktop
 %%PORTDOCS%%%%DOCSDIR%%/pluma-pluma-view.html
 %%PORTDOCS%%%%DOCSDIR%%/pluma-pluma-window.html
 %%PORTDOCS%%%%DOCSDIR%%/pluma.devhelp2
-%%PORTDOCS%%%%DOCSDIR%%/right-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/right.png
 %%PORTDOCS%%%%DOCSDIR%%/style.css
-%%PORTDOCS%%%%DOCSDIR%%/up-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/up.png
 share/help/C/pluma/figures/pluma_format_bold.png
 share/help/C/pluma/figures/pluma_format_italic.png
@@ -506,6 +502,7 @@ share/locale/zh_TW/LC_MESSAGES/pluma.mo
 %%PYTHON%%%%DATADIR%%/plugins/snippets/xslt.xml
 %%DATADIR%%/plugins/sort/sort.ui
 %%DATADIR%%/plugins/spell/languages-dialog.ui
+%%DATADIR%%/plugins/spell/pluma-spell-setup-dialog.ui
 %%DATADIR%%/plugins/spell/spell-checker.ui
 %%DATADIR%%/plugins/taglist/HTML.tags.gz
 %%DATADIR%%/plugins/taglist/Latex.tags.gz
