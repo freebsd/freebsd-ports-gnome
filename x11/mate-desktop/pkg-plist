@@ -25,7 +25,6 @@ libdata/pkgconfig/mate-desktop-2.0.pc
 man/man1/mate-about.1.gz
 man/man1/mate-color-select.1.gz
 man/man1/mpaste.1.gz
-share/MateConf/gsettings/mate-desktop.convert
 share/applications/mate-about.desktop
 share/applications/mate-color-select.desktop
 %%PORTDOCS%%%%DOCSDIR%%/MateBG.html
@@ -37,7 +36,6 @@ share/applications/mate-color-select.desktop
 %%PORTDOCS%%%%DOCSDIR%%/index.html
 %%PORTDOCS%%%%DOCSDIR%%/index.sgml
 %%PORTDOCS%%%%DOCSDIR%%/intro.html
-%%PORTDOCS%%%%DOCSDIR%%/left-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/left.png
 %%PORTDOCS%%%%DOCSDIR%%/libmate.html
 %%PORTDOCS%%%%DOCSDIR%%/mate-desktop-Miscellaneous-Functions.html
@@ -49,11 +47,9 @@ share/applications/mate-color-select.desktop
 %%PORTDOCS%%%%DOCSDIR%%/mate-desktop-mate-rr-screen.html
 %%PORTDOCS%%%%DOCSDIR%%/mate-desktop.devhelp2
 %%PORTDOCS%%%%DOCSDIR%%/randr.html
-%%PORTDOCS%%%%DOCSDIR%%/right-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/right.png
 %%PORTDOCS%%%%DOCSDIR%%/style.css
 %%PORTDOCS%%%%DOCSDIR%%/thumbnail.html
-%%PORTDOCS%%%%DOCSDIR%%/up-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/up.png
 share/gir-1.0/MateDesktop-2.0.gir
 share/icons/hicolor/16x16/apps/mate.png

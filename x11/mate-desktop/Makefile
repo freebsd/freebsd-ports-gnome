@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-desktop
-PORTVERSION=	1.12.1
+PORTVERSION=	1.13.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -23,7 +23,6 @@ SHEBANG_FILES=	tools/mpaste
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-gtk-doc \
-		--disable-user-guide \
 		--with-html-dir=${PREFIX}/share/doc
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
