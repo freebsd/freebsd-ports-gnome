@@ -8,7 +8,6 @@ man/man1/mate-session-properties.1.gz
 man/man1/mate-session-save.1.gz
 man/man1/mate-session.1.gz
 man/man1/mate-wm.1.gz
-share/MateConf/gsettings/mate-session.convert
 share/applications/mate-session-properties.desktop
 share/icons/hicolor/16x16/apps/mate-session-properties.png
 share/icons/hicolor/22x22/apps/mate-session-properties.png
