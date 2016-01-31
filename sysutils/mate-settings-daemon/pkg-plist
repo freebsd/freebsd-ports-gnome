@@ -47,7 +47,6 @@ libexec/msd-locate-pointer
 man/man1/mate-settings-daemon.1.gz
 man/man1/msd-datetime-mechanism.1.gz
 man/man1/msd-locate-pointer.1.gz
-share/MateConf/gsettings/mate-settings-daemon.convert
 share/dbus-1/services/org.mate.SettingsDaemon.service
 share/dbus-1/system-services/org.mate.SettingsDaemon.DateTimeMechanism.service
 share/icons/hicolor/16x16/apps/msd-xrandr.png
