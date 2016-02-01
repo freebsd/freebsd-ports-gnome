@@ -20,6 +20,7 @@ USE_GNOME=	libxml2 intlhack
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-gtk-doc \
+		--with-gtk=2.0 \
 		--with-html-dir=${PREFIX}/share/doc
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include

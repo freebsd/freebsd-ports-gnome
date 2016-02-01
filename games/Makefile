@@ -1,7 +1,7 @@
 # $FreeBSD$
 #
 
-    COMMENT = Games
+    COMMENT = Games and related software
 
     SUBDIR += 0ad
     SUBDIR += 0verkill
@@ -408,6 +408,7 @@
     SUBDIR += hohlin
     SUBDIR += hoichess
     SUBDIR += holotz-castle
+    SUBDIR += hoverboard-sdl
     SUBDIR += hypatia_engine
     SUBDIR += iagno
     SUBDIR += icbm3d
@@ -892,6 +893,7 @@
     SUBDIR += sjeng
     SUBDIR += ski
     SUBDIR += sl
+    SUBDIR += slade
     SUBDIR += slashem-tty
     SUBDIR += slump
     SUBDIR += slune

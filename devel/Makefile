@@ -1026,7 +1026,6 @@
     SUBDIR += htable
     SUBDIR += hub
     SUBDIR += hwloc
-    SUBDIR += i386-linux-binutils
     SUBDIR += ice
     SUBDIR += icmake
     SUBDIR += icu
@@ -1401,6 +1400,7 @@
     SUBDIR += llvm35
     SUBDIR += llvm36
     SUBDIR += llvm37
+    SUBDIR += llvm38
     SUBDIR += lm4tools
     SUBDIR += lmdbg
     SUBDIR += lndir
@@ -4151,7 +4151,7 @@
     SUBDIR += py-monotonic
     SUBDIR += py-more-itertools
     SUBDIR += py-mox
-    SUBDIR += py-msgpack
+    SUBDIR += py-msgpack-python
     SUBDIR += py-multipledispatch
     SUBDIR += py-mwlib
     SUBDIR += py-mwlib.ext
@@ -4256,6 +4256,7 @@
     SUBDIR += py-python-bugzilla
     SUBDIR += py-python-distutils-extra
     SUBDIR += py-python-jenkins
+    SUBDIR += py-python-magic
     SUBDIR += py-python-pcre
     SUBDIR += py-python-statsd
     SUBDIR += py-python2-pythondialog
@@ -4530,6 +4531,7 @@
     SUBDIR += py3-jsonschema
     SUBDIR += py3-libpeas
     SUBDIR += py3-pytz
+    SUBDIR += py3-python-magic
     SUBDIR += py3-vcversioner
     SUBDIR += py3-xdg
     SUBDIR += py_static_check
@@ -4601,6 +4603,7 @@
     SUBDIR += qt5-help
     SUBDIR += qt5-linguist
     SUBDIR += qt5-linguisttools
+    SUBDIR += qt5-location
     SUBDIR += qt5-qdbus
     SUBDIR += qt5-qdbusviewer
     SUBDIR += qt5-qdoc
@@ -4783,6 +4786,7 @@
     SUBDIR += rubygem-default_value_for
     SUBDIR += rubygem-delayed_job
     SUBDIR += rubygem-delayer
+    SUBDIR += rubygem-delayer-deferred
     SUBDIR += rubygem-deprecated
     SUBDIR += rubygem-deprecated2
     SUBDIR += rubygem-descendants_tracker
@@ -4873,6 +4877,7 @@
     SUBDIR += rubygem-ice_cube
     SUBDIR += rubygem-ice_nine
     SUBDIR += rubygem-inflecto
+    SUBDIR += rubygem-instance_storage
     SUBDIR += rubygem-interact
     SUBDIR += rubygem-io-like
     SUBDIR += rubygem-iobuffer
@@ -4906,6 +4911,7 @@
     SUBDIR += rubygem-lumberjack
     SUBDIR += rubygem-main
     SUBDIR += rubygem-map
+    SUBDIR += rubygem-memoist
     SUBDIR += rubygem-memoizable
     SUBDIR += rubygem-memoize
     SUBDIR += rubygem-mercenary
@@ -4959,6 +4965,7 @@
     SUBDIR += rubygem-pkg-config
     SUBDIR += rubygem-platform
     SUBDIR += rubygem-plist
+    SUBDIR += rubygem-pluggaloid
     SUBDIR += rubygem-polyamorous
     SUBDIR += rubygem-polyglot
     SUBDIR += rubygem-popen4
@@ -5170,7 +5177,6 @@
     SUBDIR += simgear
     SUBDIR += simian
     SUBDIR += simple_components
-    SUBDIR += simpletest
     SUBDIR += skalibs
     SUBDIR += slf4j
     SUBDIR += smack

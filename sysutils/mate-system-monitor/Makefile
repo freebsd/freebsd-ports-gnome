@@ -16,7 +16,8 @@ LIB_DEPENDS=	libgtop-2.0.so:${PORTSDIR}/devel/libgtop \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		alias gettext gmake pathfix pkgconfig tar:xz
+USES=		alias compiler:c++11-lang gettext gmake pathfix \
+		pkgconfig tar:xz
 USE_MATE=	icontheme
 USE_GNOME=	intlhack librsvg2 libxml2
 GNU_CONFIGURE=	yes

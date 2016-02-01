@@ -16,9 +16,10 @@ PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake libtool pathfix pkgconfig tar:xz
 USE_MATE=	caja desktop
-USE_GNOME=	glib20 intlhack
+USE_GNOME=	glib20 gtk20 intlhack
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--with-gtk=2.0
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip

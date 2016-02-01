@@ -1,9 +1,9 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
 # $FreeBSD$
-#   $MCom: ports/editors/abiword/Makefile,v 1.13 2009/11/10 13:56:18 kwm Exp $
 
 PORTNAME=	abiword
 PORTVERSION=	3.0.1
+PORTREVISION=	1
 CATEGORIES=	editors
 MASTER_SITES=	http://www.abisource.com/downloads/abiword/${PORTVERSION}/source/
 DIST_SUBDIR=	AbiWord
@@ -36,7 +36,7 @@ INSTALL_TARGET=	install-strip
 PLIST_SUB+=	ABIVERSION=3.0
 
 OPTIONS_DEFINE=	AIKSAURUS CLIPART DEBUG MATHVIEW NLS OTS PSION \
-		TEMPLATES MATHVIEW WP
+		TEMPLATES WP
 OPTIONS_DEFAULT=CLIPART COLSERVICE COLSUGAR COLTCP SPELLCHECK TEMPLATES
 OPTIONS_SUB=	yes
 
@@ -102,10 +102,11 @@ COLTELEPATHY_LIB_DEPENDS=	libtelepathy-glib.so:${PORTSDIR}/net-im/telepathy-glib
 COLXMPP_CONFIGURE_ENABLE=	collab-backend-xmpp
 COLXMPP_LIB_DEPENDS=		libloudmouth-1.so:${PORTSDIR}/net-im/loudmouth
 
-DEBUG_CONFIGURE_ENABLE=		debug symbols
+DEBUG_CONFIGURE_ENABLE=		debug
 
 GRAMMAR_LIB_DEPENDS=		liblink-grammar.so:${PORTSDIR}/textproc/link-grammar
 
+MATHVIEW_USES=			bison
 MATHVIEW_LIB_DEPENDS=		libmathview.so:${PORTSDIR}/x11-toolkits/gtkmathview
 
 NLS_USES=			gettext
@@ -121,8 +122,9 @@ SPELLCHECK_CONFIGURE_ENABLE=	spell
 TEMPLATES_CONFIGURE_ENABLE=	templates
 
 WP_USE=		gnome=libgsf
-WP_LIB_DEPENDS=	libwpg-0.2.so:${PORTSDIR}/graphics/libwpg \
-		libwpd-0.9.so:${PORTSDIR}/textproc/libwpd
+WP_LIB_DEPENDS=	libwpg-0.3.so:${PORTSDIR}/graphics/libwpg03 \
+		libwpd-0.10.so:${PORTSDIR}/textproc/libwpd010 \
+		libwps-0.4.so:${PORTSDIR}/textproc/libwps
 
 .include <bsd.port.options.mk>
 
