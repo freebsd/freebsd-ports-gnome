@@ -5,7 +5,6 @@ etc/xdg/autostart/mate-power-manager.desktop
 libexec/mate-brightness-applet
 libexec/mate-inhibit-applet
 sbin/mate-power-backlight-helper
-share/MateConf/gsettings/mate-power-manager.convert
 share/applications/mate-power-preferences.desktop
 share/applications/mate-power-statistics.desktop
 share/dbus-1/services/org.mate.PowerManager.service
