@@ -19,7 +19,6 @@ USES=		gettext gmake libtool pathfix pkgconfig tar:xz
 USE_MATE=	desktop panel
 USE_GNOME=	glib20 intlhack libxml2
 USE_LDCONFIG=	yes
-USE_GSTREAMER=	good
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
