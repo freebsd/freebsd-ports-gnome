@@ -12,7 +12,6 @@ bin/mate-network-properties
 bin/mate-thumbnail-font
 bin/mate-typing-monitor
 bin/mate-window-properties
-etc/xdg/menus/mate-preferences-categories.menu
 etc/xdg/menus/matecc.menu
 include/libmate-slab/app-resizer.h
 include/libmate-slab/app-shell.h
@@ -68,7 +67,6 @@ man/man1/mate-thumbnail-font.1.gz
 man/man1/mate-typing-monitor.1.gz
 man/man1/mate-window-properties.1.gz
 sbin/mate-display-properties-install-systemwide
-share/MateConf/gsettings/mate-control-center.convert
 share/applications/mate-about-me.desktop
 share/applications/mate-appearance-properties.desktop
 share/applications/mate-at-properties.desktop
