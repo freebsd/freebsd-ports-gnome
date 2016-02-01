@@ -18,7 +18,6 @@ man/man1/marco-message.1.gz
 man/man1/marco-theme-viewer.1.gz
 man/man1/marco-window-demo.1.gz
 man/man1/marco.1.gz
-share/MateConf/gsettings/marco.convert
 share/applications/marco.desktop
 share/help/C/creating-marco-themes/index.docbook
 share/locale/am/LC_MESSAGES/marco.mo
