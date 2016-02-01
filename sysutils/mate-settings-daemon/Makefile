@@ -26,7 +26,6 @@ USE_MATE=	desktop libmatekbd
 USE_XORG=	xxf86misc
 USE_GNOME=	dconf intlhack
 USE_LDCONFIG=	yes
-USE_GSTREAMER=	good
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-dbus-services=${PREFIX}/share/dbus-1/services \
 		--disable-static
