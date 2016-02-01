@@ -1,15 +1,15 @@
---- command/Makefile.in.orig	2014-12-05 12:31:21.926018134 +0100
-+++ command/Makefile.in	2014-12-05 12:31:38.632017015 +0100
-@@ -78,7 +78,7 @@
+--- command/Makefile.in.orig	2016-02-01 09:46:38.122354000 +0100
++++ command/Makefile.in	2016-02-01 09:47:21.885977000 +0100
+@@ -88,7 +88,7 @@
  POST_UNINSTALL = :
  build_triplet = @build@
  host_triplet = @host@
 -libexec_PROGRAMS = command-applet$(EXEEXT)
 +libexec_PROGRAMS = mate-command-applet$(EXEEXT)
  subdir = command
- DIST_COMMON = $(srcdir)/Makefile.in $(srcdir)/Makefile.am \
- 	$(top_srcdir)/depcomp
-@@ -98,19 +98,20 @@
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/m4/ac-define-dir.m4 \
+@@ -107,19 +107,20 @@
  am__installdirs = "$(DESTDIR)$(libexecdir)" "$(DESTDIR)$(appletsdir)" \
  	"$(DESTDIR)$(servicedir)"
  PROGRAMS = $(libexec_PROGRAMS)
@@ -36,7 +36,7 @@
  AM_V_P = $(am__v_P_@AM_V@)
  am__v_P_ = $(am__v_P_@AM_DEFAULT_V@)
  am__v_P_0 = false
-@@ -145,8 +146,8 @@
+@@ -154,8 +155,8 @@
  am__v_CCLD_ = $(am__v_CCLD_@AM_DEFAULT_V@)
  am__v_CCLD_0 = @echo "  CCLD    " $@;
  am__v_CCLD_1 = 
@@ -60,7 +60,7 @@
  appletsdir = $(datadir)/mate-panel/applets
  applets_in_files = org.mate.applets.CommandApplet.mate-panel-applet.in
  applets_DATA = $(applets_in_files:.mate-panel-applet.in=.mate-panel-applet)
-@@ -544,9 +545,9 @@
+@@ -546,9 +547,9 @@
  	echo " rm -f" $$list; \
  	rm -f $$list
  
@@ -73,7 +73,7 @@
  
  mostlyclean-compile:
  	-rm -f *.$(OBJEXT)
-@@ -554,7 +555,7 @@
+@@ -556,7 +557,7 @@
  distclean-compile:
  	-rm -f *.tab.c
  
@@ -82,7 +82,7 @@
  
  .c.o:
  @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-@@ -577,19 +578,19 @@
+@@ -579,19 +580,19 @@
  @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
  @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LTCOMPILE) -c -o $@ $<
  

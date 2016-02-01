@@ -1,6 +1,6 @@
---- battstat/Makefile.am.orig	2014-12-05 12:27:04.701035642 +0100
-+++ battstat/Makefile.am	2014-12-05 12:28:02.762606006 +0100
-@@ -35,10 +35,10 @@
+--- battstat/Makefile.am.orig	2016-01-03 02:03:50.000000000 +0100
++++ battstat/Makefile.am	2016-02-01 09:45:52.147416000 +0100
+@@ -34,10 +34,10 @@
  	-DBATTSTAT_MENU_UI_DIR=\""$(uidir)"\"
  
  
@@ -13,7 +13,7 @@
  	battstat.h \
  	pixmaps.h \
  	properties.c \
-@@ -54,7 +54,7 @@
+@@ -51,7 +51,7 @@
  	battstat-upower.h
  
  

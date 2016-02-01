@@ -1,6 +1,6 @@
---- invest-applet/invest/Makefile.in.orig	2014-04-12 15:44:54.000000000 +0200
-+++ invest-applet/invest/Makefile.in	2014-04-12 15:45:15.000000000 +0200
-@@ -391,7 +391,7 @@
+--- invest-applet/invest/Makefile.in.orig	2016-02-01 09:46:39.146605000 +0100
++++ invest-applet/invest/Makefile.in	2016-02-01 09:47:54.380747000 +0100
+@@ -385,7 +385,7 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  bin_SCRIPTS = mate-invest-chart
@@ -9,7 +9,7 @@
  investdir = $(pythondir)/mate_invest
  invest_PYTHON = \
  	__init__.py \
-@@ -409,7 +409,7 @@
+@@ -403,7 +403,7 @@
  	defs.py
  
  BUILT_SOURCES = \
@@ -18,9 +18,9 @@
  
  CLEANFILES = \
  	$(BUILT_SOURCES)
-@@ -795,7 +795,7 @@
- 	uninstall-am uninstall-binSCRIPTS uninstall-investPYTHON \
- 	uninstall-libexecSCRIPTS uninstall-nodist_investPYTHON
+@@ -790,7 +790,7 @@
+ 
+ .PRECIOUS: Makefile
  
 -invest-applet: invest-applet.py
 +mate-invest-applet: mate-invest-applet.py

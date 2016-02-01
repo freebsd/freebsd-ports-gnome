@@ -1,10 +1,10 @@
---- stickynotes/Makefile.am.orig	2014-12-05 12:40:40.520108172 +0100
-+++ stickynotes/Makefile.am	2014-12-05 12:41:13.202979210 +0100
-@@ -20,9 +20,9 @@
- 	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\"\
- 	-DSTICKYNOTES_ICONDIR=\"$(datadir)/pixmaps/mate-stickynotes/\"
+--- stickynotes/Makefile.am.orig	2016-01-05 02:12:51.000000000 +0100
++++ stickynotes/Makefile.am	2016-02-01 09:50:00.996103000 +0100
+@@ -19,9 +19,9 @@
+ 	$(XML2_CFLAGS)				\
+ 	-DSTICKYNOTES_MENU_UI_DIR=\""$(uidir)"\"
  
--libexec_PROGRAMS = stickynotes_applet
+-libexec_PROGRAMS = stickynotes-applet
 +libexec_PROGRAMS = mate-stickynotes-applet
  
 -stickynotes_applet_SOURCES = \
@@ -12,7 +12,7 @@
  	util.h \
  	util.c \
  	stickynotes.h \
-@@ -34,7 +34,7 @@
+@@ -33,7 +33,7 @@
  	stickynotes_applet.c \
  	stickynotes_applet_callbacks.c
  

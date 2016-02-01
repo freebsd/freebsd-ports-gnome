@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-applets
-PORTVERSION=	1.12.1
-PORTREVISION=	1
+PORTVERSION=	1.13.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -40,6 +39,7 @@ GLIB_SCHEMAS=	org.mate.panel.applet.charpick.gschema.xml \
 		org.mate.panel.applet.command.gschema.xml \
 		org.mate.panel.applet.geyes.gschema.xml \
 		org.mate.panel.applet.multiload.gschema.xml \
+		org.mate.panel.applet.netspeed.gschema.xml \
 		org.mate.panel.applet.timer.gschema.xml \
 		org.mate.stickynotes.gschema.xml
 
@@ -57,16 +57,17 @@ MATEGTK3_USE_OFF=	GNOME=gtk20,gtksourceview2,libwnck
 
 .include <bsd.port.pre.mk>
 
-#.if ${ARCH} != "i386" && ${ARCH} != "amd64"
+.if ${ARCH} != "i386" && ${ARCH} != "amd64"
 CONFIGURE_ARGS+=--disable-battstat
 CFLAGS+=	-fPIC
 PLIST_SUB+=	BATTERY="@comment "
-#.else
+.else
 #CONFIGURE_ARGS+=--enable-battstat
-#GLIB_SCHEMAS+=	org.mate.panel.applet.battstat.gschema.xml
-#PLIST_SUB+=	BATTERY=""
-#.endif
+GLIB_SCHEMAS+=	org.mate.panel.applet.battstat.gschema.xml
+PLIST_SUB+=	BATTERY=""
+.endif
 
+# requires linux libcpufreq library
 #.if ${ARCH} != "i386" && ${ARCH} != "amd64"
 CONFIGURE_ARGS+=--disable-cpufreq
 PLIST_SUB+=	CPUFREQ="@comment "
