@@ -13,7 +13,6 @@ libexec/mate-screensaver/slideshow
 man/man1/mate-screensaver-command.1.gz
 man/man1/mate-screensaver-preferences.1.gz
 man/man1/mate-screensaver.1.gz
-share/MateConf/gsettings/org.mate.screensaver.gschema.migrate
 share/applications/mate-screensaver-preferences.desktop
 share/applications/screensavers/cosmos-slideshow.desktop
 share/applications/screensavers/footlogo-floaters.desktop
