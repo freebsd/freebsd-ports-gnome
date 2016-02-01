@@ -23,7 +23,6 @@ man/man1/caja-autorun-software.1.gz
 man/man1/caja-connect-server.1.gz
 man/man1/caja-file-management-properties.1.gz
 man/man1/caja.1.gz
-share/MateConf/gsettings/caja.convert
 share/appdata/caja.appdata.xml
 share/applications/caja-autorun-software.desktop
 share/applications/caja-browser.desktop
@@ -82,7 +81,6 @@ share/doc/libcaja-extension/home.png
 share/doc/libcaja-extension/index.html
 share/doc/libcaja-extension/index.sgml
 share/doc/libcaja-extension/ix01.html
-share/doc/libcaja-extension/left-insensitive.png
 share/doc/libcaja-extension/left.png
 share/doc/libcaja-extension/libcaja-extension-caja-column-provider.html
 share/doc/libcaja-extension/libcaja-extension-caja-column.html
@@ -96,10 +94,8 @@ share/doc/libcaja-extension/libcaja-extension-caja-property-page-provider.html
 share/doc/libcaja-extension/libcaja-extension-caja-property-page.html
 share/doc/libcaja-extension/libcaja-extension.devhelp2
 share/doc/libcaja-extension/pt01.html
-share/doc/libcaja-extension/right-insensitive.png
 share/doc/libcaja-extension/right.png
 share/doc/libcaja-extension/style.css
-share/doc/libcaja-extension/up-insensitive.png
 share/doc/libcaja-extension/up.png
 share/gir-1.0/Caja-2.0.gir
 share/icons/hicolor/16x16/apps/caja.png
