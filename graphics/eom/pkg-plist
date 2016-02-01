@@ -31,7 +31,6 @@ lib/eom/plugins/reload.eom-plugin
 lib/eom/plugins/statusbar-date.eom-plugin
 libdata/pkgconfig/eom.pc
 man/man1/eom.1.gz
-share/MateConf/gsettings/eom.convert
 share/appdata/eom.appdata.xml
 share/applications/eom.desktop
 %%PORTDOCS%%%%DOCSDIR%%/EomDialog.html
@@ -86,14 +85,11 @@ share/applications/eom.desktop
 %%PORTDOCS%%%%DOCSDIR%%/home.png
 %%PORTDOCS%%%%DOCSDIR%%/index.html
 %%PORTDOCS%%%%DOCSDIR%%/index.sgml
-%%PORTDOCS%%%%DOCSDIR%%/left-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/left.png
 %%PORTDOCS%%%%DOCSDIR%%/pt01.html
-%%PORTDOCS%%%%DOCSDIR%%/right-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/right.png
 %%PORTDOCS%%%%DOCSDIR%%/rn01.html
 %%PORTDOCS%%%%DOCSDIR%%/style.css
-%%PORTDOCS%%%%DOCSDIR%%/up-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/up.png
 %%DATADIR%%/eom-image-properties-dialog.ui
 %%DATADIR%%/eom-multiple-save-as-dialog.ui
