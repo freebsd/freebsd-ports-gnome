@@ -29,11 +29,6 @@ man/man1/mate-panel-screenshot.1.gz
 man/man1/mate-screenshot.1.gz
 man/man1/mate-search-tool.1.gz
 man/man1/mate-system-log.1.gz
-share/MateConf/gsettings/mate-dictionary.convert
-share/MateConf/gsettings/mate-disk-usage-analyzer.convert
-share/MateConf/gsettings/mate-screenshot.convert
-share/MateConf/gsettings/mate-search-tool.convert
-share/MateConf/gsettings/mate-system-log.convert
 share/appdata/mate-dictionary.appdata.xml
 share/appdata/mate-disk-usage-analyzer.appdata.xml
 share/appdata/mate-screenshot.appdata.xml
@@ -45,7 +40,6 @@ share/applications/mate-search-tool.desktop
 share/applications/mate-system-log.desktop
 share/dbus-1/services/org.mate.panel.applet.DictionaryAppletFactory.service
 share/doc/mate-dict/GdictClientContext.html
-share/doc/mate-dict/GdictContext.html
 share/doc/mate-dict/GdictDatabaseChooser.html
 share/doc/mate-dict/GdictDefbox.html
 share/doc/mate-dict/GdictSource.html
@@ -68,16 +62,14 @@ share/doc/mate-dict/ix01.html
 share/doc/mate-dict/ix02.html
 share/doc/mate-dict/ix03.html
 share/doc/mate-dict/ix04.html
-share/doc/mate-dict/left-insensitive.png
 share/doc/mate-dict/left.png
+share/doc/mate-dict/mate-dict-GdictContext.html
 share/doc/mate-dict/mate-dict-gdict-utils.html
 share/doc/mate-dict/mate-dict-gdict-version.html
 share/doc/mate-dict/mate-dict.devhelp2
-share/doc/mate-dict/right-insensitive.png
 share/doc/mate-dict/right.png
 share/doc/mate-dict/sources.html
 share/doc/mate-dict/style.css
-share/doc/mate-dict/up-insensitive.png
 share/doc/mate-dict/up.png
 share/help/C/mate-dictionary/figures/mate-dictionary-add-source.png
 share/help/C/mate-dictionary/figures/mate-dictionary-applet-window.png
