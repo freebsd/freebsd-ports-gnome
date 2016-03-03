@@ -9,13 +9,18 @@ MASTER_SITES=	SF
 MAINTAINER=	skreuzer@FreeBSD.org
 COMMENT=	Open On-Chip Debugger
 
+BUILD_DEPENDS=	${LOCALBASE}/bin/makeinfo:${PORTSDIR}/print/texinfo
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--disable-werror
+CONFIGURE_ENV=	MAKEINFO=${LOCALBASE}/bin/makeinfo
+
+BROKEN_FreeBSD_9=	libusb does not install pkgconfig files
 
 OPTIONS_DEFINE=	DOC JIMTCL VERBOSE JTAG_IO USB_IO PARPORT DUMMY FT2232 FTDI \
 	USBBLASTER EP93XX AT91RM9200 PRESTO USBPROG JLINK VSLLINK RLINK ULINK \
 	ARMJTAGEW BUSPIRATE TIICDI STLINK OSBDM OPENDOUS SYSFSGPIO RMTBITBANG \
-	MINIDRIVER
+	MINIDRIVER CMSISDAP
 OPTIONS_DEFAULT=DOC JIMTCL PARPORT DUMMY FT2232 FTDI USBBLASTER EP93XX \
 	AT91RM9200 PRESTO USBPROG JLINK VSLLINK RLINK ULINK ARMJTAGEW \
 	BUSPIRATE STLINK OSBDM OPENDOUS RMTBITBANG
@@ -47,6 +52,7 @@ OPENDOUS=	Support EStick/OpenDous Programmer
 SYSFSGPIO=	Support Programming via sysfs GPIOs
 RMTBITBANG_DESC=Support Remote-Bitbang Driver
 MINIDRIVER_DESC=Dummy minidriver only (will exclude others!)
+CMSISDAP_DESC=Support for CMSIS-DAP Compliant Debugger
 
 USES=		gmake libtool pkgconfig tar:bzip2
 CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
@@ -269,6 +275,13 @@ CONFIGURE_ARGS+=	--disable-remote-bitbang
 CONFIGURE_ARGS+=	--enable-minidriver-dummy
 .else
 CONFIGURE_ARGS+=	--disable-minidriver-dummy
+.endif
+
+.if ${PORT_OPTIONS:MCMSISDAP}
+CONFIGURE_ARGS+=	--enable-cmsis-dap
+LIB_DEPENDS+=		libhidapi.so:${PORTSDIR}/comms/hidapi
+.else
+CONFIGURE_ARGS+=	--disable-cmsis-dap
 .endif
 
 .if defined(WITH_LIBFTDI)

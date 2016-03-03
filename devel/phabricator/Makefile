@@ -26,6 +26,7 @@ SHEBANG_FILES=	externals/httpful/build \
 		scripts/install/install_ubuntu.sh
 USE_PHP=	ctype curl fileinfo hash iconv filter mbstring mysql openssl \
 		pcntl posix
+IGNORE_WITH_PHP=	70
 
 GD_USE=		PHP=gd
 
@@ -50,7 +51,9 @@ GH_TAGNAME=	006321c
 PHP_DESTDIR=	lib/php/phabricator
 
 do-install:
-	@${MKDIR} ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}/conf/local
+	@${INSTALL_DATA} ${FILESDIR}/local.json.sample \
+		${STAGEDIR}${PREFIX}/${PHP_DESTDIR}/conf/local
 	cd ${WRKSRC} ; ${PAX} -rw * ${STAGEDIR}${PREFIX}/${PHP_DESTDIR}
 
 .include <bsd.port.post.mk>

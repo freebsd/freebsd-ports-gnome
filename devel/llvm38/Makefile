@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	llvm
-DISTVERSION=	3.8.0rc1
+DISTVERSION=	3.8.0rc2
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/${PRE_}releases/${LLVM_RELEASE}/${RCDIR}
 DISTNAME=	${PORTNAME}-${DISTVERSION}.src
@@ -114,8 +114,10 @@ STRIP_LIBS=	BugpointPasses.so \
 EXTRAS_COMMANDS+= \
 		clang-apply-replacements \
 		clang-modernize \
+		clang-query \
 		clang-rename \
-		clang-tidy
+		clang-tidy \
+		modularize
 EXTRAS_LIBS=	libclangApplyReplacements \
 		libclangQuery \
 		libclangRename \
@@ -147,19 +149,10 @@ MAN1SRCS+=	clang.1 \
 CLANG_PATTERN=	(c-index-test|clang|scan-|Reporter.py|ScanView.py|scanview.css|sorttable.js|startfile.py|-analyzer)
 .endif
 
-.if ${PORT_OPTIONS:MEXTRAS}
-COMMANDS+=	${EXTRAS_COMMANDS}
-.endif
-
 .if ${PORT_OPTIONS:MLIT}
 MAN1SRCS+=	lit.1 FileCheck.1
 _USES_PYTHON=	python
 LIT_COMMANDS=	lit llvm-lit FileCheck
-.endif
-
-.if ${PORT_OPTIONS:MLLD}
-COMMANDS+=	lld
-PORTDOCS+=	lld
 .endif
 
 .if ${PORT_OPTIONS:MLLDB}
@@ -190,6 +183,19 @@ NOT_FOR_ARCH=	ia64
 
 .include <bsd.port.pre.mk>
 
+.if ${OPSYS} != "FreeBSD" || ${COMPILER_TYPE} == clang
+.if ${PORT_OPTIONS:MEXTRAS}
+COMMANDS+=	${EXTRAS_COMMANDS}
+MAN1SRCS+=	extraclangtools.1
+PORTDOCS+=	clang-tools
+.endif
+
+.if ${PORT_OPTIONS:MLLD}
+COMMANDS+=	lld
+PORTDOCS+=	lld
+.endif
+.endif
+
 .if ${PYTHON_REL} < 3400
 LLDB_BUILD_DEPENDS+= \
 	${PYTHON_PKGNAMEPREFIX}enum34>0:${PORTSDIR}/devel/py-enum34
@@ -201,6 +207,8 @@ BROKEN=	LLDB does not build with Python 3
 
 .if ${OPSYS} == "FreeBSD" && ${COMPILER_TYPE} != clang
 # Evil hack around gcc48 not providing a usable c++11 environment on 9.x
+PLIST_SUB:=	${PLIST_SUB:NEXTRAS=*} EXTRAS="@comment "
+PLIST_SUB:=	${PLIST_SUB:NLLD=*} LLD="@comment "
 PLIST_SUB:=	${PLIST_SUB:NLLDB=*} LLDB="@comment "
 .endif
 
@@ -208,10 +216,14 @@ post-extract-CLANG-on:
 	${MV} ${WRKSRC_clang} ${PATCH_WRKSRC}/tools/clang
 
 post-extract-EXTRAS-on:
+.if ${OPSYS} != "FreeBSD" || ${COMPILER_TYPE} == clang
 	${MV} ${WRKSRC_extras} ${PATCH_WRKSRC}/tools/clang/tools/extra
+.endif
 
 post-extract-LLD-on:
+.if ${OPSYS} != "FreeBSD" || ${COMPILER_TYPE} == clang
 	${MV} ${WRKSRC_lld} ${PATCH_WRKSRC}/tools/lld
+.endif
 
 post-extract-LLDB-on:
 .if ${OPSYS} != "FreeBSD" || ${COMPILER_TYPE} == clang
@@ -310,7 +322,7 @@ build-plist:
 	    if ($$0 ~ /${CLANG_PATTERN}/ && $$0 !~ /(omp.h|libclang_rt|sanitizer|blacklist.txt|${EXTRAS_PATTERN})/) {printf "%%%%CLANG%%%%"} \
 	    if ($$0 ~ /(${EXTRAS_PATTERN})/) {printf "%%%%EXTRAS%%%%"} \
 	    if ($$0 ~ /lld/ && $$0 !~ /lldb/) {printf "%%%%LLD%%%%"} \
-	    if ($$0 ~ /(argdumper|lldb)/) {printf "%%%%LLDB%%%%"} \
+	    if ($$0 ~ /(argdumper|lldb|six.py)/) {printf "%%%%LLDB%%%%"} \
 	    if ($$0 ~ /lib.*omp/) {printf "%%%%OPENMP%%%%"} \
 	    if ($$0 ~ /LLVMgold/) {printf "%%%%GOLD%%%%"} \
 	    if ($$0 !~ /libclang_rt/) {print}}' ${PLIST}.tmp >> ${PLIST}

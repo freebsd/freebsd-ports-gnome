@@ -221,6 +221,7 @@
     SUBDIR += dolly
     SUBDIR += downtime
     SUBDIR += downtimed
+    SUBDIR += dsbwrtsysctl
     SUBDIR += dt
     SUBDIR += dtpstree
     SUBDIR += du2ps
@@ -244,6 +245,7 @@
     SUBDIR += enteruser
     SUBDIR += entr
     SUBDIR += env4801
+    SUBDIR += envconsul
     SUBDIR += etcmerge
     SUBDIR += etcupdate
     SUBDIR += eventlog
@@ -440,6 +442,7 @@
     SUBDIR += jadm
     SUBDIR += jail-primer
     SUBDIR += jail2
+    SUBDIR += jailadmin
     SUBDIR += jailctl
     SUBDIR += jaildaemon
     SUBDIR += jailme
@@ -729,12 +732,12 @@
     SUBDIR += pftables
     SUBDIR += pftop
     SUBDIR += phantom
-    SUBDIR += php5-fileinfo
-    SUBDIR += php5-posix
     SUBDIR += php55-fileinfo
     SUBDIR += php55-posix
     SUBDIR += php56-fileinfo
     SUBDIR += php56-posix
+    SUBDIR += php70-fileinfo
+    SUBDIR += php70-posix
     SUBDIR += phybs
     SUBDIR += pick
     SUBDIR += pidof
@@ -764,10 +767,10 @@
     SUBDIR += pstacku
     SUBDIR += pstree
     SUBDIR += ptools
-    SUBDIR += puppet
     SUBDIR += puppet-lint
     SUBDIR += puppet-mode.el
     SUBDIR += puppet37
+    SUBDIR += puppet38
     SUBDIR += puppet4
     SUBDIR += pv
     SUBDIR += pwd_unmkdb
@@ -1056,6 +1059,7 @@
     SUBDIR += u-boot-pandaboard
     SUBDIR += u-boot-rpi
     SUBDIR += u-boot-rpi2
+    SUBDIR += u-boot-utilite
     SUBDIR += u-boot-wandboard
     SUBDIR += ua
     SUBDIR += ucspi-ipc

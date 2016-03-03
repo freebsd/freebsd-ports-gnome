@@ -3,7 +3,6 @@
 
 PORTNAME=	mplayer
 PORTVERSION=	${MPLAYER_PORT_VERSION}
-PORTREVISION=	2
 CATEGORIES=	multimedia audio
 
 MAINTAINER=	riggs@FreeBSD.org
@@ -48,7 +47,7 @@ CONFFILES=	example.conf input.conf menu.conf dvb-menu.conf
 USES+=		iconv pkgconfig
 
 .include "${.CURDIR}/../../multimedia/mplayer/Makefile.optvars"
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
 CONFIGURE_ARGS+=	--disable-arts \
 			--disable-directfb \
@@ -63,8 +62,6 @@ CONFIGURE_ARGS+=	--disable-arts \
 			--disable-mpg123 \
 			--disable-musepack \
 			--disable-theora
-
-.include "${.CURDIR}/../../multimedia/mplayer/Makefile.options"
 
 .if ${PORT_OPTIONS:MGUI} && ${PORT_OPTIONS:MX11}
 PLIST_SUB+=	GMPLAYER=""
@@ -115,6 +112,9 @@ CONFIGURE_ARGS+=--enable-xvmc --with-xvmclib=XvMCW
 CONFIGURE_ARGS+=--disable-x11
 .endif
 
+.include <bsd.port.pre.mk>
+.include "${.CURDIR}/../../multimedia/mplayer/Makefile.options"
+
 pre-everything::
 	@${ECHO_MSG} "N - O - T - E"
 	@${ECHO_MSG} ""
@@ -130,9 +130,6 @@ pre-everything::
 	@${ECHO_MSG} "or download them from"
 	@${ECHO_MSG} "http://www.mplayerhq.hu/"
 .endif
-
-pre-patch:
-	${MV} ${WRKDIR}/ffmpeg-${FFMPEG_VERSION} ${WRKSRC}/ffmpeg
 
 post-patch:
 	@${REINPLACE_CMD} \

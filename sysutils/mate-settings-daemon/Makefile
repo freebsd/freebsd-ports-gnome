@@ -59,7 +59,7 @@ GLIB_SCHEMAS=	org.mate.SettingsDaemon.plugins.a11y-keyboard.gschema.xml \
 OPTIONS_DEFINE=	PULSEAUDIO MATEGTK3
 OPTIONS_SUB=	yes
 
-PULSEAUDIO_CONFIGURE_ENABLE=	pulseaudio
+PULSEAUDIO_CONFIGURE_ENABLE=	pulse
 PULSEAUDIO_LIB_DEPENDS=		libpulse.so:${PORTSDIR}/audio/pulseaudio
 
 MATEGTK3_DESC=	build agains gtk3

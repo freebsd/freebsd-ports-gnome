@@ -2,25 +2,26 @@
 # $FreeBSD$
 
 PORTNAME=	freesweep
-PORTVERSION=	0.92
-PORTREVISION=	1
+PORTVERSION=	1.0.1
+DISTVERSIONPREFIX=	v
 CATEGORIES=	games
-MASTER_SITES=	GOOGLE_CODE
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	rwestlun@gmail.com
 COMMENT=	Minesweeper-style game for text-mode terminals
 
-LICENSE=	GPLv2 GPLv3
-LICENSE_COMB=	dual
+LICENSE=	GPLv2+
 
-USES=		gmake
+USE_GITHUB=	yes
+GH_ACCOUNT=	rwestlund
+
+USES=		gmake ncurses
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-prefsdir=${DATADIR} \
 		--with-scoresdir=${DATADIR} \
 		--disable-debug-log
 ALL_TARGET=	${PORTNAME}
 
-PORTDOCS=	CHANGES README
+PORTDOCS=	README.md
 PLIST_FILES=	"@(,games,2555) bin/${PORTNAME}" man/man6/${PORTNAME}.6.gz \
 		%%DATADIR%%/sweeprc "@(,games,0664) %%DATADIR%%/sweeptimes"
 PLIST_DIRS=	%%DATADIR%%
@@ -33,6 +34,8 @@ do-install:
 	${TOUCH} ${STAGEDIR}${DATADIR}/sweeptimes
 	${INSTALL_DATA} ${WRKSRC}/sweeprc ${STAGEDIR}${DATADIR}
 	${INSTALL_MAN} ${WRKSRC}/freesweep.6 ${STAGEDIR}${PREFIX}/man/man6
+
+do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for file in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${file} ${STAGEDIR}${DOCSDIR}

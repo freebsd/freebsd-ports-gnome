@@ -10,6 +10,27 @@ in the release notes and/or placed into UPDATING.
 
 All ports committers are allowed to commit to this file.
 
+20160301:
+AUTHOR: mat@FreeBSD.org
+
+  Introduce GH_TUPLE.
+
+  GH_TUPLE allows one to put all the GH_{ACCOUNT,PROJECT,TAGNAME} into one
+  variable, in the form of account:project:tagname[:group].  It is helpful when
+  there are many submodules.
+
+20160207:
+AUTHOR: kwm@FreeBSD.org
+
+  The GNOME and MATE framework activation changed. To use the frameworks
+  now either gnome or mate needs to be added USES.
+
+  The usage of USE_GNOME, USE_MATE, INSTALLS_ICONS and for example
+  GLIB_SCHEMAS stays the same.
+
+  Like with USES, the use of USE_GNOME and so after bsd.port.pre.mk
+  is now forbidden.
+
 20160112:
 AUTHOR: amdmi3@FreeBSD.org
 

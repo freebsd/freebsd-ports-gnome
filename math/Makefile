@@ -394,6 +394,7 @@
     SUBDIR += octave-forge-video
     SUBDIR += octave-forge-xraylib
     SUBDIR += octave-forge-zenity
+    SUBDIR += octave-forge-zeromq
     SUBDIR += ogdf
     SUBDIR += oleo
     SUBDIR += open-axiom
@@ -556,12 +557,12 @@
     SUBDIR += pecl-bitset
     SUBDIR += pecl-stats
     SUBDIR += pecl-trader
-    SUBDIR += php5-bcmath
-    SUBDIR += php5-gmp
     SUBDIR += php55-bcmath
     SUBDIR += php55-gmp
     SUBDIR += php56-bcmath
     SUBDIR += php56-gmp
+    SUBDIR += php70-bcmath
+    SUBDIR += php70-gmp
     SUBDIR += physcalc
     SUBDIR += picosat
     SUBDIR += plman
@@ -667,6 +668,7 @@
     SUBDIR += slgrace
     SUBDIR += snns
     SUBDIR += solitaire
+    SUBDIR += sound-of-sorting
     SUBDIR += spar
     SUBDIR += spblas
     SUBDIR += speedcrunch

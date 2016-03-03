@@ -91,7 +91,6 @@
     SUBDIR += cntlm
     SUBDIR += cocoon
     SUBDIR += codeigniter
-    SUBDIR += codeigniter22
     SUBDIR += coppermine
     SUBDIR += cplanet
     SUBDIR += cppcms
@@ -247,6 +246,7 @@
     SUBDIR += gstreamer1-plugins-neon
     SUBDIR += gtkhtml3
     SUBDIR += gtkhtml4
+    SUBDIR += guacamole-client
     SUBDIR += guile-www
     SUBDIR += gurlchecker
     SUBDIR += h2o
@@ -468,6 +468,7 @@
     SUBDIR += mod_flickr
     SUBDIR += mod_geoip2
     SUBDIR += mod_gzip2
+    SUBDIR += mod_http2-devel
     SUBDIR += mod_h264_streaming
     SUBDIR += mod_hosts_access
     SUBDIR += mod_jail
@@ -489,9 +490,9 @@
     SUBDIR += mod_myvhost
     SUBDIR += mod_ntlm2
     SUBDIR += mod_perl2
-    SUBDIR += mod_php5
     SUBDIR += mod_php55
     SUBDIR += mod_php56
+    SUBDIR += mod_php70
     SUBDIR += mod_proctitle
     SUBDIR += mod_proxy_html
     SUBDIR += mod_proxy_uwsgi
@@ -1433,7 +1434,6 @@
     SUBDIR += pecl-varnish
     SUBDIR += pecl-yaf
     SUBDIR += pecl-yar
-    SUBDIR += pecl-zendopcache
     SUBDIR += perlbal
     SUBDIR += pglogd
     SUBDIR += phalcon
@@ -1441,14 +1441,15 @@
     SUBDIR += php-plurk-api
     SUBDIR += php-screw
     SUBDIR += php-templates
-    SUBDIR += php5-session
-    SUBDIR += php5-tidy
     SUBDIR += php55-opcache
     SUBDIR += php55-session
     SUBDIR += php55-tidy
     SUBDIR += php56-opcache
     SUBDIR += php56-session
     SUBDIR += php56-tidy
+    SUBDIR += php70-opcache
+    SUBDIR += php70-session
+    SUBDIR += php70-tidy
     SUBDIR += phpbb
     SUBDIR += phpbb3
     SUBDIR += phpgroupware
@@ -1537,11 +1538,14 @@
     SUBDIR += py-django-extensions
     SUBDIR += py-django-filer
     SUBDIR += py-django-formtools
+    SUBDIR += py-django-happenings
     SUBDIR += py-django-haystack
+    SUBDIR += py-django-htmlmin
     SUBDIR += py-django-json-rpc
     SUBDIR += py-django-keyedcache
     SUBDIR += py-django-ldapdb
     SUBDIR += py-django-livesettings
+    SUBDIR += py-django-markdownx
     SUBDIR += py-django-markwhat
     SUBDIR += py-django-mezzanine
     SUBDIR += py-django-mezzanine-filebrowser
@@ -1560,6 +1564,10 @@
     SUBDIR += py-django-registration
     SUBDIR += py-django-registration-defaults
     SUBDIR += py-django-registration-redux
+    SUBDIR += py-djangorestframework
+    SUBDIR += py-djangorestframework-csv
+    SUBDIR += py-djangorestframework-filters
+    SUBDIR += py-djangorestframework-xml
     SUBDIR += py-django-reversion
     SUBDIR += py-django-sekizai
     SUBDIR += py-django-signals-ahoy
@@ -1578,7 +1586,6 @@
     SUBDIR += py-django-voting
     SUBDIR += py-django16
     SUBDIR += py-django16-tastypie
-    SUBDIR += py-django17
     SUBDIR += py-django18
     SUBDIR += py-django19
     SUBDIR += py-django_compressor
@@ -1769,6 +1776,7 @@
     SUBDIR += py-tvdb_api
     SUBDIR += py-twistedWeb
     SUBDIR += py-twistedWeb2
+    SUBDIR += py-txrequests
     SUBDIR += py-uliweb
     SUBDIR += py-urlgrabber
     SUBDIR += py-urljr
@@ -2062,6 +2070,7 @@
     SUBDIR += sqstat
     SUBDIR += squid
     SUBDIR += squid_radius_auth
+    SUBDIR += squidanalyzer
     SUBDIR += squidclamav
     SUBDIR += squidguard
     SUBDIR += squidpurge

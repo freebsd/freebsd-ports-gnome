@@ -42,6 +42,7 @@
     SUBDIR += R-cran-reshape2
     SUBDIR += R-cran-rngtools
     SUBDIR += R-cran-rstudioapi
+    SUBDIR += R-cran-tidyr
     SUBDIR += SpecTcl
     SUBDIR += aap
     SUBDIR += aarch64-binutils
@@ -235,6 +236,7 @@
     SUBDIR += charva
     SUBDIR += checkbashisms
     SUBDIR += checkheaders
+    SUBDIR += cheritrace-devel
     SUBDIR += cherivis-devel
     SUBDIR += chrpath
     SUBDIR += chruby
@@ -505,7 +507,6 @@
     SUBDIR += erlang-syslog
     SUBDIR += es-eric6
     SUBDIR += etcd
-    SUBDIR += etcdctl
     SUBDIR += etl
     SUBDIR += euca2ools
     SUBDIR += eventxx
@@ -659,6 +660,7 @@
     SUBDIR += git-bzr-ng
     SUBDIR += git-codereview
     SUBDIR += git-cola
+    SUBDIR += git-cvs
     SUBDIR += git-extras
     SUBDIR += git-gui
     SUBDIR += git-lfs
@@ -948,6 +950,7 @@
     SUBDIR += hs-mueval
     SUBDIR += hs-murmur-hash
     SUBDIR += hs-mutable-containers
+    SUBDIR += hs-ncurses
     SUBDIR += hs-newtype
     SUBDIR += hs-old-locale
     SUBDIR += hs-old-time
@@ -1025,6 +1028,7 @@
     SUBDIR += hs-word8
     SUBDIR += htable
     SUBDIR += hub
+    SUBDIR += hyperscan
     SUBDIR += hwloc
     SUBDIR += ice
     SUBDIR += icmake
@@ -1032,6 +1036,7 @@
     SUBDIR += idutils
     SUBDIR += ifd-test
     SUBDIR += imake
+    SUBDIR += include-what-you-use
     SUBDIR += inilib
     SUBDIR += iniparser
     SUBDIR += initutil
@@ -1123,6 +1128,7 @@
     SUBDIR += libbobcat
     SUBDIR += libbonobo
     SUBDIR += libbonobo-reference
+    SUBDIR += libbrotli
     SUBDIR += libbson
     SUBDIR += libburn
     SUBDIR += libc++
@@ -1136,6 +1142,7 @@
     SUBDIR += libclaw
     SUBDIR += libclc
     SUBDIR += libcli
+    SUBDIR += libconcurrent
     SUBDIR += libconfig
     SUBDIR += libconfuse
     SUBDIR += libcutl
@@ -1392,6 +1399,7 @@
     SUBDIR += linux_libusb
     SUBDIR += lion
     SUBDIR += lldb37
+    SUBDIR += lldb38
     SUBDIR += llnextgen
     SUBDIR += llvm-cheri
     SUBDIR += llvm-devel
@@ -1533,6 +1541,7 @@
     SUBDIR += nxt-python
     SUBDIR += obby
     SUBDIR += obfuscatejs
+    SUBDIR += objecthash
     SUBDIR += ocaml-annexlib
     SUBDIR += ocaml-calendar
     SUBDIR += ocaml-camljava
@@ -2457,6 +2466,7 @@
     SUBDIR += p5-IPC-ShellCmd
     SUBDIR += p5-IPC-Signal
     SUBDIR += p5-IPC-System-Simple
+    SUBDIR += p5-Import-Base
     SUBDIR += p5-Import-Into
     SUBDIR += p5-Inline
     SUBDIR += p5-Inline-ASM
@@ -2663,6 +2673,7 @@
     SUBDIR += p5-MooX-StrictConstructor
     SUBDIR += p5-MooX-Types-MooseLike
     SUBDIR += p5-MooX-Types-MooseLike-Numeric
+    SUBDIR += p5-MooX-TypeTiny
     SUBDIR += p5-MooX-late
     SUBDIR += p5-Moos
     SUBDIR += p5-Moose
@@ -3490,7 +3501,6 @@
     SUBDIR += pcsc-ada
     SUBDIR += pcsc-lite
     SUBDIR += pdcurses
-    SUBDIR += pdcurses-the
     SUBDIR += pear
     SUBDIR += pear-Config
     SUBDIR += pear-Console_Color
@@ -3582,7 +3592,6 @@
     SUBDIR += pear-Horde_Util
     SUBDIR += pear-Horde_View
     SUBDIR += pear-I18N
-    SUBDIR += pear-IO_Bit
     SUBDIR += pear-Math_Fraction
     SUBDIR += pear-Net_Gearman
     SUBDIR += pear-OLE
@@ -3687,6 +3696,7 @@
     SUBDIR += pecl-inotify
     SUBDIR += pecl-intl
     SUBDIR += pecl-jsmin
+    SUBDIR += pecl-json_post
     SUBDIR += pecl-jsonc
     SUBDIR += pecl-jsond
     SUBDIR += pecl-jsonnet
@@ -3733,6 +3743,7 @@
     SUBDIR += php-composer
     SUBDIR += php-jq
     SUBDIR += php-libawl
+    SUBDIR += php-maxminddb
     SUBDIR += php-memoize
     SUBDIR += php-scalar_objects
     SUBDIR += php-uprofiler
@@ -3741,19 +3752,10 @@
     SUBDIR += php5-blitz-devel
     SUBDIR += php5-dav
     SUBDIR += php5-geshi
-    SUBDIR += php5-gettext
     SUBDIR += php5-ice
-    SUBDIR += php5-json
     SUBDIR += php5-msgpack
-    SUBDIR += php5-pcntl
     SUBDIR += php5-pinba
-    SUBDIR += php5-readline
-    SUBDIR += php5-shmop
-    SUBDIR += php5-sysvmsg
-    SUBDIR += php5-sysvsem
-    SUBDIR += php5-sysvshm
     SUBDIR += php5-thrift
-    SUBDIR += php5-tokenizer
     SUBDIR += php55-gettext
     SUBDIR += php55-json
     SUBDIR += php55-pcntl
@@ -3772,6 +3774,16 @@
     SUBDIR += php56-sysvsem
     SUBDIR += php56-sysvshm
     SUBDIR += php56-tokenizer
+    SUBDIR += php70-gettext
+    SUBDIR += php70-intl
+    SUBDIR += php70-json
+    SUBDIR += php70-pcntl
+    SUBDIR += php70-readline
+    SUBDIR += php70-shmop
+    SUBDIR += php70-sysvmsg
+    SUBDIR += php70-sysvsem
+    SUBDIR += php70-sysvshm
+    SUBDIR += php70-tokenizer
     SUBDIR += phpbt
     SUBDIR += phpsh
     SUBDIR += phpunit
@@ -3918,6 +3930,7 @@
     SUBDIR += py-argh
     SUBDIR += py-argparse
     SUBDIR += py-args
+    SUBDIR += py-arrow
     SUBDIR += py-aspects
     SUBDIR += py-aspyct
     SUBDIR += py-astroid
@@ -3958,6 +3971,7 @@
     SUBDIR += py-click
     SUBDIR += py-clint
     SUBDIR += py-clonedigger
+    SUBDIR += py-cloudpickle
     SUBDIR += py-cmdln
     SUBDIR += py-codegen
     SUBDIR += py-cog
@@ -3993,6 +4007,7 @@
     SUBDIR += py-decorator
     SUBDIR += py-decoratortools
     SUBDIR += py-defusedxml
+    SUBDIR += py-delfick_error
     SUBDIR += py-deliciousapi
     SUBDIR += py-demjson
     SUBDIR += py-dexml
@@ -4106,6 +4121,7 @@
     SUBDIR += py-joblib
     SUBDIR += py-jsmin
     SUBDIR += py-json-py
+    SUBDIR += py-json-sempai
     SUBDIR += py-jsonlib
     SUBDIR += py-jsonlib2
     SUBDIR += py-jsonpatch
@@ -4164,6 +4180,7 @@
     SUBDIR += py-ncurses
     SUBDIR += py-nose
     SUBDIR += py-nose-cov
+    SUBDIR += py-noseofyeti
     SUBDIR += py-notifier
     SUBDIR += py-notify
     SUBDIR += py-ocempgui
@@ -4176,6 +4193,7 @@
     SUBDIR += py-omniorb
     SUBDIR += py-omniorb-3
     SUBDIR += py-optik
+    SUBDIR += py-option_merge
     SUBDIR += py-orbit
     SUBDIR += py-ordereddict
     SUBDIR += py-oslo.i18n
@@ -4195,6 +4213,7 @@
     SUBDIR += py-phonenumbers
     SUBDIR += py-phpserialize
     SUBDIR += py-pika
+    SUBDIR += py-pinocchio
     SUBDIR += py-pip
     SUBDIR += py-pkgconfig
     SUBDIR += py-plan
@@ -4250,6 +4269,7 @@
     SUBDIR += py-pytest
     SUBDIR += py-pytest-cache
     SUBDIR += py-pytest-capturelog
+    SUBDIR += py-pytest-localserver
     SUBDIR += py-pytest-runner
     SUBDIR += py-pytest-timeout
     SUBDIR += py-pytest-xdist
@@ -4294,6 +4314,7 @@
     SUBDIR += py-qt5-test
     SUBDIR += py-rauth
     SUBDIR += py-raven
+    SUBDIR += py-rcsparse
     SUBDIR += py-rednose
     SUBDIR += py-repl
     SUBDIR += py-repoze.lru
@@ -4331,7 +4352,6 @@
     SUBDIR += py-setuptools
     SUBDIR += py-setuptools-git
     SUBDIR += py-setuptools27
-    SUBDIR += py-setuptools32
     SUBDIR += py-setuptools33
     SUBDIR += py-setuptools34
     SUBDIR += py-setuptools35
@@ -4339,6 +4359,7 @@
     SUBDIR += py-setuptools_hg
     SUBDIR += py-setuptools_scm
     SUBDIR += py-sh
+    SUBDIR += py-should_dsl
     SUBDIR += py-shapely
     SUBDIR += py-simplegeneric
     SUBDIR += py-simplejson
@@ -4362,6 +4383,7 @@
     SUBDIR += py-stsci.distutils
     SUBDIR += py-subversion
     SUBDIR += py-subvertpy
+    SUBDIR += py-sure
     SUBDIR += py-sysctl
     SUBDIR += py-sysv_ipc
     SUBDIR += py-tables
@@ -4372,6 +4394,7 @@
     SUBDIR += py-tempora
     SUBDIR += py-tempstorage
     SUBDIR += py-termcolor
+    SUBDIR += py-terminable_thread
     SUBDIR += py-termstyle
     SUBDIR += py-testgears
     SUBDIR += py-testoob
@@ -4379,7 +4402,9 @@
     SUBDIR += py-tgMochiKit
     SUBDIR += py-thrift
     SUBDIR += py-timelib
+    SUBDIR += py-tinyarray
     SUBDIR += py-tipper
+    SUBDIR += py-total-ordering
     SUBDIR += py-tox
     SUBDIR += py-trace2html
     SUBDIR += py-traitlets
@@ -4405,7 +4430,6 @@
     SUBDIR += py-uncompyle2
     SUBDIR += py-unipath
     SUBDIR += py-unittest2
-    SUBDIR += py-unittestplus
     SUBDIR += py-unpaddedbase64
     SUBDIR += py-urlimport
     SUBDIR += py-urwid
@@ -4414,6 +4438,7 @@
     SUBDIR += py-user_agents
     SUBDIR += py-utils
     SUBDIR += py-validictory
+    SUBDIR += py-vcrpy
     SUBDIR += py-vcversioner
     SUBDIR += py-venusian
     SUBDIR += py-versiontools
@@ -4568,6 +4593,7 @@
     SUBDIR += qscintilla2-designerplugin
     SUBDIR += qscintilla2-designerplugin-qt5
     SUBDIR += qscintilla2-qt5
+    SUBDIR += qt-maybe
     SUBDIR += qt4
     SUBDIR += qt4-assistant
     SUBDIR += qt4-assistant-adp
@@ -5348,6 +5374,7 @@
     SUBDIR += xwpe
     SUBDIR += xxgdb
     SUBDIR += xxl
+    SUBDIR += yaggo
     SUBDIR += yajl
     SUBDIR += yajl-tcl
     SUBDIR += yaml-cpp

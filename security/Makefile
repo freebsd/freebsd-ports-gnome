@@ -94,6 +94,7 @@
     SUBDIR += cyrus-sasl2-gssapi
     SUBDIR += cyrus-sasl2-ldapdb
     SUBDIR += cyrus-sasl2-saslauthd
+    SUBDIR += cyrus-sasl2-srp
     SUBDIR += d0_blind_id
     SUBDIR += dcetest
     SUBDIR += ddos_scan
@@ -189,6 +190,7 @@
     SUBDIR += hitch
     SUBDIR += hlfl
     SUBDIR += hmap
+    SUBDIR += honeybadger
     SUBDIR += honggfuzz
     SUBDIR += hotssh
     SUBDIR += hpenc
@@ -283,6 +285,7 @@
     SUBDIR += l5
     SUBDIR += lasso
     SUBDIR += lastpass-cli
+    SUBDIR += letsencrypt.sh
     SUBDIR += libassuan
     SUBDIR += libbeid
     SUBDIR += libbf
@@ -404,7 +407,6 @@
     SUBDIR += openscep
     SUBDIR += openssh-askpass
     SUBDIR += openssh-portable
-    SUBDIR += openssh-portable-devel
     SUBDIR += openssl
     SUBDIR += openssl_tpm_engine
     SUBDIR += openvas-client
@@ -571,6 +573,7 @@
     SUBDIR += p5-Crypt-UnixCrypt
     SUBDIR += p5-Crypt-UnixCrypt_XS
     SUBDIR += p5-Crypt-X509
+    SUBDIR += p5-Crypt-XTEA
     SUBDIR += p5-Crypt-xDBM_File
     SUBDIR += p5-CryptX
     SUBDIR += p5-Dancer-Plugin-Auth-Extensible
@@ -614,6 +617,7 @@
     SUBDIR += p5-Digest-SHA
     SUBDIR += p5-Digest-SHA-PurePerl
     SUBDIR += p5-Digest-SHA1
+    SUBDIR += p5-Digest-SHA3
     SUBDIR += p5-Digest-SV1
     SUBDIR += p5-Digest-Tiger
     SUBDIR += p5-Digest-Whirlpool
@@ -704,6 +708,7 @@
     SUBDIR += pbc
     SUBDIR += pbnj
     SUBDIR += pcsc-tools
+    SUBDIR += pdfcrack
     SUBDIR += pear-Auth
     SUBDIR += pear-Auth_HTTP
     SUBDIR += pear-Auth_OpenID
@@ -750,10 +755,6 @@
     SUBDIR += pgpgpg
     SUBDIR += pgpin
     SUBDIR += php-suhosin
-    SUBDIR += php5-filter
-    SUBDIR += php5-hash
-    SUBDIR += php5-mcrypt
-    SUBDIR += php5-openssl
     SUBDIR += php55-filter
     SUBDIR += php55-hash
     SUBDIR += php55-mcrypt
@@ -762,6 +763,10 @@
     SUBDIR += php56-hash
     SUBDIR += php56-mcrypt
     SUBDIR += php56-openssl
+    SUBDIR += php70-filter
+    SUBDIR += php70-hash
+    SUBDIR += php70-mcrypt
+    SUBDIR += php70-openssl
     SUBDIR += phpdeadlock
     SUBDIR += phpsecinfo
     SUBDIR += pidentd
@@ -782,7 +787,6 @@
     SUBDIR += pks
     SUBDIR += pktsuckers
     SUBDIR += please
-    SUBDIR += polarssl
     SUBDIR += polarssl13
     SUBDIR += poly1305aes
     SUBDIR += pond
@@ -809,6 +813,7 @@
     SUBDIR += py-scrypt
     SUBDIR += py-SecretStorage
     SUBDIR += py-acme
+    SUBDIR += py-acme-tiny
     SUBDIR += py-artifacts
     SUBDIR += py-bcrypt
     SUBDIR += py-borg.localrole
@@ -835,6 +840,7 @@
     SUBDIR += py-kerberos
     SUBDIR += py-keyczar
     SUBDIR += py-keyring
+    SUBDIR += py-keyrings.alt
     SUBDIR += py-letsencrypt
     SUBDIR += py-libnacl
     SUBDIR += py-m2crypto
@@ -842,7 +848,6 @@
     SUBDIR += py-mhash
     SUBDIR += py-oauth2client
     SUBDIR += py-oauthlib
-    SUBDIR += py-openid
     SUBDIR += py-openssl
     SUBDIR += py-paramiko
     SUBDIR += py-passlib
@@ -873,6 +878,7 @@
     SUBDIR += py-pyscard
     SUBDIR += py-pysha3
     SUBDIR += py-python-gnupg
+    SUBDIR += py-python-openid
     SUBDIR += py-python-registry
     SUBDIR += py-rekall
     SUBDIR += py-rekall-core
@@ -1067,6 +1073,7 @@
     SUBDIR += stoken
     SUBDIR += strobe
     SUBDIR += strongswan
+    SUBDIR += stud
     SUBDIR += stunnel
     SUBDIR += subversion-gnome-keyring
     SUBDIR += subversion-kwallet

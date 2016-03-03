@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	dnsmasq
-DISTVERSION=	2.76test5
-PORTVERSION=	2.76.0test5
-PORTREVISION=	1
+DISTVERSION=	2.76test10
+PORTVERSION=	2.76.0test10
 CATEGORIES=	dns ipv6
 #MASTER_SITES=	http://www.thekelleys.org.uk/dnsmasq/release-candidates/
 MASTER_SITES=	http://www.thekelleys.org.uk/dnsmasq/test-releases/

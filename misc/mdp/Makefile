@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mdp
-PORTVERSION=	1.0.4
+PORTVERSION=	1.0.5
 CATEGORIES=	misc
 
 MAINTAINER=	neel@neelc.org
@@ -12,7 +12,7 @@ LICENSE=	GPLv3
 USE_GITHUB=	yes
 GH_ACCOUNT=	visit1985
 
-USES=		gmake
+USES=		gmake ncurses
 PLIST_FILES=	bin/${PORTNAME}
 
 OPTIONS_DEFINE=		DEBUG

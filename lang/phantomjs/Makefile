@@ -19,13 +19,14 @@ LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libpng.so:${PORTSDIR}/graphics/png
 
 PROJECTHOST=	phantomjs
-USES=		bison:build compiler gmake jpeg perl5 pkgconfig python:build zip
+USES=		bison:build compiler gmake gperf jpeg perl5 pkgconfig python:build zip
 USE_PERL5=	build
 USE_RUBY=	yes
 RUBY_NO_RUN_DEPENDS=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 PLIST_FILES=	bin/phantomjs
 #PATCH_DEBUG=	yes
+NO_CCACHE=	yes
 
 # NOTE:
 #   build.sh --qtwebkit=system requires Qt 5.3.x.  We cannot use it.
