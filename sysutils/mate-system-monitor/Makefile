@@ -16,24 +16,17 @@ LIB_DEPENDS=	libgtop-2.0.so:${PORTSDIR}/devel/libgtop \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		alias compiler:c++11-lang gettext gmake pathfix \
+USES=		alias compiler:c++11-lib gettext gmake pathfix \
 		pkgconfig tar:xz
 USE_MATE=	icontheme
-USE_GNOME=	intlhack librsvg2 libxml2
+USE_GNOME=	gtkmm30 intlhack librsvg2 libwnck3 libxml2
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--disable-systemd
 CONFIGURE_ENV=	LIBS="-lutil" DATADIRNAME="share"
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.system-monitor.enums.xml \
 		org.mate.system-monitor.gschema.xml
-
-OPTIONS_DEFINE=	MATEGTK3
-
-MATEGTK3_DESC=	build agains gtk3
-MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
-MATEGTK3_USE=	GNOME=gtk30,gtkmm30,libwnck3
-MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
-MATEGTK3_USE_OFF=	GNOME=gtk20,gtkmm24,libwnck
 
 .include <bsd.port.mk>
