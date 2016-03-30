@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-panel
-PORTVERSION=	1.13.1
+PORTVERSION=	1.13.2
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -47,14 +47,10 @@ MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30,libwnck3
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20,libwnck
+MATEGTK3_LIB_DEPENDS=	libcanberra-gtk3.so:${PORTSDIR}/audio/libcanberra-gtk3
+MATEGTK3_LIB_DEPENDS_OFF=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra
 
 .include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MMATEGTK3}
-LIB_DEPENDS+=	libcanberra-gtk3.so:${PORTSDIR}/audio/libcanberra-gtk3
-.else
-LIB_DEPENDS+=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra
-.endif
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/mate-panel/modules
