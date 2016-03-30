@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-system-monitor
-PORTVERSION=	1.13.1
+PORTVERSION=	1.13.2
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
