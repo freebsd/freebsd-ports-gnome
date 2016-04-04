@@ -50,7 +50,7 @@ OPTIONS_DEFINE=	MATEGTK3
 MATEGTK3_DESC=	build agains gtk3
 MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30,gtksourceview3,libwnck3
-MATEGTK3_RUN_DEPENDS=	gucharmap:${PORTSDIR}/deskutils/gucharmap
+MATEGTK3_RUN_DEPENDS=	gucharmap:deskutils/gucharmap
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20,gtksourceview2,libwnck
 
