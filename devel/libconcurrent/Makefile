@@ -3,6 +3,7 @@
 
 PORTNAME=	libconcurrent
 PORTVERSION=	0.0.20160303
+PORTREVISION=	1
 CATEGORIES=	devel
 
 MAINTAINER=	t@tobik.me
@@ -11,7 +12,7 @@ COMMENT=	Tiny asymmetric-coroutine library
 LICENSE=	ZLIB
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	nasm:${PORTSDIR}/devel/nasm
+BUILD_DEPENDS=	nasm:devel/nasm
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	sharow
@@ -25,9 +26,14 @@ OPTIONS_DEFAULT=	EXAMPLES
 
 MAKEFILE=	makefile
 MAKE_ARGS=	LIBCONCURRENT_DESTDIR=${STAGEDIR}${PREFIX}
-USES=		gmake
+USES=		gmake compiler:c11
 
 post-patch:
+# Remove explicitly (re-)set C compiler and linker in libconcurrent's
+# makefile.  The ports system will provide the correct ones.  This is
+# needed on FreeBSD 9 where cc does not understand -std=c11.
+	@${REINPLACE_CMD} 's/CC=cc//g' ${WRKSRC}/makefile
+	@${REINPLACE_CMD} 's/LD=ld//g' ${WRKSRC}/makefile
 # libconcurrent's makefile resets ${ARCH} internally and the ports
 # system interferes with that for some reason, so replace it with a
 # more neutral variant.

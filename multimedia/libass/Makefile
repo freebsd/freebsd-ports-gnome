@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libass
-PORTVERSION=	0.13.1
+PORTVERSION=	0.13.2
 CATEGORIES=	multimedia devel
 
 MAINTAINER=	multimedia@FreeBSD.org
@@ -9,9 +9,9 @@ COMMENT=	Portable ASS/SSA subtitle renderer
 
 LICENSE=	ISCL
 
-LIB_DEPENDS=	libfreetype.so:${PORTSDIR}/print/freetype2 \
-		libfribidi.so:${PORTSDIR}/converters/fribidi \
-		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig
+LIB_DEPENDS=	libfreetype.so:print/freetype2 \
+		libfribidi.so:converters/fribidi \
+		libfontconfig.so:x11-fonts/fontconfig
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	${PORTNAME}
@@ -27,12 +27,12 @@ OPTIONS_DEFAULT=HARFBUZZ
 OPTIONS_DEFINE_amd64=	ASM
 OPTIONS_DEFINE_i386=	ASM
 OPTIONS_DEFAULT_amd64=	ASM
+OPTIONS_DEFAULT_i386=	ASM
 
-ASM_BUILD_DEPENDS=${LOCALBASE}/bin/yasm:${PORTSDIR}/devel/yasm
+ASM_BUILD_DEPENDS=${LOCALBASE}/bin/yasm:devel/yasm
 ASM_CONFIGURE_ENABLE=asm
-ASM_DESC?=	Use optimized ASM routines on x86/amd64
 
-HARFBUZZ_LIB_DEPENDS=libharfbuzz.so:${PORTSDIR}/print/harfbuzz
+HARFBUZZ_LIB_DEPENDS=libharfbuzz.so:print/harfbuzz
 HARFBUZZ_CONFIGURE_ENABLE=harfbuzz
 HARFBUZZ_DESC?=	Font shaping via HarfBuzz
 

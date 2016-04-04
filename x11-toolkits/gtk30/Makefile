@@ -4,8 +4,8 @@
 # adwaita-icon-theme, gnome-themes-standard and mate-themes
 
 PORTNAME=	gtk
-PORTVERSION=	3.18.7
-PORTREVISION?=	0
+PORTVERSION=	3.18.8
+PORTREVISION?=	3
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMESUFFIX=	3
@@ -24,11 +24,11 @@ PORTSCOUT=	ignore:1
 .else
 PORTSCOUT=	limit:1,even
 
-BUILD_DEPENDS+=	at-spi2-atk>=0:${PORTSDIR}/accessibility/at-spi2-atk
-LIB_DEPENDS=	libepoxy.so:${PORTSDIR}/graphics/libepoxy
-RUN_DEPENDS+=	hicolor-icon-theme>=0:${PORTSDIR}/misc/hicolor-icon-theme \
-		adwaita-icon-theme>=0:${PORTSDIR}/x11-themes/adwaita-icon-theme \
-		at-spi2-atk>=0:${PORTSDIR}/accessibility/at-spi2-atk
+BUILD_DEPENDS+=	at-spi2-atk>=0:accessibility/at-spi2-atk
+LIB_DEPENDS=	libepoxy.so:graphics/libepoxy
+RUN_DEPENDS+=	hicolor-icon-theme>=0:misc/hicolor-icon-theme \
+		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
+		at-spi2-atk>=0:accessibility/at-spi2-atk
 
 USE_PERL5=	build
 USE_LDCONFIG=	yes
@@ -46,7 +46,7 @@ LIBS+=		-L${LOCALBASE}/lib
 INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
 
-LIBVERSION=	0.1800.7
+LIBVERSION=	0.1800.8
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
@@ -62,16 +62,16 @@ BROADWAY_DESC=	Enable GDK Broadway backend for showing GTK+ in the webbrowser us
 BROADWAY_CONFIGURE_ENABLE=	broadway-backend
 
 COLORD_DESC=	Color profile support
-COLORD_LIB_DEPENDS=	libcolord.so:${PORTSDIR}/graphics/colord
+COLORD_LIB_DEPENDS=	libcolord.so:graphics/colord
 COLORD_CONFIGURE_ENABLE=colord
 
-CUPS_LIB_DEPENDS=	libcups.so:${PORTSDIR}/print/cups-client
+CUPS_LIB_DEPENDS=	libcups.so:print/cups
 CUPS_CONFIGURE_ENABLE=	cups
 
 CLOUDPRINT_DESC=	Cloud printing support
 CLOUDPRINT_CONFIGURE_ENABLE=	cloudprint
-CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:${PORTSDIR}/devel/librest \
-			libjson-glib-1.0.so:${PORTSDIR}/devel/json-glib
+CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
+			libjson-glib-1.0.so:devel/json-glib
 
 DEBUG_CONFIGURE_ENABLE=debug
 

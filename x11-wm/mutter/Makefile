@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mutter
-PORTVERSION=	3.18.2
+PORTVERSION=	3.18.3
 CATEGORIES=	x11-wm
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -10,15 +10,15 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Window and compositing manager based on Clutter
 
-BUILD_DEPENDS=	zenity>=3.0.0:${PORTSDIR}/x11/zenity \
-		gsettings-desktop-schemas>=3.4.0:${PORTSDIR}/devel/gsettings-desktop-schemas
-LIB_DEPENDS=	libstartup-notification-1.so:${PORTSDIR}/x11/startup-notification \
-		libclutter-1.0.so:${PORTSDIR}/graphics/clutter \
-		libxkbcommon.so:${PORTSDIR}/x11/libxkbcommon \
-		libcanberra-gtk3.so:${PORTSDIR}/audio/libcanberra-gtk3 \
-		libupower-glib.so:${PORTSDIR}/sysutils/upower
-RUN_DEPENDS=	zenity>=3.0.0:${PORTSDIR}/x11/zenity \
-		gsettings-desktop-schemas>=3.4.0:${PORTSDIR}/devel/gsettings-desktop-schemas
+BUILD_DEPENDS=	zenity>=3.0.0:x11/zenity \
+		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas
+LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
+		libclutter-1.0.so:graphics/clutter \
+		libxkbcommon.so:x11/libxkbcommon \
+		libcanberra-gtk3.so:audio/libcanberra-gtk3 \
+		libupower-glib.so:sysutils/upower
+RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
+		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas
 
 PORTSCOUT=	limitw:1,even
 

@@ -23,6 +23,7 @@
     SUBDIR += bestfit
     SUBDIR += bibletime
     SUBDIR += biblical-curse
+    SUBDIR += binclock
     SUBDIR += biosfont-demos
     SUBDIR += birthday
     SUBDIR += bogosort
@@ -370,7 +371,6 @@
     SUBDIR += posixtestsuite
     SUBDIR += proxyper
     SUBDIR += pspresent
-    SUBDIR += py-tqdm
     SUBDIR += py-YABT
     SUBDIR += py-osd
     SUBDIR += py-pexpect
@@ -383,6 +383,7 @@
     SUBDIR += py-qt5-doc
     SUBDIR += py-spdx
     SUBDIR += py-spdx-lookup
+    SUBDIR += py-tqdm
     SUBDIR += py-yolk
     SUBDIR += pylize
     SUBDIR += pypanda
@@ -419,6 +420,7 @@
     SUBDIR += shc
     SUBDIR += shuffle
     SUBDIR += shuffle-db
+    SUBDIR += seabios
     SUBDIR += since
     SUBDIR += skyutils
     SUBDIR += sloccount
@@ -442,6 +444,7 @@
     SUBDIR += termatrix
     SUBDIR += terraform
     SUBDIR += teseq
+    SUBDIR += teslams
     SUBDIR += tkcron
     SUBDIR += tkinfo
     SUBDIR += tkregexp

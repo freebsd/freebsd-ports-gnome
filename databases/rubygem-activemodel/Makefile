@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	activemodel
-PORTVERSION=	3.2.22.1
+PORTVERSION=	3.2.22.2
 CATEGORIES=	databases rubygems
 MASTER_SITES=	RG
 
@@ -11,8 +11,8 @@ COMMENT=	Toolkit for building modeling frameworks
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/MIT-LICENSE
 
-RUN_DEPENDS=	rubygem-activesupport>=${PORTVERSION}:${PORTSDIR}/devel/rubygem-activesupport \
-		rubygem-builder>=3.0.0:${PORTSDIR}/devel/rubygem-builder
+RUN_DEPENDS=	rubygem-activesupport>=${PORTVERSION}:devel/rubygem-activesupport \
+		rubygem-builder>=3.0.0:devel/rubygem-builder
 
 NO_ARCH=	yes
 USE_RUBY=	yes

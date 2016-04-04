@@ -10,9 +10,9 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME music playing application
 
-BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool
-LIB_DEPENDS=	libgrilo-0.2.so:${PORTSDIR}/net/grilo \
-		libmediaart-2.0.so:${PORTSDIR}/multimedia/libmediaart
+BUILD_DEPENDS=	itstool:textproc/itstool
+LIB_DEPENDS=	libgrilo-0.2.so:net/grilo \
+		libmediaart-2.0.so:multimedia/libmediaart
 
 PORTSCOUT=	limitw:1,even
 
@@ -29,6 +29,15 @@ INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.gnome.Music.gschema.xml
 
-PLIST_SUB+=	PYVER=${PYTHON_VER:S/.//}
+.include <bsd.port.pre.mk>
 
-.include <bsd.port.mk>
+.if ${PYTHON_REL} < 3500
+PYOEXTENSION=	pyo
+.else
+PYOEXTENSION=	opt-1.pyc
+.endif
+
+PLIST_SUB+=	PYOEXTENSION=${PYOEXTENSION} \
+		PYVER=${PYTHON_VER:S/.//}
+
+.include <bsd.port.post.mk>

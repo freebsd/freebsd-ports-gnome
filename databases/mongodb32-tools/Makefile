@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mongodb32-tools
-PORTVERSION=	3.2.1
+PORTVERSION=	3.2.4
 DISTVERSIONPREFIX=	r
-PORTREVISION=	1
 CATEGORIES=	databases net
 
 MAINTAINER=	brendan+freebsd@bbqsrc.net
@@ -12,7 +11,7 @@ COMMENT=	Tools for MongoDB
 
 LICENSE=	APACHE20
 
-BUILD_DEPENDS=	go>0:${PORTSDIR}/lang/go
+BUILD_DEPENDS=	go>0:lang/go
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	mongodb
@@ -22,7 +21,7 @@ OPTIONS_DEFINE=	SSL SASL
 OPTIONS_DEFAULT=	SSL
 
 SASL_USE=	my_tags=sasl
-SASL_LIB_DEPENDS=	libsasl2.so:${PORTSDIR}/security/cyrus-sasl2
+SASL_LIB_DEPENDS=	libsasl2.so:security/cyrus-sasl2
 
 SSL_USE=	openssl=yes my_tags=ssl
 

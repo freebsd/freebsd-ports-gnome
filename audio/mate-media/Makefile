@@ -10,9 +10,9 @@ DIST_SUBDIR=	mate
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Multimedia applications for the MATE desktop
 
-BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool
-LIB_DEPENDS=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra \
-		libmatemixer.so:${PORTSDIR}/audio/libmatemixer
+BUILD_DEPENDS=	itstool:textproc/itstool
+LIB_DEPENDS=	libcanberra-gtk.so:audio/libcanberra \
+		libmatemixer.so:audio/libmatemixer
 PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake libtool pathfix pkgconfig tar:xz
@@ -30,14 +30,14 @@ OPTIONS_DEFINE=	MATEGTK3
 MATEGTK3_DESC=	build agains gtk3
 MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30
-MATEGTK3_LIB_DEPENDS=	libunique-3.0.so:${PORTSDIR}/x11-toolkits/libunique3
+MATEGTK3_LIB_DEPENDS=	libunique-3.0.so:x11-toolkits/libunique3
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20
 
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:NMATEGTK3}
-LIB_DEPENDS+=	libunique-1.0.so:${PORTSDIR}/x11-toolkits/unique
+LIB_DEPENDS+=	libunique-1.0.so:x11-toolkits/unique
 .endif
 
 .include <bsd.port.mk>

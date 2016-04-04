@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	letsencrypt.sh
-PORTVERSION=	0.0.0.20160217
-PORTREVISION=	1
+PORTVERSION=	0.0.0.20160229
 CATEGORIES=	security
 
 MAINTAINER=	sascha@root-login.org
@@ -11,11 +10,11 @@ COMMENT=	Pure BASH/ZSH Lets Encrypt client
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	curl:${PORTSDIR}/ftp/curl
+RUN_DEPENDS=	curl:ftp/curl
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	lukas2511
-GH_TAGNAME=	669185a
+GH_TAGNAME=	2099c77
 
 OPTIONS_SINGLE=	SHELL
 OPTIONS_SINGLE_SHELL=	BASH ZSH
@@ -28,8 +27,8 @@ NO_ARCH=	yes
 NO_BUILD=	yes
 USES=		shebangfix
 
-BASH_RUN_DEPENDS=	bash:${PORTSDIR}/shells/bash
-ZSH_RUN_DEPENDS=	zsh:${PORTSDIR}/shells/zsh
+BASH_RUN_DEPENDS=	bash:shells/bash
+ZSH_RUN_DEPENDS=	zsh:shells/zsh
 
 PERIODIC_DIRS=	etc/periodic/weekly
 PERIODIC_FILES=	000.letsencrypt.sh

@@ -10,10 +10,10 @@ DIST_SUBDIR=	mate
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT?=	File manager for the MATE desktop
 
-BUILD_DEPENDS=	gtkdoc-check:${PORTSDIR}/textproc/gtk-doc
-LIB_DEPENDS=	libexif.so:${PORTSDIR}/graphics/libexif \
-		libexempi.so:${PORTSDIR}/textproc/exempi
-RUN_DEPENDS=	${LOCALBASE}/libexec/gvfsd:${PORTSDIR}/devel/gvfs
+BUILD_DEPENDS=	gtkdoc-check:textproc/gtk-doc
+LIB_DEPENDS=	libexif.so:graphics/libexif \
+		libexempi.so:textproc/exempi
+RUN_DEPENDS=	${LOCALBASE}/libexec/gvfsd:devel/gvfs
 
 PORTSCOUT=	limitw:1,even
 
@@ -47,9 +47,9 @@ MATEGTK3_USE_OFF=	GNOME=gtk20
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMATEGTK3}
-LIB_DEPENDS+=	libunique-3.0.so:${PORTSDIR}/x11-toolkits/libunique3
+LIB_DEPENDS+=	libunique-3.0.so:x11-toolkits/libunique3
 .else
-LIB_DEPENDS+=	libunique-1.0.so:${PORTSDIR}/x11-toolkits/unique
+LIB_DEPENDS+=	libunique-1.0.so:x11-toolkits/unique
 .endif
 
 post-install:

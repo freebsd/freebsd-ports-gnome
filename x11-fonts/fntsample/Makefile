@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fntsample
-PORTVERSION=	4.0
+PORTVERSION=	4.1
 CATEGORIES=	x11-fonts
 MASTER_SITES=	SF/fntsample/fntsample/${PORTVERSION} \
 		http://unicode.org/Public/6.0.0/ucd/:unidata
@@ -16,7 +16,7 @@ COMMENT=	Show Unicode coverage of a font
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-RUN_DEPENDS=	pdfoutline:${PORTSDIR}/textproc/pdfoutline
+RUN_DEPENDS=	pdfoutline:textproc/pdfoutline
 
 CONFIGURE_ARGS=	--disable-silent-rules \
 		--with-unicode-blocks=${WRKSRC}/Blocks.txt

@@ -3,7 +3,7 @@
 
 PORTNAME=	mixer
 PORTVERSION=	0.1.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://www.defora.org/os/download/download/3705/
 PKGNAMEPREFIX=	deforaos-
@@ -14,7 +14,7 @@ COMMENT=	DeforaOS desktop audio mixer
 
 LICENSE=	GPLv3
 
-LIB_DEPENDS=	libDesktop.so:${PORTSDIR}/x11/deforaos-libdesktop
+LIB_DEPENDS=	libDesktop.so:x11/deforaos-libdesktop
 
 MAKE_ARGS=	PREFIX=${PREFIX}
 USES=		desktop-file-utils gettext pkgconfig

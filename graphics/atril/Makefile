@@ -11,10 +11,10 @@ DIST_SUBDIR=	mate
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT?=	MATE multi-format document viewer
 
-BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool
+BUILD_DEPENDS=	itstool:textproc/itstool
 
-LIB_DEPENDS=	libpoppler-glib.so:${PORTSDIR}/graphics/poppler-glib \
-		libspectre.so:${PORTSDIR}/print/libspectre
+LIB_DEPENDS=	libpoppler-glib.so:graphics/poppler-glib \
+		libspectre.so:print/libspectre
 
 PORTSCOUT=	limitw:1,even
 SLAVEPORT?=	no
@@ -57,17 +57,17 @@ OPTIONS_SUB=	yes
 
 CAJA_CONFIGURE_ENABLE=	caja
 CAJA_USE=		MATE=caja
-DJVU_LIB_DEPENDS=	libdjvulibre.so:${PORTSDIR}/graphics/djvulibre
+DJVU_LIB_DEPENDS=	libdjvulibre.so:graphics/djvulibre
 DJVU_CONFIGURE_ENABLE=	djvu
 COMICS_CONFIGURE_ENABLE=	comics
 KEYRING_CONFIGURE_WITH=	keyring
-KEYRING_LIB_DEPENDS=	libsecret-1.so:${PORTSDIR}/security/libsecret
+KEYRING_LIB_DEPENDS=	libsecret-1.so:security/libsecret
 XPS_CONFIGURE_ENABLE=	xps
-XPS_LIB_DEPENDS=	libgxps.so:${PORTSDIR}/graphics/libgxps
+XPS_LIB_DEPENDS=	libgxps.so:graphics/libgxps
 EPUB_CONFIGURE_ENABLE=	epub
-#EPUB_LIB_DEPENDS=	libwebkitgtk-1.0.so:${PORTSDIR}/www/webkit-gtk2
+#EPUB_LIB_DEPENDS=	libwebkitgtk-1.0.so:www/webkit-gtk2
 
-MATEGTK3_DESC=	build agains gtk3
+MATEGTK3_DESC=	build against gtk3
 MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
@@ -77,9 +77,9 @@ MATEGTK3_USE_OFF=	GNOME=gtk20
 
 .if ${PORT_OPTIONS:MEPUB}
 .if ${PORT_OPTIONS:MMATEGTK3}
-LIB_DEPENDS+=	libwebkit2gtk-4.0.so:${PORTSDIR}/www/webkit2-gtk3
+LIB_DEPENDS+=	libwebkit2gtk-4.0.so:www/webkit2-gtk3
 .else
-LIB_DEPENDS+=	libwebkitgtk-1.0.so:${PORTSDIR}/www/webkit-gtk2
+LIB_DEPENDS+=	libwebkitgtk-1.0.so:www/webkit-gtk2
 .endif
 .endif
 
@@ -87,7 +87,7 @@ LIB_DEPENDS+=	libwebkitgtk-1.0.so:${PORTSDIR}/www/webkit-gtk2
 CONFIGURE_ARGS+=--disable-dbus
 .else
 CONFIGURE_ARGS+=--enable-dbus
-LIB_DEPENDS+=	libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib
+LIB_DEPENDS+=	libdbus-glib-1.so:devel/dbus-glib
 .endif
 
 .if ${PORT_OPTIONS:MDVI} || ${PORT_OPTIONS:MT1LIB}
@@ -96,7 +96,7 @@ CONFIGURE_ARGS+=--enable-dvi
 PLIST_SUB+=	DVI=""
 
 . if ${PORT_OPTIONS:MT1LIB}
-LIB_DEPENDS+=	libt1.so:${PORTSDIR}/devel/t1lib
+LIB_DEPENDS+=	libt1.so:devel/t1lib
 CONFIGURE_ARGS+=--enable-t1lib
 .else
 CONFIGURE_ARGS+=--disable-t1lib

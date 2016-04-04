@@ -8,7 +8,7 @@ CATEGORIES=	audio
 MAINTAINER=	danfe@FreeBSD.org
 COMMENT=	Playback status widget for DeaDBeeF audio player
 
-BUILD_DEPENDS=	${LOCALBASE}/include/deadbeef/deadbeef.h:${PORTSDIR}/audio/deadbeef
+BUILD_DEPENDS=	${LOCALBASE}/include/deadbeef/deadbeef.h:audio/deadbeef
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USE_GITHUB=	yes
@@ -17,6 +17,8 @@ GH_PROJECT=	ddb_playback_status
 GH_TAGNAME=	fce1de0
 
 USES=		gmake pkgconfig
+
+MAKE_JOBS_UNSAFE=	yes
 
 OPTIONS_DEFINE=	GTK2 GTK3
 OPTIONS_DEFAULT=	GTK3

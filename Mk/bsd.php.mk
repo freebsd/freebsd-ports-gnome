@@ -56,13 +56,13 @@ PHP_EXT_DIR!=	${PHPBASE}/bin/php-config --extension-dir | ${SED} -ne 's,^${PHPBA
 DEFAULT_PHP_VER?=	${PHP_DEFAULT:S/.//}
 
 PHP_VER?=	${DEFAULT_PHP_VER}
-.if ${PHP_VER}  == 70
+.if ${PHP_VER} == 70
 PHP_EXT_DIR=   20151012
 PHP_EXT_INC=    pcre spl
-.elif ${PHP_VER}  == 56
+.elif ${PHP_VER} == 56
 PHP_EXT_DIR=	20131226
 PHP_EXT_INC=	pcre spl
-.elif ${PHP_VER}  == 55
+.elif ${PHP_VER} == 55
 PHP_EXT_DIR=	20121212
 PHP_EXT_INC=	pcre spl
 .else
@@ -139,20 +139,20 @@ PHP_PORT?=	lang/php${PHP_VER}
 MOD_PHP_PORT?=	www/mod_php${PHP_VER}
 
 .if defined(USE_PHP_BUILD)
-BUILD_DEPENDS+=	${PHPBASE}/include/php/main/php.h:${PORTSDIR}/${PHP_PORT}
+BUILD_DEPENDS+=	${PHPBASE}/include/php/main/php.h:${PHP_PORT}
 .endif
-RUN_DEPENDS+=	${PHPBASE}/include/php/main/php.h:${PORTSDIR}/${PHP_PORT}
+RUN_DEPENDS+=	${PHPBASE}/include/php/main/php.h:${PHP_PORT}
 .if defined(WANT_PHP_MOD) || (defined(WANT_PHP_WEB) && defined(PHP_VERSION) && ${PHP_SAPI:Mcgi} == "" && ${PHP_SAPI:Mfpm} == "")
 USE_APACHE_RUN=	22+
 .include "${PORTSDIR}/Mk/bsd.apache.mk"
-RUN_DEPENDS+=	${PHPBASE}/${APACHEMODDIR}/libphp5.so:${PORTSDIR}/${MOD_PHP_PORT}
+RUN_DEPENDS+=	${PHPBASE}/${APACHEMODDIR}/libphp5.so:${MOD_PHP_PORT}
 .endif
 
 PLIST_SUB+=	PHP_EXT_DIR=${PHP_EXT_DIR}
 SUB_LIST+=	PHP_EXT_DIR=${PHP_EXT_DIR}
 
 .if defined(USE_PHPIZE) || defined(USE_PHPEXT) || defined(USE_ZENDEXT)
-BUILD_DEPENDS+=	${PHPBASE}/bin/phpize:${PORTSDIR}/${PHP_PORT}
+BUILD_DEPENDS+=	${PHPBASE}/bin/phpize:${PHP_PORT}
 GNU_CONFIGURE=	yes
 USE_AUTOTOOLS+=	autoconf:env
 CONFIGURE_ARGS+=--with-php-config=${PHPBASE}/bin/php-config
@@ -259,7 +259,11 @@ _USE_PHP_VER70=	${_USE_PHP_ALL}
 
 apc_DEPENDS=	www/pecl-APC
 bcmath_DEPENDS=	math/php${PHP_VER}-bcmath
+.if ${PHP_VER} == 70
 bitset_DEPENDS=	math/pecl-bitset
+.else
+bitset_DEPENDS=	math/pecl-bitset2
+.endif
 bz2_DEPENDS=	archivers/php${PHP_VER}-bz2
 calendar_DEPENDS=	misc/php${PHP_VER}-calendar
 ctype_DEPENDS=	textproc/php${PHP_VER}-ctype
@@ -279,7 +283,7 @@ iconv_DEPENDS=	converters/php${PHP_VER}-iconv
 igbinary_DEPENDS=	converters/pecl-igbinary
 imap_DEPENDS=	mail/php${PHP_VER}-imap
 interbase_DEPENDS=	databases/php${PHP_VER}-interbase
-.if ${PHP_VER}	== 70
+.if ${PHP_VER} == 70
 intl_DEPENDS=	devel/php${PHP_VER}-intl
 .else
 intl_DEPENDS=	devel/pecl-intl
@@ -342,17 +346,17 @@ zlib_DEPENDS=	archivers/php${PHP_VER}-zlib
 .		if ${_USE_PHP_VER${PHP_VER}:M${extension}} != ""
 .			if ${PHP_EXT_INC:M${extension}} == ""
 .				if defined(USE_PHP_BUILD)
-BUILD_DEPENDS+=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/${extension}.so:${PORTSDIR}/${${extension}_DEPENDS}
+BUILD_DEPENDS+=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/${extension}.so:${${extension}_DEPENDS}
 .				endif
-RUN_DEPENDS+=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/${extension}.so:${PORTSDIR}/${${extension}_DEPENDS}
+RUN_DEPENDS+=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/${extension}.so:${${extension}_DEPENDS}
 .			endif
 .		else
 ext=		${extension}
 .			if ${ext} == "mhash"
 .				if defined(USE_PHP_BUILD)
-BUILD_DEPENDS+=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/hash.so:${PORTSDIR}/${hash_DEPENDS}
+BUILD_DEPENDS+=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/hash.so:${hash_DEPENDS}
 .				endif
-RUN_DEPENDS+=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/hash.so:${PORTSDIR}/${hash_DEPENDS}
+RUN_DEPENDS+=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/hash.so:${hash_DEPENDS}
 .			elif ${ext:tl} != "yes"
 check-makevars::
 			@${ECHO_CMD} "Unknown extension ${extension} for PHP ${PHP_VER}."

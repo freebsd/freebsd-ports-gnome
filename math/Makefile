@@ -61,6 +61,7 @@
     SUBDIR += R-cran-spdep
     SUBDIR += R-cran-sspir
     SUBDIR += R-cran-stabledist
+    SUBDIR += R-cran-survey
     SUBDIR += R-cran-xts
     SUBDIR += R-cran-zoo
     SUBDIR += aamath
@@ -160,7 +161,7 @@
     SUBDIR += gap
     SUBDIR += gdcalc
     SUBDIR += geg
-    SUBDIR += geogebra-i18n
+    SUBDIR += geogebra
     SUBDIR += geonext
     SUBDIR += gexpr
     SUBDIR += ggobi
@@ -262,6 +263,7 @@
     SUBDIR += ltl2ba
     SUBDIR += lybniz
     SUBDIR += math77
+    SUBDIR += mathmod
     SUBDIR += mathomatic
     SUBDIR += matio
     SUBDIR += matlab-installer
@@ -555,6 +557,7 @@
     SUBDIR += pear-Math_Combinatorics
     SUBDIR += pecl-big_int
     SUBDIR += pecl-bitset
+    SUBDIR += pecl-bitset2
     SUBDIR += pecl-stats
     SUBDIR += pecl-trader
     SUBDIR += php55-bcmath

@@ -13,9 +13,9 @@ COMMENT=	Send small notifications to your desktop
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libdbus-1.so:${PORTSDIR}/devel/dbus \
-		libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib \
-		libnotify.so:${PORTSDIR}/devel/libnotify
+LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+		libdbus-glib-1.so:devel/dbus-glib \
+		libnotify.so:devel/libnotify
 
 PORTSCOUT=	limitw:1,even
 
@@ -43,9 +43,9 @@ MATEGTK3_USE_OFF=	GNOME=gtk20,libwnck
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMATEGTK3}
-LIB_DEPENDS+=	libcanberra-gtk3.so:${PORTSDIR}/audio/libcanberra-gtk3
+LIB_DEPENDS+=	libcanberra-gtk3.so:audio/libcanberra-gtk3
 .else
-LIB_DEPENDS+=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra
+LIB_DEPENDS+=	libcanberra-gtk.so:audio/libcanberra
 .endif
 
 .include <bsd.port.mk>

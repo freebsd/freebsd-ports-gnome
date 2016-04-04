@@ -108,6 +108,7 @@
     SUBDIR += burp
     SUBDIR += busybox
     SUBDIR += byobu
+    SUBDIR += catfish
     SUBDIR += cbsd
     SUBDIR += ccd2iso
     SUBDIR += cciss_vol_status
@@ -149,6 +150,7 @@
     SUBDIR += cloop-utils
     SUBDIR += cloudabi-utils
     SUBDIR += clsync
+    SUBDIR += cluster-glue
     SUBDIR += cmdwatch
     SUBDIR += cmockery2
     SUBDIR += cmogstored
@@ -221,6 +223,10 @@
     SUBDIR += dolly
     SUBDIR += downtime
     SUBDIR += downtimed
+    SUBDIR += dsbbatmon
+    SUBDIR += dsbdriverd
+    SUBDIR += dsbmc
+    SUBDIR += dsbmd
     SUBDIR += dsbwrtsysctl
     SUBDIR += dt
     SUBDIR += dtpstree
@@ -246,6 +252,7 @@
     SUBDIR += entr
     SUBDIR += env4801
     SUBDIR += envconsul
+    SUBDIR += epazote
     SUBDIR += etcmerge
     SUBDIR += etcupdate
     SUBDIR += eventlog
@@ -293,6 +300,7 @@
     SUBDIR += freebsd-snapshot
     SUBDIR += freecolor
     SUBDIR += freedt
+    SUBDIR += freefilesync
     SUBDIR += freeipmi
     SUBDIR += freesbie
     SUBDIR += froxlor
@@ -375,6 +383,7 @@
     SUBDIR += graffer
     SUBDIR += graid5
     SUBDIR += graveman
+    SUBDIR += graylog
     SUBDIR += grok
     SUBDIR += grub2
     SUBDIR += grub2-bhyve
@@ -399,6 +408,7 @@
     SUBDIR += heartbeat
     SUBDIR += heirloom
     SUBDIR += hextools
+    SUBDIR += hfm
     SUBDIR += hfsexplorer
     SUBDIR += hfsutils
     SUBDIR += hidesvn
@@ -512,7 +522,6 @@
     SUBDIR += logrotate
     SUBDIR += logstalgia
     SUBDIR += logstash
-    SUBDIR += logstash-contrib
     SUBDIR += logstash-forwarder
     SUBDIR += logtool
     SUBDIR += logwatch
@@ -536,8 +545,15 @@
     SUBDIR += mbgtools
     SUBDIR += mcelog
     SUBDIR += mcollective
+    SUBDIR += mcollective-actionpolicy-auth
+    SUBDIR += mcollective-nettest-agent
+    SUBDIR += mcollective-nettest-client
+    SUBDIR += mcollective-nettest-common
     SUBDIR += mcollective-nrpe-agent
     SUBDIR += mcollective-puppet-agent
+    SUBDIR += mcollective-service-agent
+    SUBDIR += mcollective-service-client
+    SUBDIR += mcollective-service-common
     SUBDIR += mcollective-shell-agent
     SUBDIR += mcollective-shell-client
     SUBDIR += mcron
@@ -613,6 +629,7 @@
     SUBDIR += ods2
     SUBDIR += ohmu
     SUBDIR += open
+    SUBDIR += openhpi
     SUBDIR += openipmi
     SUBDIR += openupsd
     SUBDIR += ori
@@ -694,6 +711,7 @@
     SUBDIR += paicc
     SUBDIR += pam_mount
     SUBDIR += panicmail
+    SUBDIR += parafly
     SUBDIR += parallel
     SUBDIR += password-store
     SUBDIR += patchelf
@@ -772,6 +790,7 @@
     SUBDIR += puppet37
     SUBDIR += puppet38
     SUBDIR += puppet4
+    SUBDIR += puppetserver
     SUBDIR += pv
     SUBDIR += pwd_unmkdb
     SUBDIR += pwgen
@@ -936,6 +955,7 @@
     SUBDIR += safecat
     SUBDIR += samefile
     SUBDIR += samesame
+    SUBDIR += sample
     SUBDIR += sas2ircu
     SUBDIR += sas3ircu
     SUBDIR += savelogs
@@ -965,6 +985,7 @@
     SUBDIR += shim
     SUBDIR += shlock
     SUBDIR += shmcat
+    SUBDIR += showbeastie
     SUBDIR += sievelog
     SUBDIR += skill
     SUBDIR += slack
@@ -1011,6 +1032,8 @@
     SUBDIR += syslog-ng-incubator03
     SUBDIR += syslog-ng34
     SUBDIR += syslog-ng35
+    SUBDIR += syslog-ng36
+    SUBDIR += syslog-ng37
     SUBDIR += syslogger
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
@@ -1018,6 +1041,7 @@
     SUBDIR += tai64nfrac
     SUBDIR += tarsnap
     SUBDIR += tarsnap-gui
+    SUBDIR += tarsnap-periodic
     SUBDIR += tartarus
     SUBDIR += tbku
     SUBDIR += tclsyslog

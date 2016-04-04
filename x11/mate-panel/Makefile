@@ -10,8 +10,8 @@ DIST_SUBDIR=	mate
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Panel component for the MATE Desktop
 
-BUILD_DEPENDS=	itstool:${PORTSDIR}/textproc/itstool
-LIB_DEPENDS=	libdbus-glib-1.so:${PORTSDIR}/devel/dbus-glib
+BUILD_DEPENDS=	itstool:textproc/itstool
+LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib
 
 PORTSCOUT=	limitw:1,even
 
@@ -47,8 +47,8 @@ MATEGTK3_CONFIGURE_ON=	--with-gtk=3.0
 MATEGTK3_USE=	GNOME=gtk30,libwnck3
 MATEGTK3_CONFIGURE_OFF=	--with-gtk=2.0
 MATEGTK3_USE_OFF=	GNOME=gtk20,libwnck
-MATEGTK3_LIB_DEPENDS=	libcanberra-gtk3.so:${PORTSDIR}/audio/libcanberra-gtk3
-MATEGTK3_LIB_DEPENDS_OFF=	libcanberra-gtk.so:${PORTSDIR}/audio/libcanberra
+MATEGTK3_LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3
+MATEGTK3_LIB_DEPENDS_OFF=	libcanberra-gtk.so:audio/libcanberra
 
 .include <bsd.port.options.mk>
 
