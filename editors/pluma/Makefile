@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pluma
-PORTVERSION=	1.13.1
+PORTVERSION=	1.14.0
 CATEGORIES=	editors mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -18,8 +18,8 @@ RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
-		shebangfix tar:xz
+USES=		desktop-file-utils gettext gmake libtool localbase \
+		pathfix pkgconfig shebangfix tar:xz
 USE_MATE=	desktop
 USE_XORG=	sm x11
 USE_GNOME=	gvfs intlhack libxml2
@@ -27,8 +27,6 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-gtk-doc \
 		--with-html-dir=${PREFIX}/share/doc
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 SHEBANG_FILES=	${WRKSRC}/plugins/externaltools/data/search-recursive.tool.in \

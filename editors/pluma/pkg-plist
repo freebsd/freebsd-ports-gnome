@@ -145,7 +145,7 @@ share/applications/pluma.desktop
 %%PORTDOCS%%%%DOCSDIR%%/ch01.html
 %%PORTDOCS%%%%DOCSDIR%%/home.png
 %%PORTDOCS%%%%DOCSDIR%%/index.html
-%%PORTDOCS%%%%DOCSDIR%%/index.sgml
+%%PORTDOCS%%%%DOCSDIR%%/left-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/left.png
 %%PORTDOCS%%%%DOCSDIR%%/pluma-PlumaPrintJob.html
 %%PORTDOCS%%%%DOCSDIR%%/pluma-pluma-app.html
@@ -169,8 +169,10 @@ share/applications/pluma.desktop
 %%PORTDOCS%%%%DOCSDIR%%/pluma-pluma-view.html
 %%PORTDOCS%%%%DOCSDIR%%/pluma-pluma-window.html
 %%PORTDOCS%%%%DOCSDIR%%/pluma.devhelp2
+%%PORTDOCS%%%%DOCSDIR%%/right-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/right.png
 %%PORTDOCS%%%%DOCSDIR%%/style.css
+%%PORTDOCS%%%%DOCSDIR%%/up-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/up.png
 share/help/C/pluma/figures/pluma_format_bold.png
 share/help/C/pluma/figures/pluma_format_italic.png
@@ -393,6 +395,9 @@ share/locale/en_CA/LC_MESSAGES/pluma.mo
 share/locale/en_GB/LC_MESSAGES/pluma.mo
 share/locale/eo/LC_MESSAGES/pluma.mo
 share/locale/es/LC_MESSAGES/pluma.mo
+share/locale/es_AR/LC_MESSAGES/pluma.mo
+share/locale/es_CO/LC_MESSAGES/pluma.mo
+share/locale/es_MX/LC_MESSAGES/pluma.mo
 share/locale/et/LC_MESSAGES/pluma.mo
 share/locale/eu/LC_MESSAGES/pluma.mo
 share/locale/fa/LC_MESSAGES/pluma.mo
@@ -456,6 +461,7 @@ share/locale/tk/LC_MESSAGES/pluma.mo
 share/locale/tr/LC_MESSAGES/pluma.mo
 share/locale/uk/LC_MESSAGES/pluma.mo
 share/locale/ur/LC_MESSAGES/pluma.mo
+share/locale/uz/LC_MESSAGES/pluma.mo
 share/locale/vi/LC_MESSAGES/pluma.mo
 share/locale/wa/LC_MESSAGES/pluma.mo
 share/locale/xh/LC_MESSAGES/pluma.mo
