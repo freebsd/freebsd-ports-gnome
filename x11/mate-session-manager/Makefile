@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-session-manager
-PORTVERSION=	1.13.0
+PORTVERSION=	1.14.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -17,7 +17,8 @@ RUN_DEPENDS=	${LOCALBASE}/sbin/console-kit-daemon:sysutils/consolekit \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		execinfo gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		execinfo gettext gmake localbase libtool pathfix \
+		pkgconfig tar:xz
 USE_MATE=	desktop
 USE_XORG=	ice sm xau xext xrandr xrender xtrans xtst
 USE_GNOME=	intlhack librsvg2 libxslt pango
@@ -26,8 +27,6 @@ CONFIGURE_ARGS=	--disable-docbook-docs \
 		--enable-upower \
 		--with-systemd=no
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.session.gschema.xml
 
