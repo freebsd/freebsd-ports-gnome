@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-utils
-PORTVERSION=	1.13.0
+PORTVERSION=	1.14.0
 CATEGORIES=	deskutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -16,7 +16,8 @@ LIB_DEPENDS=	libgtop-2.0.so:devel/libgtop \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		gettext gmake libtool localbase pathfix \
+		pkgconfig tar:xz
 USE_MATE=	panel
 USE_XORG=	x11 xext
 USE_GNOME=	intlhack
@@ -26,8 +27,6 @@ CONFIGURE_ARGS=	--enable-maintainer-flags=no \
 		--disable-gtk-doc \
 		--with-html-dir=${PREFIX}/share/doc
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.dictionary.gschema.xml \
