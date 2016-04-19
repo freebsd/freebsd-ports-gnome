@@ -20,7 +20,6 @@ libdata/pkgconfig/mateweather.pc
 %%DOCSDIR%%/ch01.html
 %%DOCSDIR%%/home.png
 %%DOCSDIR%%/index.html
-%%DOCSDIR%%/index.sgml
 %%DOCSDIR%%/left-insensitive.png
 %%DOCSDIR%%/left.png
 %%DOCSDIR%%/libmateweather-mateweather-mateconf.html
