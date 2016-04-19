@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	engrampa
-PORTVERSION=	1.13.1
+PORTVERSION=	1.14.0
 CATEGORIES=	archivers mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -16,8 +16,8 @@ RUN_DEPENDS=	${LOCALBASE}/bin/gtar:archivers/gtar \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
-		tar:xz
+USES=		desktop-file-utils gettext gmake libtool localbase \
+		pathfix pkgconfig tar:xz
 USE_MATE=	caja
 USE_XORG=	sm
 USE_GNOME=	glib20 intlhack
@@ -25,8 +25,6 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-packagekit
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.engrampa.gschema.xml
