@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-applets
-PORTVERSION=	1.13.0
+PORTVERSION=	1.14.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -21,7 +21,8 @@ LIB_DEPENDS=	libgtop-2.0.so:devel/libgtop \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		autoreconf:build gettext gmake libtool pathfix pkgconfig python tar:xz
+USES=		autoreconf:build gettext gmake libtool localbase pathfix \
+		pkgconfig python tar:xz
 USE_MATE=	desktop icontheme libmateweather panel polkit settingsdaemon
 USE_XORG=	x11
 USE_GNOME=	gdkpixbuf2 introspection:build \
@@ -30,8 +31,7 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 CONFIGURE_ENV=	OS_SYS="/usr/include"
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-lpthread -L${LOCALBASE}/lib
+LDFLAGS+=	-lpthread
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.panel.applet.charpick.gschema.xml \
