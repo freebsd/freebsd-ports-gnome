@@ -446,11 +446,14 @@ share/locale/en_CA/LC_MESSAGES/mate-control-center.mo
 share/locale/en_GB/LC_MESSAGES/mate-control-center.mo
 share/locale/eo/LC_MESSAGES/mate-control-center.mo
 share/locale/es/LC_MESSAGES/mate-control-center.mo
+share/locale/es_CO/LC_MESSAGES/mate-control-center.mo
+share/locale/es_MX/LC_MESSAGES/mate-control-center.mo
 share/locale/et/LC_MESSAGES/mate-control-center.mo
 share/locale/eu/LC_MESSAGES/mate-control-center.mo
 share/locale/fa/LC_MESSAGES/mate-control-center.mo
 share/locale/fi/LC_MESSAGES/mate-control-center.mo
 share/locale/fr/LC_MESSAGES/mate-control-center.mo
+share/locale/fr_CA/LC_MESSAGES/mate-control-center.mo
 share/locale/ga/LC_MESSAGES/mate-control-center.mo
 share/locale/gl/LC_MESSAGES/mate-control-center.mo
 share/locale/gu/LC_MESSAGES/mate-control-center.mo
@@ -458,10 +461,12 @@ share/locale/he/LC_MESSAGES/mate-control-center.mo
 share/locale/hi/LC_MESSAGES/mate-control-center.mo
 share/locale/hr/LC_MESSAGES/mate-control-center.mo
 share/locale/hu/LC_MESSAGES/mate-control-center.mo
+share/locale/hy/LC_MESSAGES/mate-control-center.mo
 share/locale/id/LC_MESSAGES/mate-control-center.mo
 share/locale/is/LC_MESSAGES/mate-control-center.mo
 share/locale/it/LC_MESSAGES/mate-control-center.mo
 share/locale/ja/LC_MESSAGES/mate-control-center.mo
+share/locale/jv/LC_MESSAGES/mate-control-center.mo
 share/locale/ka/LC_MESSAGES/mate-control-center.mo
 share/locale/kk/LC_MESSAGES/mate-control-center.mo
 share/locale/kn/LC_MESSAGES/mate-control-center.mo

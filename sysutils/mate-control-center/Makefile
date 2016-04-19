@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-control-center
-PORTVERSION=	1.13.2
+PORTVERSION=	1.14.0
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -19,8 +19,8 @@ LIB_DEPENDS=	libcanberra-gtk.so:audio/libcanberra \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
-		shared-mime-info tar:xz
+USES=		desktop-file-utils gettext gmake libtool localbase \
+		pathfix pkgconfig shared-mime-info tar:xz
 USE_MATE=	desktop libmatekbd marco menus settingsdaemon
 USE_XORG=	x11 xcursor xext xxf86misc xft xi xrandr xscrnsaver
 USE_GNOME=	dconf glib20 intlhack libxml2 librsvg2 \
@@ -29,8 +29,6 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-appindicator=no
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.control-center.gschema.xml \
