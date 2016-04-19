@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-media
-PORTVERSION=	1.13.0
+PORTVERSION=	1.14.0
 CATEGORIES=	audio mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -15,14 +15,13 @@ LIB_DEPENDS=	libcanberra-gtk.so:audio/libcanberra \
 		libmatemixer.so:audio/libmatemixer
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		gettext gmake libtool localbase pathfix \
+		pkgconfig tar:xz
 USE_MATE=	desktop panel
 USE_GNOME=	glib20 intlhack libxml2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 OPTIONS_DEFINE=	MATEGTK3
