@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-terminal
-PORTVERSION=	1.13.2
+PORTVERSION=	1.14.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -14,14 +14,13 @@ BUILD_DEPENDS=	itstool:textproc/itstool
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake pathfix pkgconfig shebangfix tar:xz
+USES=		gettext gmake localbase pathfix pkgconfig \
+		shebangfix tar:xz
 USE_MATE=	desktop
 USE_XORG=	sm x11
 USE_GNOME=	dconf intlhack
 SHEBANG_FILES=	mate-terminal.wrapper
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.terminal.gschema.xml
 
