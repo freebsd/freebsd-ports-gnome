@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-power-manager
-PORTVERSION=	1.13.0
+PORTVERSION=	1.14.0
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -23,7 +23,8 @@ RUN_DEPENDS=	pkexec:sysutils/polkit \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		execinfo gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		execinfo gettext gmake libtool localbase \
+		pathfix pkgconfig tar:xz
 USE_MATE=	panel
 USE_XORG=	x11 xext xproto xrandr xrender
 USE_GNOME=	cairo glib20 intlhack
@@ -34,8 +35,6 @@ CONFIGURE_ARGS=	--with-doc-dir=${PREFIX}/share/doc \
 		--disable-docbook-docs \
 		--with-gtk=2.0 \
 		--with-keyring
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.power-manager.gschema.xml
 
