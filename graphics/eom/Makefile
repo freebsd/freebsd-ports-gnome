@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	eom
-PORTVERSION=	1.13.1
+PORTVERSION=	1.14.0
 CATEGORIES=	graphics mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -14,8 +14,8 @@ BUILD_DEPENDS=	itstool:textproc/itstool
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake jpeg libtool pathfix pkgconfig \
-		tar:xz
+USES=		desktop-file-utils gettext gmake jpeg libtool localbase \
+		pathfix pkgconfig tar:xz
 USE_MATE=	desktop icontheme
 USE_XORG=	x11
 USE_GNOME=	gdkpixbuf2 glib20 intltool librsvg2 libxml2
@@ -26,8 +26,6 @@ CONFIGURE_ARGS+=	--disable-gtk-doc \
 		--disable-python \
 		--without-cms
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.eom.gschema.xml \
