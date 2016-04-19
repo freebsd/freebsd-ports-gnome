@@ -21,6 +21,7 @@ libdata/pkgconfig/mateweather.pc
 %%DOCSDIR%%/home.png
 %%DOCSDIR%%/index.html
 %%DOCSDIR%%/index.sgml
+%%DOCSDIR%%/left-insensitive.png
 %%DOCSDIR%%/left.png
 %%DOCSDIR%%/libmateweather-mateweather-mateconf.html
 %%DOCSDIR%%/libmateweather-mateweather-prefs.html
@@ -28,8 +29,10 @@ libdata/pkgconfig/mateweather.pc
 %%DOCSDIR%%/libmateweather-weather.html
 %%DOCSDIR%%/libmateweather.devhelp2
 %%DOCSDIR%%/object-tree.html
+%%DOCSDIR%%/right-insensitive.png
 %%DOCSDIR%%/right.png
 %%DOCSDIR%%/style.css
+%%DOCSDIR%%/up-insensitive.png
 %%DOCSDIR%%/up.png
 share/icons/mate/16x16/status/weather-clear-night-000.png
 share/icons/mate/16x16/status/weather-clear-night-010.png
@@ -519,6 +522,8 @@ share/locale/eu/LC_MESSAGES/libmateweather.mo
 share/locale/fa/LC_MESSAGES/libmateweather.mo
 share/locale/fi/LC_MESSAGES/libmateweather.mo
 share/locale/fr/LC_MESSAGES/libmateweather.mo
+share/locale/fr_CA/LC_MESSAGES/libmateweather.mo
+share/locale/frp/LC_MESSAGES/libmateweather.mo
 share/locale/ga/LC_MESSAGES/libmateweather.mo
 share/locale/gl/LC_MESSAGES/libmateweather.mo
 share/locale/gu/LC_MESSAGES/libmateweather.mo
@@ -531,6 +536,7 @@ share/locale/id/LC_MESSAGES/libmateweather.mo
 share/locale/is/LC_MESSAGES/libmateweather.mo
 share/locale/it/LC_MESSAGES/libmateweather.mo
 share/locale/ja/LC_MESSAGES/libmateweather.mo
+share/locale/jv/LC_MESSAGES/libmateweather.mo
 share/locale/ka/LC_MESSAGES/libmateweather.mo
 share/locale/kk/LC_MESSAGES/libmateweather.mo
 share/locale/kn/LC_MESSAGES/libmateweather.mo
@@ -572,6 +578,7 @@ share/locale/te/LC_MESSAGES/libmateweather.mo
 share/locale/th/LC_MESSAGES/libmateweather.mo
 share/locale/tr/LC_MESSAGES/libmateweather.mo
 share/locale/uk/LC_MESSAGES/libmateweather.mo
+share/locale/uz/LC_MESSAGES/libmateweather.mo
 share/locale/vi/LC_MESSAGES/libmateweather.mo
 share/locale/wa/LC_MESSAGES/libmateweather.mo
 share/locale/xh/LC_MESSAGES/libmateweather.mo
