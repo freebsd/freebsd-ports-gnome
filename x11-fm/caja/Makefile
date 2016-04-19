@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	caja
-PORTVERSION=	1.13.1
+PORTVERSION=	1.14.0
 CATEGORIES=	x11-fm mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -17,8 +17,8 @@ RUN_DEPENDS=	${LOCALBASE}/libexec/gvfsd:devel/gvfs
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake libtool pathfix pkgconfig \
-		shared-mime-info tar:xz
+USES=		desktop-file-utils gettext gmake libtool localbase \
+		pathfix pkgconfig shared-mime-info tar:xz
 USE_MATE=	desktop icontheme:run
 USE_XORG=	ice x11 xrender
 USE_GNOME=	glib20 intltool introspection:build \
@@ -29,8 +29,6 @@ CONFIGURE_ARGS=	--disable-packagekit \
 		--disable-gtk-doc \
 		--with-html-dir=${PREFIX}/share/doc
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.caja.gschema.xml \
