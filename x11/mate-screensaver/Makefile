@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-screensaver
-PORTVERSION=	1.13.0
+PORTVERSION=	1.14.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -16,7 +16,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake pathfix pkgconfig tar:xz
+USES=		gettext gmake localbase pathfix pkgconfig tar:xz
 USE_GL=		gl
 USE_MATE=	desktop libmatekbd menus
 USE_XORG=	ice sm x11 xext xtst xxf86misc xxf86vm xscrnsaver
@@ -26,8 +26,6 @@ CONFIGURE_ARGS=	--with-xscreensaverdir=${XSCREENSAVER_DIR} \
 		--with-xscreensaverhackdir=${LOCALBASE}/bin/xscreensaver-hacks \
 		--with-console-kit=yes \
 		--with-systemd=no
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.screensaver.gschema.xml
 
