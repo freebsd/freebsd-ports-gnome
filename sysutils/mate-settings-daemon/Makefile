@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-settings-daemon
-PORTVERSION=	1.13.0
+PORTVERSION=	1.14.0
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -21,7 +21,8 @@ RUN_DEPENDS=	xrdb:x11/xrdb
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		gettext gmake libtool localbase pathfix \
+		pkgconfig tar:xz
 USE_MATE=	desktop libmatekbd
 USE_XORG=	xxf86misc
 USE_GNOME=	dconf intlhack
@@ -30,8 +31,6 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-dbus-services=${PREFIX}/share/dbus-1/services \
 		--disable-static
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.SettingsDaemon.plugins.a11y-keyboard.gschema.xml \
