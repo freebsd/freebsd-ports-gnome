@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libmatekbd
-PORTVERSION=	1.13.0
+PORTVERSION=	1.14.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -14,13 +14,12 @@ LIB_DEPENDS=	libxklavier.so:x11/libxklavier
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		gettext gmake libtool localbase pathfix \
+		pkgconfig tar:xz
 USE_GNOME=	intlhack introspection:build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.peripherals-keyboard-xkb.gschema.xml
