@@ -208,11 +208,13 @@ include/wine/windows/d3drmdef.h
 include/wine/windows/d3drmobj.h
 include/wine/windows/d3drmwin.h
 include/wine/windows/d3dtypes.h
+include/wine/windows/d3dukmdt.h
 include/wine/windows/d3dvec.inl
 include/wine/windows/d3dx10.h
 include/wine/windows/d3dx10async.h
 %%STAGING%%include/wine/windows/d3dx10core.h
 %%STAGING%%include/wine/windows/d3dx10core.idl
+include/wine/windows/d3dx10tex.h
 include/wine/windows/d3dx9.h
 include/wine/windows/d3dx9anim.h
 include/wine/windows/d3dx9core.h
@@ -333,6 +335,7 @@ include/wine/windows/fci.h
 include/wine/windows/fdi.h
 include/wine/windows/fileapi.h
 include/wine/windows/fltdefs.h
+include/wine/windows/fontsub.h
 include/wine/windows/fusion.h
 include/wine/windows/fusion.idl
 include/wine/windows/gameux.h
@@ -447,6 +450,8 @@ include/wine/windows/metahost.h
 include/wine/windows/metahost.idl
 include/wine/windows/mfapi.h
 include/wine/windows/mferror.h
+%%STAGING%%include/wine/windows/mfidl.h
+%%STAGING%%include/wine/windows/mfidl.idl
 include/wine/windows/mfobjects.h
 include/wine/windows/mfobjects.idl
 include/wine/windows/midles.h
@@ -645,6 +650,8 @@ include/wine/windows/shdeprecated.idl
 include/wine/windows/shdispid.h
 include/wine/windows/shellapi.h
 %%STAGING%%include/wine/windows/shellscalingapi.h
+include/wine/windows/shimgdata.h
+include/wine/windows/shimgdata.idl
 include/wine/windows/shldisp.h
 include/wine/windows/shldisp.idl
 include/wine/windows/shlguid.h
@@ -745,6 +752,7 @@ include/wine/windows/wia_lh.idl
 include/wine/windows/wia_xp.h
 include/wine/windows/wia_xp.idl
 include/wine/windows/wiadef.h
+include/wine/windows/wimgapi.h
 include/wine/windows/winbase.h
 include/wine/windows/wincodec.h
 include/wine/windows/wincodec.idl
@@ -839,6 +847,7 @@ include/wine/windows/xmllite.idl
 include/wine/windows/zmouse.h
 include/wine/windows/ddk/compstui.h
 include/wine/windows/ddk/csq.h
+include/wine/windows/ddk/d3dkmthk.h
 include/wine/windows/ddk/hidclass.h
 include/wine/windows/ddk/hidpi.h
 include/wine/windows/ddk/hidport.h
@@ -1450,11 +1459,13 @@ lib/wine/fakedlls/ext-ms-win-gdi-devcaps-l1-1-0.dll
 %%STAGING%%lib/wine/fakedlls/ext-ms-win-xaml-pal-l1-1-0.dll
 lib/wine/fakedlls/extrac32.exe
 lib/wine/fakedlls/faultrep.dll
+%%STAGING%%lib/wine/fakedlls/feclient.dll
 lib/wine/fakedlls/findstr.exe
 lib/wine/fakedlls/fltlib.dll
 %%STAGING%%lib/wine/fakedlls/fltmgr.sys
 lib/wine/fakedlls/fntcache.dll
 lib/wine/fakedlls/fontsub.dll
+%%STAGING%%lib/wine/fakedlls/fsutil.exe
 lib/wine/fakedlls/fusion.dll
 lib/wine/fakedlls/fwpuclnt.dll
 lib/wine/fakedlls/gameux.dll
@@ -1755,6 +1766,7 @@ lib/wine/fakedlls/traffic.dll
 lib/wine/fakedlls/twain_32.dll
 %%WINE32%%lib/wine/fakedlls/typelib.dll16
 %%STAGING%%lib/wine/fakedlls/ucrtbase.dll
+%%STAGING%%lib/wine/fakedlls/uiautomationcore.dll
 lib/wine/fakedlls/unicows.dll
 lib/wine/fakedlls/uninstaller.exe
 lib/wine/fakedlls/unlodctr.exe
@@ -1876,11 +1888,13 @@ lib/wine/fakedlls/xolehlp.dll
 lib/wine/fakedlls/xpsprint.dll
 lib/wine/fakedlls/xpssvcs.dll
 lib/wine/faultrep.dll.so
+%%STAGING%%lib/wine/feclient.dll.so
 lib/wine/findstr.exe.so
 lib/wine/fltlib.dll.so
 %%STAGING%%lib/wine/fltmgr.sys.so
 lib/wine/fntcache.dll.so
 lib/wine/fontsub.dll.so
+%%STAGING%%lib/wine/fsutil.exe.so
 lib/wine/fusion.dll.so
 lib/wine/fwpuclnt.dll.so
 lib/wine/gameux.dll.so
@@ -1977,8 +1991,7 @@ lib/wine/libdbgeng.def
 lib/wine/libdbghelp.def
 lib/wine/libdciman32.def
 lib/wine/libddraw.def
-lib/wine/libdinput.def
-lib/wine/libdinput.def.a
+lib/wine/libdinput.a
 lib/wine/libdinput8.def
 lib/wine/libdmusic32.def
 lib/wine/libdnsapi.def
@@ -2081,6 +2094,7 @@ lib/wine/libsti.def
 lib/wine/libstrmbase.a
 lib/wine/libstrmiids.a
 lib/wine/libsxs.def
+lib/wine/libt2embed.def
 lib/wine/libtapi32.def
 lib/wine/libunicows.def
 lib/wine/liburl.def
@@ -2365,6 +2379,7 @@ lib/wine/traffic.dll.so
 lib/wine/twain_32.dll.so
 %%WINE32%%lib/wine/typelib.dll16.so
 %%STAGING%%lib/wine/ucrtbase.dll.so
+%%STAGING%%lib/wine/uiautomationcore.dll.so
 lib/wine/unicows.dll.so
 lib/wine/uninstaller.exe.so
 lib/wine/unlodctr.exe.so

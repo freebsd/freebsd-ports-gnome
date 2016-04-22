@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rust
-PORTVERSION?=	1.7.0
+PORTVERSION?=	1.8.0
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/dist/:src \
 		http://static.rust-lang.org/stage0-snapshots/:bootstrap
@@ -36,9 +36,9 @@ CONFLICTS_INSTALL?=	rust-nightly
 
 RUST_BOOT=	rust-stage0-${RUST_BOOT_SIG_${ARCH}}.tar.bz2
 
-RUST_BOOT_SIG_x86_64?=	2015-12-18-3391630-dragonfly-x86_64-e74d79488e88ac2de3bd03afd5959d2ae6e2b628
-RUST_BOOT_SIG_amd64?=	2015-12-18-3391630-freebsd-x86_64-91724d4e655807a2a2e940ac50992ebeaac16ea9
-RUST_BOOT_SIG_i386?=	2015-12-18-3391630-freebsd-i386-7e624c50494402e1feb14c743d659fbd71b448f5
+RUST_BOOT_SIG_x86_64?=	2016-02-17-4d3eebf-dragonfly-x86_64-765bb5820ad406e966ec0ac51c8070b656459b02
+RUST_BOOT_SIG_amd64?=	2016-02-17-4d3eebf-freebsd-x86_64-f38991fbb81c1cd8d0bbda396f98f13a55b42804
+RUST_BOOT_SIG_i386?=	2016-02-17-4d3eebf-freebsd-i386-4e2af0b34eb335e173aebff543be693724a956c2
 
 # Rust's libraries are named librustc_${component}-${RUST_VSN_HASH}.so.
 # The hash depends on Rust version and, if the channel is not "stable",
@@ -57,10 +57,11 @@ RUST_ARCH_i386=		i686
 RUST_TARGET=		${RUST_ARCH_${ARCH}}-unknown-${OPSYS:tl}
 PLIST_SUB+=	RUST_TARGET=${RUST_TARGET}
 
-USES=		gmake libedit python:2,build
+USES=		compiler gmake libedit python:2,build
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-valgrind --disable-docs \
-		--enable-clang --mandir=${MANPREFIX}/man \
+		${CHOSEN_COMPILER_TYPE:Mclang:C/.+/--enable-&/} \
+		--mandir=${MANPREFIX}/man \
 		--release-channel=${RUST_CHANNEL}
 
 .if defined(BATCH) || defined(PACKAGE_BUILDING)
@@ -125,13 +126,13 @@ post-patch:
 # new ones. Otherwise, the staging directory is polluted with unneeded
 # files.
 pre-install:
-.for f in manifest-rustc manifest-rust-std-${RUST_TARGET}
-	@if test -f ${STAGEDIR}${PREFIX}/lib/rustlib/${f}; then \
+	@for f in manifest-rustc manifest-rust-std-${RUST_TARGET}; do \
+	    if test -f ${STAGEDIR}${PREFIX}/lib/rustlib/$$f; then \
 		${SED} -E -e 's,^(dir|file:),${STAGEDIR},' \
-		< ${STAGEDIR}${PREFIX}/lib/rustlib/${f} \
+		< ${STAGEDIR}${PREFIX}/lib/rustlib/$$f \
 		| ${XARGS} ${RM}; \
-	fi
-.endfor
+	    fi; \
+	done
 	@${RM} \
 		${STAGEDIR}${PREFIX}/lib/rustlib/components \
 		${STAGEDIR}${PREFIX}/lib/rustlib/manifest-rustc \
@@ -140,11 +141,11 @@ pre-install:
 		${STAGEDIR}${PREFIX}/lib/rustlib/uninstall.sh
 
 post-install:
-.for f in manifest-rustc manifest-rust-std-${RUST_TARGET}
-	@${REINPLACE_CMD} -e 's|${STAGEDIR}||' \
-		${STAGEDIR}${PREFIX}/lib/rustlib/${f}
-	@${RM} ${STAGEDIR}${PREFIX}/lib/rustlib/${f}.bak
-.endfor
+	@for f in manifest-rustc manifest-rust-std-${RUST_TARGET}; do \
+		${REINPLACE_CMD} -e 's|${STAGEDIR}||' \
+			${STAGEDIR}${PREFIX}/lib/rustlib/$$f; \
+		${RM} ${STAGEDIR}${PREFIX}/lib/rustlib/$$f.bak; \
+	done
 	@${RM} ${STAGEDIR}${PREFIX}/lib/rustlib/install.log
 # FIXME: Static libraries in lib/rustlib/*/lib/*.rlib are not stripped,
 # but they contain non-object files which make strip(1) unhappy.

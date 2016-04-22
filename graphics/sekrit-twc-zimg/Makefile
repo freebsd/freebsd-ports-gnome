@@ -14,6 +14,8 @@ LICENSE_NAME=	Do What The Fuck You Want To Public License version 2
 LICENSE_FILE=	${WRKSRC}/COPYING
 LICENSE_PERMS=	${_LICENSE_PERMS_DEFAULT}
 
+BROKEN_powerpc64=	Does not build
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	sekrit-twc
 
@@ -23,8 +25,8 @@ USES=		autoreconf compiler:c++11-lib gmake libtool pathfix
 EXTRACT_AFTER_ARGS=	--exclude test/extra
 PATHFIX_MAKEFILEIN=	Makefile.am
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--enable-testapp
-CFLAGS+=	-D_GLIBCXX_USE_C99 -D_GLIBCXX_USE_C99_MATH_TR1 \
+CONFIGURE_ARGS=	--disable-silent-rules --enable-testapp
+CPPFLAGS+=	-D_GLIBCXX_USE_C99 -D_GLIBCXX_USE_C99_MATH_TR1 \
 		-D_DECLARE_C99_LDBL_MATH # XXX ports/193528
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes

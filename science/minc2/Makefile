@@ -4,7 +4,7 @@
 PORTNAME=	minc
 PORTVERSION=	2.2.00
 DISTVERSIONPREFIX=	release-
-PORTREVISION=	3
+PORTREVISION=	4
 PORTEPOCH=	1
 CATEGORIES=	science biology
 PKGNAMESUFFIX=	2
@@ -20,6 +20,8 @@ RUN_DEPENDS=	bash:shells/bash
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	BIC-MNI
+
+MAKE_JOBS_UNSAFE=	yes
 
 USES=		autoreconf bison gmake libtool perl5 shebangfix
 SHEBANG_FILES=	progs/mincview/mincview
