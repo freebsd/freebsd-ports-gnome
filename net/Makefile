@@ -252,6 +252,7 @@
     SUBDIR += iodine
     SUBDIR += ip2location
     SUBDIR += ip6_int
+    SUBDIR += ipdecap
     SUBDIR += ipgrab
     SUBDIR += iplog
     SUBDIR += ipsorc
@@ -415,6 +416,7 @@
     SUBDIR += nakenchat
     SUBDIR += nanomsg
     SUBDIR += nast
+    SUBDIR += nats
     SUBDIR += nbd-server
     SUBDIR += nc
     SUBDIR += ncp
