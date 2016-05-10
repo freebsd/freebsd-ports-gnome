@@ -1,14 +1,14 @@
-# Created by: Ben Woods <woodsb02@gmail.com>
+# Created by: Ben Woods <woodsb02@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	plexhometheater
 PORTVERSION=	1.4.1
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONPREFIX=v
 DISTVERSIONSUFFIX=.469-47a90f01
 CATEGORIES=	multimedia
 
-MAINTAINER=	woodsb02@gmail.com
+MAINTAINER=	woodsb02@FreeBSD.org
 COMMENT=	Media center frontend to multimedia/plexmediaserver
 
 LICENSE=	GPLv2

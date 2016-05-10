@@ -673,6 +673,7 @@
     SUBDIR += git-modes
     SUBDIR += git-review
     SUBDIR += git-subversion
+    SUBDIR += gitblit
     SUBDIR += gitflow
     SUBDIR += gitg
     SUBDIR += gitg0
@@ -1206,6 +1207,7 @@
     SUBDIR += libfsntfs
     SUBDIR += libftdi
     SUBDIR += libftdi1
+    SUBDIR += libfwnt
     SUBDIR += libfwsi
     SUBDIR += libg19
     SUBDIR += libg19draw
@@ -1416,6 +1418,7 @@
     SUBDIR += lldb38
     SUBDIR += llnextgen
     SUBDIR += llvm-cheri
+    SUBDIR += llvm-cheri128
     SUBDIR += llvm-devel
     SUBDIR += llvm33
     SUBDIR += llvm34
@@ -4605,6 +4608,7 @@
     SUBDIR += py3-gobject3
     SUBDIR += py3-jsonschema
     SUBDIR += py3-libpeas
+    SUBDIR += py3-pyicu
     SUBDIR += py3-python-magic
     SUBDIR += py3-pytz
     SUBDIR += py3-vcversioner
@@ -4887,6 +4891,7 @@
     SUBDIR += rubygem-excon
     SUBDIR += rubygem-execjs
     SUBDIR += rubygem-extlib
+    SUBDIR += rubygem-extras
     SUBDIR += rubygem-facets
     SUBDIR += rubygem-faraday_middleware-multi_json
     SUBDIR += rubygem-fast-stemmer
@@ -4911,6 +4916,7 @@
     SUBDIR += rubygem-foreigner
     SUBDIR += rubygem-foreman
     SUBDIR += rubygem-formatador
+    SUBDIR += rubygem-forwardable-extended
     SUBDIR += rubygem-gdata
     SUBDIR += rubygem-gem_plugin
     SUBDIR += rubygem-gemcutter
@@ -5038,6 +5044,7 @@
     SUBDIR += rubygem-paint
     SUBDIR += rubygem-paperclip
     SUBDIR += rubygem-parser
+    SUBDIR += rubygem-pathutil
     SUBDIR += rubygem-piston
     SUBDIR += rubygem-pkg-config
     SUBDIR += rubygem-platform
@@ -5264,7 +5271,7 @@
     SUBDIR += smokeqt
     SUBDIR += smv
     SUBDIR += soapui
-    SUBDIR += sope
+    SUBDIR += sope2
     SUBDIR += sope3
     SUBDIR += sourcenav
     SUBDIR += sparc64-binutils

@@ -556,6 +556,7 @@
     SUBDIR += node010
     SUBDIR += node012
     SUBDIR += node4
+    SUBDIR += node5
     SUBDIR += nostromo
     SUBDIR += npapi-vlc
     SUBDIR += npapi-xine
@@ -2073,9 +2074,9 @@
     SUBDIR += smarty3
     SUBDIR += smb_auth
     SUBDIR += snarf
-    SUBDIR += sogo
+    SUBDIR += sogo2
     SUBDIR += sogo3
-    SUBDIR += sogo-activesync
+    SUBDIR += sogo2-activesync
     SUBDIR += sogo3-activesync
     SUBDIR += spawn-fcgi
     SUBDIR += spdylay
@@ -2083,6 +2084,7 @@
     SUBDIR += spreadlogd
     SUBDIR += sqstat
     SUBDIR += squid
+    SUBDIR += squid-devel
     SUBDIR += squid_radius_auth
     SUBDIR += squidanalyzer
     SUBDIR += squidclamav
