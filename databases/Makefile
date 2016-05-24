@@ -648,12 +648,9 @@
     SUBDIR += postgresql-relay
     SUBDIR += postgresql-repmgr
     SUBDIR += postgresql90-client
-    SUBDIR += postgresql90-contrib
-    SUBDIR += postgresql90-docs
     SUBDIR += postgresql90-pgtcl
     SUBDIR += postgresql90-plperl
     SUBDIR += postgresql90-plpython
-    SUBDIR += postgresql90-pltcl
     SUBDIR += postgresql90-server
     SUBDIR += postgresql91-client
     SUBDIR += postgresql91-contrib
@@ -779,10 +776,12 @@
     SUBDIR += py-riak
     SUBDIR += py-rrdtool_lgpl
     SUBDIR += py-south
-    SUBDIR += py-sqlalchemy
-    SUBDIR += py-sqlalchemy-devel
     SUBDIR += py-sqlalchemy-migrate
     SUBDIR += py-sqlalchemy06
+    SUBDIR += py-sqlalchemy07
+    SUBDIR += py-sqlalchemy08
+    SUBDIR += py-sqlalchemy09
+    SUBDIR += py-sqlalchemy10
     SUBDIR += py-sqlite3
     SUBDIR += py-sqlite3dbm
     SUBDIR += py-sqlobject
@@ -851,6 +850,7 @@
     SUBDIR += rubygem-activemodel
     SUBDIR += rubygem-activemodel4
     SUBDIR += rubygem-activerecord
+    SUBDIR += rubygem-activerecord-import
     SUBDIR += rubygem-activerecord-jdbc-adapter
     SUBDIR += rubygem-activerecord-jdbcmysql-adapter
     SUBDIR += rubygem-activerecord-mysql-adapter
@@ -910,6 +910,8 @@
     SUBDIR += rubygem-openid-redis-store
     SUBDIR += rubygem-paranoia
     SUBDIR += rubygem-pg
+    SUBDIR += rubygem-pg_array_parser
+    SUBDIR += rubygem-postgres_ext
     SUBDIR += rubygem-rbase
     SUBDIR += rubygem-redis
     SUBDIR += rubygem-redis-actionpack

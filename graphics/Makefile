@@ -54,6 +54,7 @@
     SUBDIR += aqsis
     SUBDIR += argyllcms
     SUBDIR += asciio
+    SUBDIR += aseprite
     SUBDIR += atril
     SUBDIR += atril-lite
     SUBDIR += autopano-sift-c
@@ -824,6 +825,7 @@
     SUBDIR += py-blockdiag
     SUBDIR += py-blockdiagcontrib-cisco
     SUBDIR += py-cairo
+    SUBDIR += py-cairocffi
     SUBDIR += py-chart
     SUBDIR += py-django-easy-thumbnails
     SUBDIR += py-editobj
@@ -843,6 +845,7 @@
     SUBDIR += py-graph-dot
     SUBDIR += py-graphy
     SUBDIR += py-gvgen
+    SUBDIR += py-imagesize
     SUBDIR += py-imaging
     SUBDIR += py-mcomix
     SUBDIR += py-ming
@@ -879,6 +882,8 @@
     SUBDIR += py-wand
     SUBDIR += py-webcolors
     SUBDIR += py3-cairo
+    SUBDIR += py3-pillow
+    SUBDIR += py3-pygraphviz
     SUBDIR += pygts
     SUBDIR += pymorph
     SUBDIR += pysvg

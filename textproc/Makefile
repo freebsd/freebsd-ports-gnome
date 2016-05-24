@@ -1223,6 +1223,7 @@
     SUBDIR += py-cloud_sptheme
     SUBDIR += py-creole
     SUBDIR += py-curator
+    SUBDIR += py-dbfread
     SUBDIR += py-diff-match-patch
     SUBDIR += py-docutils
     SUBDIR += py-dsv
@@ -1252,6 +1253,7 @@
     SUBDIR += py-mistune
     SUBDIR += py-mwparserfromhell
     SUBDIR += py-nltk
+    SUBDIR += py-numpydoc
     SUBDIR += py-openpyxl
     SUBDIR += py-paragrep
     SUBDIR += py-pdfminer
@@ -1458,6 +1460,7 @@
     SUBDIR += rubygem-org-ruby
     SUBDIR += rubygem-parslet
     SUBDIR += rubygem-phone
+    SUBDIR += rubygem-pretty-xml
     SUBDIR += rubygem-rails-dom-testing
     SUBDIR += rubygem-rails-html-sanitizer
     SUBDIR += rubygem-rak
