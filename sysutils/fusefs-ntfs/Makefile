@@ -2,14 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	ntfs
-PORTVERSION=	2015.3.14
-PORTREVISION=	3
+PORTVERSION=	2016.2.22
 CATEGORIES=	sysutils
 MASTER_SITES=	http://tuxera.com/opensource/
 PKGNAMEPREFIX=	fusefs-
 DISTNAME=	${PORTNAME}-3g_ntfsprogs-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	freebsd@dussan.org
 COMMENT=	Mount NTFS partitions (read/write) and disk images
 
 LICENSE=	GPLv2

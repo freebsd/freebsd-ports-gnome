@@ -274,6 +274,7 @@
     SUBDIR += fetchlog
     SUBDIR += ffs2recov
     SUBDIR += file
+    SUBDIR += filebeat
     SUBDIR += filedupe
     SUBDIR += filelight-kde4
     SUBDIR += fileprune
@@ -553,6 +554,8 @@
     SUBDIR += mcollective-nettest-client
     SUBDIR += mcollective-nettest-common
     SUBDIR += mcollective-nrpe-agent
+    SUBDIR += mcollective-nrpe-client
+    SUBDIR += mcollective-nrpe-common
     SUBDIR += mcollective-puppet-agent
     SUBDIR += mcollective-puppet-client
     SUBDIR += mcollective-puppet-common
@@ -712,6 +715,7 @@
     SUBDIR += p5-arclog
     SUBDIR += p5-reslog
     SUBDIR += packer
+    SUBDIR += packetbeat
     SUBDIR += pacman
     SUBDIR += paicc
     SUBDIR += pam_mount
@@ -850,6 +854,7 @@
     SUBDIR += qpxtool
     SUBDIR += qsynergy
     SUBDIR += qt5-qtpaths
+    SUBDIR += qtpass
     SUBDIR += quicksynergy
     SUBDIR += qzeitgeist
     SUBDIR += racktables
@@ -1063,6 +1068,8 @@
     SUBDIR += tkdvd
     SUBDIR += tlsdate
     SUBDIR += tm
+    SUBDIR += tmate
+    SUBDIR += tmate-slave
     SUBDIR += tmpreaper
     SUBDIR += tmpwatch
     SUBDIR += tmux

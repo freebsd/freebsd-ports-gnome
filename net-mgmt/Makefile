@@ -96,6 +96,7 @@
     SUBDIR += irrtoolset
     SUBDIR += isic
     SUBDIR += jnettop
+    SUBDIR += kapacitor
     SUBDIR += kismet
     SUBDIR += klg
     SUBDIR += lanmap
@@ -326,6 +327,7 @@
     SUBDIR += torrus
     SUBDIR += unifi3
     SUBDIR += unifi4
+    SUBDIR += unifi5
     SUBDIR += victorops-nagios
     SUBDIR += vidalia
     SUBDIR += virt-viewer

@@ -2,6 +2,7 @@
 # $FreeBSD$
 
 PKGNAMESUFFIX=		-filter-regex
+PORTREVISION=		0
 
 COMMENT=		Regular expression filter for OpenSMTPD
 MAINTAINER=		adamw@FreeBSD.org

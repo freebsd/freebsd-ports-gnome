@@ -11,6 +11,8 @@ COMMENT=	Qt4 graphical Wine frontend
 
 LICENSE=	GPLv2
 
+BROKEN=		fails to stage
+
 BUILD_DEPENDS=	pyrcc4:textproc/py-qt4-xml
 RUN_DEPENDS=	xterm:x11/xterm \
 		cabextract:archivers/cabextract \
@@ -22,7 +24,6 @@ DATADIRLIB=	${PREFIX}/lib/${PORTNAME}
 USE_GITHUB=	yes
 GH_ACCOUNT=	dswd
 GH_PROJECT=	Swine
-GH_TAGNAME=	1770c40
 
 USES=		gmake python
 NO_BUILD=	yes

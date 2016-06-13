@@ -99,6 +99,7 @@
     SUBDIR += gcc5
     SUBDIR += gcc5-aux
     SUBDIR += gcc5-devel
+    SUBDIR += gcc6
     SUBDIR += gcc6-aux
     SUBDIR += gcc6-devel
     SUBDIR += gcc7-devel
@@ -290,7 +291,6 @@
     SUBDIR += rexx-wrapper
     SUBDIR += rhino
     SUBDIR += rubinius
-    SUBDIR += ruby20
     SUBDIR += ruby21
     SUBDIR += ruby22
     SUBDIR += ruby23
@@ -340,6 +340,7 @@
     SUBDIR += tcl84
     SUBDIR += tcl85
     SUBDIR += tcl86
+    SUBDIR += tcl87
     SUBDIR += tclX
     SUBDIR += tinypy
     SUBDIR += tolua

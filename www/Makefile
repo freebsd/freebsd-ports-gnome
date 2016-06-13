@@ -60,6 +60,7 @@
     SUBDIR += c-icap-modules
     SUBDIR += cadaver
     SUBDIR += calamaris
+    SUBDIR += caldavzap
     SUBDIR += calendarserver
     SUBDIR += castget
     SUBDIR += caudium14
@@ -532,6 +533,7 @@
     SUBDIR += moodle28
     SUBDIR += moodle29
     SUBDIR += moodle30
+    SUBDIR += moodle31
     SUBDIR += mozplugger
     SUBDIR += multisort
     SUBDIR += multiwatch
@@ -838,6 +840,7 @@
     SUBDIR += p5-Dancer-Plugin-Lexicon
     SUBDIR += p5-Dancer-Plugin-Memcached
     SUBDIR += p5-Dancer-Plugin-REST
+    SUBDIR += p5-Dancer-Plugin-RPC
     SUBDIR += p5-Dancer-Plugin-SiteMap
     SUBDIR += p5-Dancer-Plugin-ValidationClass
     SUBDIR += p5-Dancer-Session-Cookie
@@ -1562,6 +1565,7 @@
     SUBDIR += py-django-mptt
     SUBDIR += py-django-openid-auth
     SUBDIR += py-django-otp
+    SUBDIR += py-django-otp-yubikey
     SUBDIR += py-django-overextends
     SUBDIR += py-django-paging
     SUBDIR += py-django-photologue
