@@ -35,6 +35,7 @@ share/applications/mate-network-scheme.desktop
 %%DATADIR%%/browser.xml
 %%DATADIR%%/caja-extras.placeholder
 %%DATADIR%%/caja-suggested.placeholder
+%%DATADIR%%/caja.css
 %%DATADIR%%/patterns/blue_gray_rough.png
 %%DATADIR%%/patterns/blue_ridge.png
 %%DATADIR%%/patterns/blue_type.png
