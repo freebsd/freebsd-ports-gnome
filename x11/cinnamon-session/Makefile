@@ -2,15 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-session
-PORTVERSION=	2.4.3
-PORTREVISION=	1
+PORTVERSION=	2.8.2
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Session component for the cinnamon desktop
 
-BUILD_DEPENDS=	gnome-autogen.sh:devel/gnome-common
+BUILD_DEPENDS=	gnome-common>=0:devel/gnome-common
 LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
 		libjson-glib-1.0.so:devel/json-glib \
 		libupower-glib.so:sysutils/upower \
@@ -18,10 +17,11 @@ LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
 RUN_DEPENDS=	console-kit-daemon:sysutils/consolekit \
 		xdpyinfo:x11/xdpyinfo
 
-USES=		autoreconf:build execinfo gettext gmake libtool \
-		pathfix pkgconfig tar:xz
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
+
+USES=		autoreconf execinfo gettext gmake libtool \
+		pathfix pkgconfig tar:xz
 USE_GNOME=	gnomeprefix gtk30 intlhack
 USE_XORG=	ice sm xau xext xtst xrender xtrans xcomposite
 USE_GL=		gl
@@ -34,8 +34,5 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.cinnamon.SessionManager.gschema.xml
-
-pre-configure:
-	cd ${WRKSRC} && ${SETENV} NOCONFIGURE=yes ${SH} ./autogen.sh
 
 .include <bsd.port.mk>

@@ -66,6 +66,8 @@ share/locale/gu/LC_MESSAGES/nemo-share.mo
 share/locale/he/LC_MESSAGES/nemo-preview.mo
 share/locale/he/LC_MESSAGES/nemo-share.mo
 share/locale/hi/LC_MESSAGES/nemo-preview.mo
+share/locale/hr/LC_MESSAGES/nemo-preview.mo
+share/locale/hr/LC_MESSAGES/nemo-share.mo
 share/locale/hu/LC_MESSAGES/nemo-preview.mo
 share/locale/hu/LC_MESSAGES/nemo-share.mo
 share/locale/id/LC_MESSAGES/nemo-preview.mo
@@ -114,6 +116,7 @@ share/locale/te/LC_MESSAGES/nemo-share.mo
 share/locale/tg/LC_MESSAGES/nemo-preview.mo
 share/locale/th/LC_MESSAGES/nemo-preview.mo
 share/locale/tr/LC_MESSAGES/nemo-preview.mo
+share/locale/tr/LC_MESSAGES/nemo-share.mo
 share/locale/ug/LC_MESSAGES/nemo-preview.mo
 share/locale/uk/LC_MESSAGES/nemo-preview.mo
 share/locale/uk/LC_MESSAGES/nemo-share.mo

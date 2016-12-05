@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nemo
-PORTVERSION=	2.4.5
+PORTVERSION=	2.8.6
 CATEGORIES=	x11-fm gnome
 DIST_SUBDIR=	gnome3
 
@@ -10,9 +10,9 @@ MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	File manager for the Cinnamon desktop
 
 BUILD_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme \
+		gnome-common>=0:devel/gnome-common \
 		gtkdocize:textproc/gtk-doc \
 		py*-polib>=0:devel/py-polib \
-		gnome-autogen.sh:devel/gnome-common \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 LIB_DEPENDS=	libexif.so:graphics/libexif \
 		libcinnamon-desktop.so:x11/cinnamon-desktop \
@@ -21,19 +21,20 @@ LIB_DEPENDS=	libexif.so:graphics/libexif \
 RUN_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
-USES=		autoreconf:build desktop-file-utils gettext gmake libtool pathfix \
-		pkgconfig python:2 shared-mime-info
-USE_GNOME=	gnomedesktop3 gnomeprefix intlhack introspection:build \
-		libxml2 pygobject3
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
+
+USES=		autoreconf:build desktop-file-utils gettext gmake libtool \
+		pathfix pkgconfig python:2 shared-mime-info
+USE_GNOME=	gnomedesktop3 gnomeprefix intlhack introspection:build \
+		libxml2 pygobject3
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -lpthread
+LDFLAGS+=	-L${LOCALBASE}/lib ${PTHREAD_LIBS}
 INSTALL_TARGET=	install-strip
-CONFIGURE_ARGS=	--enable-static --disable-packagekit
+CONFIGURE_ARGS=	--enable-static
 
 GLIB_SCHEMAS=	org.nemo.gschema.xml
 
@@ -49,20 +50,14 @@ post-patch:
 
 	@${MV} ${WRKSRC}/files/usr/share ${WRKSRC}/files${PREFIX}
 
-	@${REINPLACE_CMD} -e 's|0.16|1.0|g' \
-		${WRKSRC}/configure.in
+	@${REINPLACE_CMD} -e 's|unused-variable|unused-variable -Wno-error=unused-const-variable|g' \
+		${WRKSRC}/configure.ac
 
 	@${REINPLACE_CMD} -e 's|find|find ${WRKSRC}/files|g' \
 		${WRKSRC}/files/Makefile.in
 
-	@${REINPLACE_CMD} -e 's|-DGTK_DISABLE_DEPRECATED||g' \
-		${WRKSRC}/configure.in
-
 	@${REINPLACE_CMD} -e 's|/usr/share|${PREFIX}/share|g' \
 		${WRKSRC}/src/nemo-properties-window.c
-
-	@${REINPLACE_CMD} -e 's|"-DG_DISABLE_DEPRECATED -DGTK_DISABLE_DEPRECATED -DGDK_DISABLE_DEPRECATED -DGDK_PIXBUF_DISABLE_DEPRECATED"|""|g' \
-		${WRKSRC}/configure.in
 
 	@${REINPLACE_CMD} -e 's|/usr/share|${PREFIX}/share|g ;\
 		s|@INTROSPECTION_TYPELIBDIR@|$$(libdir)/girepository-1.0|g ;\

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nemo-extensions
-PORTVERSION=	2.4.0
-PORTREVISION=	3
+PORTVERSION=	2.8.1
 CATEGORIES=	deskutils gnome
 DIST_SUBDIR=	gnome3
 
@@ -32,7 +31,8 @@ RUN_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_TAGNAME=	6c8ec3a
+# there is no "offical" tag, so just pick the "latest"
+GH_TAGNAME=	468f760
 
 USE_GNOME=	gconf2 gnomeprefix gnomedocutils gtksourceview3 intlhack \
 		introspection:build libxml2 pygtk2
@@ -45,8 +45,8 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
-NON_AUTO_EXTENSIONS=	nemo-dropbox nemo-fileroller nemo-preview
-AUTO_EXTENSIONS=	nemo-share
+NON_AUTO_EXTENSIONS=	nemo-dropbox nemo-fileroller nemo-preview nemo-share
+AUTO_EXTENSIONS=
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|AM_GNU_GETTEXT_VERSION(\[0.17\])||g ;\

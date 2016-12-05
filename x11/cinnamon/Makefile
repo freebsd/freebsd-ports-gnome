@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon
-PORTVERSION=	2.4.6
-PORTREVISION=	3
+PORTVERSION=	2.8.6
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome3
 
@@ -11,7 +10,7 @@ MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Fork of GNOME Shell with layout similar to GNOME 2
 
 BUILD_DEPENDS=	ca_root_nss>=0:security/ca_root_nss \
-		gnome-autogen.sh:devel/gnome-common
+		gtkdoc-check:textproc/gtk-doc
 LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libcaribou.so:accessibility/caribou \
 		libmuffin.so:x11-wm/muffin \
@@ -37,22 +36,25 @@ RUN_DEPENDS=	py*-dbus>=0:devel/py-dbus \
 
 WRKSRC=		${WRKDIR}/Cinnamon-${PORTVERSION}
 
-USES=		autoreconf compiler:c11 gettext gmake libtool \
-		pathfix pkgconfig python shebangfix
-USE_GNOME=	evolutiondataserver3 gconf2 gnomedesktop3 \
-		gnomeprefix gtk30 intlhack introspection:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
+
+USES=		autoreconf:build compiler:c11 gettext gmake libtool \
+		pathfix pkgconfig python shebangfix
+USE_GNOME=	evolutiondataserver3 gconf2 gnomedesktop3 \
+		gnomeprefix gtk30 intltool introspection:build
 # this happens before moving the file to ${PREFIX} (which then will be copied to ${STAGEDIR}${PREFIX})
 SHEBANG_FILES=	files/usr/bin/cinnamon2d
 USE_XORG=	x11 xfixes sm
-USE_GSTREAMER=	theora vp8 ogg
+USE_GSTREAMER1=	good theora vpx ogg
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--enable-compile-warnings=no \
 		--with-ca-certificates=${LOCALBASE}/share/certs/ca-root-nss.crt
-CPPFLAGS+=	-I${LOCALASE}/include
+CFLAGS+=	-I${LOCALBASE}/include \
+		-I${LOCALBASE}/include/gtk-3.0
+CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
@@ -61,24 +63,27 @@ GLIB_SCHEMAS=	org.cinnamon.gschema.xml
 OPTIONS_DEFINE=	NLS
 NLS_RUN_DEPENDS=	cinnamon-translations>=0:misc/cinnamon-translations
 
+pre-configure:
+	cd ${WRKSRC} && ${SETENV} NOCONFIGURE=yes ${SH} ./autogen.sh
+
 post-patch:
 # we need this for intltoolize otherwise it can't copy the m4 file ...
 	@${MKDIR} ${WRKSRC}/m4
 	@${MKDIR} ${WRKSRC}/files${PREFIX}
-.for d in bin lib share
+.for d in bin share
 	@${MV} ${WRKSRC}/files/usr/${d} ${WRKSRC}/files${PREFIX}
 .endfor
 
-	@${REINPLACE_CMD} -e 's|/usr/share/cinnamon|${STAGEDIR}${PREFIX}/share/|g ;\
-		s|/usr/lib|${STAGEDIR}${PREFIX}/share/|g' \
-			${WRKSRC}/files/generate_desktop_files
+#	@${REINPLACE_CMD} -e 's|/usr/share/cinnamon|${STAGEDIR}${PREFIX}/share/|g ;\
+#		s|/usr/lib|${STAGEDIR}${PREFIX}/share/|g' \
+#			${WRKSRC}/files/generate_desktop_files
 
-	@${REINPLACE_CMD} -e 's|"usr/lib|"${STAGEDIR}${PREFIX}/share/|g ;\
-		s|"usr/share|"${STAGEDIR}${PREFIX}/share/|g' \
-			${WRKSRC}/files/generate_desktop_files
+#	@${REINPLACE_CMD} -e 's|"usr/lib|"${STAGEDIR}${PREFIX}/share/|g ;\
+#		s|"usr/share|"${STAGEDIR}${PREFIX}/share/|g' \
+#			${WRKSRC}/files/generate_desktop_files
 
 	@${MV} ${WRKSRC}/files/etc ${WRKSRC}/files${PREFIX}
-	@${RM} ${WRKSRC}/files/${PREFIX}/lib/cinnamon-settings/modules/cs_user.py
+	@${RM} ${WRKSRC}/files/${PREFIX}/share/cinnamon/cinnamon-settings/modules/cs_user.py
 	# Remove a broken link (is applications-merge used anywhere?)
 	@${RM} ${WRKSRC}/files/${PREFIX}/etc/xdg/menus/cinnamon-applications-merged
 
@@ -100,7 +105,7 @@ post-patch:
 
 	@${REINPLACE_CMD} -e '/prefix/s|/usr|${PREFIX}|g ; \
 		/datadir/s|/usr|${PREFIX}|g' \
-			${WRKSRC}/files${PREFIX}/lib/cinnamon-menu-editor/cme/config.py
+			${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-menu-editor/cme/config.py
 
 	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/share/cinnamon/locale" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/share/cinnamon/locale|${PREFIX}/share/locale|g"
@@ -115,17 +120,17 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|"/usr/bin|"${PREFIX}/bin|g' \
 		${WRKSRC}/files${PREFIX}/share/cinnamon/applets/menu@cinnamon.org/applet.js \
 		${WRKSRC}/files${PREFIX}/share/cinnamon/applets/user@cinnamon.org/applet.js \
-		${WRKSRC}/files${PREFIX}/lib/cinnamon-settings/bin/Spices.py \
-#		${WRKSRC}/files${PREFIX}/lib/cinnamon-settings/modules/cs_user.py \
-		${WRKSRC}/files${PREFIX}/lib/cinnamon-settings/modules/cs_screensaver.py \
+		${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-settings/bin/Spices.py \
+#		${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-settings/modules/cs_user.py \
+		${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-settings/modules/cs_screensaver.py \
 		${WRKSRC}/files${PREFIX}/bin/cinnamon-settings \
 		${WRKSRC}/files${PREFIX}/bin/cinnamon-launcher
 
 	@${REINPLACE_CMD} -e '/cs-tablet/d; /cs-bluetooth/d; /cs-network/d' \
-			${WRKSRC}/files${PREFIX}/lib/cinnamon-settings/cinnamon-settings.py
+			${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-settings/cinnamon-settings.py
 
 	@${REINPLACE_CMD} -e '/increase-opacity/d; /decrease-opacity/d' \
-			${WRKSRC}/files${PREFIX}/lib/cinnamon-settings/modules/cs_keyboard.py
+			${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-settings/modules/cs_keyboard.py
 
 	#@${REINPLACE_CMD} -e 's/SIZE\/$$$$CONTEXT/CONTEXT\/$$$$SIZE/g' \
 	#		${WRKSRC}/data/icons/Makefile.am
@@ -142,7 +147,7 @@ post-patch:
 	@${FIND} ${WRKSRC} -name '*.orig' -delete
 	@${FIND} ${WRKSRC} -name '*.bak' -delete
 
-post-install:
-	@${PYTHON_CMD} ${WRKSRC}/files/generate_desktop_files
+#post-install:
+#	@${PYTHON_CMD} ${WRKSRC}/files/generate_desktop_files
 
 .include <bsd.port.mk>

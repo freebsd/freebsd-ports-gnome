@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-settings-daemon
-PORTVERSION=	2.4.3
-PORTREVISION=	3
+PORTVERSION=	2.8.3
 CATEGORIES=	sysutils gnome
 DIST_SUBDIR=	gnome3
 
@@ -27,12 +26,12 @@ LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 RUN_DEPENDS=	cinnamon-session:x11/cinnamon-session \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
-USES=		autoreconf gettext gmake libtool pathfix \
-		pkgconfig tar:xz
-USE_GNOME=	gnomeprefix intlhack libgnomekbd \
-		libxslt:build
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
+
+USES=		autoreconf gettext gmake libtool pathfix \
+		pkgconfig tar:xz
+USE_GNOME=	gnomeprefix intlhack libgnomekbd libxslt:build
 USE_XORG=	xxf86misc
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes

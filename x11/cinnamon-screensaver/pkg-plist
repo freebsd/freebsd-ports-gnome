@@ -5,4 +5,8 @@ libexec/cinnamon-screensaver-dialog
 man/man1/cinnamon-screensaver-command.1.gz
 man/man1/cinnamon-screensaver.1.gz
 share/applications/cinnamon-screensaver.desktop
+%%DATADIR%%/screensavers/webkit@cinnamon.org/main
+%%DATADIR%%/screensavers/webkit@cinnamon.org/webkit-stars@cinnamon.org/index.html
+%%DATADIR%%/screensavers/webkit@cinnamon.org/webkit-stars@cinnamon.org/metadata.json
+%%DATADIR%%/screensavers/xscreensaver@cinnamon.org/main
 share/dbus-1/services/org.cinnamon.ScreenSaver.service

@@ -133,3 +133,4 @@ share/locale/zh_CN/LC_MESSAGES/muffin.mo
 share/locale/zh_HK/LC_MESSAGES/muffin.mo
 share/locale/zh_TW/LC_MESSAGES/muffin.mo
 %%DATADIR%%/icons/muffin-window-demo.png
+%%DATADIR%%/theme/metacity-theme-3.xml
