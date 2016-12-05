@@ -361,3 +361,5 @@ share/locale/zh_HK/LC_MESSAGES/gnome-online-accounts.mo
 share/locale/zh_TW/LC_MESSAGES/gnome-online-accounts-tpaw.mo
 share/locale/zh_TW/LC_MESSAGES/gnome-online-accounts.mo
 share/locale/zu/LC_MESSAGES/gnome-online-accounts-tpaw.mo
+share/vala/vapi/goa-1.0.deps
+share/vala/vapi/goa-1.0.vapi

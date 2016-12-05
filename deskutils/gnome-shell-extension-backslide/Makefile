@@ -34,7 +34,7 @@ NO_BUILD=	yes
 post-patch:
 	@${REINPLACE_CMD} -e "s|Me.dir.get_child(\'schemas\').get_path()|'${PREFIX}/share/glib-2.0/schemas'|g" \
 		${WRKSRC}/backslide@codeisland.org/settings.js
-	@${REINPLACE_CMD} -e 's|3.12|3.12", "3.14", "3.16|g' \
+	@${REINPLACE_CMD} -e 's|3.12|3.12", "3.14", "3.16", "3.18", "3.20|g' \
 		${WRKSRC}/backslide\@codeisland.org/metadata.json
 
 do-install:

@@ -276,10 +276,11 @@ share/help/zh_CN/four-in-a-row/sound-animation.page
 share/icons/hicolor/16x16/apps/four-in-a-row.png
 share/icons/hicolor/22x22/apps/four-in-a-row.png
 share/icons/hicolor/24x24/apps/four-in-a-row.png
+share/icons/hicolor/256x256/apps/four-in-a-row.png
 share/icons/hicolor/32x32/apps/four-in-a-row.png
 share/icons/hicolor/48x48/apps/four-in-a-row.png
-share/icons/hicolor/scalable/apps/four-in-a-row-symbolic.svg
-share/icons/hicolor/scalable/apps/four-in-a-row.svg
+share/icons/hicolor/512x512/apps/four-in-a-row.png
+share/icons/hicolor/symbolic/apps/four-in-a-row-symbolic.svg
 share/locale/af/LC_MESSAGES/four-in-a-row.mo
 share/locale/am/LC_MESSAGES/four-in-a-row.mo
 share/locale/ar/LC_MESSAGES/four-in-a-row.mo

@@ -1,11 +1,11 @@
---- Makefile.in.orig	2015-08-31 13:55:15.919297000 +0200
-+++ Makefile.in	2015-08-31 13:55:35.773605000 +0200
-@@ -429,7 +429,7 @@
+--- Makefile.in.orig	2016-09-18 08:19:27 UTC
++++ Makefile.in
+@@ -448,7 +448,7 @@ target_alias = @target_alias@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
--SUBDIRS = gtksourceview po data docs tests
-+SUBDIRS = gtksourceview po data docs
- pkgconfig_DATA = gtksourceview-3.0.pc
- EXTRA_DIST = \
- 	intltool-extract.in \
+-SUBDIRS = gtksourceview po data docs tests testsuite build
++SUBDIRS = gtksourceview po data docs build
+ AM_DISTCHECK_CONFIGURE_FLAGS = \
+ 	--enable-gtk-doc		\
+ 	--enable-introspection		\

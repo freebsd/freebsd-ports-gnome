@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gcab
-PORTVERSION=	0.6
+PORTVERSION=	0.7
 CATEGORIES=	archivers gnome
 MASTER_SITES=	GNOME
 
@@ -15,5 +15,6 @@ USES=		cpe gettext gmake libtool pathfix pkgconfig tar:xz
 GNU_CONFIGURE=	yes
 USE_GNOME=	glib20 intlhack introspection:build
 CPE_VENDOR=	gnome
+INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	yelp
-PORTVERSION=	3.18.1
-PORTREVISION=	1
+PORTVERSION=	3.22.0
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -28,8 +27,6 @@ USE_GNOME=	gtk30 intlhack libxml2 libxslt
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 GLIB_SCHEMAS=	org.gnome.yelp.gschema.xml
 INSTALL_TARGET=	install-strip
 
@@ -41,7 +38,7 @@ CONFIGURE_ENV+=	YELP_LZMA_CFLAGS="-I/usr/include" \
 .endif
 
 post-patch:
-	@${CP} ${FILESDIR}/yelp-groff ${WRKSRC}/libyelp
+	@${CP} ${FILESDIR}/yelp-groff ${WRKSRC}
 
 post-install:
 	${INSTALL_SCRIPT} ${FILESDIR}/yelp-groff ${STAGEDIR}${PREFIX}/libexec

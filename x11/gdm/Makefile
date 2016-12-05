@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gdm
-PORTVERSION=	3.16.4
-PORTREVISION=	2
+PORTVERSION=	3.20.1
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -20,6 +19,7 @@ LIB_DEPENDS=	libck-connector.so:sysutils/consolekit \
 		libnss3.so:security/nss \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libaccountsservice.so:sysutils/accountsservice \
+		libcanberra.so:audio/libcanberra \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3
 RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		gnome-shell>=3.15.92:x11/gnome-shell \
@@ -37,16 +37,18 @@ RUN_DEPENDS+=	xrdb:x11/xrdb \
 		xterm:x11/xterm
 
 USERS=		gdm
-GROUPS=		gdm
+GROUPS=		gdm video
 
 PORTSCOUT=	limitw:1,even
 
-USES=		cpe execinfo gettext gmake libtool pathfix pkgconfig tar:xz
+USES=		cpe execinfo gettext gmake gnome libtool pathfix \
+		pkgconfig tar:xz
 CPE_VENDOR=	gnome
 CPE_VENDOR=	gnome_display_manager
-USE_GNOME=	dconf intlhack introspection librsvg2
+USE_GNOME=	cairo dconf gtk30 intlhack introspection librsvg2
+
 USE_LDCONFIG=	yes
-USE_XORG=	dmx dmxproto
+USE_XORG=	dmx dmxproto x11 xau xdmcp
 INSTALLS_ICONS=	yes
 USE_RC_SUBR=	gdm
 USE_GNOME_SUBR=	yes
@@ -68,6 +70,7 @@ CONFIGURE_ARGS=	--disable-static \
 		--with-screenshot-dir=/var/run/gdm/greeter \
 		--enable-authentication-scheme=pam \
 		--without-plymouth \
+		--without-systemd \
 		--with-user=gdm \
 		--with-group=gdm \
 		--with-initial-vt=09 \

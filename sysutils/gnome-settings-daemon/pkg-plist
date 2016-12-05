@@ -80,7 +80,6 @@ libexec/gsd-test-xsettings
 man/man1/gnome-settings-daemon.1.gz
 share/GConf/gsettings/gnome-settings-daemon.convert
 %%DATADIR%%/datetime/backward
-share/gnome-settings-daemon-3.0/input-device-example.sh
 share/icons/hicolor/16x16/apps/gsd-xrandr.png
 share/icons/hicolor/22x22/apps/gsd-xrandr.png
 share/icons/hicolor/24x24/apps/gsd-xrandr.png
@@ -118,6 +117,7 @@ share/locale/eu/LC_MESSAGES/gnome-settings-daemon.mo
 share/locale/fa/LC_MESSAGES/gnome-settings-daemon.mo
 share/locale/fi/LC_MESSAGES/gnome-settings-daemon.mo
 share/locale/fr/LC_MESSAGES/gnome-settings-daemon.mo
+share/locale/fur/LC_MESSAGES/gnome-settings-daemon.mo
 share/locale/ga/LC_MESSAGES/gnome-settings-daemon.mo
 share/locale/gl/LC_MESSAGES/gnome-settings-daemon.mo
 share/locale/gd/LC_MESSAGES/gnome-settings-daemon.mo

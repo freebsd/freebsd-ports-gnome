@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	swell-foop
-PORTVERSION=	3.18.1
+PORTVERSION=	3.20.0
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -16,13 +16,12 @@ LIB_DEPENDS=	libclutter-gtk-1.0.so:graphics/clutter-gtk3
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome pathfix pkgconfig tar:xz
+USES=		gettext gmake gnome localbase pathfix \
+		pkgconfig tar:xz
 USE_GNOME=	gtk30 intlhack libxml2:build
 INSTALLS_ICONS=	yes
 USE_GL=		gl
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.gnome.swell-foop.gschema.xml
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-documents
-PORTVERSION=	3.18.2
+PORTVERSION=	3.22.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -30,15 +30,13 @@ RUN_DEPENDS=	py2?-dbus>0:devel/py-dbus \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c++11-lib gettext gmake gnome libtool pathfix \
-		pkgconfig tar:xz
+USES=		compiler:c++11-lib gettext gmake gnome libtool localbase \
+		pathfix pkgconfig tar:xz
 USE_GNOME=	gnomedesktop3 gtk30 intlhack \
 		introspection:build librsvg2 libxml2
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.gnome.Documents.enums.xml \

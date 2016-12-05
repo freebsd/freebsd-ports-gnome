@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gegl
-PORTVERSION=	0.3.4
-PORTREVISION=	2
+PORTVERSION=	0.3.6
 CATEGORIES=	graphics
 MASTER_SITES=	GIMP
 PKGNAMESUFFIX=	3
@@ -20,7 +19,8 @@ LICENSE_FILE_LGPL3+ =	${WRKSRC}/COPYING.LESSER
 LIB_DEPENDS=	libbabl-0.1.so:x11/babl \
 		libjson-glib-1.0.so:devel/json-glib
 
-USES=		cpe gettext gmake libtool pathfix pkgconfig shebangfix tar:bzip2
+USES=		cpe gettext gmake libtool localbase pathfix pkgconfig \
+		shebangfix tar:bzip2
 USE_GNOME=	glib20 intltool introspection:build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
@@ -28,9 +28,6 @@ CONFIGURE_ENV=	ac_cv_header_execinfo_h=no
 CONFIGURE_ARGS=	--without-vala --disable-docs
 CONFIGURE_ARGS+=--without-mrg
 INSTALL_TARGET=	install-strip
-
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 GEGL_MINOR=	304
 GEGL_VER=	0.3

@@ -109,7 +109,6 @@ lib/gegl-%%GEGL_VER%%/copy-buffer.so
 lib/gegl-%%GEGL_VER%%/crop.so
 lib/gegl-%%GEGL_VER%%/cubism.so
 lib/gegl-%%GEGL_VER%%/darken.so
-%%RAW%%lib/gegl-%%GEGL_VER%%/dcraw-load.so
 lib/gegl-%%GEGL_VER%%/deinterlace.so
 lib/gegl-%%GEGL_VER%%/difference-of-gaussians.so
 lib/gegl-%%GEGL_VER%%/difference.so
@@ -141,6 +140,7 @@ lib/gegl-%%GEGL_VER%%/fractal-explorer.so
 lib/gegl-%%GEGL_VER%%/fractal-trace.so
 lib/gegl-%%GEGL_VER%%/gamma.so
 lib/gegl-%%GEGL_VER%%/gaussian-blur-iir.so
+lib/gegl-%%GEGL_VER%%/gaussian-blur-selective.so
 lib/gegl-%%GEGL_VER%%/gaussian-blur.so
 lib/gegl-%%GEGL_VER%%/gblur-1d.so
 lib/gegl-%%GEGL_VER%%/gegl-buffer-load-op.so
@@ -223,6 +223,7 @@ lib/gegl-%%GEGL_VER%%/remap.so
 lib/gegl-%%GEGL_VER%%/rgbe-load.so
 lib/gegl-%%GEGL_VER%%/rgbe-save.so
 lib/gegl-%%GEGL_VER%%/ripple.so
+lib/gegl-%%GEGL_VER%%/saturation.so
 %%PIXBUF%%lib/gegl-%%GEGL_VER%%/save-pixbuf.so
 lib/gegl-%%GEGL_VER%%/save.so
 lib/gegl-%%GEGL_VER%%/screen.so
@@ -280,7 +281,7 @@ lib/gegl-%%GEGL_VER%%/xor.so
 lib/girepository-1.0/Gegl-%%GEGL_VER%%.typelib
 lib/libgegl-%%GEGL_VER%%.so
 lib/libgegl-%%GEGL_VER%%.so.0
-lib/libgegl-%%GEGL_VER%%.so.0.%%GEGL_MINOR%%.0
+lib/libgegl-%%GEGL_VER%%.so.%%GEGL_VER%%06.0
 lib/libgegl-npd-%%GEGL_VER%%.so
 lib/libgegl-sc-%%GEGL_VER%%.so
 libdata/pkgconfig/gegl-%%GEGL_VER%%.pc
@@ -296,6 +297,7 @@ libdata/pkgconfig/gegl-sc-%%GEGL_VER%%.pc
 share/gir-1.0/Gegl-%%GEGL_VER%%.gir
 share/locale/bs/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/ca/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
+share/locale/da/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/de/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/el/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/en_GB/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
@@ -305,15 +307,19 @@ share/locale/eu/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/fr/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/gl/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/id/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
+share/locale/is/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/it/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/ko/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/lv/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
+share/locale/nb/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/oc/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/pl/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/pt_BR/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/pt/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/ru/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
+share/locale/sk/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/sl/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
+share/locale/sr/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/sv/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/tr/LC_MESSAGES/gegl-%%GEGL_VER%%.mo
 share/locale/zh_CN/LC_MESSAGES/gegl-%%GEGL_VER%%.mo

@@ -142,7 +142,7 @@ lib/girepository-1.0/Clutter-1.0.typelib
 lib/girepository-1.0/ClutterX11-1.0.typelib
 lib/libclutter-1.0.so
 lib/libclutter-1.0.so.0
-lib/libclutter-1.0.so.0.2400.2
+lib/libclutter-1.0.so.0.2600.0
 lib/libclutter-glx-1.0.so
 lib/libclutter-glx-1.0.so.0
 libdata/pkgconfig/cally-1.0.pc
@@ -308,6 +308,7 @@ share/gtk-doc/html/clutter/flow-layout.png
 share/gtk-doc/html/clutter/go01.html
 share/gtk-doc/html/clutter/home.png
 share/gtk-doc/html/clutter/index.html
+share/gtk-doc/html/clutter/index.sgml
 share/gtk-doc/html/clutter/iterating-paths.html
 share/gtk-doc/html/clutter/ix01.html
 share/gtk-doc/html/clutter/ix02.html
@@ -328,6 +329,7 @@ share/gtk-doc/html/clutter/ix16.html
 share/gtk-doc/html/clutter/ix17.html
 share/gtk-doc/html/clutter/ix18.html
 share/gtk-doc/html/clutter/ix19.html
+share/gtk-doc/html/clutter/ix20.html
 share/gtk-doc/html/clutter/left-insensitive.png
 share/gtk-doc/html/clutter/left.png
 share/gtk-doc/html/clutter/license.html
@@ -385,6 +387,7 @@ share/locale/mk/LC_MESSAGES/clutter-1.0.mo
 share/locale/ml/LC_MESSAGES/clutter-1.0.mo
 share/locale/nb/LC_MESSAGES/clutter-1.0.mo
 share/locale/nl/LC_MESSAGES/clutter-1.0.mo
+share/locale/oc/LC_MESSAGES/clutter-1.0.mo
 share/locale/or/LC_MESSAGES/clutter-1.0.mo
 share/locale/pa/LC_MESSAGES/clutter-1.0.mo
 share/locale/pl/LC_MESSAGES/clutter-1.0.mo

@@ -41,7 +41,6 @@ libdata/pkgconfig/libmutter.pc
 libexec/mutter-restart-helper
 man/man1/mutter.1.gz
 share/GConf/gsettings/mutter-schemas.convert
-share/applications/mutter-wayland.desktop
 share/applications/mutter.desktop
 share/gnome-control-center/keybindings/50-mutter-navigation.xml
 share/gnome-control-center/keybindings/50-mutter-system.xml
@@ -75,6 +74,7 @@ share/locale/eu/LC_MESSAGES/mutter.mo
 share/locale/fa/LC_MESSAGES/mutter.mo
 share/locale/fi/LC_MESSAGES/mutter.mo
 share/locale/fr/LC_MESSAGES/mutter.mo
+share/locale/fur/LC_MESSAGES/mutter.mo
 share/locale/ga/LC_MESSAGES/mutter.mo
 share/locale/gl/LC_MESSAGES/mutter.mo
 share/locale/gu/LC_MESSAGES/mutter.mo

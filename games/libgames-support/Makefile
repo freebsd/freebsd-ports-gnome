@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libgames-support
-PORTVERSION=	0.1
+PORTVERSION=	1.0.2
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -16,7 +16,8 @@ LIB_DEPENDS=	libgee-0.8.so:devel/libgee
 PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake gnome libtool pathfix pkgconfig tar:xz
-USE_GNOME=	gtk30 intltool
+USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool
 GNU_CONFIGURE=	yes
+INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

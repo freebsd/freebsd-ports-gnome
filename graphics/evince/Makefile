@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	evince
-PORTVERSION=	3.18.2
-PORTREVISION=	1
+PORTVERSION=	3.22.1
 CATEGORIES=	graphics print gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -11,12 +10,16 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT?=	GNOME 3 multi-format document viewer
 
+LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 BUILD_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme \
 		itstool:textproc/itstool \
 		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 LIB_DEPENDS=	libpoppler-glib.so:graphics/poppler-glib \
-		libspectre.so:print/libspectre
+		libspectre.so:print/libspectre \
+		libtiff.so:graphics/tiff
 RUN_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme \
 		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
@@ -25,14 +28,14 @@ PORTSCOUT=	limitw:1,even
 SLAVEPORT?=	no
 
 USES=		compiler:c++11-lib desktop-file-utils gettext gmake \
-		gnome libtool pathfix pkgconfig tar:xz
-USE_GNOME=	gtk30 intlhack
+		gnome libarchive libtool localbase pathfix pkgconfig tar:xz
+USE_GNOME=	cairo gtk30 intlhack
+USE_GSTREAMER1=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 USE_XORG=	ice
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include -Wno-format-nonliteral
-LIBS+=		-L${LOCALBASE}/lib
+CPPFLAGS+=	-Wno-format-nonliteral
 INSTALL_TARGET=	install-strip
 
 .if ${SLAVEPORT} == lite
@@ -40,6 +43,7 @@ CONFIGURE_ARGS+=--disable-introspection \
 		--disable-libgnome-desktop \
 		--disable-thumbnailer \
 		--disable-previewer
+USE_GNOME+=	libxml2
 .else
 USE_GNOME+=	introspection:build
 CONFIGURE_ARGS+=	--enable-introspection

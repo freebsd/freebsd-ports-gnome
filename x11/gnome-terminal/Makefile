@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-terminal
-PORTVERSION=	3.18.1
-PORTREVISION=	1
+PORTVERSION=	3.22.0
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -11,22 +10,25 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Terminal component for the GNOME 3 Desktop
 
+LICENSE=	GPLv3
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 BUILD_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
 		itstool:textproc/itstool \
 		appstream-builder:devel/appstream-glib \
 		vala:lang/vala
-LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
-		libuuid.so:misc/e2fsprogs-libuuid
+LIB_DEPENDS=	libuuid.so:misc/e2fsprogs-libuuid \
+		libgnutls.so:security/gnutls \
+		libpcre2-8.so:devel/pcre2
 RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
 PORTSCOUT=	limitw:1,even
 
-USES=		cpe gettext gmake gnome libtool pathfix pkgconfig tar:xz
-USE_GNOME=	dconf gtk30 intlhack nautilus3 vte3
-USE_XORG=	sm ice
+USES=		cpe gettext gmake gnome libtool localbase pathfix \
+		pkgconfig tar:xz
+USE_GNOME=	cairo dconf gdkpixbuf2 gtk30 intlhack nautilus3 vte3
+USE_XORG=	sm ice x11
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 CPE_VENDOR=	gnome
 
@@ -56,7 +58,7 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-src_terminal-screen.c
 .endif
 
 post-install:
-.for i in ca cs de el es fi fr gl hu pt_BR ru
+.for i in ca cs de el es fi fr gl
 	@${RMDIR} ${STAGEDIR}${PREFIX}/share/help/${i}/gnome-terminal/figures
 .endfor
 

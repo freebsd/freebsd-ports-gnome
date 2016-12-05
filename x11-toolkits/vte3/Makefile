@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	vte
-PORTVERSION=	0.42.4
-PORTREVISION=	1
+PORTVERSION=	0.46.0
 CATEGORIES=	x11-toolkits gnome
 MASTER_SITES=	GNOME
 PKGNAMESUFFIX=	3
@@ -12,19 +11,22 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Terminal widget with improved accessibility and I18N support
 
+LICENSE=	LGPL21
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 BUILD_DEPENDS+= vapigen:lang/vala \
 		bash:shells/bash
-LIB_DEPENDS=	libgnutls.so:security/gnutls
+LIB_DEPENDS=	libgnutls.so:security/gnutls \
+		libpcre2-8.so:devel/pcre2
 
 PORTSCOUT=	limitw:1,even
 
-USES=		bison compiler:c++0x gettext gmake gnome libtool pathfix \
-		pkgconfig tar:xz
+USES=		bison compiler:c++0x gettext gmake gnome libtool localbase \
+		pathfix pkgconfig tar:xz
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-USE_GNOME?=	gtk30 intltool referencehack introspection:build
-CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib
+USE_GNOME?=	cairo gdkpixbuf2 gtk30 intltool referencehack \
+		introspection:build
 CONFIGURE_ARGS=	--enable-introspection \
 		--disable-static \
 		--disable-Bsymbolic

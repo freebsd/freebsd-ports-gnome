@@ -10,6 +10,7 @@ include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-enum-types.h
 include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-features.h
 include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-io.h
 include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-loader.h
+include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-macros.h
 include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-marshal.h
 include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-simple-anim.h
 include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixbuf-transform.h
@@ -32,10 +33,10 @@ lib/gdk-pixbuf-2.0/%%GTK2_VERSION%%/loaders/libpixbufloader-xpm.so
 lib/girepository-1.0/GdkPixbuf-2.0.typelib
 lib/libgdk_pixbuf-2.0.so
 lib/libgdk_pixbuf-2.0.so.0
-lib/libgdk_pixbuf-2.0.so.0.3200.3
+lib/libgdk_pixbuf-2.0.so.0.3600.0
 lib/libgdk_pixbuf_xlib-2.0.so
 lib/libgdk_pixbuf_xlib-2.0.so.0
-lib/libgdk_pixbuf_xlib-2.0.so.0.3200.3
+lib/libgdk_pixbuf_xlib-2.0.so.0.3600.0
 libdata/pkgconfig/gdk-pixbuf-2.0.pc
 libdata/pkgconfig/gdk-pixbuf-xlib-2.0.pc
 man/man1/gdk-pixbuf-csource.1.gz

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	clutter
-PORTVERSION=	1.24.2
+PORTVERSION=	1.26.0
 CATEGORIES=	graphics
 MASTER_SITES=	GNOME
 
@@ -17,7 +17,8 @@ LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 
 PORTSCOUT=	limit:1,even
 
-USES=		gettext gmake gnome libtool pathfix pkgconfig tar:xz
+USES=		gettext gmake gnome libtool localbase pathfix \
+		pkgconfig tar:xz
 USE_GNOME=	gtk30 introspection:build
 USE_GL=		gl egl
 USE_XORG=	glproto x11 xfixes xdamage xcomposite xi
@@ -29,8 +30,7 @@ CONFIGURE_ARGS=	--with-x --enable-conformance=no \
 		--enable-x11-backend=yes \
 		--enable-gdk-backend=no \
 		--enable-wayland-compositor=no
-CPPFLAGS+=	-I${LOCALBASE}/include -fno-omit-frame-pointer
-LIBS+=		-L${LOCALBASE}/lib
+CPPFLAGS+=	-fno-omit-frame-pointer
 INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

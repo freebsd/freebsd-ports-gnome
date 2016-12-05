@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-utils
-PORTVERSION=	3.18.0
+PORTVERSION=	3.20.0
 PORTEPOCH=	1
 CATEGORIES=	deskutils gnome
 

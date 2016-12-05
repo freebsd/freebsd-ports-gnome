@@ -2,13 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	eog
-PORTVERSION=	3.18.3
+PORTVERSION=	3.20.5
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	The Eye Of Gnome image viewer
+
+LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	itstool:textproc/itstool \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
@@ -18,14 +21,12 @@ RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake gnome jpeg libtool pathfix \
-		pkgconfig tar:xz
+USES=		desktop-file-utils gettext gmake gnome jpeg libtool localbase \
+		pathfix pkgconfig tar:xz
 USE_GNOME=	cairo intltool librsvg2 gtk30 gnomedesktop3 introspection
 USE_XORG=	x11
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.gnome.eog.enums.xml \

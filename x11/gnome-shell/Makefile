@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-shell
-PORTVERSION=	3.18.4
-PORTREVISION=	3
+PORTVERSION=	3.20.3
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -34,8 +33,8 @@ RUN_DEPENDS=	py*-dbus>=0:devel/py-dbus \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c11 cpe gettext gmake gnome libtool pathfix \
-		pkgconfig tar:xz webplugin:native
+USES=		compiler:c11 cpe gettext gmake gnome libtool localbase \
+		pathfix pkgconfig tar:xz webplugin:native
 USE_GNOME=	evolutiondataserver3 gnomedesktop3 gtk30 intlhack \
 		introspection
 USE_XORG=	x11 xfixes sm
@@ -46,9 +45,8 @@ WEBPLUGIN_NAME=	libgnome-shell-browser-plugin.so
 WEBPLUGIN_DIR=	${PREFIX}/lib/mozilla/plugins/
 WEBPLUGIN_FILES=libgnome-shell-browser-plugin.so
 CONFIGURE_ARGS+=--enable-compile-warnings=no \
-		--with-ca-certificates=${LOCALBASE}/share/certs/ca-root-nss.crt
-CPPFLAGS+=	-I${LOCALASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+		--disable-systemd \
+		--disable-networkmanager
 INSTALL_TARGET=	install-strip
 CPE_VENDOR=	gnome
 

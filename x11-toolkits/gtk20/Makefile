@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gtk
-PORTVERSION=	2.24.29
-PORTREVISION?=	3
+PORTVERSION=	2.24.30
+PORTREVISION?=	0
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMESUFFIX=	2
@@ -24,8 +24,7 @@ PORTSCOUT=	limitw:0,even
 RUN_DEPENDS+=	update-mime-database:misc/shared-mime-info \
 		${LOCALBASE}/share/icons/hicolor/index.theme:misc/hicolor-icon-theme
 
-USES+=		gettext gmake libtool pathfix perl5 pkgconfig python:run shebangfix
-SHEBANG_FILES=	gtk/gtk-builder-convert
+USES+=		gettext gmake libtool localbase pathfix perl5 pkgconfig
 GNU_CONFIGURE=	yes
 USE_GNOME=	atk pango gdkpixbuf2 introspection:build \
 		gtk-update-icon-cache
@@ -34,8 +33,6 @@ USE_PERL5=	build
 USE_XORG=	xext xrender x11 xinerama xi xrandr xcursor xfixes xdamage \
 		xcomposite
 CONFIGURE_ARGS=	--with-xinput=yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 OPTIONS_DEFINE=	CUPS DEBUG
@@ -47,7 +44,7 @@ CUPS_CONFIGURE_ON=	--enable-cups=auto
 CUPS_CONFIGURE_OFF=	--disable-cups
 DEBUG_CONFIGURE_ON=	--enable-debug=yes
 
-PLIST_SUB+=	LIBGAILVER=18.0.1 LIBGVER=0.2400.29
+PLIST_SUB+=	LIBGAILVER=18.0.1 LIBGVER=0.2400.30
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|[{]libdir[}]/locale|{datadir}/locale|g' \

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mutter
-PORTVERSION=	3.18.4
+PORTVERSION=	3.20.3
 CATEGORIES=	x11-wm
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -25,21 +25,18 @@ RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c++0x gettext gmake gmake libtool pathfix \
+USES=		compiler:c++0x gettext gmake gmake libtool localbase pathfix \
 		pkgconfig tar:xz
 USE_GNOME=	gnomedesktop3 gtk30 intlhack introspection:build
 USE_XORG=	x11 xext xrandr xcomposite xcursor xinerama ice sm xfixes \
 		xrender xdamage
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include -fno-omit-frame-pointer
-LDFLAGS+=	-L${LOCALBASE}/lib
+CPPFLAGS+=	-fno-omit-frame-pointer
 CONFIGURE_ARGS=	--enable-compile-warnings=maximum
 INSTALL_TARGET=	install-strip
 GLIB_SCHEMAS=	org.gnome.mutter.gschema.xml \
 		org.gnome.mutter.wayland.gschema.xml
-
-PLIST_SUB=	VERSION=${PORTVERSION:R}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-Wcast-align||g' \

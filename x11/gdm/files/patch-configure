@@ -1,0 +1,213 @@
+--- configure.orig	2015-08-16 21:58:06.000000000 +0200
++++ configure	2015-08-16 21:58:35.000000000 +0200
+@@ -678,6 +678,7 @@
+ XEVIE_OPTION
+ CHECK_ACCELERATED_DIR
+ GNOME_SETTINGS_DAEMON_DIR
++CONSOLEKIT_DIR
+ GDM_OLD_CONF
+ GDM_CUSTOM_CONF
+ GDM_DEFAULTS_CONF
+@@ -696,6 +697,9 @@
+ JOURNALD_CFLAGS
+ SYSTEMD_LIBS
+ SYSTEMD_CFLAGS
++WITH_CONSOLE_KIT
++WITH_CONSOLE_KIT_FALSE
++WITH_CONSOLE_KIT_TRUE
+ XINERAMA_LIBS
+ LIBWRAP_LIBS
+ OS_SOLARIS_FALSE
+@@ -972,6 +976,8 @@
+ with_xinerama
+ with_xdmcp
+ with_tcp_wrappers
++with_console_kit
++with_systemd
+ with_systemdsystemunitdir
+ enable_systemd_journal
+ enable_wayland_support
+@@ -990,6 +996,7 @@
+ with_at_bindir
+ with_defaults_conf
+ with_custom_conf
++with_consolekit_directory
+ with_gnome_settings_daemon_directory
+ with_check_accelerated_directory
+ with_xevie
+@@ -1734,6 +1741,8 @@
+   --with-xinerama         Add Xinerama support [default=auto]
+   --with-xdmcp            Add XDMCP (remote login) support [default=auto]
+   --with-tcp-wrappers     Use TCP Wrappers [default=auto]
++  --with-console-kit      Add ConsoleKit support [default=auto]
++  --with-systemd          Add systemd support [default=auto]
+   --with-systemdsystemunitdir=DIR
+                           Directory for systemd service files
+   --with-plymouth         Add plymouth support [default=yes]
+@@ -1761,6 +1770,9 @@
+   --with-custom-conf=<FILENAME>
+                           FILENAME to give to custom configuration file
+                           [default=GDMCONFDIR/custom.conf]
++  --with-consolekit-directory
++                          Specify the directory of ck-get-x11-display-device
++                          [default=libexecdir]
+   --with-gnome-settings-daemon-directory
+                           Specify the directory of gnome-settings-daemon used
+                           by the chooser [default=libexecdir]
+@@ -20832,6 +20844,23 @@
+ 
+ 
+ 
++# Check whether --with-console-kit was given.
++if test "${with_console_kit+set}" = set; then :
++  withval=$with_console_kit;
++else
++  with_console_kit=no
++fi
++
++
++
++# Check whether --with-systemd was given.
++if test "${with_systemd+set}" = set; then :
++  withval=$with_systemd; with_systemd=$withval
++else
++  with_systemd=auto
++fi
++
++
+ # Check whether --with-systemdsystemunitdir was given.
+ if test "${with_systemdsystemunitdir+set}" = set; then :
+   withval=$with_systemdsystemunitdir; with_systemdsystemunitdir=$withval
+@@ -23037,6 +23066,24 @@
+ CPPFLAGS="$xinerama_save_cppflags"
+ 
+ 
++use_console_kit=no
++if test "x$with_console_kit" != "xno" ; then
++	use_console_kit=yes
++
++$as_echo "#define WITH_CONSOLE_KIT 1" >>confdefs.h
++
++fi
++ if test x$use_console_kit = xyes; then
++  WITH_CONSOLE_KIT_TRUE=
++  WITH_CONSOLE_KIT_FALSE='#'
++else
++  WITH_CONSOLE_KIT_TRUE='#'
++  WITH_CONSOLE_KIT_FALSE=
++fi
++
++
++
++
+ 
+ pkg_failed=no
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for SYSTEMD" >&5
+@@ -23096,39 +23143,38 @@
+ 	# Put the nasty error message in config.log where it belongs
+ 	echo "$SYSTEMD_PKG_ERRORS" >&5
+ 
+-	as_fn_error $? "Package requirements (libsystemd) were not met:
+-
+-$SYSTEMD_PKG_ERRORS
+-
+-Consider adjusting the PKG_CONFIG_PATH environment variable if you
+-installed software in a non-standard prefix.
+-
+-Alternatively, you may set the environment variables SYSTEMD_CFLAGS
+-and SYSTEMD_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details." "$LINENO" 5
++	have_systemd=no
+ elif test $pkg_failed = untried; then
+      	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ $as_echo "no" >&6; }
+-	{ { $as_echo "$as_me:${as_lineno-$LINENO}: error: in \`$ac_pwd':" >&5
+-$as_echo "$as_me: error: in \`$ac_pwd':" >&2;}
+-as_fn_error $? "The pkg-config script could not be found or is too old.  Make sure it
+-is in your PATH or set the PKG_CONFIG environment variable to the full
+-path to pkg-config.
+-
+-Alternatively, you may set the environment variables SYSTEMD_CFLAGS
+-and SYSTEMD_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details.
+-
+-To get pkg-config, see <http://pkg-config.freedesktop.org/>.
+-See \`config.log' for more details" "$LINENO" 5; }
++	have_systemd=no
+ else
+ 	SYSTEMD_CFLAGS=$pkg_cv_SYSTEMD_CFLAGS
+ 	SYSTEMD_LIBS=$pkg_cv_SYSTEMD_LIBS
+         { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
+ $as_echo "yes" >&6; }
++	have_systemd=yes
++fi
+ 
++if test "x$with_systemd" = "xauto" ; then
++        if test x$have_systemd = xno ; then
++                use_systemd=no
++        else
++                use_systemd=yes
++        fi
++else
++        use_systemd="$with_systemd"
+ fi
+ 
++if test "x$use_systemd" != "xno" ; then
++        if test "x$have_systemd" = "xno"; then
++                as_fn_error $? "Systemd support explicitly required, but systemd not found" "$LINENO" 5
++        fi
++
++
++$as_echo "#define WITH_SYSTEMD 1" >>confdefs.h
++
++fi
+ 
+ 
+ 
+@@ -23548,6 +23594,18 @@
+ 
+ 
+ 
++# Check whether --with-consolekit-directory was given.
++if test "${with_consolekit_directory+set}" = set; then :
++  withval=$with_consolekit_directory;
++else
++  with_consolekit_directory="\${libexecdir}"
++fi
++
++
++CONSOLEKIT_DIR=$with_consolekit_directory
++
++
++
+ # Check whether --with-gnome-settings-daemon-directory was given.
+ if test "${with_gnome_settings_daemon_directory+set}" = set; then :
+   withval=$with_gnome_settings_daemon_directory;
+@@ -24644,6 +24702,10 @@
+   as_fn_error $? "conditional \"OS_SOLARIS\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+ fi
++if test -z "${WITH_CONSOLE_KIT_TRUE}" && test -z "${WITH_CONSOLE_KIT_FALSE}"; then
++  as_fn_error $? "conditional \"WITH_CONSOLE_KIT\" was never defined.
++Usually this means the macro was only invoked conditionally." "$LINENO" 5
++fi
+ if test -z "${HAVE_ADT_TRUE}" && test -z "${HAVE_ADT_FALSE}"; then
+   as_fn_error $? "conditional \"HAVE_ADT\" was never defined.
+ Usually this means the macro was only invoked conditionally." "$LINENO" 5
+@@ -27122,6 +27184,7 @@
+         dmconfdir:                ${dmconfdir}
+         localstatedir:            ${localstatedir}
+         datadir:                  ${datadir}
++        consolekit location:      ${with_consolekit_directory}
+ 	gnome-settings-daemon location: ${with_gnome_settings_daemon_directory}
+ 	gnome-session-check-accel location: ${with_check_accelerated_directory}
+ 	source code location:	  ${srcdir}
+@@ -27150,6 +27213,8 @@
+ "        Xinerama support:         ${XINERAMA_SUPPORT}
+         XDMCP support:            ${XDMCP_SUPPORT}
+         SELinux support:          ${use_selinux}
++        ConsoleKit support:       ${use_console_kit}
++        systemd support:          ${use_systemd}
+         systemd unit dir:         ${with_systemdsystemunitdir}
+         plymouth support:         ${use_plymouth}
+         wayland support:          ${use_wayland}

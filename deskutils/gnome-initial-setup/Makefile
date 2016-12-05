@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-initial-setup
-PORTVERSION=	3.18.0
+PORTVERSION=	3.20.1
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -21,13 +21,11 @@ RUN_DEPENDS=	gdm>=3.0.0:x11/gdm
 PORTSCOUT=	limitw:1,even
 
 USES=		autoreconf compiler:c++11-lib gettext gmake gnome libtool \
-		pathfix pkgconfig tar:xz
+		localbase pathfix pkgconfig tar:xz
 USE_GNOME=	gnomedesktop3 gnomeprefix gtk30 intlhack
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 OPTIONS_DEFINE=	KERBEROS
 OPTIONS_DEFAULT=KERBEROS

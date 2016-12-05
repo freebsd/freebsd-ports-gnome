@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-2048
-PORTVERSION=	3.18.2
+PORTVERSION=	3.20.2
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -12,18 +12,22 @@ COMMENT=	Move the tiles until you obtain the 2048 tile
 
 BUILD_DEPENDS=	vala:lang/vala \
 		itstool:textproc/itstool
-LIB_DEPENDS=	libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
+LIB_DEPENDS=	libclutter-1.0.so:graphics/clutter \
+		libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
+		libcogl.so:graphics/cogl \
 		libgee-0.8.so:devel/libgee \
-		libgames-support.so:games/libgames-support
+		libgames-support.so:games/libgames-support \
+		libjson-glib-1.0.so:devel/json-glib
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome pathfix pkgconfig tar:xz
-USE_GNOME=	gtk30 intltool libxml2:build
+USES=		gettext gmake gnome localbase pathfix \
+		pkgconfig tar:xz
+USE_GNOME=	cairo gtk30 intltool libxml2:build
+USE_GL=		egl
+USE_XORG+=	x11 xext xdamage xfixes xcomposite xi xrandr
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.gnome.2048.gschema.xml
 
