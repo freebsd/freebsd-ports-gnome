@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	atril
-PORTVERSION=	1.12.2
-PORTREVISION?=	1
+PORTVERSION=	1.16.1
+PORTREVISION?=	0
 CATEGORIES=	graphics print mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -14,20 +14,24 @@ COMMENT?=	MATE multi-format document viewer
 BUILD_DEPENDS=	itstool:textproc/itstool
 
 LIB_DEPENDS=	libpoppler-glib.so:graphics/poppler-glib \
+		libsoup-2.4.so:devel/libsoup \
+		libfontconfig.so:x11-fonts/fontconfig \
+		libfreetype.so:print/freetype2 \
+		libtiff.so:graphics/tiff \
 		libspectre.so:print/libspectre
 
 PORTSCOUT=	limitw:1,even
 SLAVEPORT?=	no
 
-USES=		desktop-file-utils gettext gmake libtool pathfix \
+USES=		desktop-file-utils gettext gmake libarchive libtool pathfix \
 		pkgconfig tar:xz
 USE_MATE=	icontheme
-USE_XORG=	sm
-USE_GNOME=	cairo gtk20 intlhack libxml2
+USE_XORG=	ice sm x11
+USE_GNOME=	cairo gtk30 intlhack libxml2
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-gtk=2.0 \
-		--disable-static
+CONFIGURE_ARGS=	--disable-static \
+		--with-gtk=3.0
 INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -66,9 +70,13 @@ KEYRING_LIB_DEPENDS=	libsecret-1.so:security/libsecret
 XPS_CONFIGURE_ENABLE=	xps
 XPS_LIB_DEPENDS=	libgxps.so:graphics/libgxps
 EPUB_CONFIGURE_ENABLE=	epub
-EPUB_LIB_DEPENDS=	libwebkitgtk-1.0.so:www/webkit-gtk2
+#EPUB_LIB_DEPENDS=	libwebkitgtk-1.0.so:www/webkit-gtk2
 
 .include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MEPUB}
+LIB_DEPENDS+=	libwebkit2gtk-4.0.so:www/webkit2-gtk3
+.endif
 
 .if ${SLAVEPORT} == lite
 CONFIGURE_ARGS+=--disable-dbus

@@ -435,6 +435,7 @@ share/icons/mate/16x16/apps/redhat-filemanager.png
 share/icons/mate/16x16/apps/screensaver.png
 share/icons/mate/16x16/apps/style.png
 share/icons/mate/16x16/apps/susehelpcenter.png
+share/icons/mate/16x16/apps/system-config-keyboard.png
 share/icons/mate/16x16/apps/system-config-users.png
 share/icons/mate/16x16/apps/system-file-manager.png
 share/icons/mate/16x16/apps/system-software-install.png
@@ -1581,6 +1582,7 @@ share/icons/mate/22x22/apps/redhat-filemanager.png
 share/icons/mate/22x22/apps/screensaver.png
 share/icons/mate/22x22/apps/style.png
 share/icons/mate/22x22/apps/susehelpcenter.png
+share/icons/mate/22x22/apps/system-config-keyboard.png
 share/icons/mate/22x22/apps/system-config-users.png
 share/icons/mate/22x22/apps/system-file-manager.png
 share/icons/mate/22x22/apps/system-software-install.png
@@ -2721,6 +2723,7 @@ share/icons/mate/24x24/apps/redhat-filemanager.png
 share/icons/mate/24x24/apps/screensaver.png
 share/icons/mate/24x24/apps/style.png
 share/icons/mate/24x24/apps/susehelpcenter.png
+share/icons/mate/24x24/apps/system-config-keyboard.png
 share/icons/mate/24x24/apps/system-config-users.png
 share/icons/mate/24x24/apps/system-file-manager.png
 share/icons/mate/24x24/apps/system-software-install.png
@@ -4558,6 +4561,7 @@ share/icons/mate/32x32/apps/redhat-filemanager.png
 share/icons/mate/32x32/apps/screensaver.png
 share/icons/mate/32x32/apps/style.png
 share/icons/mate/32x32/apps/susehelpcenter.png
+share/icons/mate/32x32/apps/system-config-keyboard.png
 share/icons/mate/32x32/apps/system-config-users.png
 share/icons/mate/32x32/apps/system-file-manager.png
 share/icons/mate/32x32/apps/system-software-install.png
@@ -5695,6 +5699,7 @@ share/icons/mate/48x48/apps/redhat-filemanager.png
 share/icons/mate/48x48/apps/screensaver.png
 share/icons/mate/48x48/apps/style.png
 share/icons/mate/48x48/apps/susehelpcenter.png
+share/icons/mate/48x48/apps/system-config-keyboard.png
 share/icons/mate/48x48/apps/system-config-users.png
 share/icons/mate/48x48/apps/system-file-manager.png
 share/icons/mate/48x48/apps/system-software-install.png
@@ -6584,6 +6589,7 @@ share/icons/mate/scalable/apps/goa-panel-symbolic.svg
 share/icons/mate/scalable/apps/help-browser-symbolic.svg
 share/icons/mate/scalable/apps/help-contents-symbolic.svg
 share/icons/mate/scalable/apps/help-faq-symbolic.svg
+share/icons/mate/scalable/apps/mate.svg
 share/icons/mate/scalable/apps/multimedia-volume-control-symbolic.svg
 share/icons/mate/scalable/apps/preferences-color-symbolic.svg
 share/icons/mate/scalable/apps/preferences-desktop-accessibility-symbolic.svg

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-screensaver
-PORTVERSION=	1.12.0
-PORTREVISION=	1
+PORTVERSION=	1.16.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -13,23 +12,25 @@ COMMENT=	MATE screen saver and locker
 
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libdbus-glib-1.so:devel/dbus-glib \
-		libnotify.so:devel/libnotify
+		libnotify.so:devel/libnotify \
+		libfontconfig.so:x11-fonts/fontconfig \
+		libfreetype.so:print/freetype2 \
+		libstartup-notification-1.so:x11/startup-notification \
+		libxklavier.so:x11/libxklavier
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake pathfix pkgconfig tar:xz
+USES=		gettext gmake localbase pathfix pkgconfig tar:xz
 USE_GL=		gl
 USE_MATE=	desktop libmatekbd menus session:run
 USE_XORG=	ice sm x11 xext xtst xxf86misc xxf86vm xscrnsaver
-USE_GNOME=	glib20 gtk20 intlhack
+USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 intlhack
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-xscreensaverdir=${XSCREENSAVER_DIR} \
 		--with-xscreensaverhackdir=${LOCALBASE}/bin/xscreensaver-hacks \
-		--with-gtk=2.0 \
 		--with-console-kit=yes \
+		--with-gtk=3.0 \
 		--with-systemd=no
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 GLIB_SCHEMAS=	org.mate.screensaver.gschema.xml
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	eom
-PORTVERSION=	1.12.2
+PORTVERSION=	1.16.0
 CATEGORIES=	graphics mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -11,24 +11,25 @@ MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Eye of MATE image viewer
 
 BUILD_DEPENDS=	itstool:textproc/itstool
+LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
+		libdbus-1.so:devel/dbus \
+		libdbus-glib-1.so:devel/dbus-glib
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake jpeg libtool pathfix pkgconfig \
-		tar:xz
+USES=		desktop-file-utils gettext gmake jpeg libtool localbase \
+		pathfix pkgconfig tar:xz
 USE_MATE=	desktop icontheme
 USE_XORG=	x11
-USE_GNOME=	gdkpixbuf2 glib20 gtk20 intltool librsvg2 libxml2
+USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 intltool librsvg2 libxml2
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=	--disable-gtk-doc \
+CONFIGURE_ARGS+=--disable-gtk-doc \
 		--with-html-dir=${PREFIX}/share/doc \
 		--disable-introspection \
-		--with-gtk=2.0 \
 		--disable-python \
+		--with-gtk=3.0 \
 		--without-cms
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.eom.gschema.xml \

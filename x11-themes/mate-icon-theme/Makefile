@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-icon-theme
-PORTVERSION=	1.12.0
+PORTVERSION=	1.16.0
 CATEGORIES=	x11-themes mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -20,8 +20,6 @@ USES=		gettext gmake pathfix pkgconfig tar:xz
 USE_GNOME=	intlhack
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 pre-install:
 	@${REINPLACE_CMD} -e 's|install: install-data|install:|g' \

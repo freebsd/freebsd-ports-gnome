@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-menus
-PORTVERSION=	1.12.0
+PORTVERSION=	1.16.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -12,13 +12,11 @@ COMMENT=	Implementation of the FreeDesktop Desktop Menu Spec
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake libtool pathfix pkgconfig \
+USES=		gettext gmake libtool localbase pathfix pkgconfig \
 		python tar:xz
 USE_GNOME=	glib20 intlhack introspection:build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 post-patch:

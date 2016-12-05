@@ -3901,6 +3901,7 @@ share/themes/BlueMenta/metacity-1/maximize_unfocused_prelight.svg
 share/themes/BlueMenta/metacity-1/menu.png
 share/themes/BlueMenta/metacity-1/menu_prelight.png
 share/themes/BlueMenta/metacity-1/metacity-theme-1.xml
+share/themes/BlueMenta/metacity-1/metacity-theme-2.xml
 share/themes/BlueMenta/metacity-1/metacity-theme-3.xml
 share/themes/BlueMenta/metacity-1/minimize_focused_normal.svg
 share/themes/BlueMenta/metacity-1/minimize_focused_prelight.svg
@@ -4535,7 +4536,6 @@ share/themes/GreenLaguna/metacity-1/button-min-focus.png
 share/themes/GreenLaguna/metacity-1/menu-button-pressed.png
 share/themes/GreenLaguna/metacity-1/metacity-theme-1.xml
 share/themes/GreenLaguna/metacity-1/metacity-theme-2.xml
-share/themes/GreenLaguna/metacity-1/metacity-theme-3.xml
 share/themes/GreenLaguna/metacity-1/neutral.png
 share/themes/GreenLaguna/metacity-1/unabove-button-unfocus.png
 share/themes/GreenLaguna/metacity-1/unabove-button.png
@@ -4761,6 +4761,7 @@ share/themes/Menta/metacity-1/maximize_unfocused_prelight.svg
 share/themes/Menta/metacity-1/menu.png
 share/themes/Menta/metacity-1/menu_prelight.png
 share/themes/Menta/metacity-1/metacity-theme-1.xml
+share/themes/Menta/metacity-1/metacity-theme-2.xml
 share/themes/Menta/metacity-1/metacity-theme-3.xml
 share/themes/Menta/metacity-1/minimize_focused_normal.svg
 share/themes/Menta/metacity-1/minimize_focused_prelight.svg

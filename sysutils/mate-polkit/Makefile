@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-polkit
-PORTVERSION=	1.12.0
+PORTVERSION=	1.16.0
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -16,16 +16,14 @@ LIB_DEPENDS=	libpolkit-gobject-1.so:sysutils/polkit \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake libtool pathfix pkgconfig tar:xz
-USE_GNOME=	gtk20 intlhack introspection:build
+USES=		gettext gmake libtool localbase pathfix \
+		pkgconfig tar:xz
+USE_GNOME=	cairo gdkpixbuf2 gtk30 intlhack introspection:build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-gtk-doc \
-		--with-gtk=2.0 \
 		--enable-accountsservice \
 		--localstatedir=/var
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>
