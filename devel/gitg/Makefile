@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gitg
-PORTVERSION=	3.20.1
+PORTVERSION=	3.22.0
 CATEGORIES=	devel deskutils gnome
 MASTER_SITES=	GNOME
 
@@ -30,7 +30,8 @@ PORTSCOUT=	limitw:1,even
 USES=		compiler:c11 desktop-file-utils gmake libtool localbase \
 		pathfix pkgconfig tar:xz
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-maintainer-mode \
+CONFIGURE_ARGS=	--disable-silent-rules \
+		--disable-maintainer-mode \
 		--enable-compile-warnings=no
 USE_GNOME=	cairo glib20 gtk30 gtksourceview3 intlhack introspection
 INSTALL_TARGET=	install-strip
