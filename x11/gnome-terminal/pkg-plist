@@ -431,6 +431,38 @@ share/help/ru/gnome-terminal/txt-copy-paste.page
 share/help/ru/gnome-terminal/txt-links.page
 share/help/ru/gnome-terminal/txt-search.page
 share/help/ru/gnome-terminal/txt-select-text.page
+share/help/sv/gnome-terminal/adv-keyboard-shortcuts.page
+share/help/sv/gnome-terminal/app-colors.page
+share/help/sv/gnome-terminal/app-cursor.page
+share/help/sv/gnome-terminal/app-fonts.page
+share/help/sv/gnome-terminal/app-fullscreen.page
+share/help/sv/gnome-terminal/app-terminal-sizes.page
+share/help/sv/gnome-terminal/app-zoom.page
+share/help/sv/gnome-terminal/gs-execute-commands.page
+share/help/sv/gnome-terminal/gs-tabs.page
+share/help/sv/gnome-terminal/index.page
+share/help/sv/gnome-terminal/introduction.page
+share/help/sv/gnome-terminal/legal.xml
+share/help/sv/gnome-terminal/overview.page
+share/help/sv/gnome-terminal/pref-bell.page
+share/help/sv/gnome-terminal/pref-custom-command.page
+share/help/sv/gnome-terminal/pref-custom-exit.page
+share/help/sv/gnome-terminal/pref-encoding.page
+share/help/sv/gnome-terminal/pref-keyboard-access.page
+share/help/sv/gnome-terminal/pref-menubar.page
+share/help/sv/gnome-terminal/pref-profile-char-width.page
+share/help/sv/gnome-terminal/pref-profile-encoding.page
+share/help/sv/gnome-terminal/pref-profiles.page
+share/help/sv/gnome-terminal/pref-scrolling.page
+share/help/sv/gnome-terminal/pref-tab-window.page
+share/help/sv/gnome-terminal/pref-user-input.page
+share/help/sv/gnome-terminal/pref.page
+share/help/sv/gnome-terminal/prob-reset.page
+share/help/sv/gnome-terminal/profile.page
+share/help/sv/gnome-terminal/txt-copy-paste.page
+share/help/sv/gnome-terminal/txt-links.page
+share/help/sv/gnome-terminal/txt-search.page
+share/help/sv/gnome-terminal/txt-select-text.page
 share/locale/am/LC_MESSAGES/gnome-terminal.mo
 share/locale/an/LC_MESSAGES/gnome-terminal.mo
 share/locale/ar/LC_MESSAGES/gnome-terminal.mo
@@ -530,3 +562,4 @@ share/locale/zh_TW/LC_MESSAGES/gnome-terminal.mo
 @dir share/help/hu/gnome-terminal/figures
 @dir share/help/pt_BR/gnome-terminal/figures
 @dir share/help/ru/gnome-terminal/figures
+@dir share/help/sv/gnome-terminal/figures
