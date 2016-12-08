@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-builder
-PORTVERSION=	3.20.4
+PORTVERSION=	3.22.1
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -14,21 +14,29 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	intltool-update:textproc/intltool \
 		itstool:textproc/itstool \
-		vala:lang/vala \
-		appstream-util:devel/appstream-glib
+		appstream-util:devel/appstream-glib \
+		mm-common-prepare:devel/mm-common
 LIB_DEPENDS=	libgit2-glib-1.0.so:devel/libgit2-glib \
+		libgit2.so:devel/libgit2 \
+		libclang.so.3.7:devel/llvm37 \
 		libpeas-1.0.so:devel/libpeas \
 		libdevhelp-3.so:devel/devhelp \
 		libgjs.so:lang/gjs \
-		libpcre.so:devel/pcre
+		libpcre.so:devel/pcre \
+		libvala-0.34.so:lang/vala \
+		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
+		libsoup-2.4.so:devel/libsoup \
+		libfreetype.so:print/freetype2 \
+		libfontconfig.so:x11-fonts/fontconfig
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py${PYTHON_SUFFIX}-sqlite3
 
 PORTSCOUT=	limitw:1,even
 PORTDOCS=	*
 
 USES=		compiler:c++11-lib cpe desktop-file-utils gettext gmake \
-		libtool localbase pathfix pkgconfig python:3 tar:xz
-USE_GNOME=	glib20 gtk30 gtksourceview3 gtk-update-icon-cache py3gobject3
+		libtool localbase pathfix pkgconfig python:3.3+ tar:xz
+USE_GNOME=	cairo glib20 gtk30 gtksourceview3 gtk-update-icon-cache \
+		introspection py3gobject3
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--disable-debug
 USE_LDCONFIG=	yes
