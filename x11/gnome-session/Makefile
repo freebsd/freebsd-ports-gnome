@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-session
-PORTVERSION=	3.22.1
+PORTVERSION=	3.22.2
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -13,7 +13,8 @@ COMMENT=	Session component for the GNOME 3 desktop
 LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
 		libdbus-1.so:devel/dbus \
 		libjson-glib-1.0.so:devel/json-glib \
-		libupower-glib.so:sysutils/upower
+		libupower-glib.so:sysutils/upower \
+		libepoxy.so:graphics/libepoxy
 RUN_DEPENDS=	${LOCALBASE}/sbin/console-kit-daemon:sysutils/consolekit \
 		${LOCALBASE}/bin/xdpyinfo:x11/xdpyinfo
 
