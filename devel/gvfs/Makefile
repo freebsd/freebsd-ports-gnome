@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gvfs
-PORTVERSION=	1.30.1
+PORTVERSION=	1.30.2
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -24,7 +24,6 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libgpg-error.so:security/libgpg-error \
 		libcdio.so:sysutils/libcdio \
 		libjson-glib-1.0.so:devel/json-glib
-
 PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake gnome libarchive libtool localbase \
