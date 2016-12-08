@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	webkit
-PORTVERSION=	2.14.1
+PORTVERSION=	2.14.2
 CATEGORIES=	www
 MASTER_SITES=	http://webkitgtk.org/releases/
 PKGNAMESUFFIX=	2-gtk3
@@ -44,7 +44,7 @@ USE_LDCONFIG=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 #CXXFLAGS=	-I${LOCALBASE}/include
 # debug only
-CXXFLAGS=	-pipe -fstack-protector -fno-strict-aliasing -I${LOCALBASE}/include
+#CXXFLAGS=	-pipe -fstack-protector -fno-strict-aliasing -I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install
 
@@ -54,12 +54,7 @@ CMAKE_ARGS+=	-DPORT=GTK \
 		-DENABLE_GLES2:BOOL=OFF \
 		-DUSE_LD_GOLD:BOOL=OFF \
 		-DENABLE_WEBKIT:BOOL=OFF
-# do we want to use system malloc?
-#USE_SYSTEM_MALLOC
-#CMAKE_ARGS+=	-GNinja
 CONFIGURE_ENV+=	XDG_CACHE_HOME=${WRKDIR}
-
-GMAKE_ENV=	VERBOSE=1
 
 BROWSER_PLUGINS_DIR?=	${LOCALBASE}/lib/browser_plugins/symlinks/webkit-gtk3
 #_BROWSER_PLUGINS_DIR=	${BROWSER_PLUGINS_DIR:S|^/|"|:S|/|", "|g}",
