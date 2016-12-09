@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	iagno
-PORTVERSION=	3.20.2
+PORTVERSION=	3.22.0
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -10,8 +10,13 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Iagno
 
+LICENSE=	GPLv3
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 BUILD_DEPENDS=	vala:lang/vala \
-		itstool:textproc/itstool
+		itstool:textproc/itstool \
+		appstream-util:devel/appstream-glib
+
 LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 		libcanberra.so:audio/libcanberra
 
