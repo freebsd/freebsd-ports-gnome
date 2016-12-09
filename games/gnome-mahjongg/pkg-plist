@@ -3,6 +3,7 @@ man/man6/gnome-mahjongg.6.gz
 share/appdata/gnome-mahjongg.appdata.xml
 share/applications/gnome-mahjongg.desktop
 %%DATADIR%%/maps/mahjongg.map
+%%DATADIR%%/themes/edu_kang_xi.png
 %%DATADIR%%/themes/maya.png
 %%DATADIR%%/themes/postmodern.svg
 %%DATADIR%%/themes/smooth.png
