@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-games
-PORTVERSION=	3.20.0
+PORTVERSION=	3.22.0
 CATEGORIES=	games gnome
 
 MAINTAINER=	gnome@FreeBSD.org
