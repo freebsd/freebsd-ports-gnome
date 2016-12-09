@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-robots
-PORTVERSION=	3.20.2
+PORTVERSION=	3.22.1
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -10,10 +10,14 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gnome robots
 
-BUILD_DEPENDS=	itstool:textproc/itstool
+LICENSE=	GPLv3
+LICENSE_FILE=	${WRKSRC}/COPYING
+
+BUILD_DEPENDS=	itstool:textproc/itstool \
+		appstream-util:devel/appstream-glib
 LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 		libcanberra.so:audio/libcanberra \
-		libgames-support.so:games/libgames-support \
+		libgnome-games-support-1.so:games/libgnome-games-support \
 		libgee-0.8.so:devel/libgee
 
 PORTSCOUT=	limitw:1,even
