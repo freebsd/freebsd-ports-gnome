@@ -2,13 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-nibbles
-PORTVERSION=	3.20.2.1
+PORTVERSION=	3.22.2
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gnome nibbles
+
+LICENSE=	GPLv3
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	vala:lang/vala \
 		itstool:textproc/itstool \
@@ -17,10 +20,10 @@ LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 		libcanberra.so:audio/libcanberra \
 		libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
 		libclutter-1.0.so:graphics/clutter \
-		libgames-support.so:games/libgames-support \
 		libcogl.so:graphics/cogl \
 		libjson-glib-1.0.so:devel/json-glib \
-		libgee-0.8.so:devel/libgee
+		libgee-0.8.so:devel/libgee \
+		libgnome-games-support-1.so:games/libgnome-games-support
 
 PORTSCOUT=	limitw:1,even
 
