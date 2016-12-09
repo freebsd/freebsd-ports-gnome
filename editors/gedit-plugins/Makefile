@@ -2,13 +2,16 @@
 # $FreeBSD: head/editors/gedit-plugins/Makefile 412346 2016-04-01 14:00:51Z mat $
 
 PORTNAME=	gedit-plugins
-PORTVERSION=	3.20.0
+PORTVERSION=	3.22.0
 CATEGORIES=	editors gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Plugins for GEdit 3
+
+LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	gedit>=0:editors/gedit \
 		valac:lang/vala \
@@ -21,8 +24,8 @@ RUN_DEPENDS=	gedit>=0:editors/gedit
 PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake gnome libtool localbase pathfix pkgconfig \
-		python:3 tar:xz
-USE_GNOME=	gtk30 gtksourceview3 intlhack
+		python:3.3+ tar:xz
+USE_GNOME=	cairo gdkpixbuf2 gtk30 gtksourceview3 intlhack introspection
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
