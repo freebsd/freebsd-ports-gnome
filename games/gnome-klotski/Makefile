@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-klotski
-PORTVERSION=	3.20.2
+PORTVERSION=	3.22.1
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -10,9 +10,12 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gnome klotski
 
+LICENSE=	GPLv3
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 BUILD_DEPENDS=	vala:lang/vala \
 		itstool:textproc/itstool
-LIB_DEPENDS=	libgames-support.so:games/libgames-support \
+LIB_DEPENDS=	libgnome-games-support-1.so:games/libgnome-games-support \
 		libgee-0.8.so:devel/libgee
 
 PORTSCOUT=	limitw:1,even
