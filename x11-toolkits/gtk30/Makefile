@@ -77,6 +77,13 @@ CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
 
 DEBUG_CONFIGURE_ENABLE=debug
 
+.include <bsd.port.options.mk>
+# gcc on 9.x doesn't like this file
+.if (${OPSYS} == FreeBSD && ${OSVERSION} < 1000000)
+EXTRA_PATCHES=	${FILESDIR}/extra-gdk_x11_gdkscreen-x11.h \
+		${FILESDIR}/extra-gdk_broadway_gdkscreen-broadway.h
+.endif
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|[{]libdir[}]/locale|{datadir}/locale|g' \
 		${WRKSRC}/configure
