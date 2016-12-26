@@ -46,7 +46,7 @@ gio_MAN=	gdbus.1 gsettings.1 gio-querymodules.1 \
 		glib-compile-resources.1 gresource.1 gdbus-codegen.1
 gobject_MAN=	glib-genmarshal.1 glib-mkenums.1 gobject-query.1
 
-OPTIONS_DEFINE=	COLLATION_FIX DEBUG GDB
+OPTIONS_DEFINE=	COLLATION_FIX GDB
 # libc collation was fixed by https://svnweb.freebsd.org/changeset/base/290494
 COLLATION_FIX_DESC=	Use ICU for UTF-8 string collation (if libc is broken)
 GDB_DESC=	Install python gdb scripts
@@ -91,11 +91,6 @@ PLIST_SUB+=	GDB=""
 EXTRA_PATCHES+=	${FILESDIR}/extra-glib_gdbscripts \
 		${FILESDIR}/extra-gobject_gdbscripts
 PLIST_SUB+=	GDB="@comment "
-.endif
-
-.if ${PORT_OPTIONS:MDEBUG}
-CONFIGURE_ARGS+=	--enable-debug=yes \
-			--disable-silent-rules
 .endif
 
 post-patch:

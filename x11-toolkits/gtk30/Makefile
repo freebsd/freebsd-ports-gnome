@@ -5,7 +5,7 @@
 
 PORTNAME=	gtk
 PORTVERSION=	3.22.5
-PORTREVISION?=	0
+PORTREVISION?=	1
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMESUFFIX=	3
@@ -56,7 +56,7 @@ GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
 		org.gtk.Settings.Debug.gschema.xml \
 		org.gtk.Settings.FileChooser.gschema.xml
 
-OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD DEBUG BROADWAY
+OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD BROADWAY
 OPTIONS_DEFAULT=CUPS COLORD BROADWAY
 OPTIONS_SUB=	yes
 
@@ -74,8 +74,6 @@ CLOUDPRINT_DESC=	Cloud printing support
 CLOUDPRINT_CONFIGURE_ENABLE=	cloudprint
 CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
 			libjson-glib-1.0.so:devel/json-glib
-
-DEBUG_CONFIGURE_ENABLE=debug
 
 .include <bsd.port.options.mk>
 # gcc on 9.x doesn't like this file
