@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	5.3.0
+PORTVERSION=	6.2.0
 PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	GCC/releases/gcc-${DISTVERSION}
@@ -29,7 +29,7 @@ RUN_DEPENDS=	${BU_PREFIX}-as:devel/${PKGNAMEPREFIX}binutils
 
 .if empty(GCC_TARGET)
 # We are building for a FreeBSD target
-GCC_TARGET?=	${PKGNAMEPREFIX}portbld-${OPSYS:tl}${OSREL}
+GCC_TARGET?=	${PKGNAMEPREFIX}unknown-${OPSYS:tl}${OSREL}
 BU_PREFIX?=	${PKGNAMEPREFIX}${OPSYS:tl}
 EXTRA_PATCHES+= ${FILESDIR}/freebsd-format-extensions
 .else
@@ -48,6 +48,7 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} --disable-nls --enable-languages=c,c++ \
 		--with-gmp=${LOCALBASE} \
 		--with-pkgversion="FreeBSD Ports Collection for ${PKGNAMEPREFIX:C/-//g}" \
 		--with-system-zlib \
+		--with-gcc-include-dir=/usr/include/c++/v1/ \
 		--with-as=${LOCALBASE}/bin/${BU_PREFIX}-as \
 		--with-ld=${LOCALBASE}/bin/${BU_PREFIX}-ld
 
@@ -62,9 +63,9 @@ post-patch:
 		${WRKSRC}//gcc/cp/g++spec.c
 
 .if ${ARCH} == "amd64"
-CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
+CONFIGURE_TARGET=	x86_64-unknown-${OPSYS:tl}${OSREL}
 .else
-CONFIGURE_TARGET=	${ARCH}-portbld-${OPSYS:tl}${OSREL}
+CONFIGURE_TARGET=	${ARCH}-unknown-${OPSYS:tl}${OSREL}
 .endif
 
 post-install:

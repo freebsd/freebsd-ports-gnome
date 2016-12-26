@@ -11,6 +11,8 @@ COMMENT=	Supplicant (client) for WPA/802.1x protocols
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/README
 
+BROKEN_FreeBSD_9=	does not build (error: void value not ignored as it ought to be)
+
 USES=		cpe gmake readline ssl
 BUILD_WRKSRC=	${WRKSRC}/wpa_supplicant
 INSTALL_WRKSRC=	${WRKSRC}/src

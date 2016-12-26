@@ -3,6 +3,7 @@
 
 PORTNAME=	madsonic
 PORTVERSION=	6.1.8700
+PORTREVISION=	1
 CATEGORIES=	www java
 MASTER_SITES=	http://madsonic.org/download/6.1/
 DISTFILES=	${DISTDATE}_${DISTNAME}-war-tomcat.zip \
@@ -132,11 +133,11 @@ pre-install:
 	@${ECHO} "@owner ${USER}" >> ${PLIST}
 	@${ECHO} "@group ${GROUP}" >> ${PLIST}
 	@cd ${WRKSRC}; ${FIND} . -type f | cut -c2- \
-		| ${SED} 's|^|${WEBAPPDIR:S,${PREFIX}/,,}/${PORTDIRNAME}|' \
+		| ${SED} 's|^|${WEBAPPDIR:S,${PREFIX}/,,}/${PORTNAME}|' \
 		| ${SORT} >> ${PLIST}
 	@${CAT} ${PKGDIR}/pkg-plist-chunk >> ${PLIST}
 	@cd ${WRKSRC}; ${FIND} . -type d | cut -c2- \
-		| ${SED} 's|^|@dir ${WEBAPPDIR:S,${PREFIX}/,,}/${PORTDIRNAME}|' \
+		| ${SED} 's|^|@dir ${WEBAPPDIR:S,${PREFIX}/,,}/${PORTNAME}|' \
 		| ${SORT} -r >> ${PLIST}
 	@${RM} ${PKGMESSAGE}
 	@${CAT} ${PKGDIR}/pkg-message-spacer >> ${PKGMESSAGE}
@@ -147,7 +148,7 @@ pre-install:
 	@${CAT} ${PKGDIR}/pkg-message-spacer >> ${PKGMESSAGE}
 
 do-install:
-	cd ${WRKDIR} && ${COPYTREE_SHARE} ${PORTDIRNAME} ${STAGEDIR}${WEBAPPDIR}
+	cd ${WRKDIR} && ${COPYTREE_SHARE} ${PORTNAME} ${STAGEDIR}${WEBAPPDIR}
 
 	${MKDIR} ${STAGEDIR}${MADSONIC_HOME}
 	${MKDIR} ${STAGEDIR}${MADSONIC_HOME}/transcode

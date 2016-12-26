@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	libpsl
-PORTVERSION=	0.15.0
+PORTVERSION=	0.16.1
 DISTVERSIONPREFIX=	${PORTNAME}-
-PORTREVISION=	1
 CATEGORIES=	dns
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -30,7 +29,7 @@ CONFIGURE_ARGS=	--enable-man \
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
-USES=		autoreconf libtool pathfix pkgconfig python:build shebangfix
+USES=		autoreconf libtool localbase:ldflags pathfix pkgconfig python:build shebangfix
 
 GH_ACCOUNT=	rockdaboot
 USE_GITHUB=	yes
@@ -50,8 +49,5 @@ IDN2_USES=		iconv
 NLS_CPPFLAGS=		-DENABLE_NLS=1
 NLS_USES=		gettext
 NLS_USES_OFF=		gettext-tools
-
-post-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/src/psl2c ${STAGEDIR}${PREFIX}/bin/
 
 .include <bsd.port.mk>

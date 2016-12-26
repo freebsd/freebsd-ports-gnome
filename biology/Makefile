@@ -58,6 +58,7 @@
     SUBDIR += njplot
     SUBDIR += p5-AcePerl
     SUBDIR += p5-Bio-ASN1-EntrezGene
+    SUBDIR += p5-Bio-Coordinate
     SUBDIR += p5-Bio-Das
     SUBDIR += p5-Bio-Das-Lite
     SUBDIR += p5-Bio-GFF3
@@ -67,8 +68,8 @@
     SUBDIR += p5-Bio-NEXUS
     SUBDIR += p5-Bio-Phylo
     SUBDIR += p5-Bio-SCF
-    SUBDIR += p5-bioperl
-    SUBDIR += p5-bioperl-run
+    SUBDIR += p5-BioPerl
+    SUBDIR += p5-BioPerl-Run
     SUBDIR += p5-transdecoder
     SUBDIR += paml
     SUBDIR += phrap

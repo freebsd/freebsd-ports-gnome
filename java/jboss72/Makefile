@@ -15,6 +15,11 @@ COMMENT=	JBoss 7.2.0.Final
 
 LICENSE=	GPLv2
 
+DEPRECATED=     Unsupported, replaced by wildfly
+EXPIRATION_DATE=2017-02-07
+
+BROKEN_FreeBSD_9_i386=	does not build on FreeBSD 9.x i386
+
 USE_GITHUB=	YES
 GH_ACCOUNT=	jbossas
 GH_PROJECT=	jboss-as

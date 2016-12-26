@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	citra
-PORTVERSION=	s20161115
-PORTREVISION?=	1
+PORTVERSION=	s20161216
+PORTREVISION?=	0
 CATEGORIES=	emulators
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -28,11 +28,11 @@ ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	https://github.com/MerryMage/dynarmic/issues/35
 
 USE_GITHUB=	yes
-GH_TUPLE=	citra-emu:${PORTNAME}:fb13bfe \
+GH_TUPLE=	citra-emu:${PORTNAME}:cda7210f \
 		citra-emu:ext-soundtouch:5274ec4:soundtouch/externals/soundtouch \
-		MerryMage:dynarmic:943487e:dynarmic/externals/dynarmic \
-		fmtlib:fmt:3.0.0-108-g2ae6bca:fmt/externals/dynarmic/externals/fmt \
-		herumi:xbyak:v3.71-424-g4cc35db:xbyak/externals/dynarmic/externals/xbyak \
+		MerryMage:dynarmic:34e19f1:dynarmic/externals/dynarmic \
+		fmtlib:fmt:3.0.0-146-g796beaa:fmt/externals/dynarmic/externals/fmt \
+		herumi:xbyak:v5.40:xbyak/externals/xbyak \
 		neobrain:nihstro:26a0a04:nihstro/externals/nihstro \
 		philsquared:Catch:v1.4.0:catch/externals/catch \
 		svn2github:inih:603729d:inih/externals/inih/inih
@@ -50,17 +50,21 @@ OPTIONS_EXCLUDE:=	${OPTIONS_MULTI_GUI}
 
 SDL_USE=	SDL=sdl2
 SDL_CMAKE_BOOL=	ENABLE_SDL2
-SDL_PLIST_FILES=bin/${PORTNAME}
+SDL_PLIST_FILES=bin/${PORTNAME} \
+		man/man6/${PORTNAME}.6.gz
 
 QT5_USES=	desktop-file-utils shared-mime-info
 QT5_USE=	QT5=qmake_build,buildtools_build,core,gui,opengl,widgets
 QT5_CMAKE_BOOL=	ENABLE_QT
 QT5_PLIST_FILES=bin/${PORTNAME}-qt \
+		man/man6/${PORTNAME}-qt.6.gz \
 		share/applications/${PORTNAME}.desktop \
 		share/mime/packages/${PORTNAME}.xml \
 		share/pixmaps/${PORTNAME}.svg
 
 post-patch:
+	@${REINPLACE_CMD} -e 's,share/man,man,' \
+		${WRKSRC}/CMakeLists.txt
 	@${REINPLACE_CMD} -e 's/@GIT_BRANCH@/master/' \
 		-e 's/@GIT_DESC@/${GH_TAGNAME}/' \
 		${WRKSRC}/src/common/scm_rev.cpp.in

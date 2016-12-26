@@ -9,6 +9,8 @@ MASTER_SITES=	http://www.freedesktop.org/software/colord/releases/
 MAINTAINER=	kwm@FreeBSD.org
 COMMENT=	Manage color profiles to accurately color input/output devices
 
+LICENSE=	GPLv2
+
 BUILD_DEPENDS=	spotread:graphics/argyllcms
 LIB_DEPENDS=	libpolkit-gobject-1.so:sysutils/polkit \
 		libdbus-1.so:devel/dbus \
@@ -31,7 +33,7 @@ CONFIGURE_ARGS=	--disable-udev \
 		--disable-sane \
 		--with-daemon-user=colord \
 		--disable-systemd-login \
-		--with-udevrulesdir=${LOCALBASE}/share/colord
+		--enable-libcolordcompat
 CONFIGURE_ENV=	USB_CFLAGS="-I/usr/include" \
 		USB_LIBS="-L/usr/lib -lusb"
 INSTALL_TARGET=	install-strip

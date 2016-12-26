@@ -5,6 +5,58 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20161218:
+  AFFECTS: users of www/nghttp2
+  AUTHOR: sunpoet@FreeBSD.org
+
+  nghttp2 has been split into 2 ports: www/libnghttp2 for core library and
+  www/nghttp2 for the rest. Please uninstall nghttp2 before you update
+  this port.
+
+20161216:
+  AFFECTS: mail/thunderbird, www/seamonkey
+  AUTHOR: gecko@FreeBSD.org
+
+  ENIGMAIL is no longer provided as part of the ports after upstream
+  dropped binary components in 1.9. Go to Tools -> Add-ons Manager
+  then type "enigmail" in the search box to install.
+
+20161213:
+  AFFECTS: users of devel/skalibs, lang/execline, sysutils/s6
+  AUTHOR: Colin Booth <colin-ports@heliocat.net>
+
+  skalibs has undergone a major version bump and compatibility is not
+  guaranteed for software with a runtime dependency on
+  libskarnet.so.2.3.9.0. This will not affect lang/execline or
+  sysutils/s6 as those are statically linked against libskarnet.a.
+
+  execline has undergone a major version bump and compatibility is not
+  guaranteed for software with a runtime dependency on
+  libexecline.so.2.1.4.5. This will not affect sysutils/s6 as all s6
+  programs are statically linked against libexecline.a.
+
+  s6 has undergone a major version bump and compatibility is not
+  guaranteed for software with a runtime dependency on
+  libs6.so.2.2.4.3. Additionally, s6-applyuidgid and s6-setuidgid
+  have moved from $PREFIX/sbin to $PREFIX/bin. Any scripts calling
+  those utilities that are not relying on $PATH resolution to find
+  them will need to be rewritten.
+
+20161207:
+  AFFECTS: users of www/node
+  AUTHOR: bradleythughes@fastmail.fm
+
+  The www/node port has been updated to node.js v7.2.0, the latest
+  upstream release. A new port, www/node6, has been created for the
+  v6.x LTS branch. Users wanting to stay on v6.x can replace www/node
+  with www/node6 with one of the following commands:
+
+  # pkg set -o www/node:www/node6
+    or
+  # portmaster -o www/node6 www/node
+    or
+  # portupgrade -o www/node6 www/node
+
 20161202:
   AFFECTS: Users of textproc/p5-Search-Elasticsearch
   AUTHOR: tj@FreeBSD.org

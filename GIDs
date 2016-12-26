@@ -137,9 +137,9 @@ moinmoin:*:192:
 cups:*:193:
 saned:*:194:
 radns:*:195:
-# free: 196
-# free: 197
-# free: 198
+nova:*:196:
+dq:*:197:
+horizon:*:198:
 mcserver:*:199:
 sympa:*:200:
 privoxy:*:201:
@@ -196,7 +196,7 @@ fcron:*:247:
 # free: 252
 _adsuck:*:253:
 # free: 254
-# free: 255
+_i2pd:*:255:
 _tor:*:256:
 _smtpd:*:257:
 _smtpq:*:258:

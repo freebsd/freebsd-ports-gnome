@@ -454,6 +454,7 @@
     SUBDIR += intel-qcu
     SUBDIR += iocage
     SUBDIR += iocage-devel
+    SUBDIR += iocell
     SUBDIR += iogen
     SUBDIR += iograph
     SUBDIR += iohyve
@@ -596,6 +597,7 @@
     SUBDIR += memtest86
     SUBDIR += memtest86+
     SUBDIR += metalog
+    SUBDIR += metricbeat
     SUBDIR += mfid
     SUBDIR += mgeupsd
     SUBDIR += minimunin

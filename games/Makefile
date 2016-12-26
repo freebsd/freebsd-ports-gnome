@@ -32,6 +32,8 @@
     SUBDIR += alephone-data
     SUBDIR += alephone-scenarios
     SUBDIR += alex4
+    SUBDIR += alienarena
+    SUBDIR += alienarena-data
     SUBDIR += alienblaster
     SUBDIR += alienwave
     SUBDIR += allacrost
@@ -48,6 +50,7 @@
     SUBDIR += armagetron
     SUBDIR += arx-libertatis
     SUBDIR += asc
+    SUBDIR += ascii-invaders
     SUBDIR += asciiquarium
     SUBDIR += assaultcube
     SUBDIR += asteroid
@@ -520,6 +523,7 @@
     SUBDIR += libfov
     SUBDIR += libgames-support
     SUBDIR += libggz
+    SUBDIR += libgnome-games-support
     SUBDIR += libkdegames
     SUBDIR += libkmahjongg
     SUBDIR += liblcf

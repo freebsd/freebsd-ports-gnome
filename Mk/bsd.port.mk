@@ -1211,9 +1211,7 @@ USE_SUBMAKE=	yes
 .for _CATEGORY in ${CATEGORIES}
 PKGCATEGORY?=	${_CATEGORY}
 .endfor
-_PORTDIRNAME=	${.CURDIR:T}
-PORTDIRNAME?=	${_PORTDIRNAME}
-PKGORIGIN?=		${PKGCATEGORY}/${PORTDIRNAME}
+PKGORIGIN?=		${.CURDIR:C/${PORTSDIR}\///}
 
 # where 'make config' records user configuration options
 PORT_DBDIR?=	/var/db/ports
@@ -1264,6 +1262,9 @@ _PREMKINCLUDED=	yes
 .if defined(PORTVERSION)
 .if ${PORTVERSION:M*[-_,]*}x != x
 IGNORE=			PORTVERSION ${PORTVERSION} may not contain '-' '_' or ','
+.endif
+.if defined(DISTVERSION)
+DEV_WARNING+=	"Defining both PORTVERSION and DISTVERSION is wrong, only set one and let the framework create the other one"
 .endif
 DISTVERSION?=	${PORTVERSION:S/:/::/g}
 .elif defined(DISTVERSION)

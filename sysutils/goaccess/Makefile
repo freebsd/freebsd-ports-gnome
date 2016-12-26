@@ -16,10 +16,10 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
-USES=		pkgconfig
+USES=		alias pkgconfig ncurses
 
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+CFLAGS+=	-I${NCURSESINC} -I${LOCALBASE}/include
+LDFLAGS+=	-L${NCURSESLIB} -L${LOCALBASE}/lib
 
 PORTDOCS=	AUTHORS COPYING ChangeLog NEWS README TODO
 
@@ -39,7 +39,8 @@ TOKYOCABINET_BTREE_DESC=	Storage using on-disk B+ Tree
 TOKYOCABINET_MHASH_DESC=	Storage using on-memory hash database
 TOKYOCABINET_BTREE_CONFIGURE_ON=	--enable-tcb=btree
 TOKYOCABINET_MHASH_CONFIGURE_ON=	--enable-tcb=memhash
-TOKYOCABINET_LIB_DEPENDS=	libtokyocabinet.so:databases/tokyocabinet
+TOKYOCABINET_BTREE_LIB_DEPENDS=	libtokyocabinet.so:databases/tokyocabinet
+TOKYOCABINET_HASH_LIB_DEPENDS=	libtokyocabinet.so:databases/tokyocabinet
 
 do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

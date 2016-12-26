@@ -168,6 +168,7 @@
     SUBDIR += firefox-esr
     SUBDIR += firefox-esr-i18n
     SUBDIR += firefox-i18n
+    SUBDIR += flashplayer
     SUBDIR += flat-frog
     SUBDIR += flickcurl
     SUBDIR += flood
@@ -358,6 +359,7 @@
     SUBDIR += libhubbub
     SUBDIR += libjwt
     SUBDIR += libmicrohttpd
+    SUBDIR += libnghttp2
     SUBDIR += libsocialweb
     SUBDIR += libwww
     SUBDIR += libxul
@@ -372,14 +374,10 @@
     SUBDIR += links
     SUBDIR += links-hacked
     SUBDIR += links1
-    SUBDIR += linux-c6-flashplugin11
-    SUBDIR += linux-c6-flashplugin24
     SUBDIR += linux-c6-qt47-webkit
-    SUBDIR += linux-c7-flashplugin11
-    SUBDIR += linux-c7-flashplugin24
     SUBDIR += linux-c7-qtwebkit
-    SUBDIR += linux-f10-flashplugin11
     SUBDIR += linux-firefox
+    SUBDIR += linux-flashplayer
     SUBDIR += linux-opera
     SUBDIR += linux-seamonkey
     SUBDIR += lionwiki
@@ -549,7 +547,6 @@
     SUBDIR += node012
     SUBDIR += node4
     SUBDIR += node6
-    SUBDIR += node7
     SUBDIR += nostromo
     SUBDIR += npapi-vlc
     SUBDIR += npapi-xine
@@ -1489,6 +1486,7 @@
     SUBDIR += py-Products.CMFPlone
     SUBDIR += py-Products.PloneLDAP
     SUBDIR += py-Products.TinyMCE
+    SUBDIR += py-Tenjin
     SUBDIR += py-WebError
     SUBDIR += py-WebFlash
     SUBDIR += py-WebTest
@@ -1528,6 +1526,7 @@
     SUBDIR += py-django-appmedia
     SUBDIR += py-django-assets
     SUBDIR += py-django-auth-ldap
+    SUBDIR += py-django-babel
     SUBDIR += py-django-bitfield
     SUBDIR += py-django-bootstrap-form
     SUBDIR += py-django-caching-app-plugins
@@ -1574,6 +1573,7 @@
     SUBDIR += py-django-pipeline13
     SUBDIR += py-django-post_office
     SUBDIR += py-django-profiles
+    SUBDIR += py-django-pyscss
     SUBDIR += py-django-recaptcha
     SUBDIR += py-django-redis
     SUBDIR += py-django-registration
@@ -1604,6 +1604,7 @@
     SUBDIR += py-django18
     SUBDIR += py-django19
     SUBDIR += py-django_compressor
+    SUBDIR += py-django_openstack_auth
     SUBDIR += py-django_polymorphic
     SUBDIR += py-djangorestframework
     SUBDIR += py-djangorestframework-csv
@@ -1652,6 +1653,7 @@
     SUBDIR += py-graphite-web
     SUBDIR += py-grequests
     SUBDIR += py-gunicorn
+    SUBDIR += py-horizon
     SUBDIR += py-html
     SUBDIR += py-html5lib
     SUBDIR += py-http-parser
@@ -1800,7 +1802,6 @@
     SUBDIR += py-splinter
     SUBDIR += py-spyne
     SUBDIR += py-surl
-    SUBDIR += py-Tenjin
     SUBDIR += py-textile
     SUBDIR += py-tgwebservices
     SUBDIR += py-tmdb3
@@ -1833,6 +1834,7 @@
     SUBDIR += py-wsgiauth
     SUBDIR += py-wsgidav
     SUBDIR += py-zope.app.wsgi
+    SUBDIR += py3-cssutils
     SUBDIR += py33-requests
     SUBDIR += py34-requests
     SUBDIR += py35-requests

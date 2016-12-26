@@ -3,6 +3,7 @@
 
 PORTNAME=	lastfm-desktop
 PORTVERSION=	2.1.36
+PORTREVISION=	1
 CATEGORIES=	audio
 
 MAINTAINER=	vg@FreeBSD.org
@@ -15,6 +16,8 @@ LIB_DEPENDS=	liblastfm.so:audio/liblastfm \
 		libgpod.so:audio/libgpod \
 		libimobiledevice.so:comms/libimobiledevice \
 		libplist.so:devel/libplist
+
+BROKEN_FreeBSD_9_i386=	does not build (LAV_Source.cpp:290: error: integer constant is too large for 'unsigned long' type)
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	lastfm

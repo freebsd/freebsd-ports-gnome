@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	ceres-solver
-DISTVERSION=	1.12.0rc4
+DISTVERSION=	1.12.0
+PORTREVISION=	2
 CATEGORIES=	math
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -50,7 +51,8 @@ GFLAGS_CMAKE_BOOL=	GFLAGS
 
 OPENMP_USES=		compiler:openmp
 OPENMP_CMAKE_BOOL=	OPENMP
-OPENMP_VARS=		OPENMP=gcc- # XXX ports/210337
+# XXX ports/199603 + ports/210337
+OPENMP_VARS=		OPENMP=gcc-
 
 SCHUR_DESC=		Fixed-size schur specializations
 SCHUR_CMAKE_BOOL=	SCHUR_SPECIALIZATIONS
@@ -106,4 +108,10 @@ post-install-EXAMPLES-on:
 	@${RM} -r ${STAGEDIR}${EXAMPLESDIR}/bin/*_test
 	-@${STRIP_CMD} ${STAGEDIR}${EXAMPLESDIR}/bin/* # may fail for non-root
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000000 && ${OSVERSION} < 1002000
+BROKEN=		does not build on FreeBSD 10.1 (undefined reference to `__cxa_throw_bad_array_new_length')
+.endif
+
+.include <bsd.port.post.mk>

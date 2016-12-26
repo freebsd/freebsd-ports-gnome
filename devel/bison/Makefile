@@ -3,11 +3,12 @@
 
 PORTNAME=	bison
 PORTVERSION=	2.7.1
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	devel
 MASTER_SITES=	GNU
 
-MAINTAINER=	johans@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Parser generator from FSF, (mostly) compatible with Yacc
 
 BUILD_DEPENDS=	m4>=1.4.16,1:devel/m4

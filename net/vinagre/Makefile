@@ -13,7 +13,10 @@ COMMENT=	VNC client for the GNOME Desktop
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	itstool:textproc/itstool
+BUILD_DEPENDS=	appstream-glib>=0:devel/appstream-glib \
+		itstool:textproc/itstool \
+		gnome-autogen.sh:devel/gnome-common \
+		yelp-tools>=0:textproc/yelp-tools
 LIB_DEPENDS=	libgtk-vnc-2.0.so:net/gtk-vnc \
 		libgdbm.so:databases/gdbm \
 		libsecret-1.so:security/libsecret \
