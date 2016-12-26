@@ -22,6 +22,9 @@ LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
 		libgdata.so:devel/libgdata \
 		libgoa-1.0.so:net/gnome-online-accounts \
 		libgjs.so:lang/gjs \
+		libjson-glib-1.0.so:devel/json-glib \
+		librest-0.7.so:devel/librest \
+		libsoup-2.4.so:devel/libsoup \
 		libtracker-sparql-1.0.so:sysutils/tracker \
 		libzapojit-0.0.so:net/libzapojit
 RUN_DEPENDS=	py2?-dbus>0:devel/py-dbus \
@@ -32,8 +35,8 @@ PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c++11-lib gettext gmake gnome libtool localbase \
 		pathfix pkgconfig tar:xz
-USE_GNOME=	gnomedesktop3 gtk30 intlhack \
-		introspection:build librsvg2 libxml2
+USE_GNOME=	cairo gnomedesktop3 gtk30 intlhack \
+		introspection librsvg2 libxml2
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
