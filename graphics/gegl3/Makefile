@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gegl
-PORTVERSION=	0.3.6
+PORTVERSION=	0.3.10
 CATEGORIES=	graphics
 MASTER_SITES=	GIMP
 PKGNAMESUFFIX=	3
@@ -29,7 +29,7 @@ CONFIGURE_ARGS=	--without-vala --disable-docs
 CONFIGURE_ARGS+=--without-mrg
 INSTALL_TARGET=	install-strip
 
-GEGL_MINOR=	304
+GEGL_MINOR=	310
 GEGL_VER=	0.3
 PLIST_SUB+=	GEGL_MINOR="${GEGL_MINOR}" GEGL_VER=${GEGL_VER}
 
@@ -80,7 +80,8 @@ LCMS2_CONFIGURE_WITH=	lcms
 LUA_USES=		lua
 LUA_CONFIGURE_WITH=	lua
 
-OPENEXR_LIB_DEPENDS=	libIlmImf.so:graphics/OpenEXR
+OPENEXR_LIB_DEPENDS=	libIlmImf.so:graphics/OpenEXR \
+			libImath-2_2.so:graphics/ilmbase
 OPENEXR_CONFIGURE_WITH=	openexr
 
 RAW_LIB_DEPENDS=	libraw.so:graphics/libraw
