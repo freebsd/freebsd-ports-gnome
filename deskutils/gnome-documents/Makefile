@@ -26,6 +26,7 @@ LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
 		librest-0.7.so:devel/librest \
 		libsoup-2.4.so:devel/libsoup \
 		libtracker-sparql-1.0.so:sysutils/tracker \
+		libgepub.so:textproc/libgepub \
 		libzapojit-0.0.so:net/libzapojit
 RUN_DEPENDS=	py2?-dbus>0:devel/py-dbus \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
