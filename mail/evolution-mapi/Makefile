@@ -17,7 +17,8 @@ RUN_DEPENDS=	evolution>=3.0.0:mail/evolution
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome libtool localbase pkgconfig sqlite tar:xz
+USES=		gettext gmake gnome libtool localbase pathfix pkgconfig \
+		sqlite tar:xz
 USE_GNOME=	atk cairo evolutiondataserver3 gdkpixbuf2 glib20 gtk30 \
 		intltool pango
 USE_LDCONFIG=	yes
