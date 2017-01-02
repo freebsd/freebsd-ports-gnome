@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	6.2.0
-PORTREVISION=	1
+PORTVERSION=	6.3.0
 CATEGORIES=	devel
 MASTER_SITES=	GCC/releases/gcc-${DISTVERSION}
 PKGNAMEPREFIX?=	powerpc64-
@@ -54,7 +53,6 @@ CONFIGURE_ARGS+=--target=${GCC_TARGET} --disable-nls --enable-languages=c,c++ \
 
 ALL_TARGET?=	all-gcc
 INSTALL_TARGET?=	install-gcc
-BROKEN_FreeBSD_9=	plist is different on 9.x that on other arches
 
 .include <bsd.port.options.mk>
 

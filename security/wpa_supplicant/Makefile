@@ -11,8 +11,6 @@ COMMENT=	Supplicant (client) for WPA/802.1x protocols
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/README
 
-BROKEN_FreeBSD_9=	does not build (error: void value not ignored as it ought to be)
-
 USES=		cpe gmake readline ssl
 BUILD_WRKSRC=	${WRKSRC}/wpa_supplicant
 INSTALL_WRKSRC=	${WRKSRC}/src
@@ -95,7 +93,7 @@ TNC_DESC=		Trusted Network Connect
 
 PRIVSEP_PLIST_FILES=	sbin/wpa_priv
 
-.include <bsd.port.options.mk>
+.include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MNDIS} && ${PORT_OPTIONS:MPRIVSEP}
 BROKEN=	Fails to compile with both NDIS and PRIVSEP
@@ -173,4 +171,4 @@ do-install-DOCS-on:
 do-install-PRIVSEP-on:
 	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/wpa_priv ${STAGEDIR}${PREFIX}/sbin
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

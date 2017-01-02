@@ -560,19 +560,6 @@
     SUBDIR += linux-c7-sdl_image
     SUBDIR += linux-c7-sdl_ttf
     SUBDIR += linux-c7-tiff
-    SUBDIR += linux-f10-cairo
-    SUBDIR += linux-f10-dri
-    SUBDIR += linux-f10-gdk-pixbuf
-    SUBDIR += linux-f10-glew
-    SUBDIR += linux-f10-imlib
-    SUBDIR += linux-f10-jpeg
-    SUBDIR += linux-f10-libGLU
-    SUBDIR += linux-f10-libmng
-    SUBDIR += linux-f10-png
-    SUBDIR += linux-f10-sdl_image
-    SUBDIR += linux-f10-sdl_ttf
-    SUBDIR += linux-f10-tiff
-    SUBDIR += linux-f10-ungif
     SUBDIR += llpp
     SUBDIR += lprof-devel
     SUBDIR += lua-gd
@@ -930,6 +917,7 @@
     SUBDIR += raster3d
     SUBDIR += rawstudio
     SUBDIR += rawtherapee
+    SUBDIR += rawtherapee-devel
     SUBDIR += rayshade
     SUBDIR += reallyslick
     SUBDIR += recoverjpeg

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	filezilla
-PORTVERSION=	3.22.2.2
+PORTVERSION=	3.23.0.2
 CATEGORIES=	ftp
 MASTER_SITES=	SF/${PORTNAME}/FileZilla_Client/${PORTVERSION}
 DISTNAME=	FileZilla_${PORTVERSION}_src
@@ -22,8 +22,6 @@ LIB_DEPENDS=	libfilezilla.so:ftp/libfilezilla \
 		libpugixml.so:textproc/pugixml \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
-
-BROKEN_FreeBSD_9=	requires C++14 compiler, 9.x lacks C++11 standard library
 
 INSTALLS_ICONS=	yes
 USES=		compiler:c++14-lang gmake iconv:wchar_t localbase pkgconfig sqlite tar:bzip2

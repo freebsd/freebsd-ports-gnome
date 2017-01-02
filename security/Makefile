@@ -356,14 +356,6 @@
     SUBDIR += linux-c7-nss
     SUBDIR += linux-c7-openssl
     SUBDIR += linux-c7-openssl-compat
-    SUBDIR += linux-f10-cyrus-sasl2
-    SUBDIR += linux-f10-gnutls
-    SUBDIR += linux-f10-libgcrypt
-    SUBDIR += linux-f10-libgpg-error
-    SUBDIR += linux-f10-libssh2
-    SUBDIR += linux-f10-libtasn1
-    SUBDIR += linux-f10-nss
-    SUBDIR += linux-f10-openssl
     SUBDIR += lockdown
     SUBDIR += log2timeline
     SUBDIR += logcheck
@@ -436,7 +428,9 @@
     SUBDIR += openvpn-auth-ldap
     SUBDIR += openvpn-auth-radius
     SUBDIR += openvpn-devel
-    SUBDIR += openvpn-polarssl
+    SUBDIR += openvpn-mbedtls
+    SUBDIR += openvpn23
+    SUBDIR += openvpn23-polarssl
     SUBDIR += ophcrack
     SUBDIR += orthrus
     SUBDIR += osiris

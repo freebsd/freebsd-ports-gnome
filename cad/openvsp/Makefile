@@ -29,8 +29,6 @@ BUILD_DEPENDS=	${LOCALBASE}/lib/libopenNURBS.a:graphics/opennurbs \
 		${LOCALBASE}/include/glm/glm.hpp:math/glm \
 		${LOCALBASE}/include/eigen3/Eigen/Array:math/eigen3
 
-BROKEN_FreeBSD_9=	dependency graphics/code-eli needs additional math functions
-
 USE_GITHUB=	yes
 GH_PROJECT=	OpenVSP
 GH_ACCOUNT=	${GH_PROJECT}
@@ -43,7 +41,7 @@ USES=		cmake:outsource jpeg
 
 .include <bsd.port.options.mk>
 
-.if ${OSVERSION} == 1001000
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000000 && ${OSVERSION} < 1002000
 # Fails to build with GCC 4.9 in 10.1
 USE_GCC=	4.8
 LDFLAGS+=	-L${LOCALBASE}/lib/c++

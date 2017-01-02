@@ -3,7 +3,7 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	3.2.2
-PORTREVISION=	2
+PORTREVISION=	4
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://ffmpeg.org/releases/
@@ -18,7 +18,8 @@ BUILD_DEPENDS=	yasm:devel/yasm \
 		${LOCALBASE}/bin/as:devel/binutils
 
 HAS_CONFIGURE=	yes
-USES=		compiler:c11 cpe gmake localbase perl5 pkgconfig shebangfix tar:bzip2
+USES=		compiler:c11 cpe gmake localbase:ldflags perl5 \
+		pkgconfig shebangfix tar:bzip2
 USE_LDCONFIG=	yes
 USE_PERL5=	build
 SHEBANG_FILES=	doc/texi2pod.pl
@@ -37,7 +38,7 @@ OPTIONS_DEFINE=	ALSA AMR_NB AMR_WB ASS BS2B CACA CDIO CELT CHROMAPRINT DC1394 \
 		XVIDEO ZIMG ZMQ ZVBI
 
 OPTIONS_DEFAULT=	FFSERVER FONTCONFIG FREETYPE FREI0R GMP GNUTLS ICONV \
-			OPENCV RTCPU SCHROEDINGER THEORA V4L VAAPI VDPAU \
+			OPENCV OPTIMIZED_CFLAGS RTCPU SCHROEDINGER THEORA V4L VAAPI VDPAU \
 			VORBIS VPX X264 XVID
 
 OPTIONS_RADIO=	RTMP SSL
@@ -271,7 +272,7 @@ OPENSSL_CONFIGURE_ENABLE=	openssl
 OPENSSL_IMPLIES=	NONFREE
 
 # optimizations
-OPTIMIZED_CFLAGS_CFLAGS=-O3 -ffast-math -fno-finite-math-only -fomit-frame-pointer
+OPTIMIZED_CFLAGS_CONFIGURE_ENABLE=	optimizations
 
 # opus
 OPUS_LIB_DEPENDS=	libopus.so:audio/opus

@@ -27,7 +27,6 @@ LIB_DEPENDS=	libsqlite3.so:databases/sqlite3 \
 
 CONFLICTS_BUILD=	xmlrpc-c-*
 
-BROKEN_FreeBSD_9=	Fails in configure due to compiler issues
 ONLY_FOR_ARCHS=	amd64
 
 USES=		gmake jpeg pkgconfig lua perl5 libtool shebangfix tar:xz iconv libedit ssl
@@ -55,7 +54,10 @@ ALL_MODULES_CONFLICTS_BUILD+=	apr
 ALL_MODULES_EXTRA_PATCHES=	${FILESDIR}/extrapatch-modules.conf
 
 GNU_CONFIGURE=		yes
-INSTALL_TARGET=		install-strip
+# install-strip causes `make stage' to fail:
+# libtool: install: strip --strip-debug /wrkdirs/usr/ports/net/freeswitch/work/stage/usr/local/lib/libfreeswitch.a
+# strip: file format not recognized
+# INSTALL_TARGET=		install-strip
 SHEBANG_FILES=		scripts/fsxs.in
 USE_RC_SUBR=		freeswitch
 

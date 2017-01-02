@@ -1111,7 +1111,7 @@
     SUBDIR += p5-POE-Filter-HTTP-Parser
     SUBDIR += p5-POEx-Role-PSGIServer
     SUBDIR += p5-PSGI
-    SUBDIR += p5-ParallelUA
+    SUBDIR += p5-ParallelUserAgent
     SUBDIR += p5-Parse-HTTP-UserAgent
     SUBDIR += p5-Path-Class-URI
     SUBDIR += p5-Perlanet
@@ -1835,9 +1835,7 @@
     SUBDIR += py-wsgidav
     SUBDIR += py-zope.app.wsgi
     SUBDIR += py3-cssutils
-    SUBDIR += py33-requests
-    SUBDIR += py34-requests
-    SUBDIR += py35-requests
+    SUBDIR += py3-requests
     SUBDIR += pyblosxom
     SUBDIR += pycarddav
     SUBDIR += pydio
@@ -1968,7 +1966,6 @@
     SUBDIR += rubygem-innate
     SUBDIR += rubygem-jekyll
     SUBDIR += rubygem-jekyll-watch
-    SUBDIR += rubygem-jekyll2
     SUBDIR += rubygem-journey
     SUBDIR += rubygem-jquery-atwho-rails
     SUBDIR += rubygem-jquery-atwho-rails-rails4
