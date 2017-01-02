@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	winetricks
-PORTVERSION=	20161012
+PORTVERSION=	20161228
 CATEGORIES=	emulators
 
-MAINTAINER=	lifanov@mail.lifanov.com
+MAINTAINER=	lifanov@FreeBSD.org
 COMMENT=	Easy way to work around problems in Wine
 
 LICENSE=	LGPL21

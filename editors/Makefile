@@ -69,6 +69,7 @@
     SUBDIR += heme
     SUBDIR += hexcurse
     SUBDIR += hexedit
+    SUBDIR += hexer
     SUBDIR += hexpert
     SUBDIR += hnb
     SUBDIR += hte
@@ -190,6 +191,7 @@
     SUBDIR += libreoffice-ug
     SUBDIR += libreoffice-uz
     SUBDIR += libreoffice-ve
+    SUBDIR += libreoffice-vec
     SUBDIR += libreoffice-xh
     SUBDIR += libreoffice-zu
     SUBDIR += libreoffice4
@@ -255,6 +257,7 @@
     SUBDIR += vile
     SUBDIR += vim
     SUBDIR += vim-lite
+    SUBDIR += web-mode
     SUBDIR += with-editor
     SUBDIR += wordgrinder
     SUBDIR += xcoral

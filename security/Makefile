@@ -115,6 +115,7 @@
     SUBDIR += doas
     SUBDIR += doorman
     SUBDIR += doscan
+    SUBDIR += dotdotpwn
     SUBDIR += dradis
     SUBDIR += dropbear
     SUBDIR += dsniff
@@ -355,14 +356,6 @@
     SUBDIR += linux-c7-nss
     SUBDIR += linux-c7-openssl
     SUBDIR += linux-c7-openssl-compat
-    SUBDIR += linux-f10-cyrus-sasl2
-    SUBDIR += linux-f10-gnutls
-    SUBDIR += linux-f10-libgcrypt
-    SUBDIR += linux-f10-libgpg-error
-    SUBDIR += linux-f10-libssh2
-    SUBDIR += linux-f10-libtasn1
-    SUBDIR += linux-f10-nss
-    SUBDIR += linux-f10-openssl
     SUBDIR += lockdown
     SUBDIR += log2timeline
     SUBDIR += logcheck
@@ -435,7 +428,9 @@
     SUBDIR += openvpn-auth-ldap
     SUBDIR += openvpn-auth-radius
     SUBDIR += openvpn-devel
-    SUBDIR += openvpn-polarssl
+    SUBDIR += openvpn-mbedtls
+    SUBDIR += openvpn23
+    SUBDIR += openvpn23-polarssl
     SUBDIR += ophcrack
     SUBDIR += orthrus
     SUBDIR += osiris
@@ -603,6 +598,7 @@
     SUBDIR += p5-Dancer-Plugin-Passphrase
     SUBDIR += p5-Dancer2-Plugin-Auth-Extensible
     SUBDIR += p5-Dancer2-Plugin-Auth-Extensible-Provider-DBIC
+    SUBDIR += p5-Dancer2-Plugin-Auth-Extensible-Provider-Database
     SUBDIR += p5-Dancer2-Plugin-Auth-Extensible-Provider-IMAP
     SUBDIR += p5-Dancer2-Plugin-Auth-Extensible-Provider-Usergroup
     SUBDIR += p5-Dancer2-Plugin-Passphrase
@@ -820,6 +816,7 @@
     SUBDIR += pulledpork
     SUBDIR += pure-sfv
     SUBDIR += putty
+    SUBDIR += putty-nogtk
     SUBDIR += pvk
     SUBDIR += pwauth
     SUBDIR += pwman

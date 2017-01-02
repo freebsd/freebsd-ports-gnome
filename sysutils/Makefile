@@ -138,6 +138,7 @@
     SUBDIR += cfengine-masterfiles37
     SUBDIR += cfengine-masterfiles38
     SUBDIR += cfengine-masterfiles39
+    SUBDIR += cfengine-masterfiles310
     SUBDIR += cfengine22
     SUBDIR += cfengine32
     SUBDIR += cfengine33
@@ -147,6 +148,7 @@
     SUBDIR += cfengine37
     SUBDIR += cfengine38
     SUBDIR += cfengine39
+    SUBDIR += cfengine310
     SUBDIR += chgrep
     SUBDIR += chyves
     SUBDIR += cinnamon-control-center
@@ -372,7 +374,6 @@
     SUBDIR += gdmap
     SUBDIR += genisoimage
     SUBDIR += geomWatch
-    SUBDIR += geomgui
     SUBDIR += getdelta
     SUBDIR += geteltorito
     SUBDIR += gigolo
@@ -406,6 +407,7 @@
     SUBDIR += grub2-efi
     SUBDIR += grub2-pcbsd
     SUBDIR += gsmartcontrol
+    SUBDIR += gsh
     SUBDIR += gstopd
     SUBDIR += gstreamer-plugins-cdio
     SUBDIR += gstreamer-plugins-hal
@@ -454,6 +456,7 @@
     SUBDIR += intel-qcu
     SUBDIR += iocage
     SUBDIR += iocage-devel
+    SUBDIR += iocell
     SUBDIR += iogen
     SUBDIR += iograph
     SUBDIR += iohyve
@@ -533,7 +536,6 @@
     SUBDIR += lineakd
     SUBDIR += linrename
     SUBDIR += linux-crashplan
-    SUBDIR += linux-f10-procps
     SUBDIR += linux-nero
     SUBDIR += linuxfdisk
     SUBDIR += livecd
@@ -596,6 +598,7 @@
     SUBDIR += memtest86
     SUBDIR += memtest86+
     SUBDIR += metalog
+    SUBDIR += metricbeat
     SUBDIR += mfid
     SUBDIR += mgeupsd
     SUBDIR += minimunin
@@ -658,7 +661,6 @@
     SUBDIR += nomad
     SUBDIR += npadmin
     SUBDIR += nrg2iso
-    SUBDIR += ntfsprogs
     SUBDIR += nut
     SUBDIR += nvclock
     SUBDIR += nvramtool
@@ -1018,7 +1020,6 @@
     SUBDIR += schedutils
     SUBDIR += scprotect
     SUBDIR += screen
-    SUBDIR += screen-legacy
     SUBDIR += screenfetch
     SUBDIR += screenie
     SUBDIR += scterc
@@ -1044,6 +1045,7 @@
     SUBDIR += slst
     SUBDIR += slurm-wlm
     SUBDIR += smartmontools
+    SUBDIR += smenu
     SUBDIR += smp_utils
     SUBDIR += snap
     SUBDIR += snowlog

@@ -2,7 +2,7 @@
 
 PORTNAME=	powerdns
 PORTVERSION=	4.0.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	dns ipv6
 MASTER_SITES=	http://downloads.powerdns.com/releases/
 DISTNAME=	pdns-${PORTVERSION}
@@ -14,7 +14,6 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libboost_serialization.so:devel/boost-libs
 
-BROKEN_FreeBSD_9=	Does not link
 BROKEN_powerpc64=	Does not build
 BROKEN_sparc64=		Does not compile: error: to_string is not a member of std
 

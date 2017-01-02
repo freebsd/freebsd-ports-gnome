@@ -22,15 +22,15 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	happyfish100
 GH_TAGNAME=	87659981148a362812912b6d4752d281ac05f0b6
 
-MAKE_ENV += 	DESTDIR=${STAGEDIR}
+MAKE_ENV+= 	DESTDIR=${STAGEDIR}
 
 do-build:
 	cd ${BUILD_WRKSRC} && ${SETENV} ${MAKE_ENV} ${SH} make.sh
 
 do-install:
 	cd ${BUILD_WRKSRC} && ${SETENV} ${MAKE_ENV} ${SH} make.sh install
-	@${INSTALL} -d ${STAGEDIR}/var/db/fastdfs
-	@${INSTALL} -d ${STAGEDIR}/var/db/fastdfs/tracker
-	@${INSTALL} -d ${STAGEDIR}/var/db/fastdfs/storage
+	@${MKDIR} ${STAGEDIR}/var/db/fastdfs
+	@${MKDIR} ${STAGEDIR}/var/db/fastdfs/tracker
+	@${MKDIR} ${STAGEDIR}/var/db/fastdfs/storage
 
 .include <bsd.port.mk>

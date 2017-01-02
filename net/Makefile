@@ -52,6 +52,7 @@
     SUBDIR += bird-devel
     SUBDIR += bird6
     SUBDIR += bittwist
+    SUBDIR += bluemix-cli
     SUBDIR += bmon
     SUBDIR += bnxt-kmod
     SUBDIR += boclient
@@ -145,12 +146,14 @@
     SUBDIR += freeradius2
     SUBDIR += freeradius3
     SUBDIR += freerdp
+    SUBDIR += freerdp1
     SUBDIR += freeswitch
     SUBDIR += freevrrpd
     SUBDIR += fspclient
     SUBDIR += fspd
     SUBDIR += fsplib
     SUBDIR += g2ipmsg
+    SUBDIR += gdrive
     SUBDIR += geoclue
     SUBDIR += geocode-glib
     SUBDIR += geoipupdate
@@ -247,7 +250,6 @@
     SUBDIR += iaxmodem
     SUBDIR += icmpinfo
     SUBDIR += icpld
-    SUBDIR += iet
     SUBDIR += ifdepd
     SUBDIR += iffinder
     SUBDIR += ifstat
@@ -383,8 +385,6 @@
     SUBDIR += linux-c7-avahi-libs
     SUBDIR += linux-c7-openldap
     SUBDIR += linux-c7-tcp_wrappers-libs
-    SUBDIR += linux-f10-nss_ldap
-    SUBDIR += linux-f10-openldap
     SUBDIR += linuxigd
     SUBDIR += liveMedia
     SUBDIR += lla
@@ -959,7 +959,6 @@
     SUBDIR += py-amqplib
     SUBDIR += py-avahi
     SUBDIR += py-beanstalkc
-    SUBDIR += py-cinderclient
     SUBDIR += py-cjdns
     SUBDIR += py-cloudfiles
     SUBDIR += py-coherence
@@ -967,7 +966,6 @@
     SUBDIR += py-dugong
     SUBDIR += py-ec2-cli-tools
     SUBDIR += py-eventlet
-    SUBDIR += py-glanceclient
     SUBDIR += py-gntp
     SUBDIR += py-gspread
     SUBDIR += py-gspreadsheet
@@ -976,7 +974,6 @@
     SUBDIR += py-ipaddress
     SUBDIR += py-iplib
     SUBDIR += py-kafka-python
-    SUBDIR += py-keystoneclient
     SUBDIR += py-kombu
     SUBDIR += py-ldap
     SUBDIR += py-ldap3
@@ -995,13 +992,10 @@
     SUBDIR += py-netifaces
     SUBDIR += py-netlib
     SUBDIR += py-netstring
-    SUBDIR += py-neutronclient
     SUBDIR += py-nnpy
-    SUBDIR += py-novaclient
     SUBDIR += py-ntplib
     SUBDIR += py-oauth
     SUBDIR += py-oauth2
-    SUBDIR += py-openstackclient
     SUBDIR += py-paho-mqtt
     SUBDIR += py-pamqp
     SUBDIR += py-pcap
@@ -1016,11 +1010,22 @@
     SUBDIR += py-pypcap
     SUBDIR += py-pysendfile
     SUBDIR += py-pyshark
+    SUBDIR += py-pysimplesoap
     SUBDIR += py-pysmb
     SUBDIR += py-pysocks
     SUBDIR += py-pystun
+    SUBDIR += py-python-barbicanclient
     SUBDIR += py-python-bitcoinrpc
+    SUBDIR += py-python-ceilometerclient
+    SUBDIR += py-python-cinderclient
+    SUBDIR += py-python-designateclient
+    SUBDIR += py-python-glanceclient
+    SUBDIR += py-python-heatclient
+    SUBDIR += py-python-keystoneclient
+    SUBDIR += py-python-neutronclient
+    SUBDIR += py-python-novaclient
     SUBDIR += py-python-ntlm
+    SUBDIR += py-python-openstackclient
     SUBDIR += py-pyvmomi
     SUBDIR += py-pyzmq
     SUBDIR += py-qt4-network
@@ -1034,7 +1039,6 @@
     SUBDIR += py-ripe.atlas.tools
     SUBDIR += py-s3cmd
     SUBDIR += py-s3transfer
-    SUBDIR += py-simplesoap
     SUBDIR += py-smbpasswd
     SUBDIR += py-soappy
     SUBDIR += py-socketio-client
@@ -1092,6 +1096,7 @@
     SUBDIR += remmina
     SUBDIR += remmina-plugin-gnome
     SUBDIR += remmina-plugin-nx
+    SUBDIR += remmina-plugin-rdp
     SUBDIR += remmina-plugin-telepathy
     SUBDIR += remmina-plugin-vnc
     SUBDIR += remmina-plugin-xdmcp
@@ -1189,6 +1194,7 @@
     SUBDIR += rubygem-opennebula
     SUBDIR += rubygem-packetfu
     SUBDIR += rubygem-pcaprub
+    SUBDIR += rubygem-qiniu
     SUBDIR += rubygem-rabbiter
     SUBDIR += rubygem-rbvmomi
     SUBDIR += rubygem-right_aws

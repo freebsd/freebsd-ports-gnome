@@ -30,13 +30,21 @@ TEST_ENV=	${MAKE_ENV} TEST_JOBS=${MAKE_JOBS_NUMBER} \
 USE_GITHUB=	yes
 GH_ACCOUNT=	Perl
 GH_PROJECT=	perl5
-GH_TAGNAME=	v5.25.7-52-ga14be3e
+GH_TAGNAME=	v5.25.8-128-g74ef8fd
 
 MAKE_JOBS_UNSAFE=	yes
 
 OPTIONS_DEFINE=	DEBUG GDBM PERL_64BITINT MULTIPLICITY SITECUSTOMIZE \
-		THREADS PERL_MALLOC
-OPTIONS_DEFAULT=	PERL_64BITINT THREADS MULTIPLICITY
+		THREADS PERL_MALLOC DTRACE
+OPTIONS_DEFAULT=	PERL_64BITINT THREADS MULTIPLICITY DTRACE
+
+.if !exists(/usr/sbin/dtrace)
+OPTIONS_EXCLUDE+=	DTRACE
+.endif
+.for a in aarch64 arm armeb armv6 mips mips64 mips64el mipsel mipsn32 powerpc \
+	powerpc64 sparc64
+OPTIONS_EXCLUDE_${a}=	DTRACE
+.endfor
 
 EXCLUSIVE_DESC=	Exclusive OPTIONS
 GDBM_DESC=	GDBM_File extension
@@ -49,6 +57,8 @@ SITECUSTOMIZE_DESC=	Run-time customization of @INC
 OPTIONS_SUB=		yes
 DEBUG_CONFIGURE_ON=	-Doptimize="-g" -DDEBUGGING
 DEBUG_CONFIGURE_OFF=	-Doptimize="${CFLAGS}"
+DTRACE_CONFIGURE_ON=	-Dusedtrace
+DTRACE_CONFIGURE_OFF=	-Uusedtrace
 GDBM_CONFIGURE_ON=	-Di_gdbm
 GDBM_CONFIGURE_OFF=	-Ui_gdbm
 GDBM_LIB_DEPENDS=	libgdbm.so:databases/gdbm
@@ -273,18 +283,21 @@ post-patch:
 		${WRKSRC}/installperl
 .endif
 
-post-build:
+post-install:
 	@${REINPLACE_CMD} -e '/^lddlflags/s|-L${WRKSRC} ||' \
-		${WRKSRC}/lib/Config_heavy.pl
+		${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config_heavy.pl
+	@${TOUCH} -r ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config_heavy.pl.bak ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config_heavy.pl
+	@${RM} ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config_heavy.pl.bak
 .if ${CC} == /nxb-bin/usr/bin/cc
 	@${REINPLACE_CMD} -e 's=/nxb-bin==' \
-		${WRKSRC}/lib/Config.pm ${WRKSRC}/lib/Config_heavy.pl
+		${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config.pm ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config_heavy.pl
 # Restore Config.pm's timestamp so that Perl's build system does not think it
 # needs to rebuild everything.
-	@${TOUCH} -r ${WRKSRC}/lib/Config.pm.bak ${WRKSRC}/lib/Config.pm
+	@${TOUCH} -r ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config.pm.bak ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config.pm
+	@${TOUCH} -r ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config_heavy.pl.bak ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config_heavy.pl
+	@${RM} ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config.pm.bak ${STAGEDIR}${PREFIX}/${_ARCH_LIB}/Config_heavy.pl.bak
 .endif
 
-post-install:
 	${MKDIR} ${STAGEDIR}${SITE_MAN1} ${STAGEDIR}${SITE_MAN3}
 	${MKDIR} ${STAGEDIR}${SITE_ARCH}/auto
 	${MKDIR} ${STAGEDIR}${SITE_PERL}/auto

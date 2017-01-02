@@ -26,6 +26,7 @@
     SUBDIR += R-cran-VGAM
     SUBDIR += R-cran-Zelig
     SUBDIR += R-cran-assertthat
+    SUBDIR += R-cran-backports
     SUBDIR += R-cran-bdsmatrix
     SUBDIR += R-cran-car
     SUBDIR += R-cran-coda
@@ -434,6 +435,7 @@
     SUBDIR += p5-Math-BigInt
     SUBDIR += p5-Math-BigInt-FastCalc
     SUBDIR += p5-Math-BigInt-GMP
+    SUBDIR += p5-Math-BigInt-Lite
     SUBDIR += p5-Math-BigInt-Pari
     SUBDIR += p5-Math-BigRat
     SUBDIR += p5-Math-CDF
@@ -629,6 +631,7 @@
     SUBDIR += py-theano
     SUBDIR += py-ufl
     SUBDIR += py-viper
+    SUBDIR += py-yt
     SUBDIR += qalculate
     SUBDIR += qd
     SUBDIR += qhull
@@ -649,6 +652,7 @@
     SUBDIR += rpy
     SUBDIR += rpy2
     SUBDIR += ruby-algebra
+    SUBDIR += rubygem-algebra
     SUBDIR += rubygem-expression_parser
     SUBDIR += rubygem-fftw3
     SUBDIR += rubygem-narray

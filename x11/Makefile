@@ -171,9 +171,9 @@
     SUBDIR += libexo
     SUBDIR += libfakekey
     SUBDIR += libfm
-    SUBDIR += libfmqt-l10n
     SUBDIR += libfm-extra
     SUBDIR += libfm-qt
+    SUBDIR += libfmqt-l10n
     SUBDIR += libgnome
     SUBDIR += libgnome-reference
     SUBDIR += libgnomekbd
@@ -192,11 +192,12 @@
     SUBDIR += libxkbui
     SUBDIR += libxklavier
     SUBDIR += libxshmfence
+    SUBDIR += lightdm
+    SUBDIR += lightdm-gtk-greeter
     SUBDIR += linux-c6-pixman
     SUBDIR += linux-c6-xorg-libs
     SUBDIR += linux-c7-pixman
     SUBDIR += linux-c7-xorg-libs
-    SUBDIR += linux-f10-xorg-libs
     SUBDIR += listres
     SUBDIR += lsw
     SUBDIR += luit
@@ -206,6 +207,7 @@
     SUBDIR += lxde-meta
     SUBDIR += lxmenu-data
     SUBDIR += lxpanel
+    SUBDIR += lxqt-l10n
     SUBDIR += lxrandr
     SUBDIR += mate
     SUBDIR += mate-applets
@@ -258,6 +260,7 @@
     SUBDIR += qt5-qev
     SUBDIR += qt5-x11extras
     SUBDIR += qterminal
+    SUBDIR += qterminal-l10n
     SUBDIR += qxkb
     SUBDIR += randrproto
     SUBDIR += recordproto

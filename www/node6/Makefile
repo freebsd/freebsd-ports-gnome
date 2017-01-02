@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	node
-PORTVERSION=	6.9.1
-PORTREVISION=	2
+PORTVERSION=	6.9.2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 MASTER_SITES=	http://nodejs.org/dist/v${PORTVERSION}/
@@ -22,9 +21,8 @@ OPTIONS_SUB=	yes
 OPTIONS_EXCLUDE+=	DTRACE
 .endif
 
-OPTIONS_EXCLUDE_FreeBSD_9+=	DTRACE
-OPTIONS_EXCLUDE_FreeBSD_10+=	DTRACE
-OPTIONS_EXCLUDE+=		${OPTIONS_EXCLUDE_${OPSYS}_${OSREL:R}}
+OPTIONS_EXCLUDE_FreeBSD_9=	DTRACE
+OPTIONS_EXCLUDE_FreeBSD_10=	DTRACE
 
 BUNDLED_SSL_DESC=		Use node.js's bundled OpenSSL implementation
 BUNDLED_SSL_USES_OFF=		ssl
@@ -39,7 +37,7 @@ USES=		compiler:c++11-lib execinfo gmake python:2,build pkgconfig \
 HAS_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 
-CONFLICTS_INSTALL=	node[457]-[0-9]* node01[02]-[0-9]* node-[0-9]* node-devel-[0-9]* iojs-[0-9]*
+CONFLICTS_INSTALL=	node[45]-[0-9]* node01[02]-[0-9]* node-[0-9]* node-devel-[0-9]* iojs-[0-9]*
 
 ONLY_FOR_ARCHS=	i386 amd64 armv6
 CONFIGURE_ARGS=	--prefix=${PREFIX_RELDEST} \

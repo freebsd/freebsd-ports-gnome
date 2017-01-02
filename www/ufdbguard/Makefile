@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ufdbGuard
-PORTVERSION=	1.32.3
+PORTVERSION=	1.32.4
 CATEGORIES=	www
 MASTER_SITES=	SF/ufdbguard/1.32
 
@@ -51,6 +51,8 @@ CONFIGURE_ARGS=	--with-ssl=${OPENSSLBASE} \
 		--with-ufdb-config=${ETCDIR} \
 		--with-ufdb-dbhome=${DBDIR} \
 		--with-ufdb-images_dir=${EXAMPLESDIR}/images
+
+MAKE_JOBS_UNSAFE=	yes
 
 OPTIONS_DEFINE=	UNIXSOCKETS
 OPTIONS_DEFAULT=	UNIXSOCKETS
