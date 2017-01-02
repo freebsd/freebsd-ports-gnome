@@ -45,6 +45,7 @@ include/gstreamer-%%VERSION%%/gst/gstcapsfeatures.h
 include/gstreamer-%%VERSION%%/gst/gstchildproxy.h
 include/gstreamer-%%VERSION%%/gst/gstclock.h
 include/gstreamer-%%VERSION%%/gst/gstcompat.h
+include/gstreamer-%%VERSION%%/gst/gstconfig.h
 include/gstreamer-%%VERSION%%/gst/gstcontext.h
 include/gstreamer-%%VERSION%%/gst/gstcontrolbinding.h
 include/gstreamer-%%VERSION%%/gst/gstcontrolsource.h
@@ -84,6 +85,8 @@ include/gstreamer-%%VERSION%%/gst/gstquery.h
 include/gstreamer-%%VERSION%%/gst/gstregistry.h
 include/gstreamer-%%VERSION%%/gst/gstsample.h
 include/gstreamer-%%VERSION%%/gst/gstsegment.h
+include/gstreamer-%%VERSION%%/gst/gststreamcollection.h
+include/gstreamer-%%VERSION%%/gst/gststreams.h
 include/gstreamer-%%VERSION%%/gst/gststructure.h
 include/gstreamer-%%VERSION%%/gst/gstsystemclock.h
 include/gstreamer-%%VERSION%%/gst/gsttaglist.h
@@ -115,7 +118,6 @@ lib/girepository-1.0/GstBase-%%VERSION%%.typelib
 %%LIBCHECK%%lib/girepository-1.0/GstCheck-%%VERSION%%.typelib
 lib/girepository-1.0/GstController-%%VERSION%%.typelib
 lib/girepository-1.0/GstNet-%%VERSION%%.typelib
-lib/gstreamer-%%VERSION%%/include/gst/gstconfig.h
 lib/gstreamer-%%VERSION%%/libgstcoreelements.so
 lib/gstreamer-%%VERSION%%/libgstcoretracers.so
 lib/libgstbase-%%VERSION%%.so
