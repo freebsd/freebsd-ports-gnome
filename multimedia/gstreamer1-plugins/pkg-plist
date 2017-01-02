@@ -14,6 +14,7 @@ include/gstreamer-%%VERSION%%/gst/audio/audio-enumtypes.h
 include/gstreamer-%%VERSION%%/gst/audio/audio-format.h
 include/gstreamer-%%VERSION%%/gst/audio/audio-info.h
 include/gstreamer-%%VERSION%%/gst/audio/audio-quantize.h
+include/gstreamer-%%VERSION%%/gst/audio/audio-resampler.h
 include/gstreamer-%%VERSION%%/gst/audio/audio.h
 include/gstreamer-%%VERSION%%/gst/audio/gstaudiobasesink.h
 include/gstreamer-%%VERSION%%/gst/audio/gstaudiobasesrc.h
@@ -86,6 +87,7 @@ include/gstreamer-%%VERSION%%/gst/video/gstvideofilter.h
 include/gstreamer-%%VERSION%%/gst/video/gstvideometa.h
 include/gstreamer-%%VERSION%%/gst/video/gstvideopool.h
 include/gstreamer-%%VERSION%%/gst/video/gstvideosink.h
+include/gstreamer-%%VERSION%%/gst/video/gstvideotimecode.h
 include/gstreamer-%%VERSION%%/gst/video/gstvideoutils.h
 include/gstreamer-%%VERSION%%/gst/video/navigation.h
 include/gstreamer-%%VERSION%%/gst/video/video-blend.h
@@ -104,6 +106,7 @@ include/gstreamer-%%VERSION%%/gst/video/video-resampler.h
 include/gstreamer-%%VERSION%%/gst/video/video-scaler.h
 include/gstreamer-%%VERSION%%/gst/video/video-tile.h
 include/gstreamer-%%VERSION%%/gst/video/video.h
+include/gstreamer-%%VERSION%%/gst/video/videodirection.h
 include/gstreamer-%%VERSION%%/gst/video/videoorientation.h
 include/gstreamer-%%VERSION%%/gst/video/videooverlay.h
 lib/girepository-1.0/GstAllocators-%%VERSION%%.typelib

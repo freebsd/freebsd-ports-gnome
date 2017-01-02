@@ -310,6 +310,7 @@
     SUBDIR += gstreamer1-plugins-gdkpixbuf
     SUBDIR += gstreamer1-plugins-gl
     SUBDIR += gstreamer1-plugins-jpeg
+    SUBDIR += gstreamer1-plugins-kms
     SUBDIR += gstreamer1-plugins-libcaca
     SUBDIR += gstreamer1-plugins-libvisual
     SUBDIR += gstreamer1-plugins-opencv

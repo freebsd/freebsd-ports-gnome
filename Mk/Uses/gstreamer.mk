@@ -6,13 +6,16 @@
 # Created by: Michael Johnson <ahze@FreeBSD.org>
 #
 # $FreeBSD$
-#    $MCom: ports/Mk/bsd.gstreamer.mk,v 1.56 2013/01/15 21:43:45 kwm Exp $
+#
+# MAINTAINER: multimedia@FreeBSD.org
 
-.if !defined(_POSTMKINCLUDED) && !defined(Gstreamer_Pre_Include)
+.if !defined(_INCLUDE_USES_GSTREAMER_MK)
+_INCLUDE_USES_GSTREAMER_MK=	yes
 
-Gstreamer_Include_MAINTAINER=	multimedia@FreeBSD.org
-Gstreamer_Pre_Include=		bsd.gstreamer.mk
+_USES_PORT+=	gstreamer
 
+.if !empty(gstreamer_ARGS)
+IGNORE=	USES=gstreamer takes no arguments
 .endif
 
 # Ports can use the following:
@@ -90,7 +93,7 @@ _GSTREAMER_PLUGINS+= \
 .if defined(USE_GSTREAMER1)
 _GSTREAMER_PLUGINS+= \
 		assrender bs2b chromaprint curl dtls dvdread editing-services \
-		gtksink hls kate libav libde265 modplug mpg123 openh264 openjpeg \
+		gtksink hls kate kms libav libde265 modplug mpg123 openh264 openjpeg \
 		png rsvg rtmp spandsp vpx webp x x265 ximagesrc zbar
 # vaapi?
 .endif
@@ -238,6 +241,8 @@ hermes_DEPENDS=	graphics/gstreamer-plugins-hermes
 
 jpeg_DEPENDS=	graphics/gstreamer-plugins-jpeg
 
+kms_DEPENDS=	graphics/gstreamer-plugins-kms
+
 libcaca_DEPENDS=	graphics/gstreamer-plugins-libcaca
 
 libmng_DEPENDS=	graphics/gstreamer-plugins-libmng
@@ -378,10 +383,11 @@ gtksink_DEPENDS=	x11-toolkits/gstreamer-plugins-gtksink
 
 pango_DEPENDS=	x11-toolkits/gstreamer-plugins-pango
 
+.endif
 #--------------------------------------------------------------------------#
 
-.if defined(_POSTMKINCLUDED) && !defined(Gstreamer_Post_Include)
-Gstreamer_Post_Include=	bsd.gstreamer.mk
+.if defined(_POSTMKINCLUDED) && !defined(_INCLUDE_USES_GSTREAMER_POST_MK)
+_INCLUDE_USES_GSTREAMER_POST_MK=	yes
 
 .if (defined (USE_GSTREAMER) && defined(USE_GSTREAMER1))
 IGNORE=	USE_GSTREAMER and USE_GSTREAMER1 can't be used together

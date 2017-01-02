@@ -1,5 +1,4 @@
 # $FreeBSD$
-
 BASE_GST_ALL_PLUGINS= \
 		alsa \
 		cdparanoia \
@@ -25,9 +24,10 @@ BAD_GST_ALL_PLUGINS+= \
 		flite \
 		gme \
 		gsm \
-		gtksink \
+		gtk3 \
 		hls \
 		kate \
+		kms \
 		libde265 \
 		libmms \
 		librfb \
@@ -282,7 +282,8 @@ gst_gme_LIB_DEPENDS=	libgme.so:audio/libgme
 gst_gsm_LIB_DEPENDS=	libgsm.so:audio/gsm
 
 # gtksink
-gst_gtksink_USE_GNOME=	gtk30
+gst_gtksink_USE_GNOME=	cairo gdkpixbuf2 gtk30
+gst_gtksink_CONFIGURE_ARGS=	--enable-gtk3
 gst_gtksink_GST_PLUGIN_DIR=ext/gtk
 
 # hls
@@ -296,6 +297,11 @@ gst_jpeg_USES=		jpeg
 
 # kate
 gst_kate_LIB_DEPENDS=	libkate.so:multimedia/libkate
+
+# kms
+gst_kms_LIB_DEPENDS=	libkms.so:graphics/libdrm
+gst_kms_GST_PLUGIN_DIR=	sys/kms
+gst_kms_PLIST_FILES=	${GST_LIB_DIR}/libgstkmssink.so
 
 # lame
 gst_lame_LIB_DEPENDS=	libmp3lame.so:audio/lame

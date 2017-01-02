@@ -1384,8 +1384,8 @@ USES+=mysql:${USE_MYSQL}
 .include "${PORTSDIR}/Mk/bsd.wx.mk"
 .endif
 
-.if defined(WANT_GSTREAMER) || defined(USE_GSTREAMER) || defined(USE_GSTREAMER1)
-.include "${PORTSDIR}/Mk/bsd.gstreamer.mk"
+.if defined(WANT_GSTREAMER) || defined(WITH_GSTREAMER) || defined(USE_GSTREAMER1)
+USES+=	gstreamer
 .endif
 
 .if defined(USE_SDL)
@@ -1820,10 +1820,6 @@ _FORCE_POST_PATTERNS=	rmdir kldxref mkfontscale mkfontdir fc-cache \
 
 .if defined(USE_XORG) || defined(XORG_CAT)
 .include "${PORTSDIR}/Mk/bsd.xorg.mk"
-.endif
-
-.if defined(WANT_GSTREAMER) || defined(USE_GSTREAMER) || defined(USE_GSTREAMER1)
-.include "${PORTSDIR}/Mk/bsd.gstreamer.mk"
 .endif
 
 .if defined(USE_JAVA)

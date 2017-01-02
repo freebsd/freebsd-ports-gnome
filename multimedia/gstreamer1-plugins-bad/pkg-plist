@@ -5,6 +5,7 @@ include/gstreamer-%%VERSION%%/gst/basecamerabinsrc/gstcamerabin-enum.h
 include/gstreamer-%%VERSION%%/gst/basecamerabinsrc/gstcamerabinpreview.h
 include/gstreamer-%%VERSION%%/gst/codecparsers/gsth264parser.h
 include/gstreamer-%%VERSION%%/gst/codecparsers/gsth265parser.h
+include/gstreamer-%%VERSION%%/gst/codecparsers/gstjpeg2000sampling.h
 include/gstreamer-%%VERSION%%/gst/codecparsers/gstjpegparser.h
 include/gstreamer-%%VERSION%%/gst/codecparsers/gstmpeg4parser.h
 include/gstreamer-%%VERSION%%/gst/codecparsers/gstmpegvideometa.h
@@ -93,6 +94,7 @@ lib/gstreamer-%%VERSION%%/libgstsmooth.so
 lib/gstreamer-%%VERSION%%/libgstspeed.so
 lib/gstreamer-%%VERSION%%/libgststereo.so
 lib/gstreamer-%%VERSION%%/libgstsubenc.so
+lib/gstreamer-%%VERSION%%/libgsttimecode.so
 lib/gstreamer-%%VERSION%%/libgstvideofiltersbad.so
 lib/gstreamer-%%VERSION%%/libgstvideoframe_audiolevel.so
 lib/gstreamer-%%VERSION%%/libgstvideoparsersbad.so
