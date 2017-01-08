@@ -3,16 +3,18 @@
 
 PORTNAME=	gstreamer1-plugins-all
 PORTVERSION=	${GST1_VERSION}
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	multimedia
 
 MAINTAINER=	multimedia@FreeBSD.org
 COMMENT=	Meta-port of all GStreamer 1.x plugins with options
 
-USES=		metaport
+USES=		gstreamer metaport
 USE_GSTREAMER1=	yes
 
-.include "${.CURDIR}/../../Mk/bsd.gstreamer.mk"
+BROKEN=	needs fixing
+
+#.include "${.CURDIR}/../../Mk/Uses/gstreamer.mk"
 
 ALL_PLUGINS:=	${_GSTREAMER_PLUGINS}
 # Weed out gst-plugins that can not be packaged. or are broken.
