@@ -2,7 +2,7 @@
 
 PORTNAME=	0ad
 PORTVERSION=	0.0.21
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	games
 MASTER_SITES=	http://releases.wildfiregames.com/ \
 		SF/zero-ad/releases
@@ -44,10 +44,6 @@ MAKE_ENV+=	JOBS=${_MAKE_JOBS}
 PORTDATA=	*
 
 .include <bsd.port.pre.mk>
-
-.if ${OSVERSION} < 1000024
-BROKEN=		segfaults during build
-.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|' \

@@ -3,7 +3,7 @@
 
 PORTNAME=	cyphesis
 PORTVERSION=	0.6.2
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	net
 MASTER_SITES=	SF/worldforge/${PORTNAME}%20%28server%29/${PORTVERSION}
 
@@ -11,6 +11,10 @@ MAINTAINER=	oliver@FreeBSD.org
 COMMENT=	Server for WorldForge games
 
 LICENSE=	GPLv2
+
+BROKEN=		Does not compile on FreeBSD 10+
+DEPRECATED=	${BROKEN}
+EXPIRATION_DATE=	2017-01-15
 
 LIB_DEPENDS=	libAtlas-0.6.so:devel/atlas-devel \
 		libvarconf-1.0.so:devel/varconf \
@@ -32,10 +36,6 @@ CFLAGS+=	-I${LOCALBASE}/include
 OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000000
-BROKEN=		Does not compile on FreeBSD 10+
-.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's| install-dist_docDATA | |g' ${WRKSRC}/Makefile.in

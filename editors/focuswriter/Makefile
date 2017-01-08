@@ -4,6 +4,7 @@
 PORTNAME=	focuswriter
 PORTVERSION=	1.6.3
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	editors
 
 MAINTAINER=	lightside@gmx.com
@@ -14,7 +15,7 @@ LICENSE_COMB=	multi
 LICENSE_FILE_GPLv3=	${WRKSRC}/COPYING
 LICENSE_FILE_LGPL3=	${WRKSRC}/resources/images/icons/oxygen/COPYING
 
-LIB_DEPENDS=	libhunspell-1.5.so:textproc/hunspell
+LIB_DEPENDS=	libhunspell-1.6.so:textproc/hunspell
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	gottcode
@@ -25,8 +26,6 @@ USE_QT5=	concurrent core gui multimedia network printsupport widgets \
 		buildtools_build linguisttools_build
 INSTALLS_ICONS=	yes
 
-LIBS+=		-lz
-
 PORTDATA=	*
 PORTDOCS=	CREDITS NEWS README
 
@@ -35,8 +34,7 @@ OPTIONS_DEFINE=	DOCS
 .include <bsd.port.pre.mk>
 
 post-patch:
-	@${REINPLACE_CMD} -e '/PKGCONFIG/s/ zlib// ; \
-		/INSTALLS/s/man //' \
+	@${REINPLACE_CMD} -e '/INSTALLS/s/man //' \
 		${WRKSRC}/focuswriter.pro
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000054
 	@${REINPLACE_CMD} -e 's/std::lround/lround/g' \

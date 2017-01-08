@@ -55,6 +55,7 @@
     SUBDIR += dhcdrop
     SUBDIR += dhcp_probe
     SUBDIR += disco
+    SUBDIR += dnsmap
     SUBDIR += docsis
     SUBDIR += driftnet
     SUBDIR += ehnt
@@ -299,6 +300,9 @@
     SUBDIR += routers2-extras
     SUBDIR += rrdbot
     SUBDIR += rubygem-blimpy
+    SUBDIR += rubygem-oxidized
+    SUBDIR += rubygem-oxidized-script
+    SUBDIR += rubygem-oxidized-web
     SUBDIR += rubygem-snmp
     SUBDIR += rubygem-visage-app
     SUBDIR += sblim-wbemcli
