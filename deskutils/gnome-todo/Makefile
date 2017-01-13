@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-todo
-PORTVERSION=	3.22.0
+PORTVERSION=	3.22.1
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
