@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-desktop
-PORTVERSION=	3.22.1
+PORTVERSION=	3.22.2
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -29,7 +29,7 @@ RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		libxkbfile>=0:x11/libxkbfile
 
 USES+=		bison gettext gmake gnome libtool localbase pathfix \
-		pkgconfig python:3
+		pkgconfig python:3.3+
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intlhack introspection:build \
 		referencehack
 USE_XORG=	x11 xrandr xext
