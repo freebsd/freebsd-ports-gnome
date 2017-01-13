@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-builder
-PORTVERSION=	3.22.1
+PORTVERSION=	3.22.4
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -27,7 +27,8 @@ LIB_DEPENDS=	libgit2-glib-1.0.so:devel/libgit2-glib \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libsoup-2.4.so:devel/libsoup \
 		libfreetype.so:print/freetype2 \
-		libfontconfig.so:x11-fonts/fontconfig
+		libfontconfig.so:x11-fonts/fontconfig \
+		libjson-glib-1.0.so:devel/json-glib
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py${PYTHON_SUFFIX}-sqlite3
 
 PORTSCOUT=	limitw:1,even
