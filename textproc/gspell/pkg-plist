@@ -29,6 +29,7 @@ share/gir-1.0/Gspell-1.gir
 %%NLS%%share/locale/fur/LC_MESSAGES/gspell-1.mo
 %%NLS%%share/locale/gl/LC_MESSAGES/gspell-1.mo
 %%NLS%%share/locale/he/LC_MESSAGES/gspell-1.mo
+%%NLS%%share/locale/hr/LC_MESSAGES/gspell-1.mo
 %%NLS%%share/locale/hu/LC_MESSAGES/gspell-1.mo
 %%NLS%%share/locale/id/LC_MESSAGES/gspell-1.mo
 %%NLS%%share/locale/it/LC_MESSAGES/gspell-1.mo
