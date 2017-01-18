@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	atspi
-PORTVERSION=	2.20.2
+PORTVERSION=	2.20.3
 CATEGORIES=	accessibility x11-toolkits python
 MASTER_SITES=	GNOME/sources/pyatspi/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -11,6 +11,9 @@ DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Python3 API for the D-BUS based SPI framework
+
+LICENSE=	LGPL21
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 RUN_DEPENDS=	${LOCALBASE}/libexec/at-spi2-registryd:accessibility/at-spi2-core
 

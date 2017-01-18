@@ -22,8 +22,8 @@
 %%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/document.cpython-%%PYVER%%.%%PYOEXTENSION%%
 %%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/editabletext.cpython-%%PYVER%%.pyc
 %%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/editabletext.cpython-%%PYVER%%.%%PYOEXTENSION%%
-%%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/enum.cpython-%%PYVER%%.pyc
-%%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/enum.cpython-%%PYVER%%.%%PYOEXTENSION%%
+%%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/atspienum.cpython-%%PYVER%%.pyc
+%%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/atspienum.cpython-%%PYVER%%.%%PYOEXTENSION%%
 %%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/hypertext.cpython-%%PYVER%%.pyc
 %%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/hypertext.cpython-%%PYVER%%.%%PYOEXTENSION%%
 %%PYTHON_SITELIBDIR%%/pyatspi/__pycache__/image.cpython-%%PYVER%%.pyc
@@ -57,7 +57,7 @@
 %%PYTHON_SITELIBDIR%%/pyatspi/deviceevent.py
 %%PYTHON_SITELIBDIR%%/pyatspi/document.py
 %%PYTHON_SITELIBDIR%%/pyatspi/editabletext.py
-%%PYTHON_SITELIBDIR%%/pyatspi/enum.py
+%%PYTHON_SITELIBDIR%%/pyatspi/atspienum.py
 %%PYTHON_SITELIBDIR%%/pyatspi/hypertext.py
 %%PYTHON_SITELIBDIR%%/pyatspi/image.py
 %%PYTHON_SITELIBDIR%%/pyatspi/interface.py

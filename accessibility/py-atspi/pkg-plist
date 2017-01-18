@@ -31,9 +31,9 @@
 %%PYTHON_SITELIBDIR%%/pyatspi/editabletext.py
 %%PYTHON_SITELIBDIR%%/pyatspi/editabletext.pyc
 %%PYTHON_SITELIBDIR%%/pyatspi/editabletext.pyo
-%%PYTHON_SITELIBDIR%%/pyatspi/enum.py
-%%PYTHON_SITELIBDIR%%/pyatspi/enum.pyc
-%%PYTHON_SITELIBDIR%%/pyatspi/enum.pyo
+%%PYTHON_SITELIBDIR%%/pyatspi/atspienum.py
+%%PYTHON_SITELIBDIR%%/pyatspi/atspienum.pyc
+%%PYTHON_SITELIBDIR%%/pyatspi/atspienum.pyo
 %%PYTHON_SITELIBDIR%%/pyatspi/hypertext.py
 %%PYTHON_SITELIBDIR%%/pyatspi/hypertext.pyc
 %%PYTHON_SITELIBDIR%%/pyatspi/hypertext.pyo
