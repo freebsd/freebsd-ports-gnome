@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-music
-PORTVERSION=	3.18.2
-PORTREVISION=	1
+PORTVERSION=	3.22.2
 CATEGORIES=	audio gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -19,7 +18,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake gnome libtool pathfix pkgconfig python:3 tar:xz
 USE_LDCONFIG=	yes
-USE_GNOME=	gnomedesktop3 gtk30 intltool introspection:build
+USE_GNOME=	cairo gnomedesktop3 gtk30 intltool introspection:build
 GNU_CONFIGURE=	yes
 USE_GSTREAMER1=	ogg mad
 INSTALLS_ICONS=	yes
