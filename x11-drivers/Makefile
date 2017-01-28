@@ -3,7 +3,6 @@
 
     COMMENT = X11 drivers
 
-    SUBDIR += drm-kmod
     SUBDIR += xf86-input-acecad
     SUBDIR += xf86-input-egalax
     SUBDIR += xf86-input-elographics
@@ -25,7 +24,6 @@
     SUBDIR += xf86-video-chips
     SUBDIR += xf86-video-cirrus
     SUBDIR += xf86-video-dummy
-    SUBDIR += xf86-video-fbdev
     SUBDIR += xf86-video-glint
     SUBDIR += xf86-video-i128
     SUBDIR += xf86-video-i740

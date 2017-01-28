@@ -2,7 +2,7 @@
 
 PORTNAME=	libreoffice
 PORTVERSION=	4.3.7
-PORTREVISION=	11
+PORTREVISION=	14
 CATEGORIES=	editors
 MASTER_SITES=	http://download.documentfoundation.org/libreoffice/src/${PORTVERSION}/ \
 		http://dev-www.libreoffice.org/extern/:ext \
@@ -55,7 +55,7 @@ LIB_DEPENDS=	libapr-1.so:devel/apr1 \
 		libnss3.so:security/nss \
 		libclucene-core.so:textproc/clucene \
 		libexpat.so:textproc/expat2 \
-		libhunspell-1.5.so:textproc/hunspell \
+		libhunspell-1.6.so:textproc/hunspell \
 		libhyphen.so:textproc/hyphen \
 		libabw-0.1.so:textproc/libabw \
 		libe-book-0.1.so:textproc/libe-book \
@@ -337,11 +337,6 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-libc++.i386:-p0
 EXTRA_PATCHES+=	${FILESDIR}/extra-configure.ac
 .endif
 
-.if ${OSVERSION} < 1000033
-BUILD_DEPENDS+=	${LOCALBASE}/bin/flex:textproc/flex
-CONFIGURE_ENV+=	FLEX=${LOCALBASE}/bin/flex
-.endif
-
 ACLOCAL_ARGS=	-I "${WRKSRC}/m4"
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -349,7 +344,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 MAKE_ENV+=	ENVCFLAGS="${CFLAGS}" ENVCFLAGSCXX="${CXXFLAGS}"
 MAKE_ENV+=	ENVLINKFLAGS="${LDFLAGS}"
 MAKE_ENV+=	GNUSED=${LOCALBASE}/bin/gsed
-MAKE_ENV+=	LANG=C LC_ALL=C
 
 pre-configure:
 	@${TOUCH} ${WRKSRC}/autogen.lastrun

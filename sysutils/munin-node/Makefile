@@ -13,12 +13,12 @@ COMMENT=	Node-specific part of Munin
 
 BUILD_DEPENDS=	p5-Module-Build>=0:devel/p5-Module-Build \
 		p5-DateTime-HiRes>=0:devel/p5-DateTime-HiRes \
-		munin-common>=0:sysutils/munin-common \
+		munin-common>=${MUNIN_VERSION}:sysutils/munin-common \
 		p5-Net-Server>=0:net/p5-Net-Server \
 		bash:shells/bash
 RUN_DEPENDS=	p5-Cache-Cache>=0:devel/p5-Cache-Cache \
 		p5-DateTime-HiRes>=0:devel/p5-DateTime-HiRes \
-		munin-common>=0:sysutils/munin-common \
+		munin-common>=${MUNIN_VERSION}:sysutils/munin-common \
 		p5-Net-Server>=0:net/p5-Net-Server \
 		p5-Net-CIDR>=0:net-mgmt/p5-Net-CIDR \
 		p5-libwww>=0:www/p5-libwww \
@@ -77,7 +77,7 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/build/node/munin-node.conf \
 		${STAGEDIR}${ETCDIR}/munin-node.conf.sample
 	${INSTALL_DATA} ${WRKDIR}/plugins.conf \
-		${STAGEDIR}${ETCDIR}/plugin-conf.d/plugins.conf.sample
+		${STAGEDIR}${ETCDIR}/plugins.conf.sample
 	(cd ${WRKSRC}/node/blib/bindoc; \
 		${INSTALL_MAN} munin-node-configure.1 munin-node.1 munin-run.1 munin-sched.1 munindoc.1 ${STAGEDIR}${MAN1PREFIX}/man/man1; \
 	)

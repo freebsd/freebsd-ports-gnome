@@ -3,6 +3,7 @@
 
 PORTNAME=	curl
 PORTVERSION=	7.52.1
+PORTREVISION=	1
 CATEGORIES=	ftp net www
 MASTER_SITES=	http://curl.haxx.se/download/ \
 		LOCAL/sunpoet
@@ -48,7 +49,6 @@ CONFIGURE_ENV=	LOCALBASE=${LOCALBASE} \
 		ac_cv_func_SSLv2_client_method=no
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-TEST_ENV=	${MAKE_ENV} LC_ALL=C
 TEST_TARGET=	test
 USE_LDCONFIG=	yes
 USE_PERL5=	build

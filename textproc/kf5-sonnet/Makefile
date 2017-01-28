@@ -9,7 +9,7 @@ MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KF5 plugin-based spell checking library
 
 LIB_DEPENDS=	libaspell.so:textproc/aspell \
-		libhunspell-1.5.so:textproc/hunspell
+		libhunspell-1.6.so:textproc/hunspell
 
 USES=		cmake:outsource compiler:c++11-lib kde:5 tar:xz
 USE_KDE=	ecm

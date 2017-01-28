@@ -132,6 +132,7 @@
     SUBDIR += kf5-kglobalaccel
     SUBDIR += kf5-kinit
     SUBDIR += kf5-krunner
+    SUBDIR += kf5-kwayland
     SUBDIR += kf5-kwindowsystem
     SUBDIR += kf5-plasma-framework
     SUBDIR += kgamma
@@ -205,6 +206,7 @@
     SUBDIR += lumina-i18n
     SUBDIR += lupe
     SUBDIR += lxde-meta
+    SUBDIR += lxhotkey
     SUBDIR += lxmenu-data
     SUBDIR += lxpanel
     SUBDIR += lxqt-l10n
@@ -274,7 +276,6 @@
     SUBDIR += roxterm
     SUBDIR += rsibreak-kde4
     SUBDIR += rstart
-    SUBDIR += ruby-X11
     SUBDIR += rubygem-gnome2
     SUBDIR += rxvt
     SUBDIR += rxvt-unicode

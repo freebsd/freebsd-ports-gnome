@@ -73,6 +73,7 @@
     SUBDIR += libzip
     SUBDIR += lrzip
     SUBDIR += lua-lzlib
+    SUBDIR += lua51-zlib
     SUBDIR += lzfse
     SUBDIR += lzip
     SUBDIR += lzlib
@@ -151,6 +152,10 @@
     SUBDIR += php70-phar
     SUBDIR += php70-zip
     SUBDIR += php70-zlib
+    SUBDIR += php71-bz2
+    SUBDIR += php71-phar
+    SUBDIR += php71-zip
+    SUBDIR += php71-zlib
     SUBDIR += pigz
     SUBDIR += pixz
     SUBDIR += plzip
@@ -159,6 +164,7 @@
     SUBDIR += ppunpack
     SUBDIR += pxz
     SUBDIR += py-attic
+    SUBDIR += py-backports.lzma
     SUBDIR += py-borgbackup
     SUBDIR += py-brotli
     SUBDIR += py-bz2file
@@ -181,7 +187,6 @@
     SUBDIR += rox-archive
     SUBDIR += rpm2cpio
     SUBDIR += rpm4
-    SUBDIR += ruby-lha
     SUBDIR += rubygem-archive-tar-minitar
     SUBDIR += rubygem-archive-zip
     SUBDIR += rubygem-bzip2-ruby
@@ -203,7 +208,6 @@
     SUBDIR += stuffit
     SUBDIR += szip
     SUBDIR += tardy
-    SUBDIR += tclmkziplib
     SUBDIR += thunar-archive-plugin
     SUBDIR += torrentzip
     SUBDIR += ucl

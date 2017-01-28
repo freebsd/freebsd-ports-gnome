@@ -72,7 +72,7 @@ zabbix:*:122:122::0:0:Zabbix NMS:/nonexistent:/bin/sh
 _ntp:*:123:123::0:0:NTP Daemon:/var/empty:/usr/sbin/nologin
 fetchmail:*:124:124::0:0:Fetchmail mail-retrieval daemon:/nonexistent:/usr/sbin/nologin
 postfix:*:125:125::0:0:Postfix Mail System:/var/spool/postfix:/usr/sbin/nologin
-# free: 126
+synapse:*:126:65534::0:0:Synapse Daemon:/nonexistent:/usr/sbin/nologin
 navcron:*:127:127::0:0:Network Administration Visualized:/usr/local/nav:/usr/sbin/nologin
 sd-agent:*:128:128::0:0:ServerDensity Agent:/nonexistent:/usr/sbin/nologin
 # free: 129
@@ -149,7 +149,7 @@ mcserver:*:199:199::0:0:Minecraft Server:/nonexistent:/bin/sh
 sympa:*:200:200::0:0:Sympa Owner:/nonexistent:/usr/sbin/nologin
 privoxy:*:201:201::0:0:Privoxy proxy user:/nonexistent:/usr/sbin/nologin
 dspam:*:202:202::0:0:Dspam:/nonexistent:/usr/sbin/nologin
-# free: 203
+cinder:*:203:203::0:0:Cinder daemon pseudo-user:/var/lib/cinder:/usr/sbin/nologin
 yate:*:204:204::0:0:Yate:/nonexistent:/usr/sbin/nologin
 gnugk:*:205:205::0:0:GNU GateKeeper pseudo-user:/nonexistent:/usr/sbin/nologin
 gini:*:206:206::0:0:& streaming server:/var/log/gini:/usr/sbin/nologin
@@ -248,7 +248,7 @@ ntopng:*:288:288::0:0:ntopng daemon user:/nonexistent:/usr/sbin/nologin
 # free: 299
 backuppc:*:300:300::0:0:BackupPC pseudo-user:/nonexistent:/usr/sbin/nologin
 # free: 301
-# free: 302
+netdata:*:302:302::0:0:NetData Daemon:/var/cache/netdata:/usr/sbin/nologin
 # free: 303
 # free: 304
 # free: 305
@@ -366,7 +366,7 @@ uhub:*:411:411::0:0:uHub ADC Daemon:/nonexistent:/usr/sbin/nologin
 # free: 417
 # free: 418
 # free: 419
-# free: 420
+oxidized:*:420:420::0:0:Oxidized Owner:/var/db/oxidized:/usr/sbin/nologin
 # free: 421
 # free: 422
 # free: 423
@@ -842,7 +842,7 @@ graylog:*:848:848::0:0:Graylog user:/nonexistent:/usr/sbin/nologin
 # free: 893
 # free: 894
 # free: 895
-# free: 896
+istat:*:896:896::0:0:istatserver user:/nonexistent:/usr/sbin/nologin
 znc:*:897:897::0:0:ZNC User:/nonexistent:/usr/sbin/nologin
 ufdb:*:898:898::0:0:ufdb user:/nonexistent:/usr/sbin/nologin
 guacamole:*:899:899::0:0:Guacamole user:/nonexistent:/usr/sbin/nologin
@@ -896,7 +896,7 @@ mediatomb:*:946:946::0:0:Mediatomb UPnP AV MediaServer:/nonexistent:/usr/sbin/no
 mapred:*:947:955::0:0:Hadoop MapReduce user:/nonexistent:/usr/sbin/nologin
 dnrd:*:948:948::0:0:& user:/nonexistent:/usr/sbin/nologin
 _lldpd:*:949:949::0:0:lldpd user:/nonexistent:/usr/sbin/nologin
-# free: 950
+couchpotato:*:950:65534::0:0:couchpotato user:/nonexistent:/usr/sbin/nologin
 openerpd:*:951:951::0:0:Openerpd user:/nonexistent:/usr/sbin/nologin
 bitten-slave:*:952:952:daemon:0:0:Bitten slave user:/var/lib/bitten-slave:/usr/sbin/nologin
 _neubot:*:953:953::0:0:neubot daemon:/nonexistent:/usr/sbin/nologin

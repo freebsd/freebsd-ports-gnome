@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	unittest-cpp
-PORTVERSION=	1.6.1
+PORTVERSION=	2.0.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
-MASTER_SITES=	GH
 
 MAINTAINER=	iblis@hs.ntnu.edu.tw
 COMMENT=	Lightweight unit testing framework for C++

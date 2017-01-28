@@ -3,7 +3,7 @@
 
 PORTNAME=	redmine
 PORTVERSION=	3.2.3
-PORTREVISION=	2
+PORTREVISION=	5
 CATEGORIES=	www
 MASTER_SITES=	http://www.redmine.org/releases/
 
@@ -23,12 +23,13 @@ RUN_DEPENDS=	rubygem-bundler>=1.5.0:sysutils/rubygem-bundler \
 		rubygem-mimemagic>=0:misc/rubygem-mimemagic \
 		rubygem-protected_attributes>=0:devel/rubygem-protected_attributes \
 		rubygem-actionpack-action_caching>=0:devel/rubygem-actionpack-action_caching \
-		rubygem-actionpack-xml_parser>=0:textproc/rubygem-actionpack-xml_parser \
+		rubygem-actionpack-xml_parser1>=0:textproc/rubygem-actionpack-xml_parser1 \
 		rubygem-roadie-rails>=0:mail/rubygem-roadie-rails \
 		rubygem-rbpdf>=1.19.0:print/rubygem-rbpdf \
 		rubygem-rake>=0:devel/rubygem-rake \
 		rubygem-ruby-openid>=2.3.0:net/rubygem-ruby-openid \
-		rubygem-rack-openid>=0:www/rubygem-rack-openid
+		rubygem-rack-openid>=0:www/rubygem-rack-openid \
+		rubygem-net-ldap>=0.12.0:net/rubygem-net-ldap
 
 NO_ARCH=	yes
 NO_BUILD=	yes
@@ -54,12 +55,11 @@ PASSENGER_DESC=	Use Apache/Nginx WEB server
 MYSQL_DESC=	MySQL database support (via mysql2 rubygem)
 NO_OPTIONS_SORT=	yes
 
-MYSQL_RUN_DEPENDS=	rubygem-mysql2>=0.3.11:databases/rubygem-mysql2
+MYSQL_RUN_DEPENDS=	rubygem-mysql2>=0.4.5:databases/rubygem-mysql2
 PASSENGER_RUN_DEPENDS=	passenger-config:www/rubygem-passenger
 POSTGRESQL_RUN_DEPENDS=	rubygem-pg>=0.18.1:databases/rubygem-pg
 MARKDOWN_RUN_DEPENDS=	rubygem-redcarpet>=3.3.2:textproc/rubygem-redcarpet
 RMAGIC_RUN_DEPENDS=	rubygem-rmagick>=2.14.0:graphics/rubygem-rmagick
-LDAP_RUN_DEPENDS=	rubygem-net-ldap>=0.12.0:net/rubygem-net-ldap
 THIN_RUN_DEPENDS=	rubygem-thin>=1.6.2:www/rubygem-thin
 THIN_SUB_LIST=		WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 THIN_VARS=		USE_RC_SUBR=redmine

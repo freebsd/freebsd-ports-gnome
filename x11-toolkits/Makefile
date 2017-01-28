@@ -11,6 +11,7 @@
     SUBDIR += blt
     SUBDIR += bwidget
     SUBDIR += c++-gtk-utils
+    SUBDIR += diorite
     SUBDIR += flowcanvas
     SUBDIR += fltk
     SUBDIR += fltk-devel
@@ -249,6 +250,7 @@
     SUBDIR += rubygem-gtksourceview3
     SUBDIR += rubygem-pango
     SUBDIR += rubygem-poppler
+    SUBDIR += rubygem-uh
     SUBDIR += rubygem-vte
     SUBDIR += rubygem-vte3
     SUBDIR += scintilla

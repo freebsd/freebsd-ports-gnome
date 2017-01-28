@@ -40,6 +40,7 @@
     SUBDIR += clang36
     SUBDIR += clang37
     SUBDIR += clang38
+    SUBDIR += cling
     SUBDIR += clojure
     SUBDIR += clojure-mode.el
     SUBDIR += clover
@@ -251,6 +252,8 @@
     SUBDIR += php56-extensions
     SUBDIR += php70
     SUBDIR += php70-extensions
+    SUBDIR += php71
+    SUBDIR += php71-extensions
     SUBDIR += php_doc
     SUBDIR += picoc
     SUBDIR += pike78

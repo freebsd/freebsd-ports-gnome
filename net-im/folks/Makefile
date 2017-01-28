@@ -25,12 +25,11 @@ LIB_DEPENDS=	libgee-0.8.so:devel/libgee \
 		libdbus-1.so:devel/dbus
 
 USE_LDCONFIG=	yes
-USES=		gettext libtool gmake pathfix pkgconfig readline sqlite tar:xz
+USES=		gettext gmake libtool localbase pathfix pkgconfig \
+		readline sqlite tar:xz
 USE_GNOME=	evolutiondataserver3 intlhack introspection:build
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-bluez-backend
-CPPFLAGS+=	-I${LOCALBASE}/include -Wno-error=deprecated-declarations
-LIBS+=		-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.freedesktop.folks.gschema.xml

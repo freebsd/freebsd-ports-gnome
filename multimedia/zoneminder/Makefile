@@ -30,10 +30,8 @@ RUN_DEPENDS=	${ZM_DEPENDS} \
 		zip:archivers/zip
 
 USE_GITHUB=	yes
-GH_TUPLE=	zoneminder:zoneminder:${DISTVERSIONPREFIX}${PORTVERSION}${DISTVERSIONSUFFIX} \
-		FriendsOfCake:crud:c3976f1:crud
-
-WRKSRC=		${WRKDIR}/ZoneMinder-${DISTVERSION}${DISTVERSIONSUFFIX}
+GH_PROJECT=	ZoneMinder
+GH_TUPLE=	FriendsOfCake:crud:c3976f1:crud
 
 USES=		cmake jpeg mysql perl5 php shebangfix ssl
 USE_RC_SUBR=	zoneminder
@@ -80,17 +78,6 @@ CMAKE_ARGS+=	-DZM_PERL_MM_PARMS=INSTALLDIRS=site \
 		-DGNUTLS_LIBRARIES=0 \
 		-DCMAKE_REQUIRED_INCLUDES:STRING="${LOCALBASE}/include"
 
-.include <bsd.port.pre.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000 && ${ARCH} == i386
-CFLAGS+=	-msse
-.endif
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
-LIB_DEPENDS+=	libexecinfo.so:devel/libexecinfo
-LDFLAGS+=	-L${LOCALBASE}/lib
-.endif
-
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
 post-extract:
@@ -115,4 +102,4 @@ post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

@@ -55,6 +55,7 @@
     SUBDIR += dhcdrop
     SUBDIR += dhcp_probe
     SUBDIR += disco
+    SUBDIR += dnsmap
     SUBDIR += docsis
     SUBDIR += driftnet
     SUBDIR += ehnt
@@ -156,6 +157,7 @@
     SUBDIR += nedi
     SUBDIR += nefu
     SUBDIR += net-snmp
+    SUBDIR += netdata
     SUBDIR += netdisco
     SUBDIR += netdisco-mibs
     SUBDIR += netdot
@@ -262,6 +264,7 @@
     SUBDIR += pftabled
     SUBDIR += php56-snmp
     SUBDIR += php70-snmp
+    SUBDIR += php71-snmp
     SUBDIR += phpip
     SUBDIR += phpipam
     SUBDIR += phpweathermap
@@ -299,6 +302,9 @@
     SUBDIR += routers2-extras
     SUBDIR += rrdbot
     SUBDIR += rubygem-blimpy
+    SUBDIR += rubygem-oxidized
+    SUBDIR += rubygem-oxidized-script
+    SUBDIR += rubygem-oxidized-web
     SUBDIR += rubygem-snmp
     SUBDIR += rubygem-visage-app
     SUBDIR += sblim-wbemcli

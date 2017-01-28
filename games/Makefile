@@ -589,6 +589,7 @@
     SUBDIR += maitretarot
     SUBDIR += manaplus
     SUBDIR += mangband
+    SUBDIR += mari0
     SUBDIR += marsnomercy
     SUBDIR += masterserver
     SUBDIR += maxr
@@ -835,6 +836,7 @@
     SUBDIR += railroad-rampage
     SUBDIR += redeclipse
     SUBDIR += redeclipse-data
+    SUBDIR += redorblack
     SUBDIR += reminiscence
     SUBDIR += rescue
     SUBDIR += residualvm

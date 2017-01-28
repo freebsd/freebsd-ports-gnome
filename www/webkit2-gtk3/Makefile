@@ -85,11 +85,6 @@ CMAKE_ARGS+=	-DENABLE_JIT:BOOL=OFF
 CFLAGS+=	-mminimal-toc
 .endif
 
-.if ${OSVERSION} < 1000033
-BUILD_DEPENDS+=	flex>=0:textproc/flex
-CONFIGURE_ENV+=	FLEX_PATH="${LOCALBASE}/bin/flex"
-.endif
-
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%BROWSER_PLUGINS_DIR%%|${BROWSER_PLUGINS_DIR}|' \
 		${WRKSRC}/Source/WebKit2/Shared/Plugins/unix/PluginSearchPath.cpp

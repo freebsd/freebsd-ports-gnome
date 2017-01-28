@@ -308,7 +308,6 @@
     SUBDIR += httpasyncclient
     SUBDIR += httpclient
     SUBDIR += httpcore
-    SUBDIR += httpie
     SUBDIR += httpsqs
     SUBDIR += httptunnel
     SUBDIR += httrack
@@ -408,6 +407,7 @@
     SUBDIR += midori
     SUBDIR += mimetex
     SUBDIR += mini_httpd
+    SUBDIR += miniminiweb
     SUBDIR += minio
     SUBDIR += mitmproxy
     SUBDIR += mkapachepw
@@ -481,6 +481,7 @@
     SUBDIR += mod_perl2
     SUBDIR += mod_php56
     SUBDIR += mod_php70
+    SUBDIR += mod_php71
     SUBDIR += mod_proctitle
     SUBDIR += mod_proxy_html
     SUBDIR += mod_proxy_uwsgi
@@ -556,6 +557,22 @@
     SUBDIR += npm2
     SUBDIR += npm3
     SUBDIR += nspluginwrapper
+    SUBDIR += nuvolaplayer-8tracks
+    SUBDIR += nuvolaplayer-all-services
+    SUBDIR += nuvolaplayer-amazon-cloud-player
+    SUBDIR += nuvolaplayer-bandcamp
+    SUBDIR += nuvolaplayer-google-play-music
+    SUBDIR += nuvolaplayer-groove
+    SUBDIR += nuvolaplayer-jango
+    SUBDIR += nuvolaplayer-kexp
+    SUBDIR += nuvolaplayer-logitech-media-server
+    SUBDIR += nuvolaplayer-mixcloud
+    SUBDIR += nuvolaplayer-plex
+    SUBDIR += nuvolaplayer-soundcloud
+    SUBDIR += nuvolaplayer-spotify
+    SUBDIR += nuvolaplayer-tunein
+    SUBDIR += nuvolaplayer-yandex-music
+    SUBDIR += nuvolaplayer-youtube
     SUBDIR += obhttpd
     SUBDIR += ocaml-net
     SUBDIR += offline-npm
@@ -1449,6 +1466,9 @@
     SUBDIR += php70-opcache
     SUBDIR += php70-session
     SUBDIR += php70-tidy
+    SUBDIR += php71-opcache
+    SUBDIR += php71-session
+    SUBDIR += php71-tidy
     SUBDIR += phpbb
     SUBDIR += phpbb3
     SUBDIR += phpgroupware
@@ -1465,7 +1485,6 @@
     SUBDIR += piwik
     SUBDIR += planet
     SUBDIR += plexwatchweb
-    SUBDIR += pligg
     SUBDIR += plone
     SUBDIR += plugger
     SUBDIR += pmwiki
@@ -1657,6 +1676,7 @@
     SUBDIR += py-html
     SUBDIR += py-html5lib
     SUBDIR += py-http-parser
+    SUBDIR += py-httpie
     SUBDIR += py-httplib2
     SUBDIR += py-hyper
     SUBDIR += py-imdbpy
@@ -1668,6 +1688,7 @@
     SUBDIR += py-meld3
     SUBDIR += py-mt
     SUBDIR += py-nevow
+    SUBDIR += py-notebook
     SUBDIR += py-octoprint
     SUBDIR += py-pafy
     SUBDIR += py-paste
@@ -1886,11 +1907,10 @@
     SUBDIR += rt44
     SUBDIR += rtv
     SUBDIR += ruby-aws
-    SUBDIR += ruby-google
     SUBDIR += rubygem-ace-rails-ap
-    SUBDIR += rubygem-actionpack
+    SUBDIR += rubygem-actioncable5
     SUBDIR += rubygem-actionpack4
-    SUBDIR += rubygem-activeresource
+    SUBDIR += rubygem-actionpack5
     SUBDIR += rubygem-activeresource4
     SUBDIR += rubygem-acts-as-taggable-on
     SUBDIR += rubygem-acts-as-taggable-on3
@@ -1947,7 +1967,6 @@
     SUBDIR += rubygem-haml
     SUBDIR += rubygem-haml-coderay
     SUBDIR += rubygem-haml-contrib
-    SUBDIR += rubygem-haml-rails
     SUBDIR += rubygem-haml-rails-rails4
     SUBDIR += rubygem-hamlit
     SUBDIR += rubygem-hashicorp-checkpoint
@@ -1969,12 +1988,11 @@
     SUBDIR += rubygem-journey
     SUBDIR += rubygem-jquery-atwho-rails
     SUBDIR += rubygem-jquery-atwho-rails-rails4
-    SUBDIR += rubygem-jquery-rails
     SUBDIR += rubygem-jquery-rails4
     SUBDIR += rubygem-jquery-scrollto-rails
     SUBDIR += rubygem-jquery-turbolinks
-    SUBDIR += rubygem-jquery-ui-rails
     SUBDIR += rubygem-jquery-ui-rails-rails4
+    SUBDIR += rubygem-jquery-ui-rails5-rails4
     SUBDIR += rubygem-jruby-rack
     SUBDIR += rubygem-jsobfu
     SUBDIR += rubygem-jwt
@@ -2024,11 +2042,10 @@
     SUBDIR += rubygem-rack14
     SUBDIR += rubygem-rack15
     SUBDIR += rubygem-rack16
-    SUBDIR += rubygem-rails
     SUBDIR += rubygem-rails4
     SUBDIR += rubygem-rails_autolink
-    SUBDIR += rubygem-railties
     SUBDIR += rubygem-railties4
+    SUBDIR += rubygem-railties5
     SUBDIR += rubygem-raindrops
     SUBDIR += rubygem-ramaze
     SUBDIR += rubygem-raphael-rails
@@ -2038,7 +2055,6 @@
     SUBDIR += rubygem-redis-rails
     SUBDIR += rubygem-redmine_acts_as_taggable_on
     SUBDIR += rubygem-responders
-    SUBDIR += rubygem-responders-rails3
     SUBDIR += rubygem-rest-client
     SUBDIR += rubygem-rfacebook
     SUBDIR += rubygem-rfeedfinder
@@ -2061,6 +2077,7 @@
     SUBDIR += rubygem-sinatra-contrib
     SUBDIR += rubygem-sinatra-r18n
     SUBDIR += rubygem-sinatra-respond_to
+    SUBDIR += rubygem-socksify
     SUBDIR += rubygem-task_list
     SUBDIR += rubygem-thin
     SUBDIR += rubygem-tinyatom

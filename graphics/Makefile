@@ -131,6 +131,7 @@
     SUBDIR += devil
     SUBDIR += dia
     SUBDIR += diacanvas2
+    SUBDIR += diffpdf
     SUBDIR += digikam-kde4
     SUBDIR += digikam-kde4-doc
     SUBDIR += digikam-kde4-l10n
@@ -201,6 +202,7 @@
     SUBDIR += frei0r-plugins
     SUBDIR += frei0r-plugins-gavl
     SUBDIR += frei0r-plugins-opencv
+    SUBDIR += frogr
     SUBDIR += ftgl
     SUBDIR += fujiplay
     SUBDIR += fusefs-gphotofs
@@ -771,6 +773,8 @@
     SUBDIR += php56-gd
     SUBDIR += php70-exif
     SUBDIR += php70-gd
+    SUBDIR += php71-exif
+    SUBDIR += php71-gd
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
@@ -928,9 +932,6 @@
     SUBDIR += rigsofrods-pagedgeometry
     SUBDIR += ristretto
     SUBDIR += ruby-gd
-    SUBDIR += ruby-image_size
-    SUBDIR += ruby-imlib2
-    SUBDIR += ruby-svg
     SUBDIR += rubygem-cairo
     SUBDIR += rubygem-captcha
     SUBDIR += rubygem-chunky_png

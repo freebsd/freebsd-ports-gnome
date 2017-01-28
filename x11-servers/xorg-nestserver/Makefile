@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	xorg-nestserver
-PORTVERSION=	1.18.4
-PORTEPOCH=	1
+PORTVERSION=	1.19.1
+PORTEPOCH=	2
 CATEGORIES=	x11-servers
 MASTER_SITES=	XORG/individual/xserver
 DISTNAME=	xorg-server-${PORTVERSION}
@@ -15,6 +15,7 @@ COMMENT=	Nesting X server from X.Org
 LICENSE=	MIT
 
 LIB_DEPENDS=	libxcb-keysyms.so:x11/xcb-util-keysyms
+RUN_DEPENDS=	xkeyboard-config>=2.5:x11/xkeyboard-config
 
 USES=		tar:bzip2 pkgconfig ssl
 INSTALL_WRKSRC= ${WRKSRC}/hw/xnest
@@ -50,7 +51,7 @@ USE_XORG=	x11 xf86driproto glproto randrproto renderproto fixesproto \
 		xf86vidmodeproto xf86bigfontproto scrnsaverproto bigreqsproto \
 		dri2proto resourceproto fontsproto xf86dgaproto videoproto \
 		compositeproto trapproto recordproto resourceproto \
-		xineramaproto xinerama evieproto xkbfile xfont fontenc xkbui \
+		xineramaproto xinerama evieproto xkbfile xfont2 fontenc xkbui \
 		xxf86misc xxf86vm xaw7 xmu xpm xext pixman xtrans presentproto
 
 PLIST_FILES=	bin/Xnest \

@@ -13,21 +13,23 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	vala>=0.14.0:lang/vala
-LIB_DEPENDS=	libgoa-1.0.so:net/gnome-online-accounts \
-		libchamplain-0.12.so:graphics/libchamplain \
+LIB_DEPENDS=	libchamplain-0.12.so:graphics/libchamplain \
 		libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
 		libclutter-1.0.so:graphics/clutter \
-		libgee-0.8.so:devel/libgee \
+		libcogl.so:graphics/cogl \
+		libdrm.so:graphics/libdrm \
+		libexpat.so:textproc/expat2 \
 		libfolks.so:net-im/folks \
+		libgee-0.8.so:devel/libgee \
+		libgeocode-glib.so:net/geocode-glib \
+		libgoa-1.0.so:net/gnome-online-accounts \
+		libgstreamer-1.0.so:multimedia/gstreamer1 \
+		libjson-glib-1.0.so:devel/json-glib \
 		libnotify.so:devel/libnotify \
-		libplds4.so:devel/nspr \
+		libnspr4.so:devel/nspr \
 		libsecret-1.so:security/libsecret \
 		libsoup-2.4.so:devel/libsoup \
-		libjson-glib-1.0.so:devel/json-glib \
-		libgeocode-glib.so:net/geocode-glib \
-		libtelepathy-glib.so:net-im/telepathy-glib \
-		libcogl-path.so:graphics/cogl \
-		libnss3.so:security/nss
+		libtelepathy-glib.so:net-im/telepathy-glib
 
 PORTSCOUT=	limitw:1,even
 

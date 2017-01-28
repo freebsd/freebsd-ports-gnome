@@ -45,14 +45,9 @@ PORTDOCS=	*
 
 .include <bsd.port.pre.mk>
 
-.if ${OPSYS} == FreeBSD
-.if (${OSVERSION} < 1002000) || (${OSVERSION} < 1100079)
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100079
 BUILD_DEPENDS+=	clang38:devel/llvm38
 EXTRA_FLAGS=	--host-cc=${LOCALBASE}/bin/clang38 --host-cxx=${LOCALBASE}/bin/clang++38
-.endif
-.if (${OSVERSION} < 1001513)
-BROKEN=		Does not build
-.endif
 .endif
 
 post-extract:

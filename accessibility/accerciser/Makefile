@@ -28,15 +28,4 @@ SHEBANG_FILES=	plugins/ipython_view.py
 
 GLIB_SCHEMAS=	org.a11y.Accerciser.gschema.xml
 
-.include <bsd.port.pre.mk>
-
-.if ${PYTHON_REL} < 3500
-PYOEXTENSION=	pyo
-.else
-PYOEXTENSION=	opt-1.pyc
-.endif
-
-PLIST_SUB+=	PYOEXTENSION=${PYOEXTENSION} \
-		PYVER=${PYTHON_VER:S/.//}
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

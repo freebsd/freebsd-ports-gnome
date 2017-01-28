@@ -10,14 +10,14 @@ COMMENT=	High performance media player supporting many formats
 
 .include "${.CURDIR}/../../multimedia/mplayer/Makefile.common"
 
-OPTIONS_DEFINE=	AALIB AMR_NB AMR_WB BLURAY CACA CDIO DEBUG DV DVDNAV \
+OPTIONS_DEFINE=	AALIB AMR_NB AMR_WB ASS BLURAY CACA CDIO DEBUG DV DVDNAV \
 		ENCA FONTCONFIG FRIBIDI GIF GNUTLS GSM GUI IPV6 JACK \
 		LADSPA LIBMNG LIRC LZO NAS OPENAL OPENGL \
 		OPENJPEG OPUS PULSEAUDIO RTC RTMP \
 		SCHROEDINGER SDL SKINS SNDIO SMB SPEEX SVGALIB V4L VDPAU VPX \
 		X11 X11DGA X11VM XINERAMA XVIDEO XVMC
 
-OPTIONS_DEFAULT=DVDNAV FONTCONFIG FRIBIDI GNUTLS OPENGL \
+OPTIONS_DEFAULT=ASS DVDNAV FONTCONFIG FRIBIDI GNUTLS OPENGL \
 		SKINS X11 X11DGA X11VM XINERAMA XVIDEO
 
 OPTIONS_DEFINE_i386=	RTCPU
@@ -28,8 +28,9 @@ OPTIONS_DEFAULT_i386=	RTCPU VDPAU
 OPTIONS_DEFAULT_amd64=	RTCPU VDPAU
 OPTIONS_DEFAULT_powerpc=RTCPU
 
-DVDNAV_DESC?=	DVD navigation features support
+ASS_DESC?=	Subtitles rendering via libass
 BLURAY_DESC?=	BluRay support
+DVDNAV_DESC?=	DVD navigation features support
 ENCA_DESC?=	Charset conversion via enca
 LZO_DESC?=	External liblzo support
 RTC_DESC?=	Add support for kernel real time clock
@@ -45,8 +46,10 @@ CONFLICTS=	mplayer2-2.*
 CONFFILES=	example.conf input.conf menu.conf dvb-menu.conf
 USES+=		iconv pkgconfig
 
+OPTIONS_SUB=	yes
+
 .include "${.CURDIR}/../../multimedia/mplayer/Makefile.optvars"
-.include <bsd.port.options.mk>
+.include <bsd.port.pre.mk>
 
 CONFIGURE_ARGS+=	--disable-arts \
 			--disable-directfb \
@@ -62,60 +65,7 @@ CONFIGURE_ARGS+=	--disable-arts \
 			--disable-musepack \
 			--disable-theora
 
-.if ${PORT_OPTIONS:MGUI} && ${PORT_OPTIONS:MX11}
-PLIST_SUB+=	GMPLAYER=""
-DESKTOP_ENTRIES=	"MPlayer" "High performance media player" "mplayer" "gmplayer" "" false
-.if ${PORT_OPTIONS:MSKINS}
-RUN_DEPENDS+=	mplayer-skins>=0:multimedia/mplayer-skins
-.endif
-
-USE_GNOME+=	gtk20
-CONFIGURE_ARGS+=	--enable-gui
-
-.else
-PLIST_SUB+=	GMPLAYER="@comment "
-.endif #GUI && X11
-
-.if ${PORT_OPTIONS:MX11}
-USE_XORG=	x11 xext xproto xscrnsaver
-.if ${PORT_OPTIONS:MXVIDEO}
-USE_XORG+=	xv
-.else
-CONFIGURE_ARGS+=--disable-xv
-.endif
-.if ${PORT_OPTIONS:MX11DGA}
-USE_XORG+=	xxf86dga
-.else
-CONFIGURE_ARGS+=--disable-dga1 --disable-dga2
-.endif
-.if ${PORT_OPTIONS:MOPENGL}
-USE_GL+=	gl
-.else
-CONFIGURE_ARGS+=--disable-gl
-.endif
-.if ${PORT_OPTIONS:MXINERAMA}
-USE_XORG+=	xinerama xineramaproto
-.else
-CONFIGURE_ARGS+=--disable-xinerama
-.endif
-.if ${PORT_OPTIONS:MX11VM}
-USE_XORG+=	xxf86vm
-.else
-CONFIGURE_ARGS+=--disable-vm
-.endif
-.if ${PORT_OPTIONS:MXVMC}
-USE_XORG+=	xvmc
-CONFIGURE_ARGS+=--enable-xvmc --with-xvmclib=XvMCW
-.endif
-.else	#X11
-CONFIGURE_ARGS+=--disable-x11
-.endif
-
-.include <bsd.port.pre.mk>
 .include "${.CURDIR}/../../multimedia/mplayer/Makefile.options"
-
-BROKEN_armv6=		Fails to compile: Error: garbage following instruction -- vmov s16,SCALE
-BROKEN_aarch64=		Fails to compile: error: invalid operand for instruction
 
 pre-everything::
 	@${ECHO_MSG} "N - O - T - E"
