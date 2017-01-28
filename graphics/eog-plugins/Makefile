@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	eog-plugins
-PORTVERSION=	3.16.4
+PORTVERSION=	3.16.5
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
