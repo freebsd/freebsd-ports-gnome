@@ -35,9 +35,7 @@ OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	LIBCHECK
 LIBCHECK_DESC=	Unit tests support
 LIBCHECK_CONFIGURE_ENABLE=	check
-LIBCHECK_LIB_DEPENDS=	libcheck.so:devel/libcheck
-
-.include <bsd.port.options.mk>
+LIBCHECK_LIB_DEPENDS=	libcheck.so:devel/check
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-Wmissing-include-dirs||g' \

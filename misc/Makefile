@@ -363,6 +363,7 @@
     SUBDIR += pfm
     SUBDIR += php56-calendar
     SUBDIR += php70-calendar
+    SUBDIR += php71-calendar
     SUBDIR += phraze
     SUBDIR += pinfo
     SUBDIR += pipe
@@ -371,6 +372,7 @@
     SUBDIR += proxyper
     SUBDIR += pspresent
     SUBDIR += py-YABT
+    SUBDIR += py-cinder
     SUBDIR += py-crudini
     SUBDIR += py-fuzzy
     SUBDIR += py-glance

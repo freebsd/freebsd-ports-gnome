@@ -1,6 +1,6 @@
---- build/toolchain/gcc_toolchain.gni.orig	2016-11-10 20:02:09 UTC
+--- build/toolchain/gcc_toolchain.gni.orig	2017-01-26 00:49:07 UTC
 +++ build/toolchain/gcc_toolchain.gni
-@@ -10,6 +10,11 @@ import("//build/toolchain/cc_wrapper.gni
+@@ -11,6 +11,11 @@ import("//build/toolchain/cc_wrapper.gni
  import("//build/toolchain/goma.gni")
  import("//build/toolchain/toolchain.gni")
  
@@ -12,7 +12,7 @@
  # This template defines a toolchain for something that works like gcc
  # (including clang).
  #
-@@ -453,14 +458,28 @@ template("clang_toolchain") {
+@@ -482,14 +487,23 @@ template("clang_toolchain") {
    }
  
    gcc_toolchain(target_name) {
@@ -21,11 +21,6 @@
 -    cxx = "$prefix/clang++"
 -    ld = cxx
 +    if (is_bsd) {
-+      # cc = getenv("CC")
-+      # assert(cc != "", "CC env must me set with >= clang39")
-+      # cxx = getenv("CXX")
-+      # assert(cxx != "", "CXX env must me set with >= clang++39")
-+      # ld = cxx
 +      cc = "${toolprefix}clang39"
 +      cxx = "${toolprefix}clang++39"
 +      ld = cxx

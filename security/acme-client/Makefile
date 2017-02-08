@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	acme-client
-PORTVERSION=	0.1.15
+PORTVERSION=	0.1.16
 DISTVERSIONPREFIX=	portable-
 CATEGORIES=	security
 MASTER_SITES=	https://kristaps.bsd.lv/${PORTNAME}/snapshots/ \
@@ -53,14 +53,7 @@ LDFLAGS+=		-L${WRKDIR}/libressl/lib
 . ifnmake describe
 STAGEDIR_libressl!=	${MAKE} -V STAGEDIR -C ${PORTSDIR}/security/libressl
 . endif
-# security/libressl ignores implicit SSP_UNSAFE, see Mk/bsd.ssp.mk
-. if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000036 && ${ARCH} == i386
-SSP_CFLAGS?=	-fstack-protector
-CFLAGS+=	${SSP_CFLAGS}
-LDFLAGS+=	-fstack-protector
-LIBS+=		-lssp_nonshared
-. endif
- 
+
 pre-configure:
 	@(cd ${STAGEDIR_libressl}${LOCALBASE} && ${COPYTREE_SHARE} \
 		. ${WRKDIR}/libressl "! -name *.so*")

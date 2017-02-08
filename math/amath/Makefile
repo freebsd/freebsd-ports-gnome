@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	amath
-PORTVERSION=	1.6.0
-PORTREVISION=	1
+PORTVERSION=	1.6.2
 CATEGORIES=	math
 MASTER_SITES=	http://suyai.innolan.net/
 
@@ -13,14 +12,18 @@ LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 HAS_CONFIGURE=	yes
-MAKE_ARGS=	CC=${CC}
+CONFIGURE_ARGS=	-Wno-inline-new-delete
+MAKE_ARGS=	CC=${CC} CXX=${CXX}
 PLIST_FILES=	bin/${PORTNAME}
-USE_GCC=	yes
+ONLY_FOR_ARCHS=	aarch64 amd64 arm armv6 i386 powerpc
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 do-test:
 	${WRKSRC}/${PORTNAME} test
+
+BROKEN_aarch64=		Fails to compile: must define endianness
+BROKEN_armv6=		Fails to configure: what cpu is this ?!
 
 .include <bsd.port.mk>

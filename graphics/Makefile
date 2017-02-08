@@ -131,6 +131,7 @@
     SUBDIR += devil
     SUBDIR += dia
     SUBDIR += diacanvas2
+    SUBDIR += diffpdf
     SUBDIR += digikam-kde4
     SUBDIR += digikam-kde4-doc
     SUBDIR += digikam-kde4-l10n
@@ -226,6 +227,7 @@
     SUBDIR += geomorph
     SUBDIR += geomview
     SUBDIR += geos
+    SUBDIR += geos35
     SUBDIR += geoserver
     SUBDIR += gexiv2
     SUBDIR += giblib
@@ -338,7 +340,6 @@
     SUBDIR += hs-dia-base
     SUBDIR += hs-dia-functions
     SUBDIR += hs-svgcairo
-    SUBDIR += hsetroot
     SUBDIR += hugin
     SUBDIR += icat
     SUBDIR += icc-profiles-basiccolor
@@ -773,6 +774,8 @@
     SUBDIR += php56-gd
     SUBDIR += php70-exif
     SUBDIR += php70-gd
+    SUBDIR += php71-exif
+    SUBDIR += php71-gd
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
@@ -930,9 +933,6 @@
     SUBDIR += rigsofrods-pagedgeometry
     SUBDIR += ristretto
     SUBDIR += ruby-gd
-    SUBDIR += ruby-image_size
-    SUBDIR += ruby-imlib2
-    SUBDIR += ruby-svg
     SUBDIR += rubygem-cairo
     SUBDIR += rubygem-captcha
     SUBDIR += rubygem-chunky_png
@@ -1052,6 +1052,7 @@
     SUBDIR += vp
     SUBDIR += waffle
     SUBDIR += waifu2x-converter-cpp
+    SUBDIR += wayland
     SUBDIR += webp
     SUBDIR += wings
     SUBDIR += wmicons

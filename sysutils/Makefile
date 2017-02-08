@@ -40,7 +40,6 @@
     SUBDIR += apachetop
     SUBDIR += apcpwr
     SUBDIR += apcupsd
-    SUBDIR += apt
     SUBDIR += arcconf
     SUBDIR += archivemount
     SUBDIR += areca-cli
@@ -245,6 +244,7 @@
     SUBDIR += dsbmd
     SUBDIR += dsbwrtsysctl
     SUBDIR += dt
+    SUBDIR += dtc
     SUBDIR += dtpstree
     SUBDIR += du2ps
     SUBDIR += duff
@@ -323,7 +323,9 @@
     SUBDIR += froxlor
     SUBDIR += fsbackup
     SUBDIR += fsc
+    SUBDIR += fsearch
     SUBDIR += fstyp
+    SUBDIR += fswatch-mon
     SUBDIR += ftwin
     SUBDIR += fusefs-afuse
     SUBDIR += fusefs-chironfs
@@ -341,7 +343,6 @@
     SUBDIR += fusefs-gunzip
     SUBDIR += fusefs-httpfs
     SUBDIR += fusefs-ifuse
-    SUBDIR += fusefs-kmod
     SUBDIR += fusefs-libs
     SUBDIR += fusefs-lkl
     SUBDIR += fusefs-mhddfs
@@ -406,8 +407,8 @@
     SUBDIR += grub2-bhyve
     SUBDIR += grub2-efi
     SUBDIR += grub2-pcbsd
-    SUBDIR += gsmartcontrol
     SUBDIR += gsh
+    SUBDIR += gsmartcontrol
     SUBDIR += gstopd
     SUBDIR += gstreamer-plugins-cdio
     SUBDIR += gstreamer-plugins-hal
@@ -470,7 +471,7 @@
     SUBDIR += isc-cron
     SUBDIR += isomaster
     SUBDIR += isomd5sum
-    SUBDIR += istatd
+    SUBDIR += istatserver
     SUBDIR += jadm
     SUBDIR += jail-primer
     SUBDIR += jail2
@@ -642,6 +643,7 @@
     SUBDIR += mtxorbd
     SUBDIR += multitail
     SUBDIR += munin-common
+    SUBDIR += munin-contrib
     SUBDIR += munin-master
     SUBDIR += munin-node
     SUBDIR += muse
@@ -752,6 +754,7 @@
     SUBDIR += packetbeat
     SUBDIR += pacman
     SUBDIR += paicc
+    SUBDIR += paladin
     SUBDIR += pam_mount
     SUBDIR += panicmail
     SUBDIR += parafly
@@ -796,6 +799,8 @@
     SUBDIR += php56-posix
     SUBDIR += php70-fileinfo
     SUBDIR += php70-posix
+    SUBDIR += php71-fileinfo
+    SUBDIR += php71-posix
     SUBDIR += phybs
     SUBDIR += pick
     SUBDIR += pidof
@@ -828,7 +833,6 @@
     SUBDIR += ptools
     SUBDIR += puppet-lint
     SUBDIR += puppet-mode.el
-    SUBDIR += puppet37
     SUBDIR += puppet38
     SUBDIR += puppet4
     SUBDIR += puppetserver
@@ -854,6 +858,7 @@
     SUBDIR += py-glances
     SUBDIR += py-halite
     SUBDIR += py-honcho
+    SUBDIR += py-iocage
     SUBDIR += py-iowait
     SUBDIR += py-nagiosplugin
     SUBDIR += py-pkginfo
@@ -928,7 +933,6 @@
     SUBDIR += rsyncrypto
     SUBDIR += rsyslog8
     SUBDIR += rtty
-    SUBDIR += ruby-quota
     SUBDIR += rubygem-SyslogLogger
     SUBDIR += rubygem-backup
     SUBDIR += rubygem-bosh-gen
@@ -991,6 +995,7 @@
     SUBDIR += rubygem-sys-uname
     SUBDIR += rubygem-sys-uptime
     SUBDIR += rubygem-teamocil
+    SUBDIR += rubygem-tmuxinator
     SUBDIR += rubygem-vagrant-bhyve
     SUBDIR += rubygem-vagrant-mutate
     SUBDIR += rubygem-vagrant-vbguest
@@ -1005,6 +1010,7 @@
     SUBDIR += s6-rc
     SUBDIR += safe-rm
     SUBDIR += safecat
+    SUBDIR += safecopy
     SUBDIR += samefile
     SUBDIR += samesame
     SUBDIR += sample
@@ -1038,6 +1044,7 @@
     SUBDIR += shlock
     SUBDIR += shmcat
     SUBDIR += showbeastie
+    SUBDIR += siegfried
     SUBDIR += sievelog
     SUBDIR += skill
     SUBDIR += slack
@@ -1112,6 +1119,7 @@
     SUBDIR += tmpreaper
     SUBDIR += tmpwatch
     SUBDIR += tmux
+    SUBDIR += tmux-mem-cpu-load
     SUBDIR += topless
     SUBDIR += torque
     SUBDIR += toshctl

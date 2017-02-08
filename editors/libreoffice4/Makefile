@@ -337,11 +337,6 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-libc++.i386:-p0
 EXTRA_PATCHES+=	${FILESDIR}/extra-configure.ac
 .endif
 
-.if ${OSVERSION} < 1000033
-BUILD_DEPENDS+=	${LOCALBASE}/bin/flex:textproc/flex
-CONFIGURE_ENV+=	FLEX=${LOCALBASE}/bin/flex
-.endif
-
 ACLOCAL_ARGS=	-I "${WRKSRC}/m4"
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -349,7 +344,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 MAKE_ENV+=	ENVCFLAGS="${CFLAGS}" ENVCFLAGSCXX="${CXXFLAGS}"
 MAKE_ENV+=	ENVLINKFLAGS="${LDFLAGS}"
 MAKE_ENV+=	GNUSED=${LOCALBASE}/bin/gsed
-MAKE_ENV+=	LANG=C LC_ALL=C
 
 pre-configure:
 	@${TOUCH} ${WRKSRC}/autogen.lastrun

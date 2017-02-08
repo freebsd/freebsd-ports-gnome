@@ -12,6 +12,8 @@ COMMENT=	URL filter for the Squid web proxy
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BROKEN_aarch64=		fails to compile: error: regparm is not valid on this platform
+
 USES=		perl5 shebangfix ssl
 SHEBANG_FILES=	samples/URLblocked.cgi
 GNU_CONFIGURE=	yes
@@ -62,20 +64,12 @@ UNIXSOCKETS_CONFIGURE_OFF=	--without-unix-sockets
 
 UNIXSOCKETS_DESC=	Unix sockets support
 
-.include <bsd.port.options.mk>
-
-.if ${OSVERSION} < 1002000
-USES+=		gmake
-.endif
-
-.include <bsd.port.pre.mk>
-
 post-install:
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/ufdbguardd \
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/ufdbguardd \
 		${STAGEDIR}${PREFIX}/bin/ufdbgclient \
 		${STAGEDIR}${PREFIX}/bin/ufdbsignal \
 		${STAGEDIR}${PREFIX}/bin/ufdbGenTable \
 		${STAGEDIR}${PREFIX}/bin/ufdbAnalyse \
 		${STAGEDIR}${PREFIX}/bin/ufdbhttpd
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

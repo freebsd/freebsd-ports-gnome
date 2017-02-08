@@ -26,8 +26,6 @@ NO_CDROM=	May not be redistributed in binary form
 
 .if ${OPSYS} != FreeBSD
 IGNORE=		installs incompatible binaries for FreeBSD
-.elif ${OSVERSION} < 1000000
-DIST_OSVER=	9
 .else
 DIST_OSVER=	10
 .endif
@@ -35,7 +33,7 @@ DIST_OSVER=	10
 .if ${ARCH} == amd64
 DIST_EXT=	_x64
 .elif ${ARCH} == i386
-.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000000
+.if ${OPSYS} == FreeBSD
 # use the 9 i386 version for 10 i386
 DIST_OSVER=	9
 RUN_DEPENDS+=	${LOCALBASE}/lib/compat/libstdc++.so.6:misc/compat9x

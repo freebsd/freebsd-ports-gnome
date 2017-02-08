@@ -110,6 +110,9 @@
     SUBDIR += ghc
     SUBDIR += gjs
     SUBDIR += gnat_util
+    SUBDIR += gnatcross-aarch64
+    SUBDIR += gnatcross-binutils-aarch64
+    SUBDIR += gnatcross-sysroot-aarch64
     SUBDIR += gnatdroid-armv7
     SUBDIR += gnatdroid-binutils
     SUBDIR += gnatdroid-binutils-x86
@@ -252,6 +255,8 @@
     SUBDIR += php56-extensions
     SUBDIR += php70
     SUBDIR += php70-extensions
+    SUBDIR += php71
+    SUBDIR += php71-extensions
     SUBDIR += php_doc
     SUBDIR += picoc
     SUBDIR += pike78

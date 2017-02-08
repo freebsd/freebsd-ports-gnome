@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	e2fsprogs
-PORTVERSION=	1.43.3
-PORTREVISION?=	3
+PORTVERSION=	1.43.4
+PORTREVISION?=	0
 CATEGORIES?=	sysutils
 MASTER_SITES=	KERNEL_ORG/linux/kernel/people/tytso/${PORTNAME}/v${PORTVERSION}
 
@@ -123,13 +123,6 @@ post-patch::
 		u_mke2fs_opt_offset
 	@${MV} ${WRKSRC}/tests/${i} ${WRKSRC}/tests/disabled_test-${i}
 .endfor
-# m_rootdir behaves erratically on 9.x and fails randomly,
-# but may succeed when run again. Disable for now.
-.if ${OSVERSION} < 1000000
-.for i in m_rootdir
-	@${MV} ${WRKSRC}/tests/${i} ${WRKSRC}/tests/disabled_test-${i}
-.endfor
-.endif
 .endif
 
 # Master port stuff that is not to be seen by the slave ports.

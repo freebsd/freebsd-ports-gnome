@@ -88,7 +88,6 @@
     SUBDIR += ctrace
     SUBDIR += cvsup-static
     SUBDIR += cvsync
-    SUBDIR += cyphesis
     SUBDIR += czmq
     SUBDIR += daemonlogger
     SUBDIR += dante
@@ -119,6 +118,7 @@
     SUBDIR += dshell
     SUBDIR += dtcp
     SUBDIR += dtcpclient
+    SUBDIR += dual-dhclient
     SUBDIR += e169-stats
     SUBDIR += easysoap
     SUBDIR += echoping
@@ -131,6 +131,7 @@
     SUBDIR += etrace
     SUBDIR += exabgp
     SUBDIR += exaddos
+    SUBDIR += fb
     SUBDIR += findmtu
     SUBDIR += flowgrep
     SUBDIR += fonulator
@@ -188,7 +189,6 @@
     SUBDIR += googlecl
     SUBDIR += gopher
     SUBDIR += gotthard
-    SUBDIR += gpxe
     SUBDIR += gq
     SUBDIR += grdesktop
     SUBDIR += grilo
@@ -363,7 +363,7 @@
     SUBDIR += librdkafka
     SUBDIR += librouteros
     SUBDIR += librsync
-    SUBDIR += librsync1
+    SUBDIR += librsync2
     SUBDIR += libsocket++
     SUBDIR += libsocketcpp
     SUBDIR += libsrtp
@@ -467,6 +467,7 @@
     SUBDIR += nos-ttb
     SUBDIR += nph
     SUBDIR += ns3
+    SUBDIR += nsq
     SUBDIR += nss-pam-ldapd
     SUBDIR += nss-pam-ldapd-sasl
     SUBDIR += nss_ldap
@@ -505,7 +506,6 @@
     SUBDIR += openmq-client
     SUBDIR += openntpd
     SUBDIR += opennx
-    SUBDIR += openospfd
     SUBDIR += openpgm
     SUBDIR += openradius
     SUBDIR += opensips
@@ -923,6 +923,10 @@
     SUBDIR += php70-soap
     SUBDIR += php70-sockets
     SUBDIR += php70-xmlrpc
+    SUBDIR += php71-ldap
+    SUBDIR += php71-soap
+    SUBDIR += php71-sockets
+    SUBDIR += php71-xmlrpc
     SUBDIR += phpldapadmin
     SUBDIR += pim6-tools
     SUBDIR += pim6dd
@@ -971,6 +975,7 @@
     SUBDIR += py-gspread
     SUBDIR += py-gspreadsheet
     SUBDIR += py-haproxy-log-analysis
+    SUBDIR += py-httpstat
     SUBDIR += py-impacket
     SUBDIR += py-ipaddress
     SUBDIR += py-iplib
@@ -1046,6 +1051,7 @@
     SUBDIR += py-speedtest-cli
     SUBDIR += py-sshuttle
     SUBDIR += py-suds
+    SUBDIR += py-suds-jurko
     SUBDIR += py-terminado
     SUBDIR += py-tofu
     SUBDIR += py-tweepy
@@ -1117,10 +1123,6 @@
     SUBDIR += rtpbreak
     SUBDIR += rtpproxy
     SUBDIR += rtptools
-    SUBDIR += ruby-dict
-    SUBDIR += ruby-icmp
-    SUBDIR += ruby-tcpsocketpipe
-    SUBDIR += ruby-tserver
     SUBDIR += rubygem-amazon-ec2
     SUBDIR += rubygem-amq-protocol
     SUBDIR += rubygem-amqp
@@ -1208,6 +1210,7 @@
     SUBDIR += rubygem-ruby-openid
     SUBDIR += rubygem-ruby-yadis
     SUBDIR += rubygem-rubyntlm
+    SUBDIR += rubygem-rubyntlm05
     SUBDIR += rubygem-rubytter
     SUBDIR += rubygem-rudy
     SUBDIR += rubygem-rye
@@ -1222,7 +1225,6 @@
     SUBDIR += rubygem-uri-redis
     SUBDIR += rubygem-whois
     SUBDIR += rude
-    SUBDIR += rwhoisd
     SUBDIR += samba-libsmbclient
     SUBDIR += samba-nmblookup
     SUBDIR += samba-smbclient

@@ -4,6 +4,7 @@ PORTNAME=	ccnet-server
 PORTVERSION=	6.0.7
 DISTVERSIONPREFIX=	v
 DISTVERSIONSUFFIX=	-server
+PORTREVISION=	1
 CATEGORIES=	net-mgmt devel
 
 MAINTAINER=	ultima1252@gmail.com
@@ -48,12 +49,6 @@ PLIST_SUB=	USERS=${USERS} \
 		GROUPS=${GROUPS} \
 		SEAFILE_SERVER=${SEAFILE_SERVER} \
 		HAIWENDIR=${HAIWENDIR}
-
-.include <bsd.port.options.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
-WITH_OPENSSL_PORT=	yes
-.endif
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${SEABIN} ${STAGEDIR}${PREFIX}/${SEALIB}

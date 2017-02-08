@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nagios-plugins
-PORTVERSION=	2.1.4
+PORTVERSION=	2.2.0
 PORTREVISION=	0
 PORTEPOCH=	1
 CATEGORIES=	net-mgmt
@@ -138,7 +138,7 @@ SSH_PORTABLE_CONFIGURE_ON=	--with-ssh-command=${LOCALBASE}/bin/ssh
 
 .include <bsd.port.options.mk>
 
-.if ${OSVERSION} > 1000055 && ${PORT_OPTIONS:MDNS_BASE}
+.if ${PORT_OPTIONS:MDNS_BASE}
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-dig-to-drill.diff
 CONFIGURE_ARGS+=--with-dig-command=/usr/bin/drill \
 		ac_cv_path_PATH_TO_NSLOOKUP=

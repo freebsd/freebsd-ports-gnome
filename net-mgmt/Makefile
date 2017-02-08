@@ -157,6 +157,7 @@
     SUBDIR += nedi
     SUBDIR += nefu
     SUBDIR += net-snmp
+    SUBDIR += netdata
     SUBDIR += netdisco
     SUBDIR += netdisco-mibs
     SUBDIR += netdot
@@ -173,6 +174,7 @@
     SUBDIR += netspoc
     SUBDIR += netustad
     SUBDIR += netwag
+    SUBDIR += networkmgr
     SUBDIR += netwox
     SUBDIR += netxms
     SUBDIR += nfdump
@@ -263,6 +265,7 @@
     SUBDIR += pftabled
     SUBDIR += php56-snmp
     SUBDIR += php70-snmp
+    SUBDIR += php71-snmp
     SUBDIR += phpip
     SUBDIR += phpipam
     SUBDIR += phpweathermap
@@ -317,6 +320,7 @@
     SUBDIR += sjitter
     SUBDIR += slate
     SUBDIR += smokeping
+    SUBDIR += snap
     SUBDIR += snmp++
     SUBDIR += snmp4nagios
     SUBDIR += snmptt

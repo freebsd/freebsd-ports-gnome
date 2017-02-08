@@ -2,7 +2,6 @@
 
 PORTNAME=	openjdk
 PORTVERSION=	${JDK_MAJOR_VERSION}.${JDK_UPDATE_VERSION}.${JDK_BUILD_NUMBER:S/^0//}
-PORTREVISION=	2
 CATEGORIES=	java devel
 MASTER_SITES=	http://download.java.net/openjdk/jdk${JDK_MAJOR_VERSION}/promoted/b${DIST_BUILD_NUMBER}/:jdk \
 		https://adopt-openjdk.ci.cloudbees.com/job/jtreg/${JTREG_JENKINS_BUILD}/artifact/:jtreg \
@@ -27,7 +26,8 @@ PATCHFILES=	patch-8u05-b13.xz \
 		patch-8u77-b03.xz \
 		patch-8u92-b14.xz \
 		patch-8u102-b14.xz \
-		patch-8u112-b16.xz
+		patch-8u112-b16.xz \
+		patch-8u121-b13.xz
 
 MAINTAINER=	java@FreeBSD.org
 COMMENT?=	Java Development Kit ${JDK_MAJOR_VERSION}
@@ -197,8 +197,7 @@ SHEBANG_FILES=	configure
 _MAKE_JOBS=	#
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
-MAKE_ENV=	LANG="C" LC_ALL="C"
-MAKE_ENV+=	CLASSPATH="" JAVA_HOME="" LD_LIBRARY_PATH=""
+MAKE_ENV=	CLASSPATH="" JAVA_HOME="" LD_LIBRARY_PATH=""
 MAKE_ENV+=	IGNORE_OLD_CONFIG=true
 MAKE_ENV+=	COMPILER_WARNINGS_FATAL="false"
 # openjdk8 normally sets X_CFLAGS in the ./configure script, but it won't do
@@ -222,8 +221,8 @@ NO_CCACHE=		yes
 NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	8
-JDK_UPDATE_VERSION=	112
-JDK_BUILD_NUMBER=	16
+JDK_UPDATE_VERSION=	121
+JDK_BUILD_NUMBER=	13
 DIST_BUILD_NUMBER=	132
 JTREG_VERSION=		4.1
 JTREG_BUILD_NUMBER=	b08
@@ -351,11 +350,6 @@ BUILD_DEPENDS+=		${BOOTSTRAPJDKDIR}/bin/javac:java/openjdk7
 .  endif
 .endif
 
-# PR193009: work around the rtld bug
-.if ${OSVERSION} < 1001511
-CONFIGURE_ARGS+=	--enable-static-libjli
-.endif
-
 .if ${COMPILER_TYPE} == clang
 .if ${COMPILER_VERSION} >= 35
 MAKE_ENV+=	COMPILER_WARNINGS_FATAL=false
@@ -370,9 +364,9 @@ CONFIGURE_ENV+=	LIBCXX="-lc++"
 .if ${COMPILER_TYPE} == gcc
 .if ${ARCH} == "powerpc64"
 MAKE_ARGS+=	USE_PRECOMPILED_HEADER=1
-.endif
 .else
 MAKE_ARGS+=	USE_PRECOMPILED_HEADER=0
+.endif
 .endif
 
 .if empty(ICONV_LIB)

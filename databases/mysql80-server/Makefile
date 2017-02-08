@@ -4,7 +4,7 @@
 PORTNAME?=		mysql
 PORTVERSION=		8.0.0
 DISTVERSIONSUFFIX?=	-dmr
-PORTREVISION?=		0
+PORTREVISION?=		1
 CATEGORIES=		databases ipv6
 MASTER_SITES=		MYSQL/MySQL-8.0
 PKGNAMESUFFIX?=		80-server
@@ -129,15 +129,6 @@ OPTIONS_DEFAULT+=	PERFSCHM
 
 PERFSCHM_SUB_LIST+=	PERFSCHEMRC=""
 PERFSCHM_SUB_LIST_OFF+=	PERFSCHEMRC="--skip-performance-schema"
-.endif
-
-.include <bsd.port.options.mk>
-
-### Just for the sake of FreeBSD 9.X ###
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
-.  if !defined(CLIENT_ONLY)
-EXTRA_PATCHES+=		${PATCHDIR}/rapid_plugin-patch-_x_mysqlxtest__src_mysqlxtest.cc
-.  endif
 .endif
 
 .include <bsd.port.pre.mk>

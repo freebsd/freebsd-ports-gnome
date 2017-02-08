@@ -26,6 +26,7 @@
     SUBDIR += ample
     SUBDIR += aqualung
     SUBDIR += ardour
+    SUBDIR += ardour5
     SUBDIR += ario
     SUBDIR += arss
     SUBDIR += ascd
@@ -42,7 +43,6 @@
     SUBDIR += audiere
     SUBDIR += audiotag
     SUBDIR += aumix
-    SUBDIR += aureal-kmod
     SUBDIR += autocd
     SUBDIR += autotalent
     SUBDIR += autozen
@@ -416,13 +416,12 @@
     SUBDIR += libvorbis
     SUBDIR += libworkman
     SUBDIR += libxmp
+    SUBDIR += lilv
     SUBDIR += lingot
     SUBDIR += linux-c6-alsa-lib
     SUBDIR += linux-c6-alsa-plugins-oss
     SUBDIR += linux-c6-alsa-plugins-pulseaudio
     SUBDIR += linux-c6-alsa-utils
-    SUBDIR += linux-c6-arts
-    SUBDIR += linux-c6-esound
     SUBDIR += linux-c6-flac
     SUBDIR += linux-c6-libaudiofile
     SUBDIR += linux-c6-libogg
@@ -439,7 +438,6 @@
     SUBDIR += linux-c7-alsa-plugins-pulseaudio
     SUBDIR += linux-c7-alsa-utils
     SUBDIR += linux-c7-audiofile
-    SUBDIR += linux-c7-esound
     SUBDIR += linux-c7-flac
     SUBDIR += linux-c7-libogg
     SUBDIR += linux-c7-libsndfile
@@ -677,8 +675,6 @@
     SUBDIR += rplay
     SUBDIR += rsynth
     SUBDIR += rubberband
-    SUBDIR += ruby-audiofile
-    SUBDIR += ruby-mp3tag
     SUBDIR += ruby-smf
     SUBDIR += ruby-taglib
     SUBDIR += ruby-xmms2
@@ -739,9 +735,11 @@
     SUBDIR += splay
     SUBDIR += splaytk
     SUBDIR += squash
+    SUBDIR += sratom
     SUBDIR += streamripper
     SUBDIR += streamtranscoder
     SUBDIR += stymulator
+    SUBDIR += suil
     SUBDIR += sweep
     SUBDIR += swhplugins
     SUBDIR += taglib
@@ -833,7 +831,6 @@
     SUBDIR += xmms-mailnotify
     SUBDIR += xmms-nas
     SUBDIR += xmms-nsf
-    SUBDIR += xmms-openspc
     SUBDIR += xmms-sapplug
     SUBDIR += xmms-scrobbler
     SUBDIR += xmms-sexypsf
@@ -855,6 +852,7 @@
     SUBDIR += xwave
     SUBDIR += yell
     SUBDIR += zinf
+    SUBDIR += zita-resampler
     SUBDIR += zynaddsubfx
 
 .include <bsd.port.subdir.mk>

@@ -207,6 +207,7 @@
     SUBDIR += glpi
     SUBDIR += gnome-user-share
     SUBDIR += gnome-web-photo
+    SUBDIR += go-www
     SUBDIR += gohugo
     SUBDIR += google-appengine
     SUBDIR += google-sitemapgen
@@ -218,6 +219,7 @@
     SUBDIR += grafana
     SUBDIR += grafana2
     SUBDIR += grafana3
+    SUBDIR += grafana4
     SUBDIR += grails
     SUBDIR += graylog-web-interface
     SUBDIR += gregarius
@@ -308,7 +310,6 @@
     SUBDIR += httpasyncclient
     SUBDIR += httpclient
     SUBDIR += httpcore
-    SUBDIR += httpie
     SUBDIR += httpsqs
     SUBDIR += httptunnel
     SUBDIR += httrack
@@ -408,6 +409,7 @@
     SUBDIR += midori
     SUBDIR += mimetex
     SUBDIR += mini_httpd
+    SUBDIR += miniminiweb
     SUBDIR += minio
     SUBDIR += mitmproxy
     SUBDIR += mkapachepw
@@ -481,6 +483,7 @@
     SUBDIR += mod_perl2
     SUBDIR += mod_php56
     SUBDIR += mod_php70
+    SUBDIR += mod_php71
     SUBDIR += mod_proctitle
     SUBDIR += mod_proxy_html
     SUBDIR += mod_proxy_uwsgi
@@ -1465,6 +1468,9 @@
     SUBDIR += php70-opcache
     SUBDIR += php70-session
     SUBDIR += php70-tidy
+    SUBDIR += php71-opcache
+    SUBDIR += php71-session
+    SUBDIR += php71-tidy
     SUBDIR += phpbb
     SUBDIR += phpbb3
     SUBDIR += phpgroupware
@@ -1481,7 +1487,6 @@
     SUBDIR += piwik
     SUBDIR += planet
     SUBDIR += plexwatchweb
-    SUBDIR += pligg
     SUBDIR += plone
     SUBDIR += plugger
     SUBDIR += pmwiki
@@ -1673,6 +1678,7 @@
     SUBDIR += py-html
     SUBDIR += py-html5lib
     SUBDIR += py-http-parser
+    SUBDIR += py-httpie
     SUBDIR += py-httplib2
     SUBDIR += py-hyper
     SUBDIR += py-imdbpy
@@ -1684,6 +1690,7 @@
     SUBDIR += py-meld3
     SUBDIR += py-mt
     SUBDIR += py-nevow
+    SUBDIR += py-notebook
     SUBDIR += py-octoprint
     SUBDIR += py-pafy
     SUBDIR += py-paste
@@ -1902,9 +1909,10 @@
     SUBDIR += rt44
     SUBDIR += rtv
     SUBDIR += ruby-aws
-    SUBDIR += ruby-google
     SUBDIR += rubygem-ace-rails-ap
+    SUBDIR += rubygem-actioncable5
     SUBDIR += rubygem-actionpack4
+    SUBDIR += rubygem-actionpack5
     SUBDIR += rubygem-activeresource4
     SUBDIR += rubygem-acts-as-taggable-on
     SUBDIR += rubygem-acts-as-taggable-on3
@@ -2039,6 +2047,7 @@
     SUBDIR += rubygem-rails4
     SUBDIR += rubygem-rails_autolink
     SUBDIR += rubygem-railties4
+    SUBDIR += rubygem-railties5
     SUBDIR += rubygem-raindrops
     SUBDIR += rubygem-ramaze
     SUBDIR += rubygem-raphael-rails
@@ -2070,6 +2079,7 @@
     SUBDIR += rubygem-sinatra-contrib
     SUBDIR += rubygem-sinatra-r18n
     SUBDIR += rubygem-sinatra-respond_to
+    SUBDIR += rubygem-socksify
     SUBDIR += rubygem-task_list
     SUBDIR += rubygem-thin
     SUBDIR += rubygem-tinyatom
@@ -2175,7 +2185,6 @@
     SUBDIR += tidy-lib
     SUBDIR += tikiwiki
     SUBDIR += tinymce
-    SUBDIR += tinymce3
     SUBDIR += tinyproxy
     SUBDIR += tinytinyhttpd
     SUBDIR += tivoka

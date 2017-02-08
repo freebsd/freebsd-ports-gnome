@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	openiked
-PORTVERSION=	1.2
+PORTVERSION=	1.3
+PORTREVISION=	1
 CATEGORIES=	security net ipv6
 
 MAINTAINER=	marcel@FreeBSD.org

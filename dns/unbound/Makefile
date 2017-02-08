@@ -3,6 +3,7 @@
 
 PORTNAME=	unbound
 PORTVERSION=	1.6.0
+PORTREVISION=	1
 CATEGORIES=	dns
 MASTER_SITES=	http://unbound.net/downloads/
 
@@ -65,14 +66,6 @@ PYTHON_CONFIGURE_ON=	--with-pyunbound=yes --with-pythonmodule=yes LDFLAGS="-L${L
 PYTHON_USES=		python:2
 PYTHON_VARS=		STRIP_FILES+=.libs/_unbound.so
 THREADS_CONFIGURE_WITH=	pthreads
-
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MGOST}
-. if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000015
-WITH_OPENSSL_PORT=	yes
-. endif
-.endif
 
 post-patch:
 	@${RM} ${WRKSRC}/util/configlexer.c

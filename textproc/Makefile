@@ -26,7 +26,6 @@
     SUBDIR += aft
     SUBDIR += agrep
     SUBDIR += aiksaurus
-    SUBDIR += aiksaurus-gtk
     SUBDIR += align
     SUBDIR += am-aspell
     SUBDIR += amberfish
@@ -355,6 +354,7 @@
     SUBDIR += jaxup
     SUBDIR += jdictionary
     SUBDIR += jdictionary-int-eng
+    SUBDIR += jid
     SUBDIR += jing
     SUBDIR += jo
     SUBDIR += jq
@@ -454,6 +454,7 @@
     SUBDIR += linuxdoc-tools
     SUBDIR += localize
     SUBDIR += loook
+    SUBDIR += lowdown
     SUBDIR += lt-aspell
     SUBDIR += lt-hyphen
     SUBDIR += lttoolbox
@@ -1204,6 +1205,16 @@
     SUBDIR += php70-xmlreader
     SUBDIR += php70-xmlwriter
     SUBDIR += php70-xsl
+    SUBDIR += php71-ctype
+    SUBDIR += php71-dom
+    SUBDIR += php71-enchant
+    SUBDIR += php71-pspell
+    SUBDIR += php71-simplexml
+    SUBDIR += php71-wddx
+    SUBDIR += php71-xml
+    SUBDIR += php71-xmlreader
+    SUBDIR += php71-xmlwriter
+    SUBDIR += php71-xsl
     SUBDIR += plover
     SUBDIR += po4a
     SUBDIR += pocketreader
@@ -1268,6 +1279,7 @@
     SUBDIR += py-nltk
     SUBDIR += py-numpydoc
     SUBDIR += py-openpyxl
+    SUBDIR += py-pandocfilters
     SUBDIR += py-paragrep
     SUBDIR += py-parsimonious
     SUBDIR += py-pdfminer
@@ -1315,6 +1327,7 @@
     SUBDIR += py-sphinxcontrib-httpdomain
     SUBDIR += py-sphinxcontrib-programoutput
     SUBDIR += py-syck
+    SUBDIR += py-tabletext
     SUBDIR += py-terminaltables
     SUBDIR += py-texttable
     SUBDIR += py-tinycss
@@ -1394,19 +1407,14 @@
     SUBDIR += ruby-deplate
     SUBDIR += ruby-escape
     SUBDIR += ruby-format
-    SUBDIR += ruby-htmlrepair
-    SUBDIR += ruby-htmlsplit
     SUBDIR += ruby-htree
     SUBDIR += ruby-rd-mode.el
     SUBDIR += ruby-rdtool
-    SUBDIR += ruby-rss
-    SUBDIR += ruby-rss.alt
     SUBDIR += ruby-rttool
     SUBDIR += ruby-sary
-    SUBDIR += ruby-xml-configfile
     SUBDIR += ruby-xmlparser
-    SUBDIR += ruby-xmlscan
     SUBDIR += rubygem-actionpack-xml_parser
+    SUBDIR += rubygem-actionpack-xml_parser1
     SUBDIR += rubygem-albino
     SUBDIR += rubygem-amatch
     SUBDIR += rubygem-asciidoctor

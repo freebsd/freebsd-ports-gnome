@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nvmupdate
-DISTVERSION=	5_04
+DISTVERSION=	5_05
 CATEGORIES=	sysutils
 MASTER_SITES=	https://downloadmirror.intel.com/${MASTER_SITE_SUBDIR}/ \
 		http://downloadmirror.intel.com/${MASTER_SITE_SUBDIR}/
@@ -28,6 +28,7 @@ WRKSRC=			${WRKDIR}/XL710/FreeBSDx64
 NO_BUILD=		yes
 ONLY_FOR_ARCHS=		amd64
 ONLY_FOR_ARCHS_REASON=	not supported on anything other than amd64
+IGNORE_DragonFly=	FreeBSD binary port
 
 SUB_FILES=	nvmupdate
 SUB_LIST=	NVMUPDATE_DIR=${NVMUPDATE_DIR}
