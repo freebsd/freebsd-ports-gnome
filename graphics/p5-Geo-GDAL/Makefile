@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Geo-GDAL
-PORTVERSION=	2.1.2
-PORTREVISION=	1
+PORTVERSION=	2.1.3
 CATEGORIES=	graphics perl5
 MASTER_SITES=	http://download.osgeo.org/gdal/${PORTVERSION}/ \
 		ftp://ftp.remotesensing.org/pub/gdal/${PORTVERSION}/ \
@@ -17,9 +16,10 @@ COMMENT=	Perl binding for GDAL
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/../../LICENSE.TXT
 
+BUILD_DEPENDS=	p5-Capture-Tiny>=0:devel/p5-Capture-Tiny
 LIB_DEPENDS=	libgdal.so:graphics/gdal
 
-USES=		gmake perl5 tar:xz
+USES=		perl5 tar:xz
 
 WRKSRC_SUBDIR=	swig/perl
 
@@ -29,8 +29,6 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|(const char \*)""|(char \*)""|' ${WRKSRC}/gdal_wrap.cpp ${WRKSRC}/ogr_wrap.cpp
 
 post-install:
-# Add %%SITE_ARCH%%/Geo/GNM.pm to PLIST if GNM is enabled
-	@-${GREP} "GNM_ENABLED = yes" ${LOCALBASE}/share/gdal/GDALmake.opt && ${ECHO_CMD} "${SITE_ARCH_REL}/Geo/GNM.pm" >> ${TMPPLIST}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Geo/GDAL/Const/Const.so ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Geo/*/*.so
 
 .include <bsd.port.mk>

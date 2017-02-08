@@ -10,19 +10,19 @@ COMMENT=	Cross-platform Multi-protocol VPN Software
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		gmake iconv localbase readline ssl
+USES=		dos2unix gmake iconv localbase readline ssl
+DOS2UNIX_FILES=	src/Mayaqua/Network.c
 USE_GITHUB=	yes
 GH_ACCOUNT=	SoftEtherVPN
 GH_PROJECT=	SoftEtherVPN
 GH_TAGNAME=	1e17c9b
 ALL_TARGET=	build
-MAKE_ENV=	STAGEDIR=${STAGEDIR}
+MAKE_ENV=	STAGEDIR=${STAGEDIR} ICONV_LIB=${ICONV_LIB}
 USE_RC_SUBR=	vpnserver vpnclient vpnbridge
 PORTDOCS=	AUTHORS.TXT BUILD_UNIX.TXT ChangeLog README THIRD_PARTY.TXT \
 		WARNING.TXT
 
 OPTIONS_DEFINE=	DOCS
-OPTIONS_DEFAULT=DOCS
 
 post-patch:
 	${INSTALL_DATA} ${WRKSRC}/src/makefiles/freebsd_32bit.mak \

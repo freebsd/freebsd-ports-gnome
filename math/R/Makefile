@@ -3,7 +3,7 @@
 
 PORTNAME=		R
 PORTVERSION=		3.3.2
-PORTREVISION=		6
+PORTREVISION=		7
 CATEGORIES=		math lang
 MASTER_SITES=		CRAN/src/base/R-${PORTVERSION:C|\..*||}
 
@@ -18,6 +18,7 @@ LIB_DEPENDS=		libcurl.so:ftp/curl \
 CONFIGURE_ARGS=		--disable-java \
 			--with-readline \
 			rdocdir=${DOCSDIR}
+CONFIGURE_ENV=		r_cv_header_zlib_h=yes
 GNU_CONFIGURE=		yes
 INSTALL_TARGET=		install-strip
 ONLY_FOR_ARCHS=		i386 amd64

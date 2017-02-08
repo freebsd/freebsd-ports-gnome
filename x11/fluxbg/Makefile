@@ -3,7 +3,7 @@
 
 PORTNAME=	fluxbg
 PORTVERSION=	0.7
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	x11
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -27,7 +27,7 @@ post-patch:
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} < 1100077
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100077
 # chmod -R bug
 post-extract:
 	${CHMOD} +x ${WRKSRC}/autom4te.cache

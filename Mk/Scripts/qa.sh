@@ -45,6 +45,11 @@ shebangonefile() {
 	case "${interp}" in
 	"") ;;
 	${LINUXBASE}/*) ;;
+	${LOCALBASE}/bin/perl5.* | ${PREFIX}/bin/perl5.*)
+		err "'${interp}' is an invalid shebang for '${f#${STAGEDIR}${PREFIX}/}' you must use ${LOCALBASE}/bin/perl."
+		err "Either pass \${PERL} to the build or use USES=shebangfix"
+		rc=1
+		;;
 	${LOCALBASE}/*) ;;
 	${PREFIX}/*) ;;
 	/bin/csh) ;;
@@ -107,15 +112,19 @@ shebang() {
 baselibs() {
 	local rc
 	local found_openssl
+	local file
 	[ "${PKGBASE}" = "pkg" -o "${PKGBASE}" = "pkg-devel" ] && return
 	while read f; do
 		case ${f} in
+		File:\ .*)
+			file=${f#File: .}
+			;;
 		*NEEDED*\[libarchive.so.[56]])
-			err "Bad linking on ${f##* } please add USES=libarchive"
+			err "Bad linking on ${f##* } for ${file} please add USES=libarchive"
 			rc=1
 			;;
 		*NEEDED*\[libedit.so.7])
-			err "Bad linking on ${f##* } please add USES=libedit"
+			err "Bad linking on ${f##* } for ${file} please add USES=libedit"
 			rc=1
 			;;
 		*NEEDED*\[libcrypto.so.*]|*NEEDED*\[libssl.so.*])
@@ -733,6 +742,20 @@ sonames() {
 	EOT
 }
 
+perlcore_port_module_mapping() {
+	case "$1" in
+		Net)
+			echo "Net::Config"
+			;;
+		libwww)
+			echo "LWP"
+			;;
+		*)
+			echo "$1" | sed -e 's/-/::/g'
+			;;
+	esac
+}
+
 perlcore() {
 	local portname version module gotsome
 	[ -x "${LOCALBASE}/bin/corelist" ] || return 0
@@ -740,7 +763,7 @@ perlcore() {
 		portname=$(expr "${dep}" : ".*/p5-\(.*\)")
 		if [ -n "${portname}" ]; then
 			gotsome=1
-			module=$(echo ${portname}|sed -e 's/-/::/g')
+			module=$(perlcore_port_module_mapping "${portname}")
 			version=$(expr "${dep}" : ".*>=*\([^:<]*\)")
 
 			while read l; do

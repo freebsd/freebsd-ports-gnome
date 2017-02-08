@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	5.5.53
-PORTREVISION=	2
+PORTVERSION=	5.5.54
+PORTREVISION?=	1
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://ftp.osuosl.org/pub/mariadb/${PORTNAME}-${PORTVERSION}/source/ \
 		http://mirrors.supportex.net/mariadb/${PORTNAME}-${PORTVERSION}/source/ \
@@ -15,7 +15,7 @@ MASTER_SITES=	http://ftp.osuosl.org/pub/mariadb/${PORTNAME}-${PORTVERSION}/sourc
 		http://mirror.switch.ch/mirror/mariadb/${PORTNAME}-${PORTVERSION}/source/
 PKGNAMESUFFIX?=	55-server
 
-MAINTAINER=	never@nevermind.kiev.ua
+MAINTAINER=	ports@FreeBSD.org
 COMMENT?=	Multithreaded SQL database (server)
 
 LICENSE=	GPLv2
@@ -24,7 +24,7 @@ SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
 SLAVEDIRS=	databases/mariadb55-client
-USES=		cmake execinfo gmake shebangfix ssl
+USES=		cmake execinfo shebangfix ssl
 SHEBANG_FILES=	scripts/*.sh
 
 CMAKE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql" \
@@ -108,14 +108,14 @@ MAXKEY_EXTRA_PATCHES=	${FILESDIR}/extra-patch-include_my_compare.h
 
 .include <bsd.port.pre.mk>
 
-.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000012
+.if ${OPSYS} == FreeBSD
 CMAKE_ARGS+=	-DWITH_JEMALLOC="system"
 .else
 CMAKE_ARGS+=	-DWITH_JEMALLOC="no"
 .endif
 
 # Server segfaults on i386 when built with clang >= 3.4
-.if ${ARCH} == 'i386' && ${OSVERSION} >= 1001000
+.if ${ARCH} == 'i386'
 USE_GCC=	yes
 .endif
 

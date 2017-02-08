@@ -168,6 +168,7 @@
     SUBDIR += firefox-esr
     SUBDIR += firefox-esr-i18n
     SUBDIR += firefox-i18n
+    SUBDIR += flashplayer
     SUBDIR += flat-frog
     SUBDIR += flickcurl
     SUBDIR += flood
@@ -206,6 +207,7 @@
     SUBDIR += glpi
     SUBDIR += gnome-user-share
     SUBDIR += gnome-web-photo
+    SUBDIR += go-www
     SUBDIR += gohugo
     SUBDIR += google-appengine
     SUBDIR += google-sitemapgen
@@ -217,6 +219,7 @@
     SUBDIR += grafana
     SUBDIR += grafana2
     SUBDIR += grafana3
+    SUBDIR += grafana4
     SUBDIR += grails
     SUBDIR += graylog-web-interface
     SUBDIR += gregarius
@@ -307,7 +310,6 @@
     SUBDIR += httpasyncclient
     SUBDIR += httpclient
     SUBDIR += httpcore
-    SUBDIR += httpie
     SUBDIR += httpsqs
     SUBDIR += httptunnel
     SUBDIR += httrack
@@ -358,6 +360,7 @@
     SUBDIR += libhubbub
     SUBDIR += libjwt
     SUBDIR += libmicrohttpd
+    SUBDIR += libnghttp2
     SUBDIR += libsocialweb
     SUBDIR += libwww
     SUBDIR += libxul
@@ -372,14 +375,10 @@
     SUBDIR += links
     SUBDIR += links-hacked
     SUBDIR += links1
-    SUBDIR += linux-c6-flashplugin11
-    SUBDIR += linux-c6-flashplugin24
     SUBDIR += linux-c6-qt47-webkit
-    SUBDIR += linux-c7-flashplugin11
-    SUBDIR += linux-c7-flashplugin24
     SUBDIR += linux-c7-qtwebkit
-    SUBDIR += linux-f10-flashplugin11
     SUBDIR += linux-firefox
+    SUBDIR += linux-flashplayer
     SUBDIR += linux-opera
     SUBDIR += linux-seamonkey
     SUBDIR += lionwiki
@@ -410,6 +409,7 @@
     SUBDIR += midori
     SUBDIR += mimetex
     SUBDIR += mini_httpd
+    SUBDIR += miniminiweb
     SUBDIR += minio
     SUBDIR += mitmproxy
     SUBDIR += mkapachepw
@@ -483,6 +483,7 @@
     SUBDIR += mod_perl2
     SUBDIR += mod_php56
     SUBDIR += mod_php70
+    SUBDIR += mod_php71
     SUBDIR += mod_proctitle
     SUBDIR += mod_proxy_html
     SUBDIR += mod_proxy_uwsgi
@@ -549,7 +550,6 @@
     SUBDIR += node012
     SUBDIR += node4
     SUBDIR += node6
-    SUBDIR += node7
     SUBDIR += nostromo
     SUBDIR += npapi-vlc
     SUBDIR += npapi-xine
@@ -559,6 +559,22 @@
     SUBDIR += npm2
     SUBDIR += npm3
     SUBDIR += nspluginwrapper
+    SUBDIR += nuvolaplayer-8tracks
+    SUBDIR += nuvolaplayer-all-services
+    SUBDIR += nuvolaplayer-amazon-cloud-player
+    SUBDIR += nuvolaplayer-bandcamp
+    SUBDIR += nuvolaplayer-google-play-music
+    SUBDIR += nuvolaplayer-groove
+    SUBDIR += nuvolaplayer-jango
+    SUBDIR += nuvolaplayer-kexp
+    SUBDIR += nuvolaplayer-logitech-media-server
+    SUBDIR += nuvolaplayer-mixcloud
+    SUBDIR += nuvolaplayer-plex
+    SUBDIR += nuvolaplayer-soundcloud
+    SUBDIR += nuvolaplayer-spotify
+    SUBDIR += nuvolaplayer-tunein
+    SUBDIR += nuvolaplayer-yandex-music
+    SUBDIR += nuvolaplayer-youtube
     SUBDIR += obhttpd
     SUBDIR += ocaml-net
     SUBDIR += offline-npm
@@ -1114,7 +1130,7 @@
     SUBDIR += p5-POE-Filter-HTTP-Parser
     SUBDIR += p5-POEx-Role-PSGIServer
     SUBDIR += p5-PSGI
-    SUBDIR += p5-ParallelUA
+    SUBDIR += p5-ParallelUserAgent
     SUBDIR += p5-Parse-HTTP-UserAgent
     SUBDIR += p5-Path-Class-URI
     SUBDIR += p5-Perlanet
@@ -1452,6 +1468,9 @@
     SUBDIR += php70-opcache
     SUBDIR += php70-session
     SUBDIR += php70-tidy
+    SUBDIR += php71-opcache
+    SUBDIR += php71-session
+    SUBDIR += php71-tidy
     SUBDIR += phpbb
     SUBDIR += phpbb3
     SUBDIR += phpgroupware
@@ -1468,7 +1487,6 @@
     SUBDIR += piwik
     SUBDIR += planet
     SUBDIR += plexwatchweb
-    SUBDIR += pligg
     SUBDIR += plone
     SUBDIR += plugger
     SUBDIR += pmwiki
@@ -1489,6 +1507,7 @@
     SUBDIR += py-Products.CMFPlone
     SUBDIR += py-Products.PloneLDAP
     SUBDIR += py-Products.TinyMCE
+    SUBDIR += py-Tenjin
     SUBDIR += py-WebError
     SUBDIR += py-WebFlash
     SUBDIR += py-WebTest
@@ -1528,6 +1547,7 @@
     SUBDIR += py-django-appmedia
     SUBDIR += py-django-assets
     SUBDIR += py-django-auth-ldap
+    SUBDIR += py-django-babel
     SUBDIR += py-django-bitfield
     SUBDIR += py-django-bootstrap-form
     SUBDIR += py-django-caching-app-plugins
@@ -1574,6 +1594,7 @@
     SUBDIR += py-django-pipeline13
     SUBDIR += py-django-post_office
     SUBDIR += py-django-profiles
+    SUBDIR += py-django-pyscss
     SUBDIR += py-django-recaptcha
     SUBDIR += py-django-redis
     SUBDIR += py-django-registration
@@ -1604,6 +1625,7 @@
     SUBDIR += py-django18
     SUBDIR += py-django19
     SUBDIR += py-django_compressor
+    SUBDIR += py-django_openstack_auth
     SUBDIR += py-django_polymorphic
     SUBDIR += py-djangorestframework
     SUBDIR += py-djangorestframework-csv
@@ -1652,9 +1674,11 @@
     SUBDIR += py-graphite-web
     SUBDIR += py-grequests
     SUBDIR += py-gunicorn
+    SUBDIR += py-horizon
     SUBDIR += py-html
     SUBDIR += py-html5lib
     SUBDIR += py-http-parser
+    SUBDIR += py-httpie
     SUBDIR += py-httplib2
     SUBDIR += py-hyper
     SUBDIR += py-imdbpy
@@ -1666,6 +1690,7 @@
     SUBDIR += py-meld3
     SUBDIR += py-mt
     SUBDIR += py-nevow
+    SUBDIR += py-notebook
     SUBDIR += py-octoprint
     SUBDIR += py-pafy
     SUBDIR += py-paste
@@ -1800,7 +1825,6 @@
     SUBDIR += py-splinter
     SUBDIR += py-spyne
     SUBDIR += py-surl
-    SUBDIR += py-Tenjin
     SUBDIR += py-textile
     SUBDIR += py-tgwebservices
     SUBDIR += py-tmdb3
@@ -1833,9 +1857,8 @@
     SUBDIR += py-wsgiauth
     SUBDIR += py-wsgidav
     SUBDIR += py-zope.app.wsgi
-    SUBDIR += py33-requests
-    SUBDIR += py34-requests
-    SUBDIR += py35-requests
+    SUBDIR += py3-cssutils
+    SUBDIR += py3-requests
     SUBDIR += pyblosxom
     SUBDIR += pycarddav
     SUBDIR += pydio
@@ -1886,11 +1909,10 @@
     SUBDIR += rt44
     SUBDIR += rtv
     SUBDIR += ruby-aws
-    SUBDIR += ruby-google
     SUBDIR += rubygem-ace-rails-ap
-    SUBDIR += rubygem-actionpack
+    SUBDIR += rubygem-actioncable5
     SUBDIR += rubygem-actionpack4
-    SUBDIR += rubygem-activeresource
+    SUBDIR += rubygem-actionpack5
     SUBDIR += rubygem-activeresource4
     SUBDIR += rubygem-acts-as-taggable-on
     SUBDIR += rubygem-acts-as-taggable-on3
@@ -1947,7 +1969,6 @@
     SUBDIR += rubygem-haml
     SUBDIR += rubygem-haml-coderay
     SUBDIR += rubygem-haml-contrib
-    SUBDIR += rubygem-haml-rails
     SUBDIR += rubygem-haml-rails-rails4
     SUBDIR += rubygem-hamlit
     SUBDIR += rubygem-hashicorp-checkpoint
@@ -1966,16 +1987,14 @@
     SUBDIR += rubygem-innate
     SUBDIR += rubygem-jekyll
     SUBDIR += rubygem-jekyll-watch
-    SUBDIR += rubygem-jekyll2
     SUBDIR += rubygem-journey
     SUBDIR += rubygem-jquery-atwho-rails
     SUBDIR += rubygem-jquery-atwho-rails-rails4
-    SUBDIR += rubygem-jquery-rails
     SUBDIR += rubygem-jquery-rails4
     SUBDIR += rubygem-jquery-scrollto-rails
     SUBDIR += rubygem-jquery-turbolinks
-    SUBDIR += rubygem-jquery-ui-rails
     SUBDIR += rubygem-jquery-ui-rails-rails4
+    SUBDIR += rubygem-jquery-ui-rails5-rails4
     SUBDIR += rubygem-jruby-rack
     SUBDIR += rubygem-jsobfu
     SUBDIR += rubygem-jwt
@@ -2025,11 +2044,10 @@
     SUBDIR += rubygem-rack14
     SUBDIR += rubygem-rack15
     SUBDIR += rubygem-rack16
-    SUBDIR += rubygem-rails
     SUBDIR += rubygem-rails4
     SUBDIR += rubygem-rails_autolink
-    SUBDIR += rubygem-railties
     SUBDIR += rubygem-railties4
+    SUBDIR += rubygem-railties5
     SUBDIR += rubygem-raindrops
     SUBDIR += rubygem-ramaze
     SUBDIR += rubygem-raphael-rails
@@ -2039,7 +2057,6 @@
     SUBDIR += rubygem-redis-rails
     SUBDIR += rubygem-redmine_acts_as_taggable_on
     SUBDIR += rubygem-responders
-    SUBDIR += rubygem-responders-rails3
     SUBDIR += rubygem-rest-client
     SUBDIR += rubygem-rfacebook
     SUBDIR += rubygem-rfeedfinder
@@ -2062,6 +2079,7 @@
     SUBDIR += rubygem-sinatra-contrib
     SUBDIR += rubygem-sinatra-r18n
     SUBDIR += rubygem-sinatra-respond_to
+    SUBDIR += rubygem-socksify
     SUBDIR += rubygem-task_list
     SUBDIR += rubygem-thin
     SUBDIR += rubygem-tinyatom
@@ -2167,7 +2185,6 @@
     SUBDIR += tidy-lib
     SUBDIR += tikiwiki
     SUBDIR += tinymce
-    SUBDIR += tinymce3
     SUBDIR += tinyproxy
     SUBDIR += tinytinyhttpd
     SUBDIR += tivoka

@@ -13,11 +13,13 @@ COMMENT=	Web application framework for writing web APIs in C
 LICENSE=	ISCL
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=	gmake
+USES=		compiler gmake
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	jorisvink
 
+CFLAGS+=	${CFLAGS_${CHOSEN_COMPILER_TYPE}}
+CFLAGS_clang=	-Wno-error=c11-extensions # 12.0 + -pedantic
 MAKE_ARGS=	INSTALL_DIR="${STAGEDIR}${PREFIX}/bin" \
 		INCLUDE_DIR="${STAGEDIR}${PREFIX}/include/kore"
 
@@ -48,15 +50,12 @@ JSONRPC_LIB_DEPENDS=	libyajl.so:devel/yajl
 
 DEBUG_VARS=	MAKE_ARGS+=DEBUG=1
 
-BROKEN_FreeBSD_9=	does not build
-
 post-patch:
 # Disable kore's own optimizations flags, make sure the correct flags
 # are set when LOCALBASE is not /usr/local, and allow __generic on
 # FreeBSD 12.0-CURRENT after r308264
 	@${REINPLACE_CMD} -e 's|CFLAGS+=-O|#|g' \
 		-e 's|/usr/local/|${LOCALBASE}/|g' \
-		-e 's|-pedantic|-pedantic -Wno-error=c11-extensions|g' \
 		${WRKSRC}/Makefile
 
 pre-install:

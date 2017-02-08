@@ -14,6 +14,8 @@ COMMENT=	Perl Application Development and Refactoring Environment
 
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
+LICENSE_FILE_ART10=	${WRKSRC}/Artistic
+LICENSE_FILE_GPLv1=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	p5-JSON-XS>=2.29:converters/p5-JSON-XS \
 		p5-DBD-SQLite>=1.35:databases/p5-DBD-SQLite \
@@ -73,8 +75,6 @@ WX_COMPS=	wx
 MAKE_JOBS_UNSAFE=	yes
 DOS2UNIX_WRKSRC=${WRKDIR}/${WXSC_DISTNAME}
 DOS2UNIX_FILES=	wx-scintilla/src/scintilla/src/Editor.cxx
-
-BROKEN_FreeBSD_9=	does not build
 
 DESKTOP_ENTRIES="Padre" \
 		"The Perl IDE" \

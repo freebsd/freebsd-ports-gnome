@@ -34,6 +34,7 @@
     SUBDIR += intellij-fsnotifier
     SUBDIR += intellij-pty4j
     SUBDIR += intellij-pycharm
+    SUBDIR += intellij-rubymine
     SUBDIR += intellij-ultimate
     SUBDIR += jad
     SUBDIR += jaf
@@ -64,9 +65,6 @@
     SUBDIR += javamail
     SUBDIR += javavmwrapper
     SUBDIR += jaxen
-    SUBDIR += jboss7
-    SUBDIR += jboss71
-    SUBDIR += jboss72
     SUBDIR += jcalendar
     SUBDIR += jcckit
     SUBDIR += jcommon
@@ -122,7 +120,7 @@
     SUBDIR += trove4j
     SUBDIR += veditor
     SUBDIR += visualvm
-    SUBDIR += wildfly100
+    SUBDIR += wildfly10
     SUBDIR += wildfly90
     SUBDIR += xdoclet
 

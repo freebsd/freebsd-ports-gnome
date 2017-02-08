@@ -2,6 +2,7 @@
 
 PORTNAME=	tmate-slave
 PORTVERSION=	0.0.0.2016051901
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	swills@FreeBSD.org
@@ -22,7 +23,5 @@ USE_LDCONFIG=	yes
 LDFLAGS+=	-lexecinfo
 
 PLIST_FILES=	bin/tmate-slave
-
-BROKEN_FreeBSD_9=	Does not build
 
 .include <bsd.port.mk>

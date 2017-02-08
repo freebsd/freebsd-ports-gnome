@@ -32,12 +32,11 @@ CONFIGURE_ARGS=	${RUBY_CONFIGURE_ARGS} \
 		--with-ruby-version=minor \
 		--with-sitedir="${PREFIX}/lib/ruby/site_ruby" \
 		--with-vendordir="${PREFIX}/lib/ruby/vendor_ruby"
-CONFIGURE_ENV=	LC_ALL=C debugflags=
+CONFIGURE_ENV=	debugflags=
 CPPFLAGS+=	-I${LOCALBASE}/include
 GNU_CONFIGURE=	yes
 # Keep this, else ruby will fail to load libraries dependent of libpthread.
 LIBS+=		-lpthread -L${LOCALBASE}/lib
-MAKE_ENV=	LC_ALL=C
 USE_LDCONFIG=	yes
 USES=		autoreconf cpe execinfo tar:xz ssl
 WRKSRC=		${RUBY_WRKSRC}
@@ -46,9 +45,6 @@ RUBY_VER=		2.2
 USE_RUBY=		yes
 RUBY_NO_BUILD_DEPENDS=	yes
 RUBY_NO_RUN_DEPENDS=	yes
-
-NOT_FOR_ARCHS=	ia64
-NOT_FOR_ARCHS_REASON_ia64=	does not build
 
 OPTIONS_DEFINE=		CAPIDOCS DEBUG DOCS EXAMPLES GMP RDOC
 OPTIONS_DEFAULT=	RDOC LIBEDIT
@@ -101,7 +97,7 @@ CONFIGURE_ARGS+=	--disable-dtrace
 .endif
 .endif
 
-.if ${ARCH} == "powerpc" || ${ARCH} == "powerpc64"
+.if ${ARCH} == "powerpc64"
 USE_GCC=	yes
 .endif
 

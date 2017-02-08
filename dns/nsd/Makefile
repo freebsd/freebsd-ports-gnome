@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	nsd
-PORTVERSION=	4.1.13
+PORTVERSION=	4.1.14
+PORTREVISION=	1
 CATEGORIES=	dns ipv6
 MASTER_SITES=	http://www.nlnetlabs.nl/downloads/nsd/	\
 		ftp://ftp.rhnet.is/pub/nsd/

@@ -5,7 +5,7 @@ PORTNAME=	hugin
 PORTVERSION=	2016.2.0
 DISTVERSION=	2016.2.0
 WRKSRC=		${WRKDIR}/hugin-2016.2.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	graphics
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION:R}
 
@@ -27,8 +27,6 @@ LIB_DEPENDS=	libIlmImf.so:graphics/OpenEXR \
 RUN_DEPENDS=	enblend>=4.1.4:graphics/enblend \
 		exiftool:graphics/p5-Image-ExifTool \
 		gmake:devel/gmake
-
-BROKEN_FreeBSD_9=	does not build
 
 USES=		cmake compiler:c++11-lib desktop-file-utils \
 		gettext jpeg pkgconfig shared-mime-info tar:bzip2

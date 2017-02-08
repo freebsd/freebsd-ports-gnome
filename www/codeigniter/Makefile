@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	codeigniter
-PORTVERSION=	3.0.6
+PORTVERSION=	3.1.2
 CATEGORIES=	www
 
 MAINTAINER=	junovitch@FreeBSD.org
@@ -11,9 +11,9 @@ COMMENT=	Framework for developing PHP web applications
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/license.txt
 
-USES=		tar:tgz
 USE_GITHUB=	yes
 GH_ACCOUNT=	bcit-ci
+GH_PROJECT=	CodeIgniter
 
 CONFLICTS=	codeigniter-1.[0-9]* codeigniter22-2.[0-9]*
 
@@ -25,7 +25,6 @@ PLIST_SUB=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
 
 CI_SYS_DIR=	system
 CI_CONF_DIR=	application/config
-WRKSRC=		${WRKDIR}/CodeIgniter-${PORTVERSION}
 PORTDOCS=	*
 
 # These are all user-configurable files that we'll install
@@ -106,10 +105,11 @@ do-install:
 		${INSTALL_DATA} ${WRKSRC}/$$i ${STAGEDIR}${WWWDIR}/$$i.sample; \
 	done
 
-post-install-APACHE-on:
-	${MKDIR} ${STAGEDIR}${CONFDIR}
+do-install-APACHE-on:
+	@${MKDIR} ${STAGEDIR}${CONFDIR}
 	${CP} ${WRKDIR}/${CONF} ${STAGEDIR}${CONFDIR}/codeigniter.conf;
-post-install-DOCS-on:
+
+do-install-DOCS-on:
 	cd ${WRKSRC}/user_guide && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 	${RM} ${STAGEDIR}${DOCSDIR}/.buildinfo
 	${CP} ${WRKSRC}/readme.rst ${STAGEDIR}${DOCSDIR}/readme.rst

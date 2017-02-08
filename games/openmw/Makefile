@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	openmw
-PORTVERSION=	0.40.0
+PORTVERSION=	0.41.0
 DISTVERSIONPREFIX=	openmw-
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	games
 
 MAINTAINER=	t@tobik.me
@@ -19,8 +19,6 @@ LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg \
 		libMyGUIEngine.so:x11-toolkits/mygui \
 		libosg.so:graphics/osg \
 		libunshield.so:archivers/unshield
-
-BROKEN_FreeBSD_9=	does not build
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	OpenMW

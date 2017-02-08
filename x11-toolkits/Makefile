@@ -11,6 +11,7 @@
     SUBDIR += blt
     SUBDIR += bwidget
     SUBDIR += c++-gtk-utils
+    SUBDIR += diorite
     SUBDIR += flowcanvas
     SUBDIR += fltk
     SUBDIR += fltk-devel
@@ -124,12 +125,6 @@
     SUBDIR += linux-c7-pango
     SUBDIR += linux-c7-qt-x11
     SUBDIR += linux-c7-tk85
-    SUBDIR += linux-f10-blt
-    SUBDIR += linux-f10-gtk2
-    SUBDIR += linux-f10-openmotif
-    SUBDIR += linux-f10-pango
-    SUBDIR += linux-f10-qt45
-    SUBDIR += linux-f10-tk85
     SUBDIR += movingmotif
     SUBDIR += mowitz
     SUBDIR += mygui
@@ -210,7 +205,7 @@
     SUBDIR += py-gtksourceview
     SUBDIR += py-gui
     SUBDIR += py-kivy
-    SUBDIR += py-kiwi
+    SUBDIR += py-kiwi-gtk
     SUBDIR += py-qt4-gui
     SUBDIR += py-qt5-gui
     SUBDIR += py-qt5-quick
@@ -228,6 +223,7 @@
     SUBDIR += py33-tkinter
     SUBDIR += py34-tkinter
     SUBDIR += py35-tkinter
+    SUBDIR += py36-tkinter
     SUBDIR += pypy-tkinter
     SUBDIR += qt4-declarative
     SUBDIR += qt4-gui
@@ -254,6 +250,7 @@
     SUBDIR += rubygem-gtksourceview3
     SUBDIR += rubygem-pango
     SUBDIR += rubygem-poppler
+    SUBDIR += rubygem-uh
     SUBDIR += rubygem-vte
     SUBDIR += rubygem-vte3
     SUBDIR += scintilla

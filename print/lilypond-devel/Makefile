@@ -3,6 +3,7 @@
 
 PORTNAME=	lilypond
 PORTVERSION=	2.19.51
+PORTREVISION=	1
 CATEGORIES=	print audio
 MASTER_SITES=	http://download.linuxaudio.org/lilypond/sources/v${PORTVERSION:R}/
 PKGNAMESUFFIX=	-devel
@@ -30,8 +31,6 @@ LIB_DEPENDS=	libltdl.so:devel/libltdl \
 		libgmp.so:math/gmp \
 		libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
-
-BROKEN_FreeBSD_9=	does not build on FreeBSD < 10.x
 
 INFO=		internals \
 		lilypond-changes \

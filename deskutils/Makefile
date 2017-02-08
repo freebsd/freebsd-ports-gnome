@@ -94,6 +94,7 @@
     SUBDIR += gnote
     SUBDIR += gnotime
     SUBDIR += gnustep-wrapper
+    SUBDIR += go-for-it
     SUBDIR += gourmet
     SUBDIR += griffith
     SUBDIR += growl-for-linux
@@ -164,6 +165,7 @@
     SUBDIR += osynctool
     SUBDIR += owncloudclient
     SUBDIR += p5-Data-ICal
+    SUBDIR += p5-Data-ICal-DateTime
     SUBDIR += p5-Goo
     SUBDIR += p5-ZConf-BGSet
     SUBDIR += p5-ZConf-Runner

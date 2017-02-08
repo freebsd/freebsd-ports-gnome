@@ -15,10 +15,10 @@ COMMENT=	Python bindings for XML Security Library
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BROKEN=		does not build (x509.c:46:60: error: too many arguments to function call, expected 2, have 3)
+
 LIB_DEPENDS=	libxmlsec1.so:security/xmlsec1
 RUN_DEPENDS=	${PYTHON_SITELIBDIR}/libxml2.py:textproc/py-libxml2
-
-BROKEN_FreeBSD_9=	does not build
 
 USES=		python:2 ssl
 USE_PYTHON=	distutils autoplist

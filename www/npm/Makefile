@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	npm
-PORTVERSION=	4.0.2
+PORTVERSION=	4.1.2
 CATEGORIES=	www
 MASTER_SITES=	LOCAL/sunpoet
 
@@ -27,8 +27,8 @@ CPE_VENDOR=	npmjs
 CPE_PRODUCT=	node_packaged_modules
 
 SHEBANG_FILES=	lib/utils/completion.sh \
+		node_modules/lockfile/gen-changelog.sh \
 		node_modules/node-gyp/test/docker.sh \
-		node_modules/request/node_modules/node-uuid/benchmark/bench.sh \
 		scripts/clean-old.sh \
 		scripts/release.sh \
 		scripts/relocate.sh
@@ -71,10 +71,10 @@ genplist: do-clean stage
 
 maketar: do-clean
 	@${MKDIR} ${MS_WRKSRC}/
-	@${FETCH_BINARY} ${FETCH_ARGS:C/A//} -o ${MS_RELEASES} ${GITHUB_RELEASES}
+	@${FETCH_CMD} -o ${MS_RELEASES} ${GITHUB_RELEASES}
 	@${GREP} -o '/${GITHUB_USER}/${GITHUB_PROJECT}/archive/[^"]*\.tar\.gz' ${MS_RELEASES} | ${HEAD} -1 | ${CUT} -d/ -f5 | ${SED} 's|^v||; s|\.tar\.gz$$||' > ${MS_VERSIONFILE}
 	@${ECHO_MSG} "*** Updating from ${PORTVERSION} to ${MS_VERSION} ..."
-	@${FETCH_BINARY} ${FETCH_ARGS:C/A//} -o ${MS_WRKSRC}/${MS_DISTNAME}.tar.gz ${GITHUB_TARBALL}
+	@${FETCH_CMD} -o ${MS_WRKSRC}/${MS_DISTNAME}.tar.gz ${GITHUB_TARBALL}
 	@${MKDIR} ${MS_WRKSRC}/${MS_DISTNAME}/
 	@${TAR} -xf ${MS_WRKSRC}/${MS_DISTNAME}.tar.gz -C ${MS_WRKSRC}/${MS_DISTNAME}/ --strip-components 1
 	@${REINPLACE_CMD} -e 's|${MAKE}|${GMAKE}|g; /^install: / s| docclean||' ${MS_WRKSRC}/${MS_DISTNAME}/Makefile

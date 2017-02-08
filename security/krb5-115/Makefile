@@ -3,6 +3,7 @@
 
 PORTNAME=		krb5
 PORTVERSION=		1.15
+PORTREVISION=		1
 CATEGORIES=		security
 MASTER_SITES=		http://web.mit.edu/kerberos/dist/${PORTNAME}/${PORTVERSION:C/^[0-9]*\.[0-9]*/&X/:C/X\.[0-9]*$//:C/X//}/
 .if !defined(MASTERDIR)
@@ -14,7 +15,7 @@ PATCH_SITES=		http://web.mit.edu/kerberos/advisories/
 PATCH_DIST_STRIP=	-p2
 
 MAINTAINER=		cy@FreeBSD.org
-COMMENT=		Authentication system developed at MIT, successor to Kerberos IV
+COMMENT=		MIT implementation of RFC 4120 network authentication service
 
 LICENSE=		MIT
 
@@ -26,7 +27,7 @@ USE_LDCONFIG=		yes
 USE_CSTD=		gnu99
 GNU_CONFIGURE=		yes
 USES=			cpe gettext gmake perl5 libtool:build \
-			gssapi:bootstrap,mit pkgconfig:both ssl
+			gssapi:bootstrap,mit pkgconfig:run ssl
 CONFIGURE_ARGS?=	--enable-shared --without-system-verto \
 			--disable-rpath --localstatedir="${PREFIX}/var"
 CONFIGURE_ENV=		INSTALL="${INSTALL}" INSTALL_LIB="${INSTALL_LIB}" YACC="${YACC}"
@@ -107,6 +108,9 @@ WRKSRC=			${WRKDIR}/${PORTNAME}-${PORTVERSION}/src
 HTML_DOC_DIR=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/doc/html
 PDF_DOC_DIR=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/doc/pdf
 
+
+.include <bsd.port.pre.mk>
+
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/doc/krb5
 # html documentation
@@ -154,4 +158,4 @@ post-install:
 	@${ECHO} "for more information.                                 "
 	@${ECHO} "------------------------------------------------------"
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

@@ -37,6 +37,7 @@
     SUBDIR += doulos-compact
     SUBDIR += droid-fonts-ttf
     SUBDIR += ecofont
+    SUBDIR += emojione-color-font-ttf
     SUBDIR += encodings
     SUBDIR += exo
     SUBDIR += fantasque-sans-mono
@@ -126,7 +127,6 @@
     SUBDIR += libfontenc
     SUBDIR += linux-c6-fontconfig
     SUBDIR += linux-c7-fontconfig
-    SUBDIR += linux-f10-fontconfig
     SUBDIR += linuxlibertine
     SUBDIR += linuxlibertine-g
     SUBDIR += lohit

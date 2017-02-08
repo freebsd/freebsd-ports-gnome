@@ -44,7 +44,7 @@ MILTER_CONFIGURE_ENABLE=milter
 TESTS_CONFIGURE_ENABLE=	check
 JSON_CONFIGURE_WITH=	libjson
 PCRE_CONFIGURE_WITH=	pcre
-TESTS_BUILD_DEPENDS=	${LOCALBASE}/include/check.h:devel/libcheck
+TESTS_BUILD_DEPENDS=	${LOCALBASE}/include/check.h:devel/check
 ICONV_CONFIGURE_ON=	--with-iconv
 ICONV_CONFIGURE_OFF=	--without-iconv
 ICONV_USES=		iconv
@@ -82,6 +82,7 @@ CONFIGURE_ARGS=	--libdir=${PREFIX}/lib \
 		--enable-readdir_r \
 		--enable-gethostbyname_r \
 		--disable-dependency-tracking \
+		--disable-zlib-vcheck \
 		--enable-clamdtop
 CPPFLAGS+=	-I${LOCALBASE}/include
 

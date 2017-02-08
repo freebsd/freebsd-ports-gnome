@@ -2,7 +2,7 @@
 
 PORTNAME=	openntpd
 PORTVERSION=	6.0p1
-PORTREVISION=	2
+PORTREVISION=	4
 PORTEPOCH=	2
 CATEGORIES=	net
 MASTER_SITES=	OPENBSD/OpenNTPD
@@ -40,17 +40,12 @@ LDFLAGS+=		-L${OPENSSLLIB}
 BUILD_DEPENDS+=		${NONEXISTENT}:security/libressl:stage
 CPPFLAGS+=		-I${WRKDIR}/libressl/include
 LDFLAGS+=		-L${WRKDIR}/libressl/lib
-# security/libressl ignores implicit SSP_UNSAFE, see Mk/bsd.ssp.mk
-. if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000036 && ${ARCH} == i386
-SSP_CFLAGS?=	-fstack-protector
-CFLAGS+=	${SSP_CFLAGS}
-LDFLAGS+=	-fstack-protector
-LIBS+=		-lssp_nonshared
-. endif
 
+# Don't use COPYTREE_SHARE here as it hard links files, and the original files
+# are owned by root, which creates problems of its own.
 pre-configure:
-	@cd `${MAKE} -V STAGEDIR -C ${PORTSDIR}/security/libressl`${LOCALBASE} \
-	    && ${COPYTREE_SHARE} . ${WRKDIR}/libressl "! -name *.so*"
+	@cd `${MAKE} -V STAGEDIR -C ${PORTSDIR}/security/libressl`${PREFIX} \
+	    && ${FIND} -E . ! -name *.so\* | ${CPIO} -dump ${WRKDIR}/libressl >/dev/null 2>&1
 .endif # SSL_DEFAULT
 
 .include <bsd.port.post.mk>

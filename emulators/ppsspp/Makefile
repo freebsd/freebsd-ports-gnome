@@ -3,7 +3,7 @@
 PORTNAME=	ppsspp
 DISTVERSIONPREFIX=	v
 DISTVERSION?=	1.3
-PORTREVISION?=	2
+PORTREVISION?=	3
 CATEGORIES=	emulators
 # XXX Get from Debian once #697821 lands
 MASTER_SITES=	https://bazaar.launchpad.net/~sergio-br2/${PORTNAME}/debian-sdl/download/5/${PORTNAME}.1-20140802045408-dd26dik367ztj5xg-8/:manpage
@@ -76,9 +76,8 @@ post-patch:
 
 do-install-SDL-on:
 # cmake doesn't pack assets into the app unlike qmake
-# XXX Convert to ${PORTDATA:N${PORTNAME}} once fmake is EOL
 	(cd ${INSTALL_WRKSRC} && ${COPYTREE_SHARE} \
-		"${PORTDATA:Nppsspp}" ${STAGEDIR}${DATADIR})
+		"${PORTDATA:N${PORTNAME}}" ${STAGEDIR}${DATADIR})
 # Install the app alongside assets to avoid warnings with GetExeDirectory()
 	${INSTALL_PROGRAM} ${INSTALL_WRKSRC}/${PORTNAME:tu}* \
 		${STAGEDIR}${DATADIR}/${PORTNAME}

@@ -3,7 +3,7 @@
 
 PORTNAME=	srecord
 PORTVERSION=	1.64
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	devel
 MASTER_SITES=	SF
 
@@ -13,6 +13,7 @@ COMMENT=	Collection of powerful tools for manipulating EPROM load files
 BUILD_DEPENDS=	${LOCALBASE}/include/boost/shared_ptr.hpp:devel/boost-libs
 LIB_DEPENDS=	libgcrypt.so:security/libgcrypt
 
+ALL_TARGET=	all libdir/pkgconfig/srecord.pc
 USES=		ghostscript libtool:build
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -32,9 +33,6 @@ HEADER_DIRS=	input \
 		quit
 
 OPTIONS_DEFINE=	DOCS
-
-post-build:
-	cd ${WRKSRC} && ${MAKE_CMD} libdir/pkgconfig/srecord.pc
 
 pre-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

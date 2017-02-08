@@ -2,7 +2,7 @@
 
 PORTNAME=	android-tools-simpleperf
 DISTVERSIONPREFIX=	android-
-DISTVERSION=	7.1.0_r4
+DISTVERSION=	7.1.1_r4
 CATEGORIES=	devel
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -39,14 +39,6 @@ TEST_ALL_TARGET=	simpleperf_test
 post-extract:
 # Adjust paths relative to extras
 	@(cd ${WRKSRC_core} && ${COPYTREE_SHARE} . ${WRKSRC})
-
-post-patch:
-# XXX C++ exception with description "regex_error" thrown in the test body.
-	@if [ ${OPSYS} = FreeBSD -a ${OSREL:R} -lt 10 ]; then \
-		${REINPLACE_CMD} -Ee '/^TEST/\
-			s/ (LOG|PLOG|UNIMPLEMENTED)/ DISABLED_\1/' \
-		${WRKSRC}/base/logging_test.cpp; \
-	fi
 
 pre-install-TEST-on: do-test
 

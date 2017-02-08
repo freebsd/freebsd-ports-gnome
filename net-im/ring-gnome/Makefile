@@ -11,7 +11,7 @@ MAINTAINER=	yuri@rawbw.com
 COMMENT=	Gnome client of the Ring VoIP SIP phone and IM
 
 LICENSE=	GPLv3
-LICENSE_FILES=	${WRKSRC}/COPYING
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libringclient.so:net-im/ring-libclient \
 		libqrencode.so:graphics/libqrencode \
@@ -25,8 +25,6 @@ LIB_DEPENDS=	libringclient.so:net-im/ring-libclient \
 		libnss3.so:security/nss \
 		libsecret-1.so:security/libsecret \
 		libebook-1.2.so:databases/evolution-data-server
-
-BROKEN_FreeBSD_9=	Fails due to compiler issues
 
 USE_GITHUB=	yes
 GH_TUPLE+=	savoirfairelinux:ring-client-gnome:07107e9

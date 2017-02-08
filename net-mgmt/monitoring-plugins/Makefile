@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	monitoring-plugins
-PORTVERSION=	2.1.2
-PORTREVISION=	1
+PORTVERSION=	2.2
 CATEGORIES=	net-mgmt
 MASTER_SITES=	https://www.monitoring-plugins.org/download/ LOCAL/mat/${PORTNAME}
 
@@ -131,7 +130,7 @@ SSH_PORTABLE_CONFIGURE_ON=	--with-ssh-command=${LOCALBASE}/bin/ssh
 
 .include <bsd.port.options.mk>
 
-.if ${OSVERSION} > 1000055 && ${PORT_OPTIONS:MDNS_BASE}
+.if ${PORT_OPTIONS:MDNS_BASE}
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-dig-to-drill.diff
 CONFIGURE_ARGS+=--with-dig-command=/usr/bin/drill \
 		ac_cv_path_PATH_TO_NSLOOKUP=

@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	rocksdb
-PORTVERSION=	4.11.2
+PORTVERSION=	5.0.2
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
 CATEGORIES=	databases
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -31,17 +30,18 @@ CONFIGURE_ARGS=	make_config.mk
 CONFIGURE_ENV=	ROCKSDB_ROOT=${WRKSRC}
 CONFIGURE_SCRIPT=	build_tools/build_detect_platform
 CPPFLAGS+=	-DOS_FREEBSD
-MAKE_ENV=	CXX=${CXX}
+MAKE_ENV=	CXX=${CXX} INSTALL_PATH=${STAGEDIR}${PREFIX}
 USE_CXXSTD=	c++11
 USE_LDCONFIG=	yes
 USES=		compiler:c++11-lib gmake localbase:ldflags
 
+PLIST_SUB=	PORTVERSION=${PORTVERSION} SHLIB_MAJOR=${PORTVERSION:R:R} SHLIB_MINOR=${PORTVERSION:R:E}
 PORTDATA=	make_config.mk
 
 GH_ACCOUNT=	facebook
 USE_GITHUB=	yes
 
-BENCHMARKS=	cache_bench db_bench memtablerep_bench table_reader_bench
+BENCHMARKS=	cache_bench column_aware_encoding_exp db_bench memtablerep_bench persistent_cache_bench table_reader_bench
 TOOLS=		db_repl_stress db_sanity_test db_stress ldb rocksdb_dump rocksdb_undump sst_dump write_stress
 
 DEBUG_MAKE_ENV=		DEBUG_LEVEL=2
@@ -51,12 +51,12 @@ ZSTD_LIB_DEPENDS=	libzstd.so:archivers/zstd
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} <= 1000000
-CFLAGS+=	-D_GLIBCXX_USE_C99
-.endif
-
 .if ${COMPILER_TYPE} == clang && ${COMPILER_VERSION} >= 36
 CXXFLAGS+=	-Wno-inconsistent-missing-override
+.endif
+
+.if ${COMPILER_TYPE} == gcc && ${COMPILER_VERSION} < 60
+CFLAGS+=	-D_GLIBCXX_USE_C99
 .endif
 
 post-patch:
@@ -77,13 +77,11 @@ post-patch-LZ4-off:
 post-patch-ZSTD-off:
 	@${REINPLACE_CMD} -e '/zstd/Id' ${WRKSRC}/build_tools/build_detect_platform
 
-do-install:
-	${MKDIR} ${STAGEDIR}${PREFIX}/include/rocksdb/ ${STAGEDIR}${DATADIR}/
+post-install:
+	${MKDIR} ${STAGEDIR}${DATADIR}/
 	cd ${WRKSRC}/ && ${INSTALL_PROGRAM} ${BENCHMARKS} ${TOOLS} ${STAGEDIR}${PREFIX}/bin/
-	cd ${WRKSRC}/include/rocksdb/ && ${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/include/rocksdb/
-	${INSTALL_DATA} ${WRKSRC}/librocksdb.a ${STAGEDIR}${PREFIX}/lib/
-	${INSTALL_LIB} ${WRKSRC}/librocksdb.so ${STAGEDIR}${PREFIX}/lib/librocksdb.so.0
-	${LN} -fs librocksdb.so.0 ${STAGEDIR}${PREFIX}/lib/librocksdb.so
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/librocksdb.so
+	${INSTALL_DATA} ${WRKSRC}/librocksdb_tools.a ${STAGEDIR}${PREFIX}/lib/
 	${INSTALL_DATA} ${WRKSRC}/make_config.mk ${STAGEDIR}${DATADIR}/
 
 regression-test test: build

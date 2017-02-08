@@ -3,7 +3,7 @@
 
 PORTNAME=	mobility
 PORTVERSION=	1.2.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://dev.gentoo.org/~pesa/distfiles/ \
 		LOCAL/vg
@@ -67,7 +67,7 @@ pre-configure:
 		${STAGE}${PREFIX}/${QT_LIBDIR_REL} \
 		${STAEG}${PREFIX}/${QT_PLUGINDIR_REL}
 
-	cd ${WRKSRC} && ./configure \
+	cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ./configure \
 		-release \
 		-prefix ${STAGE}${PREFIX} \
 		-bindir ${STAGE}${PREFIX}/${QT_BINDIR_REL} \

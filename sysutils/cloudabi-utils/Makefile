@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cloudabi-utils
-PORTVERSION=	0.18
+PORTVERSION=	0.20
 PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	sysutils
@@ -24,13 +24,6 @@ ONLY_FOR_ARCHS_REASON=	CloudABI has not yet been ported to other architectures
 USES=		cmake compiler:c11 pkgconfig tar:xz
 USE_LDCONFIG=	yes
 
-CMAKE_ARGS=	-DCMAKE_INSTALL_MANDIR=man
 CFLAGS+=	-I${LOCALBASE}/include
 
-.include <bsd.port.pre.mk>
-
-.if ${OSVERSION} < 1001511
-IGNORE=		requires a recent implementation of Capsicum
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

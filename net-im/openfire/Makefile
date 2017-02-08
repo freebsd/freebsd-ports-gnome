@@ -2,30 +2,36 @@
 # $FreeBSD$
 
 PORTNAME=	openfire
-PORTVERSION=	4.0.3
+PORTVERSION=	4.1.1
+DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	net-im java
-MASTER_SITES=	http://download.igniterealtime.org/openfire/
-DISTNAME=	${PORTNAME}_src_${PORTVERSION:S/./_/g}
 
 MAINTAINER=	gahr@FreeBSD.org
 COMMENT=	Enterprise instant messaging server
 
 LICENSE=	APACHE20
+LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	slf4j>=1.7.7:devel/slf4j
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	igniterealtime
+GH_PROJECT=	Openfire
 
 OPTIONS_DEFINE=	DOCS PLUGINS
 OPTIONS_DEFAULT=PLUGINS
 OPTIONS_SUB=	yes
 PLUGINS_DESC=	Install bundled plugins
 
-USES=		cpe dos2unix zip
+USES=		cpe dos2unix
 DOS2UNIX_FILES=	src/java/org/jivesoftware/openfire/server/ServerDialback.java
 USE_LDCONFIG=	yes
 USE_ANT=	yes
 USE_JAVA=	yes
 JAVA_VERSION=	1.8
+NO_ARCH=	yes
 
 CPE_VENDOR=	igniterealtime
 
@@ -33,7 +39,6 @@ ALL_TARGET=	openfire
 USE_RC_SUBR=	openfire
 SUB_FILES+=	pkg-message
 
-WRKSRC=		${WRKDIR}/${PORTNAME}_src
 BUILD_WRKSRC=	${WRKSRC}/build
 INSTALL_WRKSRC=	${WRKSRC}/target/openfire
 DATADIR=	${JAVASHAREDIR}/${PORTNAME}
@@ -56,8 +61,10 @@ do-install:
 	(cd ${INSTALL_WRKSRC}/lib && ${INSTALL} -m 744 *.jar ${STAGEDIR}${DATADIR}/lib)
 	(cd ${INSTALL_WRKSRC}/lib && ${INSTALL} -m 744 log4j.xml ${STAGEDIR}${DATADIR}/lib)
 
-	(cd ${INSTALL_WRKSRC}/resources && ${FIND} . \! -path ./security\* \
-	| ${CPIO} -pvdmu -R ${SHAREOWN}:${SHAREGRP} ${STAGEDIR}${DATADIR}/resources)
+	(cd ${INSTALL_WRKSRC}/resources && \
+	    ${FIND} . \! -path ./security\* \! -path ./nativeAuth\* | \
+	    ${CPIO} -pvdmu -R ${SHAREOWN}:${SHAREGRP} \
+	        ${STAGEDIR}${DATADIR}/resources)
 
 #	always install admin interface
 	(cd ${INSTALL_WRKSRC}/plugins/admin && ${FIND} . \
@@ -82,12 +89,7 @@ do-install-PLUGINS-on:
 
 do-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	(cd ${WRKSRC} && ${INSTALL_DATA} LICENSE.html README.html changelog.html \
-	    ${STAGEDIR}${DOCSDIR})
 	(cd ${WRKSRC}/documentation/docs && ${FIND} . \! -path ./javadoc\* \
 	| ${CPIO} -pdmu -R ${SHAREOWN}:${SHAREGRP} ${STAGEDIR}${DOCSDIR} > /dev/null 2>&1 )
-
-post-install:
-	${STRIP_CMD} ${STAGEDIR}${DATADIR}/resources/nativeAuth/linux-i386/libshaj.so
 
 .include <bsd.port.mk>

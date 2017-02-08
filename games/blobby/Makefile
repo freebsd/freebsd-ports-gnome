@@ -3,7 +3,7 @@
 
 PORTNAME=	blobby
 PORTVERSION=	1.0r3
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/Blobby%20Volley%202%20%28Linux%29/1.0RC3/
 DISTNAME=	blobby2-linux-1.0rc3
@@ -28,6 +28,8 @@ CMAKE_ARGS+=	-DDATADIR:PATH="${DATADIR}"
 WRKSRC=		${WRKDIR}/blobby-1.0rc3
 
 PORTDOCS=	AUTHORS ChangeLog INSTALL NEWS README TODO
+
+BROKEN_aarch64=		Fails to compile: I can't tell what endian-ness to use for your architecture
 
 post-install:
 	@${MKDIR}  ${STAGEDIR}${DOCSDIR}

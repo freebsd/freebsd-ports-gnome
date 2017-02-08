@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnuradio
-PORTVERSION=	3.7.9.2
-PORTREVISION=	2
+PORTVERSION=	3.7.10.1
 CATEGORIES=	comms astro hamradio
 MASTER_SITES=	http://gnuradio.org/releases/gnuradio/ \
 		LOCAL/db
@@ -16,7 +15,6 @@ BUILD_DEPENDS=	sdl-config:devel/sdl12 \
 		swig2.0:devel/swig20 \
 		cheetah:devel/py-cheetah \
 		${PYTHON_PKGNAMEPREFIX}lxml>0:devel/py-lxml \
-		${PYTHON_PKGNAMEPREFIX}qt4>0:devel/py-qt4 \
 		xdg-open:devel/xdg-utils \
 		guile:lang/guile \
 		aconnect:audio/alsa-utils \
@@ -24,6 +22,7 @@ BUILD_DEPENDS=	sdl-config:devel/sdl12 \
 		${PYNUMPY} \
 		${PYTHON_SITELIBDIR}/ephem/__init__.py:astro/pyephem
 LIB_DEPENDS=	libcppunit.so:devel/cppunit \
+		libcodec2.so:audio/codec2 \
 		libfftw3.so:math/fftw3 \
 		libfftw3f.so:math/fftw3-float \
 		libqwt.so:x11-toolkits/qwt5 \
@@ -41,18 +40,20 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 # volk/lib/volk_cpu.c: In function 'i_can_has_3dnow':
 # volk/lib/volk_cpu.c:62: error: can't find a register in class 'BREG' while reloading 'asm'
 # volk/lib/volk_cpu.c:62: error: 'asm' operand has impossible constraints
-USES=		cmake:outsource compiler:c11 iconv perl5 python:2.7 shebangfix
-SHEBANG_FILES=	grc/freedesktop/grc_setup_freedesktop.in
+USES=		cmake:outsource compiler:c11 iconv perl5 pkgconfig pyqt:4 python:2.7 shebangfix
+SHEBANG_FILES=	grc/scripts/freedesktop/grc_setup_freedesktop.in
 CMAKE_ARGS+=	-DSWIG_EXECUTABLE:STRING="${LOCALBASE}/bin/swig2.0"\
 		-DICONV_PREFIX:STRING="${ICONV_PREFIX}" \
 		-DICONV_LIB:STRING="X${ICONV_LIB}" \
 		-DENABLE_GR_CTRLPORT="YES" \
+		-DLOCALBASE:STRING="${LOCALBASE}" \
 		-DCMAKE_INSTALL_RPATH:STRING="${LOCALBASE}/lib/gcc${_GCC_VER}"
 # for detailed debugging uncomment the next line
 #CMAKE_ARGS+=	--debug-output --trace
-MAJOR_SUB_VER=	3.7.9.2
-DOCSDIR=	share/doc/${PORTNAME}-${MAJOR_SUB_VER}
+MAJOR_SUB_VER=	${PORTVERSION}
+DOCSDIR=	share/doc/${PORTNAME}-${PORTVERSION}
 USE_GNOME=	pygtk2
+USE_PYQT=	core gui opengl
 USE_WX=		3.0+
 USE_QT4=	corelib gui xml qmake moc rcc uic
 WX_COMPS=	wx wx:build wx:run python:build python:run
@@ -63,11 +64,11 @@ LIBSTRIP_FILES=	analog atsc audio blocks channels digital dtv fcd fec fft\
 		filter noaa pager pmt qtgui runtime trellis video-sdl\
 		vocoder wavelet wxgui
 
-OPTIONS_DEFINE=		UHD TESTING
+OPTIONS_DEFINE=		UHD TESTING DOXYGEN
 # Unfortunately building docs on i386 fails
-##OPTIONS_EXCLUDE_${i386}=	DOCS
+##OPTIONS_EXCLUDE_${i386}=	DOXYGEN
 # Yay. building docs is broken on 10 and HEAD too so turn them all off
-OPTIONS_EXCLUDE=	DOCS
+OPTIONS_EXCLUDE=	DOXYGEN
 OPTIONS_DEFAULT=	UHD
 OPTIONS_SUB=		yes
 UHD_DESC=	Include UHD support from Ettus
@@ -75,15 +76,15 @@ TESTING_DESC=	Include testing support
 
 PLIST_SUB+=	PORTVERSION=${PORTVERSION}
 
-DOCS_BUILD_DEPENDS=	doxygen:devel/doxygen \
-			${LOCALBASE}/bin/sphinx-apidoc:textproc/py-sphinx \
+DOXYGEN_BUILD_DEPENDS=	doxygen:devel/doxygen \
+			sphinx-apidoc:textproc/py-sphinx \
 			dot:graphics/graphviz \
 			xmlto:textproc/xmlto \
 			freefont-ttf>0:x11-fonts/freefont-ttf
-DOCS_CMAKE_ON=	-DENABLE_DOXYGEN:STRING="ON" \
+DOXYGEN_CMAKE_ON=	-DENABLE_DOXYGEN:STRING="ON" \
 		-DENABLE_DOCS:STRING="ON" \
 		-DENABLE_BAD_BOOST="ON"
-DOCS_CMAKE_OFF=	-DENABLE_DOXYGEN:STRING="OFF" \
+DOXYGEN_CMAKE_OFF=	-DENABLE_DOXYGEN:STRING="OFF" \
 		-DENABLE_DOCS:STRING="OFF" \
 		-DENABLE_BAD_BOOST="ON"
 HAVE_PORTDOCS=	YES
@@ -100,9 +101,6 @@ TESTING_BUILD_DEPENDS=	cppunit-config:devel/cppunit
 .if ${PORT_OPTIONS:MUHD}
 LIBSTRIP_FILES+=	uhd
 LIB_DEPENDS+=	libuhd.so:comms/uhd
-.endif
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
-USE_GCC=	yes
 .endif
 
 PATCH_FILES=	docs/doxygen/Doxyfile.in \

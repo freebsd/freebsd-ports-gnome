@@ -8,7 +8,7 @@ PORTVERSION=	${ISCVERSION:S/-P/P/:S/b/.b/:S/a/.a/:S/rc/.rc/}
 PORTREVISION=	0
 .else
 # dns/bind9xx here
-PORTREVISION=	0
+PORTREVISION=	1
 .endif
 CATEGORIES=	dns net ipv6
 MASTER_SITES=	ISC/bind9/${ISCVERSION}
@@ -29,7 +29,7 @@ COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 LICENSE=	MPL
 
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.11.0-P1
+ISCVERSION=	9.11.0-P2
 
 USES=	cpe libedit
 
@@ -46,7 +46,7 @@ CONFIGURE_ARGS+=	--localstatedir=/var --disable-linux-caps \
 		--disable-symtable \
 		--with-randomdev=/dev/random \
 		--with-libxml2=${LOCALBASE} \
-		--with-readline=-ledit \
+		--with-readline="-L${LOCALBASE}/lib -ledit" \
 		--with-dlopen=yes \
 		--sysconfdir=${ETCDIR}
 .if defined(BIND_TOOLS_SLAVE)
@@ -54,14 +54,14 @@ CONFIGURE_ARGS+=	--disable-shared
 .endif
 ETCDIR=		${PREFIX}/etc/namedb
 
-CONFLICTS+=	bind9*-9.[456789].* bind910-* bind9*-sdb-9.[456789].*
+CONFLICTS+=	bind99 bind910 bind9-devel
 
 .if !defined(BIND_TOOLS_SLAVE)
 SUB_FILES=	pkg-message
 .endif
 
-OPTIONS_DEFAULT=	SSL THREADS SIGCHASE IDN GSSAPI_NONE
-OPTIONS_DEFINE=		IDN LARGE_FILE PYTHON \
+OPTIONS_DEFAULT=	SSL THREADS SIGCHASE IDN GSSAPI_NONE JSON
+OPTIONS_DEFINE=		IDN LARGE_FILE PYTHON JSON \
 			FIXED_RRSET SIGCHASE IPV6 THREADS FILTER_AAAA
 OPTIONS_RADIO=	CRYPTO GOSTDEF
 OPTIONS_RADIO_CRYPTO=	SSL NATIVE_PKCS11
@@ -69,7 +69,7 @@ OPTIONS_RADIO_GOSTDEF=	GOST GOST_ASN1
 
 .if !defined(BIND_TOOLS_SLAVE)
 OPTIONS_DEFAULT+=	DLZ_FILESYSTEM LMDB RPZ_NSDNAME RPZ_NSIP
-OPTIONS_DEFINE+=	LINKS RPZ_NSIP RPZ_NSDNAME DOCS GEOIP \
+OPTIONS_DEFINE+=	RPZ_NSIP RPZ_NSDNAME DOCS GEOIP \
 			MINCACHE PORTREVISION QUERYTRACE LMDB DNSTAP \
 			START_LATE
 OPTIONS_GROUP=		DLZ
@@ -100,7 +100,6 @@ QUERYTRACE_DESC=	Enable the very verbose query tracelogging
 LMDB_DESC=		Use LMDB for zone management
 DNSTAP_DESC=		Provides fast passive logging of DNS messages
 
-LINKS_DESC=		Create conf file symlinks in ${PREFIX}
 RPZ_NSIP_DESC=		Enable RPZ NSIP trigger rules
 RPZ_NSDNAME_DESC=	Enable RPZ NSDNAME policy records
 DLZ_DESC=		Dynamically Loadable Zones
@@ -116,9 +115,9 @@ GSSAPI_MIT_DESC=	Using security/krb5
 GSSAPI_NONE_DESC=	Disable
 
 .if defined(BIND_TOOLS_SLAVE)
-CONFLICTS+=		bind910-9.10.*
+CONFLICTS+=		bind911
 .else
-CONFLICTS+=		bind-tools-9.*
+CONFLICTS+=		bind-tools
 .endif	# BIND_TOOLS_SLAVE
 
 SSL_CONFIGURE_ON=	--with-openssl=${OPENSSLBASE}
@@ -145,6 +144,9 @@ NATIVE_PKCS11_CONFIGURE_ENABLE=	native-pkcs11
 
 GEOIP_CONFIGURE_WITH=	geoip
 GEOIP_LIB_DEPENDS=	libGeoIP.so:net/GeoIP
+
+JSON_LIB_DEPENDS=	libjson-c.so:devel/json-c
+JSON_CONFIGURE_WITH=	libjson
 
 GOST_CONFIGURE_ON=	--with-gost
 GOST_ASN1_CONFIGURE_ON=	--with-gost=asn1
@@ -206,30 +208,16 @@ DNSTAP_LIB_DEPENDS=	libfstrm.so:devel/fstrm \
 CONFIGURE_ARGS+=	--without-gost
 .endif
 
-.if !${PORT_OPTIONS:MLINKS}
-PKGINSTALL=${NONEXISTENT}
-.endif
-
 .if ${PORT_OPTIONS:MTHREADS} && !${PORT_OPTIONS:MDLZ_MYSQL}
 CONFIGURE_ARGS+=	--enable-threads
 .else
 CONFIGURE_ARGS+=	--disable-threads
 .endif
 
-.if ${OPSYS} == DragonFly || (${OPSYS} == FreeBSD && ${OSVERSION} >= 1000100)
-PKGINSTALL=	${NONEXISTENT}
-PLIST_SUB+=	NOBASE="" BASE="@comment "
-SUB_LIST+=	NOBASE="" BASE="@comment "
 .if !defined(BIND_TOOLS_SLAVE)
 USE_RC_SUBR+=	named
 SUB_FILES+=	named.conf
-.endif # !defined(BIND_TOOLS_SLAVE)
-.else
-PLIST_SUB+=	NOBASE="@comment " BASE=""
-SUB_LIST+=	NOBASE="@comment " BASE=""
 .endif
-
-PKGDEINSTALL=	${PKGINSTALL}
 
 MAKE_JOBS_UNSAFE=	yes
 
@@ -253,7 +241,7 @@ post-patch:
 		-e 's#.*INSTALL.*isc-config.*##' \
 		-e 's#.*INSTALL.*bind.keys.*##' \
 		${WRKSRC}/Makefile.in
-	@${REINPLACE_CMD} -e 's#^SUBDIRS.*#SUBDIRS = delv dig dnssec nsupdate \\#' \
+	@${REINPLACE_CMD} -e 's#^SUBDIRS.*#SUBDIRS = dig delv dnssec tools nsupdate \\#' \
 		-e 's#^	.*check confgen ##' \
 		${WRKSRC}/bin/Makefile.in
 .else
@@ -298,10 +286,10 @@ post-install:
 .endif
 	${INSTALL_DATA} ${WRKSRC}/bin/rndc/rndc.conf \
 		${STAGEDIR}${ETCDIR}/rndc.conf.sample
+.endif	# BIND_TOOLS_SLAVE
 
 # Can't use USE_PYTHON=autoplist
 post-install-PYTHON-on:
 	@${FIND} ${STAGEDIR}${PYTHON_SITELIBDIR} -type f | ${SED} -e 's|${STAGEDIR}||' >> ${TMPPLIST}
-.endif	# BIND_TOOLS_SLAVE
 
 .include <bsd.port.post.mk>

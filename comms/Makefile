@@ -25,6 +25,7 @@
     SUBDIR += cqrlog
     SUBDIR += cutecom
     SUBDIR += cwdaemon
+    SUBDIR += cwstudio
     SUBDIR += dabstick-radio
     SUBDIR += dcf77pi
     SUBDIR += deforaos-phone
@@ -78,7 +79,6 @@
     SUBDIR += klog
     SUBDIR += kremotecontrol
     SUBDIR += kvasd
-    SUBDIR += libcodec2
     SUBDIR += libconcord
     SUBDIR += libfap
     SUBDIR += libfec

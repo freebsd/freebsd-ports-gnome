@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	erlang
-PORTVERSION=	19.1.6
+PORTVERSION=	19.2.2
 CATEGORIES=	lang parallel
 MASTER_SITES=	http://www.erlang.org/download/:erlangorg		\
 		http://erlang.stacken.kth.se/download/:erlangorg	\
@@ -14,8 +14,7 @@ EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 PATCH_SITES=	http://olgeni.olgeni.com/~olgeni/distfiles/ \
 		LOCAL/olgeni
-PATCHFILES=	patch-otp-19.1.1 patch-otp-19.1.2 patch-otp-19.1.3 \
-		patch-otp-19.1.4 patch-otp-19.1.5 patch-otp-19.1.6
+PATCHFILES=	patch-otp-19.2.1 patch-otp-19.2.2
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	Erlang bindings for wxWindows
@@ -33,14 +32,14 @@ MAKE_JOBS_UNSAFE=yes
 
 OPTIONS_DEFINE=	DOCS
 
-ERL_RELEASE=	19.1
+ERL_RELEASE=	19.2
 
 USES=		gmake
 USE_GL=		gl glu
 GNU_CONFIGURE=	yes
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-APP_VERSION=	1.7.1
+APP_VERSION=	1.8
 APP_DIR=	${PREFIX}/lib/erlang/lib/wx-${APP_VERSION}
 
 .include <bsd.port.options.mk>
@@ -55,10 +54,6 @@ USE_WX=		2.8+
 WX_COMPS=	wx contrib
 
 ERLANG_DOCS=	otp_doc_html_${ERL_RELEASE}.tar.gz
-
-.if ${ARCH} == i386
-MAKE_ARGS+=	ARCH=x86
-.endif
 
 do-build:
 	cd ${WRKSRC}/lib/wx && ${GMAKE} ERL_TOP=${WRKSRC} TARGET=${CONFIGURE_TARGET}

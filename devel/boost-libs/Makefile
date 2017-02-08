@@ -6,6 +6,8 @@ PORTREVISION=	1
 
 COMMENT=	Free portable C++ libraries (without Boost.Python)
 
+BROKEN_sparc64=	https://github.com/boostorg/context/commit/f2ef6326b6ed
+
 BUILD_DEPENDS+=	bjam:devel/boost-jam
 
 OPTIONS_DEFINE=		DEBUG OPTIMIZED_CFLAGS

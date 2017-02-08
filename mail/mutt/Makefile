@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mutt
-PORTVERSION=	1.7.1
-PORTREVISION?=	2
+PORTVERSION=	1.7.2
+PORTREVISION?=	0
 CATEGORIES+=	mail ipv6
 MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/ \
 		ftp://ftp.fu-berlin.de/pub/unix/mail/mutt/ \
@@ -218,8 +218,8 @@ DOCS_EXTRA_PATCHES=	${PATCHDIR}/extra-patch-doc-ref
 .include <bsd.port.options.mk>
 
 # un/comment as each VERSION is created for PORTVERSION
-#VVV_PATCH_VERSION=	1.7.0
-#RR_PATCH_VERSION=	1.7.0
+VVV_PATCH_VERSION=	1.7.1
+RR_PATCH_VERSION=	1.7.1
 #GREETING_PATCH_VERSION=	1.7.0
 
 .if !defined(VVV_PATCH_VERSION)
@@ -247,34 +247,34 @@ CFLAGS+=		${CFLAGS_ADD}
 LDFLAGS+=		${LDFLAGS_ADD}
 
 pre-patch-PARENT_CHILD_MATCH_PATCH-on:
-	@${PATCH} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-parent-child-match
+	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-parent-child-match
 
 pre-patch-COMPRESSED_FOLDERS-on:
 	@${GUNZIP_CMD} -c ${DISTDIR}/${DIST_SUBDIR}/patch-${RR_PATCH_VERSION}.rr.compressed.gz > ${WRKDIR}/patch-compressed
 	@${REINPLACE_CMD} -E '/^diff.*\/doc\/manual.txt$$/,/^diff/d' \
 		 ${WRKDIR}/patch-compressed
-	@${PATCH} ${PATCH_ARGS} -p1 < ${WRKDIR}/patch-compressed
+	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${WRKDIR}/patch-compressed
 
 pre-patch-NNTP-on:
 	@${GUNZIP_CMD} -c ${DISTDIR}/${DIST_SUBDIR}/patch-${VVV_PATCH_VERSION}.vvv.nntp.gz > ${WRKDIR}/patch-nntp
 	@${REINPLACE_CMD} -E '/^diff.*\/doc\/manual.txt$$/,/^diff/d' \
 		${WRKDIR}/patch-nntp
-	@${PATCH} ${PATCH_ARGS} -p1 < ${WRKDIR}/patch-nntp
+	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${WRKDIR}/patch-nntp
 
 post-patch-NNTP-on:
 .if ${PORT_OPTIONS:MMAILDIR_MTIME_PATCH}
-	@${PATCH} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-maildir-mtime-nntp
+	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-maildir-mtime-nntp
 .endif
 .if ${PORT_OPTIONS:MFORCEBASE64}
-	@${PATCH} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-forcebase64-nntp
+	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-forcebase64-nntp
 .endif
 
 post-patch-NNTP-off:
 .if ${PORT_OPTIONS:MMAILDIR_MTIME_PATCH}
-	@${PATCH} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-maildir-mtime
+	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-maildir-mtime
 .endif
 .if ${PORT_OPTIONS:MFORCEBASE64}
-	@${PATCH} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-forcebase64
+	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-forcebase64
 .endif
 
 post-install:
@@ -284,7 +284,7 @@ post-install-NNTP-on:
 	${INSTALL_DATA} ${WRKSRC}/ChangeLog.nntp ${STAGEDIR}${DOCSDIR}
 
 post-patch-IFDEF_PATCH-on:
-	@${PATCH} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-ifdef
+	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-ifdef
 
 WRKSRC=		${WRKDIR}/${DISTNAME:S/i$//}
 

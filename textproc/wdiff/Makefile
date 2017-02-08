@@ -3,10 +3,11 @@
 
 PORTNAME=	wdiff
 PORTVERSION=	1.2.2
+PORTREVISION=	1
 CATEGORIES=	textproc
 MASTER_SITES=	GNU
 
-MAINTAINER=	sanpei@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Display word differences between text files
 
 LICENSE=	GPLv3

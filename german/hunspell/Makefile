@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	hunspell
-PORTVERSION=	20160407
+PORTVERSION=	20161207
 PORTREVISION=	1
 CATEGORIES=	german textproc
 MASTER_SITES=	http://www.j3e.de/ispell/igerman98/dict/ \
@@ -20,7 +20,6 @@ BUILD_DEPENDS=	aspell:textproc/aspell \
 
 USES=		gmake perl5 shebangfix tar:bzip2
 ALL_TARGET=	hunspell-all
-MAKE_ENV=	LANG=C LC_ALL=C
 NO_ARCH=	yes
 USE_PERL5=	build
 SHEBANG_FILES=	bin/*.pl

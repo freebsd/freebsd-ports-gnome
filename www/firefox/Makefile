@@ -2,45 +2,43 @@
 # $FreeBSD$
 
 PORTNAME=	firefox
-DISTVERSION=	50.0.2
+DISTVERSION=	51.0.1
 DISTVERSIONSUFFIX=.source
 PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	www ipv6
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \
-		MOZILLA/${PORTNAME}/candidates/${DISTVERSION}-candidates/build1/source
+		MOZILLA/${PORTNAME}/candidates/${DISTVERSION}-candidates/build3/source
 
 MAINTAINER=	gecko@FreeBSD.org
 COMMENT=	Web browser based on the browser portion of Mozilla
 
-BUILD_DEPENDS=	nspr>=4.12:devel/nspr \
-		nss>=3.26.2:security/nss \
+BUILD_DEPENDS=	nspr>=4.13.1:devel/nspr \
+		nss>=3.28.1:security/nss \
 		libevent2>=2.0.21_2:devel/libevent2 \
-		soundtouch>=1.9.0:audio/soundtouch \
-		harfbuzz>=1.2.6:print/harfbuzz \
+		harfbuzz>=1.3.3:print/harfbuzz \
 		graphite2>=1.3.8:graphics/graphite2 \
-		png>=1.6.23:graphics/png \
+		png>=1.6.25:graphics/png \
 		libvorbis>=1.3.5,3:audio/libvorbis \
 		libvpx>=1.5.0:multimedia/libvpx \
-		sqlite3>=3.13:databases/sqlite3 \
+		sqlite3>=3.14.1:databases/sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3 \
 		v4l_compat>0:multimedia/v4l_compat \
 		autoconf-2.13:devel/autoconf213 \
 		yasm:devel/yasm \
 		zip:archivers/zip
+#		soundtouch>=1.9.0:audio/soundtouch \
 
 LIB_DEPENDS=	libv4l2.so:multimedia/libv4l
 
 USE_GECKO=	gecko
 CONFLICTS_INSTALL=	firefox-esr-45.* firefox-esr-3[18].* firefox-esr-24.*
 MOZ_PKGCONFIG_FILES=	# empty
-USE_MOZILLA=	# empty
+USE_MOZILLA=	-soundtouch
 MOZILLA_NAME=	Firefox
 
 USE_GL=		gl
 USES=		tar:xz
-
-BROKEN_aarch64=		Fails to link: error adding symbols: File in wrong format
 
 FIREFOX_ICON=		${MOZILLA}.png
 FIREFOX_ICON_SRC=	${PREFIX}/lib/${MOZILLA}/browser/chrome/icons/default/default48.png
@@ -49,8 +47,7 @@ MOZ_OPTIONS=	--enable-application=browser \
 
 OPTIONS_DEFINE=		RUST
 OPTIONS_DEFAULT=	BUNDLED_CAIRO GTK3
-OPTIONS_EXCLUDE_FreeBSD_9=	RUST
-# XXX lang/rust currently builds only on these platforms
+# XXX lang/rust and devel/cargo currently build only on these platforms
 OPTIONS_DEFAULT_amd64=	RUST
 OPTIONS_DEFAULT_i386=	RUST
 

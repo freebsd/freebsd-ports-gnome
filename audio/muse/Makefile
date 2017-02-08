@@ -3,7 +3,7 @@
 
 PORTNAME=	MuSE
 PORTVERSION=	0.9.2
-PORTREVISION=	14
+PORTREVISION=	16
 CATEGORIES=	audio
 MASTER_SITES=	https://files.dyne.org/muse/sources/
 

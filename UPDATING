@@ -5,6 +5,262 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20170203:
+  AFFECTS: users of security/libressl-devel
+  AUTHOR: brnrd@FreeBSD.org
+
+  The version 2.5.1 bumps the libcrypto, libssl and libtls shared library
+  versions. You will have to rebuild all packages that depend on
+  libressl-devel. Check the 20160811 libressl entry for more detailed
+  guidance on rebuilding.
+
+20170202:
+  AFFECTS: users of www/uwsgi
+  AUTHOR: feld@FreeBSD.org
+
+  The previous disruptive changes to uwsgi for security have been remediated
+  through creation of a dedicated uwsgi user/group and utilizing the
+  uwsgi feature to set socket ownership. The uwsgi daemon by default now
+  has the following properties:
+
+  * Process runs as uwsgi user and group (UID/GID 165)
+  * Socket mode is 660, still protecting unauthorized access from "other"
+  * Socket ownership is www:www, restoring compatibility
+
+20170130:
+  AFFECTS: users of devel/ice, devel/py-ice, devel/php5-ice
+  AUTHOR: grembo@FreeBSD.org
+
+  Since __WORDSIZE as defined by <stdint.h> always reports 32 when using
+  C++98/03 (unless __STDC_LIMIT_MACROS is set explictly), Ice 3.6.3 used
+  "long long" for Int64 instead of "long" on 64-bit platforms by mistake.
+  A workaround has been added in version 3.6.3_2 of these three ports,
+  requiring to upgrade all of them at the same time and to rebuild all
+  custom code that links against them.
+
+20170129:
+  AFFECTS: users of multimedia/motion
+  AUTHOR: jhale@FreeBSD.org
+
+  Version 3.x expected the configuration files to reside in:
+	${LOCALBASE}/etc
+  Version 4.x expects the configuration files to reside in:
+	${LOCALBASE}/etc/motion
+  This was unfortunately overlooked when the port was updated to 4.x, but it
+  has now been fixed to install the default configuration file in the new
+  location. The rc script now checks for motion.conf in the new location.
+
+  While you may be able to simply copy your old motion.conf to the new location,
+  it is recommended to review ${LOCALBASE}/etc/motion/motion.conf and make
+  changes to it based on your old ${LOCALBASE}/etc/motion.conf as some options
+  have been added and removed.
+
+  Further, if you use motion with multiple cameras and have
+  ${LOCALBASE}/etc/thread[0-9].conf files, they should be moved to
+  ${LOCALBASE}/etc/motion as well. These files are deprecated and should be
+  renamed to camera[0-9].conf and in motion.conf, lines like:
+	thread /usr/local/etc/thread1.conf
+  Should be converted to:
+	camera /usr/local/etc/motion/camera1.conf
+
+20170127:
+  AFFECTS: users of www/uwsgi
+  AUTHOR: feld@FreeBSD.org
+
+  The default socket mode for uwsgi as 777 is a severe security concern.
+  This has been remediated by changing the rc script to default to 600.
+  The mode is configurable with rc.conf values: uwsgi_socket_mode="600"
+  or for a profile named "www", uwsgi_www_socket_mode="600".
+
+20170121:
+  AFFECTS: users of security/tinc
+  AUTHOR: dinoex@FreeBSD.org
+
+  this version of tinc requires all nodes in the VPN to be linked with a
+  version of OpenSSL or LibreSSL that supports the AES256 and SHA256
+  algorithms.
+
+
+20170120:
+  AFFECTS: users of databases/mysql56-server
+  AUTHOR: feld@FreeBSD.org
+
+  databases/mysql56-server was updated to 5.6.35 which included backported
+  rc script changes from the mysql57-server port. This broke mysql_optfile in
+  rc.conf and also forced a sample my.cnf if none existed. MySQL has
+  some parameters which cannot be changed after a database has been
+  created, so this caused MySQL to fail to start.
+
+  This change was reverted in mysql56-server-5.6.35_1
+
+  An additional change was made in mysql56-server-5.6.35_2 to prevent
+  automatic loading of a sample my.cnf which was causing issues for
+  users who were running without a my.cnf.
+
+20170117:
+  AFFECTS: users of EoL'ed FreeBSD versions (<10.3, 11 prior to 11.0)
+  AUTHOR: amdmi3@FreeBSD.org
+
+  The ports system will now refuse to build anything if it's run on
+  outdated system version. This protects users from unexpected build
+  failures after code to support EoL'ed systems is removed from the
+  tree. You may define ALLOW_UNSUPPORTED_SYSTEM to override this and
+  allow builds, but no support will be provided in case of failures.
+
+20170116:
+  AFFECTS: users of java/wildfly10
+  AUTHOR: olgeni@FreeBSD.org
+
+  The java/wildfly10 port has been updated to 10.1.0. To complete the
+  migration you must copy your existing configuration (directories
+  "appclient", "standalone", and "domain") from /usr/local/wildfly-10.0.0
+  to /usr/local/wildfly10.
+
+20170115:
+  AFFECTS: users of net-mgmt/librenms
+  AUTHOR: dvl@FreeBSD.org
+
+  The following is recommended for /var/db/mysql/my.cnf
+
+  NOTE: these are global settings.  Please read this first:
+
+  http://dev.mysql.com/doc/refman/5.7/en/sql-mode.html
+
+  [mysqld]
+  innodb_file_per_table=1
+  sql-mode=""
+
+20170109:
+  AFFECTS: users of lang/ruby22
+  AUTHOR: swills@FreeBSD.org
+
+  The default ruby version has been updated from 2.2 to 2.3.
+
+  If you compile your own ports you may keep 2.2 as the default version by
+  adding the following lines to your /etc/make.conf file:
+
+  #
+  # Keep ruby 2.2 as default version
+  #
+  DEFAULT_VERSIONS+=ruby=2.2
+
+  If you wish to update to the new default version, you need to first stop any
+  software that uses ruby. Then, you will need to follow these steps, depending
+  upon how you manage your system.
+
+  If you use pkgng, simply upgrade:
+  # pkg upgrade
+
+  If you use portmaster, install new ruby, then rebuild all ports that depend
+  on ruby:
+  # portmaster -o lang/ruby23 lang/ruby22
+  # portmaster -R -r ruby-2.3
+
+  If you use portupgrade, install new ruby, then rebuild all ports that depend
+  on ruby:
+
+  # pkg delete -f ruby portupgrade
+  # make -C /usr/ports/ports-mgmt/portupgrade install clean
+  # pkg set -o lang/ruby22:lang/ruby23
+  # portupgrade -x ruby-2.3.\* -fr lang/ruby23
+
+20170102:
+  AFFECTS: multimedia/ffmpeg
+  AUTHOR: jbeich@FreeBSD.org
+
+  OPTIMIZED_CFLAGS switched to only use vendor optimizations which
+  means -ffast-math -fno-finite-math-only are no longer applied. If
+  you did like the former behavior consider adding
+
+      # multimedia/ffmpeg/Makefile.local
+      OPTIMIZED_CFLAGS_CFLAGS += -ffast-math -fno-finite-math-only
+
+  or
+
+      # /etc/make.conf
+      .if ${.CURDIR:M*/multimedia/ffmpeg}
+      CFLAGS += -ffast-math -fno-finite-math-only
+      .endif
+
+20161230:
+  AFFECTS: users of x11/xfce4-terminal
+  AUTHOR: olivierd@FreeBSD.org
+
+  The port has been updated to the latest stable version 0.8.2.
+  Please, don't active the hidden 'MiscSlimTabs' option in
+  ~/.config/xfce4/terminal/terminalrc, it requires Gtk+ > 3.20.
+
+20161228:
+  AFFECTS: users of multimedia/mlt
+  AUTHOR: avilla@FreeBSD.org
+
+  MLT Qt plugins have been moved to their own ports, mlt-qt4 and
+  mlt-qt5. Please, uninstall multimedia/mlt before you update:
+
+  # pkg delete mlt
+
+20161227:
+  AFFECTS: users of security/openvpn, security/openvpn-polarssl
+  AUTHOR: Matthias Andree <mandree@FreeBSD.org>
+
+  The OpenVPN ports have been updated to the new upstream release v2.4,
+  and their predecessors preserved as openvpn23 and openvpn23-polarssl,
+  respectively.  Note that for the new v2.4 release, the
+  openvpn-polarssl port has been renamed to openvpn-mbedtls to match the
+  upstream library's new name.
+
+20161218:
+  AFFECTS: users of www/nghttp2
+  AUTHOR: sunpoet@FreeBSD.org
+
+  nghttp2 has been split into 2 ports: www/libnghttp2 for core library and
+  www/nghttp2 for the rest. Please uninstall nghttp2 before you update
+  this port.
+
+20161216:
+  AFFECTS: mail/thunderbird, www/seamonkey
+  AUTHOR: gecko@FreeBSD.org
+
+  ENIGMAIL is no longer provided as part of the ports after upstream
+  dropped binary components in 1.9. Go to Tools -> Add-ons Manager
+  then type "enigmail" in the search box to install.
+
+20161213:
+  AFFECTS: users of devel/skalibs, lang/execline, sysutils/s6
+  AUTHOR: Colin Booth <colin-ports@heliocat.net>
+
+  skalibs has undergone a major version bump and compatibility is not
+  guaranteed for software with a runtime dependency on
+  libskarnet.so.2.3.9.0. This will not affect lang/execline or
+  sysutils/s6 as those are statically linked against libskarnet.a.
+
+  execline has undergone a major version bump and compatibility is not
+  guaranteed for software with a runtime dependency on
+  libexecline.so.2.1.4.5. This will not affect sysutils/s6 as all s6
+  programs are statically linked against libexecline.a.
+
+  s6 has undergone a major version bump and compatibility is not
+  guaranteed for software with a runtime dependency on
+  libs6.so.2.2.4.3. Additionally, s6-applyuidgid and s6-setuidgid
+  have moved from $PREFIX/sbin to $PREFIX/bin. Any scripts calling
+  those utilities that are not relying on $PATH resolution to find
+  them will need to be rewritten.
+
+20161207:
+  AFFECTS: users of www/node
+  AUTHOR: bradleythughes@fastmail.fm
+
+  The www/node port has been updated to node.js v7.2.0, the latest
+  upstream release. A new port, www/node6, has been created for the
+  v6.x LTS branch. Users wanting to stay on v6.x can replace www/node
+  with www/node6 with one of the following commands:
+
+  # pkg set -o www/node:www/node6
+    or
+  # portmaster -o www/node6 www/node
+    or
+  # portupgrade -o www/node6 www/node
+
 20161202:
   AFFECTS: Users of textproc/p5-Search-Elasticsearch
   AUTHOR: tj@FreeBSD.org
@@ -45,7 +301,7 @@ you update your ports collection, before attempting any port upgrades.
 
   Bareos v1.6.x changed the configuration scheme, from one configuration
   file per Bareos component (file daemon, storage daemon, and director)
-  to several configuration files, in several directories, for each 
+  to several configuration files, in several directories, for each
   component. See http://doc.bareos.org/master/html/bareos-manual-main-reference.html
 
   The new scheme will use all files named *.conf in the directory
@@ -73,7 +329,7 @@ you update your ports collection, before attempting any port upgrades.
    - misc/osinfo-db: contains database with OS data
    - devel/libosinfo: the library
 
-  As osinfo-db-tools now ships binaries that previously were 
+  As osinfo-db-tools now ships binaries that previously were
   part of libosinfo, it's required to delete the old libosinfo
   package to prevent conflict because of same files installation:
 
@@ -299,15 +555,15 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: Users of net-im/ejabberd
   AUTHOR: ashish@FreeBSD.org
 
-  Before upgrading ejabberd to 16.09, please make sure to backup your 
+  Before upgrading ejabberd to 16.09, please make sure to backup your
   ejabberd data using:
- 
+
      % sudo -u ejabberd -H ejabberdctl backup /path/to/backup/file
 
-  In some cases, ejabberd may fail to start, for which a workaround is to 
+  In some cases, ejabberd may fail to start, for which a workaround is to
   remove the schema.DAT file from /var/spool/ejabberd before starting, and
   then restoring everything from the backup using:
-     
+
      % sudo -u ejabberd -H ejabberdctl restore /path/to/backup/file
 
   For more details:

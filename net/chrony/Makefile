@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	chrony
-PORTVERSION=	2.4.1
+PORTVERSION=	3.0
 CATEGORIES=	net
 MASTER_SITES=	http://download.tuxfamily.org/chrony/
 
@@ -10,6 +10,7 @@ MAINTAINER=	yonas@fizk.net
 COMMENT=	System clock synchronization client and server
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	rubygem-asciidoctor>=0:textproc/rubygem-asciidoctor
 
@@ -39,6 +40,8 @@ OPTIONS_DEFINE=		IPV6
 
 IPV6_CATEGORIES=	ipv6
 IPV6_CONFIGURE_OFF=	--disable-ipv6
+
+BROKEN_aarch64=		Fails to compile: invalid operands to binary expression (double and double)
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/chronyc

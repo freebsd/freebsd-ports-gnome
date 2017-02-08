@@ -27,6 +27,7 @@ USES=		cpe gmake perl5 pkgconfig tar:bzip2 shebangfix
 USE_LDCONFIG=	${PREFIX}/lib/ffmpeg${FFMPEG_SUFFIX}
 USE_PERL5=	build
 SHEBANG_FILES=	doc/texi2pod.pl
+NOPRECIOUSMAKEVARS=	yes # ARCH
 
 FFMPEG_SUFFIX=	0
 HAS_CONFIGURE=	yes
@@ -161,10 +162,6 @@ COMPAT_HEADERS=libavcodec/avcodec.h \
 	libswscale/swscale.h
 
 .include <bsd.port.pre.mk>
-
-.if ${OPSYS} == "FreeBSD" && ${OSVERSION} < 1000000
-CONFIGURE_ARGS+=	--enable-memalign-hack
-.endif
 
 .if ${ARCH} == armv6
 CONFIGURE_ENV+=	ASFLAGS=-no-integrated-as

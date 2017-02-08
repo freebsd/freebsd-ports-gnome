@@ -3,7 +3,7 @@
 PORTNAME=	dnscrypt-wrapper
 PORTVERSION=	0.2.1
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	dns
 
 MAINTAINER=	freebsd@toyingwithfate.com
@@ -14,8 +14,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libsodium.so:security/libsodium \
 		libevent.so:devel/libevent2
-
-BROKEN_FreeBSD_9=	does not install (too long username)
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	Cofyc

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	metasploit
-PORTVERSION=	4.13.1
+PORTVERSION=	4.13.19
 CATEGORIES=	security
 
 MAINTAINER=	tanawts@gmail.com
@@ -18,14 +18,14 @@ RUN_DEPENDS=	nmap:security/nmap \
 		rubygem-bcrypt>=0:security/rubygem-bcrypt \
 		rubygem-bundler>=0:sysutils/rubygem-bundler \
 		rubygem-jsobfu>=0:www/rubygem-jsobfu \
-		rubygem-json>=0:devel/rubygem-json \
+		rubygem-json1>=0:devel/rubygem-json1 \
 		rubygem-metasm>=0:devel/rubygem-metasm \
 		rubygem-metasploit-concern>=0:security/rubygem-metasploit-concern \
 		rubygem-metasploit-credential>=0:security/rubygem-metasploit-credential \
 		rubygem-metasploit_data_models>=0:security/rubygem-metasploit_data_models \
 		rubygem-metasploit-model>=0:security/rubygem-metasploit-model \
-		rubygem-metasploit-payloads>=1.2.1:security/rubygem-metasploit-payloads \
-		rubygem-metasploit_payloads-mettle>=0.1.2:security/rubygem-metasploit_payloads-mettle \
+		rubygem-metasploit-payloads>=1.2.11:security/rubygem-metasploit-payloads \
+		rubygem-metasploit_payloads-mettle>=0.1.7:security/rubygem-metasploit_payloads-mettle \
 		rubygem-msgpack>=0:devel/rubygem-msgpack \
 		rubygem-network_interface>=0:net/rubygem-network_interface \
 		rubygem-rubyntlm>=0:net/rubygem-rubyntlm \
@@ -43,7 +43,7 @@ RUN_DEPENDS=	nmap:security/nmap \
 		rubygem-bit-struct>=0:devel/rubygem-bit-struct \
 		rubygem-windows_error>=0:devel/rubygem-windows_error \
 		rubygem-net-ssh>=0:security/rubygem-net-ssh \
-		rubygem-rex-arch>=0.1.2:security/rubygem-rex-arch \
+		rubygem-rex-arch>=0.1.4:security/rubygem-rex-arch \
 		rubygem-rex-bin_tools>=0:security/rubygem-rex-bin_tools \
 		rubygem-rex-core>=0:security/rubygem-rex-core \
 		rubygem-rex-encoder>=0:security/rubygem-rex-encoder \
@@ -82,7 +82,7 @@ USE_RUBY=	yes
 
 post-patch:
 	${REINPLACE_CMD} 's,git ls-files,find . ! -type d | sed "s|^./||", ; \
-		/rb-readline-r7/d ; /tzinfo-data/d' \
+		/rb-readline/d ; /tzinfo-data/d' \
 		${WRKSRC}/metasploit-framework.gemspec
 
 do-build:

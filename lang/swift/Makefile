@@ -27,6 +27,9 @@ GH_PROJECT=	swift:DEFAULT swift-llvm:llvm swift-clang:clang swift-lldb:lldb \
 		swift-corelibs-xctest:xctest swift-corelibs-foundation:xcfound
 GH_TAGNAME=	swift-${PORTVERSION}-RELEASE:DEFAULT,llvm,clang,lldb,cmark \
 		swift-DEVELOPMENT-SNAPSHOT-2016-05-03-a:llbuild,swiftpm,xctest,xcfound
+GH_SUBDIR=	llvm:llvm clang:clang lldb:lldb cmark:cmark llbuild:llbuild \
+		swiftpm:swiftpm swift-corelibs-xctest:xctest \
+		swift-corelibs-foundation:xcfound
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 USES=		iconv libedit ninja perl5 pkgconfig python:3,build sqlite
@@ -42,27 +45,14 @@ PORTDOCS=	*
 
 .include <bsd.port.pre.mk>
 
-.if ${OPSYS} == FreeBSD
-.if (${OSVERSION} < 1002000) || (${OSVERSION} < 1100079)
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100079
 BUILD_DEPENDS+=	clang38:devel/llvm38
 EXTRA_FLAGS=	--host-cc=${LOCALBASE}/bin/clang38 --host-cxx=${LOCALBASE}/bin/clang++38
-.endif
-.if (${OSVERSION} < 1001513)
-BROKEN=		Does not build
-.endif
 .endif
 
 post-extract:
 	@${MKDIR} ${WRKSRC}
 	@${MV} ${WRKDIR}/${PORTNAME}-${PORTNAME}-${PORTVERSION}-RELEASE ${WRKSRC}/swift
-	@${MV} ${WRKSRC_llvm} ${WRKSRC}/llvm
-	@${MV} ${WRKSRC_clang} ${WRKSRC}/clang
-	@${MV} ${WRKSRC_lldb} ${WRKSRC}/lldb
-	@${MV} ${WRKSRC_cmark} ${WRKSRC}/cmark
-	@${MV} ${WRKSRC_llbuild} ${WRKSRC}/llbuild
-	@${MV} ${WRKSRC_swiftpm} ${WRKSRC}/swiftpm
-	@${MV} ${WRKSRC_xctest} ${WRKSRC}/swift-corelibs-xctest
-	@${MV} ${WRKSRC_xcfound} ${WRKSRC}/swift-corelibs-foundation
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \

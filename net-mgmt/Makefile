@@ -27,7 +27,8 @@
     SUBDIR += bwm-ng
     SUBDIR += cacti
     SUBDIR += cacti-spine
-    SUBDIR += ccnet
+    SUBDIR += ccnet-client
+    SUBDIR += ccnet-server
     SUBDIR += cdpd
     SUBDIR += cdpr
     SUBDIR += cdpsnarf
@@ -54,6 +55,7 @@
     SUBDIR += dhcdrop
     SUBDIR += dhcp_probe
     SUBDIR += disco
+    SUBDIR += dnsmap
     SUBDIR += docsis
     SUBDIR += driftnet
     SUBDIR += ehnt
@@ -144,6 +146,7 @@
     SUBDIR += nagiosgraph
     SUBDIR += nagiosql
     SUBDIR += nagircbot
+    SUBDIR += nagnu
     SUBDIR += nagstamon
     SUBDIR += nagtail
     SUBDIR += nagvis
@@ -154,6 +157,7 @@
     SUBDIR += nedi
     SUBDIR += nefu
     SUBDIR += net-snmp
+    SUBDIR += netdata
     SUBDIR += netdisco
     SUBDIR += netdisco-mibs
     SUBDIR += netdot
@@ -170,6 +174,7 @@
     SUBDIR += netspoc
     SUBDIR += netustad
     SUBDIR += netwag
+    SUBDIR += networkmgr
     SUBDIR += netwox
     SUBDIR += netxms
     SUBDIR += nfdump
@@ -260,6 +265,7 @@
     SUBDIR += pftabled
     SUBDIR += php56-snmp
     SUBDIR += php70-snmp
+    SUBDIR += php71-snmp
     SUBDIR += phpip
     SUBDIR += phpipam
     SUBDIR += phpweathermap
@@ -297,19 +303,24 @@
     SUBDIR += routers2-extras
     SUBDIR += rrdbot
     SUBDIR += rubygem-blimpy
+    SUBDIR += rubygem-oxidized
+    SUBDIR += rubygem-oxidized-script
+    SUBDIR += rubygem-oxidized-web
     SUBDIR += rubygem-snmp
     SUBDIR += rubygem-visage-app
     SUBDIR += sblim-wbemcli
     SUBDIR += scli
     SUBDIR += sdig
-    SUBDIR += seafile
+    SUBDIR += seafile-client
     SUBDIR += seafile-gui
+    SUBDIR += seafile-server
     SUBDIR += send
     SUBDIR += sendip
     SUBDIR += sipcalc
     SUBDIR += sjitter
     SUBDIR += slate
     SUBDIR += smokeping
+    SUBDIR += snap
     SUBDIR += snmp++
     SUBDIR += snmp4nagios
     SUBDIR += snmptt
@@ -327,7 +338,6 @@
     SUBDIR += telegraf
     SUBDIR += tornova
     SUBDIR += torrus
-    SUBDIR += unifi4
     SUBDIR += unifi5
     SUBDIR += victorops-nagios
     SUBDIR += vidalia

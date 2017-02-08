@@ -3,13 +3,14 @@
 
 PORTNAME=	osquery
 PORTVERSION=	1.4.7
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	sysutils
 
 MAINTAINER=	zi@FreeBSD.org
 COMMENT=	SQL powered OS instrumentation, monitoring, and analytics
 
 LICENSE=	BSD3CLAUSE
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	snappy>0:archivers/snappy \
 		rocksdb>0:databases/rocksdb \
@@ -28,6 +29,10 @@ LIB_DEPENDS=	libboost_regex.so:devel/boost-libs \
 		libgflags.so:devel/gflags \
 		libicuuc.so:devel/icu
 
+BROKEN=		does not build (error: no matching constructor for initialization of 'gflags::FlagRegisterer')
+DEPRECATED=	repeated build and dependency issues, upstream unable to assist
+EXPIRATION_DATE=2017-02-28
+
 USES=		cmake:outsource gmake libtool python:build compiler:c++11-lib
 CONFIGURE_ENV+=	OSQUERY_BUILD_VERSION="${PORTVERSION}" HOME="${WRKDIR}" \
 		SKIP_TESTS="yes" CC="${CC}" CXX="${CXX}"
@@ -39,12 +44,6 @@ GH_ACCOUNT=	facebook ${PORTNAME}:tp
 GH_PROJECT=	third-party:tp
 GH_SUBDIR=	third-party:tp
 MAKE_JOBS_UNSAFE=	yes
-
-.include <bsd.port.pre.mk>
-
-.if ${OSVERSION} <= 1000000
-CFLAGS+=	-D_GLIBCXX_USE_C99
-.endif
 
 post-patch:
 	${REINPLACE_CMD} -e 's|/var/osquery|/var/db/osquery|g' \
@@ -71,4 +70,4 @@ do-install:
 
 	${MKDIR} ${STAGEDIR}/var/db/osquery
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

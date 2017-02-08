@@ -9,11 +9,12 @@ PORTREVISION=	1
 CATEGORIES=	emulators math
 MASTER_SITES=	LOCAL/shaun
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} sdcard64.tar.gz
+EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	shaun@FreeBSD.org
 COMMENT=	HP 49g+/50g graphics calculator emulator
 
-EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
+BROKEN_i386=		does not build on i386 (error: frame pointer required, but reserved)
 
 WRKSRC=		${WRKDIR}/x49gp/x49gp-code
 HAVE_CONFIGURE=	yes

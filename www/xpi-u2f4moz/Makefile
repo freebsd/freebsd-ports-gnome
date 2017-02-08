@@ -11,8 +11,6 @@ COMMENT=	U2F support extension for Firefox
 
 LICENSE=	LGPL21
 
-BROKEN_FreeBSD_9=	does not build
-
 CMAKE_SOURCE_PATH=	c_src
 
 FIREFOX_EXTENSIONS_DIR=	lib/firefox/browser/extensions
@@ -44,10 +42,6 @@ post-install:
 
 .if ${ARCH} == "amd64"
 SYSTEM_PROCESSOR=	x86_64
-.endif
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000000
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-freebsd9
 .endif
 
 .include <bsd.port.post.mk>

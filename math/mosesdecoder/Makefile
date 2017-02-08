@@ -4,7 +4,7 @@
 PORTNAME=	mosesdecoder
 PORTVERSION=	2.1.1
 DISTVERSIONPREFIX=	RELEASE-
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	math
 
 MAINTAINER=	demon@FreeBSD.org
@@ -16,8 +16,6 @@ LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 		libRandLM.so:textproc/randlm \
 		libirstlm.so:textproc/irstlm
 RUN_DEPENDS=	lmplz:textproc/kenlm
-
-BROKEN_FreeBSD_9=	does not link
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	moses-smt

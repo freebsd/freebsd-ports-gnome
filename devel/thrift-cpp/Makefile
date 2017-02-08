@@ -3,7 +3,7 @@
 
 PORTNAME=	thrift
 PORTVERSION=	${THRIFT_PORTVERSION} # to keep in sync with thrift
-PORTREVISION=	3
+PORTREVISION=	5
 PORTEPOCH=	1
 CATEGORIES=	devel
 PKGNAMESUFFIX=	-cpp
@@ -49,12 +49,6 @@ LDFLAGS+=	-L${OPENSSLLIB}
 CFLAGS+=	-I${OPENSSLINC}
 
 .include <bsd.port.pre.mk>
-
-.if ${SSL_DEFAULT} == base
-# src/thrift/transport/TSSLSocket.cpp:147: error: 'TLSv1_1_method' was not declared in this scope
-# src/thrift/transport/TSSLSocket.cpp:149: error: 'TLSv1_2_method' was not declared in this scope
-BROKEN_FreeBSD_9=	does not build with 9.x base OpenSSL
-.endif
 
 .if ${COMPILER_TYPE} == clang
 USE_CXXSTD=	c++11

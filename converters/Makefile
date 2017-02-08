@@ -142,6 +142,9 @@
     SUBDIR += php70-iconv
     SUBDIR += php70-mbstring
     SUBDIR += php70-recode
+    SUBDIR += php71-iconv
+    SUBDIR += php71-mbstring
+    SUBDIR += php71-recode
     SUBDIR += psiconv
     SUBDIR += py-bcode
     SUBDIR += py-bencode
@@ -149,13 +152,11 @@
     SUBDIR += py-better-bencode
     SUBDIR += py-bsdconv
     SUBDIR += py-iconv
-    SUBDIR += py-pisa
     SUBDIR += py-rencode
     SUBDIR += py-unidecode
     SUBDIR += py-zfec
     SUBDIR += rcctools
     SUBDIR += recode
-    SUBDIR += ruby-dump.rb
     SUBDIR += rubygem-base32
     SUBDIR += rubygem-bsdconv
     SUBDIR += shftool

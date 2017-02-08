@@ -1115,6 +1115,7 @@ lib/calibre/calibre/gui2/viewer/bookmarkmanager.py
 lib/calibre/calibre/gui2/viewer/config.py
 lib/calibre/calibre/gui2/viewer/config_ui.py
 lib/calibre/calibre/gui2/viewer/documentview.py
+lib/calibre/calibre/gui2/viewer/fake_net.py
 lib/calibre/calibre/gui2/viewer/flip.py
 lib/calibre/calibre/gui2/viewer/footnote.py
 lib/calibre/calibre/gui2/viewer/gestures.py
@@ -1173,7 +1174,7 @@ lib/calibre/calibre/library/server/opds.py
 lib/calibre/calibre/library/server/utils.py
 lib/calibre/calibre/library/server/xml.py
 lib/calibre/calibre/library/sqlite.py
-lib/calibre/calibre/library/test.py
+lib/calibre/calibre/library/test_cli.py
 lib/calibre/calibre/libunzip.py
 lib/calibre/calibre/linux.py
 lib/calibre/calibre/plugins/_patiencediff_c.so

@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	tarantool
-PORTVERSION=	1.6.9.9
+PORTVERSION=	1.7.3.99
 CATEGORIES=	databases
-MASTER_SITES=	http://download.tarantool.org/tarantool/1.6/src/
+MASTER_SITES=	http://download.tarantool.org/tarantool/1.7/src/
 
 MAINTAINER=	vg@FreeBSD.org
 COMMENT=	NoSQL database running in a Lua application server
@@ -23,9 +23,9 @@ TT_DATADIR?=	/var/db/tarantool
 TT_RUNDIR?=	/var/run/tarantool
 TT_LOGDIR?=	/var/log/tarantool
 
-CMAKE_ARGS=	-DCMAKE_INSTALL_MANDIR=man \
-		-DCMAKE_INSTALL_FULL_SYSCONFDIR=${ETCDIR} \
+CMAKE_ARGS=	-DCMAKE_INSTALL_FULL_SYSCONFDIR=${ETCDIR} \
 		-DCMAKE_INSTALL_LOCALSTATEDIR=/var \
+		-DCMAKE_INSTALL_MANDIR=${MANPREFIX}/man \
 		-DENABLE_DIST=ON
 
 USERS=		tarantool

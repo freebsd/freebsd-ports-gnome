@@ -13,7 +13,6 @@ LICENSE=	BSD2CLAUSE
 
 BROKEN_powerpc64=	Does not build
 
-BROKEN_FreeBSD_9=	does not build
 NOT_FOR_ARCHS=		aarch64 sparc64
 NOT_FOR_ARCHS_REASON=	not yet ported to this architecture
 
@@ -27,12 +26,6 @@ CXXFLAGS+=	-std=c++11 \
 		-I${WRKSRC}/poly1305-opt/app/include \
 		-I${OPENSSLINC}
 LDFLAGS+=	-pthread -lcrypto -L${OPENSSLLIB}
-
-.include <bsd.port.options.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000036
-WITH_OPENSSL_PORT=	yes
-.endif
 
 post-install:
 	${INSTALL_MAN} ${WRKSRC}/doc/hpenc.1 ${STAGEDIR}${MANPREFIX}/man/man1

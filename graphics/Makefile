@@ -98,6 +98,7 @@
     SUBDIR += cluttermm
     SUBDIR += code-eli
     SUBDIR += cogl
+    SUBDIR += colmap
     SUBDIR += colord
     SUBDIR += colord-gtk
     SUBDIR += comical
@@ -130,6 +131,7 @@
     SUBDIR += devil
     SUBDIR += dia
     SUBDIR += diacanvas2
+    SUBDIR += diffpdf
     SUBDIR += digikam-kde4
     SUBDIR += digikam-kde4-doc
     SUBDIR += digikam-kde4-l10n
@@ -200,6 +202,7 @@
     SUBDIR += frei0r-plugins
     SUBDIR += frei0r-plugins-gavl
     SUBDIR += frei0r-plugins-opencv
+    SUBDIR += frogr
     SUBDIR += ftgl
     SUBDIR += fujiplay
     SUBDIR += fusefs-gphotofs
@@ -224,6 +227,7 @@
     SUBDIR += geomorph
     SUBDIR += geomview
     SUBDIR += geos
+    SUBDIR += geos35
     SUBDIR += geoserver
     SUBDIR += gexiv2
     SUBDIR += giblib
@@ -335,7 +339,6 @@
     SUBDIR += hs-dia-base
     SUBDIR += hs-dia-functions
     SUBDIR += hs-svgcairo
-    SUBDIR += hsetroot
     SUBDIR += hugin
     SUBDIR += icat
     SUBDIR += icc-profiles-basiccolor
@@ -395,6 +398,7 @@
     SUBDIR += kdegraphics4-thumbnailers
     SUBDIR += kf5-kimageformats
     SUBDIR += kf5-kplotting
+    SUBDIR += kf5-prison
     SUBDIR += kiconedit
     SUBDIR += kipi-plugin-acquireimages
     SUBDIR += kipi-plugin-advancedslideshow
@@ -558,19 +562,6 @@
     SUBDIR += linux-c7-sdl_image
     SUBDIR += linux-c7-sdl_ttf
     SUBDIR += linux-c7-tiff
-    SUBDIR += linux-f10-cairo
-    SUBDIR += linux-f10-dri
-    SUBDIR += linux-f10-gdk-pixbuf
-    SUBDIR += linux-f10-glew
-    SUBDIR += linux-f10-imlib
-    SUBDIR += linux-f10-jpeg
-    SUBDIR += linux-f10-libGLU
-    SUBDIR += linux-f10-libmng
-    SUBDIR += linux-f10-png
-    SUBDIR += linux-f10-sdl_image
-    SUBDIR += linux-f10-sdl_ttf
-    SUBDIR += linux-f10-tiff
-    SUBDIR += linux-f10-ungif
     SUBDIR += llpp
     SUBDIR += lprof-devel
     SUBDIR += lua-gd
@@ -598,6 +589,7 @@
     SUBDIR += mirage
     SUBDIR += mitsuba
     SUBDIR += mmrecover
+    SUBDIR += movit
     SUBDIR += mozjpeg
     SUBDIR += mscgen
     SUBDIR += mtpaint
@@ -617,7 +609,6 @@
     SUBDIR += ocaml-lablgl
     SUBDIR += ocrad
     SUBDIR += ocre
-    SUBDIR += ocrfeeder
     SUBDIR += ocropus
     SUBDIR += ogre3d
     SUBDIR += okular
@@ -769,6 +760,7 @@
     SUBDIR += pfstools
     SUBDIR += pgplot
     SUBDIR += pho
+    SUBDIR += photivo
     SUBDIR += photopc
     SUBDIR += phototonic
     SUBDIR += php-facedetect
@@ -781,6 +773,8 @@
     SUBDIR += php56-gd
     SUBDIR += php70-exif
     SUBDIR += php70-gd
+    SUBDIR += php71-exif
+    SUBDIR += php71-gd
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
@@ -830,7 +824,6 @@
     SUBDIR += py-PyOpenGL-accelerate
     SUBDIR += py-PyX
     SUBDIR += py-PyX12
-    SUBDIR += py-aafigure
     SUBDIR += py-actdiag
     SUBDIR += py-blockdiag
     SUBDIR += py-blockdiagcontrib-cisco
@@ -928,6 +921,7 @@
     SUBDIR += raster3d
     SUBDIR += rawstudio
     SUBDIR += rawtherapee
+    SUBDIR += rawtherapee-devel
     SUBDIR += rayshade
     SUBDIR += reallyslick
     SUBDIR += recoverjpeg
@@ -938,9 +932,6 @@
     SUBDIR += rigsofrods-pagedgeometry
     SUBDIR += ristretto
     SUBDIR += ruby-gd
-    SUBDIR += ruby-image_size
-    SUBDIR += ruby-imlib2
-    SUBDIR += ruby-svg
     SUBDIR += rubygem-cairo
     SUBDIR += rubygem-captcha
     SUBDIR += rubygem-chunky_png
@@ -1060,6 +1051,7 @@
     SUBDIR += vp
     SUBDIR += waffle
     SUBDIR += waifu2x-converter-cpp
+    SUBDIR += wayland
     SUBDIR += webp
     SUBDIR += wings
     SUBDIR += wmicons

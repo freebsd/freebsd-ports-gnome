@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	knewstuff
-PORTVERSION=	${KDE_FRAMEWORKS_VERSION}
+PORTVERSION=	5.30.1
 CATEGORIES=	devel kde kde-frameworks
 
 MAINTAINER=	kde@FreeBSD.org
@@ -14,6 +14,6 @@ USE_KDE=	archive attica5 auth codecs completion config \
 		jobwidgets kio service sonnet textwidgets widgetsaddons \
 		xmlgui
 USE_QT5=	buildtools_build core dbus gui network qmake_build \
-		widgets xml
+		quick widgets xml
 
 .include <bsd.port.mk>

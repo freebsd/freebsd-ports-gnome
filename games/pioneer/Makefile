@@ -36,9 +36,9 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	pioneerspacesim
-GH_TAGNAME=	20161110
+GH_TAGNAME=	20161129
 
-USES=		autoreconf compiler:c++11-lib gmake localbase pkgconfig
+USES=		autoreconf compiler:c++11-lib gmake pkgconfig
 USE_GL=		gl
 USE_SDL=	image2 sdl2
 
@@ -80,10 +80,6 @@ CXXFLAGS+=	-D_GLIBCXX_USE_C99
 post-patch: .SILENT
 	${REINPLACE_CMD} -e '/^OPTIMISE=/d' \
 		${WRKSRC}/configure.ac
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1000054
-	${REINPLACE_CMD} -e 's/std::acosh/acosh/g ; s/std::copysign/copysign/g' \
-		${WRKSRC}/src/Orbit.cpp
-.endif
 
 post-patch-MODELCOMPILER-off: .SILENT
 	${REINPLACE_CMD} -e 's/pioneer modelcompiler/pioneer/' \

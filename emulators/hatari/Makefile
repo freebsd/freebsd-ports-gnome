@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	hatari
-PORTVERSION=	1.9.0
-PORTREVISION=	1
+PORTVERSION=	2.0.0
 CATEGORIES=	emulators
 MASTER_SITES=	http://download.tuxfamily.org/hatari/${PORTVERSION}/
 
@@ -27,6 +26,9 @@ CMAKE_ARGS=	-DETCDIR:PATH="${PREFIX}/etc" \
 		-DMANDIR:PATH="man/man1" \
 		-DREADLINE_FOUND:BOOL=ON
 INSTALLS_ICONS=	yes
+
+BROKEN_aarch64=		Fails to configure: error: unrecognized CPU type
+BROKEN_armv6=		Fails to configure: CMake Error: Generator: execution of make failed
 
 OPTIONS_DEFINE=		DEBUG DOCS SDL2 WINUAE
 

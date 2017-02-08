@@ -26,6 +26,10 @@ SUB_LIST=	LLVM_PREFIX="${LLVM_PREFIX}" LLVM_SUFFIX="${LLVM_SUFFIX}"
 
 CMAKE_INSTALL_PREFIX=	${LLVM_PREFIX}
 CMAKE_ARGS=	-DLLVM_BUILD_LLVM_DYLIB=ON
+# Following commit https://github.com/kitware/cmake/commit/956054
+# we need to either change the whole man-shuffle below, or simply
+# redefine CMAKE_INSTALL_MANDIR
+CMAKE_ARGS+=	-DCMAKE_INSTALL_MANDIR:PATH="share/man"
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	llvm-mirror
@@ -76,7 +80,7 @@ LLD_DESC=		Install lld, the LLVM linker
 LLD_GH_PROJECT=		lld:lld
 LLD_GH_SUBDIR=		tools/lld:lld
 LLD_GH_TAGNAME=		${LLD_COMMIT}:lld
-LLDB_DESC=		Install lldb, the LLVM debugger (ignored on 9.x)
+LLDB_DESC=		Install lldb, the LLVM debugger
 LLDB_BUILD_DEPENDS=	swig:devel/swig13
 LLDB_GH_PROJECT=	lldb:lldb
 LLDB_GH_SUBDIR=		tools/lldb:lldb
@@ -96,7 +100,9 @@ OPTIONS_SUB=	yes
 
 DOCS_BUILD_DEPENDS=		sphinx-build:textproc/py-sphinx
 
-PLIST_SUB+=	LLVM_MAJOR=${LLVM_MAJOR} LLVM_RELEASE=${LLVM_RELEASE}
+PLIST_SUB+=	LLVM_LIB_VER=${LLVM_MAJOR:C/\.//} \
+		LLVM_MAJOR=${LLVM_MAJOR} \
+		LLVM_RELEASE=${LLVM_RELEASE}
 
 COMMANDS=	bugpoint \
 		llc \
@@ -104,6 +110,7 @@ COMMANDS=	bugpoint \
 		llvm-ar \
 		llvm-as \
 		llvm-bcanalyzer \
+		llvm-cat \
 		llvm-config \
 		llvm-cov \
 		llvm-diff \
@@ -114,6 +121,7 @@ COMMANDS=	bugpoint \
 		llvm-link \
 		llvm-mc \
 		llvm-mcmarkup \
+		llvm-modextract \
 		llvm-nm \
 		llvm-objdump \
 		llvm-opt-report \
@@ -172,6 +180,7 @@ COMMANDS+=	c-index-test \
 		clang-check \
 		clang-cpp \
 		clang-format \
+		clang-import-test \
 		clang-offload-bundler \
 		scan-build \
 		scan-view
@@ -187,6 +196,10 @@ COMPILER_RT_PATTERN=	(asan_blacklist.txt|sanitizer|xray_interface.h)
 .if ${PORT_OPTIONS:MLIT}
 MAN1SRCS+=	lit.1 FileCheck.1
 LIT_COMMANDS=	lit llvm-lit FileCheck
+.endif
+
+.if ${PORT_OPTIONS:MLLD}
+COMMANDS+=	ld.lld
 .endif
 
 .if ${PORT_OPTIONS:MLLDB}
@@ -380,7 +393,8 @@ build-plist:
 	    -e 's|${PORTVERSION}|%%PORTVERSION%%|' \
 	    -e 's|release.cmake|%%CMAKE_BUILD_TYPE%%.cmake|' \
 	    -e 's|${LLVM_RELEASE:C/\./\\./g}|%%LLVM_RELEASE%%|' \
-	    -e 's|${LLVM_MAJOR:C/\./\\./}|%%LLVM_MAJOR%%|' | \
+	    -e 's|${LLVM_MAJOR:C/\./\\./}|%%LLVM_MAJOR%%|' \
+	    -e 's|${LLVM_MAJOR:C/\.//}|%%LLVM_LIB_VER%%|' | \
 	    ${SORT} >> ${PLIST}.tmp
 	${FIND} ${STAGEDIR}${PYTHON_SITELIBDIR}/lit${LLVM_SUFFIX} -type f | \
 	    ${SED} -e 's|${STAGEDIR}${PYTHON_SITELIBDIR}|%%LIT%%%%PYTHON_SITELIBDIR%%|' \

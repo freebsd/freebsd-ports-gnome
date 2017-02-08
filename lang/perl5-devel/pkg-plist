@@ -1,4 +1,3 @@
-bin/c2ph%%BINSUFFIX%%
 bin/corelist%%BINSUFFIX%%
 bin/cpan%%BINSUFFIX%%
 bin/enc2xs%%BINSUFFIX%%
@@ -24,7 +23,6 @@ bin/pod2usage%%BINSUFFIX%%
 bin/podchecker%%BINSUFFIX%%
 bin/podselect%%BINSUFFIX%%
 bin/prove%%BINSUFFIX%%
-bin/pstruct%%BINSUFFIX%%
 bin/ptar%%BINSUFFIX%%
 bin/ptardiff%%BINSUFFIX%%
 bin/ptargrep%%BINSUFFIX%%
@@ -109,7 +107,6 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%PRIV_LIB%%/Compress/Zlib.pm
 %%PRIV_LIB%%/Config/Extensions.pm
 %%PRIV_LIB%%/Config/Perl/V.pm
-%%PRIV_LIB%%/Config_heavy.pl.bak
 %%PRIV_LIB%%/DB.pm
 %%PRIV_LIB%%/DBM_Filter.pm
 %%PRIV_LIB%%/DBM_Filter/compress.pm
@@ -500,6 +497,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%PRIV_LIB%%/Test2/Event.pm
 %%PRIV_LIB%%/Test2/Event/Bail.pm
 %%PRIV_LIB%%/Test2/Event/Diag.pm
+%%PRIV_LIB%%/Test2/Event/Encoding.pm
 %%PRIV_LIB%%/Test2/Event/Exception.pm
 %%PRIV_LIB%%/Test2/Event/Generic.pm
 %%PRIV_LIB%%/Test2/Event/Info.pm
@@ -508,6 +506,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%PRIV_LIB%%/Test2/Event/Plan.pm
 %%PRIV_LIB%%/Test2/Event/Skip.pm
 %%PRIV_LIB%%/Test2/Event/Subtest.pm
+%%PRIV_LIB%%/Test2/Event/TAP/Version.pm
 %%PRIV_LIB%%/Test2/Event/Waiting.pm
 %%PRIV_LIB%%/Test2/Formatter.pm
 %%PRIV_LIB%%/Test2/Formatter/TAP.pm
@@ -518,6 +517,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%PRIV_LIB%%/Test2/IPC.pm
 %%PRIV_LIB%%/Test2/IPC/Driver.pm
 %%PRIV_LIB%%/Test2/IPC/Driver/Files.pm
+%%PRIV_LIB%%/Test2/Tools/Tiny.pm
 %%PRIV_LIB%%/Test2/Transition.pod
 %%PRIV_LIB%%/Test2/Util.pm
 %%PRIV_LIB%%/Test2/Util/ExternalMeta.pm
@@ -728,6 +728,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%ARCH_LIB%%/CORE/patchlevel.h
 %%ARCH_LIB%%/CORE/perl.h
 %%ARCH_LIB%%/CORE/perlapi.h
+%%DTRACE%%%%ARCH_LIB%%/CORE/perldtrace.h
 %%ARCH_LIB%%/CORE/perlio.h
 %%ARCH_LIB%%/CORE/perliol.h
 %%ARCH_LIB%%/CORE/perlsdio.h
@@ -925,7 +926,6 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%PRIV_LIB%%/overload/numbers.pm
 %%PRIV_LIB%%/overloading.pm
 %%PRIV_LIB%%/parent.pm
-%%MAN1%%/c2ph.1.gz
 %%MAN1%%/corelist.1.gz
 %%MAN1%%/cpan.1.gz
 %%MAN1%%/enc2xs.1.gz
@@ -966,8 +966,11 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%MAN1%%/perl5220delta.1.gz
 %%MAN1%%/perl5221delta.1.gz
 %%MAN1%%/perl5222delta.1.gz
+%%MAN1%%/perl5223delta.1.gz
 %%MAN1%%/perl5240delta.1.gz
+%%MAN1%%/perl5241delta.1.gz
 %%MAN1%%/perl5250delta.1.gz
+%%MAN1%%/perl52510delta.1.gz
 %%MAN1%%/perl5251delta.1.gz
 %%MAN1%%/perl5252delta.1.gz
 %%MAN1%%/perl5253delta.1.gz
@@ -976,6 +979,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%MAN1%%/perl5256delta.1.gz
 %%MAN1%%/perl5257delta.1.gz
 %%MAN1%%/perl5258delta.1.gz
+%%MAN1%%/perl5259delta.1.gz
 %%MAN1%%/perl561delta.1.gz
 %%MAN1%%/perl56delta.1.gz
 %%MAN1%%/perl581delta.1.gz
@@ -1012,6 +1016,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%MAN1%%/perldebtut.1.gz
 %%MAN1%%/perldebug.1.gz
 %%MAN1%%/perldelta.1.gz
+%%MAN1%%/perldeprecation.1.gz
 %%MAN1%%/perldiag.1.gz
 %%MAN1%%/perldoc.1.gz
 %%MAN1%%/perldos.1.gz
@@ -1141,7 +1146,6 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%MAN1%%/podchecker.1.gz
 %%MAN1%%/podselect.1.gz
 %%MAN1%%/prove.1.gz
-%%MAN1%%/pstruct.1.gz
 %%MAN1%%/ptar.1.gz
 %%MAN1%%/ptardiff.1.gz
 %%MAN1%%/ptargrep.1.gz
@@ -1583,6 +1587,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%MAN3%%/Test2::Event.3.gz
 %%MAN3%%/Test2::Event::Bail.3.gz
 %%MAN3%%/Test2::Event::Diag.3.gz
+%%MAN3%%/Test2::Event::Encoding.3.gz
 %%MAN3%%/Test2::Event::Exception.3.gz
 %%MAN3%%/Test2::Event::Generic.3.gz
 %%MAN3%%/Test2::Event::Info.3.gz
@@ -1591,6 +1596,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%MAN3%%/Test2::Event::Plan.3.gz
 %%MAN3%%/Test2::Event::Skip.3.gz
 %%MAN3%%/Test2::Event::Subtest.3.gz
+%%MAN3%%/Test2::Event::TAP::Version.3.gz
 %%MAN3%%/Test2::Event::Waiting.3.gz
 %%MAN3%%/Test2::Formatter.3.gz
 %%MAN3%%/Test2::Formatter::TAP.3.gz
@@ -1601,6 +1607,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%MAN3%%/Test2::IPC.3.gz
 %%MAN3%%/Test2::IPC::Driver.3.gz
 %%MAN3%%/Test2::IPC::Driver::Files.3.gz
+%%MAN3%%/Test2::Tools::Tiny.3.gz
 %%MAN3%%/Test2::Transition.3.gz
 %%MAN3%%/Test2::Util.3.gz
 %%MAN3%%/Test2::Util::ExternalMeta.3.gz
@@ -1747,8 +1754,11 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%PRIV_LIB%%/pod/perl5220delta.pod
 %%PRIV_LIB%%/pod/perl5221delta.pod
 %%PRIV_LIB%%/pod/perl5222delta.pod
+%%PRIV_LIB%%/pod/perl5223delta.pod
 %%PRIV_LIB%%/pod/perl5240delta.pod
+%%PRIV_LIB%%/pod/perl5241delta.pod
 %%PRIV_LIB%%/pod/perl5250delta.pod
+%%PRIV_LIB%%/pod/perl52510delta.pod
 %%PRIV_LIB%%/pod/perl5251delta.pod
 %%PRIV_LIB%%/pod/perl5252delta.pod
 %%PRIV_LIB%%/pod/perl5253delta.pod
@@ -1757,6 +1767,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%PRIV_LIB%%/pod/perl5256delta.pod
 %%PRIV_LIB%%/pod/perl5257delta.pod
 %%PRIV_LIB%%/pod/perl5258delta.pod
+%%PRIV_LIB%%/pod/perl5259delta.pod
 %%PRIV_LIB%%/pod/perl561delta.pod
 %%PRIV_LIB%%/pod/perl56delta.pod
 %%PRIV_LIB%%/pod/perl581delta.pod
@@ -1792,6 +1803,7 @@ etc/man.d/perl%%PKGNAMESUFFIX%%.conf
 %%PRIV_LIB%%/pod/perldebtut.pod
 %%PRIV_LIB%%/pod/perldebug.pod
 %%PRIV_LIB%%/pod/perldelta.pod
+%%PRIV_LIB%%/pod/perldeprecation.pod
 %%PRIV_LIB%%/pod/perldiag.pod
 %%PRIV_LIB%%/pod/perldoc.pod
 %%PRIV_LIB%%/pod/perldos.pod

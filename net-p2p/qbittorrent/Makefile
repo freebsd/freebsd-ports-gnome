@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	qbittorrent
-PORTVERSION=	3.3.7
+PORTVERSION=	3.3.10
 PORTREVISION=	1
 CATEGORIES=	net-p2p ipv6
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
@@ -49,8 +49,6 @@ OPTIONS_DEFAULT+=	DBUS
 .else
 CONFIGURE_ARGS+=	--disable-gui
 .endif
-
-BROKEN_FreeBSD_9=	needs more C++11 support than 9.x offers
 
 .include <bsd.port.options.mk>
 

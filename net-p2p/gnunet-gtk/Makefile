@@ -3,13 +3,15 @@
 
 PORTNAME=	gnunet-gtk
 PORTVERSION=	0.10.1
+PORTREVISION=	1
 CATEGORIES=	net-p2p ipv6 security
 MASTER_SITES=	GNU/gnunet
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	GTK interface to GNUnet
 
-LICENSE=	GPLv3
+LICENSE=	GPLv3+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libgladeui-1.so:devel/glade3 \
 		libltdl.so:devel/libltdl \
@@ -29,7 +31,7 @@ INSTALL_TARGET=	install-strip
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 
-OPTIONS_DEFINE=		DOCS
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e \
@@ -39,11 +41,10 @@ post-patch:
 		's|"$${mkinstalldirs}"|"$${MKDIR_P}"|' \
 		${WRKSRC}/pixmaps/Makefile.in
 
-post-install:
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in AUTHORS ChangeLog NEWS README
-	(cd ${WRKSRC} && ${INSTALL_DATA} ${i} \
-		${STAGEDIR}${DOCSDIR})
+	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
 
 .include <bsd.port.mk>

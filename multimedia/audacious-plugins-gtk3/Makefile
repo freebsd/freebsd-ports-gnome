@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	audacious-plugins
-PORTVERSION=	3.8
+PORTVERSION=	3.8.2
 DISTVERSIONSUFFIX=	-gtk3
 CATEGORIES=	multimedia audio
 MASTER_SITES=	http://distfiles.audacious-media-player.org/
@@ -24,6 +24,7 @@ CONFLICTS_INSTALL=	audacious-plugins-3.*
 
 MASTERDIR=	${.CURDIR}/../audacious-plugins
 DISTINFO_FILE=	${.CURDIR}/distinfo
+FILESDIR=	${MASTERDIR}/files
 
 GNU_CONFIGURE=	yes
 USES=		compiler:c++11-lib execinfo gettext-tools gmake iconv \

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ircd-ratbox
-PORTVERSION=	3.0.8
-PORTREVISION=	9
+PORTVERSION=	3.0.10
 CATEGORIES=	irc ipv6
 MASTER_SITES=	http://www.ratbox.org/download/				\
 		http://www.ratbox.org/download/old/
@@ -15,7 +14,6 @@ LICENSE=	GPLv2
 
 CONFLICTS=	ircd-ratbox-devel-[0-9]* charybdis-[0-9]*
 
-BROKEN_FreeBSD_9=	does not build
 BROKEN_aarch64=		Fails to link: missing sbrk
 
 USES=		cpe libtool sqlite tar:bzip2

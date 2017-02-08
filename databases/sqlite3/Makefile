@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	sqlite3
-PORTVERSION=	3.15.1
-PORTREVISION=	1
+PORTVERSION=	3.16.2
 CATEGORIES=	databases
-MASTER_SITES=	https://www.sqlite.org/2016/ http://www2.sqlite.org/2016/ http://www3.sqlite.org/2016/
+MASTER_SITES=	https://www.sqlite.org/2017/ http://www2.sqlite.org/2017/ http://www3.sqlite.org/2017/
 DISTNAME=	sqlite-autoconf-${PORTVERSION:C/\.([[:digit:]])[[:>:]]/0\1/g:S/.//g}00
 
 MAINTAINER=	pavelivolkov@gmail.com
@@ -17,11 +16,6 @@ USES=		libtool ncurses pathfix
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-
-# Platform Configuration
-CFLAGS+=	-Os
-CPPFLAGS+=	-DHAVE_ISNAN=1 -DHAVE_MALLOC_USABLE_SIZE=1 -DHAVE_GMTIME_R=1 -DHAVE_LOCALTIME_R=1 -DHAVE_USLEEP=1
-CPPFLAGS+=	${OSVERSION<1000000:?:-DHAVE_STRCHRNUL=1}
 
 MAKE_JOBS_UNSAFE=	yes
 
@@ -174,6 +168,7 @@ ICU_LIB_DEPENDS=	libicudata.so:devel/icu
 ICU_CPPFLAGS=	`${LOCALBASE}/bin/icu-config --cppflags` -DSQLITE_ENABLE_ICU=1
 ICU_LIBS=	`${LOCALBASE}/bin/icu-config --ldflags`
 
+UNICODE61_CPPFLAGS=	""
 UNICODE61_CPPFLAGS_OFF=	-DSQLITE_DISABLE_FTS3_UNICODE=1
 
 READLINES_CONFIGURE_ON=	--enable-readline
@@ -196,6 +191,12 @@ SESSION_CONFIGURE_ENABLE=	session
 UNKNOWN_SQL_CPPFLAGS=	-DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION=1
 
 .include <bsd.port.options.mk>
+
+# Platform Configuration
+.if !defined(WITH_DEBUG)
+CFLAGS+=	-Os
+.endif
+CPPFLAGS+=	-DHAVE_ISNAN=1 -DHAVE_MALLOC_USABLE_SIZE=1 -DHAVE_GMTIME_R=1 -DHAVE_LOCALTIME_R=1 -DHAVE_USLEEP=1 -DHAVE_STRCHRNUL=1
 
 post-configure:
 	@${ECHO_MSG} "===> CONFIGURE_ARGS=${CONFIGURE_ARGS}"
