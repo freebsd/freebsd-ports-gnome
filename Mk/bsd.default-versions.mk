@@ -37,11 +37,11 @@ BDB_DEFAULT?=		5
 FIREBIRD_DEFAULT?=	2.5
 # Possible values: 3.0.0
 FPC_DEFAULT?=		3.0.0
-# Possible values: 4.6, 4.7, 4.8, 4.9, 5, 6
+# Possible values: 4.7, 4.8, 4.9, 5, 6
 GCC_DEFAULT?=		4.9
 # Possible values: 7, 8, 9, agpl
 GHOSTSCRIPT_DEFAULT?=	agpl
-.if defined(ARCH) && ${ARCH} == amd64
+.if ${ARCH} == amd64
 # Possible values: c6, c6_64, c7
 LINUX_DEFAULT?=		c6_64
 .else

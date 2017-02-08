@@ -4,7 +4,7 @@
 PORTNAME=	mixxx
 PORTVERSION=	1.11.0
 DISTVERSIONSUFFIX=	-src
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	audio
 MASTER_SITES=	http://downloads.mixxx.org/${PORTNAME}-${PORTVERSION}/
 
@@ -24,6 +24,8 @@ LIB_DEPENDS=	libFLAC.so:audio/flac \
 		libprotobuf.so:devel/protobuf
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
+
+BROKEN_aarch64=		Fails to compile: Exception("invalid machine type")
 
 USES=		scons iconv
 USE_QT4=	corelib gui network opengl script sql svg xml \

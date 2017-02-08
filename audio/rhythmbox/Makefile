@@ -20,7 +20,7 @@ LIB_DEPENDS=	libmusicbrainz5.so:audio/libmusicbrainz5 \
 		libdbus-glib-1.so:devel/dbus-glib \
 		libhal.so:sysutils/hal \
 		libsoup-2.4.so:devel/libsoup \
-		libcheck.so:devel/libcheck \
+		libcheck.so:devel/check \
 		libpeas-1.0.so:devel/libpeas \
 		libjson-glib-1.0.so:devel/json-glib \
 		libsoup-gnome-2.4.so:devel/libsoup-gnome \

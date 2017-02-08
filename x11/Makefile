@@ -101,6 +101,7 @@
     SUBDIR += hs-X11
     SUBDIR += hs-X11-xft
     SUBDIR += hs-xmobar
+    SUBDIR += hsetroot
     SUBDIR += i3lock
     SUBDIR += i3status
     SUBDIR += iceauth
@@ -179,11 +180,13 @@
     SUBDIR += libgnome-reference
     SUBDIR += libgnomekbd
     SUBDIR += libgnomemm26
+    SUBDIR += libinput
     SUBDIR += libkonq
     SUBDIR += libmatekbd
     SUBDIR += liboldX
     SUBDIR += libsx
     SUBDIR += libsynaptics
+    SUBDIR += libwacom
     SUBDIR += libxcb
     SUBDIR += libxdg-basedir
     SUBDIR += libxfce4menu

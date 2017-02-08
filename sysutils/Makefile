@@ -323,6 +323,7 @@
     SUBDIR += froxlor
     SUBDIR += fsbackup
     SUBDIR += fsc
+    SUBDIR += fsearch
     SUBDIR += fstyp
     SUBDIR += fswatch-mon
     SUBDIR += ftwin
@@ -832,7 +833,6 @@
     SUBDIR += ptools
     SUBDIR += puppet-lint
     SUBDIR += puppet-mode.el
-    SUBDIR += puppet37
     SUBDIR += puppet38
     SUBDIR += puppet4
     SUBDIR += puppetserver
@@ -1010,6 +1010,7 @@
     SUBDIR += s6-rc
     SUBDIR += safe-rm
     SUBDIR += safecat
+    SUBDIR += safecopy
     SUBDIR += samefile
     SUBDIR += samesame
     SUBDIR += sample

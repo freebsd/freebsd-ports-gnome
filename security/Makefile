@@ -36,6 +36,7 @@
     SUBDIR += bcrypt
     SUBDIR += bcwipe
     SUBDIR += bdc
+    SUBDIR += bdes
     SUBDIR += bearssl
     SUBDIR += beecrypt
     SUBDIR += belier
@@ -163,6 +164,7 @@
     SUBDIR += gag
     SUBDIR += gcipher
     SUBDIR += gcr
+    SUBDIR += git-crypt
     SUBDIR += gnome-gpg
     SUBDIR += gnome-keyring
     SUBDIR += gnome-keyring-sharp
@@ -346,7 +348,6 @@
     SUBDIR += linux-c6-libtasn1
     SUBDIR += linux-c6-nss
     SUBDIR += linux-c6-openssl
-    SUBDIR += linux-c6-openssl-compat
     SUBDIR += linux-c7-cyrus-sasl2
     SUBDIR += linux-c7-gnutls
     SUBDIR += linux-c7-libgcrypt
@@ -355,7 +356,6 @@
     SUBDIR += linux-c7-libtasn1
     SUBDIR += linux-c7-nss
     SUBDIR += linux-c7-openssl
-    SUBDIR += linux-c7-openssl-compat
     SUBDIR += lockdown
     SUBDIR += log2timeline
     SUBDIR += logcheck
@@ -931,6 +931,7 @@
     SUBDIR += py-tuf
     SUBDIR += py-twistedConch
     SUBDIR += py-twofish
+    SUBDIR += py-virustotal-api
     SUBDIR += py-volatility
     SUBDIR += py-vulndb
     SUBDIR += py-xmlsec

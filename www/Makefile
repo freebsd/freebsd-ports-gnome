@@ -207,6 +207,7 @@
     SUBDIR += glpi
     SUBDIR += gnome-user-share
     SUBDIR += gnome-web-photo
+    SUBDIR += go-www
     SUBDIR += gohugo
     SUBDIR += google-appengine
     SUBDIR += google-sitemapgen
@@ -218,6 +219,7 @@
     SUBDIR += grafana
     SUBDIR += grafana2
     SUBDIR += grafana3
+    SUBDIR += grafana4
     SUBDIR += grails
     SUBDIR += graylog-web-interface
     SUBDIR += gregarius
@@ -2183,7 +2185,6 @@
     SUBDIR += tidy-lib
     SUBDIR += tikiwiki
     SUBDIR += tinymce
-    SUBDIR += tinymce3
     SUBDIR += tinyproxy
     SUBDIR += tinytinyhttpd
     SUBDIR += tivoka

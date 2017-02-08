@@ -227,6 +227,7 @@
     SUBDIR += geomorph
     SUBDIR += geomview
     SUBDIR += geos
+    SUBDIR += geos35
     SUBDIR += geoserver
     SUBDIR += gexiv2
     SUBDIR += giblib
@@ -338,7 +339,6 @@
     SUBDIR += hs-dia-base
     SUBDIR += hs-dia-functions
     SUBDIR += hs-svgcairo
-    SUBDIR += hsetroot
     SUBDIR += hugin
     SUBDIR += icat
     SUBDIR += icc-profiles-basiccolor
@@ -1051,6 +1051,7 @@
     SUBDIR += vp
     SUBDIR += waffle
     SUBDIR += waifu2x-converter-cpp
+    SUBDIR += wayland
     SUBDIR += webp
     SUBDIR += wings
     SUBDIR += wmicons
