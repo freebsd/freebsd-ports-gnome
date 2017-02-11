@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	webkit
-PORTVERSION=	2.14.2
+PORTVERSION=	2.14.4
 CATEGORIES=	www
 MASTER_SITES=	http://webkitgtk.org/releases/
 PKGNAMESUFFIX=	2-gtk3
@@ -52,6 +52,7 @@ CMAKE_ARGS+=	-DPORT=GTK \
 		-DENABLE_WAYLAND_TARGET:BOOL=OFF \
 		-DENABLE_MINIBROWSER:BOOL=ON \
 		-DENABLE_GLES2:BOOL=OFF \
+		-DENABLE_ACCELERATED_2D_CANVAS=ON \
 		-DUSE_LD_GOLD:BOOL=OFF \
 		-DENABLE_WEBKIT:BOOL=OFF
 CONFIGURE_ENV+=	XDG_CACHE_HOME=${WRKDIR}
@@ -66,6 +67,7 @@ FULLDEBUG_DESC=	Enable asserts and other debug support
 FULLDEBUG_CONFIGURE_ENABLE=	debug
 DEBUG_CMAKE_ON=		-DCMAKE_BUILD_TYPE:STRING=Debug
 DEBUG_CMAKE_OFF=	-DCMAKE_BUILD_TYPE:STRING=Release
+DEBUG_CFLAGS_OFF=	-DNDEBUG
 
 # -O? doesn't work with debug builds.
 # use ld from binutils for tin archive support
@@ -97,6 +99,8 @@ pre-configure:
 	fi
 
 post-install:
+	@${LN} -sf ../libexec/webkit2gtk-4.0/jsc ${STAGEDIR}${PREFIX}/bin/jsc-4
+	@${LN} -sf ../libexec/webkit2gtk-4.0/MiniBrowser ${STAGEDIR}${PREFIX}/bin/MiniBrowser-4
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/*.so.*.*
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/webkit2gtk-4.0/injected-bundle/*.so
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/libexec/webkit2gtk-4.0/*
