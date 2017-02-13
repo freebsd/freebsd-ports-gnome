@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome3
-PORTVERSION=	3.18.0
+PORTVERSION=	3.22.0
 CATEGORIES?=	x11 gnome
 
 MAINTAINER=	gnome@FreeBSD.org
@@ -48,8 +48,7 @@ MAPI_RUN_DEPENDS=	evolution-mapi>=3.0.0:mail/evolution-mapi
 .include <bsd.port.options.mk>
 
 .if ${.CURDIR:T}!="gnome3-lite"
-RUN_DEPENDS+=	empathy>=3.0.0:net-im/empathy \
-		epiphany>=3.0.0:www/epiphany \
+RUN_DEPENDS+=	epiphany>=3.0.0:www/epiphany \
 		gucharmap>=3.0.0:deskutils/gucharmap \
 		gnome-characters>=3.0.0:deskutils/gnome-characters \
 		gnome-calendar>=3.0:deskutils/gnome-calendar \
