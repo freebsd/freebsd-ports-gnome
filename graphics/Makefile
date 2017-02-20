@@ -1053,6 +1053,7 @@
     SUBDIR += waffle
     SUBDIR += waifu2x-converter-cpp
     SUBDIR += wayland
+    SUBDIR += wayland-protocols
     SUBDIR += webp
     SUBDIR += wings
     SUBDIR += wmicons

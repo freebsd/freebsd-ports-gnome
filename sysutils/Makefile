@@ -555,6 +555,8 @@
     SUBDIR += lr
     SUBDIR += lsof
     SUBDIR += ltrace
+    SUBDIR += lttng-tools
+    SUBDIR += lttng-ust
     SUBDIR += luckybackup
     SUBDIR += lxinput
     SUBDIR += lxsplit
@@ -764,6 +766,7 @@
     SUBDIR += pax-utils
     SUBDIR += pbi-manager
     SUBDIR += pbimaker
+    SUBDIR += pcapfix
     SUBDIR += pcbsd-appweb
     SUBDIR += pcbsd-libsh
     SUBDIR += pcbsd-syscache

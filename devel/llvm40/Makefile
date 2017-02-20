@@ -154,10 +154,12 @@ EXTRAS_COMMANDS+= \
 		find-all-symbols \
 		modularize
 EXTRAS_LIBS=	libclangApplyReplacements \
+		libclangChangeNamespace \
 		libclangIncludeFixer \
-		libclangRename \
+		libclangMove \
 		libclangQuery \
 		libclangRename \
+		libclangReorderFields \
 		libclangTidy \
 		libclangTidyGoogleModule \
 		libclangTidyLLVMModule \
@@ -325,6 +327,9 @@ post-patch:
 post-patch-CLANG-on:
 	${REINPLACE_CMD} -e 's|%%LLVM_PREFIX%%|${LLVM_PREFIX}|' \
 	    ${PATCH_WRKSRC}/tools/clang/lib/Driver/Tools.cpp
+
+post-patch-COMPILER_RT-on:
+	cd ${WRKSRC_compiler_rt} && patch < ${PATCHDIR}/compiler-rt-patch-svn-294806
 
 post-build-COMPILER_RT-on:
 	${MKDIR} ${WRKDIR}/compiler-rt-build

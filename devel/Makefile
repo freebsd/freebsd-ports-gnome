@@ -460,6 +460,7 @@
     SUBDIR += elixir-conform_exrm
     SUBDIR += elixir-connection
     SUBDIR += elixir-coverex
+    SUBDIR += elixir-crontab
     SUBDIR += elixir-csv
     SUBDIR += elixir-decimal
     SUBDIR += elixir-dialyze
@@ -1249,7 +1250,6 @@
     SUBDIR += libdbusmenu-qt5
     SUBDIR += libdevq
     SUBDIR += libdfui
-    SUBDIR += libdict
     SUBDIR += libdisasm
     SUBDIR += libdisorder
     SUBDIR += libdispatch
@@ -1702,6 +1702,7 @@
     SUBDIR += ocaml-xstr
     SUBDIR += ocaml-xstrp4
     SUBDIR += ocl-icd
+    SUBDIR += oclgrind
     SUBDIR += ode
     SUBDIR += ois
     SUBDIR += okteta
@@ -3826,6 +3827,7 @@
     SUBDIR += pear-pdepend-staticReflection
     SUBDIR += pear-phing
     SUBDIR += pecl-APCu
+    SUBDIR += pecl-APCu4
     SUBDIR += pecl-dio
     SUBDIR += pecl-eio
     SUBDIR += pecl-ev
@@ -3845,6 +3847,7 @@
     SUBDIR += pecl-libevent
     SUBDIR += pecl-memoize
     SUBDIR += pecl-msgpack
+    SUBDIR += pecl-msgpack0
     SUBDIR += pecl-ncurses
     SUBDIR += pecl-newt
     SUBDIR += pecl-params
@@ -3903,7 +3906,6 @@
     SUBDIR += php56-sysvsem
     SUBDIR += php56-sysvshm
     SUBDIR += php56-tokenizer
-    SUBDIR += php70-APCu
     SUBDIR += php70-gettext
     SUBDIR += php70-intl
     SUBDIR += php70-json
@@ -4102,6 +4104,7 @@
     SUBDIR += py-arrow
     SUBDIR += py-aspects
     SUBDIR += py-aspyct
+    SUBDIR += py-astor
     SUBDIR += py-astroid
     SUBDIR += py-asyncio
     SUBDIR += py-atomiclong
@@ -4597,7 +4600,6 @@
     SUBDIR += py-rauth
     SUBDIR += py-raven
     SUBDIR += py-rcsparse
-    SUBDIR += py-re2
     SUBDIR += py-rebulk
     SUBDIR += py-rednose
     SUBDIR += py-repl
@@ -4625,6 +4627,7 @@
     SUBDIR += py-rope
     SUBDIR += py-rose
     SUBDIR += py-roxlib
+    SUBDIR += py-rply
     SUBDIR += py-rq
     SUBDIR += py-rtree
     SUBDIR += py-rtslib-fb
@@ -4778,6 +4781,7 @@
     SUBDIR += py-xerox
     SUBDIR += py-xmltodict
     SUBDIR += py-xoltar-toolkit
+    SUBDIR += py-xxhash
     SUBDIR += py-yaml
     SUBDIR += py-yandex-money-sdk
     SUBDIR += py-yappi
@@ -5747,6 +5751,7 @@
     SUBDIR += xtl
     SUBDIR += xwpe
     SUBDIR += xxgdb
+    SUBDIR += xxhash
     SUBDIR += xxl
     SUBDIR += yaggo
     SUBDIR += yajl
