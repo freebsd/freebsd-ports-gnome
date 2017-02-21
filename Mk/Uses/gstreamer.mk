@@ -383,11 +383,7 @@ gtksink_DEPENDS=	x11-toolkits/gstreamer-plugins-gtksink
 
 pango_DEPENDS=	x11-toolkits/gstreamer-plugins-pango
 
-.endif
 #--------------------------------------------------------------------------#
-
-.if defined(_POSTMKINCLUDED) && !defined(_INCLUDE_USES_GSTREAMER_POST_MK)
-_INCLUDE_USES_GSTREAMER_POST_MK=	yes
 
 .if (defined (USE_GSTREAMER) && defined(USE_GSTREAMER1))
 IGNORE=	USE_GSTREAMER and USE_GSTREAMER1 can't be used together
