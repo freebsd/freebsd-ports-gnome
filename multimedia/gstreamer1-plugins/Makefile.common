@@ -370,6 +370,7 @@ gst_pulse_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
 # resindvd
 gst_resindvd_BUILD_DEPENDS=	libdvdnav>=4.1.2:multimedia/libdvdnav
+gst_resindvd_LIB_DEPENDS=	libdvdread.so:multimedia/libdvdread
 gst_resindvd_RUN_DEPENDS=	libdvdnav>=4.1.2:multimedia/libdvdnav
 
 # rtmp xxx
