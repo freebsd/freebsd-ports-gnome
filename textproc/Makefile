@@ -80,7 +80,6 @@
     SUBDIR += cl-ppcre-sbcl
     SUBDIR += clit
     SUBDIR += clucene
-    SUBDIR += clucene-qt4
     SUBDIR += cmark
     SUBDIR += coccigrep
     SUBDIR += code2html
@@ -90,6 +89,7 @@
     SUBDIR += confget
     SUBDIR += consul-template
     SUBDIR += crimson
+    SUBDIR += crunch
     SUBDIR += cs-aspell
     SUBDIR += cs-hunspell
     SUBDIR += cs-hyphen
@@ -460,6 +460,7 @@
     SUBDIR += lttoolbox
     SUBDIR += ltxml
     SUBDIR += luaexpat
+    SUBDIR += luaexpat-51
     SUBDIR += lucene
     SUBDIR += lucene4
     SUBDIR += lucene5
@@ -1271,6 +1272,7 @@
     SUBDIR += py-libxml2
     SUBDIR += py-libxslt
     SUBDIR += py-ltxml
+    SUBDIR += py-m2r
     SUBDIR += py-mako
     SUBDIR += py-markdown
     SUBDIR += py-markdown2
@@ -1367,6 +1369,7 @@
     SUBDIR += qprint
     SUBDIR += qrcodegen
     SUBDIR += qstardict
+    SUBDIR += qt4-clucene
     SUBDIR += qt4-xml
     SUBDIR += qt4-xmlpatterns
     SUBDIR += qt4-xmlpatterns-tool

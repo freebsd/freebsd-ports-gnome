@@ -106,6 +106,7 @@
     SUBDIR += arduino-sevseg
     SUBDIR += arduino-tools
     SUBDIR += arduino16
+    SUBDIR += argdata
     SUBDIR += argouml
     SUBDIR += argp-standalone
     SUBDIR += argtable
@@ -234,6 +235,7 @@
     SUBDIR += cbrowser
     SUBDIR += cc65
     SUBDIR += ccache
+    SUBDIR += ccache-memcached
     SUBDIR += cccc
     SUBDIR += ccdoc
     SUBDIR += ccons
@@ -383,8 +385,6 @@
     SUBDIR += dbus
     SUBDIR += dbus-c++
     SUBDIR += dbus-glib
-    SUBDIR += dbus-qt4
-    SUBDIR += dbus-qt5
     SUBDIR += dbus-sharp
     SUBDIR += dbus-sharp-glib
     SUBDIR += dbus-tcl
@@ -752,6 +752,8 @@
     SUBDIR += go-bindata
     SUBDIR += go-cobra
     SUBDIR += go-codec
+    SUBDIR += go-cpuid
+    SUBDIR += go-crc32
     SUBDIR += go-faker
     SUBDIR += go-form
     SUBDIR += go-glide
@@ -1225,7 +1227,6 @@
     SUBDIR += libbrotli
     SUBDIR += libbson
     SUBDIR += libburn
-    SUBDIR += libc++
     SUBDIR += libccid
     SUBDIR += libcfg
     SUBDIR += libcfu
@@ -1241,7 +1242,6 @@
     SUBDIR += libcrossguid
     SUBDIR += libcutl
     SUBDIR += libcwd
-    SUBDIR += libcxxrt
     SUBDIR += libdaemon
     SUBDIR += libdap
     SUBDIR += libdatrie
@@ -1274,7 +1274,7 @@
     SUBDIR += libev
     SUBDIR += libevdev
     SUBDIR += libevent-hiphop
-    SUBDIR += libevent2
+    SUBDIR += libevent
     SUBDIR += libevt
     SUBDIR += libevtx
     SUBDIR += libewf
@@ -1482,6 +1482,7 @@
     SUBDIR += libzrtpcpp
     SUBDIR += libzvbi
     SUBDIR += lightning
+    SUBDIR += linenoise-ng
     SUBDIR += linux-c6-dbus-glib
     SUBDIR += linux-c6-dbus-libs
     SUBDIR += linux-c6-devtools
@@ -1566,6 +1567,7 @@
     SUBDIR += lua-posix
     SUBDIR += lua-pty
     SUBDIR += lua-sysctl
+    SUBDIR += lua51-libevent
     SUBDIR += luabind
     SUBDIR += luafilesystem
     SUBDIR += luafilesystem-51
@@ -1577,7 +1579,6 @@
     SUBDIR += m17n-docs
     SUBDIR += m17n-lib
     SUBDIR += m4
-    SUBDIR += m6811-binutils
     SUBDIR += magit
     SUBDIR += make++
     SUBDIR += makedepend
@@ -1591,6 +1592,7 @@
     SUBDIR += mcpp
     SUBDIR += mdds
     SUBDIR += mdds0
+    SUBDIR += memleax
     SUBDIR += menhir
     SUBDIR += mercator
     SUBDIR += mercurial
@@ -1653,6 +1655,7 @@
     SUBDIR += newtonsoft-json
     SUBDIR += nexus2-oss
     SUBDIR += nglogc
+    SUBDIR += nimble
     SUBDIR += nini
     SUBDIR += ninja
     SUBDIR += ninja-ide
@@ -2259,6 +2262,7 @@
     SUBDIR += p5-Devel-CheckCompiler
     SUBDIR += p5-Devel-CheckLib
     SUBDIR += p5-Devel-CheckOS
+    SUBDIR += p5-Devel-Confess
     SUBDIR += p5-Devel-Constants
     SUBDIR += p5-Devel-CoreStack
     SUBDIR += p5-Devel-Cover
@@ -2437,6 +2441,7 @@
     SUBDIR += p5-File-Remove
     SUBDIR += p5-File-SafeDO
     SUBDIR += p5-File-SearchPath
+    SUBDIR += p5-File-Share
     SUBDIR += p5-File-ShareDir
     SUBDIR += p5-File-ShareDir-Install
     SUBDIR += p5-File-ShareDir-PAR
@@ -3872,6 +3877,7 @@
     SUBDIR += pecl-uploadprogress
     SUBDIR += pecl-uri_template
     SUBDIR += pecl-uuid
+    SUBDIR += pecl-uv
     SUBDIR += pecl-vld
     SUBDIR += pecl-weakref
     SUBDIR += pecl-xhprof
@@ -3990,6 +3996,7 @@
     SUBDIR += pwlib
     SUBDIR += py-Acquisition
     SUBDIR += py-AddOns
+    SUBDIR += py-Automat
     SUBDIR += py-Breve
     SUBDIR += py-BytecodeAssembler
     SUBDIR += py-DateTime
@@ -4405,6 +4412,7 @@
     SUBDIR += py-mwlib.rl
     SUBDIR += py-mx-experimental
     SUBDIR += py-mygpoclient
+    SUBDIR += py-mypy
     SUBDIR += py-nagioscheck
     SUBDIR += py-natsort
     SUBDIR += py-natural
@@ -4902,6 +4910,7 @@
     SUBDIR += py3-python-magic
     SUBDIR += py3-pytz
     SUBDIR += py3-rubymarshal
+    SUBDIR += py3-setproctitle
     SUBDIR += py3-simplejson
     SUBDIR += py3-threema-msgapi
     SUBDIR += py3-vcversioner
@@ -4935,8 +4944,6 @@
     SUBDIR += qjson
     SUBDIR += qjson-qt5
     SUBDIR += qmake
-    SUBDIR += qmake4
-    SUBDIR += qmake5
     SUBDIR += qprog
     SUBDIR += qross
     SUBDIR += qscintilla2
@@ -4948,6 +4955,7 @@
     SUBDIR += qt4-assistant
     SUBDIR += qt4-assistant-adp
     SUBDIR += qt4-corelib
+    SUBDIR += qt4-dbus
     SUBDIR += qt4-designer
     SUBDIR += qt4-help
     SUBDIR += qt4-help-tools
@@ -4959,6 +4967,7 @@
     SUBDIR += qt4-porting
     SUBDIR += qt4-qdbusviewer
     SUBDIR += qt4-qdoc3
+    SUBDIR += qt4-qmake
     SUBDIR += qt4-qmlviewer
     SUBDIR += qt4-qt3support
     SUBDIR += qt4-qtsolutions-singleapplication
@@ -4975,6 +4984,7 @@
     SUBDIR += qt5-buildtools
     SUBDIR += qt5-concurrent
     SUBDIR += qt5-core
+    SUBDIR += qt5-dbus
     SUBDIR += qt5-designer
     SUBDIR += qt5-help
     SUBDIR += qt5-linguist
@@ -4984,8 +4994,10 @@
     SUBDIR += qt5-qdbusviewer
     SUBDIR += qt5-qdoc
     SUBDIR += qt5-qdoc-data
+    SUBDIR += qt5-qmake
     SUBDIR += qt5-script
     SUBDIR += qt5-scripttools
+    SUBDIR += qt5-scxml
     SUBDIR += qt5-testlib
     SUBDIR += qt5-uitools
     SUBDIR += qtcreator
@@ -5366,6 +5378,7 @@
     SUBDIR += rubygem-powerpack
     SUBDIR += rubygem-pqueue
     SUBDIR += rubygem-progressbar
+    SUBDIR += rubygem-progressbar09
     SUBDIR += rubygem-protected_attributes
     SUBDIR += rubygem-pry
     SUBDIR += rubygem-pry-rails
@@ -5742,7 +5755,6 @@
     SUBDIR += xdg-utils
     SUBDIR += xfce4-dev-tools
     SUBDIR += xfce4-vala
-    SUBDIR += xlocale
     SUBDIR += xmake
     SUBDIR += xmltooling
     SUBDIR += xorg-macros

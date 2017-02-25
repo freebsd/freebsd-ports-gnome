@@ -19,9 +19,9 @@ USES=		libtool pathfix
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 
-SUB_FILES=	pkg-message
+BROKEN_aarch64=	fails to install: error in backend: fixup value out of range
 
-CFLAGS_aarch64=	-fPIC
+SUB_FILES=	pkg-message
 
 INFO=	talkfilters
 

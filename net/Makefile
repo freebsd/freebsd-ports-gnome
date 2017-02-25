@@ -393,6 +393,7 @@
     SUBDIR += ltm
     SUBDIR += lualdap
     SUBDIR += luasocket
+    SUBDIR += luasocket-51
     SUBDIR += lvwimax
     SUBDIR += mDNSResponder
     SUBDIR += macchanger
@@ -465,7 +466,6 @@
     SUBDIR += nmsg
     SUBDIR += nocatsplash
     SUBDIR += norm
-    SUBDIR += nos-ttb
     SUBDIR += nph
     SUBDIR += ns3
     SUBDIR += nsq

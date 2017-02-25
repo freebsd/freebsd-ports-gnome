@@ -293,7 +293,7 @@ add-plist-phpext:
 _USE_PHP_ALL=	bcmath bitset bz2 calendar ctype curl dba dom \
 		enchant exif fileinfo filter ftp gd gettext gmp \
 		hash iconv igbinary imap interbase intl json ldap mbstring mcrypt \
-		memcache mysqli odbc opcache \
+		memcache memcached mysqli odbc opcache \
 		openssl pcntl pcre pdf pdo pdo_dblib pdo_firebird pdo_mysql \
 		pdo_odbc pdo_pgsql pdo_sqlite phar pgsql posix \
 		pspell radius readline recode redis session shmop simplexml snmp soap\
@@ -344,6 +344,11 @@ memcache_DEPENDS=	databases/php${PHP_VER}-memcache
 .    else
 memcache_DEPENDS=	databases/pecl-memcache
 .    endif
+.    if ${PHP_VER} >= 70
+memcached_DEPENDS=	databases/pecl-memcached
+.    else
+memcached_DEPENDS=	databases/pecl-memcached2
+.    endif
 mssql_DEPENDS=	databases/php${PHP_VER}-mssql
 mysql_DEPENDS=	databases/php${PHP_VER}-mysql
 mysqli_DEPENDS=	databases/php${PHP_VER}-mysqli
@@ -368,7 +373,7 @@ pspell_DEPENDS=	textproc/php${PHP_VER}-pspell
 radius_DEPENDS=	net/pecl-radius
 readline_DEPENDS=	devel/php${PHP_VER}-readline
 recode_DEPENDS=	converters/php${PHP_VER}-recode
-redis_DEPENDS=	databases/php${PHP_VER}-redis
+redis_DEPENDS=	databases/pecl-redis
 session_DEPENDS=www/php${PHP_VER}-session
 shmop_DEPENDS=	devel/php${PHP_VER}-shmop
 simplexml_DEPENDS=	textproc/php${PHP_VER}-simplexml

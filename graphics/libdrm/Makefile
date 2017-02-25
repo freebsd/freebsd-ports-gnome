@@ -4,6 +4,7 @@
 PORTNAME=	libdrm
 PORTVERSION=	2.4.75
 PORTEPOCH=	1
+PORTREVISION=	1
 CATEGORIES=	graphics x11
 MASTER_SITES=	http://dri.freedesktop.org/libdrm/
 
@@ -27,8 +28,6 @@ OPTIONS_DEFINE=	MANPAGES
 .if defined(PACKAGE_BUILDING)
 OPTIONS_DEFAULT+=	MANPAGES
 .endif
-
-USES+=		gmake
 
 .include <bsd.port.options.mk>
 

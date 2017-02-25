@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nginx
-PORTVERSION=	1.11.9
-PORTREVISION=	1
+PORTVERSION=	1.11.10
 CATEGORIES=	www
 MASTER_SITES=	http://nginx.org/download/
 MASTER_SITES+=	LOCAL/osa
@@ -522,11 +521,15 @@ CONFIGURE_ARGS+=--add-module=${WRKSRC_eval}
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_FANCYINDEX}
-NGINX_FANCYINDEX_VERSION=	0.3.6
+NGINX_FANCYINDEX_VERSION=	0.4.1
 GH_ACCOUNT+=	aperezdc:fancyindex
 GH_PROJECT+=	ngx-fancyindex:fancyindex
 GH_TAGNAME+=	v${NGINX_FANCYINDEX_VERSION}:fancyindex
+.if !empty(PORT_OPTIONS:MDSO)
+CONFIGURE_ARGS+=--add-dynamic-module=${WRKSRC_fancyindex}
+.else
 CONFIGURE_ARGS+=--add-module=${WRKSRC_fancyindex}
+.endif
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_FOOTER}
@@ -788,6 +791,7 @@ GH_ACCOUNT+=	evanmiller:mod_zip
 GH_PROJECT+=	mod_zip:mod_zip
 GH_TAGNAME+=	${NGINX_ZIP_VERSION}:mod_zip
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/mod_zip-${NGINX_ZIP_VERSION}
+IGNORE=	HTTP_ZIP: a patch requires
 .endif
 
 .if ${PORT_OPTIONS:MDRIZZLE}
@@ -825,7 +829,7 @@ CONFIGURE_ARGS+=--add-module=${WRKSRC_devel_kit}
 .endif
 
 .if ${PORT_OPTIONS:MENCRYPTSESSION}
-NGINX_ENCRYPTSESSION_VERSION=	0.05
+NGINX_ENCRYPTSESSION_VERSION=	0.06
 GH_ACCOUNT+=	openresty:encryptsession
 GH_PROJECT+=	encrypted-session-nginx-module:encryptsession
 GH_TAGNAME+=	v${NGINX_ENCRYPTSESSION_VERSION}:encryptsession

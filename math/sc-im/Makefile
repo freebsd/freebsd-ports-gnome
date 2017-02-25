@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sc-im
-PORTVERSION=	0.4.0
+PORTVERSION=	0.5.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	math
 
@@ -18,6 +18,8 @@ GH_ACCOUNT=	andmarti1424
 USE_GNOME=	libxml2
 LIB_DEPENDS=	libxlsreader.so:math/libxls \
 		libzip.so:archivers/libzip
+
+BROKEN_aarch64=	fails to compile: conflicting types for __wcwidth
 
 WRKSRC_SUBDIR=	src
 CFLAGS+=	-I${LOCALBASE}/include/libxml2
