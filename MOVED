@@ -5329,8 +5329,6 @@ devel/py-gevent-zeromq|devel/py-pyzmq|2014-01-06|Has expired: devel/py-pyzmq has
 net/erlyvideo||2014-01-06|Has expired: Development of erlyvideo is abandoned upstream. Use flussonic instead
 devel/qt4-declarative|x11-toolkits/qt4-declarative|2014-01-06|Moved to unify with Qt 5
 devel/qt4-qtestlib|devel/qt4-testlib|2014-01-06|Renamed to unify with Qt 5
-textproc/qt4-clucene|textproc/clucene-qt4|2014-01-06|Renamed to unify with Qt 5
-www/qt4-webkit|www/webkit-qt4|2014-01-06|Renamed to unify with Qt 5
 x11/qt4-opengl|graphics/qt4-opengl|2014-01-06|Moved to unify with Qt 5
 graphics/wings-devel|graphics/wings|2014-01-07|Obsoleted by the main port
 devel/llvm|devel/llvm32|2014-01-08|Has expired: Migrate to devel/llvm32 or newer
@@ -5891,7 +5889,6 @@ palm/gnome-pilot-conduits||2014-04-11|Removed (depends on gnome-pilot)
 www/p5-CGI-modules||2014-04-11|Has expired: No more public distfiles
 www/p5-WWW-Link||2014-04-11|Has expired: Depends on expired www/p5-CGI-modules
 www/sbox-dtc||2014-04-11|Has expired: No more public distfiles
-sysutils/dtc||2014-04-11|Has expired: Depends on expired www/sbox-dtc
 textproc/glimpse||2014-04-11|Has expired: No more public distfiles
 ftp/ftplocate||2014-04-11|Has expired: Depends on expired textproc/glimpse
 misc/tkman||2014-04-11|Has expired: Depends on expired textproc/glimpse
@@ -6297,7 +6294,6 @@ sysutils/lookupd_ldap||2014-07-24|Has expired: Fails to build with new utmpx
 sysutils/p5-Sys-Utmp||2014-07-24|Has expired: Fails to build with new utmpx
 sysutils/syslog-ng2||2014-07-24|Has expired: Fails to build with new utmpx
 sysutils/yawho||2014-07-24|Has expired: Fails to build with new utmpx
-devel/libevent|devel/libevent2|2014-07-27|libevent2 replaced libevent
 devel/p5-MetaCPAN-API|devel/p5-MetaCPAN-Client|2014-07-27|Has expired: Use devel/p5-MetaCPAN-Client instead
 net-im/pidgin-facebookchat||2014-07-27|Has expired: obsolete, development has ceased, not staged
 net-im/gtkyahoo||2014-07-28|Has expired: Broken, unmaintained, unstaged, gtk12, i386 only
@@ -9070,4 +9066,25 @@ math/R-cran-SuppDists||2017-02-08|Has expired: Broken for more than 6 months
 devel/py-re2||2017-02-08|Has expired: Broken for more than 6 months
 net-p2p/digitalcoin||2017-02-08|Has expired: Broken for more than 6 months
 devel/php70-APCu|devel/pecl-APCu|2017-02-12|Use devel/pecl-APCu for PHP 7.0+ users
-chinese/mutt|mail/mutt||2017-02-13|Regular mutt's email client can handle Chinese locales
+chinese/mutt|mail/mutt|2017-02-13|Use mail/mutt, which can handle Chinese locales
+lang/libjit||2017-02-14|Has expired: This version is severely out of date and its use is discouraged; see http://www.gnu.org/software/libjit/
+databases/php56-redis|databases/pecl-redis|2017-02-15|Merged with latest codebase that supports all php versions
+databases/php70-redis|databases/pecl-redis|2017-02-15|Merged with latest codebase that supports all php versions
+databases/php71-redis|databases/pecl-redis|2017-02-15|Merged with latest codebase that supports all php versions
+devel/dbus-qt4|devel/qt4-dbus|2017-02-18|Renamed to match other Qt ports
+devel/dbus-qt5|devel/qt5-dbus|2017-02-18|Renamed to match other Qt ports
+devel/qmake4|devel/qt4-qmake|2017-02-18|Renamed to match other Qt ports
+devel/qmake5|devel/qt5-qmake|2017-02-18|Renamed to match other Qt ports
+textproc/clucene-qt4|textproc/qt4-clucene|2017-02-18|Renamed to match other Qt ports
+www/webkit-qt4|www/qt4-webkit|2017-02-18|Renamed to match other Qt ports
+www/webkit-qt5|www/qt5-webkit|2017-02-18|Renamed to match other Qt ports
+www/rt40|www/rt44|2017-02-18|Has expired: Upstream support EoL, please migrate to rt44
+devel/m6811-binutils||2017-02-18|Has expired: multiple vulnerabilities, version is years behind upstream
+devel/libevent2|devel/libevent|2017-02-20|Rename as only libevent 2.x is supported
+german/mediathek|german/mediathekview|2017-02-20|Project renamed
+net/nos-ttb||2017-02-20|Has expired: does not work due to protocol changes
+sysutils/filebeat|sysutils/beats|2017-02-21|merged beats to one port
+sysutils/metricbeat|sysutils/beats|2017-02-21|merged beats to one port
+sysutils/packetbeat|sysutils/beats|2017-02-21|merged beats to one port
+devel/libc++||2017-02-24|Obsolete, all supported FreeBSD versions have libc++ in the base system
+devel/libcxxrt||2017-02-24|Obsolete, all supported FreeBSD versions have libcxxrt in the base system

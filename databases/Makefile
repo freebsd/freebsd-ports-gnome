@@ -226,6 +226,7 @@
     SUBDIR += mysql57-server
     SUBDIR += mysql80-client
     SUBDIR += mysql80-server
+    SUBDIR += mysqlwsrep56-server
     SUBDIR += mysqlbackup
     SUBDIR += mysqlbigram
     SUBDIR += mysqldump-secure
@@ -428,6 +429,7 @@
     SUBDIR += p5-Data-Page
     SUBDIR += p5-Data-Pageset
     SUBDIR += p5-Exception-Class-DBI
+    SUBDIR += p5-File-Locate
     SUBDIR += p5-GDBM
     SUBDIR += p5-Genezzo
     SUBDIR += p5-GitDDL
@@ -551,6 +553,7 @@
     SUBDIR += pecl-mongo
     SUBDIR += pecl-mongodb
     SUBDIR += pecl-pdo_user
+    SUBDIR += pecl-redis
     SUBDIR += pecl-rrd
     SUBDIR += pecl-tokyo_tyrant
     SUBDIR += percona-pam-for-mysql
@@ -614,7 +617,6 @@
     SUBDIR += php56-pdo_pgsql
     SUBDIR += php56-pdo_sqlite
     SUBDIR += php56-pgsql
-    SUBDIR += php56-redis
     SUBDIR += php56-sqlite3
     SUBDIR += php56-sybase_ct
     SUBDIR += php70-dba
@@ -631,7 +633,6 @@
     SUBDIR += php70-pdo_pgsql
     SUBDIR += php70-pdo_sqlite
     SUBDIR += php70-pgsql
-    SUBDIR += php70-redis
     SUBDIR += php70-sqlite3
     SUBDIR += php71-dba
     SUBDIR += php71-interbase
@@ -646,7 +647,6 @@
     SUBDIR += php71-pdo_pgsql
     SUBDIR += php71-pdo_sqlite
     SUBDIR += php71-pgsql
-    SUBDIR += php71-redis
     SUBDIR += php71-sqlite3
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin

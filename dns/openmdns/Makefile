@@ -1,9 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	openmdns
-DISTVERSION=	0.6-15
-DISTVERSIONSUFFIX=	-gd76ce05
-PORTREVISION=	1
+DISTVERSION=	0.6-24
+DISTVERSIONSUFFIX=	-g627cc56
 CATEGORIES=	dns
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -37,10 +36,10 @@ GROUPS=		_mdnsd
 
 OPTIONS_DEFINE=	DOCS STATIC
 
-STATIC_BUILD_DEPENDS=	${LOCALBASE}/lib/libevent.a:devel/libevent2 \
+STATIC_BUILD_DEPENDS=	${LOCALBASE}/lib/libevent.a:devel/libevent \
 			${LOCALBASE}/lib/libopenbsd.a:devel/libopenbsd
 STATIC_MAKE_ENV=	NO_SHARED=1
-STATIC_LIB_DEPENDS_OFF=	libevent.so:devel/libevent2 \
+STATIC_LIB_DEPENDS_OFF=	libevent.so:devel/libevent \
 			libopenbsd.so:devel/libopenbsd
 
 post-patch:

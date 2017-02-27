@@ -2,19 +2,23 @@
 # $FreeBSD$
 
 PORTNAME=	frescobaldi
-PORTVERSION=	2.19.0
+PORTVERSION=	2.20.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	print kde
 
 MAINTAINER=	martin.dieringer@gmx.de
 COMMENT=	Music score editor for lilypond
 
-LICENSE=	GPLv2 GPLv3
-LICENSE_COMB=	dual
+LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
-RUN_DEPENDS=	lilypond:print/lilypond \
-		${PYTHON_PKGNAMEPREFIX}poppler-qt4>=0:graphics/py-poppler-qt4 \
-		${PYTHON_PKGNAMEPREFIX}ly>=0:print/py-python-ly
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}poppler-qt4>=0:graphics/py-poppler-qt4 \
+		${PYTHON_PKGNAMEPREFIX}python-ly>=0:print/py-python-ly
+
+OPTIONS_DEFINE=	LILYPOND
+LILYPOND_DESC=	Use unstable LilyPond (lilypond-devel)
+LILYPOND_RUN_DEPENDS=	lilypond:print/lilypond-devel
+LILYPOND_RUN_DEPENDS_OFF=	lilypond:print/lilypond
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	wbsoft

@@ -56,6 +56,7 @@
     SUBDIR += bolt
     SUBDIR += bookmarkbridge
     SUBDIR += bozohttpd
+    SUBDIR += butterfly
     SUBDIR += c-icap
     SUBDIR += c-icap-modules
     SUBDIR += cadaver
@@ -192,6 +193,7 @@
     SUBDIR += gallery3
     SUBDIR += gatling
     SUBDIR += gecko-mediaplayer
+    SUBDIR += geckodriver
     SUBDIR += geeklog
     SUBDIR += geeknote
     SUBDIR += geneweb
@@ -207,6 +209,7 @@
     SUBDIR += glpi
     SUBDIR += gnome-user-share
     SUBDIR += gnome-web-photo
+    SUBDIR += go-fasthttp
     SUBDIR += go-www
     SUBDIR += gohugo
     SUBDIR += google-appengine
@@ -411,6 +414,7 @@
     SUBDIR += mini_httpd
     SUBDIR += miniminiweb
     SUBDIR += minio
+    SUBDIR += minio-client
     SUBDIR += mitmproxy
     SUBDIR += mkapachepw
     SUBDIR += mknmz-wwwoffle
@@ -1454,6 +1458,7 @@
     SUBDIR += pecl-swish
     SUBDIR += pecl-twig
     SUBDIR += pecl-yaf
+    SUBDIR += pecl-yaf2
     SUBDIR += pecl-yar
     SUBDIR += perlbal
     SUBDIR += pglogd
@@ -1868,6 +1873,8 @@
     SUBDIR += pyweblib
     SUBDIR += qdecoder
     SUBDIR += qooxdoo
+    SUBDIR += qt4-webkit
+    SUBDIR += qt5-webkit
     SUBDIR += qt5-webchannel
     SUBDIR += qt5-websockets
     SUBDIR += quickie
@@ -1905,7 +1912,6 @@
     SUBDIR += rssroll
     SUBDIR += rsstail
     SUBDIR += rsstool
-    SUBDIR += rt40
     SUBDIR += rt42
     SUBDIR += rt44
     SUBDIR += rtv
@@ -1963,6 +1969,7 @@
     SUBDIR += rubygem-gitlab-grack
     SUBDIR += rubygem-gollum-grit_adapter
     SUBDIR += rubygem-gollum-lib
+    SUBDIR += rubygem-gollum-lib-gitlab
     SUBDIR += rubygem-gollum-rugged_adapter
     SUBDIR += rubygem-gon
     SUBDIR += rubygem-gon-rails4
@@ -2000,6 +2007,9 @@
     SUBDIR += rubygem-jsobfu
     SUBDIR += rubygem-jwt
     SUBDIR += rubygem-kaminari
+    SUBDIR += rubygem-kaminari-actionview
+    SUBDIR += rubygem-kaminari-activerecord
+    SUBDIR += rubygem-kaminari-core
     SUBDIR += rubygem-kaminari-rails4
     SUBDIR += rubygem-kensa
     SUBDIR += rubygem-layout_yullio_generator
@@ -2334,8 +2344,6 @@
     SUBDIR += webinject
     SUBDIR += webkit-gtk2
     SUBDIR += webkit-gtk3
-    SUBDIR += webkit-qt4
-    SUBDIR += webkit-qt5
     SUBDIR += webkit-sharp
     SUBDIR += webkit2-gtk3
     SUBDIR += weblint
