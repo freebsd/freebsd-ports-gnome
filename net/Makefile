@@ -1316,7 +1316,6 @@
     SUBDIR += tcpcat
     SUBDIR += tcpdstat
     SUBDIR += tcpdump
-    SUBDIR += tcpdump398
     SUBDIR += tcpflow
     SUBDIR += tcpick
     SUBDIR += tcpillust
