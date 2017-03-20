@@ -1189,6 +1189,7 @@
     SUBDIR += rubygem-octokit
     SUBDIR += rubygem-octopress-deploy
     SUBDIR += rubygem-omniauth-auth0
+    SUBDIR += rubygem-omniauth-authentiq
     SUBDIR += rubygem-omniauth-azure-oauth2
     SUBDIR += rubygem-omniauth-facebook
     SUBDIR += rubygem-omniauth-github
