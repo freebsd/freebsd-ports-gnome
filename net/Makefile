@@ -1220,6 +1220,7 @@
     SUBDIR += rubygem-rubytter
     SUBDIR += rubygem-rudy
     SUBDIR += rubygem-rye
+    SUBDIR += rubygem-signet
     SUBDIR += rubygem-simple_oauth
     SUBDIR += rubygem-stompserver
     SUBDIR += rubygem-t
