@@ -58,8 +58,9 @@ GOOGLE_DESC=	Google backend
 FUSE_USES=	fuse
 FUSE_CONFIGURE_ENABLE=	fuse
 
-SAMBA_LIB_DEPENDS=	libsmbclient.so:net/samba-libsmbclient
+SAMBA_USES=	samba:lib
 SAMBA_CONFIGURE_ENABLE=	samba
+SAMBA_CONFIGURE_WITH=	samba-includes=${SAMBAINCLUDES} samba-libs=${SAMBALIBS}
 
 CDDA_LIB_DEPENDS=	libcdio_paranoia.so:sysutils/libcdio-paranoia
 CDDA_CONFIGURE_ENABLE=	cdda
