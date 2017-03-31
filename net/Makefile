@@ -676,6 +676,7 @@
     SUBDIR += p5-Net-NBsocket
     SUBDIR += p5-Net-NIS
     SUBDIR += p5-Net-NIS-Listgroup
+    SUBDIR += p5-Net-NTP
     SUBDIR += p5-Net-Nessus-XMLRPC
     SUBDIR += p5-Net-Nmsg
     SUBDIR += p5-Net-OAuth
