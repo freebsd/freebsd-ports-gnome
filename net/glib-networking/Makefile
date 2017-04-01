@@ -31,4 +31,7 @@ INSTALL_TARGET=	install-strip
 post-patch:
 	@${REINPLACE_CMD} -e' s|-Wmissing-include-dirs||g' ${WRKSRC}/configure
 
+post-install:
+	${RM} -r ${STAGEDIR}${PREFIX}/lib/systemd
+
 .include <bsd.port.mk>
