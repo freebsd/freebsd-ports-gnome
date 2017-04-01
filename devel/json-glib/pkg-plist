@@ -17,7 +17,7 @@ include/json-glib-1.0/json-glib/json-version.h
 %%GIR%%share/gir-1.0/Json-1.0.gir
 lib/libjson-glib-1.0.so
 lib/libjson-glib-1.0.so.0
-lib/libjson-glib-1.0.so.0.200.2
+lib/libjson-glib-1.0.so.0.200.8
 libdata/pkgconfig/json-glib-1.0.pc
 %%DOCSDIR%%/JsonBuilder.html
 %%DOCSDIR%%/JsonGenerator.html
