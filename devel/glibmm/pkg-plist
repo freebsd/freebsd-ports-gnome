@@ -166,10 +166,9 @@ include/giomm-%%VERSION%%/giomm/private/networkmonitor_p.h
 include/giomm-%%VERSION%%/giomm/private/networkservice_p.h
 include/giomm-%%VERSION%%/giomm/private/notification_p.h
 include/giomm-%%VERSION%%/giomm/private/outputstream_p.h
+include/giomm-%%VERSION%%/giomm/private/permission_p.h
 include/giomm-%%VERSION%%/giomm/private/pollableinputstream_p.h
 include/giomm-%%VERSION%%/giomm/private/pollableoutputstream_p.h
-include/giomm-%%VERSION%%/giomm/private/permission_p.h
-include/giomm-%%VERSION%%/giomm/private/simplepermission_p.h
 include/giomm-%%VERSION%%/giomm/private/proxy_p.h
 include/giomm-%%VERSION%%/giomm/private/proxyaddress_p.h
 include/giomm-%%VERSION%%/giomm/private/proxyresolver_p.h
@@ -184,6 +183,7 @@ include/giomm-%%VERSION%%/giomm/private/settingsschemasource_p.h
 include/giomm-%%VERSION%%/giomm/private/simpleaction_p.h
 include/giomm-%%VERSION%%/giomm/private/simpleactiongroup_p.h
 include/giomm-%%VERSION%%/giomm/private/simpleiostream_p.h
+include/giomm-%%VERSION%%/giomm/private/simplepermission_p.h
 include/giomm-%%VERSION%%/giomm/private/socket_p.h
 include/giomm-%%VERSION%%/giomm/private/socketaddress_p.h
 include/giomm-%%VERSION%%/giomm/private/socketaddressenumerator_p.h
@@ -227,9 +227,9 @@ include/giomm-%%VERSION%%/giomm/settings.h
 include/giomm-%%VERSION%%/giomm/settingsschema.h
 include/giomm-%%VERSION%%/giomm/settingsschemakey.h
 include/giomm-%%VERSION%%/giomm/settingsschemasource.h
-include/giomm-%%VERSION%%/giomm/simpleiostream.h
 include/giomm-%%VERSION%%/giomm/simpleaction.h
 include/giomm-%%VERSION%%/giomm/simpleactiongroup.h
+include/giomm-%%VERSION%%/giomm/simpleiostream.h
 include/giomm-%%VERSION%%/giomm/simplepermission.h
 include/giomm-%%VERSION%%/giomm/socket.h
 include/giomm-%%VERSION%%/giomm/socketaddress.h

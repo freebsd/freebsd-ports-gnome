@@ -11,6 +11,8 @@ DIST_SUBDIR=	gnome2
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	C++ interfaces for glib2
 
+LICENSE=	LGPL21
+
 USES+=		tar:xz
 PORTSCOUT?=	limitw:1,even
 
