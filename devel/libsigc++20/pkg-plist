@@ -36,7 +36,7 @@ lib/libsigc-%%API_VERSION%%.so.0
 lib/libsigc-%%API_VERSION%%.so.0.0.0
 lib/sigc++-%%API_VERSION%%/include/sigc++config.h
 libdata/pkgconfig/sigc++-%%API_VERSION%%.pc
-%%PORTDOCS%%share/devhelp/books/libsigc++-%%API_VERSION%%/libsigc++-%%API_VERSION%%.devhelp2
+share/devhelp/books/libsigc++-%%API_VERSION%%/libsigc++-%%API_VERSION%%.devhelp2
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/images/libsigc_logo.gif
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/images/top.gif
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/index.html
@@ -340,6 +340,9 @@ libdata/pkgconfig/sigc++-%%API_VERSION%%.pc
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot7-members.html
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot7.html
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot7__inherit__graph.png
+%%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot_3_01T__return_07T__arg_8_8_8_08_4-members.html
+%%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot_3_01T__return_07T__arg_8_8_8_08_4.html
+%%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot_3_01T__return_07T__arg_8_8_8_08_4__inherit__graph.png
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot__base-members.html
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot__base.html
 %%PORTDOCS%%%%DOCSDIR%%-%%API_VERSION%%/reference/html/classsigc_1_1slot__base__inherit__graph.png
