@@ -11,7 +11,9 @@ COMMENT=	C++ wrapper for ATK API library
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gmake libtool localbase pathfix pkgconfig tar:xz
+LICENSE=	LGPL20
+
+USES=		gmake localbase libtool pathfix pkgconfig tar:xz
 USE_GNOME=	atk glibmm
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
