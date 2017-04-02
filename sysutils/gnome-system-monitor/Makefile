@@ -20,8 +20,8 @@ RUN_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme
 
 PORTSCOUT=	limitw:1,even
 
-USES=		alias gettext gmake localbase pathfix \
-		pkgconfig tar:xz
+USES=		alias compiler:c++11-lang gettext gmake localbase pathfix pkgconfig tar:xz
+USE_CXXSTD=	c++11
 USE_GNOME=	gtkmm30 intlhack librsvg2 libwnck3
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
