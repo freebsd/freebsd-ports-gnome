@@ -279,6 +279,12 @@ PORTDOCS+=	lld
 CXXFLAGS+=	-D_GLIBCXX_USE_C99
 .endif
 
+.if ${ARCH} == "armv6"
+BUILD_DEPENDS+=	${LOCALBASE}/bin/ld:devel/binutils
+CONFIGURE_ENV+=	COMPILER_PATH=${LOCALBASE}/bin
+MAKE_ENV+=	COMPILER_PATH=${LOCALBASE}/bin
+.endif
+
 .if ${PYTHON_REL} < 3400
 LLDB_BUILD_DEPENDS+= \
 	${PYTHON_PKGNAMEPREFIX}enum34>0:devel/py-enum34
@@ -313,6 +319,9 @@ post-patch:
 post-patch-CLANG-on:
 	${REINPLACE_CMD} -e 's|%%LLVM_PREFIX%%|${LLVM_PREFIX}|' \
 	    ${PATCH_WRKSRC}/tools/clang/lib/Driver/Tools.cpp
+
+post-patch-COMPILER_RT-on:
+	cd ${WRKSRC_compiler_rt} && patch < ${PATCHDIR}/compiler-rt-patch-svn-294806
 
 post-build-COMPILER_RT-on:
 	${MKDIR} ${WRKDIR}/compiler-rt-build

@@ -360,6 +360,7 @@
     SUBDIR += log2timeline
     SUBDIR += logcheck
     SUBDIR += luasec
+    SUBDIR += luasec-51
     SUBDIR += lynis
     SUBDIR += mac-robber
     SUBDIR += maia
@@ -380,6 +381,7 @@
     SUBDIR += mhash
     SUBDIR += mindterm-binary
     SUBDIR += monkeysphere
+    SUBDIR += morphis
     SUBDIR += munge
     SUBDIR += mussh
     SUBDIR += nacl
@@ -1109,6 +1111,7 @@
     SUBDIR += srm
     SUBDIR += ssdeep
     SUBDIR += ssh-multiadd
+    SUBDIR += ssh-vault
     SUBDIR += ssh_askpass_gtk2
     SUBDIR += sshblock
     SUBDIR += sshguard

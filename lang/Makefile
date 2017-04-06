@@ -156,7 +156,6 @@
     SUBDIR += lci
     SUBDIR += lfe
     SUBDIR += libhx
-    SUBDIR += libjit
     SUBDIR += libobjc2
     SUBDIR += librep
     SUBDIR += libstdc++_stldoc_4.2.2
@@ -265,6 +264,7 @@
     SUBDIR += ptoc
     SUBDIR += pure
     SUBDIR += py-clojure
+    SUBDIR += py-hy
     SUBDIR += py-mx-base
     SUBDIR += py-prolog
     SUBDIR += py-qt5-qml

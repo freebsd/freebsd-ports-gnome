@@ -153,6 +153,8 @@ include/wine/windows/commdlg.h
 include/wine/windows/commoncontrols.h
 include/wine/windows/commoncontrols.idl
 include/wine/windows/compobj.h
+include/wine/windows/comsvcs.h
+include/wine/windows/comsvcs.idl
 include/wine/windows/control.h
 include/wine/windows/control.idl
 include/wine/windows/cor.h
@@ -262,6 +264,7 @@ include/wine/windows/devicetopology.h
 include/wine/windows/devicetopology.idl
 include/wine/windows/devpkey.h
 include/wine/windows/devpropdef.h
+include/wine/windows/dhcpcsdk.h
 include/wine/windows/difxapi.h
 include/wine/windows/digitalv.h
 include/wine/windows/dimm.h
@@ -1678,6 +1681,7 @@ lib/wine/fakedlls/mciqtz32.dll
 lib/wine/fakedlls/mciseq.dll
 lib/wine/fakedlls/mciwave.dll
 lib/wine/fakedlls/mf.dll
+lib/wine/fakedlls/mf3216.dll
 lib/wine/fakedlls/mfplat.dll
 lib/wine/fakedlls/mfreadwrite.dll
 lib/wine/fakedlls/mgmtapi.dll
@@ -1863,6 +1867,7 @@ lib/wine/fakedlls/sccbase.dll
 lib/wine/fakedlls/schannel.dll
 lib/wine/fakedlls/schedsvc.dll
 lib/wine/fakedlls/schtasks.exe
+lib/wine/fakedlls/scrobj.dll
 lib/wine/fakedlls/scrrun.dll
 lib/wine/fakedlls/scsiport.sys
 lib/wine/fakedlls/sdbinst.exe
@@ -1945,6 +1950,7 @@ lib/wine/fakedlls/vdmdbg.dll
 %%WINE32%%lib/wine/fakedlls/ver.dll16
 lib/wine/fakedlls/version.dll
 lib/wine/fakedlls/view.exe
+lib/wine/fakedlls/virtdisk.dll
 %%WINE32%%lib/wine/fakedlls/vmm.vxd
 %%WINE32%%lib/wine/fakedlls/vnbt.vxd
 %%WINE32%%lib/wine/fakedlls/vnetbios.vxd
@@ -2008,6 +2014,7 @@ lib/wine/fakedlls/winsta.dll
 %%WINE32%%lib/wine/fakedlls/wintab.dll16
 lib/wine/fakedlls/wintab32.dll
 lib/wine/fakedlls/wintrust.dll
+lib/wine/fakedlls/winusb.dll
 lib/wine/fakedlls/winver.exe
 lib/wine/fakedlls/wlanapi.dll
 lib/wine/fakedlls/wldap32.dll
@@ -2296,6 +2303,7 @@ lib/wine/libwinscard.def
 lib/wine/libwinspool.def
 lib/wine/libwintab32.def
 lib/wine/libwintrust.def
+lib/wine/libwlanapi.def
 lib/wine/libwldap32.def
 lib/wine/libwnaspi32.def
 %%WINE32%%lib/wine/libwow32.def
@@ -2319,6 +2327,7 @@ lib/wine/mciqtz32.dll.so
 lib/wine/mciseq.dll.so
 lib/wine/mciwave.dll.so
 lib/wine/mf.dll.so
+lib/wine/mf3216.dll.so
 lib/wine/mfplat.dll.so
 lib/wine/mfreadwrite.dll.so
 lib/wine/mgmtapi.dll.so
@@ -2504,6 +2513,7 @@ lib/wine/sccbase.dll.so
 lib/wine/schannel.dll.so
 lib/wine/schedsvc.dll.so
 lib/wine/schtasks.exe.so
+lib/wine/scrobj.dll.so
 lib/wine/scrrun.dll.so
 lib/wine/scsiport.sys.so
 lib/wine/sdbinst.exe.so
@@ -2586,6 +2596,7 @@ lib/wine/vdmdbg.dll.so
 %%WINE32%%lib/wine/ver.dll16.so
 lib/wine/version.dll.so
 lib/wine/view.exe.so
+lib/wine/virtdisk.dll.so
 %%WINE32%%lib/wine/vmm.vxd.so
 %%WINE32%%lib/wine/vnbt.vxd.so
 %%WINE32%%lib/wine/vnetbios.vxd.so
@@ -2649,6 +2660,7 @@ lib/wine/winsta.dll.so
 %%WINE32%%lib/wine/wintab.dll16.so
 lib/wine/wintab32.dll.so
 lib/wine/wintrust.dll.so
+lib/wine/winusb.dll.so
 lib/wine/winver.exe.so
 lib/wine/wlanapi.dll.so
 lib/wine/wldap32.dll.so

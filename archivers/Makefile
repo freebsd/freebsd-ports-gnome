@@ -22,6 +22,7 @@
     SUBDIR += dzip
     SUBDIR += ecm
     SUBDIR += engrampa
+    SUBDIR += erlang-snappy
     SUBDIR += fastjar
     SUBDIR += file-roller
     SUBDIR += fpc-bzip2
@@ -31,6 +32,7 @@
     SUBDIR += gcab
     SUBDIR += gcpio
     SUBDIR += gnome-autoar
+    SUBDIR += go-compress
     SUBDIR += grzip
     SUBDIR += gtar
     SUBDIR += gzip

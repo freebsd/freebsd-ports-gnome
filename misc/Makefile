@@ -404,6 +404,7 @@
     SUBDIR += qt5-examples
     SUBDIR += qt5-l10n
     SUBDIR += qt5ct
+    SUBDIR += qtchooser
     SUBDIR += raspberrypi-userland
     SUBDIR += raspbsd-led
     SUBDIR += ree
@@ -453,7 +454,6 @@
     SUBDIR += termatrix
     SUBDIR += terraform
     SUBDIR += teseq
-    SUBDIR += teslams
     SUBDIR += timediff
     SUBDIR += tkcron
     SUBDIR += tkinfo

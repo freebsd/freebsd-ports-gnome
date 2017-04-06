@@ -106,6 +106,7 @@
     SUBDIR += arduino-sevseg
     SUBDIR += arduino-tools
     SUBDIR += arduino16
+    SUBDIR += argdata
     SUBDIR += argouml
     SUBDIR += argp-standalone
     SUBDIR += argtable
@@ -234,6 +235,7 @@
     SUBDIR += cbrowser
     SUBDIR += cc65
     SUBDIR += ccache
+    SUBDIR += ccache-memcached
     SUBDIR += cccc
     SUBDIR += ccdoc
     SUBDIR += ccons
@@ -383,8 +385,6 @@
     SUBDIR += dbus
     SUBDIR += dbus-c++
     SUBDIR += dbus-glib
-    SUBDIR += dbus-qt4
-    SUBDIR += dbus-qt5
     SUBDIR += dbus-sharp
     SUBDIR += dbus-sharp-glib
     SUBDIR += dbus-tcl
@@ -460,6 +460,7 @@
     SUBDIR += elixir-conform_exrm
     SUBDIR += elixir-connection
     SUBDIR += elixir-coverex
+    SUBDIR += elixir-crontab
     SUBDIR += elixir-csv
     SUBDIR += elixir-decimal
     SUBDIR += elixir-dialyze
@@ -751,6 +752,8 @@
     SUBDIR += go-bindata
     SUBDIR += go-cobra
     SUBDIR += go-codec
+    SUBDIR += go-cpuid
+    SUBDIR += go-crc32
     SUBDIR += go-faker
     SUBDIR += go-form
     SUBDIR += go-glide
@@ -1224,7 +1227,6 @@
     SUBDIR += libbrotli
     SUBDIR += libbson
     SUBDIR += libburn
-    SUBDIR += libc++
     SUBDIR += libccid
     SUBDIR += libcfg
     SUBDIR += libcfu
@@ -1240,7 +1242,6 @@
     SUBDIR += libcrossguid
     SUBDIR += libcutl
     SUBDIR += libcwd
-    SUBDIR += libcxxrt
     SUBDIR += libdaemon
     SUBDIR += libdap
     SUBDIR += libdatrie
@@ -1249,7 +1250,6 @@
     SUBDIR += libdbusmenu-qt5
     SUBDIR += libdevq
     SUBDIR += libdfui
-    SUBDIR += libdict
     SUBDIR += libdisasm
     SUBDIR += libdisorder
     SUBDIR += libdispatch
@@ -1274,7 +1274,7 @@
     SUBDIR += libev
     SUBDIR += libevdev
     SUBDIR += libevent-hiphop
-    SUBDIR += libevent2
+    SUBDIR += libevent
     SUBDIR += libevt
     SUBDIR += libevtx
     SUBDIR += libewf
@@ -1482,6 +1482,7 @@
     SUBDIR += libzrtpcpp
     SUBDIR += libzvbi
     SUBDIR += lightning
+    SUBDIR += linenoise-ng
     SUBDIR += linux-c6-dbus-glib
     SUBDIR += linux-c6-dbus-libs
     SUBDIR += linux-c6-devtools
@@ -1566,6 +1567,7 @@
     SUBDIR += lua-posix
     SUBDIR += lua-pty
     SUBDIR += lua-sysctl
+    SUBDIR += lua51-libevent
     SUBDIR += luabind
     SUBDIR += luafilesystem
     SUBDIR += luafilesystem-51
@@ -1577,7 +1579,6 @@
     SUBDIR += m17n-docs
     SUBDIR += m17n-lib
     SUBDIR += m4
-    SUBDIR += m6811-binutils
     SUBDIR += magit
     SUBDIR += make++
     SUBDIR += makedepend
@@ -1591,6 +1592,7 @@
     SUBDIR += mcpp
     SUBDIR += mdds
     SUBDIR += mdds0
+    SUBDIR += memleax
     SUBDIR += menhir
     SUBDIR += mercator
     SUBDIR += mercurial
@@ -1653,6 +1655,7 @@
     SUBDIR += newtonsoft-json
     SUBDIR += nexus2-oss
     SUBDIR += nglogc
+    SUBDIR += nimble
     SUBDIR += nini
     SUBDIR += ninja
     SUBDIR += ninja-ide
@@ -1702,6 +1705,7 @@
     SUBDIR += ocaml-xstr
     SUBDIR += ocaml-xstrp4
     SUBDIR += ocl-icd
+    SUBDIR += oclgrind
     SUBDIR += ode
     SUBDIR += ois
     SUBDIR += okteta
@@ -2258,6 +2262,7 @@
     SUBDIR += p5-Devel-CheckCompiler
     SUBDIR += p5-Devel-CheckLib
     SUBDIR += p5-Devel-CheckOS
+    SUBDIR += p5-Devel-Confess
     SUBDIR += p5-Devel-Constants
     SUBDIR += p5-Devel-CoreStack
     SUBDIR += p5-Devel-Cover
@@ -2436,6 +2441,7 @@
     SUBDIR += p5-File-Remove
     SUBDIR += p5-File-SafeDO
     SUBDIR += p5-File-SearchPath
+    SUBDIR += p5-File-Share
     SUBDIR += p5-File-ShareDir
     SUBDIR += p5-File-ShareDir-Install
     SUBDIR += p5-File-ShareDir-PAR
@@ -3826,6 +3832,7 @@
     SUBDIR += pear-pdepend-staticReflection
     SUBDIR += pear-phing
     SUBDIR += pecl-APCu
+    SUBDIR += pecl-APCu4
     SUBDIR += pecl-dio
     SUBDIR += pecl-eio
     SUBDIR += pecl-ev
@@ -3845,6 +3852,7 @@
     SUBDIR += pecl-libevent
     SUBDIR += pecl-memoize
     SUBDIR += pecl-msgpack
+    SUBDIR += pecl-msgpack0
     SUBDIR += pecl-ncurses
     SUBDIR += pecl-newt
     SUBDIR += pecl-params
@@ -3869,6 +3877,7 @@
     SUBDIR += pecl-uploadprogress
     SUBDIR += pecl-uri_template
     SUBDIR += pecl-uuid
+    SUBDIR += pecl-uv
     SUBDIR += pecl-vld
     SUBDIR += pecl-weakref
     SUBDIR += pecl-xhprof
@@ -3903,7 +3912,6 @@
     SUBDIR += php56-sysvsem
     SUBDIR += php56-sysvshm
     SUBDIR += php56-tokenizer
-    SUBDIR += php70-APCu
     SUBDIR += php70-gettext
     SUBDIR += php70-intl
     SUBDIR += php70-json
@@ -3988,6 +3996,7 @@
     SUBDIR += pwlib
     SUBDIR += py-Acquisition
     SUBDIR += py-AddOns
+    SUBDIR += py-Automat
     SUBDIR += py-Breve
     SUBDIR += py-BytecodeAssembler
     SUBDIR += py-DateTime
@@ -4102,6 +4111,7 @@
     SUBDIR += py-arrow
     SUBDIR += py-aspects
     SUBDIR += py-aspyct
+    SUBDIR += py-astor
     SUBDIR += py-astroid
     SUBDIR += py-asyncio
     SUBDIR += py-atomiclong
@@ -4402,6 +4412,7 @@
     SUBDIR += py-mwlib.rl
     SUBDIR += py-mx-experimental
     SUBDIR += py-mygpoclient
+    SUBDIR += py-mypy
     SUBDIR += py-nagioscheck
     SUBDIR += py-natsort
     SUBDIR += py-natural
@@ -4597,7 +4608,6 @@
     SUBDIR += py-rauth
     SUBDIR += py-raven
     SUBDIR += py-rcsparse
-    SUBDIR += py-re2
     SUBDIR += py-rebulk
     SUBDIR += py-rednose
     SUBDIR += py-repl
@@ -4625,6 +4635,7 @@
     SUBDIR += py-rope
     SUBDIR += py-rose
     SUBDIR += py-roxlib
+    SUBDIR += py-rply
     SUBDIR += py-rq
     SUBDIR += py-rtree
     SUBDIR += py-rtslib-fb
@@ -4778,6 +4789,7 @@
     SUBDIR += py-xerox
     SUBDIR += py-xmltodict
     SUBDIR += py-xoltar-toolkit
+    SUBDIR += py-xxhash
     SUBDIR += py-yaml
     SUBDIR += py-yandex-money-sdk
     SUBDIR += py-yappi
@@ -4898,6 +4910,7 @@
     SUBDIR += py3-python-magic
     SUBDIR += py3-pytz
     SUBDIR += py3-rubymarshal
+    SUBDIR += py3-setproctitle
     SUBDIR += py3-simplejson
     SUBDIR += py3-threema-msgapi
     SUBDIR += py3-vcversioner
@@ -4931,8 +4944,6 @@
     SUBDIR += qjson
     SUBDIR += qjson-qt5
     SUBDIR += qmake
-    SUBDIR += qmake4
-    SUBDIR += qmake5
     SUBDIR += qprog
     SUBDIR += qross
     SUBDIR += qscintilla2
@@ -4944,6 +4955,7 @@
     SUBDIR += qt4-assistant
     SUBDIR += qt4-assistant-adp
     SUBDIR += qt4-corelib
+    SUBDIR += qt4-dbus
     SUBDIR += qt4-designer
     SUBDIR += qt4-help
     SUBDIR += qt4-help-tools
@@ -4955,6 +4967,7 @@
     SUBDIR += qt4-porting
     SUBDIR += qt4-qdbusviewer
     SUBDIR += qt4-qdoc3
+    SUBDIR += qt4-qmake
     SUBDIR += qt4-qmlviewer
     SUBDIR += qt4-qt3support
     SUBDIR += qt4-qtsolutions-singleapplication
@@ -4971,6 +4984,7 @@
     SUBDIR += qt5-buildtools
     SUBDIR += qt5-concurrent
     SUBDIR += qt5-core
+    SUBDIR += qt5-dbus
     SUBDIR += qt5-designer
     SUBDIR += qt5-help
     SUBDIR += qt5-linguist
@@ -4980,8 +4994,10 @@
     SUBDIR += qt5-qdbusviewer
     SUBDIR += qt5-qdoc
     SUBDIR += qt5-qdoc-data
+    SUBDIR += qt5-qmake
     SUBDIR += qt5-script
     SUBDIR += qt5-scripttools
+    SUBDIR += qt5-scxml
     SUBDIR += qt5-testlib
     SUBDIR += qt5-uitools
     SUBDIR += qtcreator
@@ -5362,6 +5378,7 @@
     SUBDIR += rubygem-powerpack
     SUBDIR += rubygem-pqueue
     SUBDIR += rubygem-progressbar
+    SUBDIR += rubygem-progressbar09
     SUBDIR += rubygem-protected_attributes
     SUBDIR += rubygem-pry
     SUBDIR += rubygem-pry-rails
@@ -5738,7 +5755,6 @@
     SUBDIR += xdg-utils
     SUBDIR += xfce4-dev-tools
     SUBDIR += xfce4-vala
-    SUBDIR += xlocale
     SUBDIR += xmake
     SUBDIR += xmltooling
     SUBDIR += xorg-macros
@@ -5747,6 +5763,7 @@
     SUBDIR += xtl
     SUBDIR += xwpe
     SUBDIR += xxgdb
+    SUBDIR += xxhash
     SUBDIR += xxl
     SUBDIR += yaggo
     SUBDIR += yajl

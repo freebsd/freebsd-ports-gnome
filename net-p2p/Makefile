@@ -21,7 +21,6 @@
     SUBDIR += dclib
     SUBDIR += deluge
     SUBDIR += deluge-cli
-    SUBDIR += digitalcoin
     SUBDIR += dogecoin
     SUBDIR += ed2k
     SUBDIR += edonkey-tool-hash
@@ -77,6 +76,7 @@
     SUBDIR += py-vertex
     SUBDIR += qbittorrent
     SUBDIR += qbittorrent-nox11
+    SUBDIR += radarr
     SUBDIR += retroshare
     SUBDIR += rtgui
     SUBDIR += rtorrent

@@ -3,7 +3,7 @@
 
 PORTNAME=	ntp
 PORTVERSION=	4.2.8p9
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	net ipv6
 MASTER_SITES=	http://www.eecis.udel.edu/~ntp/ntp_spool/ntp4/ntp-4.2/ \
 		http://archive.ntp.org/ntp4/ntp-4.2/ \
@@ -14,7 +14,7 @@ MAINTAINER=	cy@FreeBSD.org
 COMMENT=	The Network Time Protocol Distribution
 
 BUILD_DEPENDS=	autogen:devel/autogen
-LIB_DEPENDS=	libevent.so:devel/libevent2 \
+LIB_DEPENDS=	libevent.so:devel/libevent \
 		libmd5.so:www/libwww
 
 CONFLICTS=	ntp-devel-*
@@ -56,6 +56,7 @@ PERL_UTILS_USES=	perl5
 SSL_CONFIGURE_ON=	--with-openssl-incdir=${OPENSSLINC} \
 			--with-openssl-libdir=${OPENSSLLIB}
 SSL_CONFIGURE_OFF=	--without-crypto
+SSL_BROKEN_OFF=		Includes OpenSSL when deselected
 
 THREADS_CONFIGURE_ENABLE=	thread-support
 THREADS_CONFIGURE_WITH=		threads

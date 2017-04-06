@@ -345,7 +345,6 @@ lib/calibre/calibre/ebooks/metadata/html.py
 lib/calibre/calibre/ebooks/metadata/imp.py
 lib/calibre/calibre/ebooks/metadata/kdl.py
 lib/calibre/calibre/ebooks/metadata/kfx.py
-lib/calibre/calibre/ebooks/metadata/library_thing.py
 lib/calibre/calibre/ebooks/metadata/lit.py
 lib/calibre/calibre/ebooks/metadata/lrx.py
 lib/calibre/calibre/ebooks/metadata/meta.py
@@ -1930,6 +1929,7 @@ lib/calibre/tinycss/version.py
 %%DATADIR%%/rapydscript/lib/random.pyj
 %%DATADIR%%/rapydscript/lib/re.pyj
 %%DATADIR%%/rapydscript/lib/traceback.pyj
+%%DATADIR%%/rapydscript/lib/uuid.pyj
 %%DATADIR%%/scripts.pickle
 %%DATADIR%%/template-functions.json
 %%DATADIR%%/templates/book_details.css
