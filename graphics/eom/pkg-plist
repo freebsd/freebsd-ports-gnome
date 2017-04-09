@@ -13,7 +13,6 @@ include/eom-2.20/eom/eom-image.h
 include/eom-2.20/eom/eom-job-queue.h
 include/eom-2.20/eom/eom-jobs.h
 include/eom-2.20/eom/eom-list-store.h
-include/eom-2.20/eom/eom-plugin.h
 include/eom-2.20/eom/eom-properties-dialog.h
 include/eom-2.20/eom/eom-scroll-view.h
 include/eom-2.20/eom/eom-sidebar.h
@@ -23,12 +22,12 @@ include/eom-2.20/eom/eom-thumb-view.h
 include/eom-2.20/eom/eom-thumbnail.h
 include/eom-2.20/eom/eom-transform.h
 include/eom-2.20/eom/eom-window.h
-lib/eom/plugins/fullscreen.eom-plugin
+lib/eom/plugins/fullscreen.plugin
 lib/eom/plugins/libfullscreen.so
 lib/eom/plugins/libreload.so
 lib/eom/plugins/libstatusbar-date.so
-lib/eom/plugins/reload.eom-plugin
-lib/eom/plugins/statusbar-date.eom-plugin
+lib/eom/plugins/reload.plugin
+lib/eom/plugins/statusbar-date.plugin
 libdata/pkgconfig/eom.pc
 man/man1/eom.1.gz
 share/appdata/eom.appdata.xml
@@ -39,7 +38,6 @@ share/applications/eom.desktop
 %%PORTDOCS%%%%DOCSDIR%%/EomImageSaveInfo.html
 %%PORTDOCS%%%%DOCSDIR%%/EomMetadataReaderJpg.html
 %%PORTDOCS%%%%DOCSDIR%%/EomMetadataReaderPng.html
-%%PORTDOCS%%%%DOCSDIR%%/EomPluginManager.html
 %%PORTDOCS%%%%DOCSDIR%%/EomPreferencesDialog.html
 %%PORTDOCS%%%%DOCSDIR%%/EomPrintImageSetup.html
 %%PORTDOCS%%%%DOCSDIR%%/EomPrintPreview.html
@@ -67,7 +65,6 @@ share/applications/eom.desktop
 %%PORTDOCS%%%%DOCSDIR%%/eom-eom-metadata-reader.html
 %%PORTDOCS%%%%DOCSDIR%%/eom-eom-pixbuf-util.html
 %%PORTDOCS%%%%DOCSDIR%%/eom-eom-plugin-engine.html
-%%PORTDOCS%%%%DOCSDIR%%/eom-eom-plugin.html
 %%PORTDOCS%%%%DOCSDIR%%/eom-eom-print.html
 %%PORTDOCS%%%%DOCSDIR%%/eom-eom-properties-dialog.html
 %%PORTDOCS%%%%DOCSDIR%%/eom-eom-save-as-dialog-helper.html
@@ -84,12 +81,14 @@ share/applications/eom.desktop
 %%PORTDOCS%%%%DOCSDIR%%/eom.devhelp2
 %%PORTDOCS%%%%DOCSDIR%%/home.png
 %%PORTDOCS%%%%DOCSDIR%%/index.html
-%%PORTDOCS%%%%DOCSDIR%%/index.sgml
+%%PORTDOCS%%%%DOCSDIR%%/left-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/left.png
 %%PORTDOCS%%%%DOCSDIR%%/pt01.html
+%%PORTDOCS%%%%DOCSDIR%%/right-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/right.png
 %%PORTDOCS%%%%DOCSDIR%%/rn01.html
 %%PORTDOCS%%%%DOCSDIR%%/style.css
+%%PORTDOCS%%%%DOCSDIR%%/up-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/up.png
 %%DATADIR%%/eom-image-properties-dialog.ui
 %%DATADIR%%/eom-multiple-save-as-dialog.ui
@@ -299,6 +298,7 @@ share/locale/kn/LC_MESSAGES/eom.mo
 share/locale/ko/LC_MESSAGES/eom.mo
 share/locale/ks/LC_MESSAGES/eom.mo
 share/locale/ku/LC_MESSAGES/eom.mo
+share/locale/ku_IQ/LC_MESSAGES/eom.mo
 share/locale/ky/LC_MESSAGES/eom.mo
 share/locale/lt/LC_MESSAGES/eom.mo
 share/locale/lv/LC_MESSAGES/eom.mo

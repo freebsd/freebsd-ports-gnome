@@ -1,11 +1,11 @@
 bin/mate-screensaver
 bin/mate-screensaver-command
 bin/mate-screensaver-preferences
-%%PAM%%etc/pam.d/mate-screensaver
+etc/pam.d/mate-screensaver
 etc/xdg/autostart/mate-screensaver.desktop
 etc/xdg/menus/mate-screensavers.menu
 libdata/pkgconfig/mate-screensaver.pc
-@(,,6555) libexec/mate-screensaver-dialog
+libexec/mate-screensaver-dialog
 libexec/mate-screensaver-gl-helper
 libexec/mate-screensaver/floaters
 libexec/mate-screensaver/popsquares
@@ -40,6 +40,7 @@ share/locale/bg/LC_MESSAGES/mate-screensaver.mo
 share/locale/bn/LC_MESSAGES/mate-screensaver.mo
 share/locale/bn_IN/LC_MESSAGES/mate-screensaver.mo
 share/locale/br/LC_MESSAGES/mate-screensaver.mo
+share/locale/bs/LC_MESSAGES/mate-screensaver.mo
 share/locale/ca/LC_MESSAGES/mate-screensaver.mo
 share/locale/ca@valencia/LC_MESSAGES/mate-screensaver.mo
 share/locale/cmn/LC_MESSAGES/mate-screensaver.mo
@@ -55,6 +56,7 @@ share/locale/en_CA/LC_MESSAGES/mate-screensaver.mo
 share/locale/en_GB/LC_MESSAGES/mate-screensaver.mo
 share/locale/es/LC_MESSAGES/mate-screensaver.mo
 share/locale/es_AR/LC_MESSAGES/mate-screensaver.mo
+share/locale/es_CO/LC_MESSAGES/mate-screensaver.mo
 share/locale/et/LC_MESSAGES/mate-screensaver.mo
 share/locale/eu/LC_MESSAGES/mate-screensaver.mo
 share/locale/fa/LC_MESSAGES/mate-screensaver.mo
@@ -79,6 +81,7 @@ share/locale/kk/LC_MESSAGES/mate-screensaver.mo
 share/locale/kn/LC_MESSAGES/mate-screensaver.mo
 share/locale/ko/LC_MESSAGES/mate-screensaver.mo
 share/locale/ku/LC_MESSAGES/mate-screensaver.mo
+share/locale/ku_IQ/LC_MESSAGES/mate-screensaver.mo
 share/locale/ky/LC_MESSAGES/mate-screensaver.mo
 share/locale/lt/LC_MESSAGES/mate-screensaver.mo
 share/locale/lv/LC_MESSAGES/mate-screensaver.mo

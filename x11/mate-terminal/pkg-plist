@@ -123,6 +123,7 @@ share/locale/kk/LC_MESSAGES/mate-terminal.mo
 share/locale/kn/LC_MESSAGES/mate-terminal.mo
 share/locale/ko/LC_MESSAGES/mate-terminal.mo
 share/locale/ku/LC_MESSAGES/mate-terminal.mo
+share/locale/ku_IQ/LC_MESSAGES/mate-terminal.mo
 share/locale/ky/LC_MESSAGES/mate-terminal.mo
 share/locale/la/LC_MESSAGES/mate-terminal.mo
 share/locale/lt/LC_MESSAGES/mate-terminal.mo
@@ -180,3 +181,4 @@ share/locale/zh_TW/LC_MESSAGES/mate-terminal.mo
 %%DATADIR%%/skey-challenge.ui
 %%DATADIR%%/terminal.about
 %%DATADIR%%/terminal.xml
+

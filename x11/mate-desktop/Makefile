@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-desktop
-PORTVERSION=	1.16.1
+PORTVERSION=	1.18.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -21,7 +21,7 @@ USES=		bison gettext gmake libtool localbase pathfix \
 		pkgconfig python shebangfix tar:xz
 USE_XORG=	x11 xrandr
 USE_GNOME=	cairo dconf gdkpixbuf2 gtk30 intlhack introspection:build
-SHEBANG_FILES=	tools/mpaste
+#SHEBANG_FILES=	tools/mpaste
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-gtk-doc \
@@ -49,9 +49,9 @@ GLIB_SCHEMAS=	org.mate.accessibility-keyboard.gschema.xml \
 		org.mate.debug.gschema.xml
 
 OPTIONS_SUB=			yes
-OPTIONS_DEFINE=			PASTE
-OPTIONS_DEFAULT=		PASTE
-PASTE_CONFIGURE_ENABLE=		mpaste
-PASTE_DESC=			Build the mate paste tool
+#OPTIONS_DEFINE=			PASTE
+#OPTIONS_DEFAULT=		PASTE
+#PASTE_CONFIGURE_ENABLE=		mpaste
+#PASTE_DESC=			Build the mate paste tool
 
 .include <bsd.port.mk>

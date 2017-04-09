@@ -12,6 +12,7 @@ lib/caja/extensions-2.0/libcaja-open-terminal.so
 lib/caja/extensions-2.0/libcaja-sendto.so
 lib/caja/extensions-2.0/libcaja-share.so
 lib/caja/extensions-2.0/libcaja-wallpaper.so
+lib/caja/extensions-2.0/libcaja-xattr-tags.so
 libdata/pkgconfig/caja-sendto.pc
 man/man1/caja-sendto.1.gz
 %%DATADIR%%/caja-image-resize.ui
@@ -24,6 +25,7 @@ share/caja/extensions/libcaja-open-terminal.caja-extension
 share/caja/extensions/libcaja-sendto.caja-extension
 share/caja/extensions/libcaja-share.caja-extension
 share/caja/extensions/libcaja-wallpaper.caja-extension
+share/caja/extensions/libcaja-xattr-tags.caja-extension
 share/gtk-doc/html/caja-sendto/annotation-glossary.html
 share/gtk-doc/html/caja-sendto/api-index-full.html
 share/gtk-doc/html/caja-sendto/caja-sendto-caja-sendto-plugin.html
@@ -43,7 +45,9 @@ share/locale/ar/LC_MESSAGES/caja-extensions.mo
 share/locale/be/LC_MESSAGES/caja-extensions.mo
 share/locale/bg/LC_MESSAGES/caja-extensions.mo
 share/locale/br/LC_MESSAGES/caja-extensions.mo
+share/locale/bs/LC_MESSAGES/caja-extensions.mo
 share/locale/ca/LC_MESSAGES/caja-extensions.mo
+share/locale/ca@valencia/LC_MESSAGES/caja-extensions.mo
 share/locale/cmn/LC_MESSAGES/caja-extensions.mo
 share/locale/cs/LC_MESSAGES/caja-extensions.mo
 share/locale/cy/LC_MESSAGES/caja-extensions.mo
@@ -72,6 +76,7 @@ share/locale/it/LC_MESSAGES/caja-extensions.mo
 share/locale/ja/LC_MESSAGES/caja-extensions.mo
 share/locale/kk/LC_MESSAGES/caja-extensions.mo
 share/locale/ko/LC_MESSAGES/caja-extensions.mo
+share/locale/ku_IQ/LC_MESSAGES/caja-extensions.mo
 share/locale/lt/LC_MESSAGES/caja-extensions.mo
 share/locale/mk/LC_MESSAGES/caja-extensions.mo
 share/locale/mr/LC_MESSAGES/caja-extensions.mo
@@ -89,6 +94,7 @@ share/locale/sl/LC_MESSAGES/caja-extensions.mo
 share/locale/sq/LC_MESSAGES/caja-extensions.mo
 share/locale/sr/LC_MESSAGES/caja-extensions.mo
 share/locale/sv/LC_MESSAGES/caja-extensions.mo
+share/locale/ta/LC_MESSAGES/caja-extensions.mo
 share/locale/th/LC_MESSAGES/caja-extensions.mo
 share/locale/tr/LC_MESSAGES/caja-extensions.mo
 share/locale/uk/LC_MESSAGES/caja-extensions.mo
@@ -96,3 +102,4 @@ share/locale/uz/LC_MESSAGES/caja-extensions.mo
 share/locale/vi/LC_MESSAGES/caja-extensions.mo
 share/locale/zh_CN/LC_MESSAGES/caja-extensions.mo
 share/locale/zh_TW/LC_MESSAGES/caja-extensions.mo
+

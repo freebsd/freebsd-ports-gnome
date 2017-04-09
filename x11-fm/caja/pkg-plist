@@ -18,7 +18,6 @@ lib/libcaja-extension.so
 lib/libcaja-extension.so.1
 lib/libcaja-extension.so.1.4.0
 libdata/pkgconfig/libcaja-extension.pc
-libexec/caja-convert-metadata
 man/man1/caja-autorun-software.1.gz
 man/man1/caja-connect-server.1.gz
 man/man1/caja-file-management-properties.1.gz
@@ -33,6 +32,7 @@ share/applications/caja-home.desktop
 share/applications/caja.desktop
 share/applications/mate-network-scheme.desktop
 %%DATADIR%%/browser.xml
+%%DATADIR%%/caja-desktop.css
 %%DATADIR%%/caja-extras.placeholder
 %%DATADIR%%/caja-suggested.placeholder
 %%DATADIR%%/caja.css
@@ -90,7 +90,6 @@ share/doc/libcaja-extension/CajaPropertyPageProvider.html
 share/doc/libcaja-extension/ch01.html
 share/doc/libcaja-extension/home.png
 share/doc/libcaja-extension/index.html
-share/doc/libcaja-extension/index.sgml
 share/doc/libcaja-extension/ix01.html
 share/doc/libcaja-extension/left-insensitive.png
 share/doc/libcaja-extension/left.png
@@ -169,6 +168,7 @@ share/locale/kk/LC_MESSAGES/caja.mo
 share/locale/kn/LC_MESSAGES/caja.mo
 share/locale/ko/LC_MESSAGES/caja.mo
 share/locale/ku/LC_MESSAGES/caja.mo
+share/locale/ku_IQ/LC_MESSAGES/caja.mo
 share/locale/ky/LC_MESSAGES/caja.mo
 share/locale/li/LC_MESSAGES/caja.mo
 share/locale/lt/LC_MESSAGES/caja.mo
@@ -224,8 +224,6 @@ share/locale/zh_CN/LC_MESSAGES/caja.mo
 share/locale/zh_HK/LC_MESSAGES/caja.mo
 share/locale/zh_TW/LC_MESSAGES/caja.mo
 share/locale/zu/LC_MESSAGES/caja.mo
-share/mime/application/x-mate-saved-search.xml
-share/mime/packages/caja.xml
 share/pixmaps/caja/audio.svg
 share/pixmaps/caja/backgrounds.png
 share/pixmaps/caja/chit_frame.png

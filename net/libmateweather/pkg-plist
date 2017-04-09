@@ -15,12 +15,10 @@ libdata/pkgconfig/mateweather.pc
 %%PORTDOCS%%%%DOCSDIR%%/MateWeatherTimezone.html
 %%PORTDOCS%%%%DOCSDIR%%/MateWeatherTimezoneMenu.html
 %%PORTDOCS%%%%DOCSDIR%%/annotation-glossary.html
-%%PORTDOCS%%%%DOCSDIR%%/api-index-deprecated.html
 %%PORTDOCS%%%%DOCSDIR%%/api-index-full.html
 %%PORTDOCS%%%%DOCSDIR%%/ch01.html
 %%PORTDOCS%%%%DOCSDIR%%/home.png
 %%PORTDOCS%%%%DOCSDIR%%/index.html
-%%PORTDOCS%%%%DOCSDIR%%/index.sgml
 %%PORTDOCS%%%%DOCSDIR%%/left-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/left.png
 %%PORTDOCS%%%%DOCSDIR%%/libmateweather-mateweather-mateconf.html
@@ -538,6 +536,7 @@ share/locale/kk/LC_MESSAGES/libmateweather.mo
 share/locale/kn/LC_MESSAGES/libmateweather.mo
 share/locale/ko/LC_MESSAGES/libmateweather.mo
 share/locale/ku/LC_MESSAGES/libmateweather.mo
+share/locale/ku_IQ/LC_MESSAGES/libmateweather.mo
 share/locale/ky/LC_MESSAGES/libmateweather.mo
 share/locale/lt/LC_MESSAGES/libmateweather.mo
 share/locale/lv/LC_MESSAGES/libmateweather.mo
@@ -580,3 +579,4 @@ share/locale/xh/LC_MESSAGES/libmateweather.mo
 share/locale/zh_CN/LC_MESSAGES/libmateweather.mo
 share/locale/zh_HK/LC_MESSAGES/libmateweather.mo
 share/locale/zh_TW/LC_MESSAGES/libmateweather.mo
+

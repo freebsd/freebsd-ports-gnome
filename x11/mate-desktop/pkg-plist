@@ -1,6 +1,5 @@
 bin/mate-about
 bin/mate-color-select
-%%PASTE%%bin/mpaste
 include/mate-desktop-2.0/libmate-desktop/mate-aboutdialog.h
 include/mate-desktop-2.0/libmate-desktop/mate-bg-crossfade.h
 include/mate-desktop-2.0/libmate-desktop/mate-bg.h
@@ -24,7 +23,6 @@ lib/libmate-desktop-2.so.17.1.4
 libdata/pkgconfig/mate-desktop-2.0.pc
 man/man1/mate-about.1.gz
 man/man1/mate-color-select.1.gz
-man/man1/mpaste.1.gz
 share/applications/mate-about.desktop
 share/applications/mate-color-select.desktop
 %%PORTDOCS%%%%DOCSDIR%%/MateBG.html
@@ -34,7 +32,6 @@ share/applications/mate-color-select.desktop
 %%PORTDOCS%%%%DOCSDIR%%/background.html
 %%PORTDOCS%%%%DOCSDIR%%/home.png
 %%PORTDOCS%%%%DOCSDIR%%/index.html
-%%PORTDOCS%%%%DOCSDIR%%/index.sgml
 %%PORTDOCS%%%%DOCSDIR%%/intro.html
 %%PORTDOCS%%%%DOCSDIR%%/left-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/left.png
@@ -55,6 +52,24 @@ share/applications/mate-color-select.desktop
 %%PORTDOCS%%%%DOCSDIR%%/up-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/up.png
 share/gir-1.0/MateDesktop-2.0.gir
+share/glib-2.0/schemas/org.mate.accessibility-keyboard.gschema.xml
+share/glib-2.0/schemas/org.mate.accessibility-startup.gschema.xml
+share/glib-2.0/schemas/org.mate.applications-at-mobility.gschema.xml
+share/glib-2.0/schemas/org.mate.applications-at-visual.gschema.xml
+share/glib-2.0/schemas/org.mate.applications-browser.gschema.xml
+share/glib-2.0/schemas/org.mate.applications-office.gschema.xml
+share/glib-2.0/schemas/org.mate.applications-terminal.gschema.xml
+share/glib-2.0/schemas/org.mate.background.gschema.xml
+share/glib-2.0/schemas/org.mate.debug.gschema.xml
+share/glib-2.0/schemas/org.mate.file-views.gschema.xml
+share/glib-2.0/schemas/org.mate.interface.gschema.xml
+share/glib-2.0/schemas/org.mate.lockdown.gschema.xml
+share/glib-2.0/schemas/org.mate.peripherals-keyboard.gschema.xml
+share/glib-2.0/schemas/org.mate.peripherals-mouse.gschema.xml
+share/glib-2.0/schemas/org.mate.sound.gschema.xml
+share/glib-2.0/schemas/org.mate.thumbnail-cache.gschema.xml
+share/glib-2.0/schemas/org.mate.thumbnailers.gschema.xml
+share/glib-2.0/schemas/org.mate.typing-break.gschema.xml
 share/icons/hicolor/16x16/apps/mate.png
 share/icons/hicolor/22x22/apps/mate.png
 share/icons/hicolor/24x24/apps/mate.png
@@ -93,7 +108,9 @@ share/locale/en_CA/LC_MESSAGES/mate-desktop.mo
 share/locale/en_GB/LC_MESSAGES/mate-desktop.mo
 share/locale/eo/LC_MESSAGES/mate-desktop.mo
 share/locale/es/LC_MESSAGES/mate-desktop.mo
+share/locale/es_AR/LC_MESSAGES/mate-desktop.mo
 share/locale/es_CL/LC_MESSAGES/mate-desktop.mo
+share/locale/es_CO/LC_MESSAGES/mate-desktop.mo
 share/locale/es_MX/LC_MESSAGES/mate-desktop.mo
 share/locale/et/LC_MESSAGES/mate-desktop.mo
 share/locale/eu/LC_MESSAGES/mate-desktop.mo
@@ -177,3 +194,4 @@ share/locale/zh_HK/LC_MESSAGES/mate-desktop.mo
 share/locale/zh_TW/LC_MESSAGES/mate-desktop.mo
 share/locale/zu/LC_MESSAGES/mate-desktop.mo
 share/mate-about/mate-version.xml
+

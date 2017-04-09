@@ -160,7 +160,6 @@ share/locale/as/LC_MESSAGES/engrampa.mo
 share/locale/ast/LC_MESSAGES/engrampa.mo
 share/locale/az/LC_MESSAGES/engrampa.mo
 share/locale/be/LC_MESSAGES/engrampa.mo
-share/locale/be@latin/LC_MESSAGES/engrampa.mo
 share/locale/bg/LC_MESSAGES/engrampa.mo
 share/locale/bn/LC_MESSAGES/engrampa.mo
 share/locale/bn_IN/LC_MESSAGES/engrampa.mo
@@ -175,7 +174,6 @@ share/locale/da/LC_MESSAGES/engrampa.mo
 share/locale/de/LC_MESSAGES/engrampa.mo
 share/locale/dz/LC_MESSAGES/engrampa.mo
 share/locale/el/LC_MESSAGES/engrampa.mo
-share/locale/en@shaw/LC_MESSAGES/engrampa.mo
 share/locale/en_AU/LC_MESSAGES/engrampa.mo
 share/locale/en_CA/LC_MESSAGES/engrampa.mo
 share/locale/en_GB/LC_MESSAGES/engrampa.mo
@@ -210,6 +208,7 @@ share/locale/kk/LC_MESSAGES/engrampa.mo
 share/locale/kn/LC_MESSAGES/engrampa.mo
 share/locale/ko/LC_MESSAGES/engrampa.mo
 share/locale/ku/LC_MESSAGES/engrampa.mo
+share/locale/ku_IQ/LC_MESSAGES/engrampa.mo
 share/locale/ky/LC_MESSAGES/engrampa.mo
 share/locale/lt/LC_MESSAGES/engrampa.mo
 share/locale/lv/LC_MESSAGES/engrampa.mo
@@ -229,6 +228,7 @@ share/locale/oc/LC_MESSAGES/engrampa.mo
 share/locale/or/LC_MESSAGES/engrampa.mo
 share/locale/pa/LC_MESSAGES/engrampa.mo
 share/locale/pl/LC_MESSAGES/engrampa.mo
+share/locale/pms/LC_MESSAGES/engrampa.mo
 share/locale/ps/LC_MESSAGES/engrampa.mo
 share/locale/pt/LC_MESSAGES/engrampa.mo
 share/locale/pt_BR/LC_MESSAGES/engrampa.mo
@@ -240,7 +240,6 @@ share/locale/sk/LC_MESSAGES/engrampa.mo
 share/locale/sl/LC_MESSAGES/engrampa.mo
 share/locale/sq/LC_MESSAGES/engrampa.mo
 share/locale/sr/LC_MESSAGES/engrampa.mo
-share/locale/sr@ije/LC_MESSAGES/engrampa.mo
 share/locale/sr@latin/LC_MESSAGES/engrampa.mo
 share/locale/sv/LC_MESSAGES/engrampa.mo
 share/locale/ta/LC_MESSAGES/engrampa.mo
@@ -258,3 +257,4 @@ share/locale/xh/LC_MESSAGES/engrampa.mo
 share/locale/zh_CN/LC_MESSAGES/engrampa.mo
 share/locale/zh_HK/LC_MESSAGES/engrampa.mo
 share/locale/zh_TW/LC_MESSAGES/engrampa.mo
+

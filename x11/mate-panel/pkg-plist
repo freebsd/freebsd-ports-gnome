@@ -269,6 +269,7 @@ share/locale/eo/LC_MESSAGES/mate-panel.mo
 share/locale/es/LC_MESSAGES/mate-panel.mo
 share/locale/es_CO/LC_MESSAGES/mate-panel.mo
 share/locale/es_MX/LC_MESSAGES/mate-panel.mo
+share/locale/es_PR/LC_MESSAGES/mate-panel.mo
 share/locale/et/LC_MESSAGES/mate-panel.mo
 share/locale/eu/LC_MESSAGES/mate-panel.mo
 share/locale/fa/LC_MESSAGES/mate-panel.mo
@@ -375,8 +376,6 @@ share/locale/zu/LC_MESSAGES/mate-panel.mo
 %%DATADIR%%/pixmaps/clock-map.png
 %%DATADIR%%/pixmaps/fishanim.png
 %%DATADIR%%/pixmaps/footguy.png
-%%DATADIR%%/pixmaps/mate-gegl2-2.png
-%%DATADIR%%/pixmaps/mate-gegl2.png
 %%DATADIR%%/pixmaps/monkey.png
 %%DATADIR%%/pixmaps/oldwanda.png
 %%DATADIR%%/pixmaps/wanda.png
@@ -385,7 +384,6 @@ share/locale/zu/LC_MESSAGES/mate-panel.mo
 %%DATADIR%%/ui/fish-menu.xml
 %%DATADIR%%/ui/fish.ui
 %%DATADIR%%/ui/notification-area-menu.xml
-%%DATADIR%%/ui/panel-properties-dialog-gtk3.ui
 %%DATADIR%%/ui/panel-properties-dialog.ui
 %%DATADIR%%/ui/panel-run-dialog.ui
 %%DATADIR%%/ui/panel-test-applets.ui
@@ -396,4 +394,4 @@ share/locale/zu/LC_MESSAGES/mate-panel.mo
 %%DATADIR%%/ui/workspace-switcher-menu.xml
 %%DATADIR%%/ui/workspace-switcher.ui
 @dir lib/mate-panel/modules
-@postexec %D/bin/gio-querymodules %D/lib/mate-panel/modules
+
