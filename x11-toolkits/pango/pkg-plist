@@ -103,4 +103,3 @@ share/gtk-doc/html/pango/rotated-text.png
 share/gtk-doc/html/pango/style.css
 share/gtk-doc/html/pango/up-insensitive.png
 share/gtk-doc/html/pango/up.png
-@exec %%LOCALBASE%%/bin/pango-querymodules --update-cache

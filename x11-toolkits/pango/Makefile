@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pango
-PORTVERSION=	1.40.4
+PORTVERSION=	1.40.5
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -33,7 +33,7 @@ USE_GNOME=	cairo glib20 introspection:build referencehack
 INSTALL_TARGET=	install-strip
 
 VERSION=	1.8.0
-LIBVERSION=	0.4000.4
+LIBVERSION=	0.4000.5
 PLIST_SUB+=     VERSION=${VERSION} LIBVERSION=${LIBVERSION}
 
 FONTSCALE=	${LOCALBASE}/share/fonts/TTF/luximb.ttf
