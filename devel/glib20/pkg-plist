@@ -251,6 +251,7 @@ include/glib-2.0/glib/gtypes.h
 include/glib-2.0/glib/gunicode.h
 include/glib-2.0/glib/gurifuncs.h
 include/glib-2.0/glib/gutils.h
+include/glib-2.0/glib/guuid.h
 include/glib-2.0/glib/gvariant.h
 include/glib-2.0/glib/gvarianttype.h
 include/glib-2.0/glib/gversion.h
@@ -356,6 +357,7 @@ share/glib-2.0/gdb/glib_gdb.py
 share/glib-2.0/gdb/gobject_gdb.py
 share/glib-2.0/gettext/po/Makefile.in.in
 share/glib-2.0/schemas/gschema.dtd
+share/glib-2.0/valgrind/glib.supp
 share/locale/af/LC_MESSAGES/glib20.mo
 share/locale/am/LC_MESSAGES/glib20.mo
 share/locale/an/LC_MESSAGES/glib20.mo
@@ -387,6 +389,7 @@ share/locale/eu/LC_MESSAGES/glib20.mo
 share/locale/fa/LC_MESSAGES/glib20.mo
 share/locale/fi/LC_MESSAGES/glib20.mo
 share/locale/fr/LC_MESSAGES/glib20.mo
+share/locale/fur/LC_MESSAGES/glib20.mo
 share/locale/ga/LC_MESSAGES/glib20.mo
 share/locale/gd/LC_MESSAGES/glib20.mo
 share/locale/gl/LC_MESSAGES/glib20.mo
