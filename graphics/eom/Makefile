@@ -13,7 +13,8 @@ COMMENT=	Eye of MATE image viewer
 BUILD_DEPENDS=	itstool:textproc/itstool
 LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libdbus-1.so:devel/dbus \
-		libdbus-glib-1.so:devel/dbus-glib
+		libdbus-glib-1.so:devel/dbus-glib \
+		libpeas-gtk-1.0.so:devel/libpeas
 
 PORTSCOUT=	limitw:1,even
 
