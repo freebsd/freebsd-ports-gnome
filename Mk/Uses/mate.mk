@@ -46,7 +46,7 @@ _USE_MATE_ALL=	autogen intlhack intltool
 # and :run, it will be added in both build and run dependency. It will check
 # for the library dependency first. If not exists then do the build/run on
 # the *.pc file instead.
-_USE_MATE_ALL+=	caja common controlcenter desktop dialogs docutils icontheme \
+_USE_MATE_ALL+=	common caja controlcenter desktop dialogs docutils icontheme \
 		libmatekbd libmateweather \
 		marco menus mixer notificationdaemon panel polkit pluma \
 		session settingsdaemon
