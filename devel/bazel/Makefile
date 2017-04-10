@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=		bazel
-PORTVERSION=		0.4.4
+PORTVERSION=		0.4.5
 CATEGORIES=		devel java
 MASTER_SITES=		https://storage.googleapis.com/bazel/${PORTVERSION}/rc${FINALRC}/
 DISTNAME=		bazel-${PORTVERSION}rc${FINALRC}-dist
@@ -19,11 +19,11 @@ BUILD_DEPENDS=		bash:shells/bash \
 # In bazel, a release is always code-wise identical to the final release candidate.
 # Hence we can also download that one and so have a simple way to also test earlier release
 # candidates.
-FINALRC=		1
+FINALRC=		7
 
 NO_WRKSUBDIR=		YES
 USES=			shebangfix zip
-SHEBANG_FILES=		${WRKSRC}/tools/cpp/link_dynamic_library.sh
+SHEBANG_REGEX=		.*(sh|txt|_stub|stub_.*|bazel|get_workspace_status|protobuf_support|_so)
 USE_JAVA=		yes
 JAVA_VENDOR=		openjdk
 JAVA_VERSION=		1.8
@@ -36,7 +36,7 @@ JAVA_RUN=		yes
 post-patch:
 	@${REINPLACE_CMD} \
 	-e "s|\"/etc/bazel.bazelrc\"|\"${ETCDIR}/bazel.bazelrc\"|" \
-	${WRKSRC}/src/main/cpp/workspace_layout.cc
+	${WRKSRC}/src/main/cpp/blaze_util_posix.cc
 	@${ECHO_CMD} build --strategy=Javac=standalone >> ${WRKSRC}/scripts/packages/debian/bazel.bazelrc
 
 do-build:
@@ -48,6 +48,7 @@ do-build:
 	${LOCALBASE}/bin/bash ./compile.sh)
 
 do-install:
+	# The bazel binary is also a zip archive (extracted by the elf part), hence cannot be stripped
 	${CP} ${WRKSRC}/output/bazel ${STAGEDIR}${PREFIX}/bin
 	@${MKDIR} ${STAGEDIR}${ETCDIR}
 	${INSTALL_DATA} ${WRKSRC}/scripts/packages/debian/bazel.bazelrc ${STAGEDIR}${ETCDIR}/bazel.bazelrc.sample

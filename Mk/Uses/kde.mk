@@ -55,9 +55,9 @@ _KDE_RELNAME=		KDE${_KDE_VERSION}
 # === VERSIONS OF THE DIFFERENT COMPONENTS =====================================
 # Old KDE desktop.
 KDE4_VERSION?=			4.14.3
-KDE4_KDELIBS_VERSION=		4.14.10
+KDE4_KDELIBS_VERSION=		4.14.30
 KDE4_ACTIVITIES_VERSION=	4.13.3
-KDE4_WORKSPACE_VERSION=		4.11.21
+KDE4_WORKSPACE_VERSION=		4.11.22
 KDE4_KDEPIM_VERSION?=		4.14.10
 # Applications version for the kde4-applications.
 KDE4_APPLICATIONS_BRANCH?=	Attic
@@ -65,11 +65,11 @@ KDE4_APPLICATIONS_VERSION?=	15.04.3
 KDE4_BRANCH?=			stable
 
 # Current KDE desktop.
-KDE_FRAMEWORKS_VERSION?=	5.31.0
+KDE_FRAMEWORKS_VERSION?=	5.32.0
 KDE_FRAMEWORKS_BRANCH?= 	stable
 
 # Current KDE applications.
-KDE_APPLICATIONS_VERSION?=      16.12.0
+KDE_APPLICATIONS_VERSION?=      16.12.3
 KDE_APPLICATIONS_BRANCH?=       stable
 # Upstream moves old software to Attic/. Specify the newest applications release there.
 # Only the major version is used for the comparison.
@@ -134,8 +134,14 @@ DIST_SUBDIR?=           KDE/applications/${KDE_APPLICATIONS_VERSION}
 .    elif ${_KDE_CATEGORY:Mkde-frameworks}
 PORTVERSION?=		${KDE_FRAMEWORKS_VERSION}
 PKGNAMEPREFIX?=		kf5-
-MASTER_SITES?=		KDE/${KDE_FRAMEWORKS_BRANCH}/frameworks/${KDE_FRAMEWORKS_VERSION:R} \
-			KDE/${KDE_FRAMEWORKS_BRANCH}/frameworks/${KDE_FRAMEWORKS_VERSION:R}/portingAids
+# This is a slight duplication of _USE_FRAMEWORKS_PORTING -- it maybe would be
+# better to rely on ${_USE_FRAMEWORKS_PORTING:S/^/k/g}
+_PORTINGAIDS=		kjs kjsembed kdelibs4support khtml kmediaplayer kross
+.      if ${_PORTINGAIDS:M*${PORTNAME}*}
+MASTER_SITES?=		KDE/${KDE_FRAMEWORKS_BRANCH}/frameworks/${KDE_FRAMEWORKS_VERSION:R}/portingAids
+.      else
+MASTER_SITES?=		KDE/${KDE_FRAMEWORKS_BRANCH}/frameworks/${KDE_FRAMEWORKS_VERSION:R}
+.      endif
 DIST_SUBDIR?=		KDE/frameworks/${KDE_FRAMEWORKS_VERSION}
 .    else
 IGNORE?=		unknown CATEGORY value '${_KDE_CATEGORY}' #'
@@ -198,7 +204,7 @@ _USE_KDE4_ALL=		baloo baloo-widgets baseapps kactivities kate kdelibs \
 			kfilemetadata korundum libkcddb libkcompactdisc \
 			libkdcraw libkdeedu libkdegames libkexiv2 libkipi \
 			libkonq libksane marble nepomuk-core nepomuk-widgets \
-			okular oxygen-icons4 perlkde perlqt pimlibs pykde4 \
+			okular oxygen-icons5 perlkde perlqt pimlibs pykde4 \
 			pykdeuic4 qtruby runtime smokegen smokekde smokeqt \
 			workspace
 # These components are not part of the Software Compilation.
@@ -222,7 +228,7 @@ _USE_FRAMEWORKS_TIER2=	auth completion crash doctools filemetadata5 \
 
 _USE_FRAMEWORKS_TIER3=	activities baloo5 bookmarks configwidgets \
 			designerplugin emoticons globalaccel guiaddons \
-			iconthemes init kcmutils kconfigwidgets kdeclarative \
+			iconthemes init kcmutils kdeclarative \
 			kded kdesu kdewebkit kio newstuff notifyconfig parts \
 			people plasma-framework runner service texteditor \
 			textwidgets wallet xmlgui xmlrpcclient
@@ -314,10 +320,6 @@ nepomuk-widgets_LIB=	libnepomukwidgets.so
 
 okular_PORT=		graphics/okular
 okular_LIB=		libokularcore.so
-
-oxygen-icons4_PORT=	x11-themes/kde4-icons-oxygen
-oxygen-icons4_PATH=	${KDE_PREFIX}/share/icons/oxygen/index.theme
-oxygen-icons4_TYPE=	run
 
 perlkde_PORT=		devel/p5-perlkde
 perlkde_PATH=		${KDE_PREFIX}/lib/kde4/kperlpluginfactory.so
@@ -532,6 +534,8 @@ notifications_LIB=	libKF5Notifications.so
 notifyconfig_PORT=	devel/kf5-knotifyconfig
 notifyconfig_LIB=	libKF5NotifyConfig.so
 
+# This is a KF5 port used by KDE4 as well, but it's architecture-independent
+# and only contains icons.
 oxygen-icons5_PORT=	x11-themes/kf5-oxygen-icons5
 oxygen-icons5_PATH=	${KDE_PREFIX}/share/icons/oxygen/index.theme
 oxygen-icons5_TYPE=	run

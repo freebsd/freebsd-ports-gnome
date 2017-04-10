@@ -3,7 +3,7 @@
 
 PORTNAME=	hplip
 PORTVERSION=	3.16.11
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	print
 MASTER_SITES=	SF
 
@@ -39,34 +39,56 @@ CONFIGURE_ARGS=	--with-cupsbackenddir=${PREFIX}/libexec/cups/backend \
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=	DOCS FAX SNMP SCAN X11 XSANE
-OPTIONS_DEFAULT=SNMP SCAN X11
-OPTIONS_SUB=	yes # FAX SCAN X11
+OPTIONS_DEFINE=		DOCS FAX SCAN SNMP X11 XSANE
+OPTIONS_RADIO=		GUI
+OPTIONS_RADIO_GUI=	QT4 QT5
+OPTIONS_DEFAULT=	QT5 SCAN SNMP X11
+OPTIONS_SUB=		yes
+
+DOCS_CONFIGURE_ENABLE=	doc-build
 
 FAX_DESC=		PC Send Fax support
 FAX_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}reportlab>=0:print/py-reportlab
 FAX_CONFIGURE_ENABLE=	fax-build
-
-SNMP_DESC=		Network/JetDirect support
-SNMP_USES=		ssl
-SNMP_LIB_DEPENDS=	libnetsnmp.so:net-mgmt/net-snmp
-SNMP_CONFIGURE_ENABLE=	network-build
 
 SCAN_DESC=		Scanning support
 SCAN_LIB_DEPENDS=	libsane.so:graphics/sane-backends
 SCAN_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pillow>0:graphics/py-pillow
 SCAN_CONFIGURE_ENABLE=	scan-build
 
-X11_DESC=		Graphical User Interface (Qt 4)
-X11_USES=		pyqt:4
-X11_USE=		PYQT=dbussupport_run,gui_run
-X11_CONFIGURE_ENABLE=	qt4 gui-build
+SNMP_DESC=		Network/JetDirect support
+SNMP_USES=		ssl
+SNMP_LIB_DEPENDS=	libnetsnmp.so:net-mgmt/net-snmp
+SNMP_CONFIGURE_ENABLE=	network-build
+
+X11_DESC=		Graphical User Interface (Qt)
+X11_CONFIGURE_ENABLE=	gui-build
 
 XSANE_DESC=		Install XSane for scanning (implies SCAN)
 XSANE_IMPLIES=		SCAN
 XSANE_RUN_DEPENDS=	xsane:graphics/xsane
 
-DOCS_CONFIGURE_ENABLE=	doc-build
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MQT4} && ${PORT_OPTIONS:MX11}
+USES+=			pyqt:4
+USE_PYQT=		core_run dbussupport_run gui_run
+CONFIGURE_ARGS+=	--enable-qt4
+.else
+CONFIGURE_ARGS+=	--disable-qt4
+.endif
+
+.if ${PORT_OPTIONS:MQT5} && ${PORT_OPTIONS:MX11}
+USES+=			pyqt:5
+USE_PYQT=		core_run dbussupport_run gui_run widgets_run
+CONFIGURE_ARGS+=	--enable-qt5
+.else
+CONFIGURE_ARGS+=	--disable-qt5
+.endif
+
+.if ${PORT_OPTIONS:MX11} && ! ${PORT_OPTIONS:MQT4} && ! ${PORT_OPTIONS:MQT5}
+BROKEN=			The X11 option requires one of the QT4 or QT5 options
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-ldld||g;' \

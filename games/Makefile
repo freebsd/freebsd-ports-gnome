@@ -13,12 +13,14 @@
     SUBDIR += 4stattack
     SUBDIR += 54321
     SUBDIR += 7kaa
+    SUBDIR += 90secondportraits
     SUBDIR += CaribbeanStud
     SUBDIR += HeroesOfMightAndMagic
     SUBDIR += KnightCap
     SUBDIR += abbayedesmorts
     SUBDIR += abe
     SUBDIR += abuse_sdl
+    SUBDIR += ace-of-penguins
     SUBDIR += acm
     SUBDIR += adgali
     SUBDIR += adom
@@ -421,6 +423,7 @@
     SUBDIR += hoverboard-sdl
     SUBDIR += hs-scroll
     SUBDIR += hypatia_engine
+    SUBDIR += hyperrogue
     SUBDIR += iagno
     SUBDIR += icbm3d
     SUBDIR += icebreaker
@@ -760,6 +763,7 @@
     SUBDIR += popstar
     SUBDIR += pouetchess
     SUBDIR += powder
+    SUBDIR += powder-toy
     SUBDIR += powermanga
     SUBDIR += powwow
     SUBDIR += ppracer
@@ -981,7 +985,6 @@
     SUBDIR += traingame
     SUBDIR += tremulous
     SUBDIR += trenchbroom
-    SUBDIR += trigger-data
     SUBDIR += trigger-rally
     SUBDIR += trimines
     SUBDIR += triplane

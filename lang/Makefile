@@ -38,7 +38,6 @@
     SUBDIR += clang34
     SUBDIR += clang35
     SUBDIR += clang36
-    SUBDIR += clang37
     SUBDIR += clang38
     SUBDIR += cling
     SUBDIR += clojure
@@ -50,6 +49,7 @@
     SUBDIR += cparser
     SUBDIR += csharp-mode.el
     SUBDIR += cython
+    SUBDIR += cython3
     SUBDIR += diveintopython
     SUBDIR += dlv
     SUBDIR += dmd1
@@ -154,6 +154,7 @@
     SUBDIR += kturtle
     SUBDIR += lafontaine
     SUBDIR += lci
+    SUBDIR += ldc
     SUBDIR += lfe
     SUBDIR += libhx
     SUBDIR += libobjc2
@@ -183,6 +184,7 @@
     SUBDIR += mosml
     SUBDIR += mtasc
     SUBDIR += munger
+    SUBDIR += myrddin
     SUBDIR += nawk
     SUBDIR += nbc
     SUBDIR += nbfc
@@ -204,6 +206,7 @@
     SUBDIR += ohugs
     SUBDIR += onyx
     SUBDIR += oo2c
+    SUBDIR += opencoarrays
     SUBDIR += opendylan
     SUBDIR += p2c
     SUBDIR += p5-Data-JavaScript
@@ -216,6 +219,7 @@
     SUBDIR += p5-JavaScript-Squish
     SUBDIR += p5-JavaScript-Value-Escape
     SUBDIR += p5-List-MoreUtils
+    SUBDIR += p5-List-MoreUtils-XS
     SUBDIR += p5-Marpa
     SUBDIR += p5-Marpa-PP
     SUBDIR += p5-Marpa-XS

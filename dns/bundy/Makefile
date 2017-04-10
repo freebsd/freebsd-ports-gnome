@@ -3,7 +3,7 @@
 
 PORTNAME=	bundy
 PORTVERSION=	0.20160125
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	dns
 MASTER_SITES=	LOCAL/mat/bundy SF/boost/boost/1.55.0:boost
 DISTFILES+=	boost_1_55_0.tar.bz2:boost
@@ -30,9 +30,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	bundy-dns
 GH_TAGNAME=	d310c5d
 
-USE_OPENSSL=	yes
-
-USES=	compiler:c++11-lang pathfix pkgconfig libtool python:3 autoreconf
+USES=	compiler:c++11-lang pathfix pkgconfig libtool python:3 autoreconf ssl
 
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes

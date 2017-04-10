@@ -75,6 +75,7 @@
     SUBDIR += abacus
     SUBDIR += abakus
     SUBDIR += abs
+    SUBDIR += acalc
     SUBDIR += add
     SUBDIR += algae
     SUBDIR += algotutor
@@ -285,6 +286,7 @@
     SUBDIR += mpexpr
     SUBDIR += mpfr
     SUBDIR += mpir
+    SUBDIR += mprime
     SUBDIR += msieve
     SUBDIR += mtl
     SUBDIR += mtrxmath
@@ -581,6 +583,7 @@
     SUBDIR += pspp
     SUBDIR += pure-mpfr
     SUBDIR += pure-rational
+    SUBDIR += py-PyWavelets
     SUBDIR += py-altgraph
     SUBDIR += py-apgl
     SUBDIR += py-basemap

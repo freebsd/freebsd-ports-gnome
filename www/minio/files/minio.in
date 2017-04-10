@@ -3,24 +3,41 @@
 # PROVIDE: minio
 # KEYWORD: shutdown
 
-minio_enable="${minio_enable-NO}"
-minio_config="${minio_config-%%PREFIX%%/etc/minio}"
-minio_disks="${minio_disks-/var/db/minio}"
-minio_address="${minio_address-:9000}"
-minio_user="${minio_user-minio}"
-minio_group="${minio_group-minio}"
+#
+# Add the following lines to /etc/rc.conf to enable minio:
+#
+# minio_enable (bool):          Set to "NO" by default.
+#                               Set it to "YES" to enable minio
+# minio_config (path):          Set to "%%PREFIX%%/etc/minio" by default
+#                               Set to directory to store minio config
+# minio_disks (path):           Set to "/var/db/minio" by default.
+#                               Set it to directory to store minio data
+# minio_address (str):          Set to ":9000" by default.
+#                               Set it to address for minio to listen on
+# minio_user (str):             Set to "minio" by default.
+#                               Set it to user to run minio under
+# minio_group (str):            Set to "minio" by default.
+#                               Set it to group to run minio under
+#
 
 . /etc/rc.subr
 
 name=minio
-procname="%%PREFIX%%/bin/minio"
 rcvar=minio_enable
 
 load_rc_config ${name}
 
+: ${minio_enable:="NO"}
+: ${minio_config="%%PREFIX%%/etc/minio"}
+: ${minio_disks="/var/db/minio"}
+: ${minio_address=":9000"}
+: ${minio_user:="%%USER%%"}
+: ${minio_group:="%%GROUP%%"}
+
 pidfile="/var/run/${name}.pid"
+procname="%%PREFIX%%/bin/minio"
 command="/usr/sbin/daemon"
-command_args="-c -p ${pidfile} /usr/bin/env ${minio_env} ${procname} -C \"${minio_config}\" server --address=\"${minio_address}\" --quiet ${minio_disks}"
+command_args="-f -c -p ${pidfile} /usr/bin/env ${minio_env} ${procname} -C \"${minio_config}\" server --address=\"${minio_address}\" --quiet ${minio_disks}"
 
 start_precmd="minio_startprecmd"
 

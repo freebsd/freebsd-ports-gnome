@@ -2,6 +2,7 @@
 
 PORTNAME=	wsjtx
 PORTVERSION=	1.7.0
+PORTREVISION=	1
 CATEGORIES=	comms hamradio
 MASTER_SITES=	SF/wsjt/${PORTNAME}-${DISTVERSIONPREFIX}${DISTVERSION}${DISTVERSIONSUFFIX}
 DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}
@@ -40,4 +41,3 @@ do-extract:
 BROKEN_i386=    does not build on i386 due to openmp
 
 .include <bsd.port.mk>
-

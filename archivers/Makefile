@@ -31,7 +31,6 @@
     SUBDIR += freeze
     SUBDIR += gcab
     SUBDIR += gcpio
-    SUBDIR += gnome-autoar
     SUBDIR += go-compress
     SUBDIR += grzip
     SUBDIR += gtar
@@ -70,7 +69,6 @@
     SUBDIR += libpar2
     SUBDIR += librtfcomp
     SUBDIR += libunrar
-    SUBDIR += libunrar4
     SUBDIR += libunrar5
     SUBDIR += libzip
     SUBDIR += lrzip
@@ -83,7 +81,6 @@
     SUBDIR += lzmalib
     SUBDIR += lzo2
     SUBDIR += lzop
-    SUBDIR += macutils
     SUBDIR += makeself
     SUBDIR += mar
     SUBDIR += minizip
@@ -144,8 +141,8 @@
     SUBDIR += pecl-lzf
     SUBDIR += pecl-phk
     SUBDIR += pecl-rar
-    SUBDIR += pecl-snappy
     SUBDIR += php-horde_lz4
+    SUBDIR += php-snappy
     SUBDIR += php56-bz2
     SUBDIR += php56-phar
     SUBDIR += php56-zip

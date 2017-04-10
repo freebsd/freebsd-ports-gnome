@@ -124,11 +124,6 @@ FreeBSD_MAINTAINER=	portmgr@FreeBSD.org
 #				  ${MASTER_SITE_OVERRIDE})
 # EXTRACT_ONLY	- If set, a subset of ${DISTFILES} you want to
 #				  actually extract.
-# ALWAYS_KEEP_DISTFILES
-#				- If set, the package building cluster will save the distfiles
-#				  along with the packages. This may be required to comply with
-#				  some licenses, e.g. GPL in some cases.
-#				  Default: not set.
 #
 # (NOTE: by convention, the MAINTAINER entry (see above) should go here.)
 #
@@ -1061,6 +1056,9 @@ STAGEDIR?=	${WRKDIR}/stage
 NOTPHONY?=
 MINIMAL_PKG_VERSION=	1.6.0
 
+_PORTS_DIRECTORIES+=	${PKG_DBDIR} ${PREFIX} ${WRKDIR} ${EXTRACT_WRKDIR} \
+						${STAGEDIR}${PREFIX}
+
 # make sure bmake treats -V as expected
 .MAKE.EXPAND_VARIABLES= yes
 
@@ -1347,10 +1345,6 @@ PKGCOMPATDIR?=		${LOCALBASE}/lib/compat/pkg
 .include "${PORTSDIR}/Mk/bsd.local.mk"
 .endif
 
-.if defined(USE_OPENSSL)
-USES+=	ssl
-.endif
-
 .if defined(USE_EMACS)
 .include "${PORTSDIR}/Mk/bsd.emacs.mk"
 .endif
@@ -1576,7 +1570,7 @@ CONFIGURE_ENV+=	PKG_CONFIG_SYSROOT_DIR="${CROSS_SYSROOT}"
 .endif
 
 WRKDIR?=		${WRKDIRPREFIX}${.CURDIR}/work
-.if !defined(IGNORE_MASTER_SITE_GITHUB) && defined(USE_GITHUB)
+.if !defined(IGNORE_MASTER_SITE_GITHUB) && defined(USE_GITHUB) && empty(USE_GITHUB:Mnodefault)
 WRKSRC?=		${WRKDIR}/${GH_PROJECT}-${GH_TAGNAME_EXTRACT}
 .endif
 # If the distname is not extracting into a specific subdirectory, have the
@@ -1763,10 +1757,6 @@ MAKE_ENV+=	${b}="${${b}}"
 
 .if defined(USE_RC_SUBR)
 SUB_FILES+=	${USE_RC_SUBR}
-.endif
-
-.if defined(USE_RCORDER)
-SUB_FILES+=	${USE_RCORDER}
 .endif
 
 .if defined(USE_LDCONFIG) && ${USE_LDCONFIG:tl} == "yes"
@@ -2007,7 +1997,9 @@ BUILD_FAIL_MESSAGE+=	Try to set MAKE_JOBS_UNSAFE=yes and rebuild before reportin
 
 .include "${PORTSDIR}/Mk/bsd.ccache.mk"
 
+.if !make(makesum)
 FETCH_ENV?=		SSL_NO_VERIFY_PEER=1 SSL_NO_VERIFY_HOSTNAME=1
+.endif
 FETCH_BINARY?=	/usr/bin/fetch
 FETCH_ARGS?=	-Fpr
 FETCH_REGET?=	1
@@ -2081,7 +2073,7 @@ _SHAREMODE?=	0644
 # A few aliases for *-install targets
 INSTALL_PROGRAM=	${INSTALL} ${COPY} ${STRIP} -m ${BINMODE}
 INSTALL_KLD=	${INSTALL} ${COPY} -m ${BINMODE}
-INSTALL_LIB=	${INSTALL} ${COPY} ${STRIP} -m ${SHAREMODE}
+INSTALL_LIB=	${INSTALL} ${COPY} ${STRIP} -m ${_SHAREMODE}
 INSTALL_SCRIPT=	${INSTALL} ${COPY} -m ${BINMODE}
 INSTALL_DATA=	${INSTALL} ${COPY} -m ${_SHAREMODE}
 INSTALL_MAN=	${INSTALL} ${COPY} -m ${MANMODE}
@@ -2103,7 +2095,7 @@ COPYTREE_BIN=	${SH} -c '(${FIND} -Ed $$0 $$2 | ${CPIO} -dumpl $$1 >/dev/null 2>&
 												 -o -type f -exec ${SH} -c '\''cd '\''$$1'\'' && chmod ${BINMODE} "$$@"'\'' -- . {} + \)' --
 COPYTREE_SHARE=	${SH} -c '(${FIND} -Ed $$0 $$2 | ${CPIO} -dumpl $$1 >/dev/null 2>&1) && \
 						   ${FIND} -Ed $$0 $$2 \(   -type d -exec ${SH} -c '\''cd '\''$$1'\'' && chmod 755 "$$@"'\'' -- . {} + \
-												 -o -type f -exec ${SH} -c '\''cd '\''$$1'\'' && chmod ${SHAREMODE} "$$@"'\'' -- . {} + \)' --
+												 -o -type f -exec ${SH} -c '\''cd '\''$$1'\'' && chmod ${_SHAREMODE} "$$@"'\'' -- . {} + \)' --
 
 # The user can override the NO_PACKAGE by specifying this from
 # the make command line
@@ -2513,6 +2505,7 @@ check-categories:
 PKGREPOSITORYSUBDIR?=	All
 PKGREPOSITORY?=		${PACKAGES}/${PKGREPOSITORYSUBDIR}
 .if exists(${PACKAGES})
+_HAVE_PACKAGES=	yes
 PKGFILE?=		${PKGREPOSITORY}/${PKGNAME}${PKG_SUFX}
 .else
 PKGFILE?=		${.CURDIR}/${PKGNAME}${PKG_SUFX}
@@ -2561,6 +2554,9 @@ SET_LATE_CONFIGURE_ARGS= \
 	fi ; \
 	if [ ! -z "`${CONFIGURE_CMD} --help 2>&1 | ${GREP} -- '--disable-silent-rules'`" ]; then \
 	    _LATE_CONFIGURE_ARGS="$${_LATE_CONFIGURE_ARGS} --disable-silent-rules" ; \
+	fi ; \
+	if [ ! -z "`${CONFIGURE_CMD} --help 2>&1 | ${GREP} -- '--enable-jobserver\[.*\#\]'`" ]; then \
+	    _LATE_CONFIGURE_ARGS="$${_LATE_CONFIGURE_ARGS} --enable-jobserver=${MAKE_JOBS_NUMBER}" ; \
 	fi ; \
 	if [ ! -z "`${CONFIGURE_CMD} --help 2>&1 | ${GREP} -- '--infodir'`" ]; then \
 	    _LATE_CONFIGURE_ARGS="$${_LATE_CONFIGURE_ARGS} --infodir=${GNU_CONFIGURE_PREFIX}/${INFO_PATH}/${INFO_SUBDIR}" ; \
@@ -2944,9 +2940,6 @@ options-message:
 	@${ECHO_MSG} "===>  Found saved configuration for ${_OPTIONS_READ}"
 .endif
 
-${PKG_DBDIR} ${PREFIX} ${WRKDIR} ${EXTRACT_WRKDIR}:
-	@${MKDIR} ${.TARGET}
-
 # Warn user about deprecated packages.  Advisory only.
 
 .if !target(check-deprecated)
@@ -3098,7 +3091,7 @@ clean-wrkdir:
 	@${RM} -r ${WRKDIR}
 
 .if !target(do-extract)
-do-extract:
+do-extract: ${EXTRACT_WRKDIR}
 	@for file in ${EXTRACT_ONLY}; do \
 		if ! (cd ${EXTRACT_WRKDIR} && ${EXTRACT_CMD} ${EXTRACT_BEFORE_ARGS} ${_DISTDIR}/$$file ${EXTRACT_AFTER_ARGS});\
 		then \
@@ -3341,21 +3334,17 @@ do-test:
 
 # Package
 
+.if defined(_HAVE_PACKAGES)
+_EXTRA_PACKAGE_TARGET_DEP=	${PKGREPOSITORY}
+_PORTS_DIRECTORIES+=	${PKGREPOSITORY}
+.endif
+
 .if !target(do-package)
 PKG_CREATE_ARGS=	-r ${STAGEDIR} -m ${METADIR} -p ${TMPPLIST}
 .if defined(PKG_CREATE_VERBOSE)
 PKG_CREATE_ARGS+=	-v
 .endif
-do-package: create-manifest
-do-package: ${TMPPLIST}
-	@if [ -d ${PACKAGES} ]; then \
-		if [ ! -d ${PKGREPOSITORY} ]; then \
-			if ! ${MKDIR} ${PKGREPOSITORY}; then \
-				${ECHO_MSG} "=> Can't create directory ${PKGREPOSITORY}."; \
-				exit 1; \
-			fi; \
-		fi; \
-	fi
+do-package: create-manifest ${_EXTRA_PACKAGE_TARGET_DEP} ${TMPPLIST}
 	@for cat in ${CATEGORIES}; do \
 		${RM} ${PACKAGES}/$$cat/${PKGNAMEPREFIX}${PORTNAME}*${PKG_SUFX} ; \
 	done
@@ -4539,8 +4528,7 @@ compress-man:
 .endif
 
 .if !target(stage-dir)
-stage-dir:
-	@${MKDIR} ${STAGEDIR}${PREFIX}
+stage-dir: ${STAGEDIR}${PREFIX}
 .if !defined(NO_MTREE)
 	@${MTREE_CMD} ${MTREE_ARGS} ${STAGEDIR}${PREFIX} > /dev/null
 .endif
@@ -5193,6 +5181,9 @@ show-dev-errors:
 	@${FALSE}
 .endif
 .endif #DEVELOPER
+
+${_PORTS_DIRECTORIES}:
+	@${MKDIR} ${.TARGET}
 
 # Please note that the order of the following targets is important, and
 # should not be modified.

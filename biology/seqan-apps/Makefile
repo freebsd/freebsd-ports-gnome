@@ -4,7 +4,7 @@
 PORTNAME=	seqan-apps
 PORTVERSION=	2.2.0
 DISTVERSIONPREFIX=	seqan-v
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	biology
 
 MAINTAINER=	h2+fbsdports@fsfe.org
@@ -25,6 +25,8 @@ USES=		cmake:outsource
 CMAKE_ARGS=	-DSEQAN_BUILD_SYSTEM="SEQAN_RELEASE_APPS"
 
 USE_GCC=	yes
+
+BROKEN_armv6=		fails to link: undefined reference to _Unwind_GetIP@GCC_3.0
 
 .include <bsd.port.pre.mk>
 

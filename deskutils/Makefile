@@ -57,14 +57,12 @@
     SUBDIR += genius
     SUBDIR += gkrellm-reminder2
     SUBDIR += glabels
-    SUBDIR += gnome-blog
     SUBDIR += gnome-calendar
     SUBDIR += gnome-characters
     SUBDIR += gnome-clocks
     SUBDIR += gnome-contacts
     SUBDIR += gnome-dictionary
     SUBDIR += gnome-documents
-    SUBDIR += gnome-epub-thumbnailer
     SUBDIR += gnome-font-viewer
     SUBDIR += gnome-initial-setup
     SUBDIR += gnome-maps
@@ -72,7 +70,6 @@
     SUBDIR += gnome-screenshot
     SUBDIR += gnome-search-tool
     SUBDIR += gnome-shell-extension-audio-output-switcher
-    SUBDIR += gnome-shell-extension-backslide
     SUBDIR += gnome-shell-extension-coverflow
     SUBDIR += gnome-shell-extension-dashtodock
     SUBDIR += gnome-shell-extension-filesmenu
@@ -124,7 +121,7 @@
     SUBDIR += jjclient
     SUBDIR += jlj
     SUBDIR += kcharselect
-    SUBDIR += kchmviewer-kde4
+    SUBDIR += kchmviewer
     SUBDIR += kdeconnect
     SUBDIR += kdepim4
     SUBDIR += kdepim4-runtime

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ardour5
-PORTVERSION=	5.6.0
+PORTVERSION=	5.8.0
 CATEGORIES=	audio
 MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/
 # The original master side points to the latest release only:
@@ -39,8 +39,9 @@ LIB_DEPENDS=	libserd-0.so:devel/serd \
 		libFLAC.so:audio/flac \
 		libreadline.so:devel/readline
 
-USES=		desktop-file-utils gettext libarchive pkgconfig \
-		python:build readline tar:bzip2 waf
+USES=		compiler:c++11-lang desktop-file-utils gettext libarchive \
+		pkgconfig python:build readline tar:bzip2 waf
+USE_CXXSTD=	c++11
 USE_XORG=	x11
 USE_GNOME=	atk cairo cairomm gdkpixbuf2 glib20 glibmm gtk20 gtkmm24 pango
 USE_LDCONFIG=	yes

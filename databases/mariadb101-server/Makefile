@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	10.1.21
-PORTREVISION?=	0
+PORTVERSION=	10.1.22
+PORTREVISION?=	1
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://ftp.osuosl.org/pub/${SITESDIR}/ \
 		http://mirrors.supportex.net/${SITESDIR}/ \
@@ -142,7 +142,8 @@ post-install:
 	${RM} ${STAGEDIR}${PREFIX}/bin/msql2mysql \
 		${STAGEDIR}${PREFIX}/bin/mysql_config \
 		${STAGEDIR}${PREFIX}/bin/mysql_find_rows \
-		${STAGEDIR}${PREFIX}/bin/mysqlaccess
+		${STAGEDIR}${PREFIX}/bin/mysqlaccess \
+		${STAGEDIR}${PREFIX}/lib/mysql/plugin/client_ed25519.so
 	${RM} -r ${STAGEDIR}${PREFIX}/share/mysql/policy \
 		${STAGEDIR}${PREFIX}/share/pkgconfig
 .endif # defined(CLIENT_ONLY)

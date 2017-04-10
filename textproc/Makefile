@@ -4,6 +4,7 @@
     COMMENT = Text processing utilities (does not include desktop publishing)
 
     SUBDIR += 2bsd-diff
+    SUBDIR += CLDR
     SUBDIR += R-cran-DT
     SUBDIR += R-cran-R2HTML
     SUBDIR += R-cran-XML
@@ -19,7 +20,6 @@
     SUBDIR += R-cran-xtable
     SUBDIR += R-cran-yaml
     SUBDIR += UCD
-    SUBDIR += ack
     SUBDIR += adabrowse
     SUBDIR += add-css-links
     SUBDIR += af-aspell
@@ -226,6 +226,7 @@
     SUBDIR += google-translate-cli
     SUBDIR += gpp
     SUBDIR += grap
+    SUBDIR += greple
     SUBDIR += grc-aspell
     SUBDIR += groff
     SUBDIR += groonga
@@ -325,10 +326,12 @@
     SUBDIR += ibus-m17n
     SUBDIR += ibus-qt
     SUBDIR += ibus-table
+    SUBDIR += ibus-typing-booster
     SUBDIR += icdiff
     SUBDIR += id-aspell
     SUBDIR += id-hyphen
     SUBDIR += idnits
+    SUBDIR += ie-hunspell
     SUBDIR += igor
     SUBDIR += iksemel
     SUBDIR += info2html
@@ -370,8 +373,9 @@
     SUBDIR += kibana43
     SUBDIR += kibana44
     SUBDIR += kibana45
-    SUBDIR += kibana50
-    SUBDIR += kibana50-x-pack
+    SUBDIR += kibana5
+    SUBDIR += kibana5-x-pack
+    SUBDIR += kiss-templates
     SUBDIR += kmfl-european-latin
     SUBDIR += kmfl-khmer
     SUBDIR += kmfl-sil-ezra
@@ -671,6 +675,7 @@
     SUBDIR += p5-PDF-Create
     SUBDIR += p5-PDF-FromHTML
     SUBDIR += p5-PDF-Table
+    SUBDIR += p5-PDF-Tiny
     SUBDIR += p5-PDF-WebKit
     SUBDIR += p5-PDF-Writer
     SUBDIR += p5-POD2-Base
@@ -717,6 +722,7 @@
     SUBDIR += p5-Pod-Escapes
     SUBDIR += p5-Pod-Eventual
     SUBDIR += p5-Pod-HtmlEasy
+    SUBDIR += p5-Pod-LaTeX
     SUBDIR += p5-Pod-Markdown
     SUBDIR += p5-Pod-MinimumVersion
     SUBDIR += p5-Pod-POM
@@ -957,6 +963,7 @@
     SUBDIR += p5-Text-Wrapper
     SUBDIR += p5-Text-Xslate
     SUBDIR += p5-Text-Xslate-Bridge-TT2Like
+    SUBDIR += p5-Text-Unaccent-PurePerl
     SUBDIR += p5-Text-vCard
     SUBDIR += p5-Tiffany
     SUBDIR += p5-Time-Human
@@ -1128,6 +1135,7 @@
     SUBDIR += p5-YAPE-HTML
     SUBDIR += p5-YAPE-Regex
     SUBDIR += p5-YAPE-Regex-Explain
+    SUBDIR += p5-ack
     SUBDIR += p5-dTemplate
     SUBDIR += p5-libsoldout
     SUBDIR += p5-libxml
@@ -1182,6 +1190,7 @@
     SUBDIR += pecl-xdiff2
     SUBDIR += pecl-xslcache
     SUBDIR += pecl-yaml
+    SUBDIR += pecl-yaml1
     SUBDIR += peco
     SUBDIR += perl2html
     SUBDIR += permute
@@ -1251,6 +1260,7 @@
     SUBDIR += py-elasticsearch-curator-py
     SUBDIR += py-elasticsearch-dsl-py
     SUBDIR += py-elasticsearch-py
+    SUBDIR += py-elasticsearch2-dsl-py
     SUBDIR += py-elib.intl
     SUBDIR += py-empy
     SUBDIR += py-enchant
@@ -1300,6 +1310,7 @@
     SUBDIR += py-python-augeas
     SUBDIR += py-python-docx
     SUBDIR += py-python-gettext
+    SUBDIR += py-python-slugify
     SUBDIR += py-pytidylib
     SUBDIR += py-pyx12
     SUBDIR += py-qrcode
@@ -1319,6 +1330,7 @@
     SUBDIR += py-snowballstemmer
     SUBDIR += py-sparqlwrapper
     SUBDIR += py-sphinx
+    SUBDIR += py-sphinx-hieroglyph
     SUBDIR += py-sphinx-intl
     SUBDIR += py-sphinx-me
     SUBDIR += py-sphinx_numfig
@@ -1360,11 +1372,16 @@
     SUBDIR += py-zpt
     SUBDIR += py2html
     SUBDIR += py3-MarkupSafe
+    SUBDIR += py3-alabaster
     SUBDIR += py3-asciinema
     SUBDIR += py3-chardet
     SUBDIR += py3-hunspell
     SUBDIR += py3-libxml2
     SUBDIR += py3-pager
+    SUBDIR += py3-pystemmer
+    SUBDIR += py3-snowballstemmer
+    SUBDIR += py3-sphinx_rtd_theme
+    SUBDIR += py3-texttable
     SUBDIR += pychm
     SUBDIR += qprint
     SUBDIR += qrcodegen
@@ -1422,6 +1439,7 @@
     SUBDIR += rubygem-albino
     SUBDIR += rubygem-amatch
     SUBDIR += rubygem-asciidoctor
+    SUBDIR += rubygem-asciidoctor-plantuml
     SUBDIR += rubygem-autoprefixer-rails
     SUBDIR += rubygem-babel-source
     SUBDIR += rubygem-babel-transpiler
@@ -1454,7 +1472,6 @@
     SUBDIR += rubygem-gemoji
     SUBDIR += rubygem-gherkin
     SUBDIR += rubygem-github-linguist
-    SUBDIR += rubygem-github-markdown
     SUBDIR += rubygem-github-markup
     SUBDIR += rubygem-gitlab-grit
     SUBDIR += rubygem-gitlab-linguist
@@ -1464,8 +1481,10 @@
     SUBDIR += rubygem-html-pipeline
     SUBDIR += rubygem-html-pipeline-gitlab
     SUBDIR += rubygem-html-pipeline1
+    SUBDIR += rubygem-html2text
     SUBDIR += rubygem-htmlentities
     SUBDIR += rubygem-ini
+    SUBDIR += rubygem-inifile
     SUBDIR += rubygem-itextomml
     SUBDIR += rubygem-jekyll-assets
     SUBDIR += rubygem-jekyll-feed
@@ -1482,7 +1501,6 @@
     SUBDIR += rubygem-libxml-ruby
     SUBDIR += rubygem-linguistics
     SUBDIR += rubygem-liquid
-    SUBDIR += rubygem-liquid2
     SUBDIR += rubygem-liquid3
     SUBDIR += rubygem-loggability
     SUBDIR += rubygem-loofah
@@ -1491,7 +1509,6 @@
     SUBDIR += rubygem-multi_xml
     SUBDIR += rubygem-nokogiri
     SUBDIR += rubygem-nokogiri-diff
-    SUBDIR += rubygem-nokogiri14
     SUBDIR += rubygem-nokogumbo
     SUBDIR += rubygem-octopress-escape-code
     SUBDIR += rubygem-opml
@@ -1508,6 +1525,7 @@
     SUBDIR += rubygem-rdiscount
     SUBDIR += rubygem-rdtool
     SUBDIR += rubygem-redcarpet
+    SUBDIR += rubygem-representable
     SUBDIR += rubygem-reverse_markdown
     SUBDIR += rubygem-ri_cal
     SUBDIR += rubygem-rich
@@ -1523,7 +1541,6 @@
     SUBDIR += rubygem-rugments
     SUBDIR += rubygem-sanitize
     SUBDIR += rubygem-sass
-    SUBDIR += rubygem-sass-rails4
     SUBDIR += rubygem-sass-rails5
     SUBDIR += rubygem-sass32
     SUBDIR += rubygem-sax-machine
@@ -1538,6 +1555,7 @@
     SUBDIR += rubygem-terminal-table
     SUBDIR += rubygem-text
     SUBDIR += rubygem-tidy
+    SUBDIR += rubygem-truncato
     SUBDIR += rubygem-twitter-text
     SUBDIR += rubygem-unf
     SUBDIR += rubygem-unf_ext
@@ -1575,6 +1593,7 @@
     SUBDIR += scss
     SUBDIR += sdcv
     SUBDIR += sdf
+    SUBDIR += sdif
     SUBDIR += sdocbook-xml
     SUBDIR += sdom
     SUBDIR += senna
@@ -1670,6 +1689,7 @@
     SUBDIR += uim-m17nlib
     SUBDIR += uim-qt4
     SUBDIR += uml2svg
+    SUBDIR += uncle
     SUBDIR += uncrustify
     SUBDIR += uni2ascii
     SUBDIR += unoconv

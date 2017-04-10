@@ -2,7 +2,7 @@
 
 PORTNAME=	hpenc
 PORTVERSION=	2.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	security
 MASTER_SITES=	http://highsecure.ru/distfiles/
 
@@ -16,8 +16,7 @@ BROKEN_powerpc64=	Does not build
 NOT_FOR_ARCHS=		aarch64 sparc64
 NOT_FOR_ARCHS_REASON=	not yet ported to this architecture
 
-USES=		tar:xz compiler:c++11-lib gmake
-USE_OPENSSL=	yes
+USES=		tar:xz compiler:c++11-lib gmake ssl
 PLIST_FILES=	bin/hpenc man/man1/hpenc.1.gz
 
 MAKE_ARGS+=	"ARCH=${ARCH:S/amd64/x86/:S/i386/x86/}"
