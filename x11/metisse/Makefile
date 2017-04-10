@@ -3,7 +3,7 @@
 
 PORTNAME=	metisse
 PORTVERSION=	0.4.1
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	x11
 MASTER_SITES=	http://insitu.lri.fr/metisse/download/metisse/
 
@@ -19,6 +19,7 @@ RUN_DEPENDS=	xorg-fonts>0:x11-fonts/xorg-fonts
 CONFLICTS=	fvwm-1.* fvwm-2.*
 
 BROKEN_aarch64=	Fails to build: error: GETLEFTBITS_ALIGNMENT must be 1
+BROKEN_armv6=	Fails to build: error: GETLEFTBITS_ALIGNMENT must be 1
 
 USES=		gettext libtool pathfix pkgconfig python shebangfix tar:bzip2
 SHEBANG_FILES=	${WRKSRC}/fvwm-insitu/bin/fvwm-convert-2.4.in \
@@ -46,14 +47,13 @@ INSTALL_TARGET=	install-strip
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=	GLX ATSPI STROKE RPLAY FRIBIDI GLIB GTK2 GCONF \
+OPTIONS_DEFINE=	GLX STROKE RPLAY FRIBIDI GLIB GTK2 GCONF \
 		DOCS
 OPTIONS_DEFINE_i386=	GLX_X86 MMX
 OPTIONS_DEFINE_amd64=	MMX
 OPTIONS_SUB=	yes
 
 GLX_X86_DESC=	GLX with x86 optimizations
-ATSPI_DESC=	Widget tracking support
 RPLAY_DESC=	RPlay support in FvwmEvent
 GLIB_DESC=	Use GLib 2.x for module integration
 GTK2_DESC=	Use GDK-PixBuf-2.0 for image loading
@@ -65,7 +65,6 @@ OPTIONS_DEFAULT_amd64=	MMX
 MMX_CONFIGURE_ENABLE=	mmx
 GLX_CONFIGURE_ENABLE=	glx
 GLX_X86_CONFIGURE_ENABLE=	glx-x86
-ATSPI_USE=	GNOME=atspi
 STROKE_LIB_DEPENDS=	libstroke.so:devel/libstroke
 MRPLAY_LIB_DEPENDS=	librplay.so:audio/rplay
 FRIBIDI_LIB_DEPENDS=	libfribidi.so:converters/fribidi

@@ -3,7 +3,7 @@
 
 PORTNAME=	thrift
 PORTVERSION=	${THRIFT_PORTVERSION} # to keep in sync with thrift
-PORTREVISION=	6
+PORTREVISION=	7
 PORTEPOCH=	1
 CATEGORIES=	devel
 PKGNAMESUFFIX=	-cpp
@@ -52,6 +52,10 @@ CFLAGS+=	-I${OPENSSLINC}
 
 .if ${COMPILER_TYPE} == clang
 USE_CXXSTD=	c++11
+.endif
+
+.if ${SSL_DEFAULT} == openssl-devel
+BROKEN=		Cannot find libcrypto.
 .endif
 
 post-install:

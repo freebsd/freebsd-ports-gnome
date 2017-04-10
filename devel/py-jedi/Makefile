@@ -2,16 +2,22 @@
 # $FreeBSD$
 
 PORTNAME=	jedi
-PORTVERSION=	0.8.1
+PORTVERSION=	0.10.0
+DISTVERSIONPREFIX=	v
 CATEGORIES=	devel python
-MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
-DISTVERSION=	${PORTVERSION}-final0
 
 MAINTAINER=	skreuzer@FreeBSD.org
 COMMENT=	Autocompletion tool for Python
 
-USES=		python:2
-USE_PYTHON=	distutils autoplist
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE.txt
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	davidhalter
+
+NO_ARCH=	yes
+USES?=		python
+USE_PYTHON=	autoplist distutils
 
 .include <bsd.port.mk>

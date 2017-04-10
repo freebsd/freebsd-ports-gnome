@@ -210,8 +210,10 @@
     SUBDIR += libv4l
     SUBDIR += libva
     SUBDIR += libva-intel-driver
+    SUBDIR += libva-utils
     SUBDIR += libva-vdpau-driver
     SUBDIR += libvdpau
+    SUBDIR += libvdpau-va-gl
     SUBDIR += libvpx
     SUBDIR += libx264
     SUBDIR += libxine
@@ -260,7 +262,6 @@
     SUBDIR += mpgtx
     SUBDIR += mplayer
     SUBDIR += mplayer-skins
-    SUBDIR += mplayer2
     SUBDIR += mplex
     SUBDIR += mps-youtube
     SUBDIR += mpv
@@ -353,6 +354,7 @@
     SUBDIR += qt5-phonon4-designerplugin
     SUBDIR += qt5-phonon4-gstreamer
     SUBDIR += qt5-phonon4-vlc
+    SUBDIR += QtAV
     SUBDIR += quark
     SUBDIR += quodlibet
     SUBDIR += quvi

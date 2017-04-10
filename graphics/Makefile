@@ -63,6 +63,7 @@
     SUBDIR += autotrace
     SUBDIR += aview
     SUBDIR += ayam
+    SUBDIR += azpainter
     SUBDIR += backfract
     SUBDIR += barbecue
     SUBDIR += barcode
@@ -77,6 +78,7 @@
     SUBDIR += burplex
     SUBDIR += c-a-i-r
     SUBDIR += cadubi
+    SUBDIR += caffe
     SUBDIR += cairo
     SUBDIR += cairo-reference
     SUBDIR += cairomm
@@ -282,7 +284,6 @@
     SUBDIR += gocr
     SUBDIR += goocanvas
     SUBDIR += goocanvas2
-    SUBDIR += goocanvasmm
     SUBDIR += goocanvasmm2
     SUBDIR += goom
     SUBDIR += gource
@@ -290,6 +291,7 @@
     SUBDIR += gphoto2
     SUBDIR += gpicview
     SUBDIR += gpsmanshp
+    SUBDIR += gpu-firmware-kmod
     SUBDIR += gracula
     SUBDIR += grads
     SUBDIR += grafx2
@@ -327,6 +329,7 @@
     SUBDIR += gtk-update-icon-cache
     SUBDIR += gtkam
     SUBDIR += gts
+    SUBDIR += guetzli
     SUBDIR += guilib
     SUBDIR += gwenview-kde4
     SUBDIR += gx
@@ -882,6 +885,7 @@
     SUBDIR += py-qt5-svg
     SUBDIR += py-rabbyt
     SUBDIR += py-sane
+    SUBDIR += py-scikit-image
     SUBDIR += py-seqdiag
     SUBDIR += py-sorl-thumbnail
     SUBDIR += py-soya3d
@@ -891,6 +895,7 @@
     SUBDIR += py-wand
     SUBDIR += py-webcolors
     SUBDIR += py3-cairo
+    SUBDIR += py3-imagesize
     SUBDIR += py3-pillow
     SUBDIR += py3-pygraphviz
     SUBDIR += pygts
@@ -948,6 +953,7 @@
     SUBDIR += rubygem-gd2
     SUBDIR += rubygem-gdk_pixbuf2
     SUBDIR += rubygem-gemojione
+    SUBDIR += rubygem-gemojione2
     SUBDIR += rubygem-geokit
     SUBDIR += rubygem-gitlab_emoji
     SUBDIR += rubygem-goocanvas
@@ -1029,6 +1035,7 @@
     SUBDIR += tilecache
     SUBDIR += tiled
     SUBDIR += timeless
+    SUBDIR += timg
     SUBDIR += tintfu
     SUBDIR += tinyows
     SUBDIR += tkpng

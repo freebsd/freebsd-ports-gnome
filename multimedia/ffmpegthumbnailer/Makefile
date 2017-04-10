@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ffmpegthumbnailer
-PORTVERSION=	2.1.1
+PORTVERSION=	2.2.0
 PORTREVISION=	1
 CATEGORIES=	multimedia graphics
 

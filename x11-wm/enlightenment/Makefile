@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	enlightenment
-PORTVERSION=	0.21.5
+PORTVERSION=	0.21.7
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	x11-wm enlightenment
 MASTER_SITES=	http://download.enlightenment.org/rel/apps/${PORTNAME}/
-DIST_SUBDIR=    enlightenment
+DIST_SUBDIR=	enlightenment
 
 MAINTAINER=	enlightenment@FreeBSD.org
 COMMENT=	Artistic X window manager
@@ -30,11 +31,17 @@ CONFIGURE_ARGS=	--with-profile=MEDIUM_PC \
 
 .include "Makefile.plist"
 
-OPTIONS_DEFINE=	NLS
-OPTIONS_SUB=	yes
+OPTIONS_DEFINE=		NLS
+OPTIONS_GROUP=		MIXER
+OPTIONS_GROUP_MIXER=	ALSA PULSEAUDIO
+OPTIONS_DEFAULT=	ALSA
+OPTIONS_SUB=		yes
 
 NLS_USES=		gettext-runtime
 NLS_CONFIGURE_ENABLE=	nls
+
+ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
+PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
 post-patch:
 	@${REINPLACE_CMD} -e \

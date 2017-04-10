@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-PORTVERSION=	2.1
+PORTVERSION=	2.4
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	LOCAL/dbn/repos/wine/${DIST_SUBDIR}/
@@ -13,7 +13,7 @@ EXTRACT_SUFX=	.txz
 DIST_SUBDIR=	freebsd:${OSREL:C/\..*//}:x86:64
 
 MAINTAINER=	dbn@FreeBSD.org
-COMMENT?=	32bit Microsoft Windows compatibility environment for 64bit FreeBSD
+COMMENT?=	32-bit Microsoft Windows compatibility environment for 64-bit FreeBSD
 
 LICENSE=        LGPL21 LGPL3
 LICENSE_COMB=   dual
@@ -43,7 +43,7 @@ USES=		tar:xz desktop-file-utils
 BUNDLE_LIBS=	yes
 
 GECKO_RUN_DEPENDS=	${DATADIR}/gecko/wine_gecko-2.47-x86.msi:emulators/wine-gecko-devel
-MONO_RUN_DEPENDS=	${DATADIR}/mono/wine-mono-4.6.4.msi:emulators/wine-mono-devel
+MONO_RUN_DEPENDS=	${DATADIR}/mono/wine-mono-4.7.0.msi:emulators/wine-mono-devel
 
 # Included for OPSYS and OSVERSION
 .include <bsd.port.pre.mk>

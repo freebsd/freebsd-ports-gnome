@@ -33,6 +33,7 @@
     SUBDIR += cinnamon-session
     SUBDIR += cl-clx
     SUBDIR += compositeproto
+    SUBDIR += controllermap
     SUBDIR += cool-retro-term
     SUBDIR += damageproto
     SUBDIR += decurs
@@ -45,6 +46,7 @@
     SUBDIR += deskpaint
     SUBDIR += dgs
     SUBDIR += dmenu
+    SUBDIR += dmenu2
     SUBDIR += dmxproto
     SUBDIR += docker-tray
     SUBDIR += dri2proto
@@ -249,6 +251,7 @@
     SUBDIR += p5-X11-XCB
     SUBDIR += p5-X11-Xlib
     SUBDIR += p5-XTerm-Conf
+    SUBDIR += pipeglade
     SUBDIR += pixman
     SUBDIR += plasma-scriptengine-python
     SUBDIR += plasma-scriptengine-ruby
@@ -277,7 +280,7 @@
     SUBDIR += rox-wallpaper
     SUBDIR += roxbg
     SUBDIR += roxterm
-    SUBDIR += rsibreak-kde4
+    SUBDIR += rsibreak
     SUBDIR += rstart
     SUBDIR += rubygem-gnome2
     SUBDIR += rxvt

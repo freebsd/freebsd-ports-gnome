@@ -3,11 +3,13 @@
 
     COMMENT = Security tools
 
+    SUBDIR += 0d1n
     SUBDIR += ADMsmb
     SUBDIR += ADMsnmp
     SUBDIR += R-cran-ROAuth
     SUBDIR += R-cran-digest
     SUBDIR += R-cran-openssl
+    SUBDIR += acmetool
     SUBDIR += acme-client
     SUBDIR += aescrypt
     SUBDIR += aespipe
@@ -126,6 +128,7 @@
     SUBDIR += elixir-comeonin
     SUBDIR += elixir-comeonin_i18n
     SUBDIR += elixir-jose
+    SUBDIR += enchive
     SUBDIR += erlang-fast_tls
     SUBDIR += erlang-jose
     SUBDIR += eschalot
@@ -277,12 +280,14 @@
     SUBDIR += keepassx
     SUBDIR += keepassx-devel
     SUBDIR += keepassx2
+    SUBDIR += keepassxc
     SUBDIR += keybase
     SUBDIR += keychain
     SUBDIR += keynote
     SUBDIR += keyprint
     SUBDIR += kf5-kdesu
     SUBDIR += kgpg-kde4
+    SUBDIR += kickpass
     SUBDIR += knock
     SUBDIR += knocker
     SUBDIR += kpcli
@@ -879,6 +884,7 @@
     SUBDIR += py-mixbox
     SUBDIR += py-oauth2client
     SUBDIR += py-oauthlib
+    SUBDIR += py-onetime
     SUBDIR += py-openssl
     SUBDIR += py-paramiko
     SUBDIR += py-paramiko1
@@ -893,6 +899,7 @@
     SUBDIR += py-plone.session
     SUBDIR += py-potr
     SUBDIR += py-pow
+    SUBDIR += py-pyaes
     SUBDIR += py-pyaff4
     SUBDIR += py-pyclamd
     SUBDIR += py-pycrypto
@@ -939,6 +946,7 @@
     SUBDIR += py-xmlsec
     SUBDIR += py-yara
     SUBDIR += py-yara-editor
+    SUBDIR += py-yubioath-desktop
     SUBDIR += py-zope.app.authentication
     SUBDIR += py-zope.app.localpermission
     SUBDIR += py-zope.app.principalannotation
@@ -1000,6 +1008,7 @@
     SUBDIR += rubygem-doorkeeper
     SUBDIR += rubygem-encryptor
     SUBDIR += rubygem-ezcrypto
+    SUBDIR += rubygem-googleauth
     SUBDIR += rubygem-gpgr
     SUBDIR += rubygem-gssapi
     SUBDIR += rubygem-jugyo-twitter_oauth
@@ -1014,14 +1023,17 @@
     SUBDIR += rubygem-net-sftp
     SUBDIR += rubygem-net-ssh
     SUBDIR += rubygem-net-ssh-gateway
+    SUBDIR += rubygem-net-ssh-gateway1
     SUBDIR += rubygem-net-ssh-multi
     SUBDIR += rubygem-net-telnet
+    SUBDIR += rubygem-nexpose
     SUBDIR += rubygem-nmap-parser
     SUBDIR += rubygem-omniauth
     SUBDIR += rubygem-omniauth-bitbucket
     SUBDIR += rubygem-omniauth-cas3
     SUBDIR += rubygem-omniauth-gitlab
     SUBDIR += rubygem-omniauth-multipassword
+    SUBDIR += rubygem-omniauth-oauth2-generic
     SUBDIR += rubygem-omniauth-saml
     SUBDIR += rubygem-omniauth-shibboleth
     SUBDIR += rubygem-openssl-ccm
@@ -1054,6 +1066,7 @@
     SUBDIR += rubygem-ruby-rc4
     SUBDIR += rubygem-ruby-saml
     SUBDIR += rubygem-scrypt
+    SUBDIR += rubygem-signet
     SUBDIR += rubygem-six
     SUBDIR += rubygem-sshkey
     SUBDIR += rubygem-sshkit
@@ -1062,6 +1075,9 @@
     SUBDIR += s2n
     SUBDIR += safesh
     SUBDIR += samba-virusfilter
+    SUBDIR += samhain
+    SUBDIR += samhain-client
+    SUBDIR += samhain-server
     SUBDIR += sancp
     SUBDIR += sasp
     SUBDIR += scamp
@@ -1076,6 +1092,7 @@
     SUBDIR += secure_delete
     SUBDIR += sguil
     SUBDIR += sha
+    SUBDIR += sha1collisiondetection
     SUBDIR += shibboleth2-sp
     SUBDIR += shimmer
     SUBDIR += shishi

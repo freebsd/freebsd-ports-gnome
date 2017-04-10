@@ -2,8 +2,9 @@
 
 PORTNAME=	phabricator
 PORTVERSION=	20161003
+PORTREVISION=	2
 CATEGORIES=	devel
-PKGNAMEPREFIX=	php5-
+PKGNAMEPREFIX=	php-
 
 MAINTAINER=	grembo@FreeBSD.org
 COMMENT=	Open source, software engineering platform
@@ -11,8 +12,8 @@ COMMENT=	Open source, software engineering platform
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	php5-libphutil>0:devel/libphutil \
-		php5-arcanist>0:devel/arcanist \
+RUN_DEPENDS=	php-libphutil>0:devel/libphutil \
+		php-arcanist>0:devel/arcanist \
 		git:devel/git
 
 OPTIONS_DEFINE=	GD OPCACHE
@@ -24,18 +25,19 @@ SHEBANG_FILES=	externals/httpful/build \
 		externals/restful/build-phar \
 		scripts/install/install_rhel-derivs.sh \
 		scripts/install/install_ubuntu.sh
-USE_PHP=	ctype curl fileinfo hash iconv filter mbstring mysql openssl \
+USE_PHP=	ctype curl fileinfo filter hash iconv mbstring mysqli openssl \
 		pcntl posix
-IGNORE_WITH_PHP=	70
 
 GD_USE=		PHP=gd
 
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MOPCACHE}
-.	if ${PHP_EXT_DIR:C|[^0-9]||g}  >= 20121212
 USE_PHP+=	opcache
+.	if ${PHP_VER} >= 70
 RUN_DEPENDS+=	 ${PHPBASE}/lib/php/${PHP_EXT_DIR}/apcu.so:devel/pecl-APCu
+.	else
+RUN_DEPENDS+=	 ${PHPBASE}/lib/php/${PHP_EXT_DIR}/apcu.so:devel/pecl-APCu4
 .	endif
 .endif
 

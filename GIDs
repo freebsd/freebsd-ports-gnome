@@ -107,8 +107,8 @@ octoprint:*:162:
 _iked:*:163:
 lightdm:*:164:
 uwsgi:*:165:
-# free: 166
-# free: 167
+yule:*:166:
+ceph:*:167:
 # free: 168
 # free: 169
 tile38:*:170:
@@ -415,7 +415,7 @@ serf:*:470:
 vault:*:471:
 nomad:*:472:
 minio:*:473:
-# free: 474
+gitlab-runner:*:474:
 # free: 475
 # free: 476
 # free: 477
@@ -741,7 +741,7 @@ zetacoin:*:780:
 # free: 797
 # free: 798
 # free: 799
-# free: 800
+clickhouse:*:800:
 # free: 801
 # free: 802
 # free: 803

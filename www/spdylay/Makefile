@@ -3,7 +3,7 @@
 
 PORTNAME=	spdylay
 PORTVERSION=	1.4.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	www net
 MASTER_SITES=	https://github.com/tatsuhiro-t/${PORTNAME}/releases/download/v${PORTVERSION}/ \
 		LOCAL/sunpoet
@@ -36,5 +36,11 @@ PORTDOCS=	*
 post-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/examples/spdycli ${STAGEDIR}${PREFIX}/bin/
 	${INSTALL_DATA} ${WRKSRC}/shrpx.conf.sample ${STAGEDIR}${PREFIX}/etc/
+
+.include <bsd.port.options.mk>
+
+.if ${SSL_DEFAULT} == openssl-devel
+BROKEN=		Does not build.
+.endif
 
 .include <bsd.port.mk>

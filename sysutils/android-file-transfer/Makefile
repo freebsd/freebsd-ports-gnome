@@ -2,10 +2,12 @@
 
 PORTNAME=	android-file-transfer
 DISTVERSIONPREFIX=	v
-DISTVERSION=	3.0-14
-DISTVERSIONSUFFIX=	-g5a818d8
-PORTREVISION?=	0
+DISTVERSION=	3.1
+PORTREVISION?=	1
 CATEGORIES=	sysutils
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES=	7a1db96cd2e2.patch:-p1
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Android MTP client with minimalistic UI

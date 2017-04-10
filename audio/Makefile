@@ -15,6 +15,7 @@
     SUBDIR += adplay
     SUBDIR += afsp
     SUBDIR += aften
+    SUBDIR += alac
     SUBDIR += alienwah
     SUBDIR += alsa-lib
     SUBDIR += alsa-plugins
@@ -97,6 +98,7 @@
     SUBDIR += deadbeef-musical-spectrum-plugin
     SUBDIR += deadbeef-playback-status-plugin
     SUBDIR += deadbeef-quick-search-plugin
+    SUBDIR += deadbeef-spectrogram-plugin
     SUBDIR += deadbeef-vu-meter-plugin
     SUBDIR += deadbeef-waveform-seekbar-plugin
     SUBDIR += decibel-audio-player
@@ -212,8 +214,6 @@
     SUBDIR += gmtp
     SUBDIR += gmusicbrowser
     SUBDIR += gnaural
-    SUBDIR += gnome-audio
-    SUBDIR += gnome-media
     SUBDIR += gnome-music
     SUBDIR += gnomoradio
     SUBDIR += gnormalize
@@ -399,7 +399,6 @@
     SUBDIR += libmusicbrainz5
     SUBDIR += libnjb
     SUBDIR += libnoise
-    SUBDIR += libofa
     SUBDIR += libogg
     SUBDIR += liboggz
     SUBDIR += libopenspc
@@ -667,6 +666,7 @@
     SUBDIR += rem
     SUBDIR += resid
     SUBDIR += rexima
+    SUBDIR += rezound
     SUBDIR += rhythmbox
     SUBDIR += rio500
     SUBDIR += rioutil
@@ -714,6 +714,7 @@
     SUBDIR += sndio
     SUBDIR += solfege
     SUBDIR += sonata
+    SUBDIR += sonic-visualiser
     SUBDIR += sooperlooper
     SUBDIR += sound-juicer
     SUBDIR += soundconverter
@@ -741,6 +742,7 @@
     SUBDIR += streamtranscoder
     SUBDIR += stymulator
     SUBDIR += suil
+    SUBDIR += supercollider
     SUBDIR += sweep
     SUBDIR += swhplugins
     SUBDIR += taglib

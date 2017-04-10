@@ -2,7 +2,7 @@
 
 PORTNAME=	glusterfs
 PORTVERSION=	3.9.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net
 MASTER_SITES=	http://bits.gluster.org/pub/gluster/glusterfs/src/
 
@@ -17,7 +17,7 @@ LIB_DEPENDS=	libargp.so:devel/argp-standalone liburcu-bp.so:sysutils/liburcu
 USE_GCC=	any
 
 USES=		bison gettext libtool pkgconfig python readline shebangfix \
-		sqlite
+		sqlite ssl
 
 SHEBANG_FILES=	extras/ganesha/scripts/create-export-ganesha.sh \
 		extras/ganesha/scripts/dbus-send.sh \
@@ -28,7 +28,6 @@ SHEBANG_FILES=	extras/ganesha/scripts/create-export-ganesha.sh \
 
 USE_GNOME=	glib20 libxml2
 USE_LDCONFIG=	yes
-USE_OPENSSL=	yes
 USE_RC_SUBR=	glusterd
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-pkgconfigdir=${PREFIX}/libdata/pkgconfig \
