@@ -17,7 +17,7 @@ post-patch:
 .endif
 .else # ${OPSYS} == DragonFly
 #	Sed on dragonfly doesn't support \< or \>
-	@${REINPLACE_CMD} -e 's|\\>//|[[:>:]]//|' -e 's|\\S\*//|[:space:]* //|' \
+	@${REINPLACE_CMD} -e 's|\\>//|[[:>:]]//|' \
 		${WRKSRC}/configure
 .endif # ${OPSYS}
 	@${REINPLACE_CMD} -e 's|/etc/|${PREFIX}/etc/|g' \

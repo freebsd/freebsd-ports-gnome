@@ -3,7 +3,7 @@
 
 PORTNAME=	lives
 PORTVERSION=	2.8.4
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	multimedia
 MASTER_SITES=	http://lives-video.com/releases/
 DISTNAME=	LiVES-${PORTVERSION}
@@ -11,7 +11,8 @@ DISTNAME=	LiVES-${PORTVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Video editing system
 
-LICENSE=	GPLv3
+LICENSE=	GPLv3+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	${LOCALBASE}/include/linux/input.h:multimedia/v4l_compat \
 		${LOCALBASE}/bin/analyseplugin:audio/ladspa
@@ -22,8 +23,8 @@ LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		liboil-0.3.so:devel/liboil \
 		libprojectM.so:graphics/libprojectm \
 		libvisual-0.4.so:graphics/libvisual04 \
-		libopencv_calib3d.so:graphics/opencv2 \
-		libopencv_core.so:graphics/opencv2-core \
+		libopencv_calib3d.so:graphics/opencv \
+		libopencv_core.so:graphics/opencv-core \
 		libpng16.so:graphics/png \
 		libfftw3.so:math/fftw3 \
 		libfftw3f.so:math/fftw3-float \
@@ -95,6 +96,8 @@ post-patch:
 		${WRKSRC}/lives-plugins/weed-plugins/Makefile.in
 	@${REINPLACE_CMD} '/selectRandom/d' \
 		${WRKSRC}/lives-plugins/weed-plugins/projectM.cpp
+	@${REINPLACE_CMD} 's|/usr/bin/perl|${perl_CMD}|' \
+		${WRKSRC}/build-lives-rfx-plugin
 
 pre-build-NLS-on:
 	@(cd ${WRKSRC}/po && ${DO_MAKE_BUILD} update-po)

@@ -1,5 +1,5 @@
 # Created by: Pawel Worach <pawel.worach@gmail.com>
-# $FreeBSD: head/lang/gjs/Makefile 408881 2016-02-14 18:57:53Z kwm $
+# $FreeBSD$
 
 PORTNAME=	gjs
 PORTVERSION=	1.46.0

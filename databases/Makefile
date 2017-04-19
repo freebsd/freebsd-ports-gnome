@@ -95,7 +95,6 @@
     SUBDIR += glom
     SUBDIR += gnats4
     SUBDIR += gnatsweb4
-    SUBDIR += godis
     SUBDIR += gomdb
     SUBDIR += gosqlite3
     SUBDIR += gqlplus
@@ -572,14 +571,11 @@
     SUBDIR += pgdbf
     SUBDIR += pgespresso
     SUBDIR += pgfouine
-    SUBDIR += pglesslog
     SUBDIR += pgloader
     SUBDIR += pglogical
     SUBDIR += pgmodeler
     SUBDIR += pgpool
     SUBDIR += pgpool-II
-    SUBDIR += pgpool-II-22
-    SUBDIR += pgpool-II-23
     SUBDIR += pgpool-II-30
     SUBDIR += pgpool-II-33
     SUBDIR += pgpoolAdmin
@@ -708,8 +704,6 @@
     SUBDIR += proftpd-mod_sql_postgres
     SUBDIR += proftpd-mod_sql_sqlite
     SUBDIR += proftpd-mod_sql_tds
-    SUBDIR += puppetdb
-    SUBDIR += puppetdb-terminus
     SUBDIR += puppetdb-terminus3
     SUBDIR += puppetdb-terminus4
     SUBDIR += puppetdb3
@@ -807,6 +801,7 @@
     SUBDIR += py-unqlite
     SUBDIR += py-whisper
     SUBDIR += py-xapian
+    SUBDIR += py3-apsw
     SUBDIR += py3-bsddb3
     SUBDIR += py3-mysqlclient
     SUBDIR += py3-psycopg2
@@ -851,6 +846,7 @@
     SUBDIR += riak
     SUBDIR += riak2
     SUBDIR += rocksdb
+    SUBDIR += rocksdb-lite
     SUBDIR += rrdman
     SUBDIR += rrdmerge
     SUBDIR += rrdtool
@@ -921,11 +917,11 @@
     SUBDIR += rubygem-paranoia
     SUBDIR += rubygem-pg
     SUBDIR += rubygem-pg_array_parser
+    SUBDIR += rubygem-pghero
     SUBDIR += rubygem-postgres_ext
     SUBDIR += rubygem-rbase
     SUBDIR += rubygem-redis
     SUBDIR += rubygem-redis-actionpack
-    SUBDIR += rubygem-redis-actionpack4
     SUBDIR += rubygem-redis-namespace
     SUBDIR += rubygem-seed-fu
     SUBDIR += rubygem-sqlite3

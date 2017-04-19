@@ -20,8 +20,7 @@ CONFLICTS=	at-spi-1.[0-9]*
 PORTSCOUT=	limitw:1,even
 
 NO_ARCH=	yes
-USES=		gettext gmake gnome localbase pathfix pkgconfig \
-		python:3.3+ tar:xz
+USES=		gettext gmake gnome localbase pathfix pkgconfig python:3 tar:xz
 USE_GNOME=	intlhack py3gobject3
 GNU_CONFIGURE=	yes
 
