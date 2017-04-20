@@ -2,12 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	geoclue
-PORTVERSION=	2.4.3
+PORTVERSION=	2.4.6
 CATEGORIES=	net devel gnome
 MASTER_SITES=	http://www.freedesktop.org/software/geoclue/releases/${PORTVERSION:R}/
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	D-Bus service that provides location information
+
+LICENSE=	GPLv2 LGPL21
+LICENSE_COMB=	multi
 
 LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 		libsoup-2.4.so:devel/libsoup
