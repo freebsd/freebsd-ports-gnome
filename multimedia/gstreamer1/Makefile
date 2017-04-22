@@ -33,12 +33,6 @@ PLIST_SUB=	VERSION=${GST10_VERSION} \
 USE_LDCONFIG=	yes
 GST10_VERSION=	1.0
 
-OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	LIBCHECK
-LIBCHECK_DESC=	Unit tests support
-LIBCHECK_CONFIGURE_ENABLE=	check
-LIBCHECK_LIB_DEPENDS=	libcheck.so:devel/check
-
 post-patch:
 	@${REINPLACE_CMD} -e 's|-Wmissing-include-dirs||g' \
 		${WRKSRC}/configure
