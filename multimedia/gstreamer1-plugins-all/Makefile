@@ -3,21 +3,18 @@
 
 PORTNAME=	gstreamer1-plugins-all
 PORTVERSION=	${GST1_VERSION}
-PORTREVISION=	5
+PORTREVISION=	4
 CATEGORIES=	multimedia
 
 MAINTAINER=	multimedia@FreeBSD.org
 COMMENT=	Meta-port of all GStreamer 1.x plugins with options
 
-USES=		gstreamer metaport
+USES=		metaport
 USE_GSTREAMER1=	yes
 
-#.include "${.CURDIR}/../../Mk/Uses/gstreamer.mk"
+.include "${.CURDIR}/../../Mk/bsd.gstreamer.mk"
 
-#.include <bsd.port.options.mk>
-
-ALL_PLUGINS=	${_GSTREAMER_PLUGINS}
-
+ALL_PLUGINS:=	${_GSTREAMER_PLUGINS}
 # Weed out gst-plugins that can not be packaged. or are broken.
 .if defined(PACKAGE_BUILDING)
 # FAAC:    Mp4 Dolby license , no package
@@ -33,14 +30,11 @@ ${all:tu}_DESC=	${all} plugin
 ${all:tu}_USE=	GSTREAMER1=${all}
 .endfor
 
-#OGG_DESC=foo
-#OGG_USE=	GSTREAMER1=ogg
-
 # Pull out i386-only plugins, add back conditionally
 ALL_PLUGINS:=	${ALL_PLUGINS:Nspc}
 DEF_PLUGINS:=	${DEF_PLUGINS:Nspc}
 
-OPTIONS_DEFINE=		${ALL_PLUGINS:tu}
+OPTIONS_DEFINE=	${ALL_PLUGINS:tu}
 OPTIONS_DEFAULT=	${DEF_PLUGINS:tu}
 
 OPTIONS_DEFINE_i386=	SPC
