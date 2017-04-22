@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	jna
-PORTVERSION=	4.3.0
+PORTVERSION=	4.4.0
 CATEGORIES=	devel java
 
 MAINTAINER=	ports@FreeBSD.org
@@ -21,21 +21,18 @@ MAKE_ARGS=	-DCC="${CC}" -DLD="${LD}"
 MAKE_ENV=	ANT_OPTS=-Drelease -DARCH=${ANT_ARCH}
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	twall
+GH_ACCOUNT=	java-native-access
 
 PORTDOCS=	javadoc platform-${PORTVERSION}-javadoc.jar
 PLIST_FILES=	%%JAVAJARDIR%%/jna-platform.jar \
 		%%JAVAJARDIR%%/jna.jar
 
+ALL_TARGET=	native jar
+TEST_TARGET=	test
+
 OPTIONS_DEFINE=	DOCS
 
-.include <bsd.port.options.mk>
-
-.if ${ARCH} == "i386"
-ANT_ARCH=	x86
-.elif ${ARCH} == "amd64"
-ANT_ARCH=	x86-64
-.endif
+ANT_ARCH=	${ARCH:S/amd64/x86-64/:S/i386/x86/}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|' \

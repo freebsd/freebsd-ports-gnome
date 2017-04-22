@@ -3,7 +3,7 @@
 
 PORTNAME=	spdylay
 PORTVERSION=	1.4.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	www net
 MASTER_SITES=	https://github.com/tatsuhiro-t/${PORTNAME}/releases/download/v${PORTVERSION}/ \
 		LOCAL/sunpoet
@@ -17,8 +17,9 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	libevent>=2.0.8:devel/libevent
 LIB_DEPENDS=	libevent_openssl.so:devel/libevent
 
+BROKEN_SSL=	openssl-devel
 BROKEN_powerpc64=	does not build
-BROKEN_sparc64=		does not build: fails to link
+BROKEN_sparc64=	does not build: fails to link
 
 CONFIGURE_ARGS=	--enable-examples \
 		--enable-src

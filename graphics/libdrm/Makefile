@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	libdrm
-PORTVERSION=	2.4.75
+PORTVERSION=	2.4.78
 PORTEPOCH=	1
-PORTREVISION=	1
 CATEGORIES=	graphics x11
 MASTER_SITES=	http://dri.freedesktop.org/libdrm/
 
@@ -13,10 +12,8 @@ COMMENT=	Userspace interface to kernel Direct Rendering Module services
 
 LICENSE=	MIT
 
-BUILD_DEPENDS=	libdevq>=0.0.4:devel/libdevq
-LIB_DEPENDS=	libpciaccess.so:devel/libpciaccess \
-		libdevq.so:devel/libdevq \
-		libpthread-stubs.so:devel/libpthread-stubs
+BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/pthread-stubs.pc:devel/libpthread-stubs
+LIB_DEPENDS=	libpciaccess.so:devel/libpciaccess
 
 USES=		libtool pkgconfig tar:bzip2
 GNU_CONFIGURE=	yes
@@ -75,7 +72,7 @@ PLIST_SUB+=	RADEON_DRIVERS="@comment "
 
 # This variable is not for users. So use a non-default name, intended for
 # people working on DRM kernel module development.
-.if !defined(LIBDRM_SKIP_RETURN_PATCH)
+.if ${OPSYS} == FreeBSD && !defined(LIBDRM_SKIP_RETURN_PATCH)
 EXTRA_PATCHES+=	${FILESDIR}/extra-xf86drm.c
 .endif
 

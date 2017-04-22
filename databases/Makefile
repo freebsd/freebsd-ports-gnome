@@ -33,6 +33,7 @@
     SUBDIR += cdb
     SUBDIR += cego
     SUBDIR += cegobridge
+    SUBDIR += clickhouse
     SUBDIR += couchdb
     SUBDIR += courier-authlib-mysql
     SUBDIR += courier-authlib-pgsql
@@ -94,7 +95,6 @@
     SUBDIR += glom
     SUBDIR += gnats4
     SUBDIR += gnatsweb4
-    SUBDIR += godis
     SUBDIR += gomdb
     SUBDIR += gosqlite3
     SUBDIR += gqlplus
@@ -120,10 +120,7 @@
     SUBDIR += jakarta-commons-dbutils
     SUBDIR += jasperreports
     SUBDIR += jdb
-    SUBDIR += jdbc-oracle10g
     SUBDIR += jdbc-oracle11g
-    SUBDIR += jdbc-oracle8i
-    SUBDIR += jdbc-oracle9i
     SUBDIR += jdbm2
     SUBDIR += jlog
     SUBDIR += jrobin
@@ -141,14 +138,6 @@
     SUBDIR += libdbi-drivers
     SUBDIR += libdrizzle
     SUBDIR += libdrizzle-redux
-    SUBDIR += libgda4
-    SUBDIR += libgda4-bdb
-    SUBDIR += libgda4-jdbc
-    SUBDIR += libgda4-ldap
-    SUBDIR += libgda4-mdb
-    SUBDIR += libgda4-mysql
-    SUBDIR += libgda4-postgresql
-    SUBDIR += libgda4-reference
     SUBDIR += libgda5
     SUBDIR += libgda5-bdb
     SUBDIR += libgda5-jdbc
@@ -157,7 +146,6 @@
     SUBDIR += libgda5-mysql
     SUBDIR += libgda5-postgresql
     SUBDIR += libgda5-ui
-    SUBDIR += libgdamm
     SUBDIR += libgdamm5
     SUBDIR += libhsclient
     SUBDIR += libiodbc
@@ -178,6 +166,7 @@
     SUBDIR += linux-oracle-instantclient-sqlplus
     SUBDIR += liquibase
     SUBDIR += lmdb
+    SUBDIR += lua-xapian
     SUBDIR += luadbi
     SUBDIR += luasql-firebird
     SUBDIR += luasql-mysql
@@ -250,8 +239,6 @@
     SUBDIR += openark-kit
     SUBDIR += opendbx
     SUBDIR += opentsdb
-    SUBDIR += oracle7-client
-    SUBDIR += oracle8-client
     SUBDIR += p5-Amazon-SimpleDB
     SUBDIR += p5-Amon2-DBI
     SUBDIR += p5-AnyEvent-BDB
@@ -314,7 +301,6 @@
     SUBDIR += p5-DBD-Mock
     SUBDIR += p5-DBD-Multi
     SUBDIR += p5-DBD-ODBC
-    SUBDIR += p5-DBD-Oracle
     SUBDIR += p5-DBD-Pg
     SUBDIR += p5-DBD-PgLite
     SUBDIR += p5-DBD-PgPP
@@ -387,6 +373,7 @@
     SUBDIR += p5-DBIx-Handler
     SUBDIR += p5-DBIx-Inspector
     SUBDIR += p5-DBIx-Introspector
+    SUBDIR += p5-DBIx-Lite
     SUBDIR += p5-DBIx-Log4perl
     SUBDIR += p5-DBIx-MySQLSequence
     SUBDIR += p5-DBIx-NoSQL
@@ -488,8 +475,9 @@
     SUBDIR += p5-SQLite-Work
     SUBDIR += p5-Search-InvertedIndex
     SUBDIR += p5-Search-Namazu
-    SUBDIR += p5-Search-Xapian
     SUBDIR += p5-Search-Xapian10
+    SUBDIR += p5-Search-Xapian12
+    SUBDIR += p5-Store-CouchDB
     SUBDIR += p5-T2
     SUBDIR += p5-Tangram
     SUBDIR += p5-Template-DBI
@@ -506,6 +494,7 @@
     SUBDIR += p5-Tie-LevelDB
     SUBDIR += p5-Time-Piece-MySQL
     SUBDIR += p5-TokyoCabinet
+    SUBDIR += p5-Xapian
     SUBDIR += p5-mysql-genocide
     SUBDIR += p5-tokyotyrant
     SUBDIR += pear-DB
@@ -544,6 +533,7 @@
     SUBDIR += pear-Structures_DataGrid_DataSource_PDO
     SUBDIR += pear-XML_Query2XML
     SUBDIR += pecl-chdb
+    SUBDIR += pecl-couchbase
     SUBDIR += pecl-dbase
     SUBDIR += pecl-drizzle
     SUBDIR += pecl-leveldb
@@ -581,14 +571,11 @@
     SUBDIR += pgdbf
     SUBDIR += pgespresso
     SUBDIR += pgfouine
-    SUBDIR += pglesslog
     SUBDIR += pgloader
     SUBDIR += pglogical
     SUBDIR += pgmodeler
     SUBDIR += pgpool
     SUBDIR += pgpool-II
-    SUBDIR += pgpool-II-22
-    SUBDIR += pgpool-II-23
     SUBDIR += pgpool-II-30
     SUBDIR += pgpool-II-33
     SUBDIR += pgpoolAdmin
@@ -601,6 +588,7 @@
     SUBDIR += pguri
     SUBDIR += pgworksheet
     SUBDIR += php-mdcached
+    SUBDIR += php-xapian
     SUBDIR += php5-pdo_cassandra
     SUBDIR += php5-tarantool
     SUBDIR += php56-dba
@@ -648,6 +636,7 @@
     SUBDIR += php71-pdo_sqlite
     SUBDIR += php71-pgsql
     SUBDIR += php71-sqlite3
+    SUBDIR += phpliteadmin
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin
     SUBDIR += phppgadmin
@@ -715,8 +704,6 @@
     SUBDIR += proftpd-mod_sql_postgres
     SUBDIR += proftpd-mod_sql_sqlite
     SUBDIR += proftpd-mod_sql_tds
-    SUBDIR += puppetdb
-    SUBDIR += puppetdb-terminus
     SUBDIR += puppetdb-terminus3
     SUBDIR += puppetdb-terminus4
     SUBDIR += puppetdb3
@@ -799,8 +786,6 @@
     SUBDIR += py-rrdtool_lgpl
     SUBDIR += py-south
     SUBDIR += py-sqlalchemy-migrate
-    SUBDIR += py-sqlalchemy08
-    SUBDIR += py-sqlalchemy09
     SUBDIR += py-sqlalchemy10
     SUBDIR += py-sqlalchemy11
     SUBDIR += py-sqlite3
@@ -815,6 +800,8 @@
     SUBDIR += py-umemcache
     SUBDIR += py-unqlite
     SUBDIR += py-whisper
+    SUBDIR += py-xapian
+    SUBDIR += py3-apsw
     SUBDIR += py3-bsddb3
     SUBDIR += py3-mysqlclient
     SUBDIR += py3-psycopg2
@@ -859,6 +846,7 @@
     SUBDIR += riak
     SUBDIR += riak2
     SUBDIR += rocksdb
+    SUBDIR += rocksdb-lite
     SUBDIR += rrdman
     SUBDIR += rrdmerge
     SUBDIR += rrdtool
@@ -869,6 +857,7 @@
     SUBDIR += ruby-odbc
     SUBDIR += ruby-qdbm
     SUBDIR += ruby-tokyocabinet
+    SUBDIR += ruby-xapian
     SUBDIR += rubygem-activemodel4
     SUBDIR += rubygem-activemodel5
     SUBDIR += rubygem-activerecord-import
@@ -882,6 +871,7 @@
     SUBDIR += rubygem-arel
     SUBDIR += rubygem-arel-helpers
     SUBDIR += rubygem-arel6
+    SUBDIR += rubygem-arel7
     SUBDIR += rubygem-awesome_nested_set
     SUBDIR += rubygem-bdb1
     SUBDIR += rubygem-bigrecord
@@ -927,11 +917,11 @@
     SUBDIR += rubygem-paranoia
     SUBDIR += rubygem-pg
     SUBDIR += rubygem-pg_array_parser
+    SUBDIR += rubygem-pghero
     SUBDIR += rubygem-postgres_ext
     SUBDIR += rubygem-rbase
     SUBDIR += rubygem-redis
     SUBDIR += rubygem-redis-actionpack
-    SUBDIR += rubygem-redis-actionpack4
     SUBDIR += rubygem-redis-namespace
     SUBDIR += rubygem-seed-fu
     SUBDIR += rubygem-sqlite3
@@ -962,6 +952,7 @@
     SUBDIR += sqlite3
     SUBDIR += sqlitebrowser
     SUBDIR += sqlitebrowser-qt5
+    SUBDIR += sqliteconvert
     SUBDIR += sqliteman
     SUBDIR += sqlitemanager
     SUBDIR += sqliteodbc
@@ -995,10 +986,11 @@
     SUBDIR += wfb2sql
     SUBDIR += wmjsql
     SUBDIR += xapian-bindings
+    SUBDIR += xapian-bindings12
     SUBDIR += xapian-core
     SUBDIR += xapian-core10
+    SUBDIR += xapian-core12
     SUBDIR += xtrabackup
-    SUBDIR += yasql
     SUBDIR += zodb3
 
 .include <bsd.port.subdir.mk>

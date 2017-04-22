@@ -1517,6 +1517,8 @@ share/applications/emacs.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/emacs-lisp/cl-macs.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/emacs-lisp/cl-preloaded.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/emacs-lisp/cl-preloaded.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/emacs-lisp/cl-print.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/emacs-lisp/cl-print.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/emacs-lisp/cl-seq.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/emacs-lisp/cl-seq.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/emacs-lisp/cl.el.gz
@@ -2226,6 +2228,9 @@ share/applications/emacs.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/international/uni-name.el
 %%DATADIR%%/%%EMACS_VER%%/lisp/international/uni-numeric.el
 %%DATADIR%%/%%EMACS_VER%%/lisp/international/uni-old-name.el
+%%DATADIR%%/%%EMACS_VER%%/lisp/international/uni-special-lowercase.el
+%%DATADIR%%/%%EMACS_VER%%/lisp/international/uni-special-titlecase.el
+%%DATADIR%%/%%EMACS_VER%%/lisp/international/uni-special-uppercase.el
 %%DATADIR%%/%%EMACS_VER%%/lisp/international/uni-titlecase.el
 %%DATADIR%%/%%EMACS_VER%%/lisp/international/uni-uppercase.el
 %%DATADIR%%/%%EMACS_VER%%/lisp/international/utf-7.el.gz
@@ -2324,8 +2329,7 @@ share/applications/emacs.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/language/viet-util.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/language/vietnamese.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/language/vietnamese.elc
-%%DATADIR%%/%%EMACS_VER%%/lisp/ldefs-boot-auto.el
-%%DATADIR%%/%%EMACS_VER%%/lisp/ldefs-boot-manual.el
+%%DATADIR%%/%%EMACS_VER%%/lisp/ldefs-boot.el
 %%DATADIR%%/%%EMACS_VER%%/lisp/leim/ja-dic/ja-dic.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/leim/ja-dic/ja-dic.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/leim/leim-list.el
@@ -3553,6 +3557,8 @@ share/applications/emacs.desktop
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/ispell.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/makeinfo.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/makeinfo.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/mhtml-mode.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/mhtml-mode.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/nroff-mode.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/nroff-mode.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/textmodes/page-ext.el.gz

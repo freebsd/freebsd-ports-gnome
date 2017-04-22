@@ -53,6 +53,7 @@
     SUBDIR += emacs
     SUBDIR += emacs-devel
     SUBDIR += emacs-nox11
+    SUBDIR += encryptpad
     SUBDIR += fileobj
     SUBDIR += flim
     SUBDIR += focuswriter
@@ -195,12 +196,12 @@
     SUBDIR += libreoffice-vec
     SUBDIR += libreoffice-xh
     SUBDIR += libreoffice-zu
-    SUBDIR += libreoffice4
     SUBDIR += linux-sublime
     SUBDIR += linux-sublime3
     SUBDIR += madedit
     SUBDIR += manedit
     SUBDIR += mg
+    SUBDIR += micro
     SUBDIR += mined
     SUBDIR += morla
     SUBDIR += mousepad
@@ -226,6 +227,7 @@
     SUBDIR += poedit
     SUBDIR += psgml
     SUBDIR += puff
+    SUBDIR += py-editorconfig
     SUBDIR += py-room
     SUBDIR += rox-edit
     SUBDIR += scite

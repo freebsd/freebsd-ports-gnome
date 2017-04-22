@@ -3,7 +3,7 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	3.2.4
-PORTREVISION=	4
+PORTREVISION=	8
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://ffmpeg.org/releases/
@@ -251,7 +251,7 @@ OPENCL_LIB_DEPENDS=	libOpenCL.so:devel/ocl-icd
 OPENCL_CONFIGURE_ENABLE=	opencl
 
 # opencv
-OPENCV_LIB_DEPENDS=	libopencv_imgproc.so:graphics/opencv2-core
+OPENCV_LIB_DEPENDS=	libopencv_imgproc.so:graphics/opencv-core
 OPENCV_CONFIGURE_ENABLE=	libopencv
 
 # opengl
@@ -267,7 +267,7 @@ OPENJPEG_LIB_DEPENDS=	libopenjp2.so:graphics/openjpeg
 OPENJPEG_CONFIGURE_ENABLE=	libopenjpeg
 
 # openssl
-OPENSSL_USE=		OPENSSL=yes
+OPENSSL_USES=		ssl
 OPENSSL_CONFIGURE_ENABLE=	openssl
 OPENSSL_IMPLIES=	NONFREE
 
@@ -305,7 +305,7 @@ SDL_CONFIGURE_ENABLE=	ffplay
 SDL_CONFIGURE_OFF=	--disable-outdev=sdl --disable-sdl2
 
 # smbclient
-SMB_LIB_DEPENDS=	libsmbclient.so:net/samba-libsmbclient
+SMB_USES=		samba:lib
 SMB_CONFIGURE_ENABLE=	libsmbclient
 SMB_IMPLIES=		GPL3
 

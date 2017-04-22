@@ -91,6 +91,7 @@ include/wine/windows/amstream.h
 include/wine/windows/amstream.idl
 include/wine/windows/amvideo.h
 include/wine/windows/amvideo.idl
+%%STAGING%%include/wine/windows/apiset.h
 include/wine/windows/appcompatapi.h
 include/wine/windows/appmgmt.h
 include/wine/windows/asptlb.h
@@ -467,6 +468,8 @@ include/wine/windows/mferror.h
 %%STAGING%%include/wine/windows/mfidl.idl
 include/wine/windows/mfobjects.h
 include/wine/windows/mfobjects.idl
+include/wine/windows/mfreadwrite.h
+include/wine/windows/mfreadwrite.idl
 include/wine/windows/midles.h
 include/wine/windows/mimeinfo.h
 include/wine/windows/mimeinfo.idl
@@ -514,6 +517,7 @@ include/wine/windows/msinkaut.h
 include/wine/windows/msinkaut.idl
 include/wine/windows/msiquery.h
 include/wine/windows/mssip.h
+include/wine/windows/msstkppg.h
 include/wine/windows/mstask.h
 include/wine/windows/mstask.idl
 include/wine/windows/mstcpip.h
@@ -742,6 +746,7 @@ include/wine/windows/ver.h
 include/wine/windows/verrsrc.h
 include/wine/windows/vfw.h
 include/wine/windows/vfwmsgs.h
+%%STAGING%%include/wine/windows/virtdisk.h
 include/wine/windows/vmr9.h
 include/wine/windows/vmr9.idl
 include/wine/windows/vmrender.idl
@@ -969,6 +974,7 @@ lib/wine/api-ms-win-core-psapi-obsolete-l1-1-0.dll.so
 %%STAGING%%lib/wine/api-ms-win-core-quirks-l1-1-0.dll.so
 lib/wine/api-ms-win-core-realtime-l1-1-0.dll.so
 lib/wine/api-ms-win-core-registry-l1-1-0.dll.so
+%%STAGING%%lib/wine/api-ms-win-core-registry-l2-1-0.dll.so
 lib/wine/api-ms-win-core-registryuserspecific-l1-1-0.dll.so
 lib/wine/api-ms-win-core-rtlsupport-l1-1-0.dll.so
 lib/wine/api-ms-win-core-rtlsupport-l1-2-0.dll.so
@@ -988,6 +994,7 @@ lib/wine/api-ms-win-core-sysinfo-l1-2-1.dll.so
 lib/wine/api-ms-win-core-threadpool-l1-1-0.dll.so
 lib/wine/api-ms-win-core-threadpool-l1-2-0.dll.so
 lib/wine/api-ms-win-core-threadpool-legacy-l1-1-0.dll.so
+%%STAGING%%lib/wine/api-ms-win-core-threadpool-private-l1-1-0.dll.so
 lib/wine/api-ms-win-core-timezone-l1-1-0.dll.so
 lib/wine/api-ms-win-core-toolhelp-l1-1-0.dll.so
 lib/wine/api-ms-win-core-url-l1-1-0.dll.so
@@ -1001,6 +1008,7 @@ lib/wine/api-ms-win-core-winrt-error-l1-1-1.dll.so
 lib/wine/api-ms-win-core-winrt-errorprivate-l1-1-1.dll.so
 lib/wine/api-ms-win-core-winrt-l1-1-0.dll.so
 lib/wine/api-ms-win-core-winrt-registration-l1-1-0.dll.so
+%%STAGING%%lib/wine/api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll.so
 lib/wine/api-ms-win-core-winrt-string-l1-1-0.dll.so
 lib/wine/api-ms-win-core-wow64-l1-1-0.dll.so
 lib/wine/api-ms-win-core-xstate-l1-1-0.dll.so
@@ -1037,6 +1045,8 @@ lib/wine/api-ms-win-eventing-consumer-l1-1-0.dll.so
 lib/wine/api-ms-win-eventing-controller-l1-1-0.dll.so
 lib/wine/api-ms-win-eventing-provider-l1-1-0.dll.so
 lib/wine/api-ms-win-eventlog-legacy-l1-1-0.dll.so
+%%STAGING%%lib/wine/api-ms-win-mm-misc-l1-1-1.dll.so
+%%STAGING%%lib/wine/api-ms-win-mm-mme-l1-1-0.dll.so
 lib/wine/api-ms-win-ntuser-dc-access-l1-1-0.dll.so
 lib/wine/api-ms-win-power-base-l1-1-0.dll.so
 lib/wine/api-ms-win-power-setting-l1-1-0.dll.so
@@ -1047,11 +1057,13 @@ lib/wine/api-ms-win-security-audit-l1-1-1.dll.so
 lib/wine/api-ms-win-security-base-l1-1-0.dll.so
 lib/wine/api-ms-win-security-base-l1-2-0.dll.so
 lib/wine/api-ms-win-security-base-private-l1-1-1.dll.so
+%%STAGING%%lib/wine/api-ms-win-security-grouppolicy-l1-1-0.dll.so
 lib/wine/api-ms-win-security-lsalookup-l1-1-0.dll.so
 lib/wine/api-ms-win-security-lsalookup-l1-1-1.dll.so
 lib/wine/api-ms-win-security-lsalookup-l2-1-1.dll.so
 lib/wine/api-ms-win-security-lsapolicy-l1-1-0.dll.so
 lib/wine/api-ms-win-security-sddl-l1-1-0.dll.so
+%%STAGING%%lib/wine/api-ms-win-security-systemfunctions-l1-1-0.dll.so
 lib/wine/api-ms-win-service-core-l1-1-0.dll.so
 lib/wine/api-ms-win-service-core-l1-1-1.dll.so
 lib/wine/api-ms-win-service-management-l1-1-0.dll.so
@@ -1329,6 +1341,7 @@ lib/wine/fakedlls/api-ms-win-core-psapi-obsolete-l1-1-0.dll
 %%STAGING%%lib/wine/fakedlls/api-ms-win-core-quirks-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-realtime-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-registry-l1-1-0.dll
+%%STAGING%%lib/wine/fakedlls/api-ms-win-core-registry-l2-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-registryuserspecific-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-rtlsupport-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-rtlsupport-l1-2-0.dll
@@ -1348,6 +1361,7 @@ lib/wine/fakedlls/api-ms-win-core-sysinfo-l1-2-1.dll
 lib/wine/fakedlls/api-ms-win-core-threadpool-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-threadpool-l1-2-0.dll
 lib/wine/fakedlls/api-ms-win-core-threadpool-legacy-l1-1-0.dll
+%%STAGING%%lib/wine/fakedlls/api-ms-win-core-threadpool-private-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-timezone-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-toolhelp-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-url-l1-1-0.dll
@@ -1361,6 +1375,7 @@ lib/wine/fakedlls/api-ms-win-core-winrt-error-l1-1-1.dll
 lib/wine/fakedlls/api-ms-win-core-winrt-errorprivate-l1-1-1.dll
 lib/wine/fakedlls/api-ms-win-core-winrt-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-winrt-registration-l1-1-0.dll
+%%STAGING%%lib/wine/fakedlls/api-ms-win-core-winrt-roparameterizediid-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-winrt-string-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-wow64-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-core-xstate-l1-1-0.dll
@@ -1397,6 +1412,8 @@ lib/wine/fakedlls/api-ms-win-eventing-consumer-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-eventing-controller-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-eventing-provider-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-eventlog-legacy-l1-1-0.dll
+%%STAGING%%lib/wine/fakedlls/api-ms-win-mm-misc-l1-1-1.dll
+%%STAGING%%lib/wine/fakedlls/api-ms-win-mm-mme-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-ntuser-dc-access-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-power-base-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-power-setting-l1-1-0.dll
@@ -1407,11 +1424,13 @@ lib/wine/fakedlls/api-ms-win-security-audit-l1-1-1.dll
 lib/wine/fakedlls/api-ms-win-security-base-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-security-base-l1-2-0.dll
 lib/wine/fakedlls/api-ms-win-security-base-private-l1-1-1.dll
+%%STAGING%%lib/wine/fakedlls/api-ms-win-security-grouppolicy-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-security-lsalookup-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-security-lsalookup-l1-1-1.dll
 lib/wine/fakedlls/api-ms-win-security-lsalookup-l2-1-1.dll
 lib/wine/fakedlls/api-ms-win-security-lsapolicy-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-security-sddl-l1-1-0.dll
+%%STAGING%%lib/wine/fakedlls/api-ms-win-security-systemfunctions-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-service-core-l1-1-0.dll
 lib/wine/fakedlls/api-ms-win-service-core-l1-1-1.dll
 lib/wine/fakedlls/api-ms-win-service-management-l1-1-0.dll

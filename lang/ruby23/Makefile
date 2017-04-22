@@ -11,7 +11,7 @@ DISTNAME=	${RUBY_DISTNAME}
 DIST_SUBDIR=	ruby
 
 MAINTAINER=	ruby@FreeBSD.org
-COMMENT?=	Object-oriented interpreted scripting language
+COMMENT=	Object-oriented interpreted scripting language
 
 LICENSE=	BSD2CLAUSE RUBY
 LICENSE_COMB=	dual
@@ -22,6 +22,9 @@ LICENSE_FILE_RUBY=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	libffi>=0:devel/libffi
 LIB_DEPENDS=	libyaml.so:textproc/libyaml
 RUN_DEPENDS=	libffi>=0:devel/libffi
+
+BROKEN_SSL=	openssl-devel
+BROKEN_SSL_REASON_openssl-devel=does not detect and buid the openssl*.rb bits	
 
 CONFIGURE_ARGS=	${RUBY_CONFIGURE_ARGS} \
 		--disable-rpath \
@@ -55,7 +58,7 @@ RDOC_DESC=		Build and install Rdoc indexes
 EDIT_DESC=		Which line editing lib to use
 LIBEDIT_DESC=		Use libedit
 READLINE_DESC=		Use libreadline
-CAPIDOCS_BUILD_DEPENDS=	doxygen>1.8.12,2:devel/doxygen \
+CAPIDOCS_BUILD_DEPENDS=	doxygen>=1.8.12,2:devel/doxygen \
 			dot:graphics/graphviz
 CAPIDOCS_CONFIGURE_ENABLE=	install-capi
 GMP_CONFIGURE_WITH=	gmp

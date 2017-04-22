@@ -3,7 +3,7 @@
 
 PORTNAME=	Padre
 PORTVERSION=	1.00
-PORTREVISION=	5
+PORTREVISION=	7
 CATEGORIES=	editors perl5
 MASTER_SITES=	CPAN/${PORTNAME}/ CPAN/Wx/:wxsc
 PKGNAMEPREFIX=	p5-
@@ -27,14 +27,12 @@ BUILD_DEPENDS=	p5-JSON-XS>=2.29:converters/p5-JSON-XS \
 		p5-Class-Adapter>=1.05:devel/p5-Class-Adapter \
 		p5-Class-Inspector>=1.22:devel/p5-Class-Inspector \
 		p5-Class-XSAccessor>=1.13:devel/p5-Class-XSAccessor \
-		p5-Data-Dumper>=2.101:devel/p5-Data-Dumper \
 		p5-Debug-Client>=0.20:devel/p5-Debug-Client \
 		p5-Devel-Dumpvar>=0.04:devel/p5-Devel-Dumpvar \
 		p5-Devel-Refactor>=0.05:devel/p5-Devel-Refactor \
 		p5-File-Copy-Recursive>=0.37:devel/p5-File-Copy-Recursive \
 		p5-File-Find-Rule>=0.30:devel/p5-File-Find-Rule \
 		p5-File-HomeDir>=0.84:devel/p5-File-HomeDir \
-		p5-File-Path>=2.08:devel/p5-File-Path \
 		p5-File-ShareDir>=1.00:devel/p5-File-ShareDir \
 		p5-IO-stringy>=2.110:devel/p5-IO-stringy \
 		p5-IPC-Run>=0.83:devel/p5-IPC-Run \
@@ -63,7 +61,7 @@ BUILD_DEPENDS=	p5-JSON-XS>=2.29:converters/p5-JSON-XS \
 		p5-YAML-Tiny>=1.32:textproc/p5-YAML-Tiny \
 		p5-HTML-Parser>=3.58:www/p5-HTML-Parser \
 		p5-libwww>=5.815:www/p5-libwww \
-		p5-Wx>=0.97:x11-toolkits/p5-Wx \
+		p5-Wx>=0.9700:x11-toolkits/p5-Wx \
 		p5-Wx-Perl-ProcessStream>=0.25:x11-toolkits/p5-Wx-Perl-ProcessStream
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 BUILD_DEPENDS+=	p5-Module-Build>=0.36:devel/p5-Module-Build
@@ -91,8 +89,8 @@ WXSC_DISTFILE=	${WXSC_DISTNAME}.tar.gz
 .include <bsd.port.pre.mk>
 
 .if ${PERL_LEVEL} >= 502100
-BUILD_DEPENDS+=	p5-CGI>0:www/p5-CGI
-RUN_DEPENDS+=	p5-CGI>0:www/p5-CGI
+BUILD_DEPENDS+=	p5-CGI>=3.47:www/p5-CGI
+RUN_DEPENDS+=	p5-CGI>=3.47:www/p5-CGI
 .endif
 
 .if exists(${PERL})

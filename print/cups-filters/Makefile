@@ -1,13 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	cups-filters
-PORTVERSION=	1.11.4
-PORTREVISION=	1
+PORTVERSION=	1.13.4
+PORTREVISION?=	3
 CATEGORIES=	print
 MASTER_SITES=	http://www.openprinting.org/download/cups-filters/
 
 MAINTAINER=	cyberbotx@cyberbotx.com
 COMMENT=	Additional backends, filters and other software for CUPS
+
+LICENSE=	BSD4CLAUSE GPLv2 GPLv2+ GPLv3 GPLv3+ LGPL20 LGPL21+ MIT
+LICENSE_COMB=	multi
 
 LIB_DEPENDS=	liblcms2.so:graphics/lcms2 \
 		libqpdf.so:print/qpdf \
@@ -41,7 +44,7 @@ OPTIONS_DEFINE=			BRAILLE COLORD DOCS IJS IMAGEFILTERS
 OPTIONS_GROUP=			CUPS_BROWSED
 OPTIONS_GROUP_CUPS_BROWSED=	AVAHI LDAP
 OPTIONS_SINGLE=			PDFTOPS_RENDERER
-OPTIONS_SINGLE_PDFTOPS_RENDERER=GS HYBRID PDFTOPS
+OPTIONS_SINGLE_PDFTOPS_RENDERER=GS HYBRID PDFTOPS MUPDF
 OPTIONS_DEFAULT=		AVAHI COLORD HYBRID IJS IMAGEFILTERS
 OPTIONS_SUB=			yes
 
@@ -90,13 +93,19 @@ GS_DESC=			Ghostscript gs(1)
 
 HYBRID_BUILD_DEPENDS=		pdftops:graphics/poppler-utils
 HYBRID_RUN_DEPENDS=		pdftops:graphics/poppler-utils
-HYBRID_CONFIGURE_ON=		--with-pdftops=hybrid
+HYBRID_CONFIGURE_ON=		--with-pdftops=hybrid --with-pdftops-path=${LOCALBASE}/bin/pdftops
 HYBRID_DESC=			Ghostscript or Poppler depending on printer
 
 PDFTOPS_BUILD_DEPENDS=		pdftops:graphics/poppler-utils
 PDFTOPS_RUN_DEPENDS=		pdftops:graphics/poppler-utils
-PDFTOPS_CONFIGURE_ON=		--with-pdftops=pdftops
+PDFTOPS_CONFIGURE_ON=		--with-pdftops=pdftops --with-pdftops-path=${LOCALBASE}/bin/pdftops
 PDFTOPS_DESC=			Poppler pdftops(1)
+
+MUPDF_BUILD_DEPENDS=		mutool:graphics/mupdf
+MUPDF_RUN_DEPENDS=		mutool:graphics/mupdf
+MUPDF_CONFIGURE_ON=		--with-pdftops=mupdf
+MUPDF_CONFIGURE_ENABLE=		mutool
+MUPDF_DESC=			MuPDF renderer
 
 PDFTOPS_RENDERER_DESC=		Default PDF-to-PostScript renderer
 

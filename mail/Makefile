@@ -82,6 +82,7 @@
     SUBDIR += cyrus-imapd23
     SUBDIR += cyrus-imapd24
     SUBDIR += cyrus-imapd25
+    SUBDIR += cyrus-imapd30
     SUBDIR += cyrus2courier
     SUBDIR += cyrus2dovecot
     SUBDIR += davmail
@@ -253,7 +254,6 @@
     SUBDIR += mini_sendmail
     SUBDIR += minimalist
     SUBDIR += missey
-    SUBDIR += mixmaster
     SUBDIR += mlmmj
     SUBDIR += mls
     SUBDIR += mmr
@@ -486,6 +486,7 @@
     SUBDIR += pear-Net_IMAP
     SUBDIR += pear-Net_LMTP
     SUBDIR += pecl-mailparse
+    SUBDIR += pecl-mailparse2
     SUBDIR += pecl-pop3
     SUBDIR += perdition
     SUBDIR += pflogsumm
@@ -545,7 +546,6 @@
     SUBDIR += py-ppolicy
     SUBDIR += py-pyspf
     SUBDIR += py-spambayes
-    SUBDIR += py-turbomail
     SUBDIR += py-twistedMail
     SUBDIR += py-zope.sendmail
     SUBDIR += pymsgauth
@@ -615,6 +615,7 @@
     SUBDIR += rubygem-actionmailer5
     SUBDIR += rubygem-email_reply_parser
     SUBDIR += rubygem-email_reply_parser-discourse
+    SUBDIR += rubygem-email_reply_trimmer
     SUBDIR += rubygem-exception_notification
     SUBDIR += rubygem-larch
     SUBDIR += rubygem-mail

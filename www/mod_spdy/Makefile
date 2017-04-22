@@ -3,7 +3,7 @@
 
 PORTNAME=	mod_spdy
 PORTVERSION=	0.9.4.1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	www
 MASTER_SITES=	http://www.club.kyutech.ac.jp/~masaki/ports/:mod_spdy \
 		APACHE_HTTPD:apache22
@@ -82,11 +82,10 @@ CONFIGURE_ENV+=	CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}"
 MAKE_ENV+=	BUILDTYPE=${BUILDTYPE}
 
-.include <bsd.port.pre.mk>
+BROKEN_SSL=		libressl libressl-devel
+BROKEN_SSL_REASON=	incompatible with LibreSSL, please use www/apache24 with mod_http2
 
-.if ${SSL_DEFAULT:Mlibressl*}
-IGNORE=		${PORTNAME} is incompatible with LibreSSL, please use www/apache24 with mod_http2
-.endif
+.include <bsd.port.pre.mk>
 
 .if ${COMPILER_TYPE} == clang && ${COMPILER_VERSION} >= 36
 CXXFLAGS+=	-Wno-unused-local-typedef

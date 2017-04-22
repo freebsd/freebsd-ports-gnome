@@ -312,7 +312,6 @@
     SUBDIR += p5-File-Sort
     SUBDIR += p5-Geo-Cache
     SUBDIR += p5-Geo-Coder-Bing
-    SUBDIR += p5-Geo-Coder-Geocoder-US
     SUBDIR += p5-Geo-Coder-Google
     SUBDIR += p5-Geo-Coder-Googlev3
     SUBDIR += p5-Geo-Coder-Many
@@ -392,6 +391,7 @@
     SUBDIR += py-spdx-lookup
     SUBDIR += py-tqdm
     SUBDIR += py-yolk
+    SUBDIR += py3-tqdm
     SUBDIR += pylize
     SUBDIR += qbrew
     SUBDIR += qlas

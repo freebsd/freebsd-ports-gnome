@@ -98,7 +98,6 @@
     SUBDIR += irssi-themes
     SUBDIR += kde-gtk-config
     SUBDIR += kde-icons-black-and-white
-    SUBDIR += kde-icons-cezanne
     SUBDIR += kde-icons-dark-glass
     SUBDIR += kde-icons-gartoon-blue-svg
     SUBDIR += kde-icons-gartoon-svg
@@ -110,10 +109,8 @@
     SUBDIR += kde-icons-noia
     SUBDIR += kde-icons-nuovext2
     SUBDIR += kde-icons-nuvola
-    SUBDIR += kde-icons-sky
     SUBDIR += kde-icons-umicons
     SUBDIR += kde4-base-artwork
-    SUBDIR += kde4-icons-oxygen
     SUBDIR += kde4-style-bespin
     SUBDIR += kde4-style-nitrogen
     SUBDIR += kde4-style-oxygen-transparent

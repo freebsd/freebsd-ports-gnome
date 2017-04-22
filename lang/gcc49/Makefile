@@ -3,7 +3,7 @@
 
 PORTNAME=	gcc
 PORTVERSION=	4.9.4
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	lang java
 MASTER_SITES=	GCC/releases/gcc-${DISTVERSION}
 PKGNAMESUFFIX=	${SUFFIX}
@@ -24,7 +24,6 @@ RUN_DEPENDS+=	${LOCALBASE}/bin/as:devel/binutils
 BUILD_DEPENDS+=	runtest:misc/dejagnu
 .endif
 
-CONFLICTS=	gcc-4.9.*
 CPE_VENDOR=	gnu
 
 # GCC_VERSION and SUFFIX relate to names of executables and directories
@@ -46,6 +45,9 @@ OPTIONS_DEFAULT_i386=	JAVA
 OPTIONS_DEFAULT_amd64=	JAVA
 OPTIONS_EXCLUDE_DragonFly=	JAVA
 BOOTSTRAP_DESC=		Build using a full bootstrap
+
+JAVA_USES=	python:build shebangfix
+SHEBANG_FILES=	libjava/contrib/aot-compile.in
 
 .if exists(/usr/lib32/libc.so)
 OPTIONS_DEFINE_powerpc64+=	MULTILIB

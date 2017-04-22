@@ -3,6 +3,7 @@
 
 PORTNAME=	gcc
 PORTVERSION=	5.4.0
+PORTREVISION=	2
 CATEGORIES=	lang java
 MASTER_SITES=	GCC/releases/gcc-${DISTVERSION}
 PKGNAMESUFFIX=	${SUFFIX}
@@ -23,6 +24,7 @@ RUN_DEPENDS+=	${LOCALBASE}/bin/as:devel/binutils
 BUILD_DEPENDS+=	runtest:misc/dejagnu
 .endif
 
+CONFLICTS=	gcc-5.*
 CPE_VENDOR=	gnu
 
 GCC_VERSION=	${PORTVERSION}
@@ -36,12 +38,16 @@ SSP_UNSAFE=	yes
 OPTIONS_DEFINE=		BOOTSTRAP GRAPHITE
 OPTIONS_DEFINE_i386=	JAVA
 OPTIONS_DEFINE_amd64=	JAVA
+OPTIONS_DEFINE_powerpc64=	JAVA
 OPTIONS_DEFAULT=	BOOTSTRAP
 OPTIONS_DEFAULT_i386=	JAVA
 OPTIONS_DEFAULT_amd64=	JAVA
 OPTIONS_EXCLUDE_DragonFly=	JAVA
 BOOTSTRAP_DESC=		Build using a full bootstrap
 GRAPHITE_DESC=		Support for Graphite loop optimizations
+
+JAVA_USES=	python:build shebangfix
+SHEBANG_FILES=	libjava/contrib/aot-compile.in
 
 .if exists(/usr/lib32/libc.so)
 OPTIONS_DEFINE_powerpc64+=	MULTILIB

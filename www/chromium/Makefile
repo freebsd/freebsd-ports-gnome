@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	chromium
-PORTVERSION=	56.0.2924.87
-PORTREVISION=	1
+PORTVERSION=	57.0.2987.133
 CATEGORIES=	www
 MASTER_SITES=	http://commondatastorage.googleapis.com/chromium-browser-official/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} # default, but needed to get distinfo correct if TEST is on
@@ -82,7 +81,10 @@ GN_ARGS+=	is_clang=true \
 		clang_use_chrome_plugins=false \
 		enable_media_router=true \
 		enable_nacl=false \
+		enable_one_click_signin=true \
 		enable_remoting=false \
+		enable_webrtc=false \
+		fieldtrial_testing_like_official_build=true \
 		toolkit_views=true \
 		use_allocator="none" \
 		use_aura=true \
@@ -199,10 +201,9 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-patch-clang
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-10
 .endif
 
-.if ${OSVERSION} >= 1200017 || (${OSVERSION} >= 1100508 && ${OSVERSION} < 1200000)
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-new
-.else
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-old
+# Work around base r261801
+.if ${OSVERSION} < 1100508
+GN_ARGS+=	extra_cxxflags="-D_LIBCPP_TRIVIAL_PAIR_COPY_CTOR=1"
 .endif
 .endif
 
@@ -246,6 +247,10 @@ test regression-test: build
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_MAN} ${WRKSRC}/out/${BUILDTYPE}/chrome.1 ${STAGEDIR}${MANPREFIX}/man/man1
+.for t in font_service ui
+	${INSTALL_DATA} ${WRKSRC}/out/${BUILDTYPE}/${t}.service \
+		${STAGEDIR}${DATADIR}
+.endfor
 .for s in 22 24 48 64 128 256
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/${s}x${s}/apps
 	${INSTALL_DATA} ${WRKSRC}/chrome/app/theme/chromium/product_logo_${s}.png \
@@ -253,11 +258,13 @@ do-install:
 .endfor
 	${INSTALL_SCRIPT} ${WRKSRC}/chrome/tools/build/linux/chrome-wrapper \
 		${STAGEDIR}${DATADIR}
-.for p in chrome_100_percent chrome_200_percent keyboard_resources resources
+.for p in chrome_100_percent chrome_200_percent headless_lib keyboard_resources \
+	resources mus_app_resources_100 mus_app_resources_200 mus_app_resources_strings \
+	views_mus_resources
 	${INSTALL_DATA} ${WRKSRC}/out/${BUILDTYPE}/${p}.pak \
 		${STAGEDIR}${DATADIR}
 .endfor
-.for d in icudtl.dat natives_blob.bin
+.for d in icudtl.dat natives_blob.bin snapshot_blob.bin
 	${INSTALL_DATA} ${WRKSRC}/out/${BUILDTYPE}/${d} ${STAGEDIR}${DATADIR}
 .endfor
 	${INSTALL_PROGRAM} ${WRKSRC}/out/${BUILDTYPE}/chrome \

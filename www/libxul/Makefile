@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	libxul
-DISTVERSION=	45.7.0
-PORTREVISION=	2
+DISTVERSION=	45.9.0
 CATEGORIES?=	www devel
 MASTER_SITES=	MOZILLA/firefox/releases/${DISTVERSION}esr/source \
-		MOZILLA/firefox/candidates/${DISTVERSION}esr-candidates/build1/source
+		MOZILLA/firefox/candidates/${DISTVERSION}esr-candidates/build3/source
 DISTNAME=	firefox-${DISTVERSION}esr.source
 
 MAINTAINER?=	gecko@FreeBSD.org
@@ -40,6 +39,7 @@ LDFLAGS+=	-Wl,-rpath,${PREFIX}/lib/${MOZ_RPATH}
 USE_LDCONFIG=	${PREFIX}/lib/${MOZILLA}
 
 MOZ_OPTIONS?=	--enable-application=xulrunner
+MOZ_CHANNEL=	esr
 USE_GECKO=	gecko
 CPE_PRODUCT=	firefox_esr
 MOZILLA_EXEC_NAME=xulrunner

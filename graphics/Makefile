@@ -63,6 +63,7 @@
     SUBDIR += autotrace
     SUBDIR += aview
     SUBDIR += ayam
+    SUBDIR += azpainter
     SUBDIR += backfract
     SUBDIR += barbecue
     SUBDIR += barcode
@@ -77,6 +78,7 @@
     SUBDIR += burplex
     SUBDIR += c-a-i-r
     SUBDIR += cadubi
+    SUBDIR += caffe
     SUBDIR += cairo
     SUBDIR += cairo-reference
     SUBDIR += cairomm
@@ -144,6 +146,7 @@
     SUBDIR += dmtx-utils
     SUBDIR += dri
     SUBDIR += driconf
+    SUBDIR += dspdfviewer
     SUBDIR += duhdraw
     SUBDIR += dynamechs
     SUBDIR += easypaint
@@ -282,7 +285,6 @@
     SUBDIR += gocr
     SUBDIR += goocanvas
     SUBDIR += goocanvas2
-    SUBDIR += goocanvasmm
     SUBDIR += goocanvasmm2
     SUBDIR += goom
     SUBDIR += gource
@@ -290,9 +292,11 @@
     SUBDIR += gphoto2
     SUBDIR += gpicview
     SUBDIR += gpsmanshp
+    SUBDIR += gpu-firmware-kmod
     SUBDIR += gracula
     SUBDIR += grads
     SUBDIR += grafx2
+    SUBDIR += graphene
     SUBDIR += graphite2
     SUBDIR += graphopt
     SUBDIR += graphos
@@ -328,6 +332,7 @@
     SUBDIR += gtk-update-icon-cache
     SUBDIR += gtkam
     SUBDIR += gts
+    SUBDIR += guetzli
     SUBDIR += guilib
     SUBDIR += gwenview-kde4
     SUBDIR += gx
@@ -501,6 +506,7 @@
     SUBDIR += libimg
     SUBDIR += libiptcdata
     SUBDIR += libjpeg-turbo
+    SUBDIR += libjxr
     SUBDIR += libkdcraw-kde4
     SUBDIR += libkexiv2-kde4
     SUBDIR += libkface
@@ -618,12 +624,11 @@
     SUBDIR += opencolorio
     SUBDIR += opencolorio-tools
     SUBDIR += opencsg
-    SUBDIR += opencv2
-    SUBDIR += opencv2-core
-    SUBDIR += opencv2-java
+    SUBDIR += opencv
+    SUBDIR += opencv-core
+    SUBDIR += opencv-java
     SUBDIR += opendx
     SUBDIR += opengl-man
-    SUBDIR += opengtl
     SUBDIR += openimageio
     SUBDIR += openjpeg
     SUBDIR += openjpeg15
@@ -639,6 +644,7 @@
     SUBDIR += osgearth
     SUBDIR += oyranos
     SUBDIR += p5-Acme-Steganography-Image-Png
+    SUBDIR += p5-Alien-Gimp
     SUBDIR += p5-Barcode-ZBar
     SUBDIR += p5-CAD-Drawing
     SUBDIR += p5-CAD-Drawing-Template
@@ -859,7 +865,7 @@
     SUBDIR += py-ming
     SUBDIR += py-nwdiag
     SUBDIR += py-opencolorio
-    SUBDIR += py-opencv2
+    SUBDIR += py-opencv
     SUBDIR += py-openexr
     SUBDIR += py-openimageio
     SUBDIR += py-paint
@@ -883,6 +889,7 @@
     SUBDIR += py-qt5-svg
     SUBDIR += py-rabbyt
     SUBDIR += py-sane
+    SUBDIR += py-scikit-image
     SUBDIR += py-seqdiag
     SUBDIR += py-sorl-thumbnail
     SUBDIR += py-soya3d
@@ -892,6 +899,7 @@
     SUBDIR += py-wand
     SUBDIR += py-webcolors
     SUBDIR += py3-cairo
+    SUBDIR += py3-imagesize
     SUBDIR += py3-pillow
     SUBDIR += py3-pygraphviz
     SUBDIR += pygts
@@ -914,7 +922,6 @@
     SUBDIR += qt5-pixeltool
     SUBDIR += qt5-svg
     SUBDIR += qtawesome
-    SUBDIR += qtgtl
     SUBDIR += quat
     SUBDIR += quat-gui
     SUBDIR += quesa
@@ -949,6 +956,7 @@
     SUBDIR += rubygem-gd2
     SUBDIR += rubygem-gdk_pixbuf2
     SUBDIR += rubygem-gemojione
+    SUBDIR += rubygem-gemojione2
     SUBDIR += rubygem-geokit
     SUBDIR += rubygem-gitlab_emoji
     SUBDIR += rubygem-goocanvas
@@ -994,7 +1002,6 @@
     SUBDIR += seq2gif
     SUBDIR += shared-color-profiles
     SUBDIR += sharpconstruct
-    SUBDIR += shiva-collections
     SUBDIR += shotwell
     SUBDIR += showimage
     SUBDIR += silgraphite
@@ -1030,6 +1037,7 @@
     SUBDIR += tilecache
     SUBDIR += tiled
     SUBDIR += timeless
+    SUBDIR += timg
     SUBDIR += tintfu
     SUBDIR += tinyows
     SUBDIR += tkpng

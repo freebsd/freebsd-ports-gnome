@@ -2,7 +2,7 @@
 
 PORTNAME=	llvm
 DISTVERSION=	3.9.1
-PORTREVISION=	1
+PORTREVISION=	5
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/${PRE_}releases/${LLVM_RELEASE}/${RCDIR}
 PKGNAMESUFFIX=	${LLVM_SUFFIX}
@@ -27,10 +27,18 @@ LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
 
-USES=		cmake:outsource compiler:c++11-lib libedit ninja perl5 tar:xz
+USES=		cmake:outsource compiler:c++11-lib libedit ninja perl5 tar:xz \
+		shebangfix
 _USES_PYTHON?=	python:build
 USES+=		${_USES_PYTHON}
 USE_LDCONFIG=	${LLVM_PREFIX}/lib
+SHEBANG_FILES=	utils/lit/lit.py utils/llvm-lit/llvm-lit.in \
+		tools/clang/tools/scan-view/bin/scan-view \
+		tools/clang/tools/clang-format/git-clang-format \
+		tools/clang/tools/clang-format/clang-format-diff.py \
+		tools/clang/tools/extra/clang-tidy/tool/clang-tidy-diff.py \
+		tools/clang/tools/extra/clang-tidy/tool/run-clang-tidy.py \
+		tools/clang/tools/extra/include-fixer/find-all-symbols/tool/run-find-all-symbols.py
 
 SUB_FILES=	llvm-wrapper.sh
 SUB_LIST=	LLVM_PREFIX="${LLVM_PREFIX}" LLVM_SUFFIX="${LLVM_SUFFIX}"
@@ -56,7 +64,10 @@ CLANG_EXTRA_PATCHES= \
 	${PATCHDIR}/clang-patch-fopenmp.diff \
 	${PATCHDIR}/clang-patch-tools_clang_lib_Headers_CMakeLists.txt \
 	${PATCHDIR}/clang-patch-tools_clang_tools_clang-format_clang-format.py \
-	${PATCHDIR}/clang-patch-tools_clang_tools_scan-build_libexec_ccc-analyzer
+	${PATCHDIR}/clang-patch-tools_clang_tools_scan-build_libexec_ccc-analyzer \
+	${PATCHDIR}/clang-patch-tools_clang_include_clang_Basic_DiagnosticSemaKinds.td \
+	${PATCHDIR}/clang-patch-tools_clang_lib_Sema_SemaOverload.cpp \
+	${PATCHDIR}/config-patch-tools_clang_include_clang_Sema_Overload.h
 CLANG_CONFLICTS_INSTALL=	clang-devel-3.[1234567]*
 CLANG_DISTFILES=	cfe-${DISTVERSION}.src${EXTRACT_SUFX}
 CLANG_CMAKE_ON=		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
@@ -81,14 +92,23 @@ LIT_DESC=		Install lit and FileCheck test tools
 LIT_VARS=		_USES_PYTHON=python
 LLD_DESC=		Install lld, the LLVM linker
 LLD_DISTFILES=		lld-${DISTVERSION}.src${EXTRACT_SUFX}
-LLDB_DESC=		Install lldb, the LLVM debugger (ignored on 9.x)
-LLDB_EXTRA_PATCHES=	${PATCHDIR}/lldb-patch-tools_lldb_source_Host_common_FileSpec.cpp
 LLDB_BUILD_DEPENDS=	swig:devel/swig13
+LLDB_DESC=		Install lldb, the LLVM debugger
 LLDB_DISTFILES=		lldb-${DISTVERSION}.src${EXTRACT_SUFX}
+LLDB_EXTRA_PATCHES=	${PATCHDIR}/lldb-patch-tools_lldb_source_Host_common_FileSpec.cpp
+LLDB_IMPLIES=		CLANG
 LLDB_USES=		execinfo
 LLDB_VARS=		_USES_PYTHON=python
 OPENMP_DESC=		Install libomp, the LLVM OpenMP runtime library
 OPENMP_DISTFILES=	openmp-${DISTVERSION}.src${EXTRACT_SUFX}
+OPENMP_EXTRA_PATCHES=	${PATCHDIR}/openmp-patch-bug32279
+
+.if defined(WITH_DEBUG)
+CMAKE_BUILD_TYPE=	RelWithDebInfo
+STRIP=
+.endif
+
+_CRTLIBDIR=	${LLVM_PREFIX:S|${PREFIX}/||}/lib/clang/${LLVM_RELEASE}/lib/freebsd
 
 # Emulate USE_GITHUB's ${WRKSRC_tag} to reduce diffs to ../llvm-devel
 .for option in CLANG COMPILER_RT EXTRAS LLD LLDB OPENMP
@@ -218,11 +238,8 @@ MAN1SRCS+=	bugpoint.1 llc.1 lli.1 llvm-ar.1 llvm-as.1 \
 		llvm-profdata.1 llvm-readobj.1 llvm-stress.1 llvm-symbolizer.1 \
 		opt.1 tblgen.1
 
-NOT_FOR_ARCH=	ia64
-
 .include <bsd.port.pre.mk>
 
-_CRTLIBDIR=	${LLVM_PREFIX:S|${PREFIX}/||}/lib/clang/${LLVM_RELEASE}/lib/freebsd
 .if ${ARCH} == "amd64"
 _COMPILER_RT_LIBS= \
 	libclang_rt.asan-preinit-x86_64.a \

@@ -3,7 +3,7 @@
 
 PORTNAME=	kBuild
 DISTVERSION=	${KBUILD_VERSION}
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	devel
 MASTER_SITES=	ftp://ftp.netlabs.org/pub/kbuild/ \
 		http://tmp.chruetertee.ch/ \
@@ -25,7 +25,7 @@ CONFLICTS_INSTALL=	kBuild-devel-[0-9]*
 WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION}
 
 KBUILD_VERSION=	0.1.9998
-KBUILD_ARCH=	${MACHINE_ARCH:S/i386/x86/:S/x86_64/amd64/:S/powerpc/ppc32/}
+KBUILD_ARCH=	${MACHINE_ARCH:S/i386/x86/:S/x86_64/amd64/:S/powerpc/ppc32/:S/armv6/arm/}
 KBUILD_ENV=	ACLOCAL=${ACLOCAL} \
 		AUTOMAKE=${AUTOMAKE} \
 		AUTORECONF=${AUTORECONF} \

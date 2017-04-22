@@ -2,7 +2,7 @@
 
 PORTNAME=	llvm
 PORTVERSION=	3.4.2
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/releases/${PORTVERSION}/
 DISTNAME=	${PORTNAME}-${PORTVERSION}.src
@@ -20,10 +20,11 @@ DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
 
 WRKSRC=		${WRKDIR}/llvm-${PORTVERSION}.src
 
-USES=		execinfo gmake perl5
+USES=		execinfo gmake perl5 shebangfix
 GNU_CONFIGURE=	yes
 GNU_CONFIGURE_PREFIX=	${LLVM_PREFIX}
 USE_LDCONFIG=	${LLVM_PREFIX}/lib
+SHEBANG_FILES=	utils/lit/lit.py utils/llvm-lit/llvm-lit.in
 
 SUB_FILES=	llvm-wrapper.sh
 SUB_LIST=	LLVM_PREFIX="${LLVM_PREFIX}" LLVM_SUFFIX="${LLVM_SUFFIX}"
@@ -139,8 +140,6 @@ MAN1SRCS+=	bugpoint.1 llc.1 lli.1 llvm-ar.1 llvm-as.1 \
 		llvm-prof.1 llvm-stress.1 opt.1 tblgen.1
 PLIST_FILES+=	${MAN1SRCS:S|^|man/man1/|:S|.1$|${LLVM_SUFFIX}.1.gz|}
 .endif
-
-NOT_FOR_ARCH=	ia64
 
 .include <bsd.port.pre.mk>
 

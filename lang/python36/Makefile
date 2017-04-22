@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	python
-DISTVERSION=	${PYTHON_PORTVERSION}
+PORTVERSION=	${PYTHON_PORTVERSION}
+PORTREVISION=	1
 CATEGORIES=	lang python ipv6
 MASTER_SITES=	PYTHON/ftp/python/${PYTHON_PORTVERSION}
 PKGNAMESUFFIX=	${PYTHON_SUFFIX}
@@ -14,14 +15,17 @@ COMMENT=	Interpreted object-oriented programming language
 
 LICENSE=	PSFL
 
-USES=		cpe ncurses pathfix pkgconfig readline ssl tar:xz
+BROKEN_SSL=	openssl-devel
+
+USES=		cpe ncurses pathfix pkgconfig readline ssl tar:xz shebangfix
 PATHFIX_MAKEFILEIN=	Makefile.pre.in
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
+python_CMD=	${PREFIX}/bin/python${PYTHON_PORTVERSION:R}
+SHEBANG_FILES=	Lib/lib2to3/tests/data/*.py Lib/encodings/*.py
 
 CPE_VENDOR=	python
 CPE_PRODUCT=	${CPE_VENDOR}
-CPE_VERSION=	${DISTVERSION}
 
 # Duplicate python.mk variables. TODO: Let lang/python?? ports use python.mk bits.
 PYTHON_VER=		${PYTHON_PORTVERSION:R}
@@ -104,7 +108,7 @@ PLIST_FILES+=	libdata/pkgconfig/python-%%XYDOT%%%%ABI%%.pc
 # http://bugs.python.org/issue22521
 # http://bugs.python.org/issue23042
 .if ${ARCH} == i386 && !${PORT_OPTIONS:MLIBFFI}
-BROKEN=	You must use libffi from ports on i386. Enable the LIBFFI option
+BROKEN=		You must use libffi from ports on i386. Enable the LIBFFI option
 .endif
 
 .if ${ARCH} == sparc64
@@ -119,6 +123,10 @@ DISABLED_EXTENSIONS+=	nis
 PLIST_SUB+=	NO_NIS=""
 .endif
 
+post-patch:
+	${REINPLACE_CMD} -e 's|/usr/local/bin/python|${python_CMD}|' \
+		${WRKSRC}/Lib/cgi.py
+
 post-install:
 .if ! ${PORT_OPTIONS:MDEBUG}
 	${RM} ${STAGEDIR}${PREFIX}/lib/libpython3.so						# Upstream Issue: http://bugs.python.org/issue17975
@@ -126,10 +134,4 @@ post-install:
 	for i in ${STAGEDIR}${PREFIX}/lib/python${PYTHON_VER}/lib-dynload/*.so; do \
 		${STRIP_CMD} $$i; done								# Strip shared extensions
 
-.include <bsd.port.pre.mk>
-
-.if ${SSL_DEFAULT:Mopenssl-devel}
-BROKEN=		Does not build with openssl-devel
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

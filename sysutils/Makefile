@@ -9,6 +9,7 @@
     SUBDIR += DTraceToolkit
     SUBDIR += LPRng
     SUBDIR += LPRngTool
+    SUBDIR += UEFITool
     SUBDIR += abck
     SUBDIR += abduco
     SUBDIR += abgx360
@@ -235,7 +236,9 @@
     SUBDIR += djmount
     SUBDIR += dmg2img
     SUBDIR += dmidecode
+    SUBDIR += docker
     SUBDIR += docker-freebsd
+    SUBDIR += docker-machine
     SUBDIR += doinkd
     SUBDIR += dolly
     SUBDIR += downtime
@@ -306,6 +309,7 @@
     SUBDIR += flexbackup
     SUBDIR += flock
     SUBDIR += flog
+    SUBDIR += fluent-bit
     SUBDIR += flyback
     SUBDIR += fonteditfs
     SUBDIR += foremost
@@ -451,13 +455,12 @@
     SUBDIR += i2c-tools
     SUBDIR += i7z
     SUBDIR += iat
+    SUBDIR += immortal
     SUBDIR += inotify-tools
     SUBDIR += installwatch
     SUBDIR += intel-nvmupdate
     SUBDIR += intel-pcm
     SUBDIR += intel-qcu
-    SUBDIR += iocage
-    SUBDIR += iocage-devel
     SUBDIR += iocell
     SUBDIR += iogen
     SUBDIR += iograph
@@ -475,7 +478,6 @@
     SUBDIR += istatserver
     SUBDIR += jadm
     SUBDIR += jail-primer
-    SUBDIR += jail2
     SUBDIR += jailadmin
     SUBDIR += jailctl
     SUBDIR += jaildaemon
@@ -512,6 +514,7 @@
     SUBDIR += ksysguardd
     SUBDIR += ksystemlog
     SUBDIR += kuser
+    SUBDIR += lava
     SUBDIR += lbl-cf
     SUBDIR += lbl-hf
     SUBDIR += lcdproc
@@ -538,7 +541,6 @@
     SUBDIR += lineakd
     SUBDIR += linrename
     SUBDIR += linux-crashplan
-    SUBDIR += linux-nero
     SUBDIR += linuxfdisk
     SUBDIR += livecd
     SUBDIR += lmmon
@@ -555,6 +557,7 @@
     SUBDIR += lookat
     SUBDIR += lr
     SUBDIR += lsof
+    SUBDIR += lsop
     SUBDIR += ltrace
     SUBDIR += lttng-tools
     SUBDIR += lttng-ust
@@ -611,8 +614,10 @@
     SUBDIR += mkfwimage
     SUBDIR += mkntpwd
     SUBDIR += mksunbootcd
+    SUBDIR += mmc-utils
     SUBDIR += mnrpes
     SUBDIR += modules
+    SUBDIR += mog
     SUBDIR += monit
     SUBDIR += monitord
     SUBDIR += monitorix
@@ -650,6 +655,7 @@
     SUBDIR += munin-node
     SUBDIR += muse
     SUBDIR += mybashburn
+    SUBDIR += myrescue
     SUBDIR += n98-magerun
     SUBDIR += nagios-statd
     SUBDIR += namefix
@@ -703,6 +709,7 @@
     SUBDIR += p5-Filesys-Statvfs
     SUBDIR += p5-Fuse
     SUBDIR += p5-Fuse-Simple
+    SUBDIR += p5-Giovanni
     SUBDIR += p5-Iterator-File
     SUBDIR += p5-Lchown
     SUBDIR += p5-Linux-Cpuinfo
@@ -761,6 +768,7 @@
     SUBDIR += parafly
     SUBDIR += parallel
     SUBDIR += password-store
+    SUBDIR += passwordsafe
     SUBDIR += patchelf
     SUBDIR += pax-utils
     SUBDIR += pbi-manager
@@ -835,7 +843,6 @@
     SUBDIR += ptools
     SUBDIR += puppet-lint
     SUBDIR += puppet-mode.el
-    SUBDIR += puppet38
     SUBDIR += puppet4
     SUBDIR += puppetserver
     SUBDIR += pv
@@ -853,6 +860,7 @@
     SUBDIR += py-diffoscope
     SUBDIR += py-dirsync
     SUBDIR += py-dlipower
+    SUBDIR += py-docker
     SUBDIR += py-drmaa
     SUBDIR += py-execnet
     SUBDIR += py-ezjailremote
@@ -890,6 +898,7 @@
     SUBDIR += py-zdaemon
     SUBDIR += py-zfs
     SUBDIR += pydf
+    SUBDIR += py3-iocage
     SUBDIR += qchroot
     SUBDIR += qjail
     SUBDIR += qjail2
@@ -903,6 +912,7 @@
     SUBDIR += qzeitgeist
     SUBDIR += racktables
     SUBDIR += radeontool
+    SUBDIR += radeontop
     SUBDIR += radmind
     SUBDIR += rainbarf
     SUBDIR += raincoat
@@ -932,6 +942,7 @@
     SUBDIR += rinse
     SUBDIR += rmonitor
     SUBDIR += roottail
+    SUBDIR += rovclock
     SUBDIR += rsnapshot
     SUBDIR += rsyncbackup
     SUBDIR += rsyncrypto
@@ -953,6 +964,7 @@
     SUBDIR += rubygem-fluent-mixin-plaintextformatter
     SUBDIR += rubygem-fluent-plugin-config-expander
     SUBDIR += rubygem-fluent-plugin-file-alternative
+    SUBDIR += rubygem-fluent-plugin-graylog
     SUBDIR += rubygem-fluent-plugin-tail-asis
     SUBDIR += rubygem-fluentd
     SUBDIR += rubygem-fluentd010
@@ -972,6 +984,7 @@
     SUBDIR += rubygem-hiera-file
     SUBDIR += rubygem-hiera1
     SUBDIR += rubygem-hieracles
+    SUBDIR += rubygem-httplog
     SUBDIR += rubygem-itamae
     SUBDIR += rubygem-librarian-puppet
     SUBDIR += rubygem-log4r
@@ -1005,6 +1018,7 @@
     SUBDIR += rubygem-vagrant-vbguest
     SUBDIR += rubygem-vmstat
     SUBDIR += rubygem-winrm
+    SUBDIR += rubygem-winrm-elevated
     SUBDIR += rubygem-winrm-fs
     SUBDIR += rubygem-yell
     SUBDIR += rundeck
@@ -1063,6 +1077,7 @@
     SUBDIR += snowlog
     SUBDIR += socket
     SUBDIR += socklog
+    SUBDIR += solaar
     SUBDIR += sortu
     SUBDIR += spindown
     SUBDIR += spinner
@@ -1086,6 +1101,8 @@
     SUBDIR += symlinks
     SUBDIR += symon
     SUBDIR += synergy
+    SUBDIR += sysadm
+    SUBDIR += sysadm-client
     SUBDIR += sysgather
     SUBDIR += sysinfo
     SUBDIR += syslinux
@@ -1163,7 +1180,6 @@
     SUBDIR += ucspi-ipc
     SUBDIR += ucspi-proxy
     SUBDIR += ucspi-ssl
-    SUBDIR += ucspi-ssl-tls
     SUBDIR += ucspi-tcp
     SUBDIR += ucspi-unix
     SUBDIR += udfclient
@@ -1239,7 +1255,6 @@
     SUBDIR += wtail
     SUBDIR += wuzzah
     SUBDIR += x86info
-    SUBDIR += xacpim
     SUBDIR += xbatt
     SUBDIR += xbattbar
     SUBDIR += xcdroast

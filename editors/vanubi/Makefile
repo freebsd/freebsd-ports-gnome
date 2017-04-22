@@ -4,10 +4,10 @@
 PORTNAME=	vanubi
 PORTVERSION=	0.0.16
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	editors
 
-MAINTAINER=	olivierd@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Programming editor written in Vala
 
 LICENSE=	GPLv3

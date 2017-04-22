@@ -22,8 +22,6 @@
     SUBDIR += fpc-xforms
     SUBDIR += fxscintilla
     SUBDIR += gai
-    SUBDIR += gal2
-    SUBDIR += gal2-reference
     SUBDIR += gdl
     SUBDIR += girara
     SUBDIR += gnocl
@@ -107,7 +105,6 @@
     SUBDIR += libgnomeui
     SUBDIR += libgnomeui-reference
     SUBDIR += libgnomeuimm26
-    SUBDIR += libgtksourceviewmm
     SUBDIR += libsexy
     SUBDIR += libsexymm
     SUBDIR += libunique3
@@ -145,7 +142,7 @@
     SUBDIR += p5-Gnome2-Canvas
     SUBDIR += p5-Gnome2-VFS
     SUBDIR += p5-Gnome2-Wnck
-    SUBDIR += p5-Gtk
+    SUBDIR += p5-Gtk-Perl
     SUBDIR += p5-Gtk2
     SUBDIR += p5-Gtk2-Chmod
     SUBDIR += p5-Gtk2-Ex-Dialogs
@@ -284,7 +281,6 @@
     SUBDIR += viewklass
     SUBDIR += vte
     SUBDIR += vte-reference
-    SUBDIR += vte290
     SUBDIR += vte3
     SUBDIR += vtkfox
     SUBDIR += wlc
