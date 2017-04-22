@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	webkit
-PORTVERSION=	2.14.5
+PORTVERSION=	2.14.6
 CATEGORIES=	www
 MASTER_SITES=	http://webkitgtk.org/releases/
 PKGNAMESUFFIX=	2-gtk3
@@ -26,6 +26,7 @@ LIB_DEPENDS=	libenchant.so:textproc/enchant \
 		libicutu.so:devel/icu \
 		libharfbuzz.so:print/harfbuzz \
 		libsoup-2.4.so:devel/libsoup \
+		libgcrypt.so:security/libgcrypt \
 		libgnutls.so:security/gnutls
 RUN_DEPENDS=	geoclue>=0:net/geoclue
 
@@ -42,9 +43,6 @@ USE_GL=		gl egl
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
-#CXXFLAGS=	-I${LOCALBASE}/include
-# debug only
-#CXXFLAGS=	-pipe -fstack-protector -fno-strict-aliasing -I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install
 
@@ -60,22 +58,16 @@ CONFIGURE_ENV+=	XDG_CACHE_HOME=${WRKDIR}
 BROWSER_PLUGINS_DIR?=	${LOCALBASE}/lib/browser_plugins/symlinks/webkit-gtk3
 #_BROWSER_PLUGINS_DIR=	${BROWSER_PLUGINS_DIR:S|^/|"|:S|/|", "|g}",
 
-OPTIONS_DEFINE=	DEBUG FULLDEBUG
-DEBUG_DESC=	Just enable debug symbols
-FULLDEBUG_DESC=	Enable asserts and other debug support
+OPTIONS_DEFINE=	DEBUG
 
-FULLDEBUG_CONFIGURE_ENABLE=	debug
-DEBUG_CMAKE_ON=		-DCMAKE_BUILD_TYPE:STRING=Debug
+DEBUG_BUILD_DEPENDS=	binutils>=0:devel/binutils
+DEBUG_CMAKE_ON=		-DCMAKE_BUILD_TYPE:STRING=Debug \
+			-DCMAKE_AR=${LOCALBASE}/bin/ar \
+			-DCMAKE_RANLIB=${LOCALBASE}/bin/ranlib \
+			-DCMAKE_LINKER=${LOCALBASE}/bin/ld
+DEBUG_CXXFLAGS=		-B${LOCALBASE}/bin
 DEBUG_CMAKE_OFF=	-DCMAKE_BUILD_TYPE:STRING=Release
 DEBUG_CFLAGS_OFF=	-DNDEBUG
-
-# -O? doesn't work with debug builds.
-# use ld from binutils for tin archive support
-#-DCMAKE_C_FLAGS=-B/usr/local/bin
-#-DCMAKE_CXX_FLAGS=-B/usr/local/bin
-#-DCMAKE_AR=/usr/local/bin/ar
-#-DCMAKE_RANLIB=/usr/local/bin/ranlib
-#-DCMAKE_LINKER=/usr/local/bin/ld
 
 .include <bsd.port.options.mk>
 
