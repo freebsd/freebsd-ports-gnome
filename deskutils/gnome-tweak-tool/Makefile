@@ -19,9 +19,9 @@ PORTSCOUT=	limitw:1,even
 NO_ARCH=	yes
 USES=		gettext gmake gnome localbase pathfix pkgconfig \
 		python:2.7 shebangfix tar:xz
-SHEBANG_FILES=	gnome-tweak-tool
 USE_GNOME=	gtk30 pygobject3 intlhack
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
+SHEBANG_FILES=	gnome-tweak-tool
 
 .include <bsd.port.mk>
