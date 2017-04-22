@@ -6,18 +6,12 @@
 # Created by: Michael Johnson <ahze@FreeBSD.org>
 #
 # $FreeBSD$
-#
-# MAINTAINER: multimedia@FreeBSD.org
 
-.if !defined(_INCLUDE_USES_GSTREAMER_MK)
-_INCLUDE_USES_GSTREAMER_MK=	yes
+.if !defined(_POSTMKINCLUDED) && !defined(Gstreamer_Pre_Include)
 
-BROKEN=		has issues with USE_GSTREAMER[1]= not working
+Gstreamer_Include_MAINTAINER=	multimedia@FreeBSD.org
+Gstreamer_Pre_Include=		bsd.gstreamer.mk
 
-_USES_PORT+=	gstreamer
-
-.if !empty(gstreamer_ARGS)
-IGNORE=	USES=gstreamer takes no arguments
 .endif
 
 # Ports can use the following:
@@ -386,6 +380,9 @@ gtksink_DEPENDS=	x11-toolkits/gstreamer-plugins-gtksink
 pango_DEPENDS=	x11-toolkits/gstreamer-plugins-pango
 
 #--------------------------------------------------------------------------#
+
+.if defined(_POSTMKINCLUDED) && !defined(Gstreamer_Post_Include)
+Gstreamer_Post_Include=	bsd.gstreamer.mk
 
 .if (defined (USE_GSTREAMER) && defined(USE_GSTREAMER1))
 IGNORE=	USE_GSTREAMER and USE_GSTREAMER1 can't be used together
