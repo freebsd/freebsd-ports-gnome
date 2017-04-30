@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gstreamer
-PORTVERSION=	1.10.3
+PORTVERSION=	1.11.91
 CATEGORIES=	multimedia python
 MASTER_SITES=	http://gstreamer.freedesktop.org/src/gst-python/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -22,8 +22,6 @@ USE_GNOME=	pygobject3
 USE_GSTREAMER1=	yes
 GNU_CONFIGURE=	yes
 PLIST_SUB=	VERSION="${GST_VERSION}"
-CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>
