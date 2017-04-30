@@ -4,6 +4,7 @@ bin/gst-play-%%VERSION%%
 include/gstreamer-%%VERSION%%/gst/allocators/allocators.h
 include/gstreamer-%%VERSION%%/gst/allocators/gstdmabuf.h
 include/gstreamer-%%VERSION%%/gst/allocators/gstfdmemory.h
+include/gstreamer-%%VERSION%%/gst/app/app-enumtypes.h
 include/gstreamer-%%VERSION%%/gst/app/app.h
 include/gstreamer-%%VERSION%%/gst/app/gstappsink.h
 include/gstreamer-%%VERSION%%/gst/app/gstappsrc.h
@@ -76,6 +77,7 @@ include/gstreamer-%%VERSION%%/gst/sdp/gstsdpmessage.h
 include/gstreamer-%%VERSION%%/gst/sdp/sdp.h
 include/gstreamer-%%VERSION%%/gst/tag/gsttagdemux.h
 include/gstreamer-%%VERSION%%/gst/tag/gsttagmux.h
+include/gstreamer-%%VERSION%%/gst/tag/tag-enumtypes.h
 include/gstreamer-%%VERSION%%/gst/tag/tag.h
 include/gstreamer-%%VERSION%%/gst/tag/xmpwriter.h
 include/gstreamer-%%VERSION%%/gst/video/colorbalance.h
@@ -125,9 +127,11 @@ lib/gstreamer-%%VERSION%%/libgstaudioconvert.so
 lib/gstreamer-%%VERSION%%/libgstaudiorate.so
 lib/gstreamer-%%VERSION%%/libgstaudioresample.so
 lib/gstreamer-%%VERSION%%/libgstaudiotestsrc.so
-lib/gstreamer-%%VERSION%%/libgstencodebin.so
+lib/gstreamer-%%VERSION%%/libgstencoding.so
 lib/gstreamer-%%VERSION%%/libgstgio.so
+lib/gstreamer-%%VERSION%%/libgstpbtypes.so
 lib/gstreamer-%%VERSION%%/libgstplayback.so
+lib/gstreamer-%%VERSION%%/libgstrawparse.so
 lib/gstreamer-%%VERSION%%/libgstsubparse.so
 lib/gstreamer-%%VERSION%%/libgsttcp.so
 lib/gstreamer-%%VERSION%%/libgsttypefindfunctions.so
@@ -209,6 +213,7 @@ share/locale/es/LC_MESSAGES/gst-plugins-base-%%VERSION%%.mo
 share/locale/eu/LC_MESSAGES/gst-plugins-base-%%VERSION%%.mo
 share/locale/fi/LC_MESSAGES/gst-plugins-base-%%VERSION%%.mo
 share/locale/fr/LC_MESSAGES/gst-plugins-base-%%VERSION%%.mo
+share/locale/fur/LC_MESSAGES/gst-plugins-base-%%VERSION%%.mo
 share/locale/gl/LC_MESSAGES/gst-plugins-base-%%VERSION%%.mo
 share/locale/hr/LC_MESSAGES/gst-plugins-base-%%VERSION%%.mo
 share/locale/hu/LC_MESSAGES/gst-plugins-base-%%VERSION%%.mo
