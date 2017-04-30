@@ -135,8 +135,8 @@ post-patch:
 		${WRKSRC}/ext/resindvd/resindvdsrc.c
 .endif
 .if ${DIST} != ugly
-	@${FIND} ${WRKSRC}/ext ${WRKSRC}/sys -name Makefile.in | \
-	${XARGS} -n 10 ${REINPLACE_CMD} -e \
+	@${FIND} ${WRKSRC}/ext ${WRKSRC}/sys ${WRKSRC}/gst-libs/gst gl \
+	-name Makefile.in | ${XARGS} -n 10 ${REINPLACE_CMD} -e \
 	'/la_DEPENDENCIES/,/am__DEPENDENCIES/s,$$(top_builddir)/gst-libs/.*.la,,' -e \
 	's|$$(top_builddir)/gst-libs/gst/tag/libgsttag-@GST_API_VERSION@.la|-lgsttag-${VERSION}|; \
 	s|$$(top_builddir)/gst-libs/gst/audio/libgstaudio-@GST_API_VERSION@.la|-lgstaudio-${VERSION}|; \
@@ -148,6 +148,8 @@ post-patch:
 	s|$$(top_builddir)/gst-libs/gst/base/libgstbadbase-@GST_API_VERSION@.la|-lgstbadbase-${VERSION}|; \
 	s|$$(top_builddir)/gst-libs/gst/uridownloader/libgsturidownloader-@GST_API_VERSION@.la|-lgsturidownloader-${VERSION}|; \
 	s|$$(top_builddir)/gst-libs/gst/adaptivedemux/libgstadaptivedemux-@GST_API_VERSION@.la|-lgstadaptivedemux-${VERSION}|; \
+	s|$$(top_builddir)/gst-libs/gst/codecparsers/libgstcodecparsers-@GST_API_VERSION@.la|-lgstcodecparsers-${VERSION}|; \
+	s|$$(top_builddir)/gst-libs/gst/allocators/libgstbadallocators-@GST_API_VERSION@.la|-lgstbadallocators-${VERSION}|; \
 	s|$$(top_builddir)/gst-libs/gst/video/libgstbadvideo-@GST_API_VERSION@.la|-lgstbadvideo-${VERSION}|'
 
 	 @${FIND} ${WRKSRC}/ext ${WRKSRC}/sys -name Makefile.in | \
@@ -163,6 +165,8 @@ post-patch:
 	  s|$$(top_builddir)/gst-libs/gst/base/libgstbadbase-$$(GST_API_VERSION).la|-lgstbadbase-${VERSION}|; \
 	  s|$$(top_builddir)/gst-libs/gst/uridownloader/libgsturidownloader-$$(GST_API_VERSION).la|-lgsturidownloader-${VERSION}|; \
 	  s|$$(top_builddir)/gst-libs/gst/adaptivedemux/libgstadaptivedemux-@GST_API_VERSION@.la|-lgstadaptivedemux-${VERSION}|; \
+	  s|$$(top_builddir)/gst-libs/gst/codecparsers/libgstcodecparsers-$$(GST_API_VERSION).la|-lgstcodecparsers-${VERSION}|; \
+	  s|$$(top_builddir)/gst-libs/gst/allocators/libgstbadallocators-$$(GST_API_VERSION).la|-lgstbadallocators-${VERSION}|; \
 	  s|$$(top_builddir)/gst-libs/gst/video/libgstbadvideo-$$(GST_API_VERSION).la|-lgstbadvideo-${VERSION}|'
 .endif
 

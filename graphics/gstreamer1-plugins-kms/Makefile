@@ -3,7 +3,7 @@
 PORTREVISION=	0
 CATEGORIES=	graphics
 
-COMMENT=	GStreamer kms video output plugin
+COMMENT=	GStreamer video sink via KMS plugin
 
 GST_PLUGIN=	kms
 DIST=		bad

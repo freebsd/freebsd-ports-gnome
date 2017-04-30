@@ -135,11 +135,13 @@
     SUBDIR += gstreamer1-plugins-libde265
     SUBDIR += gstreamer1-plugins-mpeg2dec
     SUBDIR += gstreamer1-plugins-mpeg2enc
+    SUBDIR += gstreamer1-plugins-mplex
     SUBDIR += gstreamer1-plugins-openh264
     SUBDIR += gstreamer1-plugins-resindvd
     SUBDIR += gstreamer1-plugins-rtmp
     SUBDIR += gstreamer1-plugins-schroedinger
     SUBDIR += gstreamer1-plugins-theora
+    SUBDIR += gstreamer1-plugins-ttml
     SUBDIR += gstreamer1-plugins-ugly
     SUBDIR += gstreamer1-plugins-v4l2
     SUBDIR += gstreamer1-plugins-vpx

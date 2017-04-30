@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTREVISION=	0
-CATEGORIES=	multimedia
+CATEGORIES=	audio
 
-COMMENT=	GStreamer ASS/SSA text renderer plugin
+COMMENT=	Gstreamer ladspa (Linux Audio Developer's Simple Plugin API) plugin
 
-GST_PLUGIN=	assrender
+GST_PLUGIN=	ladspa
 DIST=		bad
 
 MASTERDIR=	${.CURDIR}/../../multimedia/gstreamer1-plugins

@@ -3,9 +3,9 @@
 PORTREVISION=	0
 CATEGORIES=	multimedia
 
-COMMENT=	GStreamer ASS/SSA text renderer plugin
+COMMENT=	GStreamer mplex plugin
 
-GST_PLUGIN=	assrender
+GST_PLUGIN=	mplex
 DIST=		bad
 
 MASTERDIR=	${.CURDIR}/../../multimedia/gstreamer1-plugins

@@ -3,7 +3,7 @@
 PORTREVISION=	0
 CATEGORIES=	audio
 
-COMMENT=	GStreamer fingerprint audio plugin
+COMMENT=	GStreamer audio fingerprint extracting plugin
 
 GST_PLUGIN=	chromaprint
 DIST=		bad

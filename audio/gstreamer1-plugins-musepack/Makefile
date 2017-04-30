@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTREVISION=	0
-CATEGORIES=	multimedia
+CATEGORIES=	audio
 
-COMMENT=	GStreamer ASS/SSA text renderer plugin
+COMMENT=	Gstreamer musepack mpc encoder/decoder plugin
 
-GST_PLUGIN=	assrender
+GST_PLUGIN=	musepack
 DIST=		bad
 
 MASTERDIR=	${.CURDIR}/../../multimedia/gstreamer1-plugins

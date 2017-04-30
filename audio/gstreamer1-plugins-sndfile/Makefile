@@ -1,11 +1,12 @@
+# Created by: Michael Johnson <ahze@FreeBSD.org>
 # $FreeBSD$
 
 PORTREVISION=	0
-CATEGORIES=	multimedia
+CATEGORIES=	audio
 
-COMMENT=	GStreamer ASS/SSA text renderer plugin
+COMMENT=	Gstreamer sndfile plugin
 
-GST_PLUGIN=	assrender
+GST_PLUGIN=	sndfile
 DIST=		bad
 
 MASTERDIR=	${.CURDIR}/../../multimedia/gstreamer1-plugins

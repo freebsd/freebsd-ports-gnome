@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTREVISION=	0
-CATEGORIES=	multimedia
+CATEGORIES=	net
 
-COMMENT=	GStreamer ASS/SSA text renderer plugin
+COMMENT=	GStreamer srtp plugin
 
-GST_PLUGIN=	assrender
+GST_PLUGIN=	srtp
 DIST=		bad
 
 MASTERDIR=	${.CURDIR}/../../multimedia/gstreamer1-plugins
