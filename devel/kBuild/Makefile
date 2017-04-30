@@ -13,9 +13,9 @@ DISTNAME=	${PORTNAME}-${DISTVERSION}r2695-src
 MAINTAINER=	vbox@FreeBSD.org
 COMMENT=	Makefile framework
 
-BROKEN_powerpc64=	Does not build
-
 BUILD_DEPENDS=	${LOCALBASE}/bin/flex:textproc/flex
+
+BROKEN_powerpc64=	does not build: fatal error: xmmintrin.h: No such file or directory
 
 USE_GCC=	any
 USES=		autoreconf:build gmake makeinfo
@@ -40,13 +40,8 @@ KBUILD_BINS=	kDepIDB kDepPre kObjCache kmk kmk_append kmk_ash kmk_cat \
 PORTDOCS=	QuickReference-kmk.html \
 		QuickReference-kmk.txt
 
-# bmake doesn't know about unsetenv=true
-.if defined(.PARSEDIR)
 ENV=
 .export ENV
-.else
-.SHELL:		path="/bin/sh" unsetenv=true
-.endif
 
 OPTIONS_DEFINE=	DOCS
 

@@ -64,6 +64,7 @@
     SUBDIR += b43-fwcutter
     SUBDIR += backupchecker
     SUBDIR += backuppc
+    SUBDIR += backuppc4
     SUBDIR += backuppc-devel
     SUBDIR += bacula-bat
     SUBDIR += bacula-client
@@ -255,6 +256,7 @@
     SUBDIR += du2ps
     SUBDIR += duff
     SUBDIR += dunst
+    SUBDIR += dupd
     SUBDIR += duplicity
     SUBDIR += duply
     SUBDIR += dupmerge
@@ -487,6 +489,7 @@
     SUBDIR += jailutils
     SUBDIR += javaservicewrapper
     SUBDIR += jdiskreport
+    SUBDIR += jdupes
     SUBDIR += jkill
     SUBDIR += jobd
     SUBDIR += jps

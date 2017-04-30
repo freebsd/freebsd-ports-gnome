@@ -323,6 +323,7 @@
     SUBDIR += imgsizer
     SUBDIR += impresscms
     SUBDIR += interchange
+    SUBDIR += iridium
     SUBDIR += itop
     SUBDIR += iwebcal
     SUBDIR += jdresolve
@@ -1912,8 +1913,10 @@
     SUBDIR += ruby-aws
     SUBDIR += rubygem-ace-rails-ap
     SUBDIR += rubygem-actioncable5
+    SUBDIR += rubygem-actioncable50
     SUBDIR += rubygem-actionpack4
     SUBDIR += rubygem-actionpack5
+    SUBDIR += rubygem-actionpack50
     SUBDIR += rubygem-activeresource4
     SUBDIR += rubygem-acts-as-taggable-on
     SUBDIR += rubygem-acts-as-taggable-on3
@@ -1926,6 +1929,7 @@
     SUBDIR += rubygem-asana
     SUBDIR += rubygem-async_sinatra
     SUBDIR += rubygem-best_in_place
+    SUBDIR += rubygem-best_in_place-rails5
     SUBDIR += rubygem-bluecloth
     SUBDIR += rubygem-bootstrap-sass
     SUBDIR += rubygem-browser
@@ -1949,6 +1953,7 @@
     SUBDIR += rubygem-em-twitter
     SUBDIR += rubygem-em-websocket
     SUBDIR += rubygem-emk-sinatra-url-for
+    SUBDIR += rubygem-erubi
     SUBDIR += rubygem-erubis
     SUBDIR += rubygem-ethon
     SUBDIR += rubygem-eventmachine_httpserver
@@ -1978,8 +1983,10 @@
     SUBDIR += rubygem-haml-coderay
     SUBDIR += rubygem-haml-contrib
     SUBDIR += rubygem-haml-rails-rails4
+    SUBDIR += rubygem-haml4
     SUBDIR += rubygem-hamlit
     SUBDIR += rubygem-hamlit-rails
+    SUBDIR += rubygem-hamlit-rails-rails5
     SUBDIR += rubygem-hashicorp-checkpoint
     SUBDIR += rubygem-heroku
     SUBDIR += rubygem-heroku-api
@@ -2000,6 +2007,7 @@
     SUBDIR += rubygem-journey
     SUBDIR += rubygem-jquery-atwho-rails
     SUBDIR += rubygem-jquery-rails
+    SUBDIR += rubygem-jquery-rails-rails5
     SUBDIR += rubygem-jquery-scrollto-rails
     SUBDIR += rubygem-jquery-turbolinks
     SUBDIR += rubygem-jquery-ui-rails-rails4
@@ -2019,6 +2027,7 @@
     SUBDIR += rubygem-lighthouse-api
     SUBDIR += rubygem-link_header
     SUBDIR += rubygem-lograge
+    SUBDIR += rubygem-lograge-rails5
     SUBDIR += rubygem-maruku
     SUBDIR += rubygem-mechanize
     SUBDIR += rubygem-merb-assets
@@ -2061,13 +2070,16 @@
     SUBDIR += rubygem-rack15
     SUBDIR += rubygem-rack16
     SUBDIR += rubygem-rails4
+    SUBDIR += rubygem-rails5
     SUBDIR += rubygem-rails_12factor
     SUBDIR += rubygem-rails_autolink
     SUBDIR += rubygem-rails_serve_static_assets
     SUBDIR += rubygem-rails-settings-cached
+    SUBDIR += rubygem-rails-settings-cached-rails5
     SUBDIR += rubygem-rails_stdout_logging
     SUBDIR += rubygem-railties4
     SUBDIR += rubygem-railties5
+    SUBDIR += rubygem-railties50
     SUBDIR += rubygem-raindrops
     SUBDIR += rubygem-ramaze
     SUBDIR += rubygem-raphael-rails
@@ -2078,6 +2090,7 @@
     SUBDIR += rubygem-redis-rails
     SUBDIR += rubygem-redmine_acts_as_taggable_on
     SUBDIR += rubygem-responders
+    SUBDIR += rubygem-responders-rails5
     SUBDIR += rubygem-rest-client
     SUBDIR += rubygem-rfacebook
     SUBDIR += rubygem-rfeedfinder
@@ -2088,6 +2101,7 @@
     SUBDIR += rubygem-rqrcode
     SUBDIR += rubygem-rqrcode-rails3
     SUBDIR += rubygem-rtlit
+    SUBDIR += rubygem-ruby-oembed
     SUBDIR += rubygem-ruby-readability
     SUBDIR += rubygem-savon
     SUBDIR += rubygem-sawyer
@@ -2110,6 +2124,7 @@
     SUBDIR += rubygem-tumblr_client
     SUBDIR += rubygem-turbolinks
     SUBDIR += rubygem-turbolinks-classic
+    SUBDIR += rubygem-turbolinks-rails5
     SUBDIR += rubygem-turbolinks-source
     SUBDIR += rubygem-typhoeus
     SUBDIR += rubygem-uglifier

@@ -217,6 +217,7 @@
     SUBDIR += gbm
     SUBDIR += gcolor
     SUBDIR += gcolor2
+    SUBDIR += gcolor3
     SUBDIR += gd
     SUBDIR += gdal
     SUBDIR += gdchart
@@ -763,6 +764,7 @@
     SUBDIR += pecomato
     SUBDIR += pencil
     SUBDIR += peps
+    SUBDIR += perceptualdiff
     SUBDIR += pfscalibration
     SUBDIR += pfstmo
     SUBDIR += pfstools
@@ -946,6 +948,7 @@
     SUBDIR += rubygem-captcha
     SUBDIR += rubygem-chunky_png
     SUBDIR += rubygem-clutter
+    SUBDIR += rubygem-clutter-gdk
     SUBDIR += rubygem-clutter-gtk
     SUBDIR += rubygem-dragonfly
     SUBDIR += rubygem-emoji
