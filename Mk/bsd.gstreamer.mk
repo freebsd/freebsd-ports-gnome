@@ -71,7 +71,7 @@ _GSTREAMER_PLUGINS= \
 		a52dec aalib amrnb amrwbdec cairo cdio \
 		cdparanoia dts dv faac faad flac flite \
 		gdkpixbuf gl gme gnonlin gsm jack jpeg lame libcaca \
-		libmms libvisual mad mpeg2dec mpeg2enc neon ogg \
+		libmms libvisual mpeg2dec mpeg2enc neon ogg \
 		opencv opus pango pulse resindvd schroedinger \
 		shout2 sidplay soundtouch soup speex taglib \
 		theora twolame v4l2 vorbis wavpack x264
@@ -81,7 +81,7 @@ _GSTREAMER_PLUGINS= \
 _GSTREAMER_PLUGINS+= \
 		annodex bz2 cdaudio dvd esound ffmpeg fluendo-mp3 \
 		fluendo-mpegdemux gconf gio gnomevfs hal \
-		ladspa libpng mm mp3 musepack nas python qt4 \
+		ladspa libpng mad mm mp3 musepack nas python qt4 \
 		sdl sndfile spc vdpau vp8 xvid
 .endif
 

@@ -135,7 +135,7 @@ post-patch:
 		${WRKSRC}/ext/resindvd/resindvdsrc.c
 .endif
 .if ${DIST} != ugly
-	@${FIND} ${WRKSRC}/ext ${WRKSRC}/sys ${WRKSRC}/gst-libs/gst gl \
+	@${FIND} ${WRKSRC}/ext ${WRKSRC}/sys ${WRKSRC}/gst-libs/gst \
 	-name Makefile.in | ${XARGS} -n 10 ${REINPLACE_CMD} -e \
 	'/la_DEPENDENCIES/,/am__DEPENDENCIES/s,$$(top_builddir)/gst-libs/.*.la,,' -e \
 	's|$$(top_builddir)/gst-libs/gst/tag/libgsttag-@GST_API_VERSION@.la|-lgsttag-${VERSION}|; \
@@ -169,6 +169,13 @@ post-patch:
 	  s|$$(top_builddir)/gst-libs/gst/allocators/libgstbadallocators-$$(GST_API_VERSION).la|-lgstbadallocators-${VERSION}|; \
 	  s|$$(top_builddir)/gst-libs/gst/video/libgstbadvideo-$$(GST_API_VERSION).la|-lgstbadvideo-${VERSION}|'
 .endif
+
+# we don't want X11 support in librfb so we don't have to depend on libX11 in -bad
+post-configure:
+	@${REINPLACE_CMD} -e 's|HAVE_X11 = yes|HAVE_X11 = no|g' \
+		-e 's|$$(X11_CFLAGS) \\|\\|g' \
+		-e 's|$$(X11_LIBS) \\|\\|g' \
+		${WRKSRC}/gst/librfb/Makefile
 
 pre-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/gstreamer-1.0

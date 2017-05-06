@@ -31,7 +31,6 @@ BAD_GST_ALL_PLUGINS+= \
 		ladspa \
 		libde265 \
 		libmms \
-		librfb \
 		modplug \
 		mpeg2enc \
 		mplex \
@@ -55,6 +54,7 @@ BAD_GST_ALL_PLUGINS+= \
 		ttml \
 		vdpau \
 		webp \
+		webrtcdsp \
 		x265 \
 		zbar \
 
@@ -100,20 +100,20 @@ GOOD_GST_ALL_PLUGINS+= \
 		cairo \
 		flac \
 		gdk_pixbuf \
+		gst_v4l2 \
 		jack \
 		jpeg \
 		libcaca \
 		libdv \
 		libpng \
-		gst_v4l2 \
+		pulse \
 		shout2 \
 		soup \
 		speex \
 		taglib \
 		vpx \
 		wavpack \
-		x \
-		pulse
+		x
 
 GOOD_GST_NON_PLUGINS=	\
 		--disable-dv1394 \
@@ -134,7 +134,6 @@ UGLY_GST_ALL_PLUGINS+= \
 		cdio \
 		dvdread \
 		lame \
-		mad \
 		mpeg2dec \
 		mpg123 \
 		sidplay \
@@ -195,6 +194,7 @@ gst_a52dec_LIB_DEPENDS=	liba52.so:audio/liba52
 
 # aalib
 gst_aalib_LIB_DEPENDS=	libaa.so:graphics/aalib
+gst_aalib_USES=		ncurses
 gst_aalib_PLIST_FILES=	${GST_LIB_DIR}/libgstaasink.so
 
 # amrnb
@@ -326,9 +326,6 @@ gst_libpng_PLIST_FILES=	${GST_LIB_DIR}/libgstpng.so
 # libvisual
 gst_libvisual_LIB_DEPENDS=	libvisual-0.4.so:graphics/libvisual04
 
-# mad
-gst_mad_LIB_DEPENDS=	libmad.so:audio/libmad
-
 # modplug
 gst_modplug_LIB_DEPENDS=	libmodplug.so:audio/libmodplug
 
@@ -361,6 +358,10 @@ gst_opencv_GST_PLUGIN_DIR=	gst-libs/gst/opencv ext/opencv
 gst_opencv_PLIST_FILES=		#
 gst_opencv_USES=	compiler:c++11-lib
 
+# openexr
+gst_openexr_LIB_DEPENDS=libImath-2_2.so:graphics/ilmbase \
+			libIlmImf.so:graphics/OpenEXR
+
 # openjpeg
 gst_openjpeg_LIB_DEPENDS=	libopenjp2.so:graphics/openjpeg
 
@@ -375,6 +376,7 @@ gst_pango_USE_GNOME=	cairo pango
 
 # pulse
 gst_pulse_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
+gst_pulse_PLIST_FILES=	${GST_LIB_DIR}/libgstpulseaudio.so
 
 # resindvd
 gst_resindvd_BUILD_DEPENDS=	libdvdnav>=4.1.2:multimedia/libdvdnav
@@ -402,8 +404,6 @@ gst_soundtouch_LIB_DEPENDS=	libSoundTouch.so:audio/soundtouch
 
 # souphttpsrc
 gst_soup_LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup
-gst_soup_GST_PLUGIN_DIR=ext/soup
-gst_soup_PLIST_FILES=	${GST_LIB_DIR}/libgstsouphttpsrc.so
 
 # spandsp
 gst_spandsp_LIB_DEPENDS=	libspandsp.so:comms/spandsp

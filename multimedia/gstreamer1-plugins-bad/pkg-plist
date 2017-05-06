@@ -92,6 +92,7 @@ lib/gstreamer-%%VERSION%%/libgstnetsim.so
 lib/gstreamer-%%VERSION%%/libgstpcapparse.so
 lib/gstreamer-%%VERSION%%/libgstpnm.so
 lib/gstreamer-%%VERSION%%/libgstremovesilence.so
+lib/gstreamer-%%VERSION%%/libgstrfbsrc.so
 lib/gstreamer-%%VERSION%%/libgstrtponvif.so
 lib/gstreamer-%%VERSION%%/libgstsdpelem.so
 lib/gstreamer-%%VERSION%%/libgstsegmentclip.so
