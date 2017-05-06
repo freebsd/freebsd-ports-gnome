@@ -3,6 +3,7 @@
 
 PORTNAME=	libbinio
 PORTVERSION=	1.4
+DISTVERSIONPREFIX=	${PORTNAME}-
 PORTREVISION=	4
 CATEGORIES=	devel
 
@@ -17,9 +18,10 @@ USE_GITHUB=	yes
 USE_LDCONFIG=	yes
 
 GH_ACCOUNT=	adplug
-GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
 
 INSTALL_TARGET=	install-strip
+
+PORTSCOUT=	skipv:start
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|^\(SUBDIRS\ =\).*|\1 src|' ${WRKSRC}/Makefile.am

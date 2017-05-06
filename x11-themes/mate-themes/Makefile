@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-themes
-PORTVERSION=	3.18.6
+PORTVERSION=	3.22.10
 CATEGORIES=	x11-themes mate
 MASTER_SITES=	MATE/themes/${PORTVERSION:R}/
 DIST_SUBDIR=	mate
@@ -33,8 +33,8 @@ LOCALES=	as ast bn_IN ca@valencia cmn crh dz es_CO fur \
 
 post-install:
 .for l in ${LOCALES}
-	@rmdir ${STAGEDIR}${PREFIX}/share/locale/${l}/LC_MESSAGES
-	@rmdir ${STAGEDIR}${PREFIX}/share/locale/${l}
+	@${RMDIR} ${STAGEDIR}${PREFIX}/share/locale/${l}/LC_MESSAGES
+	@${RMDIR} ${STAGEDIR}${PREFIX}/share/locale/${l}
 .endfor
 
 .include <bsd.port.mk>

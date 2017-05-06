@@ -25,7 +25,7 @@ RUN_DEPENDS=	gucharmap:deskutils/gucharmap
 PORTSCOUT=	limitw:1,even
 
 USES=		autoreconf:build gettext gmake libtool localbase pathfix \
-		pkgconfig python tar:xz
+		pkgconfig python shebangfix tar:xz
 USE_MATE=	desktop icontheme libmateweather panel polkit settingsdaemon
 USE_XORG=	ice sm x11
 USE_GNOME=	cairo gdkpixbuf2 gtk30 gtksourceview3 introspection:build \
@@ -45,6 +45,9 @@ GLIB_SCHEMAS=	org.mate.panel.applet.charpick.gschema.xml \
 		org.mate.panel.applet.netspeed.gschema.xml \
 		org.mate.panel.applet.timer.gschema.xml \
 		org.mate.stickynotes.gschema.xml
+
+SHEBANG_FILES=	invest-applet/invest/*.py \
+		invest-applet/invest/mate-invest-chart
 
 .include <bsd.port.pre.mk>
 
