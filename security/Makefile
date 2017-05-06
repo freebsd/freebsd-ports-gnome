@@ -85,7 +85,6 @@
     SUBDIR += clamsmtp
     SUBDIR += clamtk
     SUBDIR += clusterssh
-    SUBDIR += cmd5checkpw
     SUBDIR += cops
     SUBDIR += courier-authlib
     SUBDIR += courier-authlib-base
@@ -98,6 +97,7 @@
     SUBDIR += create-cert
     SUBDIR += cryptlib
     SUBDIR += cryptopp
+    SUBDIR += ct-submit
     SUBDIR += cvm
     SUBDIR += cyberchef
     SUBDIR += cyrus-sasl2
@@ -158,7 +158,6 @@
     SUBDIR += fswatch
     SUBDIR += ftimes
     SUBDIR += fuzz
-    SUBDIR += fuzzdb
     SUBDIR += fwanalog
     SUBDIR += fwbuilder
     SUBDIR += fwipe
@@ -398,7 +397,6 @@
     SUBDIR += nikto
     SUBDIR += nist-kat
     SUBDIR += nmap
-    SUBDIR += nmapsi4
     SUBDIR += nss
     SUBDIR += nss_compat_ossl
     SUBDIR += oath-toolkit
@@ -850,8 +848,8 @@
     SUBDIR += py-certifi
     SUBDIR += py-cpe
     SUBDIR += py-cracklib
-    SUBDIR += py-crits
     SUBDIR += py-cryptkit
+    SUBDIR += py-cryptlib_py
     SUBDIR += py-cryptography
     SUBDIR += py-cybox
     SUBDIR += py-dfdatetime
@@ -945,7 +943,6 @@
     SUBDIR += py-vulndb
     SUBDIR += py-xmlsec
     SUBDIR += py-yara
-    SUBDIR += py-yara-editor
     SUBDIR += py-yubioath-desktop
     SUBDIR += py-zope.app.authentication
     SUBDIR += py-zope.app.localpermission
@@ -1005,8 +1002,10 @@
     SUBDIR += rubygem-bcrypt
     SUBDIR += rubygem-bcrypt-ruby
     SUBDIR += rubygem-devise-two-factor
+    SUBDIR += rubygem-devise-two-factor-rails5
     SUBDIR += rubygem-digest-crc
     SUBDIR += rubygem-doorkeeper
+    SUBDIR += rubygem-doorkeeper-rails5
     SUBDIR += rubygem-encryptor
     SUBDIR += rubygem-ezcrypto
     SUBDIR += rubygem-googleauth
@@ -1037,6 +1036,8 @@
     SUBDIR += rubygem-omniauth-oauth2-generic
     SUBDIR += rubygem-omniauth-saml
     SUBDIR += rubygem-omniauth-shibboleth
+    SUBDIR += rubygem-omniauth13
+    SUBDIR += rubygem-openssl
     SUBDIR += rubygem-openssl-ccm
     SUBDIR += rubygem-openvas-omp
     SUBDIR += rubygem-origami
@@ -1103,7 +1104,6 @@
     SUBDIR += signing-party
     SUBDIR += silktools
     SUBDIR += sinfp
-    SUBDIR += skipfish
     SUBDIR += sks
     SUBDIR += slurpie
     SUBDIR += slush
@@ -1119,6 +1119,7 @@
     SUBDIR += snortsam
     SUBDIR += snortsnarf
     SUBDIR += softether
+    SUBDIR += softether-devel
     SUBDIR += softhsm
     SUBDIR += softhsm2
     SUBDIR += spass
@@ -1181,7 +1182,6 @@
     SUBDIR += tripwire-131
     SUBDIR += tripwire12
     SUBDIR += trousers
-    SUBDIR += truecrack
     SUBDIR += truecrypt
     SUBDIR += tsshbatch
     SUBDIR += tthsum
