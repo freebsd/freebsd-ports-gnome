@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gstreamer1-plugins-all
-PORTVERSION=	${GST1_VERSION}
-PORTREVISION=	5
+PORTVERSION=	1.12
+PORTREVISION=	0
 CATEGORIES=	multimedia
 
 MAINTAINER=	multimedia@FreeBSD.org
@@ -31,8 +31,8 @@ ${all:tu}_USE=	GSTREAMER1=${all}
 .endfor
 
 # Pull out i386-only plugins, add back conditionally
-ALL_PLUGINS:=	${ALL_PLUGINS:Nspc}
-DEF_PLUGINS:=	${DEF_PLUGINS:Nspc}
+ALL_PLUGINS:=	${ALL_PLUGINS:Nspc:Ncdparanoia:Ngtksink}
+DEF_PLUGINS:=	${DEF_PLUGINS:Nspc:Ncdparanoia:Ngtksink}
 
 OPTIONS_DEFINE=	${ALL_PLUGINS:tu}
 OPTIONS_DEFAULT=	${DEF_PLUGINS:tu}

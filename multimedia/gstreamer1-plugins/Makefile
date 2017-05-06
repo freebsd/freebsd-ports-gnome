@@ -26,16 +26,16 @@ RUN_DEPENDS+=	iso-codes>=0:misc/iso-codes
 
 PORTSCOUT=	limitw:1,even
 
-BASE_PORTVERSION=	1.11.91
+BASE_PORTVERSION=	1.12.0
 BASE_DISTNAME=		gst-plugins-base-${BASE_PORTVERSION}
 BASE_DISTFILE=		${BASE_DISTNAME}${EXTRACT_SUFX}
-BAD_PORTVERSION=	1.11.91
+BAD_PORTVERSION=	1.12.0
 BAD_DISTNAME=		gst-plugins-bad-${BAD_PORTVERSION}
 BAD_DISTFILE=		${BAD_DISTNAME}${EXTRACT_SUFX}
-GOOD_PORTVERSION=	1.11.91
+GOOD_PORTVERSION=	1.12.0
 GOOD_DISTNAME=		gst-plugins-good-${GOOD_PORTVERSION}
 GOOD_DISTFILE=		${GOOD_DISTNAME}${EXTRACT_SUFX}
-UGLY_PORTVERSION=	1.11.91
+UGLY_PORTVERSION=	1.12.0
 UGLY_DISTNAME=		gst-plugins-ugly-${UGLY_PORTVERSION}
 UGLY_DISTFILE=		${UGLY_DISTNAME}${EXTRACT_SUFX}
 DIST?=		base
@@ -60,7 +60,7 @@ IGNORE=		DIST not specified
 .endif
 
 VERSION=	1.0
-SOVERSION=	0.1191.0
+SOVERSION=	0.1200.0
 PLIST_SUB+=	VERSION="${VERSION}" \
 		SOVERSION="${SOVERSION}"
 
@@ -170,12 +170,14 @@ post-patch:
 	  s|$$(top_builddir)/gst-libs/gst/video/libgstbadvideo-$$(GST_API_VERSION).la|-lgstbadvideo-${VERSION}|'
 .endif
 
-# we don't want X11 support in librfb so we don't have to depend on libX11 in -bad
+.if ${DIST} == bad
+# Disable X11 support in librfb
 post-configure:
 	@${REINPLACE_CMD} -e 's|HAVE_X11 = yes|HAVE_X11 = no|g' \
 		-e 's|$$(X11_CFLAGS) \\|\\|g' \
 		-e 's|$$(X11_LIBS) \\|\\|g' \
 		${WRKSRC}/gst/librfb/Makefile
+.endif
 
 pre-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/lib/gstreamer-1.0

@@ -5,6 +5,8 @@ CATEGORIES=	graphics
 
 COMMENT=	GStreamer GL graphics plugin
 
+#XXX depends checking
+
 GST_PLUGIN=	gl
 DIST=		bad
 
