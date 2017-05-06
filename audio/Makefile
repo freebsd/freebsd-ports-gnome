@@ -352,7 +352,6 @@
     SUBDIR += ladspa
     SUBDIR += lame
     SUBDIR += lash
-    SUBDIR += last-cmus
     SUBDIR += last.fm
     SUBDIR += lastfm-desktop
     SUBDIR += liba52
@@ -461,7 +460,6 @@
     SUBDIR += logitechmediaserver-dynamicplaylist
     SUBDIR += logitechmediaserver-lazysearch
     SUBDIR += logitechmediaserver-sqlplaylist
-    SUBDIR += logitechmediaserver-superdatetime
     SUBDIR += logitechmediaserver-trackstat
     SUBDIR += lollypop
     SUBDIR += lpac
@@ -479,7 +477,6 @@
     SUBDIR += mcplay
     SUBDIR += mctoolame-decoder
     SUBDIR += mctoolame-encoder
-    SUBDIR += mehdiaplayer
     SUBDIR += mhwaveedit
     SUBDIR += midipp
     SUBDIR += mikmod
@@ -609,7 +606,6 @@
     SUBDIR += penguinsap
     SUBDIR += pianobar
     SUBDIR += picard
-    SUBDIR += pidgin-musictracker
     SUBDIR += pithos
     SUBDIR += play
     SUBDIR += playgsf
@@ -633,6 +629,7 @@
     SUBDIR += py-eyed3
     SUBDIR += py-fmoo-audiotools
     SUBDIR += py-gmusicapi
+    SUBDIR += py-hsaudiotag
     SUBDIR += py-id3
     SUBDIR += py-karaoke
     SUBDIR += py-mad
@@ -853,7 +850,6 @@
     SUBDIR += xmp
     SUBDIR += xmradio
     SUBDIR += xoscope
-    SUBDIR += xpi-musicpm
     SUBDIR += xsynth-dssi
     SUBDIR += xvmixer
     SUBDIR += xwave

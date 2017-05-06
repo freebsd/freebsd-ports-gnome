@@ -37,7 +37,6 @@
     SUBDIR += clang33
     SUBDIR += clang34
     SUBDIR += clang35
-    SUBDIR += clang36
     SUBDIR += clang38
     SUBDIR += cling
     SUBDIR += clojure
@@ -203,7 +202,6 @@
     SUBDIR += ocaml
     SUBDIR += ocaml-autoconf
     SUBDIR += ocaml-nox11
-    SUBDIR += ofc
     SUBDIR += ohugs
     SUBDIR += onyx
     SUBDIR += oo2c
@@ -303,7 +301,6 @@
     SUBDIR += rexx-wrapper
     SUBDIR += rhino
     SUBDIR += rubinius
-    SUBDIR += ruby21
     SUBDIR += ruby22
     SUBDIR += ruby23
     SUBDIR += ruby24

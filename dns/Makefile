@@ -167,9 +167,8 @@
     SUBDIR += powerdns
     SUBDIR += powerdns-recursor
     SUBDIR += public_suffix_list
-    SUBDIR += py-adns
-    SUBDIR += py-bonjour
     SUBDIR += py-dns
+    SUBDIR += py-dns-lexicon
     SUBDIR += py-dnschain
     SUBDIR += py-dnspython
     SUBDIR += py-easyzone
