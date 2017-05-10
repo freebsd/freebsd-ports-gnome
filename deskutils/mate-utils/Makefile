@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-utils
-PORTVERSION=	1.18.0
+PORTVERSION=	1.18.2
 CATEGORIES=	deskutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
