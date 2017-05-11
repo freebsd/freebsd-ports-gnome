@@ -64,6 +64,7 @@
     SUBDIR += b43-fwcutter
     SUBDIR += backupchecker
     SUBDIR += backuppc
+    SUBDIR += backuppc4
     SUBDIR += backuppc-devel
     SUBDIR += bacula-bat
     SUBDIR += bacula-client
@@ -255,6 +256,7 @@
     SUBDIR += du2ps
     SUBDIR += duff
     SUBDIR += dunst
+    SUBDIR += dupd
     SUBDIR += duplicity
     SUBDIR += duply
     SUBDIR += dupmerge
@@ -408,7 +410,6 @@
     SUBDIR += graid5
     SUBDIR += graveman
     SUBDIR += graylog
-    SUBDIR += grok
     SUBDIR += grub2
     SUBDIR += grub2-bhyve
     SUBDIR += grub2-efi
@@ -487,6 +488,7 @@
     SUBDIR += jailutils
     SUBDIR += javaservicewrapper
     SUBDIR += jdiskreport
+    SUBDIR += jdupes
     SUBDIR += jkill
     SUBDIR += jobd
     SUBDIR += jps
@@ -520,7 +522,6 @@
     SUBDIR += lbl-hf
     SUBDIR += lcdproc
     SUBDIR += ldap-account-manager
-    SUBDIR += ldapenter
     SUBDIR += ldapvi
     SUBDIR += ledit
     SUBDIR += less
@@ -783,7 +784,6 @@
     SUBDIR += pciutils
     SUBDIR += pcpustat
     SUBDIR += pdixtract
-    SUBDIR += pdsh
     SUBDIR += pdumpfs
     SUBDIR += pear-Cache
     SUBDIR += pear-Cache_Lite
@@ -816,7 +816,6 @@
     SUBDIR += pick
     SUBDIR += pidof
     SUBDIR += pipemeter
-    SUBDIR += plasma-applet-apcups
     SUBDIR += plconfig
     SUBDIR += pmt
     SUBDIR += policykit
@@ -857,7 +856,6 @@
     SUBDIR += py-consul
     SUBDIR += py-croniter
     SUBDIR += py-crontab
-    SUBDIR += py-danzfs
     SUBDIR += py-diffoscope
     SUBDIR += py-dirsync
     SUBDIR += py-dlipower
@@ -891,6 +889,7 @@
     SUBDIR += py-ranger
     SUBDIR += py-salt
     SUBDIR += py-scandir
+    SUBDIR += py-scriptine
     SUBDIR += py-shutilwhich
     SUBDIR += py-stdiff
     SUBDIR += py-supervisor
@@ -1041,7 +1040,6 @@
     SUBDIR += scalpel
     SUBDIR += scan_ffs
     SUBDIR += scanbuttond
-    SUBDIR += scanmem
     SUBDIR += scct
     SUBDIR += schedutils
     SUBDIR += scprotect
@@ -1064,7 +1062,6 @@
     SUBDIR += shmcat
     SUBDIR += showbeastie
     SUBDIR += siegfried
-    SUBDIR += sievelog
     SUBDIR += skill
     SUBDIR += slack
     SUBDIR += sleuthkit
@@ -1211,6 +1208,7 @@
     SUBDIR += utcount
     SUBDIR += vagrant
     SUBDIR += vbetool
+    SUBDIR += vchanger
     SUBDIR += vcp
     SUBDIR += videogen
     SUBDIR += vii

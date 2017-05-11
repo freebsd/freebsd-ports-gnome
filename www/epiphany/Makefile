@@ -10,13 +10,14 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Extremely lightweight and simple web browser for GNOME 3
 
-LICENSE=	GPLv2
+LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		itstool:textproc/itstool \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
+		libsoup-2.4.so:devel/libsoup \
 		libsoup-gnome-2.4.so:devel/libsoup-gnome \
 		libsoup-2.4.so:devel/libsoup \
 		libgcr-3.so:security/gcr \
@@ -37,7 +38,7 @@ USES=		cpe desktop-file-utils gettext gmake libtool localbase pathfix \
 		pkgconfig python:3.3+ sqlite tar:xz
 CPE_VENDOR=	gnome
 USE_GNOME=	cairo gnomedesktop3 intlhack libwnck3 libxml2 libxslt
-USE_XORG=	ice x11 sm
+USE_XORG=	x11
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
@@ -47,8 +48,8 @@ CONFIGURE_ARGS+=\
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.gnome.Epiphany.enums.xml \
-		org.gnome.epiphany.gschema.xml \
-		org.gnome.epiphany.host.gschema.xml
+		org.gnome.epiphany.host.gschema.xml \
+		org.gnome.epiphany.gschema.xml
 
 PLIST_SUB+=	EPHY_VERSION=${PORTVERSION:R}
 

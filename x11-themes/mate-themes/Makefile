@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-themes
-PORTVERSION=	3.22.4
+PORTVERSION=	3.22.10
 CATEGORIES=	x11-themes mate
 MASTER_SITES=	MATE/themes/${PORTVERSION:R}/
 DIST_SUBDIR=	mate
@@ -28,7 +28,6 @@ INSTALLS_ICONS=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-#.include "Makefile.locales"
 LOCALES=	as ast bn_IN ca@valencia cmn crh dz es_CO fur \
 		hy kk ky mai mg mr nds oc si sr@latin te ug xh zh_HK
 

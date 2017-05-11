@@ -4,7 +4,7 @@
 PORTNAME=	devede
 PORTVERSION=	3.23.0
 DISTVERSIONPREFIX=	v
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	multimedia
 
 MAINTAINER=	ports@FreeBSD.org
@@ -25,7 +25,7 @@ GH_PROJECT=	Devede
 
 USES=		iconv python:run shebangfix
 USE_GNOME=	pygtk2:run
-SHEBANG_FILES=	devede.py
+SHEBANG_FILES=	devede
 NO_ARCH=	yes
 NO_BUILD=	yes
 

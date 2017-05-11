@@ -61,6 +61,7 @@ GLIB_SCHEMAS=	org.freedesktop.Tracker.DB.gschema.xml \
 		org.freedesktop.Tracker.Writeback.gschema.xml \
 		org.freedesktop.Tracker.enums.xml \
 		org.freedesktop.Tracker.gschema.xml
+SHEBANG_FILES=	tests/tracker-writeback/01-writeback.py
 
 PLIST_SUB=	TRACKER_VER="1.0" LIBVER=1002
 

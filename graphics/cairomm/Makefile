@@ -10,7 +10,9 @@ MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	C++ interface to cairo
 
 LICENSE=	LGPL20
-LICENSE_FILE=	${WRKSRC}/COPYING
+
+LIB_DEPENDS=	libfreetype.so:print/freetype2 \
+		libpng.so:graphics/png
 
 LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libpng.so:graphics/png

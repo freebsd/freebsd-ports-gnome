@@ -13,6 +13,8 @@ COMMENT=	Multiplayer Chinese Checkers game
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BROKEN=		fails to build
+
 LIB_DEPENDS=	libgnet-2.0.so:net/gnet2
 
 OPTIONS_DEFINE=	DOCS

@@ -36,7 +36,6 @@
     SUBDIR += fcitx-chewing
     SUBDIR += fcitx-cloudpinyin
     SUBDIR += fcitx-configtool
-    SUBDIR += fcitx-googlepinyin
     SUBDIR += fcitx-libpinyin
     SUBDIR += fcitx-rime
     SUBDIR += fcitx-sunpinyin
@@ -44,9 +43,7 @@
     SUBDIR += fcitx-ui-light
     SUBDIR += fireflyttf
     SUBDIR += font-std
-    SUBDIR += fortune
     SUBDIR += fortunetw
-    SUBDIR += fqterm
     SUBDIR += gb2jis
     SUBDIR += gb2ps
     SUBDIR += gcin
@@ -56,13 +53,11 @@
     SUBDIR += ibus-chewing
     SUBDIR += ibus-libpinyin
     SUBDIR += ibus-pinyin
-    SUBDIR += ibus-table-chinese
     SUBDIR += jis2gb
     SUBDIR += kcfonts
     SUBDIR += kde4-l10n-zh_CN
     SUBDIR += kde4-l10n-zh_TW
     SUBDIR += libchewing
-    SUBDIR += libgooglepinyin
     SUBDIR += libpinyin
     SUBDIR += libreoffice-zh_CN
     SUBDIR += libreoffice-zh_TW
@@ -91,13 +86,10 @@
     SUBDIR += p5-Lingua-ZH-WordSegmenter
     SUBDIR += p5-Lingua-ZH-Wrap
     SUBDIR += p5-Text-Greeking-zh_TW
-    SUBDIR += p5-cconv
     SUBDIR += pcmanx
-    SUBDIR += php-cconv
     SUBDIR += php-opencc
     SUBDIR += phpbb-tw
     SUBDIR += phpbb3-tw
-    SUBDIR += py-cconv
     SUBDIR += pyzy
     SUBDIR += qe
     SUBDIR += qt4-codecs-cn
@@ -120,6 +112,5 @@
     SUBDIR += wordpress-zh_CN
     SUBDIR += wordpress-zh_TW
     SUBDIR += xpdf
-    SUBDIR += ydict
 
 .include <bsd.port.subdir.mk>

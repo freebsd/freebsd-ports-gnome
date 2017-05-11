@@ -3,7 +3,7 @@
 
 PORTNAME=	ember
 PORTVERSION=	0.7.2
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	games
 MASTER_SITES=	SF/worldforge/Ember%20%28OGRE%20client%29/${PORTVERSION} \
 		http://amber.worldforge.org/ember/releases/stable/
@@ -14,6 +14,8 @@ MAINTAINER=	oliver@FreeBSD.org
 COMMENT=	Ember is a WorldForge 3D client using the OGRE 3D library
 
 LICENSE=	GPLv3
+
+BROKEN=		fails to build
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/libOgreMain.so:graphics/ogre3d
 RUN_DEPENDS=	${LOCALBASE}/lib/libOgreMain.so:graphics/ogre3d
