@@ -4,6 +4,7 @@
     COMMENT = Ports related to the World Wide Web
 
     SUBDIR += R-cran-RgoogleMaps
+    SUBDIR += R-cran-Rook
     SUBDIR += R-cran-htmlwidgets
     SUBDIR += R-cran-httpuv
     SUBDIR += R-cran-httr
@@ -1341,6 +1342,7 @@
     SUBDIR += p5-Web-Query
     SUBDIR += p5-Web-Scraper
     SUBDIR += p5-Web-Scraper-Config
+    SUBDIR += p5-Web-Simple
     SUBDIR += p5-Web-oEmbed
     SUBDIR += p5-WebDAO
     SUBDIR += p5-WebDriver-Tiny
@@ -1503,6 +1505,7 @@
     SUBDIR += py-amf
     SUBDIR += py-apachelog
     SUBDIR += py-autobahn
+    SUBDIR += py-aws-requests-auth
     SUBDIR += py-beaker
     SUBDIR += py-beautifulsoup
     SUBDIR += py-beautifulsoup32

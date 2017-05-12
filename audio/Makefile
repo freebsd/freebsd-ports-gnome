@@ -47,6 +47,7 @@
     SUBDIR += autocd
     SUBDIR += autotalent
     SUBDIR += autozen
+    SUBDIR += aylet
     SUBDIR += baresip
     SUBDIR += baudline
     SUBDIR += bcg729
@@ -780,7 +781,6 @@
     SUBDIR += tuxguitar
     SUBDIR += twolame
     SUBDIR += uade
-    SUBDIR += ufmcontrol-i18n
     SUBDIR += umix
     SUBDIR += umodplayer
     SUBDIR += umurmur

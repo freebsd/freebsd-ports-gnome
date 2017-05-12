@@ -410,7 +410,6 @@
     SUBDIR += graid5
     SUBDIR += graveman
     SUBDIR += graylog
-    SUBDIR += grok
     SUBDIR += grub2
     SUBDIR += grub2-bhyve
     SUBDIR += grub2-efi
@@ -890,6 +889,7 @@
     SUBDIR += py-ranger
     SUBDIR += py-salt
     SUBDIR += py-scandir
+    SUBDIR += py-scriptine
     SUBDIR += py-shutilwhich
     SUBDIR += py-stdiff
     SUBDIR += py-supervisor
