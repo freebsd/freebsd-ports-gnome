@@ -32,6 +32,7 @@ include/gtksourceview-3.0/gtksourceview/gtksourcestyleschemechooser.h
 include/gtksourceview-3.0/gtksourceview/gtksourcestyleschemechooserbutton.h
 include/gtksourceview-3.0/gtksourceview/gtksourcestyleschemechooserwidget.h
 include/gtksourceview-3.0/gtksourceview/gtksourcestyleschememanager.h
+include/gtksourceview-3.0/gtksourceview/gtksourcetag.h
 include/gtksourceview-3.0/gtksourceview/gtksourcetypes.h
 include/gtksourceview-3.0/gtksourceview/gtksourceundomanager.h
 include/gtksourceview-3.0/gtksourceview/gtksourceutils.h
@@ -67,6 +68,7 @@ libdata/pkgconfig/gtksourceview-3.0.pc
 %%PORTDOCS%%%%DOCSDIR%%-3.0/GtkSourceMarkAttributes.html
 %%PORTDOCS%%%%DOCSDIR%%-3.0/GtkSourceRegion.html
 %%PORTDOCS%%%%DOCSDIR%%-3.0/GtkSourcePrintCompositor.html
+%%PORTDOCS%%%%DOCSDIR%%-3.0/GtkSourceRegion.html
 %%PORTDOCS%%%%DOCSDIR%%-3.0/GtkSourceSearchContext.html
 %%PORTDOCS%%%%DOCSDIR%%-3.0/GtkSourceSearchSettings.html
 %%PORTDOCS%%%%DOCSDIR%%-3.0/GtkSourceStyle.html

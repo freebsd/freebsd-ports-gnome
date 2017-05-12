@@ -19,8 +19,8 @@ BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		itstool:textproc/itstool
 LIB_DEPENDS=	libenchant.so:textproc/enchant \
 		libpeas-gtk-1.0.so:devel/libpeas \
-		libsoup-2.4.so:devel/libsoup \
-		libgspell-1.so:textproc/gspell
+		libgspell-1.so:textproc/gspell \
+		libsoup-2.4.so:devel/libsoup
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
 		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py3-libpeas

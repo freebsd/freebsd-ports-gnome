@@ -23,8 +23,8 @@ PORTSCOUT=	limitw:1,even
 BUILD_DEPENDS=	vala:lang/vala
 
 USES+=		gettext gmake gnome libtool localbase pathfix pkgconfig
-USE_GNOME=	cairo gdkpixbuf2 gnomeprefix gtk30 intlhack introspection:build \
-		libxml2 referencehack
+USE_GNOME=	cairo gdkpixbuf2 gnomeprefix gtk30 intlhack \
+		introspection:build libxml2 referencehack
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--enable-compile-warnings=no \

@@ -17,7 +17,7 @@ LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 
 USES=		gettext gmake gnome libtool localbase pathfix \
 		pkgconfig tar:xz
-USE_GNOME=	glib20 intlhack
+USE_GNOME=	glib20 intlhack introspection:build
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--disable-3g-source \
