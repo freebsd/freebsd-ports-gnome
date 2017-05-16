@@ -547,6 +547,7 @@
     SUBDIR += npm
     SUBDIR += npm2
     SUBDIR += npm3
+    SUBDIR += npm-less-plugin-clean-css
     SUBDIR += nspluginwrapper
     SUBDIR += nuvolaplayer-8tracks
     SUBDIR += nuvolaplayer-all-services
@@ -1904,6 +1905,7 @@
     SUBDIR += rubygem-actionpack5
     SUBDIR += rubygem-actionpack50
     SUBDIR += rubygem-activeresource4
+    SUBDIR += rubygem-activeresource5
     SUBDIR += rubygem-acts-as-taggable-on
     SUBDIR += rubygem-acts-as-taggable-on3
     SUBDIR += rubygem-acts_as_taggable
