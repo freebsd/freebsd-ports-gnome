@@ -1679,6 +1679,11 @@
     SUBDIR += node-thrift
     SUBDIR += notify-sharp
     SUBDIR += noweb
+    SUBDIR += npm-amdefine
+    SUBDIR += npm-clean-css
+    SUBDIR += npm-commander
+    SUBDIR += npm-graceful-readlink
+    SUBDIR += npm-source-map
     SUBDIR += npth
     SUBDIR += nsgenbind
     SUBDIR += nspr
@@ -3116,6 +3121,7 @@
     SUBDIR += p5-Readonly-XS
     SUBDIR += p5-ReadonlyX
     SUBDIR += p5-Ref-Util
+    SUBDIR += p5-Ref-Util-XS
     SUBDIR += p5-Reflex
     SUBDIR += p5-Regexp-Assemble
     SUBDIR += p5-Regexp-Assemble-Compressed
@@ -4925,6 +4931,7 @@
     SUBDIR += py3-babel
     SUBDIR += py3-click
     SUBDIR += py3-click-log
+    SUBDIR += py3-click-threading
     SUBDIR += py3-colorama
     SUBDIR += py3-dbus
     SUBDIR += py3-defusedxml
@@ -5192,7 +5199,6 @@
     SUBDIR += rubygem-classifier
     SUBDIR += rubygem-classifier-reborn
     SUBDIR += rubygem-climate_control
-    SUBDIR += rubygem-climate_control-rails5
     SUBDIR += rubygem-clio
     SUBDIR += rubygem-cliprompt
     SUBDIR += rubygem-cloudfiles
@@ -5639,6 +5645,7 @@
     SUBDIR += rubygem-web-console
     SUBDIR += rubygem-web-console2
     SUBDIR += rubygem-webby
+    SUBDIR += rubygem-webpacker-rails5
     SUBDIR += rubygem-will_paginate
     SUBDIR += rubygem-windows_error
     SUBDIR += rubygem-wmi-lite
