@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	vala
-PORTVERSION=	0.34.4
+PORTVERSION=	0.36.3
 CATEGORIES=	lang gnome
 MASTER_SITES=	GNOME
 
@@ -22,7 +22,6 @@ INSTALL_TARGET=	install-strip
 
 VALA_VER=	${PORTVERSION:R}
 
-# not dynamic. Devel versions use stable versions here
-PLIST_SUB=	VERSION=0.34
+PLIST_SUB=	VERSION=0.36
 
 .include <bsd.port.mk>
