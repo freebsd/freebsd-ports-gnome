@@ -43,7 +43,6 @@ USES+=		compiler:c11 gettext gmake gnome libtool localbase \
 USE_XORG=	xext xrender x11 xinerama xi xrandr xcursor xfixes xdamage \
 		xcomposite
 CONFIGURE_ARGS=	--enable-x11-backend \
-		--disable-wayland-backend \
 		--enable-introspection
 CPPFLAGS+=	-fno-omit-frame-pointer
 INSTALLS_ICONS=	yes
@@ -57,7 +56,7 @@ GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
 		org.gtk.Settings.Debug.gschema.xml \
 		org.gtk.Settings.FileChooser.gschema.xml
 
-OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD DEBUG BROADWAY
+OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD DEBUG BROADWAY WAYLAND
 OPTIONS_DEFAULT=CUPS COLORD BROADWAY
 OPTIONS_SUB=	yes
 
@@ -76,6 +75,15 @@ CLOUDPRINT_CONFIGURE_ENABLE=	cloudprint
 CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
 			libjson-glib-1.0.so:devel/json-glib
 
+WAYLAND_DESC=		GDK Wayland backend
+WAYLAND_CONFIGURE_ENABLE=	wayland-backend
+WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
+			libxkbcommon.so:x11/libxkbcommon
+WAYLAND_USE=		GL=egl
+
+.include <bsd.port.options.mk>
+
 # don't explicitly disable debug, this causes segfaults. ports r437293
 DEBUG_CONFIGURE_ON=	--enable-debug=yes
 
@@ -89,6 +97,12 @@ pre-configure:
 		${ECHO_MSG} "${PKGNAME}: Needs cairo with X11 support enabled."; \
 		${FALSE}; \
 	fi
+.if ${PORT_OPTIONS:MWAYLAND}
+	@if ! pkg-config --exists wayland-egl; then \
+		${ECHO_MSG} "${PKGNAME}: Needs mesa-libs with wayland support enabled."; \
+		${FALSE}; \
+	fi
+.endif
 
 pre-build:
 	@${RM} -r ${WRKSRC}/docs/gtk.info*
