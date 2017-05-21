@@ -105,6 +105,11 @@ _USE_GSTREAMER_ALL=	bad core good ugly yes ${_GSTREAMER_PLUGINS}
 
 #--------------------------------------------------------------------------#
 
+# XXX
+# a52dec_IMPL=	yes => voor depend tracking?
+
+#--------------------------------------------------------------------------#
+
 core_DEPENDS=	multimedia/gstreamer-plugins-core
 
 yes_DEPENDS=	multimedia/gstreamer-plugins
@@ -392,21 +397,33 @@ IGNORE=	USE_GSTREAMER and USE_GSTREAMER1 can't be used together
 .endif
 
 .if defined(USE_GSTREAMER)
-.for ext in ${USE_GSTREAMER}
+. for component in ${USE_GSTREAMER:C/^([^:]+).*/\1/}
+.  if ${_USE_GSTREAMER_ALL:M${component}}==""
+IGNORE=	cannot install: unknown gstreamer ${GST_VERSION} plugin -- ${component}
+.  endif
+_USE_GSTREAMER+=	${component}
+. endfor
+
+.for ext in ${_USE_GSTREAMER}
 ${ext}_GST_PREFIX?=	gstreamer-plugins-
 ${ext}_GST_VERSION?=	${GST_VERSION}${GST_MINOR_VERSION}
 ${ext}_NAME?=		${ext}
 . if ${_USE_GSTREAMER_ALL:M${ext}}!= "" && exists(${PORTSDIR}/${${ext}_DEPENDS})
 BUILD_DEPENDS+=	${${ext}_GST_PREFIX}${${ext}_NAME}>=${${ext}_GST_VERSION}:${${ext}_DEPENDS}
 RUN_DEPENDS+=	${${ext}_GST_PREFIX}${${ext}_NAME}>=${${ext}_GST_VERSION}:${${ext}_DEPENDS}
-. else
-IGNORE=	cannot install: unknown gstreamer ${GST_VERSION} plugin -- ${ext}
 . endif
 .endfor
 .endif
 
 .if defined(USE_GSTREAMER1)
-.for ext in ${USE_GSTREAMER1}
+. for component in ${USE_GSTREAMER1:C/^([^:]+).*/\1/}
+.  if ${_USE_GSTREAMER_ALL:M${component}}==""
+IGNORE=	cannot install: unknown gstreamer ${GST1_VERSION} plugin -- ${component}
+.  endif
+_USE_GSTREAMER1+=	${component}
+. endfor
+
+.for ext in ${_USE_GSTREAMER1}
 ${ext}_GST_PREFIX?=	gstreamer1-plugins-
 ${ext}_GST_VERSION?=	${GST1_VERSION}${GST1_MINIMAL_VERSION}
 ${ext}_NAME10?=		${ext}
@@ -414,8 +431,6 @@ ${ext}_GST_DEPENDS?=	${${ext}_DEPENDS:S,gstreamer-,gstreamer1-,}
 . if ${_USE_GSTREAMER_ALL:M${ext}}!= "" && exists(${PORTSDIR}/${${ext}_GST_DEPENDS})
 BUILD_DEPENDS+=	${${ext}_GST_PREFIX}${${ext}_NAME10}>=${${ext}_GST_VERSION}:${${ext}_GST_DEPENDS}
 RUN_DEPENDS+=	${${ext}_GST_PREFIX}${${ext}_NAME10}>=${${ext}_GST_VERSION}:${${ext}_GST_DEPENDS}
-. else
-IGNORE=	cannot install: unknown gstreamer ${GST1_VERSION} plugin -- ${ext}
 . endif
 .endfor
 .endif

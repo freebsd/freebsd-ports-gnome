@@ -5,6 +5,8 @@ CATEGORIES=	x11-toolkits
 
 COMMENT=	GStreamer gtksink plugin
 
+# XXX hmm doesn't work.
+
 GST_PLUGIN=	gtksink
 DIST=		bad
 
