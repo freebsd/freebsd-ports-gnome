@@ -517,6 +517,7 @@
     SUBDIR += mpdas
     SUBDIR += mpdbrowser
     SUBDIR += mpdcon
+    SUBDIR += mpdscribble
     SUBDIR += mpg123
     SUBDIR += mpg123.el
     SUBDIR += mpg321
