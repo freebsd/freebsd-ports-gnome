@@ -44,15 +44,13 @@ GNU_CONFIGURE=	yes
 USE_GNOME=	atk cairo gdkpixbuf2 introspection:build pango
 USES+=		compiler:c11 gettext gmake gnome libtool localbase \
 		pathfix perl5 pkgconfig
-USE_XORG=	x11 xcomposite xcursor xdamage xext xfixes xi xinerama xrandr
-CONFIGURE_ARGS=	--enable-x11-backend \
-		--disable-vulkan \
+CONFIGURE_ARGS=	--disable-vulkan \
 		--enable-introspection
 #CPPFLAGS+=	-fno-omit-frame-pointer
 #INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
 
-LIBVERSION=	0.9000.0
+LIBVERSION=	0.9100.0
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
@@ -60,11 +58,15 @@ GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
 		org.gtk.Settings.Debug.gschema.xml \
 		org.gtk.Settings.FileChooser.gschema.xml
 
-OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD BROADWAY WAYLAND
-OPTIONS_DEFAULT=CUPS COLORD BROADWAY
+OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD
+OPTIONS_DEFAULT=CUPS COLORD BROADWAY X11
 OPTIONS_SUB=	yes
 
-BROADWAY_DESC=	Enable GDK Broadway (HTML5) backend
+BACKEND_DESC=	GDK backends
+OPTIONS_MULTI=	BACKEND
+OPTIONS_MULTI_BACKEND=	BROADWAY WAYLAND X11
+
+BROADWAY_DESC=	Broadway (HTML5) GDK backend
 BROADWAY_CONFIGURE_ENABLE=	broadway-backend
 
 COLORD_DESC=	Color profile support
@@ -79,12 +81,17 @@ CLOUDPRINT_CONFIGURE_ENABLE=	cloudprint
 CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
 			libjson-glib-1.0.so:devel/json-glib
 
-WAYLAND_DESC=		Wayland GDK backend
+WAYLAND_DESC=		Wayland GDK backend (support Wayland applications)
 WAYLAND_CONFIGURE_ENABLE=	wayland-backend
-WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols \
+			v4l_compat>=0:multimedia/v4l_compat
 WAYLAND_LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
-		libxkbcommon.so:x11/libxkbcommon
+			libxkbcommon.so:x11/libxkbcommon
 WAYLAND_USE=		GL=egl
+
+X11_DESC=		X11 GDK backend (support X.org applications)
+X11_CONFIGURE_ENABLE=	x11-backend
+X11_USE=		XORG=x11,xcomposite,xcursor,xdamage,xext,xfixes,xi,xinerama,xrandr
 
 # don't explicitly disable debug, this causes segfaults. ports r437293
 DEBUG_CONFIGURE_ON=	--enable-debug=yes
