@@ -3,16 +3,15 @@
 
 PORTREVISION=	0
 
-BOOKS=		gdk gtk libgail-util
-
+BOOKS=		gdk gsk gtk
 NO_ARCH=	yes
 
 do-install:
 .for d in ${BOOKS}
 	if [ -d ${REFERENCE_SRC}/${d}/html ]; then \
-		${MKDIR} ${STAGEDIR}${PREFIX}/share/doc/${d}3; \
+		${MKDIR} ${STAGEDIR}${PREFIX}/share/doc/${d}4; \
 		cd ${REFERENCE_SRC}/${d}/html && \
-		${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/doc/${d}3; \
+		${COPYTREE_SHARE} . ${STAGEDIR}${PREFIX}/share/doc/${d}4; \
 	fi
 .endfor
 
