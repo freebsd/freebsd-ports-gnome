@@ -12,7 +12,8 @@ PKGNAMESUFFIX=	${LLVM_SUFFIX}
 MAINTAINER=	brooks@FreeBSD.org
 COMMENT=	LLVM and Clang
 
-BROKEN_powerpc64=	Does not build: internal compiler error: Killed (program cc1plus)
+BROKEN_armv6=		fails to compile: fatal error: llvm/IR/Attributes.inc file not found
+BROKEN_powerpc64=	fails to compile: internal compiler error: Killed (program cc1plus)
 
 LLVM_RELEASE=	${DISTVERSION:C/rc.*//}
 RCDIR=		${DISTVERSION:S/${LLVM_RELEASE}//:C|(rc.*)|\1/|}
@@ -305,6 +306,8 @@ post-patch:
 post-patch-COMPILER_RT-on:
 	cd ${WRKSRC_compiler_rt} && patch < ${PATCHDIR}/compiler-rt-patch-svn-261229
 	cd ${WRKSRC_compiler_rt} && patch < ${PATCHDIR}/compiler-rt-patch-svn-294806
+	cd ${WRKSRC_compiler_rt} && patch < ${PATCHDIR}/compiler-rt-patch-canonical-syscalls
+	cd ${WRKSRC_compiler_rt} && patch < ${PATCHDIR}/compiler-rt-patch-ino64
 .if ${ARCH} == "amd64"
 	cd ${WRKSRC_compiler_rt} && patch < ${PATCHDIR}/compiler-rt-patch-no-m32
 .endif

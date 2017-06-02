@@ -866,6 +866,7 @@
     SUBDIR += py-filelike
     SUBDIR += py-freenas.cli
     SUBDIR += py-glances
+    SUBDIR += py-gmailfs-fuse
     SUBDIR += py-halite
     SUBDIR += py-honcho
     SUBDIR += py-iocage
@@ -899,6 +900,7 @@
     SUBDIR += py-zfs
     SUBDIR += pydf
     SUBDIR += py3-iocage
+    SUBDIR += py3-pkginfo
     SUBDIR += qchroot
     SUBDIR += qjail
     SUBDIR += qjail2

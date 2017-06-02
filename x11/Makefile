@@ -99,6 +99,7 @@
     SUBDIR += gtkchtheme
     SUBDIR += gtkterm2
     SUBDIR += guake
+    SUBDIR += gxkb
     SUBDIR += hs-X11
     SUBDIR += hs-X11-xft
     SUBDIR += hs-xmobar
@@ -425,6 +426,7 @@
     SUBDIR += xkbcomp
     SUBDIR += xkbctrl
     SUBDIR += xkbevd
+    SUBDIR += xkbind
     SUBDIR += xkbprint
     SUBDIR += xkbset
     SUBDIR += xkbutils
