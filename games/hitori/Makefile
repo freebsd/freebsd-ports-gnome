@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	hitori
-PORTVERSION=	3.22.0
+PORTVERSION=	3.22.3
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -20,7 +20,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake localbase pathfix pkgconfig \
 		tar:xz
-USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
+USE_GNOME=	cairo gtk30 librsvg2 libxml2:build
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
 

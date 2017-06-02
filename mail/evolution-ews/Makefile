@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	evolution-ews
-PORTVERSION=	3.20.4
+PORTVERSION=	3.22.6
 CATEGORIES=	mail gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -13,11 +13,11 @@ COMMENT=	Evolution Microsoft Exchange plugin through Exchange Web Services
 BUILD_DEPENDS=	evolution>=3.0.0:mail/evolution
 LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		libmspack.so:archivers/libmspack \
-		libical.so:devel/libical \
 		libsecret-1.so:security/libsecret \
 		libnspr4.so:devel/nspr \
 		libnss3.so:security/nss \
-		libwebkitgtk-3.0.so:www/webkit-gtk3
+		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
+		libical.so:devel/libical
 RUN_DEPENDS=	evolution>=3.0.0:mail/evolution
 
 PORTSCOUT=	limitw:1,even

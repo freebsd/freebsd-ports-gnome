@@ -418,6 +418,7 @@
     SUBDIR += rubygem-dotenv
     SUBDIR += rubygem-dotenv-rails
     SUBDIR += rubygem-dotenv-rails-rails5
+    SUBDIR += rubygem-dotenv-rails-rails50
     SUBDIR += rubygem-iesd
     SUBDIR += rubygem-mime-types
     SUBDIR += rubygem-mime-types-data
@@ -473,6 +474,7 @@
     SUBDIR += uk-postcodes
     SUBDIR += umodunpack
     SUBDIR += unclutter
+    SUBDIR += unicode-ucd
     SUBDIR += upclient
     SUBDIR += us-zipcodes
     SUBDIR += usbids

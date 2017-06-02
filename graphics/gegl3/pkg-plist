@@ -6,7 +6,6 @@ include/gegl-%%GEGL_VER%%/gegl-buffer-backend.h
 include/gegl-%%GEGL_VER%%/gegl-buffer-cl-iterator.h
 include/gegl-%%GEGL_VER%%/gegl-buffer-iterator.h
 include/gegl-%%GEGL_VER%%/gegl-buffer.h
-include/gegl-%%GEGL_VER%%/gegl-c.h
 include/gegl-%%GEGL_VER%%/gegl-color.h
 include/gegl-%%GEGL_VER%%/gegl-cpuaccel.h
 include/gegl-%%GEGL_VER%%/gegl-curve.h

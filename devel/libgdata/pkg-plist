@@ -107,7 +107,7 @@ lib/girepository-1.0/GData-0.0.typelib
 lib/libgdata.a
 lib/libgdata.so
 lib/libgdata.so.22
-lib/libgdata.so.22.1.4
+lib/libgdata.so.22.2.1
 libdata/pkgconfig/libgdata.pc
 share/doc/gdata/GDataAPPCategories.html
 share/doc/gdata/GDataAccessHandler.html
@@ -257,6 +257,7 @@ share/doc/gdata/ix20.html
 share/doc/gdata/ix21.html
 share/doc/gdata/ix22.html
 share/doc/gdata/ix23.html
+share/doc/gdata/ix24.html
 share/doc/gdata/left-insensitive.png
 share/doc/gdata/left.png
 share/doc/gdata/pt01.html

@@ -17,8 +17,7 @@ BUILD_DEPENDS=	itstool:textproc/itstool
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix \
-		pkgconfig tar:xz
+USES=		gettext gmake gnome localbase pathfix pkgconfig tar:xz
 USE_GNOME=	cairo gtk30 intlhack librsvg2
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes

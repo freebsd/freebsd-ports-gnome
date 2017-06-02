@@ -3,7 +3,9 @@ include/babl-0.1/babl/babl-macros.h
 include/babl-0.1/babl/babl-types.h
 include/babl-0.1/babl/babl-version.h
 include/babl-0.1/babl/babl.h
+lib/babl-0.1/16bit.so
 lib/babl-0.1/CIE.so
+lib/babl-0.1/HCY.so
 lib/babl-0.1/HSL.so
 lib/babl-0.1/HSV.so
 lib/babl-0.1/cairo.so
@@ -28,5 +30,5 @@ lib/babl-0.1/two-table.so
 lib/babl-0.1/ycbcr.so
 lib/libbabl-0.1.so
 lib/libbabl-0.1.so.0
-lib/libbabl-0.1.so.0.121.1
+lib/libbabl-0.1.so.0.127.1
 libdata/pkgconfig/babl.pc

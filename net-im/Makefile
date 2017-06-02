@@ -73,6 +73,7 @@
     SUBDIR += licq-osd
     SUBDIR += licq-qt-gui
     SUBDIR += loudmouth
+    SUBDIR += mastodon
     SUBDIR += mbpurple
     SUBDIR += mcabber
     SUBDIR += meanwhile
@@ -109,6 +110,7 @@
     SUBDIR += pidgin-hotkeys
     SUBDIR += pidgin-latex
     SUBDIR += pidgin-libnotify
+    SUBDIR += pidgin-manualsize
     SUBDIR += pidgin-osd
     SUBDIR += pidgin-pidgimpd
     SUBDIR += pidgin-privacy-please

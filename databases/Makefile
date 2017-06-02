@@ -177,6 +177,8 @@
     SUBDIR += mariadb100-server
     SUBDIR += mariadb101-client
     SUBDIR += mariadb101-server
+    SUBDIR += mariadb102-client
+    SUBDIR += mariadb102-server
     SUBDIR += mariadb55-client
     SUBDIR += mariadb55-server
     SUBDIR += mdbtools
@@ -240,6 +242,7 @@
     SUBDIR += openark-kit
     SUBDIR += opendbx
     SUBDIR += opentsdb
+    SUBDIR += oracle8-client
     SUBDIR += p5-Amazon-SimpleDB
     SUBDIR += p5-Amon2-DBI
     SUBDIR += p5-AnyEvent-BDB
@@ -302,6 +305,7 @@
     SUBDIR += p5-DBD-Mock
     SUBDIR += p5-DBD-Multi
     SUBDIR += p5-DBD-ODBC
+    SUBDIR += p5-DBD-Oracle
     SUBDIR += p5-DBD-Pg
     SUBDIR += p5-DBD-PgLite
     SUBDIR += p5-DBD-PgPP
@@ -914,6 +918,7 @@
     SUBDIR += rubygem-em-redis-unified
     SUBDIR += rubygem-familia
     SUBDIR += rubygem-globalid
+    SUBDIR += rubygem-globalid-rails50
     SUBDIR += rubygem-globalid-rails5
     SUBDIR += rubygem-her
     SUBDIR += rubygem-hiredis
@@ -929,11 +934,13 @@
     SUBDIR += rubygem-pg_array_parser
     SUBDIR += rubygem-pghero
     SUBDIR += rubygem-pghero-rails5
+    SUBDIR += rubygem-pghero-rails50
     SUBDIR += rubygem-postgres_ext
     SUBDIR += rubygem-rbase
     SUBDIR += rubygem-redis
     SUBDIR += rubygem-redis-actionpack
     SUBDIR += rubygem-redis-actionpack-rails5
+    SUBDIR += rubygem-redis-actionpack-rails50
     SUBDIR += rubygem-redis-namespace
     SUBDIR += rubygem-seed-fu
     SUBDIR += rubygem-sqlite3

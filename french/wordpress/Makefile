@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	wordpress
-PORTVERSION=	4.7.4
+PORTVERSION=	4.7.5
 PORTEPOCH=	1
 DISTVERSIONSUFFIX=	-fr_FR
 CATEGORIES=	french www
 MASTER_SITES=	http://fr.wordpress.org/
 
-MAINTAINER=	joneum@bsdproject.de
+MAINTAINER=	joneum@FreeBSD.org
 COMMENT=	State-of-the-art semantic personal publishing platform
 
 LICENSE=	GPLv2

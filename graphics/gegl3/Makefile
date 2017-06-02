@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gegl
-PORTVERSION=	0.3.10
+PORTVERSION=	0.3.18
 CATEGORIES=	graphics
 MASTER_SITES=	GIMP
 PKGNAMESUFFIX=	3
-WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION:S/.a1//}
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Graph based image processing framework
@@ -26,10 +25,10 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_header_execinfo_h=no
 CONFIGURE_ARGS=	--without-vala --disable-docs
-CONFIGURE_ARGS+=--without-mrg
+CONFIGURE_ARGS+=--without-mrg --without-lensfun
 INSTALL_TARGET=	install-strip
 
-GEGL_MINOR=	310
+GEGL_MINOR=	318
 GEGL_VER=	0.3
 PLIST_SUB+=	GEGL_MINOR="${GEGL_MINOR}" GEGL_VER=${GEGL_VER}
 

@@ -18,8 +18,7 @@ BUILD_DEPENDS=	vala:lang/vala \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix \
-		pkgconfig tar:xz
+USES=		gettext gmake gnome localbase pathfix pkgconfig tar:xz
 INSTALLS_ICONS=	yes
 USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
 GNU_CONFIGURE=	yes

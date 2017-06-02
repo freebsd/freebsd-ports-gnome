@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-mines
-PORTVERSION=	3.22.2
+PORTVERSION=	3.24.0
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -20,8 +20,7 @@ LIB_DEPENDS=	libgnome-games-support-1.so:games/libgnome-games-support \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix \
-		pkgconfig tar:xz
+USES=		gettext gmake gnome localbase pathfix pkgconfig tar:xz
 USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes

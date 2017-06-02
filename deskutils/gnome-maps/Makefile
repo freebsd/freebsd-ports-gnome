@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-maps
-PORTVERSION=	3.22.2
+PORTVERSION=	3.24.3
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -13,12 +13,13 @@ COMMENT=	Map application for GNOME 3
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	geoclue>=0:net/geoclue \
-		itstool:textproc/itstool
-LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3 \
-		libgeocode-glib.so:net/geocode-glib \
+BUILD_DEPENDS=	geoclue>=0:net/geoclue
+LIB_DEPENDS=	libgeocode-glib.so:net/geocode-glib \
 		libgee-0.8.so:devel/libgee \
 		libchamplain-0.12.so:graphics/libchamplain \
+		libsoup-2.4.so:devel/libsoup \
+		librest-0.7.so:devel/librest \
+		libjson-glib-1.0.so:devel/json-glib \
 		libfolks.so:net-im/folks \
 		libgjs.so:lang/gjs \
 		libsoup-2.4.so:devel/libsoup \
@@ -30,9 +31,9 @@ RUN_DEPENDS=	geoclue>=0:net/geoclue
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome libtool localbase pathfix \
-		pkgconfig tar:xz
-USE_GNOME=	cairo gnomedesktop3 gtk30 intlhack libxml2
+USES=		desktop-file-utils gettext gmake gnome libtool \
+		localbase pathfix pkgconfig tar:xz
+USE_GNOME=	cairo gtk30 intltool libxml2
 USE_GL=		egl
 USE_LDCONFIG=	yes
 USE_XORG=	x11 xcomposite xdamage xext xfixes xi xrandr

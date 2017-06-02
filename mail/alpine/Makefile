@@ -4,7 +4,7 @@ PORTNAME?=	alpine
 PORTVERSION=	2.21
 PORTREVISION?=	0
 CATEGORIES?=	mail news ipv6
-MASTER_SITES=	http://patches.freeiz.com/alpine/release/src/
+MASTER_SITES=	http://alpine.freeiz.com/alpine/release/src/
 DIST_SUBDIR=	alpine-${PORTVERSION}
 
 MAINTAINER=	mbeis@xs4all.nl
@@ -13,7 +13,7 @@ COMMENT?=	Mail and news client descended from Pine
 LICENSE=	APACHE20
 
 OPTIONS_DEFINE=		DOCS SSL THREADS MOUSE NLS ISPELL NOSPELL
-OPTIONS_DEFAULT+=	DOCS SSL THREADS MOUSE
+OPTIONS_DEFAULT+=	SSL THREADS MOUSE
 SSL_DESC=	Build with SSL (installs: security/openssl if pre 10.x)
 MOUSE_DESC=	Enable mouse support for xterm
 ISPELL_DESC=	Use ispell instead of aspell as default speller
@@ -112,7 +112,7 @@ CONFIGURE_ARGS+=	--with-passfile=.alpine.pwd
 .endif
 
 .if ${PORT_OPTIONS:MMAILDIR}
-PATCH_SITES=		http://patches.freeiz.com/alpine/patches/alpine-${PORTVERSION}/
+PATCH_SITES=		http://alpine.freeiz.com/alpine/patches/alpine-${PORTVERSION}/
 PATCHFILES+=		maildir.patch.gz:-p1
 .endif
 

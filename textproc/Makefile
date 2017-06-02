@@ -420,6 +420,7 @@
     SUBDIR += libsass
     SUBDIR += libsoldout
     SUBDIR += libsphinxclient
+    SUBDIR += libstaroffice
     SUBDIR += libstree
     SUBDIR += libtextcat
     SUBDIR += libtranslate
@@ -1289,6 +1290,7 @@
     SUBDIR += py-openpyxl
     SUBDIR += py-pandocfilters
     SUBDIR += py-paragrep
+    SUBDIR += py-parsel
     SUBDIR += py-parsimonious
     SUBDIR += py-pdfminer
     SUBDIR += py-pss
@@ -1371,6 +1373,7 @@
     SUBDIR += py3-asciinema
     SUBDIR += py3-chardet
     SUBDIR += py3-docutils
+    SUBDIR += py3-humanfriendly
     SUBDIR += py3-hunspell
     SUBDIR += py3-libxml2
     SUBDIR += py3-pager
@@ -1517,6 +1520,7 @@
     SUBDIR += rubygem-pretty-xml
     SUBDIR += rubygem-rails-dom-testing
     SUBDIR += rubygem-rails-dom-testing-rails5
+    SUBDIR += rubygem-rails-dom-testing-rails50
     SUBDIR += rubygem-rails-dom-testing1
     SUBDIR += rubygem-rails-html-sanitizer
     SUBDIR += rubygem-rak
@@ -1541,6 +1545,7 @@
     SUBDIR += rubygem-sanitize
     SUBDIR += rubygem-sass
     SUBDIR += rubygem-sass-rails-rails5
+    SUBDIR += rubygem-sass-rails-rails50
     SUBDIR += rubygem-sass-rails5
     SUBDIR += rubygem-sass32
     SUBDIR += rubygem-sax-machine

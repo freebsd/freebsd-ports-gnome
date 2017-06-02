@@ -103,6 +103,7 @@
     SUBDIR += biggles
     SUBDIR += blacs
     SUBDIR += blas
+    SUBDIR += blis
     SUBDIR += blitz++
     SUBDIR += blocksolve95
     SUBDIR += bsdnt
@@ -120,6 +121,7 @@
     SUBDIR += clarence
     SUBDIR += clasp
     SUBDIR += clblas
+    SUBDIR += clblast
     SUBDIR += clfft
     SUBDIR += clipper
     SUBDIR += cln
