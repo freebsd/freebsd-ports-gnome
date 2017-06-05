@@ -338,6 +338,7 @@
     SUBDIR += libmaia
     SUBDIR += libmateweather
     SUBDIR += libmaxminddb
+    SUBDIR += libmdf
     SUBDIR += libmediawiki
     SUBDIR += libmms
     SUBDIR += libmxp

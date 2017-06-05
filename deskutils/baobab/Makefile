@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	baobab
-PORTVERSION=	3.22.1
+PORTVERSION=	3.24.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -22,7 +22,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		desktop-file-utils gettext gmake gnome localbase \
 		pathfix pkgconfig tar:xz
-USE_GNOME=	cairo gnomeprefix gtk30 intlhack libxml2
+USE_GNOME=	cairo gnomeprefix gtk30 libxml2
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 

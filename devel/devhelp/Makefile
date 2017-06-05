@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	devhelp
-PORTVERSION=	3.22.0
+PORTVERSION=	3.24.0
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -13,23 +13,19 @@ COMMENT=	Developer help browser for GNOME 3
 LICENSE=	GPLv2
 LICENSE_FILES=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
-		libsoup-2.4.so:devel/libsoup
-
+LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
+		libwebkit2gtk-4.0.so:www/webkit2-gtk3
+		
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c++11-lib gettext gmake gnome \
-		libtool localbase pathfix pkgconfig python:3.3+,build tar:xz
-USE_GNOME=	cairo gtk30 intlhack libxslt
-USE_XORG=	x11
+USES=		compiler:c++11-lib gettext gmake gnome libtool localbase \
+		pathfix pkgconfig python:3.3+,build tar:xz
+USE_GNOME=	cairo gtk30 introspection
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.gnome.devhelp.gschema.xml
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|gedit-plugin||g' ${WRKSRC}/misc/Makefile.in
 
 .include <bsd.port.mk>
