@@ -1,6 +1,6 @@
---- Makefile.in.orig	2017-06-04 16:18:05.147255000 +0200
-+++ Makefile.in	2017-06-04 16:22:53.394133000 +0200
-@@ -208,10 +207,13 @@
+--- Makefile.in.orig	2017-06-05 19:05:02 UTC
++++ Makefile.in
+@@ -208,10 +208,13 @@ endif
  SCRIPTS = $(JS_CONFIG_NAME)
  SDK_BINARY = $(JS_CONFIG_NAME)
  

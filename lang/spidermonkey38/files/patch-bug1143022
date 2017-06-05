@@ -7,13 +7,9 @@ There might be 48-bit VA on arm64 depending on kernel configuration.
 Manually mmap heap memory to align with the assumption made by JS engine.
 
 Change-Id: I2853e284b92aecf609e00bb82718e5df535bbba2
----
-
-diff --git a/js/src/gc/Memory.cpp b/js/src/gc/Memory.cpp
-index 8db2c68e..db2063d 100644
---- gc/Memory.cpp
+--- gc/Memory.cpp.orig	2016-04-20 21:17:31 UTC
 +++ gc/Memory.cpp
-@@ -379,7 +379,7 @@
+@@ -379,7 +379,7 @@ static inline void*
  MapMemoryAt(void* desired, size_t length, int prot = PROT_READ | PROT_WRITE,
              int flags = MAP_PRIVATE | MAP_ANON, int fd = -1, off_t offset = 0)
  {
@@ -22,7 +18,7 @@ index 8db2c68e..db2063d 100644
      MOZ_ASSERT(0xffff800000000000ULL & (uintptr_t(desired) + length - 1) == 0);
  #endif
      void* region = mmap(desired, length, prot, flags, fd, offset);
-@@ -429,6 +429,41 @@
+@@ -429,6 +429,41 @@ MapMemory(size_t length, int prot = PROT_READ | PROT_W
          return nullptr;
      }
      return region;
@@ -64,11 +60,10 @@ index 8db2c68e..db2063d 100644
  #else
      void* region = MozTaggedAnonymousMmap(nullptr, length, prot, flags, fd, offset, "js-gc-heap");
      if (region == MAP_FAILED)
-diff --git a/js/src/jsapi-tests/testGCAllocator.cpp b/js/src/jsapi-tests/testGCAllocator.cpp
-index 2d36d2f..9bf1692 100644
---- jsapi-tests/testGCAllocator.cpp
+
+--- jsapi-tests/testGCAllocator.cpp.orig	2016-04-20 21:17:34 UTC
 +++ jsapi-tests/testGCAllocator.cpp
-@@ -257,7 +257,7 @@
+@@ -257,7 +257,7 @@ unmapPages(void* p, size_t size)
  void*
  mapMemoryAt(void* desired, size_t length)
  {
@@ -77,7 +72,7 @@ index 2d36d2f..9bf1692 100644
      MOZ_RELEASE_ASSERT(0xffff800000000000ULL & (uintptr_t(desired) + length - 1) == 0);
  #endif
      void* region = mmap(desired, length, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANON, -1, 0);
-@@ -274,21 +274,45 @@
+@@ -274,21 +274,45 @@ mapMemoryAt(void* desired, size_t length)
  void*
  mapMemory(size_t length)
  {
