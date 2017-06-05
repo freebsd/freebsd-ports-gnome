@@ -13,6 +13,7 @@ share/icons/hicolor/512x512/apps/org.gnome.Calendar.png
 share/icons/hicolor/symbolic/apps/org.gnome.Calendar-symbolic.svg
 share/locale/an/LC_MESSAGES/gnome-calendar.mo
 share/locale/ar/LC_MESSAGES/gnome-calendar.mo
+share/locale/be/LC_MESSAGES/gnome-calendar.mo
 share/locale/bs/LC_MESSAGES/gnome-calendar.mo
 share/locale/ca/LC_MESSAGES/gnome-calendar.mo
 share/locale/cs/LC_MESSAGES/gnome-calendar.mo
