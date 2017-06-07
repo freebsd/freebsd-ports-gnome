@@ -31,6 +31,7 @@ USES=		compiler:c++11-lib desktop-file-utils gettext gmake gnome \
 USE_LDCONFIG=	yes
 USE_GNOME=	cairo evolutiondataserver3 intltool
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--disable-Werror
 INSTALLS_ICONS=	yes
 
 GLIB_SCHEMAS=	org.gnome.bijiben.gschema.xml
