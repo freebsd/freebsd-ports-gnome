@@ -4,10 +4,8 @@ bin/gnome-shell-extension-tool
 bin/gnome-shell-perf-tool
 lib/gnome-shell/Gvc-1.0.typelib
 lib/gnome-shell/Shell-0.1.typelib
-lib/gnome-shell/ShellJS-0.1.typelib
 lib/gnome-shell/ShellMenu-0.1.typelib
 lib/gnome-shell/St-1.0.typelib
-lib/gnome-shell/libgnome-shell-js.so
 lib/gnome-shell/libgnome-shell-menu.so
 lib/gnome-shell/libgnome-shell.so
 %%WEBPLUGIN_DIR%%libgnome-shell-browser-plugin.so
@@ -19,6 +17,7 @@ share/GConf/gsettings/gnome-shell-overrides.convert
 share/applications/evolution-calendar.desktop
 share/applications/gnome-shell-extension-prefs.desktop
 share/applications/org.gnome.Shell.desktop
+share/dbus-1/interfaces/org.gnome.Shell.PadOsd.xml
 share/dbus-1/interfaces/org.gnome.Shell.Screencast.xml
 share/dbus-1/interfaces/org.gnome.Shell.Screenshot.xml
 share/dbus-1/interfaces/org.gnome.ShellSearchProvider.xml
@@ -30,7 +29,6 @@ share/gnome-control-center/keybindings/50-gnome-shell-system.xml
 %%DATADIR%%/perf-background.xml
 share/gtk-doc/html/shell/ShellEmbeddedWindow.html
 share/gtk-doc/html/shell/ShellGtkEmbed.html
-share/gtk-doc/html/shell/ShellTpClient.html
 share/gtk-doc/html/shell/annotation-glossary.html
 share/gtk-doc/html/shell/api-index-full.html
 share/gtk-doc/html/shell/ch01.html
@@ -39,7 +37,6 @@ share/gtk-doc/html/shell/ch03.html
 share/gtk-doc/html/shell/ch04.html
 share/gtk-doc/html/shell/ch05.html
 share/gtk-doc/html/shell/ch06.html
-share/gtk-doc/html/shell/deprecated-api-index.html
 share/gtk-doc/html/shell/gdbus-org.gnome.Shell.SearchProvider.html
 share/gtk-doc/html/shell/gdbus-org.gnome.Shell.SearchProvider2.html
 share/gtk-doc/html/shell/home.png
@@ -79,7 +76,6 @@ share/gtk-doc/html/st/annotation-glossary.html
 share/gtk-doc/html/st/api-index-full.html
 share/gtk-doc/html/st/base.html
 share/gtk-doc/html/st/containers.html
-share/gtk-doc/html/st/deprecated-api-index.html
 share/gtk-doc/html/st/home.png
 share/gtk-doc/html/st/index.html
 share/gtk-doc/html/st/left-insensitive.png
@@ -94,10 +90,9 @@ share/gtk-doc/html/st/st-st-label.html
 share/gtk-doc/html/st/st-st-scroll-view.html
 share/gtk-doc/html/st/st-st-texture-cache.html
 share/gtk-doc/html/st/st-st-theme-context.html
+share/gtk-doc/html/st/st-st-theme-node-transition.html
 share/gtk-doc/html/st/st-st-theme-node.html
 share/gtk-doc/html/st/st-st-theme.html
-share/gtk-doc/html/st/st-st-theme-node-transition.html
-share/locale/gd/LC_MESSAGES/gnome-shell.mo
 share/gtk-doc/html/st/st.devhelp2
 share/gtk-doc/html/st/style.css
 share/gtk-doc/html/st/styling.html
@@ -130,6 +125,7 @@ share/locale/fi/LC_MESSAGES/gnome-shell.mo
 share/locale/fr/LC_MESSAGES/gnome-shell.mo
 share/locale/fur/LC_MESSAGES/gnome-shell.mo
 share/locale/ga/LC_MESSAGES/gnome-shell.mo
+share/locale/gd/LC_MESSAGES/gnome-shell.mo
 share/locale/gl/LC_MESSAGES/gnome-shell.mo
 share/locale/gu/LC_MESSAGES/gnome-shell.mo
 share/locale/he/LC_MESSAGES/gnome-shell.mo
