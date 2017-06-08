@@ -75,6 +75,8 @@ share/help/sv/gdm/index.docbook
 share/help/sv/gdm/legal.xml
 share/help/te/gdm/index.docbook
 share/help/te/gdm/legal.xml
+share/help/tr/gdm/index.docbook
+share/help/tr/gdm/legal.xml
 share/help/uk/gdm/index.docbook
 share/help/uk/gdm/legal.xml
 share/help/zh_CN/gdm/index.docbook
@@ -195,13 +197,13 @@ share/pixmaps/gdm-xnest.png
 share/pixmaps/gdm.png
 share/pixmaps/nobody.png
 share/pixmaps/nohost.png
-@exec mkdir -p %D/share/xsessions
-@exec dconf update
-@unexec dconf update
+@postexec mkdir -p %D/share/xsessions
+@postexec dconf update
+@postunexec dconf update
 @mode 1775
 @dir etc/gdm/home
 @mode
-@unexec rm -rf %D/etc/gdm/home/.gconf*
+@postunexec rm -rf %D/etc/gdm/home/.gconf*
 @dir %%ETCDIR%%/Sessions
 @dir %%ETCDIR%%/home/.local/share/applications
 @dir etc/dm
@@ -211,4 +213,4 @@ share/pixmaps/nohost.png
 @dir /var/run/gdm/greeter
 @dir /var/run/gdm/
 @dir /var/log/gdm/
-@unexec rm -fr /var/gdm
+@postunexec rm -fr /var/gdm

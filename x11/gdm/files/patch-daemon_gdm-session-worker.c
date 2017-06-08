@@ -1,5 +1,31 @@
---- daemon/gdm-session-worker.c.orig	Tue Apr 19 07:00:41 2016
-+++ daemon/gdm-session-worker.c	Tue Apr 26 10:02:48 2016
+$OpenBSD: patch-daemon_gdm-session-worker_c,v 1.15 2017/03/12 12:58:03 nigel Exp $
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 1ac67f522f5690c27023d98096ca817f12f7eb88 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:28:01 -0400
+Subject: drop consolekit support
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:48:52 -0400
+Subject: require logind support
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From a9cacb929470eb82582396984c61d5b611bfeb1a Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 14:33:40 -0400
+Subject: session: drop session-type property
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 6942fb9b16bab7173bbd295fb19a9770289dbe0e Mon Sep 17 00:00:00 2001
+From: Tim Lunn <tim@feathertop.org>
+Date: Mon, 11 Apr 2016 23:18:10 +1000
+Subject: gdm-session: set PAM_TTY when initialising pam
+
+--- daemon/gdm-session-worker.c.orig	Fri Mar  3 20:32:37 2017
++++ daemon/gdm-session-worker.c	Sun Mar 12 12:37:19 2017
 @@ -28,9 +28,11 @@
  #include <string.h>
  #include <sys/types.h>
@@ -381,7 +407,7 @@
  
          gdm_session_worker_uninitialize_pam (worker, PAM_SUCCESS);
  
-@@ -1847,12 +2048,14 @@ gdm_session_worker_start_session (GdmSessionWorker  *w
+@@ -1849,12 +2050,14 @@ gdm_session_worker_start_session (GdmSessionWorker  *w
  
          error_code = PAM_SUCCESS;
  
@@ -394,9 +420,9 @@
          }
 +#endif
  
-         session_pid = fork ();
- 
-@@ -1899,6 +2102,7 @@ gdm_session_worker_start_session (GdmSessionWorker  *w
+         if (!worker->priv->is_program_session && !run_script (worker, GDMCONFDIR "/PostLogin")) {
+                 g_set_error (error,
+@@ -1919,6 +2122,7 @@ gdm_session_worker_start_session (GdmSessionWorker  *w
                          _exit (2);
                  }
  
@@ -404,7 +430,7 @@
                  /* Take control of the tty
                   */
                  if (needs_controlling_terminal) {
-@@ -1906,6 +2110,7 @@ gdm_session_worker_start_session (GdmSessionWorker  *w
+@@ -1926,6 +2130,7 @@ gdm_session_worker_start_session (GdmSessionWorker  *w
                                  g_debug ("GdmSessionWorker: could not take control of tty: %m");
                          }
                  }
@@ -412,7 +438,7 @@
  
  #ifdef HAVE_LOGINCAP
                  if (setusercontext (NULL, passwd_entry, passwd_entry->pw_uid, LOGIN_SETALL) < 0) {
-@@ -2050,11 +2255,13 @@ gdm_session_worker_start_session (GdmSessionWorker  *w
+@@ -2070,11 +2275,13 @@ gdm_session_worker_start_session (GdmSessionWorker  *w
          return TRUE;
  }
  
@@ -426,7 +452,7 @@
          int session_vt = 0;
  
          fd = open ("/dev/tty0", O_RDWR | O_NOCTTY);
-@@ -2064,6 +2271,11 @@ set_up_for_new_vt (GdmSessionWorker *worker)
+@@ -2084,6 +2291,11 @@ set_up_for_new_vt (GdmSessionWorker *worker)
                  return FALSE;
          }
  
@@ -438,7 +464,7 @@
          if (worker->priv->display_is_initial) {
                  session_vt = atoi (GDM_INITIAL_VT);
          } else {
-@@ -2073,6 +2285,7 @@ set_up_for_new_vt (GdmSessionWorker *worker)
+@@ -2093,6 +2305,7 @@ set_up_for_new_vt (GdmSessionWorker *worker)
                  }
          }
  
@@ -446,7 +472,7 @@
          worker->priv->session_vt = session_vt;
  
          close (fd);
-@@ -2100,6 +2313,7 @@ fail:
+@@ -2155,6 +2368,7 @@ fail:
          close (fd);
          return FALSE;
  }
@@ -454,7 +480,22 @@
  
  static gboolean
  set_up_for_current_vt (GdmSessionWorker  *worker,
-@@ -2188,6 +2402,7 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
+@@ -2222,12 +2436,14 @@ set_up_for_current_vt (GdmSessionWorker  *worker,
+          }
+ #endif
+ 
++#ifdef WITH_SYSTEMD
+         if (g_strcmp0 (worker->priv->display_seat_id, "seat0") == 0) {
+                 g_debug ("GdmSessionWorker: setting XDG_VTNR to current vt");
+                 set_xdg_vtnr_to_current_vt (worker);
+         } else {
+                 g_debug ("GdmSessionWorker: not setting XDG_VTNR since not seat0");
+         }
++#endif
+ 
+         return TRUE;
+ out:
+@@ -2251,6 +2467,7 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
                          return FALSE;
                  }
                  break;
@@ -462,7 +503,7 @@
          case GDM_SESSION_DISPLAY_MODE_NEW_VT:
          case GDM_SESSION_DISPLAY_MODE_LOGIND_MANAGED:
                  if (!set_up_for_new_vt (worker)) {
-@@ -2198,6 +2413,7 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
+@@ -2261,6 +2478,7 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
                          return FALSE;
                  }
                  break;
@@ -470,19 +511,13 @@
          }
  
          flags = 0;
-@@ -2227,7 +2443,9 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
+@@ -2282,8 +2500,18 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
          g_debug ("GdmSessionWorker: state SESSION_OPENED");
          worker->priv->state = GDM_SESSION_WORKER_STATE_SESSION_OPENED;
  
 +#ifdef WITH_SYSTEMD
          session_id = gdm_session_worker_get_environment_variable (worker, "XDG_SESSION_ID");
 +#endif
- 
-         /* FIXME: should we do something here?
-          * Note that error return status from PreSession script should
-@@ -2237,6 +2455,14 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
-          */
-         run_script (worker, GDMCONFDIR "/PreSession");
  
 +#ifdef WITH_CONSOLE_KIT
 +        register_ck_session (worker);
@@ -495,7 +530,7 @@
          if (session_id != NULL) {
                  g_free (worker->priv->session_id);
                  worker->priv->session_id = session_id;
-@@ -2341,6 +2567,19 @@ gdm_session_worker_handle_set_session_name (GdmDBusWor
+@@ -2388,6 +2616,19 @@ gdm_session_worker_handle_set_session_name (GdmDBusWor
  }
  
  static gboolean
@@ -515,7 +550,7 @@
  gdm_session_worker_handle_set_session_display_mode (GdmDBusWorker         *object,
                                                      GDBusMethodInvocation *invocation,
                                                      const char            *str)
-@@ -3147,6 +3386,7 @@ worker_interface_init (GdmDBusWorkerIface *interface)
+@@ -3194,6 +3435,7 @@ worker_interface_init (GdmDBusWorkerIface *interface)
          interface->handle_open = gdm_session_worker_handle_open;
          interface->handle_set_language_name = gdm_session_worker_handle_set_language_name;
          interface->handle_set_session_name = gdm_session_worker_handle_set_session_name;

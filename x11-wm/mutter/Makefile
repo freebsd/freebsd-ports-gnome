@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mutter
-PORTVERSION=	3.22.2
+PORTVERSION=	3.24.2
 CATEGORIES=	x11-wm
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -32,15 +32,17 @@ PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c++0x gettext gmake gmake libtool localbase pathfix \
 		pkgconfig tar:xz
-USE_GL=		egl gbm
-USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 gtk30 intlhack introspection
-USE_XORG=	x11 xcb xext xi xrandr xcomposite xcursor xinerama ice sm xfixes \
-		xrender xdamage
+USE_GL=		egl
+USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 introspection
+USE_XORG=	ice sm x11 xcb xcomposite xcursor xdamage xext xfixes \
+		xi xinerama xrandr xrender xtst
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CFLAGS+=	-Wno-unknown-warning-option \
 		-Wno-format-nonliteral
 CPPFLAGS+=	-fno-omit-frame-pointer
+CONFIGURE_ARGS=	--without-libwacom \
+		--disable-wayland
 
 # Required by embedded cogl/clutter forks.
 CONFIGURE_ARGS+=	--with-x \
@@ -57,16 +59,16 @@ GLIB_SCHEMAS=	org.gnome.mutter.gschema.xml \
 		org.gnome.mutter.wayland.gschema.xml
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|-Wcast-align||g' \
-		${WRKSRC}/configure
-	@${REINPLACE_CMD} -e 's,-Wempty-body,,' \
-	-e 's,-Werror=maybe-uninitialized,,' \
-	-e 's,-Wno-error=maybe-uninitialized,,' \
-	-e 's,-Werror=redundant-decls,,' \
-	-e 's,-Wvla,,' \
-	${WRKSRC}/cogl/configure \
-	${WRKSRC}/clutter/configure \
-	${WRKSRC}/cogl/tests/conform/Makefile.in \
-	${WRKSRC}/cogl/test-fixtures/Makefile.in
+#	@${REINPLACE_CMD} -e 's|-Wcast-align||g' \
+#		${WRKSRC}/configure
+#	@${REINPLACE_CMD} -e 's,-Wempty-body,,' \
+#	-e 's,-Werror=maybe-uninitialized,,' \
+#	-e 's,-Wno-error=maybe-uninitialized,,' \
+#	-e 's,-Werror=redundant-decls,,' \
+#	-e 's,-Wvla,,' \
+#	${WRKSRC}/cogl/configure \
+#	${WRKSRC}/clutter/configure \
+#	${WRKSRC}/cogl/tests/conform/Makefile.in \
+#	${WRKSRC}/cogl/test-fixtures/Makefile.in
 
 .include <bsd.port.mk>

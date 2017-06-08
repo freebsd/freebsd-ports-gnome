@@ -1,20 +1,38 @@
---- daemon/gdm-session.c.orig	2015-08-16 16:56:01 UTC
+$OpenBSD: patch-daemon_gdm-session_c,v 1.12 2017/05/10 10:18:15 ajacoutot Exp $
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:48:52 -0400
+Subject: require logind support
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From a9cacb929470eb82582396984c61d5b611bfeb1a Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 14:33:40 -0400
+Subject: session: drop session-type property
+
+Index: daemon/gdm-session.c
+--- daemon/gdm-session.c.orig
 +++ daemon/gdm-session.c
-@@ -3039,6 +3039,10 @@ gdm_session_get_display_mode (GdmSession
-                  self->priv->is_program_session? "yes" : "no",
-                  self->priv->display_seat_id);
+@@ -3076,6 +3076,10 @@ gdm_session_bypasses_xsession (GdmSession *self)
+         g_return_val_if_fail (self != NULL, FALSE);
+         g_return_val_if_fail (GDM_IS_SESSION (self), FALSE);
  
 +        if (!LOGIND_RUNNING()) {
 +                return GDM_SESSION_DISPLAY_MODE_REUSE_VT;
 +        }
 +
  #ifdef ENABLE_WAYLAND_SUPPORT
-         /* Wayland sessions are for now assumed to run in a
-          * mutter-launch-like environment, so we allocate
-@@ -3080,6 +3084,27 @@ gdm_session_select_program (GdmSession *
- }
+         if (gdm_session_is_wayland_session (self)) {
+                 bypasses_xsession = TRUE;
+@@ -3168,6 +3172,27 @@ gdm_session_select_program (GdmSession *self,
+         g_free (self->priv->selected_program);
  
- void
+         self->priv->selected_program = g_strdup (text);
++}
++
++void
 +gdm_session_select_session_type (GdmSession *self,
 +                                 const char *text)
 +{
@@ -33,9 +51,6 @@
 +                                                       text,
 +                                                       NULL, NULL, NULL);
 +        }
-+}
-+
-+void
- gdm_session_select_session (GdmSession *self,
-                             const char *text)
- {
+ }
+ 
+ void
