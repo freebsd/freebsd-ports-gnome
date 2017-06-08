@@ -1,5 +1,5 @@
---- daemon/gdm-server.c.orig	2015-08-16 16:56:01 UTC
-+++ daemon/gdm-server.c
+--- daemon/gdm-server.c.orig	2017-05-05 16:40:44.000000000 +0200
++++ daemon/gdm-server.c	2017-06-08 10:39:30.725180000 +0200
 @@ -43,7 +43,9 @@
  #include <linux/vt.h>
  #endif
@@ -10,7 +10,7 @@
  
  #ifdef ENABLE_SYSTEMD_JOURNAL
  #include <systemd/sd-journal.h>
-@@ -122,11 +124,59 @@ static void     gdm_server_finalize     
+@@ -122,23 +124,65 @@
  
  G_DEFINE_TYPE (GdmServer, gdm_server, G_TYPE_OBJECT)
  
@@ -72,16 +72,31 @@
  }
  
  static void
-@@ -228,6 +278,8 @@ gdm_server_init_command (GdmServer *serv
+ gdm_server_ready (GdmServer *server)
+ {
+         g_debug ("GdmServer: Got USR1 from X server - emitting READY");
+-
+-        gdm_run_script (GDMCONFDIR "/Init", GDM_USERNAME,
+-                        server->priv->display_name,
+-                        NULL, /* hostname */
+-                        server->priv->auth_file);
+-
+         g_signal_emit (server, signals[READY], 0);
+ }
  
- #define X_SERVER_ARG_FORMAT " -background none -noreset -verbose %s%s"
+@@ -226,8 +270,10 @@
+                 debug_options = "";
+         }
+ 
+-#define X_SERVER_ARG_FORMAT " -background none -noreset -verbose %s%s"
++        #define X_SERVER_ARG_FORMAT " -background none -noreset -verbose %s%s"
  
 +#ifdef WITH_SYSTEMD
 +
          /* This is a temporary hack to work around the fact that XOrg
           * currently lacks support for multi-seat hotplugging for
           * display devices. This bit should be removed as soon as XOrg
-@@ -242,6 +294,10 @@ gdm_server_init_command (GdmServer *serv
+@@ -242,6 +288,10 @@
           * wasn't booted using systemd, or b) the wrapper tool is
           * missing, or c) we are running for the main seat 'seat0'. */
  
@@ -92,7 +107,7 @@
  #ifdef ENABLE_SYSTEMD_JOURNAL
          /* For systemd, we don't have a log file but instead log to stdout,
             so set it to the xserver's built-in default verbosity */
-@@ -264,8 +320,9 @@ gdm_server_init_command (GdmServer *serv
+@@ -264,8 +314,9 @@
          return;
  
  fallback:
@@ -103,7 +118,7 @@
  }
  
  static gboolean
-@@ -315,10 +372,12 @@ gdm_server_resolve_command_line (GdmServ
+@@ -315,10 +366,12 @@
                  argv[len++] = g_strdup (server->priv->auth_file);
          }
  
@@ -115,5 +130,38 @@
          }
 +#endif
  
-         if (server->priv->disable_tcp && ! query_in_arglist) {
-                 argv[len++] = g_strdup ("-nolisten");
+         /* If we were compiled with Xserver >= 1.17 we need to specify
+          * '-listen tcp' as the X server dosen't listen on tcp sockets
+@@ -657,18 +710,14 @@
+                 g_signal_emit (server, signals [DIED], 0, num);
+         }
+ 
++        active_servers = g_slist_remove (active_servers, server);
++
+         g_spawn_close_pid (server->priv->pid);
+         server->priv->pid = -1;
+ 
+         g_object_unref (server);
+ }
+ 
+-static void
+-prune_active_servers_list (GdmServer *server)
+-{
+-        active_servers = g_slist_remove (active_servers, server);
+-}
+-
+ static gboolean
+ gdm_server_spawn (GdmServer    *server,
+                   const char   *vtarg,
+@@ -707,11 +756,6 @@
+         g_free (freeme);
+ 
+         active_servers = g_slist_append (active_servers, server);
+-
+-        g_object_weak_ref (G_OBJECT (server),
+-                           (GWeakNotify)
+-                           prune_active_servers_list,
+-                           server);
+ 
+         gdm_server_launch_sigusr1_thread_if_needed ();
+ 

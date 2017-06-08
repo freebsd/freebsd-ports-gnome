@@ -2,22 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	gdm
-PORTVERSION=	3.20.1
+PORTVERSION=	3.24.2
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	GNOME 3 version of xdm display manager
+COMMENT=	GNOME 3 display manager
 
 BUILD_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		itstool:textproc/itstool \
 		iso-codes>=0:misc/iso-codes
 LIB_DEPENDS=	libck-connector.so:sysutils/consolekit \
-		libdbus-glib-1.so:devel/dbus-glib \
-		libupower-glib.so:sysutils/upower \
-		libnss3.so:security/nss \
-		libfontconfig.so:x11-fonts/fontconfig \
 		libaccountsservice.so:sysutils/accountsservice \
 		libcanberra.so:audio/libcanberra \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3
@@ -33,6 +29,8 @@ RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 # used in scripts
 RUN_DEPENDS+=	xrdb:x11/xrdb \
 		setxkbmap:x11/setxkbmap \
+		xsetroot:x11/xsetroot \
+		xhost:x11/xhost \
 		xmodmap:x11/xmodmap \
 		xterm:x11/xterm
 
@@ -45,10 +43,9 @@ USES=		cpe execinfo gettext gmake gnome libtool pathfix \
 		pkgconfig tar:xz
 CPE_VENDOR=	gnome
 CPE_VENDOR=	gnome_display_manager
-USE_GNOME=	cairo dconf gtk30 intlhack introspection librsvg2
-
+USE_GNOME=	cairo dconf gtk30 intltool introspection
 USE_LDCONFIG=	yes
-USE_XORG=	dmx dmxproto x11 xau xdmcp
+USE_XORG=	x11 xau xcb xdmcp
 INSTALLS_ICONS=	yes
 USE_RC_SUBR=	gdm
 USE_GNOME_SUBR=	yes
@@ -114,8 +111,8 @@ post-patch:
 		-e 's|/usr/bin/Xorg|${LOCALBASE}/bin/Xorg|g' \
 		${WRKSRC}/configure ${WRKSRC}/daemon/*.c ${WRKSRC}/po/*.po
 	@${REINPLACE_CMD} -e 's|/at-spi-registryd|/at-spi2-registryd|g' \
-		${WRKSRC}/gui/simple-chooser/gdm-host-chooser.c \
-		${WRKSRC}/gui/simple-chooser/chooser-main.c
+		${WRKSRC}/chooser/gdm-host-chooser.c \
+		${WRKSRC}/chooser/chooser-main.c
 	@${REINPLACE_CMD} -e 's|/etc/X11|${LOCALBASE}/etc/X11|g' \
 		${WRKSRC}/data/Init.in \
 		${WRKSRC}/data/PostLogin \

@@ -1,5 +1,19 @@
---- common/gdm-common.c.orig	2015-07-20 13:13:40 UTC
-+++ common/gdm-common.c
+$OpenBSD: patch-common_gdm-common_c,v 1.4 2015/10/18 13:25:54 ajacoutot Exp $
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:48:52 -0400
+Subject: require logind support
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 1ac67f522f5690c27023d98096ca817f12f7eb88 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:28:01 -0400
+Subject: drop consolekit support
+
+--- common/gdm-common.c.orig	Sun Oct 18 14:26:27 2015
++++ common/gdm-common.c	Sun Oct 18 14:24:34 2015
 @@ -39,12 +39,25 @@
  #include "mkdtemp.h"
  #endif
@@ -26,7 +40,7 @@
  G_DEFINE_QUARK (gdm-common-error, gdm_common_error);
  
  const char *
-@@ -343,10 +356,301 @@ create_transient_display (GDBusConnectio
+@@ -343,15 +356,306 @@ create_transient_display (GDBusConnection *connection,
          return TRUE;
  }
  
@@ -38,11 +52,11 @@
 -                     const char      *session_id)
 +get_current_session_id (GDBusConnection  *connection,
 +                        char            **session_id)
-+{
-+        GError *local_error = NULL;
-+        GVariant *reply;
-+
-+        reply = g_dbus_connection_call_sync (connection,
+ {
+         GError *local_error = NULL;
+         GVariant *reply;
+ 
+         reply = g_dbus_connection_call_sync (connection,
 +                                             CK_NAME,
 +                                             CK_MANAGER_PATH,
 +                                             CK_MANAGER_INTERFACE,
@@ -328,10 +342,15 @@
 +activate_session_id_for_systemd (GDBusConnection *connection,
 +                                 const char      *seat_id,
 +                                 const char      *session_id)
- {
-         GError *local_error = NULL;
-         GVariant *reply;
-@@ -373,8 +677,8 @@ activate_session_id (GDBusConnection *co
++{
++        GError *local_error = NULL;
++        GVariant *reply;
++
++        reply = g_dbus_connection_call_sync (connection,
+                                              "org.freedesktop.login1",
+                                              "/org/freedesktop/login1",
+                                              "org.freedesktop.login1.Manager",
+@@ -373,8 +677,8 @@ activate_session_id (GDBusConnection *connection,
  }
  
  static gboolean
@@ -353,7 +372,7 @@
  {
          gboolean        ret;
          int             res;
-@@ -497,9 +801,9 @@ goto_login_session (GDBusConnection  *co
+@@ -497,9 +801,9 @@ goto_login_session (GDBusConnection  *connection,
                  return FALSE;
          }
  
@@ -365,7 +384,7 @@
  
                  if (res) {
                          ret = TRUE;
-@@ -518,6 +822,7 @@ goto_login_session (GDBusConnection  *co
+@@ -518,6 +822,7 @@ goto_login_session (GDBusConnection  *connection,
  
          return ret;
  }
