@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-documents
-PORTVERSION=	3.22.0
+PORTVERSION=	3.24.2
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -12,32 +12,23 @@ COMMENT=	Document manager application designed to work with GNOME 3
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS=	itstool:textproc/itstool \
-		docbook-xsl>=0:textproc/docbook-xsl
-LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
+BUILD_DEPENDS=	itstool:textproc/itstool
+LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
-		libclutter-1.0.so:graphics/clutter \
-		libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
 		libevview3.so:graphics/evince \
 		libgdata.so:devel/libgdata \
 		libgoa-1.0.so:net/gnome-online-accounts \
 		libgjs.so:lang/gjs \
-		libjson-glib-1.0.so:devel/json-glib \
-		librest-0.7.so:devel/librest \
-		libsoup-2.4.so:devel/libsoup \
 		libtracker-sparql-1.0.so:sysutils/tracker \
 		libgepub.so:textproc/libgepub \
 		libzapojit-0.0.so:net/libzapojit
-RUN_DEPENDS=	py2?-dbus>0:devel/py-dbus \
-		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
-		unoconv:textproc/unoconv
+RUN_DEPENDS=	gnome-online-miners>=0:net/gnome-online-miners
 
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c++11-lib gettext gmake gnome libtool localbase \
 		pathfix pkgconfig tar:xz
-USE_GNOME=	cairo gnomedesktop3 gtk30 intlhack \
-		introspection librsvg2 libxml2
+USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 intltool introspection
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
