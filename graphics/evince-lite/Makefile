@@ -1,12 +1,12 @@
 # Created by: Adam Weinberger <adamw@FreeBSD.org>
 # $FreeBSD$
 
-PORTREVISION=	1
+PORTREVISION=	0
 PKGNAMESUFFIX=	-lite
 
 COMMENT=	GNOME 3 multi-format document viewer without the GNOME dependencies
 
-OPTIONS_EXCLUDE=	NAUTILUS
+OPTIONS_EXCLUDE=	NAUTILUS DBUS
 
 MASTERDIR=	${.CURDIR}/../../graphics/evince
 SLAVEPORT=	lite
