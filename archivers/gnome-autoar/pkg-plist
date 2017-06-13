@@ -28,7 +28,6 @@ share/gtk-doc/html/gnome-autoar/api-index-full.html
 share/gtk-doc/html/gnome-autoar/ch01.html
 share/gtk-doc/html/gnome-autoar/ch02.html
 share/gtk-doc/html/gnome-autoar/ch03.html
-share/gtk-doc/html/gnome-autoar/deprecated-api-index.html
 share/gtk-doc/html/gnome-autoar/gnome-autoar-autoar-format-filter.html
 share/gtk-doc/html/gnome-autoar/gnome-autoar-autoar-gtk-chooser.html
 share/gtk-doc/html/gnome-autoar/gnome-autoar-autoar-misc.html
@@ -43,3 +42,5 @@ share/gtk-doc/html/gnome-autoar/right.png
 share/gtk-doc/html/gnome-autoar/style.css
 share/gtk-doc/html/gnome-autoar/up-insensitive.png
 share/gtk-doc/html/gnome-autoar/up.png
+share/vala/vapi/gnome-autoar-0.vapi
+share/vala/vapi/gnome-autoar-gtk-0.vapi

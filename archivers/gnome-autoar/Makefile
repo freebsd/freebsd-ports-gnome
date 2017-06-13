@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-autoar
-PORTVERSION=	0.1.1
+PORTVERSION=	0.2.2
 CATEGORIES=	archivers
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -13,13 +13,11 @@ COMMENT=	Glib wrapper around libarchives
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		gettext-runtime gmake libarchive libtool pathfix \
-		pkgconfig tar:xz
+BUILD_DEPENDS=	valac:lang/vala
+
+USES=		gettext-runtime gmake libarchive libtool pkgconfig tar:xz
 USE_GNOME=	cairo gdkpixbuf2 gtk30 introspection:build
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-
-GLIB_SCHEMAS=	org.gnome.desktop.archives.enums.xml \
-		org.gnome.desktop.archives.gschema.xml
 
 .include <bsd.port.mk>

@@ -2,10 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	rust
-PORTVERSION?=	1.17.0
+PORTVERSION?=	1.18.0
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/dist/:src \
 		https://static.rust-lang.org/dist/:rust_bootstrap \
+		https://static.rust-lang.org/dist/:cargo_bootstrap \
 		https://s3.amazonaws.com/rust-lang-ci/cargo-builds/:cargo_bootstrap \
 		LOCAL/marino:bootstrap
 DISTNAME?=	${PORTNAME}c-${PORTVERSION}-src
@@ -22,7 +23,7 @@ DISTFILES+=	${CARGO_REGISTRY}:registry
 DIST_SUBDIR?=	rust
 EXTRACT_ONLY?=	${DISTFILES:N*\:*bootstrap:C/:.*//}
 
-MAINTAINER?=	riggs@FreeBSD.org
+MAINTAINER?=	rust@FreeBSD.org
 COMMENT=	Language with a focus on memory safety and concurrency
 
 LICENSE=	APACHE20 \
@@ -43,13 +44,14 @@ CONFLICTS_BUILD?=	rust-nightly
 CONFLICTS_BUILD+=	${PKGBASE}
 CONFLICTS_INSTALL?=	rust-nightly
 
-RUST_BOOTSTRAP_DIR?=		2017-03-11
-RUST_BOOTSTRAP_VERSION?=	1.16.0
+RUST_BOOTSTRAP_DIR?=		2017-04-27
+RUST_BOOTSTRAP_VERSION?=	1.17.0
+RUST_BOOTSTRAP_HASH?=		f4594d3e53dcb114
 RUSTC_BOOTSTRAP=		${RUST_BOOTSTRAP_DIR}/rustc-${RUST_BOOTSTRAP_VERSION}-${RUST_TARGET}.tar.gz
 RUST_STD_BOOTSTRAP=		${RUST_BOOTSTRAP_DIR}/rust-std-${RUST_BOOTSTRAP_VERSION}-${RUST_TARGET}.tar.gz
 
-CARGO_BOOTSTRAP_DIR?=		6b05583d71f982bcad049b9fa094c637c062e751
-CARGO_BOOTSTRAP_VERSION?=	nightly
+CARGO_BOOTSTRAP_DIR?=		${RUST_BOOTSTRAP_DIR}
+CARGO_BOOTSTRAP_VERSION?=	0.18.0
 CARGO_BOOTSTRAP=		${CARGO_BOOTSTRAP_DIR}/cargo-${CARGO_BOOTSTRAP_VERSION}-${RUST_TARGET}.tar.gz
 CARGO_REGISTRY=			${PORTNAME}-registry-${DISTVERSIONFULL}.tar.xz
 
@@ -134,8 +136,8 @@ pre-fetch:
 		exit 1;\
 	fi
 
-LIBSTD=	rust-std-1.16.0-${RUST_ARCH_${ARCH}}-unknown-freebsd/rust-std-${RUST_ARCH_${ARCH}}-unknown-freebsd/lib/rustlib/${RUST_ARCH_${ARCH}}-unknown-freebsd/lib/libstd-aef6cb139bd07bdc.rlib
-STDF=	std-aef6cb139bd07bdc.0.o
+LIBSTD=	rust-std-${RUST_BOOTSTRAP_VERSION}-${RUST_ARCH_${ARCH}}-unknown-freebsd/rust-std-${RUST_ARCH_${ARCH}}-unknown-freebsd/lib/rustlib/${RUST_ARCH_${ARCH}}-unknown-freebsd/lib/libstd-f4594d3e53dcb114.rlib
+STDF=	std-${RUST_BOOTSTRAP_HASH}.0.o
 
 post-extract:
 	@${MKDIR} \
@@ -156,7 +158,7 @@ post-extract:
 	${LD} -r -o ${WRKSRC}/std.xx.o ${WRKSRC}/${STDF} ${WRKSRC}/old_fstat.o
 	${MV} ${WRKSRC}/std.xx.o ${WRKSRC}/${STDF}
 	(cd ${WRKSRC} && ${AR} r ${WRKSRC}/${LIBSTD} ${STDF})
-	${TAR} -cy -C ${WRKSRC} -f ${WRKSRC}/rustc.tbz rust-std-1.16.0-${RUST_ARCH_${ARCH}}-unknown-freebsd
+	${TAR} -cy -C ${WRKSRC} -f ${WRKSRC}/rustc.tbz rust-std-${RUST_BOOTSTRAP_VERSION}-${RUST_ARCH_${ARCH}}-unknown-freebsd
 	${MV} ${WRKSRC}/rustc.tbz ${WRKSRC}/build/cache/${RUST_STD_BOOTSTRAP}
 .endif
 

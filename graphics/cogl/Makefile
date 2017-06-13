@@ -16,12 +16,12 @@ CONFLICTS=	clutter-1.6.[0-9]*
 
 USES=		gettext gmake gnome libtool localbase pathfix pkgconfig tar:xz
 GNU_CONFIGURE=	yes
-USE_GNOME=	cairo gdkpixbuf2 gnomeprefix atk pango introspection:build
-USE_GL=		gl egl
-USE_XORG=	x11 xext xfixes xdamage xcomposite xi xrandr
+USE_GNOME=	cairo gdkpixbuf2 pango introspection:build
+USE_GL=		egl
+USE_XORG=	x11 xcomposite xext xdamage xfixes xrandr
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--with-x \
-		--enable-xlib-egl-platform=yes
+		 --enable-xlib-egl-platform=yes
 INSTALL_TARGET=	install-strip
 
 PLIST_SUB=	LIBVER=20 LIBVERSION=20.4.2

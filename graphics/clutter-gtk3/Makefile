@@ -13,18 +13,16 @@ COMMENT=	GTK+ Integration library for Clutter
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libclutter-1.0.so:graphics/clutter \
-		libcogl-path.so:graphics/cogl \
+LIB_DEPENDS=	libcogl.so:graphics/cogl \
+		libclutter-1.0.so:graphics/clutter \
 		libjson-glib-1.0.so:devel/json-glib
 
-USES=		gettext gmake gnome libtool pathfix pkgconfig tar:xz
+USES=		gettext gmake gnome libtool localbase pathfix pkgconfig tar:xz
 GNU_CONFIGURE=	yes
-USE_GNOME=	cairo gdkpixbuf2 gnomeprefix gtk30 introspection
+USE_GNOME=	cairo gdkpixbuf2 gtk30 introspection:build
+USE_XORG=	x11 xcomposite xdamage xext xfixes xi xrandr
 USE_GL=		egl
-USE_XORG=	xcomposite xdamage xext xfixes xi xp xrandr x11
 USE_LDCONFIG=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-lpthread -L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>

@@ -1,8 +1,6 @@
-Fix build without wayland (to be upstreamed)
-
 --- cogl/winsys/cogl-winsys-egl.c.orig	2016-08-26 16:18:16 UTC
 +++ cogl/winsys/cogl-winsys-egl.c
-@@ -1029,7 +1029,7 @@ _cogl_egl_create_image (CoglContext *ctx
+@@ -1029,7 +1029,7 @@ _cogl_egl_create_image (CoglContext *ctx,
      egl_ctx = EGL_NO_CONTEXT;
    else
  #endif

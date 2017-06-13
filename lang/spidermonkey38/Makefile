@@ -16,7 +16,7 @@ LIB_DEPENDS=	libnspr4.so:devel/nspr \
 
 GNU_CONFIGURE=	yes
 USES=		compiler:c++11-lib gmake pathfix perl5 pkgconfig \
-		python:2,build readline tar:bzip2
+		python:2.7,build readline tar:bzip2
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 
@@ -70,10 +70,11 @@ UTF8_CFLAGS=	-DJS_C_STRINGS_ARE_UTF8
 CONFIGURE_TARGET=	x86_64-portbld-freebsd${OSREL}
 .endif
 
-## Skip some tests because bundled icu differs from system
-#rm tests/test262/intl402/ch10/10.2/10.2.3_b.js tests/Intl/DateTimeFormat/format.js tests/ecma_6/String/normalize-generateddata-part1-not-listed.js
-
-#tests/jstests.py -d -s --no-progress ../../js/src/js/src/shell/js
+post-patch:
+# Skip some tests because bundled icu differs from system
+	@${RM}  ${WRKSRC}/tests/test262/intl402/ch10/10.2/10.2.3_b.js \
+		${WRKSRC}/tests/Intl/DateTimeFormat/format.js \
+		${WRKSRC}/tests/ecma_6/String/normalize-generateddata-part1-not-listed.js
 
 regression-test: build
 	@${ECHO_MSG} -n "===> Running jstests.py: "
