@@ -18,22 +18,18 @@ USES=		tar:xz
 .if !defined(REFERENCE_PORT)
 PORTSCOUT=	limitw:1,even
 
-#BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
-#		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
-#		xkeyboard-config>=0:x11/xkeyboard-config \
-#		libxkbfile>=0:x11/libxkbfile \
-#		itstool:textproc/itstool
-#RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
-#		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
-#		xkeyboard-config>=0:x11/xkeyboard-config \
-#		libxkbfile>=0:x11/libxkbfile
+BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
+		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
+		xkeyboard-config>=0:x11/xkeyboard-config \
+		itstool:textproc/itstool
+RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
+		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
+		xkeyboard-config>=0:x11/xkeyboard-config
 
 USES+=		gettext gmake gnome libtool localbase pathfix \
 		pkgconfig python:3.3+
-#USE_GNOME=	cairo gdkpixbuf2 gtk30 intlhack introspection:build \
-#		referencehack
-USE_GNOME=	cairo gdkpixbuf2 gtk30
-#USE_XORG=	x11 xrandr xext
+USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection:build \
+		referencehack
 USE_XORG=	x11
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
