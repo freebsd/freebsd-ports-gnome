@@ -59,6 +59,8 @@ CONFIGURE_ARGS=	--disable-static \
 		--with-dbus-sys=${PREFIX}/etc/dbus-1/system.d \
 		--with-log-dir=/var/log/gdm \
 		--localstatedir=/var \
+		--without-selinux \
+		--without-libaudit \
 		--with-console-kit \
 		--with-working-directory=${PREFIX}/etc/gdm/home \
 		--with-sysconfsubdir=gdm \
@@ -105,6 +107,7 @@ post-patch:
 		${WRKSRC}/data/Makefile.in
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
 		-e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
+		-e 's|/bin/bash|/bin/sh|g' \
 		${WRKSRC}/daemon/gdm-session-worker.c
 	@${REINPLACE_CMD} -e 's|/usr/X11R6|${LOCALBASE}|g' \
 		-e 's|/usr/bin/X|${LOCALBASE}/bin/X|g' \
