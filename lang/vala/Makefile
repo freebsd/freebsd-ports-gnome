@@ -15,7 +15,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		bison gettext-runtime gmake gnome libtool \
 		localbase pathfix pkgconfig tar:xz
-USE_GNOME=	glib20 gnomeprefix libxslt
+USE_GNOME=	glib20 gnomeprefix libxslt:build
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
