@@ -2,13 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	gjs
-PORTVERSION=	1.48.3
+PORTVERSION=	1.48.4
 CATEGORIES=	lang gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME Javascript binding
+
+LICENSE=	MPL LGPL20+ GPLv2+
+LICENSE_COMB=	multi
+LICENSE_FILE_MPL=	${WRKSRC}/COPYING
+LICENSE_FILE_LGPL20+=	${WRKSRC}/COPYING.LGPL
 
 LIB_DEPENDS=	libmozjs-38.so:lang/spidermonkey38 \
 		libffi.so:devel/libffi
