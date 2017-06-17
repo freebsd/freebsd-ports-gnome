@@ -21,7 +21,7 @@ PORTSCOUT=	limitw:1,even
 USES=		execinfo gettext gmake gnome localbase pathfix \
 		pkgconfig tar:xz
 USE_GNOME=	cairo gnomedesktop3 intlhack libxslt:build
-USE_XORG=	ice sm x11 xau xcomposite xext xrender xtst
+USE_XORG=	ice sm x11 xau xcomposite xext xrender xtrans xtst
 USE_GL=		egl gl glesv2
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
