@@ -11,6 +11,9 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Configuration database system for GNOME
 
+LICENSE=	LGPL21
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 BUILD_DEPENDS=	vala>=0.18.1:lang/vala \
 		docbook-xsl>=0:textproc/docbook-xsl
 LIB_DEPENDS=	libdbus-1.so:devel/dbus
@@ -18,7 +21,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus
 PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake localbase pathfix pkgconfig tar:xz
-USE_GNOME=	glib20
+USE_GNOME=	glib20 libxslt:build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 
