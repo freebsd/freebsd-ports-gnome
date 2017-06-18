@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	galera
-PORTVERSION=	25.3.20
-PORTREVISION=	2
+PORTVERSION?=	25.3.20
+PORTREVISION?=	2
 CATEGORIES=	databases
 
 MAINTAINER=	devel@galeracluster.com
@@ -15,7 +15,7 @@ BUILD_DEPENDS=	checkmk:devel/check \
 		${LOCALBASE}/include/boost/shared_ptr.hpp:devel/boost-libs
 LIB_DEPENDS=	libboost_date_time.so:devel/boost-libs
 
-NOT_FOR_ARCHS=	i386
+NOT_FOR_ARCHS=		i386
 # On i386 older versions of clang produce:
 #   cannot compile this atomic library call yet ... __atomic_add_fetch
 # whereas newer ones generate a call to __atomic_add_fetch which ends up with
@@ -32,7 +32,7 @@ USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	codership
-GH_TAGNAME=	release_${DISTVERSION}
+GH_TAGNAME?=	release_${DISTVERSION}
 
 LDFLAGS+=	-lboost_program_options -lboost_system
 MAKE_ARGS+=	--config=force \
@@ -52,6 +52,11 @@ BOOSTPOOL_DESC=	Use boost pool allocator
 BPOSTATIC_DESC=	Use static boost_program_options
 
 .include <bsd.port.pre.mk>
+
+# COMPILER_TYPE could be empty on older FreeBSD versions.
+.if "${COMPILER_TYPE}" == gcc || ${OSVERSION} < 1000000
+USE_GCC=	4.8+
+.endif
 
 .if ${PORT_OPTIONS:MBOOSTPOOL}
 MAKE_ARGS+=	boost_pool=1

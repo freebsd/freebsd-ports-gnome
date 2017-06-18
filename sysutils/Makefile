@@ -64,8 +64,8 @@
     SUBDIR += b43-fwcutter
     SUBDIR += backupchecker
     SUBDIR += backuppc
-    SUBDIR += backuppc4
     SUBDIR += backuppc-devel
+    SUBDIR += backuppc4
     SUBDIR += bacula-bat
     SUBDIR += bacula-client
     SUBDIR += bacula-client-static
@@ -136,12 +136,13 @@
     SUBDIR += cdrtools-devel
     SUBDIR += cfengine
     SUBDIR += cfengine-masterfiles
+    SUBDIR += cfengine-masterfiles310
     SUBDIR += cfengine-masterfiles36
     SUBDIR += cfengine-masterfiles37
     SUBDIR += cfengine-masterfiles38
     SUBDIR += cfengine-masterfiles39
-    SUBDIR += cfengine-masterfiles310
     SUBDIR += cfengine22
+    SUBDIR += cfengine310
     SUBDIR += cfengine32
     SUBDIR += cfengine33
     SUBDIR += cfengine34
@@ -150,7 +151,6 @@
     SUBDIR += cfengine37
     SUBDIR += cfengine38
     SUBDIR += cfengine39
-    SUBDIR += cfengine310
     SUBDIR += chgrep
     SUBDIR += chyves
     SUBDIR += cinnamon-control-center
@@ -617,6 +617,7 @@
     SUBDIR += mksunbootcd
     SUBDIR += mmc-utils
     SUBDIR += mnrpes
+    SUBDIR += modman
     SUBDIR += modules
     SUBDIR += mog
     SUBDIR += monit
@@ -662,6 +663,7 @@
     SUBDIR += namefix
     SUBDIR += nbosd
     SUBDIR += ncdu
+    SUBDIR += ndmpd
     SUBDIR += nepomuk-core
     SUBDIR += nepomuk-widgets
     SUBDIR += nfcutils
@@ -898,9 +900,11 @@
     SUBDIR += py-uptime
     SUBDIR += py-zdaemon
     SUBDIR += py-zfs
-    SUBDIR += pydf
+    SUBDIR += py3-execnet
     SUBDIR += py3-iocage
     SUBDIR += py3-pkginfo
+    SUBDIR += py3-ptyprocess
+    SUBDIR += pydf
     SUBDIR += qchroot
     SUBDIR += qjail
     SUBDIR += qjail2
@@ -938,6 +942,7 @@
     SUBDIR += respond
     SUBDIR += restic
     SUBDIR += retail
+    SUBDIR += rex
     SUBDIR += rfstool
     SUBDIR += rhc
     SUBDIR += riak-cs
