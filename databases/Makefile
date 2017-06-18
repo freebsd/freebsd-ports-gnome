@@ -124,6 +124,8 @@
     SUBDIR += jrobin
     SUBDIR += jrrd
     SUBDIR += kbibtex
+    SUBDIR += kdb
+    SUBDIR += kexi
     SUBDIR += kyotocabinet
     SUBDIR += kyototycoon
     SUBDIR += ldb
@@ -653,6 +655,7 @@
     SUBDIR += postgis21
     SUBDIR += postgis22
     SUBDIR += postgis23
+    SUBDIR += postgresql-cstore_fdw
     SUBDIR += postgresql-jdbc
     SUBDIR += postgresql-libpgeasy
     SUBDIR += postgresql-libpqxx

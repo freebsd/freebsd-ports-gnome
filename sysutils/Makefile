@@ -617,6 +617,7 @@
     SUBDIR += mksunbootcd
     SUBDIR += mmc-utils
     SUBDIR += mnrpes
+    SUBDIR += modman
     SUBDIR += modules
     SUBDIR += mog
     SUBDIR += monit
@@ -662,12 +663,12 @@
     SUBDIR += namefix
     SUBDIR += nbosd
     SUBDIR += ncdu
+    SUBDIR += ndmpd
     SUBDIR += nepomuk-core
     SUBDIR += nepomuk-widgets
     SUBDIR += nfcutils
     SUBDIR += nfsping
     SUBDIR += nitrogen
-    SUBDIR += ndmpd
     SUBDIR += no-login
     SUBDIR += node_exporter
     SUBDIR += nomad
@@ -941,6 +942,7 @@
     SUBDIR += respond
     SUBDIR += restic
     SUBDIR += retail
+    SUBDIR += rex
     SUBDIR += rfstool
     SUBDIR += rhc
     SUBDIR += riak-cs
