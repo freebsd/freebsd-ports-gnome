@@ -13,13 +13,9 @@ COMMENT=	Control center for GNOME 3 project
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-#BUILD_DEPENDS=	gnome-settings-daemon>=3.4.0:sysutils/gnome-settings-daemon \
-#		gsettings-desktop-schemas>=3.2.2:devel/gsettings-desktop-schemas \
-#		docbook-xsl>=0:textproc/docbook-xsl \
-#		iso-codes>=0:misc/iso-codes
-# libsmbclient ...
-#CUPS_USES=		samba:lib
-
+BUILD_DEPENDS=	gnome-settings-daemon>=3.4.0:sysutils/gnome-settings-daemon \
+		gsettings-desktop-schemas>=3.2.2:devel/gsettings-desktop-schemas \
+		docbook-xsl>=0:textproc/docbook-xsl
 LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 		libcups.so:print/cups \
@@ -41,17 +37,14 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libgrilo-0.3.so:net/grilo \
 		libpolkit-gobject-1.so:sysutils/polkit \
 		libsoup-2.4.so:devel/libsoup
-#RUN_DEPENDS=	gnome-settings-daemon>=3.4.0:sysutils/gnome-settings-daemon \
-#		gsettings-desktop-schemas>=3.2.2:devel/gsettings-desktop-schemas \
-#		iso-codes>=0:misc/iso-codes \
-#		glxinfo:graphics/mesa-demos \
-#		apg:security/apg \
-#		gcm-calibrate:graphics/gnome-color-manager
+RUN_DEPENDS=	gnome-settings-daemon>=3.4.0:sysutils/gnome-settings-daemon \
+		gsettings-desktop-schemas>=3.2.2:devel/gsettings-desktop-schemas \
+		gcm-calibrate:graphics/gnome-color-manager
 
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c++11-lib gettext gmake gnome localbase pathfix \
-		pkgconfig ssl tar:xz
+		pkgconfig samba:lib ssl tar:xz
 USE_GNOME=	cairo gnomedesktop3 intltool libxml2
 USE_GL=		egl
 USE_XORG=	x11 xcomposite xdamage xext xfixes xi xrandr
@@ -70,8 +63,10 @@ CHEESE_DESC=	Cheese webcam support
 CHEESE_LIB_DEPENDS=	libcheese.so:multimedia/cheese
 CHEESE_CONFIGURE_WITH=	cheese
 
-#post-patch:
-#	@${REINPLACE_CMD} -e 's|datetime wacom|datetime|g' \
-#		${WRKSRC}/panels/Makefile.in
+post-patch:
+	@${REINPLACE_CMD} -e 's|gdk-wayland-3.0|gdk-wayland-3.0-disabled|g' \
+		${WRKSRC}/configure
+	@${REINPLACE_CMD} -e 's|HAVE_WAYLAND|DON_WANT_WAYLAND|g' \
+		${WRKSRC}/panels/common/gnome-settings-bus.h
 
 .include <bsd.port.mk>
