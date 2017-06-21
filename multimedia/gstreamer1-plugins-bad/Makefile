@@ -18,7 +18,7 @@ RUN_DEPENDS+=	gstreamer1-plugins>=${GST1_VERSION}${GST1_MININAL_VERSION}:multime
 DIST=		bad
 BAD_GST_DIRS=	gst-libs sys gst po pkgconfig
 # "extra" plugins enabled by default in Makefile.common
-BAD_GST_DIRS+=  ext/bz2 ext/dash ext/smoothstreaming
+BAD_GST_DIRS+=  ext/bz2
 NO_GSTREAMER_COMMON=	yes
 PLIST=		${.CURDIR}/pkg-plist
 

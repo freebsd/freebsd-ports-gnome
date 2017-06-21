@@ -28,7 +28,6 @@ BAD_GST_ALL_PLUGINS+= \
 		gme \
 		gsm \
 		gtk3 \
-		gtksink \
 		hls \
 		kate \
 		kms \
@@ -283,11 +282,11 @@ gst_gme_LIB_DEPENDS=	libgme.so:audio/libgme
 # gsm
 gst_gsm_LIB_DEPENDS=	libgsm.so:audio/gsm
 
-# gtksink
-gst_gtksink_USE_GNOME=	cairo gdkpixbuf2 gtk30
-gst_gtksink_CONFIGURE_ARGS=	--enable-gtk3
-gst_gtksink_GST_PLUGIN_DIR=ext/gtk
-gst_gtksink_PLIST_FILES=	${GST_LIB_DIR}/libgstgtk.so
+# gtk3
+gst_gtk3_USE_GNOME=	cairo gdkpixbuf2 gtk30
+gst_gtk3_CONFIGURE_ARGS=--enable-gtk3
+gst_gtk3_GST_PLUGIN_DIR=ext/gtk
+gst_gtk3_PLIST_FILES=	${GST_LIB_DIR}/libgstgtk.so
 
 # hls
 gst_hls_LIB_DEPENDS=	libnettle.so:security/nettle

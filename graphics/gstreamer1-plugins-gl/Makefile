@@ -5,14 +5,19 @@ CATEGORIES=	graphics
 
 COMMENT=	GStreamer GL graphics plugin
 
-#XXX depends checking
-
 GST_PLUGIN=	gl
 DIST=		bad
 
+GL_GST_DIRS=	gst-libs/gst/allocators
 PLIST=		${.CURDIR}/pkg-plist
 
 MASTERDIR=	${.CURDIR}/../../multimedia/gstreamer1-plugins
+
+# document why?
+pre-build:
+.for dir in ${GL_GST_DIRS}
+	@(cd ${BUILD_WRKSRC}/${dir}; ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_FLAGS} ${MAKEFILE} ${_MAKE_JOBS} ${MAKE_ARGS} ${ALL_TARGET})
+.endfor
 
 post-install:
 	${INSTALL_DATA} ${WRKSRC}/pkgconfig/gstreamer-gl.pc \

@@ -26,21 +26,21 @@ RUN_DEPENDS+=	iso-codes>=0:misc/iso-codes
 
 PORTSCOUT=	limitw:1,even
 
-BASE_PORTVERSION=	1.12.0
+BASE_PORTVERSION=	1.12.1
 BASE_DISTNAME=		gst-plugins-base-${BASE_PORTVERSION}
 BASE_DISTFILE=		${BASE_DISTNAME}${EXTRACT_SUFX}
-BAD_PORTVERSION=	1.12.0
+BAD_PORTVERSION=	1.12.1
 BAD_DISTNAME=		gst-plugins-bad-${BAD_PORTVERSION}
 BAD_DISTFILE=		${BAD_DISTNAME}${EXTRACT_SUFX}
-GOOD_PORTVERSION=	1.12.0
+GOOD_PORTVERSION=	1.12.1
 GOOD_DISTNAME=		gst-plugins-good-${GOOD_PORTVERSION}
 GOOD_DISTFILE=		${GOOD_DISTNAME}${EXTRACT_SUFX}
-UGLY_PORTVERSION=	1.12.0
+UGLY_PORTVERSION=	1.12.1
 UGLY_DISTNAME=		gst-plugins-ugly-${UGLY_PORTVERSION}
 UGLY_DISTFILE=		${UGLY_DISTNAME}${EXTRACT_SUFX}
 DIST?=		base
 
-USES=		gettext gmake gnome libtool pathfix pkgconfig tar:xz
+USES+=		gettext gmake gnome libtool pathfix pkgconfig tar:xz
 WANT_GSTREAMER=	yes
 USE_GNOME+=	glib20 introspection:build libxml2
 GNU_CONFIGURE=	yes
@@ -60,7 +60,7 @@ IGNORE=		DIST not specified
 .endif
 
 VERSION=	1.0
-SOVERSION=	0.1200.0
+SOVERSION=	0.1201.0
 PLIST_SUB+=	VERSION="${VERSION}" \
 		SOVERSION="${SOVERSION}"
 
@@ -135,7 +135,7 @@ post-patch:
 		${WRKSRC}/ext/resindvd/resindvdsrc.c
 .endif
 .if ${DIST} != ugly
-	@${FIND} ${WRKSRC}/ext ${WRKSRC}/sys ${WRKSRC}/gst-libs/gst \
+	@${FIND} ${WRKSRC}/ext ${WRKSRC}/sys \
 	-name Makefile.in | ${XARGS} -n 10 ${REINPLACE_CMD} -e \
 	'/la_DEPENDENCIES/,/am__DEPENDENCIES/s,$$(top_builddir)/gst-libs/.*.la,,' -e \
 	's|$$(top_builddir)/gst-libs/gst/tag/libgsttag-@GST_API_VERSION@.la|-lgsttag-${VERSION}|; \

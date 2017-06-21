@@ -39,8 +39,10 @@ ${all:tu}_USE=	GSTREAMER1=${all}
 #USE_GSTREAMER1+=	ogg
 
 # Pull out i386-only plugins, add back conditionally
-ALL_PLUGINS:=	${ALL_PLUGINS:Nspc:Ngtksink}
-DEF_PLUGINS:=	${DEF_PLUGINS:Nspc:Ngtksink}
+#ALL_PLUGINS:=	${ALL_PLUGINS:Nspc:Ngtksink}
+ALL_PLUGINS:=	${ALL_PLUGINS:Nspc}
+#DEF_PLUGINS:=	${DEF_PLUGINS:Nspc:Ngtksink}
+DEF_PLUGINS:=	${DEF_PLUGINS:Nspc}
 
 OPTIONS_DEFINE=	${ALL_PLUGINS:tu}
 OPTIONS_DEFAULT=	${DEF_PLUGINS:tu}

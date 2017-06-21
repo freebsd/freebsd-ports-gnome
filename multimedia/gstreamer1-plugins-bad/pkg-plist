@@ -61,7 +61,6 @@ lib/gstreamer-%%VERSION%%/libgstbz2.so
 lib/gstreamer-%%VERSION%%/libgstcamerabin.so
 lib/gstreamer-%%VERSION%%/libgstcoloreffects.so
 lib/gstreamer-%%VERSION%%/libgstcompositor.so
-lib/gstreamer-%%VERSION%%/libgstdashdemux.so
 lib/gstreamer-%%VERSION%%/libgstdebugutilsbad.so
 lib/gstreamer-%%VERSION%%/libgstdvb.so
 lib/gstreamer-%%VERSION%%/libgstdvbsuboverlay.so
@@ -99,7 +98,6 @@ lib/gstreamer-%%VERSION%%/libgstsegmentclip.so
 lib/gstreamer-%%VERSION%%/libgstshm.so
 lib/gstreamer-%%VERSION%%/libgstsiren.so
 lib/gstreamer-%%VERSION%%/libgstsmooth.so
-lib/gstreamer-%%VERSION%%/libgstsmoothstreaming.so
 lib/gstreamer-%%VERSION%%/libgstspeed.so
 lib/gstreamer-%%VERSION%%/libgststereo.so
 lib/gstreamer-%%VERSION%%/libgstsubenc.so

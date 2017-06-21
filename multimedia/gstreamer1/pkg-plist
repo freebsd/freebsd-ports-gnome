@@ -148,6 +148,7 @@ libexec/gstreamer-%%VERSION%%/gst-plugin-scanner
 @(,,4755) libexec/gstreamer-%%VERSION%%/gst-ptp-helper
 man/man1/gst-inspect-%%VERSION%%.1.gz
 man/man1/gst-launch-%%VERSION%%.1.gz
+man/man1/gst-stats-%%VERSION%%.1.gz
 man/man1/gst-typefind-%%VERSION%%.1.gz
 share/aclocal/gst-element-check-%%VERSION%%.m4
 share/bash-completion/completions/gst-inspect-%%VERSION%%

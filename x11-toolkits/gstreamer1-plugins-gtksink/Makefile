@@ -5,9 +5,7 @@ CATEGORIES=	x11-toolkits
 
 COMMENT=	GStreamer gtksink plugin
 
-# XXX hmm doesn't work.
-
-GST_PLUGIN=	gtksink
+GST_PLUGIN=	gtk3
 DIST=		bad
 
 MASTERDIR=	${.CURDIR}/../../multimedia/gstreamer1-plugins
