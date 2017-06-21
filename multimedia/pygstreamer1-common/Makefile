@@ -20,6 +20,7 @@ SLAVE_PORT?=	no
 
 USES=		gmake gnome libtool pathfix pkgconfig tar:xz
 GNU_CONFIGURE=	yes
+USE_GSTREAMER1=	yes
 INSTALL_TARGET=	install-strip
 
 PLIST_SUB=	VERSION="${GST_VERSION}"
@@ -29,7 +30,6 @@ PORTSCOUT?=	limitw:1,even
 
 USES+=		python:2.7,build
 USE_GNOME+=	pygobject3:build
-USE_GSTREAMER1=	yes
 
 PLIST_FILES=	lib/gstreamer-1.0/libgstpythonplugin.so
 
