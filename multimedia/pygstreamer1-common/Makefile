@@ -6,7 +6,7 @@ PORTVERSION=	1.12.1
 PORTREVISION=	0
 CATEGORIES=	multimedia python
 MASTER_SITES=	http://gstreamer.freedesktop.org/src/gst-python/
-PKGNAMEPREFIX?=	${PYTHON_PKGNAMEPREFIX}
+PKGNAMEPREFIX?=	py
 PKGNAMESUFFIX?=	1-common
 DISTNAME=	gst-python-${PORTVERSION}
 
@@ -50,6 +50,8 @@ USE_GNOME+=	py3gobject3
 . endif
 
 . if ${SLAVE_PORT} != no
+RUN_DEPENDS+=	pygstreamer1-common>=0:multimedia/pygstreamer1-common
+
 post-install:
 	@${RM} ${STAGEDIR}${PREFIX}/lib/gstreamer-1.0/libgstpythonplugin.*
 	@${RMDIR} ${STAGEDIR}${PREFIX}/lib/gstreamer-1.0
