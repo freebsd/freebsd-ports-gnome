@@ -531,7 +531,7 @@ proxydeps_suggest_uses() {
 	elif [ ${pkg} = "multimedia/gstreamer" ]; then warn "you need to use USE_GSTREAMER+=yes"
 	elif [ ${pkg} = "multimedia/gstreamer-plugins" ]; then warn "you need to use USE_GSTREAMER+=yes"
 	elif [ ${pkg} = "multimedia/gstreamer-plugins-bad" ]; then warn "you need to use USE_GSTREAMER+=bad"
-	# GStreamer 1.0
+	# GStreamer 1
 	elif [ ${pkg} = "multimedia/gstreamer1" ]; then warn "you need to use USE_GSTREAMER1+=yes"
 	elif [ ${pkg} = "multimedia/gstreamer1-plugins" ]; then warn "you need to use USE_GSTREAMER1+=yes"
 	elif [ ${pkg} = "multimedia/gstreamer1-plugins-bad" ]; then warn "you need to use USE_GSTREAMER1+=bad"
