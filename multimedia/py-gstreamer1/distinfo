@@ -1,3 +1,2 @@
-TIMESTAMP = 1493541790
-SHA256 (gst-python-1.11.91.tar.xz) = 826e7f00863eaad48ee455690579d25493637b81184eda6bf7f63964c6a949cc
-SIZE (gst-python-1.11.91.tar.xz) = 373700
+SHA256 (dbus-python-1.1.1.tar.gz) = 8917ca4fb8f4d693aee18d200cbad166b2c938dfb88c03bb4ab3d90a7c915e88
+SIZE (dbus-python-1.1.1.tar.gz) = 596476

@@ -1,27 +1,13 @@
-# Created by: Koop Mast <kwm@rainbow-runner.nl>
 # $FreeBSD$
 
-PORTNAME=	gstreamer
-PORTVERSION=	1.11.91
-CATEGORIES=	multimedia python
-MASTER_SITES=	http://gstreamer.freedesktop.org/src/gst-python/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 PKGNAMESUFFIX=	1
-DISTNAME=	gst-python-${PORTVERSION}
 
-MAINTAINER=	multimedia@FreeBSD.org
-COMMENT=	GStreamer python 3 bindings
+COMMENT=	Python3 bindings for GStreamer 1.x
 
-LICENSE=	LGPL21
-LICENSE_FILE=	${WRKSRC}/COPYING
+SLAVE_PORT=	python3
 
-PORTSCOUT=	limitw:1,even
+MASTERDIR=	${.CURDIR}/../../multimedia/pygstreamer1-common
+PLIST=		${.CURDIR}/pkg-plist
 
-USES=		gmake libtool pathfix pkgconfig python:3 tar:xz
-USE_GNOME=	py3gobject3
-USE_GSTREAMER1=	yes
-GNU_CONFIGURE=	yes
-PLIST_SUB=	VERSION="${GST_VERSION}"
-INSTALL_TARGET=	install-strip
-
-.include <bsd.port.mk>
+.include "${MASTERDIR}/Makefile"
