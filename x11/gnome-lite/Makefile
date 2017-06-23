@@ -1,14 +1,13 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
 # $FreeBSD$
 
-PORTREVISION=	1
+PORTREVISION=	0
 CATEGORIES=	x11 gnome
 PKGNAMESUFFIX=	-lite
 
 COMMENT=	The "meta-port" of the GNOME desktop slimmed down for only the basics
 
-MASTERDIR=	${.CURDIR}/../gnome3
-CONFLICTS=	gnome3-[0-9]*
+MASTERDIR=	${.CURDIR}/../gnome
 
 DESCR=		${.CURDIR}/pkg-descr
 PKGMESSAGE=	${.CURDIR}/pkg-message

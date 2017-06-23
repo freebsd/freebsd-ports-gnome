@@ -1,8 +1,8 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
 # $FreeBSD$
 
-PORTNAME=	gnome3
-PORTVERSION=	3.22.0
+PORTNAME=	gnome
+PORTVERSION=	3.24.0
 CATEGORIES?=	x11 gnome
 
 MAINTAINER=	gnome@FreeBSD.org
@@ -33,11 +33,11 @@ RUN_DEPENDS?=	dconf-editor:devel/dconf-editor \
 		${LOCALBASE}/share/sounds/freedesktop/index.theme:audio/freedesktop-sound-theme \
 		ekiga:net-im/ekiga
 
-CONFLICTS?=	gnome3-lite-[0-9]*
+CONFLICTS?=	gnome-lite-[0-9]*
 
 USES=		metaport
 
-.if ${.CURDIR:T}!="gnome3-lite"
+.if ${.CURDIR:T}!="gnome-lite"
 OPTIONS_DEFINE+=MAPI DOCS
 MAPI_DESC=	Depend on evolution-mapi (pulls in samba4)
 
@@ -47,7 +47,7 @@ MAPI_RUN_DEPENDS=	evolution-mapi>=3.0.0:mail/evolution-mapi
 
 .include <bsd.port.options.mk>
 
-.if ${.CURDIR:T}!="gnome3-lite"
+.if ${.CURDIR:T}!="gnome-lite"
 RUN_DEPENDS+=	epiphany>=3.0.0:www/epiphany \
 		gucharmap>=3.0.0:deskutils/gucharmap \
 		gnome-characters>=3.0.0:deskutils/gnome-characters \
@@ -74,6 +74,6 @@ RUN_DEPENDS+=	epiphany>=3.0.0:www/epiphany \
 		evolution>=3.0.0:mail/evolution \
 		cheese>=3.0.0:multimedia/cheese
 
-.endif # !gnome3-lite section
+.endif # !gnome-lite section
 
 .include <bsd.port.mk>
