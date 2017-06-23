@@ -15,8 +15,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 #BUILD_DEPENDS=	ca_root_nss>=0:security/ca_root_nss \
 #		nss>=0:security/nss \
-#		gnome-control-center:sysutils/gnome-control-center
-BUILD_DEPENDS=	docbook-xsl>=0:textproc/docbook-xsl
+BUILD_DEPENDS=	docbook-xsl>=0:textproc/docbook-xsl \
+		gnome-control-center:sysutils/gnome-control-center
 LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libdrm.so:graphics/libdrm \
 		libmutter-0.so:x11-wm/mutter \
@@ -36,8 +36,8 @@ LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libp11-kit.so:security/p11-kit \
 		libgjs.so:lang/gjs
 #RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py3-dbus \
-#		nss>=0:security/nss \
-#		gnome-control-center:sysutils/gnome-control-center \
+#		nss>=0:security/nss
+RUN_DEPENDS=	gnome-control-center:sysutils/gnome-control-center
 #		ca_root_nss>=0:security/ca_root_nss \
 #		gkbd-keyboard-display:x11/libgnomekbd
 
