@@ -62,31 +62,110 @@ GST1_MINIMAL_VERSION=	.0
 # These are the current supported gstreamer-plugins modules:
 # Supported plugins by both 0.10 and 1.0.
 _GSTREAMER_PLUGINS= \
-		a52dec aalib amrnb amrwbdec cairo cdio \
-		cdparanoia dts dv faac faad flac flite \
-		gdkpixbuf gl gme gnonlin gsm jack jpeg ladspa lame libcaca \
-		libmms libvisual mpeg2dec mpeg2enc musepack neon ogg \
-		opencv opus pango pulse resindvd schroedinger \
-		shout2 sndfile sndio sidplay soundtouch soup speex taglib \
-		theora twolame v4l2 vorbis wavpack x264
+		a52dec \
+		aalib \
+		amrnb \
+		amrwbdec \
+		cairo \
+		cdio \
+		cdparanoia \
+		dts \
+		dv \
+		faac \
+		faad \
+		flac \
+		flite \
+		gdkpixbuf \
+		gl \
+		gme \
+		gnonlin \
+		gsm \
+		jack \
+		jpeg \
+		ladspa \
+		lame \
+		libcaca \
+		libmms \
+		libvisual \
+		mpeg2dec \
+		mpeg2enc \
+		musepack \
+		neon \
+		ogg \
+		opencv \
+		opus \
+		pango \
+		pulse \
+		resindvd \
+		schroedinger \
+		shout2 \
+		sndfile \
+		sndio \
+		sidplay \
+		soundtouch \
+		soup \
+		speex \
+		taglib \
+		theora \
+		twolame \
+		v4l2 \
+		vorbis \
+		wavpack \
+		x264
 
 # plugins only in 0.10
 .if defined(USE_GSTREAMER)
 _GSTREAMER_PLUGINS+= \
-		annodex bz2 cdaudio dvd esound ffmpeg fluendo-mp3 \
-		fluendo-mpegdemux gconf gio gnomevfs hal \
-		libpng mad mm mp3 nas python qt4 \
-		sdl spc vdpau vp8 xvid
-.endif
+		annodex \
+		bz2 \
+		cdaudio \
+		dvd \
+		esound \
+		ffmpeg \
+		fluendo-mp3 \
+		fluendo-mpegdemux \
+		gconf \
+		gio \
+		gnomevfs \
+		hal \
+		libpng \
+		mad \
+		mm \
+		mp3 \
+		nas \
+		python \
+		qt4 \
+		sdl \
+		spc \
+		vdpau \
+		vp8 \
+		xvid
+.endif # USE_GSTREAMER
 
 # plugins only in 1.0
 .if defined(USE_GSTREAMER1)
 _GSTREAMER_PLUGINS+= \
-		assrender bs2b chromaprint curl dtls dvdread editing-services \
-		gtksink hls kate kms libav libde265 modplug mpg123 mplex openexr openh264 openjpeg \
+		assrender \
+		bs2b \
+		chromaprint \
+		curl \
+		dtls \
+		dvdread \
+		editing-services \
+		gtksink \
+		hls \
+		kate \
+		kms \
+		libav \
+		libde265 \
+		modplug \
+		mpg123 \
+		mplex \
+		openexr \
+		openh264 openjpeg \
 		png rsvg rtmp spandsp srtp ttml vpx webp x x265 ximagesrc zbar
 # dash / vaapi / smoothwave?
-.endif
+.endif # USE_GSTREAMER1
 
 # other plugins
 _USE_GSTREAMER_ALL=	bad core good ugly yes ${_GSTREAMER_PLUGINS}
@@ -102,7 +181,6 @@ yes_GST_PREFIX=	# empty
 yes_IMPL=	# empty
 
 # XXX check if IMPL is correct for both 0.10 and 1.0
-# XXX check if all the old/new plugins are listed...
 
 #-- audio plugins section -------------------------------------------------#
 
