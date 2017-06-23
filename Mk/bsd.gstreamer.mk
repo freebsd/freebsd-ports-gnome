@@ -59,12 +59,6 @@ GST1_MINOR_VERSION=	.0
 GST1_SHLIB_VERSION=	0
 GST1_MINIMAL_VERSION=	.0
 
-#
-# missing base: alsa ivorbisdec
-# missing good: -
-# missing ugly: -
-# missing bad: openal
-
 # These are the current supported gstreamer-plugins modules:
 # Supported plugins by both 0.10 and 1.0.
 _GSTREAMER_PLUGINS= \
