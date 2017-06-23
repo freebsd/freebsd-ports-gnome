@@ -1,0 +1,6 @@
+Needs adding to MOVED!
+* renamed gnome3 -> gnome
+* renamed gnome3-lite -> gnome-lite
+
+* gdm needs fixing, crashing after login
+* gnome-shell extensions need checking.
