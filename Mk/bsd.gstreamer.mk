@@ -64,10 +64,10 @@ GST1_MINIMAL_VERSION=	.0
 _GSTREAMER_PLUGINS= \
 		a52dec aalib amrnb amrwbdec cairo cdio \
 		cdparanoia dts dv faac faad flac flite \
-		gdkpixbuf gl gme gnonlin gsm jack jpeg lame libcaca \
-		libmms libvisual mpeg2dec mpeg2enc neon ogg \
+		gdkpixbuf gl gme gnonlin gsm jack jpeg ladspa lame libcaca \
+		libmms libvisual mpeg2dec mpeg2enc musepack neon ogg \
 		opencv opus pango pulse resindvd schroedinger \
-		shout2 sndio sidplay soundtouch soup speex taglib \
+		shout2 sndfile sndio sidplay soundtouch soup speex taglib \
 		theora twolame v4l2 vorbis wavpack x264
 
 # plugins only in 0.10
@@ -75,17 +75,17 @@ _GSTREAMER_PLUGINS= \
 _GSTREAMER_PLUGINS+= \
 		annodex bz2 cdaudio dvd esound ffmpeg fluendo-mp3 \
 		fluendo-mpegdemux gconf gio gnomevfs hal \
-		ladspa libpng mad mm mp3 musepack nas python qt4 \
-		sdl sndfile spc vdpau vp8 xvid
+		libpng mad mm mp3 nas python qt4 \
+		sdl spc vdpau vp8 xvid
 .endif
 
 # plugins only in 1.0
 .if defined(USE_GSTREAMER1)
 _GSTREAMER_PLUGINS+= \
 		assrender bs2b chromaprint curl dtls dvdread editing-services \
-		gtksink hls kate kms libav libde265 modplug mpg123 openh264 openjpeg \
-		png rsvg rtmp spandsp vpx webp x x265 ximagesrc zbar
-# vaapi?
+		gtksink hls kate kms libav libde265 modplug mpg123 mplex openexr openh264 openjpeg \
+		png rsvg rtmp spandsp srtp ttml vpx webp x x265 ximagesrc zbar
+# dash / vaapi / smoothwave?
 .endif
 
 # other plugins
@@ -103,7 +103,6 @@ yes_IMPL=	# empty
 
 # XXX check if IMPL is correct for both 0.10 and 1.0
 # XXX check if all the old/new plugins are listed...
-# XXX sort by catergories?
 
 #-- audio plugins section -------------------------------------------------#
 
@@ -293,6 +292,9 @@ libvisual_IMPL=		#
 opencv_DEPENDS=	graphics/gstreamer-plugins-opencv
 opencv_IMPL=	bad
 
+openexr_DEPENDS=	graphics/gstreamer-plugins-openexr
+openexr_IMPL=		bad
+
 openjpeg_DEPENDS=	graphics/gstreamer-plugins-openjpeg
 openjpeg_IMPL=		bad
 
@@ -386,8 +388,11 @@ qt4_DEPENDS=	multimedia/gstreamer-qt4
 qt4_GST_PREFIX=	gstreamer-
 qt4_IMPL=	#
 
-rtmp_DEPENDS=	multimedia/gstreamer1-plugins-rtmp
+rtmp_DEPENDS=	multimedia/gstreamer-plugins-rtmp
 rtmp_IMPL=	bad
+
+ttml_DEPENDS=	multimedia/gstreamer-plugins-ttml
+ttml_IMPL=	bad
 
 v4l2_DEPENDS=	multimedia/gstreamer-plugins-v4l2
 v4l2_IMPL=	good
@@ -428,6 +433,9 @@ ugly_IMPL=	#
 vdpau_DEPENDS=	multimedia/gstreamer-plugins-vdpau
 vdpau_IMPL=	bad
 
+webrtcdsp_DEPENDS=	multimedia/gstreamer-plugins-webrtcdsp
+webrtcdsp_IMPL=		bad
+
 x264_DEPENDS=	multimedia/gstreamer-plugins-x264
 x264_IMPL=	ugly
 
@@ -442,6 +450,9 @@ xvid_IMPL=	bad
 
 libmms_DEPENDS=	net/gstreamer-plugins-libmms
 libmms_IMPL=	bad
+
+srtp_DEPENDS=	net/gstreamer-plugins-srtp
+srtp_IMPL=	bad
 
 #-- security plugins section ----------------------------------------------#
 
