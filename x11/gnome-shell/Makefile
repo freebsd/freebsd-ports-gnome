@@ -46,7 +46,8 @@ USES=		compiler:c11 cpe gettext gmake gnome libtool localbase \
 		pathfix pkgconfig python:3.3+ tar:xz webplugin:native
 #USE_GNOME=	cairo evolutiondataserver3 gdkpixbuf2 gtk30 intltool 
 #		introspection libxml2 py3gobject3
-USE_GNOME=	cairo gdkpixbuf2 evolutiondataserver3 introspection libxml2
+USE_GNOME=	cairo gdkpixbuf2 evolutiondataserver3 introspection \
+		libxslt:build libxml2
 USE_XORG=	x11 xcomposite xdamage xext xfixes xi xrandr xtst
 USE_GL=		egl #gbm
 #USE_GSTREAMER1=	yes
