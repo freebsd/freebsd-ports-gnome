@@ -28,7 +28,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c++11-lib gettext gmake gnome libtool localbase \
 		pathfix pkgconfig tar:xz
-USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 intltool introspection
+USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 intltool introspection librsvg2
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
