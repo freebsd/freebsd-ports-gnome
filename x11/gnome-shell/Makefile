@@ -16,6 +16,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 #BUILD_DEPENDS=	ca_root_nss>=0:security/ca_root_nss \
 #		nss>=0:security/nss \
 #		gnome-control-center:sysutils/gnome-control-center
+BUILD_DEPENDS=	docbook-xsl>=0:textproc/docbook-xsl
 LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libdrm.so:graphics/libdrm \
 		libmutter-0.so:x11-wm/mutter \
