@@ -55,7 +55,6 @@ GST_SHLIB_VERSION=	1
 GSTREAMER1_PORT=	${PORTSDIR}/multimedia/gstreamer1-plugins
 _GST1_LIB_BASE=		${LOCALBASE}/lib/gstreamer-${GST1_VERSION}
 GST1_VERSION=		1.4
-#GST1_BASE_VER=		1.12
 GST1_MINOR_VERSION=	.0
 GST1_SHLIB_VERSION=	0
 GST1_MINIMAL_VERSION=	.0
@@ -122,7 +121,7 @@ amrnb_DEPENDS=	audio/gstreamer-plugins-amrnb
 amrnb_IMPL=	ugly
 
 amrwbdec_DEPENDS=	audio/gstreamer-plugins-amrwbdec
-amrwbdec_IMPL=	ugly
+amrwbdec_IMPL=		ugly
 
 bs2b_DEPENDS=	audio/gstreamer-plugins-bs2b
 bs2b_IMPL=	bad
@@ -152,7 +151,7 @@ flite_DEPENDS=	audio/gstreamer-plugins-flite
 flite_IMPL=	bad
 
 fluendo-mp3_DEPENDS=	audio/gstreamer-plugins-fluendo-mp3
-fluendo_IMPL=	#
+fluendo_IMPL=		#
 
 gme_DEPENDS=	audio/gstreamer-plugins-gme
 gme_IMPL=	bad
@@ -185,7 +184,7 @@ mpg123_DEPENDS=	audio/gstreamer-plugins-mpg123
 mpg123_IMPL=	ugly
 
 musepack_DEPENDS=	audio/gstreamer-plugins-musepack
-musepack_IMPL=	bad
+musepack_IMPL=		bad
 
 nas_DEPENDS=	audio/gstreamer-plugins-nas
 nas_IMPL=	bad
@@ -208,20 +207,17 @@ shout2_IMPL=	good
 sidplay_DEPENDS=	audio/gstreamer-plugins-sidplay
 sidplay_IMPL=		ugly
 
-smoothwave_DEPENDS=	audio/gstreamer-plugins-smoothwave
-_IMPL=	
-
 sndio_DEPENDS=	audio/gstreamer-plugins-sndio
 sndio_IMPL=	#
 
 sndfile_DEPENDS=	audio/gstreamer-plugins-sndfile
-_IMPL=	
+sndfile_IMPL=		bad
 
 soundtouch_DEPENDS=	audio/gstreamer-plugins-soundtouch
 soundtouch_IMPL=	bad
 
 spc_DEPENDS=	audio/gstreamer-plugins-spc
-_IMPL=	
+spc_IMPL=	bad
 
 speex_DEPENDS=	audio/gstreamer-plugins-speex
 speex_IMPL=	good
@@ -381,16 +377,16 @@ mm_GST_VERSION=	0.9.4
 mm_IMPL=	#
 
 mpeg2dec_DEPENDS=	multimedia/gstreamer-plugins-mpeg2dec
-mpeg2dec_IMPL=	ugly
+mpeg2dec_IMPL=		ugly
 
 mpeg2enc_DEPENDS=	multimedia/gstreamer-plugins-mpeg2enc
-mpeg2enc_IMPL=	bad
+mpeg2enc_IMPL=		bad
 
 mplex_DEPENDS=	multimedia/gstreamer-plugins-mplex
-_IMPL=	
+mplex_IMPL=	bad
 
 openh264_DEPENDS=	multimedia/gstreamer-plugins-openh264
-openh264_IMPL=	bad
+openh264_IMPL=		bad
 
 qt4_DEPENDS=	multimedia/gstreamer-qt4
 qt4_GST_PREFIX=	gstreamer-
@@ -529,7 +525,11 @@ ${ext}_GST_DEPENDS?=	${${ext}_DEPENDS:S,gstreamer-,gstreamer1-,}
 .  if ${_USE_GSTREAMER_ALL:M${ext}}!= "" && exists(${PORTSDIR}/${${ext}_GST_DEPENDS})
 _GST_BUILD_DEPENDS+=	${${ext}_GST_PREFIX}${${ext}_NAME10}>=${${ext}_GST_VERSION}:${${ext}_GST_DEPENDS}
 _GST_RUN_DEPENDS+=	${${ext}_GST_PREFIX}${${ext}_NAME10}>=${${ext}_GST_VERSION}:${${ext}_GST_DEPENDS}
+.   if defined(${ext}1_IMPL)
+_GST_IMPL_LIST+=	${${ext}1_IMPL}
+.   else
 _GST_IMPL_LIST+=	${${ext}_IMPL}
+.   endif
 .  else
 IGNORE=	cannot install: unknown gstreamer ${GST1_VERSION} plugin -- ${ext}
 .  endif
