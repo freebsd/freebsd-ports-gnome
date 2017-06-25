@@ -13,8 +13,6 @@ COMMENT=	Next generation GNOME desktop shell
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-#BUILD_DEPENDS=	ca_root_nss>=0:security/ca_root_nss \
-#		nss>=0:security/nss \
 BUILD_DEPENDS=	docbook-xsl>=0:textproc/docbook-xsl \
 		gnome-control-center:sysutils/gnome-control-center
 LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
@@ -35,23 +33,17 @@ LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 		libp11-kit.so:security/p11-kit \
 		libgjs.so:lang/gjs
-#RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py3-dbus \
-#		nss>=0:security/nss
 RUN_DEPENDS=	gnome-control-center:sysutils/gnome-control-center
-#		ca_root_nss>=0:security/ca_root_nss \
-#		gkbd-keyboard-display:x11/libgnomekbd
 
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c11 cpe gettext gmake gnome libtool localbase \
 		pathfix pkgconfig python:3.3+ tar:xz webplugin:native
-#USE_GNOME=	cairo evolutiondataserver3 gdkpixbuf2 gtk30 intltool 
-#		introspection libxml2 py3gobject3
-USE_GNOME=	cairo gdkpixbuf2 evolutiondataserver3 introspection \
+USE_GNOME=	cairo evolutiondataserver3 gdkpixbuf2 introspection \
 		libxslt:build libxml2
 USE_XORG=	x11 xcomposite xdamage xext xfixes xi xrandr xtst
-USE_GL=		egl #gbm
-#USE_GSTREAMER1=	yes
+USE_GL=		egl gbm
+USE_GSTREAMER1=	yes
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 WEBPLUGIN_NAME=	libgnome-shell-browser-plugin.so

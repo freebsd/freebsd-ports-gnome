@@ -66,9 +66,4 @@ CHEESE_DESC=		Cheese webcam support
 CHEESE_CONFIGURE_WITH=	cheese
 CHEESE_LIB_DEPENDS=	libcheese-gtk.so:multimedia/cheese
 
-post-patch:
-	# touch vala sources to force regen c sources to honor cheese setting
-	${TOUCH} ${WRKSRC}/src/main.vala \
-		${WRKSRC}/src/contacts-avatar-dialog.vala
-
 .include <bsd.port.mk>
