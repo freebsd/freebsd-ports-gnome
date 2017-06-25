@@ -182,6 +182,7 @@
     SUBDIR += bglibs
     SUBDIR += bicyclerepair
     SUBDIR += bin86
+    SUBDIR += bingrep
     SUBDIR += binutils
     SUBDIR += bison
     SUBDIR += bisoncpp
@@ -2683,6 +2684,7 @@
     SUBDIR += p5-List-Objects-WithUtils
     SUBDIR += p5-List-Permutor
     SUBDIR += p5-List-PowerSet
+    SUBDIR += p5-List-Regexp
     SUBDIR += p5-List-Rotation-Cycle
     SUBDIR += p5-List-SomeUtils
     SUBDIR += p5-List-SomeUtils-XS
@@ -5256,6 +5258,7 @@
     SUBDIR += rubygem-commander
     SUBDIR += rubygem-concurrent-ruby
     SUBDIR += rubygem-concurrent-ruby-edge
+    SUBDIR += rubygem-concurrent-ruby-ext
     SUBDIR += rubygem-configatron
     SUBDIR += rubygem-configstruct
     SUBDIR += rubygem-configuration
@@ -5322,6 +5325,7 @@
     SUBDIR += rubygem-file-tail
     SUBDIR += rubygem-filesize
     SUBDIR += rubygem-flexmock
+    SUBDIR += rubygem-flipper
     SUBDIR += rubygem-fluent-logger
     SUBDIR += rubygem-fog
     SUBDIR += rubygem-fog-core
@@ -5496,6 +5500,7 @@
     SUBDIR += rubygem-parser
     SUBDIR += rubygem-patch_finder
     SUBDIR += rubygem-pathutil
+    SUBDIR += rubygem-peek
     SUBDIR += rubygem-piston
     SUBDIR += rubygem-pkg-config
     SUBDIR += rubygem-platform

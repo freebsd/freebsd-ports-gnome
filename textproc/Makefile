@@ -1417,6 +1417,7 @@
     SUBDIR += resume
     SUBDIR += resume-extensions
     SUBDIR += rfcdiff
+    SUBDIR += ripgrep
     SUBDIR += ripole
     SUBDIR += rl
     SUBDIR += rman
@@ -1641,6 +1642,7 @@
     SUBDIR += sr-hunspell
     SUBDIR += srilm
     SUBDIR += ss-hunspell
+    SUBDIR += ssddiff
     SUBDIR += stardict-dict-fa_IR
     SUBDIR += stardict-dictd_mova
     SUBDIR += stardict-quick
