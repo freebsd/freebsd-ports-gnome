@@ -2,7 +2,7 @@
 
 PORTREVISION=	0
 CATEGORIES=	x11-toolkits
-GST_PLUGIN_SUFFIX=	-gtksink
+GST_PLUGIN_SUFFIX=	-gtk
 
 COMMENT=	GStreamer gtksink plugin
 

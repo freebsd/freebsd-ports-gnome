@@ -152,7 +152,7 @@ _GSTREAMER_PLUGINS+= \
 		dtls \
 		dvdread \
 		editing-services \
-		gtksink \
+		gtk \
 		hls \
 		kate \
 		kms \
@@ -552,8 +552,8 @@ ximagesrc_IMPL=		good
 
 #-- x11-toolkits plugins section ------------------------------------------#
 
-gtksink_DEPENDS=	x11-toolkits/gstreamer-plugins-gtksink
-gtksink_IMPL=		bad
+gtk_DEPENDS=	x11-toolkits/gstreamer-plugins-gtk
+gtk_IMPL=	bad
 
 pango_DEPENDS=	x11-toolkits/gstreamer-plugins-pango
 pango_IMPL=	#
