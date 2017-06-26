@@ -2,3 +2,4 @@ dash
 smoothstreaming
 
 plugin: gtksink -> gtk move
+mad removal point to mpg123
