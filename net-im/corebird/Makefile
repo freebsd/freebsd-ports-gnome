@@ -32,8 +32,6 @@ OPTIONS_DEFINE=		GSTREAMER NLS
 OPTIONS_DEFAULT=	GSTREAMER
 OPTIONS_SUB=		yes
 
-GSTREAMER_LIB_DEPENDS=		libgstbase-1.0.so:multimedia/gstreamer1 \
-				libgstreamer-1.0.so:multimedia/gstreamer1
 GSTREAMER_USE=			gstreamer1=yes,bad,good,gtk,hls,libav,soup,x,ximagesrc
 GSTREAMER_CONFIGURE_OFF=	--disable-video
 
