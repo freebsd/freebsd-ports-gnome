@@ -174,9 +174,11 @@ post-patch:
 # Disable X11 support in librfb
 post-configure:
 	@${REINPLACE_CMD} -e 's|HAVE_X11 = yes|HAVE_X11 = no|g' \
+		-e 's|#ifdef HAVE_X11|#ifdef NO_X11|g' \
 		-e 's|$$(X11_CFLAGS) \\|\\|g' \
 		-e 's|$$(X11_LIBS) \\|\\|g' \
-		${WRKSRC}/gst/librfb/Makefile
+		${WRKSRC}/gst/librfb/Makefile \
+		${WRKSRC}/gst/librfb/gstrfbsrc.c
 .endif
 
 pre-install:
