@@ -5,6 +5,29 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20170628:
+  AFFECTS: users of www/node
+  AUTHOR: bhughes@freebsd.org
+
+  The www/node port has been updated to Node.js v8.1.2, the latest
+  upstream release. This is a major release, including many significant
+  changes. Users are encouraged to read the release announcements before
+  upgrading:
+
+  https://nodejs.org/en/blog/release/v8.0.0/
+  https://nodejs.org/en/blog/release/v8.1.0/
+
+20170626:
+  AFFECTS: users of net-mgmt/zabbix24*
+  AUTHOR: dbaio@FreeBSD.org
+
+  Zabbix 2.4 has reached end of life and net-mgmt/zabbix24* ports have been
+  removed. Users that have not yet moved to a newer version, should use now
+  net-mgmt/zabbix3-* (LTS release) or net-mgmt/zabbix32-* (Standard release).
+
+  See more info about Zabbix releases here:
+  http://www.zabbix.com/life_cycle_and_release_policy
+
 20170624:
   AFFECTS: users of mail/dcc-dccd
   AUTHOR: ultima@FreeBSD.org
