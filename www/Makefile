@@ -23,10 +23,6 @@
     SUBDIR += apache-forrest
     SUBDIR += apache-mode.el
     SUBDIR += apache22
-    SUBDIR += apache22-event-mpm
-    SUBDIR += apache22-itk-mpm
-    SUBDIR += apache22-peruser-mpm
-    SUBDIR += apache22-worker-mpm
     SUBDIR += apache24
     SUBDIR += apercu
     SUBDIR += aria2
@@ -1645,7 +1641,6 @@
     SUBDIR += py-flask-principal
     SUBDIR += py-flask-restful
     SUBDIR += py-flask-restplus
-    SUBDIR += py-flask-restplus08
     SUBDIR += py-flask-socketio
     SUBDIR += py-flask-sockets
     SUBDIR += py-flask-uploads

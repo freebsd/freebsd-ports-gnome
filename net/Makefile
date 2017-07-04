@@ -9,7 +9,6 @@
     SUBDIR += GeoIP
     SUBDIR += R-cran-twitteR
     SUBDIR += Sockets
-    SUBDIR += abills
     SUBDIR += activemq
     SUBDIR += adasockets
     SUBDIR += afpfs-ng
@@ -61,6 +60,7 @@
     SUBDIR += bounce
     SUBDIR += bsdec2-image-upload
     SUBDIR += bsdproxy
+    SUBDIR += bsdrcmds
     SUBDIR += bwi-firmware-kmod
     SUBDIR += bwn-firmware-kmod
     SUBDIR += bwping
@@ -145,12 +145,12 @@
     SUBDIR += freediameter
     SUBDIR += freenet6
     SUBDIR += freeradius-client
-    SUBDIR += freeradius2
     SUBDIR += freeradius3
     SUBDIR += freerdp
     SUBDIR += freerdp1
     SUBDIR += freeswitch
     SUBDIR += freevrrpd
+    SUBDIR += frr
     SUBDIR += fspclient
     SUBDIR += fspd
     SUBDIR += fsplib
@@ -1184,6 +1184,7 @@
     SUBDIR += rubygem-fog-vsphere
     SUBDIR += rubygem-fog-xenserver
     SUBDIR += rubygem-geoip
+    SUBDIR += rubygem-gitaly
     SUBDIR += rubygem-gitlab_omniauth-ldap
     SUBDIR += rubygem-gitlab_omniauth-ldap1
     SUBDIR += rubygem-http_parser.rb
@@ -1280,7 +1281,6 @@
     SUBDIR += sippy_b2bua
     SUBDIR += siproxd
     SUBDIR += sipsak
-    SUBDIR += sixxs-aiccu
     SUBDIR += skstream
     SUBDIR += sl2tps
     SUBDIR += slurm

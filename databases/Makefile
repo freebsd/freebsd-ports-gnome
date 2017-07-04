@@ -540,6 +540,7 @@
     SUBDIR += pear-Structures_DataGrid_DataSource_MDB2
     SUBDIR += pear-Structures_DataGrid_DataSource_PDO
     SUBDIR += pear-XML_Query2XML
+    SUBDIR += pecl-cassandra
     SUBDIR += pecl-chdb
     SUBDIR += pecl-couchbase
     SUBDIR += pecl-dbase
@@ -583,12 +584,9 @@
     SUBDIR += pglogical
     SUBDIR += pgmodeler
     SUBDIR += pgpool
-    SUBDIR += pgpool-II
-    SUBDIR += pgpool-II-30
     SUBDIR += pgpool-II-33
     SUBDIR += pgpool-II-35
     SUBDIR += pgpool-II-36
-    SUBDIR += pgpoolAdmin
     SUBDIR += pgreplay
     SUBDIR += pgrouting
     SUBDIR += pgsphere
@@ -650,6 +648,7 @@
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin
     SUBDIR += phppgadmin
+    SUBDIR += pldebugger
     SUBDIR += postgis-jdbc
     SUBDIR += postgis20
     SUBDIR += postgis21
@@ -660,6 +659,7 @@
     SUBDIR += postgresql-libpgeasy
     SUBDIR += postgresql-libpqxx
     SUBDIR += postgresql-libpqxx3
+    SUBDIR += postgresql-mysql_fdw
     SUBDIR += postgresql-odbc
     SUBDIR += postgresql-plproxy
     SUBDIR += postgresql-plruby
@@ -921,6 +921,7 @@
     SUBDIR += rubygem-do_sqlite3
     SUBDIR += rubygem-em-redis-unified
     SUBDIR += rubygem-familia
+    SUBDIR += rubygem-flipper-active_record
     SUBDIR += rubygem-globalid
     SUBDIR += rubygem-globalid-rails5
     SUBDIR += rubygem-globalid-rails50
@@ -993,6 +994,7 @@
     SUBDIR += tdb
     SUBDIR += tdbc
     SUBDIR += tile38
+    SUBDIR += timescaledb
     SUBDIR += tinycdb
     SUBDIR += tokyocabinet
     SUBDIR += tokyotyrant

@@ -91,7 +91,6 @@
     SUBDIR += android-tools-fastboot-devel
     SUBDIR += android-tools-simpleperf
     SUBDIR += anjuta
-    SUBDIR += anjuta-extras
     SUBDIR += antlr
     SUBDIR += antlr3
     SUBDIR += antlr4
@@ -182,6 +181,7 @@
     SUBDIR += bglibs
     SUBDIR += bicyclerepair
     SUBDIR += bin86
+    SUBDIR += bingrep
     SUBDIR += binutils
     SUBDIR += bison
     SUBDIR += bisoncpp
@@ -318,6 +318,7 @@
     SUBDIR += cobf
     SUBDIR += coccinelle
     SUBDIR += codeblocks
+    SUBDIR += codesearch-py
     SUBDIR += codeville
     SUBDIR += codeworker
     SUBDIR += colorgcc
@@ -2683,6 +2684,7 @@
     SUBDIR += p5-List-Objects-WithUtils
     SUBDIR += p5-List-Permutor
     SUBDIR += p5-List-PowerSet
+    SUBDIR += p5-List-Regexp
     SUBDIR += p5-List-Rotation-Cycle
     SUBDIR += p5-List-SomeUtils
     SUBDIR += p5-List-SomeUtils-XS
@@ -4146,6 +4148,7 @@
     SUBDIR += py-argparse
     SUBDIR += py-args
     SUBDIR += py-arrow
+    SUBDIR += py-asn1crypto
     SUBDIR += py-aspects
     SUBDIR += py-aspyct
     SUBDIR += py-astor
@@ -4439,6 +4442,7 @@
     SUBDIR += py-logan
     SUBDIR += py-logbook
     SUBDIR += py-logilab-common
+    SUBDIR += py-logutils
     SUBDIR += py-louie
     SUBDIR += py-lxml
     SUBDIR += py-magic
@@ -4618,6 +4622,7 @@
     SUBDIR += py-pytest-capturelog
     SUBDIR += py-pytest-django
     SUBDIR += py-pytest-localserver
+    SUBDIR += py-pytest-mock
     SUBDIR += py-pytest-runner
     SUBDIR += py-pytest-timeout
     SUBDIR += py-pytest-tornado
@@ -5214,6 +5219,7 @@
     SUBDIR += rubygem-blobstore_client
     SUBDIR += rubygem-blockenspiel
     SUBDIR += rubygem-bones
+    SUBDIR += rubygem-bootsnap
     SUBDIR += rubygem-bosh-template
     SUBDIR += rubygem-bosh_common
     SUBDIR += rubygem-bson
@@ -5256,6 +5262,7 @@
     SUBDIR += rubygem-commander
     SUBDIR += rubygem-concurrent-ruby
     SUBDIR += rubygem-concurrent-ruby-edge
+    SUBDIR += rubygem-concurrent-ruby-ext
     SUBDIR += rubygem-configatron
     SUBDIR += rubygem-configstruct
     SUBDIR += rubygem-configuration
@@ -5322,6 +5329,7 @@
     SUBDIR += rubygem-file-tail
     SUBDIR += rubygem-filesize
     SUBDIR += rubygem-flexmock
+    SUBDIR += rubygem-flipper
     SUBDIR += rubygem-fluent-logger
     SUBDIR += rubygem-fog
     SUBDIR += rubygem-fog-core
@@ -5496,6 +5504,7 @@
     SUBDIR += rubygem-parser
     SUBDIR += rubygem-patch_finder
     SUBDIR += rubygem-pathutil
+    SUBDIR += rubygem-peek
     SUBDIR += rubygem-piston
     SUBDIR += rubygem-pkg-config
     SUBDIR += rubygem-platform
