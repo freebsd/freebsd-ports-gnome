@@ -149,6 +149,7 @@ _GSTREAMER_PLUGINS+= \
 		bs2b \
 		chromaprint \
 		curl \
+		dash \
 		dtls \
 		dvdread \
 		editing-services \
@@ -163,8 +164,20 @@ _GSTREAMER_PLUGINS+= \
 		mplex \
 		openexr \
 		openh264 openjpeg \
-		png rsvg rtmp spandsp srtp ttml vpx webp x x265 ximagesrc zbar
-# dash / vaapi / smoothwave?
+		png \
+		rsvg \
+		rtmp \
+		smoothstreaming \
+		spandsp \
+		srtp \
+		ttml \
+		vpx \
+		webp \
+		x \
+		x265 \
+		ximagesrc \
+		zbar
+#  vaapi / smoothwave?
 .endif # USE_GSTREAMER1
 
 # other plugins
@@ -396,6 +409,9 @@ bad_IMPL=	#
 bz2_DEPENDS=	multimedia/gstreamer-plugins-bz2
 bz2_IMPL=	bad
 
+dash_DEPENDS=	multimedia/gstreamer-plugins-dash
+dash_IMPL=	bad
+
 dvdread_DEPENDS=	multimedia/gstreamer-plugins-dvdread
 dvdread_IMPL=		ugly
 
@@ -468,6 +484,9 @@ qt4_IMPL=	#
 
 rtmp_DEPENDS=	multimedia/gstreamer-plugins-rtmp
 rtmp_IMPL=	bad
+
+smoothstreaming_DEPENDS=	multimedia/gstreamer-plugins-smoothstreaming
+smoothstreaming_IMPL=		bad
 
 ttml_DEPENDS=	multimedia/gstreamer-plugins-ttml
 ttml_IMPL=	bad

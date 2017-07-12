@@ -1,7 +1,5 @@
 # $FreeBSD$
 
-# XXX check all plugins in the list and depend lines ....
-
 BASE_GST_ALL_PLUGINS= \
 		alsa \
 		cdparanoia \
@@ -20,6 +18,7 @@ BAD_GST_ALL_PLUGINS+= \
 		bs2b \
 		chromaprint \
 		curl \
+		dash \
 		dtls \
 		dts \
 		faac \
@@ -50,6 +49,7 @@ BAD_GST_ALL_PLUGINS+= \
 		rtmp \
 		rsvg \
 		schro \
+		smoothstreaming \
 		sndfile \
 		soundtouch \
 		spandsp \
@@ -71,10 +71,8 @@ BAD_GST_NON_PLUGINS= \
 		--disable-glx
 BAD_GST_NON_PLUGINS+= \
 		--enable-bz2 \
-		--enable-dash \
 		--enable-dvb \
 		--enable-shm \
-		--enable-smoothstreaming \
 		--disable-acm \
 		--disable-android_media \
 		--disable-apple_media \
@@ -94,9 +92,6 @@ BAD_GST_NON_PLUGINS+= \
 		--disable-wgl \
 		--disable-winks \
 		--disable-winscreencap
-#		--disable-fbdev \
-#		--disable-wildmidi
-#		--disable-dc1394 \
 
 GOOD_GST_ALL_PLUGINS+= \
 		aalib \
@@ -234,6 +229,7 @@ gst_curl_LIB_DEPENDS=	libcurl.so:ftp/curl \
 
 # dash
 gst_dash_USE_GNOME=	libxml2
+gst_dash_PLIST_FILES=	${GST_LIB_DIR}/libgstdashdemux.so
 
 # dtls
 gst_dtls_USES=		compiler:c11 ssl
@@ -388,7 +384,7 @@ gst_resindvd_BUILD_DEPENDS=	libdvdnav>=4.1.2:multimedia/libdvdnav
 gst_resindvd_LIB_DEPENDS=	libdvdread.so:multimedia/libdvdread
 gst_resindvd_RUN_DEPENDS=	libdvdnav>=4.1.2:multimedia/libdvdnav
 
-# rtmp xxx
+# rtmp
 gst_rtmp_LIB_DEPENDS=	librtmp.so:multimedia/librtmp
 
 # rsvg
@@ -400,6 +396,9 @@ gst_shout2_LIB_DEPENDS=	libshout.so:audio/libshout
 # sidplay
 gst_sidplay_LIB_DEPENDS=	libsidplay.so:audio/libsidplay
 gst_sidplay_PLIST_FILES=	${GST_LIB_DIR}/libgstsid.so
+
+# smoothstreaming
+gst_smoothstreaming_USE_GNOME=	libxml2
 
 # sndfile
 gst_sndfile_LIB_DEPENDS=	libsndfile.so:audio/libsndfile

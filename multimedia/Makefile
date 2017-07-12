@@ -123,6 +123,7 @@
     SUBDIR += gstreamer1-plugins-assrender
     SUBDIR += gstreamer1-plugins-bad
     SUBDIR += gstreamer1-plugins-core
+    SUBDIR += gstreamer1-plugins-dash
     SUBDIR += gstreamer1-plugins-dts
     SUBDIR += gstreamer1-plugins-dv
     SUBDIR += gstreamer1-plugins-dvdread
@@ -138,6 +139,7 @@
     SUBDIR += gstreamer1-plugins-resindvd
     SUBDIR += gstreamer1-plugins-rtmp
     SUBDIR += gstreamer1-plugins-schroedinger
+    SUBDIR += gstreamer1-plugins-smoothstreaming
     SUBDIR += gstreamer1-plugins-theora
     SUBDIR += gstreamer1-plugins-ttml
     SUBDIR += gstreamer1-plugins-ugly
