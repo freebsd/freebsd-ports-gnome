@@ -339,6 +339,7 @@
     SUBDIR += cpp-hocon
     SUBDIR += cpp-netlib
     SUBDIR += cppcheck
+    SUBDIR += cppcheck-gui
     SUBDIR += cppi
     SUBDIR += cpprestsdk
     SUBDIR += cpptest
@@ -567,7 +568,8 @@
     SUBDIR += erlang-unicode_util_compat
     SUBDIR += es-eric6
     SUBDIR += etcd
-    SUBDIR += etcd3
+    SUBDIR += etcd31
+    SUBDIR += etcd32
     SUBDIR += etl
     SUBDIR += euca2ools
     SUBDIR += eventxx
@@ -1257,7 +1259,6 @@
     SUBDIR += libbobcat
     SUBDIR += libbonobo
     SUBDIR += libbonobo-reference
-    SUBDIR += libbrotli
     SUBDIR += libbson
     SUBDIR += libburn
     SUBDIR += libccid
@@ -4164,6 +4165,7 @@
     SUBDIR += py-babelfish
     SUBDIR += py-backports.functools_lru_cache
     SUBDIR += py-backports.shutil_get_terminal_size
+    SUBDIR += py-backports.weakref
     SUBDIR += py-backports_abc
     SUBDIR += py-bandit
     SUBDIR += py-bcdoc
@@ -4271,6 +4273,7 @@
     SUBDIR += py-doit
     SUBDIR += py-durus
     SUBDIR += py-dynrules
+    SUBDIR += py-easyprocess
     SUBDIR += py-editdistance
     SUBDIR += py-efilter
     SUBDIR += py-efl
@@ -4727,6 +4730,7 @@
     SUBDIR += py-serpent
     SUBDIR += py-setproctitle
     SUBDIR += py-setuptools-git
+    SUBDIR += py-setuptools-pkg
     SUBDIR += py-setuptools_darcs
     SUBDIR += py-setuptools_hg
     SUBDIR += py-setuptools_scm
@@ -5113,6 +5117,7 @@
     SUBDIR += qtscriptgenerator
     SUBDIR += quickcheck++
     SUBDIR += quilt
+    SUBDIR += racer
     SUBDIR += radare2
     SUBDIR += ragel
     SUBDIR += raknet
@@ -5209,6 +5214,7 @@
     SUBDIR += rubygem-axiom-types
     SUBDIR += rubygem-backports
     SUBDIR += rubygem-bacon
+    SUBDIR += rubygem-baf
     SUBDIR += rubygem-benelux
     SUBDIR += rubygem-bin_utils
     SUBDIR += rubygem-bindata
@@ -5277,6 +5283,7 @@
     SUBDIR += rubygem-cyoi
     SUBDIR += rubygem-daemon_controller
     SUBDIR += rubygem-daemons
+    SUBDIR += rubygem-ddplugin
     SUBDIR += rubygem-debug_inspector
     SUBDIR += rubygem-debugger-linecache
     SUBDIR += rubygem-debugger-xml
@@ -5407,6 +5414,7 @@
     SUBDIR += rubygem-jbuilder-rails5
     SUBDIR += rubygem-jbuilder-rails50
     SUBDIR += rubygem-jekyll-coffeescript
+    SUBDIR += rubygem-jenkins_api_client
     SUBDIR += rubygem-jeweler
     SUBDIR += rubygem-jira-ruby
     SUBDIR += rubygem-jmespath
@@ -5456,6 +5464,7 @@
     SUBDIR += rubygem-mixlib-config
     SUBDIR += rubygem-mixlib-log
     SUBDIR += rubygem-mixlib-shellout
+    SUBDIR += rubygem-mize
     SUBDIR += rubygem-mkrf
     SUBDIR += rubygem-mocha
     SUBDIR += rubygem-moneta
@@ -5522,6 +5531,7 @@
     SUBDIR += rubygem-progressbar
     SUBDIR += rubygem-progressbar09
     SUBDIR += rubygem-protected_attributes
+    SUBDIR += rubygem-protocol
     SUBDIR += rubygem-pry
     SUBDIR += rubygem-pry-rails
     SUBDIR += rubygem-pry-remote-em
@@ -5576,6 +5586,7 @@
     SUBDIR += rubygem-rspec
     SUBDIR += rubygem-rspec-core
     SUBDIR += rubygem-rspec-expectations
+    SUBDIR += rubygem-rspec-its
     SUBDIR += rubygem-rspec-logsplit
     SUBDIR += rubygem-rspec-mocks
     SUBDIR += rubygem-rspec-rails
