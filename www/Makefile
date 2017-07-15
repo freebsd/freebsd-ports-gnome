@@ -392,7 +392,6 @@
     SUBDIR += mathjax
     SUBDIR += mathopd
     SUBDIR += mediawiki123
-    SUBDIR += mediawiki126
     SUBDIR += mediawiki127
     SUBDIR += mediawiki128
     SUBDIR += mergelog
@@ -1031,6 +1030,7 @@
     SUBDIR += p5-HTTP-Tiny
     SUBDIR += p5-HTTP-Tiny-SPDY
     SUBDIR += p5-HTTP-WebTest
+    SUBDIR += p5-HTTP-XSCookies
     SUBDIR += p5-HTTPD-Log-Filter
     SUBDIR += p5-HTTPD-User-Manage
     SUBDIR += p5-Hijk
@@ -1860,6 +1860,7 @@
     SUBDIR += qt5-webchannel
     SUBDIR += qt5-webkit
     SUBDIR += qt5-websockets
+    SUBDIR += qt5-websockets-qml
     SUBDIR += quickie
     SUBDIR += qupzilla-qt4
     SUBDIR += qupzilla-qt5
@@ -2129,6 +2130,7 @@
     SUBDIR += rubygem-thin
     SUBDIR += rubygem-tinyatom
     SUBDIR += rubygem-tinymce-rails
+    SUBDIR += rubygem-toml-rb
     SUBDIR += rubygem-totoridipjp
     SUBDIR += rubygem-tumblr_client
     SUBDIR += rubygem-turbolinks
