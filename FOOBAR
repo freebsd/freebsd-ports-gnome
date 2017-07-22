@@ -1,4 +1,0 @@
-audio/gstreamer1-plugins-mad was removed from -ugly, use -mpg123 instead
-
-
-#multimedia/gstreamer1-plugins-all needs fixing after USES/gstreamer.mk move

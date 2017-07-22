@@ -11,8 +11,6 @@ PKGNAMESUFFIX=	1
 MAINTAINER=	multimedia@FreeBSD.org
 COMMENT=	Media applications framework
 
-LIB_DEPENDS=	libunwind.so:devel/libunwind
-
 LICENSE=	LGPL20
 LICENSE_FILE=	${WRKSRC}/COPYING
 

@@ -10,8 +10,8 @@ COMMENT=	Sndio audio sink and source for GStreamer
 
 LICENSE=	ISCL
 
-#LIB_DEPENDS=	libgstaudio-1.0.so:multimedia/gstreamer1-plugins \
-#		libgstbase-1.0.so:multimedia/gstreamer1 
+LIB_DEPENDS=	libgstaudio-1.0.so:multimedia/gstreamer1-plugins \
+		libgstbase-1.0.so:multimedia/gstreamer1 
 LIB_DEPENDS=	libsndio.so:audio/sndio
 
 USE_GITHUB=	yes
@@ -19,7 +19,6 @@ GH_ACCOUNT=	t6
 
 USES=		gettext-runtime pkgconfig
 USE_GNOME=	glib20
-USE_GSTREAMER1=	yes
 USE_LDCONFIG=	yes
 
 PLIST_FILES=	lib/gstreamer-1.0/libgstsndio.so
