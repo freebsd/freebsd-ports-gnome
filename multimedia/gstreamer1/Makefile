@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gstreamer
-PORTVERSION=	1.12.1
+PORTVERSION=	1.12.2
 CATEGORIES=	multimedia
-MASTER_SITES=	http://gstreamer.freedesktop.org/src/gstreamer/
+MASTER_SITES=	GNOME \
+		http://gstreamer.freedesktop.org/src/gstreamer/
 PKGNAMESUFFIX=	1
 
 MAINTAINER=	multimedia@FreeBSD.org
@@ -29,9 +30,15 @@ CONFIGURE_ARGS=	--disable-tests \
 CONFIGURE_ENV=	ac_cv_func_register_printf_function="no"
 INSTALL_TARGET=	install-strip
 PLIST_SUB=	VERSION=${GST10_VERSION} \
-		SOVERSION=0.1201.0
+		SOVERSION=0.1202.0
 USE_LDCONFIG=	yes
 GST10_VERSION=	1.0
+
+.include <bsd.port.options.mk>
+
+.if ${ARCH} == i386 || ${ARCH} == amd64
+LIB_DEPENDS+=	libunwind.so:devel/libunwind
+.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-Wmissing-include-dirs||g' \

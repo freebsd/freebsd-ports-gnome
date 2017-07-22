@@ -53,6 +53,7 @@ BAD_GST_ALL_PLUGINS+= \
 		sndfile \
 		soundtouch \
 		spandsp \
+		spc \
 		srtp \
 		ttml \
 		vdpau \
@@ -411,6 +412,9 @@ gst_soup_LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup
 
 # spandsp
 gst_spandsp_LIB_DEPENDS=	libspandsp.so:comms/spandsp
+
+# spc
+gst_spc_LIB_DEPENDS=	libopenspc.so:audio/libopenspc
 
 # speex
 gst_speex_LIB_DEPENDS=	libspeex.so:audio/speex

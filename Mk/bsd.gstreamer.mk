@@ -6,6 +6,7 @@
 # Created by: Michael Johnson <ahze@FreeBSD.org>
 #
 # $FreeBSD$
+#    $MCom: ports/Mk/bsd.gstreamer.mk,v 1.56 2013/01/15 21:43:45 kwm Exp $
 
 .if !defined(_POSTMKINCLUDED) && !defined(Gstreamer_Pre_Include)
 
@@ -104,6 +105,7 @@ _GSTREAMER_PLUGINS= \
 		sidplay \
 		soundtouch \
 		soup \
+		spc \
 		speex \
 		taglib \
 		theora \
@@ -136,7 +138,6 @@ _GSTREAMER_PLUGINS+= \
 		python \
 		qt4 \
 		sdl \
-		spc \
 		vdpau \
 		vp8 \
 		xvid
@@ -163,7 +164,8 @@ _GSTREAMER_PLUGINS+= \
 		mpg123 \
 		mplex \
 		openexr \
-		openh264 openjpeg \
+		openh264 \
+		openjpeg \
 		png \
 		rsvg \
 		rtmp \
@@ -177,7 +179,7 @@ _GSTREAMER_PLUGINS+= \
 		x265 \
 		ximagesrc \
 		zbar
-#  vaapi / smoothwave?
+# vaapi webrtcdsp
 .endif # USE_GSTREAMER1
 
 # other plugins
@@ -186,6 +188,7 @@ _USE_GSTREAMER_ALL=	bad core good ugly yes ${_GSTREAMER_PLUGINS}
 #--------------------------------------------------------------------------#
 
 core_DEPENDS=	multimedia/gstreamer-plugins-core
+core_IMPL=	#
 
 yes_DEPENDS=	multimedia/gstreamer-plugins
 yes_NAME=	gstreamer-plugins
