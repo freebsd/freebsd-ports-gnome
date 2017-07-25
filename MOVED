@@ -7602,7 +7602,6 @@ devel/erlang-mustache|devel/erlang-bbmustache|2015-06-21|Renamed upstream
 dns/maradns1|dns/maradns|2015-06-23|Has expired: MaraDNS 1 end-of-life: June 21, 2015, use dns/maradns
 net/py-soappy-devel||2015-06-25|Please use net/py-soappy instead. It's fresher than -devel
 devel/armv6-freebsd10.0-xdev||2015-06-27|Not usable for the purpose it has been intended for
-devel/bear|devel/erlang-bear|2015-06-27|Renamed with erlang- prefix
 devel/common_lib|devel/erlang-common_lib|2015-06-27|Renamed with erlang- prefix
 devel/cowlib|devel/erlang-cowlib|2015-06-27|Renamed with erlang- prefix
 devel/cuttlefish|devel/erlang-cuttlefish|2015-06-27|Renamed with erlang- prefix
@@ -9469,3 +9468,4 @@ security/sshguard-ipfw|security/sshguard|2017-07-20|Merged with security/sshguar
 security/sshguard-pf|security/sshguard|2017-07-20|Merged with security/sshguard
 security/sshguard-null|security/sshguard|2017-07-20|Merged with security/sshguard
 audio/gstreamer1-plugins-mad|audio/gstreamer1-plugins-mpg123|2017-07-21|The GStreamer 1 mad plugin was removed, the mpg123 plugin supplies the same functionality
+x11-toolkits/gstreamer1-plugins-gtksink|x11-toolkits/gstreamer1-plugins-gtk|2017-07-21|The GStreamer 1 gtksink plugin was renamed
