@@ -14,7 +14,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libdbus-glib-1.so:devel/dbus-glib \
 		libjson-glib-1.0.so:devel/json-glib \
 		libepoxy.so:graphics/libepoxy
-RUN_DEPENDS=	${LOCALBASE}/sbin/console-kit-daemon:sysutils/consolekit
+RUN_DEPENDS=	${LOCALBASE}/sbin/console-kit-daemon:sysutils/consolekit2
 
 PORTSCOUT=	limitw:1,even
 

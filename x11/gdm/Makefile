@@ -13,7 +13,7 @@ COMMENT=	GNOME 3 display manager
 BUILD_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		itstool:textproc/itstool \
 		iso-codes>=0:misc/iso-codes
-LIB_DEPENDS=	libck-connector.so:sysutils/consolekit \
+LIB_DEPENDS=	libck-connector.so:sysutils/consolekit2 \
 		libaccountsservice.so:sysutils/accountsservice \
 		libcanberra.so:audio/libcanberra \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3
@@ -94,6 +94,7 @@ PKGMESSAGE=	${WRKDIR}/pkg-message
 GNOME_LOCALSTATEDIR=	/var
 
 OPTIONS_DEFINE=	IPV6
+
 IPV6_CONFIGURE_ENABLE=	ipv6
 
 .include <bsd.port.options.mk>

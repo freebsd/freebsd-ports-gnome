@@ -305,8 +305,6 @@
     SUBDIR += clisp-hyperspec
     SUBDIR += clojure-cider
     SUBDIR += cloudabi
-    SUBDIR += cloudabi-binutils-aarch64
-    SUBDIR += cloudabi-binutils-x86_64
     SUBDIR += cloudabi-toolchain
     SUBDIR += cltune
     SUBDIR += cmake
@@ -320,6 +318,7 @@
     SUBDIR += cobf
     SUBDIR += coccinelle
     SUBDIR += codeblocks
+    SUBDIR += codequery
     SUBDIR += codesearch-py
     SUBDIR += codeville
     SUBDIR += codeworker
@@ -3056,6 +3055,8 @@
     SUBDIR += p5-Params-Validate-Dependencies
     SUBDIR += p5-Params-ValidationCompiler
     SUBDIR += p5-Paranoid
+    SUBDIR += p5-Paranoid-Log-Email
+    SUBDIR += p5-Paranoid-Log-Syslog
     SUBDIR += p5-Parse-CPAN-Packages
     SUBDIR += p5-Parse-CPAN-Packages-Fast
     SUBDIR += p5-Parse-ErrorString-Perl
@@ -4153,6 +4154,7 @@
     SUBDIR += py-ZopeUndo
     SUBDIR += py-adb
     SUBDIR += py-akismet
+    SUBDIR += py-amalgamate
     SUBDIR += py-aniso8601
     SUBDIR += py-anonfunc
     SUBDIR += py-anyconfig
@@ -5046,6 +5048,7 @@
     SUBDIR += py3-tzlocal
     SUBDIR += py3-urwid
     SUBDIR += py3-vcversioner
+    SUBDIR += py3-verboselogs
     SUBDIR += py3-virtualenv
     SUBDIR += py3-voluptuous
     SUBDIR += py3-wcwidth
@@ -5419,7 +5422,6 @@
     SUBDIR += rubygem-hashie-forbidden_attributes
     SUBDIR += rubygem-hashie2
     SUBDIR += rubygem-health_check
-    SUBDIR += rubygem-health_check22
     SUBDIR += rubygem-highline
     SUBDIR += rubygem-hike
     SUBDIR += rubygem-hitimes
@@ -5521,7 +5523,6 @@
     SUBDIR += rubygem-netaddr
     SUBDIR += rubygem-newrelic-grape
     SUBDIR += rubygem-newrelic_rpm
-    SUBDIR += rubygem-newrelic_rpm3
     SUBDIR += rubygem-nice-ffi
     SUBDIR += rubygem-nio4r
     SUBDIR += rubygem-nori
@@ -5653,7 +5654,6 @@
     SUBDIR += rubygem-schash
     SUBDIR += rubygem-sdoc
     SUBDIR += rubygem-semantic_puppet
-    SUBDIR += rubygem-semantic_puppet0
     SUBDIR += rubygem-semi_semantic
     SUBDIR += rubygem-sentry-raven
     SUBDIR += rubygem-sequel

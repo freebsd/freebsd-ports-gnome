@@ -1169,6 +1169,8 @@
     SUBDIR += rubygem-fog-dynect
     SUBDIR += rubygem-fog-ecloud
     SUBDIR += rubygem-fog-google
+    SUBDIR += rubygem-fog-internet-archive
+    SUBDIR += rubygem-fog-joyent
     SUBDIR += rubygem-fog-local
     SUBDIR += rubygem-fog-openstack
     SUBDIR += rubygem-fog-powerdns
@@ -1203,7 +1205,6 @@
     SUBDIR += rubygem-network_interface
     SUBDIR += rubygem-oauth
     SUBDIR += rubygem-oauth2
-    SUBDIR += rubygem-oauth212
     SUBDIR += rubygem-octokit
     SUBDIR += rubygem-octopress-deploy
     SUBDIR += rubygem-omniauth-auth0

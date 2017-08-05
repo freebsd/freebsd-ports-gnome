@@ -20,7 +20,7 @@ LIB_DEPENDS=	libavahi-client.so:net/avahi-app \
 		libcanberra.so:audio/libcanberra \
 		libunique-1.0.so:x11-toolkits/unique
 RUN_DEPENDS=	ap*-mod_dnssd>=0:www/mod_dnssd \
-		console-kit-daemon:sysutils/consolekit
+		console-kit-daemon:sysutils/consolekit2
 
 USES=		gettext gmake libtool localbase pkgconfig tar:xz
 USE_APACHE=	22+

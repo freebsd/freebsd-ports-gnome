@@ -1512,7 +1512,6 @@
     SUBDIR += rubygem-libxml-ruby
     SUBDIR += rubygem-linguistics
     SUBDIR += rubygem-liquid
-    SUBDIR += rubygem-liquid3
     SUBDIR += rubygem-loggability
     SUBDIR += rubygem-loofah
     SUBDIR += rubygem-ltsv
@@ -1554,10 +1553,12 @@
     SUBDIR += rubygem-rugments
     SUBDIR += rubygem-sanitize
     SUBDIR += rubygem-sass
+    SUBDIR += rubygem-sass-listen
     SUBDIR += rubygem-sass-rails-rails5
     SUBDIR += rubygem-sass-rails-rails50
     SUBDIR += rubygem-sass-rails5
     SUBDIR += rubygem-sass32
+    SUBDIR += rubygem-sass34
     SUBDIR += rubygem-sax-machine
     SUBDIR += rubygem-scss_lint
     SUBDIR += rubygem-shell2html
