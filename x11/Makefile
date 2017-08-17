@@ -52,12 +52,14 @@
     SUBDIR += docker-tray
     SUBDIR += dri2proto
     SUBDIR += dri3proto
+    SUBDIR += dsbautostart
     SUBDIR += dxpc
     SUBDIR += dynamag
     SUBDIR += dzen2
     SUBDIR += eaglemode
     SUBDIR += editres
     SUBDIR += emprint
+    SUBDIR += enventor
     SUBDIR += erun
     SUBDIR += eterm
     SUBDIR += evieext
@@ -289,6 +291,7 @@
     SUBDIR += rxvt-unicode
     SUBDIR += sakura
     SUBDIR += sbxkb
+    SUBDIR += screen-message
     SUBDIR += scripts
     SUBDIR += scrnsaverproto
     SUBDIR += sessreg
