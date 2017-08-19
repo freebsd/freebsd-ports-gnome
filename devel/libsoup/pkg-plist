@@ -98,7 +98,6 @@ share/gtk-doc/html/libsoup-%%VERSION%%/ch04.html
 share/gtk-doc/html/libsoup-%%VERSION%%/ch05.html
 share/gtk-doc/html/libsoup-%%VERSION%%/home.png
 share/gtk-doc/html/libsoup-%%VERSION%%/index.html
-share/gtk-doc/html/libsoup-%%VERSION%%/index.sgml
 share/gtk-doc/html/libsoup-%%VERSION%%/ix01.html
 share/gtk-doc/html/libsoup-%%VERSION%%/left-insensitive.png
 share/gtk-doc/html/libsoup-%%VERSION%%/left.png

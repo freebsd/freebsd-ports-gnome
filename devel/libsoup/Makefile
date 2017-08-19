@@ -2,13 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	libsoup
-PORTVERSION=	2.56.0
+PORTVERSION=	2.58.2
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	SOAP (Simple Object Access Protocol) implementation in C
+
+LICENSE=	LGPL20
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	glib-networking>=2.29.18:net/glib-networking
 LIB_DEPENDS=	libgcrypt.so:security/libgcrypt
