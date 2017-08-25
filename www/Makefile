@@ -450,6 +450,7 @@
     SUBDIR += mod_fileiri
     SUBDIR += mod_flickr
     SUBDIR += mod_geoip2
+    SUBDIR += mod_gnutls
     SUBDIR += mod_gzip2
     SUBDIR += mod_h264_streaming
     SUBDIR += mod_hosts_access
@@ -1543,6 +1544,7 @@
     SUBDIR += py-django-babel
     SUBDIR += py-django-bitfield
     SUBDIR += py-django-bootstrap-form
+    SUBDIR += py-django-bulk-update
     SUBDIR += py-django-caching-app-plugins
     SUBDIR += py-django-classy-tags
     SUBDIR += py-django-cms
@@ -1680,6 +1682,7 @@
     SUBDIR += py-hyperlink
     SUBDIR += py-imdbpy
     SUBDIR += py-jonpy
+    SUBDIR += py-jsonfield
     SUBDIR += py-jswebkit
     SUBDIR += py-kallithea
     SUBDIR += py-libsass
@@ -1864,6 +1867,7 @@
     SUBDIR += qooxdoo
     SUBDIR += qt4-webkit
     SUBDIR += qt5-webchannel
+    SUBDIR += qt5-webengine
     SUBDIR += qt5-webkit
     SUBDIR += qt5-websockets
     SUBDIR += qt5-websockets-qml

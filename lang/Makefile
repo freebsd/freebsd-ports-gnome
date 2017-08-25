@@ -20,7 +20,6 @@
     SUBDIR += basic256
     SUBDIR += beignet
     SUBDIR += bf2c
-    SUBDIR += bigloo
     SUBDIR += bsh
     SUBDIR += bwbasic
     SUBDIR += c
@@ -363,7 +362,6 @@
     SUBDIR += v8-devel
     SUBDIR += vala
     SUBDIR += visualworks
-    SUBDIR += whitespace
     SUBDIR += x10
     SUBDIR += yabasic
     SUBDIR += yap

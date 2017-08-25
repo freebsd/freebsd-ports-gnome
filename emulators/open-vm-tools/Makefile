@@ -5,9 +5,10 @@ PORTNAME=		open-vm-tools
 PORTVERSION=		${RELEASE_VER}
 DISTVERSIONPREFIX=	stable-
 PORTEPOCH=		2
+PORTREVISION=		1
 CATEGORIES=		emulators
 
-MAINTAINER=		swills@FreeBSD.org
+MAINTAINER=		jpaetzel@FreeBSD.org
 COMMENT?=		Open VMware tools for FreeBSD VMware guests
 
 LICENSE=		LGPL21
@@ -40,7 +41,7 @@ ICU_CONFIGURE_WITH=	icu
 ICU_LIB_DEPENDS=	libicuuc.so:devel/icu
 OPENSSL_CONFIGURE_WITH=	ssl
 
-WRKSRC=			${WRKDIR}/${PORTNAME}-stable-${RELEASE_VER}/open-vm-tools/
+WRKSRC_SUBDIR=		open-vm-tools
 
 GNU_CONFIGURE=		yes
 USE_GNOME=		glib20

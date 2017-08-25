@@ -38,7 +38,6 @@
     SUBDIR += base
     SUBDIR += bcrypt
     SUBDIR += bcwipe
-    SUBDIR += bdc
     SUBDIR += bdes
     SUBDIR += bearssl
     SUBDIR += beecrypt
@@ -1043,6 +1042,7 @@
     SUBDIR += rubygem-encryptor
     SUBDIR += rubygem-ezcrypto
     SUBDIR += rubygem-googleauth
+    SUBDIR += rubygem-gpgme
     SUBDIR += rubygem-gpgr
     SUBDIR += rubygem-gssapi
     SUBDIR += rubygem-hkdf

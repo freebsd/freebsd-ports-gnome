@@ -33,6 +33,7 @@
     SUBDIR += cego
     SUBDIR += cegobridge
     SUBDIR += clickhouse
+    SUBDIR += cockroach
     SUBDIR += couchdb
     SUBDIR += courier-authlib-mysql
     SUBDIR += courier-authlib-pgsql
@@ -960,6 +961,8 @@
     SUBDIR += rubygem-mysql2
     SUBDIR += rubygem-openid-redis-store
     SUBDIR += rubygem-paranoia
+    SUBDIR += rubygem-peek-mysql2
+    SUBDIR += rubygem-peek-pg
     SUBDIR += rubygem-pg
     SUBDIR += rubygem-pg_array_parser
     SUBDIR += rubygem-pghero
@@ -1000,7 +1003,6 @@
     SUBDIR += sqlite2
     SUBDIR += sqlite3
     SUBDIR += sqlitebrowser
-    SUBDIR += sqlitebrowser-qt5
     SUBDIR += sqliteconvert
     SUBDIR += sqliteman
     SUBDIR += sqlitemanager
