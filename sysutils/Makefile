@@ -1144,6 +1144,7 @@
     SUBDIR += syslog-ng37
     SUBDIR += syslog-ng39
     SUBDIR += syslog-ng310
+    SUBDIR += syslog-ng311
     SUBDIR += syslogger
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
@@ -1229,6 +1230,7 @@
     SUBDIR += ufs_copy
     SUBDIR += uhidd
     SUBDIR += uif2iso
+    SUBDIR += unetbootin
     SUBDIR += unieject
     SUBDIR += uniutils
     SUBDIR += unquote
