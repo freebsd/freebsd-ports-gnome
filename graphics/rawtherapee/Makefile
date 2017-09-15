@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	rawtherapee
-PORTVERSION=	5.1
+PORTVERSION=	5.2
+PORTREVISION=	1
 #DISTNAME=	${PORTNAME}-${PORTVERSION:R}-r${PORTVERSION:E}${DISTVERSIONSUFFIX}
 CATEGORIES=	graphics
 MASTER_SITES=	http://rawtherapee.com/shared/source/
@@ -48,7 +49,6 @@ CMAKE_ARGS+=	-DDOCDIR="${DOCSDIR}" \
 # any more. The CMP0056 policy must be explicitly set to NEW to ensure
 # linker flags are passed. Else -lomp is not found with clang.
 # See: https://cmake.org/cmake/help/v3.4/policy/CMP0056.html
-CMAKE_NINJA=	yes
 
 INSTALLS_ICONS=	yes
 

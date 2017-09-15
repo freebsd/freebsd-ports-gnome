@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	wordpress
-PORTVERSION=	4.8
-PORTEPOCH=	1
+PORTVERSION=	4.8.1
 DISTVERSIONSUFFIX=	-fr_FR
+PORTEPOCH=	1
 CATEGORIES=	french www
 MASTER_SITES=	http://fr.wordpress.org/
 

@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	octave-forge-nan
-PORTVERSION=	3.0
-PORTREVISION=	2
+PORTVERSION=	3.1.4
+PORTREVISION=	1
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org
@@ -16,7 +16,7 @@ MAKE_JOBS_UNSAFE=	yes
 
 # OCTSRC is the name of the directory of the package.
 # It is usually ${OCTAVE_PKGNAME} or ${DISTNAME}.
-OCTSRC=		NaN
+OCTSRC=		${DISTNAME}
 
 WRKSRC=		${WRKDIR}/${OCTSRC}/src
 

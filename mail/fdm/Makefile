@@ -32,6 +32,7 @@ PCRE_LIB_DEPENDS=libpcre.so:devel/pcre
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/etc|${PREFIX}/etc|g' ${WRKSRC}/*.[15] ${WRKSRC}/MANUAL
+	@${ECHO_CMD} 'lex.c: parse.h' >> ${WRKSRC}/Makefile.am
 
 pre-configure:
 	@cd ${WRKSRC} && sh autogen.sh

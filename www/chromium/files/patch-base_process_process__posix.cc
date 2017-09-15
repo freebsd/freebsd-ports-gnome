@@ -1,6 +1,6 @@
---- base/process/process_posix.cc.orig	2017-04-19 19:06:28 UTC
-+++ base/process/process_posix.cc
-@@ -21,8 +21,18 @@
+--- base/process/process_posix.cc.orig	2017-07-25 21:04:48.000000000 +0200
++++ base/process/process_posix.cc	2017-08-02 19:38:18.657740000 +0200
+@@ -22,8 +22,18 @@
  #include <sys/event.h>
  #endif
  
@@ -19,9 +19,9 @@
  #if !defined(OS_NACL_NONSFI)
  
  bool WaitpidWithTimeout(base::ProcessHandle handle,
-@@ -184,13 +194,13 @@ bool WaitForExitWithTimeoutImpl(base::Pr
-   base::ProcessHandle parent_pid = base::GetParentProcessId(handle);
+@@ -186,13 +196,13 @@
    base::ProcessHandle our_pid = base::GetCurrentProcessHandle();
+ 
    if (parent_pid != our_pid) {
 -#if defined(OS_MACOSX)
 +#if defined(OS_MACOSX) || defined(OS_BSD)
@@ -36,26 +36,26 @@
    }
  
    int status;
-@@ -257,12 +267,16 @@ Process Process::DeprecatedGetProcessFro
+@@ -258,12 +268,16 @@
    return Process(handle);
  }
  
--#if !defined(OS_LINUX) && !defined(OS_MACOSX)
-+#if !defined(OS_LINUX) && !defined(OS_MACOSX) && !defined(OS_FREEBSD)
+-#if !defined(OS_LINUX) && !defined(OS_MACOSX) && !defined(OS_AIX)
++#if !defined(OS_LINUX) && !defined(OS_MACOSX) && !defined(OS_AIX) && !defined(OS_BSD)
  // static
  bool Process::CanBackgroundProcesses() {
    return false;
  }
--#endif  // !defined(OS_LINUX) && !defined(OS_MACOSX)
+-#endif  // !defined(OS_LINUX) && !defined(OS_MACOSX) && !defined(OS_AIX)
 +#elif defined(OS_FREEBSD)
 +bool Process::CanBackgroundProcesses() {
 +  return true;
 +}
-+#endif  // !defined(OS_LINUX) && !defined(OS_MACOSX) && !defined(OS_FREEBSD)
++#endif  // !defined(OS_LINUX) && !defined(OS_MACOSX) && !defined(OS_AIX) && !defined(OS_BSD)
  
  // static
  void Process::TerminateCurrentProcessImmediately(int exit_code) {
-@@ -370,15 +384,32 @@ bool Process::WaitForExitWithTimeout(Tim
+@@ -371,15 +385,31 @@
  bool Process::IsProcessBackgrounded() const {
    // See SetProcessBackgrounded().
    DCHECK(IsValid());
@@ -82,9 +82,8 @@
 +  int priority = value ? kBackgroundPriority : kForegroundPriority;
 +  int result   = setpriority(PRIO_PROCESS, process_, priority);
 +
-+  DPCHECK(result == 0);
 +  return result == 0;
 +#endif // !defined(OS_FREEBSD)
  }
- #endif  // !defined(OS_LINUX) && !defined(OS_MACOSX)
+ #endif  // !defined(OS_LINUX) && !defined(OS_MACOSX) && !defined(OS_AIX)
  

@@ -1,6 +1,6 @@
---- components/tracing/common/process_metrics_memory_dump_provider.cc.orig	2017-04-19 19:06:33 UTC
-+++ components/tracing/common/process_metrics_memory_dump_provider.cc
-@@ -56,7 +56,7 @@ base::LazyInstance<
+--- components/tracing/common/process_metrics_memory_dump_provider.cc.orig	2017-08-03 00:05:11.000000000 +0200
++++ components/tracing/common/process_metrics_memory_dump_provider.cc	2017-08-10 15:54:41.312710000 +0200
+@@ -57,7 +57,7 @@
               std::unique_ptr<ProcessMetricsMemoryDumpProvider>>>::Leaky
      g_dump_providers_map = LAZY_INSTANCE_INITIALIZER;
  
@@ -9,8 +9,8 @@
  const char kClearPeakRssCommand[] = "5";
  
  const uint32_t kMaxLineSize = 4096;
-@@ -190,13 +190,13 @@ bool GetResidentSizeFromStatmFile(int fd
-   return num_scanned == 1;
+@@ -194,13 +194,13 @@
+   return num_scanned == 2;
  }
  
 -#endif  // defined(OS_LINUX) || defined(OS_ANDROID)
@@ -25,7 +25,7 @@
    // Just pass ProcessId instead of handle since they are the same in linux and
    // android.
    return base::ProcessMetrics::CreateProcessMetrics(process);
-@@ -205,7 +205,7 @@ std::unique_ptr<base::ProcessMetrics> Cr
+@@ -209,7 +209,7 @@
    // additional information like ProcessHandle or port provider.
    NOTREACHED();
    return std::unique_ptr<base::ProcessMetrics>();
@@ -34,7 +34,7 @@
  }
  
  }  // namespace
-@@ -217,7 +217,7 @@ uint64_t ProcessMetricsMemoryDumpProvide
+@@ -221,7 +221,7 @@
  ProcessMetricsMemoryDumpProvider::FactoryFunction
      ProcessMetricsMemoryDumpProvider::factory_for_testing = nullptr;
  
@@ -43,7 +43,7 @@
  
  // static
  FILE* ProcessMetricsMemoryDumpProvider::proc_smaps_for_testing = nullptr;
-@@ -244,7 +244,7 @@ bool ProcessMetricsMemoryDumpProvider::D
+@@ -248,7 +248,7 @@
      pmd->set_has_process_mmaps();
    return res;
  }
@@ -52,7 +52,16 @@
  
  #if defined(OS_WIN)
  bool ProcessMetricsMemoryDumpProvider::DumpProcessMemoryMaps(
-@@ -620,7 +620,7 @@ bool ProcessMetricsMemoryDumpProvider::D
+@@ -637,7 +637,7 @@
+ 
+   uint64_t peak_rss_bytes = 0;
+ 
+-#if defined(OS_LINUX) || defined(OS_ANDROID)
++#if defined(OS_LINUX) || defined(OS_ANDROID) || !defined(OS_BSD)
+   base::trace_event::ProcessMemoryTotals::PlatformPrivateFootprint footprint;
+ 
+   base::ScopedFD autoclose;
+@@ -673,7 +673,7 @@
  
  #if !defined(OS_IOS)
    peak_rss_bytes = process_metrics_->GetPeakWorkingSetSize();
@@ -61,16 +70,31 @@
    if (is_rss_peak_resettable_) {
      std::string clear_refs_file =
          "/proc/" +
-@@ -670,7 +670,7 @@ bool ProcessMetricsMemoryDumpProvider::D
+@@ -714,7 +714,7 @@
+   return true;
+ }
+ 
+-#if defined(OS_LINUX) || defined(OS_ANDROID)
++#if defined(OS_LINUX) || defined(OS_ANDROID) || defined(OS_BSD)
+ base::ScopedFD ProcessMetricsMemoryDumpProvider::OpenStatm() {
+   std::string name =
+       "/proc/" +
+@@ -725,12 +725,12 @@
+   DCHECK(fd.is_valid());
+   return fd;
+ }
+-#endif  // defined(OS_LINUX) || defined(OS_ANDROID)
++#endif  // defined(OS_LINUX) || defined(OS_ANDROID) || defined(OS_BSD)
+ 
  void ProcessMetricsMemoryDumpProvider::PollFastMemoryTotal(
      uint64_t* memory_total) {
    *memory_total = 0;
 -#if defined(OS_LINUX) || defined(OS_ANDROID)
 +#if defined(OS_LINUX) || defined(OS_ANDROID) || defined(OS_BSD)
+ 
    int statm_fd = fast_polling_statm_fd_for_testing;
    if (statm_fd == -1) {
-     if (!fast_polling_statm_fd_.is_valid()) {
-@@ -698,7 +698,7 @@ void ProcessMetricsMemoryDumpProvider::P
+@@ -755,7 +755,7 @@
  }
  
  void ProcessMetricsMemoryDumpProvider::SuspendFastMemoryPolling() {

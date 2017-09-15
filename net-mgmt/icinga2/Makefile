@@ -2,7 +2,7 @@
 
 PORTNAME=	icinga2
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.6.3
+DISTVERSION=	2.7.0
 PORTREVISION=	1
 CATEGORIES=	net-mgmt
 
@@ -18,10 +18,11 @@ RUN_DEPENDS=	${LOCALBASE}/bin/bash:shells/bash
 
 BROKEN_powerpc64=	does not build: Your version of GCC (4.2.1) is too old for building Icinga 2 (GCC >= 4.6.0)
 
+USES=		alias bison cmake execinfo libedit
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	icinga
 
-USES=		alias bison cmake execinfo libedit
 USE_LDCONFIG=	yes
 
 USE_RC_SUBR=	${PORTNAME}

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-PORTVERSION=	2.0.1
-PORTREVISION=	2
+PORTVERSION=	2.0.2
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	LOCAL/dbn/repos/wine/${DIST_SUBDIR}/
@@ -50,7 +49,7 @@ PORTSCOUT=	limitw:1,even
 # Included for OPSYS and OSVERSION
 .include <bsd.port.pre.mk>
 
-.for osrel in 10 11
+.for osrel in 10 11 12
 .if ${OSREL:C/\..*//} == ${osrel}
 PLIST_SUB+=	OSREL${osrel}=""
 .else
@@ -76,7 +75,7 @@ ${PLIST}: fetch
 
 port-update:
 	${RM} ${SLAVEDIR}/distinfo ${SLAVEDIR}/distinfo~ ${SLAVEDIR}/pkg-plist.*
-.for osrel in 10 11
+.for osrel in 10 11 12
 	${MAKE} fetch OSREL=${osrel} OSVERSION=${osrel}99999 UNAME_r=${osrel}
 	${MAKE} makesum OSREL=${osrel} OSVERSION=${osrel}99999 UNAME_r=${osrel}
 	${CAT} ${SLAVEDIR}/distinfo >> ${SLAVEDIR}/distinfo~

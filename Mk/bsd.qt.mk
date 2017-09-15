@@ -92,8 +92,8 @@ QT_DIST=		3d base canvas3d charts connectivity datavis3d declarative \
 				declarative-render2d gamepad graphicaleffects imageformats \
 				location multimedia quickcontrols quickcontrols2 script scxml \
 				sensors serialbus serialport svg tools translations \
-				virtualkeyboard webchannel webkit websockets x11extras \
-				xmlpatterns
+				virtualkeyboard wayland webchannel webengine \
+				websockets x11extras xmlpatterns
 .		endif
 .  endif
 
@@ -175,7 +175,7 @@ CONFIGURE_ARGS+=-verbose
 .  if ${_QT_VERSION:M4*}
 _EXTRA_PATCHES_QT4=	${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-src-corelib-global-qglobal.h \
 					${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-libtool
-# Patch in proper name for armv6 architecture: https://gcc.gnu.org/ml/gcc-patches/2015-06/msg01679.html 
+# Patch in proper name for armv6 architecture: https://gcc.gnu.org/ml/gcc-patches/2015-06/msg01679.html
 _EXTRA_PATCHES_QT4+=	${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-armv6
 .  else
 _EXTRA_PATCHES_QT5=	${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-mkspecs_features_create__cmake.prf \
@@ -316,12 +316,12 @@ _USE_QT4_ONLY=	accessible assistant-adp assistantclient clucene codecs-cn codecs
 				qtestlib qvfb rcc uic uic3 xmlpatterns-tool
 
 _USE_QT5_ONLY=	3d buildtools canvas3d charts concurrent connectivity \
-				core datavis3d declarative-render2d examples gamepad \
-				graphicaleffects location paths phonon4 printsupport \
+				core datavis3d declarative-render2d diag examples gamepad \
+				graphicaleffects location paths phonon4 plugininfo printsupport \
 				qdbus qdoc qdoc-data qev qml quick quickcontrols \
 				quickcontrols2 scxml sensors serialbus serialport \
-				sql-tds uiplugin uitools virtualkeyboard webchannel \
-				websockets widgets x11extras
+				sql-tds uiplugin uitools virtualkeyboard wayland webchannel \
+				webengine websockets websockets-qml widgets x11extras
 
 3d_PORT=		graphics/${_QT_RELNAME}-3d
 3d_LIB=		libQt${_QT_LIBVER}3DCore.so
@@ -391,6 +391,9 @@ demo_PATH=			${QT_BINDIR}/qtdemo
 
 designer_PORT=		devel/${_QT_RELNAME}-designer
 designer_PATH=		${QT_BINDIR}/designer
+
+diag_PORT=		sysutils/${_QT_RELNAME}-qtdiag
+diag_PATH=		${QT_BINDIR}/qtdiag
 
 doc_PORT=			misc/${_QT_RELNAME}-doc
 doc_PATH=			${_QT_RELNAME}-doc>=${_QT_VERSION:R:R}
@@ -466,6 +469,9 @@ phonon4_LIB=		libphonon4${_QT_RELNAME}.so
 
 phonon-gst_PORT=	multimedia/phonon-gstreamer
 phonon-gst_PATH=	${QT_PLUGINDIR}/phonon_backend/libphonon_gstreamer.so
+
+plugininfo_PORT=		sysutils/${_QT_RELNAME}-qtplugininfo
+plugininfo_PATH=		${QT_BINDIR}/qtplugininfo
 
 porting_PORT=		devel/${_QT_RELNAME}-porting
 porting_PATH=		${QT_BINDIR}/qt3to4
@@ -586,8 +592,14 @@ virtualkeyboard_PATH=	${QT_PLUGINDIR}/platforminputcontexts/libqtvirtualkeyboard
 webchannel_PORT=	www/${_QT_RELNAME}-webchannel
 webchannel_LIB=	libQt${_QT_LIBVER}WebChannel.so
 
+webengine_PORT=		www/${_QT_RELNAME}-webengine
+webengine_LIB=	libQt${_QT_LIBVER}WebEngine.so
+
 websockets_PORT=	www/${_QT_RELNAME}-websockets
 websockets_LIB=	libQt${_QT_LIBVER}WebSockets.so
+
+websockets-qml_PORT=	www/${_QT_RELNAME}-websockets-qml
+websockets-qml_PATH=	${QT_QMLDIR}/QtWebSockets/qmldir
 
 webkit_PORT=		www/${_QT_RELNAME}-webkit
 webkit_LIB=	libQt${_QT_LIBVER}WebKit.so

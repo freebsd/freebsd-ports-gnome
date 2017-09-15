@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	6.3.0
-PORTREVISION=	3
+PORTVERSION=	6.4.0
+PORTREVISION=	1
 CATEGORIES=	lang java
 MASTER_SITES=	GCC/releases/gcc-${DISTVERSION}
 PKGNAMESUFFIX=	${SUFFIX}
@@ -14,13 +14,14 @@ COMMENT=	GNU Compiler Collection 6
 LICENSE=	GPLv3 GPLv3RLE
 LICENSE_COMB=	multi
 
+ONLY_FOR_ARCHS=	aarch64 amd64 arm armv6 i386 powerpc powerpc64 sparc64
+BROKEN_sparc64=	fails to configure: cannot compute suffix of object files: cannot compile
+
 LIB_DEPENDS=	libgmp.so:math/gmp \
 		libmpfr.so:math/mpfr \
 		libmpc.so:math/mpc
 BUILD_DEPENDS+=	${LOCALBASE}/bin/as:devel/binutils
 RUN_DEPENDS+=	${LOCALBASE}/bin/as:devel/binutils
-
-BROKEN_sparc64=		fails to configure: cannot compute suffix of object files: cannot compile
 
 .if defined(MAINTAINER_MODE)
 BUILD_DEPENDS+=	runtest:misc/dejagnu
@@ -30,8 +31,7 @@ CPE_VENDOR=	gnu
 
 GCC_VERSION=	${PORTVERSION}
 SUFFIX=		${PORTVERSION:C/([0-9]+).*/\1/}
-ONLY_FOR_ARCHS=	aarch64 amd64 arm armv6 i386 powerpc powerpc64 sparc64
-USES=		compiler cpe gmake iconv libtool makeinfo perl5 tar:bzip2
+USES=		compiler cpe gmake iconv libtool makeinfo perl5 tar:xz
 USE_BINUTILS=	yes
 USE_PERL5=	build
 SSP_UNSAFE=	yes
@@ -71,7 +71,7 @@ CONFIGURE_ENV+=	UNAME_m="powerpc64"
 USE_GCC=	5	# Cannot require ourselves, needs to be at least 4.9.
 .endif
 
-.if ${ARCH} == "armv6" || ${ARCH} == "aarch64"
+.if ${ARCH} == "aarch64" || ${ARCH} == "armv6"
 . if ${COMPILER_TYPE} == clang
 .  if empty(PORT_OPTIONS:MBOOTSTRAP)
 MAKE_ARGS+=CXXFLAGS=-fbracket-depth=512
@@ -117,7 +117,7 @@ INFO=		gcc${SUFFIX}/cpp \
 		gcc${SUFFIX}/gfortran \
 		gcc${SUFFIX}/libgomp
 # Release tarballs (as opposed to snapshots) always carry this.
-#.if ${ARCH} == "i386" || ${ARCH} == "amd64"
+#.if ${ARCH} == "amd64" || ${ARCH} == "i386"
 INFO+=		gcc${SUFFIX}/libquadmath \
 		gcc${SUFFIX}/libitm
 #.endif
@@ -163,6 +163,7 @@ post-stage:
 	${RM} ${STAGEDIR}${PREFIX}/man/man7/*
 	${RM} ${STAGEDIR}${PREFIX}/bin/rebuild-gcj-db${SUFFIX} \
 	         ${STAGEDIR}${PREFIX}/man/man1/rebuild-gcj-db${SUFFIX}.1
+	${RM} -r ${STAGEDIR}${TARGLIB}/gcc/*/${GCC_VERSION}/include-fixed/
 	# Add target libraries and include files to packaging list.
 	${RM} ${WRKDIR}/PLIST.lib
 .for d in ${TARGLIB:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///} include/gcj include/gnu include/java include/javax

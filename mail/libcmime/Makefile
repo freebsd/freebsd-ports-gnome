@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libcmime
-PORTVERSION=	0.1.15
-PORTREVISION=	3
+PORTVERSION=	0.2.1
 CATEGORIES=	mail
 MASTER_SITES=	http://www.libcmime.org/files/
 
@@ -11,8 +10,9 @@ MAINTAINER=	ast@treibsand.com
 COMMENT=	Lightweight C mime library
 
 LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		bison cmake pkgconfig
+USES=		bison cmake:noninja pkgconfig
 USE_LDCONFIG=	yes
 CMAKE_ARGS=	--no-warn-unused-cli
 

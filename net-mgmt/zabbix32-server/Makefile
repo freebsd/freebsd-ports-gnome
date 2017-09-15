@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	zabbix32
-PORTVERSION=	3.2.6
+PORTVERSION=	3.2.7
 PORTREVISION?=	0
 CATEGORIES=	net-mgmt
 MASTER_SITES=	SF/zabbix/ZABBIX%20Latest%20Stable/${PORTVERSION}
@@ -14,7 +14,7 @@ COMMENT=	Enterprise-class open source distributed monitoring (${PKGNAMESUFFIX:S/
 
 LICENSE=	GPLv2
 
-CONFLICTS=	zabbix[0-24-9][0-13-9]${PKGNAMESUFFIX}-[0-9]* zabbix[0-9]${PKGNAMESUFFIX}-[0-9]*
+CONFLICTS=	zabbix[0-24-9][0-13-9]${PKGNAMESUFFIX} zabbix[0-9]${PKGNAMESUFFIX}
 
 IGNORE_WITH_MYSQL=	41
 

@@ -3,7 +3,7 @@
 
 PORTNAME=	gcc
 PORTVERSION=	5.4.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	lang java
 MASTER_SITES=	GCC/releases/gcc-${DISTVERSION}
 PKGNAMESUFFIX=	${SUFFIX}
@@ -13,6 +13,9 @@ COMMENT=	GNU Compiler Collection 5
 
 LICENSE=	GPLv3 GPLv3RLE
 LICENSE_COMB=	multi
+
+ONLY_FOR_ARCHS=	aarch64 amd64 arm armv6 i386 powerpc powerpc64 sparc64
+BROKEN_sparc64=	Does not build: bootstrap comparison failure
 
 LIB_DEPENDS=	libgmp.so:math/gmp \
 		libmpfr.so:math/mpfr \
@@ -29,7 +32,6 @@ CPE_VENDOR=	gnu
 
 GCC_VERSION=	${PORTVERSION}
 SUFFIX=		${PORTVERSION:C/([0-9]+).*/\1/}
-ONLY_FOR_ARCHS=	aarch64 amd64 arm armv6 i386 powerpc powerpc64 sparc64
 USES=		compiler cpe gmake iconv libtool makeinfo perl5 tar:bzip2
 USE_BINUTILS=	yes
 USE_PERL5=	build
@@ -68,7 +70,7 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 CONFIGURE_ENV+=	UNAME_m="powerpc64"
 .endif
 
-.if ${ARCH} == "armv6" || ${ARCH} == "aarch64"
+.if ${ARCH} == "aarch64" || ${ARCH} == "armv6"
 . if ${COMPILER_TYPE} == clang
 .  if empty(PORT_OPTIONS:MBOOTSTRAP)
 MAKE_ARGS+=CXXFLAGS=-fbracket-depth=512
@@ -78,7 +80,6 @@ MAKE_ARGS+=STAGE1_CXXFLAGS=-fbracket-depth=512
 . endif
 .endif
 
-BROKEN_sparc64=	Does not build: bootstrap comparison failure
 LANGUAGES:=	c,c++,objc,fortran
 TARGLIB=	${PREFIX}/lib/gcc${SUFFIX}
 LIBEXEC=	${PREFIX}/libexec/gcc${SUFFIX}
@@ -115,7 +116,7 @@ INFO=		gcc${SUFFIX}/cpp \
 		gcc${SUFFIX}/gfortran \
 		gcc${SUFFIX}/libgomp
 # Release tarballs (as opposed to snapshots) always carry this.
-#.if ${ARCH} == "i386" || ${ARCH} == "amd64"
+#.if ${ARCH} == "amd64" || ${ARCH} == "i386"
 INFO+=		gcc${SUFFIX}/libquadmath \
 		gcc${SUFFIX}/libitm
 #.endif
@@ -161,6 +162,7 @@ post-stage:
 	${RM} ${STAGEDIR}${PREFIX}/man/man7/*
 	${RM} ${STAGEDIR}${PREFIX}/bin/rebuild-gcj-db${SUFFIX} \
 	         ${STAGEDIR}${PREFIX}/man/man1/rebuild-gcj-db${SUFFIX}.1
+	${RM} -r ${STAGEDIR}${TARGLIB}/gcc/*/${GCC_VERSION}/include-fixed/
 	# Add target libraries and include files to packaging list.
 	${RM} ${WRKDIR}/PLIST.lib
 .for d in ${TARGLIB:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///} include/gcj include/gnu include/java include/javax

@@ -2,6 +2,7 @@
 
 PORTNAME=	ImageMagick
 DISTVERSION=	6.9.8-9
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	graphics perl5
 MASTER_SITES=	http://www.imagemagick.org/download/ \
@@ -38,6 +39,7 @@ LIB_DEPENDS=	libltdl.so:devel/libltdl
 PORTSCOUT?=	limit:6.*$$
 
 CONFLICTS_INSTALL=	execline-[0-9]* # bin/import
+CONFLICTS_INSTALL+=	ImageMagick7 ImageMagick7-nox11 # bin/Magick++-config
 
 # This port uses .la files, keep libtool:keepla! (magick/module.c)
 USES=		cpe gettext-runtime gmake gnome libtool:keepla \

@@ -3,6 +3,7 @@
 
 PORTNAME=	elmerfem
 PORTVERSION=	8.3.20170519
+PORTREVISION=	1
 CATEGORIES=	cad science
 
 MAINTAINER=	ports@FreeBSD.org
@@ -28,7 +29,7 @@ CMAKE_ARGS+=	-Wno-dev
 
 .include <bsd.port.pre.mk>
 
-.if ${ARCH} == "amd64" || ${ARCH} == "ia64"
+.if ${ARCH} == "amd64"
 CFLAGS_${ARCH}=	-fPIC
 CXXFLAGS_${ARCH}= -fPIC
 FCFLAGS+=	-fPIC

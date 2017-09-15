@@ -121,6 +121,7 @@
     SUBDIR += qemu-cheri128m
     SUBDIR += qemu-devel
     SUBDIR += qemu-launcher
+    SUBDIR += qemu-ppcnv
     SUBDIR += qemu-riscv
     SUBDIR += qemu-sbruno
     SUBDIR += qemu-user-static
@@ -131,6 +132,7 @@
     SUBDIR += raine
     SUBDIR += riscv-fesvr
     SUBDIR += riscv-isa-sim
+    SUBDIR += rpcs3
     SUBDIR += rtc
     SUBDIR += rubygem-fission
     SUBDIR += simh

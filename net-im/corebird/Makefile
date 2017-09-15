@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	corebird
-PORTVERSION=	1.5
+PORTVERSION=	1.5.1
 PORTREVISION=	1
 CATEGORIES=	net-im
 
@@ -19,12 +19,10 @@ LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		librest-0.7.so:devel/librest \
 		libgspell-1.so:textproc/gspell
 
-BROKEN_powerpc64=	fails to compile: CbMedia.h:61: redefinition of typedef 'CbMedia'
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	baedert
 
-USES=		autoreconf gmake libtool pkgconfig sqlite
+USES=		autoreconf compiler:c++11-lang gmake libtool pkgconfig sqlite
 
 GNU_CONFIGURE=	yes
 USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 intltool libxml2 pango
@@ -36,7 +34,7 @@ OPTIONS_SUB=		yes
 
 GSTREAMER_LIB_DEPENDS=		libgstbase-1.0.so:multimedia/gstreamer1 \
 				libgstreamer-1.0.so:multimedia/gstreamer1
-GSTREAMER_USE=			gstreamer1=yes,bad,good,gtksink,hls,libav,soup,x,ximagesrc
+GSTREAMER_USE=			gstreamer1=yes,bad,good,gtk,hls,libav,soup,x,ximagesrc
 GSTREAMER_CONFIGURE_OFF=	--disable-video
 
 NLS_USES=			gettext
@@ -45,8 +43,11 @@ NLS_CONFIGURE_OFF=		--disable-nls
 GLIB_SCHEMAS=	org.baedert.corebird.gschema.xml
 
 post-extract:
-	@(cd ${WRKSRC}/data && ${MV} org.baedert.corebird.desktop.in \
-		corebird.desktop.in)
+	@${REINPLACE_CMD} -e 's|tests||' ${WRKSRC}/Makefile.am
+	@${REINPLACE_CMD} -e 's|org.baedert.corebird.desktop.in|corebird.desktop.in|' \
+		${WRKSRC}/data/Makefile.am
+	@cd ${WRKSRC}/data && ${MV} org.baedert.corebird.desktop.in \
+		corebird.desktop.in
 
 # Replace locales files in right place
 post-configure:

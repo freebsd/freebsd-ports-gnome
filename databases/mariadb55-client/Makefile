@@ -23,7 +23,6 @@ CLIENT_ONLY=	yes
 
 USES+=		ncurses readline
 
-
 post-install:
 	${RM} ${STAGEDIR}${PREFIX}/bin/mysqld_safe_helper
 	${RM} -r ${STAGEDIR}${PREFIX}/include/mysql/private

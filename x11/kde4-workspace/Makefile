@@ -2,14 +2,14 @@
 
 PORTNAME=	kde-workspace
 PORTVERSION=	${KDE4_WORKSPACE_VERSION}
-PORTREVISION=	6
+PORTREVISION=	10
 CATEGORIES=	x11 kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE Plasma Desktop
 
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
-		libck-connector.so:sysutils/consolekit \
+		libck-connector.so:sysutils/consolekit2 \
 		libpci.so:devel/libpci \
 		libhal.so:sysutils/hal \
 		libqjson.so:devel/qjson \
@@ -40,7 +40,7 @@ RUN_DEPENDS=	${KDE_PREFIX}/env/xdg-env.sh:misc/kde4-xdg-env \
 		${LOCALBASE}/etc/pam.d/kde:security/pam_kde \
 		${KDE_PREFIX}/share/apps/ksplash/Themes/Default/Theme.rc:x11-themes/kde4-base-artwork
 
-USES=		cmake:outsource compiler:c++11-lib gettext gmake jpeg kde:4 \
+USES=		cmake:outsource,noninja compiler:c++11-lib gettext gmake jpeg kde:4 \
 		pkgconfig shebangfix tar:xz
 USE_GL=		gl glu
 USE_GNOME=	glib20 libxml2
@@ -129,6 +129,9 @@ pre-configure:
 
 post-install:
 	${LN} -sf ${PREFIX}/bin/startkde ${STAGEDIR}${PREFIX}/bin/startkde4
+# Install kde4.desktop to launch kde4 via sddm.
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/xsessions
+	${INSTALL_DATA} ${FILESDIR}/kde4.desktop ${STAGEDIR}${PREFIX}/share/xsessions
 
 post-install-GSTREAMER-on:
 	@${HEAD} -1 ${PKGMESSAGE} >> ${PKGMESSAGE}

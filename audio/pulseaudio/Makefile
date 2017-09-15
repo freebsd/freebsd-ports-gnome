@@ -5,8 +5,8 @@
 # PORTREVISION bumps of depending ports.
 
 PORTNAME=	pulseaudio
-PORTVERSION=	10.0
-PORTREVISION=	3
+PORTVERSION=	11.0
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://freedesktop.org/software/pulseaudio/releases/
 
@@ -21,7 +21,7 @@ LIB_DEPENDS=	libsndfile.so:audio/libsndfile \
 		libfftw3f.so:math/fftw3-float \
 		libdbus-1.so:devel/dbus \
 		libltdl.so:devel/libltdl \
-		libck-connector.so:sysutils/consolekit
+		libck-connector.so:sysutils/consolekit2
 
 USE_GNOME=	glib20 intltool
 USE_XORG=	ice sm x11 xcb xtst
@@ -51,7 +51,6 @@ CONFIGURE_ARGS=	--localstatedir=/var \
 		--disable-systemd-journal \
 		--disable-systemd-login \
 		--disable-neon-opt \
-		--disable-xen \
 		--disable-lirc # untested
 
 USERS=		pulse

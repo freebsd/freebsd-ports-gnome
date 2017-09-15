@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mailman
-DISTVERSION=	2.1.23
+DISTVERSION=	2.1.24
 PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	GNU \
@@ -35,7 +35,9 @@ CONFIGURE_ARGS+=--with-python=${PYTHON_CMD} \
 		--with-username=${MM_USERNAME} \
 		--with-groupname=${MM_GROUPNAME} \
 		--with-mail-gid=${MAIL_GID} --with-cgi-gid=${CGI_GID} \
-		--with-permcheck=no
+		--with-permcheck=no \
+		--with-mailhost=// \
+		--with-urlhost=//
 
 # The Mailman port supports a number of variables that may be tweaked at
 # build time.  Getting the values of some of them right is crucial!
@@ -115,11 +117,12 @@ MAIL_GID?=	_smtpd
 .if ${PORT_OPTIONS:MHTDIG}
 PKGNAMESUFFIX+=	-with-htdig
 # how to create PATCHFILES:
-#X fetch http://bazaar.launchpad.net/~msapiro/mailman/htdig/tarball/1668
+#X identify what is the version of msapiro's patches corresponding to the release.
+#X fetch http://bazaar.launchpad.net/~msapiro/mailman/htdig/tarball/1702
 #X unpack this tarball, and the original distfile
-#X diff -NEur original-unpack bazaar-unpack | xz --best -c >msapiro-htdig-1668.patch.xz
+#X diff -NEur original-unpack bazaar-unpack | xz --best -c >msapiro-htdig-1702.patch.xz
 #X upload the latter with mode 0644 or similar to freefall's public_distfiles/ directory
-PATCHFILES+=	msapiro-htdig-1668.patch.xz
+PATCHFILES+=	msapiro-htdig-1702.patch.xz
 RUN_DEPENDS+=	htdig:textproc/htdig
 PLIST_SUB+=	SUB_HTDIG=""
 .else

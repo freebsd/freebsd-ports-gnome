@@ -2,7 +2,7 @@
 
 PORTNAME=	llvm
 DISTVERSION=	3.9.1
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/${PRE_}releases/${LLVM_RELEASE}/${RCDIR}
 PKGNAMESUFFIX=	${LLVM_SUFFIX}
@@ -27,7 +27,7 @@ LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
 
-USES=		cmake:outsource compiler:c++11-lib libedit ninja perl5 tar:xz \
+USES=		cmake:outsource compiler:c++11-lib libedit perl5 tar:xz \
 		shebangfix
 _USES_PYTHON?=	python:build
 USES+=		${_USES_PYTHON}

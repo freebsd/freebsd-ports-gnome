@@ -3,7 +3,7 @@
 
 PORTNAME=	blender
 PORTVERSION=	2.78c
-PORTREVISION=	3
+PORTREVISION=	7
 CATEGORIES=	graphics games
 MASTER_SITES=	http://download.blender.org/source/ \
 		http://mirror.cs.umn.edu/blender.org/source/ \
@@ -221,11 +221,9 @@ USE_GCC=	yes
 .endif
 .endif
 
-post-patch:
-.if ${PORT_OPTIONS:MOPENCOLORIO}
+post-patch-OPENCOLORIO-on:
 	@${REINPLACE_CMD} -e 's|yaml-cpp|&03|' \
 		${PATCH_WRKSRC}/build_files/cmake/Modules/FindOpenColorIO.cmake
-.endif
 
 post-build:
 	@(cd ${WRKSRC}/doc/manpage && \

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	racket
-PORTVERSION=	6.9
+PORTVERSION=	6.10.1
 CATEGORIES=	lang scheme
 MASTER_SITES=	http://mirror.racket-lang.org/installers/${PORTVERSION}/ \
 		http://www.cs.utah.edu/plt/installers/${PORTVERSION}/ \
@@ -21,9 +21,9 @@ LICENSE=	LGPL3
 
 LIB_DEPENDS=	libffi.so:devel/libffi
 
-BROKEN_i386=		does not build on i386 (Seg fault (internal error) at 0x606060a)
-BROKEN_powerpc64=       fails to build: jit.c: 'JIT_LOCAL4' undeclared (first use in this function)
-NOT_FOR_ARCHS=		armv6 aarch64 sparc64
+BROKEN_i386=		fails to build: Seg fault (internal error) at 0x606060a
+BROKEN_powerpc64=	fails to build: jit.c: 'JIT_LOCAL4' undeclared (first use in this function)
+NOT_FOR_ARCHS=		aarch64 aarch64 sparc64
 NOT_FOR_ARCHS_REASON=	not yet ported to this arch
 
 MAKE_JOBS_UNSAFE=yes

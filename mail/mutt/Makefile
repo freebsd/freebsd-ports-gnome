@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mutt
-PORTVERSION=	1.8.2
+PORTVERSION=	1.9.0
 PORTREVISION?=	1
 CATEGORIES+=	mail ipv6
 MASTER_SITES=	ftp://ftp.mutt.org/pub/mutt/ \
@@ -17,10 +17,10 @@ EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 PATCH_SITES+=	http://www.mutt.org.ua/download/mutt-${VVV_PATCH_VERSION}/:vvv \
 		http://www2.mutt.org.ua/download/mutt-${VVV_PATCH_VERSION}/:vvv \
-		https://www.schrab.com/aaron/mutt/:ats \
+		https://github.com/aschrab/mutt/compare/dev-base...feature/:ats \
 		http://vc.org.ua/mutt/:vc
 PATCH_DIST_STRIP=	-p1
-PATCHFILES=	patch-1.7.0.ats.date_conditional.1:ats
+PATCHFILES=	date-conditional.diff:ats
 
 MAINTAINER?=	dereks@lifeofadishwasher.com
 COMMENT?=	Small but powerful text based program for read/writing e-mail
@@ -38,7 +38,7 @@ CONFIGURE_ARGS=	--disable-fcntl --with-ssl=${OPENSSLBASE} \
 		--enable-external-dotlock --enable-pop --enable-imap \
 		--enable-compressed
 
-USES+=		cpe shebangfix ssl
+USES+=		cpe ncurses shebangfix ssl
 SHEBANG_FILES=	doc/gen-map-doc smime_keys.pl contrib/smime_keys_test.pl
 
 .if defined(MUTT_CONFIGURE_ARGS)
@@ -57,9 +57,8 @@ OPTIONS_EXCLUDE=	NLS DOCS EXAMPLES
 OPTIONS_DEFINE=	SASL DEBUG DOCS EXAMPLES FLOCK \
 		FORCEBASE64 GPGME GREETING_PATCH HTML ICONV IDN IFDEF_PATCH \
 		LOCALES_FIX MAILBOX_MANPAGES MAILDIR_MTIME_PATCH \
-		NLS NNTP PARENT_CHILD_MATCH_PATCH QUOTE_PATCH \
-		REVERSE_REPLY_PATCH SIDEBAR SMART_DATE SMIME_OUTLOOK_COMPAT \
-		SMTP URLVIEW XML
+		NLS NNTP QUOTE_PATCH REVERSE_REPLY_PATCH SIDEBAR SMART_DATE \
+		SMIME_OUTLOOK_COMPAT SMTP URLVIEW XML
 
 OPTIONS_SINGLE=	GSSAPI HCACHE SCREEN
 OPTIONS_RADIO=	SPELL
@@ -82,7 +81,6 @@ MAILBOX_MANPAGES_DESC=	Install mbox.5/mmdf.5 manpages
 MAILDIR_MTIME_PATCH_DESC=	Maildir mtime patch
 NCURSES_DESC=	Ncurses support
 NLS_DESC=	Native language support (implies ICONV)
-PARENT_CHILD_MATCH_PATCH_DESC=	Parent/child match
 QUOTE_PATCH_DESC=	Extended quoting
 REVERSE_REPLY_PATCH_DESC=	Reverse_reply
 SIDEBAR_DESC=	Sidebar support
@@ -100,9 +98,8 @@ XML_DESC=	Use XML tools for rebuilding documentation
 
 OPTIONS_DEFAULT=	GPGME HTML HCACHE_BDB ICONV IDN \
 		IFDEF_PATCH LOCALES_FIX MAILBOX_MANPAGES MAILDIR_MTIME_PATCH \
-		NLS NCURSES PARENT_CHILD_MATCH_PATCH QUOTE_PATCH \
-		REVERSE_REPLY_PATCH SMART_DATE SMIME_OUTLOOK_COMPAT SASL SMTP \
-		URLVIEW XML GSSAPI_NONE
+		NLS NCURSES QUOTE_PATCH REVERSE_REPLY_PATCH SMART_DATE \
+		SMIME_OUTLOOK_COMPAT SASL SMTP URLVIEW XML GSSAPI_NONE
 .endif
 
 RUN_DEPENDS+=	${LOCALBASE}/etc/mime.types:misc/mime-support
@@ -170,7 +167,6 @@ ICONV_CONFIGURE_ON=	${ICONV_CONFIGURE_ARG}
 ICONV_CONFIGURE_OFF=	--disable-iconv
 
 ASPELL_EXTRA_PATCHES=	${PATCHDIR}/extra-patch-aspell
-PARENT_CHILD_MATCH_PATCH_EXTRA_PATCHES=	${PATCHDIR}/extra-patch-parent-child-match
 REVERSE_REPLY_PATCH_EXTRA_PATCHES=	${PATCHDIR}/extra-patch-reverse_reply
 
 SASL_LIB_DEPENDS=	libsasl2.so:security/cyrus-sasl2
@@ -187,6 +183,8 @@ IDN_LIB_DEPENDS=	libidn.so:dns/libidn
 IDN_CONFIGURE_WITH=	idn
 IDN_IMPLIES=	ICONV
 
+IFDEF_PATCH_EXTRA_PATCHES=	${PATCHDIR}/extra-patch-ifdef
+
 GPGME_LIB_DEPENDS+=	libgpgme.so:security/gpgme
 GPGME_LIB_DEPENDS+=	libgpg-error.so:security/libgpg-error
 GPGME_LIB_DEPENDS+=	libassuan.so:security/libassuan
@@ -199,8 +197,7 @@ GREETING_PATCH_PATCHFILES=	mutt-${GREETING_PATCH_VERSION}.vc.greeting:vc
 QUOTE_PATCH_PATCHFILES=	patch-${VVV_PATCH_VERSION}.vvv.initials.gz:vvv \
 			patch-${VVV_PATCH_VERSION}.vvv.quote.gz:vvv
 
-NNTP_DISTFILES=	patch-${VVV_PATCH_VERSION}.vvv.nntp.gz:vvv \
-		patch-${VVV_PATCH_VERSION}.vvv.nntp_ru.gz:vvv
+NNTP_PATCHFILES=	patch-${VVV_PATCH_VERSION}.vvv.nntp.gz:-p1:vvv
 NNTP_CONFIGURE_ON=	--enable-nntp
 NNTP_VARS=	XML_NEEDED=yes
 NNTP_CATEGORIES=	news
@@ -212,8 +209,8 @@ DOCS_EXTRA_PATCHES=	${PATCHDIR}/extra-patch-doc-ref
 .include <bsd.port.options.mk>
 
 # un/comment as each VERSION is created for PORTVERSION
-#VVV_PATCH_VERSION=	1.8.0
-#GREETING_PATCH_VERSION=	1.8.1
+#VVV_PATCH_VERSION=	1.8.3
+#GREETING_PATCH_VERSION=	1.8.3
 
 .if !defined(VVV_PATCH_VERSION)
 VVV_PATCH_VERSION=	${PORTVERSION}
@@ -235,12 +232,6 @@ pre-build::
 LDFLAGS+=		-L${LOCALBASE}/lib -Wl,-rpath=${LOCALBASE}/lib:/usr/lib -ltinfow
 CFLAGS+=		${CFLAGS_ADD}
 LDFLAGS+=		${LDFLAGS_ADD}
-
-pre-patch-NNTP-on:
-	@${GUNZIP_CMD} -c ${DISTDIR}/${DIST_SUBDIR}/patch-${VVV_PATCH_VERSION}.vvv.nntp.gz > ${WRKDIR}/patch-nntp
-	@${REINPLACE_CMD} -E '/^diff.*\/doc\/manual.txt$$/,/^diff/d' \
-		${WRKDIR}/patch-nntp
-	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${WRKDIR}/patch-nntp
 
 post-patch-NNTP-on:
 .if ${PORT_OPTIONS:MMAILDIR_MTIME_PATCH}
@@ -264,12 +255,9 @@ post-install:
 post-install-NNTP-on:
 	${INSTALL_DATA} ${WRKSRC}/ChangeLog.nntp ${STAGEDIR}${DOCSDIR}
 
-post-patch-IFDEF_PATCH-on:
-	@${PATCH} -d ${PATCH_WRKSRC} ${PATCH_ARGS} -p1 < ${PATCHDIR}/extra-patch-ifdef
-
 WRKSRC=		${WRKDIR}/${DISTNAME:S/i$//}
 
-post-patch:
+pre-configure::
 	@${REINPLACE_CMD} -e 's,/usr/bin/gpg,${LOCALBASE}/bin/gpg,g' \
 		${WRKSRC}/contrib/gpg.rc
 	@${REINPLACE_CMD} -e 's,pgp6,pgp,g' \

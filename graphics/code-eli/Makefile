@@ -3,7 +3,7 @@
 
 PORTNAME=	code-eli
 PORTVERSION=	0.3.6
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	graphics
 
 MAINTAINER=	fernando.apesteguia@gmail.com
@@ -11,6 +11,8 @@ COMMENT=	Library with functionalities for geometries
 
 LICENSE=	EPL
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
+
+BROKEN=		Needs work to use math/eigen3 currently in ports
 
 BUILD_DEPENDS=	eigen>3:math/eigen3
 

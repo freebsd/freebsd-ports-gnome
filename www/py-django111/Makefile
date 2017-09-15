@@ -1,8 +1,10 @@
 # Created by: Jose Alonso Cardenas Marquez <acardenas@bsd.org.pe>
 # $FreeBSD$
+#
+# Remember to update www/py-django along with this port.
 
 PORTNAME=	django
-PORTVERSION=	1.11.2
+PORTVERSION=	1.11.5
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP \
 		https://www.djangoproject.com/m/releases/${PORTVERSION}/
@@ -16,6 +18,8 @@ COMMENT=	High-level Python Web Framework
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytz>0:devel/py-pytz
 
 NO_ARCH=	yes
 USES=		cpe python shebangfix

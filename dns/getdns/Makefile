@@ -2,12 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	getdns
-PORTVERSION=	1.1.0
+PORTVERSION=	1.1.2
 CATEGORIES=	dns ipv6
 MASTER_SITES=	https://getdnsapi.net/dist/ \
-		https://mirrors.rit.edu/zi/ \
+		ZI \
 		http://getdnsapi.net/dist/ \
-		http://mirrors.rit.edu/zi/
 
 MAINTAINER=	zi@FreeBSD.org
 COMMENT=	Modern asynchronous DNS API
@@ -25,7 +24,7 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-libidn=${LOCALBASE} --docdir=${DOCSDIR} \
 		--with-trust-anchor=${LOCALBASE}/etc/unbound/root.key
-SOVERSION=	6.0.0
+SOVERSION=	6.1.0
 SOMAJVER=	${SOVERSION:C/([0-9]).*/\1/1}
 MAKE_JOBS_UNSAFE=yes
 
@@ -33,7 +32,7 @@ PLIST_SUB+=	SOVERSION="${SOVERSION}" SOMAJVER="${SOMAJVER}"
 SUB_FILES+=	pkg-message
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	DOCS EXAMPLES LIBEV LIBEVENT LIBUV
+OPTIONS_DEFINE=	DOCS LIBEV LIBEVENT LIBUV
 
 LIBEV_DESC=	Build with libev extension
 LIBEVENT_DESC=	Build with libevent extension
@@ -41,7 +40,7 @@ LIBUV_DESC=	Build with libuv extension
 
 LIBEV_LIB_DEPENDS=	libev.so:devel/libev
 LIBEV_CONFIGURE_WITH=	libev
-LIBEVENT_LIB_DEPENDS=	libevent_core.so:devel/libevent2
+LIBEVENT_LIB_DEPENDS=	libevent_core.so:devel/libevent
 LIBEVENT_CONFIGURE_WITH=libevent
 LIBUV_LIB_DEPENDS=	libuv.so:devel/libuv
 LIBUV_CONFIGURE_WITH=	libuv
@@ -54,8 +53,5 @@ post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libgetdns*.so.*
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/getdns_query \
 		${STAGEDIR}${PREFIX}/bin/stubby
-
-post-install-EXAMPLES-on:
-	(cd ${WRKSRC}/spec/example && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}/)
 
 .include <bsd.port.mk>

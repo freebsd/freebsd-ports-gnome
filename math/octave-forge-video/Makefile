@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	octave-forge-video
-PORTVERSION=	1.2.3
-PORTREVISION=	4
+PORTVERSION=	1.2.4
+PORTREVISION=	1
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org

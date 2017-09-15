@@ -32,6 +32,7 @@
     SUBDIR += agame
     SUBDIR += ags
     SUBDIR += aisleriot
+    SUBDIR += aklabeth
     SUBDIR += alephone
     SUBDIR += alephone-data
     SUBDIR += alephone-scenarios
@@ -72,6 +73,7 @@
     SUBDIR += awele
     SUBDIR += balazar
     SUBDIR += balazarbrothers
+    SUBDIR += ballerburg
     SUBDIR += banihstypos
     SUBDIR += barbie_seahorse_adventures
     SUBDIR += barrage
@@ -253,6 +255,7 @@
     SUBDIR += entombed
     SUBDIR += enygma
     SUBDIR += epiar
+    SUBDIR += epiphany-game
     SUBDIR += etracer
     SUBDIR += euchre
     SUBDIR += evilfinder
@@ -384,7 +387,6 @@
     SUBDIR += goldencheetah
     SUBDIR += golly
     SUBDIR += gomoku
-    SUBDIR += gondola
     SUBDIR += goonies
     SUBDIR += gottet
     SUBDIR += gracer
@@ -408,6 +410,7 @@
     SUBDIR += gturing
     SUBDIR += gtypist
     SUBDIR += gunfudeadlands
+    SUBDIR += gzdoom
     SUBDIR += hangman
     SUBDIR += hedgewars
     SUBDIR += help_hannahs_horse
@@ -525,7 +528,6 @@
     SUBDIR += lgeneral
     SUBDIR += lianliankan
     SUBDIR += libdungeonmaker
-    SUBDIR += libgames-support
     SUBDIR += libggz
     SUBDIR += libgnome-games-support
     SUBDIR += libkdegames
@@ -621,9 +623,11 @@
     SUBDIR += monsterz
     SUBDIR += moon-buggy
     SUBDIR += moonlander
+    SUBDIR += moonlight-embedded
     SUBDIR += mopesnake
     SUBDIR += moria
     SUBDIR += motogt
+    SUBDIR += mrboom
     SUBDIR += mt_dolphin_ia
     SUBDIR += mt_gtk_client
     SUBDIR += mtaserver
@@ -669,6 +673,7 @@
     SUBDIR += numptyphysics
     SUBDIR += numptyphysics-npcomplete
     SUBDIR += nwndata
+    SUBDIR += nxengine
     SUBDIR += odamex
     SUBDIR += oldrunner
     SUBDIR += omega
@@ -701,6 +706,7 @@
     SUBDIR += openomf
     SUBDIR += openpref
     SUBDIR += openra
+    SUBDIR += openrct2
     SUBDIR += opensfx
     SUBDIR += opensonic
     SUBDIR += openspades
@@ -754,7 +760,6 @@
     SUBDIR += pipenightdreams
     SUBDIR += pipepanic
     SUBDIR += pipewalker
-    SUBDIR += plee-the-bear
     SUBDIR += plutocracy
     SUBDIR += pmars
     SUBDIR += pmars-sdl
@@ -865,6 +870,7 @@
     SUBDIR += rtb
     SUBDIR += rubix
     SUBDIR += rubygem-fortune_gem
+    SUBDIR += rubygem-vimgolf
     SUBDIR += sampsvr
     SUBDIR += sarien
     SUBDIR += sauerbraten
@@ -884,6 +890,7 @@
     SUBDIR += sdl_jewels
     SUBDIR += sdl_lopan
     SUBDIR += sdl_scavenger
+    SUBDIR += sdlpop
     SUBDIR += sdlroids
     SUBDIR += sdlsand
     SUBDIR += sea-defender
@@ -937,6 +944,7 @@
     SUBDIR += stormbaancoureur
     SUBDIR += stransball2
     SUBDIR += stratagus
+    SUBDIR += stuntrally
     SUBDIR += sudoku-sensei
     SUBDIR += sudoku_solver
     SUBDIR += sudsol
@@ -1154,7 +1162,6 @@
     SUBDIR += xrally
     SUBDIR += xrick
     SUBDIR += xrisk
-    SUBDIR += xroach
     SUBDIR += xrobots
     SUBDIR += xrot
     SUBDIR += xrubik

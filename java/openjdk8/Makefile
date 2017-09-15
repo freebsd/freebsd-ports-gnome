@@ -28,7 +28,8 @@ PATCHFILES=	patch-8u05-b13.xz \
 		patch-8u102-b14.xz \
 		patch-8u112-b16.xz \
 		patch-8u121-b13.xz \
-		patch-8u131-b11.xz
+		patch-8u131-b11.xz \
+		patch-8u144-b01.xz
 
 MAINTAINER=	java@FreeBSD.org
 COMMENT?=	Java Development Kit ${JDK_MAJOR_VERSION}
@@ -38,8 +39,7 @@ LICENSE=	GPLv2
 BUILD_DEPENDS=	zip:archivers/zip \
 		${LOCALBASE}/include/cups/cups.h:print/cups \
 		bash:shells/bash
-LIB_DEPENDS=	libasound.so:audio/alsa-lib \
-		libfreetype.so:print/freetype2
+LIB_DEPENDS=	libfreetype.so:print/freetype2
 X11_LIB_DEPENDS= libfontconfig.so:x11-fonts/fontconfig \
 		libgif.so:graphics/giflib
 RUN_DEPENDS=	javavm:java/javavmwrapper \
@@ -66,7 +66,7 @@ X11_LIB_DEPENDS+=	libXtst.so.6:x11/libXtst
 BUILD_DEPENDS+=	${UNZIP_CMD}:archivers/unzip
 .endif
 
-ONLY_FOR_ARCHS=	amd64 armv6 armv6hf i386 powerpc powerpc64
+ONLY_FOR_ARCHS=	amd64 armv6 armv7 i386 powerpc powerpc64
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
 DOS2UNIX_FILES= jdk/src/bsd/doc/man/appletviewer.1 \
@@ -214,16 +214,16 @@ JRE_IMAGEDIR=	${JDK_BUILDDIR}/images/j2sdk-image/jre
 .else
 JRE_IMAGEDIR=	${JDK_BUILDDIR}/images/j2re-image
 .endif
-JDK_JVMDIR=	lib/${ARCH:C/armv6.*/arm/:S/powerpc64/ppc64/}
-JDK_OSARCH=	bsd-${ARCH:S/amd64/x86_64/:C/armv6.*/arm/:S/i386/x86/:S/powerpc64/ppc64/}
+JDK_JVMDIR=	lib/${ARCH:C/armv.*/arm/:S/powerpc64/ppc64/}
+JDK_OSARCH=	bsd-${ARCH:S/amd64/x86_64/:C/armv.*/arm/:S/i386/x86/:S/powerpc64/ppc64/}
 INSTALLDIR=	${PREFIX}/${PKGBASE}
 
 NO_CCACHE=		yes
 NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	8
-JDK_UPDATE_VERSION=	131
-JDK_BUILD_NUMBER=	11
+JDK_UPDATE_VERSION=	144
+JDK_BUILD_NUMBER=	01
 DIST_BUILD_NUMBER=	132
 JTREG_VERSION=		4.1
 JTREG_BUILD_NUMBER=	b08
@@ -237,7 +237,6 @@ CONFIGURE_ARGS+=	--with-update-version=${JDK_UPDATE_VERSION}
 CONFIGURE_ARGS+=	--disable-ccache \
 			--disable-freetype-bundling \
 			--disable-zip-debug-info \
-			--with-alsa=${LOCALBASE} \
 			--with-cacerts-file=${FILESDIR}/cacerts \
 			--with-cups=${LOCALBASE} \
 			--with-debug-level=${JDK_BUILD_TYPE} \
@@ -255,10 +254,12 @@ X11_CONFIGURE_OFF=	--disable-headful
 CONFIGURE_SCRIPT=	../../configure
 CONFIGURE_WRKSRC=	${WRKSRC}/common/autoconf
 
-OPTIONS_DEFINE=		POLICY TZUPDATE X11
+OPTIONS_DEFINE=		ALSA POLICY TZUPDATE X11
 OPTIONS_DEFINE_armv6=	FPUHACK
-OPTIONS_DEFAULT=	POLICY TZUPDATE X11
+OPTIONS_DEFINE_armv7=	FPUHACK
+OPTIONS_DEFAULT=	ALSA POLICY TZUPDATE X11
 OPTIONS_DEFAULT_armv6=	FPUHACK
+OPTIONS_DEFAULT_armv7=	FPUHACK
 FPUHACK_DESC=		Hack denormalized numbers in flush-to-zero mode
 POLICY_DESC=		Install the Unlimited Strength Policy Files
 TZUPDATE_DESC=		Update the time zone data
@@ -280,6 +281,9 @@ DEBUGFAST_DESC=		Build for debugging (with optimizations)
 RELEASE_DESC=		Build for release (default)
 TEST_DESC=		Run regression tests
 
+ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
+ALSA_CONFIGURE_ON=	--with-alsa=${LOCALBASE}
+ALSA_CONFIGURE_ENV_OFF=	ALSA_NOT_NEEDED=yes
 DEBUG_VARS=		JDK_BUILD_TYPE=slowdebug
 DEBUGFAST_VARS=		JDK_BUILD_TYPE=fastdebug
 RELEASE_BUILD_DEPENDS_OFF=	${LOCALBASE}/bin/objcopy:devel/binutils
@@ -313,13 +317,13 @@ CONFIGURE_ARGS+=	--with-tools-dir="${TOOLS_DIR:u:S/ /:/g}"
 
 .include <bsd.port.pre.mk>
 
-.if ${ARCH} == "armv6" || ${ARCH} == "i386"
+.if ${ARCH} == armv6 || ${ARCH} == armv7 || ${ARCH} == i386
 # XXX We must limit max heap size for 32-bit targets.
 CONFIGURE_ARGS+=	--with-boot-jdk-jvmargs="-Xmx768m"
 MAKE_ENV+=	JAVADOC_CMD_MEM="-Xmx768m"
 .endif
 
-.if ${ARCH} == "amd64" || ${ARCH} == "i386" || ${ARCH} == "powerpc64"
+.if ${ARCH} == amd64 || ${ARCH} == i386 || ${ARCH} == powerpc64
 JDK_BUILD_JVM=	server
 .else
 JDK_BUILD_JVM=	zero
@@ -328,7 +332,7 @@ LIB_DEPENDS+=	libffi.so:devel/libffi
 
 BOOTSTRAP_JDKS=	${LOCALBASE}/openjdk8 \
 		${LOCALBASE}/openjdk7
-.if ${ARCH} == "armv6"
+.if ${ARCH} == armv6 || ${ARCH} == armv7
 BOOTSTRAP_JDKS+=	${LOCALBASE}/bootstrap-openjdk
 .endif
 
@@ -341,7 +345,7 @@ BOOTSTRAPJDKDIR=	${BJDK}
 
 # if no valid jdk found, set dependency
 .if !defined(BOOTSTRAPJDKDIR)
-.  if ${ARCH} == "armv6"
+.  if ${ARCH} == armv6 || ${ARCH} == armv7
 # bootstrap-openjdk is based on openjdk7 and can compile openjdk8
 BOOTSTRAPJDKDIR?=	${LOCALBASE}/bootstrap-openjdk
 BUILD_DEPENDS+=		${BOOTSTRAPJDKDIR}/bin/javac:java/bootstrap-openjdk
@@ -418,6 +422,10 @@ post-patch:
 	    ${WRKSRC}/jdk/make/BuildJdk.gmk
 .endif
 	@${CHMOD} 755 ${WRKSRC}/configure
+
+post-patch-ALSA-off:
+	@${REINPLACE_CMD} '/EXTRA_SOUND_JNI_LIBS += jsoundalsa/d' \
+		${WRKSRC}/jdk/make/lib/SoundLibraries.gmk
 
 pre-configure:
 	@cd ${CONFIGURE_WRKSRC} && \

@@ -97,7 +97,6 @@ BUNDLE_LIBS=	yes
 
 .if ${MOZILLA_VER:R:R} >= 49
 USES+=		compiler:c++14-lang
-FAVORITE_COMPILER=	${COMPILER_TYPE} # c++14-lib
 CPPFLAGS+=	-D_GLIBCXX_USE_C99 -D_GLIBCXX_USE_C99_MATH_TR1 \
 			-D_DECLARE_C99_LDBL_MATH # XXX ports/193528
 .else
@@ -139,18 +138,14 @@ MOZ_MK_OPTIONS+=MOZ_OBJDIR="${MOZ_OBJDIR}"
 
 LDFLAGS+=		-Wl,--as-needed
 
-.if ${MOZILLA_VER:R:R} < 55
-.if ${OPSYS} != DragonFly # XXX xpcshell crash during install
+.if ${MOZILLA_VER:R:R} < 55 && ${OPSYS} == FreeBSD && ${OSVERSION} < 1200032
 # use jemalloc 3.0.0 (4.0 for firefox 43+) API for stats/tuning
-MOZ_EXPORT+=	MOZ_JEMALLOC3=1 MOZ_JEMALLOC4=1
-.if ${OPSYS} != FreeBSD || ${MOZILLA_VER:R:R} >= 37
-. if ${MOZILLA_VER:R:R} >= 48
+MOZ_EXPORT+=	MOZ_JEMALLOC4=1
+.if ${MOZILLA_VER:R:R} >= 48
 MOZ_OPTIONS+=	--enable-jemalloc=4
-.else
+.elif ${OSVERSION} < 1100079
 MOZ_OPTIONS+=	--enable-jemalloc
-. endif
-.endif
-.endif # !DragonFly
+.endif # Mozilla >= 48
 .endif # Mozilla < 55
 
 # Standard depends
@@ -257,6 +252,7 @@ MOZ_OPTIONS+=	\
 		--enable-chrome-format=${MOZ_CHROME} \
 		--enable-default-toolkit=${MOZ_TOOLKIT} \
 		--enable-update-channel=${MOZ_CHANNEL} \
+		--disable-updater \
 		--enable-pie \
 		--with-pthreads
 # Configure options for install
@@ -480,7 +476,6 @@ CFLAGS+=	-B${LOCALBASE}/bin
 LDFLAGS+=	-B${LOCALBASE}/bin
 . endif
 .elif ${ARCH:Mpowerpc*}
-USES:=		compiler:gcc-c++11-lib ${USES:Ncompiler*c++11*}
 . if ${ARCH} == "powerpc64"
 MOZ_EXPORT+=	UNAME_m="${ARCH}"
 CFLAGS+=	-mminimal-toc

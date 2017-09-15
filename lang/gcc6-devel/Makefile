@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	6.3.1.s20170614
+PORTVERSION=	6.4.1.s20170906
+PORTREVISION=	1
 CATEGORIES=	lang java
 MASTER_SITES=	GCC/snapshots/${DIST_VERSION}
 PKGNAMESUFFIX=	${SUFFIX}-devel
@@ -13,6 +14,8 @@ COMMENT=	GNU Compiler Collection 6
 
 LICENSE=	GPLv3 GPLv3RLE
 LICENSE_COMB=	multi
+
+ONLY_FOR_ARCHS=	aarch64 amd64 arm armv6 i386 powerpc powerpc64 sparc64
 
 LIB_DEPENDS=	libgmp.so:math/gmp \
 		libmpfr.so:math/mpfr \
@@ -34,7 +37,6 @@ CPE_VERSION=	${GCC_VERSION}
 DIST_VERSION=	${PORTVERSION:C/([0-9]+).*\.s([0-9]+)/\1-\2/}
 GCC_VERSION=	${PORTVERSION:C/(.+)\.s[0-9]{8}/\1/}
 SUFFIX=		${PORTVERSION:C/([0-9]+).*/\1/}
-ONLY_FOR_ARCHS=	aarch64 amd64 arm armv6 i386 powerpc powerpc64 sparc64
 USES=		compiler cpe gmake iconv libtool makeinfo perl5 tar:xz
 USE_BINUTILS=	yes
 USE_PERL5=	build
@@ -45,14 +47,11 @@ OPTIONS_DEFINE_i386=	JAVA
 OPTIONS_DEFINE_amd64=	JAVA
 OPTIONS_DEFINE_powerpc64=	JAVA
 OPTIONS_DEFAULT=	BOOTSTRAP
-OPTIONS_DEFAULT_i386=	JAVA
-OPTIONS_DEFAULT_amd64=	JAVA
-OPTIONS_DEFAULT_powerpc64=	JAVA
 OPTIONS_EXCLUDE_DragonFly=	JAVA
 BOOTSTRAP_DESC=		Build using a full bootstrap
 GRAPHITE_DESC=		Support for Graphite loop optimizations
 
-JAVA_USES=		python shebangfix
+JAVA_USES=	python shebangfix
 SHEBANG_FILES=	libjava/contrib/aot-compile.in
 
 .if exists(/usr/lib32/libc.so)
@@ -75,7 +74,7 @@ CONFIGURE_ENV+=	UNAME_m="powerpc64"
 USE_GCC=	5	# Cannot require ourselves, needs to be at least 4.9.
 .endif
 
-.if ${ARCH} == "armv6" || ${ARCH} == "aarch64"
+.if ${ARCH} == "aarch64" || ${ARCH} == "armv6"
 . if ${COMPILER_TYPE} == clang
 .  if empty(PORT_OPTIONS:MBOOTSTRAP)
 MAKE_ARGS+=CXXFLAGS=-fbracket-depth=512
@@ -120,7 +119,7 @@ INFO=		gcc${SUFFIX}/cpp \
 		gcc${SUFFIX}/gccint \
 		gcc${SUFFIX}/gfortran \
 		gcc${SUFFIX}/libgomp
-.if ${ARCH} == "i386" || ${ARCH} == "amd64"
+.if ${ARCH} == "amd64" || ${ARCH} == "i386"
 INFO+=		gcc${SUFFIX}/libquadmath \
 		gcc${SUFFIX}/libitm
 .endif
@@ -166,6 +165,7 @@ post-stage:
 	${RM} ${STAGEDIR}${PREFIX}/man/man7/*
 	${RM} ${STAGEDIR}${PREFIX}/bin/rebuild-gcj-db${SUFFIX} \
 	         ${STAGEDIR}${PREFIX}/man/man1/rebuild-gcj-db${SUFFIX}.1
+	${RM} -r ${STAGEDIR}${TARGLIB}/gcc/*/${GCC_VERSION}/include-fixed/
 	# Add target libraries and include files to packaging list.
 	${RM} ${WRKDIR}/PLIST.lib
 .for d in ${TARGLIB:S/^${PREFIX}\///} ${LIBEXEC:S/^${PREFIX}\///} include/gcj include/gnu include/java include/javax

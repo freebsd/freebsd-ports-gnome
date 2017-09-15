@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Dancer2
-PORTVERSION=	0.205000
+PORTVERSION=	0.205001
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -18,12 +18,12 @@ BUILD_DEPENDS=	p5-App-Cmd>=0:devel/p5-App-Cmd \
 		p5-Capture-Tiny>=0.12:devel/p5-Capture-Tiny \
 		p5-Crypt-URandom>=0:security/p5-Crypt-URandom \
 		p5-Config-Any>=0:devel/p5-Config-Any \
-		p5-ExtUtils-MakeMaker>=7.12:devel/p5-ExtUtils-MakeMaker \
 		p5-File-ShareDir-Install>=0.06:devel/p5-File-ShareDir-Install \
 		p5-Hash-Merge-Simple>=0:devel/p5-Hash-Merge-Simple \
 		p5-HTTP-Body>=0:www/p5-HTTP-Body \
 		p5-HTTP-Date>=0:www/p5-HTTP-Date \
 		p5-HTTP-Headers-Fast>=0:www/p5-HTTP-Headers-Fast \
+		p5-HTTP-XSCookies>=0.000007:www/p5-HTTP-XSCookies \
 		p5-Import-Into>=0:devel/p5-Import-Into \
 		p5-JSON>=0:converters/p5-JSON \
 		p5-JSON-MaybeXS>=0:converters/p5-JSON-MaybeXS \
@@ -32,6 +32,7 @@ BUILD_DEPENDS=	p5-App-Cmd>=0:devel/p5-App-Cmd \
 		p5-Plack>=1.0035:www/p5-Plack \
 		p5-Plack-Middleware-FixMissingBodyInRedirect>=0:www/p5-Plack-Middleware-FixMissingBodyInRedirect \
 		p5-Plack-Middleware-RemoveRedundantBody>=0:www/p5-Plack-Middleware-RemoveRedundantBody \
+		p5-Ref-Util>=0:devel/p5-Ref-Util \
 		p5-Return-MultiLevel>=0:devel/p5-Return-MultiLevel \
 		p5-Role-Tiny>=2.000000:devel/p5-Role-Tiny \
 		p5-Safe-Isa>=0:devel/p5-Safe-Isa \
@@ -69,4 +70,11 @@ NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${PERL_LEVEL} < 502502
+BUILD_DEPENDS+=	p5-ExtUtils-MakeMaker>=7.12:devel/p5-ExtUtils-MakeMaker
+RUN_DEPENDS+=	p5-ExtUtils-MakeMaker>=7.12:devel/p5-ExtUtils-MakeMaker
+.endif
+
+.include <bsd.port.post.mk>

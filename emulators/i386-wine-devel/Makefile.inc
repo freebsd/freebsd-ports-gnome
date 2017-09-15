@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-PORTVERSION=	2.10
+PORTVERSION=	2.15
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	LOCAL/dbn/repos/wine/${DIST_SUBDIR}/
@@ -43,12 +43,12 @@ USES=		tar:xz desktop-file-utils
 BUNDLE_LIBS=	yes
 
 GECKO_RUN_DEPENDS=	${DATADIR}/gecko/wine_gecko-2.47-x86.msi:emulators/wine-gecko-devel
-MONO_RUN_DEPENDS=	${DATADIR}/mono/wine-mono-4.7.0.msi:emulators/wine-mono-devel
+MONO_RUN_DEPENDS=	${DATADIR}/mono/wine-mono-4.7.1.msi:emulators/wine-mono-devel
 
 # Included for OPSYS and OSVERSION
 .include <bsd.port.pre.mk>
 
-.for osrel in 10 11
+.for osrel in 10 11 12
 .if ${OSREL:C/\..*//} == ${osrel}
 PLIST_SUB+=	OSREL${osrel}=""
 .if ${PKGNAMESUFFIX} == -devel
@@ -88,7 +88,7 @@ ${PLIST}: fetch
 
 port-update:
 	${RM} ${SLAVEDIR}/distinfo ${SLAVEDIR}/distinfo~ ${SLAVEDIR}/pkg-plist.*
-.for osrel in 10 11
+.for osrel in 10 11 12
 .for suffix in -devel -staging
 	${MAKE} fetch OSREL=${osrel} OSVERSION=${osrel}99999 UNAME_r=${osrel} PKGNAMESUFFIX=${suffix}
 	${MAKE} makesum OSREL=${osrel} OSVERSION=${osrel}99999 UNAME_r=${osrel} PKGNAMESUFFIX=${suffix}

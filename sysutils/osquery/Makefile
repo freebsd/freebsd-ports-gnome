@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	osquery
-PORTVERSION=	2.4.6
+PORTVERSION=	2.7.0
+PORTREVISION=	2
 CATEGORIES=	sysutils
 
 MAINTAINER=	zi@FreeBSD.org
@@ -15,6 +16,7 @@ BUILD_DEPENDS=	thrift>0:devel/thrift \
 		bash>0:shells/bash \
 		linenoise-ng>0:devel/linenoise-ng \
 		asio>0:net/asio \
+		rapidjson>0:devel/rapidjson \
 		${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2
 LIB_DEPENDS=	libaugeas.so:textproc/augeas \
 		libboost_regex.so:devel/boost-libs \
@@ -25,10 +27,11 @@ LIB_DEPENDS=	libaugeas.so:textproc/augeas \
 		libsnappy.so:archivers/snappy \
 		librocksdb-lite.so:databases/rocksdb-lite \
 		libthrift.so:devel/thrift-cpp \
-		libcppnetlib-uri.so:devel/cpp-netlib
+		libcppnetlib-uri.so:devel/cpp-netlib \
+		libzstd.so:archivers/zstd
 RUN_DEPENDS=	ca_root_nss>0:security/ca_root_nss
 
-USES=		cmake:outsource gmake libtool python:build compiler:c++11-lib \
+USES=		cmake:outsource libtool python:build compiler:c++11-lib \
 		libarchive ssl
 USE_GNOME=	libxml2
 CONFIGURE_ENV+=	OSQUERY_BUILD_VERSION="${PORTVERSION}" HOME="${WRKDIR}" \
@@ -40,7 +43,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	facebook ${PORTNAME}:tp
 GH_PROJECT=	third-party:tp
 GH_SUBDIR=	third-party:tp
-GH_TAGNAME=	2.4.5:tp
+GH_TAGNAME=	${PORTVERSION}:tp
 
 # Some options for things that bring in many dependencies
 OPTIONS_DEFINE=	TSK AWS YARA LLDPD
@@ -84,7 +87,10 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/tools/deployment/osquery.example.conf \
 		${STAGEDIR}${PREFIX}/etc/osquery.conf.sample
 
-	${TOUCH} ${STAGEDIR}${PREFIX}/etc/osquery.flags
 	${MKDIR} ${STAGEDIR}/var/db/osquery ${STAGEDIR}/var/log/osquery
+	# The flags file must exist, even if empty. Using @sample
+	# prevents a populated flags file from being nuked on upgrade.
+	${TOUCH} ${STAGEDIR}${PREFIX}/etc/osquery.flags.sample \
+		${STAGEDIR}${PREFIX}/etc/osquery.flags
 
 .include <bsd.port.post.mk>

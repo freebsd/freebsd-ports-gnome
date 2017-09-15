@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	hy
-PORTVERSION=	0.12.1
+PORTVERSION=	0.13.0
 CATEGORIES=	lang python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	dave@dal.ca
-COMMENT=	Hy is a dialect of lisp that's is embedded in Python
+COMMENT=	Hy is a dialect of Lisp that is embedded in Python
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE

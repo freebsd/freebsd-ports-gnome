@@ -4,10 +4,12 @@ PORTNAME=	mupen64plus-qt
 PORTVERSION=	1.10
 CATEGORIES=	emulators
 
-MAINTAINER=	dan@hasting.info
+MAINTAINER=	maintainer@hasting.email
 COMMENT=	Basic launcher for Mupen64Plus
 
 LICENSE=	BSD3CLAUSE
+
+BROKEN=		wrong dependencies, mupen64plus executable is not provided by emulators/mupen64plus
 
 LIB_DEPENDS=	libquazip.so:archivers/quazip
 RUN_DEPENDS=	mupen64plus:emulators/mupen64plus

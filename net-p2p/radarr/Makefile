@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	radarr
-PORTVERSION=	0.2.0.696
+PORTVERSION=	0.2.0.846
 PORTREVISION=	0
 CATEGORIES=	net-p2p
 MASTER_SITES=	https://github.com/Radarr/Radarr/releases/download/v${PORTVERSION}/
@@ -23,6 +23,7 @@ NO_BUILD=	YES
 WRKSRC=	${WRKDIR}/Radarr
 
 USERS=	radarr
+GROUPS=	radarr
 
 OPTIONS_DEFINE=	X11
 

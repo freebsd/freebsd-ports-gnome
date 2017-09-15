@@ -3,7 +3,7 @@
 
 PORTNAME=	sagittarius
 PORTVERSION=	0.8.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	lang
 MASTER_SITES=	https://bitbucket.org/ktakashi/sagittarius-scheme/downloads/ \
 		LOCAL/ashish
@@ -20,7 +20,7 @@ LIB_DEPENDS=	libffi.so:devel/libffi \
 		libgc-threaded.so:devel/boehm-gc-threaded
 
 USE_LDCONFIG=	yes
-USES=		cmake gmake pkgconfig
+USES=		cmake pkgconfig
 ONLY_FOR_ARCHS=	amd64 i386
 MAKE_JOBS_UNSAFE=	yes
 

@@ -3,7 +3,8 @@
 
 PORTNAME=	mono
 PORTVERSION=	4.8.1.0
-PORTREVISION=	1
+DISTVERSIONPREFIX=	mono-
+PORTREVISION=	2
 CATEGORIES=	lang
 
 MAINTAINER=	mono@FreeBSD.org
@@ -34,7 +35,6 @@ MONOLITE_MASTER_SITES=	http://download.mono-project.com/monolite/:monolite
 
 MONOLITE_VERSION=	156
 USE_GITHUB=	yes
-GH_TAGNAME=	${PORTNAME}-${PORTVERSION}
 GH_TUPLE=	mono:Lucene.Net.Light:85978b7:1/external/Lucene.Net.Light \
 		mono:Newtonsoft.Json:471c3e0:2/external/Newtonsoft.Json \
 		mono:NuGet.BuildTasks:04bdab5:3/external/nuget-buildtasks \
@@ -65,7 +65,8 @@ MAKE_ENV=	MONO_SHARED_DIR="${WRKDIR}" \
 TEST_TARGET=	check
 TEST_WRKSRC=	${WRKSRC}/mono/tests
 
-ONLY_FOR_ARCHS=	i386 amd64 armv6 powerpc
+ONLY_FOR_ARCHS=		amd64 armv6 i386 powerpc
+
 PORTSCOUT=	limit:^\d+\.\d+\.[1-9]\d*
 
 LOCALBASE?=	/usr/local

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	10.2.6
+PORTVERSION=	10.2.7
 PORTREVISION?=	1
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://mirrors.supportex.net/${SITESDIR}/ \
@@ -22,11 +22,13 @@ LICENSE_NAME_PerconaFT=	PerconaFT patents license
 LICENSE_FILE_PerconaFT=	${WRKSRC}/storage/tokudb/PerconaFT/PATENTS
 LICENSE_PERMS_PerconaFT=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
+BROKEN_aarch64=		fails to link: stacktrace.c: undefined reference to 'sbrk'
+
 SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
 SLAVEDIRS=	databases/mariadb102-client
-USES=		bison:build cmake compiler:c++11-lib cpe execinfo iconv:translit ncurses shebangfix ssl
+USES=		bison:build cmake compiler:c++11-lib cpe execinfo iconv:translit libedit ncurses shebangfix ssl
 USE_LDCONFIG=	${PREFIX}/lib/mysql
 SHEBANG_FILES=	scripts/*.sh
 SITESDIR=	mariadb/mariadb-${PORTVERSION}/source
@@ -111,6 +113,7 @@ DATADIR=	${PREFIX}/share/mysql
 CONFLICTS_INSTALL=	mariadb5*-${PKGNAMESUFFIX:C/^[0-9]*-//}-* \
 			mariadb10[013-9]-${PKGNAMESUFFIX:C/^[0-9]*-//}-* \
 			mysql[0-9]*-${PKGNAMESUFFIX:C/^[0-9]*-//}-* \
+			mysqlwsrep* \
 			percona[0-9]*-${PKGNAMESUFFIX:C/^[0-9]*-//}-*
 
 FASTMTX_CMAKE_ON=	-DWITH_FAST_MUTEXES=1
@@ -177,8 +180,7 @@ post-install:
 		${STAGEDIR}${PREFIX}/bin/mysqlaccess
 	${RM} -r ${STAGEDIR}/${PREFIX}/share/mysql/policy \
 		${STAGEDIR}/${PREFIX}/share/pkgconfig
-# See https://mariadb.atlassian.net/browse/MDEV-9529
-	${RM} ${STAGEDIR}/${PREFIX}/bin/maria_add_gis_sp.sql
+	${RM} ${STAGEDIR}${LOCALBASE}/lib/mysql/libmysqlclient*
 .endif # defined(CLIENT_ONLY)
 
 .if defined(WITH_OPENSSL_PORT)
@@ -200,8 +202,8 @@ post-patch:
 		${WRKSRC}/cmake/os/DragonFly.cmake
 .endif
 
-post-configure-MROONGA-on:
-	${REINPLACE_CMD} 's|-llz4|-L${LOCALBASE}/lib -llz4|' \
-		${WRKSRC}/storage/mroonga/CMakeFiles/mroonga.dir/link.txt
+#post-configure-MROONGA-on:
+#	${REINPLACE_CMD} 's|-llz4|-L${LOCALBASE}/lib -llz4|' \
+#		${WRKSRC}/storage/mroonga/CMakeFiles/mroonga.dir/link.txt
 
 .include <bsd.port.post.mk>

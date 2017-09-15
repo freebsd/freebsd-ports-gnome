@@ -3,7 +3,7 @@
 
 PORTNAME=	libvmime
 PORTVERSION=	0.9.2
-PORTREVISION=	1
+PORTREVISION=	2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	mail
 
@@ -20,7 +20,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	kisli
 GH_PROJECT=	vmime
 
-USES=		cmake:outsource compiler:c++11-lib iconv pkgconfig
+USES=		cmake:outsource,noninja compiler:c++11-lib iconv pkgconfig
 USE_LDCONFIG=	yes
 
 CMAKE_ARGS=	-DLIB_SUFFIX:STRING="" \

@@ -4,6 +4,7 @@
     COMMENT = Security tools
 
     SUBDIR += 0d1n
+    SUBDIR += 1password-client
     SUBDIR += ADMsmb
     SUBDIR += ADMsnmp
     SUBDIR += R-cran-ROAuth
@@ -38,7 +39,6 @@
     SUBDIR += base
     SUBDIR += bcrypt
     SUBDIR += bcwipe
-    SUBDIR += bdc
     SUBDIR += bdes
     SUBDIR += bearssl
     SUBDIR += beecrypt
@@ -46,6 +46,7 @@
     SUBDIR += bfbtester
     SUBDIR += binwalk
     SUBDIR += blindelephant
+    SUBDIR += boringssl
     SUBDIR += botan110
     SUBDIR += bro
     SUBDIR += broccoli
@@ -79,7 +80,6 @@
     SUBDIR += clamav
     SUBDIR += clamav-milter
     SUBDIR += clamav-unofficial-sigs
-    SUBDIR += clambc
     SUBDIR += clamcour
     SUBDIR += clamd-stream-client
     SUBDIR += clamfs
@@ -94,6 +94,7 @@
     SUBDIR += courieruserinfo
     SUBDIR += cp2fwb
     SUBDIR += cracklib
+    SUBDIR += crackpkcs12
     SUBDIR += crank
     SUBDIR += create-cert
     SUBDIR += cryptlib
@@ -105,6 +106,7 @@
     SUBDIR += cyrus-sasl2-gssapi
     SUBDIR += cyrus-sasl2-ldapdb
     SUBDIR += cyrus-sasl2-saslauthd
+    SUBDIR += cyrus-sasl2-sql
     SUBDIR += cyrus-sasl2-srp
     SUBDIR += d0_blind_id
     SUBDIR += dcetest
@@ -177,7 +179,9 @@
     SUBDIR += gnupg
     SUBDIR += gnupg1
     SUBDIR += gnupg20
+    SUBDIR += gnupg22
     SUBDIR += gnutls
+    SUBDIR += go-cve-dictionary
     SUBDIR += go.crypto
     SUBDIR += goptlib
     SUBDIR += gorilla
@@ -190,7 +194,8 @@
     SUBDIR += gpgme-cpp
     SUBDIR += gpgme-qt5
     SUBDIR += gputty
-    SUBDIR += greenbone-security-assistant
+    SUBDIR += greenbone-security-assistant8
+    SUBDIR += greenbone-security-assistant9
     SUBDIR += gringotts
     SUBDIR += gsasl
     SUBDIR += gss
@@ -200,9 +205,11 @@
     SUBDIR += gwee
     SUBDIR += hackbot
     SUBDIR += hamachi
+    SUBDIR += hardening-check
     SUBDIR += hashcat
     SUBDIR += hashcat-legacy
     SUBDIR += heimdal
+    SUBDIR += highwayhash
     SUBDIR += hitch
     SUBDIR += hlfl
     SUBDIR += hmap
@@ -236,10 +243,15 @@
     SUBDIR += hs-cryptohash
     SUBDIR += hs-cryptohash-conduit
     SUBDIR += hs-cryptohash-cryptoapi
+    SUBDIR += hs-cryptohash-md5
+    SUBDIR += hs-cryptohash-sha1
+    SUBDIR += hs-cryptohash-sha256
     SUBDIR += hs-cryptonite
     SUBDIR += hs-digest
+    SUBDIR += hs-ed25519
     SUBDIR += hs-entropy
     SUBDIR += hs-gnutls
+    SUBDIR += hs-hackage-security
     SUBDIR += hs-monadcryptorandom
     SUBDIR += hs-nonce
     SUBDIR += hs-pem
@@ -247,6 +259,7 @@
     SUBDIR += hs-pwstore-fast
     SUBDIR += hs-skein
     SUBDIR += hs-tls
+    SUBDIR += hs-tls-session-manager
     SUBDIR += hs-x509
     SUBDIR += hs-x509-store
     SUBDIR += hs-x509-system
@@ -297,6 +310,7 @@
     SUBDIR += krb5-114
     SUBDIR += krb5-115
     SUBDIR += krb5-appl
+    SUBDIR += krb5-devel
     SUBDIR += kripp
     SUBDIR += kstart
     SUBDIR += kwalletmanager
@@ -341,6 +355,7 @@
     SUBDIR += libssh2
     SUBDIR += libtasn1
     SUBDIR += libtomcrypt
+    SUBDIR += libu2f-host
     SUBDIR += libuecc
     SUBDIR += libwhisker
     SUBDIR += libyubikey
@@ -359,8 +374,11 @@
     SUBDIR += linux-c7-libgpg-error
     SUBDIR += linux-c7-libssh2
     SUBDIR += linux-c7-libtasn1
+    SUBDIR += linux-c7-nettle
     SUBDIR += linux-c7-nss
     SUBDIR += linux-c7-openssl
+    SUBDIR += linux-c7-p11-kit
+    SUBDIR += linux-c7-trousers
     SUBDIR += lockdown
     SUBDIR += log2timeline
     SUBDIR += logcheck
@@ -425,10 +443,16 @@
     SUBDIR += openssl
     SUBDIR += openssl-devel
     SUBDIR += openssl_tpm_engine
-    SUBDIR += openvas-cli
-    SUBDIR += openvas-libraries
-    SUBDIR += openvas-manager
-    SUBDIR += openvas-scanner
+    SUBDIR += openvas8
+    SUBDIR += openvas8-cli
+    SUBDIR += openvas8-libraries
+    SUBDIR += openvas8-manager
+    SUBDIR += openvas8-scanner
+    SUBDIR += openvas9
+    SUBDIR += openvas9-cli
+    SUBDIR += openvas9-libraries
+    SUBDIR += openvas9-manager
+    SUBDIR += openvas9-scanner
     SUBDIR += openvpn
     SUBDIR += openvpn-admin
     SUBDIR += openvpn-auth-ldap
@@ -860,6 +884,7 @@
     SUBDIR += py-ed25519ll
     SUBDIR += py-fail2ban
     SUBDIR += py-fchksum
+    SUBDIR += py-first-server
     SUBDIR += py-flask-httpauth
     SUBDIR += py-gixy
     SUBDIR += py-gnupg
@@ -901,6 +926,7 @@
     SUBDIR += py-pow
     SUBDIR += py-pyaes
     SUBDIR += py-pyaff4
+    SUBDIR += py-pyaxo
     SUBDIR += py-pyclamd
     SUBDIR += py-pycrypto
     SUBDIR += py-pycryptodome
@@ -909,7 +935,6 @@
     SUBDIR += py-pyelliptic
     SUBDIR += py-pylibacl
     SUBDIR += py-pymacaroons-pynacl
-    SUBDIR += py-pyme
     SUBDIR += py-pynacl
     SUBDIR += py-pyotp
     SUBDIR += py-pyptlib
@@ -940,6 +965,7 @@
     SUBDIR += py-tuf
     SUBDIR += py-twistedConch
     SUBDIR += py-twofish
+    SUBDIR += py-txtorcon
     SUBDIR += py-virustotal-api
     SUBDIR += py-volatility
     SUBDIR += py-vulndb
@@ -963,6 +989,7 @@
     SUBDIR += py-zxcvbn-python
     SUBDIR += py3-certifi
     SUBDIR += py3-cryptography
+    SUBDIR += py3-ecdsa
     SUBDIR += py3-libnacl
     SUBDIR += py3-openssl
     SUBDIR += py3-pycrypto
@@ -1017,9 +1044,12 @@
     SUBDIR += rubygem-encryptor
     SUBDIR += rubygem-ezcrypto
     SUBDIR += rubygem-googleauth
+    SUBDIR += rubygem-gpgme
     SUBDIR += rubygem-gpgr
     SUBDIR += rubygem-gssapi
+    SUBDIR += rubygem-hkdf
     SUBDIR += rubygem-jugyo-twitter_oauth
+    SUBDIR += rubygem-metasploit-aggregator
     SUBDIR += rubygem-metasploit-concern
     SUBDIR += rubygem-metasploit-credential
     SUBDIR += rubygem-metasploit-model
@@ -1044,7 +1074,6 @@
     SUBDIR += rubygem-omniauth-oauth2-generic
     SUBDIR += rubygem-omniauth-saml
     SUBDIR += rubygem-omniauth-shibboleth
-    SUBDIR += rubygem-omniauth13
     SUBDIR += rubygem-openssl
     SUBDIR += rubygem-openssl-ccm
     SUBDIR += rubygem-openvas-omp
@@ -1084,6 +1113,7 @@
     SUBDIR += rubygem-sshkit
     SUBDIR += rubygem-timfel-krb5
     SUBDIR += rubygem-twitter_oauth
+    SUBDIR += rubygem-webpush
     SUBDIR += s2n
     SUBDIR += safesh
     SUBDIR += samba-virusfilter
@@ -1105,6 +1135,7 @@
     SUBDIR += sguil
     SUBDIR += sha
     SUBDIR += sha1collisiondetection
+    SUBDIR += sha2wordlist
     SUBDIR += shibboleth2-sp
     SUBDIR += shimmer
     SUBDIR += shishi
@@ -1144,9 +1175,6 @@
     SUBDIR += ssh_askpass_gtk2
     SUBDIR += sshblock
     SUBDIR += sshguard
-    SUBDIR += sshguard-ipfw
-    SUBDIR += sshguard-null
-    SUBDIR += sshguard-pf
     SUBDIR += sshpass
     SUBDIR += ssl-admin
     SUBDIR += sslscan
@@ -1177,6 +1205,7 @@
     SUBDIR += tclgpg
     SUBDIR += tclsasl
     SUBDIR += tcpcrypt
+    SUBDIR += testssl.sh
     SUBDIR += tinc
     SUBDIR += tinyca
     SUBDIR += titus
@@ -1200,11 +1229,13 @@
     SUBDIR += unicornscan
     SUBDIR += unssh
     SUBDIR += vault
+    SUBDIR += veracrypt
     SUBDIR += vinetto
     SUBDIR += vlock
     SUBDIR += vm-to-tor
     SUBDIR += vnccrack
     SUBDIR += vpnc
+    SUBDIR += vuls
     SUBDIR += vuxml
     SUBDIR += vxquery
     SUBDIR += w3af

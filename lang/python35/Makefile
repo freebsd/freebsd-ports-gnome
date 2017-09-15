@@ -3,7 +3,6 @@
 
 PORTNAME=	python
 PORTVERSION=	${PYTHON_PORTVERSION}
-PORTREVISION=	2
 CATEGORIES=	lang python ipv6
 MASTER_SITES=	PYTHON/ftp/python/${PYTHON_PORTVERSION}
 PKGNAMESUFFIX=	${PYTHON_SUFFIX}
@@ -17,7 +16,7 @@ LICENSE=	PSFL
 
 BROKEN_SSL=	openssl-devel
 
-USES=		cpe ncurses pathfix pkgconfig readline ssl tar:xz shebangfix
+USES=		cpe ncurses pathfix pkgconfig readline:port ssl tar:xz shebangfix
 PATHFIX_MAKEFILEIN=	Makefile.pre.in
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
@@ -127,6 +126,13 @@ PLIST_SUB+=	NO_NIS=""
 .endif
 
 post-patch:
+# readline shared library is present on base before FreeBSD 11 - r268461
+# force setup.py ignore base and use readline from ports
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
+	${REINPLACE_CMD} -e \
+		"s|lib_dirs,\ \'readline\'|[\'${LOCALBASE}/lib\',\ \'.\'],\ \'readline\'|" \
+		${WRKSRC}/setup.py
+.endif
 	${REINPLACE_CMD} -e 's|/usr/local/bin/python|${python_CMD}|' \
 		${WRKSRC}/Lib/cgi.py
 
@@ -136,6 +142,17 @@ post-install:
 .endif
 	for i in ${STAGEDIR}${PREFIX}/lib/python${PYTHON_VER}/lib-dynload/*.so; do \
 		${STRIP_CMD} $$i; done								# Strip shared extensions
+# This code block exists for the qemu-user enabled cross build environment.
+# When using this environment in poudriere, CC is not set to the default
+# of /usr/bin/cc and a cross-compile toolchain is used.  We need to hand
+# edit this so that the run time configuration for python matches what the
+# FreeBSD base system provides.  sbruno 02Aug2017
+.if ${CC} == /nxb-bin/usr/bin/cc
+	@${REINPLACE_CMD} -e 's=/nxb-bin==' \
+		${STAGEDIR}${PREFIX}/lib/python3.5/_sysconfigdata.py
+	@${REINPLACE_CMD} -e 's=/nxb-bin==' \
+		${STAGEDIR}${PREFIX}/lib/python3.5/config-3.5m/Makefile
+.endif
 	${INSTALL_DATA} ${WRKSRC}/Tools/gdb/libpython.py \
 		${STAGEDIR}${PREFIX}/lib/libpython${PYTHON_VER}${ABIFLAGS}.so.1.0-gdb.py
 

@@ -4,7 +4,7 @@
 PORTNAME=		aseprite
 PORTVERSION=		1.1.13
 DISTVERSIONPREFIX=	v
-PORTREVISION=		2
+PORTREVISION=		3
 CATEGORIES=		graphics
 
 MAINTAINER=		yuri@rawbw.com
@@ -45,7 +45,7 @@ GH_TUPLE+=		aseprite:laf:e6d79aa:laf/laf
 GH_TUPLE+=		aseprite:stringencoders:f963507:stringencoders/laf/third_party/stringencoders
 GH_TUPLE+=		dacap:observable:27fa7f6:observable/src/observable
 
-USES=			cmake:outsource compiler:c++11-lib jpeg ninja pkgconfig
+USES=			cmake:outsource compiler:c++11-lib jpeg pkgconfig
 USE_XORG=		x11 xcursor xext xpm ice pixman sm xxf86dga xxf86vm
 USE_LDCONFIG=		yes
 

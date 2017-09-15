@@ -3,6 +3,7 @@
 
 PORTNAME=	DBIx-Class
 PORTVERSION=	0.082840
+PORTREVISION=	1
 CATEGORIES=	databases perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -12,6 +13,7 @@ COMMENT=	Extensible and flexible object <-> relational mapper
 
 LICENSE=	ART10 GPLv1
 LICENSE_COMB=	dual
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	p5-Class-Accessor-Grouped>=0.10012:devel/p5-Class-Accessor-Grouped \
 		p5-Class-C3-Componentised>=1.000900:devel/p5-Class-C3-Componentised \
@@ -54,7 +56,6 @@ TEST_DEPENDS=	p5-Class-DBI-Plugin-DeepAbstractSearch>=0:databases/p5-Class-DBI-P
 		p5-Test-Warn>=0.21:devel/p5-Test-Warn \
 		p5-Test-Deep>0.101:devel/p5-Test-Deep \
 		p5-Text-CSV>=0:textproc/p5-Text-CSV \
-		p5-Time-Piece>=0:devel/p5-Time-Piece \
 		p5-Time-Piece-MySQL>=0:databases/p5-Time-Piece-MySQL \
 		p5-namespace-autoclean>=0:devel/p5-namespace-autoclean
 
@@ -63,6 +64,7 @@ SQLT_DESC=	SQL::Translator (generate DDL from schema)
 
 PORTSCOUT=	limit:^[0-9\.]*$$
 
+NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
 CONFIGURE_ENV=	DBICTEST_NO_SQLITE_CHECK=1

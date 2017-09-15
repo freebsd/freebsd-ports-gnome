@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	easyrpg-player
-PORTVERSION=	0.5.1
+PORTVERSION=	0.5.2
 PORTREVISION=	1
 CATEGORIES=	games
 
@@ -20,7 +20,8 @@ LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libvorbis.so:audio/libvorbis \
 		libsndfile.so:audio/libsndfile \
 		libxmp.so:audio/libxmp \
-		libspeexdsp.so:audio/speexdsp
+		libspeexdsp.so:audio/speexdsp \
+		libopusfile.so:audio/opusfile
 BUILD_DEPENDS=	asciidoc:textproc/asciidoc \
 		${LOCALBASE}/include/boost/shared_ptr.hpp:devel/boost-libs
 
