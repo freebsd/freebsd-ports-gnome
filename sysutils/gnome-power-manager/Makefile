@@ -10,15 +10,15 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Power management system for the GNOME Desktop
 
-LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
+#LICENSE=	GPLv2+
+#LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	appstream-builder:devel/appstream-glib
 LIB_DEPENDS=	libupower-glib.so:sysutils/upower
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome libtool localbase pathfix pkgconfig tar:xz
+USES=		gettext gmake gnome libtool localbase:ldflags pathfix pkgconfig tar:xz
 INSTALLS_ICONS=	yes
 USE_GNOME=	cairo gtk30 intlhack
 GNU_CONFIGURE=	yes
@@ -28,19 +28,13 @@ CONFIGURE_ARGS=	--with-doc-dir=${PREFIX}/share/doc \
 GLIB_SCHEMAS=	org.gnome.power-manager.gschema.xml
 
 OPTIONS_DEFINE=	MANPAGES
+OPTIONS_SUB=	yes
 
-.include <bsd.port.options.mk>
+MANPAGES_BUILD_DEPENDS=	docbook2html:textproc/docbook-utils \
+			docbook-sgml>0:textproc/docbook-sgml
 
-.if ${PORT_OPTIONS:MMANPAGES} || defined(PACKAGE_BUILDING)
-BUILD_DEPENDS+=	docbook2html:textproc/docbook-utils \
-		docbook-sgml>0:textproc/docbook-sgml
-PLIST_SUB+=	MAN=""
-.else
-PLIST_SUB+=	MAN="@comment "
-
-post-patch:
+post-patch-MANPAGES-off:
 	@${REINPLACE_CMD} -e "s|2MAN_TRUE=$$|2MAN_TRUE='#'|g ; \
 		s|2MAN_FALSE='#'|2MAN_FALSE=|g" ${WRKSRC}/configure
-.endif
 
 .include <bsd.port.mk>

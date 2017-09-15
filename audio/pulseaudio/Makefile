@@ -5,8 +5,8 @@
 # PORTREVISION bumps of depending ports.
 
 PORTNAME=	pulseaudio
-PORTVERSION=	10.0
-PORTREVISION=	4
+PORTVERSION=	11.0
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://freedesktop.org/software/pulseaudio/releases/
 
@@ -51,7 +51,6 @@ CONFIGURE_ARGS=	--localstatedir=/var \
 		--disable-systemd-journal \
 		--disable-systemd-login \
 		--disable-neon-opt \
-		--disable-xen \
 		--disable-lirc # untested
 
 USERS=		pulse
