@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	vala
-PORTVERSION=	0.36.3
+PORTVERSION=	0.38.1
 CATEGORIES=	lang gnome
 MASTER_SITES=	GNOME
 
@@ -10,6 +10,9 @@ MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Programming language and compiler that converts Vala code into C code
 
 LICENSE=	LGPL21
+
+BUILD_DEPENDS=	graphviz>=0:graphics/graphviz
+RUN_DEPENDS=	graphviz>=0:graphics/graphviz
 
 PORTSCOUT=	limitw:1,even
 
@@ -22,6 +25,6 @@ INSTALL_TARGET=	install-strip
 
 VALA_VER=	${PORTVERSION:R}
 
-PLIST_SUB=	VERSION=0.36
+PLIST_SUB=	VERSION=0.38
 
 .include <bsd.port.mk>
