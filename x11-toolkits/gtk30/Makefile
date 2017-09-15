@@ -78,7 +78,8 @@ CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
 
 WAYLAND_DESC=		GDK Wayland backend
 WAYLAND_CONFIGURE_ENABLE=	wayland-backend
-WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols \
+			v4l_compat>=0:multimedia/v4l_compat
 WAYLAND_LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
 			libxkbcommon.so:x11/libxkbcommon
 WAYLAND_USE=		GL=egl
