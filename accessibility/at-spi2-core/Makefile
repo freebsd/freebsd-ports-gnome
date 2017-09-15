@@ -18,7 +18,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		gettext gmake gnome localbase libtool pathfix pkgconfig tar:xz
 USE_GNOME=	glib20 intlhack introspection:build
-USE_XORG=	x11 xi xtst xext
+USE_XORG=	ice sm x11 xi xtst xext
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-xevie
