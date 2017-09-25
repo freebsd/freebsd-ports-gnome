@@ -11,7 +11,8 @@ DIST_SUBDIR=	gnome2
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME accessibility toolkit (ATK)
 
-LICENSE=	LGPL21
+LICENSE=	LGPL20+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 USES=		tar:xz
 PORTSCOUT=	limitw:1,even
@@ -20,8 +21,7 @@ PORTSCOUT=	limitw:1,even
 
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-USES+=		gettext gmake gnome libtool localbase \
-		pathfix pkgconfig
+USES+=		gettext gmake gnome libtool localbase pathfix pkgconfig
 USE_GNOME=	glib20 introspection:build referencehack
 CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc
 INSTALL_TARGET=	install-strip
