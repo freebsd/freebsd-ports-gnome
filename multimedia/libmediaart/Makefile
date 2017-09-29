@@ -23,6 +23,7 @@ USE_LDCONFIG=	yes
 MESON_ARGS=	-Dimage_library=gdk-pixbuf
 
 OPTIONS_DEFINE=	DOCS
+DOCS_BUILD_DEPENDS=	gtk-doc>=0:textproc/gtk-doc
 DOCS_MESON_ON=	-Dwith-docs=yes
 DOCS_MESON_OFF=	-Dwith-docs=no
 #option('image_library', type: 'combo', choices: ['auto', 'gdk-pixbuf', 'qt4', 'qt5'],
