@@ -1,9 +1,8 @@
 # Created by: fenner
 # $FreeBSD$
-#    $MCom: ports/trunk/textproc/gtk-doc/Makefile 19804 2014-08-13 14:55:11Z kwm $
 
 PORTNAME=	gtk-doc
-PORTVERSION=	1.25
+PORTVERSION=	1.26
 CATEGORIES=	textproc
 MASTER_SITES=	GNOME
 
@@ -22,7 +21,7 @@ RUN_DEPENDS=	jade:textproc/jade \
 
 DOCBOOK_VERSION=	4.1.2
 
-USES=		gmake gettext-tools pathfix perl5 pkgconfig python tar:xz
+USES=		gmake gettext-tools pathfix perl5 pkgconfig python:2.7 tar:xz
 USE_GNOME=	gnomeprefix libxslt
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-xml-catalog=${LOCALBASE}/share/xml/catalog.ports
