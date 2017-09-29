@@ -16,6 +16,7 @@ BUILD_DEPENDS=	jade:textproc/jade \
 		rarian-sk-config:textproc/rarian
 RUN_DEPENDS=	jade:textproc/jade \
 		docbook-xml>0:textproc/docbook-xml \
+		${PYTHON_PKGNAMEPREFIX}six>=0:devel/py-six \
 		${LOCALBASE}/share/xsl/docbook/xhtml/chunk.xsl:textproc/docbook-xsl \
 		rarian-sk-config:textproc/rarian
 
