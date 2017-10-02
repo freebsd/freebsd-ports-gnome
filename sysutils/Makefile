@@ -575,6 +575,7 @@
     SUBDIR += logwatch
     SUBDIR += lookat
     SUBDIR += lr
+    SUBDIR += lscpu
     SUBDIR += lsof
     SUBDIR += lsop
     SUBDIR += ltrace
@@ -1143,6 +1144,7 @@
     SUBDIR += syslog-ng-incubator
     SUBDIR += syslog-ng310
     SUBDIR += syslog-ng311
+    SUBDIR += syslog-ng312
     SUBDIR += syslog-ng36
     SUBDIR += syslog-ng37
     SUBDIR += syslog-ng39
@@ -1354,6 +1356,7 @@
     SUBDIR += znapzend
     SUBDIR += zogftw
     SUBDIR += zrep
+    SUBDIR += zrepl
     SUBDIR += zsd
     SUBDIR += zxfer
 

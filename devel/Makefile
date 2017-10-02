@@ -59,6 +59,7 @@
     SUBDIR += R-cran-rngtools
     SUBDIR += R-cran-rprojroot
     SUBDIR += R-cran-rstudioapi
+    SUBDIR += R-cran-sfsmisc
     SUBDIR += R-cran-sourcetools
     SUBDIR += R-cran-tibble
     SUBDIR += R-cran-tidyr
@@ -1326,7 +1327,6 @@
     SUBDIR += libchipcard
     SUBDIR += libcidr
     SUBDIR += libcii
-    SUBDIR += libclaw
     SUBDIR += libclc
     SUBDIR += libcli
     SUBDIR += libconcurrent
@@ -1398,6 +1398,7 @@
     SUBDIR += libgee
     SUBDIR += libgee06
     SUBDIR += libgetline
+    SUBDIR += libght
     SUBDIR += libghthash
     SUBDIR += libgit2
     SUBDIR += libgit2-glib
@@ -4259,6 +4260,7 @@
     SUBDIR += py-boto
     SUBDIR += py-botocore
     SUBDIR += py-bsd
+    SUBDIR += py-buildbot-grid-view
     SUBDIR += py-cached-property
     SUBDIR += py-cachetools
     SUBDIR += py-calendar
@@ -4430,6 +4432,7 @@
     SUBDIR += py-gobject
     SUBDIR += py-gobject3
     SUBDIR += py-google-apputils
+    SUBDIR += py-googleapis-common-protos
     SUBDIR += py-grab
     SUBDIR += py-greenlet
     SUBDIR += py-grizzled
@@ -4873,6 +4876,7 @@
     SUBDIR += py-terminable_thread
     SUBDIR += py-termstyle
     SUBDIR += py-testgears
+    SUBDIR += py-testinfra
     SUBDIR += py-testoob
     SUBDIR += py-testpath
     SUBDIR += py-testtools
@@ -4900,10 +4904,6 @@
     SUBDIR += py-twilio
     SUBDIR += py-twine
     SUBDIR += py-twisted
-    SUBDIR += py-twisted152
-    SUBDIR += py-twistedCore
-    SUBDIR += py-twistedFlow
-    SUBDIR += py-twistedRunner
     SUBDIR += py-txaio
     SUBDIR += py-typed-ast
     SUBDIR += py-typing
@@ -5373,6 +5373,8 @@
     SUBDIR += rubygem-cri
     SUBDIR += rubygem-cucumber
     SUBDIR += rubygem-cucumber-core
+    SUBDIR += rubygem-cucumber-expressions
+    SUBDIR += rubygem-cucumber-tag_expressions
     SUBDIR += rubygem-cucumber-wire
     SUBDIR += rubygem-curses
     SUBDIR += rubygem-cyoi
