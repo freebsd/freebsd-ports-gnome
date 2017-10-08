@@ -1,6 +1,5 @@
 # Created by: Michael Johnson <ahze@FreeBSD.org>
 # $FreeBSD$
-#	$MCom: ports/graphics/py-cairo/Makefile,v 1.28 2010/11/15 14:12:13 kwm Exp $
 
 PORTNAME=	cairo
 PORTVERSION=	1.14.1
@@ -12,13 +11,21 @@ DISTNAME=	py${PORTNAME}-${PORTVERSION}
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Python 2 bindings for Cairo
 
+LICENSE=	LGPL21 MPL11
+LICENSE_COMB=	multi
+LICENSE_FILE_LGPL21=	${WRKSRC}/COPYING-LGPL-2.1
+LICENSE_FILE_MPL11=	${WRKSRC}/COPYING-MPL-1.1
+
+PORTSCOUT=	limitw:1,even
+
 USES=		gnome pkgconfig python:2 shebangfix
+USES=		gnome pkgconfig python:2
 USE_PYTHON=	distutils
 USE_GNOME=	cairo
 
 PLIST_SUB=	PORTVER=${PORTVERSION}
 
 post-install:
-	@${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/cairo/_cairo.so
+	@${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/cairo/_cairo.so
 
 .include <bsd.port.mk>

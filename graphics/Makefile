@@ -138,7 +138,6 @@
     SUBDIR += derelict-gl3
     SUBDIR += devil
     SUBDIR += dia
-    SUBDIR += diacanvas2
     SUBDIR += diffpdf
     SUBDIR += digikam-kde4
     SUBDIR += digikam-kde4-doc
@@ -860,9 +859,7 @@
     SUBDIR += py-glewpy
     SUBDIR += py-goocanvas
     SUBDIR += py-gphoto2
-    SUBDIR += py-graph
     SUBDIR += py-graph-core
-    SUBDIR += py-graph-dot
     SUBDIR += py-graphviz
     SUBDIR += py-graphy
     SUBDIR += py-gvgen

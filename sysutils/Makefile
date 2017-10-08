@@ -74,11 +74,6 @@
     SUBDIR += bacula-client-static
     SUBDIR += bacula-docs
     SUBDIR += bacula-server
-    SUBDIR += bacula5-bat
-    SUBDIR += bacula5-client
-    SUBDIR += bacula5-client-static
-    SUBDIR += bacula5-docs
-    SUBDIR += bacula5-server
     SUBDIR += bacula9-bat
     SUBDIR += bacula9-client
     SUBDIR += bacula9-client-static
@@ -480,6 +475,7 @@
     SUBDIR += intel-nvmupdate
     SUBDIR += intel-pcm
     SUBDIR += intel-qcu
+    SUBDIR += iocage
     SUBDIR += iocell
     SUBDIR += iogen
     SUBDIR += iograph
@@ -868,6 +864,7 @@
     SUBDIR += puppet4
     SUBDIR += puppet5
     SUBDIR += puppetserver
+    SUBDIR += puppetserver5
     SUBDIR += pv
     SUBDIR += pwd_unmkdb
     SUBDIR += pwgen
@@ -923,7 +920,6 @@
     SUBDIR += py-zdaemon
     SUBDIR += py-zfs
     SUBDIR += py3-execnet
-    SUBDIR += py3-iocage
     SUBDIR += py3-pkginfo
     SUBDIR += py3-ptyprocess
     SUBDIR += pydf
