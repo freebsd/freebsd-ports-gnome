@@ -1,3 +1,4 @@
+
 # $FreeBSD$
 #
 
@@ -83,6 +84,7 @@
     SUBDIR += corkscrew
     SUBDIR += corosync
     SUBDIR += courier-authlib-ldap
+    SUBDIR += cppzmq
     SUBDIR += crtmpserver
     SUBDIR += cryptcat
     SUBDIR += csocks
@@ -1038,7 +1040,6 @@
     SUBDIR += py-python-bitcoinrpc
     SUBDIR += py-python-ceilometerclient
     SUBDIR += py-python-cinderclient
-    SUBDIR += py-python-cloudfiles
     SUBDIR += py-python-designateclient
     SUBDIR += py-python-glanceclient
     SUBDIR += py-python-heatclient
@@ -1386,6 +1387,7 @@
     SUBDIR += torsocks
     SUBDIR += traceroute
     SUBDIR += traff
+    SUBDIR += traefik
     SUBDIR += trafshow
     SUBDIR += trafshow3
     SUBDIR += tramp

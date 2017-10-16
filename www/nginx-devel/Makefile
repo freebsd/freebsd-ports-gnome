@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nginx
-PORTVERSION=	1.13.5
+PORTVERSION=	1.13.6
 CATEGORIES=	www
 MASTER_SITES=	http://nginx.org/download/
 MASTER_SITES+=	LOCAL/osa
@@ -235,8 +235,6 @@ VOD_DESC=			3rd party vod module
 X11_DESC=			graphics/ImageMagick[-nox11] dependency
 XSS_DESC=			3rd party xss module
 VIDEO_DESC=			Video module support
-
-WANT_GNOME=	yes
 
 .include <bsd.port.options.mk>
 

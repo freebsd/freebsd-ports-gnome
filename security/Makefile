@@ -100,6 +100,7 @@
     SUBDIR += cryptlib
     SUBDIR += cryptopp
     SUBDIR += ct-submit
+    SUBDIR += cvechecker
     SUBDIR += cvm
     SUBDIR += cyberchef
     SUBDIR += cyrus-sasl2
@@ -442,6 +443,7 @@
     SUBDIR += openssh-portable
     SUBDIR += openssl
     SUBDIR += openssl-devel
+    SUBDIR += openssl-unsafe
     SUBDIR += openssl_tpm_engine
     SUBDIR += openvas8
     SUBDIR += openvas8-cli
@@ -867,6 +869,7 @@
     SUBDIR += py-backports.ssl_match_hostname
     SUBDIR += py-bcrypt
     SUBDIR += py-borg.localrole
+    SUBDIR += py-btchip
     SUBDIR += py-cerealizer
     SUBDIR += py-certbot
     SUBDIR += py-certifi
@@ -907,6 +910,7 @@
     SUBDIR += py-mcrypt
     SUBDIR += py-mhash
     SUBDIR += py-mixbox
+    SUBDIR += py-mnemonic
     SUBDIR += py-oauth2client
     SUBDIR += py-oauthlib
     SUBDIR += py-onetime
@@ -961,6 +965,7 @@
     SUBDIR += py-stem
     SUBDIR += py-stix
     SUBDIR += py-tlslite
+    SUBDIR += py-trezor
     SUBDIR += py-trustedpickle
     SUBDIR += py-tuf
     SUBDIR += py-twofish
