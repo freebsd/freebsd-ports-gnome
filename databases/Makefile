@@ -27,7 +27,6 @@
     SUBDIR += buzhug
     SUBDIR += c3p0
     SUBDIR += cassandra-cpp-driver
-    SUBDIR += cassandra2
     SUBDIR += casstcl
     SUBDIR += cdb
     SUBDIR += cego
@@ -57,7 +56,6 @@
     SUBDIR += elixir-calecto
     SUBDIR += elixir-db_connection
     SUBDIR += elixir-ecto
-    SUBDIR += elixir-ecto_migrate
     SUBDIR += elixir-exredis
     SUBDIR += elixir-geo
     SUBDIR += elixir-mariaex
@@ -92,7 +90,6 @@
     SUBDIR += gdbm
     SUBDIR += geoserver-mysql-plugin
     SUBDIR += gigabase
-    SUBDIR += glom
     SUBDIR += gnats4
     SUBDIR += gnatsweb4
     SUBDIR += gomdb
@@ -739,10 +736,8 @@
     SUBDIR += proftpd-mod_sql_postgres
     SUBDIR += proftpd-mod_sql_sqlite
     SUBDIR += proftpd-mod_sql_tds
-    SUBDIR += puppetdb-terminus3
     SUBDIR += puppetdb-terminus4
     SUBDIR += puppetdb-terminus5
-    SUBDIR += puppetdb3
     SUBDIR += puppetdb4
     SUBDIR += puppetdb5
     SUBDIR += pure-sql3

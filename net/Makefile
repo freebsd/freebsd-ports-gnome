@@ -92,6 +92,7 @@
     SUBDIR += cvsup-static
     SUBDIR += cvsync
     SUBDIR += czmq
+    SUBDIR += czmq4
     SUBDIR += daemonlogger
     SUBDIR += dante
     SUBDIR += daq
@@ -377,7 +378,6 @@
     SUBDIR += librouteros
     SUBDIR += librsync2
     SUBDIR += libsocket++
-    SUBDIR += libsocketcpp
     SUBDIR += libsrtp
     SUBDIR += libtnl
     SUBDIR += libtrace
@@ -558,7 +558,6 @@
     SUBDIR += p5-Event-tcp
     SUBDIR += p5-File-Rsync
     SUBDIR += p5-File-RsyncP
-    SUBDIR += p5-Filesys-SmbClient
     SUBDIR += p5-Frontier-RPC
     SUBDIR += p5-Geo-IP
     SUBDIR += p5-Geo-IP-PurePerl
@@ -578,6 +577,7 @@
     SUBDIR += p5-IP-Anonymous
     SUBDIR += p5-IP-Country
     SUBDIR += p5-IPC-Session
+    SUBDIR += p5-IPv6-Address
     SUBDIR += p5-JavaScript-RPC
     SUBDIR += p5-Kafka
     SUBDIR += p5-MaxMind-DB-Common
