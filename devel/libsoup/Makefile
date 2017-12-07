@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libsoup
-PORTVERSION=	2.60.0
+PORTVERSION=	2.60.2
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -23,7 +23,7 @@ PORTSCOUT=	limitw:1,even
 .if !defined(REFERENCE_PORT)
 
 USES+=		gettext gmake gnome libtool localbase pathfix \
-		pkgconfig python:3.3+:build ssl
+		pkgconfig python:build ssl
 USE_GNOME=	glib20 intlhack introspection:build \
 		libxml2 referencehack
 USE_LDCONFIG=	yes

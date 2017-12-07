@@ -102,6 +102,7 @@
     SUBDIR += algotutor
     SUBDIR += alt-ergo
     SUBDIR += amath
+    SUBDIR += ambit
     SUBDIR += analitza
     SUBDIR += ann
     SUBDIR += apc
@@ -165,6 +166,7 @@
     SUBDIR += emc2
     SUBDIR += ent
     SUBDIR += entropy
+    SUBDIR += eprover
     SUBDIR += ess
     SUBDIR += eukleides
     SUBDIR += eval
@@ -323,6 +325,7 @@
     SUBDIR += nauty
     SUBDIR += ndiff
     SUBDIR += newmat
+    SUBDIR += nfft
     SUBDIR += ngraph
     SUBDIR += nlopt
     SUBDIR += ntl
@@ -597,6 +600,8 @@
     SUBDIR += php70-gmp
     SUBDIR += php71-bcmath
     SUBDIR += php71-gmp
+    SUBDIR += php72-bcmath
+    SUBDIR += php72-gmp
     SUBDIR += physcalc
     SUBDIR += picosat
     SUBDIR += plman

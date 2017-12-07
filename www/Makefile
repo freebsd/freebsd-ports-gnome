@@ -103,6 +103,7 @@
     SUBDIR += dalbum
     SUBDIR += davical
     SUBDIR += dddbl
+    SUBDIR += ddgr
     SUBDIR += decss
     SUBDIR += deforaos-surfer
     SUBDIR += demoroniser
@@ -377,10 +378,8 @@
     SUBDIR += links1
     SUBDIR += linux-c6-qt47-webkit
     SUBDIR += linux-c7-qtwebkit
-    SUBDIR += linux-firefox
     SUBDIR += linux-flashplayer
     SUBDIR += linux-opera
-    SUBDIR += linux-seamonkey
     SUBDIR += lionwiki
     SUBDIR += litmus
     SUBDIR += ljdeps
@@ -482,6 +481,7 @@
     SUBDIR += mod_php56
     SUBDIR += mod_php70
     SUBDIR += mod_php71
+    SUBDIR += mod_php72
     SUBDIR += mod_proctitle
     SUBDIR += mod_proxy_html
     SUBDIR += mod_proxy_uwsgi
@@ -520,6 +520,7 @@
     SUBDIR += moodle31
     SUBDIR += moodle32
     SUBDIR += moodle33
+    SUBDIR += moodle34
     SUBDIR += mozplugger
     SUBDIR += multisort
     SUBDIR += multiwatch
@@ -535,9 +536,12 @@
     SUBDIR += netrik
     SUBDIR += netstiff
     SUBDIR += netsurf
-    SUBDIR += newsbeuter
     SUBDIR += newsboat
     SUBDIR += nextcloud
+    SUBDIR += nextcloud-calendar
+    SUBDIR += nextcloud-contacts
+    SUBDIR += nextcloud-notes
+    SUBDIR += nextcloud-tasks
     SUBDIR += nghttp2
     SUBDIR += nginx
     SUBDIR += nginx-devel
@@ -557,6 +561,9 @@
     SUBDIR += npc
     SUBDIR += npm
     SUBDIR += npm-less-plugin-clean-css
+    SUBDIR += npm-node4
+    SUBDIR += npm-node6
+    SUBDIR += npm-node8
     SUBDIR += npm2
     SUBDIR += npm3
     SUBDIR += npm4
@@ -1383,7 +1390,6 @@
     SUBDIR += p5-WebService-Technorati
     SUBDIR += p5-WebService-YouTube
     SUBDIR += p5-WordPress-XMLRPC
-    SUBDIR += p5-Yahoo-Lifestyle
     SUBDIR += p5-Yahoo-Search
     SUBDIR += p5-ZConf-RSS
     SUBDIR += p5-ZConf-RSS-GUI-GTK
@@ -1395,6 +1401,7 @@
     SUBDIR += p5-pQuery
     SUBDIR += p5-webservice-validator-css-w3c
     SUBDIR += p5-webservice-validator-html-w3c
+    SUBDIR += palemoon
     SUBDIR += paros
     SUBDIR += payara
     SUBDIR += pear-HTML_AJAX
@@ -1479,6 +1486,9 @@
     SUBDIR += php71-opcache
     SUBDIR += php71-session
     SUBDIR += php71-tidy
+    SUBDIR += php72-opcache
+    SUBDIR += php72-session
+    SUBDIR += php72-tidy
     SUBDIR += phpbb
     SUBDIR += phpbb3
     SUBDIR += phpgroupware
@@ -1535,6 +1545,7 @@
     SUBDIR += py-boto3
     SUBDIR += py-bottle
     SUBDIR += py-bottle-cork
+    SUBDIR += py-buku
     SUBDIR += py-cachecontrol
     SUBDIR += py-caldav
     SUBDIR += py-cherrypy
@@ -1546,6 +1557,7 @@
     SUBDIR += py-cssmin
     SUBDIR += py-cssselect
     SUBDIR += py-cssutils
+    SUBDIR += py-ddgr
     SUBDIR += py-django
     SUBDIR += py-django-allauth
     SUBDIR += py-django-annotations
@@ -1875,9 +1887,6 @@
     SUBDIR += py-wsgidav
     SUBDIR += py-yarl
     SUBDIR += py-zope.app.wsgi
-    SUBDIR += py3-cssutils
-    SUBDIR += py3-httplib2
-    SUBDIR += py3-requests
     SUBDIR += pyblosxom
     SUBDIR += pycarddav
     SUBDIR += pydio
@@ -1893,6 +1902,7 @@
     SUBDIR += quickie
     SUBDIR += qupzilla-qt4
     SUBDIR += qupzilla-qt5
+    SUBDIR += qutebrowser
     SUBDIR += radicale
     SUBDIR += red5
     SUBDIR += redaxo
@@ -2026,6 +2036,7 @@
     SUBDIR += rubygem-hurley
     SUBDIR += rubygem-innate
     SUBDIR += rubygem-jekyll
+    SUBDIR += rubygem-jekyll-sanity
     SUBDIR += rubygem-jekyll-watch
     SUBDIR += rubygem-journey
     SUBDIR += rubygem-jquery-atwho-rails
@@ -2102,6 +2113,7 @@
     SUBDIR += rubygem-rack-timeout
     SUBDIR += rubygem-rack15
     SUBDIR += rubygem-rack16
+    SUBDIR += rubygem-rack_csrf
     SUBDIR += rubygem-rails-settings-cached
     SUBDIR += rubygem-rails-settings-cached-rails5
     SUBDIR += rubygem-rails-settings-cached-rails50
@@ -2138,6 +2150,7 @@
     SUBDIR += rubygem-rkelly-remix
     SUBDIR += rubygem-robotex
     SUBDIR += rubygem-robots
+    SUBDIR += rubygem-roda
     SUBDIR += rubygem-rqrcode
     SUBDIR += rubygem-rqrcode-rails3
     SUBDIR += rubygem-rtlit
@@ -2401,6 +2414,7 @@
     SUBDIR += w3mir
     SUBDIR += waccess
     SUBDIR += wadcomblog
+    SUBDIR += waterfox
     SUBDIR += web2ldap
     SUBDIR += webalizer
     SUBDIR += webbrowser

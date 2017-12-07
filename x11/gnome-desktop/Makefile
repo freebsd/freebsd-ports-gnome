@@ -28,8 +28,8 @@ RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
 		xkeyboard-config>=0:x11/xkeyboard-config
 
-USES+=		gettext gmake gnome libtool localbase pathfix \
-		pkgconfig python:3.3+
+USES+=		bison gettext gmake gnome libtool localbase pathfix \
+		pkgconfig python:3.4+
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection:build \
 		referencehack
 USE_XORG=	x11

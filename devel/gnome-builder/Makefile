@@ -42,7 +42,8 @@ USE_GNOME=	cairo gtk30 gtksourceview3 vte3 py3gobject3 libxml2
 USE_GNOME+=	introspection
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-flatpak-plugin \
-		--disable-jhbuild-plugin
+		--disable-jhbuild-plugin \
+		ac_cv_path_PYTHON3_CONFIG=${PYTHON_CMD}-config
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
