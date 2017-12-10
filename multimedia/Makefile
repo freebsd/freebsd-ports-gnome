@@ -211,6 +211,7 @@
     SUBDIR += libsmacker
     SUBDIR += libtheora
     SUBDIR += libtuner
+    SUBDIR += libuvc
     SUBDIR += libv4l
     SUBDIR += libva
     SUBDIR += libva-intel-driver
