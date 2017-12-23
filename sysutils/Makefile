@@ -696,6 +696,7 @@
     SUBDIR += node_exporter
     SUBDIR += nomad
     SUBDIR += npadmin
+    SUBDIR += nq
     SUBDIR += nrg2iso
     SUBDIR += nut
     SUBDIR += nvclock
@@ -1199,8 +1200,10 @@
     SUBDIR += trueos-libqt5
     SUBDIR += tuptime
     SUBDIR += tw_cli
+    SUBDIR += twmn
     SUBDIR += tzdialog
     SUBDIR += u-boot-a13-olinuxino
+    SUBDIR += u-boot-a64-olinuxino
     SUBDIR += u-boot-bananapi
     SUBDIR += u-boot-bananapim2
     SUBDIR += u-boot-beaglebone
@@ -1217,6 +1220,7 @@
     SUBDIR += u-boot-olimex-a20-som-evb
     SUBDIR += u-boot-olinuxino-lime
     SUBDIR += u-boot-orangepi-one
+    SUBDIR += u-boot-orangepi-pc2
     SUBDIR += u-boot-orangepi-plus-2e
     SUBDIR += u-boot-pandaboard
     SUBDIR += u-boot-pcduino3
@@ -1226,6 +1230,7 @@
     SUBDIR += u-boot-rpi3
     SUBDIR += u-boot-sinovoip-bpi-m3
     SUBDIR += u-boot-sopine
+    SUBDIR += u-boot-tools
     SUBDIR += u-boot-utilite
     SUBDIR += u-boot-wandboard
     SUBDIR += u-boot-zedboard
@@ -1253,6 +1258,7 @@
     SUBDIR += usb_modeswitch
     SUBDIR += usbhid-dump
     SUBDIR += usbhotkey
+    SUBDIR += usbtop
     SUBDIR += usbutils
     SUBDIR += uschedule
     SUBDIR += userinfo

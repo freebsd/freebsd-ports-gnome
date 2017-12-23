@@ -208,6 +208,7 @@
     SUBDIR += gnubc
     SUBDIR += gnumeric
     SUBDIR += gnuplot
+    SUBDIR += gnuplot-lite
     SUBDIR += gnuplot-tex-extras
     SUBDIR += goblin
     SUBDIR += gotoblas
@@ -276,6 +277,7 @@
     SUBDIR += libRmath
     SUBDIR += libflame
     SUBDIR += liblbfgs
+    SUBDIR += libmesh
     SUBDIR += libmissing
     SUBDIR += libocas
     SUBDIR += liborigin

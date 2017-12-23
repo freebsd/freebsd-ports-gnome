@@ -250,6 +250,7 @@
     SUBDIR += libisocodes
     SUBDIR += libkdeedu
     SUBDIR += libmetalink
+    SUBDIR += libpostal
     SUBDIR += libpri
     SUBDIR += libsupertone
     SUBDIR += libutf
@@ -383,6 +384,7 @@
     SUBDIR += py-fuzzy
     SUBDIR += py-glance
     SUBDIR += py-osd
+    SUBDIR += py-palettable
     SUBDIR += py-pexpect
     SUBDIR += py-powerline-status
     SUBDIR += py-progressbar

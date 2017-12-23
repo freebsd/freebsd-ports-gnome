@@ -148,6 +148,7 @@
     SUBDIR += djview4-qt4
     SUBDIR += djvulibre
     SUBDIR += dmtx-utils
+    SUBDIR += drawpile
     SUBDIR += driconf
     SUBDIR += drm-next-kmod
     SUBDIR += dspdfviewer
@@ -482,6 +483,7 @@
     SUBDIR += lib3ds
     SUBDIR += libGLU
     SUBDIR += libGLw
+    SUBDIR += libQGLViewer
     SUBDIR += libafterimage
     SUBDIR += libart_lgpl
     SUBDIR += libboard

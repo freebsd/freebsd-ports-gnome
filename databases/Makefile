@@ -680,6 +680,7 @@
     SUBDIR += postgis21
     SUBDIR += postgis22
     SUBDIR += postgis23
+    SUBDIR += postgis24
     SUBDIR += postgres-xl
     SUBDIR += postgresql-cstore_fdw
     SUBDIR += postgresql-jdbc
@@ -845,6 +846,7 @@
     SUBDIR += py-sqlobject
     SUBDIR += py-sqlparse
     SUBDIR += py-sqlparse01
+    SUBDIR += py-sqlparse020
     SUBDIR += py-sqlrelay
     SUBDIR += py-swift
     SUBDIR += py-sybase
@@ -920,6 +922,7 @@
     SUBDIR += rubygem-arel-helpers
     SUBDIR += rubygem-arel6
     SUBDIR += rubygem-arel7
+    SUBDIR += rubygem-arel8
     SUBDIR += rubygem-awesome_nested_set
     SUBDIR += rubygem-bdb1
     SUBDIR += rubygem-bigrecord

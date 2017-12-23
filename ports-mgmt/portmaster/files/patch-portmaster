@@ -1,69 +1,22 @@
---- portmaster.orig	2016-02-05 22:36:56 UTC
+--- portmaster.orig	2017-12-21 09:02:44 UTC
 +++ portmaster
-@@ -1239,7 +1239,8 @@ all_pkgs_by_origin () {
- 			echo $iport $origin
- 		done
- 	else
--		pkg query -a "%n-%v %o"
-+		namesorigins=`pkg query -a "%n-%v %o"`
-+		echo "$namesorigins"
- 	fi
- 	return
- }
-@@ -1644,42 +1645,21 @@ if [ -n "$CHECK_PORT_DBDIR" ]; then
- 	unique_list=':'
+@@ -2264,12 +2264,14 @@ make_dep_list () {
  
- 	echo "===>>> Building list of installed port names"; echo ''
--	if [ -z "$use_pkgng" ]; then
--		for pkg in $pdb/*; do
--			[ -d $pkg ] || continue
--
--			iport=${pkg#$pdb/}
--			origin=`origin_from_pdb $iport` || continue
--
--			if [ ! -d "$pd/$origin" ]; then
--				find_moved_port $origin $iport nonfatal >/dev/null
--				[ -n "$moved_npd" ] || continue
--				origin=$moved_npd
--			fi
--
--			if ! pm_cd $pd/$origin; then
--				echo "	===>>> $pd/$origin does not exist for $pkg"
--				continue
--			fi
--			unique_list="${unique_list}`make -V UNIQUENAME -V OPTIONS_NAME | tr '\n' ':'`"
--		done
--	else
--		while read pkg origin; do
--			if [ ! -d "$pd/$origin" ]; then
--				find_moved_port $origin $pkg nonfatal >/dev/null
--				[ -n "$moved_npd" ] || continue
--				origin=$moved_npd
--			fi
-+	while read pkg origin; do
-+		if [ ! -d "$pd/$origin" ]; then
-+			find_moved_port $origin $pkg nonfatal >/dev/null
-+			[ -n "$moved_npd" ] || continue
-+			origin=$moved_npd
-+		fi
- 
--			if ! pm_cd $pd/$origin; then
--				echo "	===>>> $pd/$origin does not exist for $pkg"
--				continue
--			fi
--			unique_list="${unique_list}`make -V UNIQUENAME -V OPTIONS_NAME | tr '\n' ':'`"
--		done <<-EOF
--		$(pkg query -a "%n-%v %o")
--		EOF
--	fi
-+		if ! pm_cd $pd/$origin; then
-+			echo "	===>>> $pd/$origin does not exist for $pkg"
-+			continue
-+		fi
-+		unique_list="${unique_list}`make -V UNIQUENAME -V OPTIONS_NAME | tr '\n' ':'`"
-+	done <<-EOF
-+	$(all_pkgs_by_origin)
-+	EOF
- 
- 	echo "===>>> Checking $port_dbdir"
- 
+ 	for dep_type in $*; do
+ 		case $dep_type in
+-		all-depends-list)
+-			var_opt="$var_opt -V BUILD_DEPENDS -V LIB_DEPENDS -V RUN_DEPENDS" ;;
+-		build-depends-list)
+-			var_opt="$var_opt -V BUILD_DEPENDS -V LIB_DEPENDS" ;;
++		all-depends-list|build-depends-list)
++			var_opt="$var_opt -V PKG_DEPENDS -V EXTRACT_DEPENDS \
++				-V PATCH_DEPENDS -V FETCH_DEPENDS -V BUILD_DEPENDS -V LIB_DEPENDS"
++			[ "$dep_type" = all-depends-list ] && var_opt="$var_opt -V RUN_DEPENDS" ;;
+ 		run-depends-list)
+- 			var_opt="$var_opt -V RUN_DEPENDS -V LIB_DEPENDS" ;;
++			var_opt="$var_opt -V RUN_DEPENDS -V LIB_DEPENDS" ;;
++		test-depends-list)
++			var_opt="$var_opt -V TEST_DEPENDS" ;;
+ 		*)
+ 			fail "make_dep_list: Unsupported option '$dep_type'"
+ 		esac

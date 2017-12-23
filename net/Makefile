@@ -377,6 +377,7 @@
     SUBDIR += librsync2
     SUBDIR += libsocket++
     SUBDIR += libsrtp
+    SUBDIR += libstorj
     SUBDIR += libtnl
     SUBDIR += libtrace
     SUBDIR += libunp
@@ -1008,6 +1009,7 @@
     SUBDIR += py-libcloud
     SUBDIR += py-libdnet
     SUBDIR += py-libnet
+    SUBDIR += py-libstorj
     SUBDIR += py-magic-wormhole
     SUBDIR += py-matrix-synapse-ldap3
     SUBDIR += py-maxminddb
@@ -1152,6 +1154,7 @@
     SUBDIR += rubygem-amq-protocol
     SUBDIR += rubygem-amqp
     SUBDIR += rubygem-amqp-utils
+    SUBDIR += rubygem-asset_sync
     SUBDIR += rubygem-aws-s3
     SUBDIR += rubygem-aws-ses
     SUBDIR += rubygem-azure
@@ -1269,9 +1272,11 @@
     SUBDIR += rubygem-xmlrpc
     SUBDIR += rude
     SUBDIR += s3ql
+#    SUBDIR += samba4-devel
     SUBDIR += samba44
     SUBDIR += samba45
     SUBDIR += samba46
+    SUBDIR += samba47
     SUBDIR += samplicator
     SUBDIR += sbd
     SUBDIR += sbm

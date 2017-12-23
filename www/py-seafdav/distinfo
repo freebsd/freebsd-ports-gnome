@@ -1,3 +1,5 @@
-TIMESTAMP = 1512362606
-SHA256 (haiwen-seafdav-v6.2.1-pro_GH0.tar.gz) = 8ad468a5690969cf1c5be8222ac195e09b25eb4ec77eb74119a3c4493e6dcde1
-SIZE (haiwen-seafdav-v6.2.1-pro_GH0.tar.gz) = 2554674
+TIMESTAMP = 1513799161
+SHA256 (/usr/ports/distfiles) = bb2afa1715d8499e891d117d8432cfafa8def2488869f160d9fe70cb90e4ec65
+SIZE (/usr/ports/distfiles) = 373
+SHA256 (haiwen-seafdav-v6.2.4-pro_GH0.tar.gz) = 3cc66975db697b485c6044520e7e2cc7a415f0c8252b43747f6a10984c35737a
+SIZE (haiwen-seafdav-v6.2.4-pro_GH0.tar.gz) = 2554683

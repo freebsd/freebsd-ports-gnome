@@ -1,14 +1,14 @@
 # $FreeBSD$
 
 PORTNAME=	waterfox
-DISTVERSION=	56.0.s20171203
+DISTVERSION=	56.0.1.s20171212
 CATEGORIES=	www ipv6
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Distilled fork of Firefox
 
 DEPRECATED=	Temporary experiment
-EXPIRATION_DATE=2017-12-19
+EXPIRATION_DATE=2018-01-30
 
 BUILD_DEPENDS=	nspr>=4.16:devel/nspr \
 		nss>=3.32.1:security/nss \
@@ -32,7 +32,7 @@ LIB_DEPENDS=	libv4l2.so:multimedia/libv4l
 USE_GITHUB=	yes
 GH_ACCOUNT=	MrAlex94
 GH_PROJECT=	Waterfox
-GH_TAGNAME=	eadf0f15d05e
+GH_TAGNAME=	7b7aa8b4b5d1
 
 USE_GECKO=	gecko
 MOZ_PKGCONFIG_FILES=	# empty
@@ -55,6 +55,7 @@ OPTIONS_DEFAULT=	BUNDLED_CAIRO
 
 post-patch:
 	@${REINPLACE_CMD} -e 's/%u/%U/' -e '/X-MultipleArgs/d' \
+		-e 's/firefox/${MOZILLA}/' \
 		-e 's/Firefox/${MOZILLA_NAME}/' \
 		${WATERFOX_DESKTOP}
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
