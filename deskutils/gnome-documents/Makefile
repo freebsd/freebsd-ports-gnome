@@ -23,7 +23,7 @@ LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		libgepub.so:textproc/libgepub \
 		libzapojit-0.0.so:net/libzapojit
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
-		gnome-online-miners>=0:net/gnome-online-miners
+		gnome-online-miners>=0:net/gnome-online-miners \
 		${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss \
 		unoconv:textproc/unoconv
 
