@@ -6,12 +6,11 @@ DISTVERSIONPREFIX=	v
 DISTVERSIONSUFFIX=	-stable
 CATEGORIES=	sysutils
 
-MAINTAINER=	kevlo@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Mouse and keyboard sharing utility
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
-
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
@@ -32,8 +31,6 @@ PORTEXAMPLES=	synergy.conf.example synergy.conf.example-basic \
 		synergy.conf.example-advanced
 
 OPTIONS_DEFINE=	EXAMPLES
-
-BROKEN_sparc64=	cannot build: C++ code errors
 
 post-extract:
 	@${MKDIR} ${WRKSRC}/ext/gtest-1.6.0

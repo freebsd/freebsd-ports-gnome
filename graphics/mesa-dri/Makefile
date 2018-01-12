@@ -63,9 +63,12 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-src_gallium_drivers_vc4_Makefile.in
 . endif
 .endif
 
-.if ${VULKAN_DRIVERS:MINTEL}
+.if ${VULKAN_DRIVERS}
 BUILD_DEPENDS+=		${PYTHON_PKGNAMEPREFIX}mako>0:textproc/py-mako@${PY_FLAVOR}
-. if ${/usr/bin/ld:L:tA} != "/usr/bin/ld.lld"
+.endif
+
+.if ${VULKAN_DRIVERS:MINTEL}
+. if ${/usr/bin/ld:L:tA} != /usr/bin/ld.lld
 # --build-id isn't supported by old GNU ld.bfd in base
 USE_BINUTILS=		yes
 LDFLAGS+=		-B${LOCALBASE}/bin

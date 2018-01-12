@@ -1,4 +1,3 @@
-
 # $FreeBSD$
 #
 
@@ -285,6 +284,9 @@
     SUBDIR += isc-dhcp43-client
     SUBDIR += isc-dhcp43-relay
     SUBDIR += isc-dhcp43-server
+    SUBDIR += isc-dhcp44-client
+    SUBDIR += isc-dhcp44-relay
+    SUBDIR += isc-dhcp44-server
     SUBDIR += istgt
     SUBDIR += jags
     SUBDIR += jakarta-commons-net
@@ -514,6 +516,7 @@
     SUBDIR += openldap24-server
     SUBDIR += openmpi
     SUBDIR += openmpi2
+    SUBDIR += openmpi3
     SUBDIR += openmq
     SUBDIR += openmq-client
     SUBDIR += openntpd
@@ -1170,7 +1173,6 @@
     SUBDIR += rubygem-fog-aliyun
     SUBDIR += rubygem-fog-atmos
     SUBDIR += rubygem-fog-aws
-    SUBDIR += rubygem-fog-aws0
     SUBDIR += rubygem-fog-aws1
     SUBDIR += rubygem-fog-azure
     SUBDIR += rubygem-fog-brightbox
@@ -1211,6 +1213,7 @@
     SUBDIR += rubygem-iproto
     SUBDIR += rubygem-lita-gems
     SUBDIR += rubygem-macaddr
+    SUBDIR += rubygem-mqtt
     SUBDIR += rubygem-net-ldap
     SUBDIR += rubygem-net-netrc
     SUBDIR += rubygem-net-ping
@@ -1393,8 +1396,8 @@
     SUBDIR += toonel
     SUBDIR += torsocks
     SUBDIR += traceroute
-    SUBDIR += traff
     SUBDIR += traefik
+    SUBDIR += traff
     SUBDIR += trafshow
     SUBDIR += trafshow3
     SUBDIR += tramp

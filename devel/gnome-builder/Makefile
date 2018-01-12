@@ -38,6 +38,7 @@ PORTDOCS=	*
 CONFLICTS_BUILD=	gnome-builder-3.16.*
 
 USES=		compiler:c++11-lang cpe desktop-file-utils gmake libtool localbase pathfix pkgconfig tar:xz
+# gettext? python:3.4+ ?
 USE_GNOME=	cairo gtk30 gtksourceview3 vte3 py3gobject3 libxml2
 USE_GNOME+=	introspection
 GNU_CONFIGURE=	yes
