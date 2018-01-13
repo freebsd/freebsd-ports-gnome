@@ -33,7 +33,7 @@ LIB_DEPENDS=	libmusicbrainz5.so:audio/libmusicbrainz5 \
 USES=		desktop-file-utils gmake gnome libtool localbase \
 		pathfix pkgconfig tar:xz
 USE_GNOME=	cairo intlhack gnomeprefix gtk30 introspection \
-		py3gobject3 libxml2
+		pygobject3 libxml2
 USE_XORG=	ice x11 xproto
 GNU_CONFIGURE=	yes
 USE_GSTREAMER1=	flac lame jpeg cdparanoia vorbis
