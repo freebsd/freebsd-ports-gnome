@@ -25,7 +25,7 @@ Date: Mon, 11 Apr 2016 23:18:10 +1000
 Subject: gdm-session: set PAM_TTY when initialising pam
 
 --- daemon/gdm-session-worker.c.orig	2017-10-30 16:21:02.000000000 +0100
-+++ daemon/gdm-session-worker.c	2018-01-14 13:29:26.019653000 +0100
++++ daemon/gdm-session-worker.c	2018-01-14 13:56:27.481472000 +0100
 @@ -28,9 +28,11 @@
  #include <string.h>
  #include <sys/types.h>
@@ -578,7 +578,7 @@ Subject: gdm-session: set PAM_TTY when initialising pam
          return TRUE;
  }
  
-+SUPPORTS_PAM_EXTENSIONS
++#ifdef SUPPORTS_PAM_EXTENSIONS
  static char **
  filter_extensions (const char * const *extensions)
  {
