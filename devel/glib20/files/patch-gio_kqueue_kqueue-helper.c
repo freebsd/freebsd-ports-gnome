@@ -5,7 +5,7 @@ https://bugzilla.gnome.org/show_bug.cgi?id=739424
 https://bug739424.bugzilla-attachments.gnome.org/attachment.cgi?id=351191
 
 --- gio/kqueue/kqueue-helper.c.orig	2018-01-08 21:00:49.000000000 +0100
-+++ gio/kqueue/kqueue-helper.c	2018-01-15 21:38:44.498662000 +0100
++++ gio/kqueue/kqueue-helper.c	2018-01-15 21:56:13.255353000 +0100
 @@ -43,7 +43,7 @@ static gboolean kh_debug_enabled = FALSE;
  #define KH_W if (kh_debug_enabled) g_warning
  
@@ -51,3 +51,13 @@ https://bug739424.bugzilla-attachments.gnome.org/attachment.cgi?id=351191
    return TRUE;
  }
  
+@@ -506,9 +508,7 @@ _kh_cancel_sub (kqueue_sub *sub)
+ 
+   _km_remove (sub);
+ 
+-  G_LOCK (hash_lock);
+   removed = g_hash_table_remove (subs_hash_table, GINT_TO_POINTER (sub->fd));
+-  G_UNLOCK (hash_lock);
+ 
+   if (removed)
+     {
