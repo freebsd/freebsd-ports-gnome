@@ -18,7 +18,7 @@ USES=		cpe gettext gnome localbase:ldflags meson pkgconfig \
 		shared-mime-info tar:xz
 USE_XORG=	xt xi x11
 CPE_VENDOR=	gnome
-USE_GNOME+=	glib20 introspection:build
+USE_GNOME+=	glib20 introspection:build libxslt:build
 USE_LDCONFIG=	yes
 
 OPTIONS_SUB=	yes
