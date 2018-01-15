@@ -14,6 +14,8 @@ COMMENT=	Graphic library for GTK+
 LICENSE=	LGPL20+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	docbook-xsl>0:textproc/docbook-xsl
+
 USES=		cpe gettext gnome localbase:ldflags meson pkgconfig \
 		shared-mime-info tar:xz
 USE_XORG=	xt xi x11
