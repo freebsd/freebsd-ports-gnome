@@ -1193,6 +1193,7 @@
     SUBDIR += torque
     SUBDIR += toshctl
     SUBDIR += tracker
+    SUBDIR += tracker-miners
     SUBDIR += tree
     SUBDIR += tren
     SUBDIR += trueos-libqt5
