@@ -1421,7 +1421,6 @@
     SUBDIR += unfs3
     SUBDIR += unison
     SUBDIR += unison-devel
-    SUBDIR += unison-nox11
     SUBDIR += unison232
     SUBDIR += unison240
     SUBDIR += unix2tcp

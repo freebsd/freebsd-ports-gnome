@@ -356,6 +356,7 @@
     SUBDIR += hs-svgcairo
     SUBDIR += hugin
     SUBDIR += icat
+    SUBDIR += icc-profiles-adobe-cs4
     SUBDIR += icc-profiles-basiccolor
     SUBDIR += icc-profiles-openicc
     SUBDIR += iccexamin
@@ -757,6 +758,7 @@
     SUBDIR += panoglview
     SUBDIR += panomatic
     SUBDIR += partio
+    SUBDIR += pcl-pointclouds
     SUBDIR += pdf2svg
     SUBDIR += pdfpc
     SUBDIR += pear-Horde_Image
@@ -1029,6 +1031,7 @@
     SUBDIR += sswf
     SUBDIR += stamp
     SUBDIR += structuresynth
+    SUBDIR += sverchok-blender
     SUBDIR += svg2pdf
     SUBDIR += svg2png
     SUBDIR += svgalib
