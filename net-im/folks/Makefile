@@ -3,6 +3,7 @@
 
 PORTNAME=	folks
 PORTVERSION=	0.11.4
+PORTREVISION=	1
 CATEGORIES=	net-im
 MASTER_SITES=	GNOME
 
@@ -39,14 +40,19 @@ GLIB_SCHEMAS=	org.freedesktop.folks.gschema.xml
 PLIST_SUB=	LIBVER=25 VERSION=43 LIBVERLONG=25.18.4
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	SOCIALWEB TRACKER
-OPTIONS_DEFAULT=SOCIALWEB TRACKER
+OPTIONS_DEFINE=	SOCIALWEB
+#TRACKER
+OPTIONS_DEFAULT=SOCIALWEB
+#TRACKER
 SOCIALWEB_DESC=	Social web backend
 TRACKER_DESC=	Tracker backend
+
 SOCIALWEB_CONFIGURE_ENABLE=	libsocialweb-backend
 SOCIALWEB_LIB_DEPENDS=	libsocialweb.so:www/libsocialweb
+CONFIGURE_ARGS+=	--disable-tracker-backend
 TRACKER_CONFIGURE_ENABLE=	tracker-backend
-TRACKER_LIB_DEPENDS=	libtracker-control-1.0.so:sysutils/tracker
+TRACKER_LIB_DEPENDS=	libtracker-control-2.0.so:sysutils/tracker
+PLIST_SUB+=	TRACKER="@comment "
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|--fatal-warnings||g' \
