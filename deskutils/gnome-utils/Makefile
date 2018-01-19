@@ -12,7 +12,7 @@ COMMENT=	GNOME 3 support utilities
 USES=		metaport
 
 RUN_DEPENDS=	baobab>=3.0:deskutils/baobab \
-		gnome-screenshot>=3.0:deskutils/gnome-screenshot
+		gnome-screenshot>=3.0:deskutils/gnome-screenshot \
 		gnote>=3.0:deskutils/gnote \
 		gnome-contacts>=3.0:deskutils/gnome-contacts \
 		gnome-search-tool>=3.0:deskutils/gnome-search-tool \
