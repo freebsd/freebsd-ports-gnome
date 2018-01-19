@@ -19,4 +19,6 @@ USES=		gettext jpeg libarchive localbase meson pkgconfig tar:xz
 USE_LDCONFIG=	yes
 USE_GNOME=	cairo glib20 introspection:build
 
+MESON_ARGS=	-Denable-test=false
+
 .include <bsd.port.mk>
