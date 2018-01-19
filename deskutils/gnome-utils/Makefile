@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-utils
-PORTVERSION=	3.24.0
+PORTVERSION=	3.26.0
 PORTEPOCH=	1
 CATEGORIES=	deskutils gnome
 
@@ -11,8 +11,8 @@ COMMENT=	GNOME 3 support utilities
 
 USES=		metaport
 
+#		gnome-screenshot>=3.0:deskutils/gnome-screenshot
 RUN_DEPENDS=	baobab>=3.0:deskutils/baobab \
-		gnome-screenshot>=3.0:deskutils/gnome-screenshot \
 		gnote>=3.0:deskutils/gnote \
 		gnome-contacts>=3.0:deskutils/gnome-contacts \
 		gnome-search-tool>=3.0:deskutils/gnome-search-tool \
