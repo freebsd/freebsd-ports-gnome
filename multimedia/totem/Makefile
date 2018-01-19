@@ -21,11 +21,11 @@ BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
 		itstool:textproc/itstool \
 		grilo-plugins>=0:net/grilo-plugins
 LIB_DEPENDS=	libgdata.so:devel/libgdata \
+		libcogl.so:graphics/cogl \
+		libclutter-1.0.so:graphics/clutter \
 		libclutter-gst-3.0.so:multimedia/clutter-gst3 \
 		libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
 		libpeas-1.0.so:devel/libpeas \
-		libcogl.so:graphics/cogl \
-		libclutter-1.0.so:graphics/clutter \
 		libjson-glib-1.0.so:devel/json-glib \
 		libgrilo-0.3.so:net/grilo \
 		libzeitgeist-2.0.so:sysutils/zeitgeist \
@@ -55,6 +55,10 @@ GLIB_SCHEMAS=	org.gnome.totem.enums.xml \
 		org.gnome.totem.plugins.opensubtitles.gschema.xml \
 		org.gnome.totem.plugins.pythonconsole.gschema.xml
 
+# https://bugzilla.gnome.org/show_bug.cgi?id=786248
+# https://github.com/mesonbuild/meson/issues/1994
+MAKE_JOBS_UNSAFE=yes
+
 .include <bsd.port.options.mk>
 
 .if defined(WITH_DVD_DEVICE)
@@ -71,5 +75,13 @@ pre-everything::
 post-patch:
 	@${REINPLACE_CMD} -e "s|'pylint-3'|'pylint-${PYTHON_VER}', 'pylint-3'|g" \
 		${WRKSRC}/meson.build
+	@${REINPLACE_CMD} -e "s|python3|${PYTHON_VERSION}|g" \
+		${WRKSRC}/meson_post_install.py \
+		${WRKSRC}/meson.build \
+		${WRKSRC}/src/plugins/totem-plugins-engine.c \
+		${WRKSRC}/src/plugins/pythonconsole/pythonconsole.plugin.in \
+		${WRKSRC}/src/plugins/samplepython/samplepython.plugin.in \
+		${WRKSRC}/src/plugins/dbusservice/dbusservice.plugin.in \
+		${WRKSRC}/src/plugins/opensubtitles/opensubtitles.plugin.in
 
 .include <bsd.port.mk>

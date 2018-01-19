@@ -20,9 +20,11 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 CONFLICTS=	gnome-utils-2.[0-9]*
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gnome localbase meson pkgconfig tar:xz
+USES=		gettext gnome localbase meson pkgconfig python:3.4+,build \
+		shebangfix tar:xz
 USE_GNOME=	cairo gdkpixbuf2 gtk30
 USE_XORG=	x11 xext
+SHEBANG_FILES=	build-aux/postinstall.py
 
 GLIB_SCHEMAS=	org.gnome.gnome-screenshot.gschema.xml
 
