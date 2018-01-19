@@ -40,7 +40,7 @@ RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
 PORTSCOUT=	limitw:1,even
 
 USES=		desktop-file-utils gettext gnome localbase meson \
-		pkgconfig python:3.4+ tar:xz
+		pkgconfig python:3.4+ shebangfix tar:xz
 USE_GNOME=	cairo gtk30 intlhack introspection libxml2 nautilus3 \
 		pygobject3
 USE_XORG=	x11 xcomposite xdamage xext xfixes xi xproto xrandr xtst ice sm
@@ -48,6 +48,7 @@ USE_GSTREAMER1=	core good bad soup ugly
 INSTALLS_ICONS=	yes
 USE_GL=		egl
 USE_LDCONFIG=	yes
+SHEBANG_FILES=	meson_compile_python.py
 
 GLIB_SCHEMAS=	org.gnome.totem.enums.xml \
 		org.gnome.totem.gschema.xml \
