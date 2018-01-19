@@ -77,7 +77,6 @@ post-patch:
 		${WRKSRC}/meson.build
 	@${REINPLACE_CMD} -e "s|python3|${PYTHON_VERSION}|g" \
 		${WRKSRC}/meson_post_install.py \
-		${WRKSRC}/meson.build \
 		${WRKSRC}/src/plugins/totem-plugins-engine.c \
 		${WRKSRC}/src/plugins/pythonconsole/pythonconsole.plugin.in \
 		${WRKSRC}/src/plugins/samplepython/samplepython.plugin.in \
