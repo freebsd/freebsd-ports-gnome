@@ -16,6 +16,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
 		${LOCALBASE}/libdata/pkgconfig/gnome-icon-theme.pc:misc/gnome-icon-theme \
 		pylint-${PYTHON_VER}:devel/pylint@${PY_FLAVOR} \
+		valac:lang/vala \
 		appstream-glib>=0:devel/appstream-glib \
 		itstool:textproc/itstool \
 		grilo-plugins>=0:net/grilo-plugins
