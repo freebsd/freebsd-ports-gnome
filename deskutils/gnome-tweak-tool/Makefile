@@ -23,7 +23,8 @@ USES=		gettext gnome localbase meson pkgconfig \
 USE_GNOME=	gtk30 pygobject3 nautilus3
 INSTALLS_ICONS=	yes
 SHEBANG_FILES=	gnome-tweak-tool \
-		gnome-tweak-tool-lid-inhibitor
+		gnome-tweak-tool-lid-inhibitor \
+		meson-postinstall.py
 
 # generates .py[co] files for installed modules
 # if that's not done, ${PYTHON_SITELIBDIR}/gps will be polluted
