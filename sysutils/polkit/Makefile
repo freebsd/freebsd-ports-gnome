@@ -12,6 +12,7 @@ COMMENT=	Framework for controlling access to system-wide components
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	gtkdoc-scan:textproc/gtk-doc
 LIB_DEPENDS=	libexpat.so:textproc/expat2 \
 		libmozjs-24.so:lang/spidermonkey24
 RUN_DEPENDS=	dbus-launch:devel/dbus
