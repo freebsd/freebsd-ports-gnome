@@ -209,6 +209,7 @@
     SUBDIR += curly
     SUBDIR += currtime
     SUBDIR += cw
+    SUBDIR += DTraceToolkit
     SUBDIR += daa2iso
     SUBDIR += dae
     SUBDIR += daemonize
@@ -419,6 +420,7 @@
     SUBDIR += gnome-system-monitor
     SUBDIR += gnome_subr
     SUBDIR += goaccess
+    SUBDIR += google-compute-engine-oslogin
     SUBDIR += goss
     SUBDIR += gpart
     SUBDIR += gpte
@@ -856,6 +858,7 @@
     SUBDIR += polkit-kde
     SUBDIR += polkit-qt
     SUBDIR += polkit-qt5
+    SUBDIR += pot
     SUBDIR += powerdxx
     SUBDIR += powerman
     SUBDIR += powermon
@@ -1121,6 +1124,7 @@
     SUBDIR += snap
     SUBDIR += snooze
     SUBDIR += snowlog
+    SUBDIR += socket
     SUBDIR += socklog
     SUBDIR += solaar
     SUBDIR += sortu

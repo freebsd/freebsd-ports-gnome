@@ -477,6 +477,7 @@
     SUBDIR += kcheckers
     SUBDIR += kdegames4
     SUBDIR += kdiamond
+    SUBDIR += keeperrl
     SUBDIR += kevedit
     SUBDIR += kfourinline
     SUBDIR += kgoldrunner
@@ -696,6 +697,7 @@
     SUBDIR += opencity
     SUBDIR += openclaw
     SUBDIR += openclonk
+    SUBDIR += opendungeons
     SUBDIR += opengfx
     SUBDIR += openglad
     SUBDIR += openjazz

@@ -30,6 +30,7 @@ CONFIGURE_ARGS+=--verbose --disable-tests \
 		--without-alsa --without-capi --without-dbus \
 		--without-gettext --without-gettextpo \
 		--without-gphoto --without-gsm --without-gstreamer \
+		--without-krb5 \
 		--without-opencl \
 		--without-osmesa \
 		--with-oss \
@@ -105,6 +106,11 @@ X11_LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 			libpng.so:graphics/png
 
 .include <bsd.port.pre.mk>
+
+# PR224863: clang 6.0.0 crashes
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200056 && ${ARCH} == amd64
+USE_GCC=	yes
+.endif
 
 .if ${ARCH} == amd64
 # Wine is composed of three parts:

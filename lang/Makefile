@@ -266,7 +266,7 @@
     SUBDIR += polyml
     SUBDIR += ptoc
     SUBDIR += pure
-    SUBDIR += py-clojure
+    SUBDIR += py-clojure_py
     SUBDIR += py-hy
     SUBDIR += py-mx-base
     SUBDIR += py-prolog
@@ -329,6 +329,7 @@
     SUBDIR += smalltalk
     SUBDIR += smlnj
     SUBDIR += snobol4
+    SUBDIR += solidity
     SUBDIR += spidermonkey17
     SUBDIR += spidermonkey170
     SUBDIR += spidermonkey185
