@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gcab
-PORTVERSION=	0.7
+PORTVERSION=	1.0
 CATEGORIES=	archivers gnome
 MASTER_SITES=	GNOME
 
@@ -11,10 +11,8 @@ COMMENT=	GObject library to create cabinet files
 
 BUILD_DEPENDS=	vala:lang/vala
 
-USES=		cpe gettext gmake libtool pathfix pkgconfig tar:xz
-GNU_CONFIGURE=	yes
-USE_GNOME=	glib20 intlhack introspection:build
+USES=		cpe gettext meson pkgconfig tar:xz
+USE_GNOME=	glib20 introspection:build
 CPE_VENDOR=	gnome
-INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>
