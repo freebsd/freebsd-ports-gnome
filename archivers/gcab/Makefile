@@ -9,7 +9,8 @@ MASTER_SITES=	GNOME
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GObject library to create cabinet files
 
-BUILD_DEPENDS=	vala:lang/vala
+BUILD_DEPENDS=	vala:lang/vala \
+		gtkdoc-scan:textproc/gtk-doc
 
 USES=		cpe gettext meson pkgconfig tar:xz
 USE_GNOME=	glib20 introspection:build
