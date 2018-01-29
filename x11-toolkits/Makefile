@@ -132,6 +132,7 @@
     SUBDIR += mygui-dummy
     SUBDIR += mygui-ogre
     SUBDIR += mygui-opengl
+    SUBDIR += nanogui
     SUBDIR += neXtaw
     SUBDIR += ntk
     SUBDIR += nucleo

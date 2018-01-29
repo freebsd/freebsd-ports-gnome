@@ -191,10 +191,10 @@
     SUBDIR += bcc
     SUBDIR += bcpp
     SUBDIR += bear
-    SUBDIR += beautifyphp
     SUBDIR += bennugd-core
     SUBDIR += bennugd-modules
     SUBDIR += bglibs
+    SUBDIR += bhyve-vm-goagent
     SUBDIR += bicyclerepair
     SUBDIR += bin86
     SUBDIR += bingrep
@@ -305,7 +305,6 @@
     SUBDIR += cl-trivial-gray-streams-sbcl
     SUBDIR += clanlib
     SUBDIR += clanlib1
-    SUBDIR += clanlib22
     SUBDIR += cld2
     SUBDIR += clewn
     SUBDIR += clig
@@ -477,6 +476,7 @@
     SUBDIR += e00compr
     SUBDIR += e2fsprogs-libss
     SUBDIR += easygit
+    SUBDIR += easyloggingpp
     SUBDIR += eblob
     SUBDIR += ebnf2yacc
     SUBDIR += ecgi
@@ -1429,7 +1429,6 @@
     SUBDIR += libhtp
     SUBDIR += libhyve-remote
     SUBDIR += libical
-    SUBDIR += libical-glib
     SUBDIR += libinotify
     SUBDIR += libiqxmlrpc
     SUBDIR += libisofs
@@ -1636,6 +1635,7 @@
     SUBDIR += llvm39
     SUBDIR += llvm40
     SUBDIR += llvm50
+    SUBDIR += llvm60
     SUBDIR += lm4tools
     SUBDIR += lmdbg
     SUBDIR += lndir
@@ -1771,11 +1771,6 @@
     SUBDIR += node-thrift
     SUBDIR += notify-sharp
     SUBDIR += noweb
-    SUBDIR += npm-amdefine
-    SUBDIR += npm-clean-css
-    SUBDIR += npm-commander
-    SUBDIR += npm-graceful-readlink
-    SUBDIR += npm-source-map
     SUBDIR += npth
     SUBDIR += nsgenbind
     SUBDIR += nspr
@@ -1999,6 +1994,7 @@
     SUBDIR += p5-CPAN-Reporter-Smoker
     SUBDIR += p5-CPAN-SQLite
     SUBDIR += p5-CPAN-Site
+    SUBDIR += p5-CPAN-Testers-Common-Client
     SUBDIR += p5-CPAN-Testers-Report
     SUBDIR += p5-CPAN-Uploader
     SUBDIR += p5-CPAN-YACSmoke
@@ -3575,6 +3571,7 @@
     SUBDIR += p5-Test-YAML-Meta
     SUBDIR += p5-Test-YAML-Valid
     SUBDIR += p5-Test-utf8
+    SUBDIR += p5-Test2-Harness
     SUBDIR += p5-Test2-Plugin-NoWarnings
     SUBDIR += p5-Test2-Suite
     SUBDIR += p5-Text-Levenshtein
@@ -3727,6 +3724,7 @@
     SUBDIR += p5-experimental
     SUBDIR += p5-forks
     SUBDIR += p5-github_creator
+    SUBDIR += p5-goto-file
     SUBDIR += p5-iCal-Parser
     SUBDIR += p5-indirect
     SUBDIR += p5-interface
@@ -4145,7 +4143,6 @@
     SUBDIR += py-ExtensionClass
     SUBDIR += py-Faker
     SUBDIR += py-IBMQuantumExperience
-    SUBDIR += py-InlineEgg
     SUBDIR += py-Jinja2
     SUBDIR += py-Jinja2-doc
     SUBDIR += py-Missing
@@ -4199,6 +4196,7 @@
     SUBDIR += py-PyExecJS
     SUBDIR += py-PyLD
     SUBDIR += py-PyODE
+    SUBDIR += py-QtPy
     SUBDIR += py-RPyC
     SUBDIR += py-Record
     SUBDIR += py-SymbolType
@@ -4703,7 +4701,6 @@
     SUBDIR += py-prompt_toolkit
     SUBDIR += py-protobuf
     SUBDIR += py-protocols
-    SUBDIR += py-protocols-devel
     SUBDIR += py-ptrace
     SUBDIR += py-ptvsd
     SUBDIR += py-pudb
@@ -4866,7 +4863,6 @@
     SUBDIR += py-ruamel.ordereddict
     SUBDIR += py-ruamel.yaml
     SUBDIR += py-rubymarshal
-    SUBDIR += py-ruledispatch
     SUBDIR += py-rwt
     SUBDIR += py-sanetime
     SUBDIR += py-sarge
@@ -5425,7 +5421,9 @@
     SUBDIR += rubygem-fluent-logger
     SUBDIR += rubygem-fog
     SUBDIR += rubygem-fog-core
+    SUBDIR += rubygem-fog-core1
     SUBDIR += rubygem-fog-json
+    SUBDIR += rubygem-fog-json102
     SUBDIR += rubygem-font-awesome-rails
     SUBDIR += rubygem-font-awesome-rails-rails4
     SUBDIR += rubygem-font-awesome-rails-rails5
@@ -5812,7 +5810,6 @@
     SUBDIR += rubygem-timers
     SUBDIR += rubygem-tins
     SUBDIR += rubygem-titlecase
-    SUBDIR += rubygem-toml
     SUBDIR += rubygem-tool
     SUBDIR += rubygem-transaction-simple
     SUBDIR += rubygem-travis
@@ -6062,6 +6059,7 @@
     SUBDIR += xtoolchain-llvm-devel
     SUBDIR += xtoolchain-llvm40
     SUBDIR += xtoolchain-llvm50
+    SUBDIR += xtoolchain-llvm60
     SUBDIR += xwpe
     SUBDIR += xxgdb
     SUBDIR += xxhash
