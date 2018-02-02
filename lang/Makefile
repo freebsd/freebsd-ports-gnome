@@ -293,13 +293,13 @@
     SUBDIR += racket-minimal
     SUBDIR += ratfor
     SUBDIR += referenceassemblies-pcl
+    SUBDIR += retro12
     SUBDIR += rexx-imc
     SUBDIR += rexx-regina
     SUBDIR += rexx-regutil
     SUBDIR += rexx-wrapper
     SUBDIR += rhino
     SUBDIR += rubinius
-    SUBDIR += ruby22
     SUBDIR += ruby23
     SUBDIR += ruby24
     SUBDIR += ruby25

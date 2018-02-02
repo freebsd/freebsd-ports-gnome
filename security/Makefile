@@ -1094,7 +1094,6 @@
     SUBDIR += rubygem-omniauth-shibboleth
     SUBDIR += rubygem-openssl
     SUBDIR += rubygem-openssl-ccm
-    SUBDIR += rubygem-openssl20
     SUBDIR += rubygem-openvas-omp
     SUBDIR += rubygem-origami
     SUBDIR += rubygem-pbkdf2-ruby
@@ -1188,6 +1187,7 @@
     SUBDIR += softether-devel
     SUBDIR += softhsm
     SUBDIR += softhsm2
+    SUBDIR += sops
     SUBDIR += spass
     SUBDIR += spike-proxy
     SUBDIR += spybye
