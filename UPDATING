@@ -5,6 +5,20 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20180208:
+  AFFECTS: users of mail/mailman*
+  AUTHOR: mandree@FreeBSD.org
+
+  In order to overcome complaints about mismatched checksums in
+  Mailman/Default.py, mailman now configures the DEFAULT_EMAIL_HOST
+  and DEFAULT_URL_HOST to "localhost" statically, and the rc script
+  will check this and refuse to start on next boot. 
+  Users must configured DEFAULT_EMAIL_HOST and DEFAULT_URLHOST in 
+  Mailman/mm_cfg.py properly.
+
+  A short example has been added to:
+  ${PREFIX}/local/share/doc/mailman/FreeBSD-post-install-notes.
+
 20180201:
   AFFECTS: users of editors/emacs* and all ports using Emacs via USES=emacs
   AUTHOR: jrm@FreeBSD.org
@@ -15,7 +29,7 @@ you update your ports collection, before attempting any port upgrades.
 
   Supported Flavors
   --------------------------------------------------------
-  editor/emacs:        full canna nox
+  editors/emacs:       full canna nox
   editors/emacs-devel: full nox
   ports using Emacs:   full canna nox devel_full devel_nox
   --------------------------------------------------------
@@ -33,8 +47,13 @@ you update your ports collection, before attempting any port upgrades.
      # pkg install emacs-devel_nox
 
   For those building their own packages, a flavor other than the default must be
-  specified.  For example, to build editors/emacs with the nox flavor, or to
-  build a port using Emacs with the devel_full flavor use
+  specified.  For example, to build the nox flavor of editors/emacs, or to build
+  the devel_full flavor of a port using Emacs, use
+
+     # poudriere bulk -j 11amd64 editors/emacs@nox
+     # poudriere bulk -j 11amd64 print/pdf-tools@devel_full
+
+  or
 
      # make FLAVOR=nox install
      # make FLAVOR=devel_full
