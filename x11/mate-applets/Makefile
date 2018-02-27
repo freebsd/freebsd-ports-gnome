@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-applets
-PORTVERSION=	1.18.1
+PORTVERSION=	1.20.0
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -48,8 +48,8 @@ GLIB_SCHEMAS=	org.mate.panel.applet.charpick.gschema.xml \
 		org.mate.panel.applet.timer.gschema.xml \
 		org.mate.stickynotes.gschema.xml
 
-SHEBANG_FILES=	invest-applet/invest/*.py \
-		invest-applet/invest/mate-invest-chart
+#SHEBANG_FILES=	invest-applet/invest/*.py \
+#		invest-applet/invest/mate-invest-chart
 
 .include <bsd.port.pre.mk>
 

@@ -32,7 +32,6 @@ share/applications/caja-home.desktop
 share/applications/caja.desktop
 share/applications/mate-network-scheme.desktop
 %%DATADIR%%/browser.xml
-%%DATADIR%%/caja-desktop-3.14.css
 %%DATADIR%%/caja-desktop.css
 %%DATADIR%%/caja-extras.placeholder
 %%DATADIR%%/caja-suggested.placeholder
@@ -146,6 +145,7 @@ share/locale/eu/LC_MESSAGES/caja.mo
 share/locale/fa/LC_MESSAGES/caja.mo
 share/locale/fi/LC_MESSAGES/caja.mo
 share/locale/fr/LC_MESSAGES/caja.mo
+share/locale/fr_CA/LC_MESSAGES/caja.mo
 share/locale/frp/LC_MESSAGES/caja.mo
 share/locale/fur/LC_MESSAGES/caja.mo
 share/locale/fy/LC_MESSAGES/caja.mo
@@ -166,6 +166,7 @@ share/locale/it/LC_MESSAGES/caja.mo
 share/locale/ja/LC_MESSAGES/caja.mo
 share/locale/ka/LC_MESSAGES/caja.mo
 share/locale/kk/LC_MESSAGES/caja.mo
+share/locale/km/LC_MESSAGES/caja.mo
 share/locale/kn/LC_MESSAGES/caja.mo
 share/locale/ko/LC_MESSAGES/caja.mo
 share/locale/ku/LC_MESSAGES/caja.mo
@@ -225,8 +226,20 @@ share/locale/zh_CN/LC_MESSAGES/caja.mo
 share/locale/zh_HK/LC_MESSAGES/caja.mo
 share/locale/zh_TW/LC_MESSAGES/caja.mo
 share/locale/zu/LC_MESSAGES/caja.mo
+share/mime/XMLnamespaces
+share/mime/aliases
 share/mime/application/x-mate-saved-search.xml
+share/mime/generic-icons
+share/mime/globs
+share/mime/globs2
+share/mime/icons
+share/mime/magic
+share/mime/mime.cache
 share/mime/packages/caja.xml
+share/mime/subclasses
+share/mime/treemagic
+share/mime/types
+share/mime/version
 share/pixmaps/caja/audio.svg
 share/pixmaps/caja/backgrounds.png
 share/pixmaps/caja/chit_frame.png
