@@ -38,12 +38,14 @@ BDB_DEFAULT?=		5
 FIREBIRD_DEFAULT?=	2.5
 # Possible values: flang (experimental), gfortran
 FORTRAN_DEFAULT?=	gfortran
-# Possible values: 3.0.0
+# Possible values: 3.0.4
 FPC_DEFAULT?=		3.0.4
 # Possible values: 4.9, 5, 6, 7
 GCC_DEFAULT?=		6
 # Possible values: 7, 8, 9, agpl
 GHOSTSCRIPT_DEFAULT?=	agpl
+# Possible values: 1.8.2
+LAZARUS_DEFAULT?=	1.8.2
 .if ${ARCH} == amd64
 # Possible values: c6, c6_64, c7
 LINUX_DEFAULT?=		c6_64
@@ -70,7 +72,7 @@ _PERL5_FROM_BIN!=	perl -e 'printf "%vd\n", $$^V;'
 _EXPORTED_VARS+=	_PERL5_FROM_BIN
 PERL5_DEFAULT:=		${_PERL5_FROM_BIN:R}
 .endif
-# Possible values: 9.2, 9.3, 9.4, 9.5, 9.6
+# Possible values: 9.3, 9.4, 9.5, 9.6, 10
 PGSQL_DEFAULT?=		9.5
 # Possible values: 5.6, 7.0, 7.1, 7.2
 PHP_DEFAULT?=		5.6

@@ -3,7 +3,7 @@
 
 PORTNAME=	nginx
 PORTVERSION=	1.12.2
-PORTREVISION?=	7
+PORTREVISION?=	10
 PORTEPOCH=	2
 CATEGORIES=	www
 MASTER_SITES=	http://nginx.org/download/
@@ -113,7 +113,7 @@ OPTIONS_DEFINE=	\
 	LUA \
 	MEMC \
 	MODSECURITY \
-	MODSECURITY_DEVEL \
+	MODSECURITY3 \
 	NAXSI \
 	PASSENGER \
 	POSTGRES \
@@ -228,7 +228,7 @@ LET_DESC=			3rd party let module
 LUA_DESC=			3rd party lua module
 MEMC_DESC=			3rd party memc (memcached) module
 MODSECURITY_DESC=		3rd party mod_security module
-MODSECURITY_DEVEL_DESC=		3rd party mod_security v3 module
+MODSECURITY3_DESC=		3rd party mod_security v3 module
 NAXSI_DESC=			3rd party naxsi module
 PASSENGER_DESC=			3rd party passenger module
 POSTGRES_DESC=			3rd party postgres module
@@ -701,7 +701,8 @@ CONFIGURE_ARGS+=--add-dynamic-module=${WRKSRC_nginx_tarantool}
 .else
 CONFIGURE_ARGS+=--add-module=${WRKSRC_nginx_tarantool}
 .endif
-EXTRA_PATCHES+= ${PATCHDIR}/extra-patch-ngx_http_tarantool-config
+EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-ngx_http_tarantool-config \
+		${PATCHDIR}/extra-patch-ngx_http_tarantool-src-tp_transcode.c
 .endif
 
 .if ${PORT_OPTIONS:MHTTP_SECURE_LINK}
@@ -893,9 +894,8 @@ LIB_DEPENDS+=	libapr-1.so:devel/apr1 \
 		libluajit-5.1.so:lang/luajit \
 		libpcre.so:devel/pcre \
 		libyajl.so:devel/yajl
-USE_APACHE=	22+
 USE_GNOME+=	libxml2
-USES+=		pkgconfig shebangfix
+USES+=		apache:2.2+ pkgconfig shebangfix
 MASTER_SITES+=	http://www.modsecurity.org/tarball/${NGINX_MODSECURITY_VERSION:S/RC/rc/}/:modsecurity
 DISTFILES+=	modsecurity-${NGINX_MODSECURITY_VERSION}.tar.gz:modsecurity
 CONFIGURE_ARGS+=--add-module=${WRKDIR}/modsecurity-${NGINX_MODSECURITY_VERSION}/nginx/modsecurity
@@ -903,8 +903,8 @@ EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-nginx-modsecurity-configure \
 		${PATCHDIR}/extra-patch-ngx_http_modsecurity.c
 .endif
 
-.if ${PORT_OPTIONS:MMODSECURITY_DEVEL}
-LIB_DEPENDS+=	libmodsecurity.so.3:www/mod_security-devel
+.if ${PORT_OPTIONS:MMODSECURITY3}
+LIB_DEPENDS+=	libmodsecurity.so:www/mod_security3
 GH_TUPLE+=	SpiderLabs:ModSecurity-nginx:c0ae166:modsec
 CONFIGURE_ARGS+=--add-module=${WRKSRC_modsec}
 .endif
@@ -927,7 +927,7 @@ CONFIGURE_ARGS+=--without-http_rewrite_module \
 .endif
 
 .if ${PORT_OPTIONS:MPASSENGER}
-PASSENGER_VERSION=	5.1.12
+PASSENGER_VERSION=	5.2.1
 MASTER_SITES+=	http://s3.amazonaws.com/phusion-passenger/releases/:passenger
 DISTFILES+=	passenger-${PASSENGER_VERSION}.tar.gz:passenger
 .if ${PORT_OPTIONS:MDSO}
@@ -1135,7 +1135,7 @@ CONFIGURE_ARGS+=--add-module=${WRKSRC_arrayvar}
 .endif
 
 .if ${PORT_OPTIONS:MBROTLI}
-NGINX_BROTLI_VERSION=	 47550a2
+NGINX_BROTLI_VERSION=	 8cd9dd5
 LIB_DEPENDS+=	libbrotlicommon.so:archivers/brotli
 GH_ACCOUNT+=	eustas:brotli
 GH_PROJECT+=	ngx_brotli:brotli
@@ -1172,8 +1172,6 @@ GROUPS?=${WWWGRP}
 
 .if defined(NGINX_OPENSSL)
 USES+=		ssl
-BROKEN_SSL=	openssl-devel
-BROKEN_SSL_REASON_openssl-devel=	undefined reference to SSLeay_version
 .endif
 
 pre-everything::

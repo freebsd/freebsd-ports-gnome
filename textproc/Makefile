@@ -18,6 +18,7 @@
     SUBDIR += R-cran-rmarkdown
     SUBDIR += R-cran-stringi
     SUBDIR += R-cran-stringr
+    SUBDIR += R-cran-utf8
     SUBDIR += R-cran-xml2
     SUBDIR += R-cran-xtable
     SUBDIR += R-cran-yaml
@@ -165,6 +166,7 @@
     SUBDIR += elasticsearch5
     SUBDIR += elasticsearch5-search-guard
     SUBDIR += elasticsearch5-x-pack
+    SUBDIR += elasticsearch6
     SUBDIR += elixir-earmark
     SUBDIR += elixir-ex_doc
     SUBDIR += elixir-funnel
@@ -386,6 +388,7 @@
     SUBDIR += kibana5
     SUBDIR += kibana5-search-guard
     SUBDIR += kibana5-x-pack
+    SUBDIR += kibana6
     SUBDIR += kiss-templates
     SUBDIR += kmfl-european-latin
     SUBDIR += kmfl-khmer
@@ -397,7 +400,7 @@
     SUBDIR += kmfl-varamozhi-malayalam
     SUBDIR += kmflcomp
     SUBDIR += kn-aspell
-    SUBDIR += kompare
+    SUBDIR += kompare-kde4
     SUBDIR += kreport
     SUBDIR += ku-aspell
     SUBDIR += ky-aspell
@@ -415,6 +418,7 @@
     SUBDIR += libcue
     SUBDIR += libe-book
     SUBDIR += libebml
+    SUBDIR += libepubgen
     SUBDIR += libextractor
     SUBDIR += libexttextcat
     SUBDIR += libflate
@@ -423,7 +427,7 @@
     SUBDIR += libguess
     SUBDIR += libkmfl
     SUBDIR += libkolabxml
-    SUBDIR += libkomparediff2
+    SUBDIR += libkomparediff2-kde4
     SUBDIR += liblingoteach
     SUBDIR += liblrdf
     SUBDIR += libmrss
@@ -432,6 +436,7 @@
     SUBDIR += libnxml
     SUBDIR += libodfgen01
     SUBDIR += libparsifal
+    SUBDIR += libqxp
     SUBDIR += librevenge
     SUBDIR += libsass
     SUBDIR += libsoldout
@@ -1261,6 +1266,7 @@
     SUBDIR += pure-csv
     SUBDIR += pure-xml
     SUBDIR += py-Chameleon
+    SUBDIR += py-CommonMark
     SUBDIR += py-MarkupSafe
     SUBDIR += py-Tempita
     SUBDIR += py-acora
@@ -1295,6 +1301,7 @@
     SUBDIR += py-et_xmlfile
     SUBDIR += py-excelerator
     SUBDIR += py-feedparser
+    SUBDIR += py-gambit-elasticsearch
     SUBDIR += py-genshi
     SUBDIR += py-guess-language
     SUBDIR += py-hexdump
@@ -1332,6 +1339,7 @@
     SUBDIR += py-pyes
     SUBDIR += py-pygments
     SUBDIR += py-pygtail
+    SUBDIR += py-pyhamcrest
     SUBDIR += py-pyhwp
     SUBDIR += py-pyphen
     SUBDIR += py-pyscss
@@ -1339,6 +1347,7 @@
     SUBDIR += py-pystache
     SUBDIR += py-pystemmer
     SUBDIR += py-python-augeas
+    SUBDIR += py-python-bidi
     SUBDIR += py-python-docx
     SUBDIR += py-python-gettext
     SUBDIR += py-python-slugify
@@ -1461,17 +1470,20 @@
     SUBDIR += rubygem-amatch
     SUBDIR += rubygem-asciidoctor
     SUBDIR += rubygem-asciidoctor-plantuml
+    SUBDIR += rubygem-asciidoctor-plantuml007
     SUBDIR += rubygem-autoprefixer-rails
     SUBDIR += rubygem-babel-source
     SUBDIR += rubygem-babel-transpiler
     SUBDIR += rubygem-babosa
     SUBDIR += rubygem-case_transform
     SUBDIR += rubygem-charlock_holmes
+    SUBDIR += rubygem-chewy
     SUBDIR += rubygem-citrus
     SUBDIR += rubygem-cld3
     SUBDIR += rubygem-coderay
     SUBDIR += rubygem-colorator
     SUBDIR += rubygem-colored
+    SUBDIR += rubygem-commonmarker
     SUBDIR += rubygem-compass
     SUBDIR += rubygem-compass-core
     SUBDIR += rubygem-compass-import-once
@@ -1481,12 +1493,15 @@
     SUBDIR += rubygem-cssmin
     SUBDIR += rubygem-diff-lcs
     SUBDIR += rubygem-diffy
+    SUBDIR += rubygem-diffy31
     SUBDIR += rubygem-docdiff
     SUBDIR += rubygem-elasticsearch
     SUBDIR += rubygem-elasticsearch-api
+    SUBDIR += rubygem-elasticsearch-dsl
     SUBDIR += rubygem-elasticsearch-transport
     SUBDIR += rubygem-emot
     SUBDIR += rubygem-escape_utils
+    SUBDIR += rubygem-escape_utils11
     SUBDIR += rubygem-escape_utils-rails4
     SUBDIR += rubygem-ezamar
     SUBDIR += rubygem-fast_xs
@@ -1496,6 +1511,7 @@
     SUBDIR += rubygem-gemoji
     SUBDIR += rubygem-gherkin
     SUBDIR += rubygem-github-linguist
+    SUBDIR += rubygem-github-linguist47
     SUBDIR += rubygem-github-markup
     SUBDIR += rubygem-gitlab-grit
     SUBDIR += rubygem-gitlab-linguist
@@ -1529,6 +1545,7 @@
     SUBDIR += rubygem-liquid-tag-parser
     SUBDIR += rubygem-loggability
     SUBDIR += rubygem-loofah
+    SUBDIR += rubygem-loofah20
     SUBDIR += rubygem-ltsv
     SUBDIR += rubygem-markaby
     SUBDIR += rubygem-multi_xml
@@ -1567,11 +1584,12 @@
     SUBDIR += rubygem-rubypants
     SUBDIR += rubygem-rugments
     SUBDIR += rubygem-sanitize
+    SUBDIR += rubygem-sanitize20
     SUBDIR += rubygem-sass
     SUBDIR += rubygem-sass-listen
+    SUBDIR += rubygem-sass-rails-rails4
     SUBDIR += rubygem-sass-rails-rails5
     SUBDIR += rubygem-sass-rails-rails50
-    SUBDIR += rubygem-sass-rails5
     SUBDIR += rubygem-sass32
     SUBDIR += rubygem-sass34
     SUBDIR += rubygem-sax-machine
@@ -1585,7 +1603,6 @@
     SUBDIR += rubygem-termcolor
     SUBDIR += rubygem-terminal-table
     SUBDIR += rubygem-text
-    SUBDIR += rubygem-tidy
     SUBDIR += rubygem-tidy_ffi
     SUBDIR += rubygem-toml
     SUBDIR += rubygem-tomlrb
@@ -1595,8 +1612,10 @@
     SUBDIR += rubygem-unf
     SUBDIR += rubygem-unf_ext
     SUBDIR += rubygem-version_sorter
+    SUBDIR += rubygem-version_sorter21
     SUBDIR += rubygem-whatlanguage
     SUBDIR += rubygem-wikicloth
+    SUBDIR += rubygem-wikicloth081
     SUBDIR += rubygem-xml-simple
     SUBDIR += rubygem-ya2yaml
     SUBDIR += rubygem-yard

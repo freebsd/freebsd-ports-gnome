@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	libvirt
-PORTVERSION=	4.0.0
+PORTVERSION=	4.1.0
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	http://libvirt.org/sources/ \
 		ftp://libvirt.org/libvirt/
@@ -104,7 +105,8 @@ CPE_VENDOR=	redhat
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
-SHLIB_VER=	0.4000.0
+TEST_TARGET=	check
+SHLIB_VER=	0.4001.0
 PLIST_SUB+=	PORTVERSION="-${PORTVERSION}" \
 		SHLIB_VER=${SHLIB_VER}
 PORTDOCS=	*
@@ -174,9 +176,6 @@ post-install:
 		${MV} ${STAGEDIR}${ETCDIR}/${file} \
 		${STAGEDIR}${ETCDIR}/${file}.sample; fi
 .endfor
-
-regression-test: build
-	@cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} check
 
 .include <bsd.port.pre.mk>
 

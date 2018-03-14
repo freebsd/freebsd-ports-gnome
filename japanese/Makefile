@@ -141,7 +141,7 @@
     SUBDIR += kde4-l10n
     SUBDIR += kdrill
     SUBDIR += kinput2
-    SUBDIR += kiten
+    SUBDIR += kiten-kde4
     SUBDIR += kon2-14dot
     SUBDIR += kon2-16dot
     SUBDIR += kpcal
@@ -169,7 +169,6 @@
     SUBDIR += mg
     SUBDIR += mh
     SUBDIR += migemo
-    SUBDIR += migemo-emacs
     SUBDIR += migemo.el
     SUBDIR += mime_pls
     SUBDIR += ming

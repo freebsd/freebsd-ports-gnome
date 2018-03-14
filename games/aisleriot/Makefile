@@ -34,4 +34,5 @@ GCONF_SCHEMAS=	aisleriot.schemas
 GLIB_SCHEMAS=	org.gnome.Patience.WindowState.gschema.xml
 
 INSTALLS_ICONS=	yes
+
 .include <bsd.port.mk>

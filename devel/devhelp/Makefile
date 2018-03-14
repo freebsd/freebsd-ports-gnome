@@ -15,13 +15,15 @@ LICENSE_FILES=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3
-		
+
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c++11-lib gettext gmake gnome libtool localbase \
 		pathfix pkgconfig python:3.3+,build tar:xz
 USE_GNOME=	cairo gtk30 introspection
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+=	--disable-Werror
+
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip

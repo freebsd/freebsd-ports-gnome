@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	citra
-PORTVERSION=	s20180203
+PORTVERSION=	s20180311
 PORTREVISION?=	0
 CATEGORIES=	emulators
 
@@ -18,7 +18,6 @@ LICENSE_FILE_MIT=	${WRKSRC}/externals/enet/LICENSE
 LICENSE_FILE_LGPL21+ =	${_LICENSE_STORE}/LGPL21 # soundtouch
 
 BUILD_DEPENDS=	boost-libs>=1.63:devel/boost-libs
-LIB_DEPENDS=	libpng.so:graphics/png
 
 # backend_x64/hostloc.h:93:8: fatal error: no type named 'Reg64' in namespace 'Xbyak'
 ONLY_FOR_ARCHS=	amd64
@@ -26,19 +25,21 @@ ONLY_FOR_ARCHS_REASON=	https://github.com/MerryMage/dynarmic/issues/35
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	citra-emu
-GH_TAGNAME=	587450cd
+GH_TAGNAME=	6c63bb11
 GH_TUPLE=	citra-emu:ext-soundtouch:019d208:soundtouch/externals/soundtouch \
 		MerryMage:dynarmic:d1d4705:dynarmic/externals/dynarmic \
 		benhoyt:inih:r40:inih/externals/inih/inih \
 		catchorg:Catch2:v2.1.1:catch/externals/catch \
-		fmtlib:fmt:4.0.0:fmt/externals/fmt \
+		fmtlib:fmt:4.0.0-435-g4d35f94:fmt/externals/fmt \
 		herumi:xbyak:v5.53-1-gc5da377:xbyak/externals/xbyak \
 		lsalzman:enet:39a72ab:enet/externals/enet \
 		neobrain:nihstro:fd69de1:nihstro/externals/nihstro \
-		weidai11:cryptopp:CRYPTOPP_5_6_5-610-g24bc2b8:cryptopp/externals/cryptopp/cryptopp
+		weidai11:cryptopp:CRYPTOPP_6_1_0:cryptopp/externals/cryptopp/cryptopp
 
 USES=		cmake:outsource compiler:c++14-lang iconv localbase:ldflags
 USE_SDL=	sdl2
+EXTRA_PATCHES+=	${EXTRA_PATCHES_${OPSYS}_${OSREL:R}}
+EXTRA_PATCHES_FreeBSD_10=	${PATCHDIR}/extra-patch-c++14
 CXXFLAGS+=	-D_GLIBCXX_USE_C99 -D_GLIBCXX_USE_C99_MATH_TR1 \
 		-D_DECLARE_C99_LDBL_MATH # XXX ports/193528
 
@@ -55,12 +56,14 @@ CURL_CMAKE_BOOL=ENABLE_WEB_SERVICE USE_SYSTEM_CURL
 
 SDL_CMAKE_BOOL=	ENABLE_SDL2
 SDL_PLIST_FILES=bin/${PORTNAME} \
+		bin/${PORTNAME}-room \
 		man/man6/${PORTNAME}.6.gz
 
 QT5_USES=	desktop-file-utils shared-mime-info
 QT5_USE=	QT5=qmake_build,buildtools_build,concurrent_build,core,gui,opengl,widgets
 QT5_CMAKE_BOOL=	ENABLE_QT
 QT5_PLIST_FILES=bin/${PORTNAME}-qt \
+		"@comment bin/${PORTNAME}-room" \
 		man/man6/${PORTNAME}-qt.6.gz \
 		share/applications/${PORTNAME}.desktop \
 		share/icons/hicolor/scalable/apps/${PORTNAME}.svg \

@@ -5,6 +5,117 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20180310:
+  AFFECTS: users of security/openssl
+  AUTHOR: brnrd@FreeBSD.org
+
+  The EXPCIPHERS option has been removed from the security/openssl port.
+  Use the security/openssl-unsafe port if you require this feature.
+
+20180309:
+  AFFECTS: users of net/unison
+  AUTHOR: madpilot@FreeBSD.org
+
+  Unison has been upgraded to version 2.51, which uses a different
+  wire protocol than 2.48 did.  In order to support synchronization
+  with other computers where Unison is still at version 2.48, a new
+  port net/unison248 has been created.  It provides unison248 and,
+  for the x11 flavor, also unison248-text.  This unison248 port can
+  be installed in parallel with the existing net/unison port.
+
+20180308:
+  AFFECTS: */php* */pecl* */pear*
+  AUTHOR: mat@FreeBSD.org
+
+  PHP extensions and modules have been flavored.
+
+  People using Poudriere 3.2+ and binary packages do not have to do anything.
+
+  PHP modules and extensions may have change their names from php5- or php7- to
+  fully versionned phpXY-.
+  PECL extensions and PEAR modules package names have changed from pecl- and
+  pear- to phpXX-pecl and phpXX-pear-.
+
+  For other people, to build the PHP 7.2 version of, for example,
+  databases/php-memcached, you need to run:
+
+    # make FLAVOR=php72 install
+
+20180220:
+  AFFECTS: users of www/nextcloud
+  AUTHOR: brnrd@FreeBSD.org
+
+  The file and directory permissions of Nextcloud have changed. Write
+  permissions have been removed from all directories except `data' and
+  `config'. For the updater to work, the app store of your installation
+  must be disabled. To disable the app-store prior to updating the
+  package:
+
+  # cd /usr/local/www/nextcloud
+  # su -m www -c "php ./occ config:system:set appstoreenabled --value=false --type=boolean"
+
+  If you've already updated your nextcloud package, you must manually edit
+  the configuration of nextcloud (config/config.php) and add
+
+  	'appstoreenabled' => false,
+
+  to the CONFIG array before the updater will run.
+
+20180214
+  AFFECTS: users of lang/ruby23
+  AUTHOR: swills@FreeBSD.org
+
+  The default ruby version has been updated from 2.3 to 2.4.
+
+  If you compile your own ports you may keep 2.3 as the default version by
+  adding the following lines to your /etc/make.conf file:
+
+  #
+  # Keep ruby 2.3 as default version
+  #
+  DEFAULT_VERSIONS+=ruby=2.3
+
+  If you wish to update to the new default version, you need to first stop any
+  software that uses ruby. Then, you will need to follow these steps, depending
+  upon how you manage your system.
+
+  If you use pkgng, simply upgrade:
+  # pkg upgrade
+
+  If you use portmaster, install new ruby, then rebuild all ports that depend
+  on ruby:
+  # portmaster -o lang/ruby24 lang/ruby23
+  # portmaster -R -r ruby-2.4
+
+  If you use portupgrade, install new ruby, then rebuild all ports that depend
+  on ruby:
+
+  # pkg delete -f ruby portupgrade
+  # make -C /usr/ports/ports-mgmt/portupgrade install clean
+  # pkg set -o lang/ruby23:lang/ruby24
+  # portupgrade -x ruby-2.4.\* -fr lang/ruby24
+
+20180209:
+  AFFECTS: users of japanese/lookup
+  AUTHOR: yasu@utahime.org
+
+  japanese/lookup is update to 1.99.96.20130920. This version is not
+  compatible with previous version 1.4.1 and incompatibility includes
+  how to setup. See info of Lookup for detail.
+
+20180209:
+  AFFECTS: users of net-mgmt/pmacct
+  AUTHOR: pi@FreeBSD.org
+
+  To allow separete pmacctd instances per interface, use
+
+    pmacctd_enable="YES"
+    pmacctd_interfaces="re1 re2"
+
+  in /etc/rc.conf. The path to the config files will be
+
+    /usr/local/etc/pmacct/<interface>
+
 20180208:
   AFFECTS: users of mail/mailman*
   AUTHOR: mandree@FreeBSD.org
@@ -12,12 +123,19 @@ you update your ports collection, before attempting any port upgrades.
   In order to overcome complaints about mismatched checksums in
   Mailman/Default.py, mailman now configures the DEFAULT_EMAIL_HOST
   and DEFAULT_URL_HOST to "localhost" statically, and the rc script
-  will check this and refuse to start on next boot. 
-  Users must configured DEFAULT_EMAIL_HOST and DEFAULT_URLHOST in 
-  Mailman/mm_cfg.py properly.
+  will check this and refuse to start on next boot.
+
+  Users must configure DEFAULT_EMAIL_HOST and DEFAULT_URL_HOST in
+  Mailman/mm_cfg.py properly and add this line below:
+  add_virtualhost(DEFAULT_URL_HOST, DEFAULT_EMAIL_HOST)
 
   A short example has been added to:
   ${PREFIX}/local/share/doc/mailman/FreeBSD-post-install-notes.
+
+  As of 2.1.26_3, the post-install script will add back the prior
+  default settings to mm_cfg.py (instead of Defaults.py) if no
+  virtual hosts have been defined, to cover the normal use cases
+  and initial installation.
 
 20180201:
   AFFECTS: users of editors/emacs* and all ports using Emacs via USES=emacs
@@ -58,8 +176,16 @@ you update your ports collection, before attempting any port upgrades.
      # make FLAVOR=nox install
      # make FLAVOR=devel_full
 
+  An alternative to the default flavor, full, for editors/emacs and
+  editors/emacs-devel can be set in make.conf.  For example, to specify nox as
+  the default flavor for both ports, use
+
+     .if ${.CURDIR:M*/editors/emacs*}
+     FLAVOR?=nox
+     .endif
+
   For ports using Emacs, an alternative to the default flavor, full,
-  can be set in make.conf.  For example, to automatically depend on
+  can be also be set in make.conf.  For example, to automatically depend on
   emacs-nox, use
 
      DEFAULT_VERSIONS+=emacs=nox

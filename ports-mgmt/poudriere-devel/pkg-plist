@@ -24,6 +24,18 @@ libexec/poudriere/timeout
 libexec/poudriere/timestamp
 libexec/poudriere/tsort
 man/man8/poudriere.8.gz
+man/man8/poudriere-bulk.8.gz
+man/man8/poudriere-distclean.8.gz
+man/man8/poudriere-image.8.gz
+man/man8/poudriere-jail.8.gz
+man/man8/poudriere-logclean.8.gz
+man/man8/poudriere-options.8.gz
+man/man8/poudriere-pkgclean.8.gz
+man/man8/poudriere-ports.8.gz
+man/man8/poudriere-queue.8.gz
+man/man8/poudriere-status.8.gz
+man/man8/poudriere-testport.8.gz
+man/man8/poudriere-version.8.gz
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/httpd.conf.sample
 %%PORTEXAMPLES%%%%EXAMPLESDIR%%/nginx.conf.sample
 %%DATADIR%%/MANIFESTS
@@ -40,6 +52,7 @@ man/man8/poudriere.8.gz
 %%DATADIR%%/common.sh
 %%DATADIR%%/daemon.sh
 %%DATADIR%%/distclean.sh
+%%DATADIR%%/foreachport.sh
 %%DATADIR%%/html/assets/DataTables-1.10.0/css/jquery.dataTables.min.css
 %%DATADIR%%/html/assets/DataTables-1.10.0/css/jquery.dataTables_themeroller.min.css
 %%DATADIR%%/html/assets/DataTables-1.10.0/images/back_disabled.png

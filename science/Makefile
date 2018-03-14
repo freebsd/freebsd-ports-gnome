@@ -78,7 +78,7 @@
     SUBDIR += iboview
     SUBDIR += isaac-cfd
     SUBDIR += jstrack
-    SUBDIR += kalzium
+    SUBDIR += kalzium-kde4
     SUBDIR += kst2
     SUBDIR += lamprop
     SUBDIR += libaec
@@ -182,6 +182,7 @@
     SUBDIR += py-scipy
     SUBDIR += py-scoria
     SUBDIR += py-tensorflow
+    SUBDIR += py-veusz
     SUBDIR += py-ws2300
     SUBDIR += pybrain
     SUBDIR += pycdf
@@ -200,13 +201,12 @@
     SUBDIR += simlib
     SUBDIR += simsmith
     SUBDIR += siril
-    SUBDIR += step
+    SUBDIR += step-kde4
     SUBDIR += svmlight
     SUBDIR += szip
     SUBDIR += tfel
     SUBDIR += udunits
     SUBDIR += v_sim
-    SUBDIR += veusz
     SUBDIR += vmd
     SUBDIR += voro++
     SUBDIR += xfce4-equake-plugin

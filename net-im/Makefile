@@ -127,8 +127,9 @@
     SUBDIR += proxy65
     SUBDIR += psi
     SUBDIR += psimedia
-    SUBDIR += purple-hangouts
     SUBDIR += purple-discord
+    SUBDIR += purple-facebook
+    SUBDIR += purple-hangouts
     SUBDIR += py-fbmq
     SUBDIR += py-jabber
     SUBDIR += py-jabberbot
@@ -158,6 +159,7 @@
     SUBDIR += ring-libclient
     SUBDIR += rubygem-earthquake
     SUBDIR += rubygem-hipchat
+    SUBDIR += rubygem-hipchat15
     SUBDIR += rubygem-lita
     SUBDIR += rubygem-termtter
     SUBDIR += rubygem-tinder
@@ -167,6 +169,7 @@
     SUBDIR += skype
     SUBDIR += skype-devel
     SUBDIR += skype4
+    SUBDIR += slack-term
     SUBDIR += teamwords
     SUBDIR += telegram
     SUBDIR += telegram-desktop
@@ -192,7 +195,9 @@
     SUBDIR += tkabber
     SUBDIR += tkabber-plugins
     SUBDIR += tox
+    SUBDIR += tox12
     SUBDIR += toxic
+    SUBDIR += toxins
     SUBDIR += turpial
     SUBDIR += twirssi
     SUBDIR += twitmail

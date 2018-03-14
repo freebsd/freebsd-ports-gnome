@@ -3,7 +3,7 @@
 
 PORTNAME?=		${SAMBA4_BASENAME}44
 PORTVERSION?=		${SAMBA4_VERSION}
-PORTREVISION?=		0
+PORTREVISION?=		2
 CATEGORIES?=		net
 MASTER_SITES=		SAMBA/samba/stable SAMBA/samba/rc
 DISTNAME=		${SAMBA4_DISTNAME}
@@ -13,9 +13,12 @@ COMMENT?=		Free SMB/CIFS and AD/DC server and client for Unix
 
 LICENSE=		GPLv3
 
+DEPRECATED=		yes
+EXPIRATION_DATE=	2017-09-21
+
 CONFLICTS?=		*samba3[2-6]-3.* samba4-4.0.* samba4[1-35-9]-4.* p5-Parse-Pidl-4.*
 
-#EXTRA_PATCHES=		${PATCHDIR}/extra-patch-security:-p1
+EXTRA_PATCHES=		${PATCHDIR}/samba-4.4.16-CVE-2018-1057.patch:-p1
 
 SAMBA4_BASENAME=	samba
 SAMBA4_PORTNAME=	${SAMBA4_BASENAME}4
@@ -61,7 +64,7 @@ CONFIGURE_ARGS+=	--mandir="${MANPREFIX}/man" \
 # Flags
 CONFIGURE_ENV+=		PTHREAD_LDFLAGS="-lpthread"
 
-USES=			cpe compiler waf pkgconfig perl5 python:2 \
+USES=			cpe compiler waf pkgconfig perl5 python:2.7 \
 			readline iconv shebangfix
 USE_PERL5=		build
 USE_LDCONFIG=		${SAMBA4_LIBDIR}

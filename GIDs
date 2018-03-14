@@ -168,7 +168,7 @@ rtpproxy:*:222:
 postgrey:*:225:
 sqlgrey:*:226:
 _hfm:*:227:
-# free: 228
+osrm:*:228:
 kismet:*:229:
 # free: 230
 # free: 231
@@ -543,7 +543,7 @@ avahi-autoipd:*:588:
 _xsi:*:600:
 _tss:*:601:
 _pkcs11:*:602:
-# free: 603
+_acme:*:603:
 # free: 604
 # free: 605
 # free: 606

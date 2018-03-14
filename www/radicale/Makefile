@@ -2,14 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=		radicale
-PORTVERSION=		1.1.2
-PORTREVISION=		1
+PORTVERSION=		1.1.6
 CATEGORIES=		www python
 MASTER_SITES=		CHEESESHOP
 PKGNAMEPREFIX=		${PYTHON_PKGNAMEPREFIX}
 DISTNAME=		Radicale-${PORTVERSION}
 
-MAINTAINER=		feld@FreeBSD.org
+MAINTAINER=		ports@FreeBSD.org
 COMMENT=		Python based CalDAV/CardDAV server
 
 LICENSE=		GPLv3
@@ -29,7 +28,7 @@ HTTP_DESC=		HTTP authentication support
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MHTTP} || ${PORT_OPTIONS:MLDAP}
-USES+=		python:2
+USES+=		python:2.7
 .else
 USES+=		python
 .endif
