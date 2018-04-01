@@ -10,10 +10,10 @@ COMMENT=	PECL extension of stomp client
 LICENSE=	PHP301
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-PORTSCOUT=	limit:^2.*
-
 USES=		php:pecl
 IGNORE_WITH_PHP=	56
 CONFLICTS=	pecl-stomp-1*
+
+PORTSCOUT=	limit:^2.*
 
 .include <bsd.port.mk>

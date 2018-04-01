@@ -28,9 +28,11 @@ stop_postcmd="%%PREFIX%%/sbin/sv exit ${runsvdir_path}/*"
 
 runsvdir_start()
 {
+	/bin/mkdir -p /var/run/runit/runsvdir
+	/bin/ln -sF %%RUNITDIR%%/runsvdir/current /var/run/runit/runsvdir/current
 	/bin/test -d ${runsvdir_path} || /bin/mkdir -p ${runsvdir_path}
 	/usr/bin/env -i \
-	PATH=/command:%%PREFIX%%/sbin:%%PREFIX%%/bin:/sbin:/bin:/usr/sbin:/usr/bin \
+	PATH=/bin:/sbin:/usr/bin:/usr/sbin:%%PREFIX%%/bin:%%PREFIX%%/sbin:/rescue \
 	/usr/sbin/daemon -c -f \
 	${command} ${runsvdir_path}
 }

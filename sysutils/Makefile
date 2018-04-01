@@ -6,6 +6,7 @@
     SUBDIR += 3dm
     SUBDIR += 44bsd-more
     SUBDIR += 915resolution
+    SUBDIR += DTraceToolkit
     SUBDIR += LPRng
     SUBDIR += LPRngTool
     SUBDIR += UEFITool
@@ -39,6 +40,7 @@
     SUBDIR += ansible
     SUBDIR += ansible1
     SUBDIR += ansible23
+    SUBDIR += ansible24
     SUBDIR += anvil
     SUBDIR += apachetop
     SUBDIR += apcpwr
@@ -146,6 +148,7 @@
     SUBDIR += cfengine-masterfiles37
     SUBDIR += cfengine-masterfiles38
     SUBDIR += cfengine-masterfiles39
+    SUBDIR += cfengine-masterfiles-devel
     SUBDIR += cfengine22
     SUBDIR += cfengine310
     SUBDIR += cfengine311
@@ -157,6 +160,7 @@
     SUBDIR += cfengine37
     SUBDIR += cfengine38
     SUBDIR += cfengine39
+    SUBDIR += cfengine-devel
     SUBDIR += chgrep
     SUBDIR += chyves
     SUBDIR += cinnamon-control-center
@@ -189,6 +193,7 @@
     SUBDIR += consolekit2
     SUBDIR += consul
     SUBDIR += consul-alerts
+    SUBDIR += consul-replicate
     SUBDIR += consul_exporter
     SUBDIR += container-diff
     SUBDIR += contractor
@@ -211,7 +216,6 @@
     SUBDIR += curly
     SUBDIR += currtime
     SUBDIR += cw
-    SUBDIR += DTraceToolkit
     SUBDIR += daa2iso
     SUBDIR += dae
     SUBDIR += daemonize
@@ -314,6 +318,7 @@
     SUBDIR += file
     SUBDIR += filedupe
     SUBDIR += filelight
+    SUBDIR += filelight-kde4
     SUBDIR += fileprune
     SUBDIR += fileschanged
     SUBDIR += filetype
@@ -452,6 +457,7 @@
     SUBDIR += hal
     SUBDIR += hal-info
     SUBDIR += hardlink
+    SUBDIR += hare
     SUBDIR += hatop
     SUBDIR += hdrecover
     SUBDIR += healthd
@@ -582,6 +588,7 @@
     SUBDIR += lmon
     SUBDIR += lnav
     SUBDIR += lockfile-progs
+    SUBDIR += log-courier
     SUBDIR += log_analysis
     SUBDIR += logrotate
     SUBDIR += logstalgia
@@ -924,8 +931,10 @@
     SUBDIR += py-gmailfs-fuse
     SUBDIR += py-google-compute-engine
     SUBDIR += py-halite
+    SUBDIR += py-hared
     SUBDIR += py-honcho
     SUBDIR += py-iowait
+    SUBDIR += py-mqttwarn
     SUBDIR += py-nagiosplugin
     SUBDIR += py-nomad
     SUBDIR += py-pkginfo
@@ -953,7 +962,6 @@
     SUBDIR += py-tmuxp
     SUBDIR += py-uptime
     SUBDIR += py-zdaemon
-    SUBDIR += py-zfs
     SUBDIR += pydf
     SUBDIR += qchroot
     SUBDIR += qdirstat
@@ -1125,6 +1133,7 @@
     SUBDIR += shmcat
     SUBDIR += showbeastie
     SUBDIR += siegfried
+    SUBDIR += signon-plugin-oauth2
     SUBDIR += signon-qt5
     SUBDIR += signon-ui
     SUBDIR += skill
@@ -1212,6 +1221,7 @@
     SUBDIR += tmpwatch
     SUBDIR += tmux
     SUBDIR += tmux-mem-cpu-load
+    SUBDIR += tmux23
     SUBDIR += topless
     SUBDIR += torque
     SUBDIR += toshctl

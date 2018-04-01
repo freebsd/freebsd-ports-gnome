@@ -13,6 +13,12 @@ COMMENT=	Wavetable LV2 plugin synth targeted at the electronic/dubstep genre
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BROKEN_aarch64=		fails to compile: unknown FP unit 'sse'
+BROKEN_armv6=		fails to compile: unknown FP unit 'sse'
+BROKEN_armv7=		fails to compile: unknown FP unit 'sse'
+BROKEN_mips64=		fails to compile: unknown FP unit 'sse'
+BROKEN_powerpc64=	fails to compile: unrecognized command line option "-msse2"
+
 BUILD_DEPENDS=	lv2>0:audio/lv2 \
 		${LOCALBASE}/include/boost/circular_buffer.hpp:devel/boost-libs
 LIB_DEPENDS=	libntk.so:x11-toolkits/ntk

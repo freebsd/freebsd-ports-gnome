@@ -31,6 +31,8 @@
     SUBDIR += cacti-spine
     SUBDIR += cacti88
     SUBDIR += cacti88-spine
+    SUBDIR += carbon-relay-ng
+    SUBDIR += carbonzipper
     SUBDIR += ccnet-client
     SUBDIR += ccnet-server
     SUBDIR += cdpd
@@ -41,6 +43,7 @@
     SUBDIR += check_logfiles
     SUBDIR += check_multi
     SUBDIR += check_mysql_health
+    SUBDIR += check_ssl_cert
     SUBDIR += chillispot
     SUBDIR += choparp
     SUBDIR += cidr
@@ -76,6 +79,7 @@
     SUBDIR += gnu-ipcalc
     SUBDIR += grepcidr
     SUBDIR += grepip
+    SUBDIR += grok_exporter
     SUBDIR += gsnmp
     SUBDIR += guifi-snpservices
     SUBDIR += hastmon
@@ -264,6 +268,7 @@
     SUBDIR += p5-SNMP-Simple
     SUBDIR += p5-SNMP-Trapinfo
     SUBDIR += p5-SNMP-Util
+    SUBDIR += p5-RDR-Collector
     SUBDIR += p5-SNMP_Session
     SUBDIR += p5-Telnet-Cisco
     SUBDIR += p5-Tie-NetAddr-IP
@@ -300,6 +305,7 @@
     SUBDIR += prometheus-collectd-exporter
     SUBDIR += pushgateway
     SUBDIR += py-adal
+    SUBDIR += py-ciscoconfparse
     SUBDIR += py-dnsdiag
     SUBDIR += py-ipcalc
     SUBDIR += py-ipy

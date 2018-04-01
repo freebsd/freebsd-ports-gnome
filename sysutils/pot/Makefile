@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	pot
-PORTVERSION=	0.4.0
+PORTVERSION=	0.5.0
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	pizzamig@FreeBSD.org
@@ -15,6 +16,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	pizzamig
 NO_ARCH=	yes
 NO_BUILD=	yes
+USE_RC_SUBR=	pot
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/bin/pot \

@@ -31,7 +31,7 @@
     SUBDIR += josm
     SUBDIR += kstars-kde4
     SUBDIR += libgal
-    SUBDIR += libkgeomap
+    SUBDIR += libkgeomap-kde4
     SUBDIR += libnova
     SUBDIR += libosmium
     SUBDIR += libosmpbf
@@ -96,6 +96,7 @@
     SUBDIR += routino
     SUBDIR += saoimage
     SUBDIR += sextractor
+    SUBDIR += siril
     SUBDIR += sscalc
     SUBDIR += stardates
     SUBDIR += starplot

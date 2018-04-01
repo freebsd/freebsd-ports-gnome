@@ -5660,7 +5660,6 @@ devel/sgl||2014-03-16|Has expired: never progressed beyond incomplete graduate p
 palm/jpilot-db||2014-03-16|Has expired
 databases/ludia||2014-03-18|Has expired: Broken since June 2013
 lang/schemetoc||2014-03-18|Has expired: Broken since July 2013
-sysutils/cfengine-devel||2014-03-19|Has expired: Broken since June 2013
 sysutils/py-salt-cloud|sysutils/py-salt|2014-03-19|Removed:py-salt-cloud is now part of py-salt
 devel/py-pyzmq|net/py-pyzmq|2014-03-22|Move to a more suitable category with other ZeroMQ ports
 audio/p5-Xmms|multimedia/audacious|2014-03-23|Has expired: Abandonware, please consider using multimedia/audacious instead
@@ -9080,6 +9079,7 @@ x11/rsibreak-kde4|x11/rsibreak|2017-03-11|Renamed to drop the -kde4 suffix
 textproc/ack|textproc/p5-ack|2017-03-12|Rename to match our perl naming
 misc/p5-Geo-Coder-Geocoder-US||2017-03-12|Has expired: http://geocoder.us/ disappeared in late 2015
 databases/py-sqlalchemy09|databases/py-sqlalchemy10|2017-03-12|Has expired: Upstream has declared this version EoL: please migrate to databases/py-sqlalchemy10
+lang/OpenCoarrays|lang/opencoarrays|2017-03-12|Rename to lower case
 devel/avr-gcc-devel||2017-03-13|Has expired: There's no longer a point to have both, a -devel and a regular port of GCC for the AVR
 net/py-pysimplesoap|net/py-soap2py|2017-03-13|Rename to match upstream naming
 games/trigger-data|games/trigger-rally|2017-03-15|Merged into games/trigger-rally
@@ -9304,7 +9304,6 @@ games/libfov||2017-04-30|Has expired: Unfetchable for more than six months (goog
 games/dcross||2017-04-30|Has expired: Unfetchable for more than six months (google code has gone away)
 games/lostfeathers||2017-04-30|Has expired: Unfetchable for more than six months (google code has gone away)
 games/hexglass||2017-04-30|Has expired: Unfetchable for more than six months (google code has gone away)
-textproc/ibus-table||2017-04-30|Has expired: Unfetchable for more than six months (google code has gone away)
 textproc/chm2pdf||2017-04-30|Has expired: Unfetchable for more than six months (google code has gone away)
 textproc/dtdinst||2017-04-30|Has expired: Unfetchable for more than six months (google code has gone away)
 textproc/py-xmltv||2017-04-30|Has expired: Unfetchable for more than six months (google code has gone away)
@@ -9517,7 +9516,6 @@ devel/py3-enum34||2017-09-03|Removed, Python 3.3 only
 security/clambc||2017-09-14|Has expired: Practically unmaintained, featuring issues elsewhere solved 6 years ago
 devel/cmake-modules||2017-09-14|Deleted, merged into devel/cmake
 devel/cargo|lang/rust|2017-09-15|Merged with lang/rust
-sysutils/filelight-kde4|sysutils/filelight|2017-09-16|Renamed to sysutils/filelight
 security/gnupg22|security/gnupg|2017-09-19|Removed, security/gnupg is now gnupg22
 mail/milter-greylist-devel|mail/milter-greylist|2017-09-22|Has expired: mail/milter-greylist provides same version and options
 devel/libexecinfo||2017-09-22|Is present in the base system of all supported releases
@@ -10204,3 +10202,50 @@ finance/electrum2|finance/electrum|2018-03-13|Has expired: Vulnerable legacy por
 math/py-gsl|math/py-pygsl|2018-03-13|Rename to match PyPI naming
 www/mediawiki123|www/mediawiki127|2018-03-14|Has expired: Upstream no longer maintained
 www/mediawiki128|www/mediawiki130|2018-03-14|Has expired: Upstream no longer maintained
+sysutils/py-zfs||2018-03-16|Not needed since ZFS 28
+net/freebsd-tftp||2018-03-16|Imported into base in FreeBSD 8.0
+multimedia/plexpy|multimedia/tautulli|2018-03-17|Project renamed due to copyright infringement
+net-im/ring-daemon||2018-03-18|Ring can't build because it depends on custom bundled versions of other packages
+net-im/ring-libclient||2018-03-18|Ring can't build because it depends on custom bundled versions of other packages
+net-im/ring-gnome||2018-03-18|Ring can't build because it depends on custom bundled versions of other packages
+astro/libkgeomap|astro/libkgeomap-kde4|2018-03-20|Make room for KDE updates
+databases/akonadi|databases/akonadi-kde4|2018-03-20|Make room for KDE updates
+graphics/code-eli||2018-03-20|Has expired: Broken for more than 6 months
+databases/pg_rman||2018-03-20|Has expired: Broken for more than 6 months
+devel/elixir-simple_bayes||2018-03-20|Has expired: Broken for more than 6 months
+devel/elixir-stemmer||2018-03-20|Has expired: Broken for more than 6 months
+benchmarks/expedite||2018-03-20|Has expired: Broken for more than 6 months
+textproc/p5-HTML-CTPP2||2018-03-20|Has expired: Broken for more than 6 months
+textproc/rubygem-compass-rails||2018-03-20|Has expired: Broken for more than 6 months
+graphics/pfscalibration||2018-03-20|Deprecated: pfs-calibration is a part of pfstools (from version 2.0)
+graphics/pfstmo||2018-03-20|Deprecated: pfstmo is a part of pfstools
+games/timeseal||2018-03-22|Has expired: Abandoned, outdated, requires COMPAT_43 kernel option which was removed from GENERIC in FreeBSD 7.0
+net-im/ktp-accounts-kcm|net-im/ktp-accounts-kcm-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-approver|net-im/ktp-approver-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-auth-handler|net-im/ktp-auth-handler-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-common-internals|net-im/ktp-common-internals-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-contact-list|net-im/ktp-contact-list-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-contact-runner|net-im/ktp-contact-runner-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-desktop-applets|net-im/ktp-desktop-applets-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-filetransfer-handler|net-im/ktp-filetransfer-handler-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-kded-integration-module|net-im/ktp-kded-integration-module-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-send-file|net-im/ktp-send-file-kde4|2018-03-23|Make room for KDE updates
+net-im/ktp-text-ui|net-im/ktp-text-ui-kde4|2018-03-23|Make room for KDE updates
+net-im/kde-telepathy|net-im/telepathy-kde4|2018-03-23|Make room for KDE updates
+net-im/plasma-applet-ktp|net-im/plasma-applet-ktp-kde4|2018-03-23|Make room for KDE updates
+multimedia/gmencoder||2018-03-23|Abandonware, does not support modern codecs
+mail/wanderlust-devel|mail/wanderlust|2018-03-23|Removed, use mail/wanderlust instead
+graphics/skanlite|graphics/skanlite-kde4|2018-03-25|Make room for KDE updates
+lang/x10||2018-03-25|Has expired: Broken for more than 6 months
+science/siril|astro/siril|2018-03-25|Moved to a more appropriate category
+net/samba44|net/samba45|2018-03-26|Has expired: unsupported upstream
+mail/sisyphus||2018-03-26|Has expired: Never built
+www/fira-webfont||2018-03-26|Has expired: Unused with no apparent use case
+www/dummyflash||2018-03-26|Has expired: Unused, unmaintained, and obsolete
+devel/guikachu||2018-03-26|Has expired: Broken for more than 9 months
+www/npm4|www/npm|2018-03-31|Has expired: Use www/npm instead
+devel/lua-lpeg51|devel/lua-lpeg|2018-03-31|Has expired: Use devel/lua-lpeg instead
+net/p5-Net-Jaiku||2018-03-31|Has expired: Upstream disappeared and jaiku.com returns 404
+www/py-django-devel|www/py-django|2018-03-31|Has expired: Outdated version. Use www/py-django instead
+security/rubygem-rpam2-3|security/rubygem-rpam2|2018-03-31|Has expired: Use security/rubygem-rpam2 instead
+textproc/rubygem-fast_xs073|textproc/rubygem-fast_xs|2018-03-31|Has expired: Use textproc/rubygem-fast_xs instead

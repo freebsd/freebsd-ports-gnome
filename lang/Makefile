@@ -182,6 +182,7 @@
     SUBDIR += mosh
     SUBDIR += mosml
     SUBDIR += mtasc
+    SUBDIR += mujs
     SUBDIR += munger
     SUBDIR += myrddin
     SUBDIR += nawk
@@ -363,7 +364,6 @@
     SUBDIR += v8-devel
     SUBDIR += vala
     SUBDIR += visualworks
-    SUBDIR += x10
     SUBDIR += yabasic
     SUBDIR += yap
     SUBDIR += yap-devel

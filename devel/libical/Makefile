@@ -14,6 +14,7 @@ LICENSE_COMB=	dual
 
 LIB_DEPENDS=	libicuuc.so:devel/icu
 
+USES=		cmake compiler:c++11-lib pathfix perl5
 USE_GITHUB=	yes
 
 USES=		cmake gnome pathfix perl5 pkgconfig
@@ -36,7 +37,6 @@ USE_GNOME=	introspection:build glib20 libxml2
 #  Default=false (build the libical-glib interface)
 #
 # -DICAL_GLIB=[true|false]
-
 
 .include <bsd.port.pre.mk>
 

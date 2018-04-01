@@ -5,6 +5,68 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20180330:
+  AFFECTS: users of lang/perl5*
+  AUTHOR: mat@FreeBSD.org
+
+  The default Perl version has been switched to Perl 5.26.  If you are using
+  binary packages to upgrade your system, you do not have anything to do, pkg
+  upgrade will do the right thing.  For the other people, follow the
+  instructions in entry 20161103, it should still be the same.
+
+20180325:
+  AFFECTS: users of net/samba48
+  AUTHOR: timur@FreeBSD.org
+
+  New Samba 4.8 upgrades the relevant database files in the way, that doesn't
+  allow easy fallback to the previous versions of Samba. So, before upgrading
+  to the new version make a backup of the /var/db/samba4/ directory.
+
+  Full list of changes, new features and upgrade procedure is available at:
+
+        https://www.samba.org/samba/history/samba-4.8.0.html
+
+  Please, read it carefully before upgrading!.
+
+20180320:
+  AFFECTS: users of x11/sterm
+  AUTHOR: pkubaj@anongoth.pl
+
+  The user-defined options in config.h have changed.  You should
+  compare your config.h file with the default one and change
+  appropriately.
+
+20180319:
+  AFFECTS: users of dns/dnsmasq
+  AUTHOR: mandree@FreeBSD.org
+
+  Note that with dnsmasq 2.79, some parts of the interface have changed in an
+  incompatible way versus previous versions. This comprises changed recursion
+  behaviour, signature support, a change for SIGINT (vs. SIGHUP) behaviour.
+
+  Note especially that dnsmasq will no longer answer non-recursive queries
+  unless it is marked authoritative!  Be sure to see the manual page for the
+  various --auth-* options, such as --auth-zone.
+
+  Please see the CHANGELOG that ships with dnsmasq for details.
+
+20180317:
+  AFFECTS: users of multimedia/plexpy
+  AUTHOR: feld@FreeBSD.org
+
+  Plexpy project has been renamed to Tautulli due to copyright
+  infringement. The software also has received a major update. Please
+  see the following upgrade instructions:
+
+  - Install multimedia/tautulli
+  - Create /var/db/tautulli, owned by the user you will run the daemon as
+    (default: nobody).
+  - Copy your config.ini and plexpy.db to /var/db/tautulli
+  - Enable the service and start the software
+
+   Tautulli should automatically find your database file, rename it to
+   tautulli.db, and perform the required updates.
+
 20180310:
   AFFECTS: users of security/openssl
   AUTHOR: brnrd@FreeBSD.org
@@ -61,7 +123,7 @@ you update your ports collection, before attempting any port upgrades.
 
   to the CONFIG array before the updater will run.
 
-20180214
+20180214:
   AFFECTS: users of lang/ruby23
   AUTHOR: swills@FreeBSD.org
 

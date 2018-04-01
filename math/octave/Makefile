@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	octave
-PORTVERSION=	4.2.1
-PORTREVISION=	4
+PORTVERSION=	${OCTAVE_VERSION}
 CATEGORIES=	math java
 MASTER_SITES=	GNU
 
@@ -105,4 +104,5 @@ post-install-DOCS-on:
 check regression-test: build
 	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} check)
 
+.include "Makefile.version"
 .include <bsd.port.mk>
