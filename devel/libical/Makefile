@@ -16,14 +16,15 @@ LIB_DEPENDS=	libicuuc.so:devel/icu
 
 USE_GITHUB=	yes
 
-USES=		cmake pathfix perl5
+USES=		cmake gnome pathfix perl5 pkgconfig
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 
 MAKE_JOBS_UNSAFE= yes
 
-BUILD_DEPENDS=	valac:lang/vala
-USE_GNOME=	introspection:build glib20
+BUILD_DEPENDS=	valac:lang/vala \
+		gtkdoc-scan:textproc/gtk-doc
+USE_GNOME=	introspection:build glib20 libxml2
 # -DGOBJECT_INTROSPECTION=[true|false]
 #  Set to build GObject introspection "typelib" files
 #  Requires GObject Introspection development package v0.6.7 or higher
