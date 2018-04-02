@@ -29,6 +29,7 @@
     SUBDIR += dkns
     SUBDIR += dlangide
     SUBDIR += drjava
+    SUBDIR += dte
     SUBDIR += e3
     SUBDIR += ecce
     SUBDIR += edith
@@ -184,6 +185,7 @@
     SUBDIR += linux-sublime3
     SUBDIR += madedit
     SUBDIR += manedit
+    SUBDIR += medit
     SUBDIR += mg
     SUBDIR += micro
     SUBDIR += mined
@@ -214,6 +216,7 @@
     SUBDIR += py-editorconfig
     SUBDIR += py-room
     SUBDIR += rox-edit
+    SUBDIR += rubygem-neovim
     SUBDIR += scite
     SUBDIR += se
     SUBDIR += semi
@@ -233,17 +236,15 @@
     SUBDIR += texworks
     SUBDIR += the
     SUBDIR += thoteditor
-    SUBDIR += tpad
-    SUBDIR += tree-widget
     SUBDIR += treeform
     SUBDIR += tweak
     SUBDIR += uemacs
     SUBDIR += uzap
-    SUBDIR += vanubi
     SUBDIR += vigor
     SUBDIR += vile
     SUBDIR += vim
-    SUBDIR += vim-lite
+    SUBDIR += vim-console
+    SUBDIR += vim-tiny
     SUBDIR += web-mode
     SUBDIR += with-editor
     SUBDIR += wordgrinder

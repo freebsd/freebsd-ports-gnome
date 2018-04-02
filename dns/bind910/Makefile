@@ -15,8 +15,11 @@ COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 LICENSE=	ISCL
 LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 
+DEPRECATED=	Going out of support, please migrate to dns/bind911
+EXPIRATION_DATE=	2018-06-30
+
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.10.6
+ISCVERSION=	9.10.6-P1
 
 USES=	cpe libedit
 
@@ -48,12 +51,12 @@ MAKE_JOBS_UNSAFE=	yes
 PORTDOCS=	*
 
 OPTIONS_DEFAULT=	SSL THREADS SIGCHASE IDN GSSAPI_NONE JSON \
-			DLZ_FILESYSTEM RPZ_NSIP RPZ_NSDNAME
+			DLZ_FILESYSTEM RPZ_NSIP RPZ_NSDNAME PYTHON
 OPTIONS_DEFINE=		IDN LARGE_FILE PYTHON JSON \
 			FIXED_RRSET SIGCHASE IPV6 THREADS FILTER_AAAA \
 			RPZ_NSIP RPZ_NSDNAME DOCS GEOIP \
 			MINCACHE PORTREVISION FETCHLIMIT QUERYTRACE \
-			START_LATE
+			START_LATE TUNING_LARGE
 
 OPTIONS_RADIO=	CRYPTO GOSTDEF
 OPTIONS_RADIO_CRYPTO=	SSL NATIVE_PKCS11
@@ -97,6 +100,7 @@ RPZ_NSIP_DESC=		Enable RPZ NSIP trigger rules
 SIGCHASE_DESC=		dig/host/nslookup will do DNSSEC validation
 SSL_DESC=		Build with OpenSSL (Required for DNSSEC)
 START_LATE_DESC=	Start BIND late in the boot process (see help)
+TUNING_LARGE_DESC=	Tune named for large systems (**READ HELP**)
 
 DLZ_BDB_CONFIGURE_ON=	--with-dlz-bdb=yes
 DLZ_BDB_USES=		bdb
@@ -181,6 +185,10 @@ START_LATE_SUB_LIST_OFF=NAMED_REQUIRE="NETWORKING ldconfig syslogd" \
 
 THREADS_CONFIGURE_ENABLE=	threads
 
+TUNING_LARGE_IMPLIES=	THREADS
+TUNING_LARGE_CONFIGURE_ON=	--with-tuning=large
+TUNING_LARGE_CONFIGURE_OFF=	--with-tuning=default
+
 .include <bsd.port.pre.mk>
 
 .if !${PORT_OPTIONS:MGOST} && !${PORT_OPTIONS:MGOST_ASN1}
@@ -219,8 +227,8 @@ post-install:
 	${INSTALL_DATA} ${FILESDIR}/empty.db ${STAGEDIR}${ETCDIR}/master
 	${INSTALL_DATA} ${FILESDIR}/localhost-forward.db ${STAGEDIR}${ETCDIR}/master
 	${INSTALL_DATA} ${FILESDIR}/localhost-reverse.db ${STAGEDIR}${ETCDIR}/master
-	${INSTALL_DATA} ${FILESDIR}/BIND.chroot.dist ${STAGEDIR}${PREFIX}/etc/mtree
-	${INSTALL_DATA} ${FILESDIR}/BIND.chroot.local.dist ${STAGEDIR}${PREFIX}/etc/mtree
+	${INSTALL_DATA} ${FILESDIR}/BIND.chroot.dist ${STAGEDIR}${PREFIX}/etc/mtree/BIND.chroot.dist.sample
+	${INSTALL_DATA} ${FILESDIR}/BIND.chroot.local.dist ${STAGEDIR}${PREFIX}/etc/mtree/BIND.chroot.local.dist.sample
 	${INSTALL_DATA} ${WRKSRC}/bin/rndc/rndc.conf \
 		${STAGEDIR}${ETCDIR}/rndc.conf.sample
 

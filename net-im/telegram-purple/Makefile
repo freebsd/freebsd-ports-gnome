@@ -7,7 +7,7 @@ DISTVERSIONPREFIX=	v
 PORTREVISION=	3
 CATEGORIES=	net-im
 
-MAINTAINER=	kevlo@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Libpurple plugin for Telegram messenger
 
 LICENSE=	GPLv2+
@@ -24,7 +24,7 @@ BROKEN_sparc64=		fails to compile: assertion fails
 OPTIONS_DEFINE=	NLS
 OPTIONS_SUB=	yes
 
-USES=		execinfo gettext gmake pkgconfig
+USES=		gettext gmake pkgconfig
 USE_GNOME=	glib20 libxml2
 GNU_CONFIGURE=	yes
 LDFLAGS+=	-L${LOCALBASE}/lib

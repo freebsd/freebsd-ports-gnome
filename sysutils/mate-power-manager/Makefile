@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-power-manager
-PORTVERSION=	1.18.0
+PORTVERSION=	1.20.0
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -27,7 +27,7 @@ RUN_DEPENDS=	pkexec:sysutils/polkit \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		execinfo gettext gmake libtool localbase \
+USES=		gettext gmake libtool localbase \
 		pathfix pkgconfig tar:xz
 USE_MATE=	panel
 USE_XORG=	x11 xext xproto xrandr xrender

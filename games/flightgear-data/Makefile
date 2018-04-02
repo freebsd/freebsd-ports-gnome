@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	flightgear-data
-PORTVERSION=	2017.1.3
+PORTVERSION=	2017.3.1
 CATEGORIES=	games
 MASTER_SITES=	SF/flightgear/release-${PORTVERSION:R}
 DISTNAME=	FlightGear-${PORTVERSION}-data
@@ -21,7 +21,6 @@ PLIST=		${WRKDIR}/pkg-plist
 PLIST_DIRS=	%%DATADIR%%
 
 BROKEN_aarch64=		Fails to install: runaway process
-BROKEN_armv6=		Fails to install: runaway process
 BROKEN_mips64=		Fails to install: runaway process
 
 post-patch:

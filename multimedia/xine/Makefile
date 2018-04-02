@@ -15,7 +15,7 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libpng.so:graphics/png \
 		libxine.so:multimedia/libxine
 
-USES=		desktop-file-utils execinfo gmake iconv jpeg pkgconfig readline \
+USES=		desktop-file-utils gmake iconv jpeg pkgconfig readline \
 		shared-mime-info tar:xz
 USE_XORG=	x11 xext xinerama xscrnsaver xtst xv xxf86vm
 GNU_CONFIGURE=	yes
@@ -27,6 +27,7 @@ INSTALLS_ICONS=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
+LLD_UNSAFE=	yes	# lld disallows preemption of protected visibility syms
 
 DOCSDIR=	${PREFIX}/share/doc/xine-ui
 

@@ -2,10 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	clusterssh
-PORTVERSION=	4.09
+DISTVERSIONPREFIX=	release-
+DISTVERSION=	4.11
 CATEGORIES=	security net
 
-MAINTAINER=	lx@FreeBSD.org
+MAINTAINER=	ehaupt@FreeBSD.org
 COMMENT=	Controls multiple hosts simultaneously via xterms and ssh
 
 LICENSE=	GPLv2
@@ -41,7 +42,6 @@ USE_GITHUB=	yes
 USE_PERL5=	modbuild
 
 GH_ACCOUNT=	duncs
-GH_TAGNAME=	4665a23
 
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	BASH

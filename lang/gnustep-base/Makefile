@@ -3,6 +3,7 @@
 
 PORTNAME=	gnustep-base
 PORTVERSION=	1.25.0
+PORTREVISION=	3
 CATEGORIES=	lang devel gnustep
 MASTER_SITES=	GNUSTEP/core
 

@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	powerdns
-PORTVERSION=	4.0.4
-PORTREVISION=	2
+DISTVERSION=	4.1.0
+PORTREVISION=	3
 CATEGORIES=	dns ipv6
 MASTER_SITES=	http://downloads.powerdns.com/releases/
-DISTNAME=	pdns-${PORTVERSION}
+DISTNAME=	pdns-${DISTVERSION}
 
 MAINTAINER=	tremere@cainites.net
 COMMENT=	Advanced DNS server with multiple backends including SQL
@@ -78,9 +78,11 @@ OPENLDAP_CXXFLAGS=	-DLDAP_DEPRECATED=1
 OPENLDAP_USE=		OPENLDAP=YES
 OPENLDAP_VARS=		MODULES+=ldap
 
-OPTALGO_CONFIGURE_ON=	--enable-botan1.10 \
+OPTALGO_CONFIGURE_ON=	--enable-botan \
+			--enable-libdecaf \
 			--enable-libsodium
-OPTALGO_LIB_DEPENDS=	libbotan-1.10.so:security/botan110 \
+OPTALGO_LIB_DEPENDS=	libbotan-2.so:security/botan2 \
+			libdecaf.so:security/libdecaf \
 			libsodium.so:security/libsodium
 
 PGSQL_CONFIGURE_ON=	--with-pgsql=${LOCALBASE}
@@ -116,7 +118,7 @@ MYDNS_DESC=		MyDNS backend
 MYSQL_DESC=		MySQL backend
 OPENDBX_DESC=		OpenDBX backend
 OPENLDAP_DESC=		OpenLDAP backend
-OPTALGO_DESC=		Enable optional algorithms (12 & 15)
+OPTALGO_DESC=		Enable optional algorithms (12, 15 & 16)
 PGSQL_DESC=		PostgreSQL backend
 PROTOBUF_DESC=		Protobuf support
 REMOTE_DESC=		Remote backend

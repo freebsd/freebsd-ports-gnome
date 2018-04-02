@@ -14,13 +14,15 @@ COMMENT=	Cross-platform game SDK
 
 LICENSE=	ZLIB
 
+BROKEN_aarch64=		fails to compile: X11/x11_window.cpp:1626:40: use of undeclared identifier 'malloc'; did you mean 'valloc'?
+
 LIB_DEPENDS=	libpng.so:graphics/png \
 		libmikmod.so:audio/libmikmod \
 		libvorbis.so:audio/libvorbis \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libpcre.so:devel/pcre
 
-USES=		compiler:c++11-lib execinfo gmake jpeg libtool localbase:ldflags \
+USES=		compiler:c++11-lib gmake jpeg libtool localbase:ldflags \
 		pathfix pkgconfig sqlite tar:tgz
 USE_XORG=	x11
 USE_LDCONFIG=	yes

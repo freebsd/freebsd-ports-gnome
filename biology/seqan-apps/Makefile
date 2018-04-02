@@ -4,7 +4,7 @@
 PORTNAME=	seqan-apps
 PORTVERSION=	2.2.0
 DISTVERSIONPREFIX=	seqan-v
-PORTREVISION=	6
+PORTREVISION=	9
 CATEGORIES=	biology
 
 MAINTAINER=	h2+fbsdports@fsfe.org
@@ -14,6 +14,11 @@ LICENSE=	BSD3CLAUSE LGPL3 GPLv3
 LICENSE_COMB=	multi
 
 BUILD_DEPENDS=	boost-libs>0:devel/boost-libs
+
+BROKEN_aarch64=		fails to compile: Error: unknown mnemonic rep -- rep
+BROKEN_armv6=		fails to compile: Error: bad instruction rep
+BROKEN_armv7=		fails to compile: Error: bad instruction rep
+BROKEN_powerpc64=	fails to compile: Error: unrecognized opcode: rep
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	seqan
@@ -25,9 +30,6 @@ USES=		cmake:outsource
 CMAKE_ARGS=	-DSEQAN_BUILD_SYSTEM="SEQAN_RELEASE_APPS"
 
 USE_GCC=	yes
-
-BROKEN_aarch64=		fails to compile: Error: unknown mnemonic rep -- rep
-BROKEN_powerpc64=	fails to compile: Error: unrecognized opcode: rep
 
 .include <bsd.port.pre.mk>
 

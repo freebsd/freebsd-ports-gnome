@@ -48,7 +48,7 @@ shebangonefile() {
 	/bin/rc)
 		# whitelist some interpreters
 		;;
-	${LOCALBASE}/bin/python|${PREFIX}/bin/python)
+	${LOCALBASE}/bin/python|${PREFIX}/bin/python|${LOCALBASE}/bin/python2|${PREFIX}/bin/python2|${LOCALBASE}/bin/python3|${PREFIX}/bin/python3)
 		badinterp="${interp}"
 		;;
 	${LINUXBASE}/*) ;;
@@ -69,7 +69,7 @@ shebangonefile() {
 	/usr/bin/env)
 		interparg=$(sed -n -e '1s/^#![[:space:]]*[^[:space:]]*[[:space:]]*\([^[:space:]]*\).*/\1/p;2q' "${f}")
 		case "${interparg}" in
-		python)
+		python|python2|python3)
 			badinterp="${interp} ${interparg}"
 			;;
 		esac
@@ -103,26 +103,6 @@ shebang() {
 	done <<-EOF
 	$(find ${STAGEDIR}${PREFIX} \
 	    -type f -perm +111 2>/dev/null)
-	EOF
-
-	# Split stat(1) result into 2 lines and read each line separately to
-	# retain spaces in filenames.
-	while read l; do
-		# No results presents a blank line
-		[ -z "${l}" ] && continue
-		read link
-
-		case "${link}" in
-		/*) f="${STAGEDIR}${link}" ;;
-		*) f="${l%/*}/${link}" ;;
-		esac
-		if [ -f "${f}" ]; then
-			shebangonefile "${f}" || rc=1
-		fi
-	# Use heredoc to avoid losing rc from find|while subshell
-	done <<-EOF
-	$(find ${STAGEDIR}${PREFIX} \
-	    -type l -exec stat -f "%N${LF}%Y" {} + 2>/dev/null)
 	EOF
 
 	return ${rc}
@@ -574,8 +554,6 @@ proxydeps_suggest_uses() {
 	# Qt5
 	elif expr ${pkg} : '.*/qt5-.*' > /dev/null; then
 		warn "you need USE_QT5+=$(echo ${pkg} | sed -E 's|.*/qt5-||')"
-	elif expr ${pkg} : '.*/.*-qt5' > /dev/null; then
-		warn "you need USE_QT5+=$(echo ${pkg} | sed -E 's|.*/(.*)-qt5|\1|')"
 	# MySQL
 	elif expr ${lib_file} : "${LOCALBASE}/lib/mysql/[^/]*$" > /dev/null; then
 		warn "you need USES+=mysql"
@@ -585,9 +563,6 @@ proxydeps_suggest_uses() {
 	# bdb
 	elif expr ${pkg} : "^databases/db[456]" > /dev/null; then
 		warn "you need USES+=bdb"
-	# execinfo
-	elif [ ${pkg} = "devel/libexecinfo" ]; then
-		warn "you need USES+=execinfo"
 	# fam/gamin
 	elif [ ${pkg} = "devel/fam" -o ${pkg} = "devel/gamin" ]; then
 		warn "you need USES+=fam"
@@ -702,7 +677,7 @@ proxydeps() {
 			fi
 			already="${already} ${dep_file}"
 		done <<-EOT
-		$(ldd -a "${STAGEDIR}${file}" | \
+		$(env LD_LIBMAP_DISABLE=1 ldd -a "${STAGEDIR}${file}" | \
 			awk '\
 			BEGIN {section=0}\
 			/^\// {section++}\
@@ -866,9 +841,26 @@ gemdeps()
 	return $rc
 }
 
+flavors()
+{
+	local rc pkgnames uniques
+	rc=0
+	if [ -n "${FLAVOR}" ]; then
+		pkgnames=$(make -C "${CURDIR}" flavors-package-names|sort)
+		uniques=$(echo "${pkgnames}"|uniq)
+		if [ "$pkgnames" != "${uniques}" ]; then
+			err "Package names are not uniques with flavors:"
+			make -C "${CURDIR}" pretty-flavors-package-names >&2
+			err "maybe use <flavor>_PKGNAMEPREFIX/SUFFIX".
+			rc=1
+		fi
+	fi
+	return ${rc}
+}
+
 checks="shebang symlinks paths stripped desktopfileutils sharedmimeinfo"
 checks="$checks suidfiles libtool libperl prefixvar baselibs terminfo"
-checks="$checks proxydeps sonames perlcore no_arch gemdeps"
+checks="$checks proxydeps sonames perlcore no_arch gemdeps flavors"
 
 ret=0
 cd ${STAGEDIR}

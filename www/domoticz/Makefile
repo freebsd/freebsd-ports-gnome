@@ -2,6 +2,7 @@
 
 PORTNAME=	domoticz
 PORTVERSION=	3.${DOMOTICZ_REL}
+PORTREVISION=	3
 CATEGORIES=	www
 
 MAINTAINER=	kiwi@oav.net
@@ -9,6 +10,8 @@ COMMENT=	Home Automation System
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/License.txt
+
+BROKEN=		fails to build with boost 1.66, see bug 224181
 
 LIB_DEPENDS=	libcurl.so:ftp/curl \
 		libexpat.so:textproc/expat2
@@ -34,7 +37,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	domoticz
 GH_PROJECT=	domoticz
 
-USES=		cmake iconv pkgconfig execinfo ssl
+USES=		cmake iconv pkgconfig ssl
 
 USE_RC_SUBR=	domoticz
 
@@ -68,9 +71,9 @@ LIB_DEPENDS+=	libmosquitto.so:net/mosquitto
 .endif
 
 .if ${PORT_OPTIONS:MSSQLITE}
-CMAKE_ARGS+= 	-DUSE_BUILTIN_SQLITE="YES"
+CMAKE_ARGS+=	-DUSE_BUILTIN_SQLITE="YES"
 .else
-CMAKE_ARGS+= 	-DUSE_BUILTIN_SQLITE="NO"
+CMAKE_ARGS+=	-DUSE_BUILTIN_SQLITE="NO"
 USES+=		sqlite
 .endif
 

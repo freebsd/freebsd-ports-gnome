@@ -2,7 +2,7 @@
 
 PORTNAME=	tesla
 DISTVERSION=	0.0.20140425
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	devel lang
 
 MAINTAINER=	brooks@FreeBSD.org
@@ -13,10 +13,11 @@ RUN_DEPENDS=	clang33:lang/clang33
 LIB_DEPENDS=	libprotobuf.so:devel/protobuf
 
 BROKEN_armv6=		fails to link: cmTC_8106f uses VFP register arguments, testCCompiler.c.o does not
+BROKEN_armv7=		fails to link: cmTC_8106f uses VFP register arguments, testCCompiler.c.o does not
 
 SHEBANG_FILES=	scripts/highlight-transitions
 
-USES=		cmake:outsource execinfo python:run shebangfix
+USES=		cmake:outsource python:run shebangfix
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	CTSRD-TESLA

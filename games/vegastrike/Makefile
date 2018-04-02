@@ -3,7 +3,7 @@
 
 PORTNAME=	vegastrike
 PORTVERSION=	0.5.1.r1
-PORTREVISION=	8
+PORTREVISION=	11
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION:R}/
 DISTNAME=	${PORTNAME}-src-${PORTVERSION}
@@ -30,6 +30,7 @@ USE_XORG=	sm ice xi x11 xext xrender xinerama xi xrandr xcursor \
 USE_GNOME=	gtk20
 DOS2UNIX_GLOB=	*.cpp *.h
 EXTRACT_AFTER_ARGS=	--exclude boost
+LLD_UNSAFE=	yes
 
 # cegui and ffmpeg are not used yet
 CONFIGURE_ARGS=	--disable-cegui --disable-ffmpeg \

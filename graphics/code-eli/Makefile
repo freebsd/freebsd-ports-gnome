@@ -14,13 +14,11 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 BROKEN=		Needs work to use math/eigen3 currently in ports
 
-BUILD_DEPENDS=	eigen>3:math/eigen3
-
 USE_GITHUB=	yes
 GH_PROJECT=	Code-Eli
 GH_ACCOUNT=	ddmarshall
 
-USES=		cmake:outsource compiler:c++11-lib
+USES=		cmake:outsource compiler:c++11-lib eigen:3
 PORTEXAMPLES=	AirfoilFitExample VSPPodExample test
 ALL_TARGET=	all
 
@@ -36,6 +34,7 @@ DOXYGEN_ALL_TARGET=	doc
 DOXYGEN_PORTDOCS=	html latex
 
 BROKEN_armv6=		fails to compile: undefined reference to cbrtl
+BROKEN_armv7=		fails to compile: undefined reference to cbrtl
 BROKEN_powerpc64=	fails to compile: there are no arguments to 'printf' that depend on a template parameter
 
 post-patch-EXAMPLES-off:

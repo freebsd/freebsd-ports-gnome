@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	10.1.26
+PORTVERSION=	10.1.30
 PORTREVISION?=	1
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://ftp.osuosl.org/pub/${SITESDIR}/ \
@@ -28,7 +28,7 @@ SUB_FILES=	pkg-message
 PKGMESSAGE=	${WRKDIR}/pkg-message
 
 SLAVEDIRS=	databases/mariadb101-client
-USES=		bison:build cmake compiler:c++11-lib cpe execinfo libedit ncurses \
+USES=		bison:build cmake:noninja compiler:c++11-lib cpe libedit ncurses \
 		shebangfix ssl
 USE_LDCONFIG=	${PREFIX}/lib/mysql
 SHEBANG_FILES=	scripts/*.sh
@@ -90,7 +90,6 @@ CMAKE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql" \
 		-DWITH_LIBWRAP=1 \
 		-DWITH_SSL=${OPENSSLBASE} \
 		-DKRB5_CONFIG=${KRB5CONFIG} \
-		-DEXECINFO_ROOT=${LOCALBASE} \
 		-DCOMPILATION_COMMENT="FreeBSD Ports"
 
 DATADIR=	${PREFIX}/share/mysql
@@ -142,7 +141,9 @@ LZO_CMAKE_ON=		-DWITH_INNODB_LZO=${LOCALBASE}/lib
 LZO_LIB_DEPENDS=	liblzo2.so:archivers/lzo2
 MAXKEY_EXTRA_PATCHES+=	${FILESDIR}/extra-patch-include_my__compare.h
 MROONGA_LIB_DEPENDS=	liblz4.so:archivers/liblz4
+MROONGA_VARS=		LICENSE+=LGPL20 LICENSE_COMB=multi
 MSGPACK_LIB_DEPENDS=	libmsgpackc.so:devel/msgpack
+OQGRAPH_BROKEN=		OQGRAPH fails to build with boost 1.66, see bug 224089
 OQGRAPH_LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
 			libJudy.so:devel/judy
 SNAPPY_CMAKE_OFF=	-DWITH_INNODB_SNAPPY=OFF
@@ -155,7 +156,7 @@ ZMQ_LIB_DEPENDS=	libzmq.so:net/libzmq4
 
 NOT_FOR_ARCHS=		i386
 NOT_FOR_ARCHS_REASON=	currently does not compile on i386, see \
-			https://mariadb.atlassian.net/browse/MDEV-9627
+			https://jira.mariadb.org/browse/MDEV-9627
 
 post-install:
 # Remove programs to avoid conflict with mariadb101-client
@@ -165,11 +166,19 @@ post-install:
 		${STAGEDIR}${PREFIX}/bin/mysql_config \
 		${STAGEDIR}${PREFIX}/bin/mysql_find_rows \
 		${STAGEDIR}${PREFIX}/bin/mysqlaccess \
-		${STAGEDIR}${PREFIX}/lib/mysql/plugin/client_ed25519.so
+		${STAGEDIR}${PREFIX}/lib/mysql/plugin/client_ed25519.so \
+		${STAGEDIR}${PREFIX}/share/groonga-normalizer-mysql/lgpl-2.0.txt \
+		${STAGEDIR}${PREFIX}/share/groonga/COPYING \
+		${STAGEDIR}${DATADIR}/mroonga/COPYING
 	${RM} -r ${STAGEDIR}${PREFIX}/share/mysql/policy \
 		${STAGEDIR}${PREFIX}/share/pkgconfig \
 		${STAGEDIR}${PREFIX}/mysql/mysql-test \
 		${STAGEDIR}${PREFIX}/mysql/sql-bench
+
+post-install-MROONGA-on:
+	${MV} ${STAGEDIR}${PREFIX}/share/groonga-normalizer-mysql \
+		${STAGEDIR}${PREFIX}/share/groonga \
+		${STAGEDIR}${PREFIX}/share/mysql
 .endif # defined(CLIENT_ONLY)
 
 .include <bsd.port.pre.mk>

@@ -3,7 +3,7 @@
 
 PORTNAME=	spring
 PORTVERSION=	98.0
-PORTREVISION=	6
+PORTREVISION=	10
 CATEGORIES=	games
 MASTER_SITES=	SF/springrts/springrts/${PORTNAME}-${PORTVERSION} \
 		http://springrts.com/dl/
@@ -13,6 +13,9 @@ MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Project aiming to create a new and versatile RTS Engine
 
 LICENSE=	GPLv2
+
+BROKEN=		fails to build with boost 1.66, see bug 224124
+BROKEN_FreeBSD_10=	fails to build with boost 1.65, see bug 220762
 
 LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libboost_thread.so:devel/boost-libs \
@@ -32,7 +35,7 @@ USE_XORG=	x11 xcursor
 USE_LDCONFIG=	yes
 DOS2UNIX_GLOB=	*.h *.hpp *.cpp
 
-USES=		execinfo cmake compiler:c++11-lib dos2unix openal:al tar:lzma
+USES=		cmake compiler:c++11-lib dos2unix openal:al tar:lzma
 USES+=		desktop-file-utils shared-mime-info
 CMAKE_ARGS=	-DDATADIR:STRING="share/${PORTNAME}" \
 		-DAI_TYPES:STRING="NATIVE" \
@@ -43,12 +46,6 @@ CMAKE_ARGS=	-DDATADIR:STRING="share/${PORTNAME}" \
 		-DUNITSYNC_PYTHON_WRAPPER:BOOL=false
 
 WRKSRC=		${WRKDIR}/${PORTNAME}_${PORTVERSION}
-
-.if exists(/usr/lib/libexecinfo.so)
-LEI_PREFIX=	/usr
-.else
-LEI_PREFIX=	${LOCALBASE}
-.endif
 
 # Do not exctract bundled copies of header files for 3rd-party packages:
 EXTRACT_AFTER_ARGS=--no-same-owner --no-same-permissions --exclude ${WRKSRC:T}/include
@@ -61,7 +58,7 @@ PORTDATA=	*
 
 OPTIONS_DEFINE=	MANPAGES PR_DOWNLOADER DOCS
 OPTIONS_DEFAULT=MANPAGES PR_DOWNLOADER
-OPTIONS_SUB=	*
+OPTIONS_SUB=	yes
 
 HTMLDOCS_DESC=	Build and install HTML documentation
 PR_DOWNLOADER_DESC=	Map and game downloader
@@ -101,7 +98,7 @@ post-patch:
 		${WRKSRC}/rts/System/Sync/FPUCheck.cpp
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
 		${WRKSRC}/rts/build/cmake/*.cmake
-	@${REINPLACE_CMD} -e 's|execinfo|${LEI_PREFIX}/lib/libexecinfo.so|' \
+	@${REINPLACE_CMD} -e 's|execinfo|/usr/lib/libexecinfo.so|' \
 		${WRKSRC}/rts/CMakeLists.txt \
 		${WRKSRC}/rts/builds/dedicated/CMakeLists.txt
 	@${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|' \

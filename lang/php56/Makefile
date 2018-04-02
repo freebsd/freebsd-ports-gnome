@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	php56
-PORTVERSION=	5.6.31
-PORTREVISION?=	0
+PORTVERSION=	5.6.32
+PORTREVISION?=	1
 CATEGORIES?=	lang devel www
 MASTER_SITES=	PHP/distributions
 DISTNAME=	php-${PORTVERSION}
@@ -17,12 +17,10 @@ USES+=		tar:xz cpe
 CPE_PRODUCT=	php
 NO_OPTIONS_SORT=yes
 .if !defined(PKGNAMESUFFIX)
-USE_AUTOTOOLS=	autoconf
-
 LIB_DEPENDS=	libpcre.so:devel/pcre
 
+GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--with-layout=GNU \
-		--localstatedir=/var \
 		--with-config-file-scan-dir=${PREFIX}/etc/php \
 		--disable-all \
 		--enable-libxml \
@@ -31,11 +29,11 @@ CONFIGURE_ARGS+=--with-layout=GNU \
 		--with-pcre-regex=${LOCALBASE} \
 		--with-zlib-dir=/usr \
 		--program-prefix=""
-
+USES+=		autoreconf:build
 USE_GNOME=	libxml2
 
 OPTIONS_DEFINE+=CLI CGI FPM EMBED PHPDBG DEBUG DTRACE IPV6 MAILHEAD LINKTHR ZTS
-OPTIONS_DEFAULT=CLI CGI FPM LINKTHR
+OPTIONS_DEFAULT=CLI CGI FPM EMBED LINKTHR
 # Bug 197128:  No ASM code for MIPS/MIPS64, disable FPM
 OPTIONS_EXCLUDE_mips=FPM
 OPTIONS_EXCLUDE_mips64=FPM
@@ -87,9 +85,6 @@ CONFIGURE_ARGS+=--enable-fpm \
 .endif
 
 .if defined(PKGNAMEPREFIX)
-USES+=	php
-PHP_VER=	56
-IGNORE_WITH_PHP=53 54 5
 USE_APACHE=	22+
 .include "${PORTSDIR}/Mk/bsd.apache.mk"
 .if ${PORT_OPTIONS:MAP2FILTER}
@@ -174,12 +169,8 @@ post-patch:
 		${WRKSRC}/sapi/fpm/php-fpm.conf.in
 .endif
 
-# Work around issues with newer (>=2.64) autoconf
 pre-configure:
-	@${REINPLACE_CMD} -E 's:^((m4_)?divert)[(]([0-9]*)[)]:\1(600\3):' \
-		${WRKSRC}/configure.in `${FIND} ${WRKSRC} -name '*.m4'`
-	@${RM} ${WRKSRC}/configure
-	@${CAT} ${WRKSRC}/acinclude.m4 ${WRKSRC}/build/libtool.m4 > ${WRKSRC}/aclocal.m4
+	@(cd ${WRKSRC} && ${SETENV} MAKE=${MAKE_CMD} ./buildconf --force)
 
 .if !defined(PKGNAMEPREFIX)
 post-build:

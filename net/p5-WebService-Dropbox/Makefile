@@ -10,10 +10,9 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	woodsb02@FreeBSD.org
 COMMENT=	Perl interface to Dropbox API
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/LICENSE
-
 
 MY_DEPENDS=	p5-HTTP-Message>=6.06:www/p5-HTTP-Message \
 		p5-JSON>=2.59:converters/p5-JSON \

@@ -59,6 +59,7 @@
     SUBDIR += mldonkey
     SUBDIR += mldonkey-core
     SUBDIR += mldonkey-gui
+    SUBDIR += monero-cli
     SUBDIR += namecoin
     SUBDIR += namecoin-daemon
     SUBDIR += napshare
@@ -72,6 +73,7 @@
     SUBDIR += phex
     SUBDIR += py-py2play
     SUBDIR += py-transmissionrpc
+    SUBDIR += py-tremc
     SUBDIR += py-vertex
     SUBDIR += qbittorrent
     SUBDIR += qbittorrent-nox11
@@ -106,6 +108,7 @@
     SUBDIR += verlihub-plugins-messanger
     SUBDIR += verlihub-plugins-stats
     SUBDIR += vuze
+    SUBDIR += xmrig
     SUBDIR += xnap
     SUBDIR += zetacoin
     SUBDIR += zetacoin-nox11

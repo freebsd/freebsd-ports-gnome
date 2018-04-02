@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	netCDF4
-PORTVERSION=	1.2.7
+PORTVERSION=	1.2.9
 DISTVERSIONPREFIX=	v
 DISTVERSIONSUFFIX=	rel
 PORTREVISION=	1
@@ -22,7 +22,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	autoplist distutils cython
 
 DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
@@ -44,8 +44,13 @@ post-patch:
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/netCDF4/_netCDF4.so
+	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/netcdftime/_netcdftime.so
+
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
+
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	(cd ${WRKSRC}/examples && ${INSTALL_DATA} * ${STAGEDIR}${EXAMPLESDIR})
 

@@ -2,7 +2,7 @@
 
 PORTNAME=	pykde4
 PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	devel kde kde-kde4 python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -17,8 +17,10 @@ USE_KDE=	kdelibs nepomuk-core okular pimlibs \
 USE_PYQT=	declarative designer gui network opengl phonon script sip \
 		sql svg webkit xml \
 		dbussupport_run
+USE_PYTHON=	flavors
 USE_QT4=	corelib dbus designer_build gui network xml \
 		qmake_build moc_build uic_build rcc_build
+USE_CXXSTD=	gnu++98
 
 CMAKE_ARGS+=	-DWITH_PolkitQt:BOOL=FALSE \
 		-DENABLE_PYTHON=ON \

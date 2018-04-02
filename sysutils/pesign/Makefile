@@ -11,7 +11,7 @@ COMMENT=	Signing utility for UEFI secure boot
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libefivar.so:devel/efivar \
+LIB_DEPENDS=	libefivar.so.0:devel/efivar \
 		libnspr4.so:devel/nspr \
 		libnss3.so:security/nss \
 		libpopt.so:devel/popt \
@@ -24,9 +24,8 @@ GH_ACCOUNT=	rhinstaller
 USES=		gmake localbase pkgconfig
 USE_LDCONFIG=	yes
 
-ONLY_FOR_ARCHS=		aarch64 armv6 amd64 i386
+ONLY_FOR_ARCHS=		aarch64 armv6 armv7 amd64 i386
 ONLY_FOR_ARCHS_REASON=	UEFI specification only supports little-endian processors
-BROKEN_armv6=		fails to compile: error: EFI_VARIABLE_NON_VOLATILE redefined
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%CC%%|${CC}|g' ${WRKSRC}/Make.defaults

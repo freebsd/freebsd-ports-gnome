@@ -24,11 +24,10 @@ BROKEN_aarch64=		Fails to link: missing sbrk
 BROKEN_powerpc64=	Does not compile: error: DV_INT_TAG_WORD undeclared
 BROKEN_sparc64=		Does not compile: error: DV_INT_TAG_WORD undeclared
 
-NOT_FOR_ARCHS=	arm armv6 i386 mips powerpc
+NOT_FOR_ARCHS=	arm armv6 armv7 i386 mips powerpc
 NOT_FOR_ARCHS_REASON=	can only be built on 64bit platforms
 
-USES=		execinfo gmake libtool readline uidfix ssl
-USE_AUTOTOOLS=	autoheader aclocal
+USES=		gmake libtool readline uidfix ssl
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-readline\
@@ -41,8 +40,8 @@ CONFIGURE_ARGS=	--with-readline\
 		--with-layout=freebsd\
 		--datadir="${PREFIX}"\
 		--localstatedir="${PREFIX}"
-CPPFLAGS+=	-std=gnu89 ${IODBC_CPPFLAGS} -I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -lexecinfo
+CPPFLAGS+=	-std=gnu89 ${IODBC_CPPFLAGS}
+LDFLAGS+=	-lexecinfo
 MAKE_ENV=	PATH=${LOCALBASE}/bin:${PATH}\
 		ISQL=isql-vt
 USE_RC_SUBR=	virtuoso

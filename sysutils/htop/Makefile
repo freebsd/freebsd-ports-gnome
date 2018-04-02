@@ -9,20 +9,23 @@ MAINTAINER=	gaod@hychen.org
 COMMENT=	Better top(1) - interactive process viewer
 
 LICENSE=	GPLv2
-
-RUN_DEPENDS=	lsof:sysutils/lsof
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib -lexecinfo
+LIBS+=		-lexecinfo
 
 CONFIGURE_ARGS=	--enable-unicode
-USES=		autoreconf execinfo libtool ncurses
+USES=		autoreconf libtool ncurses
 USE_GITHUB=	yes
 GH_ACCOUNT=	hishamhm
 PLIST_FILES=	bin/htop \
 		man/man1/htop.1.gz \
 		share/applications/htop.desktop \
 		share/pixmaps/htop.png
+
+OPTIONS_DEFINE=		LSOF
+OPTIONS_DEFAULT=	LSOF
+
+LSOF_RUN_DEPENDS=	lsof:sysutils/lsof
 
 .include <bsd.port.mk>

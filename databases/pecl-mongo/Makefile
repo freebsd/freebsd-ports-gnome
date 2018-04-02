@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mongo
-PORTVERSION=	1.6.14
-PORTREVISION=	1
+PORTVERSION=	1.6.16
 CATEGORIES=	databases pear
 
 MAINTAINER=	bofh@FreeBSD.org
@@ -17,6 +16,6 @@ USES=		php:pecl
 USE_PHP=	spl:build
 CONFIGURE_ARGS=	--enable-mongo
 SUB_FILES=	pkg-message
-IGNORE_WITH_PHP=	70 71
+IGNORE_WITH_PHP=	70 71 72
 
 .include <bsd.port.mk>

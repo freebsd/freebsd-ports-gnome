@@ -3,7 +3,7 @@
 
 PORTNAME=	linuxcnc
 PORTVERSION=	20170708
-PORTREVISION=	1
+PORTREVISION=	4
 CATEGORIES=	cad
 PKGNAMESUFFIX=	-devel
 
@@ -12,7 +12,7 @@ COMMENT=	Open Source CNC machine controller
 
 LICENSE=	GPLv2
 
-BROKEN_FreeBSD_10=	Does not build
+BROKEN=		wrong DEPENDS
 
 LIB_DEPENDS=	libBLT25.so:x11-toolkits/blt \
 		libboost_python.so:devel/boost-python-libs \
@@ -46,7 +46,7 @@ CONFIGURE_ARGS=	--with-realtime=uspace --enable-non-distributable=yes \
 		CXXFLAGS="-I${LOCALBASE}/include" CXX="${CXX}" CC="${CC}" \
 		--with-locale-dir="${PREFIX}/share/locale" --with-python=${PYTHON_CMD}
 MAKE_ENV=	BUILD_VERBOSE=1
-USES=		autoreconf gettext gmake ncurses pkgconfig python readline shebangfix tk
+USES=		autoreconf gettext gmake ncurses pkgconfig python:2.7 readline shebangfix tk
 USE_GL=		gl glu
 USE_GNOME=	cairo gdkpixbuf2 libgnomeprintui pygtksourceview
 USE_XORG=	ice sm x11 xext xft xinerama xmu xrender xscrnsaver xt

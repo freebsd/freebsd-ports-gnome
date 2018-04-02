@@ -3,7 +3,7 @@
 
 PORTNAME=	deadbeef
 PORTVERSION=	0.7.2
-PORTREVISION=	6
+PORTREVISION=	8
 CATEGORIES=	audio
 MASTER_SITES=	SF/${PORTNAME}/
 
@@ -14,7 +14,7 @@ LICENSE=	GPLv2 LGPL21
 LICENSE_COMB=	dual
 
 GNU_CONFIGURE=	yes
-USES=		compiler:c11 desktop-file-utils execinfo gettext gmake iconv libtool \
+USES=		compiler:c11 desktop-file-utils gettext gmake iconv libtool \
 		pkgconfig shebangfix tar:bzip2
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--disable-alsa --disable-nullout --disable-static
@@ -28,8 +28,8 @@ INSTALLS_ICONS=	yes
 SHEBANG_FILES=	yasmwrapper.sh
 INSTALL_TARGET=	install-strip
 
-BROKEN_aarch64=		Fails to compile: error in backend: Do not know how to split this operator's operand!
 BROKEN_armv6=		Fails to compile: error: invalid conversion between vector type and integer type
+BROKEN_armv7=		Fails to compile: error: invalid conversion between vector type and integer type
 
 OPTIONS_DEFINE=	PULSEAUDIO GUI VFS LASTFM ART SUPEREQ SID FFAP VTX \
 		HOTKEYS OGG FFMPEG FLAC SNDFILE WAVPACK CDDA GME DUMB NOTIFY \

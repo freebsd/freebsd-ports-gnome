@@ -2,6 +2,7 @@
 
 PORTNAME=	ttyd
 PORTVERSION=	1.3.3
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	neel@neelc.org
@@ -10,7 +11,7 @@ COMMENT=	Program to share your terminal over the web
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	xxd:editors/vim-lite
+BUILD_DEPENDS=	xxd:editors/vim-console
 LIB_DEPENDS=	libjson-c.so:devel/json-c \
 		libwebsockets.so:net/libwebsockets
 

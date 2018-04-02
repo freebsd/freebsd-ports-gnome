@@ -3,6 +3,7 @@
 
 PORTNAME=	objecthash
 PORTVERSION=	20160802
+PORTREVISION=	3
 CATEGORIES=	devel
 
 MAINTAINER=	amutu@amutu.com

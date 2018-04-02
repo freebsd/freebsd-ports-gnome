@@ -2,7 +2,7 @@
 
 PORTNAME=	0ad
 PORTVERSION=	0.0.22
-PORTREVISION=	2
+PORTREVISION=	6
 CATEGORIES=	games
 MASTER_SITES=	http://releases.wildfiregames.com/ \
 		SF/zero-ad/releases
@@ -30,7 +30,7 @@ LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}-alpha
 BUILD_WRKSRC=	${WRKSRC}/build/workspaces/gcc
 MAKE_ARGS=	config=release
-USES=		compiler:c++11-lib dos2unix execinfo gmake iconv jpeg openal:al \
+USES=		compiler:c++11-lib dos2unix gmake iconv jpeg openal:al \
 		pkgconfig tar:xz
 USE_GNOME=	libxml2 gtk20
 USE_GL=		gl
@@ -45,6 +45,7 @@ MAKE_ENV+=	JOBS=${_MAKE_JOBS}
 
 BROKEN_aarch64=		fails to compile: no member named verifyHeapAccessDisassembly
 BROKEN_armv6=		fails to link: fatal error: conftest: Unknown error: -1
+BROKEN_armv7=		fails to link: fatal error: conftest: Unknown error: -1
 BROKEN_powerpc64=	fails to compile: _psutil_bsd.c: error: 'struct xtcpcb' has no member named 'xt_tp'
 
 PORTDATA=	*

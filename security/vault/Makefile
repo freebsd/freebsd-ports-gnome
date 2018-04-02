@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	vault
-PORTVERSION=	0.7.2
+PORTVERSION=	0.9.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	security
 
@@ -11,12 +11,12 @@ COMMENT=	Tool for securely accessing secrets
 LICENSE=	MPL20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	go>=1.7.1:lang/go
+BUILD_DEPENDS=	go>=1.9:lang/go
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	hashicorp
 GH_SUBDIR=	src/github.com/${GH_ACCOUNT}/${PORTNAME}
-COMMIT_ID=	d28dd5a018294562dbc9a18c95554d52b5d12390
+COMMIT_ID=	87b6919dea55da61d7cd444b2442cabb8ede8ab1
 
 USE_RC_SUBR=	vault
 
@@ -24,10 +24,6 @@ USERS=		vault
 GROUPS=		vault
 
 PLIST_FILES=	bin/${PORTNAME}
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|%%PORTVERSION%%|${PORTVERSION}|g' ${WRKSRC}/version/version.go
-	@${REINPLACE_CMD} -e 's|%%COMMIT_ID%%|${COMMIT_ID}|g' ${WRKSRC}/version/version.go
 
 do-build:
 	@cd ${WRKSRC}; \

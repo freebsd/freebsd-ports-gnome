@@ -3,6 +3,7 @@
 
     COMMENT = Audio tools
 
+    SUBDIR += GxSwitchlessWah-lv2
     SUBDIR += HVSC-Update
     SUBDIR += Maaate
     SUBDIR += aacgain
@@ -10,6 +11,7 @@
     SUBDIR += abcde
     SUBDIR += abcmidi
     SUBDIR += abcselect
+    SUBDIR += abgate-lv2
     SUBDIR += abraca
     SUBDIR += acoustid-fingerprinter
     SUBDIR += adplay
@@ -25,6 +27,7 @@
     SUBDIR += amb-plugins
     SUBDIR += amp
     SUBDIR += ample
+    SUBDIR += amsynth
     SUBDIR += aqualung
     SUBDIR += ardour
     SUBDIR += ardour5
@@ -51,7 +54,6 @@
     SUBDIR += baresip
     SUBDIR += baudline
     SUBDIR += bcg729
-    SUBDIR += beast
     SUBDIR += beep
     SUBDIR += beets
     SUBDIR += blop
@@ -63,8 +65,9 @@
     SUBDIR += cantata
     SUBDIR += caps-lv2
     SUBDIR += caps-plugins
+    SUBDIR += carla
+    SUBDIR += cava
     SUBDIR += ccaudio2
-    SUBDIR += cd-console
     SUBDIR += cd-discid
     SUBDIR += cd2mp3
     SUBDIR += cddb-bundle
@@ -85,7 +88,6 @@
     SUBDIR += cpp-xmms2
     SUBDIR += creox
     SUBDIR += crip
-    SUBDIR += csound
     SUBDIR += csound6
     SUBDIR += ctronome
     SUBDIR += cue2toc
@@ -113,6 +115,7 @@
     SUBDIR += dream
     SUBDIR += drumgizmo
     SUBDIR += drumpiler
+    SUBDIR += drumstick
     SUBDIR += dsbmixer
     SUBDIR += dssi
     SUBDIR += dtmfdial
@@ -125,10 +128,12 @@
     SUBDIR += emms
     SUBDIR += enscribe
     SUBDIR += epos-devel
+    SUBDIR += eq10q-lv2
     SUBDIR += esound
     SUBDIR += espeak
     SUBDIR += esperanza
     SUBDIR += etcd
+    SUBDIR += eteroj-lv2
     SUBDIR += etktab
     SUBDIR += exaile
     SUBDIR += exaile-devel
@@ -137,11 +142,11 @@
     SUBDIR += faac
     SUBDIR += faad
     SUBDIR += fapg
+    SUBDIR += faust
     SUBDIR += fcplay
     SUBDIR += fdk-aac
     SUBDIR += fdmf
     SUBDIR += festalon
-    SUBDIR += festdoc
     SUBDIR += festival
     SUBDIR += festival-freebsoft-utils
     SUBDIR += festlex-cmu
@@ -173,9 +178,12 @@
     SUBDIR += flake
     SUBDIR += flite
     SUBDIR += fluid-soundfont
+    SUBDIR += fluidplug-lv2
     SUBDIR += fluidsynth
     SUBDIR += fluidsynth-dssi
     SUBDIR += fmit
+    SUBDIR += fomp-lv2
+    SUBDIR += foo-yc20
     SUBDIR += forked-daapd
     SUBDIR += fpc-a52
     SUBDIR += fpc-mad
@@ -234,7 +242,6 @@
     SUBDIR += grip
     SUBDIR += gsm
     SUBDIR += gsound
-    SUBDIR += gspeakers
     SUBDIR += gstreamer-plugins-a52dec
     SUBDIR += gstreamer-plugins-amrnb
     SUBDIR += gstreamer-plugins-amrwbdec
@@ -252,7 +259,6 @@
     SUBDIR += gstreamer-plugins-ladspa
     SUBDIR += gstreamer-plugins-lame
     SUBDIR += gstreamer-plugins-mad
-    SUBDIR += gstreamer-plugins-moodbar
     SUBDIR += gstreamer-plugins-mp3
     SUBDIR += gstreamer-plugins-musepack
     SUBDIR += gstreamer-plugins-nas
@@ -309,14 +315,15 @@
     SUBDIR += guspat
     SUBDIR += gvolwheel
     SUBDIR += gxmms2
+    SUBDIR += gxplugins-lv2
     SUBDIR += harp
     SUBDIR += herrie
     SUBDIR += hexter
     SUBDIR += hs-ALUT
     SUBDIR += hs-OpenAL
     SUBDIR += hs-libmpd
+    SUBDIR += hts_engine-API
     SUBDIR += hydrogen
-    SUBDIR += hydrogen-devel
     SUBDIR += icecast-kh
     SUBDIR += icecast2
     SUBDIR += icegenerator
@@ -330,6 +337,8 @@
     SUBDIR += id3v2
     SUBDIR += idjc
     SUBDIR += ifp-line
+    SUBDIR += infamous-plugins-lv2
+    SUBDIR += invada-studio-plugins-lv2
     SUBDIR += ir-lv2
     SUBDIR += jack
     SUBDIR += jack-keyboard
@@ -339,6 +348,7 @@
     SUBDIR += jack_mixer
     SUBDIR += jack_umidi
     SUBDIR += jalv
+    SUBDIR += jalv-select
     SUBDIR += jamin
     SUBDIR += jid3lib
     SUBDIR += jmusic
@@ -360,7 +370,6 @@
     SUBDIR += ladspa
     SUBDIR += lame
     SUBDIR += lash
-    SUBDIR += last.fm
     SUBDIR += lastfm-desktop
     SUBDIR += liba52
     SUBDIR += libaacplus
@@ -408,6 +417,7 @@
     SUBDIR += libmpdclient
     SUBDIR += libmusicbrainz3
     SUBDIR += libmusicbrainz5
+    SUBDIR += libmusicxml
     SUBDIR += libnjb
     SUBDIR += libnoise
     SUBDIR += libogg
@@ -472,6 +482,7 @@
     SUBDIR += lollypop
     SUBDIR += lpac
     SUBDIR += lua51-mpd
+    SUBDIR += luppp
     SUBDIR += lv2
     SUBDIR += lv2file
     SUBDIR += lvtk
@@ -610,11 +621,13 @@
     SUBDIR += p5-tagged
     SUBDIR += p5-xmms2
     SUBDIR += pacpl
+    SUBDIR += padthv1-lv2
     SUBDIR += paman
     SUBDIR += paprefs
     SUBDIR += patchage
     SUBDIR += pavucontrol
     SUBDIR += pavumeter
+    SUBDIR += pc-mixer
     SUBDIR += pd
     SUBDIR += pd-cyclone
     SUBDIR += pear-Text_Spell_Audio
@@ -627,7 +640,9 @@
     SUBDIR += playmidi
     SUBDIR += pm3umpdl
     SUBDIR += pms
+    SUBDIR += pms-devel
     SUBDIR += pocketsphinx
+    SUBDIR += polyphone
     SUBDIR += portaudio
     SUBDIR += praat
     SUBDIR += pragha
@@ -663,6 +678,7 @@
     SUBDIR += py-pyaudio
     SUBDIR += py-pylast
     SUBDIR += py-pyliblo
+    SUBDIR += py-pysndfile
     SUBDIR += py-shout
     SUBDIR += py-soundcloud
     SUBDIR += py-soundscrape
@@ -670,9 +686,8 @@
     SUBDIR += py-speex
     SUBDIR += py-tagpy
     SUBDIR += py-vorbis
+    SUBDIR += py-wavio
     SUBDIR += py-xmms2
-    SUBDIR += py3-mutagen
-    SUBDIR += py3-pylast
     SUBDIR += pytone
     SUBDIR += qjackctl
     SUBDIR += qmidiarp
@@ -697,11 +712,11 @@
     SUBDIR += rosegarden
     SUBDIR += rplay
     SUBDIR += rsynth
+    SUBDIR += rtaudio
     SUBDIR += rtmidi
     SUBDIR += rubberband
     SUBDIR += ruby-smf
     SUBDIR += ruby-taglib
-    SUBDIR += ruby-xmms2
     SUBDIR += rubygem-librmpd
     SUBDIR += rubygem-ruby-mp3info
     SUBDIR += rubygem-ruby-ogginfo
@@ -709,14 +724,15 @@
     SUBDIR += s3mod
     SUBDIR += sayonara
     SUBDIR += sbagen
+    SUBDIR += sc3-plugins
     SUBDIR += schismtracker
+    SUBDIR += screcord-lv2
     SUBDIR += scrobbler
     SUBDIR += sdl2_mixer
     SUBDIR += sdl_mixer
     SUBDIR += sdl_sound
     SUBDIR += sfront
     SUBDIR += shairplay
-    SUBDIR += shairport
     SUBDIR += shairport-sync
     SUBDIR += sherlock-lv2
     SUBDIR += shntool
@@ -732,14 +748,13 @@
     SUBDIR += siren
     SUBDIR += skype-call-recorder
     SUBDIR += slv2
-    SUBDIR += smasher
     SUBDIR += snack
     SUBDIR += snd
     SUBDIR += sndio
     SUBDIR += solfege
     SUBDIR += sonata
     SUBDIR += sonic-visualiser
-    SUBDIR += sooperlooper
+    SUBDIR += sorcer-lv2
     SUBDIR += sound-juicer
     SUBDIR += soundconverter
     SUBDIR += soundgrab
@@ -781,7 +796,6 @@
     SUBDIR += tap-plugins
     SUBDIR += tap-plugins-lv2
     SUBDIR += tcd
-    SUBDIR += tclmidi
     SUBDIR += teamspeak3-server
     SUBDIR += tempest_for_eliza
     SUBDIR += terminatorx
@@ -799,6 +813,7 @@
     SUBDIR += tkeca
     SUBDIR += toolame
     SUBDIR += tosha
+    SUBDIR += triceratops-lv2
     SUBDIR += trommler
     SUBDIR += tse3
     SUBDIR += tta
@@ -811,11 +826,11 @@
     SUBDIR += umurmur
     SUBDIR += vagalume
     SUBDIR += vamp-plugin-sdk
-    SUBDIR += ventrilo-server
     SUBDIR += virtual_oss
     SUBDIR += virtual_oss_ctl
     SUBDIR += vitunes
     SUBDIR += vm-lv2
+    SUBDIR += vmpk
     SUBDIR += vo-aacenc
     SUBDIR += vo-amrwbenc
     SUBDIR += voipong
@@ -834,6 +849,7 @@
     SUBDIR += wildmidi
     SUBDIR += wmalbum
     SUBDIR += wmix
+    SUBDIR += wmmp
     SUBDIR += wmrecord
     SUBDIR += wmsmixer
     SUBDIR += workman
@@ -881,6 +897,7 @@
     SUBDIR += xvmixer
     SUBDIR += xwave
     SUBDIR += yell
+    SUBDIR += yoshimi
     SUBDIR += zinf
     SUBDIR += zita-convolver
     SUBDIR += zita-resampler

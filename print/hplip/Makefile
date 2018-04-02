@@ -2,14 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	hplip
-PORTVERSION=	3.17.7
+PORTVERSION=	3.17.11
 CATEGORIES=	print
 MASTER_SITES=	SF
 
 MAINTAINER=	woodsb02@FreeBSD.org
 COMMENT=	Drivers and utilities for HP printers and All-in-One devices
 
-LICENSE=	GPLv2 MIT BSD3CLAUSE
+LICENSE=	GPLv2+ MIT BSD3CLAUSE
 LICENSE_COMB=	multi
 LICENSE_FILE=	${WRKSRC}/COPYING
 
@@ -129,7 +129,8 @@ post-patch:
 		${WRKSRC}/prnt/hpijs/hpcupsfax.cpp \
 		${WRKSRC}/prnt/hpijs/hpijs.cpp \
 		${WRKSRC}/ui/devmgr4.py \
-		${WRKSRC}/ui4/devmgr5.py
+		${WRKSRC}/ui4/devmgr5.py \
+		${WRKSRC}/ui5/devmgr5.py
 	@${REINPLACE_CMD} -e 's/umask(0)/umask(0o022)/' \
 		-e 's/umask(0o111)/umask(0o133)/' \
 		${WRKSRC}/base/os_utils.py \

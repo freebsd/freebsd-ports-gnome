@@ -13,10 +13,11 @@ MAINTAINER=	martymac@FreeBSD.org
 COMMENT=	Video DVD backup tool
 
 LICENSE=	GPLv3
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 NO_ARCH=	yes
-USES=		python:3 tar:tgz
-USE_PYTHON=	autoplist distutils
+USES=		python:3.4+ tar:tgz
+USE_PYTHON=	autoplist distutils optsuffix
 
 OPTIONS_DEFINE=	DVDCSS
 .if !defined(PACKAGE_BUILDING)

@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	sbt
-PORTVERSION=	1.0.1
+PORTVERSION=	1.1.0
 CATEGORIES=	devel java
-MASTER_SITES=	https://cocl.us/
+MASTER_SITES=	https://github.com/sbt/sbt/releases/download/v${PORTVERSION}/
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT=	Build tool for Scala projects

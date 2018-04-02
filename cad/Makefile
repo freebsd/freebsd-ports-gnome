@@ -47,6 +47,7 @@
     SUBDIR += kicad
     SUBDIR += kicad-devel
     SUBDIR += kicad-library
+    SUBDIR += kicad-library-devel
     SUBDIR += klayout
     SUBDIR += layouteditor
     SUBDIR += ldraw
@@ -86,6 +87,7 @@
     SUBDIR += sp2sp
     SUBDIR += spice
     SUBDIR += stepcode
+    SUBDIR += sumo
     SUBDIR += sweethome3d
     SUBDIR += tkgate
     SUBDIR += tochnog

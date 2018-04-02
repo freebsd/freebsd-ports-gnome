@@ -3,7 +3,7 @@
 
 PORTNAME=	vdr-plugin-markad
 PORTVERSION=	0.1.4
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://projects.vdr-developer.org/attachments/download/1041/
 DISTNAME=	${PORTNAME:S/-plugin-/-/}-${DISTVERSIONPREFIX}${DISTVERSION}${DISTVERSIONSUFFIX}
@@ -18,7 +18,7 @@ LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg
 
 RESTRICTED=	Installs station logos
 
-USES=		execinfo pkgconfig tar:tgz
+USES=		pkgconfig tar:tgz
 WRKSRC=		${WRKDIR}/${PLUGIN}-${DISTVERSION}
 VDR_PLUGIN_MAKEFILES=	${WRKSRC}/command/Makefile ${WRKSRC}/plugin/Makefile
 DEFINES=	-DDATADIR=\\\"${DATADIR}\\\" -DPREFIX=\\\"${PREFIX}\\\"

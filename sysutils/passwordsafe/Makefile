@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	passwordsafe
-DISTVERSION=	1.02BETA
-PORTREVISION=	1
+DISTVERSION=	1.03BETA
 CATEGORIES=	sysutils
 
 MAINTAINER=	brnrd@FreeBSD.org
@@ -11,10 +10,11 @@ COMMENT=	Popular secure and convenient password manager
 LICENSE=	ART20
 
 LIB_DEPENDS=	libuuid.so:misc/e2fsprogs-libuuid \
-		libxerces-c.so:textproc/xerces-c3
+		libxerces-c.so:textproc/xerces-c3 \
+		libqrencode.so:graphics/libqrencode
 BUILD_DEPENDS=	zip:archivers/zip
 
-NOT_FOR_ARCHS=		aarch64 armv6
+NOT_FOR_ARCHS=		aarch64 armv6 armv7
 NOT_FOR_ARCHS_REASON=	Cannot determine whether the target CPU is big or little endian - please fix PwsPlatform.h
 
 CONFLICTS=	pwsafe-[0-9]*
@@ -24,17 +24,23 @@ USE_GITHUB=	yes
 USE_WX=		3.0+
 USE_XORG=	x11 xtst
 
+OPTIONS_DEFINE=	NLS YUBIKEY
+YUBIKEY_DESC=	Yubikey support
+OPTIONS_SUB=	yes
+
+NLS_USES=		gettext
+YUBIKEY_LIB_DEPENDS=	libykpers-1.so:security/ykpers
+YUBIKEY_MAKE_ENV_OFF=	NO_YUBI=yes
+
 GH_ACCOUNT=	pwsafe
 GH_PROJECT=	${GH_ACCOUNT}
 
 WX_COMP=	wx
 WANT_WX_VER=	3.0
 
-ALL_TARGET=	unicoderelease
+LDFLAGS=	-L${PREFIX}/lib -lqrencode
 
-OPTIONS_DEFINE=	NLS
-OPTIONS_SUB=	yes
-NLS_USES=	gettext
+ALL_TARGET=	unicoderelease
 
 post-patch:
 .	for f in Makefile.freebsd help/Makefile.freebsd src/os/unix/Makefile \

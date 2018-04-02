@@ -7,12 +7,13 @@ PORTREVISION=	1
 CATEGORIES=	www
 MASTER_SITES=	http://www.bayofrum.net/dist/${PORTNAME}/
 
-MAINTAINER=	kevlo@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Web interface for music player daemon
 
 LICENSE=	GPLv2
 
 NO_BUILD=	yes
+USES=		php
 USE_PHP=	pcre sockets
 
 PHPMP?=		${WWWDIR_REL}

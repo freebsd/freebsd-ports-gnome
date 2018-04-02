@@ -13,32 +13,32 @@ Date:   Fri Jan 4 13:49:22 2013 +0100
  toolkit/library/Makefile.in                             |  1 +
  6 files changed, 52 insertions(+), 1 deletion(-)
 
-diff --git config/system-headers config/system-headers
-index 55e4cd1..76567b3 100644
---- config/system-headers
-+++ config/system-headers
-@@ -624,6 +624,7 @@ libgnome/libgnome.h
- libgnomeui/gnome-icon-lookup.h
- libgnomeui/gnome-icon-theme.h
- libgnomeui/gnome-ui-init.h
-+libv4l2.h
- limits.h
- link.h
- #ifdef ANDROID
+diff --git config/system-headers.mozbuild config/system-headers.mozbuild
+index e02d381a12e9..7620b4d00623 100644
+--- config/system-headers.mozbuild
++++ config/system-headers.mozbuild
+@@ -428,6 +428,7 @@ system_headers = [
+     'libgnomeui/gnome-icon-theme.h',
+     'libgnomeui/gnome-ui-init.h',
+     'libutil.h',
++    'libv4l2.h',
+     'limits.h',
+     'link.h',
+     'linux/ioprio.h',
 diff --git old-configure.in configure.in
 index 55e4cd1..76567b3 100644
 --- old-configure.in
 +++ old-configure.in
-@@ -5309,6 +5309,9 @@ if test -n "$MOZ_WEBRTC"; then
-     MOZ_VP8_ENCODER=1
-     MOZ_VP8_ERROR_CONCEALMENT=1
- 
+@@ -2558,6 +2558,9 @@ if test -n "$MOZ_WEBRTC"; then
+     if test -n "$MOZ_X11"; then
+       MOZ_WEBRTC_X11_LIBS="-lXext -lXdamage -lXfixes -lXcomposite"
+     fi
++
 +    dnl with libv4l2 we can support more cameras
 +    PKG_CHECK_MODULES(MOZ_LIBV4L2, libv4l2)
-+
- dnl enable once Signaling lands
-     MOZ_WEBRTC_SIGNALING=1
-     AC_DEFINE(MOZ_WEBRTC_SIGNALING)
+ else
+     MOZ_SYNTH_PICO=
+ fi
 diff --git build/gyp.mozbuild build/gyp.mozbuild
 index b483cd1..f1dd1f0 100644
 --- build/gyp.mozbuild
@@ -107,10 +107,11 @@ index 12df1b3..e9863ba 100644
  
  #include <new>
  
-@@ -26,6 +31,15 @@
- #include "critical_section_wrapper.h"
- #include "video_capture_linux.h"
- 
+@@ -32,6 +35,15 @@
+ #include "webrtc/modules/video_capture/linux/video_capture_linux.h"
+ #include "webrtc/system_wrappers/include/critical_section_wrapper.h"
+ #include "webrtc/system_wrappers/include/trace.h"
++
 +#ifdef HAVE_LIBV4L2
 +#define open	v4l2_open
 +#define close	v4l2_close
@@ -119,10 +120,9 @@ index 12df1b3..e9863ba 100644
 +#define mmap	v4l2_mmap
 +#define munmap	v4l2_munmap
 +#endif
-+
- namespace webrtc
- {
- namespace videocapturemodule
+ 
+ namespace webrtc {
+ namespace videocapturemodule {
 diff --git media/webrtc/trunk/webrtc/modules/video_capture/video_capture.gypi media/webrtc/trunk/webrtc/modules/video_capture/video_capture.gypi
 index d46b5aa..e452223 100644
 --- media/webrtc/trunk/webrtc/modules/video_capture/video_capture.gypi

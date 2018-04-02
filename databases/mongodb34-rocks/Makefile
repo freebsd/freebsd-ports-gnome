@@ -2,8 +2,8 @@
 
 PORTNAME=	mongodb
 PORTVERSION=	3.4.6
-PORTREVISION=	1
 DISTVERSIONPREFIX=	r
+PORTREVISION=	4
 CATEGORIES=	databases net
 MASTER_SITES=	https://fastdl.mongodb.org/src/ \
 		http://fastdl.mongodb.org/src/ \
@@ -19,6 +19,9 @@ COMMENT=	Distributed document-oriented database with a RocksDB Storage Engine
 LICENSE=	AGPLv3 APACHE20
 LICENSE_COMB=	multi
 
+BROKEN=		fails to link
+BROKEN=		fails to build with boost 1.66, see bug 224091
+
 ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	"Only supported on amd64 (i386 deprecated in v3)"
 
@@ -30,7 +33,7 @@ LIB_DEPENDS=	libpcre.so:devel/pcre \
 TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}yaml>=3.11:devel/py-yaml \
 		${PYTHON_PKGNAMEPREFIX}pymongo>=3.0:databases/pymongo
 
-USES=		compiler:c++14-lang cpe execinfo python:build scons
+USES=		compiler:c++14-lang cpe python:build scons
 USE_RC_SUBR=	mongod \
 		mongos
 

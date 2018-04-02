@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	exercism
-PORTVERSION=	2.2.5
+PORTVERSION=	2.4.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	misc
 
@@ -13,8 +13,6 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/go:lang/go
 
 USE_GITHUB=	yes
 GH_PROJECT=	cli
-
-STRIP=		# stripping can break go binaries
 
 PLIST_FILES=	bin/exercism
 

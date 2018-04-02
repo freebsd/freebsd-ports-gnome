@@ -3,7 +3,7 @@
 
 PORTNAME=	xine
 PORTVERSION=	1.2.6
-PORTREVISION=	12
+PORTREVISION=	15
 CATEGORIES=	multimedia ipv6
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-lib/${PORTVERSION}
 PKGNAMEPREFIX=	lib
@@ -40,7 +40,7 @@ LIB_DEPENDS=	libFLAC.so:audio/flac \
 LIB_DEPENDS+=	libdvdcss.so.2:multimedia/libdvdcss
 .endif
 
-USES=		compiler cpe execinfo gmake iconv libtool:keepla \
+USES=		compiler cpe gmake iconv libtool:keepla \
 		localbase pathfix perl5 pkgconfig tar:xz
 CPE_PRODUCT=	xine-lib
 CPE_VENDOR=	xine
@@ -63,6 +63,7 @@ CONFIGURE_ARGS=	--with-w32-path=${LOCALBASE}/lib/win32 \
 		--disable-musepack \
 		--enable-dvb
 MAKE_ENV=	V=1
+LLD_UNSAFE=	yes
 
 DOCSDIR=	${PREFIX}/share/doc/xine-lib
 # Please sync with XINE_PLUGINSDIR in multimedia/xine

@@ -1,4 +1,4 @@
-# Created by: Nicola Vitale	<nivit@email.it>
+# Created by: Nicola Vitale <nivit@email.it>
 # $FreeBSD$
 
 PORTNAME=	kana-no-quiz
@@ -18,8 +18,7 @@ RUN_DEPENDS=	${PYGAME}
 NO_BUILD=	yes
 NO_ARCH=	yes
 
-
-USES=		gettext python tar:bzip2
+USES=		gettext python:2.7 tar:bzip2
 USE_GNOME=	pygtk2:run
 USE_PYTHON=	distutils autoplist
 

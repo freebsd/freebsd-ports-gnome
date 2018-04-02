@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	Reddit-Client
-PORTVERSION=	1.093
-PORTEPOCH=	1
+PORTVERSION=	1.098
+PORTEPOCH=	2
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -11,7 +11,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	ehaupt@FreeBSD.org
 COMMENT=	Methods and object wrappers for objects exposed by the Reddit API
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-IO-Capture>=0:devel/p5-IO-Capture \

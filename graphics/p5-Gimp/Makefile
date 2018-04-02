@@ -11,7 +11,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Write GIMP extensions/plug-ins/load- and save-handlers in Perl
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 LICENSE_FILE_ART10=	${WRKSRC}/COPYING.Artistic
 
@@ -37,6 +37,5 @@ MAKE_JOBS_UNSAFE=	yes
 .if ${PERL_LEVEL} < 502502
 BUILD_DEPENDS+=	p5-ExtUtils-MakeMaker>=7.14:devel/p5-ExtUtils-MakeMaker
 .endif
-
 
 .include <bsd.port.post.mk>

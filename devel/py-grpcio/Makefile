@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	grpcio
-PORTVERSION=	1.4.0
+PORTVERSION=	1.8.4
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -10,23 +10,23 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	vanilla@FreeBSD.org
 COMMENT=	HTTP/2-based RPC framework
 
-LICENSE=	BSD3CLAUSE
+LICENSE=	APACHE20
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>1:devel/py-six \
-		${PYTHON_PKGNAMEPREFIX}enum34>1:devel/py-enum34 \
-		${PYTHON_PKGNAMEPREFIX}protobuf>=3:devel/py-protobuf
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>1:devel/py-six@${FLAVOR} \
+		${PY_ENUM34} \
+		${PY_FUTURES} \
+		${PYTHON_PKGNAMEPREFIX}protobuf>=3:devel/py-protobuf@${FLAVOR}
 LIB_DEPENDS=	libcares.so:dns/c-ares
 
-BROKEN_aarch64=		fails to compile: cpu-aarch64-linux.c: fatal error: 'sys/auxv.h' file not found
 BROKEN_powerpc64=	fails to compile: cpu-ppc64le.c: 'AT_HWCAP2' undeclared
 
-USES=		python
-USE_PYTHON=	distutils
-CFLAGS+=	-Ithird_party/boringssl/include \
-		-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -lcares
+USES=		compiler:gcc-c++11-lib localbase:ldflags python
+USE_PYTHON=	autoplist distutils
+CFLAGS+=	-Ithird_party/boringssl/include
+LDFLAGS+=	-lcares
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/grpc/_cython/cygrpc.so
+	${REINPLACE_CMD} -e 's|${PYTHONPREFIX_SITELIBDIR}/\(.*\)/grpcio/grpc/_cython/cygrpc.so|${PYTHONPREFIX_SITELIBDIR}/grpc/_cython/cygrpc.so|g' ${_PYTHONPKGLIST}
 
 .include <bsd.port.mk>

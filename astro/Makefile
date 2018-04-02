@@ -7,7 +7,7 @@
     SUBDIR += accrete
     SUBDIR += astrometry
     SUBDIR += boinc-astropulse
-    SUBDIR += boinc-setiathome-v7
+    SUBDIR += boinc-setiathome
     SUBDIR += celestia
     SUBDIR += celestia-gnome
     SUBDIR += celestia-gtk
@@ -17,7 +17,6 @@
     SUBDIR += garmindev
     SUBDIR += geographiclib
     SUBDIR += gkrellmoon2
-    SUBDIR += gmapcatcher
     SUBDIR += google-earth
     SUBDIR += gpsbabel
     SUBDIR += gpsbabel14
@@ -105,6 +104,7 @@
     SUBDIR += stellarium
     SUBDIR += stellarium-qt4
     SUBDIR += sunclock
+    SUBDIR += sunwait
     SUBDIR += swe
     SUBDIR += tclgeomap
     SUBDIR += tkgeomap

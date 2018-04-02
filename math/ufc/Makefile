@@ -3,14 +3,14 @@
 
 PORTNAME=	ufc
 PORTVERSION=	${MMVERSION}.0
-PORTREVISION=	4
+PORTREVISION=	7
 CATEGORIES=	math python
 MASTER_SITES=	http://launchpad.net/${PORTNAME}/${MMVERSION}.x/${PORTVERSION}/+download/
 
 MAINTAINER=	bacon4000@gmail.com
 COMMENT=	Unified framework for finite element assembly
 
-BUILD_DEPENDS=	swig2.0:devel/swig20
+BUILD_DEPENDS=	swig3.0:devel/swig30
 LIB_DEPENDS=	libboost_math_c99.so:devel/boost-libs
 
 # LICENSE=	public domain

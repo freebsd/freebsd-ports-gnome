@@ -53,14 +53,23 @@ check_dep() {
 	local _dep wrkdir show_dep
 
 	for _dep ; do
+		unset FLAVOR
 		myifs=${IFS}
 		IFS=:
 		set -- ${_dep}
 		IFS=${myifs}
 
 		case "${2}" in
-			/*) d=${2} ;;
-			*) d=${PORTSDIR}/${2} ;;
+		/*) d=${2} ;;
+		*) d=${PORTSDIR}/${2} ;;
+		esac
+
+		case "${d}" in
+		*@*/*) ;; # Ignore @ in the path which would not be a flavor
+		*@*)
+			export FLAVOR=${d##*@}
+			d=${d%@*}
+			;;
 		esac
 
 		case " ${checked} " in

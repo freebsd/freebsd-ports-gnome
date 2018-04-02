@@ -1,3 +1,4 @@
+etc/xdg/kfilemetadata.categories
 include/KF5/KFileMetaData/KFileMetaData/ExtractionResult
 include/KF5/KFileMetaData/KFileMetaData/Extractor
 include/KF5/KFileMetaData/KFileMetaData/ExtractorCollection
@@ -58,6 +59,7 @@ share/locale/el/LC_MESSAGES/kfilemetadata5.mo
 share/locale/en_GB/LC_MESSAGES/kfilemetadata5.mo
 share/locale/es/LC_MESSAGES/kfilemetadata5.mo
 share/locale/et/LC_MESSAGES/kfilemetadata5.mo
+share/locale/eu/LC_MESSAGES/kfilemetadata5.mo
 share/locale/fi/LC_MESSAGES/kfilemetadata5.mo
 share/locale/fr/LC_MESSAGES/kfilemetadata5.mo
 share/locale/gd/LC_MESSAGES/kfilemetadata5.mo

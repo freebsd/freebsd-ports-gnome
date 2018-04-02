@@ -37,8 +37,6 @@ GH_TUPLE=	\
 BUILD_HASH=	5dc8fe4
 BUILD_DATE=	February 10, 2017
 
-STRIP=		# stripping can break go binaries
-
 PLIST_FILES=	bin/micro
 PORTDOCS=	README.md
 
@@ -50,6 +48,6 @@ do-build:
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/micro ${STAGEDIR}${PREFIX}/bin
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_MAN} ${WRKSRC}/README.md ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README.md ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

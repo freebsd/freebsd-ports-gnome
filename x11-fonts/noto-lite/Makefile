@@ -10,7 +10,7 @@ DISTNAME=	${PORTNAME:S|n|N|}-hinted
 DISTFILES=	${DISTNAME}.zip NotoEmoji-Regular.ttf:emoji
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
-MAINTAINER=	kevlo@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Google font family - lite version
 
 LICENSE=	APACHE20 OFL11
@@ -22,10 +22,10 @@ NO_WRKSUBDIR=	yes
 
 CONFLICTS_INSTALL=	noto*
 
-LIST= NotoEmoji-Regular.ttf NotoSans-Bold.ttf NotoSans-BoldItalic.ttf NotoSans-Italic.ttf NotoSans-Regular.ttf NotoSansLinearB-Regular.ttf NotoSansSymbols-Regular.ttf NotoSerif-Bold.ttf NotoSerif-BoldItalic.ttf NotoSerif-Italic.ttf NotoSerif-Regular.ttf
+LIST=	NotoEmoji-Regular.ttf NotoSans-Bold.ttf NotoSans-BoldItalic.ttf NotoSans-Italic.ttf NotoSans-Regular.ttf NotoSansLinearB-Regular.ttf NotoSansSymbols-Regular.ttf NotoSerif-Bold.ttf NotoSerif-BoldItalic.ttf NotoSerif-Italic.ttf NotoSerif-Regular.ttf
 
 .for f in ${LIST}
-PLIST_FILES+=   ${FONTSDIR}/${f}
+PLIST_FILES+=	${FONTSDIR}/${f}
 .endfor
 
 post-extract:

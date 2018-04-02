@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	myrddin
-PORTVERSION=	0.1.1
+PORTVERSION=	0.2.0
 CATEGORIES=	lang
 MASTER_SITES=	http://myrlang.org/releases/
 
@@ -16,6 +16,7 @@ ONLY_FOR_ARCHS=	amd64
 USES=	gmake
 
 HAS_CONFIGURE=	yes
+CONFIGURE_ARGS=	--prefix "${PREFIX}"
 WRKSRC=	${WRKDIR}/mc
 TEST_TARGET=	check
 

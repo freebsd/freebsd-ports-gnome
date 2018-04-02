@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	chromium
-PORTVERSION=	60.0.3112.113
-PORTREVISION=	1
+PORTVERSION=	61.0.3163.100
+PORTREVISION=	5
 CATEGORIES?=	www
 MASTER_SITES=	https://commondatastorage.googleapis.com/chromium-browser-official/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
@@ -16,19 +16,19 @@ LICENSE_COMB=	multi
 
 BUILD_DEPENDS=	python:lang/python \
 		bash:shells/bash \
-		${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2 \
-		${PYTHON_PKGNAMEPREFIX}ply>0:devel/py-ply \
+		${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}ply>0:devel/py-ply@${PY_FLAVOR} \
 
 .if !defined(GN_ONLY)
 BUILD_DEPENDS+=	gperf:devel/gperf \
-		clang40:devel/llvm40 \
+		clang50:devel/llvm50 \
 		yasm:devel/yasm \
 		ffmpeg>=3.2.2,1:multimedia/ffmpeg \
 		flock:sysutils/flock \
 		node:www/node \
 		${LOCALBASE}/include/linux/videodev2.h:multimedia/v4l_compat \
 		${LOCALBASE}/share/usbids/usb.ids:misc/usbids \
-		${PYTHON_PKGNAMEPREFIX}html5lib>0:www/py-html5lib
+		${PYTHON_PKGNAMEPREFIX}html5lib>0:www/py-html5lib@${PY_FLAVOR}
 .endif
 
 .if !defined(GN_ONLY)
@@ -62,13 +62,16 @@ LIB_DEPENDS=	libspeechd.so:accessibility/speech-dispatcher \
 RUN_DEPENDS=	xdg-open:devel/xdg-utils \
 		droid-fonts-ttf>0:x11-fonts/droid-fonts-ttf
 
-ONLY_FOR_ARCHS=	amd64 i386
+BROKEN_FreeBSD_11_aarch64=	components/safe_browsing_db/v4_rice.cc:120:18: use of overloaded operator '&' is ambiguous
+BROKEN_FreeBSD_12_aarch64=	third_party/skia/src/core/SkCpu.cpp:84:27: use of undeclared identifier 'getauxval'
+ONLY_FOR_ARCHS=			aarch64 amd64 i386
+
 .endif
 
 .if defined(GN_ONLY)
-USES=		compiler:c++11-lib ninja pkgconfig python:2,build shebangfix tar:xz
+USES=		compiler:c++14-lang ninja pkgconfig python:2,build shebangfix tar:xz
 .else
-USES=		bison cpe desktop-file-utils execinfo jpeg ninja perl5 pkgconfig \
+USES=		bison cpe desktop-file-utils jpeg ninja perl5 pkgconfig \
 		python:2,build shebangfix tar:xz
 .endif
 MAKE_ARGS=	-C out/${BUILDTYPE}
@@ -85,8 +88,8 @@ SHEBANG_FILES=	chrome/tools/build/linux/chrome-wrapper
 ALL_TARGET=	chrome
 INSTALLS_ICONS=	yes
 
-CC=		clang40
-CXX=		clang++40
+CC=		clang50
+CXX=		clang++50
 .endif
 
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-clang
@@ -201,6 +204,13 @@ MAKE_ENV+=	C_INCLUDE_PATH=${LOCALBASE}/include \
 # Work around base r261801
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100508
 GN_ARGS+=	extra_cxxflags="-D_LIBCPP_TRIVIAL_PAIR_COPY_CTOR=1"
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-old
+.else
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-new
+.endif
+
+.if ${ARCH} == aarch64
+GN_ARGS+=	use_vulcanize=false
 .endif
 
 .if !defined(GN_ONLY)

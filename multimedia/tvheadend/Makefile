@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	tvheadend
-PORTVERSION=	4.2.3
+PORTVERSION=	4.2.5
 DISTVERSIONPREFIX=	v
 CATEGORIES=	multimedia
 
@@ -23,7 +23,7 @@ BROKEN_mips=		fails to configure: No C compiler found
 BROKEN_mips64=		fails to configure: No C compiler found
 BROKEN_powerpc64=	fails to configure: No C compiler found
 
-USES=		execinfo gettext gmake pkgconfig python shebangfix ssl
+USES=		gettext gmake pkgconfig python shebangfix ssl
 USE_GITHUB=	yes
 
 GNU_CONFIGURE=	yes

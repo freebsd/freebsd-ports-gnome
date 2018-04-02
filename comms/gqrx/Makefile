@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	gqrx
-PORTVERSION=	2.7
+PORTVERSION=	2.9
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	comms hamradio
 
@@ -24,10 +25,10 @@ LIB_DEPENDS=	libgnuradio-runtime.so:comms/gnuradio \
 		libboost_system.so:devel/boost-libs \
 		libboost_program_options.so:devel/boost-libs
 
+USES=		pkgconfig qmake
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	csete
-
-USES=		pkgconfig qmake
 
 USE_GL=		gl
 USE_QT5=	buildtools_build core gui svg network widgets

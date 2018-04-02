@@ -16,15 +16,13 @@ LICENSE_FILE=		${WRKSRC}/COPYING
 
 ONLY_FOR_ARCHS=		amd64 i386
 
-LIB_DEPENDS=		libmspack.so:archivers/libmspack \
-			libxerces-c.so:textproc/xerces-c3 \
-			libxml-security-c.so:security/apache-xml-security-c
+LIB_DEPENDS=		libmspack.so:archivers/libmspack
 
-RELEASE_VER=		10.1.10
-BUILD_VER=		6082533
+RELEASE_VER=		10.2.0
+BUILD_VER=		7253323
 
-OPTIONS_DEFINE=		DNET ICU LIBNOTIFY OPENSSL X11
-OPTIONS_DEFAULT=	DNET ICU LIBNOTIFY OPENSSL X11
+OPTIONS_DEFINE=		DNET LIBNOTIFY OPENSSL X11
+OPTIONS_DEFAULT=	DNET LIBNOTIFY OPENSSL X11
 
 OPTIONS_SUB=
 
@@ -39,8 +37,6 @@ X11_LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 LIBNOTIFY_LIB_DEPENDS=	libnotify.so:devel/libnotify
 DNET_CONFIGURE_WITH=	dnet
 DNET_LIB_DEPENDS=	libdnet.so:net/libdnet
-ICU_CONFIGURE_WITH=	icu
-ICU_LIB_DEPENDS=	libicuuc.so:devel/icu
 OPENSSL_CONFIGURE_WITH=	ssl
 
 WRKSRC_SUBDIR=		open-vm-tools
@@ -57,8 +53,8 @@ CPPFLAGS+=		-Wno-deprecated-declarations
 
 SSP_UNSAFE=		kernel module does not support ssp
 
-CONFIGURE_ARGS+=	--disable-grabbitmqproxy \
-			--disable-vgauth --without-procps \
+CONFIGURE_ARGS+=	--without-icu \
+			--disable-vgauth \
 			--sysconfdir=${PREFIX}/etc
 
 CONFLICTS+=		vmware-guestd[0-9]* vmware-tools[0-9]*

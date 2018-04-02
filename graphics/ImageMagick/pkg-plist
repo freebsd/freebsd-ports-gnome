@@ -26,6 +26,7 @@ bin/stream
 @sample etc/ImageMagick-6/type-apple.xml.sample
 @sample etc/ImageMagick-6/type-dejavu.xml.sample
 @sample etc/ImageMagick-6/type-ghostscript.xml.sample
+@sample etc/ImageMagick-6/type-urw-base35.xml.sample
 @sample etc/ImageMagick-6/type-windows.xml.sample
 @sample etc/ImageMagick-6/type.xml.sample
 include/ImageMagick-6/Magick++.h
@@ -416,18 +417,18 @@ lib/ImageMagick-%%PORTVERSION%%/config-%%QBIT%%%%HDRI%%/configure.xml
 lib/libMagick++-6.a
 lib/libMagick++-6.la
 lib/libMagick++-6.so
-lib/libMagick++-6.so.7
-lib/libMagick++-6.so.7.0.0
+lib/libMagick++-6.so.8
+lib/libMagick++-6.so.8.0.0
 lib/libMagickCore-6.a
 lib/libMagickCore-6.la
 lib/libMagickCore-6.so
-lib/libMagickCore-6.so.4
-lib/libMagickCore-6.so.4.0.0
+lib/libMagickCore-6.so.5
+lib/libMagickCore-6.so.5.0.0
 lib/libMagickWand-6.a
 lib/libMagickWand-6.la
 lib/libMagickWand-6.so
-lib/libMagickWand-6.so.4
-lib/libMagickWand-6.so.4.0.0
+lib/libMagickWand-6.so.5
+lib/libMagickWand-6.so.5.0.0
 %%WITH_PERL%%%%SITE_ARCH%%/Image/Magick.pm
 %%WITH_PERL%%%%SITE_ARCH%%/Image/Magick/%%QBIT%%%%HDRI%%.pm
 %%WITH_PERL%%%%SITE_ARCH%%/auto/Image/Magick/%%QBIT%%%%HDRI%%/%%QBIT%%%%HDRI%%.so
@@ -1399,6 +1400,8 @@ man/man1/stream.1.gz
 %%PORTDOCS%%%%DOCSDIR%%-6/www/api/version.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/api/wand-view.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/architecture.html
+%%PORTDOCS%%%%DOCSDIR%%-6/www/assets/magick.css
+%%PORTDOCS%%%%DOCSDIR%%-6/www/assets/magick.js
 %%PORTDOCS%%%%DOCSDIR%%-6/www/binary-releases.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/changelog.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/cipher.html
@@ -1414,8 +1417,6 @@ man/man1/stream.1.gz
 %%PORTDOCS%%%%DOCSDIR%%-6/www/connected-components.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/contact.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/convert.html
-%%PORTDOCS%%%%DOCSDIR%%-6/www/css/README.txt
-%%PORTDOCS%%%%DOCSDIR%%-6/www/css/magick.css
 %%PORTDOCS%%%%DOCSDIR%%-6/www/develop.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/display.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/distribute-pixel-cache.html
@@ -1435,8 +1436,6 @@ man/man1/stream.1.gz
 %%PORTDOCS%%%%DOCSDIR%%-6/www/index.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/install-source.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/jp2.html
-%%PORTDOCS%%%%DOCSDIR%%-6/www/js/README.txt
-%%PORTDOCS%%%%DOCSDIR%%-6/www/js/magick.js
 %%PORTDOCS%%%%DOCSDIR%%-6/www/license.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/links.html
 %%PORTDOCS%%%%DOCSDIR%%-6/www/magick.html
@@ -1477,8 +1476,12 @@ man/man1/stream.1.gz
 %%PORTDOCS%%%%DOCSDIR%%-6/www/source/piechart.mvg
 %%PORTDOCS%%%%DOCSDIR%%-6/www/source/piechart.svg
 %%PORTDOCS%%%%DOCSDIR%%-6/www/source/policy.xml
+%%PORTDOCS%%%%DOCSDIR%%-6/www/source/quantization-table.xml
 %%PORTDOCS%%%%DOCSDIR%%-6/www/source/thresholds.xml
+%%PORTDOCS%%%%DOCSDIR%%-6/www/source/type-apple.xml
+%%PORTDOCS%%%%DOCSDIR%%-6/www/source/type-dejavu.xml
 %%PORTDOCS%%%%DOCSDIR%%-6/www/source/type-ghostscript.xml
+%%PORTDOCS%%%%DOCSDIR%%-6/www/source/type-urw-base35.xml
 %%PORTDOCS%%%%DOCSDIR%%-6/www/source/type-windows.xml
 %%PORTDOCS%%%%DOCSDIR%%-6/www/source/type.xml
 %%PORTDOCS%%%%DOCSDIR%%-6/www/source/wand.c

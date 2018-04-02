@@ -1,9 +1,7 @@
-# Created by: tcberner
 # $FreeBSD$
 
 PORTNAME=	kdewebkit
-PORTVERSION=	${KDE_FRAMEWORKS_VERSION}
-PORTREVISION=	1
+DISTVERSION=	${KDE_FRAMEWORKS_VERSION}
 CATEGORIES=	www kde kde-frameworks
 
 MAINTAINER=	kde@FreeBSD.org

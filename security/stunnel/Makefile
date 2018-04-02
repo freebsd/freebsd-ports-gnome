@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	stunnel
-PORTVERSION=	5.42
+PORTVERSION=	5.44
 PORTEPOCH=	1
 CATEGORIES=	security
 MASTER_SITES=	https://www.stunnel.org/downloads/%SUBDIR%/ \
@@ -118,6 +118,6 @@ cert:
 	@${ECHO} "The new certificate will be saved into ${ETCDIR}/stunnel.pem"
 	@${ECHO} "**************************************************************************"
 	@${ECHO} ""
-	@(cd ${WRKSRC}/tools/; make install-data-local)
+	@(cd ${WRKSRC}/tools/; make cert)
 
 .include <bsd.port.post.mk>

@@ -14,7 +14,7 @@ COMMENT=	Ultimate++, a BSD-licensed, cross-platform, C/C++ RAD suite
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${BUILD_WRKSRC}/Core/Copying
 
-USES=		compiler:c++11-lib execinfo
+USES=		compiler:c++11-lib
 
 WRKSRC=		${WRKDIR}/${DISTNAME}
 BUILD_WRKSRC=	${WRKSRC}/uppsrc
@@ -61,6 +61,7 @@ SDL_USE=	sql
 OPENGL_USE=	gl
 MYSQL_USE=	mysql=yes
 PGSQL_USES=	pgsql
+LLD_UNSAFE=	yes
 
 .include <bsd.port.pre.mk>
 

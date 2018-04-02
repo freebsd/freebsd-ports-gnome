@@ -3,17 +3,15 @@
 PORTNAME=	jxrlib
 PORTVERSION=	1.1
 CATEGORIES=	graphics devel
-MASTER_SITES=	${MASTER_SITE_DEBIAN}
-MASTER_SITE_SUBDIR=pool/main/j/jxrlib
+MASTER_SITES=	DEBIAN
 DISTFILES=	jxrlib_${PORTVERSION}.orig.tar.gz	\
 		jxrlib_${PORTVERSION}-6.debian.tar.xz
 
 MAINTAINER=	mi@aldan.algebra.com
 COMMENT=	Library for JPEG XR, a.k.a. Windows MediaTM Photo
 
-LICENSE=	BSD
+LICENSE=	BSD2CLAUSE
 
-BROKEN_aarch64=		fails to link: cc: linker command failed with exit code 1 (use -v to see invocation)
 BROKEN_mips=		fails to compile: cc1: unrecognized command line option "-Wno-extra-tokens"
 BROKEN_mips64=		fails to compile: cc1: unrecognized command line option "-Wno-extra-tokens"
 BROKEN_powerpc64=	fails to compile: cc1: unrecognized command line option "-Wno-extra-tokens"
