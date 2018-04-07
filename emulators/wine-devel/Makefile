@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-DISTVERSION=	3.0-rc6
+DISTVERSION=	3.5
 PORTEPOCH=	1
 CATEGORIES=	emulators
-MASTER_SITES=	SF/${PORTNAME}/Source \
-		http://ibiblio.org/pub/linux/system/emulators/wine/
+MASTER_SITES=	http://mirrors.ibiblio.org/wine/source/3.x/ \
+		SF/${PORTNAME}/Source
 PKGNAMESUFFIX?=	-devel
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
@@ -18,7 +18,6 @@ LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 ONLY_FOR_ARCHS=	amd64 i386
-STAGING_BROKEN=	Staging patchset still not available for this version
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/flex:textproc/flex \
 		prelink:sysutils/prelink
@@ -30,10 +29,13 @@ CONFLICTS_INSTALL=	wine-[0-9]* wine-staging-[0-9]* i386-wine-[0-9]* \
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=--verbose --disable-tests \
+CONFIGURE_ARGS+=--verbose \
+		--disable-kerberos \
+		--disable-tests \
 		--without-alsa --without-capi --without-dbus \
 		--without-gettext --without-gettextpo \
 		--without-gphoto --without-gsm --without-gstreamer \
+		--without-krb5 \
 		--without-opencl \
 		--without-osmesa \
 		--with-oss \
@@ -59,7 +61,6 @@ OPTIONS_DEFINE=	CUPS DOCS DOSBOX GNUTLS HAL LDAP LIBXSLT MPG123 OPENAL STAGING V
 OPTIONS_DEFAULT=GNUTLS X11
 OPTIONS_SUB=	yes
 
-STAGING_DESC=	Include the Wine Staging patchset
 DOSBOX_DESC=	Use DOSBox to run MS-DOS programs
 LIBXSLT_DESC=	Use libxslt (only used by msxml3.dll)
 WINEMAKER_DESC=	Fully support winemaker (requires Perl)
@@ -109,6 +110,11 @@ X11_LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 
 .include <bsd.port.pre.mk>
 
+# PR224863: clang 6.0.0 crashes
+.if ${OPSYS} == FreeBSD && ${OSVERSION} == 1200056 && ${ARCH} == amd64
+USE_GCC=	yes
+.endif
+
 .if ${ARCH} == amd64
 # Wine is composed of three parts:
 #  - wine (aka this port) is the 32-bit component and runs 32-bit programs (on FreeBSD/i386)
@@ -140,7 +146,7 @@ PLIST_SUB+=		WINE32="" WINE64="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MSTAGING}
-MASTER_SITES+=	https://github.com/compholio/wine-compholio-daily/archive/:cho
+MASTER_SITES+=	https://github.com/wine-staging/wine-staging/archive/:cho
 COMP_DIST=	v${DISTVERSION}.tar.gz
 DISTFILES+=	${COMP_DIST}:cho
 

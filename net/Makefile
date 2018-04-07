@@ -28,6 +28,7 @@
     SUBDIR += asterisk-chan_sccp
     SUBDIR += asterisk-g72x
     SUBDIR += asterisk13
+    SUBDIR += asterisk15
     SUBDIR += avahi
     SUBDIR += avahi-app
     SUBDIR += avahi-autoipd
@@ -55,6 +56,8 @@
     SUBDIR += boclient
     SUBDIR += boinc-client
     SUBDIR += boinc_curses
+    SUBDIR += bosh-bootloader
+    SUBDIR += bosh-cli
     SUBDIR += bounce
     SUBDIR += bsdec2-image-upload
     SUBDIR += bsdproxy
@@ -132,6 +135,7 @@
     SUBDIR += enet
     SUBDIR += erlang-ranch
     SUBDIR += erlang-xmlrpc
+    SUBDIR += eternalterminal
     SUBDIR += etrace
     SUBDIR += exabgp
     SUBDIR += exaddos
@@ -145,7 +149,6 @@
     SUBDIR += fpc-ldap
     SUBDIR += fpc-pcap
     SUBDIR += fping
-    SUBDIR += freebsd-tftp
     SUBDIR += freebsd-uucp
     SUBDIR += freediameter
     SUBDIR += freenet6
@@ -179,6 +182,7 @@
     SUBDIR += gnome-online-miners
     SUBDIR += gnu-dico
     SUBDIR += gnu-radius
+    SUBDIR += gobgp
     SUBDIR += go-amqp
     SUBDIR += go-bapu
     SUBDIR += go-cs
@@ -194,6 +198,7 @@
     SUBDIR += google-startup-scripts
     SUBDIR += googlecl
     SUBDIR += gopher
+    SUBDIR += goreplay
     SUBDIR += gotthard
     SUBDIR += gq
     SUBDIR += grdesktop
@@ -201,7 +206,6 @@
     SUBDIR += grilo-plugins
     SUBDIR += grilo-plugins2
     SUBDIR += grilo2
-    SUBDIR += grive
     SUBDIR += grive2
     SUBDIR += grsync
     SUBDIR += gsk
@@ -302,19 +306,20 @@
     SUBDIR += kafka
     SUBDIR += kafkacat
     SUBDIR += kamailio
-    SUBDIR += kdenetwork4
-    SUBDIR += kdenetwork4-filesharing
-    SUBDIR += kdenetwork4-strigi-analyzers
+    SUBDIR += kdenetwork-kde4
+    SUBDIR += kdenetwork-filesharing-kde4
+    SUBDIR += kdenetwork-strigi-analyzers-kde4
     SUBDIR += kea
+    SUBDIR += kf5-kholidays
     SUBDIR += kf5-kxmlrpcclient
-    SUBDIR += kget
+    SUBDIR += kget-kde4
     SUBDIR += kio-upnp-ms
     SUBDIR += kippo
     SUBDIR += kissd
     SUBDIR += knc
     SUBDIR += knemo-kde4
-    SUBDIR += krdc
-    SUBDIR += krfb
+    SUBDIR += krdc-kde4
+    SUBDIR += krfb-kde4
     SUBDIR += kwooty
     SUBDIR += l2tpd
     SUBDIR += l4ip
@@ -478,6 +483,7 @@
     SUBDIR += nifmon
     SUBDIR += nload
     SUBDIR += nmsg
+    SUBDIR += nncp
     SUBDIR += nocatsplash
     SUBDIR += norm
     SUBDIR += nph
@@ -496,6 +502,7 @@
     SUBDIR += ntpa
     SUBDIR += ntraceroute
     SUBDIR += nusoap
+    SUBDIR += nuster
     SUBDIR += nxproxy
     SUBDIR += nyancat
     SUBDIR += nylon
@@ -664,7 +671,6 @@
     SUBDIR += p5-Net-Ident
     SUBDIR += p5-Net-Ifconfig-Wrapper
     SUBDIR += p5-Net-Interface
-    SUBDIR += p5-Net-Jaiku
     SUBDIR += p5-Net-Jifty
     SUBDIR += p5-Net-LDAP-AutoDNs
     SUBDIR += p5-Net-LDAP-AutoServer
@@ -993,6 +999,7 @@
     SUBDIR += py-dugong
     SUBDIR += py-ec2-cli-tools
     SUBDIR += py-eventlet
+    SUBDIR += py-flask-xml-rpc
     SUBDIR += py-gntp
     SUBDIR += py-gspread
     SUBDIR += py-gspreadsheet
@@ -1001,6 +1008,7 @@
     SUBDIR += py-impacket
     SUBDIR += py-ipaddress
     SUBDIR += py-iplib
+    SUBDIR += py-iptools
     SUBDIR += py-kafka-python
     SUBDIR += py-kombu
     SUBDIR += py-ldap
@@ -1069,6 +1077,7 @@
     SUBDIR += py-s3cmd
     SUBDIR += py-s3transfer
     SUBDIR += py-shodan
+    SUBDIR += py-smart_open
     SUBDIR += py-smbpasswd
     SUBDIR += py-soap2py
     SUBDIR += py-soappy
@@ -1104,7 +1113,6 @@
     SUBDIR += qt5-network
     SUBDIR += qtweetlib
     SUBDIR += quagga
-    SUBDIR += quagga-esr
     SUBDIR += queso
     SUBDIR += quiterss
     SUBDIR += quoted
@@ -1119,18 +1127,19 @@
     SUBDIR += radreport
     SUBDIR += radsecproxy
     SUBDIR += radvd
-    SUBDIR += raggle
     SUBDIR += rclone
     SUBDIR += rdapper
     SUBDIR += rdesktop
     SUBDIR += rdist6
+    SUBDIR += reaver
     SUBDIR += recvnet
     SUBDIR += redir
     SUBDIR += relayd
     SUBDIR += remmina
-    SUBDIR += remmina-plugin-gnome
+    SUBDIR += remmina-plugin-exec
     SUBDIR += remmina-plugin-nx
     SUBDIR += remmina-plugin-rdp
+    SUBDIR += remmina-plugin-secret
     SUBDIR += remmina-plugin-telepathy
     SUBDIR += remmina-plugin-vnc
     SUBDIR += remmina-plugin-xdmcp
@@ -1155,6 +1164,7 @@
     SUBDIR += rubygem-amqp
     SUBDIR += rubygem-amqp-utils
     SUBDIR += rubygem-asset_sync
+    SUBDIR += rubygem-asset_sync220
     SUBDIR += rubygem-aws-s3
     SUBDIR += rubygem-aws-ses
     SUBDIR += rubygem-azure
@@ -1181,6 +1191,7 @@
     SUBDIR += rubygem-fog-dynect
     SUBDIR += rubygem-fog-ecloud
     SUBDIR += rubygem-fog-google
+    SUBDIR += rubygem-fog-google0
     SUBDIR += rubygem-fog-internet-archive
     SUBDIR += rubygem-fog-joyent
     SUBDIR += rubygem-fog-local
@@ -1203,6 +1214,8 @@
     SUBDIR += rubygem-geoip
     SUBDIR += rubygem-gitaly
     SUBDIR += rubygem-gitaly-proto
+    SUBDIR += rubygem-gitaly-proto083
+    SUBDIR += rubygem-gitaly-proto084
     SUBDIR += rubygem-gitlab_omniauth-ldap
     SUBDIR += rubygem-gitlab_omniauth-ldap1
     SUBDIR += rubygem-grpc
@@ -1221,8 +1234,10 @@
     SUBDIR += rubygem-oauth
     SUBDIR += rubygem-oauth2
     SUBDIR += rubygem-octokit
+    SUBDIR += rubygem-octokit46
     SUBDIR += rubygem-octopress-deploy
     SUBDIR += rubygem-omniauth-auth0
+    SUBDIR += rubygem-omniauth-auth014
     SUBDIR += rubygem-omniauth-authentiq
     SUBDIR += rubygem-omniauth-azure-oauth2
     SUBDIR += rubygem-omniauth-facebook
@@ -1235,10 +1250,12 @@
     SUBDIR += rubygem-omniauth-oauth2
     SUBDIR += rubygem-omniauth-openid
     SUBDIR += rubygem-omniauth-twitter
+    SUBDIR += rubygem-omniauth-twitter12
     SUBDIR += rubygem-open-uri-cached
     SUBDIR += rubygem-opennebula
     SUBDIR += rubygem-packetfu
     SUBDIR += rubygem-pcaprub
+    SUBDIR += rubygem-private_address_check
     SUBDIR += rubygem-proxifier
     SUBDIR += rubygem-qiniu
     SUBDIR += rubygem-rabbiter
@@ -1272,11 +1289,10 @@
     SUBDIR += rubygem-xmlrpc
     SUBDIR += rude
     SUBDIR += s3ql
-#    SUBDIR += samba4-devel
-    SUBDIR += samba44
     SUBDIR += samba45
     SUBDIR += samba46
     SUBDIR += samba47
+    SUBDIR += samba48
     SUBDIR += samplicator
     SUBDIR += sbd
     SUBDIR += sbm
@@ -1374,7 +1390,6 @@
     SUBDIR += tcptestsuite
     SUBDIR += tcptrace
     SUBDIR += tcptraceroute
-    SUBDIR += tcptraceroute-devel
     SUBDIR += tcpview
     SUBDIR += tcpwatch
     SUBDIR += tcpxd
@@ -1422,6 +1437,7 @@
     SUBDIR += unison-devel
     SUBDIR += unison232
     SUBDIR += unison240
+    SUBDIR += unison248
     SUBDIR += unix2tcp
     SUBDIR += uplog
     SUBDIR += urelay
@@ -1433,6 +1449,8 @@
     SUBDIR += vblade
     SUBDIR += vde
     SUBDIR += vde2
+    SUBDIR += vether-kmod
+    SUBDIR += viamillipede
     SUBDIR += vinagre
     SUBDIR += vino
     SUBDIR += vmware-vsphere-cli
@@ -1487,7 +1505,7 @@
     SUBDIR += yptransitd
     SUBDIR += zebra
     SUBDIR += zebra-server
-    SUBDIR += zeroconf-ioslave
+    SUBDIR += zeroconf-ioslave-kde4
     SUBDIR += zerotier
     SUBDIR += zillion
     SUBDIR += zmap

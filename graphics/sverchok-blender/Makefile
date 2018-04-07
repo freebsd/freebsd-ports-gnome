@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sverchok
-DISTVERSION=	0.5.9.6.2
+DISTVERSION=	0.5.9.6.3
 CATEGORIES=	graphics
 PKGNAMESUFFIX=	-blender
 
@@ -11,8 +11,7 @@ COMMENT=	Add-on for Blender: parametric tool for architects and designers
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	blender:graphics/blender \
-		${PYNUMPY} \
+RUN_DEPENDS=	${PYNUMPY} \
 		${PYTHON_PKGNAMEPREFIX}requests>0:www/py-requests@${PY_FLAVOR}
 
 .include "../blender/Makefile.versions"

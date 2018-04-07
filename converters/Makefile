@@ -49,6 +49,7 @@
     SUBDIR += libiconv
     SUBDIR += libticonv
     SUBDIR += libutf-8
+    SUBDIR += lua51-iconv
     SUBDIR += lua-iconv
     SUBDIR += lua-json
     SUBDIR += mimelib
@@ -159,6 +160,7 @@
     SUBDIR += py-iconv
     SUBDIR += py-rencode
     SUBDIR += py-unidecode
+    SUBDIR += py-webencodings
     SUBDIR += py-zfec
     SUBDIR += rcctools
     SUBDIR += recode
