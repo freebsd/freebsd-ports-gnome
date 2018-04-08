@@ -13,6 +13,7 @@ COMMENT=	Note editor designed to remain simple to use
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	itstool:textproc/itstool
 LIB_DEPENDS=	libtracker-control-2.0.so:sysutils/tracker \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libgoa-1.0.so:net/gnome-online-accounts \
