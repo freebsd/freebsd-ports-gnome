@@ -4,6 +4,7 @@
     COMMENT = Multimedia software
 
     SUBDIR += 2mandvd
+    SUBDIR += Bento4
     SUBDIR += QtAV
     SUBDIR += ab25
     SUBDIR += abby
@@ -163,6 +164,7 @@
     SUBDIR += jmref
     SUBDIR += k9copy-kde4
     SUBDIR += kaffeine
+    SUBDIR += kdemultimedia-ffmpegthumbs
     SUBDIR += kdemultimedia-kde4
     SUBDIR += kdemultimedia-ffmpegthumbs-kde4
     SUBDIR += kdemultimedia-mplayerthumbs-kde4

@@ -4,6 +4,7 @@
     COMMENT = Programming languages
 
     SUBDIR += Gofer
+    SUBDIR += J
     SUBDIR += abcl
     SUBDIR += adacontrol
     SUBDIR += afnix
@@ -62,6 +63,7 @@
     SUBDIR += elk
     SUBDIR += emacs-lisp-intro
     SUBDIR += erlang
+    SUBDIR += erlang-doc
     SUBDIR += erlang-java
     SUBDIR += erlang-riak
     SUBDIR += erlang-runtime15
@@ -150,6 +152,8 @@
     SUBDIR += jython
     SUBDIR += kawa
     SUBDIR += kf5-kross
+    SUBDIR += kross-interpreters
+    SUBDIR += kturtle
     SUBDIR += kturtle-kde4
     SUBDIR += lafontaine
     SUBDIR += lci

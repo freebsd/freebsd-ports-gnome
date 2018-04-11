@@ -78,6 +78,7 @@
     SUBDIR += p5-TrimGalore
     SUBDIR += p5-transdecoder
     SUBDIR += paml
+    SUBDIR += pear-merger
     SUBDIR += phrap
     SUBDIR += phred
     SUBDIR += phylip
@@ -96,6 +97,7 @@
     SUBDIR += pycogent
     SUBDIR += pyfasta
     SUBDIR += python-nexus
+    SUBDIR += rainbow
     SUBDIR += recombine
     SUBDIR += ruby-bio
     SUBDIR += rubygem-bio
@@ -105,6 +107,7 @@
     SUBDIR += seqan-apps
     SUBDIR += seqan1
     SUBDIR += seqio
+    SUBDIR += seqtk
     SUBDIR += seqtools
     SUBDIR += sim4
     SUBDIR += slclust
@@ -114,6 +117,7 @@
     SUBDIR += t_coffee
     SUBDIR += tinker
     SUBDIR += treepuzzle
+    SUBDIR += trimadap
     SUBDIR += trimmomatic
     SUBDIR += ugene
     SUBDIR += vcftools

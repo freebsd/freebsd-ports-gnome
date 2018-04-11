@@ -304,8 +304,10 @@
     SUBDIR += keynote
     SUBDIR += keyprint
     SUBDIR += kf5-kdesu
+    SUBDIR += kgpg
     SUBDIR += kgpg-kde4
     SUBDIR += kickpass
+    SUBDIR += kleopatra
     SUBDIR += knock
     SUBDIR += knocker
     SUBDIR += kpcli
@@ -319,6 +321,7 @@
     SUBDIR += krb5-devel
     SUBDIR += kripp
     SUBDIR += kstart
+    SUBDIR += kwalletmanager
     SUBDIR += kwalletmanager-kde4
     SUBDIR += l0pht-watch
     SUBDIR += l0phtcrack
@@ -341,6 +344,7 @@
     SUBDIR += libgringotts
     SUBDIR += libhijack
     SUBDIR += libident
+    SUBDIR += libkleo
     SUBDIR += libkpass
     SUBDIR += libksba
     SUBDIR += libmcrypt
@@ -868,6 +872,7 @@
     SUBDIR += pulledpork
     SUBDIR += pure-sfv
     SUBDIR += putty
+    SUBDIR += putty-gtk2
     SUBDIR += putty-nogtk
     SUBDIR += pvk
     SUBDIR += pwauth
@@ -944,6 +949,7 @@
     SUBDIR += py-mhash
     SUBDIR += py-mixbox
     SUBDIR += py-mnemonic
+    SUBDIR += py-netmiko
     SUBDIR += py-ntlm-auth
     SUBDIR += py-oauth2client
     SUBDIR += py-oauthlib
@@ -992,6 +998,7 @@
     SUBDIR += py-requests-kerberos
     SUBDIR += py-rsa
     SUBDIR += py-safe
+    SUBDIR += py-scp
     SUBDIR += py-scrypt
     SUBDIR += py-service_identity
     SUBDIR += py-signedjson
@@ -1114,6 +1121,7 @@
     SUBDIR += rubygem-omniauth-cas
     SUBDIR += rubygem-omniauth-cas3
     SUBDIR += rubygem-omniauth-gitlab
+    SUBDIR += rubygem-omniauth-jwt
     SUBDIR += rubygem-omniauth-multipassword
     SUBDIR += rubygem-omniauth-oauth2-generic
     SUBDIR += rubygem-omniauth-saml

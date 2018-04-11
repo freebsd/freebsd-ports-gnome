@@ -17,6 +17,7 @@
     SUBDIR += R-cran-MCMCpack
     SUBDIR += R-cran-MSwM
     SUBDIR += R-cran-MatchIt
+    SUBDIR += R-cran-magic
     SUBDIR += R-cran-Matching
     SUBDIR += R-cran-MatrixModels
     SUBDIR += R-cran-NMF
@@ -46,6 +47,7 @@
     SUBDIR += R-cran-forecast
     SUBDIR += R-cran-fracdiff
     SUBDIR += R-cran-geepack
+    SUBDIR += R-cran-geometry
     SUBDIR += R-cran-gmp
     SUBDIR += R-cran-gower
     SUBDIR += R-cran-gpclib
@@ -84,7 +86,9 @@
     SUBDIR += R-cran-sf
     SUBDIR += R-cran-sm
     SUBDIR += R-cran-sp
+    SUBDIR += R-cran-spData
     SUBDIR += R-cran-spdep
+    SUBDIR += R-cran-SQUAREM
     SUBDIR += R-cran-sspir
     SUBDIR += R-cran-stabledist
     SUBDIR += R-cran-survey
@@ -95,7 +99,6 @@
     SUBDIR += SCIP
     SUBDIR += SoPlex
     SUBDIR += aamath
-    SUBDIR += abacus
     SUBDIR += abakus
     SUBDIR += abs
     SUBDIR += acalc
@@ -107,8 +110,10 @@
     SUBDIR += alt-ergo
     SUBDIR += amath
     SUBDIR += ambit
+    SUBDIR += analitza
     SUBDIR += analitza-kde4
     SUBDIR += ann
+    SUBDIR += antic
     SUBDIR += apc
     SUBDIR += arb
     SUBDIR += aribas
@@ -131,6 +136,7 @@
     SUBDIR += calc
     SUBDIR += calcoo
     SUBDIR += calctool
+    SUBDIR += cantor
     SUBDIR += cantor-kde4
     SUBDIR += cblas
     SUBDIR += ccmath
@@ -266,11 +272,16 @@
     SUBDIR += jsmath-fonts
     SUBDIR += jtransforms
     SUBDIR += jts
+    SUBDIR += kalgebra
     SUBDIR += kalgebra-kde4
+    SUBDIR += kbruch
     SUBDIR += kbruch-kde4
+    SUBDIR += kcalc
     SUBDIR += kcalc-kde4
+    SUBDIR += kig
     SUBDIR += kig-kde4
     SUBDIR += kktdirect
+    SUBDIR += kmplot
     SUBDIR += kmplot-kde4
     SUBDIR += labplot
     SUBDIR += lambda
@@ -323,6 +334,7 @@
     SUBDIR += mpexpr
     SUBDIR += mpfr
     SUBDIR += mpir
+    SUBDIR += mppp
     SUBDIR += mprime
     SUBDIR += msieve
     SUBDIR += mtl
@@ -359,6 +371,7 @@
     SUBDIR += octave-forge-data-smoothing
     SUBDIR += octave-forge-database
     SUBDIR += octave-forge-dataframe
+    SUBDIR += octave-forge-dicom
     SUBDIR += octave-forge-divand
     SUBDIR += octave-forge-doctest
     SUBDIR += octave-forge-econometrics
@@ -711,6 +724,7 @@
     SUBDIR += rexx-regmath
     SUBDIR += rkward-kde4
     SUBDIR += rngstreams
+    SUBDIR += rocs
     SUBDIR += rocs-kde4
     SUBDIR += rpcalc
     SUBDIR += rpy
