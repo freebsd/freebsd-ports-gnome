@@ -27,7 +27,7 @@ Qt_Pre_Include=	bsd.qt.mk
 # Qt versions currently supported by the framework.
 _QT_SUPPORTED?=	4 5
 QT4_VERSION?=	4.8.7
-QT5_VERSION?=	5.9.3
+QT5_VERSION?=	5.9.4
 
 _QT_RELNAME=	qt${_QT_VERSION:R:R}
 _QT_VERSION=	# empty
@@ -107,7 +107,8 @@ USES+=			pkgconfig
 # Other ports from other Qt modules will automatically build examples and
 # tests if the directories exist because of mkspecs/features/qt_parts.prf.
 EXTRACT_AFTER_ARGS?=	${DISTNAME:S,$,/examples,:S,^,--exclude ,} \
-				${DISTNAME:S,$,/tests,:S,^,--exclude ,}
+						${DISTNAME:S,$,/tests,:S,^,--exclude ,} \
+						--no-same-owner --no-same-permissions
 . endif # ! ${_QT_VERSION:M4*}
 
 CONFIGURE_ENV+=	MAKE="${MAKE:T}"
@@ -178,6 +179,7 @@ _EXTRA_PATCHES_QT4=	${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-src-cor
 					${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-config.tests-unix-compile.test
 # Patch in proper name for armv6 architecture: https://gcc.gnu.org/ml/gcc-patches/2015-06/msg01679.html
 _EXTRA_PATCHES_QT4+=	${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-armv6
+_EXTRA_PATCHES_QT4+=	${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-aarch64
 .  else
 _EXTRA_PATCHES_QT5=	${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-mkspecs_features_create__cmake.prf \
 					${.CURDIR:H:H}/devel/${_QT_RELNAME}/files/extrapatch-mkspecs_features_qt__module.prf \
@@ -312,9 +314,12 @@ CONFIGURE_ARGS+=--with-qt-includes=${QT_INCDIR} \
 _USE_QT_ALL=	assistant dbus declarative designer doc gui help \
 				imageformats l10n linguist linguisttools multimedia \
 				network opengl pixeltool qdbusviewer qmake script \
-				scripttools sql sql-ibase sql-mysql sql-odbc sql-pgsql \
+				scripttools sql sql-mysql sql-odbc sql-pgsql \
 				sql-sqlite2 sql-sqlite3 svg testlib webkit \
 				xml xmlpatterns
+.if ${ARCH} == amd64 || ${ARCH} == i386
+_USE_QT_ALL+=	sql-ibase
+.endif
 
 _USE_QT4_ONLY=	accessible assistant-adp assistantclient clucene codecs-cn codecs-jp \
 				codecs-kr codecs-tw corelib demo graphicssystems-opengl \

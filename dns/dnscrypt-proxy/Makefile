@@ -5,8 +5,7 @@ PORTNAME=	dnscrypt-proxy
 PORTVERSION=	1.9.5
 PORTREVISION=	3
 CATEGORIES=	dns
-MASTER_SITES=	https://download.dnscrypt.org/dnscrypt-proxy/ \
-		https://download.dnscrypt.org/dnscrypt-proxy/old/
+MASTER_SITES=	LOCAL/dbaio/${PORTNAME}/
 
 MAINTAINER=	freebsd@dns-lab.com
 COMMENT=	Boost privacy and security of DNS
@@ -14,19 +13,24 @@ COMMENT=	Boost privacy and security of DNS
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+DEPRECATED=		Deprecated by upstream, use dns/dnscrypt-proxy2 instead
+EXPIRATION_DATE=	2018-09-25
 BROKEN_powerpc64=	fails to compile: fpst.c: error: redefinition of typedef 'FPST'
 
 LIB_DEPENDS=	libsodium.so:security/libsodium
+
+USES=		gmake
 
 USERS=		_dnscrypt-proxy
 GROUPS=		_dnscrypt-proxy
 
 GNU_CONFIGURE=	yes
-USES=		gmake
 
 INSTALL_TARGET=	install-strip
 
 PORTDOCS=	AUTHORS ChangeLog INSTALL NEWS README* THANKS
+
+CONFLICTS_INSTALL=	dnscrypt-proxy2
 
 OPTIONS_DEFINE=	DOCS PLUGINS PLUGINS_RELAXED PLUGINS_ROOT
 OPTIONS_SINGLE=	RCWHICH
