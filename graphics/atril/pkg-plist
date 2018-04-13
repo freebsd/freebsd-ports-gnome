@@ -79,9 +79,6 @@ man/man1/atril-thumbnailer.1.gz
 man/man1/atril.1.gz
 share/appdata/atril.appdata.xml
 share/applications/atril.desktop
-%%DATADIR%%/atril-previewer-ui.xml
-%%DATADIR%%/atril-toolbar.xml
-%%DATADIR%%/atril-ui.xml
 %%DATADIR%%/hand-open.png
 %%DATADIR%%/icons/hicolor/16x16/actions/object-rotate-left.png
 %%DATADIR%%/icons/hicolor/16x16/actions/object-rotate-right.png
