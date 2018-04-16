@@ -1,5 +1,5 @@
 # Created by: Michael Johnson <ahze@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/x11/libmatekbd/Makefile 467271 2018-04-13 21:16:56Z ericbsd $
 
 PORTNAME=	libmatekbd
 PORTVERSION=	1.20.1

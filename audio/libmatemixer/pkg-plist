@@ -18,8 +18,12 @@ lib/libmatemixer.a
 lib/libmatemixer.so
 lib/libmatemixer.so.0
 lib/libmatemixer.so.0.0.0
+%%ALSA%%lib/libmatemixer/libmatemixer-alsa.a
+%%ALSA%%lib/libmatemixer/libmatemixer-alsa.so
 lib/libmatemixer/libmatemixer-oss.a
 lib/libmatemixer/libmatemixer-oss.so
+%%PULSEAUDIO%%lib/libmatemixer/libmatemixer-pulse.a
+%%PULSEAUDIO%%lib/libmatemixer/libmatemixer-pulse.so
 libdata/pkgconfig/libmatemixer.pc
 share/gtk-doc/html/libmatemixer/MateMixerAppInfo.html
 share/gtk-doc/html/libmatemixer/MateMixerContext.html

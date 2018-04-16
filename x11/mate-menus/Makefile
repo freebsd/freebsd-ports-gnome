@@ -1,5 +1,5 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/x11/mate-menus/Makefile 467271 2018-04-13 21:16:56Z ericbsd $
 
 PORTNAME=	mate-menus
 PORTVERSION=	1.20.0
@@ -23,18 +23,5 @@ USE_GNOME=	glib20 intltool introspection:buid
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-
-#post-patch:
-#	@${REINPLACE_CMD} -e 's|/usr/share/mate|${LOCALBASE}/share/mate|g' \
-#		${WRKSRC}/layout/mate-applications.menu \
-#		${WRKSRC}/layout/mate-settings.menu
-#	@${SED} -e 's|/usr/local|${LOCALBASE}|g' \
-#		< ${FILESDIR}/KDE.directory > ${WRKSRC}/KDE.directory
-#	@${SED} -e 's|/usr/local|${LOCALBASE}|g' \
-#		< ${FILESDIR}/GNOME.directory > ${WRKSRC}/GNOME.directory
-
-#post-install:
-#	@${INSTALL_DATA} ${WRKSRC}/*.directory \
-#		${STAGEDIR}${PREFIX}/share/mate/desktop-directories/
 
 .include <bsd.port.mk>

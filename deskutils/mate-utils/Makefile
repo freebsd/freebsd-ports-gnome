@@ -1,5 +1,5 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
-# $FreeBSD$
+# $FreeBSD: head/deskutils/mate-utils/Makefile 467271 2018-04-13 21:16:56Z ericbsd $
 
 PORTNAME=	mate-utils
 PORTVERSION=	1.20.0
