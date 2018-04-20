@@ -1,5 +1,5 @@
 # Created by: Eric Turgeon <ericturgeon@ghostbsd.org>
-# $FreeBSD$
+# $FreeBSD: head/deskutils/caja-extensions/Makefile 467271 2018-04-13 21:16:56Z ericbsd $
 
 PORTNAME=	caja-extensions
 PORTVERSION=	1.20.0

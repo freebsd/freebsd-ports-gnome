@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/x11/mate-applets/Makefile 467271 2018-04-13 21:16:56Z ericbsd $
 
 PORTNAME=	mate-applets
 PORTVERSION=	1.20.1
@@ -24,16 +24,12 @@ LIB_DEPENDS=	libgtop-2.0.so:devel/libgtop \
 
 PORTSCOUT=	limitw:1,even
 
-#USES=		autoreconf:build gettext gmake libtool localbase pathfix \
-#		pkgconfig python shebangfix tar:xz
 USES=		compiler:c11 gettext gmake libtool localbase pkgconfig \
-		python:2.7 shebangfix tar:xz
+		python:2.7 tar:xz
 USE_CSTD=	c11
-#USE_MATE=	desktop icontheme libmateweather panel polkit settingsdaemon
+
 USE_MATE=	libmateweather panel
 USE_XORG=	ice sm x11
-#USE_GNOME=	cairo gdkpixbuf2 gtk30 gtksourceview3 introspection:build \
-#		libwnck3 libxml2 libxslt pygobject pygobject3 intlhack
 USE_GNOME=	cairo gtk30 gtksourceview3 intltool libwnck3 libxml2 \
 		pygobject3
 USE_LDCONFIG=	yes
@@ -49,9 +45,6 @@ GLIB_SCHEMAS=	org.mate.panel.applet.charpick.gschema.xml \
 		org.mate.panel.applet.netspeed.gschema.xml \
 		org.mate.panel.applet.timer.gschema.xml \
 		org.mate.stickynotes.gschema.xml
-
-#SHEBANG_FILES=	invest-applet/invest/*.py \
-#		invest-applet/invest/mate-invest-chart
 
 .include <bsd.port.pre.mk>
 

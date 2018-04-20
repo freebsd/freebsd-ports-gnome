@@ -1,5 +1,5 @@
 # Created by: Garrett Rooney <rooneg@electricjellyfish.net>
-# $FreeBSD$
+# $FreeBSD: head/x11-wm/marco/Makefile 467271 2018-04-13 21:16:56Z ericbsd $
 
 PORTNAME=	marco
 PORTVERSION=	1.20.1

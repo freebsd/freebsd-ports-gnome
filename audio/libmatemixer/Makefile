@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/audio/libmatemixer/Makefile 467271 2018-04-13 21:16:56Z ericbsd $
 
 PORTNAME=	libmatemixer
 PORTVERSION=	1.20.0
