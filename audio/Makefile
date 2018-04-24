@@ -412,6 +412,7 @@
     SUBDIR += libkcompactdisc
     SUBDIR += libkcompactdisc-kde4
     SUBDIR += liblastfm
+    SUBDIR += liblastfm-qt5
     SUBDIR += liblo
     SUBDIR += liblscp
     SUBDIR += libltc
@@ -514,6 +515,7 @@
     SUBDIR += minitunes
     SUBDIR += mixer.app
     SUBDIR += mixmos
+    SUBDIR += mixxx20
     SUBDIR += mixxx
     SUBDIR += mma
     SUBDIR += moc

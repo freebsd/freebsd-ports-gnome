@@ -114,6 +114,7 @@
     SUBDIR += hsqldb
     SUBDIR += influxdb
     SUBDIR += innotop
+    SUBDIR += iowow
     SUBDIR += ip4r
     SUBDIR += ipa_sdb
     SUBDIR += iplike
@@ -599,6 +600,7 @@
     SUBDIR += pgpool-II-33
     SUBDIR += pgpool-II-35
     SUBDIR += pgpool-II-36
+    SUBDIR += pgpool-II-37
     SUBDIR += pgreplay
     SUBDIR += pgroonga
     SUBDIR += pgrouting
@@ -787,6 +789,7 @@
     SUBDIR += py-htsql
     SUBDIR += py-htsql-mysql
     SUBDIR += py-htsql-pgsql
+    SUBDIR += py-influxdb
     SUBDIR += py-kyotocabinet
     SUBDIR += py-leveldb
     SUBDIR += py-lmdb
@@ -886,6 +889,7 @@
     SUBDIR += redigo
     SUBDIR += redis
     SUBDIR += redis-devel
+    SUBDIR += redisdesktopmanager
     SUBDIR += retcl
     SUBDIR += riak
     SUBDIR += riak2
