@@ -2,8 +2,7 @@
 # $FreeBSD: head/www/webkit2-gtk3/Makefile 453790 2017-11-09 02:31:47Z jbeich $
 
 PORTNAME=	webkit
-PORTVERSION=	2.20.0
-PORTREVISION=	1
+PORTVERSION=	2.20.1
 CATEGORIES=	www
 MASTER_SITES=	http://webkitgtk.org/releases/
 PKGNAMESUFFIX=	2-gtk3
