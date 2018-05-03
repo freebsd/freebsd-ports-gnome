@@ -33,10 +33,10 @@ lib/gdk-pixbuf-2.0/%%GTK2_VERSION%%/loaders/libpixbufloader-xpm.so
 lib/girepository-1.0/GdkPixbuf-2.0.typelib
 lib/libgdk_pixbuf-2.0.so
 lib/libgdk_pixbuf-2.0.so.0
-lib/libgdk_pixbuf-2.0.so.0.3600.10
+lib/libgdk_pixbuf-2.0.so.0.3600.12
 lib/libgdk_pixbuf_xlib-2.0.so
 lib/libgdk_pixbuf_xlib-2.0.so.0
-lib/libgdk_pixbuf_xlib-2.0.so.0.3600.10
+lib/libgdk_pixbuf_xlib-2.0.so.0.3600.12
 libdata/pkgconfig/gdk-pixbuf-2.0.pc
 libdata/pkgconfig/gdk-pixbuf-xlib-2.0.pc
 man/man1/gdk-pixbuf-csource.1.gz
