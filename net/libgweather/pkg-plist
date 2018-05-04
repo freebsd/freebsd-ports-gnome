@@ -13,7 +13,6 @@ lib/libgweather-3.so.15
 lib/libgweather-3.so.15.0.0
 libdata/pkgconfig/gweather-3.0.pc
 share/gir-1.0/GWeather-3.0.gir
-share/glade/catalogs/libgweather.xml
 %%DATADIR%%/Locations.xml
 %%DATADIR%%/locations.dtd
 share/locale/af/LC_MESSAGES/libgweather-3.0.mo
