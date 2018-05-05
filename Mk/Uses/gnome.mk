@@ -325,8 +325,8 @@ gtksourceview2_USE_GNOME_IMPL=gtk20 libxml2
 gtksourceview3_LIB_DEPENDS=	libgtksourceview-3.0.so:x11-toolkits/gtksourceview3
 gtksourceview3_USE_GNOME_IMPL=gtk30 libxml2
 
-gtksourceview3_LIB_DEPENDS=	libgtksourceview-4.so:x11-toolkits/gtksourceview4
-gtksourceview3_USE_GNOME_IMPL=gtk30 libxml2
+gtksourceview4_LIB_DEPENDS=	libgtksourceview-4.so:x11-toolkits/gtksourceview4
+gtksourceview4_USE_GNOME_IMPL=gtk30 libxml2
 
 libgsf_LIB_DEPENDS=	libgsf-1.so:devel/libgsf
 libgsf_USE_GNOME_IMPL=	glib20 libxml2
