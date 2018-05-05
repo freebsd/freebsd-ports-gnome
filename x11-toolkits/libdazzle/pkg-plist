@@ -1,4 +1,5 @@
 bin/dazzle-list-counters
+include/libdazzle-1.0/actions/dzl-action-group.h
 include/libdazzle-1.0/actions/dzl-child-property-action.h
 include/libdazzle-1.0/actions/dzl-properties-group.h
 include/libdazzle-1.0/actions/dzl-settings-flag-action.h
@@ -11,9 +12,13 @@ include/libdazzle-1.0/bindings/dzl-binding-group.h
 include/libdazzle-1.0/bindings/dzl-signal-group.h
 include/libdazzle-1.0/cache/dzl-task-cache.h
 include/libdazzle-1.0/dazzle.h
+include/libdazzle-1.0/dzl-enums.h
+include/libdazzle-1.0/dzl-version-macros.h
 include/libdazzle-1.0/dzl-version.h
 include/libdazzle-1.0/files/dzl-directory-model.h
 include/libdazzle-1.0/files/dzl-directory-reaper.h
+include/libdazzle-1.0/files/dzl-file-transfer.h
+include/libdazzle-1.0/files/dzl-recursive-file-monitor.h
 include/libdazzle-1.0/graphing/dzl-cpu-graph.h
 include/libdazzle-1.0/graphing/dzl-cpu-model.h
 include/libdazzle-1.0/graphing/dzl-graph-column.h
@@ -93,6 +98,7 @@ include/libdazzle-1.0/tree/dzl-tree-node.h
 include/libdazzle-1.0/tree/dzl-tree-types.h
 include/libdazzle-1.0/tree/dzl-tree.h
 include/libdazzle-1.0/util/dzl-cairo.h
+include/libdazzle-1.0/util/dzl-cancellable.h
 include/libdazzle-1.0/util/dzl-counter.h
 include/libdazzle-1.0/util/dzl-date-time.h
 include/libdazzle-1.0/util/dzl-dnd.h
