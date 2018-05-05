@@ -89,7 +89,7 @@ _USE_GNOME_ALL+= atk cairo \
 
 # GNOME 3 components
 _USE_GNOME_ALL+=dconf evolutiondataserver3 gnomecontrolcenter3 gnomedesktop3 \
-		gnomemenus3 gsound gtk30 gtkhtml4 gtksourceview3 libgda5 \
+		gnomemenus3 gsound gtk30 gtkhtml4 gtksourceview3 gtksourceview4 libgda5 \
 		libgda5-ui libwnck3 metacity nautilus3 \
 		pygobject3 vte3
 
@@ -323,6 +323,9 @@ gtksourceview2_LIB_DEPENDS=	libgtksourceview-2.0.so:x11-toolkits/gtksourceview2
 gtksourceview2_USE_GNOME_IMPL=gtk20 libxml2
 
 gtksourceview3_LIB_DEPENDS=	libgtksourceview-3.0.so:x11-toolkits/gtksourceview3
+gtksourceview3_USE_GNOME_IMPL=gtk30 libxml2
+
+gtksourceview3_LIB_DEPENDS=	libgtksourceview-4.0.so:x11-toolkits/gtksourceview4
 gtksourceview3_USE_GNOME_IMPL=gtk30 libxml2
 
 libgsf_LIB_DEPENDS=	libgsf-1.so:devel/libgsf
