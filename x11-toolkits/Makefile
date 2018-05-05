@@ -265,6 +265,7 @@
     SUBDIR += soqt
     SUBDIR += swt
     SUBDIR += swt-devel
+    SUBDIR += tepl
     SUBDIR += termit
     SUBDIR += tile
     SUBDIR += tix
