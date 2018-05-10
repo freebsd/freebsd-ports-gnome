@@ -17,6 +17,7 @@
     SUBDIR += bpatch
     SUBDIR += bvi
     SUBDIR += calligra
+    SUBDIR += calligraplan
     SUBDIR += chexedit
     SUBDIR += codelite
     SUBDIR += coedit
@@ -71,6 +72,7 @@
     SUBDIR += kate
     SUBDIR += kate-kde4
     SUBDIR += kate-plugin-pate-kde4
+    SUBDIR += kile
     SUBDIR += kile-kde4
     SUBDIR += klat4
     SUBDIR += komodo-edit

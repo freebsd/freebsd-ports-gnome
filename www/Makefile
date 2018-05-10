@@ -76,6 +76,7 @@
     SUBDIR += chems
     SUBDIR += cherokee
     SUBDIR += choqok
+    SUBDIR += choqok-kde4
     SUBDIR += chpasswd
     SUBDIR += chromium
     SUBDIR += ckeditor
@@ -1033,7 +1034,6 @@
     SUBDIR += p5-JSON-API
     SUBDIR += p5-Jemplate
     SUBDIR += p5-Jifty
-    SUBDIR += p5-Kwiki
     SUBDIR += p5-LWP-Authen-Negotiate
     SUBDIR += p5-LWP-Authen-OAuth
     SUBDIR += p5-LWP-Authen-Wsse
@@ -1470,6 +1470,7 @@
     SUBDIR += pivotx
     SUBDIR += piwigo
     SUBDIR += planet
+    SUBDIR += plasma5-plasma-browser-integration
     SUBDIR += plexwatchweb
     SUBDIR += plone
     SUBDIR += plugger
@@ -1614,7 +1615,9 @@
     SUBDIR += py-django-threaded-multihost
     SUBDIR += py-django-timezone-field
     SUBDIR += py-django-tinymce
+    SUBDIR += py-django-treebeard
     SUBDIR += py-django-voting
+    SUBDIR += py-django-widget-tweaks
     SUBDIR += py-django111
     SUBDIR += py-django18
     SUBDIR += py-django20

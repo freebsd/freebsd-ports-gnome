@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	opendht
-DISTVERSION=	1.7.1
+DISTVERSION=	1.7.2
 CATEGORIES=	devel net
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -10,8 +10,6 @@ COMMENT=	Lightweight Distributed Hash Table implementation
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-BROKEN_FreeBSD_10=	Missing __cxa_thread_atexit
 
 LIB_DEPENDS=	libargon2.so:security/libargon2 \
 		libmsgpackc.so:devel/msgpack \

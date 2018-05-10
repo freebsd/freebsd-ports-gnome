@@ -5,6 +5,7 @@
 
     SUBDIR += R-cran-DBI
     SUBDIR += R-cran-RMySQL
+    SUBDIR += R-cran-RPostgreSQL
     SUBDIR += R-cran-RSQLite
     SUBDIR += R-cran-RSQLite.extfuns
     SUBDIR += R-cran-sqldf
@@ -75,6 +76,7 @@
     SUBDIR += firebird25-server
     SUBDIR += flamerobin
     SUBDIR += fortytwo-bdb
+    SUBDIR += foundationdb
     SUBDIR += fpc-dblib
     SUBDIR += fpc-fpindexer
     SUBDIR += fpc-gdbm
@@ -561,6 +563,7 @@
     SUBDIR += pecl-mongodb
     SUBDIR += pecl-pdo_user
     SUBDIR += pecl-redis
+    SUBDIR += pecl-redis3
     SUBDIR += pecl-rrd
     SUBDIR += pecl-rrd1
     SUBDIR += pecl-tokyo_tyrant
@@ -995,7 +998,6 @@
     SUBDIR += rubygem-redis-namespace15
     SUBDIR += rubygem-redis3
     SUBDIR += rubygem-seed-fu
-    SUBDIR += rubygem-seed-fu236
     SUBDIR += rubygem-sqlite3
     SUBDIR += rubygem-sqlite3-ruby
     SUBDIR += rubygem-state_machines-activemodel

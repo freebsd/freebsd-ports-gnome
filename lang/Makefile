@@ -109,6 +109,7 @@
     SUBDIR += gcc7
     SUBDIR += gcc7-devel
     SUBDIR += gcc8-devel
+    SUBDIR += gcc9-devel
     SUBDIR += gforth
     SUBDIR += ghc
     SUBDIR += gjs
@@ -274,7 +275,6 @@
     SUBDIR += ponyc
     SUBDIR += ptoc
     SUBDIR += pure
-    SUBDIR += py-clojure_py
     SUBDIR += py-hy
     SUBDIR += py-mx-base
     SUBDIR += py-prolog

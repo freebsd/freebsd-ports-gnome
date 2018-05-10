@@ -309,6 +309,7 @@
     SUBDIR += farbot
     SUBDIR += fastest_cvsup
     SUBDIR += fatback
+    SUBDIR += fcode-utils
     SUBDIR += fconfig
     SUBDIR += fcron
     SUBDIR += fd
@@ -538,9 +539,11 @@
     SUBDIR += k3b
     SUBDIR += k3b-kde4
     SUBDIR += k8temp
+    SUBDIR += kbackup
     SUBDIR += kcm-polkit-kde
     SUBDIR += kcron
     SUBDIR += kcron-kde4
+    SUBDIR += kdeadmin
     SUBDIR += kdeadmin-kde4
     SUBDIR += kdebugsettings
     SUBDIR += kdf
@@ -883,6 +886,17 @@
     SUBDIR += pick
     SUBDIR += pidof
     SUBDIR += pipemeter
+    SUBDIR += plasma5-discover
+    SUBDIR += plasma5-drkonqi
+    SUBDIR += plasma5-kde-cli-tools
+    SUBDIR += plasma5-kinfocenter
+    SUBDIR += plasma5-kmenuedit
+    SUBDIR += plasma5-ksysguard
+    SUBDIR += plasma5-libksysguard
+    SUBDIR += plasma5-polkit-kde-agent-1
+    SUBDIR += plasma5-powerdevil
+    SUBDIR += plasma5-systemsettings
+    SUBDIR += plasma5-user-manager
     SUBDIR += plconfig
     SUBDIR += pmt
     SUBDIR += policykit
@@ -1098,6 +1112,9 @@
     SUBDIR += rubygem-vagrant-mutate
     SUBDIR += rubygem-vagrant-vbguest
     SUBDIR += rubygem-vmstat
+    SUBDIR += rubygem-win32-file
+    SUBDIR += rubygem-win32-file-security
+    SUBDIR += rubygem-win32-file-stat
     SUBDIR += rubygem-winrm
     SUBDIR += rubygem-winrm-elevated
     SUBDIR += rubygem-winrm-fs
@@ -1146,6 +1163,7 @@
     SUBDIR += shlock
     SUBDIR += shmcat
     SUBDIR += showbeastie
+    SUBDIR += shuf
     SUBDIR += siegfried
     SUBDIR += signon-kwallet-extension
     SUBDIR += signon-plugin-oauth2
@@ -1187,6 +1205,7 @@
     SUBDIR += swapd
     SUBDIR += swapexd
     SUBDIR += swapmon
+    SUBDIR += sweeper
     SUBDIR += sweeper-kde4
     SUBDIR += symlinks
     SUBDIR += symon

@@ -70,6 +70,7 @@
     SUBDIR += bsdsort
     SUBDIR += btparse
     SUBDIR += c2html
+    SUBDIR += c2man
     SUBDIR += ca-aspell
     SUBDIR += catdoc
     SUBDIR += cdif
@@ -797,7 +798,6 @@
     SUBDIR += p5-Sphinx-Config
     SUBDIR += p5-Sphinx-Manager
     SUBDIR += p5-Sphinx-Search
-    SUBDIR += p5-Spork
     SUBDIR += p5-Spreadsheet-ParseExcel
     SUBDIR += p5-Spreadsheet-Read
     SUBDIR += p5-Spreadsheet-ReadSXC
@@ -1510,7 +1510,6 @@
     SUBDIR += rubygem-emot
     SUBDIR += rubygem-escape_utils
     SUBDIR += rubygem-escape_utils11
-    SUBDIR += rubygem-escape_utils-rails4
     SUBDIR += rubygem-ezamar
     SUBDIR += rubygem-fast_xs
     SUBDIR += rubygem-ferret

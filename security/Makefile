@@ -186,6 +186,7 @@
     SUBDIR += gnutls
     SUBDIR += go-cve-dictionary
     SUBDIR += go.crypto
+    SUBDIR += gopass
     SUBDIR += goptlib
     SUBDIR += gorilla
     SUBDIR += govpn
@@ -474,6 +475,7 @@
     SUBDIR += openvpn-admin
     SUBDIR += openvpn-auth-ldap
     SUBDIR += openvpn-auth-radius
+    SUBDIR += openvpn-auth-script
     SUBDIR += openvpn-devel
     SUBDIR += openvpn-mbedtls
     SUBDIR += ophcrack
@@ -636,6 +638,7 @@
     SUBDIR += p5-Crypt-UnixCrypt
     SUBDIR += p5-Crypt-UnixCrypt_XS
     SUBDIR += p5-Crypt-X509
+    SUBDIR += p5-Crypt-X509-CRL
     SUBDIR += p5-Crypt-XTEA
     SUBDIR += p5-Crypt-xDBM_File
     SUBDIR += p5-CryptX
@@ -860,8 +863,10 @@
     SUBDIR += pkesh
     SUBDIR += pks
     SUBDIR += pktsuckers
+    SUBDIR += plasma5-kscreenlocker
+    SUBDIR += plasma5-ksshaskpass
+    SUBDIR += plasma5-kwallet-pam
     SUBDIR += please
-    SUBDIR += polarssl13
     SUBDIR += poly1305aes
     SUBDIR += portsentry
     SUBDIR += ppars
@@ -1193,7 +1198,7 @@
     SUBDIR += secpanel
     SUBDIR += sectok
     SUBDIR += secure_delete
-    SUBDIR += setaudit 
+    SUBDIR += setaudit
     SUBDIR += sguil
     SUBDIR += sha
     SUBDIR += sha1collisiondetection
@@ -1269,6 +1274,7 @@
     SUBDIR += symbion-sslproxy
     SUBDIR += tclsasl
     SUBDIR += tcpcrypt
+    SUBDIR += teleport
     SUBDIR += testssl.sh
     SUBDIR += tinc
     SUBDIR += tinc-devel

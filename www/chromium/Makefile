@@ -3,7 +3,7 @@
 
 PORTNAME=	chromium
 PORTVERSION=	65.0.3325.181
-PORTREVISION=	2
+PORTREVISION=	4
 CATEGORIES?=	www
 MASTER_SITES=	https://commondatastorage.googleapis.com/chromium-browser-official/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
@@ -20,7 +20,7 @@ BUILD_DEPENDS=	bash:shells/bash \
 
 .if !defined(GN_ONLY)
 BUILD_DEPENDS+=	gperf:devel/gperf \
-		clang50:devel/llvm50 \
+		clang60:devel/llvm60 \
 		yasm:devel/yasm \
 		ffmpeg>=3.2.2,1:multimedia/ffmpeg \
 		flock:sysutils/flock \
@@ -91,8 +91,8 @@ SHEBANG_FILES=	chrome/tools/build/linux/chrome-wrapper
 ALL_TARGET=	chrome
 INSTALLS_ICONS=	yes
 
-CC=		clang50
-CXX=		clang++50
+CC=		clang60
+CXX=		clang++60
 .endif
 
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-clang
@@ -210,14 +210,6 @@ TEST_DISTFILES=		${PORTNAME}-${DISTVERSION}-testdata${EXTRACT_SUFX}
 # build would fail without C_INCLUDE_PATH/CPLUS_INCLUDE_PATH env var set.
 MAKE_ENV+=	C_INCLUDE_PATH=${LOCALBASE}/include \
 		CPLUS_INCLUDE_PATH=${LOCALBASE}/include
-
-# Work around base r261801
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1004000
-GN_ARGS+=	extra_cxxflags="-D_LIBCPP_TRIVIAL_PAIR_COPY_CTOR=1"
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-old
-.else
-EXTRA_PATCHES+=	${FILESDIR}/extra-patch-libc++-new
-.endif
 
 .if !defined(GN_ONLY)
 pre-everything::
