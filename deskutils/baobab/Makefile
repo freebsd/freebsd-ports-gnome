@@ -22,6 +22,6 @@ GLIB_SCHEMAS=	org.gnome.baobab.gschema.xml
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|MimeType=inode/directory;|MimeType=|g' \
-		${WRKSRC}/data/org.gnome.baobab.desktop.in.in
+		${WRKSRC}/data/org.gnome.baobab.desktop.in
 
 .include <bsd.port.mk>
