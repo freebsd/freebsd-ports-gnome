@@ -12,7 +12,7 @@ COMMENT=	Cantarell, a Humanist sans-serif font family
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig
 
 NO_ARCH=	yes
-USES=		fonts meson tar:xz
+USES=		gettext-tools fonts meson tar:xz
 FONTSDIR=	share/fonts/cantarell
 
 .include <bsd.port.mk>
