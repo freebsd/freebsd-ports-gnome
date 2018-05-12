@@ -21,7 +21,7 @@ LIB_DEPENDS=	libical.so:devel/libical \
 		libsoup-2.4.so:devel/libsoup \
 		libgweather-3.so:net/libgweather \
 		libgeoclue-2.so:net/geoclue \
-		libgeocode-glib.so:net/geoclue-glib \
+		libgeocode-glib.so:net/geocode-glib \
 		libgoa-1.0.so:net/gnome-online-accounts
 RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
