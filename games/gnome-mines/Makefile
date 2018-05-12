@@ -13,8 +13,8 @@ COMMENT=	Gnome minesweeper
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	vala:lang/vala
-#		itstool:textproc/itstool
+BUILD_DEPENDS=	vala:lang/vala \
+		itstool:textproc/itstool
 LIB_DEPENDS=	libgnome-games-support-1.so:games/libgnome-games-support \
 		libgee-0.8.so:devel/libgee
 
