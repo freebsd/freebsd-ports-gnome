@@ -21,7 +21,7 @@ LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 
 USES=		libtool tar:xz
 #USES=		gettext-tools gmake gnome libtool pathfix pkgconfig tar:xz
-USE_GNOME=	cairo gtk20 #gtk30 intlhack librsvg2
+USE_GNOME=	cairo gtk20 intltool #gtk30 intlhack librsvg2
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
