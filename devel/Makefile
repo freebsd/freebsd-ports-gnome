@@ -1879,12 +1879,8 @@
     SUBDIR += p4
     SUBDIR += p4.el
     SUBDIR += p4api
-    SUBDIR += p4d
     SUBDIR += p4delta
-    SUBDIR += p4ftpd
     SUBDIR += p4genpatch
-    SUBDIR += p4p
-    SUBDIR += p4web
     SUBDIR += p5-AI-Pathfinding-AStar
     SUBDIR += p5-AI-Prolog
     SUBDIR += p5-ARGV-Struct
@@ -2043,6 +2039,7 @@
     SUBDIR += p5-Cache-Simple-TimedExpiry
     SUBDIR += p5-Cairo-GObject
     SUBDIR += p5-Calendar-Simple
+    SUBDIR += p5-Call-Context
     SUBDIR += p5-Callback-Frame
     SUBDIR += p5-Canary-Stability
     SUBDIR += p5-Capture-Tiny
@@ -3394,6 +3391,7 @@
     SUBDIR += p5-Sub-Signatures
     SUBDIR += p5-Sub-Uplevel
     SUBDIR += p5-Sub-WrapPackages
+    SUBDIR += p5-Symbol-Get
     SUBDIR += p5-Symbol-Global-Name
     SUBDIR += p5-Symbol-Util
     SUBDIR += p5-Syntax-Keyword-Gather
@@ -3730,6 +3728,7 @@
     SUBDIR += p5-Want
     SUBDIR += p5-WeakRef
     SUBDIR += p5-Workflow
+    SUBDIR += p5-X-Tiny
     SUBDIR += p5-XML-Compile-Tester
     SUBDIR += p5-XML-Pastor
     SUBDIR += p5-XS-Object-Magic
