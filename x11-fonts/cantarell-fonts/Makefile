@@ -9,6 +9,7 @@ MASTER_SITES=	GNOME
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Cantarell, a Humanist sans-serif font family
 
+BUILD_DEPENDS=	appstream-util:devel/appstream-glib
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig
 
 NO_ARCH=	yes
