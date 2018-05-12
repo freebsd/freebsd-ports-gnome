@@ -13,7 +13,8 @@ COMMENT=	Gnome swell-foop
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	vala:lang/vala
+BUILD_DEPENDS=	vala:lang/vala \
+		itstool:textproc/itstool
 LIB_DEPENDS=	libclutter-1.0.so:graphics/clutter \
 		libclutter-gtk-1.0.so:graphics/clutter-gtk3
 
