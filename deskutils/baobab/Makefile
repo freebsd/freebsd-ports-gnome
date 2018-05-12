@@ -15,6 +15,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 PORTSCOUT=	limitw:1,even
 
+BUILD_DEPENDS=	valac:lang/vala
+
 USES=		desktop-file-utils gettext gnome meson pkgconfig tar:xz
 USE_GNOME=	cairo gtk30
 
