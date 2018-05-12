@@ -14,6 +14,7 @@ COMMENT=	Archive manager for zip files, tar, etc
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	itstool:textproc/itstool
 LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 		libnotify.so:devel/libnotify
 RUN_DEPENDS=	gtar:archivers/gtar
