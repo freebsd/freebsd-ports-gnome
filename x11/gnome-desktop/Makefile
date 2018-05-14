@@ -23,8 +23,8 @@ BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		itstool:textproc/itstool
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
+		cantarell-fonts>=0:x11-fonts/cantarell-fonts \
 		xkeyboard-config>=0:x11/xkeyboard-config
-RUN_DEPENDS=	cantarell-fonts>=0:x11-fonts/cantarell-fonts
 
 USES=		bison gettext gmake gnome libtool localbase pathfix \
 		pkgconfig python:3.4+ tar:xz
