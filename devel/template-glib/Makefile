@@ -10,7 +10,7 @@ COMMENT=	Templating library for GLib
 
 BUILD_DEPENDS=	valac:lang/vala
 
-USES=		bison gnome meson pkgconfig tar:xz
+USES=		bison gettext gnome meson pkgconfig tar:xz
 USE_GNOME=	glib20 introspection
 
 .include <bsd.port.mk>
