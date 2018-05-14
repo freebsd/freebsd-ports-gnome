@@ -29,11 +29,10 @@ USE_LDCONFIG=	yes
 MESON_ARGS=	-Dpackagekit=false
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
-PORTDOCS=	AUTHORS NEWS README TODO ChangeLog
 GLIB_SCHEMAS=	org.gnome.FileRoller.gschema.xml
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	DOCS NAUTILUS
+OPTIONS_DEFINE=	NAUTILUS
 OPTIONS_DEFAULT=NAUTILUS
 
 NAUTILUS_DESC=	Nautilus context menu actions
@@ -44,11 +43,5 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
 		${WRKSRC}/src/fr-command-tar.c \
 		${WRKSRC}/src/fr-command-zip.c
-
-#post-install-DOCS-on:
-#	${MKDIR} ${STAGEDIR}${DOCSDIR}
-#.for f in ${PORTDOCS}
-#	${INSTALL_DATA} ${WRKSRC}/${f} ${STAGEDIR}/${DOCSDIR}
-#.endfor
 
 .include <bsd.port.mk>
