@@ -33,7 +33,7 @@ PORTDOCS=	*
 
 CONFLICTS_BUILD=	gnome-builder-3.16.*
 
-USES=		compiler:c++11-lang cpe desktop-file-utils meson python:3.6+,build tar:xz
+USES=		compiler:c++11-lang cpe desktop-file-utils meson pkgconfig python:3.6+,build tar:xz
 #USES=		compiler:c++11-lang cpe desktop-file-utils gmake libtool localbase pathfix pkgconfig tar:xz
 # gettext? python:3.4+ ?
 #USE_GNOME=	cairo gtk30 gtksourceview3 vte3 pygobject3 libxml2
