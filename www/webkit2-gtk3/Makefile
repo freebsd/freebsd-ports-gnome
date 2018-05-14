@@ -68,6 +68,8 @@ OPTIONS_DEFAULT_i386=	NPAPI
 OPTIONS_DEFAULT_amd64=	NPAPI
 OPTIONS_SUB=		yes
 
+OPTIONS_EXCLUDE_FreeBSD_11=     COLLATION_FIX
+
 NPAPI_DESC=		Support gtk2 (NPAPI) based plugins (like flash)
 
 # Building WebKit with debugging symbols requires ar and ld with
