@@ -643,6 +643,7 @@
     SUBDIR += pure-mpfr
     SUBDIR += pure-rational
     SUBDIR += py-Diofant
+    SUBDIR += py-GridDataFormats
     SUBDIR += py-PySCIPOpt
     SUBDIR += py-PyWavelets
     SUBDIR += py-Pyomo
@@ -813,6 +814,7 @@
     SUBDIR += xgraph
     SUBDIR += xlapack
     SUBDIR += xldlas
+    SUBDIR += xlife++
     SUBDIR += xplot
     SUBDIR += xppaut
     SUBDIR += xspread
