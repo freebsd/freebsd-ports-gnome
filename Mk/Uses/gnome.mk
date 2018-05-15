@@ -89,7 +89,8 @@ _USE_GNOME_ALL+= atk cairo \
 
 # GNOME 3 components
 _USE_GNOME_ALL+=dconf evolutiondataserver3 gnomecontrolcenter3 gnomedesktop3 \
-		gnomemenus3 gsound gtk30 gtkhtml4 gtksourceview3 gtksourceview4 libgda5 \
+		gnomemenus3 gsound gtk30 gtkhtml4 gtksourceview3 \
+		gtksourceview4 libgda5 \
 		libgda5-ui libwnck3 metacity nautilus3 \
 		pygobject3 vte3
 
