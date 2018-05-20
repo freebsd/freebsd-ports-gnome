@@ -42,6 +42,7 @@
     SUBDIR += axis2
     SUBDIR += bacula-web
     SUBDIR += baikal
+    SUBDIR += bareos16-webui
     SUBDIR += bareos-webui
     SUBDIR += bigbluebutton
     SUBDIR += bins
@@ -493,6 +494,7 @@
     SUBDIR += moodle32
     SUBDIR += moodle33
     SUBDIR += moodle34
+    SUBDIR += moodle35
     SUBDIR += mozplugger
     SUBDIR += multisort
     SUBDIR += multiwatch
@@ -1568,6 +1570,7 @@
     SUBDIR += py-django-js-asset
     SUBDIR += py-django-json-rpc
     SUBDIR += py-django-jsonfield
+    SUBDIR += py-django-jsonfield2
     SUBDIR += py-django-keyedcache
     SUBDIR += py-django-ldapdb
     SUBDIR += py-django-livesettings

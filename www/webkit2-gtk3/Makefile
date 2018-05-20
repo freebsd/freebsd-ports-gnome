@@ -1,5 +1,5 @@
 # Created by: Michael Johnson <ahze@FreeBSD.org>
-# $FreeBSD: head/www/webkit2-gtk3/Makefile 453790 2017-11-09 02:31:47Z jbeich $
+# $FreeBSD$
 
 PORTNAME=	webkit
 PORTVERSION=	2.20.2
@@ -15,7 +15,6 @@ LICENSE=	GPLv2 BSD2CLAUSE
 LICENSE_COMB=	dual
 
 LIB_DEPENDS=	libenchant-2.so:textproc/enchant2 \
-		libwoff2dec.so:devel/woff2 \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2 \
 		libwebp.so:graphics/webp \
@@ -29,7 +28,7 @@ LIB_DEPENDS=	libenchant-2.so:textproc/enchant2 \
 		libsoup-2.4.so:devel/libsoup \
 		libgcrypt.so:security/libgcrypt \
 		libtasn1.so:security/libtasn1 \
-		libgnutls.so:security/gnutls
+		libwoff2dec.so:devel/woff2
 
 PORTSCOUT=	limitw:1,even
 
@@ -67,8 +66,6 @@ OPTIONS_DEFAULT=	GEOIP
 OPTIONS_DEFAULT_i386=	NPAPI
 OPTIONS_DEFAULT_amd64=	NPAPI
 OPTIONS_SUB=		yes
-
-OPTIONS_EXCLUDE_FreeBSD_10=	WAYLAND
 
 NPAPI_DESC=		Support gtk2 (NPAPI) based plugins (like flash)
 

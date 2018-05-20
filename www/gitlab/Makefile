@@ -4,6 +4,7 @@
 PORTNAME=	gitlab
 PORTVERSION=	10.7.3
 DISTVERSIONPREFIX=	v
+PORTREVISION=	2
 CATEGORIES=	www devel
 
 MAINTAINER=	mfechner@FreeBSD.org
@@ -81,7 +82,7 @@ RUN_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-hamlit26>=2.6.1:www/rubygem-hamlit26 \
 	rubygem-carrierwave>=1.1:www/rubygem-carrierwave \
 	rubygem-dropzonejs-rails07>=0.7.1:www/rubygem-dropzonejs-rails07 \
-	rubygem-fog-aws>=2.0.1:net/rubygem-fog-aws \
+	rubygem-fog-aws2>=2.0.1:net/rubygem-fog-aws2 \
 	rubygem-fog-core1>=1.44:devel/rubygem-fog-core1 \
 	rubygem-fog-google>=1.3.3:net/rubygem-fog-google \
 	rubygem-fog-local>=0.3:net/rubygem-fog-local \
@@ -91,7 +92,7 @@ RUN_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-google-api-client>=0.19.8:devel/rubygem-google-api-client \
 	rubygem-unf>=0.1.4:textproc/rubygem-unf \
 	rubygem-seed-fu>=2.3.7:databases/rubygem-seed-fu \
-	rubygem-html-pipeline>=2.7.1:textproc/rubygem-html-pipeline \
+	rubygem-html-pipeline27>=2.7.1:textproc/rubygem-html-pipeline27 \
 	rubygem-deckar01-task_list>=2.0.0:www/rubygem-deckar01-task_list \
 	rubygem-gitlab-markup>=1.6.2:textproc/rubygem-gitlab-markup \
 	rubygem-redcarpet>=3.4:textproc/rubygem-redcarpet \
