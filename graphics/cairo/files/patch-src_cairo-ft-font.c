@@ -26,8 +26,8 @@ Signed-off-by: Uli Schlachter <psychon@znc.in>
 
 diff --git a/src/cairo-ft-font.c b/src/cairo-ft-font.c
 index 79aef78f5b0d..9b10708988d7 100644
---- a/src/cairo-ft-font.c
-+++ b/src/cairo-ft-font.c
+--- src/cairo-ft-font.c
++++ src/cairo-ft-font.c
 @@ -445,7 +445,7 @@ _cairo_ft_unscaled_font_init (cairo_ft_unscaled_font_t *unscaled,
  
      if (from_face) {
