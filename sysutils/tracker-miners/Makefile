@@ -35,7 +35,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		gettext gnome localbase:ldflags meson \
 		pathfix pkgconfig python:3.4+,build shebangfix sqlite tar:xz
-USE_GNOME=	cairo libgsf libxml2
+USE_GNOME=	cairo intltool libgsf libxml2
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 GLIB_SCHEMAS=	org.freedesktop.Tracker.Extract.gschema.xml \
