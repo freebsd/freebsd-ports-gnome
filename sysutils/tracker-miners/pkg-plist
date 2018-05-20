@@ -114,6 +114,7 @@ share/locale/zh_TW/LC_MESSAGES/tracker-miners.mo
 %%DATADIR%%/extract-rules/10-pdf.rule
 %%DATADIR%%/extract-rules/10-png.rule
 %%DATADIR%%/extract-rules/10-ps.rule
+%%DATADIR%%/extract-rules/10-raw.rule
 %%GSTREAMER%%%%DATADIR%%/extract-rules/10-svg.rule
 %%DATADIR%%/extract-rules/10-tiff.rule
 %%DATADIR%%/extract-rules/10-vorbis.rule
