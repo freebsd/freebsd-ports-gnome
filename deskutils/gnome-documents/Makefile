@@ -13,7 +13,8 @@ COMMENT=	Document manager application designed to work with GNOME 3
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	itstool:textproc/itstool
+BUILD_DEPENDS=	itstool:textproc/itstool \
+		docbook-xsl>=0:textproc/docbook-xsl
 LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libevview3.so:graphics/evince \
