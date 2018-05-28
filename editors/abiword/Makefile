@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	abiword
-PORTVERSION=	3.0.1
-PORTREVISION=	9
+PORTVERSION=	3.0.2
+PORTREVISION=	0
 CATEGORIES=	editors
 MASTER_SITES=	http://www.abisource.com/downloads/abiword/${PORTVERSION}/source/
 DIST_SUBDIR=	AbiWord
@@ -15,17 +15,25 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
+		libfontconfig.so:x11-fonts/fontconfig \
+		libfreetype.so:print/freetype2 \
+		libfribidi.so:converters/fribidi \
+		libgcrypt.so:security/libgcrypt \
+		libgoffice-0.10.so:devel/goffice010 \
+		libgpg-error.so:security/libgpg-error \
 		libpopt.so:devel/popt \
 		libpng.so:graphics/png \
-		libwv.so:textproc/wv \
-		libfribidi.so:converters/fribidi \
-		libgoffice-0.10.so:devel/goffice010
+		libwmf.so:graphics/libwmf \
+		libwv.so:textproc/wv
 RUN_DEPENDS=	${LOCALBASE}/share/fonts/dejavu/DejaVuSerif.ttf:x11-fonts/dejavu
 
-USES=		desktop-file-utils gmake iconv jpeg libtool pathfix pkgconfig
-USE_GNOME=	libxml2 gtk30 librsvg2 libxslt
+USES=		desktop-file-utils gmake iconv jpeg libtool pathfix pkgconfig \
+		readline
+USE_GNOME=	cairo libxml2 gtk30 librsvg2 libxslt
+USE_XORG=	x11
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
+CXXFLAGS+=	-std=c++98
 LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ARGS=	--without-gnomevfs --enable-plugins="${ABIWORD_PLUGINS}" \
 		--enable-shared="yes" --enable-static="no"
@@ -35,8 +43,7 @@ INSTALL_TARGET=	install-strip
 
 PLIST_SUB+=	ABIVERSION=3.0
 
-OPTIONS_DEFINE=	CLIPART DEBUG MATHVIEW NLS OTS PSION \
-		TEMPLATES WP
+OPTIONS_DEFINE=	CLIPART DEBUG MATHVIEW OTS PSION TEMPLATES WP
 OPTIONS_DEFAULT=CLIPART COLSERVICE COLSUGAR COLTCP SPELLCHECK TEMPLATES
 OPTIONS_SUB=	yes
 
@@ -106,9 +113,6 @@ GRAMMAR_IMPLIES=		SPELLCHECK
 
 MATHVIEW_USES=			bison
 MATHVIEW_LIB_DEPENDS=		libmathview.so:x11-toolkits/gtkmathview
-
-NLS_USES=			gettext
-NLS_CONFIGURE_ENABLE=		nls
 
 OTS_LIB_DEPENDS=		libots-1.so:textproc/ots
 
