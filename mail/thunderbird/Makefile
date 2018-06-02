@@ -3,6 +3,7 @@
 
 PORTNAME=	thunderbird
 DISTVERSION=	52.8.0
+PORTREVISION=	5
 CATEGORIES=	mail news net-im ipv6
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \
 		MOZILLA/${PORTNAME}/candidates/${DISTVERSION}-candidates/build1/source
@@ -53,6 +54,10 @@ OPTIONS_SINGLE_TOOLKIT=	GTK2 GTK3
 OPTIONS_DEFAULT=BUNDLED_CAIRO CANBERRA GTK3 LIGHTNING
 
 .include "${.CURDIR}/../../www/firefox/Makefile.options"
+
+# Inconsistent fallback order (libcubeb vs. audio_device)
+SNDIO_PREVENTS=		${OPTIONS_MULTI_AUDIO:NSNDIO}
+
 .include <bsd.port.pre.mk>
 
 MOZSRC:=	${WRKSRC}/mozilla

@@ -665,6 +665,7 @@
     SUBDIR += fpp
     SUBDIR += frama-c
     SUBDIR += frink
+    SUBDIR += fsmtrie
     SUBDIR += fstrm
     SUBDIR += ftjam
     SUBDIR += ftnchek
@@ -913,11 +914,9 @@
     SUBDIR += horde-whups
     SUBDIR += hp48cc
     SUBDIR += hp48xgcc
-    SUBDIR += hs-BNFC
     SUBDIR += hs-Boolean
     SUBDIR += hs-BoundedChan
     SUBDIR += hs-ConfigFile
-    SUBDIR += hs-DrIFT
     SUBDIR += hs-EdisonAPI
     SUBDIR += hs-EdisonCore
     SUBDIR += hs-Glob
@@ -954,10 +953,12 @@
     SUBDIR += hs-atomic-primops
     SUBDIR += hs-auto-update
     SUBDIR += hs-base-compat
+    SUBDIR += hs-base-compat-batteries
     SUBDIR += hs-base-orphans
     SUBDIR += hs-base-unicode-symbols
     SUBDIR += hs-base16-bytestring
     SUBDIR += hs-base64-bytestring
+    SUBDIR += hs-basement
     SUBDIR += hs-basic-prelude
     SUBDIR += hs-bifunctors
     SUBDIR += hs-bits-atomic
@@ -1012,6 +1013,7 @@
     SUBDIR += hs-dlist
     SUBDIR += hs-dlist-instances
     SUBDIR += hs-easy-file
+    SUBDIR += hs-echo
     SUBDIR += hs-edit-distance
     SUBDIR += hs-either
     SUBDIR += hs-enclosed-exceptions
@@ -1051,8 +1053,8 @@
     SUBDIR += hs-haskell-lexer
     SUBDIR += hs-haskell-src
     SUBDIR += hs-haskell-src-exts
+    SUBDIR += hs-haskell-src-meta
     SUBDIR += hs-hasktags
-    SUBDIR += hs-hastache
     SUBDIR += hs-hex
     SUBDIR += hs-hinotify
     SUBDIR += hs-hint
@@ -1063,6 +1065,7 @@
     SUBDIR += hs-hsb2hs
     SUBDIR += hs-hslogger
     SUBDIR += hs-hslua
+    SUBDIR += hs-hslua-module-text
     SUBDIR += hs-hspec
     SUBDIR += hs-hspec-core
     SUBDIR += hs-hspec-discover
@@ -1094,7 +1097,6 @@
     SUBDIR += hs-monad-par
     SUBDIR += hs-monad-par-extras
     SUBDIR += hs-monad-unlift
-    SUBDIR += hs-monadplus
     SUBDIR += hs-monads-tf
     SUBDIR += hs-mono-traversable
     SUBDIR += hs-mono-traversable-instances
@@ -1139,8 +1141,9 @@
     SUBDIR += hs-simple-reflect
     SUBDIR += hs-smallcheck
     SUBDIR += hs-split
-    SUBDIR += hs-stm
     SUBDIR += hs-stm-chans
+    SUBDIR += hs-storable-record
+    SUBDIR += hs-storable-tuple
     SUBDIR += hs-streaming-commons
     SUBDIR += hs-strict
     SUBDIR += hs-syb
@@ -1153,13 +1156,15 @@
     SUBDIR += hs-test-framework
     SUBDIR += hs-test-framework-hunit
     SUBDIR += hs-test-framework-quickcheck2
-    SUBDIR += hs-text
     SUBDIR += hs-text-icu
     SUBDIR += hs-text-short
     SUBDIR += hs-tf-random
     SUBDIR += hs-th-abstraction
+    SUBDIR += hs-th-expand-syns
     SUBDIR += hs-th-lift
     SUBDIR += hs-th-lift-instances
+    SUBDIR += hs-th-orphans
+    SUBDIR += hs-th-reify-many
     SUBDIR += hs-threads
     SUBDIR += hs-threadscope
     SUBDIR += hs-time-compat
@@ -1174,6 +1179,9 @@
     SUBDIR += hs-uniplate
     SUBDIR += hs-unix-compat
     SUBDIR += hs-unix-time
+    SUBDIR += hs-unliftio
+    SUBDIR += hs-unliftio-core
+    SUBDIR += hs-unicode-show
     SUBDIR += hs-unordered-containers
     SUBDIR += hs-utf8-light
     SUBDIR += hs-utf8-string
@@ -1256,6 +1264,7 @@
     SUBDIR += kaptain
     SUBDIR += kcachegrind
     SUBDIR += kcachegrind-kde4
+    SUBDIR += kcov
     SUBDIR += kdbg
     SUBDIR += kde-dev-scripts
     SUBDIR += kde-dev-scripts-kde4
@@ -1695,6 +1704,7 @@
     SUBDIR += lua-lunit
     SUBDIR += lua-posix
     SUBDIR += lua-pty
+    SUBDIR += lua-rds-parser
     SUBDIR += lua-stdlib
     SUBDIR += lua-stdlib-debug
     SUBDIR += lua-stdlib-normalize
@@ -3251,6 +3261,7 @@
     SUBDIR += p5-Readonly
     SUBDIR += p5-Readonly-XS
     SUBDIR += p5-ReadonlyX
+    SUBDIR += p5-Reaper
     SUBDIR += p5-Ref-Util
     SUBDIR += p5-Ref-Util-XS
     SUBDIR += p5-Reflex
@@ -3412,6 +3423,7 @@
     SUBDIR += p5-Sys-Trace
     SUBDIR += p5-Sys-Virt
     SUBDIR += p5-System-Command
+    SUBDIR += p5-System-Info
     SUBDIR += p5-System-Sub
     SUBDIR += p5-System2
     SUBDIR += p5-TAP-Formatter-JUnit
@@ -3788,7 +3800,6 @@
     SUBDIR += p5-perlqt-kde4
     SUBDIR += p5-pip
     SUBDIR += p5-prefork
-    SUBDIR += p5-reaper
     SUBDIR += p5-relative
     SUBDIR += p5-rpm-build-perl
     SUBDIR += p5-self
@@ -4450,6 +4461,7 @@
     SUBDIR += py-docopt
     SUBDIR += py-dogpile.cache
     SUBDIR += py-doit
+    SUBDIR += py-dtfabric
     SUBDIR += py-durus
     SUBDIR += py-dynrules
     SUBDIR += py-easyprocess
@@ -4813,6 +4825,7 @@
     SUBDIR += py-pyface
     SUBDIR += py-pyfcm
     SUBDIR += py-pyflakes
+    SUBDIR += py-pyformance
     SUBDIR += py-pygdbmi
     SUBDIR += py-pygit2
     SUBDIR += py-pygithub
@@ -4917,6 +4930,7 @@
     SUBDIR += py-rcsparse
     SUBDIR += py-rebulk
     SUBDIR += py-rednose
+    SUBDIR += py-rekall-efilter
     SUBDIR += py-repoze.lru
     SUBDIR += py-repoze.sphinx.autointerface
     SUBDIR += py-repoze.tm2
@@ -5310,6 +5324,7 @@
     SUBDIR += renpy
     SUBDIR += renpy6
     SUBDIR += replay
+    SUBDIR += replxx
     SUBDIR += rhtvision
     SUBDIR += riscv64-binutils
     SUBDIR += riscv64-gcc
@@ -5472,6 +5487,7 @@
     SUBDIR += rubygem-deprecated
     SUBDIR += rubygem-deprecated2
     SUBDIR += rubygem-descendants_tracker
+    SUBDIR += rubygem-device_detector
     SUBDIR += rubygem-devise
     SUBDIR += rubygem-devise-rails5
     SUBDIR += rubygem-devise-rails50
@@ -5896,6 +5912,7 @@
     SUBDIR += rubygem-stella
     SUBDIR += rubygem-stemmer
     SUBDIR += rubygem-stomp
+    SUBDIR += rubygem-stoplight
     SUBDIR += rubygem-storable
     SUBDIR += rubygem-stream
     SUBDIR += rubygem-streetaddress
@@ -5937,6 +5954,7 @@
     SUBDIR += rubygem-tty
     SUBDIR += rubygem-tty-color
     SUBDIR += rubygem-tty-command
+    SUBDIR += rubygem-tty-config
     SUBDIR += rubygem-tty-cursor
     SUBDIR += rubygem-tty-editor
     SUBDIR += rubygem-tty-file

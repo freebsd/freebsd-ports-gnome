@@ -8,6 +8,7 @@
     SUBDIR += R-cran-DT
     SUBDIR += R-cran-R2HTML
     SUBDIR += R-cran-XML
+    SUBDIR += R-cran-bibtex
     SUBDIR += R-cran-brew
     SUBDIR += R-cran-formatR
     SUBDIR += R-cran-highr
@@ -191,6 +192,7 @@
     SUBDIR += fa-aspell
     SUBDIR += fcitx-m17n
     SUBDIR += fcitx-qt5
+    SUBDIR += fcitx-table-other
     SUBDIR += fex
     SUBDIR += ffe
     SUBDIR += fi-aspell
@@ -260,6 +262,7 @@
     SUBDIR += hs-case-insensitive
     SUBDIR += hs-cassava
     SUBDIR += hs-cmark
+    SUBDIR += hs-cmark-gfm
     SUBDIR += hs-csv
     SUBDIR += hs-doctemplates
     SUBDIR += hs-double-conversion
@@ -280,7 +283,6 @@
     SUBDIR += hs-pandoc
     SUBDIR += hs-pandoc-citeproc
     SUBDIR += hs-pandoc-types
-    SUBDIR += hs-parsec
     SUBDIR += hs-polyparse
     SUBDIR += hs-pretty-show
     SUBDIR += hs-regex-applicative
@@ -294,6 +296,7 @@
     SUBDIR += hs-rfc5051
     SUBDIR += hs-scanner
     SUBDIR += hs-skylighting
+    SUBDIR += hs-skylighting-core
     SUBDIR += hs-stringsearch
     SUBDIR += hs-tagsoup
     SUBDIR += hs-tagstream-conduit
@@ -301,6 +304,7 @@
     SUBDIR += hs-uri
     SUBDIR += hs-uri-bytestring
     SUBDIR += hs-uri-bytestring-aeson
+    SUBDIR += hs-uri-encode
     SUBDIR += hs-xml
     SUBDIR += hs-xml-conduit
     SUBDIR += hs-xml-hamlet
@@ -335,6 +339,7 @@
     SUBDIR += ibus-qt
     SUBDIR += ibus-table
     SUBDIR += ibus-typing-booster
+    SUBDIR += ibus-uniemoji
     SUBDIR += icdiff
     SUBDIR += id-aspell
     SUBDIR += id-hyphen
@@ -376,11 +381,6 @@
     SUBDIR += kf5-kcodecs
     SUBDIR += kf5-sonnet
     SUBDIR += kf5-syntax-highlighting
-    SUBDIR += kibana3
-    SUBDIR += kibana41
-    SUBDIR += kibana43
-    SUBDIR += kibana44
-    SUBDIR += kibana45
     SUBDIR += kibana46
     SUBDIR += kibana5
     SUBDIR += kibana5-search-guard
@@ -699,6 +699,7 @@
     SUBDIR += p5-PPI-HTML
     SUBDIR += p5-PPI-XS
     SUBDIR += p5-PPIx-EditorTools
+    SUBDIR += p5-PPIx-QuoteLike
     SUBDIR += p5-PPIx-Regexp
     SUBDIR += p5-PPIx-Utilities
     SUBDIR += p5-Parse-BooleanLogic
@@ -1344,7 +1345,6 @@
     SUBDIR += py-pss
     SUBDIR += py-pyPEG2
     SUBDIR += py-pyctpp2
-    SUBDIR += py-pyelasticsearch
     SUBDIR += py-pyes
     SUBDIR += py-pygments
     SUBDIR += py-pygtail
@@ -1402,6 +1402,7 @@
     SUBDIR += py-textfsm
     SUBDIR += py-texttable
     SUBDIR += py-tinycss
+    SUBDIR += py-toml
     SUBDIR += py-toronado
     SUBDIR += py-trans
     SUBDIR += py-transifex-client
@@ -1523,7 +1524,6 @@
     SUBDIR += rubygem-gemoji
     SUBDIR += rubygem-gherkin
     SUBDIR += rubygem-github-linguist
-    SUBDIR += rubygem-github-linguist47
     SUBDIR += rubygem-github-linguist53
     SUBDIR += rubygem-github-markup
     SUBDIR += rubygem-gitlab-grit
@@ -1559,7 +1559,6 @@
     SUBDIR += rubygem-liquid-tag-parser
     SUBDIR += rubygem-loggability
     SUBDIR += rubygem-loofah
-    SUBDIR += rubygem-loofah20
     SUBDIR += rubygem-ltsv
     SUBDIR += rubygem-markaby
     SUBDIR += rubygem-multi_xml
