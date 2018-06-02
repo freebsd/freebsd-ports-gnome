@@ -9,7 +9,7 @@ MASTER_SITES=	GNOME
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Program to create labels and business cards
 
-BUILD_DEPENDS=	itstool:misc/itstool
+BUILD_DEPENDS=	itstool:textproc/itstool
 LIB_DEPENDS=	libsecret-1.so:security/libsecret \
 		libsoup-2.4.so:devel/libsoup
 
