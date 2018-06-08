@@ -512,6 +512,7 @@
     SUBDIR += unclutter-xfixes
     SUBDIR += unicode-emoji
     SUBDIR += upclient
+    SUBDIR += urbit
     SUBDIR += us-zipcodes
     SUBDIR += usbids
     SUBDIR += usbrh-libusb

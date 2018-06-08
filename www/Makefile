@@ -553,7 +553,6 @@
     SUBDIR += nuvolaplayer-yandex-music
     SUBDIR += nuvolaplayer-youtube
     SUBDIR += obhttpd
-    SUBDIR += ocaml-net
     SUBDIR += opencart
     SUBDIR += opera
     SUBDIR += opera-linuxplugins
@@ -2252,6 +2251,8 @@
     SUBDIR += sogo2-activesync
     SUBDIR += sogo3
     SUBDIR += sogo3-activesync
+    SUBDIR += sogo4
+    SUBDIR += sogo4-activesync
     SUBDIR += spawn-fcgi
     SUBDIR += spdylay
     SUBDIR += spreadlogd

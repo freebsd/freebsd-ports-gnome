@@ -531,10 +531,8 @@
     SUBDIR += ocaml-csv
     SUBDIR += ocaml-expat
     SUBDIR += ocaml-text
-    SUBDIR += ocaml-tyxml
     SUBDIR += odt2txt
     SUBDIR += openfts
-    SUBDIR += opengrm-ngram
     SUBDIR += openjade
     SUBDIR += opensched
     SUBDIR += opensp
@@ -1371,6 +1369,7 @@
     SUBDIR += py-qt5-xmlpatterns
     SUBDIR += py-rdflib
     SUBDIR += py-regex
+    SUBDIR += py-reno
     SUBDIR += py-reverend
     SUBDIR += py-rnc2rng
     SUBDIR += py-rss2gen

@@ -166,7 +166,8 @@
     SUBDIR += freerdp1
     SUBDIR += freeswitch
     SUBDIR += freevrrpd
-    SUBDIR += frr
+    SUBDIR += frr3
+    SUBDIR += frr4
     SUBDIR += fspclient
     SUBDIR += fspd
     SUBDIR += fsplib
@@ -486,6 +487,7 @@
     SUBDIR += mpich
     SUBDIR += mpich2
     SUBDIR += mping
+    SUBDIR += mptsd
     SUBDIR += mrouted
     SUBDIR += msend
     SUBDIR += mtr
@@ -1091,7 +1093,6 @@
     SUBDIR += py-port-for
     SUBDIR += py-portend
     SUBDIR += py-pygeoip
-    SUBDIR += py-pyldap
     SUBDIR += py-pynmsg
     SUBDIR += py-pynsq
     SUBDIR += py-pypcap
