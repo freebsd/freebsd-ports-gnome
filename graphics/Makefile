@@ -535,7 +535,6 @@
     SUBDIR += libkdcraw-kde4
     SUBDIR += libkexiv2
     SUBDIR += libkexiv2-kde4
-    SUBDIR += libkface
     SUBDIR += libkipi
     SUBDIR += libkipi-kde4
     SUBDIR += libkipiplugins
@@ -934,6 +933,7 @@
     SUBDIR += py-pygooglechart
     SUBDIR += py-pygraphviz
     SUBDIR += py-pyproj
+    SUBDIR += py-pyqtgraph
     SUBDIR += py-qt4-svg
     SUBDIR += py-qt5-svg
     SUBDIR += py-sane

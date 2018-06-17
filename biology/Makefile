@@ -64,6 +64,7 @@
     SUBDIR += muscle
     SUBDIR += ncbi-blast+
     SUBDIR += ncbi-toolkit
+    SUBDIR += ngs-sdk
     SUBDIR += njplot
     SUBDIR += p5-AcePerl
     SUBDIR += p5-Bio-ASN1-EntrezGene
@@ -95,11 +96,13 @@
     SUBDIR += primer3
     SUBDIR += protomol
     SUBDIR += psi88
+    SUBDIR += py-Genesis-PyAPI
     SUBDIR += py-biom-format
     SUBDIR += py-biopython
     SUBDIR += py-bx-python
     SUBDIR += py-cutadapt
     SUBDIR += py-macs2
+    SUBDIR += py-orange3-bioinformatics
     SUBDIR += py-pysam
     SUBDIR += pycogent
     SUBDIR += pyfasta

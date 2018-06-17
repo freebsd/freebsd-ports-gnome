@@ -919,6 +919,7 @@
     SUBDIR += py-certbot-dns-route53
     SUBDIR += py-certbot-nginx
     SUBDIR += py-certifi
+    SUBDIR += py-certstream
     SUBDIR += py-cpe
     SUBDIR += py-cracklib
     SUBDIR += py-cryptkit
@@ -933,6 +934,7 @@
     SUBDIR += py-ed25519ll
     SUBDIR += py-fail2ban
     SUBDIR += py-fchksum
+    SUBDIR += py-fido2
     SUBDIR += py-first-server
     SUBDIR += py-flask-httpauth
     SUBDIR += py-flask-kerberos
@@ -987,6 +989,7 @@
     SUBDIR += py-pyclamd
     SUBDIR += py-pycrypto
     SUBDIR += py-pycryptodome
+    SUBDIR += py-pycryptodomex
     SUBDIR += py-pycryptopp
     SUBDIR += py-pydeep
     SUBDIR += py-pyelliptic

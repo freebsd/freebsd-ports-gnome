@@ -57,7 +57,7 @@ LINUX_DEFAULT?=		c6
 .endif
 # Possible values: 5.1, 5.2, 5.3
 LUA_DEFAULT?=		5.2
-# Possible values: 5.5, 5.6, 5.7, 8.0, 5.5m, 10.0m, 10.1m, 10.2m, 5.5p, 5.6p, 5.7p, 5.6w
+# Possible values: 5.5, 5.6, 5.7, 8.0, 5.5m, 10.0m, 10.1m, 10.2m, 10.3m, 5.5p, 5.6p, 5.7p, 5.6w
 MYSQL_DEFAULT?=		5.6
 # Possible values: 5.24, 5.26, 5.28, devel
 .if !exists(${LOCALBASE}/bin/perl) || (!defined(_PORTS_ENV_CHECK) && \
@@ -86,7 +86,7 @@ PYTHON2_DEFAULT?=	2.7
 PYTHON3_DEFAULT?=	3.6
 # Possible values: 2.3, 2.4, 2.5
 RUBY_DEFAULT?=		2.4
-# Possible values: 4.5, 4.6, 4.7, 4.8
+# Possible values: 4.6, 4.7, 4.8
 SAMBA_DEFAULT?=		4.6
 # Possible values: base, openssl, openssl-devel, libressl, libressl-devel
 .if !defined(SSL_DEFAULT)

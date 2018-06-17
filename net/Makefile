@@ -424,6 +424,7 @@
     SUBDIR += libsignal
     SUBDIR += libsocket++
     SUBDIR += libsrtp
+    SUBDIR += libsrtp2
     SUBDIR += libstorj
     SUBDIR += libtnl
     SUBDIR += libtrace
@@ -1348,7 +1349,6 @@
     SUBDIR += rubygem-xmlrpc
     SUBDIR += rude
     SUBDIR += s3ql
-    SUBDIR += samba45
     SUBDIR += samba46
     SUBDIR += samba47
     SUBDIR += samba48

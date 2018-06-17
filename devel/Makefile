@@ -166,7 +166,6 @@
     SUBDIR += autodist
     SUBDIR += autogen
     SUBDIR += automake
-    SUBDIR += automake-wrapper
     SUBDIR += automoc4
     SUBDIR += autotools
     SUBDIR += avalon-framework
@@ -354,6 +353,7 @@
     SUBDIR += cpan-upload-http
     SUBDIR += cpp-hocon
     SUBDIR += cpp-netlib
+    SUBDIR += cpp2py
     SUBDIR += cppcheck
     SUBDIR += cppcheck-gui
     SUBDIR += cppi
@@ -1177,12 +1177,12 @@
     SUBDIR += hs-typed-process
     SUBDIR += hs-unamb
     SUBDIR += hs-unexceptionalio
+    SUBDIR += hs-unicode-show
     SUBDIR += hs-uniplate
     SUBDIR += hs-unix-compat
     SUBDIR += hs-unix-time
     SUBDIR += hs-unliftio
     SUBDIR += hs-unliftio-core
-    SUBDIR += hs-unicode-show
     SUBDIR += hs-unordered-containers
     SUBDIR += hs-utf8-light
     SUBDIR += hs-utf8-string
@@ -1209,6 +1209,7 @@
     SUBDIR += ice
     SUBDIR += icestorm
     SUBDIR += icmake
+    SUBDIR += icontheme
     SUBDIR += icu
     SUBDIR += icu-le-hb
     SUBDIR += icu-lx
@@ -1218,6 +1219,7 @@
     SUBDIR += include-what-you-use
     SUBDIR += inifiled
     SUBDIR += inilib
+    SUBDIR += inilike
     SUBDIR += iniparser
     SUBDIR += initutil
     SUBDIR += injeqt
@@ -1225,6 +1227,7 @@
     SUBDIR += ipython
     SUBDIR += ireport
     SUBDIR += isa-l
+    SUBDIR += isfreedesktop
     SUBDIR += isl
     SUBDIR += ispc
     SUBDIR += itext
@@ -1287,8 +1290,8 @@
     SUBDIR += kdevelop-kde4
     SUBDIR += kdevelop-pg-qt
     SUBDIR += kdevelop-pg-qt-kde4
-    SUBDIR += kdevelop-php-kde4
     SUBDIR += kdevelop-php-docs-kde4
+    SUBDIR += kdevelop-php-kde4
     SUBDIR += kdevplatform-kde4
     SUBDIR += kf5-extra-cmake-modules
     SUBDIR += kf5-kapidox
@@ -1726,6 +1729,7 @@
     SUBDIR += lxqt-build-tools
     SUBDIR += m17n-db
     SUBDIR += m17n-docs
+    SUBDIR += m17n-inscript2
     SUBDIR += m17n-lib
     SUBDIR += m4
     SUBDIR += mage
@@ -4690,6 +4694,7 @@
     SUBDIR += py-mongoengine
     SUBDIR += py-mongokit
     SUBDIR += py-monotonic
+    SUBDIR += py-monty
     SUBDIR += py-more-itertools
     SUBDIR += py-mox
     SUBDIR += py-mox3
@@ -6223,6 +6228,7 @@
     SUBDIR += xc3sprog
     SUBDIR += xdg-user-dirs
     SUBDIR += xdg-utils
+    SUBDIR += xdgpaths
     SUBDIR += xfce4-dev-tools
     SUBDIR += xfce4-vala
     SUBDIR += xmake
