@@ -4551,7 +4551,6 @@ korean/kde3-i18n||2013-07-26|Has expired: Depends on Qt 3.x
 lang/gambas||2013-07-26|Has expired: Depends on Qt 3.x
 lang/klogoturtle||2013-07-26|Has expired: Depends on Qt 3.x
 mail/kcheckgmail||2013-07-26|Has expired: Depends on Qt 3.x
-math/digitizer||2013-07-26|Has expired: Depends on Qt 3.x
 math/fung-calc||2013-07-26|Has expired: Depends on Qt 3.x
 math/koctave||2013-07-26|Has expired: Depends on Qt 3.x
 math/kseg||2013-07-26|Has expired: Depends on Qt 3.x
@@ -10277,3 +10276,15 @@ textproc/elasticsearch2-plugin-hq||2018-06-15|Removed, depends on expired textpr
 textproc/elasticsearch2-plugin-migration||2018-06-15|Removed, depends on expired textproc/elasticsearch2
 textproc/elasticsearch2||2018-06-15|Has expired: Elastic 2.4 EoL is 2018-02-28
 net-im/imspector||2018-06-16|Has expired: No active upstream, master site disappeared long ago
+net/syncthing-discosrv|net/syncthing|2018-06-18|Has expired: Included in net/syncthing now
+net/syncthing-inotify|net/syncthing|2018-06-18|Has expired: Included in net/syncthing now
+net/syncthing-cli|net/syncthing|2018-06-18|Has expired: Included in net/syncthing now
+x11-themes/adwaita-common||2018-06-19|Move to flavored version
+x11-themes/adwaita-qt4|x11-themes/adwaita-qt@qt4|2018-06-19|Move to flavored version
+x11-themes/adwaita-qt5|x11-themes/adwaita-qt@qt5|2018-06-19|Move to flavored version
+net-p2p/qbittorrent-nox11|net-p2p/qbittorrent@nox|2018-06-20|Moved to a flavored version
+math/digitizer|graphics/engauge-digitizer|2018-06-20|The previously deleted port math/digitizer is now graphics/engauge-digitizer
+multimedia/qt5-phonon4|multimedia/phonon@qt5|2018-06-21|Moved to a flavored version
+multimedia/qt5-phonon4-designerplugin|multimedia/phonon-designerplugin@qt5|2018-06-21|Moved to a flavored version
+multimedia/qt5-phonon4-gstreamer|multimedia/phonon-gstreamer@qt5|2018-06-21|Moved to a flavored version
+multimedia/qt5-phonon4-vlc|multimedia/phonon-vlc@qt5|2018-06-21|Moved to a flavored version
