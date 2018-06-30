@@ -3361,6 +3361,7 @@
     SUBDIR += p5-Shell-Source
     SUBDIR += p5-ShipIt
     SUBDIR += p5-ShipIt-Step-Manifest
+    SUBDIR += p5-Signal-Mask
     SUBDIR += p5-Slurp
     SUBDIR += p5-Smart-Comments
     SUBDIR += p5-Sort-Array
@@ -3691,6 +3692,7 @@
     SUBDIR += p5-Time-Interval
     SUBDIR += p5-Time-Local
     SUBDIR += p5-Time-Mock
+    SUBDIR += p5-Time-Moment
     SUBDIR += p5-Time-Object
     SUBDIR += p5-Time-Out
     SUBDIR += p5-Time-ParseDate
@@ -4337,6 +4339,7 @@
     SUBDIR += py-async_generator
     SUBDIR += py-async_timeout
     SUBDIR += py-asyncio
+    SUBDIR += py-asynctest
     SUBDIR += py-atomiclong
     SUBDIR += py-atomicwrites
     SUBDIR += py-atpublic
@@ -4356,7 +4359,6 @@
     SUBDIR += py-bcdoc
     SUBDIR += py-bidict
     SUBDIR += py-billiard
-    SUBDIR += py-binplist
     SUBDIR += py-biplist
     SUBDIR += py-bison
     SUBDIR += py-bitarray
@@ -4882,6 +4884,7 @@
     SUBDIR += py-pyte
     SUBDIR += py-pytemplate
     SUBDIR += py-pytest
+    SUBDIR += py-pytest-aiohttp
     SUBDIR += py-pytest-asyncio
     SUBDIR += py-pytest-cache
     SUBDIR += py-pytest-capturelog
@@ -4949,6 +4952,7 @@
     SUBDIR += py-qt5-test
     SUBDIR += py-qtconsole
     SUBDIR += py-ramlfications
+    SUBDIR += py-ratelimiter
     SUBDIR += py-rauth
     SUBDIR += py-raven
     SUBDIR += py-rcsparse
@@ -4964,6 +4968,7 @@
     SUBDIR += py-repoze.who-friendlyform
     SUBDIR += py-repoze.who-testutil
     SUBDIR += py-repoze.xmliter
+    SUBDIR += py-represent
     SUBDIR += py-requestsexceptions
     SUBDIR += py-resolver
     SUBDIR += py-resourcepackage
@@ -5107,6 +5112,7 @@
     SUBDIR += py-usb
     SUBDIR += py-user_agents
     SUBDIR += py-utils
+    SUBDIR += py-uvloop
     SUBDIR += py-validators
     SUBDIR += py-validictory
     SUBDIR += py-vcrpy
@@ -6034,6 +6040,7 @@
     SUBDIR += sabre
     SUBDIR += safe-iop
     SUBDIR += samurai
+    SUBDIR += sasm
     SUBDIR += sbt
     SUBDIR += scalatest
     SUBDIR += scandoc

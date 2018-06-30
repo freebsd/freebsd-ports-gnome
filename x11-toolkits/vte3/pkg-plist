@@ -46,6 +46,7 @@ share/gtk-doc/html/vte-%%VERSION%%/up.png
 share/gtk-doc/html/vte-%%VERSION%%/vte-%%VERSION%%.devhelp2
 share/gtk-doc/html/vte-%%VERSION%%/vte-Version-Information.html
 share/gtk-doc/html/vte-%%VERSION%%/vte-Vte-PTY.html
+share/locale/af/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/am/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/an/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/ang/LC_MESSAGES/vte-%%VERSION%%.mo

@@ -3,6 +3,7 @@
 
 PORTNAME=	osquery
 PORTVERSION=	3.2.6
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	zi@FreeBSD.org
@@ -10,6 +11,8 @@ COMMENT=	SQL powered OS instrumentation, monitoring, and analytics
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BROKEN_aarch64=		fails to compile: the clang compiler does not support '-march=x86-64'
 
 BUILD_DEPENDS=	thrift>=0.11.0:devel/thrift \
 		bash>0:shells/bash \
