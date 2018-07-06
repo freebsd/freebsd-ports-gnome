@@ -24,6 +24,7 @@ USE_GNOME=	cairo
 py34_PLIST=	${.CURDIR}/pkg-plist-py3
 py35_PLIST=	${.CURDIR}/pkg-plist-py3
 py36_PLIST=	${.CURDIR}/pkg-plist-py3
+py37_PLIST=	${.CURDIR}/pkg-plist-py3
 
 PLIST_SUB=	PORTVER=${PORTVERSION}
 
