@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	git-cinnabar
-DISTVERSION=	0.5.0b3
+DISTVERSION=	0.5.0b3-2
+DISTVERSIONSUFFIX=	-gaaabee0
 CATEGORIES=	devel
 
 MAINTAINER=	jbeich@FreeBSD.org
