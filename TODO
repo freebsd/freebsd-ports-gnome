@@ -45,3 +45,9 @@ Update GNOME desktop to 3.28.1.
 PR:		209532 (1)
 Submitted by:	Kevin Zheng <kevinz5000@gmail.com> (1)
 
+# extra:
+meson update 0.47.1
+make USE_GNOME required USES=gnome
+poppler
+pitivi
+
