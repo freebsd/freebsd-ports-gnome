@@ -14,7 +14,6 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
-		${LOCALBASE}/libdata/pkgconfig/gnome-icon-theme.pc:misc/gnome-icon-theme \
 		pylint-${PYTHON_VER}:devel/pylint@${PY_FLAVOR} \
 		appstream-glib>=0:devel/appstream-glib \
 		itstool:textproc/itstool \
@@ -30,7 +29,6 @@ LIB_DEPENDS=	libgdata.so:devel/libgdata \
 		libzeitgeist-2.0.so:sysutils/zeitgeist \
 		libtotem-plparser.so:multimedia/totem-pl-parser
 RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
-		${LOCALBASE}/libdata/pkgconfig/gnome-icon-theme.pc:misc/gnome-icon-theme \
 		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR} \
 		gnome-settings-daemon>=2.91.0:sysutils/gnome-settings-daemon \
 		gnome-icon-theme-symbolic>=2.91.0:x11-themes/gnome-icon-theme-symbolic \
@@ -66,7 +64,7 @@ MAKE_JOBS_UNSAFE=yes
 MESON_ARGS=	-Denable-vala=no
 PLIST_SUB+=	VALA="@comment "
 .else
-BUILD_DPEENDS+=	valac:lang/vala
+BUILD_DEPENDS+=	valac:lang/vala
 PLIST_SUB+=	VALA=""
 .endif
 
