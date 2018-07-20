@@ -67,7 +67,7 @@ OPTIONS_DEFAULT=	CLANG
 LLVM_VER=	60
 CLANG_DESC=	Build the clang plugin
 CLANG_MESON_TRUE=	with_clang
-CLANG_BUILD_DEPENDS	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
+CLANG_BUILD_DEPENDS=	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
 CLANG_RUN_DEPENDS=	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
 
 .include <bsd.port.mk>
