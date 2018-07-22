@@ -40,6 +40,7 @@ BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
 MESON_ARGS=	-Dwith_flatpak=false \
 		-Dwith_sysprof=false \
+		-Dwith_qemu=false \
 		-Dwith_jhbuild=false
 
 PLIST_SUB+=	PORTVER=${PORTVERSION}
@@ -69,5 +70,11 @@ CLANG_DESC=	Build the clang plugin
 CLANG_MESON_TRUE=	with_clang
 CLANG_BUILD_DEPENDS=	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
 CLANG_RUN_DEPENDS=	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
+
+# jedi plugin with dependancies doesn't work
+MESON_ARGS+=	-Dwith_jeti=false
+#RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
+#		${PYTHON_PKGNAMEPREFIX}lxml>0:devel/py-lxml@${PY_FLAVOR} \
+#		${PYTHON_PKGNAMEPREFIX}jedi>0:devel/py-jedi@${PY_FLAVOR}
 
 .include <bsd.port.mk>
