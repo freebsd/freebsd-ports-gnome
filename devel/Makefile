@@ -31,6 +31,7 @@
     SUBDIR += R-cran-data.table
     SUBDIR += R-cran-doParallel
     SUBDIR += R-cran-evaluate
+    SUBDIR += R-cran-fansi
     SUBDIR += R-cran-foreach
     SUBDIR += R-cran-gbm
     SUBDIR += R-cran-gdata
@@ -187,6 +188,7 @@
     SUBDIR += b2
     SUBDIR += babeltrace
     SUBDIR += bam
+    SUBDIR += bashdb
     SUBDIR += bats-core
     SUBDIR += bazel
     SUBDIR += bazel-clang38
@@ -194,6 +196,7 @@
     SUBDIR += bbfreeze-loader
     SUBDIR += bcc
     SUBDIR += bcpp
+    SUBDIR += bcunit
     SUBDIR += bear
     SUBDIR += bennugd-core
     SUBDIR += bennugd-modules
@@ -922,6 +925,7 @@
     SUBDIR += hs-ConfigFile
     SUBDIR += hs-EdisonAPI
     SUBDIR += hs-EdisonCore
+    SUBDIR += hs-GenericPretty
     SUBDIR += hs-Glob
     SUBDIR += hs-HUnit
     SUBDIR += hs-IfElse
@@ -1032,6 +1036,7 @@
     SUBDIR += hs-filemanip
     SUBDIR += hs-filestore
     SUBDIR += hs-fmlist
+    SUBDIR += hs-fortran-src
     SUBDIR += hs-foundation
     SUBDIR += hs-free
     SUBDIR += hs-fsnotify
@@ -1056,6 +1061,7 @@
     SUBDIR += hs-haskell-lexer
     SUBDIR += hs-haskell-src
     SUBDIR += hs-haskell-src-exts
+    SUBDIR += hs-haskell-src-exts-util
     SUBDIR += hs-haskell-src-meta
     SUBDIR += hs-hasktags
     SUBDIR += hs-hex
@@ -1208,6 +1214,9 @@
     SUBDIR += hub
     SUBDIR += hwloc
     SUBDIR += hyperscan
+    SUBDIR += i386-binutils
+    SUBDIR += i386-gcc
+    SUBDIR += i386-xtoolchain-gcc
     SUBDIR += ice
     SUBDIR += icestorm
     SUBDIR += icmake
@@ -1600,6 +1609,7 @@
     SUBDIR += libtsm
     SUBDIR += libtuntap
     SUBDIR += libublio
+    SUBDIR += libubox
     SUBDIR += libudev-devd
     SUBDIR += libukcprog
     SUBDIR += libunicode
@@ -2181,6 +2191,7 @@
     SUBDIR += p5-Clone-More
     SUBDIR += p5-Clone-PP
     SUBDIR += p5-Code-Perl
+    SUBDIR += p5-Commandable
     SUBDIR += p5-Commands-Guarded
     SUBDIR += p5-CommitBit
     SUBDIR += p5-Compiler-Lexer
@@ -2456,6 +2467,7 @@
     SUBDIR += p5-Devel-LeakTrace
     SUBDIR += p5-Devel-LexAlias
     SUBDIR += p5-Devel-MAT
+    SUBDIR += p5-Devel-MAT-Dumper
     SUBDIR += p5-Devel-Messenger
     SUBDIR += p5-Devel-Modlist
     SUBDIR += p5-Devel-NYTProf
@@ -3840,6 +3852,7 @@
     SUBDIR += p5-version
     SUBDIR += p65
     SUBDIR += p8-platform
+    SUBDIR += packr
     SUBDIR += paexec
     SUBDIR += pam_wrapper
     SUBDIR += papi
@@ -4354,17 +4367,21 @@
     SUBDIR += py-avro
     SUBDIR += py-babel
     SUBDIR += py-babelfish
+    SUBDIR += py-backcall
     SUBDIR += py-backports
     SUBDIR += py-backports.csv
     SUBDIR += py-backports.functools_lru_cache
+    SUBDIR += py-backports.os
     SUBDIR += py-backports.shutil_get_terminal_size
     SUBDIR += py-backports.tempfile
     SUBDIR += py-backports.weakref
     SUBDIR += py-backports_abc
+    SUBDIR += py-banal
     SUBDIR += py-bandit
     SUBDIR += py-bcdoc
     SUBDIR += py-bidict
     SUBDIR += py-billiard
+    SUBDIR += py-binaryornot
     SUBDIR += py-biplist
     SUBDIR += py-bison
     SUBDIR += py-bitarray
@@ -4374,6 +4391,7 @@
     SUBDIR += py-blinker
     SUBDIR += py-blist
     SUBDIR += py-bluelet
+    SUBDIR += py-boolean.py
     SUBDIR += py-boto
     SUBDIR += py-botocore
     SUBDIR += py-bsd
@@ -4392,6 +4410,7 @@
     SUBDIR += py-capstone
     SUBDIR += py-castellan
     SUBDIR += py-cbor
+    SUBDIR += py-cbor2
     SUBDIR += py-cclib
     SUBDIR += py-cdg
     SUBDIR += py-celery
@@ -4402,6 +4421,7 @@
     SUBDIR += py-characteristic
     SUBDIR += py-check-manifest
     SUBDIR += py-cheetah
+    SUBDIR += py-cheetah3
     SUBDIR += py-ciphon
     SUBDIR += py-circuits
     SUBDIR += py-cjson
@@ -4602,6 +4622,7 @@
     SUBDIR += py-iniparse
     SUBDIR += py-initgroups
     SUBDIR += py-instant
+    SUBDIR += py-intbitset
     SUBDIR += py-interface
     SUBDIR += py-intervaltree
     SUBDIR += py-invoke
@@ -4666,7 +4687,6 @@
     SUBDIR += py-lazr.delegates
     SUBDIR += py-lazy
     SUBDIR += py-lazy-object-proxy
-    SUBDIR += py-levenshtein
     SUBDIR += py-liblarch
     SUBDIR += py-libpeas
     SUBDIR += py-libplist
@@ -4788,6 +4808,7 @@
     SUBDIR += py-palm
     SUBDIR += py-parallax
     SUBDIR += py-parsedatetime
+    SUBDIR += py-patch
     SUBDIR += py-path.py
     SUBDIR += py-pathlib
     SUBDIR += py-pathlib2
@@ -4829,6 +4850,7 @@
     SUBDIR += py-prompt_toolkit
     SUBDIR += py-protobuf
     SUBDIR += py-protocols
+    SUBDIR += py-ptable
     SUBDIR += py-ptrace
     SUBDIR += py-ptvsd
     SUBDIR += py-pudb
@@ -4874,6 +4896,7 @@
     SUBDIR += py-pylru
     SUBDIR += py-pylru-cache
     SUBDIR += py-pymarc
+    SUBDIR += py-pymaven-patch
     SUBDIR += py-pympler
     SUBDIR += py-pymtbl
     SUBDIR += py-pyopencl
@@ -5006,6 +5029,7 @@
     SUBDIR += py-sanetime
     SUBDIR += py-sarge
     SUBDIR += py-schema
+    SUBDIR += py-schematics-patched
     SUBDIR += py-scripttest
     SUBDIR += py-sdl2
     SUBDIR += py-selection
@@ -5112,6 +5136,7 @@
     SUBDIR += py-ujson
     SUBDIR += py-uncompyle2
     SUBDIR += py-unicodecsv
+    SUBDIR += py-unicodedata2
     SUBDIR += py-unipath
     SUBDIR += py-unittest2
     SUBDIR += py-unpaddedbase64
@@ -5164,6 +5189,7 @@
     SUBDIR += py-yappi
     SUBDIR += py-yapps2
     SUBDIR += py-ydbf
+    SUBDIR += py-yg.lockfile
     SUBDIR += py-yum-metadata-parser
     SUBDIR += py-yunomi
     SUBDIR += py-z3c.autoinclude
@@ -5623,7 +5649,6 @@
     SUBDIR += rubygem-graf
     SUBDIR += rubygem-grape
     SUBDIR += rubygem-grape-entity
-    SUBDIR += rubygem-grape-entity060
     SUBDIR += rubygem-grape-path-helpers
     SUBDIR += rubygem-grape-route-helpers
     SUBDIR += rubygem-grape-swagger
@@ -5663,6 +5688,7 @@
     SUBDIR += rubygem-iobuffer
     SUBDIR += rubygem-iso8601
     SUBDIR += rubygem-jammit
+    SUBDIR += rubygem-jaro_winkler
     SUBDIR += rubygem-jasmine-core
     SUBDIR += rubygem-jbuilder
     SUBDIR += rubygem-jbuilder-rails5
@@ -5915,6 +5941,7 @@
     SUBDIR += rubygem-sidekiq
     SUBDIR += rubygem-sidekiq-bulk-rails5
     SUBDIR += rubygem-sidekiq-cron
+    SUBDIR += rubygem-sidekiq-cron0
     SUBDIR += rubygem-sidekiq-limit_fetch
     SUBDIR += rubygem-sidekiq-scheduler
     SUBDIR += rubygem-sidekiq-unique-jobs

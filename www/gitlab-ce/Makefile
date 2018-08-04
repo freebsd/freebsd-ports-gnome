@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gitlab-ce
-PORTVERSION=	11.0.3
-PORTREVISION=	1
+PORTVERSION=	11.1.4
 CATEGORIES=	www devel
 
 MAINTAINER=	mfechner@FreeBSD.org
@@ -26,9 +25,9 @@ BUILD_DEPENDS=	gem:devel/ruby-gems
 # for the options
 RUN_DEPENDS=	git>=2.16.2:devel/git \
 	gitlab-shell>=7.1.4:devel/gitlab-shell \
-	gitlab-workhorse>=4.3.1:www/gitlab-workhorse \
-	gitaly>=0.105.0:devel/gitaly \
-	gitlab-pages>=0.9.1:www/gitlab-pages \
+	gitlab-workhorse>=5.0.0:www/gitlab-workhorse \
+	gitaly>=0.111.2:devel/gitaly \
+	gitlab-pages>=1.0.0:www/gitlab-pages \
 	redis>=2.8.23:databases/redis \
 	npm>=4.3.0:www/npm \
 	yarn>=0.17.0:www/yarn \
@@ -41,8 +40,8 @@ RUN_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-grape-path-helpers>=1.0:devel/rubygem-grape-path-helpers \
 	rubygem-faraday>=0.12.0:www/rubygem-faraday \
 	rubygem-devise>=4.4:devel/rubygem-devise \
-	rubygem-doorkeeper>=4.3:security/rubygem-doorkeeper \
-	rubygem-doorkeeper-openid_connect>=1.3:security/rubygem-doorkeeper-openid_connect \
+	rubygem-doorkeeper43>=4.3:security/rubygem-doorkeeper43 \
+	rubygem-doorkeeper-openid_connect>=1.5:security/rubygem-doorkeeper-openid_connect \
 	rubygem-omniauth>=1.8:security/rubygem-omniauth \
 	rubygem-omniauth-auth0>=2.0.0:net/rubygem-omniauth-auth0 \
 	rubygem-omniauth-azure-oauth2>=0.0.9:net/rubygem-omniauth-azure-oauth2 \
@@ -54,7 +53,7 @@ RUN_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-omniauth-kerberos>=0.3.0:net/rubygem-omniauth-kerberos \
 	rubygem-omniauth-oauth2-generic>=0.2.2:security/rubygem-omniauth-oauth2-generic \
 	rubygem-omniauth-saml>=1.10:security/rubygem-omniauth-saml \
-	rubygem-omniauth-shibboleth12>=1.2.0:security/rubygem-omniauth-shibboleth12 \
+	rubygem-omniauth-shibboleth>=1.3.0:security/rubygem-omniauth-shibboleth \
 	rubygem-omniauth-twitter>=1.4:net/rubygem-omniauth-twitter \
 	rubygem-omniauth_crowd22>=2.2.0:devel/rubygem-omniauth_crowd22 \
 	rubygem-omniauth-authentiq>=0.3.3:net/rubygem-omniauth-authentiq \
@@ -69,7 +68,7 @@ RUN_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-validates_hostname>=1.0.6:dns/rubygem-validates_hostname \
 	rubygem-browser>=2.2:www/rubygem-browser \
 	rubygem-gpgme>=2.0.13:security/rubygem-gpgme \
-	rubygem-gitlab_omniauth-ldap>=2.0.4:net/rubygem-gitlab_omniauth-ldap \
+	rubygem-gitlab_omniauth-ldap20>=2.0.4:net/rubygem-gitlab_omniauth-ldap20 \
 	rubygem-net-ldap>=0.16.0:net/rubygem-net-ldap \
 	rubygem-gitlab-gollum-lib>=4.2.0:www/rubygem-gitlab-gollum-lib \
 	rubygem-gitlab-gollum-rugged_adapter>=0.4.4:www/rubygem-gitlab-gollum-rugged_adapter \
@@ -87,17 +86,17 @@ RUN_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-dropzonejs-rails07>=0.7.1:www/rubygem-dropzonejs-rails07 \
 	rubygem-fog-aws2>=2.0.1:net/rubygem-fog-aws2 \
 	rubygem-fog-core1>=1.44:devel/rubygem-fog-core1 \
-	rubygem-fog-google>=1.3.3:net/rubygem-fog-google \
+	rubygem-fog-google13>=1.3.3:net/rubygem-fog-google13 \
 	rubygem-fog-local>=0.3:net/rubygem-fog-local \
 	rubygem-fog-openstack>=0.1:net/rubygem-fog-openstack \
 	rubygem-fog-rackspace>=0.1.1:net/rubygem-fog-rackspace \
-	rubygem-fog-aliyun>=0.2.0:net/rubygem-fog-aliyun \
+	rubygem-fog-aliyun02>=0.2.0:net/rubygem-fog-aliyun02 \
 	rubygem-google-api-client>=0.19.8:devel/rubygem-google-api-client \
 	rubygem-unf>=0.1.4:textproc/rubygem-unf \
 	rubygem-seed-fu>=2.3.7:databases/rubygem-seed-fu \
-	rubygem-html-pipeline-gitlab>=2.7.1:textproc/rubygem-html-pipeline-gitlab \
+	rubygem-html-pipeline>=2.8:textproc/rubygem-html-pipeline \
 	rubygem-deckar01-task_list>=2.0.0:www/rubygem-deckar01-task_list \
-	rubygem-gitlab-markup>=1.6.2:textproc/rubygem-gitlab-markup \
+	rubygem-gitlab-markup>=1.6.4:textproc/rubygem-gitlab-markup \
 	rubygem-redcarpet>=3.4:textproc/rubygem-redcarpet \
 	rubygem-commonmarker>=0.17:textproc/rubygem-commonmarker \
 	rubygem-redcloth>=4.3.2:www/rubygem-redcloth \
@@ -118,7 +117,7 @@ RUN_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-state_machines-activerecord>=0.5.1:databases/rubygem-state_machines-activerecord \
 	rubygem-acts-as-taggable-on>=5.0:www/rubygem-acts-as-taggable-on \
 	rubygem-sidekiq>=5.1.0:devel/rubygem-sidekiq \
-	rubygem-sidekiq-cron>=0.6.0:devel/rubygem-sidekiq-cron \
+	rubygem-sidekiq-cron0>=0.6.0:devel/rubygem-sidekiq-cron0 \
 	rubygem-redis-namespace>=1.6.0:databases/rubygem-redis-namespace \
 	rubygem-sidekiq-limit_fetch>=3.4:devel/rubygem-sidekiq-limit_fetch \
 	rubygem-rufus-scheduler342>=3.4.0:devel/rubygem-rufus-scheduler342 \
@@ -191,7 +190,7 @@ RUN_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-sshkey>=1.9.0:security/rubygem-sshkey \
 	rubygem-ed25519>=1.2:security/rubygem-ed25519 \
 	rubygem-bcrypt_pbkdf>=1.0:security/rubygem-bcrypt_pbkdf \
-	rubygem-gitaly-proto>=0.101.0:net/rubygem-gitaly-proto \
+	rubygem-gitaly-proto>=0.105.0:net/rubygem-gitaly-proto \
 	rubygem-grpc>=1.11.0:net/rubygem-grpc \
 	rubygem-gitaly>=0.8.0:net/rubygem-gitaly \
 	rubygem-google-protobuf351>=3.5.1:devel/rubygem-google-protobuf351 \
@@ -214,13 +213,19 @@ USE_RC_SUBR=	gitlab
 USE_GITLAB=	yes
 GL_ACCOUNT=	gitlab-org
 # Find the here: https://gitlab.com/gitlab-org/gitlab-ce/tags
-GL_COMMIT=	aa6207551b023ecba0dba332c6358e1007f4b0eb
+GL_COMMIT=	63daf37ad326bb4c4e74ebee8b8e2be7878b298f
 
 USERS=	git
 GROUPS=	git
 
 NO_ARCH=	yes
 NO_BUILD=	yes
+
+post-patch:
+	${REINPLACE_CMD} -e "s|%%PREFIX%%|${PREFIX}|" ${WRKSRC}/config/gitlab.yml.example \
+		${WRKSRC}/config/unicorn.rb.example \
+		${WRKSRC}/lib/support/nginx/gitlab \
+		${WRKSRC}/lib/support/nginx/gitlab-ssl
 
 post-patch-MYSQL-on:
 	${CP} ${WRKSRC}/config/database.yml.mysql ${WRKSRC}/config/database.yml.sample

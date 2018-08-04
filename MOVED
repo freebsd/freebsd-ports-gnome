@@ -5255,7 +5255,6 @@ devel/hs-DeepArrow||2013-12-22|Has expired: Broken for more than 6 months
 converters/py-svglib||2013-12-22|Has expired: Broken for more than 6 months
 converters/p5-Unicode-Lite||2013-12-22|Has expired: Broken for more than 6 months
 mail/squirrelmail-calendar_sql_backend-plugin||2013-12-22|Has expired: Broken for more than 6 months
-finance/quantlib||2013-12-22|Has expired: Broken for more than 6 months
 games/xkobo||2013-12-22|Has expired: Broken for more than 6 months
 games/quake3-rq3||2013-12-22|Has expired: Broken for more than 6 months
 math/fbm||2013-12-22|Has expired: No new release since 2004, new supported upstream
@@ -10320,14 +10319,14 @@ math/freemat||2018-07-03|Has expired: Complex, unmaintained software with obsole
 dns/bind99|dns/bind911|2018-07-04|Has expired: Going out of support, please migrate to dns/bind911
 dns/bind910|dns/bind911|2018-07-04|Has expired: Going out of support, please migrate to dns/bind911
 www/gitlab|www/gitlab-ce|2018-07-04|Port renamed to match name on gitlab.org
-devel/rubygem-oj2|devel/rubygem-oj|2018-07-04|Has expired: Obsoleted by update of www/gitlab. Please use devel/rubygem-oj instead.
+devel/rubygem-oj2|devel/rubygem-oj|2018-07-04|Has expired: Obsoleted by update of www/gitlab. Please use devel/rubygem-oj instead
 net-mgmt/sx||2018-07-08|Has expired: Upstream gone, does not fetch
 www/sxweb||2018-07-08|Removed, web frontend of net-mgmt/sx, upstream also gone
 sysutils/logstash|sysutils/logstash5|2018-07-10|Has expired: End of Life was 2018-02-28
 textproc/kibana46|textproc/kibana5|2018-07-10|Has expired: End of Life was 2018-02-28
 print/cups-connector|print/cloud-print-connector|2018-07-11|Project renamed upstream
 net/wpa_gui|net/wpa_supplicant_gui|2018-07-12|Rename to wpa_supplicant_gui for ease of search
-lang/gcc47|lang/gcc6|2018-07-15|Has expired: Unsupported by upstream. Use GCC 6 or newer instead.
+lang/gcc47|lang/gcc6|2018-07-15|Has expired: Unsupported by upstream. Use GCC 6 or newer instead
 net-p2p/transmission-qt4|net-p2p/transmission-qt@qt4|2018-07-15|Moved into flavored version
 net-p2p/transmission-qt5|net-p2p/transmission-qt@qt5|2018-07-15|Moved into flavored version
 java/jaf||2018-07-16|Included in JRE since 1.6 version
@@ -10349,6 +10348,74 @@ net-im/mastodon||2018-07-16|Has expired: Breaks too frequently
 x11-fm/p5-PerlFM||2018-07-16|Has expired: Unmaintained
 astro/p5-ZConf-Weather||2018-07-16|Has expired: Unmaintained
 sysutils/p5-ZConf-Cron||2018-07-16|Has expired: Unmaintained
+x11-fonts/hasklig|x11-fonts/Hasklig|2018-07-16|Name correctly after upstream
 misc/artikulate-kde4||2018-07-17|Has expired: broken for more than three years
 vietnamese/kde4-l10||2018-07-17|Has expired: broken for more than three years
 graphics/projectm-libvisual|graphics/libprojectm|2018-07-17|Code of projectm-libvisual was merged into graphics/libprojectm
+graphics/yafray|graphics/yafaray|2018-07-20|Project renamed
+lang/spec.alpha||2018-07-21|Unused in the ports tree
+sysutils/xen-tools|sysutils/xen-tools47|2018-07-23|Renamed to support multiple versions
+emulators/xen-kernel|emulators/xen-kernel47|2018-07-23|Renamed to support multiple versions
+emulators/xen||2018-07-23|Removed to support multiple versions
+devel/py-levenshtein|devel/py-python-Levenshtein|2018-07-28|Remove the duplicate
+comms/xwota||2018-07-28|Has expired: No server message and no upstream releases
+audio/glame||2018-07-28|Has expired: Does not build
+net/isc-dhcp43-relay|net/isc-dhcp44-relay|2018-07-31|Has expired: Please upgrade to isc-dhcp44
+net/isc-dhcp43-server|net/isc-dhcp44-server|2018-07-31|Has expired: Please upgrade to isc-dhcp44
+net/isc-dhcp43-client|net/isc-dhcp44-client|2018-07-31|Has expired: Please upgrade to isc-dhcp44
+x11/bigreqsproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/compositeproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/damageproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/dmxproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/dri2proto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/dri3proto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/fixesproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/glproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/inputproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/kbproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/presentproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/printproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/randrproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/recordproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/renderproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/resourceproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/scrnsaverproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/trapproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/videoproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xcmiscproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xextproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xf86dgaproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xf86driproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xf86miscproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xf86rushproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xf86vidmodeproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xineramaproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/xproxymanagementprotocol|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11-fonts/fontcacheproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11-fonts/fontsproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11-fonts/xf86bigfontproto|x11/xorgproto|2018-07-31|merged into x11/xorgproto
+x11/evieext|x11/xorgproto|2018-08-01|merged into x11/xorgproto
+net/rubygem-gitaly-proto096|net/rubygem-gitaly-proto|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use net/rubygem-gitaly-proto instead.
+security/tripwire12||2018-08-02|Has expired: unfetchable
+security/rubygem-rbnacl4|security/rubygem-rbnacl|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use security/rubygem-rbnacl instead.
+www/rubygem-gon61|www/rubygem-gon|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use www/rubygem-gon instead.
+databases/pgpool-II-33|databases/pgpool-II-35|2018-08-02|Has expired: Will be deprecated by upstream, please switch to newer pgpool versions
+devel/rubygem-grape-entity060|devel/rubygem-grape-entity|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use devel/rubygem-grape-entity instead.
+net/rubygem-gitaly-proto099|net/rubygem-gitaly-proto|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use net/rubygem-gitaly-proto instead.
+net/rubygem-gitaly-proto095|net/rubygem-gitaly-proto|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use net/rubygem-gitaly-proto instead.
+net/rubygem-omniauth-github11|net/rubygem-omniauth-github|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use net/rubygem-omniauth-github instead.
+net/rubygem-asset_sync220|net/rubygem-asset_sync|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use net/rubygem-asset_sync instead.
+www/rubygem-gollum-lib-gitlab|www/rubygem-gitlab-gollum-lib|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use www/rubygem-gitlab-gollum-lib instead.
+www/py-django-threaded-multihost||2018-08-02|Has expired: Project development unmaintained
+www/py-django-keyedcache||2018-08-02|Has expired: Project development abandoned
+www/py-django-signals-ahoy||2018-08-02|Has expired: Project development unmaintained
+databases/rubygem-redis-namespace15|databases/rubygem-redis-namespace|2018-08-02|Has expired: Obsoleted by update of www/gitlab-ce. Please use databases/rubygem-redis-namespace instead.
+security/py-python-social-auth||2018-08-02|Has expired: Upstream Deprecated
+www/py-django-social-auth||2018-08-02|Has expired: no support for new django
+audio/libmusicbrainz3|audio/libmusicbrainz5|2018-08-03|Has expired: Web Service 1.0 support ending 2018-08-01
+emulators/snes9x||2018-08-03|Removed: Please use emulators/snes9x-gtk instead of
+emulators/snes9express||2018-08-03|Please use emulators/snes9x-gtk instead
+security/rubygem-omniauth-shibboleth12||2018-08-04|Removed
+textproc/rubygem-html-pipeline-gitlab||2018-08-04|Removed
+net/qmdnsengine|dns/qmdnsengine|2018-08-04|Move to a proper category

@@ -129,6 +129,7 @@
     SUBDIR += bulk_extractor
     SUBDIR += burp
     SUBDIR += busybox
+    SUBDIR += bvm
     SUBDIR += byobu
     SUBDIR += catfish
     SUBDIR += cbsd
@@ -262,6 +263,7 @@
     SUBDIR += dmidecode
     SUBDIR += docker
     SUBDIR += docker-compose
+    SUBDIR += docker-credential-pass
     SUBDIR += docker-freebsd
     SUBDIR += docker-machine
     SUBDIR += doctl
@@ -395,6 +397,7 @@
     SUBDIR += fusefs-ntfs-compression
     SUBDIR += fusefs-pod
     SUBDIR += fusefs-rar2fs
+    SUBDIR += fusefs-s3backer
     SUBDIR += fusefs-s3fs
     SUBDIR += fusefs-simple-mtpfs
     SUBDIR += fusefs-smbnetfs
@@ -572,11 +575,13 @@
     SUBDIR += kldfind
     SUBDIR += kldpatch
     SUBDIR += knutclient-kde4
+    SUBDIR += kops
     SUBDIR += krename
     SUBDIR += kshutdown-kde4
     SUBDIR += ksysguardd-kde4
     SUBDIR += ksystemlog
     SUBDIR += ksystemlog-kde4
+    SUBDIR += kubectl
     SUBDIR += kuser-kde4
     SUBDIR += lava
     SUBDIR += lbl-cf
@@ -596,6 +601,7 @@
     SUBDIR += libieee1284
     SUBDIR += libretto-config
     SUBDIR += libsunacl
+    SUBDIR += libsysstat 
     SUBDIR += liburcu
     SUBDIR += libutempter
     SUBDIR += life-preserver
@@ -634,6 +640,8 @@
     SUBDIR += lttng-ust
     SUBDIR += luckybackup
     SUBDIR += lxinput
+    SUBDIR += lxqt-policykit
+    SUBDIR += lxqt-qtplugin
     SUBDIR += lxsplit
     SUBDIR += lxtask
     SUBDIR += lxterminal
@@ -760,6 +768,7 @@
     SUBDIR += odo
     SUBDIR += ods2
     SUBDIR += ohmu
+    SUBDIR += omnibackup
     SUBDIR += open
     SUBDIR += openhpi
     SUBDIR += openipmi
@@ -1287,6 +1296,7 @@
     SUBDIR += ttyd
     SUBDIR += ttyload
     SUBDIR += tuptime
+    SUBDIR += turbostat
     SUBDIR += tw_cli
     SUBDIR += twmn
     SUBDIR += tzdialog
@@ -1313,6 +1323,7 @@
     SUBDIR += u-boot-orangepi-pc-plus
     SUBDIR += u-boot-orangepi-pc2
     SUBDIR += u-boot-orangepi-plus-2e
+    SUBDIR += u-boot-orangepi-r1
     SUBDIR += u-boot-orangepi-zero
     SUBDIR += u-boot-pandaboard
     SUBDIR += u-boot-pcduino3
@@ -1420,7 +1431,8 @@
     SUBDIR += xe
     SUBDIR += xe-guest-utilities
     SUBDIR += xen-guest-tools
-    SUBDIR += xen-tools
+    SUBDIR += xen-tools411
+    SUBDIR += xen-tools47
     SUBDIR += xfburn
     SUBDIR += xfce4-battery-plugin
     SUBDIR += xfce4-bsdcpufreq-plugin
