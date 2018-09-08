@@ -153,6 +153,7 @@
     SUBDIR += drawpile
     SUBDIR += driconf
     SUBDIR += drm-devel-kmod
+    SUBDIR += drm-legacy-kmod
     SUBDIR += drm-next-kmod
     SUBDIR += drm-stable-kmod
     SUBDIR += dspdfviewer
@@ -491,6 +492,7 @@
     SUBDIR += l2p
     SUBDIR += largetifftools
     SUBDIR += laternamagica
+    SUBDIR += lazpaint
     SUBDIR += lcdtest
     SUBDIR += lcms
     SUBDIR += lcms-python
@@ -531,6 +533,7 @@
     SUBDIR += libgnomecanvasmm26
     SUBDIR += libgphoto2
     SUBDIR += libgxps
+    SUBDIR += libheif
     SUBDIR += libimg
     SUBDIR += libiptcdata
     SUBDIR += libjpeg-turbo
@@ -628,6 +631,7 @@
     SUBDIR += metacam
     SUBDIR += metapixel
     SUBDIR += mhgui
+    SUBDIR += minder
     SUBDIR += ming
     SUBDIR += mirage
     SUBDIR += mmrecover
@@ -656,6 +660,7 @@
     SUBDIR += ogre3d
     SUBDIR += okular
     SUBDIR += okular-kde4
+    SUBDIR += open3d
     SUBDIR += opencollada
     SUBDIR += opencolorio
     SUBDIR += opencolorio-tools
@@ -685,6 +690,7 @@
     SUBDIR += osgearth
     SUBDIR += oyranos
     SUBDIR += p5-Acme-Steganography-Image-Png
+    SUBDIR += p5-Algorithm-Line-Bresenham
     SUBDIR += p5-Alien-Gimp
     SUBDIR += p5-Barcode-ZBar
     SUBDIR += p5-CAD-Drawing
@@ -875,6 +881,7 @@
     SUBDIR += pstoedit
     SUBDIR += pstoepsi
     SUBDIR += ptex
+    SUBDIR += py-OWSLib
     SUBDIR += py-PyOpenGL
     SUBDIR += py-PyOpenGL-accelerate
     SUBDIR += py-PyX
@@ -914,11 +921,11 @@
     SUBDIR += py-mcomix
     SUBDIR += py-ming
     SUBDIR += py-nwdiag
+    SUBDIR += py-open3d-python
     SUBDIR += py-opencolorio
     SUBDIR += py-opencv
     SUBDIR += py-openexr
     SUBDIR += py-openimageio
-    SUBDIR += py-OWSLib
     SUBDIR += py-paint
     SUBDIR += py-photocollage
     SUBDIR += py-pillow
@@ -1117,11 +1124,13 @@
     SUBDIR += visprint
     SUBDIR += volpack
     SUBDIR += vp
+    SUBDIR += vulkan-loader
+    SUBDIR += vv
     SUBDIR += waffle
     SUBDIR += waifu2x-converter-cpp
     SUBDIR += wayland
-    SUBDIR += waylandpp
     SUBDIR += wayland-protocols
+    SUBDIR += waylandpp
     SUBDIR += webp
     SUBDIR += wings
     SUBDIR += wmicons

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	cgit
-PORTVERSION=	1.2
+PORTVERSION=	1.2.1
 CATEGORIES=	devel www
 MASTER_SITES=	http://git.zx2c4.com/cgit/snapshot/:cgit \
 		https://www.kernel.org/pub/software/scm/git/:git
@@ -35,7 +35,7 @@ SUB_FILES=	pkg-message
 PORTDOCS=	${PORTNAME}rc.5.txt
 
 OPTIONS_DEFINE=	DOCS ASCIIDOC
-OPTIONS_DEFAULT=	DOCS ASCIIDOC
+OPTIONS_DEFAULT=	ASCIIDOC
 OPTIONS_SUB=	yes
 
 ASCIIDOC_DESC=	Use asciidoc to preprocess man page

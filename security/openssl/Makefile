@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	openssl
-PORTVERSION=	1.0.2o
-PORTREVISION=	4
+PORTVERSION=	1.0.2p
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	security devel
 MASTER_SITES=	http://www.openssl.org/source/ \
@@ -74,7 +74,7 @@ MD2_CONFIGURE_ON=	enable-md2
 MD2_CONFIGURE_OFF=	no-md2
 PADLOCK_CFLAGS=		-Wno-unused-function
 PADLOCK_CONFIGURE_OFF=	no-padlock
-PADLOCK_PATCH_SITES=	http://git.alpinelinux.org/cgit/aports/plain/main/openssl/:padlock
+PADLOCK_PATCH_SITES=	http://git.alpinelinux.org/cgit/aports/plain/main/openssl1.0/:padlock
 PADLOCK_PATCHFILES=	1001-crypto-hmac-support-EVP_MD_CTX_FLAG_ONESHOT-and-set-.patch:padlock \
 			1002-backport-changes-from-upstream-padlock-module.patch:padlock \
 			1003-engines-e_padlock-implement-sha1-sha224-sha256-accel.patch:padlock \

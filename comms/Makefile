@@ -79,6 +79,7 @@
     SUBDIR += klog
     SUBDIR += kremotecontrol-kde4
     SUBDIR += kvasd
+    SUBDIR += libbtbb
     SUBDIR += libconcord
     SUBDIR += libfap
     SUBDIR += libfec
@@ -187,11 +188,11 @@
     SUBDIR += twpsk
     SUBDIR += uarduno
     SUBDIR += uartlirc
+    SUBDIR += ubertooth
     SUBDIR += uhd
     SUBDIR += uird
     SUBDIR += unixcw
     SUBDIR += usbmuxd
-    SUBDIR += usrp
     SUBDIR += viewfax
     SUBDIR += vrflash
     SUBDIR += wsjt

@@ -213,7 +213,8 @@
     SUBDIR += nstreams
     SUBDIR += observium
     SUBDIR += ocsinventory-agent
-    SUBDIR += ocsinventory-ng
+    SUBDIR += ocsinventory-ocsreports
+    SUBDIR += ocsinventory-server
     SUBDIR += omping
     SUBDIR += onionlauncher
     SUBDIR += openbmp
@@ -265,12 +266,12 @@
     SUBDIR += p5-NetAddr-IP-Lite
     SUBDIR += p5-NetApp
     SUBDIR += p5-POE-Component-SNMP
+    SUBDIR += p5-RDR-Collector
     SUBDIR += p5-SNMP-Info
     SUBDIR += p5-SNMP-MIB-Compiler
     SUBDIR += p5-SNMP-Simple
     SUBDIR += p5-SNMP-Trapinfo
     SUBDIR += p5-SNMP-Util
-    SUBDIR += p5-RDR-Collector
     SUBDIR += p5-SNMP_Session
     SUBDIR += p5-Telnet-Cisco
     SUBDIR += p5-Tie-NetAddr-IP
@@ -302,9 +303,9 @@
     SUBDIR += pnp-icinga
     SUBDIR += pnp-icinga2
     SUBDIR += portmon
+    SUBDIR += prometheus-collectd-exporter
     SUBDIR += prometheus1
     SUBDIR += prometheus2
-    SUBDIR += prometheus-collectd-exporter
     SUBDIR += pushgateway
     SUBDIR += py-adal
     SUBDIR += py-ciscoconfparse
@@ -318,8 +319,8 @@
     SUBDIR += py-napalm-logs
     SUBDIR += py-ncclient
     SUBDIR += py-pdagent
-    SUBDIR += py-pyIOSXR
     SUBDIR += py-prometheus-client
+    SUBDIR += py-pyIOSXR
     SUBDIR += py-pyang
     SUBDIR += py-pyeapi
     SUBDIR += py-pynsca

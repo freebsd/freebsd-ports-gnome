@@ -215,9 +215,11 @@
     SUBDIR += lxhotkey
     SUBDIR += lxmenu-data
     SUBDIR += lxpanel
+    SUBDIR += lxqt-about
     SUBDIR += lxqt-globalkeys
     SUBDIR += lxqt-globalkeys-l10n
     SUBDIR += lxqt-l10n
+    SUBDIR += lxqt-runner
     SUBDIR += lxrandr
     SUBDIR += mate
     SUBDIR += mate-applets
@@ -257,6 +259,7 @@
     SUBDIR += p5-XTerm-Conf
     SUBDIR += pantheon-terminal
     SUBDIR += pcdm
+    SUBDIR += perwindowlayoutd
     SUBDIR += pipeglade
     SUBDIR += pixman
     SUBDIR += plasma-scriptengine-python-kde4

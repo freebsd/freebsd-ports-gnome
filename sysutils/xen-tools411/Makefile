@@ -3,7 +3,7 @@
 PORTNAME=	xen
 PKGNAMESUFFIX=	-tools411
 PORTVERSION=	4.11.0
-PORTREVISION=	0
+PORTREVISION=	5
 CATEGORIES=	sysutils emulators
 MASTER_SITES=	http://downloads.xenproject.org/release/xen/${PORTVERSION}/
 
@@ -19,8 +19,6 @@ LIB_DEPENDS=	libyajl.so:devel/yajl \
 		liblzo2.so:archivers/lzo2 \
 		libpixman-1.so:x11/pixman \
 		libargp.so:devel/argp-standalone
-DOCS_BUILD_DEPENDS=markdown>0:textproc/markdown \
-		hs-pandoc>0:textproc/hs-pandoc
 BUILD_DEPENDS=	seabios>0:misc/seabios
 RUN_DEPENDS=	seabios>0:misc/seabios
 
@@ -33,7 +31,7 @@ USES=		cpe gettext gmake libtool localbase:ldflags perl5 pkgconfig \
 		python:2.7 shebangfix
 USE_GNOME=	glib20
 USE_LDCONFIG=	yes
-GNU_CONFIGURE=	yes
+HAS_CONFIGURE=	yes
 # Set ARCH=x86_64 in order to overwrite the environment ARCH=amd64
 MAKE_ARGS=	clang=y ARCH=x86_64
 
@@ -45,6 +43,11 @@ EXTRA_PATCHES+=	${FILESDIR}/0001-x86-replace-usage-in-the-linker-script.patch:-p
 		${FILESDIR}/0002-x86-efi-split-compiler-vs-linker-support.patch:-p1
 # Fix docs build
 EXTRA_PATCHES+=	${FILESDIR}/0001-docs-use-the-make-wildcard-function-instead-of-find.patch:-p1
+# XSA-273 and XSA-272
+EXTRA_PATCHES+=	${FILESDIR}/0031-tools-oxenstored-Make-evaluation-order-explicit.patch:-p1 \
+		${FILESDIR}/0041-xl.conf-Add-global-affinity-masks.patch:-p1
+# Fix hvmloader build with LLVM LD
+EXTRA_PATCHES+=	${FILESDIR}/0001-hvmloader-fix-build-with-LLVM-Linker.patch:-p1
 
 CONFIGURE_ARGS+= --with-system-seabios=${LOCALBASE}/share/seabios/bios.bin
 
