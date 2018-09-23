@@ -38,6 +38,8 @@ CONFIGURE_ARGS=	--enable-compile-warnings=no \
 		--enable-introspection
 INSTALL_TARGET=	install-strip
 
+OPTIONS_DEFINE=	DOCS
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|tests testsuite||g' \
 		${WRKSRC}/Makefile.in
