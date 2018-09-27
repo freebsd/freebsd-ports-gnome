@@ -21,7 +21,7 @@ PORTSCOUT=	limitw:1,even
 .if !defined(REFERENCE_PORT)
 
 USES+=		gettext gmake gnome libtool pathfix pkgconfig \
-		python:build sqlite:3 tar:xz
+		python:build sqlite:3 ssl tar:xz
 USE_GNOME=	glib20 intlhack introspection:build \
 		libxml2 referencehack
 USE_LDCONFIG=	yes
