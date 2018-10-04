@@ -64,7 +64,8 @@ COLLATION_FIX_EXTRA_PATCHES+=	${FILESDIR}/extra-patch-glib_Makefile.in \
 # http://www.freebsd.org/cgi/query-pr.cgi?pr=175930 see comment by ed@
 #COLLATION_FIX_CONFIGURE_ENV+=	CFLAGS="-D__STDC_ISO_10646__"
 
-MANPAGES_BUILD_DEPENDS=		docbook-xml>4.1.2:textproc/docbook-xml
+MANPAGES_BUILD_DEPENDS=		docbook-xml>4.1.2:textproc/docbook-xml \
+				docbook-xsl>0:textproc/docbook-xsl
 MANPAGES_USE=			GNOME=libxslt:build
 MANPAGES_CONFIGURE_ENABLE=	man
 MANPAGES_CONFIGURE_ON=		--with-xml-catalog=${LOCALBASE}/share/xml/catalog
