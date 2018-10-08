@@ -293,6 +293,7 @@
     SUBDIR += php70-snmp
     SUBDIR += php71-snmp
     SUBDIR += php72-snmp
+    SUBDIR += php73-snmp
     SUBDIR += phpip
     SUBDIR += phpipam
     SUBDIR += phpweathermap
@@ -423,5 +424,10 @@
     SUBDIR += zabbix34-java
     SUBDIR += zabbix34-proxy
     SUBDIR += zabbix34-server
+    SUBDIR += zabbix4-agent
+    SUBDIR += zabbix4-frontend
+    SUBDIR += zabbix4-java
+    SUBDIR += zabbix4-proxy
+    SUBDIR += zabbix4-server
 
 .include <bsd.port.subdir.mk>
