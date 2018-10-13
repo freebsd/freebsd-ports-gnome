@@ -23,7 +23,7 @@ LIB_DEPENDS=	libsecret-1.so:security/libsecret \
 		libsoup-2.4.so:devel/libsoup \
 
 USES+=		gettext gmake gnome libtool localbase pathfix pkgconfig
-USE_GNOME=	glib20 libxslt intlhack referencehack
+USE_GNOME=	glib20 libxslt intlhack introspection:build referencehack
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
@@ -43,8 +43,10 @@ USE_GNOME+=	libgda5
 .endif
 
 .if ${LIBGDA5_SLAVE}==ui
+LIB_DEPENDS=	libgcrypt.so:security/libgcrypt \
+		libgpg-error.so:security/libgpg-error
 CONFIGURE_ARGS+=--with-ui
-USE_GNOME+=	gtk30 gnomedocutils
+USE_GNOME+=	cairo gtk30
 INSTALLS_ICONS=	yes
 .else
 CONFIGURE_ARGS+=--without-ui
