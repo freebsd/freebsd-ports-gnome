@@ -64,6 +64,7 @@
     SUBDIR += boodler
     SUBDIR += bristol
     SUBDIR += bs2b-lv2
+    SUBDIR += cadence
     SUBDIR += calf-lv2
     SUBDIR += cam
     SUBDIR += cantata
@@ -563,8 +564,6 @@
     SUBDIR += mpg321
     SUBDIR += mpiosh
     SUBDIR += mps
-    SUBDIR += msbcg729
-    SUBDIR += msilbc
     SUBDIR += mumble
     SUBDIR += murmur
     SUBDIR += musepack
@@ -642,6 +641,7 @@
     SUBDIR += paprefs
     SUBDIR += patchage
     SUBDIR += pavucontrol
+    SUBDIR += pavucontrol-qt
     SUBDIR += pavumeter
     SUBDIR += pc-mixer
     SUBDIR += pd
@@ -686,7 +686,6 @@
     SUBDIR += py-karaoke
     SUBDIR += py-mpd
     SUBDIR += py-mpd2
-    SUBDIR += py-musicbrainz2
     SUBDIR += py-musicbrainzngs
     SUBDIR += py-mutagen
     SUBDIR += py-ogg
@@ -733,6 +732,7 @@
     SUBDIR += ripit
     SUBDIR += ripperx
     SUBDIR += rkr-lv2
+    SUBDIR += rnnoise-nu
     SUBDIR += rosegarden
     SUBDIR += rplay
     SUBDIR += rsynth
@@ -746,6 +746,7 @@
     SUBDIR += rubygem-ruby-ogginfo
     SUBDIR += rubygem-ruby-shout
     SUBDIR += s3mod
+    SUBDIR += samplv1-lv2
     SUBDIR += sayonara
     SUBDIR += sbagen
     SUBDIR += sc3-plugins
@@ -789,6 +790,7 @@
     SUBDIR += spc2it
     SUBDIR += specimen
     SUBDIR += spectrogram
+    SUBDIR += speech-denoiser-lv2
     SUBDIR += speex
     SUBDIR += speexdsp
     SUBDIR += spek
@@ -812,6 +814,7 @@
     SUBDIR += swh-lv2
     SUBDIR += swhplugins
     SUBDIR += synthpod-lv2
+    SUBDIR += synthv1-lv2
     SUBDIR += taglib
     SUBDIR += taglib-extras
     SUBDIR += taglib-sharp

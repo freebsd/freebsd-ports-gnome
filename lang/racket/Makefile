@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	racket
-PORTVERSION=	7.0
+PORTVERSION=	7.1
 CATEGORIES=	lang scheme
 MASTER_SITES=	http://mirror.racket-lang.org/installers/${PORTVERSION}/ \
 		http://www.cs.utah.edu/plt/installers/${PORTVERSION}/ \
@@ -26,6 +26,7 @@ BROKEN_powerpc64=	fails to build: jit.c: 'JIT_LOCAL4' undeclared (first use in t
 BROKEN_FreeBSD_10_i386=	segfaults during build
 BROKEN_FreeBSD_11_i386=	segfaults during build
 BROKEN_FreeBSD_12_i386=	segfaults during build
+BROKEN_FreeBSD_13_i386=	segfaults during build
 NOT_FOR_ARCHS=		aarch64 armv6 armv7 sparc64
 NOT_FOR_ARCHS_REASON=	not yet ported to this arch
 

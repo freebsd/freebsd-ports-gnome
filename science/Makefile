@@ -29,6 +29,8 @@
     SUBDIR += atom
     SUBDIR += atompaw
     SUBDIR += avogadro
+    SUBDIR += avogadro2
+    SUBDIR += avogadrolibs
     SUBDIR += bagel
     SUBDIR += bddsolve
     SUBDIR += bft
@@ -49,6 +51,7 @@
     SUBDIR += clhep
     SUBDIR += clipper
     SUBDIR += colt
+    SUBDIR += coordgenlibs
     SUBDIR += coot
     SUBDIR += cp2k
     SUBDIR += crf++
@@ -66,6 +69,7 @@
     SUBDIR += elk
     SUBDIR += epte
     SUBDIR += erd
+    SUBDIR += erkale
     SUBDIR += fastcap
     SUBDIR += fasthenry
     SUBDIR += fisicalab
@@ -115,6 +119,7 @@
     SUBDIR += libint2
     SUBDIR += libkml
     SUBDIR += liblinear
+    SUBDIR += libmsym
     SUBDIR += liboglappth
     SUBDIR += libquantum
     SUBDIR += libssm
@@ -125,6 +130,7 @@
     SUBDIR += lm
     SUBDIR += luscus
     SUBDIR += madness
+    SUBDIR += maeparser
     SUBDIR += massxpert
     SUBDIR += mbdyn
     SUBDIR += mcstas
@@ -139,8 +145,10 @@
     SUBDIR += metaphysicl
     SUBDIR += minc2
     SUBDIR += mmdb2
+    SUBDIR += mmtf
     SUBDIR += mol2ps
     SUBDIR += molgif
+    SUBDIR += molsketch
     SUBDIR += mpb
     SUBDIR += mpqc
     SUBDIR += msms
@@ -204,6 +212,7 @@
     SUBDIR += py-SimpleSpectral
     SUBDIR += py-abipy
     SUBDIR += py-ase
+    SUBDIR += py-avogadrolibs
     SUBDIR += py-cdo
     SUBDIR += py-chempy
     SUBDIR += py-coards
@@ -286,6 +295,7 @@
     SUBDIR += vmd
     SUBDIR += voro++
     SUBDIR += wannier90
+    SUBDIR += wxmacmolplt
     SUBDIR += xcrysden
     SUBDIR += xdrawchem
     SUBDIR += xfce4-equake-plugin

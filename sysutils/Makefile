@@ -42,6 +42,7 @@
     SUBDIR += ansible23
     SUBDIR += ansible24
     SUBDIR += ansible25
+    SUBDIR += ansible26
     SUBDIR += anvil
     SUBDIR += apachetop
     SUBDIR += apcpwr
@@ -769,6 +770,7 @@
     SUBDIR += nrg2iso
     SUBDIR += nut
     SUBDIR += nvclock
+    SUBDIR += nvme-cli
     SUBDIR += nvramtool
     SUBDIR += oak
     SUBDIR += obliterate
@@ -998,6 +1000,7 @@
     SUBDIR += py-mqttwarn
     SUBDIR += py-nagiosplugin
     SUBDIR += py-nomad
+    SUBDIR += py-packet-python
     SUBDIR += py-pkginfo
     SUBDIR += py-ploy
     SUBDIR += py-ploy_ansible
@@ -1153,6 +1156,7 @@
     SUBDIR += rubygem-vagrant-bhyve
     SUBDIR += rubygem-vagrant-mutate
     SUBDIR += rubygem-vagrant-vbguest
+    SUBDIR += rubygem-vagrant_cloud
     SUBDIR += rubygem-vmstat
     SUBDIR += rubygem-win32-file
     SUBDIR += rubygem-win32-file-security
@@ -1269,6 +1273,7 @@
     SUBDIR += syslog-ng314
     SUBDIR += syslog-ng315
     SUBDIR += syslog-ng317
+    SUBDIR += syslog-ng318
     SUBDIR += syslog-ng36
     SUBDIR += syslog-ng37
     SUBDIR += syslog-ng39

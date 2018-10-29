@@ -147,6 +147,7 @@
     SUBDIR += fiche
     SUBDIR += file2pcap
     SUBDIR += findmtu
+    SUBDIR += flent
     SUBDIR += flower
     SUBDIR += flowgrep
     SUBDIR += fonulator
@@ -166,6 +167,7 @@
     SUBDIR += frr3
     SUBDIR += frr4
     SUBDIR += frr5
+    SUBDIR += frr6
     SUBDIR += fspclient
     SUBDIR += fspd
     SUBDIR += fsplib
@@ -383,6 +385,7 @@
     SUBDIR += libksieve
     SUBDIR += libkvkontakte
     SUBDIR += libkvkontakte-kde4
+    SUBDIR += liblinphone
     SUBDIR += libmaia
     SUBDIR += libmateweather
     SUBDIR += libmaxminddb
@@ -635,6 +638,7 @@
     SUBDIR += p5-Kafka
     SUBDIR += p5-MaxMind-DB-Common
     SUBDIR += p5-MaxMind-DB-Reader
+    SUBDIR += p5-MaxMind-DB-Reader-XS
     SUBDIR += p5-MaxMind-DB-Writer
     SUBDIR += p5-Net
     SUBDIR += p5-Net-ACME2
@@ -878,6 +882,7 @@
     SUBDIR += p5-Sort-Key-IPv4
     SUBDIR += p5-TFTP
     SUBDIR += p5-Test-URI
+    SUBDIR += p5-Twitter-API
     SUBDIR += p5-URI
     SUBDIR += p5-URI-FromHash
     SUBDIR += p5-URI-Match
@@ -1135,6 +1140,7 @@
     SUBDIR += py-ripe.atlas.tools
     SUBDIR += py-s3cmd
     SUBDIR += py-s3transfer
+    SUBDIR += py-sbws
     SUBDIR += py-shodan
     SUBDIR += py-smart_open
     SUBDIR += py-smbpasswd
@@ -1179,6 +1185,7 @@
     SUBDIR += queso
     SUBDIR += quiterss
     SUBDIR += quoted
+    SUBDIR += rabbiteer
     SUBDIR += rabbitmq
     SUBDIR += rabbitmq-c
     SUBDIR += rabbitmq-c-devel
