@@ -2,6 +2,7 @@
 
 PORTNAME=	vapoursynth
 PORTVERSION=	R45.1
+PORTREVISION=	2
 CATEGORIES=	multimedia
 
 MAINTAINER=	jbeich@FreeBSD.org

@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	yank
-DISTVERSION=	1.0.0
-PORTREVISION=	2
+DISTVERSION=	1.1.0
 CATEGORIES=	sysutils
 MASTER_SITES=	https://github.com/mptre/yank/releases/download/v${DISTVERSION}/
 
@@ -12,8 +11,7 @@ COMMENT=	Yank terminal output to clipboard
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-
-MAKE_ARGS=	MANPREFIX=${PREFIX}/man
+MAKE_ARGS=	MANPREFIX=${PREFIX}/man PREFIX=${PREFIX}
 PLIST_FILES=	bin/yank \
 		man/man1/yank.1.gz
 
