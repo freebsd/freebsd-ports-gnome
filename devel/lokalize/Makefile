@@ -1,18 +1,22 @@
 # $FreeBSD$
 
 PORTNAME=	lokalize
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	3
-CATEGORIES=	devel kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	devel kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Computer-aided translation system
 
 LIB_DEPENDS=	libhunspell-1.6.so:textproc/hunspell
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	moc_build qmake_build rcc_build uic_build \
-		sql
+USES=		cmake:outsource desktop-file-utils gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth bookmarks codecs completion config configwidgets \
+		coreaddons crash dbusaddons doctools ecm i18n itemviews \
+		jobwidgets kio kross notifications parts service solid sonnet \
+		textwidgets widgetsaddons xmlgui
+USE_QT=		core dbus gui network script sql widgets xml \
+		buildtools_build qmake_build
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

@@ -4,10 +4,9 @@
 PORTNAME=	ipaudit
 PORTVERSION=	1.1
 CATEGORIES=	net-mgmt sysutils
-MASTER_SITES=	SF
-MASTER_SITE_SUBDIR=	ipaudit/ipaudit
+MASTER_SITES=	SF/ipaudit/ipaudit
 
-MAINTAINER=	amutu@amutu.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	IP traffic summarizer
 
 LICENSE=	GPLv2+

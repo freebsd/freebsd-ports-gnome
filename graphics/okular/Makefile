@@ -1,34 +1,39 @@
 # $FreeBSD$
 
 PORTNAME=	okular
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	8
-CATEGORIES=	graphics kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	graphics kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	KDE 4 universal document viewer
+COMMENT=	KDE universal document viewer
 
-LIB_DEPENDS=	libdjvulibre.so:graphics/djvulibre \
-		libkscreen.so:graphics/libkscreen \
-		libqca.so:devel/qca \
-		libtiff.so:graphics/tiff \
-		libpoppler-qt4.so:graphics/poppler-qt4 \
-		libspectre.so:print/libspectre \
-		libchm.so:misc/chmlib \
-		libfreetype.so:print/freetype2 \
+LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
+
+LIB_DEPENDS=	libchm.so:misc/chmlib \
+		libdjvulibre.so:graphics/djvulibre \
 		libepub.so:textproc/ebook-tools \
-		libqmobipocket.so:graphics/kdegraphics4-mobipocket
+		libfreetype.so:print/freetype2 \
+		libqmobipocket.so:graphics/kdegraphics-mobipocket \
+		libpoppler.so:graphics/poppler \
+		libpoppler-qt5.so:graphics/poppler-qt5 \
+		libqca-qt5.so:devel/qca@qt5 \
+		libspectre.so:print/libspectre \
+		libtiff.so:graphics/tiff \
+		libzip.so:archivers/libzip
 
-USES=		cmake:outsource jpeg kde:4 pkgconfig tar:xz
-USE_KDE=	kdelibs automoc4 qimageblitz kactivities \
-		libkexiv2
-USE_QT4=	corelib declarative gui opengl xml \
-		qmake_build moc_build uic_build rcc_build
-USE_LDCONFIG=	yes
+USES=		cmake:outsource compiler:c++11-lib desktop-file-utils \
+		gettext jpeg kde:5 pkgconfig qt:5 tar:xz
+USE_KDE=	activities archive auth bookmarks codecs completion config \
+		configwidgets coreaddons dbusaddons ecm emoticons i18n \
+		iconthemes init itemmodels itemviews jobwidgets js \
+		kdelibs4support khtml kio libkexiv2 parts pty \
+		service solid sonnet textwidgets threadweaver wallet \
+		widgetsaddons windowsystem xmlgui
+USE_QT=		core dbus gui network phonon4 printsupport qml quick speech \
+		svg widgets xml \
+		buildtools_build qmake_build
 
-OPTIONS_DEFINE=	DVI
-
-DVI_DESC=	Device independent TeX files support (requires teTeX)
-DVI_USE=	TEX=latex
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

@@ -6,7 +6,7 @@ DISTVERSIONPREFIX=	v
 CATEGORIES=	security
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Internationalization support for Comeonin
 
 USES=		elixir
@@ -15,5 +15,7 @@ GH_ACCOUNT=	riverrun
 
 MIX_BUILD_DEPS=	devel/elixir-gettext
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

@@ -10,19 +10,19 @@ COMMENT=	Version controlled file system
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}atomiclong>0:devel/py-atomiclong \
-		${PYTHON_PKGNAMEPREFIX}fusepy>=2.0.2:devel/py-fusepy \
-		${PYTHON_PKGNAMEPREFIX}pygit2>=0.24.1:devel/py-pygit2 \
-		${PYTHON_PKGNAMEPREFIX}raven>=5.27.0:devel/py-raven \
-		${PYTHON_PKGNAMEPREFIX}six>=1.10.0:devel/py-six
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>=2.6.1:devel/py-pytest
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}atomiclong>0:devel/py-atomiclong@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}fusepy>=2.0.2:devel/py-fusepy@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pygit2>=0.24.1:devel/py-pygit2@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}raven>=5.27.0:devel/py-raven@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}six>=1.10.0:devel/py-six@${PY_FLAVOR}
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>=2.6.1:devel/py-pytest@${PY_FLAVOR}
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	PressLabs
 
 NO_ARCH=	yes
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	autoplist distutils concurrent optsuffix
 
 post-patch:
 	@${REINPLACE_CMD} -e 's/==/>=/' ${WRKSRC}/*requirements.txt
@@ -34,7 +34,7 @@ do-test:
 .include <bsd.port.pre.mk>
 
 .if ${PYTHON_REL} < 3300
-TEST_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}mock>=1.0.1:devel/py-mock
+TEST_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}mock>=1.0.1:devel/py-mock@${PY_FLAVOR}
 .else
 post-patch:	patch-py3k-mock
 patch-py3k-mock:

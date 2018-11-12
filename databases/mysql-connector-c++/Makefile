@@ -3,6 +3,7 @@
 
 PORTNAME=	mysql-connector-c++
 PORTVERSION=	1.1.9
+PORTREVISION=	5
 CATEGORIES=	databases
 MASTER_SITES=	MYSQL/Connector-C++
 
@@ -14,9 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libboost_regex.so:devel/boost-libs
 
-BROKEN_powerpc64=	fails to configure: the compiler doesn't support C++11
-
-USES=		cmake:outsource mysql ssl
+USES=		cmake:outsource compiler:c++11-lang mysql ssl
 USE_LDCONFIG=	yes
 CMAKE_ARGS=	-DDOC_DESTINATION="${DOCSDIR}"
 
@@ -38,7 +37,8 @@ post-install:
 .if defined(MAINTAINER_MODE)
 CMAKE_ARGS+=	-DMYSQLCPPCONN_TEST_NOT_IMPLEMENTED:BOOL=1 \
 		-DMYSQLCPPCONN_BUILD_EXAMPLES:BOOL=1
-regression-test: build
+
+do-test:
 #	These tests assume that a database is running on localhost,
 #	with user:root and pass:root
 	(cd ${WRKDIR}/.build ; \

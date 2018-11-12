@@ -2,34 +2,26 @@
 
 PORTNAME=	z3
 DISTVERSIONPREFIX=	${PORTNAME}-
-DISTVERSION=	4.5.0
+DISTVERSION=	4.7.1
 PORTREVISION=	1
 CATEGORIES=	math
 
-MAINTAINER=	6yearold@gmail.com
+MAINTAINER=	arrowd@FreeBSD.org
 COMMENT=	Z3 Theorem Prover
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-BROKEN_powerpc64=	Does not build
-# compiler picks ${LOCALBASE}/include/dictionary.h from iniparser
-CONFLICTS=		iniparser-*
-
+USES=		compiler:c++11-lang python:2.7,build
 USE_GITHUB=	yes
 GH_ACCOUNT=	Z3Prover
 
-OPTIONS_DEFINE=		DEBUG STATIC PYTHON GMP
+OPTIONS_DEFINE=		DEBUG STATIC GMP
 
-OPTIONS_DEFAULT=	STATIC PYTHON
+OPTIONS_DEFAULT=	STATIC
 OPTIONS_SUB=		yes
 
 DEBUG_CONFIGURE_ON=	--debug
-
-PYTHON_DESC=		Enable python bindings
-PYTHON_CONFIGURE_ON=	--python
-PYTHON_USES=		python
-PYTHON_USES_OFF=	python:build
 
 STATIC_DESC=		Build static z3 library
 STATIC_CONFIGURE_ON=	--staticlib
@@ -43,11 +35,13 @@ GMP_LIB_DEPENDS=	libgmp.so:math/gmp
 HAS_CONFIGURE=		yes
 CONFIGURE_ARGS=		--prefix=${PREFIX}
 USE_LDCONFIG=		yes
+LDFLAGS_i386=		-Wl,-znotext
 BUILD_WRKSRC=		${WRKSRC}/build
 INSTALL_WRKSRC=		${WRKSRC}/build
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/z3
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libz3.so
+	${LN} -s libz3.so ${STAGEDIR}${PREFIX}/lib/libz3.so.0
 
 .include <bsd.port.mk>

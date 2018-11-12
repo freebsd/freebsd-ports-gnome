@@ -3,7 +3,7 @@
 
 PORTNAME=	openomf
 PORTVERSION=	0.6.5
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	games
 MASTER_SITES=	http://www.omf2097.com/pub/files/omf/:data
 DISTFILES+=	omf2097.rar:data
@@ -29,6 +29,7 @@ GH_TUPLE=	omf2097:libShadowDive:b2c34a6:shadow \
 
 USES=		cmake compiler:c++11-lang gettext openal
 USE_SDL=	sdl2
+LLD_UNSAFE=	yes
 
 DESKTOP_ENTRIES="OpenOMF" "" \
 		"${PREFIX}/share/openomf/openomf_icon.png " \

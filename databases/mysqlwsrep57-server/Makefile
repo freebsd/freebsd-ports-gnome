@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	mysqlwsrep
-PORTVERSION?=	5.7.18
+PORTVERSION?=	5.7.23
 DISTVERSIONPREFIX?=	wsrep_
-DISTVERSIONSUFFIX?=	-25.12
+DISTVERSIONSUFFIX?=	-25.15
 PORTREVISION?=	1
 CATEGORIES=	databases ipv6
 MASTER_SITES+=	SF/boost/boost/1.59.0:boost
@@ -40,13 +40,13 @@ MY_SECDIR=	/var/db/mysql_secure
 MY_TMPDIR=	/var/db/mysql_tmpdir
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	codership
-GH_PROJECT?=	mysql-wsrep
+GH_TUPLE?=	codership:mysql-wsrep:${DISTVERSIONPREFIX}${PORTVERSION}${DISTVERSIONSUFFIX} \
+		codership:wsrep-API:eab2d5d5a31672c0b7d116ef1629ff18392fd7d0:dummy/wsrep/src
 
 DATADIR=	${PREFIX}/share/mysql
 ETCDIR=		${PREFIX}/etc/mysql
 
-NOT_FOR_ARCHS=	aarch64 armv6 powerpc64
+NOT_FOR_ARCHS=	aarch64 armv6 armv7 powerpc64
 NOT_FOR_ARCHS_REASON=	Not supported platform
 
 CMAKE_ARGS+=	-DINSTALL_LAYOUT=FREEBSD \
@@ -127,7 +127,6 @@ MMAN1=		my_print_defaults.1 \
 		mysqldumpslow.1 \
 		mysqlhotcopy.1 \
 		mysqlman.1 \
-		mysqltest.1 \
 		perror.1 \
 		replace.1 \
 		resolve_stack_dump.1 \
@@ -164,12 +163,28 @@ PERFSCHM_SUB_LIST_OFF+=	PERFSCHEMRC="--skip-performance-schema"
 FEDERATED_SUB_LIST+=	FEDER="--federated"
 FEDERATED_SUB_LIST_OFF+=FEDER=""
 
+.include <bsd.port.options.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200057
+SUB_LIST+=	LEGACY_LIMITS="@comment " MODERN_LIMITS=""
+.else
+SUB_LIST+=	LEGACY_LIMITS="" MODERN_LIMITS="@comment "
+.endif
+
 .include <bsd.port.pre.mk>
 
 .if ${SSL_DEFAULT} == base
 CMAKE_ARGS+=		-DWITH_SSL=system
 .else
 CMAKE_ARGS+=		-DWITH_SSL=${OPENSSLBASE}
+.endif
+
+# ${LOCALBASE}/include/lz4.h does not compile with Clang 6.
+# Also MySQL code itself needs -Wno-c++11-narrowing when Clang 6 is used.
+.if ${OSVERSION} >= 1200056
+CFLAGS+=	-DLZ4_DISABLE_DEPRECATE_WARNINGS
+CXXFLAGS+=	-DLZ4_DISABLE_DEPRECATE_WARNINGS -Wno-c++11-narrowing
+LDFLAGS+=	-L${LOCALBASE}/lib
 .endif
 
 post-extract:
@@ -185,7 +200,7 @@ post-install:
 	${MKDIR} ${STAGEDIR}${MY_SECDIR}
 	${MKDIR} ${STAGEDIR}${MY_TMPDIR}
 
-.if ${ARCH} == "armv6"
+.if ${ARCH} == armv6 || ${ARCH} == armv7
 EXTRA_PATCHES+=		${FILESDIR}/extra-patch-config.h.cmake
 .endif
 

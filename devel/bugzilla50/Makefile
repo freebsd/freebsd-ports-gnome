@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	bugzilla
-PORTVERSION=	5.0.3
+PORTVERSION=	5.0.4
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	MOZILLA/webtools MOZILLA/webtools/archived
 
@@ -22,7 +23,6 @@ RUN_DEPENDS=	\
 		p5-Email-MIME>=1.904:mail/p5-Email-MIME \
 		p5-Email-Sender>=1.300011:mail/p5-Email-Sender \
 		p5-Encode-Detect>=0:converters/p5-Encode-Detect \
-		p5-File-Slurp>=9999.13:devel/p5-File-Slurp \
 		p5-JSON-XS>=2.01:converters/p5-JSON-XS \
 		p5-List-MoreUtils>=0.32:lang/p5-List-MoreUtils \
 		p5-Math-Random-ISAAC>=1.001:math/p5-Math-Random-ISAAC \
@@ -91,7 +91,6 @@ EXPORT_IMPORT_RUN_DEPENDS=	p5-XML-Parser>=0:textproc/p5-XML-Parser \
 LDAP_RUN_DEPENDS=	p5-perl-ldap>=0:net/p5-perl-ldap
 RADIUS_RUN_DEPENDS=	p5-Authen-Radius>=0:security/p5-Authen-Radius
 SMTP_AUTH_RUN_DEPENDS=	p5-Authen-SASL>=2.16:security/p5-Authen-SASL
-SMTP_SSL_RUN_DEPENDS=	p5-Net-SMTP-SSL>=1.01:mail/p5-Net-SMTP-SSL
 MIME_SNIFF_RUN_DEPENDS=	p5-File-MimeInfo>=0.16:devel/p5-File-MimeInfo \
 			p5-IO-stringy>=2.110:devel/p5-IO-stringy
 MEMCACHED_RUN_DEPENDS=	p5-Cache-Memcached>=1.30:databases/p5-Cache-Memcached

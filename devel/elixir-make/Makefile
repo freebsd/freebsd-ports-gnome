@@ -2,11 +2,11 @@
 
 PORTNAME=	make
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.4.0
+DISTVERSION=	0.4.2
 CATEGORIES=	devel
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Make compiler for Mix
 
 LICENSE=	APACHE20
@@ -17,5 +17,7 @@ GH_ACCOUNT=	elixir-lang
 GH_PROJECT=	elixir_make
 
 ELIXIR_APP_NAME=elixir_make
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

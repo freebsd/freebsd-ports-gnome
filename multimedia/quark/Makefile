@@ -3,7 +3,7 @@
 
 PORTNAME=	quark
 PORTVERSION=	3.24
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	multimedia gnome
 MASTER_SITES=	http://hsgg.github.com/quark/
 
@@ -17,6 +17,9 @@ LIB_DEPENDS=	libxine.so:multimedia/libxine
 USES=		pathfix gettext gmake pkgconfig
 USE_GNOME=	gnomeprefix gnomevfs2
 GNU_CONFIGURE=	yes
+LLD_UNSAFE=	yes
+
+CONFLICTS_INSTALL=	quark-server
 
 PORTDOCS=	AUTHORS COPYING INSTALL README
 GCONF_SCHEMAS=	quark.schemas strange-quark.schemas

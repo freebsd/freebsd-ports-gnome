@@ -2,13 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	ExtUtils-Constant
-PORTVERSION=	0.24
+PORTVERSION=	0.25
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Generate XS code to import C header constants
+
+LICENSE=	ART10 GPLv1+
+LICENSE_COMB=	dual
 
 NO_ARCH=	yes
 USES=		perl5

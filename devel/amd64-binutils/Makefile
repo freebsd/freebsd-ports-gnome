@@ -6,7 +6,6 @@ PLIST=	${.CURDIR}/pkg-plist
 
 MASTERDIR=	${.CURDIR}/../binutils
 
-BUTARGET=	x86_64-${OPSYS:tl}
-NAMEDTARGET=	amd64-${OPSYS:tl}
+BUTARGET=	x86_64-unknown-${OPSYS:tl}${OSREL}
 
 .include "${MASTERDIR}/Makefile"

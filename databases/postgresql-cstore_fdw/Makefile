@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	cstore_fdw
-PORTVERSION=	1.6.0
+PORTVERSION=	1.6.2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	databases
 PKGNAMEPREFIX=	postgresql${PGSQL_VER:S/.//}-
 
-MAINTAINER=	amutu@amutu.com
+MAINTAINER=	farrokhi@FreeBSD.org
 COMMENT=	Columnar store for analytics with PostgreSQL
 
 LICENSE=	APACHE20
@@ -18,6 +18,7 @@ LIB_DEPENDS=	libprotobuf-c.so:devel/protobuf-c
 SUB_FILES=	pkg-message
 
 USES=		gmake pgsql:9.3+
+LLD_UNSAFE=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	citusdata
 

@@ -10,12 +10,12 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Perl extension to compile .cgi scripts to a code reference
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
+BUILD_DEPENDS=	${RUN_DEPENDS}
 RUN_DEPENDS=	\
 	p5-File-pushd>0:devel/p5-File-pushd
-BUILD_DEPENDS:=	${RUN_DEPENDS}
 TEST_DEPENDS=	\
 	p5-Test-NoWarnings>0:devel/p5-Test-NoWarnings \
 	p5-Test-Requires>0:devel/p5-Test-Requires \

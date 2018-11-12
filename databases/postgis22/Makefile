@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	postgis
-PORTVERSION=	2.2.5
+PORTVERSION=	2.2.6
+PORTREVISION=	2
 CATEGORIES=	databases geography
 MASTER_SITES=	http://download.osgeo.org/postgis/source/
 PKGNAMESUFFIX=	22
@@ -16,9 +17,10 @@ LIB_DEPENDS=	libproj.so:graphics/proj \
 		libgeos.so:graphics/geos \
 		libjson-c.so:devel/json-c
 
-CONFLICTS=	postgis20-2.0.* postgis-2.1.* postgis23-2.3.*
+CONFLICTS_INSTALL=	postgis20 postgis21 postgis23 postgis24 postgis
 
 USES=		gettext gmake iconv:wchar_t libtool:keepla perl5 pgsql pkgconfig shebangfix
+LLD_UNSAFE=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	${ICONV_CONFIGURE_BASE}
 SHEBANG_FILES=	extensions/address_standardizer/*.pl raster/test/regress/*.pl \

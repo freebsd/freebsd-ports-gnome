@@ -3,6 +3,7 @@
 
 PORTNAME=	valyriatear
 PORTVERSION=	1.0.0
+PORTREVISION=	6
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -28,6 +29,9 @@ USE_SDL=	sdl image ttf
 USE_GL=		gl glu
 USE_XORG=	x11 xext sm ice
 INSTALLS_ICONS=	yes
+LLD_UNSAFE=	yes
+
+CXXFLAGS+=	-Wno-reserved-user-defined-literal
 
 PORTDOCS=	*
 PORTDATA=	*
@@ -37,7 +41,8 @@ OPTIONS_SUB=	yes
 
 EDITOR_DESC=	Compile the Qt editor along with the game
 EDITOR_CMAKE_BOOL=	EDITOR_SUPPORT
-EDITOR_USE=	QT4=corelib,gui,opengl,qmake_build,moc_build,uic_build,rcc_build
+EDITOR_USES=	qt:4
+EDITOR_USE=	QT=corelib,gui,opengl,qmake_build,moc_build,uic_build,rcc_build
 EDITOR_DESKTOP_ENTRIES=	\
 		"Valyria Tear Editor" \
 		"Map editor for Valyria Tear game" \

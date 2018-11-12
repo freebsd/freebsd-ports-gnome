@@ -3,7 +3,7 @@
 
 PORTNAME=	thrift
 PORTVERSION=	${THRIFT_PORTVERSION} # to keep in sync with thrift
-PORTREVISION=	9
+PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	devel
 MASTER_SITES=	APACHE/thrift/${PORTVERSION}
@@ -19,6 +19,8 @@ LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
 DISTINFO_FILE=		${.CURDIR}/../thrift/distinfo
 
 BROKEN_powerpc64=	fails to compile: undefined reference to std::__throw_out_of_range_fmt
+BROKEN_SSL=	openssl-devel
+BROKEN_SSL_REASON_openssl-devel=	'configure: error: "Error: libcrypto required."'
 
 USES=			autoreconf pkgconfig gmake compiler:c++11-lang \
 			libtool pathfix ssl
@@ -29,13 +31,15 @@ PLIST_SUB=		PORTVERSION="${THRIFT_PORTVERSION}"
 
 OPTIONS_DEFINE=		QT4
 QT4_CONFIGURE_WITH=	qt4
-QT4_USE=		QT4=network,moc_build,qmake_build,rcc_build,uic_build
+QT4_USES=		qt:4
+QT4_USE=		QT=network,moc_build,qmake_build,rcc_build,uic_build
 
 OPTIONS_SUB=		yes
 
 CONFIGURE_ARGS+=	\
 		--without-c_glib \
 		--with-cpp \
+		--with-boost-libdir="${LOCALBASE}/lib" \
 		--without-csharp \
 		--without-erlang \
 		--without-haskell \
@@ -54,10 +58,6 @@ CFLAGS+=	-I${OPENSSLINC}
 
 .if ${COMPILER_TYPE} == clang
 USE_CXXSTD=	c++11
-.endif
-
-.if ${SSL_DEFAULT} == openssl-devel
-BROKEN=		cannot find libcrypto
 .endif
 
 post-install:

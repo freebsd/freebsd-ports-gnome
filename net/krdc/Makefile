@@ -1,23 +1,28 @@
 # $FreeBSD$
 
 PORTNAME=	krdc
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	4
-CATEGORIES=	net kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	net kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	RDP and VNC client for KDE
 
-LIB_DEPENDS=	libvncserver.so:net/libvncserver \
-		libtelepathy-qt4.so:net-im/telepathy-qt4
+LIB_DEPENDS=	libvncserver.so:net/libvncserver
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth bookmarks codecs completion config configwidgets \
+		coreaddons dnssd doctools ecm i18n iconthemes kcmutils \
+		notifications notifyconfig service wallet widgetsaddons \
+		xmlgui
+USE_QT=		core dbus gui network widgets xml \
+		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 
-OPTIONS_DEFINE=	FREERDP
+OPTIONS_DEFINE=	FREERDP DOCS
+OPTIONS_SUB=	yes
+FREERDP_CMAKE_BOOL=	WITH_FREERDP
 FREERDP_DESC=	Remote Desktop support via FreeRDP
+FREERDP_BUILD_DEPENDS=	xfreerdp:net/freerdp
 FREERDP_RUN_DEPENDS=	xfreerdp:net/freerdp
 
 .include <bsd.port.mk>

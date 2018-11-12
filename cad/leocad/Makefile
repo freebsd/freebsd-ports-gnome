@@ -3,7 +3,7 @@
 
 PORTNAME=	leocad
 PORTVERSION=	0.80.3
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	cad
 MASTER_SITES=	SF/nemysisfreebsdp/${CATEGORIES}/${PORTNAME}/
 DISTFILES=	LeoCAD-Source-${PORTVERSION}.tgz
@@ -19,8 +19,8 @@ LIB_DEPENDS=	libpng.so:graphics/png
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-USES=		desktop-file-utils gmake jpeg pkgconfig qmake shared-mime-info
-USE_QT4=	moc_build rcc_build uic_build iconengines_run imageformats_run \
+USES=		desktop-file-utils gmake jpeg pkgconfig qmake qt:4 shared-mime-info
+USE_QT=		moc_build rcc_build uic_build iconengines_run imageformats_run \
 		corelib gui network opengl
 USE_GL=		glut
 USE_GNOME=	gtk20

@@ -4,7 +4,7 @@ PORTNAME=	bsdadminscripts2
 DISTVERSION=	0.2.0
 CATEGORIES=	ports-mgmt
 
-MAINTAINER=	kami@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Collection of administration scripts
 
 LICENSE=	ISCL
@@ -18,6 +18,8 @@ NO_BUILD=	yes
 NO_ARCH=	yes
 
 CONFLICTS_INSTALL=	bsdadminscripts
+
+OPTIONS_DEFINE=	DOCS
 
 do-install:
 	@cd ${WRKSRC} && ${SH} install.sh \

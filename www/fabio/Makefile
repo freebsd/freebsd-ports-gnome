@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	fabio
-PORTVERSION=	1.5.0
+PORTVERSION=	1.5.9
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 
@@ -9,6 +9,7 @@ MAINTAINER=	stl@ossuary.net
 COMMENT=	Zero-conf load balancing HTTP(S) router managed by Consul
 
 LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		go
 USE_GITHUB=	yes
@@ -20,7 +21,7 @@ USE_RC_SUBR=	fabio
 
 do-build:
 	@cd ${WRKSRC}/src/github.com/fabiolb/fabio; \
-	${SETENV} ${BUILD_ENV} GOPATH=${WRKSRC} go build -v -x \
+	${SETENV} ${MAKE_ENV} ${BUILD_ENV} GOPATH=${WRKSRC} go build -v -x \
 		-ldflags "-X main.GitDescribe=v${PORTVERSION}" -o bin/fabio
 
 do-install:

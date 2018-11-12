@@ -8,10 +8,10 @@ MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:MENDEL
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	az@FreeBSD.org
+MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Allow write DBIC add_column definitions as attribute options
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-Moose>=1.24:devel/p5-Moose \

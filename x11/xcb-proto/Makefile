@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	xcb-proto
-PORTVERSION=	1.12
+PORTVERSION=	1.13
 CATEGORIES=	x11 python
 MASTER_SITES=	http://xcb.freedesktop.org/dist/
 
@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 USE_GNOME=	libxml2:build
 XORG_CAT=	proto
-USES=		python:2.7+
+USES=		python
 USE_PYTHON=	py3kplist
 NO_ARCH=	yes
 

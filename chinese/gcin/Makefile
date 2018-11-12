@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gcin
-PORTVERSION=	2.8.5
+PORTVERSION=	2.8.6
 CATEGORIES=	chinese textproc gnome
 MASTER_SITES=	http://hyperrate.com/gcin-source/
 EXTRACT_ONLY=	gcin-${PORTVERSION}.tar.xz
@@ -12,22 +12,21 @@ COMMENT=	Traditional Chinese input utility in X
 
 LICENSE=	LGPL21
 
-HAS_CONFIGURE=	YES
-CONFIGURE_ARGS+=	--use_gtk3=N --use_qt3=N
-USE_GNOME=	gtk20
+BROKEN_powerpc64=	fails to build: gmake[3]: *** [Makefile:30: en-american] Error 255
+
+LIB_DEPENDS=	libcurl.so:ftp/curl
+
 USES=		gmake pkgconfig tar:xz
+HAS_CONFIGURE=	YES
+CONFIGURE_ARGS+=	--use_gtk3=N --use_qt3=N --use_qt4=N --use_qt5=N
+USE_GNOME=	gtk20
 USE_XORG=	x11 xtst xext
 INSTALLS_ICONS=	YES
-USE_LDCONFIG=	YES
+USE_LDCONFIG=	${PREFIX}/lib/gcin
 
-OPTIONS_DEFINE=	ANTHY QT_IM_MODULE DOCS
+OPTIONS_DEFINE=	ANTHY
 OPTIONS_SUB=	yes
 ANTHY_DESC=	Japanese anthy IM module
-QT_IM_MODULE_DESC=	QT IM module
-
-QT_IM_MODULE_USE=	QT4=inputmethods,qmake_build,moc_build,corelib,gui
-QT_IM_MODULE_LIB_DEPENDS=	libmng.so:graphics/libmng
-QT_IM_MODULE_CONFIGURE_OFF=	--use_qt4=N
 
 ANTHY_BUILD_DEPENDS=	${LOCALBASE}/include/anthy/anthy.h:japanese/anthy
 ANTHY_LIB_DEPENDS=	libanthy.so:japanese/anthy
@@ -35,19 +34,14 @@ ANTHY_CONFIGURE_OFF=	--use_anthy=N
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,&,,; 1 s,##!/bin/bash,#!/bin/sh,; \
-		s,QT_IM_DIR=/usr,QT_IM_DIR=$$prefix,g; \
-		s,QT4_IM_DIR=/usr,QT4_IM_DIR=$$prefix,g; \
 		s,-ldl,,; \
 		s,mandir=$$datadir,mandir=$$prefix,; \
 		s,/usr/share,$$prefix/share,; \
-		s,/usr/bin/moc,${MOC},; \
-		s,%%MOC%%,${MOC},; \
 		1, 300 s,gcc,$$CC,; s,gcin-$$GCIN_VERSION,gcin,; \
 		/GCIN_DEBUG/ d' ${WRKSRC}/configure
 	@${REINPLACE_CMD} -e 's,\/usr\/share,$$(prefix)\/share,; \
 		s,%%PREFIX%%,${PREFIX},;' \
 		${WRKSRC}/Makefile
-	@${REINPLACE_CMD} -e '94 s/gcin/gcin-setup/' ${WRKSRC}/gcin-common.cpp
 	@${REINPLACE_CMD} -e 's,/usr/local,/usr,g' \
 		${WRKSRC}/gtk-im/Makefile ${WRKSRC}/menu/Makefile
 	@${REINPLACE_CMD} -e 's,modify-XIM ,,; 8,10 d' \
@@ -68,9 +62,6 @@ post-patch:
 		${WRKSRC}/scripts/utf8-edit
 	@${REINPLACE_CMD} -e '/make/ d' ${WRKSRC}/IMdkit/lib/Makefile
 	@${REINPLACE_CMD} -e 's,/usr/X11R6/lib,${LOCALBASE}/lib,' ${WRKSRC}/im-client/Makefile
-
-post-patch-DOCS-off:
-	@${REINPLACE_CMD} '/install.*DOC_DIR/d' ${WRKSRC}/Makefile
 
 post-build:
 .if !defined(DEBUG_FLAGS)

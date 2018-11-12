@@ -1,13 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	ansi-terminal
-PORTVERSION=	0.6.3.1
+PORTVERSION=	0.8.0.2
+PORTREVISION=	1
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Simple ANSI terminal support, with Windows compatibility
 
 LICENSE=	BSD3CLAUSE
+
+USE_CABAL=	colour
 
 FLAGS_DISABLE=	Example
 

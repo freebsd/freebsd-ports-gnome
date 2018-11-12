@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	cpu-x
-PORTVERSION=	3.1.3
+PORTVERSION=	3.2.3
 DISTVERSIONPREFIX=	v
-PORTREVISION=	2
 CATEGORIES=	sysutils
 
 MAINTAINER=	danfe@FreeBSD.org
@@ -22,7 +21,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	X0rg
 GH_PROJECT=	${PORTNAME:tu}
 
-USES=		cmake execinfo gettext ncurses pkgconfig
+USES=		cmake gettext ncurses pkgconfig
 
 PORTDOCS=	ChangeLog README.md
 

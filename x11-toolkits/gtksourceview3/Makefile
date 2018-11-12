@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gtksourceview
-PORTVERSION=	3.22.2
+PORTVERSION=	3.24.8
+PORTREVISION=	1
 CATEGORIES=	x11-toolkits gnome
 MASTER_SITES=	GNOME
 PKGNAMESUFFIX=	3
@@ -14,6 +15,8 @@ COMMENT=	Text widget that adds syntax highlighting to the GtkTextView widget
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BROKEN_powerpc64=	fails to compile: gtksourcetag.h:43: redefinition of typedef 'GtkSourceTag'
+
 USES=		tar:xz
 
 PORTSCOUT=	limitw:1,even
@@ -21,8 +24,10 @@ PORTSCOUT=	limitw:1,even
 .if !defined(REFERENCE_PORT)
 
 BUILD_DEPENDS=	vala:lang/vala
+LIB_DEPENDS=	libfribidi.so:converters/fribidi
 
-USES+=		gettext gmake gnome libtool localbase pathfix pkgconfig
+USES+=		compiler:c11 gettext gmake gnome libtool localbase pathfix pkgconfig
+USE_CSTD=	c11
 USE_GNOME=	cairo gdkpixbuf2 gnomeprefix gtk30 intlhack \
 		introspection:build libxml2 referencehack
 GNU_CONFIGURE=	yes
@@ -33,7 +38,11 @@ CONFIGURE_ARGS=	--enable-compile-warnings=no \
 		--enable-introspection
 INSTALL_TARGET=	install-strip
 
+OPTIONS_DEFINE=	DOCS
+
 post-patch:
+	@${REINPLACE_CMD} -e 's|tests testsuite||g' \
+		${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} -e 's|--warn-all||g' \
 		${WRKSRC}/gtksourceview/Makefile.in
 

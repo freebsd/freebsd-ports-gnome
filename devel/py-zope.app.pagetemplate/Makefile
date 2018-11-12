@@ -13,20 +13,20 @@ COMMENT=	PageTemplate integration for Zope 3
 
 LICENSE=	ZPL21
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.browserpage>=3.12.0:devel/py-zope.browserpage \
-		${PYTHON_PKGNAMEPREFIX}zope.component>=0:devel/py-zope.component \
-		${PYTHON_PKGNAMEPREFIX}zope.configuration>=0:devel/py-zope.configuration \
-		${PYTHON_PKGNAMEPREFIX}zope.dublincore>=0:devel/py-zope.dublincore \
-		${PYTHON_PKGNAMEPREFIX}zope.i18nmessageid>=0:textproc/py-zope.i18nmessageid \
-		${PYTHON_PKGNAMEPREFIX}zope.interface>=0:devel/py-zope.interface \
-		${PYTHON_PKGNAMEPREFIX}zope.pagetemplate>=3.5.0:devel/py-zope.pagetemplate \
-		${PYTHON_PKGNAMEPREFIX}zope.schema>=0:devel/py-zope.schema \
-		${PYTHON_PKGNAMEPREFIX}zope.security>=0:security/py-zope.security \
-		${PYTHON_PKGNAMEPREFIX}zope.size>=0:devel/py-zope.size \
-		${PYTHON_PKGNAMEPREFIX}zope.tales>=0:devel/py-zope.tales \
-		${PYTHON_PKGNAMEPREFIX}zope.traversing>=0:devel/py-zope.traversing
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.browserpage>=3.12.0:devel/py-zope.browserpage@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.component>=0:devel/py-zope.component@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.configuration>=0:devel/py-zope.configuration@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.dublincore>=0:devel/py-zope.dublincore@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.i18nmessageid>=0:textproc/py-zope.i18nmessageid@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.interface>=0:devel/py-zope.interface@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.pagetemplate>=3.5.0:devel/py-zope.pagetemplate@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.schema>=0:devel/py-zope.schema@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.security>=0:security/py-zope.security@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.size>=0:devel/py-zope.size@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.tales>=0:devel/py-zope.tales@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.traversing>=0:devel/py-zope.traversing@${PY_FLAVOR}
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rbtrace
-PORTVERSION=	0.4.8
-PORTREVISION=	2
+PORTVERSION=	0.4.11
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
@@ -15,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	rubygem-ffi>=1.0.6:devel/rubygem-ffi \
 		rubygem-msgpack>=0.4.3:devel/rubygem-msgpack \
-		rubygem-trollop>=1.16.2:devel/rubygem-trollop
+		rubygem-optimist>=3.0.0:devel/rubygem-optimist
 
 USE_RUBY=	yes
 USES=		gem

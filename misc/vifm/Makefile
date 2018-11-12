@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	vifm
-PORTVERSION=	0.9
+PORTVERSION=	0.9.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	misc
 
@@ -17,5 +17,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--without-gtk
 
 USE_GITHUB=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

@@ -3,7 +3,7 @@
 
 PORTNAME=	cjs
 PORTVERSION=	2.4.1
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	lang gnome
 DIST_SUBDIR=	gnome3
 
@@ -28,6 +28,5 @@ CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 CONFIGURE_ARGS+=--enable-compile-warnings=no
-
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freeswitch
-PORTVERSION=	1.6.19
+PORTVERSION=	1.8.1
 CATEGORIES=	net
 MASTER_SITES=	http://files.freeswitch.org/releases/freeswitch/ \
 		http://files.freeswitch.org/releases/sounds/:sounds
@@ -11,7 +11,7 @@ DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}
 MAINTAINER=	corsmith@gmail.com
 COMMENT=	Multi-protocol soft switch for telephony applications
 
-LICENSE=	MPL
+LICENSE=	MPL11
 
 ONLY_FOR_ARCHS=	amd64
 
@@ -24,8 +24,9 @@ LIB_DEPENDS=	libsqlite3.so:databases/sqlite3 \
 		libopus.so:audio/opus \
 		libsndfile.so:audio/libsndfile \
 		libfreetype.so:print/freetype2 \
-		libpng16.so:graphics/png \
-		libjbig.so:graphics/jbigkit
+		libpng.so:graphics/png \
+		libjbig.so:graphics/jbigkit \
+		libtiff.so:graphics/tiff
 
 USES=		gmake iconv jpeg libedit libtool lua perl5 pkgconfig shebangfix ssl tar:xz
 USE_LDCONFIG=	yes
@@ -38,14 +39,16 @@ GNU_CONFIGURE=		yes
 CONFIGURE_ARGS=	--with-pkgconfigdir=${PREFIX}/libdata/pkgconfig \
 		--enable-zrtp
 CFLAGS+=	-Wno-c11-extensions -Wno-deprecated-declarations \
-		-Wno-zero-length-array -Wno-incompatible-pointer-types
+		-Wno-zero-length-array -Wno-incompatible-pointer-types \
+		-Wno-ignored-optimization-argument -Wno-unknown-warning-option \
+		-Wno-unused-function -Wno-enum-conversion -Wno-reserved-user-defined-literal
 
 USERS=		${PORTNAME}
 GROUPS=		${USERS}
 
 SUB_FILES=	pkg-message
 
-OPTIONS_DEFINE=		ALL_MODULES X11
+OPTIONS_DEFINE=		ALL_MODULES X11 EXAMPLES
 OPTIONS_DEFAULT=	8K 16K ENGLISH
 OPTIONS_MULTI=		BITRATE LANGUAGE
 OPTIONS_MULTI_BITRATE=	8K 16K 32K 48K
@@ -54,7 +57,7 @@ OPTIONS_SUB=		yes
 NO_OPTIONS_SORT=	yes
 
 ALL_MODULES_DESC=	Build all modules
-X11_DESC=		graphics/ImageMagick[-nox11] dependency
+X11_DESC=	graphics/ImageMagick[-nox11] dependency
 8K_DESC=	8kHz Audio Files
 16K_DESC=	16kHz Audio Files
 32K_DESC=	32kHz Audio Files
@@ -68,14 +71,14 @@ ALL_MODULES_BUILD_DEPENDS=	${LOCALBASE}/include/ladspa.h:audio/ladspa \
 ALL_MODULES_CONFLICTS_BUILD=	apr
 ALL_MODULES_EXTRA_PATCHES=	${FILESDIR}/extrapatch-modules.conf
 ALL_MODULES_LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
-				libopencv_gpu.so:graphics/opencv \
+				libopencv_video.so:graphics/opencv \
 				libopencv_core.so:graphics/opencv-core \
 				libhiredis.so:databases/hiredis \
 				libmemcached.so:databases/libmemcached \
 				libSoundTouch.so:audio/soundtouch \
 				libasound.so:audio/alsa-lib \
-	     			libportaudio.so:audio/portaudio \
-	      			libmp4v2.so:multimedia/mp4v2 \
+				libportaudio.so:audio/portaudio \
+				libmp4v2.so:multimedia/mp4v2 \
 				libshout.so:audio/libshout \
 				libmpg123.so:audio/mpg123 \
 				libmp3lame.so:audio/lame \
@@ -133,7 +136,8 @@ post-install:
 .endfor
 		${FIND} ${STAGEDIR}${DATADIR}/sounds -type f | ${SED} "s,^${STAGEDIR}${DATADIR},${DATADIR}," >> ${TMPPLIST}
 		${RM} -r ${STAGEDIR}${ETCDIR}
-		${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/freeswitch/mod/mod_png.so
+		${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/freeswitch/mod/mod_*.so \
+			${STAGEDIR}${PREFIX}/lib/libfreeswitch.so.1.0.0
 		(cd ${WRKSRC}/conf && \
 		${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
 

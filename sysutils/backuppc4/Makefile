@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	backuppc
-PORTVERSION=	4.1.3
+PORTVERSION=	4.2.1
 PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	https://github.com/backuppc/backuppc/releases/download/${PORTVERSION}/ \
@@ -18,15 +18,15 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	p5-CGI>0:www/p5-CGI \
 		p5-File-Listing>=0:sysutils/p5-File-Listing \
-		p5-BackupPC-XS>=0.53:sysutils/p5-BackupPC-XS
+		p5-BackupPC-XS>=0.57:sysutils/p5-BackupPC-XS
 
 CONFLICTS=	backuppc backuppc-devel
 
-USE_RC_SUBR=	backuppc
-
 USES=		perl5
+
 NO_BUILD=	yes
 NO_ARCH=	yes
+USE_RC_SUBR=	backuppc
 
 USERS=		backuppc
 GROUPS=		backuppc
@@ -80,7 +80,7 @@ do-install:
 		--name=BackupPC --center="BackupPC user guide" \
 		${WRKSRC}/doc/BackupPC.pod ${WRKSRC}/${PORTNAME}.1
 	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 ${STAGEDIR}${MANPREFIX}/man/man1
-	cd ${WRKSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 	${CP} ${WRKSRC}/doc/BackupPC.html ${STAGEDIR}${WWWDIR}
 	${RM} ${STAGEDIR}${ETCDIR}/config.pl
 	${RM} ${STAGEDIR}${ETCDIR}/hosts

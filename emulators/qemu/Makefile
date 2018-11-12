@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	qemu
-PORTVERSION=	2.9.0
+PORTVERSION=	2.12.0
+PORTREVISION=	1
 CATEGORIES=	emulators
 MASTER_SITES=	http://wiki.qemu.org/download/
 DIST_SUBDIR=	qemu/${PORTVERSION}
@@ -12,21 +13,21 @@ COMMENT?=	QEMU CPU Emulator
 
 LICENSE=	GPLv2
 
+BROKEN_powerpc64=	fails to compile: In function aio_bh_poll: internal compiler error: Segmentation fault
+
 LIB_DEPENDS?=	libnettle.so:security/nettle \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
 
 HAS_CONFIGURE=	yes
-USES?=		cpe gmake pkgconfig bison perl5 python:2,build tar:bzip2
+USES?=		cpe gmake pkgconfig bison perl5 python:2.7,build tar:bzip2
 USE_PERL5=	build
 MAKE_ENV+=	BSD_MAKE="${MAKE}" V=1
 .if !defined(PKGNAMESUFFIX) || ${PKGNAMESUFFIX} != "-utils"
 USE_XORG=	pixman
-USE_GNOME+=	cairo glib20
-ONLY_FOR_ARCHS=	amd64 i386 powerpc powerpc64 # XXX someone wants to debug sparc64 hosts?
+USE_GNOME+=	cairo glib20 libxml2
+ONLY_FOR_ARCHS=	amd64 i386 powerpc powerpc64
 .endif
-
-BROKEN_powerpc64=	fails to compile: In function aio_bh_poll: internal compiler error: Segmentation fault
 
 OPTIONS_DEFINE=	SAMBA X11 GTK2 OPENGL GNUTLS SASL JPEG PNG CURL \
 		VDE CDROM_DMA PCAP USBREDIR GNS3 X86_TARGETS \
@@ -47,7 +48,7 @@ OPTIONS_DEFAULT=X11 GTK2 OPENGL GNUTLS SASL JPEG PNG CDROM_DMA CURL PCAP GNS3 NC
 OPTIONS_SUB=	yes
 X11_USE=	SDL=sdl XORG=x11,xext GNOME=gdkpixbuf2
 X11_CONFIGURE_ENABLE=	sdl
-GTK2_USE=	GNOME=gtk20,vte
+GTK2_USE=	GNOME=gtk20,vte,gdkpixbuf2 XORG=x11,xext
 GTK2_USES=	gettext
 GTK2_CONFIGURE_OFF=	--disable-gtk --disable-vte
 GNUTLS_LIB_DEPENDS=	libgnutls.so:security/gnutls
@@ -91,6 +92,7 @@ CONFIGURE_ARGS?=--localstatedir=/var --extra-ldflags=-L\"/usr/lib\" \
 		--disable-linux-user --disable-linux-aio --disable-xen \
 		--enable-debug-info --python=${PYTHON_CMD} \
 		--extra-cflags=-I${WRKSRC}\ -I${LOCALBASE}/include\ -DPREFIX=\\\"\"${PREFIX}\\\"\"
+MAKE_JOBS_UNSAFE=yes
 
 .include <bsd.port.options.mk>
 
@@ -171,7 +173,6 @@ post-install:
 	${INSTALL_SCRIPT} ${FILESDIR}/qemu-ifup.sample ${STAGEDIR}${PREFIX}/etc
 	${INSTALL_SCRIPT} ${FILESDIR}/qemu-ifdown.sample ${STAGEDIR}${PREFIX}/etc
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/qemu-*
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/ivshmem-*
 
 post-install-DOCS-on:
 	@(cd ${WRKSRC} && ${COPYTREE_SHARE} docs ${STAGEDIR}${DOCSDIR}/)

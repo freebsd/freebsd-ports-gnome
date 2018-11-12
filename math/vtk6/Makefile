@@ -3,7 +3,7 @@
 
 PORTNAME=	vtk
 PORTVERSION=	6.2.0
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	math graphics
 MASTER_SITES=	http://www.vtk.org/files/release/${VTK_SHORT_VER}/
 PKGNAMESUFFIX=	6
@@ -23,7 +23,7 @@ LIB_DEPENDS=	libtiff.so:graphics/tiff \
 # TODO
 # * VTK Groups
 
-CONFLICTS=	vtk-4*
+CONFLICTS=	vtk5 vtk8
 USE_LDCONFIG=	${PREFIX}/lib/vtk-${VTK_SHORT_VER}
 USE_XORG=	xt sm ice x11 xext
 USES=		alias cmake:outsource jpeg
@@ -126,17 +126,21 @@ PLIST_SUB+=	MPI="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MQT4}
-USE_QT4=	gui_build gui_run network_build network_run sql_build sql_run \
+USES+=		qt:4
+USE_QT=		gui_build gui_run network_build network_run sql_build sql_run \
 		moc_build uic_build qmake_build rcc_build opengl webkit_build \
 		webkit_run
 CMAKE_ARGS+=	-DVTK_QT_VERSION:STRING="4"
+PLIST_SUB+=	QTV="qt4"
 .endif
 
 .if ${PORT_OPTIONS:MQT5}
-USE_QT5=	gui_build gui_run network_build network_run sql_build sql_run \
+USES+=		qt:5
+USE_QT=		gui_build gui_run network_build network_run sql_build sql_run \
 		qmake_build opengl webkit_build buildtools webkit_run
 CMAKE_ARGS+=	-DVTK_QT_VERSION:STRING="5" \
 		-DCMAKE_PREFIX_PATH:STRING=${LOCALBASE}/lib/qt5
+PLIST_SUB+=	QTV="qt5"
 .endif
 
 .if ${PORT_OPTIONS:MQT4} || ${PORT_OPTIONS:MQT5}
@@ -149,9 +153,9 @@ CMAKE_ARGS+=	-DVTK_Group_Qt:BOOL=OFF
 
 .if ${PORT_OPTIONS:MDESIGNER}
 .if ${PORT_OPTIONS:MQT5}
-USE_QT5+=	designer
+USE_QT+=	designer
 .elif ${PORT_OPTIONS:MQT4}
-USE_QT4+=	designer
+USE_QT+=	designer
 .else
 IGNORE=	designer requires either QT4 or QT5
 .endif
@@ -178,13 +182,13 @@ PLIST_SUB+=	JAVA="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPYTHON}
-USES+=		python
+USES+=		python:2.7
 CMAKE_ARGS+=	-DVTK_WRAP_PYTHON:BOOL=ON \
 		-DVTK_INSTALL_PYTHON_MODULE_DIR:STRING=${PYTHONPREFIX_SITELIBDIR} \
 		-DModule_vtkRenderingMatplotlib:BOOL=ON \
 		-DModule_vtkPythonInterpreter:BOOL=ON
 PLIST_SUB+=	PYTHON=""
-RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/matplotlib/__init__.py:math/py-matplotlib
+RUN_DEPENDS+=	${PYTHON_SITELIBDIR}/matplotlib/__init__.py:math/py-matplotlib@${PY_FLAVOR}
 .else
 CMAKE_ARGS+=	-DVTK_WRAP_PYTHON:BOOL=OFF
 PLIST_SUB+=	PYTHON="@comment "

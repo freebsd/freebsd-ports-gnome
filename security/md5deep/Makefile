@@ -3,6 +3,7 @@
 
 PORTNAME=	md5deep
 PORTVERSION=	4.4
+PORTREVISION=	1
 CATEGORIES=	security
 
 MAINTAINER=	nobutaka@FreeBSD.org
@@ -15,12 +16,8 @@ GH_ACCOUNT=	jessek
 GH_PROJECT=	hashdeep
 GH_TAGNAME=	cd2ed74
 
+USES=		autoreconf compiler:c++11-lang gmake
 USE_GITHUB=	yes
-USE_AUTOTOOLS=	autoconf:env autoheader:env automake:env aclocal:env
-USES=		gmake
 GNU_CONFIGURE=	yes
-
-pre-configure:
-	(cd ${WRKSRC}; ${SH} bootstrap.sh)
 
 .include <bsd.port.mk>

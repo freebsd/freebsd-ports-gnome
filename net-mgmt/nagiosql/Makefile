@@ -14,13 +14,14 @@ COMMENT=	Web based administration tool for Nagios
 
 LICENSE=	GPLv2
 
+IGNORE_WITH_PHP=	70 71 72
+
 RUN_DEPENDS=	nagios:net-mgmt/nagios \
-		${PEARDIR}/HTML/Template/IT.php:devel/pear-HTML_Template_IT
+		${PEARDIR}/HTML/Template/IT.php:devel/pear-HTML_Template_IT@${PHP_FLAVOR}
 
 USE_MYSQL=	yes
-USES=		cpe gettext tar:bzip2
+USES=		cpe gettext php:web tar:bzip2
 USE_PHP=	mysql filter gettext session simplexml
-WANT_PHP_WEB=	yes
 
 USERS?=		nagios
 GROUPS?=	nagios

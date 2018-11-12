@@ -11,9 +11,11 @@ COMMENT=	IETF Peer-to-Peer Streaming Peer Protocol implementation
 
 LICENSE=	LGPL21
 
-LIB_DEPENDS=		libevent.so:devel/libevent
-
+BROKEN_mips=		fails to build: gmake: clang++: Command not found
+BROKEN_mips64=		fails to build: gmake: clang++: Command not found
 BROKEN_powerpc64=	fails to build: gmake: clang++: Command not found
+
+LIB_DEPENDS=		libevent.so:devel/libevent
 
 USE_GITHUB=		yes
 GH_TAGNAME=		dda307f
@@ -40,6 +42,8 @@ SWIFT_SHAREDIR=		/var/db/${PORTNAME}/
 SWIFT_PIDDIR=		/var/run/${PORTNAME}/
 
 USE_RC_SUBR=		${PORTNAME}
+
+OPTIONS_DEFINE=	DOCS
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR} \

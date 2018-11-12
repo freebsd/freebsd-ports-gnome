@@ -4,7 +4,7 @@
 PORTNAME?=	xmms2
 PORTVERSION=	0.8
 DISTVERSIONSUFFIX=	DrO_o
-PORTREVISION?=	21
+PORTREVISION?=	27
 CATEGORIES?=	audio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}%20${DISTVERSIONSUFFIX}
 
@@ -20,15 +20,13 @@ INSTALL_TARGET=	install --without-ldconfig
 
 .if !defined(XMMS2_SLAVE)
 USE_GNOME=	glib20
-USES+=		sqlite
+USES+=		readline sqlite
 
 USE_LDCONFIG=	yes
 
 PLIST_SUB+=	INCLUDEDIR="include/${PORTNAME}" LIBDIR="lib/${PORTNAME}"
 
 CPPFLAGS+=	-I${LOCALBASE}/include
-
-BROKEN_aarch64=		Fails to compile: error in backend: Do not know how to split this operator's operand!
 
 OPTIONS_DEFINE=	AIRPLAY AO APE AVCODEC CDDA CURL ET FAAD FAM FLAC \
 		GME GVFS ICES JACK MAD MDNS MMS \
@@ -160,7 +158,7 @@ XML_CONFIGURE_OFF=	--without-plugins="xml" --without-plugins="rss" \
 
 ET_CONFIGURE_OFF=	--without-optionals="et"
 
-.endif # !XMMS_SLAVE
+.endif # !XMMS2_SLAVE
 
 .include <bsd.port.options.mk>
 
@@ -219,6 +217,9 @@ post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/*
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libxmmsclient*
+.else
+	${RM} -R ${STAGEDIR}${PREFIX}/lib/xmms2
+	${FIND} ${STAGEDIR}${PREFIX}/lib -name '*.so*' | ${XARGS} ${STRIP_CMD} 
 .endif
 
 .include <bsd.port.post.mk>

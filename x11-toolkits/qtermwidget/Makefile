@@ -1,30 +1,21 @@
-# Created by: Jason Bacon <bacon4000@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	qtermwidget
-PORTVERSION=	0.7.0
-PORTREVISION=	2
+PORTVERSION=	0.9.0
+PORTREVISION=	1
 CATEGORIES=	x11-toolkits
+MASTER_SITES=	LXQT
 
-MAINTAINER=	bacon4000@gmail.com
+MAINTAINER=	jsm@FreeBSD.org
 COMMENT=	Terminal widget for QTerminal
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		cmake:outsource compiler:c++11-lang pkgconfig
+USES=	cmake:outsource compiler:c++11-lang gettext-runtime lxqt \
+	pkgconfig qt:5 tar:xz
 USE_LDCONFIG=	yes
-USE_QT5=	buildtools_build core gui qmake_build widgets
-
-CMAKE_ARGS+=	-DBUILD_DESIGNER_PLUGIN:BOOL=OFF -DUSE_QT5:BOOL=ON
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	lxde
-
-.include <bsd.port.pre.mk>
-
-.if ${OPSYS} == FreeBSD
-CFLAGS+=	-DHAVE_UTEMPTER
-.endif
-
-.include <bsd.port.post.mk>
+USE_QT=		buildtools_build core gui qmake_build linguisttools widgets
+USE_LXQT=	buildtools
+CMAKE_ARGS+=	-DQTERMWIDGET_USE_UTEMPTER=ON
+.include <bsd.port.mk>

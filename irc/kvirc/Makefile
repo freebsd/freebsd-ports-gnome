@@ -3,7 +3,7 @@
 
 PORTNAME=	kvirc
 PORTVERSION=	4.2.0
-PORTREVISION=	6
+PORTREVISION=	8
 CATEGORIES=	irc kde
 MASTER_SITES=	ftp://ftp.kvirc.de/pub/kvirc/%SUBDIR%/ \
 		http://kvirc.gmake.de/pub/kvirc/%SUBDIR%/ \
@@ -19,9 +19,9 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT?=	IRC client for KDE 4
 
 USE_PERL5=	build
-USE_QT4=	moc_build qmake_build rcc_build uic_build \
+USE_QT=		moc_build qmake_build rcc_build uic_build \
 		dbus gui network sql xml
-USES=		cmake cpe gettext perl5 ssl tar:bzip2
+USES=		cmake cpe gettext perl5 qt:4 ssl tar:bzip2
 CMAKE_ARGS=	-DWANT_ESD=no -DWANT_DOXYGEN=no \
 		-DMANDIR=${MANPREFIX}
 USE_LDCONFIG=	yes
@@ -56,11 +56,13 @@ PLIST_SUB+=	QT="" KDE="@comment "
 OPTIONS_DEFINE+=	PHONON WEBKIT
 
 PHONON_DESC=	Build with Phonon support
-PHONON_USE=	QT4=phonon
+PHONON_USES=	qt:4
+PHONON_USE=	QT=phonon
 PHONON_CMAKE_OFF=	-DWITHOUT_PHONON=yes
 
 WEBKIT_DESC=	Build with QtWebkit support
-WEBKIT_USE=	QT4=webkit
+WEBKIT_USES=	qt:4
+WEBKIT_USE=	QT=webkit
 WEBKIT_CMAKE_OFF=	-DWITHOUT_QTWEBKIT=yes
 .else #defined(PKGNAMESUFFIX)
 CONFLICTS_INSTALL=	kvirc-qt4-4.*
@@ -81,5 +83,10 @@ pre-fetch-PERL-on:
 post-patch:
 	${REINPLACE_CMD} -e "s|\(-lcrypto\)|-L${OPENSSLLIB} \1|g" \
 		${WRKSRC}/CMakeLists.txt
+	# Fix error: invalid suffix on literal; C++11 requires a space between literal and identifier
+	${REINPLACE_CMD} -e 's|"KVI_OPTIONS_WIDGET_KEYWORDS|" KVI_OPTIONS_WIDGET_KEYWORDS|g' \
+		${WRKSRC}/src/modules/options/OptionsInstanceManager.cpp
+	${REINPLACE_CMD} -e 's|"KVI_PATH_SEPARATOR|" KVI_PATH_SEPARATOR|g' \
+		${WRKSRC}/src/kvirc/kernel/KviApplication_filesystem.cpp
 
 .include <bsd.port.mk>

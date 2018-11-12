@@ -3,19 +3,19 @@
 
 PORTNAME=	yatex
 PORTVERSION=	1.77
+PORTREVISION=	2
 CATEGORIES?=	print elisp
 MASTER_SITES=	http://www.yatex.org/
+PKGNAMESUFFIX=	${EMACS_PKGNAMESUFFIX}
 DISTNAME=	${PORTNAME}${PORTVERSION}
 
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	Yet Another LaTeX mode and html mode on Emacs
 
-USES=		dos2unix
-USE_EMACS=	yes
-EMACS_NO_RUN_DEPENDS=	yes
-EMACS_NO_BUILD_DEPENDS=	yes
+USES=		dos2unix emacs
+EMACS_NO_DEPENDS=	yes
+
 NO_BUILD=	yes
-PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message yatex-startup.el
 SUB_LIST=	EMACS_SITE_LISPDIR="${EMACS_SITE_LISPDIR}"
 

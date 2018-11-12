@@ -3,12 +3,13 @@
 
 PORTNAME=	sqlite-ext-regexp
 PORTVERSION=	3.8.11.1
+PORTREVISION=	1
 CATEGORIES=	databases
 MASTER_SITES=	https://www.sqlite.org/2015/ http://www2.sqlite.org/2015/ http://www3.sqlite.org/2015/
 DISTNAME=	sqlite-src-${PORTVERSION:S|8.|8|:S|.|0|g}
 DIST_SUBDIR=	sqlite-ext
 
-MAINTAINER=	yuri@rawbw.com
+MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Regular-expression matcher using NFA engine for SQLite
 
 LICENSE=	public
@@ -22,7 +23,6 @@ NO_WRKSUBDIR=	yes
 SRCFILE=	${DISTNAME}/ext/misc/regexp.c
 LIBFILE=	libregexp.so
 INST_DIR=	${PREFIX}/libexec/${DIST_SUBDIR}
-USE_LDCONFIG=	${INST_DIR}
 
 EXTRACT_AFTER_ARGS=	${SRCFILE}
 

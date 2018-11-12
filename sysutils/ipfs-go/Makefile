@@ -1,46 +1,53 @@
 # $FreeBSD$
 
-PORTNAME=	ipfs-go
-PORTVERSION=	0.4.7
+PORTNAME=	ipfs
 DISTVERSIONPREFIX=	v
+DISTVERSION=	0.4.17
+PORTREVISION=	1
 CATEGORIES=	sysutils
+MASTER_SITES=	https://github.com/ipfs/go-ipfs/releases/download/v${DISTVERSION}/
+PKGNAMESUFFIX=	-go
+DISTNAME=	go-ipfs-source
 
-MAINTAINER=	jhixson@gmail.com
+MAINTAINER=	jhixson@FreeBSD.org
 COMMENT=	IPFS implementation in Go
 
 LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	go>=1.7:lang/go
+ONLY_FOR_ARCHS=	amd64 i386
 
-ONLY_FOR_ARCHS=	amd64
+USES=		go
 
-USES=		compiler go
+GO_PKGNAME=	github.com/ipfs/go-ipfs
+GO_TARGET=	./cmd/ipfs
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	jhixson74
+NO_WRKSUBDIR=	yes
 
-MAKE_ENV+=	GOPATH=${WRKSRC}
+USE_RC_SUBR=	${PORTNAME}${PKGNAMESUFFIX}
 
-PLIST_FILES=	bin/${PORTNAME}
+SUB_FILES=	${FULLNAME}
+SUB_LIST=	IPFS_USER=${IPFS_USER} \
+		IPFS_GROUP=${IPFS_GROUP} \
+		IPFS_LOGDIR=${IPFS_LOGDIR}
+PLIST_SUB=	IPFS_USER=${IPFS_USER} \
+		IPFS_GROUP=${IPFS_GROUP} \
+		IPFS_HOME=${IPFS_HOME} \
+		IPFS_LOGDIR=${IPFS_LOGDIR}
 
-USE_RC_SUBR=	${PORTNAME}
+IPFS_USER=	${FULLNAME}
+IPFS_GROUP=	${FULLNAME}
+IPFS_HOME=	/var/db/${PORTNAME}${PKGNAMESUFFIX}
+IPFS_LOGDIR=	/var/log/${PORTNAME}${PKGNAMESUFFIX}
 
-STRIP=		# stripping can break go binaries
+USERS=		${IPFS_USER}
+GROUPS=		${IPFS_GROUP}
 
-do-build:
-	cd ${WRKSRC}/src/github.com/ipfs/go-ipfs/cmd/ipfs; \
-		${SETENV} ${BUILD_ENV} ${MAKE_ENV} go build -v -x \
-			-ldflags "-X main.GitDescribe=${DISTVERSIONFULL}" -o bin/${PORTNAME}
+FULLNAME=	${PORTNAME}${PKGNAMESUFFIX}
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/src/github.com/ipfs/go-ipfs/cmd/ipfs/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+	@${MKDIR} ${STAGEDIR}${IPFS_HOME}
+	@${MKDIR} ${STAGEDIR}${IPFS_LOGDIR}
+	${INSTALL_PROGRAM} ${GO_WRKDIR_BIN}/ipfs ${STAGEDIR}${PREFIX}/bin/${PORTNAME}${PKGNAMESUFFIX}
 
-.include <bsd.port.pre.mk>
-
-# golang assumes that if clang is in use, it is called "clang" and not "cc". If
-# it's called "cc", go fails.
-.if ${COMPILER_TYPE} == clang
-BUILD_ENV=  CC=clang
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

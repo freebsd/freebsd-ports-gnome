@@ -2,6 +2,7 @@
 
 PORTNAME=	libav
 PORTVERSION=	12.1
+PORTREVISION=	8
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	http://libav.org/releases/
 
@@ -10,6 +11,7 @@ COMMENT=	Realtime audio/video conversion library
 
 LICENSE=	GPLv2+
 
+BROKEN_aarch64=		fails to link: can't create dynamic relocation R_AARCH64_ABS64 against local symbol in readonly segment
 BROKEN_armv6=		fails to compile: cc: warning: joined argument expects additional value: -mcpu=
 
 BUILD_DEPENDS=	yasm:devel/yasm
@@ -103,7 +105,7 @@ JACK_CONFIGURE_OFF=		--disable-indev=jack
 LAME_LIB_DEPENDS=		libmp3lame.so:audio/lame
 LAME_CONFIGURE_ENABLE=		libmp3lame
 
-OPENCV_LIB_DEPENDS=		libopencv_gpu.so:graphics/opencv
+OPENCV_LIB_DEPENDS=		libopencv_video.so:graphics/opencv
 OPENCV_CONFIGURE_ENABLE=	libopencv
 
 OPENJPEG_LIB_DEPENDS=		libopenjpeg.so:graphics/openjpeg15

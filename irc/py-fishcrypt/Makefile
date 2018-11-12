@@ -3,16 +3,16 @@
 
 PORTNAME=	fishcrypt
 DISTVERSION=	5.31
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	irc security
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DIST_SUBDIR=	python
 
-MAINTAINER=	nemysis@FreeBSD.org
-COMMENT=	FiSH/Mircryption-compatible encryption for XChat/HexChat
+MAINTAINER=	ports@FreeBSD.org
+COMMENT=	FiSH/Mircryption-compatible encryption for HexChat
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycrypto>=0:security/py-pycrypto \
-		${PYTHON_PKGNAMEPREFIX}pysocks>=0:net/py-pysocks
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycrypto>=0:security/py-pycrypto@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pysocks>=0:net/py-pysocks@${PY_FLAVOR}
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	fladd
@@ -20,6 +20,7 @@ GH_PROJECT=	py-${PORTNAME}
 GH_TAGNAME=	43554b1a
 
 USES=		dos2unix python:run shebangfix
+USE_PYTHON=	flavors
 SHEBANG_FILES=	fishcrypt.py
 NO_BUILD=	yes
 
@@ -30,15 +31,13 @@ PORTDOCS=	README.md
 PLIST_FILES=	%%DATADIR%%/fishcrypt.py \
                 %%DATADIR%%/pyBlowfish.py
 
-OPTIONS_DEFINE=	DOCS HEXCHAT XCHAT
+OPTIONS_DEFINE=	DOCS HEXCHAT
 
 HEXCHAT_DESC=		FiSH encryption for HexChat
-XCHAT_DESC=		FiSH encryption for XChat
 
 OPTIONS_SUB=	yes
 
 HEXCHAT_RUN_DEPENDS=	hexchat:irc/hexchat
-XCHAT_RUN_DEPENDS=	xchat:irc/xchat
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}

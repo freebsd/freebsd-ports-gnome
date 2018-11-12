@@ -3,7 +3,7 @@
 
 PORTNAME=	hamsterdb
 PORTVERSION=	2.1.11
-PORTREVISION=	3
+PORTREVISION=	8
 CATEGORIES=	databases
 MASTER_SITES=	http://files.hamsterdb.com/dl/
 
@@ -12,14 +12,17 @@ COMMENT=	Lightweight Embedded Database Engine
 
 LICENSE=	APACHE20
 
+BROKEN_powerpc64=	fails to configure: checking for the Boost system library... no
+
 BUILD_DEPENDS=	${LOCALBASE}/include/boost/shared_ptr.hpp:devel/boost-libs
 
+USES=		alias gmake libtool
+USE_CXXSTD=	gnu++98
+USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--with-boost=${LOCALBASE}
 INSTALL_TARGET=	install-strip
 CFLAGS+=	-I${LOCALBASE}/include -L${LOCALBASE}/lib
-USES=		alias gmake libtool
-USE_LDCONFIG=	yes
 
 HAM_DOCS=	README INSTALL ChangeLog TODO AUTHORS CREDITS
 
@@ -29,6 +32,7 @@ post-patch:
 	${REINPLACE_CMD} -e 's#-ldl##g' ${WRKSRC}/configure
 	${REINPLACE_CMD} -e 's#-ldl##g' ${WRKSRC}/unittests/Makefile.in
 	${REINPLACE_CMD} -e 's#-ldl##g' ${WRKSRC}/tools/ham_bench/Makefile.in
+	${REINPLACE_CMD} -e '/^CXXFLAGS=$${CFLAGS}$$/d' ${WRKSRC}/configure
 
 post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

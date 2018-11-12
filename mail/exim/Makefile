@@ -3,7 +3,7 @@
 
 PORTNAME=	exim
 PORTVERSION?=	${EXIM_VERSION}
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	mail ipv6
 MASTER_SITES=	EXIM:exim
 MASTER_SITE_SUBDIR=	/exim4/:exim \
@@ -18,7 +18,7 @@ COMMENT?=	High performance MTA for Unix systems on the Internet
 
 LICENSE=	GPLv2
 
-USES=		cpe tar:bzip2 perl5
+USES=		compiler cpe tar:bzip2 perl5
 USE_PERL5=	run
 
 # Exim build system is job unsafe atm
@@ -72,13 +72,19 @@ IGNORE=	you cannot enable OCSP stapling with gnutls
 .endif
 .endif
 
-# DMARC implies SPF
+# DMARC implies SPF and DKIM
 .if ${PORT_OPTIONS:MDMARC}
 .if ! ${PORT_OPTIONS:MSPF} || ! ${PORT_OPTIONS:MDKIM}
 IGNORE=	you cannot enable DMARC without SPF and DKIM support
 .endif
 .endif
 
+# ARC implies SPF and DKIM
+.if ${PORT_OPTIONS:MARC}
+.if ! ${PORT_OPTIONS:MSPF} || ! ${PORT_OPTIONS:MDKIM}
+IGNORE=	you cannot enable ARC without SPF and DKIM support
+.endif
+.endif
 # DANE implies DNSSEC
 .if ${PORT_OPTIONS:MDANE}
 .if ! ${PORT_OPTIONS:MDNSSEC} || ! ${PORT_OPTIONS:MTLS}
@@ -92,7 +98,7 @@ MASTER_SITES+=	http://marc.merlins.org/linux/exim/files/:sa_exim \
 DISTFILES+=	sa-exim-${SA_EXIM_VERSION}.tar.gz:sa_exim
 .endif
 
-EXIM_VERSION=	4.89
+EXIM_VERSION=	4.91
 SA_EXIM_VERSION=4.2
 EXIM_INSTALL_ARG+=	"-no_chown" "-no_symlink"
 
@@ -208,7 +214,11 @@ SEDLIST+=	-e 's,^\# (EXPERIMENTAL_DSN=),\1,'
 .endif
 
 .if ${PORT_OPTIONS:MDANE}
-SEDLIST+=	-e 's,^\# (EXPERIMENTAL_DANE=),\1,'
+SEDLIST+=	-e 's,^\# (SUPPORT_DANE=),\1,'
+.endif
+
+.if ${PORT_OPTIONS:MARC}
+SEDLIST+=	-e 's,^\# (EXPERIMENTAL_ARC=),\1,'
 .endif
 
 .if !${PORT_OPTIONS:MEVENT}
@@ -461,7 +471,7 @@ SEDLIST+=	-e 's,^(ALT_CONFIG_PREFIX=),\# \1,'
 .if ${PORT_OPTIONS:MSPF}
 SEDLIST+=	-e 's,XX_SPF_FLAGS_XX,-DSPF,' \
 		-e 's,XX_SPF_LIBS_XX,-L${LOCALBASE}/lib -lspf2 -lpthread,' \
-		-e 's,^\# (EXPERIMENTAL_SPF=),\1,'
+		-e 's,^\# (SUPPORT_SPF=),\1,'
 .else
 SEDLIST+=	-e 's,XX_SPF_FLAGS_XX,,' \
 		-e 's,XX_SPF_LIBS_XX,,'
@@ -612,4 +622,12 @@ post-install:
 
 .endif # ! defined(EXIMON_ONLY)
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+# If using clang, avoid too many warnings due to Exim code style
+.if ${CHOSEN_COMPILER_TYPE} == "clang"
+EXIM_WARN_FLAGS?=	-Wno-logical-op-parentheses -Wno-macro-redefined -Wno-parentheses -Wno-dangling-else
+.endif
+CFLAGS+=	${EXIM_WARN_FLAGS}
+
+.include <bsd.port.post.mk>

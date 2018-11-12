@@ -4,11 +4,13 @@
     COMMENT = Archivers
 
     SUBDIR += 9e
+    SUBDIR += R-cran-zip
     SUBDIR += advancecomp
     SUBDIR += amigadepacker
     SUBDIR += arc
     SUBDIR += arj
     SUBDIR += ark
+    SUBDIR += ark-kde4
     SUBDIR += atool
     SUBDIR += bicom
     SUBDIR += brotli
@@ -30,7 +32,6 @@
     SUBDIR += fpc-bzip2
     SUBDIR += fpc-unzip
     SUBDIR += freetar
-    SUBDIR += freeze
     SUBDIR += gcab
     SUBDIR += gcpio
     SUBDIR += gnome-autoar
@@ -54,6 +55,7 @@
     SUBDIR += kf5-karchive
     SUBDIR += kzip
     SUBDIR += laszip
+    SUBDIR += lazperf
     SUBDIR += lbrate
     SUBDIR += lbzip2
     SUBDIR += lcab
@@ -64,6 +66,7 @@
     SUBDIR += libarchive
     SUBDIR += libcabinet
     SUBDIR += libcomprex
+    SUBDIR += libdeflate
     SUBDIR += libdynamite
     SUBDIR += liblz4
     SUBDIR += liblzxcomp
@@ -94,6 +97,7 @@
     SUBDIR += nwreckdum
     SUBDIR += ocaml-bz2
     SUBDIR += ocaml-zip
+    SUBDIR += opkg-openwrt
     SUBDIR += p5-Archive-Any
     SUBDIR += p5-Archive-Any-Lite
     SUBDIR += p5-Archive-Any-Plugin-Rar
@@ -103,6 +107,7 @@
     SUBDIR += p5-Archive-Rar
     SUBDIR += p5-Archive-SimpleExtractor
     SUBDIR += p5-Archive-Tar
+    SUBDIR += p5-Archive-Tar-Wrapper
     SUBDIR += p5-Archive-Zip
     SUBDIR += p5-Compress-Bzip2
     SUBDIR += p5-Compress-LZ4
@@ -113,6 +118,7 @@
     SUBDIR += p5-Compress-Raw-Lzma
     SUBDIR += p5-Compress-Raw-Zlib
     SUBDIR += p5-Compress-Snappy
+    SUBDIR += p5-Gzip-Faster
     SUBDIR += p5-IO-Compress
     SUBDIR += p5-IO-Compress-Lzf
     SUBDIR += p5-IO-Compress-Lzma
@@ -158,6 +164,10 @@
     SUBDIR += php71-phar
     SUBDIR += php71-zip
     SUBDIR += php71-zlib
+    SUBDIR += php72-bz2
+    SUBDIR += php72-phar
+    SUBDIR += php72-zip
+    SUBDIR += php72-zlib
     SUBDIR += pigz
     SUBDIR += pixz
     SUBDIR += plzip
@@ -165,11 +175,14 @@
     SUBDIR += ppmd-7z
     SUBDIR += ppunpack
     SUBDIR += pxz
+    SUBDIR += py-acefile
     SUBDIR += py-attic
     SUBDIR += py-backports.lzma
     SUBDIR += py-borgbackup
     SUBDIR += py-brotli
+    SUBDIR += py-bup
     SUBDIR += py-bz2file
+    SUBDIR += py-czipfile
     SUBDIR += py-libarchive-c
     SUBDIR += py-librtfcomp
     SUBDIR += py-lz4
@@ -182,10 +195,11 @@
     SUBDIR += py-rcssmin
     SUBDIR += py-rjsmin
     SUBDIR += py-warctools
-    SUBDIR += py3-libarchive-c
+    SUBDIR += py-xopen
+    SUBDIR += py-zstandard
+    SUBDIR += py-zstd
     SUBDIR += qpress
     SUBDIR += quazip
-    SUBDIR += quazip-qt5
     SUBDIR += rar
     SUBDIR += rox-archive
     SUBDIR += rpm2cpio
@@ -234,6 +248,8 @@
     SUBDIR += unzip
     SUBDIR += unzoo
     SUBDIR += upx
+    SUBDIR += urbackup-client
+    SUBDIR += urbackup-server
     SUBDIR += xar
     SUBDIR += xarchive
     SUBDIR += xarchiver

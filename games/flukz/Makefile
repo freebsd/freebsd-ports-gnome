@@ -2,6 +2,7 @@
 
 PORTNAME=	flukz
 PORTVERSION=	0.4
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	http://download.tuxfamily.org/${PORTNAME}/
 DISTNAME=	${PORTNAME}${PORTVERSION}
@@ -9,8 +10,8 @@ DISTNAME=	${PORTNAME}${PORTVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Vertically scrolling shoot'em up
 
-USES=		qmake
-USE_QT4=	multimedia network moc_build rcc_build
+USES=		qmake qt:4
+USE_QT=		corelib gui multimedia network moc_build rcc_build
 
 DESKTOP_ENTRIES=	Flukz "" ${PORTNAME} \
 			${PORTNAME} "Game;ArcadeGame;" true

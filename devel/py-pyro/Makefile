@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pyro
-PORTVERSION=	4.61
+PORTVERSION=	4.73
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,19 +14,21 @@ COMMENT=	Distributed Object Middleware for Python(IPC/RPC)
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}serpent>=1.23:devel/py-serpent
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}serpent>=1.24:devel/py-serpent@${PY_FLAVOR}
 
 NO_ARCH=	yes
-USES=		dos2unix python:2.7+
+USES=		dos2unix python
 USE_PYTHON=	autoplist concurrent distutils
 
 PORTDOCS=	*
 PORTEXAMPLES=	*
 
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
 .include <bsd.port.pre.mk>
 
 .if ${PYTHON_REL} < 3400
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}selectors34>0:devel/py-selectors34
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}selectors34>0:devel/py-selectors34@${PY_FLAVOR}
 .endif
 
 post-install:

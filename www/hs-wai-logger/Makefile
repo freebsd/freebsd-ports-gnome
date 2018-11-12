@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	wai-logger
-PORTVERSION=	2.3.0
+PORTVERSION=	2.3.2
+PORTREVISION=	1
 CATEGORIES=	www haskell
 
 MAINTAINER=	haskell@FreeBSD.org

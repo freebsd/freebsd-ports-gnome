@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	gpb
-PORTVERSION=	3.27.6
+PORTVERSION=	4.3.3
 CATEGORIES=	devel
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Google Protobuf implementation for Erlang
 
 LICENSE=	LGPL21
@@ -17,6 +17,8 @@ SUB_LIST+=	PORTNAME=${PORTNAME} \
 USES=		erlang:rebar
 USE_GITHUB=	yes
 GH_ACCOUNT=	tomas-abrahamsson
+
+OPTIONS_DEFINE=	DOCS
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${ERL_APP_ROOT}/bin

@@ -2,17 +2,20 @@
 
 PORTNAME=	libXft
 PORTVERSION=	2.3.2
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	x11-fonts
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Client-sided font API for X applications
 
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
 
 XORG_CAT=	lib
-USE_XORG=	xproto:both xrender
+USE_XORG=	xorgproto xrender
 INSTALL_TARGET=	install-strip
 
 post-extract:
@@ -24,7 +27,7 @@ post-patch:
 		${WRKSRC}/configure
 
 post-install:
-	@${INSTALL_SCRIPT} ${WRKSRC}/xft-config \
+	${INSTALL_SCRIPT} ${WRKSRC}/xft-config \
 		${STAGEDIR}${PREFIX}/bin/
 
 .include <bsd.port.mk>

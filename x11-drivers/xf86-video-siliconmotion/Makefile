@@ -2,7 +2,7 @@
 
 PORTNAME=	xf86-video-siliconmotion
 PORTVERSION=	1.7.9
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	x11-drivers
 
 MAINTAINER=	x11@FreeBSD.org
@@ -12,5 +12,6 @@ XORG_CAT=	driver
 
 BROKEN_aarch64=		error: implicit declaration of function outb is invalid in C99
 BROKEN_armv6=		error: implicit declaration of function outb is invalid in C99
+BROKEN_armv7=		error: implicit declaration of function outb is invalid in C99
 
 .include <bsd.port.mk>

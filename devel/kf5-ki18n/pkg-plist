@@ -10,9 +10,9 @@ include/KF5/KI18n/klocalizedtranslator.h
 include/KF5/KI18n/kuitmarkup.h
 include/KF5/KI18n/kuitsetup.h
 include/KF5/ki18n_version.h
-lib/cmake/KF5I18n/KF5I18NMacros.cmake
 lib/cmake/KF5I18n/KF5I18nConfig.cmake
 lib/cmake/KF5I18n/KF5I18nConfigVersion.cmake
+lib/cmake/KF5I18n/KF5I18nMacros.cmake
 lib/cmake/KF5I18n/KF5I18nTargets-%%CMAKE_BUILD_TYPE%%.cmake
 lib/cmake/KF5I18n/KF5I18nTargets.cmake
 lib/cmake/KF5I18n/build-pofiles.cmake
@@ -148,6 +148,5 @@ share/locale/vi/LC_MESSAGES/ki18n5.mo
 share/locale/wa/LC_MESSAGES/ki18n5.mo
 share/locale/xh/LC_MESSAGES/ki18n5.mo
 share/locale/zh_CN/LC_MESSAGES/ki18n5.mo
-share/locale/zh_CN/LC_SCRIPTS/ki18n5/ki18n5.js
 share/locale/zh_HK/LC_MESSAGES/ki18n5.mo
 share/locale/zh_TW/LC_MESSAGES/ki18n5.mo

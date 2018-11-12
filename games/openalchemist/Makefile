@@ -22,14 +22,18 @@ LIB_DEPENDS=	libclanCore.so:devel/clanlib1 \
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-lpthread -L${LOCALBASE}/lib
 GNU_CONFIGURE=	yes
+
+USES=		autoreconf gmake gnome iconv jpeg pkgconfig python:2.7,run shebangfix
+SHEBANG_FILES=	openalchemist-config
+
 USE_GNOME=	pygtk2
 USE_XORG=	xxf86vm xi x11 xmu xext xdamage xfixes xau xdmcp xt sm ice
 USE_GL=		gl glu
 USE_SDL=	sdl gfx
-USES=		autoreconf gmake iconv jpeg pkgconfig python:run shebangfix
-SHEBANG_FILES=	openalchemist-config
 
 PORTDOCS=	AUTHORS ChangeLog README TODO
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -E -e 's|0.8|1.0|g' -e 's|^%|#|g' ${WRKSRC}/configure.ac

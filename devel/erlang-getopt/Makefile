@@ -1,18 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	getopt
-PORTVERSION=	0.8.2
+PORTVERSION=	1.0.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Command line parsing library for Erlang
 
 LICENSE=	BSD3CLAUSE
 
-USES=		erlang:rebar
+USES=		erlang:rebar3
 USE_GITHUB=	yes
 GH_ACCOUNT=	jcomellas
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

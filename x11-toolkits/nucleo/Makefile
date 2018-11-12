@@ -3,7 +3,7 @@
 
 PORTNAME=	nucleo
 PORTVERSION=	0.7.6
-PORTREVISION=	19
+PORTREVISION=	21
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	http://insitu.lri.fr/metisse/download/nucleo/
 
@@ -25,6 +25,8 @@ CONFIGURE_ARGS=	--without-opencv
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 SHEBANG_FILES=	docs/MacOSX/nBundle.in
+
+CXXFLAGS+=	-Wno-c++11-narrowing
 
 OPTIONS_DEFINE=	FFMPEG GD GNUTLS QT4
 OPTIONS_RADIO=	DNSSD
@@ -50,7 +52,8 @@ GNUTLS_CONFIGURE_OFF=	--without-gnutls
 
 MDNSRESPONDER_LIB_DEPENDS=	libdns_sd.so:net/mDNSResponder
 
-QT4_USE=		QT4=moc_build,corelib
+QT4_USE=		QT=moc_build,corelib
+QT4_USES=		qmake:no_env qt:4
 QT4_CONFIGURE_OFF=	--without-qt
 QT4_MAKE_ARGS=		QT4MOC="${MOC}"
 
@@ -58,10 +61,6 @@ QT4_MAKE_ARGS=		QT4MOC="${MOC}"
 
 .if ! ${PORT_OPTIONS:MAVAHI} && ! ${PORT_OPTIONS:MMDNSRESPONDER}
 CONFIGURE_ARGS+=	--without-dns-sd
-.endif
-
-.if ${PORT_OPTIONS:MQT4}
-QT_NONSTANDARD=		yes
 .endif
 
 post-install:

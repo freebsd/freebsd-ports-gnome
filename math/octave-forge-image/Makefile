@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	octave-forge-image
-PORTVERSION=	2.6.1
-PORTREVISION=	3
+PORTVERSION=	2.8.0
+PORTREVISION=	2
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org
@@ -20,8 +20,9 @@ OCTSRC=		${DISTNAME}
 
 WRKSRC=		${WRKDIR}/${OCTSRC}/src
 
-USES=		compiler:c++0x
+USES=		compiler:c++14-lang
 GNU_CONFIGURE=	yes
+CXXFLAGS+=	-fPIC
 
 .include "${.CURDIR}/../../Mk/bsd.octave.mk"
 

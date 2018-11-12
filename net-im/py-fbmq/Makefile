@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	fbmq
-PORTVERSION=	2.1.0
+PORTVERSION=	2.5.0
 CATEGORIES=	net-im devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -11,8 +11,8 @@ COMMENT=	Python library for using the Facebook Messenger API
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Flask>0:www/py-flask \
-		${PYTHON_PKGNAMEPREFIX}requests>0:www/py-requests
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Flask>0:www/py-flask@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>0:www/py-requests@${PY_FLAVOR}
 
 NO_ARCH=	yes
 USES=		python

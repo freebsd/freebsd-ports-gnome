@@ -5,20 +5,22 @@ PORTNAME=	contextmenu
 PORTVERSION=	2.3
 CATEGORIES=	mail
 PKGNAMEPREFIX=	roundcube-
+PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
 MAINTAINER=	moiseev@mezonplus.ru
 COMMENT=	RoundCube webmail contextmenu plugin
 
 LICENSE=	GPLv3
 
-RUN_DEPENDS=	roundcube>=1.3:mail/roundcube
+RUN_DEPENDS=	roundcube${PHP_PKGNAMESUFFIX}>=1.3:mail/roundcube@${PHP_FLAVOR}
 
+USES=	php:flavors
 NO_BUILD=	yes
 NO_ARCH=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	JohnDoh
-GH_PROJECT=	Roundcube-Plugin-Context-Menu
+GH_PROJECT=	roundcube-contextmenu
 
 PLUGINDIR=	${WWWDIR:S,/${PORTNAME}$$,,}/roundcube/plugins/${PORTNAME}
 RCDIR_REL=	${WWWDIR_REL:S,/${PORTNAME}$$,,}/roundcube

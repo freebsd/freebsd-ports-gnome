@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	qtcreator
-DISTVERSION=	4.3.1
+DISTVERSION=	4.6.2
 PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	QT/official_releases/qtcreator/${DISTVERSION:R}/${DISTVERSION}
@@ -15,12 +15,13 @@ COMMENT=	C++ and QML IDE for Qt development
 # depend on the split out qbs
 LIB_DEPENDS=	libqbscore.so:devel/qbs
 
+USES=		qmake compiler:c++14-lang qt:5 tar:xz
 USE_LDCONFIG=	${LOCALBASE}/lib/${PORTNAME}
-USES=		qmake compiler:c++11-lib tar:xz
 USE_GL=		gl
-USE_QT5=	buildtools concurrent core designer gui help \
-		linguist network printsupport qdoc qmake qml quick quickcontrols \
-		script script sql svg webkit widgets xml xmlpatterns
+USE_QT=		buildtools concurrent core designer gui help \
+		linguist location network printsupport qdoc qmake qml quick \
+		quickcontrols script script sql svg webchannel webengine \
+		widgets xml xmlpatterns
 
 # be paranoid and do not extract qbs (devel/qbs) copy from source tree
 EXTRACT_AFTER_ARGS+=	--exclude '${DISTNAME}/src/shared/qbs'
@@ -42,9 +43,11 @@ BROKEN_aarch64=		fails to build: invokes x86 asm
 
 OPTIONS_DEFINE=		DOCS EXAMPLES
 DOCS_DESC=		Install the Qt5 api documentation
-DOCS_USE=		QT5=doc_run
+DOCS_USES=	qt:5
+DOCS_USE=		QT=doc_run
 EXAMPLES_DESC=		Install the Qt5 example projects
-EXAMPLES_USE=		QT5=examples_run
+EXAMPLES_USES=	qt:5
+EXAMPLES_USE=		QT=examples_run
 OPTIONS_DEFAULT=	${OPTIONS_DEFINE}
 
 ALL_TARGET=		all
@@ -54,6 +57,12 @@ DOCS_ALL_TARGET=	docs
 DOCS_INSTALL_TARGET=	install_docs
 
 PLIST_SUB=		SHLIB_VER="${PORTVERSION}"
+
+.include <bsd.port.pre.mk>
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
+# The detection of is_trivially_destructible fails with clang-3.4 from 10.3.
+QMAKE_ARGS+=	DEFINES+=TR2_OPTIONAL_DISABLE_EMULATION_OF_TYPE_TRAITS
+.endif
 
 # Fix paths for gnuplot and ant.
 post-patch:
@@ -73,4 +82,4 @@ pre-configure:
 # See QTBUG-40825 and ports bugs 194088, 195105 and 198720.
 	${ECHO_CMD} 'QMAKE_LIBDIR_FLAGS = -L${WRKSRC}/lib' >> ${WRKSRC}/.qmake.cache
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

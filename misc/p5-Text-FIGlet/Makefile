@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Text-FIGlet
-PORTVERSION=	2.19.3
-PORTREVISION=	2
+PORTVERSION=	2.19.4
 CATEGORIES=	misc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -11,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Perl module to provide FIGlet abilities, akin to banner
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 RUN_DEPENDS=	figlet:misc/figlet

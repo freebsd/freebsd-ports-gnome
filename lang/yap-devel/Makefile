@@ -3,7 +3,7 @@
 
 PORTNAME=	yap
 PORTVERSION=	6.3.3
-PORTREVISION=	8
+PORTREVISION=	10
 CATEGORIES=	lang
 MASTER_SITES=	http://www.dcc.fc.up.pt/~vsc/Yap/
 PKGNAMESUFFIX=	-devel
@@ -13,6 +13,10 @@ COMMENT=	High-performance Prolog compiler
 
 LICENSE=	ART20 LGPL3
 LICENSE_COMB=	dual
+
+BROKEN_armv6=		fails to install: tar: Pathname can't be converted from UTF-8 to current locale
+BROKEN_armv7=		fails to install: tar: Pathname can't be converted from UTF-8 to current locale
+BROKEN_powerpc64=	fails to build: YAP Fatal Error: startup.yss in saved state formatting mismatch in saved space exiting....
 
 LIB_DEPENDS=	libgmp.so:math/gmp
 
@@ -35,10 +39,10 @@ MAKE_ENV=	PKGLDFLAGS="${LDFLAGS}"
 
 STRIP=	#none
 
+USES=		gmake libarchive readline shebangfix
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--enable-max-performance --disable-clpbn-bp
-USES=		gmake libarchive readline shebangfix
 SHEBANG_FILES=	packages/http/examples/demo_inetd
 SHEBANG_LANG=	swipl
 swipl_OLD_CMD=	/usr/bin/swipl
@@ -47,17 +51,8 @@ swipl_CMD=	${LOCALBASE}/bin/swipl # installed by lang/swi-pl
 DOCSDIR=	${PREFIX}/share/doc/Yap
 DATADIR=	${PREFIX}/share/Yap
 
-.include <bsd.port.options.mk>
-
-.if ${ARCH} == i386
-# H/absmi.h:77:23: error: global register variables are not supported
-USES+=		compiler:gcc-c++11-lib
-.endif
-
-post-build:
-.if empty(PORT_OPTIONS:MDOCS)
+post-build-DOCS-off:
 	# prevent the installation of docs files
 	${REINPLACE_CMD} -e '758,761d' ${WRKSRC}/Makefile
-.endif
 
 .include <bsd.port.mk>

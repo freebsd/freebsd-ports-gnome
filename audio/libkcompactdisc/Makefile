@@ -1,28 +1,22 @@
-# Created by: Raphael Kubo da Costa <rakuco@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	libkcompactdisc
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	3
-CATEGORIES=	audio kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	audio kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE library for interfacing with audio CDs
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	automoc4 kdelibs
-USE_QT4=	phonon moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	coreaddons ecm emoticons i18n itemmodels itemviews \
+		kdelibs4support solid
+USE_QT=		core dbus phonon4\
+		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 
-OPTIONS_DEFINE=	ALSA
+OPTIONS_DEFINE=	ALSA DOCS
 
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
-
-post-patch-ALSA-off:
-	${REINPLACE_CMD} -e '/find_package(Alsa)/d' \
-		-e '/alsa_configure_file/d' ${WRKSRC}/CMakeLists.txt
-
-post-configure-ALSA-off:
-	${TOUCH} ${CONFIGURE_WRKSRC}/config-alsa.h
+ALSA_CMAKE_BOOL_OFF=	CMAKE_DISABLE_FIND_PACKAGE_ALSA
 
 .include <bsd.port.mk>

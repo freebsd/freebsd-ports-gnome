@@ -38,7 +38,7 @@ CARGO_DIST_SUBDIR?=	rust/crates
 
 # Generate list of DISTFILES.
 .for _crate in ${CARGO_CRATES}
-MASTER_SITES+=	${MASTER_SITES_CRATESIO}/${_crate:C/-[^-]*$//}/${_crate:C/^.*-//}/download?dummy=/:cargo_${_crate:S/-//g:S/.//g}
+MASTER_SITES+=	${MASTER_SITES_CRATESIO}/${_crate:C/^(.*)-[0-9].*/\1/}/${_crate:C/^.*-([0-9].*)/\1/}/download?dummy=/:cargo_${_crate:S/-//g:S/.//g}
 DISTFILES+=	${CARGO_DIST_SUBDIR}/${_crate}.tar.gz:cargo_${_crate:S/-//g:S/.//g}
 .endfor
 
@@ -46,10 +46,10 @@ DISTFILES+=	${CARGO_DIST_SUBDIR}/${_crate}.tar.gz:cargo_${_crate:S/-//g:S/.//g}
 
 CARGO_BUILDDEP?=	yes
 .if ${CARGO_BUILDDEP:tl} == "yes"
-BUILD_DEPENDS+=	 cargo:devel/cargo rustc:lang/rust
+BUILD_DEPENDS+=	 rust>=1.29.1:lang/rust
 .endif
 
-# Location of cargo binary (default to devel/cargo binary)
+# Location of cargo binary (default to lang/rust's Cargo binary)
 CARGO_CARGO_BIN?=	${LOCALBASE}/bin/cargo
 
 # Location of the cargo output directory.
@@ -71,6 +71,13 @@ CARGO_ENV+= \
 	RUSTC=${LOCALBASE}/bin/rustc \
 	RUSTDOC=${LOCALBASE}/bin/rustdoc \
 	RUSTFLAGS="${RUSTFLAGS}"
+
+# Adjust -C target-cpu if -march/-mcpu is set by bsd.cpu.mk
+.if ${ARCH} == amd64 || ${ARCH} == i386
+RUSTFLAGS+=	${CFLAGS:M-march=*:S/-march=/-C target-cpu=/}
+.else
+RUSTFLAGS+=	${CFLAGS:M-mcpu=*:S/-mcpu=/-C target-cpu=/}
+.endif
 
 # Helper to shorten cargo calls.
 CARGO_CARGO_RUN= \
@@ -103,28 +110,78 @@ CARGO_INSTALL_ARGS+=	--features='${CARGO_FEATURES}'
 CARGO_TEST_ARGS+=	--features='${CARGO_FEATURES}'
 .endif
 
-.if !defined(WITH_DEBUG) || defined(WITHOUT_DEBUG)
+.if !defined(WITH_DEBUG)
 CARGO_BUILD_ARGS+=	--release
 CARGO_TEST_ARGS+=	--release
 .else
 CARGO_INSTALL_ARGS+=	--debug
 .endif
 
-.if ${CARGO_CRATES:Mlibgit2-sys-*}
-# Use the system's libgit2 instead of building the bundled version
-LIB_DEPENDS+=	libgit2.so:devel/libgit2
-CARGO_ENV+=	LIBGIT2_SYS_USE_PKG_CONFIG=1
+.if ${CARGO_CRATES:Mbacktrace-sys-[0-9]*}
+BUILD_DEPENDS+=	gmake:devel/gmake
 .endif
 
-.if ${CARGO_CRATES:Mopenssl-sys-*}
+.if ${CARGO_CRATES:Mcmake-[0-9]*}
+BUILD_DEPENDS+=	cmake:devel/cmake
+.endif
+
+.if ${CARGO_CRATES:Mfreetype-sys-[0-9]*}
+LIB_DEPENDS+=	libfreetype.so:print/freetype2
+.endif
+
+.if ${CARGO_CRATES:Mgettext-sys-[0-9]*}
+.include "${USESDIR}/gettext.mk"
+CARGO_ENV+=	GETTEXT_BIN_DIR=${LOCALBASE}/bin \
+		GETTEXT_INCLUDE_DIR=${LOCALBASE}/include \
+		GETTEXT_LIB_DIR=${LOCALBASE}/lib
+.endif
+
+.if ${CARGO_CRATES:Mlibc-[0-9]*}
+# FreeBSD 12.0 changed ABI: r318736 and r320043
+# https://github.com/rust-lang/libc/commit/78f93220d70e
+# https://github.com/rust-lang/libc/commit/969ad2b73cdc
+_libc_VER=	${CARGO_CRATES:Mlibc-[0-9]*:C/.*-//}
+. if ${_libc_VER:R:R} == 0 && (${_libc_VER:R:E} < 2 || ${_libc_VER:R:E} == 2 && ${_libc_VER:E} < 38)
+DEV_WARNING+=	"CARGO_CRATES=libc-0.2.37 or older maybe unstable on FreeBSD 12.0. Consider updating to the latest version."
+. endif
+.undef _libc_VER
+.endif
+
+.if ${CARGO_CRATES:Mlibgit2-sys-[0-9]*}
+# Use the system's libgit2 instead of building the bundled version
+CARGO_ENV+=	LIBGIT2_SYS_USE_PKG_CONFIG=1
+LIB_DEPENDS+=	libgit2.so:devel/libgit2
+.endif
+
+.if ${CARGO_CRATES:Mlibssh2-sys-[0-9]*}
+# Use the system's libssh2 instead of building the bundled version
+CARGO_ENV+=	LIBSSH2_SYS_USE_PKG_CONFIG=1
+LIB_DEPENDS+=	libssh2.so:security/libssh2
+.endif
+
+.if ${CARGO_CRATES:Monig_sys-[0-9]*}
+# onig_sys always prefers the system library but will try to link
+# statically with it.  Since devel/oniguruma doesn't provide a static
+# library it'll link to libonig.so instead.  Strictly speaking setting
+# RUSTONIG_SYSTEM_LIBONIG is not necessary, but will force onig_sys to
+# always use the system's libonig as returned by `pkg-config oniguruma`.
+CARGO_ENV+=	RUSTONIG_SYSTEM_LIBONIG=1
+LIB_DEPENDS+=	libonig.so:devel/oniguruma
+.endif
+
+.if ${CARGO_CRATES:Mopenssl-sys-[0-9]*}
 # Make sure that openssl-sys can find the correct version of OpenSSL
 .include "${USESDIR}/ssl.mk"
 CARGO_ENV+=	OPENSSL_LIB_DIR=${OPENSSLLIB} \
 		OPENSSL_INCLUDE_DIR=${OPENSSLINC}
 .endif
 
-.if ${CARGO_CRATES:Mpkg-config-*}
+.if ${CARGO_CRATES:Mpkg-config-[0-9]*}
 .include "${USESDIR}/pkgconfig.mk"
+.endif
+
+.if ${CARGO_CRATES:Mthrussh-libsodium-[0-9]*}
+LIB_DEPENDS+=	libsodium.so:security/libsodium
 .endif
 
 _USES_extract+=	600:cargo-extract
@@ -202,8 +259,15 @@ do-test:
 # Helper targets for port maintainers
 #
 
-# cargo-crates will output the crates list from Cargo.lock.
+# cargo-crates will output the crates list from Cargo.lock.  If there
+# is no Cargo.lock for some reason, try and generate it first.
 cargo-crates: extract
+	@if [ ! -r "${CARGO_CARGOLOCK}" ]; then \
+		${ECHO_MSG} "===> ${CARGO_CARGOLOCK} not found.  Trying to generate it..."; \
+		${CARGO_CARGO_RUN} generate-lockfile \
+			--manifest-path ${CARGO_CARGOTOML} \
+			--verbose; \
+	fi
 	@${SETENV} USE_GITHUB=${USE_GITHUB} \
 		${AWK} -f ${SCRIPTSDIR}/cargo-crates.awk ${CARGO_CARGOLOCK}
 
@@ -215,5 +279,5 @@ cargo-crates-licenses: configure
 		| ${SED} \
 		-e 's@^${CARGO_VENDOR_DIR}/@@' \
 		-e 's@/Cargo.toml:license.*= *"@|@' \
-		-e 's@"$$@@g' | /usr/bin/column -t -s '|'
+		-e 's@"$$@@g' | sort | /usr/bin/column -t -s '|'
 .endif

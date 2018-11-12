@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	hunspell
-PORTVERSION=	0.4.1
-PORTREVISION=	1
+PORTVERSION=	0.5.5
 CATEGORIES=	textproc devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -15,7 +14,7 @@ LICENSE=	LGPL3
 
 LIB_DEPENDS=	libhunspell-${HSPLVER}.so:textproc/hunspell
 
-USES?=		python
+USES=		python
 USES+=		localbase
 USE_PYTHON=	distutils
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libraw
-PORTVERSION=	0.18.2
+PORTVERSION=	0.18.13
 PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	http://www.libraw.org/data/
@@ -24,22 +24,23 @@ INSTALL_TARGET=	install-strip
 PORTDOCS=	*
 PORTEXAMPLES=	*
 
+DEMOSAIC_PACK_VERSION=	0.18.8
+
 OPTIONS_DEFINE=		DEMOSAIC_PACK_GPL2 DEMOSAIC_PACK_GPL3 \
-			DOCS EXAMPLES JASPER JPEG LCMS2 OPENMP
-OPTIONS_DEFINE_i386=	OPTIMIZED_CFLAGS
+			DOCS EXAMPLES JASPER JPEG LCMS2 OPENMP OPTIMIZED_CFLAGS
 OPTIONS_DEFAULT=	JPEG LCMS2
 
 DEMOSAIC_PACK_GPL2_DESC=		GPLv2 demosaic pack
 DEMOSAIC_PACK_GPL2_CONFIGURE_OFF=	--disable-demosaic-pack-gpl2
-DEMOSAIC_PACK_GPL2_CONFIGURE_ON=	--enable-demosaic-pack-gpl2=../LibRaw-demosaic-pack-GPL2-${PORTVERSION}
-DEMOSAIC_PACK_GPL2_DISTFILES=		LibRaw-demosaic-pack-GPL2-${PORTVERSION}.tar.gz
+DEMOSAIC_PACK_GPL2_CONFIGURE_ON=	--enable-demosaic-pack-gpl2=../LibRaw-demosaic-pack-GPL2-${DEMOSAIC_PACK_VERSION}
+DEMOSAIC_PACK_GPL2_DISTFILES=		LibRaw-demosaic-pack-GPL2-${DEMOSAIC_PACK_VERSION}.tar.gz
 DEMOSAIC_PACK_GPL2_VARS=		LICENSE=GPLv2+ \
 					LICENSE_COMB=single
 
 DEMOSAIC_PACK_GPL3_DESC=		GPLv3 demosaic pack
 DEMOSAIC_PACK_GPL3_CONFIGURE_OFF=	--disable-demosaic-pack-gpl3
-DEMOSAIC_PACK_GPL3_CONFIGURE_ON=	--enable-demosaic-pack-gpl3=../LibRaw-demosaic-pack-GPL3-${PORTVERSION}
-DEMOSAIC_PACK_GPL3_DISTFILES=		LibRaw-demosaic-pack-GPL3-${PORTVERSION}.tar.gz
+DEMOSAIC_PACK_GPL3_CONFIGURE_ON=	--enable-demosaic-pack-gpl3=../LibRaw-demosaic-pack-GPL3-${DEMOSAIC_PACK_VERSION}
+DEMOSAIC_PACK_GPL3_DISTFILES=		LibRaw-demosaic-pack-GPL3-${DEMOSAIC_PACK_VERSION}.tar.gz
 DEMOSAIC_PACK_GPL3_VARS=		LICENSE=GPLv3+ \
 					LICENSE_COMB=single
 
@@ -57,6 +58,9 @@ OPENMP_CONFIGURE_ENABLE=		openmp
 OPENMP_USES=				compiler:openmp
 
 OPTIMIZED_CFLAGS_CFLAGS=		-O3
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|-lstdc++||g' ${WRKSRC}/*.pc.in
 
 # Use "\*" instead of "." in COPYTREE_SHARE commands as "." has
 # the undesired effect of copying ".deps" directory

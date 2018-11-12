@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	prosody
-PORTVERSION=	0.9.12
+PORTVERSION=	0.10.2
 CATEGORIES=	net-im
 MASTER_SITES=	http://prosody.im/downloads/source/ \
 		http://redundancy.redundancy.org/mirror/
@@ -16,11 +16,12 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 RUN_DEPENDS=	${LUA_MODLIBDIR}/socket/core.so:net/luasocket-51 \
 		${LUA_MODLIBDIR}/ssl.so:security/luasec-51 \
 		${LUA_MODLIBDIR}/lxp.so:textproc/luaexpat-51 \
-		${LUA_MODLIBDIR}/lfs.so:devel/luafilesystem-51
-
+		${LUA_MODLIBDIR}/lfs.so:devel/luafilesystem-51 \
+		${LUA_MODLIBDIR}/bit.so:devel/lua51-bitop
 LIB_DEPENDS=	libidn.so:dns/libidn
 
 USES=		cpe gmake lua:51 shebangfix ssl
+USE_CSTD=	c99
 SHEBANG_FILES=	prosody prosodyctl
 LUA_PREMK=	yes
 HAS_CONFIGURE=	yes

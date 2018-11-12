@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libpng.so:graphics/png
 
-USES=		python tar:bzip2
+USES=		python:2.7 tar:bzip2
 USE_SDL=	sdl pango
 USE_GL=		gl glu
 USE_PYTHON=	distutils
@@ -27,6 +27,8 @@ SUB_FILES=	plutocracy_
 
 PORTDOCS=	AUTHORS README
 PORTDATA=	*
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|span font|span font_desc|' \

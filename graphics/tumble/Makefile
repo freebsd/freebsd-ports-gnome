@@ -2,11 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	tumble
-PORTVERSION=	0.33
-PORTREVISION=	5
+PORTVERSION=	0.36
+DISTVERSIONPREFIX=	v
 CATEGORIES=	graphics print
-MASTER_SITES=	http://tumble.brouhaha.com/download/ \
-		http://www.sourcefiles.org/Graphics/Tools/Conversion/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Creates a PDF file from image files
@@ -14,13 +12,18 @@ COMMENT=	Creates a PDF file from image files
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+NOT_FOR_ARCHS=	powerpc sparc64
+NOT_FOR_ARCHS_REASON=	Only works on little endian systems
+
 LIB_DEPENDS=	libtiff.so:graphics/tiff \
 		libnetpbm.so:graphics/netpbm
 
 USES=		bison gmake jpeg localbase:ldflags
 
-NOT_FOR_ARCHS=	powerpc sparc64
-NOT_FOR_ARCHS_REASON=	Only works on little endian systems
+USE_GITHUB=	yes
+GH_ACCOUNT=	brouhaha
+
+CFLAGS+=	-I${LOCALBASE}/include/netpbm
 
 PORTDOCS=	README
 PLIST_FILES=	bin/tumble

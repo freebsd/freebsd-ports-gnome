@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	powder-toy
-PORTVERSION=	92.1
+PORTVERSION=	93.3
 DISTVERSIONPREFIX=	v
-DISTVERSIONSUFFIX=	.332 # build number, not part of official version
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -17,10 +16,10 @@ LIB_DEPENDS=	libfftw3f.so:math/fftw3-float \
 		libfftw3.so:math/fftw3
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	simtr
+GH_ACCOUNT=	ThePowderToy
 GH_PROJECT=	The-Powder-Toy
 
-USES=		scons localbase:ldflags lua:51
+USES=		compiler:c++11-lang scons localbase:ldflags lua:51 pkgconfig
 USE_SDL=	sdl
 USE_XORG=	x11
 
@@ -37,12 +36,18 @@ DESKTOP_ENTRIES="The Powder Toy" \
 		"Game;Simulation;" \
 		""
 
-OPTIONS_DEFINE=		DOCS OPTIMIZED_CFLAGS SSE
+OPTIONS_DEFINE=		DOCS OPTIMIZED_CFLAGS SSE SSE3 OPENGL
 OPTIONS_DEFAULT=	OPTIMIZED_CFLAGS
 OPTIONS_DEFAULT_amd64=	SSE
 # upstream also uses -funsafe-loop-optimizations, but it's not supported by clang
 OPTIMIZED_CFLAGS_CXXFLAGS=	-O3 -ftree-vectorize -funsafe-math-optimizations -ffast-math -fomit-frame-pointer
 SSE_MAKE_ARGS_OFF=	--no-sse
+SSE3_DESC=		Enable SSE3 optimizations
+SSE3_MAKE_ARGS=		--sse3
+SSE3_IMPLIES=		SSE
+OPENGL_USE=		GL=gl,glu,glew
+OPENGL_MAKE_ARGS=	--opengl --opengl-renderer
+OPENGL_BROKEN=		Application dies with SIGBUS at startup
 
 post-patch:
 	@${REINPLACE_CMD} -e '/#include/ s|lua5.1/|lua51/|' ${WRKSRC}/src/lua/LuaCompat.h

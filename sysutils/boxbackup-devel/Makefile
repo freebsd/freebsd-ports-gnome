@@ -3,6 +3,7 @@
 
 PORTNAME=	boxbackup
 PORTVERSION=	0.11.r${SVNVERSION:C/^[0-9\.]+_[a-z]+_([0-9]+)/\1/}
+PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.boxbackup.org/snapshots/201108/
 PKGNAMESUFFIX=	${CLIENT_OR_SERVER}-devel
@@ -17,10 +18,8 @@ LICENSE_FILE=	${WRKSRC}/LICENSE-DUAL.txt
 
 SVNVERSION=	0.11_trunk_2979
 
-USES=		perl5 ssl tar:tgz
+USES=		autoreconf perl5 ssl tar:tgz
 GNU_CONFIGURE=	yes
-USE_AUTOTOOLS=	autoconf aclocal autoheader
-ACLOCAL_ARGS+=	-I ${WRKSRC}/infrastructure/m4
 CFLAGS+=	-I${OPENSSLINC}
 LDFLAGS+=	-L${OPENSSLLIB}
 

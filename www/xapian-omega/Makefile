@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	xapian-omega
-PORTVERSION=	1.4.4
+PORTVERSION=	1.4.7
 CATEGORIES=	www
-MASTER_SITES=	http://oligarchy.co.uk/xapian/${PORTVERSION}/ \
+MASTER_SITES=	https://oligarchy.co.uk/xapian/${PORTVERSION}/ \
 		LOCAL/sunpoet
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -29,13 +29,8 @@ CONFIGURE_ARGS=	--datarootdir=${DATADIR} --docdir=${DOCSDIR}
 CONFIGURE_ENV=	PCRE_CONFIG=${LOCALBASE}/bin/pcre-config \
 		XAPIAN_CONFIG=${LOCALBASE}/bin/xapian-config
 GNU_CONFIGURE=	yes
+USES=		compiler:c++11-lang libtool localbase perl5 shebangfix tar:xz
 USE_LDCONFIG=	yes
-USES=		libtool localbase perl5 shebangfix tar:xz
-
-MORE_PORTDOCS=	AUTHORS ChangeLog NEWS README TODO
-PORTDATA=	*
-PORTDOCS=	*
-PORTEXAMPLES=	omega.conf
 
 SHEBANG_FILES=	dbi2omega htdig2omega mbox2omega
 
@@ -50,10 +45,11 @@ post-patch:
 			${WRKSRC}/Makefile.in
 
 post-install-DOCS-on:
-	cd ${WRKSRC}/ && ${INSTALL_DATA} ${MORE_PORTDOCS} ${STAGEDIR}${DOCSDIR}/
+	cd ${WRKSRC}/ && ${INSTALL_DATA} AUTHORS ChangeLog NEWS README TODO ${STAGEDIR}${DOCSDIR}/
 
 post-install-EXAMPLES-on:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/
-	cd ${WRKSRC}/ && ${INSTALL_DATA} ${PORTEXAMPLES} ${STAGEDIR}${EXAMPLESDIR}/
+	${INSTALL_DATA} ${WRKSRC}/omega.conf ${STAGEDIR}${EXAMPLESDIR}/
+	cd ${WRKSRC}/ && ${COPYTREE_SHARE} templates ${STAGEDIR}${EXAMPLESDIR}/
 
 .include <bsd.port.mk>

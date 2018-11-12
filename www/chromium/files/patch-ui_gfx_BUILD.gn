@@ -1,20 +1,11 @@
---- ui/gfx/BUILD.gn.orig	2017-06-05 19:03:30 UTC
-+++ ui/gfx/BUILD.gn
-@@ -358,7 +358,7 @@ component("gfx") {
+--- ui/gfx/BUILD.gn.orig	2018-08-01 00:09:48.000000000 +0200
++++ ui/gfx/BUILD.gn	2018-08-04 22:24:28.133674000 +0200
+@@ -568,7 +568,7 @@
+     deps += [ "//third_party/libdrm" ]
    }
  
-   # Linux.
--  if (is_linux) {
-+  if (is_linux || is_bsd) {
-     deps += [ "//build/linux:fontconfig" ]
+-  if (is_linux || is_android) {
++  if ((is_linux || is_android) && !is_bsd) {
+     deps += [ "//third_party/libsync" ]
    }
  
-@@ -581,7 +581,7 @@ static_library("test_support") {
-       "test/ui_cocoa_test_helper.mm",
-     ]
-   }
--  if (is_linux) {
-+  if (is_linux || is_bsd) {
-     deps += [ "//build/linux:fontconfig" ]
-   }
- }

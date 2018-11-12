@@ -1,18 +1,18 @@
---- src/pthread_debug.cc.orig	2017-07-03 08:59:29 UTC
+--- src/pthread_debug.cc.orig	2018-05-09 08:49:58 UTC
 +++ src/pthread_debug.cc
-@@ -76,6 +76,7 @@ void print_pthread_attr(const char *call
+@@ -87,6 +87,7 @@ print_pthread_attr(const char *caller, p
+   fprintf(stderr, "%-18s :  %-14s = %ld\n", caller, "stacksize", (long) stacksize);
  }
  
- 
 +#if defined (PTHREAD_MUTEXATTR_CONDATTR)
- void print_pthread_mutexattr(const char *caller,  pthread_mutexattr_t *m_attr)
+ void
+ print_pthread_mutexattr(const char *caller, pthread_mutexattr_t *m_attr)
  {
-   (void) caller;
-@@ -120,6 +121,7 @@ void print_pthread_condattr(const char *
-   (void) c_attr;
+@@ -118,6 +119,7 @@ PTHREAD_PRIO_NONE);
+   }
  #endif
  }
 +#endif
  
- 
- int PTHREAD_Debug = 0;
+ void
+ print_pthread_condattr(const char *caller, pthread_condattr_t *c_attr)

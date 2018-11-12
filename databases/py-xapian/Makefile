@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	xapian
-PORTVERSION=	1.4.4
+PORTVERSION=	1.4.7
 DISTVERSIONPREFIX=	bindings-
 CATEGORIES=	databases python
-MASTER_SITES=	http://oligarchy.co.uk/xapian/${PORTVERSION}/ \
+MASTER_SITES=	https://oligarchy.co.uk/xapian/${PORTVERSION}/ \
 		LOCAL/sunpoet
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -17,8 +17,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BROKEN_aarch64=	fails to build: Fatal Python error: swig_pythreadstate set in XapianSWIG_Python_Thread_Allow ctor
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinx>=1.4.8:textproc/py-sphinx \
-		xapian-core>=${PORTVERSION}:databases/xapian-core
+BUILD_DEPENDS=	xapian-core>=${PORTVERSION}:databases/xapian-core
 LIB_DEPENDS=	libxapian.so:databases/xapian-core
 
 CONFLICTS_INSTALL=	xapian-bindings12
@@ -33,9 +32,12 @@ CONFIGURE_ARGS=	--datarootdir=${DATADIR} --docdir=${DOCSDIR} \
 		--without-php --without-ruby --without-tcl
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-USES=		libtool python tar:xz
+USES=		compiler:c++11-lang libtool python tar:xz
+USE_PYTHON=	flavors
 
 PORTDOCS=	*
+
+DOCS_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinx>=1.4.8:textproc/py-sphinx@${PY_FLAVOR}
 
 .include <bsd.port.pre.mk>
 

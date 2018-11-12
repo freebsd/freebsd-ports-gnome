@@ -8,9 +8,7 @@ PKGNAMEPREFIX=	qt5-
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt build tools
 
-USE_QT5=	qmake_build
-QT_DIST=	base
-USES=		perl5
+USES=		perl5 qmake:no_env qt-dist:5,base
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	-no-gui -no-xcb
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}
@@ -20,6 +18,12 @@ INSTALL_WRKSRC=	${BUILD_WRKSRC}
 
 MORE_WRKSRCS=	src/tools/moc \
 		src/tools/rcc
+
+post-configure:
+.for d in src/tools/bootstrap ${MORE_WRKSRCS}
+	${MKDIR} ${WRKSRC}/${d}
+	cd ${WRKSRC}/${d} && ${SETENV} ${QMAKE_ENV} ${_QMAKE} ${QMAKE_ARGS} ${WRKSRC}/${d}
+.endfor
 
 post-build:
 .for d in ${MORE_WRKSRCS}

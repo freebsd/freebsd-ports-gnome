@@ -2,10 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	xapian-core
-PORTVERSION=	1.4.4
+PORTVERSION=	1.4.7
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	databases
-MASTER_SITES=	http://oligarchy.co.uk/xapian/${PORTVERSION}/ \
+MASTER_SITES=	https://oligarchy.co.uk/xapian/${PORTVERSION}/ \
 		LOCAL/sunpoet
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -13,8 +14,6 @@ COMMENT=	Probabilistic text search database engine
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-BROKEN_powerpc64=	fails to configure: A compiler with support for C++11 language features is required
 
 CONFLICTS_INSTALL=	xapian-core10 xapian-core12
 
@@ -25,15 +24,13 @@ PORTSCOUT=	limitw:1,even
 
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
+USES=		compiler:c++11-lang libtool pathfix tar:xz
 USE_LDCONFIG=	yes
-USES=		libtool pathfix tar:xz
-
-PORTDATA=	*
-PORTDOCS=	*
 
 SSE2_CONFIGURE_ENABLE=	sse
 
 post-install:
+	${INSTALL_PROGRAM} ${WRKSRC}/bin/xapian-inspect ${STAGEDIR}${PREFIX}/bin/xapian-inspect
 	${INSTALL_PROGRAM} ${WRKSRC}/examples/.libs/copydatabase ${STAGEDIR}${PREFIX}/bin/xapian-copydatabase
 	${INSTALL_PROGRAM} ${WRKSRC}/examples/.libs/quest ${STAGEDIR}${PREFIX}/bin/xapian-quest
 	${INSTALL_PROGRAM} ${WRKSRC}/examples/.libs/xapian-metadata ${STAGEDIR}${PREFIX}/bin/xapian-metadata

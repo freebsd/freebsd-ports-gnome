@@ -3,11 +3,11 @@
 
 PORTNAME=	playonbsd
 PORTVERSION=	4.2.10
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	emulators games
 
 MAINTAINER=	se@FreeBSD.org
-COMMENT=	Easily install and run Windows software for use with wine
+COMMENT=	Easily install and run Windows software for use with Wine
 
 LICENSE=	GPLv3
 

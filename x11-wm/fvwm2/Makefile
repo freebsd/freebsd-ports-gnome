@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	fvwm
-PORTVERSION=	2.6.7
-PORTREVISION=	3
+PORTVERSION=	2.6.8
+PORTREVISION=	2
 CATEGORIES=	x11-wm
-MASTER_SITES=	https://github.com/fvwmorg/fvwm/releases/download/2.6.7/ \
+MASTER_SITES=	https://github.com/fvwmorg/fvwm/releases/download/${PORTVERSION}/ \
 		http://www.fvwm.org/generated/icon_download/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
@@ -19,12 +19,12 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
 
 # Other ports this port cannot coexist with
-CONFLICTS?=	fvwm-1.* fvwm-2.[457].*
+CONFLICTS?=	fvwm1-1.* fvwm-2.[457].*
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-mandoc --without-gnome --disable-gtk
-CONFIGURE_ENV=	PYTHON=${PYTHON_CMD}
-USES=		gmake perl5 pkgconfig python:run gettext readline
+CONFIGURE_ARGS=	--disable-mandoc --without-gnome --disable-gtk \
+		ac_cv_path_PYTHON=${PYTHON_CMD}
+USES=		gmake perl5 pkgconfig python:3.4+ gettext readline
 USE_XORG=	xcursor xft xinerama xpm xrender x11 ice xext
 USE_GNOME=	cairo
 

@@ -3,7 +3,7 @@
 
 PORTNAME=	knights
 PORTVERSION=	2.5.0
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	games kde
 MASTER_SITES=	http://dl.dropbox.com/u/2888238/Knights/
 
@@ -14,9 +14,9 @@ RUN_DEPENDS=	${LOCALBASE}/bin/gnuchess:games/gnuchess
 
 LICENSE=	GPLv2
 
-USES=		cmake:outsource kde:4 tar:bzip2
+USES=		cmake:outsource kde:4 qt:4 tar:bzip2
 USE_KDE=	kdelibs automoc4 workspace libkdegames
-USE_QT4=	qmake_build moc_build rcc_build uic_build
+USE_QT=		qmake_build moc_build rcc_build uic_build
 
 OPTIONS_DEFINE=	DOCS NLS
 

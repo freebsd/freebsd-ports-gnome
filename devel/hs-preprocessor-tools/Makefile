@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	preprocessor-tools
-PORTVERSION=	1.0.1
-PORTREVISION=	1
+PORTVERSION=	2.0.2
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -10,7 +9,7 @@ COMMENT=	Framework for extending Haskell's syntax via quick-and-dirty preprocess
 
 LICENSE=	BSD3CLAUSE
 
-USE_CABAL=	mtl>=1 parsec>=3 syb>=0
+USE_CABAL=	mtl>=1 syb>=0
 
 .include "${.CURDIR}/../../lang/ghc/bsd.cabal.mk"
 .include <bsd.port.mk>

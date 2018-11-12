@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	exim
-PORTVERSION=	4.89
+PORTVERSION=	4.91
 CATEGORIES=	mail
 MASTER_SITES=	EXIM
 MASTER_SITE_SUBDIR=	/exim4/ \
@@ -23,6 +23,8 @@ AVAILABLE_FORMATS=	html \
 					pdf \
 					postscript
 NO_BUILD=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .if make(makesum) && !defined(FETCH_ALL)
 .error "You forgot to define FETCH_ALL to create the sane distinfo"

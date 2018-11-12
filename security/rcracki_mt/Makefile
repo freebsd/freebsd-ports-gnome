@@ -11,7 +11,7 @@ COMMENT=	Rainbow table based crack tool
 
 LICENSE=	GPLv2
 
-NOT_FOR_ARCHS=	aarch64 armv6 mips mips64 sparc64
+NOT_FOR_ARCHS=	aarch64 armv6 armv7 mips mips64 sparc64
 NOT_FOR_ARCHS_REASON=	cannot detect endianness
 
 WRKSRC=		${WRKDIR}/${DISTNAME}/${PORTNAME}
@@ -20,6 +20,8 @@ USES=		7z gmake ssl
 
 PLIST_FILES=	bin/${PORTNAME}
 PORTDOCS=	ChangeLog.txt README.txt
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} \

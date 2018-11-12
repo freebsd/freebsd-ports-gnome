@@ -6,7 +6,7 @@ DISTVERSIONPREFIX=	v
 CATEGORIES=	databases
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Non-blocking Redis client for Erlang
 
 LICENSE=	MIT
@@ -14,5 +14,7 @@ LICENSE=	MIT
 USES=		erlang:rebar
 USE_GITHUB=	yes
 GH_ACCOUNT=	wooga
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

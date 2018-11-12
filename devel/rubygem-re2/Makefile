@@ -1,18 +1,18 @@
 # $FreeBSD$
 
 PORTNAME=	re2
-PORTVERSION=	1.0.0
-PORTREVISION=	1
+PORTVERSION=	1.1.1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
-MAINTAINER=	tz@FreeBSD.org
+MAINTAINER=	mfechner@FreeBSD.org
 COMMENT=	Ruby bindings to re2
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 BUILD_DEPENDS=	re2>=0:devel/re2
+LIB_DEPENDS=	libgmp.so:math/gmp
 RUN_DEPENDS=	re2>=0:devel/re2
 
 USE_RUBY=	yes

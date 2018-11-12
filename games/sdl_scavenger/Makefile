@@ -3,13 +3,13 @@
 
 PORTNAME=	sdl_scavenger
 PORTVERSION=	145.2015.01.05
-PORTREVISION=	3
+PORTREVISION=	5
 PORTEPOCH=	1
 CATEGORIES=	games
 MASTER_SITES=	SF/sdlscavenger/
 DISTNAME=	sdlscav-145.4_2015_01_05
 
-MAINTAINER=	nemysis@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Lode Runner like game
 
 LICENSE=	GPLv1
@@ -20,7 +20,6 @@ USES=		gmake shebangfix tar:tgz
 SHEBANG_FILES=	scavsaver
 bash_CMD=	/bin/sh
 USE_SDL=	sdl image mixer
-USE_GCC=	yes
 ALL_TARGET=
 
 PORTDOCS=	CREDITS DOC NEW_FEATURES README STRATEGY

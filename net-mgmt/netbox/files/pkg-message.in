@@ -1,0 +1,27 @@
+================================================================================
+
+ UPGRADING 
+===========
+
+As always it is strongly encouraged to make a backup of the database before the
+database migrations will be executed.
+
+The following steps are required to finish the upgrade: 
+
+1. Run database migrations and collect static files:
+
+# cd %%DATADIR%%
+# python%%PYTHON_VER%% manage.py migrate
+# python%%PYTHON_VER%% manage.py collectstatic --no-input
+
+2. Restart WSGI/httpd environment (supervisord/apache/nginx/etc.)
+
+
+ INSTALLING 
+============
+
+For installation instructions please refer to the related wiki page:
+
+- https://wiki.freebsd.org/Ports/net-mgmt/netbox
+
+================================================================================

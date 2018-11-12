@@ -2,18 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	libmaia
-PORTVERSION=	0.0.20150218
+DISTVERSIONPREFIX=	v
+DISTVERSION=	0.9.0
+PORTREVISION=	1
 CATEGORIES=	net
 
-MAINTAINER=	pawel@FreeBSD.org
+MAINTAINER=	kde@FreeBSD.org
 COMMENT=	XML-RPC lib for Qt
 
+USES=		gmake qmake qt:5
 USE_GITHUB=	yes
 GH_ACCOUNT=	wiedi
-GH_TAGNAME=	e930451
-
-USES=		gmake qmake
-USE_QT5=	buildtools_build network xml
+USE_QT=		buildtools_build network xml
 
 PLIST_FILES=	include/maia/maiaObject.h \
 		include/maia/maiaXmlRpcClient.h \

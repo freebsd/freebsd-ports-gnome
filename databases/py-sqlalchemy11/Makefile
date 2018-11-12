@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sqlalchemy
-PORTVERSION=	1.1.14
+PORTVERSION=	1.1.18
 CATEGORIES=	databases python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,28 +14,28 @@ COMMENT=	Python SQL toolkit and Object Relational Mapper 1.1.x
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mock>=0:devel/py-mock \
-		${PYTHON_PKGNAMEPREFIX}pytest>=2.5.2:devel/py-pytest \
-		${PYTHON_PKGNAMEPREFIX}pytest-xdist>=0:devel/py-pytest-xdist
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mock>=0:devel/py-mock@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytest>=2.5.2:devel/py-pytest@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytest-xdist>=0:devel/py-pytest-xdist@${PY_FLAVOR}
 
-CONFLICTS_INSTALL=	${PYTHON_PKGNAMEPREFIX}sqlalchemy0 ${PYTHON_PKGNAMEPREFIX}sqlalchemy10
+CONFLICTS_INSTALL=	${PYTHON_PKGNAMEPREFIX}sqlalchemy1[02]
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 OPTIONS_MULTI=	BACKEND
 OPTIONS_MULTI_BACKEND=	MSSQL MYSQL PGSQL SQLITE SYBASE
 OPTIONS_DEFAULT=SQLITE
 
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	autoplist concurrent distutils
 USES=		python
 
 PORTDOCS=	*
 PORTEXAMPLES=	*
 
-MSSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mssql>=0:databases/py-pymssql
-MYSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pymysql>=0:databases/py-pymysql
-PGSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>=2.5.0:databases/py-psycopg2
-SQLITE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3
-SYBASE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sybase>=0:databases/py-sybase
+MSSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pymssql>=0:databases/py-pymssql@${PY_FLAVOR}
+MYSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pymysql>=0:databases/py-pymysql@${PY_FLAVOR}
+PGSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>=2.5.0:databases/py-psycopg2@${PY_FLAVOR}
+SQLITE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3@${PY_FLAVOR}
+SYBASE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sybase>=0:databases/py-sybase@${PY_FLAVOR}
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/sqlalchemy/*.so

@@ -2,31 +2,25 @@
 # $FreeBSD$
 
 PORTNAME=	geoipupdate
-PORTVERSION=	2.4.0
-DISTVERSIONPREFIX=	v
+PORTVERSION=	3.1.1
 CATEGORIES=	net geography
+MASTER_SITES=	https://github.com/maxmind/geoipupdate/releases/download/v${PORTVERSION}/
 
 MAINTAINER=	adamw@FreeBSD.org
-COMMENT=	Fetch the latest copies of the paid GeoIP database
+COMMENT=	Fetch the latest copies of the paid GeoIP2 databases
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	maxmind
-
-USES=		libtool localbase pathfix autoreconf
+USES=		libtool localbase pathfix
 GNU_CONFIGURE=	yes
 
 OPTIONS_DEFINE=	DOCS
 
-post-patch:
-# This directory is handled by net/GeoIP
-	@${REINPLACE_CMD} -e '/MKDIR_P.*(datarootdir)\/GeoIP/ d' \
-		${WRKSRC}/Makefile.am
-
 post-install:
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/GeoIP
 	${MV} ${STAGEDIR}${DOCSDIR}/GeoIP.conf.default \
 		${STAGEDIR}${PREFIX}/etc/GeoIP.conf.sample
 

@@ -3,7 +3,6 @@
 
 PORTNAME=	munin
 PORTVERSION=	${MUNIN_VERSION}
-PORTREVISION=	1
 CATEGORIES=	sysutils perl5
 MASTER_SITES=	${MUNIN_SITES}
 PKGNAMESUFFIX=	-master
@@ -38,8 +37,6 @@ RUN_DEPENDS=	munin-common>=${MUNIN_VERSION}:sysutils/munin-common \
 		p5-FCGI>=0:www/p5-FCGI
 
 USES=		gmake perl5 cpe
-
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 .include "${.CURDIR}/../munin-common/munin.mk"
 

@@ -24,7 +24,6 @@ RUN_DEPENDS=	update-mime-database:misc/shared-mime-info
 USES=		desktop-file-utils linux shared-mime-info tar:xz
 USE_LINUX=	gtk2 sqlite3 xorglibs
 ONLY_FOR_ARCHS=	i386 amd64
-WANT_GNOME=	yes
 INSTALLS_ICONS=	yes
 
 NO_BUILD=	yes
@@ -38,6 +37,8 @@ RENAME=		opera lib/opera \
 		share/applications/opera-browser.desktop \
 		share/doc/opera share/opera man/man1/opera.1 \
 		share/mime/packages/opera-extension.xml
+
+OPTIONS_DEFINE=	DOCS
 
 post-extract:
 	@${GUNZIP_CMD} ${WRKSRC}/share/man/man1/*.gz

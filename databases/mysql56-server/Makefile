@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME?=	mysql
-PORTVERSION=	5.6.37
-PORTREVISION=	1
+PORTVERSION=	5.6.41
+PORTREVISION?=	0
 CATEGORIES=	databases ipv6
 MASTER_SITES=	MYSQL/MySQL-5.6
 PKGNAMESUFFIX?=	56-server
@@ -133,6 +133,14 @@ FEDERATED_SUB_LIST+=		FEDER="--federated"
 FEDERATED_SUB_LIST_OFF+=	FEDER=""
 .endif
 
+.include <bsd.port.options.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200057
+SUB_LIST+=	LEGACY_LIMITS="@comment " MODERN_LIMITS=""
+.else
+SUB_LIST+=	LEGACY_LIMITS="" MODERN_LIMITS="@comment "
+.endif
+
 .include <bsd.port.pre.mk>
 
 post-patch:
@@ -147,7 +155,7 @@ post-install:
 	${MKDIR} ${STAGEDIR}${MY_TMPDIR}
 .endif
 
-.if ${ARCH} == "armv6"
+.if ${ARCH} == armv6 || ${ARCH} == armv7
 EXTRA_PATCHES+=		${FILESDIR}/extra-patch-config.h.cmake
 .endif
 

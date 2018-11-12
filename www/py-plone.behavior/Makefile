@@ -12,11 +12,11 @@ COMMENT=	Infrastructure for maintaining a registry of available behaviors
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.component>0:devel/py-zope.component \
-		${PYTHON_PKGNAMEPREFIX}zope.interface>0:devel/py-zope.interface \
-		${PYTHON_PKGNAMEPREFIX}zope.schema>0:devel/py-zope.schema \
-		${PYTHON_PKGNAMEPREFIX}zope.annotation>0:devel/py-zope.annotation \
-		${PYTHON_PKGNAMEPREFIX}zope.configuration>0:devel/py-zope.configuration
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.component>0:devel/py-zope.component@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.interface>0:devel/py-zope.interface@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.schema>0:devel/py-zope.schema@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.annotation>0:devel/py-zope.annotation@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.configuration>0:devel/py-zope.configuration@${PY_FLAVOR}
 
 NO_ARCH=	yes
 USES=		python:2.7

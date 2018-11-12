@@ -1,17 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	kapman
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	games kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	games kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	${${PORTNAME}_DESC}
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs libkdegames automoc4
-USE_QT4=	corelib gui xml \
-		moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs completion config configwidgets coreaddons crash \
+		dbusaddons ecm i18n libkdegames notifyconfig widgetsaddons \
+		windowsystem xmlgui
+USE_QT=		core dbus gui network qml quick svg widgets xml \
+		buildtools_build qmake_build
 
-.include <${.CURDIR}/../kdegames4/Makefile.common>
+OPTIONS_DEFINE=	DOCS
+
+.include <${.CURDIR}/../kdegames/Makefile.common>
 .include <bsd.port.mk>

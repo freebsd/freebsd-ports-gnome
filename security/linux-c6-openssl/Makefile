@@ -3,7 +3,7 @@
 
 PORTNAME=	openssl
 PORTVERSION=	1.0.1e
-PORTREVISION=	14
+PORTREVISION=	15
 CATEGORIES=	security linux
 
 MAINTAINER=	emulation@FreeBSD.org
@@ -14,5 +14,7 @@ RPMVERSION=	57.el6
 USES=		linux:c6
 USE_LDCONFIG=	yes
 USE_LINUX_RPM=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

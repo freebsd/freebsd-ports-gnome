@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	the_silver_searcher
-PORTVERSION=	2.1.0
+PORTVERSION=	2.2.0
 CATEGORIES=	textproc
 
 MAINTAINER=	olgeni@FreeBSD.org
@@ -16,8 +16,6 @@ TEST_DEPENDS=	cram:devel/cram
 USE_GITHUB=	yes
 GH_ACCOUNT=	ggreer
 
-ACLOCAL_ARGS+=	-I ${ACLOCAL_DIR}
-AUTOMAKE_ARGS+=	--add-missing
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	LZMA_LIBS=-llzma
 CONFIGURE_ARGS+=LZMA_CFLAGS=-I/usr/include

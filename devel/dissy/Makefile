@@ -3,7 +3,7 @@
 
 PORTNAME=	dissy
 PORTVERSION=	10
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	devel
 
 MAINTAINER=	sbz@FreeBSD.org
@@ -12,17 +12,19 @@ COMMENT=	Graphical frontend to the objdump disassembler
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}gtk2>0:x11-toolkits/py-gtk2 \
-		${PYTHON_PKGNAMEPREFIX}webkitgtk>0:www/py-webkitgtk
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}gtk2>0:x11-toolkits/py-gtk2@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}webkitgtk>0:www/py-webkitgtk@${PY_FLAVOR}
 LIB_DEPENDS=	librsvg-2.so:graphics/librsvg2
 
-USES=		python:2
+USES=		python:2.7
 USE_PYTHON=	distutils
 USE_GITHUB=	yes
 GH_ACCOUNT=	SimonKagstrom
 GH_TAGNAME=	2f1005e
 
 PORTDOCS=	COPYING ChangeLog README UPGRADE
+
+OPTIONS_DEFINE=	DOCS
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

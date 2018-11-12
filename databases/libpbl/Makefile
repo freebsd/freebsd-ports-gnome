@@ -16,6 +16,7 @@ MAKEFILE=	makefile
 TEST_TARGET=	test
 
 BROKEN_armv6=	Fails to build: cannot compile pblPerform.c
+BROKEN_armv7=	Fails to build: cannot compile pblPerform.c
 BROKEN_mips=	Fails to build: cannot compile pblPerform.c
 
 WRKSRC=		${WRKDIR}/${DISTNAME}/src
@@ -23,6 +24,8 @@ WRKSRC=		${WRKDIR}/${DISTNAME}/src
 PLIST_FILES=	include/pbl.h \
 		lib/libpbl.a
 PORTDOCS=	*
+
+OPTIONS_DEFINE=	DOCS
 
 post-extract:
 	@${REINPLACE_CMD} -e 's/=  -Wall -O3/+=  -Wall -Werror/' \

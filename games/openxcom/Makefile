@@ -4,13 +4,13 @@
 PORTNAME=	openxcom
 PORTVERSION=	1.0
 DISTVERSIONPREFIX=	v
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Open-source reimplementation of the original X-Com
 
-LICENSE=	GPLv3
+LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 LIB_DEPENDS=	libyaml-cpp.so:devel/yaml-cpp
@@ -22,6 +22,7 @@ GH_ACCOUNT=	SupSuper
 GH_PROJECT=	OpenXcom
 
 USES=		compiler:c++11-lang gmake pkgconfig
+USE_CXXSTD=	c++11
 USE_SDL=	sdl mixer image gfx
 USE_GL=		gl
 
@@ -46,8 +47,10 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/
 	${INSTALL_DATA} ${WRKSRC}/res/linux/openxcom.desktop ${STAGEDIR}${PREFIX}/share/applications/
 	${INSTALL_DATA} ${WRKSRC}/res/linux/icons/openxcom.svg ${STAGEDIR}${PREFIX}/share/pixmaps/
-	cd ${WRKSRC}/bin && ${COPYTREE_SHARE} data ${STAGEDIR}${DATADIR}/
-	${MKDIR} ${STAGEDIR}${DOCSDIR}
+	@cd ${WRKSRC}/bin && ${COPYTREE_SHARE} data ${STAGEDIR}${DATADIR}/
+
+do-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README.txt ${WRKSRC}/CHANGELOG.txt ${STAGEDIR}${DOCSDIR}/
 
 .include <bsd.port.mk>

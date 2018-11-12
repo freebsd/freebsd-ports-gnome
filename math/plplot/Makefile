@@ -3,7 +3,7 @@
 
 PORTNAME=	plplot
 PORTVERSION=	5.12.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	math science
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}%20Source
 
@@ -50,7 +50,7 @@ FORTRAN_CMAKE_BOOL=	ENABLE_f95
 FORTRAN_CONFIGURE_ENV=	CMAKE_Fortran_COMPILER="${FC}"
 
 GD_LIB_DEPENDS=		libgd.so:graphics/gd \
-			libpng16.so:graphics/png
+			libpng.so:graphics/png
 GD_USES=		jpeg
 GD_CMAKE_BOOL=		PLD_png
 
@@ -58,12 +58,14 @@ LUA_USES=		lua:51
 LUA_CMAKE_BOOL=		ENABLE_lua
 LUA_CMAKE_ON=		-DLUA_EXECUTABLE:FILEPATH="${LUA_CMD}"
 
-PYTHON_USES=		python
-PYTHON_BUILD_DEPENDS=	swig:devel/swig13 \
+PYTHON_USES=		python:2.7
+PYTHON_BUILD_DEPENDS=	swig3.0:devel/swig30 \
 			${PYNUMPY}
+PYTHON_BINARY_ALIAS=	swig=swig3.0
 PYTHON_RUN_DEPENDS=	${PYNUMPY}
 PYTHON_CMAKE_BOOL=	ENABLE_python
 PYTHON_CONFIGURE_ENV=	PYTHON_VERSION="${PYTHON_VERSION}"
+PYTHON_BROKEN=		Does not package
 
 QHULL2003_DESC=		Legacy Qhull support
 QHULL2015_DESC=		Latest Qhull support
@@ -93,7 +95,8 @@ TCLTK_CMAKE_ON=		-DPLPLOT_TK_VERSION:STRING="${TK_VER}" \
 
 THREADS_CMAKE_BOOL=	THREADS_HAVE_PTHREAD_ARG
 
-QT4_USE=		QT4=corelib,gui,svg,xml,moc_build,qmake_build,rcc_build,uic_build
+QT4_USES=		qt:4
+QT4_USE=		QT=corelib,gui,svg,xml,moc_build,qmake_build,rcc_build,uic_build
 QT4_CMAKE_BOOL=		ENABLE_qt
 QT4_CMAKE_BOOL_OFF=	DEFAULT_NO_QT_DEVICES
 

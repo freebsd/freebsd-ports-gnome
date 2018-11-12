@@ -34,7 +34,8 @@ PATCHFILES=	patch-7u45-b30.xz \
 		patch-7u121-b00.xz \
 		patch-7u131-b00.xz \
 		patch-7u141-b02.xz \
-		patch-7u151-b01.xz
+		patch-7u151-b01.xz \
+		patch-7u161-b01.xz
 
 MAINTAINER?=	glewis@FreeBSD.org
 COMMENT?=	Java Development Kit 7
@@ -77,7 +78,7 @@ JAVAVMS_COMMENT+=	JRE
 INSTALLDIR=	${PREFIX}/${PORTNAME}${JDK_MAJOR_VERSION}-jre
 .endif
 
-PORT_MINOR_VERSION=	151
+PORT_MINOR_VERSION=	161
 PORT_BUILD_NUMBER=	01
 JDK_MAJOR_VERSION=	7
 JDK_MINOR_VERSION=	40
@@ -138,7 +139,7 @@ MAKE_ENV+=	HOTSPOT_BUILD_JOBS=${MAKE_JOBS_NUMBER}
 
 BOOTSTRAP_JDKS=	${LOCALBASE}/openjdk7 \
 		${LOCALBASE}/openjdk6 \
-		${LOCALBASE}/bootstrap-openjdk
+		${LOCALBASE}/bootstrap-openjdk6
 
 DEBUG_MAKE_ENV=	ALT_OBJCOPY=${NONEXISTENT}
 POLICY_MAKE_ENV=	UNLIMITED_CRYPTO=1
@@ -155,11 +156,17 @@ BOOTSTRAPJDKDIR=	${BJDK}
 
 # if no valid jdk found, set dependency
 .if !defined(BOOTSTRAPJDKDIR)
-BOOTSTRAPJDKDIR?=	${LOCALBASE}/bootstrap-openjdk
-BUILD_DEPENDS+=		${BOOTSTRAPJDKDIR}/bin/javac:java/bootstrap-openjdk
+BOOTSTRAPJDKDIR?=	${LOCALBASE}/bootstrap-openjdk6
+BUILD_DEPENDS+=		${BOOTSTRAPJDKDIR}/bin/javac:java/bootstrap-openjdk6
 .endif
 
 .include <bsd.port.pre.mk>
+
+.if ${ARCH} == i386
+# Fix the build for i386 when WITH_LLD_IS_LD is set
+# https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=225741
+MAKE_ENV+=	LFLAGS="-Wl,-z,notext"
+.endif
 
 # GCC is broken with PCH: https://lists.freebsd.org/pipermail/svn-src-all/2015-March/101722.html
 .if ${COMPILER_TYPE} == gcc

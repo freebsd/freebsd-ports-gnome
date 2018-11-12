@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wordpress
-PORTVERSION=	4.8.1
+DISTVERSION=	4.9.8
 DISTVERSIONSUFFIX=	-ja
 CATEGORIES=	japanese www
 MASTER_SITES=	http://ja.wordpress.org/
@@ -23,8 +23,8 @@ USE_PHP=	curl gd mysqli pcre tokenizer xml zip zlib ftp
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
 CPE_LANG=	ja
-.if ${PORTVERSION:N*.*.*}
-CPE_VERSION=	${PORTVERSION}.0
+.if ${DISTVERSION:N*.*.*}
+CPE_VERSION=	${DISTVERSION}.0
 .endif
 
 SUB_FILES=	pkg-message
@@ -36,7 +36,9 @@ OPTIONS_DEFINE=	DOCS
 pre-everything::
 	@${ECHO_CMD} "If you want to upgrade, you must read upgrade document."
 	@${ECHO_CMD} ""
+.  if !(defined(PACKAGE_BUILDING) || defined(BATCH))
 	@sleep 1
+.  endif
 
 pre-install:
 	${ECHO_CMD} '@owner www' > ${PLIST}

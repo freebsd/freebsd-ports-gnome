@@ -3,11 +3,11 @@
 
 PORTNAME=	lockfree-malloc
 PORTVERSION=	0.0.${DATE}
-PORTREVISION=	6
+PORTREVISION=	8
 CATEGORIES=	devel
 MASTER_SITES=	LOCAL/vg
 
-MAINTAINER=	vg@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Scalable drop-in replacement for malloc/free
 
 LICENSE=	LGPL3

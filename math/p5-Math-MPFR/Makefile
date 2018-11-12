@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Math-MPFR
-PORTVERSION=	3.36
+PORTVERSION=	4.04
 CATEGORIES=	math perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Perl interface to MPFR Library
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 LIB_DEPENDS=	libgmp.so:math/gmp \
@@ -22,6 +22,9 @@ TEST_DEPENDS=	p5-Math-GMP>=0:math/p5-Math-GMP \
 
 USE_PERL5=	configure
 USES=		localbase perl5
+
+post-patch:
+	@${REINPLACE_CMD} -e 's| -lquadmath||' ${WRKSRC}/Makefile.PL
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/${SITE_ARCH_REL}/auto/Math/MPFR/MPFR.so

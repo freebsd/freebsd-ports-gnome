@@ -17,7 +17,7 @@ EXTRACT_ONLY=	${PORTNAME}-${DISTVERSION}${EXTRACT_SUFX} \
 		rocksndiamonds-3.3.1.0${EXTRACT_SUFX} \
 		${PORTNAME}_icons.tar.gz
 
-MAINTAINER=	nemysis@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Colorful Boulderdash'n'Emerald Mine'n'Sokoban'n'Stuff jue
 
 LICENSE=	GPLv2
@@ -44,6 +44,8 @@ ICON_SIZES=	32x32 48x48 64x64 72x72 96x96
 
 DESKTOP_ENTRIES="R'n'D jue" "" "${PORTNAME}" \
 		"${PORTNAME}" "Game;ArcadeGame;" ""
+
+OPTIONS_DEFINE=	DOCS
 
 post-extract-script:
 	@(cd ${WRKDIR}/rocksndiamonds* && ${COPYTREE_SHARE} levels ${WRKSRC})

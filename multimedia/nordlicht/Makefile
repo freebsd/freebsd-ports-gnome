@@ -4,7 +4,7 @@
 PORTNAME=	nordlicht
 PORTVERSION=	0.4.5
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	multimedia
 
 MAINTAINER=	tobik@FreeBSD.org
@@ -29,6 +29,8 @@ BROKEN_aarch64=		Fails to install: runaway process
 BROKEN_powerpc64=	Does not build
 
 SHEBANG_FILES=	utils/mpv-nordlicht
+
+OPTIONS_DEFINE=	EXAMPLES
 
 post-patch:
 	@${REINPLACE_CMD} \

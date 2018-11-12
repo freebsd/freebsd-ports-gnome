@@ -1,27 +1,40 @@
 # $FreeBSD$
 
 PORTNAME=	kget
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	6
-CATEGORIES=	net kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	net kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE download manager
 
-LIB_DEPENDS=	libgpgme.so:security/gpgme \
-		libktorrent.so:net-p2p/libktorrent \
-		libmms.so:net/libmms \
-		libqca.so:devel/qca \
-		libboost_thread.so:devel/boost-libs
+LIB_DEPENDS=    libKF5Torrent.so:net-p2p/libktorrent  \
+		libassuan.so:security/libassuan \
+		libgcrypt.so:security/libgcrypt \
+		libgmp.so:math/gmp \
+		libgpg-error.so:security/libgpg-error \
+		libgpgme.so:security/gpgme \
+		libgpgmepp.so:security/gpgme-cpp \
+		libqca-qt5.so:devel/qca@qt5 \
+		libqgpgme.so:security/gpgme-qt5
 
-USES=		cmake:outsource kde:4 shebangfix sqlite tar:xz
-USE_KDE=	kdelibs workspace libkonq \
-		nepomuk-core nepomuk-widgets automoc4 ontologies \
-		soprano
-SHEBANG_FILES=	conf/*.pl
-USE_QT4=	gui sql moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource kde:5 qt:5 shebangfix sqlite tar:xz
+
+USE_KDE=	archive auth bookmarks codecs completion config configwidgets \
+		coreaddons crash dbusaddons emoticons guiaddons i18n \
+		iconthemes itemmodels itemviews jobwidgets kcmutils \
+		kdelibs4support kio notifications notifyconfig parts service \
+		solid sonnet textwidgets unitconversion wallet widgetsaddons \
+		windowsystem xmlgui
+USE_QT=	        core dbus gui network printsupport sql widgets xml \
+		buildtools_build qmake_build
+
 USE_LDCONFIG=	yes
+SHEBANG_FILES=	conf/*.pl
+
+
 MAKE_ENV=	XDG_CONFIG_HOME=/dev/null
 CONFIGURE_ENV=	XDG_CONFIG_HOME=/dev/null
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

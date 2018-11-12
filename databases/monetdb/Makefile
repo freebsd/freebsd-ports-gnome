@@ -3,7 +3,7 @@
 
 PORTNAME=	monetdb
 PORTVERSION=	11.15.19
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	databases
 MASTER_SITES=	http://www.monetdb.org/downloads/sources/Feb2013-SP6/
 DISTNAME=	MonetDB-${PORTVERSION}
@@ -35,7 +35,7 @@ CFLAGS+=	-I${PREFIX}/include
 INSTALL_TARGET=	install-strip
 
 OPTIONS_DEFINE=		CONSOLE CURL DATACELL FITS GEOM JDBC MEROCONTROL ODBC \
-			PERL RDF RUBYGEMS SPHINXCLIENT TESTING OPTIMIZE
+			PERL RDF RUBYGEMS SPHINXCLIENT TESTING OPTIMIZE DOCS
 OPTIONS_RADIO=		PYTHON
 OPTIONS_RADIO_PYTHON=	PYTHON2 PYTHON3
 OPTIONS_SINGLE=		PASSWD_HASH_ALGORITHM
@@ -117,8 +117,6 @@ RDF_CONFIGURE_ENABLE=		rdf
 SPHINXCLIENT_LIB_DEPENDS=	libsphinxclient.so:textproc/libsphinxclient
 RUBYGEMS_BUILD_DEPENDS=		gem:devel/ruby-gems
 RUBYGEMS_RUN_DEPENDS=		gem:devel/ruby-gems
-PYTHON3_BUILD_DEPENDS=		python3:lang/python3
-PYTHON3_RUN_DEPENDS=		python3:lang/python3
 CURL_LIB_DEPENDS=		libcurl.so:ftp/curl
 FITS_LIB_DEPENDS=		libcfitsio.so:astro/cfitsio
 GEOM_LIB_DEPENDS=		libgeos.so:graphics/geos
@@ -177,7 +175,7 @@ PLIST_SUB+=	PYTHON="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MPYTHON2}
-USES+=		python:2
+USES+=		python:2.7
 PLIST_SUB+=	PYTHON_VER=${PYTHON_VER}
 CONFIGURE_ARGS+=	--with-python2=${PYTHON_CMD} \
 			--without-python3
@@ -186,7 +184,7 @@ CONFIGURE_ARGS+=	--without-python2
 .endif
 
 .if ${PORT_OPTIONS:MPYTHON3}
-USES+=		python:3
+USES+=		python:3.4+
 USE_PYTHON=	py3kplist
 PLIST_SUB+=	PYTHON_VER=${PYTHON_VER}
 CONFIGURE_ARGS+=	--with-python3=${PYTHON_CMD} \

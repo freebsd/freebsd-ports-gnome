@@ -11,10 +11,9 @@ COMMENT=	DTrace consumer for Python based on libdtrace
 
 LICENSE=	MIT
 
-BUILD_DEPENDS=	cython:lang/cython
-RUN_DEPENDS=	cython:lang/cython
+BROKEN_powerpc64=	fails to compile: dtrace_cython/consumer.c:476:20: dtrace.h: No such file or directory
 
 USES=		python zip
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	autoplist distutils cython cython_run
 
 .include <bsd.port.mk>

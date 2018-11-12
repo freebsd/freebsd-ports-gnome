@@ -2,16 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	httpuv
-PORTVERSION=	1.3.5
+PORTVERSION=	1.4.5
 CATEGORIES=	www
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
 MAINTAINER=	tota@FreeBSD.org
 COMMENT=	HTTP and WebSocket server library for R
 
-LICENSE=	GPLv3
+LICENSE=	GPLv2+
 
-RUN_DEPENDS=	R-cran-Rcpp>=0.11.0:devel/R-cran-Rcpp
+CRAN_DEPENDS=	R-cran-Rcpp>=0.11.0:devel/R-cran-Rcpp \
+		R-cran-promises>0:devel/R-cran-promises \
+		R-cran-later>=0.7.3:devel/R-cran-later \
+		R-cran-BH>0:devel/R-cran-BH
+BUILD_DEPENDS=	${CRAN_DEPENDS}
+RUN_DEPENDS=	${CRAN_DEPENDS}
 
 USES=		cran:auto-plist,compiles
 

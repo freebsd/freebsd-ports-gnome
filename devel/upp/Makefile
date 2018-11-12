@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	upp
-PORTVERSION=	10804
+DISTVERSION=	11873
 PORTREVISION=	1
 CATEGORIES=	devel x11-toolkits
-MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/2017.1/
+MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/2018.1/
 DISTNAME=	${PORTNAME}-x11-src-${PORTVERSION}
 
 MAINTAINER=	m.sund@arcor.de
@@ -14,7 +14,12 @@ COMMENT=	Ultimate++, a BSD-licensed, cross-platform, C/C++ RAD suite
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${BUILD_WRKSRC}/Core/Copying
 
-USES=		compiler:c++11-lib execinfo
+BROKEN_aarch64=		Does not compile on ${ARCH}: error Unknown CPU architecture
+BROKEN_powerpc=		Does not compile on ${ARCH}: error Unknown CPU architecture
+BROKEN_powerpc64=	Does not compile on ${ARCH}: error Unknown CPU architecture
+BROKEN_sparc64=		Does not compile on ${ARCH}
+
+USES=		compiler:c++11-lib
 
 WRKSRC=		${WRKDIR}/${DISTNAME}
 BUILD_WRKSRC=	${WRKSRC}/uppsrc
@@ -26,10 +31,6 @@ CINC_GUI=	-I. -I${LOCALBASE}/include -I${LOCALBASE}/include/freetype2 \
 		-I${LOCALBASE}/include/pango-1.0 -I${LOCALBASE}/include/glib-2.0 \
 		-I${LOCALBASE}/lib/glib-2.0/include -I/usr/include
 CINC_CONSOLE=	-I. -I${LOCALBASE}/include -I/usr/include
-
-BROKEN_aarch64=	Does not compile on ${ARCH}: error Unknown CPU architecture
-BROKEN_powerpc=	Does not compile on ${ARCH}
-BROKEN_sparc64=	Does not compile on ${ARCH}
 
 PORTDATA=	bazaar examples reference tutorial uppsrc *.bm
 
@@ -50,17 +51,18 @@ IDE_LIB_DEPENDS=	libexpat.so:textproc/expat2 \
 IDE_PLIST_FILES=	bin/theide ${MANPREFIX}/man/man1/theide.1.gz
 IDE_USE=	XORG=x11,xau,xcb,xcursor,xdmcp,xext,xfixes,xft,xi,xinerama,xrandr,xrender \
 		GNOME=cairo,gdkpixbuf2,gtk20
-IDE_USES=	gmake
 UMK_DESC=	Build/install UMK (U++ MaKe command line utility)
 UMK_PLIST_FILES=	bin/umk ${MANPREFIX}/man/man1/umk.1.gz
 USEMALLOC_DESC=	Compile without U++ heap allocator
 USEMALLOC_VARS=	MACRO_FLAGS+=-DflagUSEMALLOC
 SCD_DESC=	Install spelling dictionaries (*.scd files)
 SCD_VARS=	PORTDATA+=*.scd
-SDL_USE=	sql
-OPENGL_USE=	gl
-MYSQL_USE=	mysql=yes
+# SDL/OPENGL/MYSQL/PGSQL dependencies are only for run-time for use by executables built by the IDE
+SDL_USE=	SDL=sdl
+OPENGL_USE=	GL=gl,glu
+MYSQL_USES=	mysql
 PGSQL_USES=	pgsql
+LLD_UNSAFE=	yes
 
 .include <bsd.port.pre.mk>
 
@@ -68,6 +70,8 @@ PGSQL_USES=	pgsql
 # Disable some warnings for Clang
 CXXFLAGS+=	-Wno-logical-op-parentheses
 .endif
+
+CXXFLAGS_i386+=	-msse2
 
 post-patch: .SILENT
 	${CP} ${BUILD_WRKSRC}/Makefile.in ${BUILD_WRKSRC}/Makefile
@@ -80,7 +84,7 @@ post-patch: .SILENT
 		${BUILD_WRKSRC}/Makefile \
 		${BUILD_WRKSRC}/uMakefile
 	${REINPLACE_CMD} -i '' -e 's|\(^CINC\)[[:blank:]]*=.*|\1 = ${CINC_GUI}| ; \
-		/^OutDir_/s|-Gui-Linux|| ; /^OutDir_/s|-Mt|| ; \
+		/^OutDir_/s|-Gui-Linux|| ; \
 		s|-ldl|-lXau -lXdmcp -lxcb -lexecinfo|' \
 		${BUILD_WRKSRC}/Makefile
 	${REINPLACE_CMD} -i '' -e 's|\(^CINC\)[[:blank:]]*=.*|\1 = ${CINC_CONSOLE}| ; \
@@ -124,7 +128,7 @@ do-build-UMK-on:
 
 do-install:
 	(cd ${WRKSRC} && ${COPYTREE_SHARE} "${PORTDATA}" ${STAGEDIR}${DATADIR} \
-		"-not ( -type d -empty )")
+		"-not ( -type d -empty ) -o -name '*.orig'")
 	(cd ${STAGEDIR}${DATADIR}/uppsrc && ${RM} build_info.h *Makefile*)
 
 do-install-IDE-on:

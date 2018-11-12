@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	maru
-PORTVERSION=	0.12.3
+PORTVERSION=	0.12.4
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Elixir RESTful framework
 
 LICENSE=	BSD3CLAUSE
@@ -19,5 +19,7 @@ MIX_BUILD_DEPS=	devel/elixir-plug \
 		devel/elixir-poison \
 		www/erlang-cowboy
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

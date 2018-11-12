@@ -2,6 +2,7 @@
 
 PORTNAME=	largeword
 PORTVERSION=	1.2.5
+PORTREVISION=	3
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

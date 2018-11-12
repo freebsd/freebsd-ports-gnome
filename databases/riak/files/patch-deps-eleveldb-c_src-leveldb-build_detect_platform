@@ -1,6 +1,6 @@
---- deps/eleveldb/c_src/leveldb/build_detect_platform.orig	2014-04-02 12:41:11.174611987 +0000
-+++ deps/eleveldb/c_src/leveldb/build_detect_platform	2014-04-02 12:42:31.766605994 +0000
-@@ -134,7 +134,7 @@
+--- deps/eleveldb/c_src/leveldb/build_detect_platform.orig	2014-12-04 17:57:13 UTC
++++ deps/eleveldb/c_src/leveldb/build_detect_platform
+@@ -134,7 +134,7 @@ if [ "$CROSS_COMPILE" = "true" ]; then
      true
  else
      # If -std=c++0x works, use <cstdatomic>.  Otherwise use port_posix.h.
@@ -9,7 +9,7 @@
        #include <cstdatomic>
        int main() {}
  EOF
-@@ -147,7 +147,7 @@
+@@ -147,7 +147,7 @@ EOF
  
      # Test whether Snappy library is installed
      # http://code.google.com/p/snappy/
@@ -18,7 +18,7 @@
        #include <snappy.h>
        int main() {}
  EOF
-@@ -157,7 +157,7 @@
+@@ -157,7 +157,7 @@ EOF
      fi
  
      # Test whether tcmalloc is available

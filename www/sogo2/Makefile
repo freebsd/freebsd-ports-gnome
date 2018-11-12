@@ -2,18 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=		sogo2
-PORTVERSION=		2.3.22
-PORTREVISION=	1
+PORTVERSION=		2.3.23
+PORTREVISION=	3
 CATEGORIES=		www gnustep
 MASTER_SITES=		http://www.sogo.nu/files/downloads/SOGo/Sources/
 DISTNAME=		SOGo-${PORTVERSION}
 
-MAINTAINER=		euan@potensol.com
+MAINTAINER=		acm@FreeBSD.org
 COMMENT=		Groupware server with a focus on scalability and open standards
 
 LICENSE=		GPLv2
-
-BROKEN=			fails to package
 
 LIB_DEPENDS=		libmemcached.so:databases/libmemcached \
 			libcurl.so:ftp/curl \
@@ -33,7 +31,7 @@ USES=			gnustep ssl objc
 USE_GNUSTEP=		base build
 USE_LDCONFIG=		${GNUSTEP_LOCAL_LIBRARIES}/sogo
 
-CONFLICTS?=		sogo2-activesync-[0-9]* sogo3-activesync-[0-9]*
+CONFLICTS?=		sogo[2-4]-activesync-[0-9]* sogo[3-4]-[0-9]*
 
 USE_RC_SUBR=		sogod
 

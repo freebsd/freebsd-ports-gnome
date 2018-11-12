@@ -3,7 +3,7 @@
 
 PORTNAME=	knutclient
 PORTVERSION=	1.0.4
-PORTREVISION=	7
+PORTREVISION=	9
 CATEGORIES=	sysutils kde
 MASTER_SITES=	ftp://ftp.buzuluk.cz/pub/alo/knutclient/stable/ \
 		http://www.ringofsaturn.com/distfiles/ \
@@ -15,12 +15,15 @@ COMMENT=	Visual client for UPS system NUT
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+DEPRECATED=	KDE4 is EOL upstream
+EXPIRATION_DATE=	2018-12-31
+
 LIB_DEPENDS=	libqimageblitz.so:x11/qimageblitz
 
 CONFLICTS=	knutclient-0.*
 
-USES=		cmake gettext kde:4
+USES=		cmake gettext kde:4 qt:4
 USE_KDE=	kdelibs automoc4
-USE_QT4=	corelib gui qmake_build moc_build rcc_build uic_build
+USE_QT=		corelib gui qmake_build moc_build rcc_build uic_build
 
 .include <bsd.port.mk>

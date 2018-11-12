@@ -1,15 +1,15 @@
 # $FreeBSD$
 
 PORTNAME=	relx
-PORTVERSION=	3.23.1
+PORTVERSION=	3.26.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 MASTER_SITES+=	LOCAL/olgeni:deps \
 		http://olgeni.olgeni.com/~olgeni/distfiles/:deps \
-		https://s3.amazonaws.com/s3.hex.pm/tarballs/:hex
-DISTFILES=	relx-cache-14${EXTRACT_SUFX}:deps
+		https://repo.hex.pm/tarballs/:hex
+DISTFILES=	relx-cache-${CACHE_VERSION}${EXTRACT_SUFX}:deps
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX} \
-		relx-cache-14${EXTRACT_SUFX}
+		relx-cache-${CACHE_VERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	Sane, simple release creation for Erlang
@@ -27,15 +27,23 @@ PLIST_SUB=	VERSION="${PORTVERSION}"
 USE_GITHUB=	yes
 GH_ACCOUNT=	erlware
 
+CACHE_VERSION=	19
+# from rebar.config
 REBAR_DEPS=	bbmustache-1.0.4 \
 		cf-0.2.2 \
-		erlware_commons-1.0.0 \
-		getopt-0.8.2 \
-		providers-1.6.0
+		erlware_commons-1.2.0 \
+		getopt-1.0.1 \
+		providers-1.7.0
 
 .for _dep in ${REBAR_DEPS}
 DISTFILES+=	${_dep}.tar:hex
 .endfor
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+# convenience target to rebuild the relx cache file
+build-cache:
+	cd ${WRKDIR} && ${TAR} -c -v -z -f relx-cache-${CACHE_VERSION}${EXTRACT_SUFX} .cache
 
 # rebar3 insists on downloading dependencies, and some kind of package
 # index into the user's HOME. We need to trick it into behaving by
@@ -62,8 +70,6 @@ post-build:
 	@${LN} -s ${WRKSRC}/_build/dev/lib/${PORTNAME}/ebin ${WRKSRC}
 
 do-install:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_DATA} ${WRKSRC}/README.md ${STAGEDIR}${DOCSDIR}
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/erlang/lib/${PORTNAME}-${PORTVERSION}
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/erlang/lib/${PORTNAME}-${PORTVERSION}/ebin
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/erlang/lib/${PORTNAME}-${PORTVERSION}/include
@@ -74,6 +80,11 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/_build/default/lib/relx/ebin/* ${STAGEDIR}${PREFIX}/lib/erlang/lib/${PORTNAME}-${PORTVERSION}/ebin
 	cd ${WRKSRC}/priv && ${COPYTREE_SHARE} \* ${STAGEDIR}${PREFIX}/lib/erlang/lib/${PORTNAME}-${PORTVERSION}/priv
 	${INSTALL_SCRIPT} ${WRKSRC}/_build/default/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+
+post-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README.md ${STAGEDIR}${DOCSDIR}
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
 

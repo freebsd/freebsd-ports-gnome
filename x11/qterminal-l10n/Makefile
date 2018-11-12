@@ -1,19 +1,21 @@
 # Created by: Olivier Duchateau
 # $FreeBSD$
 
-PORTNAME=	qterminal-l10n
-PORTVERSION=	0.11.0
+PORTNAME=	qterminal
+PORTVERSION=	0.13.0
 CATEGORIES=	x11
+MASTER_SITES=	LXQT/lxqt-l10n
+PKGNAMESUFFIX=	-l10n
 DISTNAME=	lxqt-l10n-${DISTVERSION}
 
-MAINTAINER=	bacon4000@gmail.com
+MAINTAINER=	jsm@FreeBSD.org
 COMMENT=	Translations of Qterminal
 
 LICENSE=	LGPL21+
 
-USES=	cmake:outsource lxqt tar:xz
-USE_QT5=	buildtools_build qmake_build
-USE_LXQT=	buildtools lxqt
+USES=	cmake:outsource lxqt pkgconfig qt:5 tar:xz
+USE_QT=		buildtools_build qmake_build linguisttools
+USE_LXQT=	buildtools
 
 CMAKE_ARGS+=	-DWITH_COMPTON_CONF:BOOL=OFF \
 	-DWITH_LIBFM_QT:BOOL=OFF \
@@ -34,6 +36,7 @@ CMAKE_ARGS+=	-DWITH_COMPTON_CONF:BOOL=OFF \
 	-DWITH_OBCONF_QT:BOOL=OFF \
 	-DWITH_PCMANFM_QT:BOOL=OFF \
 	-DWITH_QTERMINAL:BOOL=ON \
+	-DWITH_QTERMWIDGET:BOOL=OFF \
 	-DWITH_PAVUCONTROL_QT:BOOL=OFF
 
 .include <bsd.port.mk>

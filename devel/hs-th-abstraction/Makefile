@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	th-abstraction
-PORTVERSION=	0.2.3.0
+PORTVERSION=	0.2.6.0
+PORTREVISION=	1
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

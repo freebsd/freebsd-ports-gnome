@@ -3,13 +3,14 @@
 
 PORTNAME=	creox
 PORTVERSION=	0.3
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	audio kde
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Realtime sound processor
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libjack.so:audio/jack
 
@@ -17,10 +18,11 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	laudrup
 GH_PROJECT=	Creox4
 
-USES=		cmake:outsource kde:4
+USES=		cmake:outsource kde:4 qt:4
 USE_KDE=	automoc4 kdelibs
-USE_QT4=	moc_build qmake_build rcc_build uic_build
+USE_QT=		moc_build qmake_build rcc_build uic_build
 USE_XORG=	xft xpm
+USE_CXXSTD=	gnu++98
 
 post-patch:
 	@${REINPLACE_CMD} -e \

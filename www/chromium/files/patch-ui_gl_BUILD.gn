@@ -1,28 +1,30 @@
---- ui/gl/BUILD.gn.orig	2017-08-03 00:05:41.000000000 +0200
-+++ ui/gl/BUILD.gn	2017-08-10 12:59:44.155432000 +0200
-@@ -14,7 +14,7 @@
-                        (target_cpu == "x86" || target_cpu == "x64")
- }
- 
--use_egl = is_win || is_android || is_linux
-+use_egl = is_win || is_android || is_linux || is_bsd
- use_glx = use_x11 || ozone_platform_x11
- 
- if (is_android) {
-@@ -173,14 +173,14 @@
-       "gl_surface_egl.h",
-     ]
- 
--    if (is_linux) {
-+    if (is_linux || is_bsd) {
-       sources += [
-         "gl_image_native_pixmap.cc",
-         "gl_image_native_pixmap.h",
-       ]
+--- ui/gl/BUILD.gn.orig	2018-08-01 00:09:48.000000000 +0200
++++ ui/gl/BUILD.gn	2018-08-04 23:32:57.498139000 +0200
+@@ -214,7 +214,7 @@
+       }
      }
+ 
+-    if (is_posix && !is_fuchsia && !is_mac) {
++    if (is_posix && !is_fuchsia && !is_mac && !is_bsd) {
+       # Windows has USE_EGL but doesn't support base::FileDescriptor.
+       # libsync isn't supported or needed on MacOSX.
+       # Fuchsia is excluded due to a libsync dependency and because it's
+@@ -311,7 +311,6 @@
+     data_deps += [
+       "//third_party/angle:libEGL",
+       "//third_party/angle:libGLESv2",
+-      "//third_party/mesa:osmesa",
+       "//third_party/swiftshader",
+     ]
    }
--  if (is_android || is_linux) {
-+  if (is_android || is_linux || is_bsd) {
-     sources += [
-       "gl_implementation_osmesa.cc",
-       "gl_implementation_osmesa.h",
+@@ -545,10 +544,6 @@
+     "//ui/gl/init",
+     "//ui/platform_window",
+     "//ui/platform_window:platform_impls",
+-  ]
+-
+-  data_deps = [
+-    "//third_party/mesa:osmesa",
+   ]
+ 
+   if (use_x11) {

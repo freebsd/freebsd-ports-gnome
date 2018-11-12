@@ -19,7 +19,8 @@ LIB_DEPENDS=	libsigc-2.0.so:devel/libsigc++20 \
 		libvorbisfile.so:audio/libvorbis \
 		libsmpeg.so:multimedia/smpeg
 
-USES=		openal:al pkgconfig lua:51 python:build scons tar:bzip2
+USES=		openal:al pkgconfig lua:51 python:2.7,build scons tar:bzip2
+USE_CXXSTD=	gnu++98
 USE_LDCONFIG=	yes
 USE_SDL=	image sdl
 MAKE_ARGS=	prefix=${PREFIX} resources_dir=${DATADIR} \
@@ -30,6 +31,8 @@ PORTDOCS=	LICENSE LICENSE.EXCEPTION README-en.txt README-linux.txt \
 		donate.url homepage.url project_page.url video.txt
 
 DESKTOP_ENTRIES="Battle Tanks" "" "" "${PORTNAME}" "Game;ArcadeGame;" ""
+
+OPTIONS_DEFINE=	DOCS
 
 pre-build:
 # Regenerate `sl08.h' after we patch `sl08.py' (as patching the header itself

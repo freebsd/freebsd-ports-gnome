@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mutter
-PORTVERSION=	3.24.2
+PORTVERSION=	3.28.2
 CATEGORIES=	x11-wm
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -14,6 +14,7 @@ LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	zenity>=3.0.0:x11/zenity \
+		xkeyboard-config>=0:x11/xkeyboard-config \
 		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas
 LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libxkbcommon.so:x11/libxkbcommon \
@@ -26,6 +27,7 @@ LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libfreetype.so:print/freetype2 \
 		libdrm.so:graphics/libdrm
 RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
+		xkeyboard-config>=0:x11/xkeyboard-config \
 		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas
 
 PORTSCOUT=	limitw:1,even
@@ -57,18 +59,5 @@ CONFIGURE_ARGS+=	--with-x \
 INSTALL_TARGET=	install-strip
 GLIB_SCHEMAS=	org.gnome.mutter.gschema.xml \
 		org.gnome.mutter.wayland.gschema.xml
-
-post-patch:
-#	@${REINPLACE_CMD} -e 's|-Wcast-align||g' \
-#		${WRKSRC}/configure
-#	@${REINPLACE_CMD} -e 's,-Wempty-body,,' \
-#	-e 's,-Werror=maybe-uninitialized,,' \
-#	-e 's,-Wno-error=maybe-uninitialized,,' \
-#	-e 's,-Werror=redundant-decls,,' \
-#	-e 's,-Wvla,,' \
-#	${WRKSRC}/cogl/configure \
-#	${WRKSRC}/clutter/configure \
-#	${WRKSRC}/cogl/tests/conform/Makefile.in \
-#	${WRKSRC}/cogl/test-fixtures/Makefile.in
 
 .include <bsd.port.mk>

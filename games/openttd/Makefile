@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	openttd
-DISTVERSION=	1.7.1
+DISTVERSION=	1.8.0
+PORTREVISION=	3
 CATEGORIES=	games
 MASTER_SITES=	http://ca.binaries.openttd.org/binaries/releases/${DISTVERSION}/ \
 		http://cz.binaries.openttd.org/binaries/releases/${DISTVERSION}/ \
@@ -20,8 +21,6 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libpng.so:graphics/png \
 		liblzo2.so:archivers/lzo2
-
-BROKEN_powerpc64=	fails to compile: libicuuc.so: undefined reference to __cxa_throw_bad_array_new_length
 
 USES=		cpe gmake pkgconfig tar:xz
 HAS_CONFIGURE=	yes
@@ -43,6 +42,8 @@ PORTDOCS=	HOWTO_compile_lang_files.txt admin_network.txt \
 DESKTOP_ENTRIES="OpenTTD" "${COMMENT}" "${PORTNAME}" "${PORTNAME}" \
 		"Game;Simulation;StrategyGame;" false
 
+OPTIONS_DEFINE=	DOCS
+
 .if defined(WITH_MIDI_PLAYER)
 CONFIGURE_ARGS+=	--with-midi="${WITH_MIDI_PLAYER}"
 .endif
@@ -57,6 +58,9 @@ CONFIGURE_ARGS+=	--enable-dedicated
 CFLAGS+=	-I${LOCALBASE}/include
 USE_RC_SUBR=	${PORTNAME}
 .else
+USES+=		compiler:c++11-lib
+USE_CXXSTD=	gnu++11
+CXXFLAGS+=	-DU_USING_ICU_NAMESPACE=1
 LIB_DEPENDS+=	libfreetype.so:print/freetype2 \
 		libicui18n.so:devel/icu \
 		libicu-le-hb.so:devel/icu-le-hb \
@@ -108,9 +112,9 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/bin/scripts/* ${STAGEDIR}${DATADIR}/scripts
 	${INSTALL_MAN} ${WRKSRC}/docs/${PORTNAME}.6 \
 		${STAGEDIR}${MANPREFIX}/man/man6
+.if !defined(WITH_DEDICATED_SERVER_ONLY)
 	${INSTALL_DATA} ${WRKSRC}/media/openttd.32.xpm \
 		${STAGEDIR}${PREFIX}/share/pixmaps
-.if !defined(WITH_DEDICATED_SERVER_ONLY)
 .  for n in 16 32 48 64 128 256
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/${n}x${n}/apps
 	${INSTALL_DATA} ${WRKSRC}/media/openttd.${n}.png \
@@ -122,7 +126,7 @@ do-install:
 
 post-install:
 .if defined(WITH_DEDICATED_SERVER_ONLY)
-	@${REINPLACE_CMD} -e '/icons/d' ${TMPPLIST}
+	@${REINPLACE_CMD} -E '/icons|pixmaps/d' ${TMPPLIST}
 .endif
 
 .include <bsd.port.post.mk>

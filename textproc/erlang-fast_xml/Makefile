@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	fast_xml
-PORTVERSION=	1.1.23
+PORTVERSION=	1.1.32
 CATEGORIES=	textproc
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Erlang XML parsing and manipulation library
 
 LICENSE=	APACHE20
@@ -21,6 +21,8 @@ ERL_RUN_DEPS:=	${ERL_BUILD_DEPS}
 
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib -l expat
+
+OPTIONS_DEFINE=	DOCS
 
 pre-install:
 	${STRIP_CMD} ${WRKSRC}/priv/lib/*.so

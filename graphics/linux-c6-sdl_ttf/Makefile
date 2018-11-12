@@ -5,7 +5,7 @@ PORTNAME=	sdl_ttf
 PORTVERSION=	2.0.11
 PORTREVISION=	4
 CATEGORIES=	graphics linux
-MASTER_SITES=	EPEL
+MASTER_SITES=	EPEL/s
 DISTNAME=	${LINUXNAME}-${DISTVERSIONFULL}
 
 MAINTAINER=	emulation@FreeBSD.org
@@ -19,5 +19,7 @@ USES=		linux:c6
 USE_LDCONFIG=	yes
 USE_LINUX=	jpeg png sdl12 tiff
 USE_LINUX_RPM=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

@@ -5,7 +5,7 @@ PORTVERSION=	2.6.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	JavaScript AST to JavaScript code generator in Elixir
 
 LICENSE=	MIT
@@ -15,5 +15,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	bryanjos
 
 ELIXIR_APP_NAME=estree
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

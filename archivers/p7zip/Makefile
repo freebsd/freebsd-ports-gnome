@@ -3,7 +3,7 @@
 
 PORTNAME=	p7zip
 PORTVERSION=	16.02
-PORTREVISION?=	0
+PORTREVISION?=	2
 CATEGORIES=	archivers
 MASTER_SITES=	SF
 DISTNAME=	${PORTNAME}_${DISTVERSION}_src_all
@@ -20,10 +20,18 @@ MAKEFILE=	makefile
 MAKE_ARGS=	OPTFLAGS="${CXXFLAGS}"
 WRKSRC=		${WRKDIR}/${PORTNAME}_${PORTVERSION}
 
+CFLAGS_arm=	-fPIC
+CFLAGS_armv6=	-fPIC
+CFLAGS_armv7=	-fPIC
 CFLAGS_aarch64=	-fPIC
 CFLAGS_amd64=	-fPIC
+CFLAGS_i386=	-fPIC
 CFLAGS_powerpc=	-fPIC
 CFLAGS_sparc64=	-fPIC
+
+# Fix the build for i386 when WITH_LLD_IS_LD is set
+# https://bugs.freebsd.org/230210
+LDFLAGS_i386=	-Wl,-z,notext
 
 OPTIONS_DEFINE=	DOCS
 

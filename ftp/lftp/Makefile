@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lftp
-PORTVERSION=	4.8.0
-PORTREVISION=	1
+PORTVERSION=	4.8.4
 CATEGORIES=	ftp ipv6
 MASTER_SITES=	http://lftp.tech/ftp/ \
 		http://lftp.tech/ftp/old/ \
@@ -21,11 +20,10 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libexpat.so:textproc/expat2 \
-		libidn.so:dns/libidn
+		libidn2.so:dns/libidn2
 
 USES=		charsetfix iconv libtool localbase readline shebangfix
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	ac_cv_type_max_align_t=yes
 
 PORTDOCS=	AUTHORS BUGS ChangeLog FAQ FEATURES INSTALL \
 		MIRRORS NEWS README README.debug-levels README.modules \
@@ -58,12 +56,22 @@ post-install-DOCS-on:
 
 .include <bsd.port.pre.mk>
 
-.if ${ARCH} == powerpc64
-USE_GCC=	yes
+# Only link to libthr if necessary
+.if ${PORT_OPTIONS:MGNUTLS}
+NEED_PTHREAD=	yes
+.else
+.if exists(${OPENSSLLIB}/libssl.so)
+NEED_PTHREAD!=	ldd ${OPENSSLLIB}/libssl.so | ${GREP} -w 'libthr\.so' || ${ECHO_CMD}
+.else
+NEED_PTHREAD=	# empty
+.endif
+.endif
+.if !empty(NEED_PTHREAD)
+LDFLAGS+=	-pthread
 .endif
 
-.if ${SSL_DEFAULT:Mopenssl-devel}
-BROKEN=		Does not build with openssl-devel
+.if ${ARCH} == powerpc64
+USE_GCC=	yes
 .endif
 
 .include <bsd.port.post.mk>

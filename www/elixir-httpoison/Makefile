@@ -6,7 +6,7 @@ DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	HTTP client for Elixir powered by hackney
 
 LICENSE=	MIT
@@ -17,5 +17,7 @@ GH_ACCOUNT=	edgurgel
 
 MIX_BUILD_DEPS=	www/erlang-hackney
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ripe.atlas.cousteau
-PORTVERSION=	1.4
+DISTVERSION=	1.4.2
 CATEGORIES=	net python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=${PYTHON_PKGNAMEPREFIX}
@@ -13,13 +13,13 @@ COMMENT=	Python wrapper around the RIPE Atlas API
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dateutil>0:devel/py-dateutil \
-		${PYTHON_PKGNAMEPREFIX}socketio-client>=0.6.5:net/py-socketio-client \
-		${PYTHON_PKGNAMEPREFIX}requests>=2.7.0:www/py-requests \
-		${PYTHON_PKGNAMEPREFIX}websocket-client<0.39:www/py-websocket-client
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dateutil>0:devel/py-dateutil@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}socketio-client>=0.6.5:net/py-socketio-client@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>=2.7.0:www/py-requests@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}websocket-client>0:www/py-websocket-client@${PY_FLAVOR}
 
 NO_ARCH=	yes
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

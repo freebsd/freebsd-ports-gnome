@@ -1,8 +1,9 @@
 # $FreeBSD$
 
-PORTNAME=	asterisk-espeak
+PORTNAME=	espeak
 PORTVERSION=	4.0
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	audio
 
 MAINTAINER=	madpilot@FreeBSD.org
@@ -13,6 +14,19 @@ LICENSE=	GPLv2
 LIB_DEPENDS=	libespeak.so:audio/espeak \
 		libsamplerate.so:audio/libsamplerate
 
+FLAVORS=			asterisk13 asterisk15
+FLAVOR?=			${FLAVORS[1]}
+
+asterisk13_PKGNAMEPREFIX=	asterisk13-
+asterisk13_CONFLICTS_INSTALL=	asterisk15-espeak
+asterisk13_BUILD_DEPENDS=	asterisk:net/asterisk13
+asterisk13_RUN_DEPENDS=		asterisk:net/asterisk13
+
+asterisk15_PKGNAMEPREFIX=	asterisk15-
+asterisk15_CONFLICTS_INSTALL=	asterisk13-espeak
+asterisk15_BUILD_DEPENDS=	asterisk:net/asterisk15
+asterisk15_RUN_DEPENDS=		asterisk:net/asterisk15
+
 USES=		compiler gmake localbase
 INSTALL_TARGET=	install samples
 
@@ -20,24 +34,15 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	zaf
 GH_PROJECT=	Asterisk-eSpeak
 
-OPTIONS_SINGLE=		ASTVER
-OPTIONS_SINGLE_ASTVER=	ASTERISK11 ASTERISK13
-OPTIONS_DEFAULT=	ASTERISK13
-
-ASTERISK11_DESC=	Depend on Asterisk 11
-ASTERISK13_DESC=	Depend on Asterisk 13
-
-ASTERISK11_BUILD_DEPENDS=	asterisk:net/asterisk11
-ASTERISK11_RUN_DEPENDS=		asterisk:net/asterisk11
-
-ASTERISK13_BUILD_DEPENDS=	asterisk:net/asterisk13
-ASTERISK13_RUN_DEPENDS=		asterisk:net/asterisk13
-
 .include <bsd.port.pre.mk>
 
 .if ${CHOSEN_COMPILER_TYPE} == clang
 CFLAGS+=	-fblocks
 .endif
+
+post-patch:
+	@${REINPLACE_CMD} -e '/ASTERISK_REGISTER_FILE/d' \
+		${WRKSRC}/app_espeak.c
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/asterisk/modules/app_espeak.so

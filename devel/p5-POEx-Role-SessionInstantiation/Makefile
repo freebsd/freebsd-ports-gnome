@@ -11,6 +11,11 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	kuriyama@FreeBSD.org
 COMMENT=	Perl extension of Moose role for turning objects into POE sessions
 
+LICENSE=	ART10 GPLv1+
+LICENSE_COMB=	dual
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BUILD_DEPENDS=	${RUN_DEPENDS}
 RUN_DEPENDS=	\
 	p5-MooseX-CompileTime-Traits>=0:devel/p5-MooseX-CompileTime-Traits \
 	p5-MooseX-Declare>0:devel/p5-MooseX-Declare \
@@ -19,7 +24,6 @@ RUN_DEPENDS=	\
 	p5-POE>0:devel/p5-POE \
 	p5-POEx-Types>=0:devel/p5-POEx-Types \
 	p5-aliased>0:devel/p5-aliased
-BUILD_DEPENDS:=	${RUN_DEPENDS}
 
 USES=		perl5
 USE_PERL5=	configure

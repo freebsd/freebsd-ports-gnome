@@ -3,7 +3,7 @@
 
 PORTNAME=	boxbackup
 PORTVERSION=	0.11.1
-PORTREVISION=	5
+PORTREVISION=	7
 CATEGORIES=	sysutils
 MASTER_SITES=	SF
 PKGNAMESUFFIX=	${CLIENT_OR_SERVER}
@@ -15,16 +15,10 @@ LICENSE=	BSD3CLAUSE GPLv2
 LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/LICENSE-DUAL.txt
 
-USES=		execinfo perl5 ssl tar:tgz
+USES=		autoreconf perl5 ssl tar:tgz
 GNU_CONFIGURE=	yes
-USE_AUTOTOOLS=	autoconf aclocal autoheader
-ACLOCAL_ARGS+=	-I ${WRKSRC}/infrastructure/m4
-CFLAGS+=	-I${OPENSSLINC}
-LDFLAGS+=	-L${OPENSSLLIB}
-
-.if exists(/usr/lib/libexecinfo.so)
-LDFLAGS+=	-lexecinfo
-.endif
+CFLAGS+=	-I${OPENSSLINC} -std=c++98
+LDFLAGS+=	-L${OPENSSLLIB} -lexecinfo
 
 MAKE_JOBS_UNSAFE=yes
 

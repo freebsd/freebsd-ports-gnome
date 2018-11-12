@@ -2,23 +2,26 @@
 # $FreeBSD$
 
 PORTNAME=	tarantool-queue
-PORTVERSION=	0.1.0
+PORTVERSION=	0.1.4
+PORTREVISION=	2
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	vg@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Python bindings for Tarantool queue
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}tarantool>=0:databases/py-tarantool \
-		${PYTHON_PKGNAMEPREFIX}msgpack-python>=0:devel/py-msgpack-python
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=0:devel/py-msgpack@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}tarantool>=0:databases/py-tarantool@${PY_FLAVOR}
 
+NO_ARCH=	yes
+REINPLACE_ARGS=	-i ''
 USES=		python
-USE_PYTHON=	distutils autoplist
+USE_PYTHON=	autoplist concurrent distutils
 
-do-configure:
-	${REINPLACE_CMD} -i -e "1d" ${WRKSRC}/setup.py
+post-patch:
+	@${REINPLACE_CMD} -e 's|msgpack-python|msgpack|; s|tarantool<0.4|tarantool|' ${WRKSRC}/setup.py ${WRKSRC}/tarantool_queue.egg-info/requires.txt
 
 .include <bsd.port.mk>

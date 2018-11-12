@@ -3,16 +3,15 @@
 
 PORTNAME=	lilypond
 PORTVERSION=	2.18.2
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	print audio
 MASTER_SITES=	http://download.linuxaudio.org/lilypond/sources/v${PORTVERSION:R}/
 
 MAINTAINER=	ports@FreeBSD.org
-COMMENT=	The GNU music typesetter
+COMMENT=	GNU music typesetter
 
-LICENSE=	GPLv3
-
-OPTIONS_DEFINE=	NLS
+LICENSE=	GPLv3+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	pdftexi2dvi:print/texinfo \
 		t1ascii:print/t1utils \
@@ -26,13 +25,35 @@ BUILD_DEPENDS=	pdftexi2dvi:print/texinfo \
 		zip:archivers/zip \
 		texi2html:textproc/texi2html \
 		${LOCALBASE}/share/ghostscript/fonts/c059033l.pfb:print/gsfonts
-
+LIB_DEPENDS=	libguile.so:lang/guile \
+		libgmp.so:math/gmp \
+		libfontconfig.so:x11-fonts/fontconfig \
+		libfreetype.so:print/freetype2 \
+		libltdl.so:devel/libltdl
 RUN_DEPENDS=	mftrace:print/mftrace \
 		${LOCALBASE}/share/fonts/dejavu/DejaVuSans-Bold.ttf:x11-fonts/dejavu
 
-LIB_DEPENDS=	libguile.so:lang/guile \
-		libgmp.so:math/gmp \
-		libfreetype.so:print/freetype2
+USES=		bison:build gettext ghostscript gmake pkgconfig perl5 \
+		python:2.7
+USE_TEX=	latex
+USE_PERL5=	build
+USE_GNOME=	pango
+#MAKE_JOBS_UNSAFE=	yes
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS+=--with-ncsb-dir=${LOCALBASE}/share/ghostscript/fonts \
+		--with-python-include=${PYTHON_INCLUDEDIR}
+CONFIGURE_ENV+=	ac_cv_prog_MAKEINFO="${LOCALBASE}/bin/makeinfo" \
+		FLEX=${FLEX} YACC=${YACC}
+
+MAKEFILE=	GNUmakefile
+GNU_MAKEFILE=	yes
+
+ALL_TARGET=	all
+TEST_TARGET=	test  # fails with sig11
+
+NO_CCACHE=	yes
+
+PLIST_SUB=	PORTVERSION=${PORTVERSION}
 
 INFO=		internals \
 		lilypond-changes \
@@ -47,49 +68,19 @@ INFO=		internals \
 		lilypond-web \
 		music-glossary
 
-USES=		bison:build gettext ghostscript gmake pkgconfig perl5 \
-		python:-3
-USE_TEX=	latex
-USE_PERL5=	build
-USE_GNOME=	pango
-
-MAKEFILE=	GNUmakefile
-GNU_MAKEFILE=	yes
-MAKE_JOBS_UNSAFE=	yes
-
-GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=--with-ncsb-dir=${LOCALBASE}/share/ghostscript/fonts \
-		--with-python-include=${PYTHON_INCLUDEDIR}
-CONFIGURE_ENV+=	ac_cv_prog_MAKEINFO="${LOCALBASE}/bin/makeinfo" \
-		FLEX=${FLEX} YACC=${YACC}
-
-ALL_TARGET=	all
-
-NO_CCACHE=	yes
-
-PLIST_SUB=	PORTVERSION=${PORTVERSION}
-
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MNLS}
-PLIST_SUB+=	NLS=""
-.else
-PLIST_SUB+=	NLS="@comment "
-.endif
+OPTIONS_DEFINE=	NLS
+OPTIONS_SUB=	yes
 
 post-patch:
-	${REINPLACE_CMD} -e 's|<FlexLexer.h>|"/usr/include/FlexLexer.h"|' \
-	    ${WRKSRC}/lily/include/includable-lexer.hh
-.if !${PORT_OPTIONS:MNLS}
-	${REINPLACE_CMD} -e '/^PO_FILES/s|= |= #|' ${WRKSRC}/${MAKEFILE}.in
-.endif
+	@${REINPLACE_CMD} -e 's|<FlexLexer.h>|"/usr/include/FlexLexer.h"|' \
+		${WRKSRC}/lily/include/includable-lexer.hh
+
+post-patch-NLS-off:
+	@${REINPLACE_CMD} -e '/^PO_FILES/s|= |= #|' ${WRKSRC}/${MAKEFILE}.in
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/lilypond
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/lilypond/${PORTVERSION}/python/midi.so
 	@${LN} -fs ${DATADIR}/${PORTVERSION} ${STAGEDIR}${DATADIR}/current
-
-regression-test: build
-	cd ${WRKSRC} && ${MAKE_CMD} -f ${MAKEFILE} test
 
 .include <bsd.port.mk>

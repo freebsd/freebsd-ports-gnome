@@ -13,21 +13,21 @@ COMMENT=	Zope app setup helper
 
 LICENSE=	ZPL21
 
-RUN_DEPENDS=	zodb${PYTHON_PKGNAMESUFFIX}>=0:databases/zodb3 \
-		${PYTHON_PKGNAMEPREFIX}zope.app.publication>=0:devel/py-zope.app.publication \
-		${PYTHON_PKGNAMEPREFIX}zope.component>=3.8.0:devel/py-zope.component \
-		${PYTHON_PKGNAMEPREFIX}zope.configuration>=0:devel/py-zope.configuration \
-		${PYTHON_PKGNAMEPREFIX}zope.container>=0:devel/py-zope.container \
-		${PYTHON_PKGNAMEPREFIX}zope.error>=0:devel/py-zope.error \
-		${PYTHON_PKGNAMEPREFIX}zope.event>=0:devel/py-zope.event \
-		${PYTHON_PKGNAMEPREFIX}zope.interface>=0:devel/py-zope.interface \
-		${PYTHON_PKGNAMEPREFIX}zope.processlifetime>=0:devel/py-zope.processlifetime \
-		${PYTHON_PKGNAMEPREFIX}zope.security>=3.6.0:security/py-zope.security \
-		${PYTHON_PKGNAMEPREFIX}zope.session>=0:security/py-zope.session \
-		${PYTHON_PKGNAMEPREFIX}zope.site>=0:devel/py-zope.site \
-		${PYTHON_PKGNAMEPREFIX}zope.traversing>=0:devel/py-zope.traversing
+RUN_DEPENDS=	zodb${PYTHON_PKGNAMESUFFIX}>=0:databases/zodb3@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.app.publication>=0:devel/py-zope.app.publication@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.component>=3.8.0:devel/py-zope.component@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.configuration>=0:devel/py-zope.configuration@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.container>=0:devel/py-zope.container@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.error>=0:devel/py-zope.error@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.event>=0:devel/py-zope.event@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.interface>=0:devel/py-zope.interface@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.processlifetime>=0:devel/py-zope.processlifetime@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.security>=3.6.0:security/py-zope.security@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.session>=0:security/py-zope.session@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.site>=0:devel/py-zope.site@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.traversing>=0:devel/py-zope.traversing@${PY_FLAVOR}
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

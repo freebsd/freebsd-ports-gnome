@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	ansi-wl-pprint
-PORTVERSION=	0.6.7.3
+PORTVERSION=	0.6.8.2
 PORTREVISION=	1
 CATEGORIES=	devel haskell
 
@@ -10,7 +10,7 @@ COMMENT=	Wadler/Leijen Pretty Printer for colored ANSI terminal output
 
 LICENSE=	BSD3CLAUSE
 
-USE_CABAL=	ansi-terminal>=0.4.0
+USE_CABAL=	ansi-terminal>=0.4.0 semigroups>=0.1
 
 FLAGS_DISABLE=	Example
 

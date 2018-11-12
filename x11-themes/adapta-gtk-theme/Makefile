@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	adapta-gtk-theme
-PORTVERSION=	3.91.1.7
+PORTVERSION=	3.91.2.152
+PORTREVISION=	1
 CATEGORIES=	x11-themes
 
 MAINTAINER=	nivit@FreeBSD.org
@@ -15,6 +16,7 @@ LICENSE_FILE_CC-BY-SA-4.0=	${WRKSRC}/LICENSE_CC_BY_SA4
 
 BUILD_DEPENDS=	gsed:textproc/gsed \
 		inkscape:graphics/inkscape \
+		bash:shells/bash \
 		sassc:textproc/sassc
 RUN_DEPENDS=	noto>=1.0.5:x11-fonts/noto \
 		roboto-fonts-ttf>=2.134:x11-fonts/roboto-fonts-ttf

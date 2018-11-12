@@ -1,18 +1,21 @@
 # $FreeBSD$
 
 PORTNAME=	kmag
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	accessibility kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	accessibility kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE Screen magnifier
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	qmake_build moc_build rcc_build uic_build
+LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
-# Somebody has to create port for libkdeaccessibilityclient first
-CMAKE_ARGS+=	-DWITH_QAccessibilityClient=off
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs config configwidgets coreaddons ecm \
+		i18n kio service widgetsaddons xmlgui
+USE_QT=		core dbus gui printsupport widgets xml \
+		buildtools_build qmake_build
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

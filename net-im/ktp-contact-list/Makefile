@@ -1,20 +1,24 @@
 # $FreeBSD$
 
 PORTNAME=	ktp-contact-list
-PORTVERSION=	${KTP_VERSION}
-PORTREVISION=	1
-CATEGORIES=	net-im kde
-MASTER_SITES=	KDE/${KTP_BRANCH}/kde-telepathy/${PORTVERSION}/src
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	net-im kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE instant messaging contact list application
 
-LIB_DEPENDS=	libtelepathy-qt4.so:net-im/telepathy-qt4 \
-		libtelepathy-logger-qt4.so:net-im/telepathy-logger-qt4 \
-		libktpcommoninternalsprivate.so:net-im/ktp-common-internals
+LIB_DEPENDS=	libtelepathy-qt5.so:net-im/telepathy-qt5 \
+		libtelepathy-logger-qt.so:net-im/telepathy-logger-qt5 \
+		libKTpCommonInternals.so:net-im/ktp-common-internals
 
-USES=		cmake gettext kde:4 tar:bzip2
-USE_KDE=	kdelibs automoc4
-USE_QT4=	corelib moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs completion config configwidgets coreaddons \
+		dbusaddons ecm i18n iconthemes jobwidgets kcmutils kio \
+		notifications notifyconfig people service wallet widgetsaddons \
+		windowsystem xmlgui
+USE_QT=		core dbus gui network widgets xml \
+		buildtools_build qmake_build
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

@@ -2,24 +2,24 @@
 # $FreeBSD$
 
 PORTNAME=	gottet
-PORTVERSION=	1.1.3
-PORTREVISION=	3
+PORTVERSION=	1.1.7
+PORTREVISION=	1
 DISTVERSIONSUFFIX=	-src
 CATEGORIES=	games
-MASTER_SITES=	http://gottcode.org/gottet/
+MASTER_SITES=	https://gottcode.org/gottet/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	jhale@FreeBSD.org
 COMMENT=	Tetris clone
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
-
-USES=		compiler:c++11-lib qmake tar:bzip2
+USES=		compiler:c++11-lib qmake qt:5 tar:bzip2
 USE_GL=		gl
-USE_QT5=	core gui widgets \
+USE_QT=		core gui widgets \
 		buildtools_build linguisttools_build
+
+WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
 OPTIONS_DEFINE=	DOCS NLS
 OPTIONS_SUB=	yes
@@ -34,7 +34,7 @@ post-patch-NLS-off:
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	(cd ${WRKSRC} && ${INSTALL_DATA} CREDITS ChangeLog NEWS README \
+	(cd ${WRKSRC} && ${INSTALL_DATA} CREDITS ChangeLog README \
 		${STAGEDIR}${DOCSDIR})
 
 .include <bsd.port.mk>

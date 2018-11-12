@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	ora2pg
-PORTVERSION=	18.1
+PORTVERSION=	19.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	databases
 
-MAINTAINER=	amutu@amutu.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Oracle to PostgreSQL database schema converter
 
 LICENSE=	GPLv3
@@ -21,6 +21,8 @@ USES=		perl5
 USE_PERL5=	configure
 USE_GITHUB=	yes
 GH_ACCOUNT=	darold
+
+OPTIONS_DEFINE=	DOCS
 
 do-patch:
 	${REINPLACE_CMD} -e '/install_all :/,/};/s=$$CONFDIR=${STAGEDIR}${ETCDIR}=g' \

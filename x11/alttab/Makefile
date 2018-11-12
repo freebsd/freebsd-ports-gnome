@@ -3,7 +3,7 @@
 
 PORTNAME=	alttab
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.0.3
+DISTVERSION=	1.3.0
 CATEGORIES=	x11
 
 MAINTAINER=	dg@syrec.org
@@ -12,15 +12,22 @@ COMMENT=	Task switcher for minimalistic window managers
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		pkgconfig
-USE_XORG=	x11 xft
-GNU_CONFIGURE=	yes
+BUILD_DEPENDS=	${LOCALBASE}/include/uthash.h:devel/uthash
+LIB_DEPENDS=	libpng.so:graphics/png
+
+USES=		localbase pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	sagb
+GNU_CONFIGURE=	yes
+USE_XORG=	x11 xft xrandr xrender
 
 PLIST_FILES=	bin/alttab \
 		man/man1/alttab.1.gz
 
-PORTDOCS=	README xmonad.md
+PORTDOCS=	README \
+		alttab.ad \
+		wm-setup.md
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

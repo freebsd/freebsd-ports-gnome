@@ -2,7 +2,7 @@
 
 PORTNAME=	amavisd-new
 PORTVERSION=	2.11.0
-PORTREVISION=	2
+PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	security
 MASTER_SITES=	http://www.ijs.si/software/amavisd/ \
@@ -43,7 +43,7 @@ AMAVISQUARANTINE?=	/var/virusmails
 DAEMON?=	/usr/sbin/daemon -p
 
 OPTIONS_DEFINE=	IPV6 BDB SNMP SQLITE MYSQL PGSQL LDAP SASL SPAMASSASSIN P0F ALTERMIME \
-		FILE RAR UNRAR ARJ UNARJ LHA ARC NOMARCH CAB RPM ZOO UNZOO LZOP FREEZE \
+		FILE RAR UNRAR ARJ UNARJ LHA ARC NOMARCH CAB RPM ZOO UNZOO LZOP \
 		P7ZIP MSWORD TNEF DOCS
 OPTIONS_DEFAULT=	BDB SPAMASSASSIN FILE UNRAR ARJ LHA ARC CAB RPM ZOO LZOP \
 			P7ZIP MSWORD
@@ -70,7 +70,6 @@ RPM_DESC=		RPM support with archivers/rpm2cpio
 ZOO_DESC=		ZOO support with archivers/zoo
 UNZOO_DESC=		ZOO support with archivers/unzoo
 LZOP_DESC=		LZOP support with archivers/lzop
-FREEZE_DESC=		FREEZE support with archivers/freeze
 P7ZIP_DESC=		P7ZIP support with archivers/p7zip
 MSWORD_DESC=		Ms Word support with textproc/ripole
 TNEF_DESC=		Add external tnef decoder converters/tnef
@@ -147,15 +146,14 @@ RUN_DEPENDS+=	${LOCALBASE}/bin/altermime:mail/altermime
 RUN_DEPENDS+=	file>=4.21:sysutils/file
 .endif
 
-# archviers/rar is a 32-bit binary port, we don't want the install to fail
+# archivers/rar is a 32-bit binary port, we don't want the install to fail
 # at that port, therefore we will block instantly here if the platform does
 # not suit rar.
-
 .if ${PORT_OPTIONS:MRAR}
 .if ${ARCH} == "i386"
 RUN_DEPENDS+=	${LOCALBASE}/bin/rar:archivers/rar
 .else
-IGNORE=	archviers/rar is a 32-bit binary port and is not compatible with ${ARCH}
+IGNORE=	archivers/rar is a 32-bit binary port and is not compatible with ${ARCH}
 .endif
 .endif
 
@@ -202,10 +200,6 @@ RUN_DEPENDS+=	unzoo>=4.4_1:archivers/unzoo
 
 .if ${PORT_OPTIONS:MLZOP}
 RUN_DEPENDS+=	${LOCALBASE}/bin/lzop:archivers/lzop
-.endif
-
-.if ${PORT_OPTIONS:MFREEZE}
-RUN_DEPENDS+=	${LOCALBASE}/bin/unfreeze:archivers/freeze
 .endif
 
 .if ${PORT_OPTIONS:MP7ZIP}

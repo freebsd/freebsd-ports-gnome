@@ -1,9 +1,10 @@
+#	$FreeBSD: head/ports-mgmt/pkg_jail/files/pkg_update 411390 2016-03-19 11:00:57Z dinoex 2
 # Created by: Brian Feldman & Matt Heckaman
 # $FreeBSD$
 
 PORTNAME=	base
 PORTVERSION=	${LICQ_VER}
-PORTREVISION=	6
+PORTREVISION=	11
 CATEGORIES=	net-im
 PKGNAMESUFFIX=	${SOCKS_SUFFIX}${PKGNAMESUFFIX2}
 
@@ -17,6 +18,7 @@ LIB_DEPENDS=	libboost_regex.so:devel/boost-libs
 BROKEN_sparc64=		Does not build: fails to link
 
 USES=		cmake:noninja iconv ssl
+USE_CXXSTD=	c++98
 WRKSRC=		${WRKDIR}/${DISTNAME}
 LICQ_PORT?=	net-im/licq
 

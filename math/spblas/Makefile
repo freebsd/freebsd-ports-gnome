@@ -3,13 +3,15 @@
 
 PORTNAME=	spblas
 DISTVERSION=	1_02
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	math
 MASTER_SITES=	http://math.nist.gov/spblas/:1 LOCAL/bf/:1 NL/blas/blast-forum/:2
 DISTFILES=	nist_spblas_${DISTVERSION}.zip:1
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	NIST Sparse Basic Linear Algebra Subprograms (BLAS)
+
+LICENSE=	PD
 
 USES=		dos2unix uidfix zip
 USE_GCC=	yes
@@ -63,14 +65,14 @@ post-extract:
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${HDIR}
-	@cd ${WRKSRC}; ${INSTALL_DATA} ${HEADERS} ${STAGEDIR}${PREFIX}/${HDIR}
-.if ${PORT_OPTIONS:MDOCS}
+	cd ${WRKSRC} && ${INSTALL_DATA} ${HEADERS} ${STAGEDIR}${PREFIX}/${HDIR}
+
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	@${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-.endif
-.if ${PORT_OPTIONS:MEXAMPLES}
+	${INSTALL_DATA} ${DISTDIR}/${DIST_SUBDIR}/${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	@cd ${WRKSRC}; ${INSTALL_DATA} ${PORTEXAMPLES} ${STAGEDIR}${EXAMPLESDIR}
-.endif
+	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTEXAMPLES} ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>

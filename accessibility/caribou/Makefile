@@ -3,6 +3,7 @@
 
 PORTNAME=	caribou
 PORTVERSION=	0.4.21
+PORTREVISION=	2
 CATEGORIES=	accessibility gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -20,12 +21,12 @@ LIB_DEPENDS=	libclutter-glx-1.0.so:graphics/clutter \
 		libjson-glib-1.0.so:devel/json-glib \
 		libatspi.so:accessibility/at-spi2-core \
 		libdbus-1.so:devel/dbus
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}atspi>0:accessibility/py3-atspi
+RUN_DEPENDS=	py3?-atspi>=2.1.91:accessibility/py-atspi@${PY_FLAVOR}
 
 USES=		gettext gmake gnome libtool localbase pathfix \
 		pkgconfig python:3.3+ shebangfix tar:xz
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intlhack introspection:build libxml2 \
-		libxslt:build py3gobject3
+		libxslt:build pygobject3
 USE_PYTHON=	py3kplist
 SHEBANG_FILES=	tools/fix_gir.py tools/make_schema.py
 USE_GL=		egl

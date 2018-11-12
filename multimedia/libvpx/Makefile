@@ -3,8 +3,8 @@
 
 PORTNAME=	libvpx
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.6.1
-PORTREVISION=	2
+DISTVERSION=	1.7.0
+PORTREVISION=	1
 CATEGORIES=	multimedia
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -13,41 +13,34 @@ COMMENT=	VP8/VP9 Codec SDK
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	yasm:devel/yasm
+BUILD_DEPENDS=	nasm:devel/nasm
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	webmproject
 
-USES=		compiler:c11 cpe gmake perl5 shebangfix
+USES=		compiler:c++11-lib cpe gmake perl5 shebangfix
 CPE_VENDOR=	john_koleszar
 HAS_CONFIGURE=	yes
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 SHEBANG_FILES=	build/make/ads2gas.pl
 CONFIGURE_ENV=	ASFLAGS="${ASFLAGS}"
-# Only explicitly list ARCHs with SIMD optimizations
-CONFIGURE_ARGS_aarch64=	--target=arm64-linux-gcc
-CONFIGURE_ARGS_amd64=	--target=x86_64-linux-gcc
-CONFIGURE_ARGS_i386=	--target=x86-linux-gcc
-.if ${CFLAGS:M-march=armv[78]*}
-CONFIGURE_ARGS+=	--target=armv7-linux-gcc
-ASFLAGS+=		-meabi=5
-.endif
-CONFIGURE_ARGS+=${CONFIGURE_ARGS_${ARCH}} \
-		--prefix=${PREFIX} \
+CONFIGURE_ARGS=	--prefix=${PREFIX} \
 		--disable-install-docs \
 		--disable-install-srcs \
 		--enable-pic \
 		--enable-vp8 \
 		--enable-vp9
 MAKE_ARGS+=	verbose=yes
+ASFLAGS+=	${ASFLAGS_${MACHINE}}
+ASFLAGS_arm=	-meabi=5
 ALL_TARGET=	# empty
 
 OPTIONS_DEFINE=	DEBUG MULTIRES POSTPROC RTCPU SHARED SIZE_LIMIT TEST THREADS
 OPTIONS_DEFAULT=MULTIRES POSTPROC RTCPU SHARED SIZE_LIMIT THREADS
 OPTIONS_EXCLUDE_aarch64=RTCPU
-OPTIONS_EXCLUDE_armv6=	RTCPU
-OPTIONS_SUB=		SHARED
+OPTIONS_EXCLUDE_powerpcspe=RTCPU
+OPTIONS_SUB=		yes
 
 DEBUG_CONFIGURE_ON=	--enable-debug
 
@@ -73,7 +66,7 @@ TEST_CONFIGURE_OFF=	--disable-unit-tests
 THREADS_CONFIGURE_OFF=	--disable-multithread
 
 post-patch:
-	@${REINPLACE_CMD} 's|\(link_with_cc\)=gcc|\1=$${CC}|' \
+	@${REINPLACE_CMD} -E '/gcctarget|link_with_cc/s/gcc[[:>:]]/$${CC}/' \
 		${WRKSRC}/build/make/configure.sh
 
 post-install:

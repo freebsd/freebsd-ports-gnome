@@ -31,10 +31,12 @@ FILELIST=	brutefile.txt \
 		tfingerprint.db \
 		users.txt
 
+OPTIONS_DEFINE=	DOCS
+
 do-install:
 	${INSTALL_SCRIPT}   ${WRKSRC}/cisco-torch.pl ${STAGEDIR}${PREFIX}/bin/cisco-torch
-	${MKDIR} 	    ${STAGEDIR}${DATADIR}/include
-	${MKDIR} 	    ${STAGEDIR}${DATADIR}/tftproot
+	${MKDIR}	    ${STAGEDIR}${DATADIR}/include
+	${MKDIR}	    ${STAGEDIR}${DATADIR}/tftproot
 	${MKDIR}            ${STAGEDIR}${ETCDIR}
 .for i in ${FILELIST}
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DATADIR}

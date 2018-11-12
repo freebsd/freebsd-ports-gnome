@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gdm
-PORTVERSION=	3.24.2
+PORTVERSION=	3.28.1
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME 3 display manager
@@ -39,13 +39,12 @@ GROUPS=		gdm video
 
 PORTSCOUT=	limitw:1,even
 
-USES=		cpe execinfo gettext gmake gnome libtool pathfix \
-		pkgconfig tar:xz
+USES=		cpe gettext gmake gnome libtool pathfix pkgconfig tar:xz
 CPE_VENDOR=	gnome
 CPE_VENDOR=	gnome_display_manager
 USE_GNOME=	cairo dconf gtk30 intltool introspection
 USE_LDCONFIG=	yes
-USE_XORG=	x11 xau xcb xdmcp
+USE_XORG=	x11 xau xcb xdmcp xorgproto
 INSTALLS_ICONS=	yes
 USE_RC_SUBR=	gdm
 USE_GNOME_SUBR=	yes
@@ -73,6 +72,7 @@ CONFIGURE_ARGS=	--disable-static \
 		--with-user=gdm \
 		--with-group=gdm \
 		--with-initial-vt=09 \
+		--enable-gdm-xsession \
 		--disable-wayland-support \
 		--with-systemd=no
 
@@ -143,13 +143,22 @@ post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/gdm/home
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/gdm/home/.pulse/
 
-	${INSTALL_DATA} ${WRKDIR}/gdm-autologin ${STAGEDIR}${PREFIX}/etc/pam.d/gdm-autologin
-	${INSTALL_DATA} ${WRKDIR}/gdm-launch-environment ${STAGEDIR}${PREFIX}/etc/pam.d/gdm-launch-environment
-	${INSTALL_DATA} ${WRKDIR}/gdm-password ${STAGEDIR}${PREFIX}/etc/pam.d/gdm-password
+	${INSTALL_DATA} ${WRKDIR}/gdm-autologin \
+		${STAGEDIR}${PREFIX}/etc/pam.d/gdm-autologin
+	${INSTALL_DATA} ${WRKDIR}/gdm-launch-environment \
+		${STAGEDIR}${PREFIX}/etc/pam.d/gdm-launch-environment
+	${INSTALL_DATA} ${WRKDIR}/gdm-password \
+		${STAGEDIR}${PREFIX}/etc/pam.d/gdm-password
 
-	${INSTALL_DATA} ${WRKDIR}/client.conf ${STAGEDIR}${PREFIX}/etc/gdm/home/.pulse/
+	${INSTALL_DATA} ${WRKDIR}/client.conf \
+		${STAGEDIR}${PREFIX}/etc/gdm/home/.pulse/client.conf.sample
 
-	${INSTALL_DATA} ${WRKDIR}/locale.conf ${STAGEDIR}${PREFIX}/etc/gdm/
+	${INSTALL_DATA} ${WRKDIR}/locale.conf \
+		${STAGEDIR}${PREFIX}/etc/gdm/locale.conf.sample
+
+	@${RM} ${STAGEDIR}${PREFIX}/lib/udev/rules.d/61-gdm.rules
+	@${RMDIR} ${STAGEDIR}${PREFIX}/lib/udev/rules.d
+	@${RMDIR} ${STAGEDIR}${PREFIX}/lib/udev
 
 	@${SED} -e 's|%%PREFIX%%|${PREFIX}|g' < ${PKGDIR}/pkg-message \
 		| /usr/bin/fmt 75 79 > ${PKGMESSAGE}

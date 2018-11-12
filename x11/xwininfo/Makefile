@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xwininfo
-PORTVERSION=	1.1.3
+PORTVERSION=	1.1.4
 PORTREVISION=	2
 CATEGORIES=	x11
 
@@ -10,7 +10,7 @@ COMMENT=	Window information utility for X
 
 XORG_CAT=	app
 USES=		iconv
-USE_XORG=	x11 xcb xproto xorg-macros
+USE_XORG=	x11 xcb xorgproto xorg-macros
 
 PLIST_FILES=	bin/xwininfo man/man1/xwininfo.1.gz
 

@@ -3,6 +3,7 @@
 
 PORTNAME=	mongodb32
 PORTVERSION=	3.2.11
+PORTREVISION=	2
 DISTVERSIONPREFIX=	r
 CATEGORIES=	databases net
 MASTER_SITES=	https://fastdl.mongodb.org/src/ \
@@ -10,17 +11,19 @@ MASTER_SITES=	https://fastdl.mongodb.org/src/ \
 		http://download.mongodb.org/src/
 DISTNAME=	mongodb-src-${DISTVERSIONPREFIX}${PORTVERSION}
 
-MAINTAINER=	brendan+freebsd@bbqsrc.net
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Distributed document-oriented "NoSQL" database
 
 # mongodb is AGPLv3, C++ driver is APACHE20
 LICENSE=	AGPLv3 APACHE20
 LICENSE_COMB=	multi
 
+BROKEN_SSL=	openssl-devel
+BROKEN_SSL_REASON_openssl-devel=	variable has incomplete type 'EVP_MD_CTX' (aka 'evp_md_ctx_st')
 LIB_DEPENDS=	libpcre.so:devel/pcre \
 		libsnappy.so:archivers/snappy
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}yaml>=3.11:devel/py-yaml \
-		${PYTHON_PKGNAMEPREFIX}pymongo>=3.0:databases/pymongo
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}yaml>=3.11:devel/py-yaml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pymongo>=3.0:databases/pymongo@${PY_FLAVOR}
 
 CHOSEN_COMPILER_TYPE=	clang
 
@@ -37,7 +40,7 @@ SASL_MAKE_ARGS=		--use-sasl-client
 SSL_USE=	yes
 SSL_MAKE_ARGS=	--ssl
 
-USES=		compiler cpe execinfo python:build scons
+USES=		compiler cpe python:build scons
 
 MAKE_ARGS=	--prefix=${STAGEDIR}${PREFIX} \
 		--use-system-pcre --use-system-snappy \
@@ -47,6 +50,14 @@ USERS=	mongodb
 GROUPS=	mongodb
 
 USE_RC_SUBR=	mongod
+
+.include <bsd.port.options.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200057
+SUB_LIST+=	LEGACY_LIMITS="@comment " MODERN_LIMITS=""
+.else
+SUB_LIST+=	LEGACY_LIMITS="" MODERN_LIMITS="@comment "
+.endif
 
 ALL_TARGET=	core
 TEST_TARGET=	unittests

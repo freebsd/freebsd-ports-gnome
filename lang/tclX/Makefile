@@ -4,8 +4,12 @@
 PORTNAME=	tclX
 PORTVERSION=	8.4.1
 CATEGORIES=	lang tcl devel
-MASTER_SITES=	SF/${PORTNAME:tl}/TclX/${PORTVERSION}
-DISTNAME=	tclx${PORTVERSION}
+MASTER_SITES=	SF/${PORTNAME:tl}/TclX/${PORTVERSION}:tclx \
+    		http://core.tcl.tk/tclconfig/raw/:tclm4
+DISTFILES=	tclx${PORTVERSION}${EXTRACT_SUFX}:tclx \
+    		${TCLM4}:tclm4
+EXTRACT_ONLY=	tclx${PORTVERSION}${EXTRACT_SUFX}
+DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	mi@aldan.algebra.com
 COMMENT=	Extended TCL
@@ -24,6 +28,8 @@ CONFIGURE_ARGS+=--enable-shared \
 PLIST_SUB=	TCLX_VER=${PORTVERSION:R}
 ALL_TARGET=	binaries libraries
 INSTALL_TARGET=	install-binaries install-libraries
+LLD_UNSAFE=	yes
+TCLM4=		tcl.m4?name=2e84c8
 
 .include <bsd.port.pre.mk>
 
@@ -33,6 +39,9 @@ EXTRA_PATCHES+=	${FILESDIR}/tcl85-test-patch
 .if ${TCL_VER} > 8.5
 EXTRA_PATCHES+=	${FILESDIR}/tcl86-test-patch
 .endif
+
+post-extract:
+	${CP} ${DISTDIR}/${DIST_SUBDIR}/${TCLM4} ${WRKSRC}/tclconfig/tcl.m4
 
 post-configure:
 	# Disabling the failing help.test

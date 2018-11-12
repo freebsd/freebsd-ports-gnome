@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=		openvpn
-DISTVERSION=		2.4.3
-PORTREVISION?=		0
+DISTVERSION=		2.4.6
+PORTREVISION?=		3
 CATEGORIES=		security net
-MASTER_SITES=		https://swupdate.openvpn.net/community/releases/ \
+MASTER_SITES=		https://swupdate.openvpn.org/community/releases/ \
 			https://build.openvpn.net/downloads/releases/
 
 MAINTAINER=		mandree@FreeBSD.org
@@ -13,7 +13,7 @@ COMMENT?=		Secure IP/Ethernet tunnel daemon
 
 LICENSE=		GPLv2
 
-CONFLICTS_INSTALL=	openvpn-2.[!4].* openvpn-[!2].* openvpn-beta-[0-9]* openvpn-devel-[0-9]*
+CONFLICTS_INSTALL?=	openvpn-2.[!4].* openvpn-[!2].* openvpn-beta-[0-9]* openvpn-devel-[0-9]* openvpn-mbedtls-[0-9]*
 
 GNU_CONFIGURE=		yes
 USES=			cpe libtool pkgconfig shebangfix tar:xz
@@ -87,12 +87,6 @@ PORTEXAMPLES=		*
 TEST_ALL_TARGET=	check
 TEST_TEST_TARGET_OFF=	check
 
-# XXX Please remove this compatibility wrapper after 2017Q2 is branched.
-.ifdef(WITHOUT_CHECK)
-WARNING+=	"${.CURDIR}: WITHOUT_CHECK is deprecated, please use WITHOUT=TEST or OPTIONS_UNSET=TEST."
-WITHOUT+=	TEST
-.endif
-
 pre-configure:
 .ifdef (LOG_OPENVPN)
 	@${ECHO} "Building with LOG_OPENVPN=${LOG_OPENVPN}"
@@ -110,6 +104,33 @@ post-configure:
 	    ${WRKSRC}/src/plugins/auth-pam/Makefile \
 	    ${WRKSRC}/src/plugins/down-root/Makefile
 
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MMBEDTLS}
+_tlslibs=libmbedtls libmbedx509 libmbedcrypto
+.else
+# OpenSSL
+_tlslibs=libssl libcrypto
+.endif
+
+.if ${SSL_DEFAULT:Mlibressl*} && empty(PORT_OPTIONS:MMBEDTLS)
+pre-everything::
+	@${ECHO_CMD} "WARNING: OpenVPN does not officially support LibreSSL."
+	@${ECHO_CMD} "If things break, rebuild with OpenSSL or mbedTLS."
+	@${ECHO_CMD} "You may wish to change your default SSL library"
+	@${ECHO_CMD} "and press Ctrl+C within the next 10 seconds to abort."
+.  if !(defined(PACKAGE_BUILDING) || defined(BATCH))
+	@sleep 10
+.  endif
+.endif
+
+# sanity check that we don't inherit incompatible SSL libs through,
+# for instance, pkcs11-helper:
+post-build:
+	@a=$$(LC_ALL=C ldd -f '%o\n' ${WRKSRC}/src/openvpn/openvpn \
+	|	${SORT} -u) ; set -- $$(for i in ${_tlslibs} ; do ${PRINTF} '%s\n' "$$a" | ${GREP} $${i}.so | wc -l ; done | ${SORT} -u) ;\
+	if test "$$*" != "1" ; then ${ECHO_CMD} >&2 "${.CURDIR} FAILED: either of ${_tlslibs} libraries linked multiple times" ; ${PRINTF} '%s\n' "$$a"; ${RM} ${BUILD_COOKIE} ; exit 1 ; fi
+
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/openvpn/plugins/openvpn-plugin-auth-pam.so
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/openvpn/plugins/openvpn-plugin-down-root.so
@@ -122,7 +143,7 @@ post-install:
 post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/
 .for i in AUTHORS ChangeLog PORTS
-	${INSTALL_MAN} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}/
+	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}/
 .endfor
 
 post-install-EXAMPLES-on:

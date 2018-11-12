@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	sslh
-PORTVERSION=	1.18
+PORTVERSION=	1.19c
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	olivier@FreeBSD.org
@@ -12,13 +13,14 @@ COMMENT=	SSL/SSH multiplexer
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libconfig.so:devel/libconfig
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	yrutschle
+LIB_DEPENDS=	libconfig.so:devel/libconfig \
+		libpcre.so:devel/pcre
 
 USES=		gmake perl5
 USE_PERL5=	build
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	yrutschle
 
 OPTIONS_DEFINE=	EXAMPLES LIBWRAP
 OPTIONS_DEFAULT=	LIBWRAP
@@ -37,11 +39,7 @@ PORTEXAMPLES=	example.cfg
 
 MAKE_JOBS_UNSAFE=	yes
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MLIBWRAP}
-MAKE_ENV+=	USELIBWRAP=1
-.endif
+LIBWRAP_MAKE_ENV=	USELIBWRAP=1
 
 post-patch:
 	@${REINPLACE_CMD} -Ee 's,^(release=)$$,\1${PORTVERSION},' \

@@ -15,6 +15,7 @@ lib/hevea/cleveref.hva
 lib/hevea/comment.hva
 lib/hevea/compat.hva
 lib/hevea/contents_motif.gif
+lib/hevea/contents_motif.svg
 lib/hevea/crlang.hva
 lib/hevea/czech.hva
 lib/hevea/deepcut.hva
@@ -25,8 +26,8 @@ lib/hevea/figcut.hva
 lib/hevea/french-common.hva
 lib/hevea/german-common.hva
 lib/hevea/hanging.hva
-lib/hevea/portuguese.hva
 lib/hevea/hevea.sty
+lib/hevea/hrlang.hva
 lib/hevea/html/amsfonts.hva
 lib/hevea/html/amssymb.hva
 lib/hevea/html/article.hva
@@ -44,6 +45,8 @@ lib/hevea/html/gif.hva
 lib/hevea/html/graphics.hva
 lib/hevea/html/graphicx.hva
 lib/hevea/html/hevea.hva
+lib/hevea/html/mathjax.hva
+lib/hevea/html/mathjaxauto.hva
 lib/hevea/html/mathpartir.hva
 lib/hevea/html/natbib.hva
 lib/hevea/html/png.hva
@@ -60,7 +63,6 @@ lib/hevea/html/undersection.hva
 lib/hevea/html/urlhref.hva
 lib/hevea/html/xypic.hva
 lib/hevea/hyperref.hva
-lib/hevea/hrlang.hva
 lib/hevea/ifpdf.hva
 lib/hevea/ifthen.hva
 lib/hevea/imagen
@@ -111,15 +113,19 @@ lib/hevea/mappings/windows-1250.map
 lib/hevea/mappings/windows-1251.map
 lib/hevea/mappings/windows-1252.map
 lib/hevea/mappings/windows-1257.map
+lib/hevea/mathjax.sty
 lib/hevea/mathop.hva
 lib/hevea/moreverb.hva
 lib/hevea/multibib.hva
 lib/hevea/multind.hva
 lib/hevea/natbib-common.hva
 lib/hevea/next_motif.gif
+lib/hevea/next_motif.svg
 lib/hevea/packages.hva
 lib/hevea/plain.hva
+lib/hevea/portuguese.hva
 lib/hevea/previous_motif.gif
+lib/hevea/previous_motif.svg
 lib/hevea/program.hva
 lib/hevea/ragged2e.hva
 lib/hevea/spaces.hva

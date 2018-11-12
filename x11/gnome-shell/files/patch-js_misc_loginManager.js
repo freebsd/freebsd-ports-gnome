@@ -1,4 +1,4 @@
-$OpenBSD: patch-js_misc_loginManager_js,v 1.3 2016/11/04 10:11:02 ajacoutot Exp $
+$OpenBSD: patch-js_misc_loginManager_js,v 1.4 2017/11/04 16:44:50 jasper Exp $
 
 REVERT:
 From ddea54a5398c123a4711243e55811c8ba26f8b85 Mon Sep 17 00:00:00 2001
@@ -12,8 +12,9 @@ From: =?UTF-8?q?Florian=20M=C3=BCllner?= <fmuellner@gnome.org>
 Date: Thu, 24 Apr 2014 17:55:56 +0200
 Subject: loginManager: Kill ConsoleKit support
 
---- js/misc/loginManager.js.orig	Sat Aug 20 01:42:50 2016
-+++ js/misc/loginManager.js	Fri Nov  4 10:57:19 2016
+
+--- js/misc/loginManager.js.orig	2018-04-05 22:23:32.831383000 +0200
++++ js/misc/loginManager.js	2018-04-05 22:30:34.647201000 +0200
 @@ -40,15 +40,38 @@ const SystemdLoginSessionIface = '<node> \
  <signal name="Lock" /> \
  <signal name="Unlock" /> \
@@ -74,21 +75,21 @@ Subject: loginManager: Kill ConsoleKit support
      }
  
      return _loginManager;
-@@ -113,6 +136,9 @@ const LoginManagerSystemd = new Lang.Class({
-                                   Lang.bind(this, this._prepareForSleep));
+@@ -113,6 +136,9 @@ var LoginManagerSystemd = new Lang.Class({
+                                   this._prepareForSleep.bind(this));
      },
  
 +    // Having this function is a bit of a hack since the Systemd and ConsoleKit
 +    // session objects have different interfaces - but in both cases there are
 +    // Lock/Unlock signals, and that's all we count upon at the moment.
-     getCurrentSessionProxy: function(callback) {
+     getCurrentSessionProxy(callback) {
          if (this._currentSession) {
              callback (this._currentSession);
-@@ -183,13 +209,35 @@ const LoginManagerSystemd = new Lang.Class({
+@@ -188,13 +214,35 @@ var LoginManagerSystemd = new Lang.Class({
  });
  Signals.addSignalMethods(LoginManagerSystemd.prototype);
  
--const LoginManagerDummy = new Lang.Class({
+-var LoginManagerDummy = new Lang.Class({
 -    Name: 'LoginManagerDummy',
 +const LoginManagerConsoleKit = new Lang.Class({
 +    Name: 'LoginManagerConsoleKit',
@@ -102,7 +103,7 @@ Subject: loginManager: Kill ConsoleKit support
 +    // Having this function is a bit of a hack since the Systemd and ConsoleKit
 +    // session objects have different interfaces - but in both cases there are
 +    // Lock/Unlock signals, and that's all we count upon at the moment.
-     getCurrentSessionProxy: function(callback) {
+     getCurrentSessionProxy(callback) {
 -        // we could return a DummySession object that fakes whatever callers
 -        // expect (at the time of writing: connect() and connectSignal()
 -        // methods), but just never calling the callback should be safer
@@ -124,8 +125,8 @@ Subject: loginManager: Kill ConsoleKit support
 +            }));
      },
  
-     canSuspend: function(asyncCallback) {
-@@ -209,4 +257,4 @@ const LoginManagerDummy = new Lang.Class({
+     canSuspend(asyncCallback) {
+@@ -214,4 +262,4 @@ var LoginManagerDummy = new Lang.Class({
          callback(null);
      }
  });

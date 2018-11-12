@@ -2,20 +2,21 @@
 # $FreeBSD$
 
 PORTNAME=	SQL-Abstract-More
-PORTVERSION=	1.28
+PORTVERSION=	1.33
 CATEGORIES=	databases perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	espen@tagestad.no
+MAINTAINER=	svysh.fbsd@gmail.com
 COMMENT=	Extension of SQL::Abstract with more constructs and more flexible API
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
+LICENSE_FILE=	${WRKSRC}/README
 
 BUILD_DEPENDS=	p5-MRO-Compat>0:devel/p5-MRO-Compat \
 		p5-Params-Validate>0:devel/p5-Params-Validate \
-		p5-SQL-Abstract>=1.73:databases/p5-SQL-Abstract \
+		p5-SQL-Abstract>=1.84:databases/p5-SQL-Abstract \
 		p5-namespace-clean>=0:devel/p5-namespace-clean
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 TEST_DEPENDS=	p5-List-MoreUtils>=0:lang/p5-List-MoreUtils \

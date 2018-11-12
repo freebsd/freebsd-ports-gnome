@@ -3,9 +3,9 @@
 
 PORTNAME=	facedetect
 PORTVERSION=	1.1
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	graphics
-PKGNAMEPREFIX=	php-
+PKGNAMEPREFIX=	${PHP_PKGNAMEPREFIX}
 
 MAINTAINER=	mm@FreeBSD.org
 COMMENT=	Face detection extension for PHP using OpenCV library
@@ -19,10 +19,9 @@ GH_ACCOUNT=	infusion
 GH_PROJECT=	PHP-Facedetect
 GH_TAGNAME=	4b1dfe1
 
-CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib -lopencv_core
+LIBS+=		-lopencv_core
 
-USES=		php:ext
+USES=		localbase php:ext
 
 CONFIGURE_ARGS+=	--with-facedetect
 

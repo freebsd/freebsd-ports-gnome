@@ -3,7 +3,7 @@
 # $FreeBSD$
 #
 # PROVIDE: nslcd
-# REQUIRE: NETWORKING ldconfig resolv kstart
+# REQUIRE: NETWORKING slapd ldconfig resolv kstart
 # BEFORE: syslogd
 # KEYWORD: shutdown
 #
@@ -43,6 +43,7 @@ nslcd_prestart()
 	else
 		command_args="-f %%PREFIX%%/sbin/nslcd"
 	fi
+	install -d -o %%USERS%% -g %%GROUPS%% %%NSLCD_VARDIR%%
 }
 
 nslcd_start()

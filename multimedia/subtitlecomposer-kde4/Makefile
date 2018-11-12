@@ -3,17 +3,21 @@
 PORTNAME=	subtitlecomposer
 PORTVERSION=	0.5.7
 DISTVERSIONPREFIX=	v
-PORTREVISION=	6
+PORTREVISION=	13
 CATEGORIES=	multimedia kde
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Subtitle editor for KDE
 
+DEPRECATED=	KDE4 is EOL upstream
+EXPIRATION_DATE=	2018-12-31
+
 LIB_DEPENDS=	libicui18n.so:devel/icu
 
-USES=		cmake:outsource gettext kde:4 shared-mime-info
+USES=		cmake:outsource gettext kde:4 qt:4 shared-mime-info
 USE_KDE=	kdelibs automoc4
-USE_QT4=	qmake_build moc_build rcc_build uic_build phonon
+USE_QT=		qmake_build moc_build rcc_build uic_build phonon
+USE_CXXSTD=	gnu++98
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	maxrd2

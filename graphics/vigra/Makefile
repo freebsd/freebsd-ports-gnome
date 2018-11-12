@@ -3,8 +3,11 @@
 
 PORTNAME=	vigra
 DISTVERSION=	1.11.0
-PORTREVISION=	13
+PORTREVISION=	24
 CATEGORIES=	graphics
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES=	18675a51fca2.patch:-p1
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	VIGRA stands for "Vision with Generic Algorithms"
@@ -15,7 +18,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 LIB_DEPENDS=	libHalf.so:graphics/ilmbase \
 		libsz.so:science/szip
 
-USES=		cmake:outsource python:2,run shebangfix
+USES=		cmake:outsource python:2.7,run shebangfix
 CMAKE_ARGS=	-DDEPENDENCY_SEARCH_PREFIX:PATH=${LOCALBASE} \
 		-DDOCINSTALL:PATH=${DOCSDIR_REL}
 
@@ -37,16 +40,22 @@ HDF5_CMAKE_BOOL=	WITH_HDF5
 HDF5_LIB_DEPENDS=	libhdf5.so:science/hdf5
 
 OPENEXR_CMAKE_BOOL=	WITH_OPENEXR
-OPENEXR_LIB_DEPENDS=	libIlmImf.so:graphics/OpenEXR
+OPENEXR_LIB_DEPENDS=	libIlmImf.so:graphics/openexr
 
 NUMPY_DESC=		NumPy mathematical computing (USE Fortran/GCC47+)
 NUMPY_CMAKE_BOOL=	WITH_VIGRANUMPY
-NUMPY_USES=		compiler:gcc-c++11-lib python:2,build
+NUMPY_USES=		compiler:gcc-c++11-lib python:2.7,build
 NUMPY_BUILD_DEPENDS=	nosetests:devel/py-nose \
 			f2py:math/py-numpy
 NUMPY_RUN_DEPENDS=	nosetests:devel/py-nose \
 			f2py:math/py-numpy
-NUMPY_LIB_DEPENDS=	libboost_python.so:devel/boost-python-libs
+NUMPY_LIB_DEPENDS=	${PY_BOOST}
+# On FreeBSD < 11 libc++ lacks support for sized delete operators.
+# GCC dropped the builtin version of these operators in 6+ by
+# defaulting to gnu++14. Force c++11 instead.
+# For a more detailed discussion see:
+# https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=219484
+NUMPY_CXXFLAGS=		-std=gnu++11
 
 PNG_CMAKE_BOOL=		WITH_PNG
 PNG_LIB_DPEENDS=	libpng.so:graphics/png

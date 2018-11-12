@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Filesys-DiskUsage
-PORTVERSION=	0.10
+PORTVERSION=	0.11
 CATEGORIES=	sysutils perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	culot@FreeBSD.org
 COMMENT=	Perl equivalent of du(1)
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 TEST_DEPENDS=	p5-Test-Warn>0:devel/p5-Test-Warn

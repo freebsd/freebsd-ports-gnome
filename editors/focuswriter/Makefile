@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	focuswriter
-PORTVERSION=	1.6.7
-PORTREVISION=	1
 DISTVERSIONPREFIX=	v
+DISTVERSION=	1.6.16
 CATEGORIES=	editors
 
 MAINTAINER=	lightside@gmx.com
@@ -17,17 +16,15 @@ LICENSE_FILE_LGPL3+ =	${WRKSRC}/resources/images/icons/oxygen/COPYING
 
 LIB_DEPENDS=	libhunspell-1.6.so:textproc/hunspell
 
+USES=		compiler:c++11-lib desktop-file-utils pkgconfig qmake qt:5
 USE_GITHUB=	yes
 GH_ACCOUNT=	gottcode
-
-USES=		compiler:c++11-lib desktop-file-utils pkgconfig qmake
 USE_GL=		gl
-USE_QT5=	concurrent core gui multimedia network printsupport widgets \
+USE_QT=		concurrent core gui multimedia network printsupport widgets \
 		buildtools_build linguisttools_build
-INSTALLS_ICONS=	yes
 
 PORTDATA=	*
-PORTDOCS=	CREDITS NEWS README
+PORTDOCS=	ChangeLog CREDITS README
 
 OPTIONS_DEFINE=	DOCS
 
@@ -40,6 +37,6 @@ post-install:
 		${STAGEDIR}${MANPREFIX}/man/man1
 
 post-install-DOCS-on:
-	(cd ${WRKSRC} && ${COPYTREE_SHARE} "${PORTDOCS}" ${STAGEDIR}${DOCSDIR})
+	cd ${WRKSRC} && ${COPYTREE_SHARE} "${PORTDOCS}" ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

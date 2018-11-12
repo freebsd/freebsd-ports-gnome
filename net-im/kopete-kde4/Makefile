@@ -2,31 +2,35 @@
 
 PORTNAME=	kopete
 PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	5
+PORTREVISION=	11
 CATEGORIES=	net-im kde kde-kde4
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE multi-protocol instant messenger
 
+DEPRECATED=	KDE4 is EOL upstream
+EXPIRATION_DATE=	2018-12-31
+
 LIB_DEPENDS=	libidn.so:dns/libidn \
-		libqca.so:devel/qca \
+		libqca.so:devel/qca@qt4 \
 		libotr.so.5:security/libotr \
 		libgadu.so:polish/libgadu \
-		libkleo.so:deskutils/kdepim4 \
+		libkleo.so:deskutils/kdepim-kde4 \
 		libmeanwhile.so:net-im/meanwhile \
 		libv4l2.so:multimedia/libv4l \
 		libjasper.so:graphics/jasper
 BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev2.h:multimedia/v4l_compat
 
-USES=		cmake:outsource jpeg kde:4 pkgconfig shebangfix sqlite tar:xz \
+USES=		cmake:outsource jpeg kde:4 pkgconfig qt:4 shebangfix sqlite tar:xz \
 		webplugin:native
 USE_GNOME=	libxml2 libxslt
 USE_KDE=	kdelibs pimlibs \
 		automoc4 qimageblitz
-USE_QT4=	corelib gui network qt3support sql xml \
+USE_QT=		corelib gui network qt3support sql xml \
 		moc_build qmake_build rcc_build uic_build uic3_build
 USE_XORG=	x11 xdamage xext xscrnsaver xtst
 USE_LDCONFIG=	yes
+USE_CXXSTD=	gnu++98
 
 SHEBANG_FILES=	protocols/winpopup/winpopup-install \
 		protocols/winpopup/winpopup-send \

@@ -1,3 +1,4 @@
 OpenStack library for privilege separation
 
-WWW: http://pypi.python.org/pypi/oslo.privsep
+WWW: https://docs.openstack.org/oslo.privsep/latest/
+WWW: https://github.com/openstack/oslo.privsep

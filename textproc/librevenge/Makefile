@@ -2,14 +2,14 @@
 
 PORTNAME=	librevenge
 PORTVERSION=	0.0.4
-PORTREVISION=	4
+PORTREVISION=	9
 CATEGORIES=	textproc
 MASTER_SITES=	SF/libwpd/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	office@FreeBSD.org
 COMMENT=	Base library for writing document import filters
 
-LICENSE=	LGPL21 MPL
+LICENSE=	LGPL21 MPL20
 LICENSE_COMB=	dual
 
 USES=		gmake libtool pathfix tar:xz
@@ -19,12 +19,13 @@ INSTALL_TARGET=	install-strip
 
 BUILD_DEPENDS=	${LOCALBASE}/include/boost/algorithm/string.hpp:devel/boost-libs
 
-OPTIONS_DEFINE=	DOXYGEN
+OPTIONS_DEFINE=	DOXYGEN DOCS
 
 CPPFLAGS=	-I${LOCALBASE}/include
 CONFIGURE_ARGS=	-disable-werror --disable-tests
 
 PORTDOCS=	*
+DOXYGEN_IMPLIES=	DOCS
 DOXYGEN_BUILD_DEPENDS=	doxygen:devel/doxygen
 DOXYGEN_CONFIGURE_OFF=	--without-docs
 

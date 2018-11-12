@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gauche
-PORTVERSION=	0.9.4
-PORTREVISION=	1
+PORTVERSION=	0.9.6
+PORTREVISION=	2
 CATEGORIES=	lang scheme
 MASTER_SITES=	SF/${PORTNAME}/Gauche
 DISTNAME=	Gauche-${PORTVERSION}
@@ -16,16 +16,16 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BROKEN_aarch64=	Fails to link: missing sbrk
 BROKEN_armv6=	Fails to build: unknown attribute __alloc_size__; also fails in assembler
+BROKEN_armv7=	Fails to build: unknown attribute __alloc_size__; also fails in assembler
 BROKEN_mips=	Fails to build: redefinition of GC_register_dynamic_libraries
 BROKEN_mips64=	Fails to build: redefinition of GC_register_dynamic_libraries
-BROKEN_sparc64=	Fails to build: do not know how to make sparc_mach_dep.lo
 
-USES=		iconv makeinfo tar:tgz
+USES=		gmake iconv makeinfo tar:tgz
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--enable-tls=none \
-		${ICONV_CONFIGURE_BASE:S/lib//}
+CONFIGURE_ARGS=	--with-local=${LOCALBASE} ${ICONV_CONFIGURE_BASE:S/lib//}
 USE_LDCONFIG=	yes
 MAKE_JOBS_UNSAFE=yes
+TEST_TARGET=	check
 
 PLIST_SUB=	VERSION="${PORTVERSION}" \
 		TARGET="${CONFIGURE_TARGET}"
@@ -36,17 +36,21 @@ MAKE_ENV+=	CCACHE_CPP2=1
 INFO=		gauche-refe gauche-refj
 
 OPTIONS_DEFINE=		GDBM THREADS SLIB
-OPTIONS_RADIO=		MULTIBYTE
+OPTIONS_RADIO=		MULTIBYTE TLS
 OPTIONS_RADIO_MULTIBYTE=	EUCJP SJIS UTF8
-OPTIONS_DEFAULT=	THREADS UTF8
+OPTIONS_RADIO_TLS=	AXTLS MBEDTLS
+OPTIONS_DEFAULT=	AXTLS THREADS UTF8
 OPTIONS_SUB=		yes
 
+AXTLS_DESC=		Cameron Rich's axTLS implementation (bundled)
+AXTLS_CONFIGURE_ON=	--with-tls=axtls
 EUCJP_DESC=		EUC-JP encoding support
 EUCJP_CONFIGURE_ON=	--enable-multibyte=euc-jp
 GDBM_LIB_DEPENDS=	libgdbm.so:databases/gdbm
-GDBM_CONFIGURE_ON=	--with-local=${LOCALBASE}
+MBEDTLS_LIB_DEPENDS=	libmbedtls.so:security/mbedtls
+MBEDTLS_CONFIGURE_ON=	--with-tls=mbedtls
 SLIB_DESC=		Create catalogue for SLIB port
-SLIB_BUILD_DEPENDS=	slib>0:lang/slib
+SLIB_BUILD_DEPENDS=	${LOCALBASE}/share/slib/require.scm:lang/slib
 SLIB_CONFIGURE_ON=	--with-slib=${LOCALBASE}/share/slib
 SLIB_CONFIGURE_OFF=	--with-slib=${WRKDIR}
 SJIS_DESC=		Shift_JIS encoding support
@@ -61,9 +65,14 @@ UTF8_CONFIGURE_ON=	--enable-multibyte=utf-8
 CONFIGURE_ARGS+=	--enable-multibyte=none
 .endif
 
+.if !${PORT_OPTIONS:MAXTLS} && !${PORT_OPTIONS:MMBEDTLS}
+CONFIGURE_ARGS+=	--with-tls=none
+.endif
+
 post-patch:
+# required for sparc64, no-op elsewhere
 	@${REINPLACE_CMD} -e \
-		's|-lpthread|-pthread|' ${WRKSRC}/configure
+		'/^VPATH = /s,$$,/src,' ${WRKSRC}/gc/Makefile.in
 
 post-install:
 	@${TOUCH} ${STAGEDIR}${PREFIX}/lib/gauche-0.9/site/${CONFIGURE_TARGET}/.keepme
@@ -88,8 +97,5 @@ post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/gauche-0.9/${PORTVERSION}/${CONFIGURE_TARGET}/${i}
 	@${CHMOD} u-w ${STAGEDIR}${PREFIX}/lib/gauche-0.9/${PORTVERSION}/${CONFIGURE_TARGET}/${i}
 .endfor
-
-regression-test: build
-	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} check
 
 .include <bsd.port.mk>

@@ -7,13 +7,6 @@ CATEGORIES=	java
 MAINTAINER=	lev@FreeBSD.org
 COMMENT=	Java bindings for Version control system
 
-.if defined(WITH_SUBVERSION_VER) && ${WITH_SUBVERSION_VER} == 18
-MASTERDIR=	${.CURDIR}/../../devel/subversion18
-.else
-MASTERDIR=	${.CURDIR}/../../devel/subversion
-.endif
-PKGDIR=		${.CURDIR}
-
 USES+=		compiler
 
 USE_JAVA=	yes
@@ -22,10 +15,13 @@ JAVA_OS=	native
 JAVA_BUILD=	yes
 JAVA_RUN=	yes
 
-SVN_BUILD_BINDINGS=	yes
-SVN_BUILD_ADDONS=	yes
 
-.include "${MASTERDIR}/Makefile.common"
+PORTREVISION_110=	1
+PORTREVISION_19=	0
+
+SVN_BUILD_BINDINGS=	yes
+
+.include "${.CURDIR}/../../devel/subversion/Makefile.addons"
 
 CONFIGURE_ARGS+=	--enable-javahl \
 			--with-jdk=${JAVA_HOME} \

@@ -2,20 +2,20 @@
 # $FreeBSD$
 
 PORTNAME=	libfilteraudio
-PORTVERSION=	0.150524
+DISTVERSIONPREFIX=	v
+DISTVERSION=	0.0.1
+PORTEPOCH=	1
 CATEGORIES=	audio
 
-MAINTAINER=	yuri@rawbw.com
+MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Lightweight audio filtering library made from webrtc code
 
 LICENSE=	BSD3CLAUSE
 
+USES=		gmake
 USE_GITHUB=	yes
 GH_ACCOUNT=	irungentoo
 GH_PROJECT=	filter_audio
-GH_TAGNAME=	612c5a1
-
-USES=		gmake
 USE_LDCONFIG=	yes
 
 post-patch:

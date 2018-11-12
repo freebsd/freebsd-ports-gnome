@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	oclgrind
-PORTVERSION=	20170122
+PORTVERSION=	20180101
+PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
@@ -12,21 +13,20 @@ COMMENT=	SPIR interpreter and virtual OpenCL device simulator
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BROKEN_FreeBSD_10=	oclgrind is only supported on FreeBSD 11.0 and newer, crashes LLVM 3.4
+
 BUILD_DEPENDS=	opencl>=0:devel/opencl \
-		llvm-config40:devel/llvm40
+		llvm-config50:devel/llvm50
 LIB_DEPENDS=	libOpenCL.so:devel/ocl-icd
 RUN_DEPENDS=	opencl>=0:devel/opencl
 
-BROKEN_FreeBSD_10=	oclgrind is only supported on FreeBSD 11.0 and newer, crashes LLVM 3.4
-
+USES=		cmake compiler:c++11-lang
 USE_GITHUB=	yes
 GH_ACCOUNT=	jrprice
 GH_PROJECT=	Oclgrind
-GH_TAGNAME=	b777367
-
+GH_TAGNAME=	e99899d
 USE_LDCONFIG=	yes
-USES=		cmake
 
-CMAKE_ARGS+=	-DLLVM_DIR=${LOCALBASE}/llvm40/share/llvm/cmake
+CMAKE_ARGS+=	-DLLVM_DIR=${LOCALBASE}/llvm50/share/llvm/cmake
 
 .include <bsd.port.mk>

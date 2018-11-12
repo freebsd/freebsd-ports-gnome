@@ -3,7 +3,7 @@
 
 PORTNAME=	nut
 PORTVERSION=	2.7.4
-PORTREVISION=	4
+PORTREVISION=	8
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.networkupstools.org/source/${PORTVERSION:R}/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} ${DISTNAME}${EXTRACT_SUFX}.sig
@@ -12,10 +12,9 @@ EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 MAINTAINER=	cy@FreeBSD.org
 COMMENT=	Network UPS Tools
 
-USE_AUTOTOOLS=	autoconf
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
-USES=		gmake pkgconfig libtool
+USES=		autoreconf gmake pkgconfig libtool
 
 NUT_USER?=	uucp
 NUT_GROUP?=	uucp
@@ -106,11 +105,11 @@ PLIST_SUB+=	NUT_SNMP="@comment "
 
 .if ${PORT_OPTIONS:MNEON}
 LIB_DEPENDS+=	libneon.so:www/neon
-CONFIGURE_ARGS+=	--with-neonxml
+CONFIGURE_ARGS+=	--with-neon
 PLIST_SUB+=	NUT_NEON=""
 .else
-CONFIGURE_ARGS+=	--without-neonxml
-CONFIGURE_ARGS+=	--disable-neonxml
+CONFIGURE_ARGS+=	--without-neon
+CONFIGURE_ARGS+=	--disable-neon
 PLIST_SUB+=	NUT_NEON="@comment "
 .endif
 

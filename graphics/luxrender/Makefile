@@ -3,7 +3,7 @@
 
 PORTNAME=	luxrender
 DISTVERSION?=	1.6
-PORTREVISION=	5
+PORTREVISION=	11
 CATEGORIES=	graphics
 MASTER_SITES=	https://bitbucket.org/luxrender/lux/get/ \
 		https://bitbucket.org/luxrender/luxrays/get/:lr
@@ -16,7 +16,7 @@ COMMENT=	Physically based and unbiased rendering system
 
 LICENSE=	GPLv3
 
-LIB_DEPENDS=	libboost_python.so:devel/boost-python-libs \
+LIB_DEPENDS=	${PY_BOOST} \
 		libfftw3.so:math/fftw3 \
 		libOpenImageIO.so:graphics/openimageio
 .if ${DISTVERSION} != 1.4
@@ -53,7 +53,8 @@ FREEIMAGE_CMAKE_ON=	-DLUX_USE_FREEIMAGE:BOOL=ON
 FREEIMAGE_LIB_DEPENDS=	libfreeimage.so:graphics/freeimage
 
 X11_DESC=	Build GUI executable (requires Qt 4)
-X11_USE=	QT4=moc_build,qmake_build,rcc_build,uic_build,corelib,gui
+X11_USES=	qt:4
+X11_USE=	QT=moc_build,qmake_build,rcc_build,uic_build,corelib,gui
 X11_PLIST_FILES=	bin/luxrender
 
 post-extract:

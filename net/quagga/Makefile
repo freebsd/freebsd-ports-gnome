@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	quagga
-PORTVERSION=	1.2.1
-PORTREVISION=	3
+PORTVERSION=	1.2.4
+PORTREVISION=	1
 CATEGORIES=	net ipv6
 MASTER_SITES=	SAVANNAH
 
@@ -14,19 +14,20 @@ LICENSE=	GPLv2
 
 BUILD_DEPENDS=	gawk:lang/gawk
 
-CONFLICTS=	openbgpd-[0-9]* openospfd-[0-9]* zebra-0* quagga-re-[0-9]*
+CONFLICTS=	frr3 frr4 frr5 openbgpd pimd zebra
 
+USES=		compiler:c11 cpe gmake libtool makeinfo \
+		perl5 readline ssl
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-exampledir=${PREFIX}/share/examples/quagga
 INSTALL_TARGET=	install-strip
-USES=		gmake libtool makeinfo perl5 readline compiler:c11 cpe
 USE_LDCONFIG=	yes
 USE_PERL5=	build
 
 INFO=		quagga
 
 OPTIONS_DEFINE=	ISISD PIMD PAM RTADV SNMP TCPSOCKETS DLMALLOC \
-		NO_BGP_ANNOUNCE OSPF_NEXTHOP ISIS_TOPOLOGY
+		NO_BGP_ANNOUNCE OSPF_NEXTHOP ISIS_TOPOLOGY EXAMPLES
 # IRDP needs something freebsd does not seem to have:
 # configure: error: 'IRDP requires in_pktinfo at the moment!'
 OPTIONS_DEFAULT=	ISISD PIMD RTADV

@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	smtube
-PORTVERSION=	17.5.0
+PORTVERSION=	18.3.0
 CATEGORIES=	multimedia
 MASTER_SITES=	SF/smtube/SMTube/${PORTVERSION}/
 
-MAINTAINER=	pawel@FreeBSD.org
+MAINTAINER=	multimedia@FreeBSD.org
 COMMENT=	SMPlayer YouTube browser
 
 LICENSE=	GPLv2
@@ -14,8 +14,9 @@ LICENSE_FILE=	${WRKSRC}/Copying.txt
 
 USES=		gmake tar:bzip2
 ALL_TARGET=	#empty
-MAKE_ARGS=	DATA_PATH=${DATADIR} DOC_PATH=${DOCSDIR} \
-		LRELEASE=${LRELEASE} MAKE=${MAKE_CMD}
+MAKE_ARGS=	DATA_PATH="${DATADIR}" DOC_PATH="${DOCSDIR}" \
+		LRELEASE="${LRELEASE}" MAKE="${MAKE_CMD}" \
+		QMAKE="${QMAKE}"
 
 PORTDOCS=	*
 
@@ -33,11 +34,13 @@ MPV_DESC=	mpv dependency for video playback
 SMPLAYER_DESC=	SMPlayer dependency for video playback
 VLC_DESC=	VLC dependency for video playback
 
-QT4_USE=	qt4=qmake_build,moc_build,rcc_build,uic_build
-QT4_USE+=	qt4=corelib,network,script,gui,webkit,linguisttools_build
+QT4_USES=	qt:4
+QT4_USE=	qt=qmake_build,moc_build,rcc_build,uic_build
+QT4_USE+=	qt=corelib,network,script,gui,webkit,linguisttools_build
 
-QT5_USE=	qt5=qmake_build,buildtools_build,linguisttools_build
-QT5_USE+=	qt5=core,network,script,gui,webkit,widgets gl=gl
+QT5_USES=	qt:5
+QT5_USE=	qt=qmake_build,buildtools_build,linguisttools_build
+QT5_USE+=	qt=core,network,script,gui,webkit,widgets gl=gl
 
 MPLAYER_RUN_DEPENDS=		mplayer:multimedia/mplayer
 MPV_RUN_DEPENDS=		mpv:multimedia/mpv
@@ -45,7 +48,7 @@ SMPLAYER_RUN_DEPENDS=		smplayer:multimedia/smplayer
 VLC_RUN_DEPENDS=		vlc:multimedia/vlc
 
 post-patch:
-	@${REINPLACE_CMD} '/^QMAKE/ s|qmake|${QMAKE} ${QMAKE_ARGS:S,\$(,\$\$(,g}|' \
+	@${REINPLACE_CMD} 's|$$(QMAKE_OPTS)|${QMAKE_ARGS:S,\$,\$\$,g}|' \
 		${WRKSRC}/Makefile
 
 post-install:

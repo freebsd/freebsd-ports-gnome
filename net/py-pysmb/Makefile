@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pysmb
-PORTVERSION=	1.1.19
+PORTVERSION=	1.1.23
 CATEGORIES=	net python
 MASTER_SITES=	CHEESESHOP \
 		http://miketeo.net/files/Projects/${PORTNAME}/
@@ -14,12 +14,12 @@ COMMENT=	SMB/CIFS library written in Python
 LICENSE=	ZLIB
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyasn1>=0:devel/py-pyasn1
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyasn1>=0:devel/py-pyasn1@${PY_FLAVOR}
 
 OPTIONS_DEFINE=	DOCS
 
 NO_ARCH=	yes
-USES=		python
+USES=		python zip
 USE_PYTHON=	autoplist concurrent distutils
 PORTDOCS=	*
 

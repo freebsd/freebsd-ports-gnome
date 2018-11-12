@@ -3,17 +3,15 @@
 
 PORTNAME=	viking
 PORTVERSION=	1.6.2
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	astro
 MASTER_SITES=	SF/${PORTNAME}/
 
-MAINTAINER=	koalative@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Program to manage GPS data (tracks, waypoints, etc.)
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-BROKEN=		wrong LIB_DEPENDS
 
 BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/pthread-stubs.pc:devel/libpthread-stubs
 LIB_DEPENDS=	libcurl.so:ftp/curl \
@@ -63,7 +61,7 @@ NLS_USES=		gettext
 GEOTAG_LIB_DEPENDS=	libexif.so:graphics/libexif
 GEOTAG_CONFIGURE_ENABLE=geotag
 
-GPSD_LIB_DEPENDS=	libgpsd.so:astro/gpsd
+GPSD_LIB_DEPENDS=	libgps.so:astro/gpsd
 GPSD_CONFIGURE_ENABLE=	realtime-gps-tracking
 
 MAPNIK_LIB_DEPENDS=	libmapnik.so:graphics/mapnik

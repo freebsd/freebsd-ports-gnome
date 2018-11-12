@@ -3,10 +3,11 @@
 
 CATEGORIES=	x11 lang
 PKGNAMESUFFIX=	-x11
+PORTREVISION=	2
 
 COMMENT=	Free Pascal interface to X windows server
 
-USE_FPC=	yes
+USES=		fpc
 
 MASTERDIR=	${.CURDIR}/../../lang/fpc
 WRKUNITDIR=	${FPCSRCDIR}/packages/${PKGNAMESUFFIX:S/-//}

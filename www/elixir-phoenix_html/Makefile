@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	phoenix_html
-PORTVERSION=	2.9.3
+PORTVERSION=	2.11.2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Functions for working with HTML from Phoenix
 
 LICENSE=	MIT
@@ -18,5 +18,7 @@ GH_ACCOUNT=	phoenixframework
 MIX_BUILD_DEPS=	devel/elixir-plug
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
 MIX_REWRITE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

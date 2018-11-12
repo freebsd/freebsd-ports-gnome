@@ -1,24 +1,28 @@
 # $FreeBSD$
 
 PORTNAME=	mu4e
-PORTVERSION=	0.9.16
-PORTREVISION=	1
+PORTVERSION=	1.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	mail
-PKGNAMESUFFIX=	-${EMACS_PORT_NAME}
+PKGNAMESUFFIX=	${EMACS_PKGNAMESUFFIX}
 
 MAINTAINER=	hrs@FreeBSD.org
 COMMENT=	Emacs frontend for Mu
 
 LICENSE=	GPLv3
 
+.if ${FLAVOR:U} != devel && ${FLAVOR:U} != devel_nox
+# http://pkg.awarnach.mathstat.dal.ca/data/11i386-default/2018-05-30_07h36m11s/logs/errors/mu4e-emacs26-1.0_1.log
+BROKEN=		fails to build
+.endif
+
 RUN_DEPENDS=	mu:mail/mu
 
-USES=		autoreconf gmake makeinfo pkgconfig
+USES=		autoreconf emacs gmake makeinfo pkgconfig
 USE_GITHUB=	yes
 GH_PROJECT=	mu
 GH_ACCOUNT=	djcb
-USE_EMACS=	yes
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-gtk \
 		--disable-webkit \

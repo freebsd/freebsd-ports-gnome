@@ -11,6 +11,8 @@ DISTNAME=	${PORTNAME}-${PORTVERSION}-src
 MAINTAINER=	saper@saper.info
 COMMENT=	5250 terminal emulator for the AS/400 written in Java
 
+BROKEN=		fails to build
+
 BUILD_DEPENDS=	${JAVALIBDIR}/mail.jar:java/javamail \
 		${JYTHON_JAR}:lang/jython \
 		${JAVALIBDIR}/jt400.jar:sysutils/jtopen \
@@ -53,7 +55,7 @@ do-install:
 post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for d in ${DOC_FILES}
-	${INSTALL_MAN} ${WRKSRC}/src/${d} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/src/${d} ${STAGEDIR}${DOCSDIR}
 .endfor
 
 .include <bsd.port.post.mk>

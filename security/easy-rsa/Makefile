@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	easy-rsa
-DISTVERSION=	3.0.1
+DISTVERSION=	3.0.5
 PORTREVISION=	1
 CATEGORIES=	security net-mgmt
-MASTER_SITES=	https://github.com/OpenVPN/easy-rsa/releases/download/${DISTVERSION}/
-DISTNAME=	EasyRSA-${DISTVERSION}
+MASTER_SITES=	https://github.com/OpenVPN/easy-rsa/releases/download/v${DISTVERSION}/
+DISTNAME=	EasyRSA-nix-${DISTVERSION}
 
 # Eric F. Crist <ecrist@secure-computing.net> does not require my
 # approval for changes to this package. -- mandree@FreeBSD.org
@@ -18,6 +18,8 @@ CONFLICTS_INSTALL=easy-rsa2-*
 
 USES=		tar:tgz
 NO_BUILD=	yes
+
+WRKSRC=		${WRKDIR}/EasyRSA-${DISTVERSION}
 
 OPTIONS_DEFINE=		DOCS EXAMPLES
 
@@ -34,13 +36,13 @@ do-install:
 		${INSTALL_SCRIPT} ${WRKDIR}/easyrsa ${STAGEDIR}${PREFIX}/bin/
 		${INSTALL_SCRIPT} ${WRKSRC}/easyrsa ${STAGEDIR}${DATADIR}/easyrsa.real
 		${INSTALL_DATA} ${WRKSRC}/vars.example ${STAGEDIR}${DATADIR}/
-		${INSTALL_DATA} ${WRKSRC}/openssl-1.0.cnf ${STAGEDIR}${DATADIR}/openssl-1.0.cnf.example
+		${INSTALL_DATA} ${WRKSRC}/openssl-easyrsa.cnf ${STAGEDIR}${DATADIR}/openssl-easyrsa.cnf.example
 		(cd ${WRKSRC}/x509-types/ && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/x509-types/)
 
 do-install-DOCS-on:
 		${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in ${_pd_files}
-		${INSTALL_MAN} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
+		${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
 .for i in ${_pd_dirs}
 		${MKDIR} ${STAGEDIR}${DOCSDIR}/${i}

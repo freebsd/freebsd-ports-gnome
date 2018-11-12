@@ -13,14 +13,14 @@ COMMENT=	Zope Application ZODB Update Generations
 
 LICENSE=	ZPL21
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.annotation>=0:devel/py-zope.annotation \
-		${PYTHON_PKGNAMEPREFIX}zope.app.authentication>=0:security/py-zope.app.authentication \
-		${PYTHON_PKGNAMEPREFIX}zope.app.component>=0:devel/py-zope.app.component \
-		${PYTHON_PKGNAMEPREFIX}zope.copypastemove>=0:devel/py-zope.copypastemove \
-		${PYTHON_PKGNAMEPREFIX}zope.dublincore>=0:devel/py-zope.dublincore \
-		${PYTHON_PKGNAMEPREFIX}zope.generations>=0:devel/py-zope.generations
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.annotation>=0:devel/py-zope.annotation@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.app.authentication>=0:security/py-zope.app.authentication@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.app.component>=0:devel/py-zope.app.component@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.copypastemove>=0:devel/py-zope.copypastemove@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.dublincore>=0:devel/py-zope.dublincore@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.generations>=0:devel/py-zope.generations@${PY_FLAVOR}
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

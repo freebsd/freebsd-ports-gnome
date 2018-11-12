@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	ecto
-PORTVERSION=	2.2.3
+PORTVERSION=	2.2.10
 DISTVERSIONPREFIX=	v
 CATEGORIES=	databases
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Database wrapper and language integrated query for Elixir
 
 LICENSE=	APACHE20
@@ -15,7 +15,7 @@ USES=		elixir
 USE_GITHUB=	yes
 GH_ACCOUNT=	elixir-ecto
 
-OPTIONS_DEFINE=	POSTGREX MARIAEX
+OPTIONS_DEFINE=	POSTGREX MARIAEX DOCS
 OPTIONS_SUB=	yes
 POSTGREX_DESC=	PostgreSQL adapter support
 MARIAEX_DESC=	MySQL adapter support

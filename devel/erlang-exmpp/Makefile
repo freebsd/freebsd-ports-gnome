@@ -8,7 +8,7 @@ PORTREVISION=	1
 CATEGORIES=	devel net-im
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Fast and scalable library for XMPP written in Erlang/OTP
 
 LICENSE=	EPL
@@ -35,6 +35,8 @@ GNU_CONFIGURE_PREFIX=	"${PREFIX}/lib/erlang/lib"
 PLIST_SUB=	VERSION=${PORTVERSION}
 USES=		autoreconf cpe libtool pkgconfig ssl
 CPE_VENDOR=	process-one
+
+OPTIONS_DEFINE=	DOCS
 
 DOCS_CONFIGURE_ENABLE=	documentation
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	CGI-Application-Plugin-Authentication
-PORTVERSION=	0.21
+PORTVERSION=	0.23
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	bofh@FreeBSD.org
 COMMENT=	Support for authenticating requests in CGI::Application
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-Apache-Htpasswd>=0:security/p5-Apache-Htpasswd \

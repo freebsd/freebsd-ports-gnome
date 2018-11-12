@@ -3,10 +3,10 @@
 
 PORTNAME=	intellij-fsnotifier
 PORTVERSION=	20160221
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	java devel
 
-MAINTAINER=	tobik@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Replacement for IntelliJ's fsnotifier
 
 LICENSE=	APACHE20

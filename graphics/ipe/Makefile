@@ -3,7 +3,7 @@
 
 PORTNAME=	ipe
 PORTVERSION=	7.2.7
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONSUFFIX=	-src
 CATEGORIES=	graphics
 MASTER_SITES=	https://dl.bintray.com/otfried/generic/ipe/${PORTVERSION:R}/
@@ -14,14 +14,14 @@ COMMENT=	Extensible vector graphics editor with LaTeX support
 LICENSE=	GPLv3+
 
 RUN_DEPENDS=	xdg-open:devel/xdg-utils
-LIB_DEPENDS=	libpng16.so:graphics/png \
+LIB_DEPENDS=	libpng.so:graphics/png \
 		libfreetype.so:print/freetype2
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/src
 
-USES=		compiler:c++11-lib gmake jpeg lua:52 pkgconfig
+USES=		compiler:c++11-lib gmake jpeg lua:52 pkgconfig qt:5
 USE_GNOME=	cairo
-USE_QT5=	buildtools_build core gui qmake_build widgets
+USE_QT=		buildtools_build core gui qmake_build widgets
 USE_TEX=	pdftex
 MAKE_ENV=	DL_LIBS="" \
 		INSTALL_DIR="${MKDIR}" \

@@ -1,63 +1,38 @@
-- DSCP cannot be modified on FreeBSD yet
-src/tcp.c:61:14: error: use of undeclared identifier 'IPTOS_DSCP_MASK'
-  v = dscp & IPTOS_DSCP_MASK;
+From dc7804e1410971dabbe087193ca2b47f02131524 Mon Sep 17 00:00:00 2001
+From: Jongsung Kim <jongsung.kim@gmail.com>
+Date: Mon, 16 Apr 2018 13:01:41 +0900
+Subject: [PATCH] tcp: fix tcp_socket_dead() for FreeBSD
 
-- Change include order for FreeBSD
-In file included from src/tcp.c:33:
-/usr/include/netinet/ip.h:69:17: error: field has incomplete type 'struct in_addr'
-        struct  in_addr ip_src,ip_dst;  /* source and dest address */
-                        ^
-/usr/include/netinet/ip.h:69:9: note: forward declaration of 'struct in_addr'
-        struct  in_addr ip_src,ip_dst;  /* source and dest address */
-                ^
-/usr/include/netinet/ip.h:69:24: error: field has incomplete type 'struct in_addr'
-        struct  in_addr ip_src,ip_dst;  /* source and dest address */
-                               ^
-/usr/include/netinet/ip.h:69:9: note: forward declaration of 'struct in_addr'
-        struct  in_addr ip_src,ip_dst;  /* source and dest address */
-                ^
-/usr/include/netinet/ip.h:181:19: error: field has incomplete type 'struct in_addr'
-                        struct in_addr ipt_addr;
-                                       ^
-/usr/include/netinet/ip.h:69:9: note: forward declaration of 'struct in_addr'
-        struct  in_addr ip_src,ip_dst;  /* source and dest address */
-                ^
-/usr/include/netinet/ip.h:216:17: error: field has incomplete type 'struct in_addr'
-        struct  in_addr ippseudo_src;   /* source internet address */
-                        ^
-/usr/include/netinet/ip.h:69:9: note: forward declaration of 'struct in_addr'
-        struct  in_addr ip_src,ip_dst;  /* source and dest address */
-                ^
-/usr/include/netinet/ip.h:217:17: error: field has incomplete type 'struct in_addr'
-        struct  in_addr ippseudo_dst;   /* destination internet address */
-                        ^
-/usr/include/netinet/ip.h:69:9: note: forward declaration of 'struct in_addr'
-        struct  in_addr ip_src,ip_dst;  /* source and dest address */
-                ^
---- src/tcp.c.orig	2017-01-20 19:41:51.000000000 +0100
-+++ src/tcp.c	2017-02-08 11:15:26.836727000 +0100
-@@ -30,8 +30,8 @@
- #include <fcntl.h>
- #include <errno.h>
- #include <signal.h>
--#include <netinet/ip.h>
- #include <netinet/in.h>
-+#include <netinet/ip.h>
- #include <netinet/tcp.h>
- #include <arpa/inet.h>
- 
-@@ -56,6 +56,7 @@
- int
- socket_set_dscp(int sockfd, uint32_t dscp, char *errbuf, size_t errbufsize)
- {
-+#ifdef IPTOS_DSCP_MASK
-   int r, v;
- 
-   v = dscp & IPTOS_DSCP_MASK;
-@@ -65,6 +66,7 @@
-       snprintf(errbuf, errbufsize, "IP_TOS failed: %s", strerror(errno));
-     return -1;
-   }
+The FreeBSD port of tvheadend couldn't stream Live TV, and debug
+log shows webui judged the peer socket closed immediately after
+starting streaming:
+
+2018-04-15 06:30:04.996 [  DEBUG]:webui: Start streaming /stream/mux/c4bc67bdaa13457e33740ca883cc4d75?ticket=7D1B56AD0E434C5F7EBFA4677A7FBE4C94097974
+2018-04-15 06:30:04.996 [  DEBUG]:webui: Stop streaming /stream/mux/c4bc67bdaa13457e33740ca883cc4d75?ticket=7D1B56AD0E434C5F7EBFA4677A7FBE4C94097974, client hung up
+
+It looks because tcp_socket_dead() misunderstood the zero-return
+from recv(). For the FreeBSD, recv() might return zero for alive
+sockets which have nothing to read.
+
+Patch tested with the latest FreeBSD port of tvheadend-4.2.6.
+---
+ src/tcp.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/tcp.c b/src/tcp.c
+index 40f6c1c0cc..9b865eb292 100644
+--- src/tcp.c
++++ src/tcp.c
+@@ -453,8 +453,13 @@ tcp_socket_dead(int fd)
+     return -errno;
+   if (err)
+     return -err;
++#ifdef PLATFORM_FREEBSD
++  if (recv(fd, NULL, 0, MSG_PEEK | MSG_DONTWAIT) < 0)
++    return -errno;
++#else
+   if (recv(fd, NULL, 0, MSG_PEEK | MSG_DONTWAIT) == 0)
+     return -EIO;
 +#endif
    return 0;
  }

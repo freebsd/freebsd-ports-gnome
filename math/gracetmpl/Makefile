@@ -3,20 +3,21 @@
 
 PORTNAME=	gracetmpl
 PORTVERSION=	0.3.2
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	math print
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Provide an easy way to use existing grace-files as a template
 
-BUILD_DEPENDS=	${PYTHON_SITELIBDIR}/numarray/__init__.py:math/py-numarray
-RUN_DEPENDS=	${PYTHON_SITELIBDIR}/numarray/__init__.py:math/py-numarray
+BUILD_DEPENDS=	${PYTHON_SITELIBDIR}/numarray/__init__.py:math/py-numarray@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_SITELIBDIR}/numarray/__init__.py:math/py-numarray@${PY_FLAVOR}
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		gmake python tar:bzip2
+USES=		gmake python:2.7 tar:bzip2
+USE_PYTHON=	flavors
 MAKE_ARGS=	PREFIX="${PREFIX}" \
 		BIN_PREFIX="${PREFIX}/bin" \
 		LIB_PREFIX="${PREFIX}/lib" \
@@ -32,6 +33,8 @@ INSTALL_TARGET=	install
 USE_GCC=	yes
 
 PLIST_SUB+=	PYTHON_VER=${PYTHON_VER}
+
+OPTIONS_DEFINE=	DOCS
 
 post-extract:
 	@${ECHO_CMD} -n > ${WRKSRC}/Makefile.defs

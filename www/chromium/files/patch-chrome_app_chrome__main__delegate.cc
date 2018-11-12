@@ -1,21 +1,16 @@
---- chrome/app/chrome_main_delegate.cc.orig	2017-06-05 19:03:01 UTC
-+++ chrome/app/chrome_main_delegate.cc
-@@ -89,7 +89,7 @@
- #include "chrome/app/chrome_crash_reporter_client.h"
+--- chrome/app/chrome_main_delegate.cc.orig	2018-02-24 16:25:09.000000000 +0100
++++ chrome/app/chrome_main_delegate.cc	2018-03-03 20:07:40.484969000 +0100
+@@ -98,7 +98,7 @@
+ #include "chrome/app/shutdown_signal_handlers_posix.h"
  #endif
  
--#if !defined(DISABLE_NACL) && defined(OS_LINUX)
-+#if !defined(DISABLE_NACL) && defined(OS_LINUX) && !defined(OS_BSD)
+-#if BUILDFLAG(ENABLE_NACL) && defined(OS_LINUX)
++#if BUILDFLAG(ENABLE_NACL) && defined(OS_LINUX) && !defined(OS_BSD)
  #include "components/nacl/common/nacl_paths.h"
  #include "components/nacl/zygote/nacl_fork_delegate_linux.h"
  #endif
-@@ -117,11 +117,11 @@
- #include "ui/base/x/x11_util.h"  // nogncheck
- #endif
- 
--#if defined(OS_POSIX) && !defined(OS_MACOSX)
-+#if defined(OS_POSIX) && !defined(OS_MACOSX) && !defined(OS_BSD)
- #include "components/crash/content/app/breakpad_linux.h"
+@@ -133,7 +133,7 @@
+ #include "v8/include/v8.h"
  #endif
  
 -#if defined(OS_LINUX)
@@ -23,34 +18,16 @@
  #include "base/environment.h"
  #endif
  
-@@ -164,7 +164,7 @@ base::LazyInstance<ChromeContentBrowserClient>::Destru
-     g_chrome_content_browser_client = LAZY_INSTANCE_INITIALIZER;
- #endif
+@@ -238,7 +238,7 @@
  
--#if defined(OS_POSIX)
-+#if defined(OS_POSIX) && !defined(OS_BSD)
- base::LazyInstance<ChromeCrashReporterClient>::Leaky g_chrome_crash_client =
-     LAZY_INSTANCE_INITIALIZER;
- #endif
-@@ -284,7 +284,7 @@ void AdjustLinuxOOMScore(const std::string& process_ty
- // and resources loaded.
- bool SubprocessNeedsResourceBundle(const std::string& process_type) {
-   return
--#if defined(OS_POSIX) && !defined(OS_MACOSX)
-+#if defined(OS_POSIX) && !defined(OS_MACOSX) && !defined(OS_BSD)
-       // The zygote process opens the resources for the renderers.
-       process_type == switches::kZygoteProcess ||
- #endif
-@@ -336,7 +336,7 @@ void HandleHelpSwitches(const base::CommandLine& comma
- }
- #endif
+ #endif  // defined(OS_WIN)
  
--#if !defined(OS_MACOSX) && !defined(OS_ANDROID)
-+#if !defined(OS_MACOSX) && !defined(OS_ANDROID) && !defined(OS_BSD)
- void SIGTERMProfilingShutdown(int signal) {
-   Profiling::Stop();
-   struct sigaction sigact;
-@@ -403,7 +403,7 @@ void InitializeUserDataDir(base::CommandLine* command_
+-#if defined(OS_LINUX)
++#if defined(OS_LINUX) && !defined(OS_BSD)
+ void AdjustLinuxOOMScore(const std::string& process_type) {
+   // Browsers and zygotes should still be killable, but killed last.
+   const int kZygoteScore = 0;
+@@ -407,7 +407,7 @@
    std::string process_type =
        command_line->GetSwitchValueASCII(switches::kProcessType);
  
@@ -59,7 +36,16 @@
    // On Linux, Chrome does not support running multiple copies under different
    // DISPLAYs, so the profile directory can be specified in the environment to
    // support the virtual desktop use-case.
-@@ -596,7 +596,7 @@ bool ChromeMainDelegate::BasicStartupComplete(int* exi
+@@ -581,7 +581,7 @@
+ #if defined(OS_CHROMEOS)
+   chromeos::RegisterPathProvider();
+ #endif
+-#if BUILDFLAG(ENABLE_NACL) && defined(OS_LINUX)
++#if BUILDFLAG(ENABLE_NACL) && defined(OS_LINUX) && !defined(OS_BSD)
+   nacl::RegisterPathProvider();
+ #endif
+ 
+@@ -603,7 +603,7 @@
        std::string format_str =
            command_line.GetSwitchValueASCII(switches::kDiagnosticsFormat);
        if (format_str == "machine") {
@@ -68,7 +54,7 @@
        } else if (format_str == "log") {
          format = diagnostics::DiagnosticsWriter::LOG;
        } else {
-@@ -646,7 +646,7 @@ bool ChromeMainDelegate::BasicStartupComplete(int* exi
+@@ -653,7 +653,7 @@
        std::string format_str =
            command_line.GetSwitchValueASCII(switches::kDiagnosticsFormat);
        if (format_str == "machine") {
@@ -77,17 +63,8 @@
        } else if (format_str == "human") {
          format = diagnostics::DiagnosticsWriter::HUMAN;
        } else {
-@@ -758,7 +758,7 @@ void ChromeMainDelegate::PreSandboxStartup() {
-   std::string process_type =
-       command_line.GetSwitchValueASCII(switches::kProcessType);
- 
--#if defined(OS_POSIX)
-+#if defined(OS_POSIX) && !defined(OS_BSD)
-   crash_reporter::SetCrashReporterClient(g_chrome_crash_client.Pointer());
- #endif
- 
-@@ -888,7 +888,7 @@ void ChromeMainDelegate::PreSandboxStartup() {
-   chrome::InitializePDF();
+@@ -915,7 +915,7 @@
+   InitializePDF();
  #endif
  
 -#if defined(OS_POSIX) && !defined(OS_MACOSX)
@@ -95,7 +72,7 @@
    // Zygote needs to call InitCrashReporter() in RunZygote().
    if (process_type != switches::kZygoteProcess) {
  #if defined(OS_ANDROID)
-@@ -903,7 +903,7 @@ void ChromeMainDelegate::PreSandboxStartup() {
+@@ -931,7 +931,7 @@
      breakpad::InitCrashReporter(process_type);
  #endif  // defined(OS_ANDROID)
    }
@@ -104,12 +81,12 @@
  
    // After all the platform Breakpads have been initialized, store the command
    // line for crash reporting.
-@@ -1009,7 +1009,7 @@ bool ChromeMainDelegate::DelaySandboxInitialization(
+@@ -941,7 +941,7 @@
+ void ChromeMainDelegate::SandboxInitialized(const std::string& process_type) {
+   // Note: If you are adding a new process type below, be sure to adjust the
+   // AdjustLinuxOOMScore function too.
+-#if defined(OS_LINUX)
++#if defined(OS_LINUX) && !defined(OS_BSD)
+   AdjustLinuxOOMScore(process_type);
  #endif
-   return process_type == switches::kRelauncherProcess;
- }
--#elif defined(OS_POSIX) && !defined(OS_ANDROID)
-+#elif defined(OS_POSIX) && !defined(OS_ANDROID) && !defined(OS_BSD)
- void ChromeMainDelegate::ZygoteStarting(
-     std::vector<std::unique_ptr<content::ZygoteForkDelegate>>* delegates) {
- #if defined(OS_CHROMEOS)
+ #if defined(OS_WIN)

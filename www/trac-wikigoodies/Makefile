@@ -9,7 +9,7 @@ MASTER_SITES=	ftp://ftp.renatasystems.org/pub/FreeBSD/ports/distfiles/
 PKGNAMEPREFIX=	trac-
 DISTNAME=	${PORTNAME}plugin.${PORTVERSION}
 
-MAINTAINER=	alexey@renatasystems.org
+MAINTAINER=	joneum@FreeBSD.org
 COMMENT=	Plugin for Trac which extends the Wiki with some goodies
 
 LICENSE=	BSD3CLAUSE
@@ -19,7 +19,7 @@ RUN_DEPENDS=	tracd:www/trac
 
 WRKSRC=		${WRKDIR}/${PORTNAME}plugin/0.11
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 NO_ARCH=	yes
 

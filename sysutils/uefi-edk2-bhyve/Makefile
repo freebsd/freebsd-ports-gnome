@@ -1,8 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	uefi-edk2-bhyve
-PORTVERSION=	20160704
-PORTREVISION=	2
+DISTVERSIONPREFIX=	v
+DISTVERSION=	0.1
+PORTEPOCH=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	fabian.freyer@physik.tu-berlin.de
@@ -12,15 +13,14 @@ LICENSE=	BSD2CLAUSE
 
 BUILD_DEPENDS=	bash:shells/bash \
 		nasm:devel/nasm \
-		${PYTHON_LIBDIR}/lib-dynload/_sqlite3.so:databases/py-sqlite3
+		${PYTHON_LIBDIR}/lib-dynload/_sqlite3.so:databases/py-sqlite3@${PY_FLAVOR}
 
 USES=		gmake \
-		python:build
+		python:2.7,build
 USE_GCC=	4.8
 USE_GITHUB=	yes
 GH_ACCOUNT=	freebsd
 GH_PROJECT=	uefi-edk2
-GH_TAGNAME=	a36132939e259df79b16699c03c6f1d63c7454b9
 
 PLIST_FILES=	${PREFIX}/share/uefi-firmware/BHYVE_UEFI${PLIST_SUFFIX}.fd
 
@@ -81,3 +81,4 @@ do-install:
 		${STAGEDIR}${PREFIX}/share/uefi-firmware/BHYVE_UEFI${PLIST_SUFFIX}.fd
 
 .include <bsd.port.mk>
+RUN_DEPENDS:=	${RUN_DEPENDS:Ngcc*}

@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	mysqlwsrep
-PORTVERSION?=	5.6.36
+PORTVERSION?=	5.6.41
 DISTVERSIONPREFIX?=	wsrep_
-DISTVERSIONSUFFIX?=	-25.20
-PORTREVISION?=	2
+DISTVERSIONSUFFIX?=	-25.23
 CATEGORIES=	databases ipv6
 PKGNAMESUFFIX=	56-server
 
@@ -14,6 +13,9 @@ COMMENT=	MySQL database enhanced with Galera replication (server package)
 
 LICENSE=	GPLv2
 
+NOT_FOR_ARCHS=		aarch64 armv6 armv7 powerpc64
+NOT_FOR_ARCHS_REASON=	error: Unsupported platform
+
 RUN_DEPENDS=	bash:shells/bash \
 		lsof:sysutils/lsof \
 		netcat:net/netcat \
@@ -21,13 +23,11 @@ RUN_DEPENDS=	bash:shells/bash \
 		socat:net/socat
 LIB_DEPENDS=	libevent.so:devel/libevent liblz4.so:archivers/liblz4
 
-BROKEN_powerpc64=	Does not build
+BROKEN_SSL=	openssl-devel
+BROKEN_SSL_REASON_openssl-devel=	incomplete definition of type 'struct dh_st'
 
 DATADIR=	${PREFIX}/share/mysql
 ETCDIR=		${PREFIX}/etc/mysql
-
-NOT_FOR_ARCHS=	aarch64 armv6 powerpc64
-NOT_FOR_ARCHS_REASON=	error: Unsupported platform
 
 USES=		bison \
 		cmake:outsource,noninja \
@@ -42,8 +42,8 @@ USE_PERL5=	run
 USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
-GH_ACCOUNT=	codership
-GH_PROJECT?=	mysql-wsrep
+GH_TUPLE?=	codership:mysql-wsrep:${DISTVERSIONPREFIX}${PORTVERSION}${DISTVERSIONSUFFIX} \
+		codership:wsrep-API:eab2d5d5a31672c0b7d116ef1629ff18392fd7d0:dummy/wsrep/src
 
 MY_DBDIR=	/var/db/mysql
 MY_SECDIR=	/var/db/mysql_secure
@@ -129,11 +129,18 @@ MMAN1=		my_print_defaults.1 \
 		mysqldumpslow.1 \
 		mysqlhotcopy.1 \
 		mysqlman.1 \
-		mysqltest.1 \
 		perror.1 \
 		replace.1 \
 		resolve_stack_dump.1 \
 		resolveip.1
+
+.include <bsd.port.options.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200057
+SUB_LIST+=	LEGACY_LIMITS="@comment " MODERN_LIMITS=""
+.else
+SUB_LIST+=	LEGACY_LIMITS="" MODERN_LIMITS="@comment "
+.endif
 
 .include <bsd.port.pre.mk>
 
@@ -147,7 +154,7 @@ post-install:
 	${MKDIR} ${STAGEDIR}${MY_SECDIR}
 	${MKDIR} ${STAGEDIR}${MY_TMPDIR}
 
-.if ${ARCH} == "armv6"
+.if ${ARCH} == armv6 || ${ARCH} == armv7
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-config.h.cmake
 .endif
 

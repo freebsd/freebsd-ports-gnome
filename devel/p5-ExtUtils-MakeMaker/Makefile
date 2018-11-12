@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ExtUtils-MakeMaker
-PORTVERSION=	7.30
+PORTVERSION=	7.34
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,13 +10,15 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Designed to write a Makefile for an extension module
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
-CONFLICTS=	p5-ExtUtils-Command-[0-9]*
 
-NO_ARCH=	yes
+CONFLICTS_INSTALL=	p5-ExtUtils-Command
+
 USES=		perl5
 USE_PERL5=	configure
+
+NO_ARCH=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e '/EXE_FILES/d; /my::bundles/d' ${WRKSRC}/Makefile.PL

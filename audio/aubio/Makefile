@@ -2,10 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	aubio
-PORTVERSION=	0.4.5
-PORTREVISION?=	0
+PORTVERSION=	0.4.6
+PORTREVISION?=	1
 CATEGORIES?=	audio
 MASTER_SITES=	http://aubio.org/pub/
+
+PATCH_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/commit/
+PATCHFILES=	5690daf759b4.patch:-p1
 
 MAINTAINER?=	jhale@FreeBSD.org
 COMMENT?=	Library for audio labelling

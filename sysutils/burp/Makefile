@@ -3,7 +3,7 @@
 
 PORTNAME=	burp
 PORTVERSION=	1.4.40
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	sysutils
 
 MAINTAINER=	ports@FreeBSD.org
@@ -22,7 +22,7 @@ GH_ACCOUNT=	grke
 
 USE_RC_SUBR=	burp
 GNU_CONFIGURE=	yes
-USES=		gmake localbase ncurses ssl
+USES=		compiler:c++11-lib gmake localbase ncurses ssl
 
 PORTSCOUT=	limit:^1\.4\.
 

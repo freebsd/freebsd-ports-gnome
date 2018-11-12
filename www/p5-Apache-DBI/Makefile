@@ -11,7 +11,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	DBI persistent connection, authentication and authorization
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-DBI>=0:databases/p5-DBI \
@@ -20,8 +20,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 CONFLICTS=	p5-Apache-DBI-mp[12]*
 
-USES=		perl5
+USES=		apache:2.2+ perl5
 USE_PERL5=	configure
-USE_APACHE?=	22+
 
 .include <bsd.port.mk>

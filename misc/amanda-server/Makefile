@@ -3,6 +3,7 @@
 
 PORTNAME=	amanda
 PORTVERSION=	3.3.9
+PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	misc
 MASTER_SITES=	SF/amanda/amanda%20-%20stable/${PORTVERSION}
@@ -31,7 +32,7 @@ CONFIGURE_ARGS=	--libexecdir=${PREFIX}/libexec/amanda \
 		--with-user=${USERS} --with-group=${AMANDA_GROUP} \
 		--with-bsdtcp-security --with-bsdudp-security \
 		--with-ssh-security \
-		--disable-installperms --with-security-file=${ETCDIR}/security.conf
+		--disable-installperms --with-security-file=${ETCDIR}/amanda-security.conf
 CONFIGURE_ENV=	PERL=${LOCALBASE}/bin/perl-amanda
 PKG_MESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message

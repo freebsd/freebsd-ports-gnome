@@ -3,6 +3,7 @@
 
 PORTNAME=	adcli
 PORTVERSION=	0.8.1
+PORTREVISION=	1
 CATEGORIES=	net-mgmt net security
 MASTER_SITES=	https://www.freedesktop.org/software/realmd/releases/
 
@@ -16,10 +17,10 @@ BUILD_DEPENDS=	xsltproc:textproc/libxslt	\
 		docbook-xml>0:textproc/docbook-xml	\
 		docbook-xsl>0:textproc/docbook-xsl
 
-PLIST_FILES=	sbin/adcli man/man8/adcli.8.gz
 GNU_CONFIGURE=	yes
 TEST_TARGET=	check
 
+OPTIONS_DEFINE=	DOCS
 OPTIONS_SINGLE=		GSSAPI
 OPTIONS_SINGLE_GSSAPI=	GSSAPI_BASE GSSAPI_HEIMDAL GSSAPI_MIT
 OPTIONS_DEFAULT=	GSSAPI_BASE

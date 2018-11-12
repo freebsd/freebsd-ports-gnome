@@ -2,46 +2,48 @@
 # $FreeBSD$
 
 PORTNAME=	h5py
-PORTVERSION=	2.7.0
+PORTVERSION=	2.8.0
+PORTREVISION=	1
 CATEGORIES=	science python
+MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	johannes@perceivon.net
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	General-purpose Python interface to the HDF5 library
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/licenses/license.txt
 
 BUILD_DEPENDS=	${PYNUMPY} \
-		cython:lang/cython \
-		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six \
-		${PYTHON_PKGNAMEPREFIX}pkgconfig>0:devel/py-pkgconfig
+		${PYTHON_PKGNAMEPREFIX}pkgconfig>=0:devel/py-pkgconfig@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}six>=0:devel/py-six@${PY_FLAVOR}
 LIB_DEPENDS=	libhdf5.so:science/hdf5
 RUN_DEPENDS=	${PYNUMPY} \
-		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six
-
-USE_GITHUB=	yes
+		${PYTHON_PKGNAMEPREFIX}six>=0:devel/py-six@${PY_FLAVOR}
 
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	autoplist concurrent cython distutils
 
 PORTDOCS=	*
-PORTEXAMPLES=	multiprocessing_example.py swmr_multiprocess.py \
-		swmr_inotify_example.py  threading_example.py
+PORTEXAMPLES=	collective_io.py \
+		multiprocessing_example.py \
+		swmr_inotify_example.py \
+		swmr_multiprocess.py \
+		threading_example.py
 
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
-post-patch:
-	${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|' ${WRKSRC}/setup_build.py
+post-install:
+	${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/h5py/*.so
 
-do-install-DOCS-on:
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/README.rst ${STAGEDIR}${DOCSDIR}
-	${COPYTREE_SHARE} ${WRKSRC}/docs ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC}/docs/ && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 
-do-install-EXAMPLES-on:
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	${INSTALL_DATA} ${PORTEXAMPLES:S|^|${WRKSRC}/examples/|} ${STAGEDIR}${EXAMPLESDIR}
+	${INSTALL_DATA} ${WRKSRC}/examples/*.py ${STAGEDIR}${EXAMPLESDIR}
 
 do-test:
 	cd ${WRKSRC} && ${PYTHON_CMD} ${PYSETUP} test

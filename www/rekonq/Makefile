@@ -2,7 +2,7 @@
 
 PORTNAME=	rekonq
 PORTVERSION=	2.4.2
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	www kde
 MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION:C,\..*,.0,}/
 
@@ -14,9 +14,9 @@ LICENSE_COMB=	multi
 LICENSE_FILE_GPLv3+ =	${WRKSRC}/COPYING
 LICENSE_FILE_GFDL=	${WRKSRC}/COPYING.DOC
 
-USES=		cmake:outsource gettext kde:4 tar:xz
+USES=		cmake:outsource gettext kde:4 qt:4 tar:xz
 USE_KDE=	kdelibs automoc4
-USE_QT4=	script webkit \
+USE_QT=		script webkit \
 		moc_build qmake_build rcc_build uic_build
 
 OPTIONS_DEFINE=		OPERA NEPOMUK

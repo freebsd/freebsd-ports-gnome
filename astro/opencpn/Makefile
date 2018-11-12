@@ -3,7 +3,7 @@
 PORTNAME=	opencpn
 PORTVERSION=	4.4.0
 DISTVERSIONPREFIX=	v
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	astro geography
 
 MAINTAINER=	ml@netfence.it
@@ -20,7 +20,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	${GH_PROJECT}
 GH_PROJECT=	OpenCPN
 
-USES=		cmake compiler:c++11-lib execinfo gettext-tools localbase
+USES=		cmake compiler:c++11-lib gettext-tools localbase
 USE_CXXSTD=	c++11
 USE_GL=		gl
 USE_GNOME=	cairo gdkpixbuf2 gtk20
@@ -33,6 +33,8 @@ LDFLAGS+=	-Wl,-E # plugins
 LDFLAGS+=	-Wl,--as-needed # ICE, SM, Xext
 
 BROKEN_aarch64=		Fails to compile: use of undeclared identifier rand
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,/usr/local,${PREFIX},' \

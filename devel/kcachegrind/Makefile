@@ -1,23 +1,24 @@
-# Created by: Simon Barner <barner@gmx.de>
 # $FreeBSD$
 
 PORTNAME=	kcachegrind
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	2
-CATEGORIES=	devel kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	devel kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Profiler frontend for KDE
 
-USES=		cmake:outsource kde:4 python:run tar:xz shebangfix
-USE_KDE=	kdelibs automoc4
-USE_QT4=	moc_build qmake_build rcc_build uic_build \
-		corelib dbus gui
-SHEBANG_FILES=	converters/op2calltree converters/dprof2calltree \
-		converters/memprof2calltree \
-		converters/hotshot2calltree.cmake
+USES=		cmake:outsource kde:5 python:run qt:5 shebangfix tar:xz
+USE_KDE=	archive auth bookmarks codecs completion config configwidgets \
+		coreaddons ecm i18n itemviews jobwidgets kio service solid \
+		widgetsaddons xmlgui
+USE_QT=		core dbus gui network widgets xml \
+		buildtools_build qmake_build
 
-OPTIONS_DEFINE=	DOT VALGRIND
+SHEBANG_FILES=	converters/hotshot2calltree.cmake \
+		converters/memprof2calltree \
+		converters/op2calltree converters/dprof2calltree
+
+OPTIONS_DEFINE=	DOT VALGRIND DOCS
 
 DOT_DESC=		Use GraphViz/dot to render call graphs
 DOT_RUN_DEPENDS=	dot:graphics/graphviz

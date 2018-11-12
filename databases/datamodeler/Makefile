@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	datamodeler
-PORTVERSION=	4.1.5.907
+PORTVERSION=	18.1.0.082.1035
 DISTVERSIONSUFFIX=-1
 CATEGORIES=	databases java
 MASTER_SITES=	#http://www.oracle.com/technetwork/developer-tools/datamodeler/downloads/index.html
@@ -16,7 +16,13 @@ COMMENT=	Database modeling tool
 EXTRACT_DEPENDS=rpm2cpio.pl:archivers/rpm2cpio
 RUN_DEPENDS=	bash:shells/bash
 
+#http://www.oracle.com/technetwork/licenses/sqldev-license-152021.html
+LICENSE_NAME=	OTN
+LICENSE_PERMS=	no-dist-mirror no-dist-sell no-pkg-mirror
+
 USE_JAVA=	yes
+INSTALLS_ICONS=	yes
+
 JAVA_VERSION=	1.8+
 
 NO_BUILD=	yes
@@ -30,6 +36,13 @@ SUB_FILES=	${PORTNAME}.script.sh
 SUB_LIST=	JAVA_HOME=${JAVA_HOME}
 
 OPTIONS_DEFINE=	DOCS
+
+# configure desktop file
+post-patch:
+	@${REINPLACE_CMD} -e \
+	    's|/opt/datamodeler/icon.png|${PREFIX}/share/icons/hicolor/128x128/apps/${PORTNAME}.png|' \
+	    ${WRKSRC}/datamodeler.desktop
+	@${ECHO} "Categories=Utility" >> ${WRKSRC}/datamodeler.desktop
 
 .include <bsd.port.pre.mk>
 
@@ -45,28 +58,31 @@ restart this installation.
 .endif
 
 do-install:
-	@${ECHO_MSG} -n ">> Installing scripts..."
-	@${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME}.script.sh ${STAGEDIR}/${PREFIX}/bin/${PORTNAME}
-	@${ECHO_MSG} " [ DONE ]"
+	${ECHO_MSG} -n ">> Installing scripts..."
+	${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME}.script.sh ${STAGEDIR}/${PREFIX}/bin/${PORTNAME}
+	${ECHO_MSG} " [ DONE ]"
 
 .for d in configuration datamodeler dropins dvt equinox external ide \
-    jdbc jdev jlib modules netbeans rdbms sleepycat \
+    jdbc jdev jlib module modules netbeans rdbms sleepycat \
     sqldeveloper svnkit
-	@${ECHO_MSG} -n ">> Installing data directory '${d}'..."
-	@cd ${WRKSRC} && ${FIND} ${d} -type d \
+	${ECHO_MSG} -n ">> Installing data directory '${d}'..."
+	cd ${WRKSRC} && ${FIND} ${d} -type d \
 		-exec ${MKDIR} ${STAGEDIR}/${DATADIR}/\{} \;
-	@cd ${WRKSRC} && ${FIND} ${d} -type f \
+	cd ${WRKSRC} && ${FIND} ${d} -type f \
 		-not -name "*.orig" \
 		-not -name "*.exe" \
-		-not -name "*.bat" \
 		-not -name "*.bak" \
 		-not -name "*.dll" \
 		-exec ${INSTALL_DATA} \{} ${STAGEDIR}/${DATADIR}/\{} \;
-	@${ECHO_MSG} " [ DONE ]"
+	${ECHO_MSG} " [ DONE ]"
 .endfor
 
-	@${ECHO_MSG} -n ">> Installing icon ..."
-	@${INSTALL_DATA} ${WRKSRC}/icon.png ${STAGEDIR}/${DATADIR}/icon.png
+	${ECHO_MSG} -n ">> Installing icon and desktop file ..."
+	${MKDIR} ${STAGEDIR}/${PREFIX}/share/applications/ \
+	    ${STAGEDIR}/${PREFIX}/share/icons/hicolor/128x128/apps/
+	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}.desktop ${STAGEDIR}/${PREFIX}/share/applications/
+	${INSTALL_DATA} ${WRKSRC}/icon.png ${STAGEDIR}/${PREFIX}/share/icons/hicolor/128x128/apps/datamodeler.png
+
 	@${ECHO_MSG} " [ DONE ]"
 
 .include <bsd.port.post.mk>

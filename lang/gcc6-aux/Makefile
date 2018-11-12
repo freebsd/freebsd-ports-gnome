@@ -4,12 +4,13 @@
 PORTNAME=	gcc6-aux
 PORTVERSION=	${SNAPSHOT}
 PORTREVISION=	${MAIN_PR}
+PORTEPOCH=	1
 CATEGORIES=	lang
 MASTER_SITES=	http://downloads.dragonlace.net/src/:boot \
 		LOCAL/marino:boot GCC/${MS_SUBDIR}
-DISTFILES=	${IDENTIFICATION}.tar.bz2
+DISTFILES=	${IDENTIFICATION}.tar.xz
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	ericbsd@FreeBSD.org
 COMMENT=	Version of GCC ${GCC_BRANCH} with full Ada support
 
 LICENSE=	GPLv3 GPLv3RLE
@@ -51,8 +52,14 @@ BOOTSTRAP_DESC=		Create bootstrap compiler (overrides other options)
 .if ${OPSYS} == FreeBSD
 ONLY_FOR_ARCHS=		aarch64 amd64 i386
 MODERN_BINUTILS=	yes
-.  if ${ARCH} == aarch64
+.  if ${ARCH} == aarch64 && ${OSVERSION} > 1200075 #ino64
 BOOTSTRAP_COMPILER=	ada-bootstrap.aarch64.freebsd.120.tar.bz2
+.  elif ${ARCH} == aarch64
+BOOTSTRAP_COMPILER=	ada-bootstrap.aarch64.freebsd.111.tar.bz2
+.  elif ${ARCH} == amd64 && ${OSVERSION} > 1200030 #ino64
+BOOTSTRAP_COMPILER=	ada-bootstrap.${GARCH}.freebsd.120.tar.bz2
+.  elif ${ARCH} == i386  && ${OSVERSION} > 1200030 #ino64
+BOOTSTRAP_COMPILER=	ada-bootstrap.${GARCH}.freebsd.120.tar.bz2
 .  else
 BOOTSTRAP_COMPILER=	ada-bootstrap.${GARCH}.freebsd.100B.tar.bz2
 .  endif
@@ -86,34 +93,38 @@ BSFILENAME=		ada-bootstrap.${GARCH}.${OPSYS:tl}.${OSREL:S/.//}.tar.bz2
 
 # If we find gnatmake and friends in a standard location, then we'll use this
 # compiler instead of downloading the bootstrap.
+# Add ${LOCALBASE}/bin for gmake
 .if exists (${LOCALBASE}/${PORTNAME}/bin/ada)
 .if exists (${LOCALBASE}/${PORTNAME}/bin/gnatbind)
 .if exists (${LOCALBASE}/${PORTNAME}/bin/gnatlink)
 .if exists (${LOCALBASE}/${PORTNAME}/bin/gnatmake)
 FULL_GNATGCC=${LOCALBASE}/${PORTNAME}/bin/ada
 FULL_GNATGXX=${LOCALBASE}/${PORTNAME}/bin/g++
-FULL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:${PREFIX}/${PORTNAME}/bin:${PREFIX}/bin
+FULL_PATH=/sbin:/bin:/usr/sbin:/usr/bin:${PREFIX}/${PORTNAME}/bin:${PREFIX}/bin:${LOCALBASE}/bin
 .endif
 .endif
 .endif
 .endif
 
 # If FULL_GNATGCC is not set, we'll request the bootstrap compiler
+# Add ${LOCALBASE}/bin for gmake
 .if ${FULL_GNATGCC} == NOT_SET
 INTENDED_COMPILER=BOOTSTRAP
 FULL_GNATGCC=${BOOTSTRAP_PREFIX}/bin/gcc
 FULL_GNATGXX=${BOOTSTRAP_PREFIX}/bin/g++
-FULL_PATH=${BOOTSTRAP_PREFIX}/bin:/sbin:/bin:/usr/sbin:/usr/bin:${PREFIX}/bin
+FULL_PATH=${BOOTSTRAP_PREFIX}/bin:/sbin:/bin:/usr/sbin:/usr/bin:${PREFIX}/bin:${LOCALBASE}/bin
 DISTFILES+=	${BOOTSTRAP_COMPILER}:boot
 .endif
 
 # for port maintenance, invoke "make makesum PLUS_BOOTSTRAPS=1"
 .if defined(PLUS_BOOTSTRAPS)
 DISTFILES=	\
-   ${IDENTIFICATION}.tar.bz2 \
+   ${IDENTIFICATION}.tar.xz \
    ada-bootstrap.i386.freebsd.100B.tar.bz2:boot \
+   ada-bootstrap.i386.freebsd.120.tar.bz2:boot \
    ada-bootstrap.x86_64.dragonfly.41.tar.bz2:boot \
    ada-bootstrap.x86_64.freebsd.100B.tar.bz2:boot \
+   ada-bootstrap.x86_64.freebsd.120.tar.bz2:boot \
    ada-bootstrap.aarch64.freebsd.120.tar.bz2:boot
 .endif
 
@@ -211,6 +222,8 @@ post-extract:
 		${WRKSRC}/gcc/config/i386/freebsd64.h \
 		${WRKSRC}/gcc/config/i386/freebsd.h \
 		${WRKSRC}/gcc/config/aarch64/aarch64-freebsd.h
+	@${REINPLACE_CMD} -e 's|static:crtbeginT.o%s;||' \
+		${WRKSRC}/gcc/config/freebsd-spec.h
 .if defined(MODERN_BINUTILS)
 	# Use dwarf4-compatible addr2line (affects FreeBSD only)
 	${REINPLACE_CMD} -e 's|/usr/bin/addr2line|${PREFIX}/bin/addr2line|g' \
@@ -267,6 +280,7 @@ do-install:
 		${STAGEDIR}${PREFIX}/share/dejagnu/baseboards
 
 post-stage:
+	${RM} -r ${STAGEDIR}${PKG_PREFIX}/lib/gcc/${BLD_TARGET}/${GCC_VERSION}/include-fixed/
 	(cd ${STAGEDIR}${PKG_PREFIX}; ${FIND} * -type d -empty | \
 		${SORT} -dr | ${XARGS} ${RMDIR})
 	(cd ${STAGEDIR}${PREFIX}; ${FIND} ${PORTNAME} share \
@@ -279,7 +293,6 @@ post-stage:
 	${CP} -a ${STAGEDIR}${PKG_PREFIX}/include ${NEWBSDIR}/
 	${CP} -a ${STAGEDIR}${PKG_PREFIX}/libexec ${NEWBSDIR}/
 	${RM} ${NEWBSDIR}/bin/${GARCH}*
-	${RM} -r ${NEWBSDIR}/lib/gcc/${BLD_TARGET}/${GCC_VERSION}/include-fixed
 	(cd ${NEWBSDIR}/.. ; ${TAR} -cyf ${BSFILENAME} bootstrap)
 .endif
 

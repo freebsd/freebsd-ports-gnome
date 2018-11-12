@@ -5,10 +5,13 @@ PORTNAME=	scim-anthy
 PORTVERSION=	1.2.7
 PORTREVISION=	5
 CATEGORIES=	japanese
-MASTER_SITES=	SFJP/scim-imengine/37309
+MASTER_SITES=	OSDN/scim-imengine/37309
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	SCIM IMEngine module using Anthy
+
+LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	scim:textproc/scim
 LIB_DEPENDS=	libanthy.so:japanese/anthy
@@ -17,8 +20,5 @@ RUN_DEPENDS:=	${BUILD_DEPENDS} \
 
 USES=		gmake iconv libtool:keepla pkgconfig
 GNU_CONFIGURE=	yes
-
-CPPFLAGS+=	-I${LOCALBASE}/include -D__STDC_ISO_10646__
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 .include <bsd.port.mk>

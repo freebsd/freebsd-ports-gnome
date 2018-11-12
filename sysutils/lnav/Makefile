@@ -12,12 +12,14 @@ COMMENT=	Terminal based log file navigator
 
 LICENSE=	BSD2CLAUSE
 
+BROKEN_powerpc64=	fails to build: lnav.cc:(.text+0x509c): undefined reference to pcrecpp::RE::QuoteMeta[abi:cxx11](pcrecpp::StringPiece const&)
+
 LIB_DEPENDS=	libpcrecpp.so:devel/pcre
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	tstack
 
-USES=		autoreconf compiler:c++14-lang execinfo gmake ncurses sqlite readline
+USES=		autoreconf compiler:c++14-lang gmake ncurses sqlite readline
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-static
 

@@ -13,13 +13,11 @@ COMMENT=	Library for building powerful interactive command lines in Python
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS?=	${PYTHON_PKGNAMEPREFIX}six>=1.9.0:devel/py-six \
-		${PYTHON_PKGNAMEPREFIX}wcwidth>=0:devel/py-wcwidth
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>=1.9.0:devel/py-six@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}wcwidth>=0:devel/py-wcwidth@${PY_FLAVOR}
 
 NO_ARCH=	yes
 USE_PYTHON=	autoplist concurrent distutils
-USES?=		python
-
-SLAVEDIRS=	devel/py3-prompt_toolkit
+USES=		python
 
 .include <bsd.port.mk>

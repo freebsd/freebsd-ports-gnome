@@ -3,6 +3,7 @@
 
     COMMENT = X11 fonts and font utilities
 
+    SUBDIR += Hasklig
     SUBDIR += alef
     SUBDIR += alegreya
     SUBDIR += alegreya-sans
@@ -32,12 +33,12 @@
     SUBDIR += crosextrafonts-carlito-ttf
     SUBDIR += cyberbit-ttfonts
     SUBDIR += cyr-rfx
+    SUBDIR += datalegreya
     SUBDIR += dejavu
     SUBDIR += dina
     SUBDIR += doulos
     SUBDIR += doulos-compact
     SUBDIR += droid-fonts-ttf
-    SUBDIR += ecofont
     SUBDIR += emojione-color-font-ttf
     SUBDIR += encodings
     SUBDIR += exo
@@ -54,6 +55,7 @@
     SUBDIR += font-adobe-utopia-type1
     SUBDIR += font-alias
     SUBDIR += font-arabic-misc
+    SUBDIR += font-awesome
     SUBDIR += font-bh-100dpi
     SUBDIR += font-bh-75dpi
     SUBDIR += font-bh-lucidatypewriter-100dpi
@@ -83,15 +85,17 @@
     SUBDIR += font-screen-cyrillic
     SUBDIR += font-sony-misc
     SUBDIR += font-sun-misc
+    SUBDIR += font-tex-gyre-bonum-math
+    SUBDIR += font-tex-gyre-pagella-math
+    SUBDIR += font-tex-gyre-schola-math
+    SUBDIR += font-tex-gyre-termes-math
     SUBDIR += font-util
     SUBDIR += font-winitzki-cyrillic
     SUBDIR += font-xfree86-type1
-    SUBDIR += fontcacheproto
     SUBDIR += fontconfig
     SUBDIR += fontconfig-reference
     SUBDIR += fontmatrix
     SUBDIR += fonts-indic
-    SUBDIR += fontsproto
     SUBDIR += fonttosfnt
     SUBDIR += freefont-ttf
     SUBDIR += freefonts
@@ -103,10 +107,11 @@
     SUBDIR += gfe
     SUBDIR += gnu-unifont
     SUBDIR += gnu-unifont-ttf
+    SUBDIR += gofont-ttf
     SUBDIR += gohufont
+    SUBDIR += google-fonts
     SUBDIR += hack-font
     SUBDIR += hanazono-fonts-ttf
-    SUBDIR += hasklig
     SUBDIR += inconsolata-lgc-ttf
     SUBDIR += inconsolata-ttf
     SUBDIR += indic-ttf
@@ -132,6 +137,7 @@
     SUBDIR += linuxlibertine-g
     SUBDIR += lohit
     SUBDIR += manu-gothica
+    SUBDIR += meslo
     SUBDIR += mgopen
     SUBDIR += mkbold
     SUBDIR += mkbold-mkitalic
@@ -142,6 +148,7 @@
     SUBDIR += montecarlo_fonts
     SUBDIR += montserrat
     SUBDIR += moveable-type-fonts
+    SUBDIR += nerd-fonts
     SUBDIR += nexfontsel
     SUBDIR += noto
     SUBDIR += noto-lite
@@ -156,10 +163,12 @@
     SUBDIR += paratype
     SUBDIR += pcf2bdf
     SUBDIR += pingwi
+    SUBDIR += plex-ttf
     SUBDIR += powerline-fonts
     SUBDIR += profont
     SUBDIR += proggy_fonts
     SUBDIR += proggy_fonts-ttf
+    SUBDIR += py-QtAwesome
     SUBDIR += py-bdflib
     SUBDIR += roboto-fonts-ttf
     SUBDIR += sgifonts
@@ -168,6 +177,7 @@
     SUBDIR += sourcecodepro-ttf
     SUBDIR += sourcesanspro-ttf
     SUBDIR += sourceserifpro-ttf
+    SUBDIR += spleen
     SUBDIR += stix-fonts
     SUBDIR += suxus
     SUBDIR += symbola
@@ -184,7 +194,6 @@
     SUBDIR += vollkorn-ttf
     SUBDIR += webfonts
     SUBDIR += wqy
-    SUBDIR += xf86bigfontproto
     SUBDIR += xfontsel
     SUBDIR += xfs
     SUBDIR += xfsinfo

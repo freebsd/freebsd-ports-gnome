@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gstreamer1-libav
-PORTVERSION=	1.12.2
+PORTVERSION=	1.12.3
+PORTREVISION=	2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://gstreamer.freedesktop.org/src/gst-libav/
 DISTNAME=	gst-libav-${PORTVERSION}
@@ -14,20 +15,30 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	orc>=0.4.16:devel/orc
-LIB_DEPENDS=	liborc-0.4.so:devel/orc \
-		libavcodec.so:multimedia/ffmpeg
+LIB_DEPENDS=	liborc-0.4.so:devel/orc
 
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:features gettext-runtime gmake libtool localbase \
-		pkgconfig tar:xz
+		pkgconfig python:build tar:xz
 USE_LDCONFIG=	yes
 USE_GSTREAMER1=	yes
 USE_GNOME=	glib20
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-system-libav
-
 INSTALL_TARGET=	install-strip
+CFLAGS_powerpc64=	-mminimal-toc
+
+OPTIONS_DEFINE=	FFMPEG
+
+FFMPEG_DESC?=	Use system ffmpeg instead of internal libav
+FFMPEG_BROKEN=	fails to build with ffmpeg 4.0, see bug 227748
+FFMPEG_LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg
+FFMPEG_CONFIGURE_WITH=	system-libav
+FFMPEG_BUILD_DEPENDS_OFF=as:devel/binutils nasm:devel/nasm
+FFMPEG_CONFIGURE_ENV_OFF=${MACHINE:Marm*:C/.+/ASFLAGS=-no-integrated-as/}
+FFMPEG_MAKE_ENV_OFF=	V=1
+FFMPEG_VARS_OFF+=	NOPRECIOUSMAKEVARS=yes # ARCH
+FFMPEG_VARS_OFF+=	LLD_UNSAFE=yes # aarch64
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|-Werror||g' \

@@ -2,28 +2,24 @@
 # $FreeBSD$
 
 PORTNAME=	ngircd
-PORTVERSION=	23
-PORTREVISION=	1
+PORTVERSION=	24
 PORTEPOCH=	1
 CATEGORIES=	irc ipv6
 MASTER_SITES=	http://arthur.barton.de/pub/${PORTNAME}/ \
 		http://ngircd.mirror.3rz.org/pub/${PORTNAME}/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	fgsch@lodoss.net
 COMMENT=	Free open source daemon for Internet Relay Chat (IRC)
 
-LICENSE=	GPLv2
+LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		cpe tar:xz
+USES=		cpe localbase:ldflags tar:xz
 GNU_CONFIGURE=	yes
 USE_RC_SUBR=	ngircd
 
 CPE_VENDOR=	barton
 CPE_VERSION=	${PORTVERSION:C/^([0-9]+)$/\1.0/}
-
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 PORTDOCS=	*
 PLIST_FILES=	etc/ngircd.conf.sample \

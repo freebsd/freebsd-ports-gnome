@@ -3,6 +3,7 @@
 
 PORTNAME=	autojump
 PORTVERSION=	13
+PORTREVISION=	1
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.vermatech.com/distfiles/
 DISTNAME=	autojump_v${PORTVERSION}
@@ -10,36 +11,28 @@ DISTNAME=	autojump_v${PORTVERSION}
 MAINTAINER=	neeraj.verma.ports@vermatech.com
 COMMENT=	Tool that acts as a complement to cd
 
-LICENSE=	GPLv3
+LICENSE=	GPLv3+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 RUN_DEPENDS=	bash:shells/bash
 
+USES=		python:run shebangfix
 NO_BUILD=	yes
-USES=		python:run
+SHEBANG_FILES=	autojump jumpapplet
 SUB_FILES=	pkg-install
+NO_ARCH=	yes
 
 PLIST_FILES=	bin/autojump \
 		bin/jumpapplet \
 		man/man1/autojump.1.gz \
 		share/autojump/autojump.bash \
 		share/autojump/autojump.zsh \
-		share/autojump/icon.png
-
-OPTIONS_DEFINE=		ZSH
-OPTIONS_DEFAULT=	ZSH
-
-ZSH_RUN_DEPENDS=	zsh:shells/zsh
-ZSH_PLIST_FILES=	share/zsh/site-functions/_j
-
-post-patch:
-	@${REINPLACE_CMD} -e '/#!\/usr\/bin/s|python|env &|' \
-		${WRKSRC}/autojump
+		share/autojump/icon.png \
+		share/zsh/site-functions/_j
 
 do-install:
 	@(cd ${INSTALL_WRKSRC} && ${SETENV} ${SH} ./install.sh \
 		--prefix ${STAGEDIR}${PREFIX})
-
-do-install-ZSH-on:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/zsh/site-functions
 	${INSTALL_DATA} ${WRKSRC}/_j \
 		${STAGEDIR}${PREFIX}/share/zsh/site-functions

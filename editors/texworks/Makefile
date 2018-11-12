@@ -4,7 +4,7 @@
 PORTNAME=	texworks
 PORTVERSION=	0.4.6
 DISTVERSIONPREFIX=	release-
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	editors
 
 MAINTAINER=	hrs@FreeBSD.org
@@ -12,13 +12,16 @@ COMMENT=	Simple TeX front-end program
 
 LICENSE=	GPLv2
 
+BROKEN_armv6=		fails to install: PDFDocument.cpp:1836:39: cannot initialize a parameter of type 'qreal *' with an rvalue of type 'double *'
+BROKEN_armv7=		fails to install: PDFDocument.cpp:1836:39: cannot initialize a parameter of type 'qreal *' with an rvalue of type 'double *'
+
 BUILD_DEPENDS=	hunspell:textproc/hunspell
 LIB_DEPENDS=	libpoppler-qt4.so:graphics/poppler-qt4
 
-USES=		pkgconfig qmake
+USES=		compiler:c++11-lang pkgconfig qmake qt:4
 USE_GITHUB=	yes
 GH_ACCOUNT=	TeXworks
-USE_QT4=	gui corelib rcc_build moc_build uic_build \
+USE_QT=		gui corelib rcc_build moc_build uic_build \
 		dbus xml scripttools designer_build
 QMAKE_ARGS=	INSTALL_PREFIX=${PREFIX} \
 		DATA_DIR=${DATADIR} \
@@ -47,7 +50,7 @@ PORTDOCS=	*
 OPTIONS_DEFINE=	DOCS LUA PYTHON
 LUA_USES=	lua:51
 LUA_PLIST_FILES=lib/texworks/libTWLuaPlugin.so
-PYTHON_USES=	python:3
+PYTHON_USES=	python:3.4+
 PYTHON_PLIST_FILES=lib/texworks/libTWPythonPlugin.so
 
 post-extract:

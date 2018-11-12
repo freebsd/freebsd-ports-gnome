@@ -2,9 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	osquery
-PORTVERSION=	2.7.0
-PORTREVISION=	2
+PORTVERSION=	3.2.6
+PORTREVISION=	3
 CATEGORIES=	sysutils
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES=	516061088514.patch:-p1
 
 MAINTAINER=	zi@FreeBSD.org
 COMMENT=	SQL powered OS instrumentation, monitoring, and analytics
@@ -12,22 +15,20 @@ COMMENT=	SQL powered OS instrumentation, monitoring, and analytics
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	thrift>0:devel/thrift \
+BROKEN_aarch64=		fails to compile: the clang compiler does not support '-march=x86-64'
+
+BUILD_DEPENDS=	thrift>=0.11.0:devel/thrift \
 		bash>0:shells/bash \
 		linenoise-ng>0:devel/linenoise-ng \
-		asio>0:net/asio \
 		rapidjson>0:devel/rapidjson \
-		${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2
+		${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2@${PY_FLAVOR}
 LIB_DEPENDS=	libaugeas.so:textproc/augeas \
 		libboost_regex.so:devel/boost-libs \
 		libgflags.so:devel/gflags \
 		libglog.so:devel/glog \
 		libicuuc.so:devel/icu \
-		liblz4.so:archivers/liblz4 \
-		libsnappy.so:archivers/snappy \
 		librocksdb-lite.so:databases/rocksdb-lite \
 		libthrift.so:devel/thrift-cpp \
-		libcppnetlib-uri.so:devel/cpp-netlib \
 		libzstd.so:archivers/zstd
 RUN_DEPENDS=	ca_root_nss>0:security/ca_root_nss
 
@@ -38,12 +39,13 @@ CONFIGURE_ENV+=	OSQUERY_BUILD_VERSION="${PORTVERSION}" HOME="${WRKDIR}" \
 		SKIP_TESTS="yes" CC="${CC}" CXX="${CXX}"
 CMAKE_ARGS+=	-DFREEBSD=awesome -DCMAKE_SYSTEM_NAME="FreeBSD"
 BLDDIR=		${WRKDIR}/.build/${PORTNAME}
+TPVERSION=	3.0.0
 USE_RC_SUBR=	${PORTNAME}d
 USE_GITHUB=	yes
 GH_ACCOUNT=	facebook ${PORTNAME}:tp
 GH_PROJECT=	third-party:tp
 GH_SUBDIR=	third-party:tp
-GH_TAGNAME=	${PORTVERSION}:tp
+GH_TAGNAME=	${TPVERSION}:tp
 
 # Some options for things that bring in many dependencies
 OPTIONS_DEFINE=	TSK AWS YARA LLDPD
@@ -67,9 +69,9 @@ LLDPD_CONFIGURE_ENV_OFF=SKIP_LLDPD=1
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} < 1100000
-BUILD_DEPENDS+=	clang38:devel/llvm38
-CC=	clang38
-CXX=	clang++38
+BUILD_DEPENDS+=	clang60:devel/llvm60
+CC=	clang60
+CXX=	clang++60
 .endif
 
 post-patch:

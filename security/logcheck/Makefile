@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	logcheck
-PORTVERSION=	1.3.18
-PORTREVISION=	1
+PORTVERSION=	1.3.19
 CATEGORIES=	security
 MASTER_SITES=	DEBIAN_POOL
 DISTNAME=	${PORTNAME}_${PORTVERSION}
@@ -16,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	docbook-to-man>0:textproc/docbook-to-man
 RUN_DEPENDS=	mime-construct:mail/mime-construct \
-		lockfile:mail/procmail \
+		lockfile-create:sysutils/lockfile-progs \
 		bash:shells/bash
 
 LOGCHECK_USER=	logcheck
@@ -28,7 +27,7 @@ BASEDIR?=	# None. portlint compliance
 DBDIR=		${BASEDIR}/var/db/${PORTNAME}
 RUNDIR=		${BASEDIR}/var/run/${PORTNAME}
 
-OPTIONS_DEFINE=	CRON
+OPTIONS_DEFINE=	CRON DOCS EXAMPLES
 CRON_DESC=	Install cron script automatically
 .if !defined(BATCH)
 OPTIONS_DEFAULT=CRON

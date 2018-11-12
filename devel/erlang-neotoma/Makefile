@@ -5,7 +5,7 @@ PORTVERSION=	1.7.4
 CATEGORIES=	devel
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Erlang library and packrat parser-generator
 
 LICENSE=	MIT
@@ -19,6 +19,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	seancribbs
 
 REBAR_TARGETS=	compile escriptize
+
+OPTIONS_DEFINE=	DOCS
 
 post-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${ERL_APP_ROOT}

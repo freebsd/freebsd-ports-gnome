@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fet
-PORTVERSION=	5.32.0
+DISTVERSION=	5.37.1
 CATEGORIES=	deskutils kde
 MASTER_SITES=	http://lalescu.ro/liviu/fet/download/ \
 		http://lalescu.ro/liviu/fet/download/old/ \
@@ -15,7 +15,8 @@ COMMENT=	Free timetabling software
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		qmake tar:bzip2
+USES=		compiler:c++14-lang qmake tar:bzip2
+USE_CXXSTD=	c++14
 
 PORTEXAMPLES=	*
 
@@ -34,22 +35,14 @@ ONLYCL_DESC=	Build only command line version (without Qt GUI)
 
 OPTIONS_SUB=	yes
 
-QT4_USE=	QT4=corelib,moc_build,rcc_build,uic_build,xml
-QT5_USE=	QT5=buildtools_build,core,xml GL=gl
-
-.include <bsd.port.options.mk>
+QT4_USES=	qt:4
+QT4_USE=	QT=corelib,moc_build,rcc_build,uic_build,xml
+QT5_USES=	qt:5
+QT5_USE=	QT=buildtools_build,core,printsupport,widgets,xml GL=gl
 
 INSTALL_TARGET=	${WRKSRC}/fet-cl
-.if ${PORT_OPTIONS:MONLYCL}
-QMAKE_SOURCE_PATH=	${WRKSRC}/src/src-cl.pro
-.else
-INSTALL_TARGET+=	${WRKSRC}/fet
-.if ${PORT_OPTIONS:MQT4}
-USE_QT4+=gui network
-.else
-USE_QT5+=gui network printsupport widgets
-.endif
-.endif
+ONLYCL_VARS=	QMAKE_SOURCE_PATH=${WRKSRC}/src/src-cl.pro
+ONLYCL_VARS_OFF=	INSTALL_TARGET+=${WRKSRC}/fet USE_QT+="gui network"
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/share/fet|${DATADIR}|g' \

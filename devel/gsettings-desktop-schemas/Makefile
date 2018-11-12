@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gsettings-desktop-schemas
-PORTVERSION=	3.24.0
+PORTVERSION=	3.28.0
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -12,8 +12,6 @@ COMMENT=	Collection of globally shared GSetting schemas
 
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-RUN_DEPENDS=	${LOCALBASE}/etc/fonts/conf.avail/31-cantarell.conf:x11-fonts/cantarell-fonts
 
 PORTSCOUT=	limitw:1,even
 

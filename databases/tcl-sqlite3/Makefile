@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	sqlite3
-PORTVERSION=	3.20.1
+PORTVERSION=	3.25.1
 CATEGORIES=	databases tcl
-MASTER_SITES=	https://www.sqlite.org/2017/ http://www2.sqlite.org/2017/ http://www3.sqlite.org/2017/
+MASTER_SITES=	https://www.sqlite.org/2018/ http://www2.sqlite.org/2018/ http://www3.sqlite.org/2018/
 PKGNAMEPREFIX=	tcl-
 DISTNAME=	sqlite-autoconf-${PORTVERSION:C/\.([[:digit:]])[[:>:]]/0\1/g:S/.//g}00
 
@@ -14,7 +14,7 @@ LICENSE=	PD
 
 LIB_DEPENDS=	libsqlite3.so:databases/sqlite3
 
-OPTIONS_DEFINE=	THREADS
+OPTIONS_DEFINE=	EXAMPLES THREADS
 OPTIONS_DEFAULT=	THREADS
 
 WRKSRC=		${WRKDIR}/${DISTNAME}/tea

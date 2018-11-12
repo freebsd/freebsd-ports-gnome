@@ -2,15 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	retroshare
-PORTVERSION=	0.6.1
 DISTVERSIONPREFIX=	v
-PORTREVISION=	7
+DISTVERSION=	0.6.4
 CATEGORIES=	net-p2p
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES=	428b331d8efe.patch:-p1
 
 MAINTAINER=	peter@netkey.at
 COMMENT=	Private and secure decentralised communication platform
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 LIB_DEPENDS=	libsqlcipher.so:databases/sqlcipher \
 		libspeex.so:audio/speex \
@@ -24,38 +27,36 @@ LIB_DEPENDS=	libsqlcipher.so:databases/sqlcipher \
 		libcurl.so:ftp/curl \
 		libmicrohttpd.so:www/libmicrohttpd
 
-USES=		compiler:features desktop-file-utils dos2unix execinfo pkgconfig qmake ssl
-USE_GNOME=	glib20 libxml2 libxslt
-USE_GL=		gl
-USE_QT5=	buildtools_build uitools_build core gui network xml \
-		widgets multimedia printsupport
-INSTALLS_ICONS=	yes
-
-DOS2UNIX_FILES=	retroshare-nogui/src/retroshare-nogui.pro
+USES=		compiler:features desktop-file-utils dos2unix \
+		gnome pkgconfig qmake qt:5 ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	RetroShare
 GH_PROJECT=	RetroShare
+RS_REVISION=	0e6d27a
+USE_GNOME=	libxml2 libxslt
+USE_GL=		gl
+USE_QT=		core gui multimedia printsupport network widgets xml \
+		buildtools_build uitools_build
+DOS2UNIX_FILES=	retroshare-nogui/src/retroshare-nogui.pro
 
 .include <bsd.port.pre.mk>
 
 post-patch:
-.if ${COMPILER_FEATURES:Mlibc++}
-	@${REINPLACE_CMD} -e 's|std::tr1::|std::|' \
-		${WRKSRC}/libretroshare/src/dbase/findex.[ch]*
-.endif
+	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \
+		${WRKSRC}/retroshare.pri
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \
 		${WRKSRC}/libretroshare/src/libretroshare.pro
+	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \
+		${WRKSRC}/libretroshare/src/rsserver/rsaccounts.cc
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \
 		${WRKSRC}/retroshare-gui/src/retroshare-gui.pro
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \
 		${WRKSRC}/retroshare-nogui/src/retroshare-nogui.pro
 	@${REINPLACE_CMD} -e 's|/usr/bin|${PREFIX}/bin|' \
-		${WRKSRC}/data/retroshare06.desktop
+		${WRKSRC}/data/retroshare.desktop
 	@${REINPLACE_CMD} -e 's|/usr/share|${PREFIX}/share|' \
-		${WRKSRC}/data/retroshare06.desktop
-.if defined(GH_TAGNAME)
-	@${REINPLACE_CMD} -e 's|RS_REVISION_NUMBER.*|RS_REVISION_NUMBER   0x${GH_TAGNAME}|' \
+		${WRKSRC}/data/retroshare.desktop
+	@${REINPLACE_CMD} -e 's|RS_REVISION_NUMBER.*|RS_REVISION_NUMBER   0x${RS_REVISION}|' \
 		${WRKSRC}/libretroshare/src/retroshare/rsversion.h
-.endif
 
 .include <bsd.port.post.mk>

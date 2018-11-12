@@ -2,7 +2,6 @@
 
 PORTNAME=	quick
 DISTVERSION=	${QT5_VERSION}
-PORTREVISION=	1
 CATEGORIES=	x11-toolkits
 PKGNAMEPREFIX=	qt5-
 
@@ -10,11 +9,12 @@ MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt declarative framework for dynamic user interfaces
 
 USE_GL=		gl
-USE_QT5=	core gui network qml sql testlib \
+USE_QT=		core gui network qml sql testlib \
 		widgets xmlpatterns buildtools_build
-QT_DIST=	declarative
-USES=		python:build qmake
+USES=		python:build qmake:norecursive qt-dist:5,declarative
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}
+
+CONFLICTS=	qt5-declarative-render2d-*
 
 QT_DEFINES=	ACCESSIBILITY
 QT_CONFIG=	accessibility accessibility-atspi-bridge
@@ -29,6 +29,7 @@ QT_CONFIG=	accessibility accessibility-atspi-bridge
 # the existing libraries and trick the existing Makefiles into doing nothing
 # (it is more future-proof than whitelisting the other directories).
 post-configure:
+	${MKDIR} ${CONFIGURE_WRKSRC}/lib
 	${LN} -s ${QT_LIBDIR}/libQt5Qml.so \
 		${CONFIGURE_WRKSRC}/lib/libQt5Qml.so
 	${LN} -s ${QT_LIBDIR}/libQt5QmlDevTools.a \

@@ -4,10 +4,10 @@
 PORTNAME=	clblas
 PORTVERSION=	2.10
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
+PORTREVISION=	9
 CATEGORIES=	math
 
-MAINTAINER=	dieterich@ogolem.org
+MAINTAINER=	jmd@FreeBSD.org
 COMMENT=	Software library containing BLAS functions written in OpenCL
 
 LICENSE=	APACHE20
@@ -18,14 +18,13 @@ LIB_DEPENDS=	libOpenCL.so:devel/ocl-icd \
 		libboost_program_options.so:devel/boost-libs
 RUN_DEPENDS=	opencl>=0:devel/opencl
 
-BROKEN_powerpc64=	fails to compile: xgemm.cc: error: extra ';'
+USES=		cmake python
+USE_LDCONFIG=	yes
+USE_CXXSTD=	gnu++98
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	clMathLibraries
 GH_PROJECT=	clBLAS
-
-USE_LDCONFIG=	yes
-USES=		cmake python
 
 CMAKE_ARGS+=	-DBUILD_TEST=OFF \
 		-DBUILD_KTEST=OFF \

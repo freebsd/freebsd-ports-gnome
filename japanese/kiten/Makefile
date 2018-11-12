@@ -1,16 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	kiten
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	2
-CATEGORIES=	japanese kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	japanese kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	Japanese reference/study tool for KDE 4
+COMMENT=	Japanese reference/study tool for KDE
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	corelib moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth archive codecs completion config configwidgets coreaddons \
+		crash doctools ecm i18n jobwidgets js khtml kio parts service \
+		sonnet textwidgets widgetsaddons xmlgui
+USE_QT=		core dbus gui network widgets xml \
+		buildtools_build qmake_build
 USE_LDCONFIG=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

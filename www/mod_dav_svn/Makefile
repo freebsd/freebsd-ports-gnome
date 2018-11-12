@@ -9,18 +9,12 @@ CATEGORIES=	www
 MAINTAINER=	lev@FreeBSD.org
 COMMENT=	Apache module for subversion serving
 
-.if defined(WITH_SUBVERSION_VER) && ${WITH_SUBVERSION_VER} == 18
-MASTERDIR=	${.CURDIR}/../../devel/subversion18
-.else
-MASTERDIR=	${.CURDIR}/../../devel/subversion
-.endif
-PKGDIR=		${.CURDIR}
+USES=		apache:2.2+
 
-SVN_BUILD_ADDONS=	yes
+PORTREVISION_110=	1
+PORTREVISION_19=	0
 
-.include "${MASTERDIR}/Makefile.common"
-
-USE_APACHE=	22+
+.include "${.CURDIR}/../../devel/subversion/Makefile.addons"
 
 CONFIGURE_ARGS+=	--with-apxs=${APXS} \
 			--with-apache-libexecdir \

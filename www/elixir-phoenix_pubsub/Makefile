@@ -6,7 +6,7 @@ DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Distributed PubSub for Phoenix
 
 LICENSE=	MIT
@@ -16,5 +16,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	phoenixframework
 
 MIX_REWRITE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

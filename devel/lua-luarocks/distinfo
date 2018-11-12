@@ -1,2 +1,3 @@
-SHA256 (keplerproject-luarocks-v2.3.0_GH0.tar.gz) = 92c014889ec6a09c4bb492df6b7f7be784110d6abe031e16418342781ca5c5ce
-SIZE (keplerproject-luarocks-v2.3.0_GH0.tar.gz) = 4012904
+TIMESTAMP = 1534264242
+SHA256 (luarocks-3.0.1.tar.gz) = b989c4b60d6c9edcd65169e5e42fcffbd39cdbebe6b138fa5aea45102f8d9ec0
+SIZE (luarocks-3.0.1.tar.gz) = 205787

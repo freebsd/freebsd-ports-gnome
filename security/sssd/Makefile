@@ -3,7 +3,7 @@
 
 PORTNAME=	sssd
 PORTVERSION=	1.11.7
-PORTREVISION=	8
+PORTREVISION=	14
 CATEGORIES=	security
 MASTER_SITES=	https://releases.pagure.org/SSSD/${PORTNAME}/
 
@@ -25,13 +25,14 @@ LIB_DEPENDS=	libpopt.so:devel/popt \
 		libunistring.so:devel/libunistring \
 		libnss3.so:security/nss \
 		libsasl2.so:security/cyrus-sasl2 \
-		libinotify.so:devel/libinotify
+		libinotify.so:devel/libinotify \
+		libplds4.so:devel/nspr
 BUILD_DEPENDS=	xmlcatalog:textproc/libxml2 \
 		docbook-xsl>=1:textproc/docbook-xsl \
 		xsltproc:textproc/libxslt \
 		xmlcatmgr:textproc/xmlcatmgr \
 		krb5>=1.10:security/krb5 \
-		nsupdate:dns/bind99
+		nsupdate:dns/bind911
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-selinux=no --with-semanage=no \
@@ -43,7 +44,8 @@ CONFIGURE_ARGS=	--with-selinux=no --with-semanage=no \
 		--with-db-path=/var/db/sss --with-pipe-path=/var/run/sss \
 		--with-pubconf-path=/var/run/sss --with-mcache-path=/var/db/sss_mc \
 		--with-unicode-lib=libunistring --with-autofs=no \
-		--disable-cifs-idmap-plugin --disable-config-lib
+		--disable-cifs-idmap-plugin --disable-config-lib \
+		--with-krb5-conf=/etc/krb5.conf
 CFLAGS+=	-fstack-protector-all
 PLIST_SUB=	PYTHON_VER=${PYTHON_VER}
 #DEBUG_FLAGS=	-g
@@ -53,11 +55,10 @@ SUB_FILES=	pkg-message
 USE_LDCONFIG=	yes
 USE_OPENLDAP=	yes
 USES=		autoreconf cpe gettext gmake iconv libtool pathfix pkgconfig \
-		python:2 shebangfix gssapi:mit
+		python:2.7 shebangfix gssapi:mit
 INSTALL_TARGET=	install-strip
 CPE_VENDOR=	fedoraproject
 
-python_CMD=	${SETENV} python2
 SHEBANG_FILES=	src/tools/sss_obfuscate \
 		src/sbus/sbus_codegen
 

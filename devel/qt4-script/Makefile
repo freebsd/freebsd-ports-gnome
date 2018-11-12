@@ -3,19 +3,19 @@
 
 PORTNAME=	script
 DISTVERSION=	${QT4_VERSION}
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel
 PKGNAMEPREFIX=	qt4-
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt scripting module
 
-USES=		pkgconfig
-USE_QT4=	qmake_build moc_build corelib
-QT_DIST=	yes
+USES=		pkgconfig qmake:no_env qt-dist:4
+USE_QT=		moc_build corelib
 
 HAS_CONFIGURE=	yes
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}
+USE_CXXSTD=	gnu++98
 
 ALL_TARGET=	first
 CONFIGURE_ENV?=	QTDIR=${WRKSRC} PATH=${WRKSRC}/bin:$$PATH

@@ -2,15 +2,17 @@
 # $FreeBSD$
 
 PORTNAME=	skalibs
-PORTVERSION=	2.4.0.2
+PORTVERSION=	2.7.0.0
 CATEGORIES=	devel
-MASTER_SITES=	http://www.skarnet.org/software/${PORTNAME}/
+MASTER_SITES=	https://www.skarnet.org/software/${PORTNAME}/
 
-MAINTAINER=	colin-ports@heliocat.net
+MAINTAINER=	crest@rlwinm.de
 COMMENT=	General purpose C libraries used by skarnet.org software
 
 LICENSE=	ISCL
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+BROKEN_mips64=		fails to build: Checking whether system has auto-close after fd-passing... test crashed, aborting
 
 USES=		gmake
 USE_LDCONFIG=	yes
@@ -18,8 +20,9 @@ HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	--prefix=${PREFIX} \
 		--with-default-path=${PREFIX}/bin:/usr/bin:/bin
 
-DOCS=		AUTHORS README doc/*.html
 OPTIONS_DEFINE=	DOCS
+
+DOCS=		AUTHORS README doc/*.html
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libskarnet.so.${PORTVERSION}
@@ -29,7 +32,7 @@ post-install-DOCS-on:
 	cd ${WRKSRC} && ${INSTALL_DATA} ${DOCS} ${STAGEDIR}${DOCSDIR}
 .for d in libbiguint libdatastruct librandom libstdcrypto libstddjb libunixonacid
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/${d}
-	cd ${WRKSRC} && ${INSTALL_MAN} doc/${d}/*.html ${STAGEDIR}${DOCSDIR}/${d}
+	cd ${WRKSRC} && ${INSTALL_DATA} doc/${d}/*.html ${STAGEDIR}${DOCSDIR}/${d}
 .endfor
 
 .include <bsd.port.mk>

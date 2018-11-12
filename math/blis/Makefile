@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	blis
-PORTVERSION=	0.2.2
-PORTREVISION=	1
+PORTVERSION=	0.4.0
 CATEGORIES=	math
 
 MAINTAINER=	jmd@FreeBSD.org
@@ -12,31 +11,23 @@ COMMENT=	Software framework for high-performance BLAS-like libraries
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	bash:shells/bash
+BUILD_DEPENDS=	bash:shells/bash \
+		llvm60>=0:devel/llvm60
 
 BROKEN_powerpc64=	fails to configure: common.mk:118: Unable to determine compiler vendor
 
 OPTIONS_DEFINE=	PARA CBLAS
 PARA_DESC=	use pthread parallelization
 CBLAS_DESC=	build the CBLAS compatibility layer
-OPTIONS_RADIO=		ARCHITECTURE
-OPTIONS_RADIO_ARCHITECTURE=	REFERENCE BULLDOZER PILEDRIVER CARRIZO DUNNINGTON SANDYBRIDGE HASWELL
-REFERENCE_DESC=	reference kernels (slow)
-BULLDOZER_DESC=	optimized kernels for AMD Bulldozer architecture
-PILEDRIVER_DESC=	optimized kernels for AMD Piledriver architecture
-CARRIZO_DESC=	optimized kernels for AMD Carrizo architecture
-DUNNINGTON_DESC=	optimized kernels for Intel Dunnington architecture
-SANDYBRIDGE_DESC=	optimized kernels for Intel Sandybridge architecture
-HASWELL_DESC=	optimized kernels for Intel Haswell architecture
-OPTIONS_DEFAULT=	PARA CBLAS REFERENCE
-OPTIONS_SUB=	yes
+OPTIONS_DEFAULT=	PARA CBLAS
+OPTIONS_SUB=		yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	flame
-GH_TAGNAME=	6e04f9d
 
+USES=		gmake python shebangfix
 USE_LDCONFIG=	yes
-USES=		gmake
+SHEBANG_FILES=	build/flatten-headers.py
 
 HAS_CONFIGURE=	yes
 
@@ -57,27 +48,17 @@ CONFIGURE_ARGS+=	-t pthreads
 CONFIGURE_ARGS+=	--enable-cblas
 .endif
 
-ARCH=	reference
-.if ${PORT_OPTIONS:MREFERENCE}
-ARCH=	reference
-.elif ${PORT_OPTIONS:MBULLDOZER}
-ARCH=	bulldozer
-.elif ${PORT_OPTIONS:MPILEDRIVER}
-ARCH=	piledriver
-.elif ${PORT_OPTIONS:MCARRIZO}
-ARCH=	carrizo
-.elif ${PORT_OPTIONS:MDUNNINGTON}
-ARCH=	dunnington
-.elif ${PORT_OPTIONS:MSANDYBRIDGE}
-ARCH=	sandybridge
-.elif ${PORT_OPTIONS:MHASWELL}
-ARCH=	haswell
+.if ${ARCH} == amd64
+LIBNAME=	x86_64
+CONFIGURE_ARGS+=	x86_64
+PLIST_SUB+=	X8664=""
+.else
+LIBNAME=	generic
+CONFIGURE_ARGS+=	generic
+PLIST_SUB+=	X8664="@comment "
 .endif
-CONFIGURE_ARGS+=	${ARCH}
 
-post-install:
-	${MV} ${STAGEDIR}/${PREFIX}/lib/libblis-${PORTVERSION}-${ARCH}.a ${STAGEDIR}/${PREFIX}/lib/libblis.a
-	${MV} ${STAGEDIR}/${PREFIX}/lib/libblis-${PORTVERSION}-${ARCH}.so ${STAGEDIR}/${PREFIX}/lib/libblis.so
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libblis.so
+CC=	${LOCALBASE}/bin/clang60
+CXX=	${LOCALBASE}/bin/clang++60
 
 .include <bsd.port.mk>

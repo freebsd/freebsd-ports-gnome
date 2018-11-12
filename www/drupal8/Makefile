@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	drupal8
-PORTVERSION=	8.3.7
+PORTVERSION=	8.5.6
 CATEGORIES=	www
 MASTER_SITES=	http://ftp.drupal.org/files/projects/
 DISTNAME=	drupal-${PORTVERSION}
@@ -14,8 +14,8 @@ COMMENT=	Database driven web content management system (CMS)
 LICENSE=	GPLv2+
 
 USES=		php:web shebangfix
-USE_PHP=	dom filter gd hash json mbstring pcre pdo session simplexml \
-		tokenizer xml
+USE_PHP=	dom filter gd hash json mbstring opcache pcre pdo session \
+		simplexml tokenizer xml
 SHEBANG_FILES=	core/scripts/password-hash.sh
 
 NO_ARCH=	yes
@@ -28,7 +28,6 @@ OPTIONS_DEFINE=		MYSQL SQLITE3 PGSQL DOCS
 OPTIONS_DEFAULT=	MYSQL
 
 SUB_FILES+=	pkg-message
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 PGSQL_USES=	pgsql
 PGSQL_USE=	PHP=pdo_pgsql

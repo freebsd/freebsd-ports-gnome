@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	binutils
-PORTVERSION=	2.29
+PORTVERSION=	2.31.1
 CATEGORIES=	devel
 MASTER_SITES=	SOURCEWARE/binutils/releases
 PKGNAMEPREFIX=	arm-elf-

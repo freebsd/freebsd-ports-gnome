@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	strictures
-PORTVERSION=	2.000003
+PORTVERSION=	2.000004
 PORTEPOCH=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
@@ -12,7 +12,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Turn on strict and make all warnings fatal
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 NO_ARCH=	yes

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pgtcl
-PORTVERSION=	2.0.0
-PORTREVISION=	1
+PORTVERSION=	2.1.1
 CATEGORIES=	databases tcl
 MASTER_SITES=	SF/pgtclng/pgtclng/${PORTVERSION}
 DISTNAME=	${PORTNAME}${PORTVERSION}
@@ -16,8 +15,6 @@ COMMENT=	TCL extension for accessing a PostgreSQL server (PGTCL-NG)
 LICENSE=	PostgreSQL
 LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 
-OPTIONS_DEFINE=	DOCS
-
 .if defined(PGTCL_SLAVE)
 USES=		pgsql:${PGTCL_SLAVE}
 .else
@@ -28,18 +25,16 @@ USES+=		tcl:tea
 LIBDIR=		${PREFIX}/lib/${PORTNAME}
 USE_LDCONFIG=	${LIBDIR}
 PLIST_SUB+=	PORTVERSION=${PORTVERSION}
-MANUALREL=	20110918
-
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MDOCS}
-DISTFILES+=	pgtcldocs-${MANUALREL}.zip:doc
-MASTER_SITES+=	SF/pgtclng/Manual/${MANUALREL}:doc
-.endif
+MANUALREL=	20171113
 
 PLIST_FILES=	lib/pgtcl/libpgtcl${PORTVERSION}.so \
 		lib/pgtcl/pkgIndex.tcl
 PORTDOCS=	*
+
+OPTIONS_DEFINE=	DOCS
+
+DOCS_DISTFILES=		pgtcldocs-${MANUALREL}.zip:doc
+DOCS_MASTER_SITES=	SF/pgtclng/Manual/${MANUALREL}:doc
 
 post-configure:
 	${REINPLACE_CMD} -e 's,tclstub,tcl,g' \
@@ -50,11 +45,11 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${LIBDIR}
 	${INSTALL_DATA} ${WRKSRC}/pkgIndex.tcl	\
 		${WRKSRC}/libpgtcl${PORTVERSION}.so ${STAGEDIR}${LIBDIR}
-.if ${PORT_OPTIONS:MDOCS}
+
+do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${TAR} -xf ${DISTDIR}/${_DISTFILES:M*.zip} -C ${STAGEDIR}${DOCSDIR} \
 		--strip-components 1 --no-same-permission --no-same-owner
 	${CHMOD} ${SHAREMODE} ${STAGEDIR}${DOCSDIR}/*
-.endif
 
 .include <bsd.port.mk>

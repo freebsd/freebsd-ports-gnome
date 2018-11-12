@@ -7,13 +7,14 @@ CATEGORIES=	graphics
 
 COMMENT=	OpenGL libraries that support GLX and EGL clients
 
-USE_XORG=	dri2proto dri3proto glproto presentproto x11 xcb xdamage xext \
+USE_XORG=	xorgproto x11 xcb xdamage xext \
 		xfixes xshmfence xxf86vm
 
 OPTIONS_DEFINE=	WAYLAND
 OPTIONS_SUB=	yes
 
 WAYLAND_DESC=		Enable support for the Wayland platform in EGL
+WAYLAND_BUILD_DEPENDS=	wayland-protocols>=1.8:graphics/wayland-protocols
 WAYLAND_LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
 			libwayland-server.so:graphics/wayland
 
@@ -38,7 +39,7 @@ IGNORE=	option WAYLAND is only valid on platforms with LLVM
 .endif
 .endif
 
-MESA_BUILD_WRKSRC=	src/mapi
+MESA_BUILD_WRKSRC=	src/mapi src/util
 MESA_INSTALL_WRKSRC=	src/mapi
 
 .if ${PORT_OPTIONS:MWAYLAND}
@@ -52,6 +53,11 @@ MESA_INSTALL_WRKSRC+=	src/gbm src/glx
 .if "${MESA_LLVM_VER}" != ""
 MESA_BUILD_WRKSRC+=	src/egl
 MESA_INSTALL_WRKSRC+=	src/egl
+.endif
+
+.if ${ARCH} == "i386"
+# PR230239 Fix the build for i386 when WITH_LLD_IS_LD is set
+LDFLAGS+=-Wl,-z,notext
 .endif
 
 .include "${MASTERDIR}/Makefile.targets"

@@ -2,13 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	apache-solr
-PORTVERSION=	6.5.1
-PORTREVISION=	1
+PORTVERSION=	7.1.0
 CATEGORIES=	textproc java
 MASTER_SITES=	APACHE/lucene/solr/${PORTVERSION}
 DISTNAME=	solr-${PORTVERSION}
 
-MAINTAINER=	idefix@fechner.net
+MAINTAINER=	mfechner@FreeBSD.org
 COMMENT=	High performance search server built using Lucene Java
 
 LICENSE=	APACHE20

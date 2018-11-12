@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	xterm
-PORTVERSION=	330
+PORTVERSION=	337
 CATEGORIES=	x11
-MASTER_SITES=	ftp://invisible-island.net/xterm/:src1 \
+MASTER_SITES=	ftp://ftp.invisible-island.net/xterm/:src1 \
+		https://invisible-mirror.net/archives/xterm/:src1 \
 		LOCAL/ehaupt:src1 LOCAL/ehaupt:src2
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:src1 \
 		bsd-xterm-icons-${ICONVERSION}${EXTRACT_SUFX}:src2
@@ -14,14 +15,16 @@ COMMENT=	Terminal emulator for the X Window System
 
 LICENSE=	MIT
 
-CONFLICTS=	x11iraf-[0-9]*
-
 USES=		cpe ncurses tar:tgz
-CPE_VENDOR=	invisible-island
 USE_XORG=	xft xmu xt x11 xpm ice
+
 GNU_CONFIGURE=	yes
 
+CPE_VENDOR=	invisible-island
+
 CONFIGURE_ARGS+=	--with-utempter --enable-narrowproto
+
+CONFLICTS=	x11iraf-[0-9]*
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
@@ -29,7 +32,7 @@ LIBS+=		-L${LOCALBASE}/lib
 ICONVERSION=	1
 
 OPTIONS_DEFINE=	WCHAR LUIT DECTERM PCRE DABBREV 256COLOR SIXEL GNOME LOGGING \
-		SCRNDUMP REGIS XINERAMA
+		SCRNDUMP REGIS TOOLBAR XINERAMA
 OPTIONS_RADIO=	3D
 OPTIONS_RADIO_3D=	XAW3D XAW3DXFT NEXTAW
 
@@ -45,12 +48,14 @@ XAW3D_DESC=	Link with Xaw 3d library
 XAW3DXFT_DESC=	Link with Xaw 3d xft (extended fonts) library
 NEXTAW_DESC=	Link with neXT Athena library
 SCRNDUMP_DESC=	Enable XHTML and SVG screen dumps
+TOOLBAR_DESC=	Enable pulldown menus with a toolbar
 
 OPTIONS_DEFAULT=WCHAR LUIT 256COLOR
 
 256COLOR_CONFIGURE_ENABLE=	256-color
 LUIT_BUILD_DEPENDS=		luit:x11/luit
 LUIT_CONFIGURE_ENABLE=		luit
+LUIT_IMPLIES=			WCHAR
 WCHAR_CONFIGURE_ENABLE=		wide-chars
 WCHAR_VARS=			PKGMESSAGE="${PKGDIR}/pkg-message.wchar"
 DECTERM_CONFIGURE_ENABLE=	dec-locator
@@ -68,7 +73,9 @@ XAW3DXFT_CONFIGURE_WITH=	Xaw3dxft
 XAW3DXFT_LIB_DEPENDS=		libXaw3dxft.so:x11-toolkits/libxaw3dxft
 NEXTAW_CONFIGURE_WITH=		neXtaw
 NEXTAW_LIB_DEPENDS=		libneXtaw.so:x11-toolkits/neXtaw
-XINERAMA_USE=			XORG=xinerama,xineramaproto
+TOOLBAR_CONFIGURE_ENABLE=	toolbar
+WCHAR_LIB_DEPENDS=		libfreetype.so:print/freetype2
+XINERAMA_USE=			XORG=xinerama,xorgproto
 XINERAMA_CONFIGURE_OFF=		--without-xinerama
 
 LIB_DEPENDS+=	libfontconfig.so:x11-fonts/fontconfig

@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	lv2file
-DISTVERSION=	0.82-1-19
+DISTVERSION=	0.84-31
 DISTVERSIONSUFFIX=	-gaed7c77
 CATEGORIES=	audio
 
-MAINTAINER=	yuri@rawbw.com
+MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Simple program that apples LV2 effects to audio files
 
 LICENSE=	GPLv3

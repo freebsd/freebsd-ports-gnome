@@ -5,6 +5,7 @@ PORTNAME=	xcache
 DISTVERSION=	3.2.0
 CATEGORIES=	www
 MASTER_SITES=	http://xcache.lighttpd.net/pub/Releases/${DISTVERSION}/
+PKGNAMESUFFIX=	${PHP_PKGNAMESUFFIX}
 
 MAINTAINER=	ale@FreeBSD.org
 COMMENT=	Fast and stable php opcode cacher
@@ -13,6 +14,8 @@ LICENSE=	BSD3CLAUSE
 
 USES=		php:phpize tar:bzip2
 
+IGNORE_WITH_PHP=	70 71 72
+
 CONFIGURE_ARGS=	--enable-xcache=shared
 
 OPTIONS_DEFINE=	CONSTANT COVERAGER EXAMPLES
@@ -20,7 +23,6 @@ CONSTANT_DESC=	Enable handling of compile time constants
 COVERAGER_DESC=	Enable code coverage dumper
 
 SUB_FILES=	pkg-message
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 PLIST_FILES=	lib/php/%%PHP_EXT_DIR%%/xcache.so
 

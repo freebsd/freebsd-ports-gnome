@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wammu
-PORTVERSION=	0.43
+PORTVERSION=	0.44
 CATEGORIES=	deskutils
 MASTER_SITES=	http://dl.cihar.com/wammu/v0/ \
 		http://dl.cihar.com.nyud.net/wammu/v0/
@@ -13,9 +13,11 @@ COMMENT=	GUI manager of contacts, todos, calendar, and messages in your phone
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BROKEN_aarch64=		fails to build: Signal 11
+
 LIB_DEPENDS=	libGammu.so:comms/gammu
 
-USES=		gettext pkgconfig python tar:bz2
+USES=		gettext pkgconfig python:2.7 tar:bz2
 USE_PYTHON=	distutils autoplist
 USE_WX=		3.0+
 WX_COMPS=	python:lib

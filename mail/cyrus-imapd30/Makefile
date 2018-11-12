@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	cyrus-imapd
-PORTVERSION=	3.0.4
+PORTVERSION=	3.0.8
 #PORTREVISION=	0
 CATEGORIES=	mail ipv6
 MASTER_SITES=	ftp://ftp.cyrusimap.org/cyrus-imapd/ \
-		http://cyrusimap.org/releases/
+		https://www.cyrusimap.org/releases/
 PKGNAMESUFFIX=	30
 
 MAINTAINER=	ume@FreeBSD.org
@@ -14,18 +14,19 @@ COMMENT=	The cyrus mail server, supporting POP3 and IMAP4 protocols
 LICENSE=	BSD4CLAUSE
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BROKEN_armv6=		fails to compile: gmake[1]: *** [Makefile:6747: lib/imapopts.c] Error 1
+BROKEN_armv7=		fails to compile: gmake[1]: *** [Makefile:6718: lib/imapopts.c] Error 1
+BROKEN_powerpc64=	fails to compile: mailbox.h: redefinition of typedef 'message_t'
+
 LIB_DEPENDS=	libsasl2.so:security/cyrus-sasl2 \
 		libicuuc.so:devel/icu \
 		libjansson.so:devel/jansson \
 		libpcre.so:devel/pcre
 
-BROKEN_powerpc64=	fails to compile: mailbox.h: redefinition of typedef 'message_t'
-
 CONFLICTS_INSTALL=	cyrus-imapd-2.* cyrus-imapd2*
 
-USE_RC_SUBR=	imapd
-
 USES=		cpe gmake libtool perl5 pkgconfig ssl
+USE_RC_SUBR=	imapd
 GNU_CONFIGURE=	yes
 CYRUS_PREFIX=	${PREFIX}/cyrus
 CONFIGURE_ARGS=	--libexecdir=${CYRUS_PREFIX}/libexec \
@@ -45,9 +46,10 @@ CPE_VENDOR=	cmu
 CPE_PRODUCT=	cyrus_imap_server
 
 OPTIONS_DEFINE=		AUTOCREATE BACKUP CLAMAV HTTP IDLED LDAP LMDB MURDER \
-			MYSQL NNTP PGSQL REPLICATION SNMP SQLITE SQUAT DOCS
+			MYSQL NNTP PGSQL REPLICATION SNMP SQLITE SQUAT XAPIAN \
+			DOCS
 #OPTIONS_DEFINE+=	DRAC
-OPTIONS_DEFAULT=	CLAMAV IDLED SQLITE SQUAT
+OPTIONS_DEFAULT=	AUTOCREATE CLAMAV IDLED SQLITE SQUAT
 OPTIONS_SUB=		yes
 AUTOCREATE_DESC=	Enable autocreate support
 AUTOCREATE_CONFIGURE_ENABLE=	autocreate
@@ -81,9 +83,7 @@ MURDER_DESC=		Enable IMAP Murder support
 MURDER_CONFIGURE_ENABLE=murder
 MURDER_MAKE_ENV=	PTHREAD_LIBS="-lpthread"
 MYSQL_USES=		mysql
-MYSQL_CONFIGURE_ON=	--with-mysql=yes \
-			--with-mysql-libdir=${LOCALBASE}/lib/mysql \
-			--with-mysql-incdir=${LOCALBASE}/include/mysql
+MYSQL_CONFIGURE_WITH=	mysql
 NNTP_DESC=		Enable NNTP support
 NNTP_CONFIGURE_ENABLE=	nntp
 PGSQL_USES=		pgsql
@@ -94,16 +94,14 @@ SNMP_LIB_DEPENDS=	libnetsnmp.so:net-mgmt/net-snmp
 SNMP_CONFIGURE_ON=	--with-snmp=${LOCALBASE}
 SNMP_CONFIGURE_OFF=	--with-snmp=no
 SQLITE_CONFIGURE_ON=	--with-sqlite=${LOCALBASE}
-SQLITE_BROKEN_OFF=	SQLITE is requited
+SQLITE_BROKEN_OFF=	SQLITE is required
 SQUAT_DESC=		Enable Squat support
 SQUAT_CONFIGURE_OFF=	--disable-squat
-# Need additional patch to xapian
-#OPTIONS_DEFINE+=	XAPIAN
-#XAPIAN_DESC=		Enable Xapian support
-#XAPIAN_CONFIGURE_ENABLE=xapian
-#XAPIAN_LIB_DEPENDS=	libxapian.so:databases/xapian-core
+XAPIAN_DESC=		Enable Xapian support
+XAPIAN_CONFIGURE_ENABLE=xapian
+XAPIAN_LIB_DEPENDS=	libxapian.so:databases/xapian-core
 
-OPTIONS_RADIO=			GSSAPI
+OPTIONS_RADIO=			GSSAPI READLINE
 OPTIONS_RADIO_GSSAPI=		GSSAPI_HEIMDAL GSSAPI_MIT
 .if exists(/usr/lib/libkrb5.a)
 OPTIONS_RADIO_GSSAPI+=		GSSAPI_BASE
@@ -118,6 +116,12 @@ GSSAPI_HEIMDAL_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
 GSSAPI_MIT_USES=		gssapi:mit
 GSSAPI_MIT_CONFIGURE_ON=	--enable-gssapi="${GSSAPIBASEDIR}" \
 				--with-gss_impl=mit
+
+OPTIONS_RADIO_READLINE=		READLINE_GNU READLINE_PERL
+READLINE_GNU_DESC=		Use Term::Readline::GNU for cyradm
+READLINE_GNU_RUN_DEPENDS=	p5-Term-ReadLine-Gnu>=0:devel/p5-Term-ReadLine-Gnu
+READLINE_PERL_DESC=		Use Term::Readline::Perl for cyradm
+READLINE_PERL_RUN_DEPENDS=	p5-Term-ReadLine-Perl>=0:devel/p5-Term-ReadLine-Perl
 
 MANDIRS=	${CYRUS_PREFIX}/man
 
@@ -151,7 +155,6 @@ CYRUS_PERL_MAN3=Cyrus::Annotator::Daemon Cyrus::Annotator::Message \
 .if ${PORT_OPTIONS:MDRAC}
 IGNORE=		DRAC is not available
 # EXTRA_PATCHES+=	${FILESDIR}/extra-patch-cmulocal__sasl2.m4
-# USE_AUTOTOOLS=	autoconf autoheader
 .endif
 
 .if ${PORT_OPTIONS:MHTTP} || ${PORT_OPTIONS:MSQLITE}
@@ -172,8 +175,11 @@ CYRUS_MAN8+=	fetchnews nntpd
 .if ${PORT_OPTIONS:MREPLICATION}
 CYRUS_MAN8+=	sync_client sync_reset sync_server
 .endif
-.if ${PORT_OPTIONS:MSQUAT}
+.if ${PORT_OPTIONS:MSQUAT} || ${PORT_OPTIONS:MXAPIAN}
 CYRUS_MAN8+=	squatter
+PLIST_SUB+=	SQUATTER=""
+.else
+PLIST_SUB+=	SQUATTER="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MDRAC}

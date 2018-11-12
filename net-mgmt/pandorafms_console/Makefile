@@ -10,9 +10,11 @@ COMMENT=	Pandora FMS console
 LICENSE=	${PANDORA_LICENSE}
 LICENSE_FILE=	${PANDORA_LICENSE_FILE}
 
+IGNORE_WITH_PHP=	70 71 72
+
 RUN_DEPENDS=	${LOCALBASE}/bin/twopi:graphics/graphviz
 
-USES=		shebangfix
+USES=		apache:run,2.2+ php:web shebangfix
 SHEBANG_FILES=	include/languages/extract_newlines.sh \
 		include/languages/util-all \
 		include/languages/util-bzr-update \
@@ -29,8 +31,6 @@ PGSQL_DESC=	Use PostgreSQL backend (experimental)
 
 USE_PHP=	curl filter gd gettext hash json ldap mbstring mysql \
 		snmp session xml zip zlib
-WANT_PHP_WEB=	yes
-USE_APACHE_RUN=	22+
 
 SUB_FILES+=	pandora_console.conf pkg-message newsyslog.conf
 SUB_LIST+=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}

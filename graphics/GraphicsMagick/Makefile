@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	GraphicsMagick
-PORTVERSION=	1.3.26
-PORTREVISION=	1
+PORTVERSION=	1.3.30
 PORTEPOCH=	1
 CATEGORIES=	graphics
 MASTER_SITES=	SF \
@@ -29,9 +28,6 @@ TEST_TARGET=	check
 USE_LDCONFIG=	yes
 USES=		libtool localbase pathfix tar:bzip2
 
-PORTDATA=	*
-PORTDOCS=	*
-
 # Use fonts installed by x11-fonts/webfonts by default
 WINDOWS_FONT_DIR?=	${LOCALBASE}/share/fonts/webfonts
 
@@ -53,7 +49,7 @@ LCMS2_CONFIGURE=	lcms2
 LCMS2_LIB_DEPENDS=	liblcms2.so:graphics/lcms2
 OPENMP_CONFIGURE_OFF=	--disable-openmp --without-threads
 OPENMP_CONFIGURE_ON=	--disable-openmp-slow --enable-openmp --with-threads
-OPENMP_USE=		CXXSTD=c++03	# See PR/221065 for detail
+OPENMP_USE=		CXXSTD=c++03	# See PR/221065 for details
 OPENMP_USES=		compiler:gcc-c++11-lib
 PNG_CONFIGURE_WITH=	png
 PNG_LIB_DEPENDS=	libpng.so:graphics/png
@@ -68,8 +64,9 @@ TIFF_LIB_DEPENDS=	libtiff.so:graphics/tiff
 WEBP_CONFIGURE_WITH=	webp
 WEBP_LIB_DEPENDS=	libwebp.so:graphics/webp
 WMF_CONFIGURE_WITH=	wmf
+X11_CONFIGURE_OFF=	ac_cv_lib_ICE_IceConnectionNumber=no
 X11_CONFIGURE_WITH=	x
-X11_USE=		XORG=x11,xext
+X11_USE=		XORG=ice,sm,x11,xext
 XML_CONFIGURE_WITH=	xml
 XML_USE=		GNOME=libxml2
 XML_USES=		gnome

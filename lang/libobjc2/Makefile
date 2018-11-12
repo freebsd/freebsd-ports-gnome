@@ -3,20 +3,21 @@
 
 PORTNAME=	libobjc2
 PORTVERSION=	1.8.1
+PORTREVISION=	2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	lang devel gnustep
 
 MAINTAINER=	theraven@FreeBSD.org
 COMMENT=	Replacement Objective-C runtime supporting modern Objective-C features
 
-SSP_UNSAFE=	yes
-
-USES=		cmake objc:compiler
 BROKEN_powerpc=		Does not compile on powerpc: Unsupported relocation type 10
 BROKEN_sparc64=		Does not compile on sparc64: Cannot configure clang properly
+USES=		cmake compiler:c++11-lang objc:compiler
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	gnustep
+
+SSP_UNSAFE=	yes
 
 SHLIB_MAJOR=	4
 SHLIB_MINOR=	6

@@ -2,19 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	ansifilter
-PORTVERSION=	2.3
+PORTVERSION=	2.10
+PORTREVISION=	1
 CATEGORIES=	textproc
 MASTER_SITES=	http://www.andre-simon.de/zip/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	bofh@FreeBSD.org
 COMMENT=	Customizable ANSI Code Converter
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BROKEN_powerpc64=	fails to compile: cc1plus: error: unrecognized command line option -std=c++11
-
-USES=		gmake tar:bzip2
+USES=		compiler:c++11-lib gmake tar:bzip2
 MAKEFILE=	makefile
 
 PORTDOCS=	ChangeLog README
@@ -22,8 +21,8 @@ PLIST_FILES=	bin/${PORTNAME} man/man1/${PORTNAME}.1.gz
 
 OPTIONS_DEFINE=		DOCS QT4
 
-QT4_USES=		qmake:norecursive
-QT4_USE=		QT4=gui,moc_build
+QT4_USES=		qmake:norecursive qt:4
+QT4_USE=		QT=gui,moc_build
 QT4_ALL_TARGET=		all all-gui
 QT4_PLIST_FILES=	bin/${PORTNAME}-gui
 QT4_DESKTOP_ENTRIES=	"ANSIFilter" "" "" "${PORTNAME}-gui" \

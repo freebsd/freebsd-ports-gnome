@@ -10,13 +10,18 @@ MASTER_SITES=	SF/ofset/${PORTNAME}/${PORTVERSION}
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	GTK interactive geometry software
 
+LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/COPYING
+
+BROKEN_powerpc64=	fails to compile: ./geo/libgeo.a: multiple definition of drgeoDialogData
+
 LIB_DEPENDS=	libguile.so:lang/guile
 
+USES=		gettext gmake localbase:ldflags pkgconfig pathfix
 GNU_CONFIGURE=	yes
-USES=		gettext gmake pkgconfig pathfix
 USE_GNOME=	gnomeprefix intlhack libglade2
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+
+CXXFLAGS+=	-Wno-reserved-user-defined-literal
 
 PORTDATA=	*
 

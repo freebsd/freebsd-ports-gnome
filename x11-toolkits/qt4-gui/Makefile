@@ -3,7 +3,7 @@
 
 PORTNAME=	gui
 DISTVERSION=	${QT4_VERSION}
-PORTREVISION=	3
+PORTREVISION=	6
 CATEGORIES=	x11-toolkits
 PKGNAMEPREFIX=	qt4-
 
@@ -14,13 +14,12 @@ LIB_DEPENDS=	libpng.so:graphics/png \
 		libfontconfig.so:x11-fonts/fontconfig
 RUN_DEPENDS=	xdg-open:devel/xdg-utils
 
-USE_QT4=	qmake_build moc_build rcc_build uic_build corelib
-QT_DIST=	yes
-USES=		pkgconfig
+USE_QT=		moc_build rcc_build uic_build corelib
+USES=		pkgconfig qmake:no_env qt-dist:4
 
 HAS_CONFIGURE=	yes
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}
-USE_XORG=	xrender xrandr xinerama inputproto xfixes \
+USE_XORG=	xrender xrandr xinerama xorgproto xfixes \
 		sm xcursor xext x11 ice xi xt
 
 ALL_TARGET=	first

@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	timelimit
-PORTVERSION=	1.8.1
-PORTREVISION=	1
+PORTVERSION=	1.9.0
 CATEGORIES=	sysutils
-MASTER_SITES=	http://devel.ringlet.net/files/sys/timelimit/ \
+MASTER_SITES=	https://devel.ringlet.net/files/sys/timelimit/ \
 		LOCAL/sunpoet
 
 MAINTAINER=	sunpoet@FreeBSD.org

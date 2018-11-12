@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	rtorrent
-PORTVERSION=	0.9.6
-PORTREVISION=	3
+PORTVERSION=	0.9.7
+PORTREVISION=	1
 CATEGORIES=	net-p2p
-MASTER_SITES=	http://rtorrent.net/downloads/
+MASTER_SITES=	https://rtorrent.net/downloads/
 
-MAINTAINER=	pipfstarrd@openmailbox.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	BitTorrent Client written in C++
 
 LICENSE=	GPLv2 GPLv3
@@ -37,15 +37,9 @@ XMLRPC_LIB_DEPENDS=	libxmlrpc.so:net/xmlrpc-c
 
 .include <bsd.port.options.mk>
 
-# Workaround to build on >= 10.x
-.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000000
-USE_CXXSTD=	c++11
-EXTRA_PATCHES+=	${FILESDIR}/extra-clang
-.endif
-
 post-patch:
 	@${REINPLACE_CMD} -e 's|-O3|${CFLAGS}|' ${WRKSRC}/configure
-.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1000000
+.if ${OPSYS} == FreeBSD
 	@${FIND} ${WRKSRC} \( -name '*.h' -o -name '*.cc' \) -type f \
 		-exec ${REINPLACE_CMD} -e 's/tr1::/std::/g' {} \; \
 		-exec ${REINPLACE_CMD} -e 's/std::std::/std::/g' {} \; \

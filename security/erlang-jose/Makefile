@@ -8,7 +8,7 @@ PKGNAMEPREFIX=	erlang-
 MAINTAINER=	vanilla@FreeBSD.org
 COMMENT=	JSON Object Signing and Encryption (JOSE) for Erlang
 
-LICENSE=	MPL
+LICENSE=	MPL20
 
 USES=		erlang:rebar
 USE_GITHUB=	yes
@@ -20,5 +20,7 @@ NO_ARCH=	yes
 
 ERL_BUILD_DEPS=	converters/erlang-base64url
 ERL_RUN_DEPS:=	${ERL_BUILD_DEPS}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

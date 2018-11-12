@@ -3,7 +3,7 @@
 
 PORTNAME=	pixie
 PORTVERSION=	2.2.6
-PORTREVISION=	15
+PORTREVISION=	19
 CATEGORIES=	graphics
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/Pixie%20${PORTVERSION}
 DISTNAME=	Pixie-src-${PORTVERSION}
@@ -14,12 +14,13 @@ COMMENT=	Photorealistic renderer with Pixar's RenderMan-like interface
 LICENSE=	LGPL21+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libIlmImf.so:graphics/OpenEXR \
+LIB_DEPENDS=	libIlmImf.so:graphics/openexr \
 		libtiff.so:graphics/tiff \
 		libfltk_gl.so:x11-toolkits/fltk
 
 BROKEN_aarch64=		fails to compile: use of undeclared identifier CRenderer
 BROKEN_armv6=		fails to compile: use of undeclared identifier CRenderer
+BROKEN_armv7=		fails to compile: use of undeclared identifier CRenderer
 BROKEN_sparc64=		fails to compile
 
 USE_GL=		glu

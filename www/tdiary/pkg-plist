@@ -103,6 +103,9 @@ bin/%%TDIARY_SCRIPT%%
 %%WWWDIR%%/lib/tdiary/view.rb
 %%WWWDIR%%/lib/tdiary/view_helper.rb
 %%WWWDIR%%/misc/convert2.rb
+%%WWWDIR%%/misc/docker-devel/Dockerfile
+%%WWWDIR%%/misc/docker-devel/README.md
+%%WWWDIR%%/misc/docker-devel/run-app.sh
 %%WWWDIR%%/misc/filter/antispamservice.rb
 %%WWWDIR%%/misc/filter/limitdays.rb
 %%WWWDIR%%/misc/filter/linkcheck.rb
@@ -113,18 +116,10 @@ bin/%%TDIARY_SCRIPT%%
 %%WWWDIR%%/misc/lib/compatible.rb
 %%WWWDIR%%/misc/lib/fcgi_patch.rb
 %%WWWDIR%%/misc/migrate.rb
-%%WWWDIR%%/misc/paas/cloudfoundry/Gemfile
-%%WWWDIR%%/misc/paas/cloudfoundry/Gemfile.lock
-%%WWWDIR%%/misc/paas/cloudfoundry/tdiary.conf
 %%WWWDIR%%/misc/paas/heroku/Gemfile.local
 %%WWWDIR%%/misc/paas/heroku/Gemfile.lock
 %%WWWDIR%%/misc/paas/heroku/misc/plugin/system_update.rb
 %%WWWDIR%%/misc/paas/heroku/tdiary.conf
-%%WWWDIR%%/misc/paas/sqale/Gemfile
-%%WWWDIR%%/misc/paas/sqale/Gemfile.lock
-%%WWWDIR%%/misc/paas/sqale/Procfile
-%%WWWDIR%%/misc/paas/sqale/dot.env
-%%WWWDIR%%/misc/paas/sqale/tdiary.conf
 %%WWWDIR%%/misc/plugin/ChangeLog.DO_NOT_UPDATE
 %%WWWDIR%%/misc/plugin/a.rb
 %%WWWDIR%%/misc/plugin/amazon.rb
@@ -2268,11 +2263,9 @@ bin/%%TDIARY_SCRIPT%%
 @dir %%WWWDIR%%/misc/plugin/ja
 @dir %%WWWDIR%%/misc/plugin/en
 @dir %%WWWDIR%%/misc/plugin
-@dir %%WWWDIR%%/misc/paas/sqale
 @dir %%WWWDIR%%/misc/paas/heroku
 @dir %%WWWDIR%%/misc/paas/heroku/misc
 @dir %%WWWDIR%%/misc/paas/heroku/misc/plugin
-@dir %%WWWDIR%%/misc/paas/cloudfoundry
 @dir %%WWWDIR%%/misc/paas
 @dir %%WWWDIR%%/misc/lib
 @dir %%WWWDIR%%/misc/filter/plugin/ja

@@ -3,7 +3,7 @@
 
 PORTNAME=	octave-forge-octproj
 PORTVERSION=	1.1.5
-PORTREVISION=	4
+PORTREVISION=	10
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org
@@ -12,13 +12,15 @@ COMMENT=	Octave-forge package ${OCTAVE_PKGNAME}
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKDIR}/${OCTSRC}/COPYING
 
+LIB_DEPENDS+=	libproj.so:graphics/proj
+
 # OCTSRC is the name of the directory of the package.
 # It is usually ${OCTAVE_PKGNAME} or ${DISTNAME}.
 OCTSRC=		${DISTNAME}
 
 WRKSRC=		${WRKDIR}/${OCTSRC}/src
 
-LIB_DEPENDS+=	libproj.so:graphics/proj
+USES+=		compiler:gcc-c++11-lib
 
 .include "${.CURDIR}/../../Mk/bsd.octave.mk"
 

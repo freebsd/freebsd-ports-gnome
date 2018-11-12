@@ -22,7 +22,7 @@ IGNORE=	Incorrect 'USES+= waf:${waf_ARGS}' waf takes no arguments
 .endif
 
 .if !${USES:Mpython*}
-python_ARGS=	2,build
+python_ARGS=	2.7,build
 .include "${USESDIR}/python.mk"
 .endif
 
@@ -36,6 +36,7 @@ WAF_CMD?=	./waf
 CONFIGURE_TARGET?=	configure
 ALL_TARGET?=		build
 INSTALL_TARGET?=	install
+TEST_TARGET?=		test
 
 CONFIGURE_CMD=	${PYTHON_CMD} ${WAF_CMD} ${CONFIGURE_TARGET}
 MAKE_CMD=	${PYTHON_CMD} ${WAF_CMD}

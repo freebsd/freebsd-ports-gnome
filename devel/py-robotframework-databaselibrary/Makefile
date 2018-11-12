@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	robotframework-databaselibrary
-PORTVERSION=	1.0.1
+PORTVERSION=	1.1.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel www python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,7 +12,7 @@ COMMENT=	Utilities meant for Robot Frameworks usage
 
 LICENSE=	APACHE20
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}robotframework>=2.7.5:devel/py-robotframework
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}robotframework>=2.7.5:devel/py-robotframework@${PY_FLAVOR}
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	franz-see

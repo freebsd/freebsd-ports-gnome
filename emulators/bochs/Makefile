@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	bochs
-PORTVERSION=	2.6.8
-PORTREVISION=	4
+PORTVERSION=	2.6.9
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	emulators
 MASTER_SITES=	SF
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	mmokhi@FreeBSD.org
 COMMENT=	IA-32 (x86) PC emulator that runs DOS, Win 95, and more
 
 LICENSE=	LGPL21
@@ -16,6 +16,7 @@ LICENSE=	LGPL21
 BROKEN_i386=		does not build on i386 (../cpu.h:4513:117: error: 'regparm' parameter must be between 0 and 3 inclusive)
 
 USES=		gmake libtool:keepla pkgconfig
+USE_XORG=	x11
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_header_alsa_asoundlib_h=no \
 		ac_cv_header_ltdl_h=no
@@ -179,7 +180,7 @@ USB_XHCI_IMPLIES=	PCI
 VMX_DESC=		Virtialization extensions
 VMX_VARS=		WITH_CPU_LEVEL=6
 VMX_IMPLIES=		FPU
-VNCSERVER_DESC= 	LibVNCServer support (works with VNC viewer)
+VNCSERVER_DESC=		LibVNCServer support (works with VNC viewer)
 VNCSERVER_LIB_DEPENDS=	libvncserver.so:net/libvncserver
 VNCSERVER_CONFIGURE_WITH=	vncsrv
 VOODOO_DESC=		3dfx Voodoo Graphics emulation
@@ -223,7 +224,7 @@ CONFIGURE_ARGS+=--enable-vmx=1
 
 .if defined(WITH_CPU_LEVEL)
 .if ${WITH_CPU_LEVEL} < 3 || ${WITH_CPU_LEVEL} > 6
-IGNORE=		can not install: WITH_CPU_LEVEL must be an integer value between 3 and 6
+IGNORE=		cannot install: WITH_CPU_LEVEL must be an integer value between 3 and 6
 .endif
 CONFIGURE_ARGS+=--enable-cpu-level=${WITH_CPU_LEVEL}
 .endif
@@ -269,7 +270,7 @@ post-build:
 	@${LN} -sf .bochsrc ${WRKSRC}/bochsrc-sample.txt
 
 post-install:
-.for f in bochs bximage
+.for f in bochs bxhub bximage
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${f}
 .endfor
 

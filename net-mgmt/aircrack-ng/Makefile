@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	aircrack-ng
-DISTVERSION=	1.2-rc4
+DISTVERSION=	1.3
+PORTREVISION=	1
 CATEGORIES=	net-mgmt security
 MASTER_SITES=	http://download.aircrack-ng.org/
 
@@ -12,17 +13,22 @@ COMMENT=	802.11 WEP and WPA-PSK keys cracking program
 LICENSE=	GPLv2 BSD3CLAUSE APACHE20
 LICENSE_COMB=	dual
 
+BROKEN_aarch64=		fails to configure: _AX_COMPILER_VERSION_GNU unknown gcc major
+BROKEN_armv6=		fails to configure: _AX_COMPILER_VERSION_GNU unknown gcc major
+BROKEN_armv7=		fails to configure: _AX_COMPILER_VERSION_GNU unknown gcc major
 BROKEN_powerpc64=	fails to compile: sse-intrinsics.c: error: emmintrin.h: No such file or directory
 
-USES=		cpe dos2unix gmake ssl
+USES=		autoreconf cpe dos2unix gmake libtool ssl
+USE_GCC=	yes
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--with-experimental
 CPE_VERSION=	${DISTVERSION:C/-.*//}
 CPE_UPDATE=	${DISTVERSION:C/^[^-]*$//:C/.*-//}
-DOS2UNIX_FILES=	src/osdep/byteorder.h
-MAKE_ARGS=	experimental=true libnl=false prefix=${PREFIX}
+DOS2UNIX_FILES=	src/aircrack-osdep/byteorder.h
 CFLAGS+=	-I${OPENSSLINC}
 LDFLAGS+=	-L${OPENSSLLIB}
 # Don't call 'strip' target with WITH_DEBUG set
-INSTALL_TARGET=	${STRIP:S/-s/strip/} install
+#INSTALL_TARGET=	${STRIP:S/-s/strip/} install
 
 OPTIONS_DEFINE=	PCRE SQLITE
 OPTIONS_DEFAULT=PCRE SQLITE
@@ -38,9 +44,6 @@ SQLITE_USES=	sqlite
 SQLITE_MAKE_ARGS=	sqlite=true
 
 post-patch:
-	@${REINPLACE_CMD} \
-		-e 's|share/\(man/man[1-9]\)|\1|' \
-			${WRKSRC}/common.mak
 	@${REINPLACE_CMD} \
 		-e 's|%%ETCDIR%%|${ETCDIR}|' ${WRKSRC}/scripts/airodump-ng-oui-update
 

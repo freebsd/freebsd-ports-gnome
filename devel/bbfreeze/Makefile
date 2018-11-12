@@ -3,6 +3,7 @@
 
 PORTNAME=	bbfreeze
 PORTVERSION=	1.1.3
+PORTREVISION=	1
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,14 +13,16 @@ COMMENT=	Module to create standalone executables from Python scripts
 
 LICENSE=	ZLIB
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}altgraph>=0.9:math/py-altgraph \
-		${PYTHON_PKGNAMEPREFIX}bbfreeze-loader>=1.1.0:devel/bbfreeze-loader
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}altgraph>=0.9:math/py-altgraph@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}bbfreeze-loader>=1.1.0:devel/bbfreeze-loader@${PY_FLAVOR}
 
-USES=		python:2 zip
+USES=		python:2.7 zip
 USE_PYTHON=	autoplist distutils
 
 DOCSDIR=	${PREFIX}/share/doc/${PYTHON_PKGNAMEPREFIX}${PORTNAME}
 PORTDOCS=	*
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e '/altgraph/s,==,>=,' ${WRKSRC}/${PYSETUP}

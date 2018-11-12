@@ -2,7 +2,7 @@
 
 PORTNAME=	poppler-qt4
 PORTVERSION=	0.18.1
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	graphics python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -16,7 +16,7 @@ LICENSE_COMB=	dual
 
 LIB_DEPENDS=	libpoppler-qt4.so:graphics/poppler-qt4
 
-USES=		pkgconfig pyqt:4 python
+USES=		compiler:c++11-lang pkgconfig pyqt:4 python
 USE_PYQT=	gui xml sip_build
 USE_PYTHON=	distutils autoplist
 

@@ -2,7 +2,7 @@
 
 PORTNAME=	wspr
 DISTVERSION=	${VERSION}.r${SVN_REV}
-PORTREVISION=	9
+PORTREVISION=	11
 CATEGORIES=	comms hamradio
 MASTER_SITES=	LOCAL/db
 DISTNAME=	wspr-r${SVN_REV}
@@ -12,10 +12,14 @@ COMMENT=	Weak signal for HF ham radio communication package
 
 LICENSE=	GPLv3
 
+BROKEN_aarch64=		fails to compile: gfortran6: unrecognized command line option '-m64'
+DEPRECATED=	replace with wsjtx upstream no longer maintained
+EXPIRATION_DATE=2018-10-01
+
 BUILD_DEPENDS=	${PYNUMPY}
-RUN_DEPENDS=	${PYTHON_LIBDIR}/tkinter:x11-toolkits/py-tkinter \
-		${PYTHON_SITELIBDIR}/PIL:graphics/py-pillow \
-		${PYTHON_SITELIBDIR}/scipy:science/py-scipy
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pillow>0:graphics/py-pillow@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}scipy>0:science/py-scipy@${PY_FLAVOR}
 LIB_DEPENDS=	libhamlib.so:comms/hamlib \
 		libfftw3f.so:math/fftw3-float \
 		libsamplerate.so:audio/libsamplerate \
@@ -30,6 +34,8 @@ CONFIGURE_ARGS=	--with-gfortran=${FC} \
 MAKE_ENV+=	PYTHONUSERBASE=${STAGEDIR}${PYTHONBASE}
 #LDFLAGS+=	-shared
 VERSION=	4.00
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
 pre-configure:
@@ -61,11 +67,6 @@ do-fetch:
 	scp ${DISTDIR}/${DISTNAME}.tar.bz2 \
 		freefall.freebsd.org:public_distfiles/
 .endif
-.endif
-
-.if defined(PACKAGE_BUILDING) && !defined(PACKAGE_BUILDING_FLAVORS) && \
-    ${PYTHON_VER} != ${PYTHON_DEFAULT}
-IGNORE=	you have python ${PYTHON_DEFAULT} set as the default, and this needs ${PYTHON_VER}
 .endif
 
 .include <bsd.port.post.mk>

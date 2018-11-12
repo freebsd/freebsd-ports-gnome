@@ -1,5 +1,3 @@
-@owner %%WWWOWN%%
-@group %%WWWGRP%%
 %%WWWDIR%%/data/EMPTY
 %%WWWDIR%%/data/VERSION
 %%WWWDIR%%/index.php
@@ -78,80 +76,6 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/Facebook/Url/FacebookUrlManipulator.php
 %%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/Facebook/Url/UrlDetectionInterface.php
 %%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/Facebook/autoload.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/AdapterInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/Curl/BatchContext.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/Curl/CurlAdapter.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/Curl/CurlFactory.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/Curl/MultiAdapter.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/Curl/RequestMediator.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/FakeParallelAdapter.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/MockAdapter.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/ParallelAdapterInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/StreamAdapter.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/StreamingProxyAdapter.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/Transaction.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/TransactionInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Adapter/TransactionIterator.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Client.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/ClientInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Collection.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Cookie/CookieJar.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Cookie/CookieJarInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Cookie/FileCookieJar.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Cookie/SessionCookieJar.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Cookie/SetCookie.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/AbstractEvent.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/AbstractRequestEvent.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/AbstractTransferEvent.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/BeforeEvent.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/CompleteEvent.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/Emitter.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/EmitterInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/ErrorEvent.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/EventInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/HasEmitterInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/HasEmitterTrait.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/HeadersEvent.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/ListenerAttacherTrait.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/RequestEvents.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Event/SubscriberInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/AdapterException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/BadResponseException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/ClientException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/CouldNotRewindStreamException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/ParseException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/RequestException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/ServerException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/TooManyRedirectsException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Exception/TransferException.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/HasDataTrait.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/AbstractMessage.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/MessageFactory.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/MessageFactoryInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/MessageInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/MessageParser.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/Request.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/RequestInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/Response.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Message/ResponseInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Mimetypes.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Post/MultipartBody.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Post/PostBody.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Post/PostBodyInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Post/PostFile.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Post/PostFileInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Query.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Subscriber/Cookie.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Subscriber/History.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Subscriber/HttpError.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Subscriber/Mock.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Subscriber/Prepare.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Subscriber/Redirect.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/ToArrayInterface.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/UriTemplate.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/Url.php
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/cacert.pem
-%%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/GuzzleHttp/functions.php
 %%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/Imagine/Draw/DrawerInterface.php
 %%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/Imagine/Effects/EffectsInterface.php
 %%WWWDIR%%/rainloop/v/%%VER%%/app/libraries/Imagine/Exception/Exception.php
@@ -1020,6 +944,7 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/admin/pl_PL.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/admin/pt_BR.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/admin/ru_RU.yml
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/admin/sk_SK.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/admin/sl_SI.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/admin/sv_SE.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/admin/zh_CN.yml
@@ -1035,6 +960,7 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/az.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/be.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/bg.js
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/bm.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/bn.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/bo.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/br.js
@@ -1053,9 +979,11 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/en-ca.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/en-gb.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/en-ie.js
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/en-il.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/en-nz.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/eo.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/es-do.js
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/es-us.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/es.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/et.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/eu.js
@@ -1069,6 +997,7 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/gd.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/gl.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/gom-latn.js
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/gu.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/he.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/hi.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/hr.js
@@ -1093,9 +1022,11 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/mi.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/mk.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/ml.js
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/mn.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/mr.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/ms-my.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/ms.js
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/mt.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/my.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/nb.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/ne.js
@@ -1122,6 +1053,7 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/ta.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/te.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/tet.js
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/tg.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/th.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/tl-ph.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/tlh.js
@@ -1129,6 +1061,7 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/tzl.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/tzm-latn.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/tzm.js
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/ug-cn.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/uk.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/ur.js
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/moment/uz-latn.js
@@ -1155,6 +1088,7 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/webmail/fi_FI.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/webmail/fr_FR.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/webmail/hu_HU.yml
+%%WWWDIR%%/rainloop/v/%%VER%%/app/localization/webmail/id_ID.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/webmail/is_IS.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/webmail/it_IT.yml
 %%WWWDIR%%/rainloop/v/%%VER%%/app/localization/webmail/ja_JP.yml
@@ -1482,6 +1416,8 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/static/css/preloader.gif
 %%WWWDIR%%/rainloop/v/%%VER%%/static/css/social.css
 %%WWWDIR%%/rainloop/v/%%VER%%/static/css/social.min.css
+%%WWWDIR%%/rainloop/v/%%VER%%/static/favicon-light.ico
+%%WWWDIR%%/rainloop/v/%%VER%%/static/favicon-light.png
 %%WWWDIR%%/rainloop/v/%%VER%%/static/favicon.ico
 %%WWWDIR%%/rainloop/v/%%VER%%/static/favicon.png
 %%WWWDIR%%/rainloop/v/%%VER%%/static/js/admin.js
@@ -1544,3 +1480,6 @@
 %%WWWDIR%%/rainloop/v/%%VER%%/themes/Xv/images/background.png
 %%WWWDIR%%/rainloop/v/%%VER%%/themes/Xv/images/preview.png
 %%WWWDIR%%/rainloop/v/%%VER%%/themes/Xv/styles.less
+@owner %%WWWOWN%%
+@group %%WWWGRP%%
+@dir %%WWWDIR%%/data

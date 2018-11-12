@@ -2,18 +2,20 @@
 
 PORTNAME=	django-annotations
 PORTVERSION=	0.0.0.2016041401
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	www python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	Django implementation of annotatorjs Storage
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django-cors-headers>=1.1.0:www/py-django-cors-headers \
-		${PYTHON_PKGNAMEPREFIX}djangorestframework>=3.3.2:www/py-djangorestframework \
-		${PYTHON_PKGNAMEPREFIX}django-rq>0:devel/py-django-rq \
-		${PYTHON_PKGNAMEPREFIX}django-rq-dashboard>0:devel/py-django-rq-dashboard \
-		${PYTHON_PKGNAMEPREFIX}pytz>0:devel/py-pytz
+LICENSE=	APACHE20
+
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django-cors-headers>=1.1.0:www/py-django-cors-headers@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}djangorestframework>=3.3.2:www/py-djangorestframework@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}django-rq>0:devel/py-django-rq@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}django-rq-dashboard>0:devel/py-django-rq-dashboard@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytz>0:devel/py-pytz@${PY_FLAVOR}
 
 USES=		python
 USE_GITHUB=	yes

@@ -2,12 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	yaz
-PORTVERSION=	5.21.1
-PORTREVISION=	1
+DISTVERSION=	5.26.1
 CATEGORIES=	net
 MASTER_SITES=	http://ftp.indexdata.dk/pub/yaz/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	neel@neelc.org
 COMMENT=	Z39.50/SR client and API library
 
 LICENSE=	BSD3CLAUSE
@@ -16,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 LIB_DEPENDS=	libicuuc.so:devel/icu \
 		libgnutls.so:security/gnutls
 
-USES=		execinfo iconv libtool ncurses pathfix pkgconfig readline \
+USES=		iconv libtool ncurses pathfix pkgconfig readline \
 		shebangfix tcl
 SHEBANG_FILES=	util/yaz-asncomp
 GNU_CONFIGURE=	yes

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wordpress
-PORTVERSION=	4.8
+PORTVERSION=	4.9
 DISTVERSIONSUFFIX=	-zh_TW
 CATEGORIES=	chinese www
 MASTER_SITES=	http://tw.wordpress.org/
@@ -33,7 +33,9 @@ SUB_FILES=	pkg-message
 pre-everything::
 	@${ECHO_CMD} "If you want to upgrade, you must read upgrade document."
 	@${ECHO_CMD} ""
+.  if !(defined(PACKAGE_BUILDING) || defined(BATCH))
 	@sleep 1
+.  endif
 
 pre-install:
 	${ECHO_CMD} '@owner www' > ${PLIST}

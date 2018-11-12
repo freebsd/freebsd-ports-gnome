@@ -1,4 +1,3 @@
-# Created by: Fernando Apesteguia <fernando.apesteguia@gmail.com>
 # $FreeBSD$
 
 PORTNAME=	basic256
@@ -8,7 +7,7 @@ CATEGORIES=	lang
 MASTER_SITES=	SF/kidbasic/${PORTNAME}
 DISTNAME=	${PORTNAME}_${PORTVERSION}.orig
 
-MAINTAINER=	fernando.apesteguia@gmail.com
+MAINTAINER=	fernape@FreeBSD.org
 COMMENT=	Easy to use BASIC language and IDE for education
 
 LICENSE=	GPLv2
@@ -19,9 +18,9 @@ BUILD_DEPENDS=	espeak:audio/espeak \
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
-USES=		bison dos2unix qmake
+USES=		bison dos2unix qmake qt:5
 USE_SDL=	sdl mixer
-USE_QT5=	buildtools core gui multimedia network printsupport sql widgets serialport
+USE_QT=		buildtools core gui multimedia network printsupport sql widgets serialport
 QMAKE_ARGS+=	LOCALBASE="${LOCALBASE}"
 QMAKE_SOURCE_PATH=	BASIC256.pro
 

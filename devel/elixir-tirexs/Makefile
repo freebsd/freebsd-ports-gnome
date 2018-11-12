@@ -6,7 +6,7 @@ DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	ElasticSearch client library for Elixir
 
 LICENSE=	APACHE20
@@ -19,5 +19,7 @@ GH_ACCOUNT=	Zatvobor
 
 MIX_BUILD_DEPS=	devel/elixir-exjsx
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

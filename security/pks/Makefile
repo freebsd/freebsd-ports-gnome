@@ -3,7 +3,7 @@
 
 PORTNAME=	pks
 PORTVERSION=	0.9.6.20040312
-PORTREVISION=	4
+PORTREVISION=	7
 CATEGORIES=	security www
 MASTER_SITES=	http://pks.sourceforge.net/ LOCAL/mandree
 DISTFILES=	pks-current.tgz
@@ -16,16 +16,14 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
 
-USE_GCC=	any
 USES=		bdb ssl
+USE_GCC=	any
+USE_RC_SUBR=	pksd
 
-OPTIONS_DEFINE=	DOCS
-PORTDOCS=	pks_help.* README EMAIL
 GNU_CONFIGURE=	yes
-USE_AUTOTOOLS=	autoconf
-CONFIGURE_ARGS=	--datadir=${PREFIX}/share/pks --localstatedir=/var/pks \
-		--docdir=${PREFIX}/share/doc/pks --sysconfdir=${EXAMPLESDIR} \
-		--libdir=${LOCALBASE}/lib --with-libwrap \
+CONFIGURE_ARGS=	--datadir=${DATADIR} \
+		--localstatedir=/var/pks \
+		--with-libwrap \
 		--with-openssl=${OPENSSLBASE}
 MAKE_ENV+=	SUBDIRS=
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -33,11 +31,9 @@ CONFIGURE_ENV=	DBLIB="-L${BDB_LIB_DIR} -l${BDB_LIB_NAME}" \
 		DBINC=-I${BDB_INCLUDE_DIR} DBHDR=db.h
 
 SUB_FILES=	pkg-message
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
-PLIST_SUB+=	RESETPREFIX=${PREFIX}
-
-USE_RC_SUBR=	pksd
+OPTIONS_DEFINE=	DOCS
+PORTDOCS=	pks_help.* README EMAIL
 
 post-extract:
 	@${CP} -a ${FILESDIR}/EMAIL ${WRKSRC}
@@ -47,8 +43,7 @@ post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/pksdctl
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/pksclient
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/sbin/pksd
-	${INSTALL_DATA}  ${WRKSRC}/pksd.conf ${STAGEDIR}${PREFIX}/etc/pksd.conf.sample
-	#${CHOWN} pksd:pksd /var/pks
+	${MV} ${STAGEDIR}${PREFIX}/etc/pksd.conf ${STAGEDIR}${PREFIX}/etc/pksd.conf.sample
 
 post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}/

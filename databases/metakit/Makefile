@@ -13,6 +13,7 @@ COMMENT=	C++ embedded database engine with Python and Tcl support
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/../license.terms
 
+USE_CXXSTD=	c++98
 GNU_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	../unix/configure
 USE_LDCONFIG=	yes
@@ -26,7 +27,7 @@ OPTIONS_DEFINE=	PYTHON TCL DOCS
 OPTIONS_DEFAULT=	PYTHON
 OPTIONS_SUB=	yes
 
-PYTHON_USES=		python
+PYTHON_USES=		python:2.7
 PYTHON_CONFIGURE_ON=	--with-python=${LOCALBASE}
 PYTHON_CATEGORIES=	python
 

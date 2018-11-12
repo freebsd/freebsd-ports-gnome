@@ -1,10 +1,8 @@
 bin/gottet
 man/man6/gottet.6.gz
-share/appdata/gottet.appdata.xml
 share/applications/gottet.desktop
 %%PORTDOCS%%%%DOCSDIR%%/CREDITS
 %%PORTDOCS%%%%DOCSDIR%%/ChangeLog
-%%PORTDOCS%%%%DOCSDIR%%/NEWS
 %%PORTDOCS%%%%DOCSDIR%%/README
 %%NLS%%%%DATADIR%%/translations/gottet_ca.qm
 %%NLS%%%%DATADIR%%/translations/gottet_cs.qm
@@ -19,10 +17,12 @@ share/applications/gottet.desktop
 %%NLS%%%%DATADIR%%/translations/gottet_ms.qm
 %%NLS%%%%DATADIR%%/translations/gottet_nl.qm
 %%NLS%%%%DATADIR%%/translations/gottet_pl.qm
+%%NLS%%%%DATADIR%%/translations/gottet_pt.qm
 %%NLS%%%%DATADIR%%/translations/gottet_ro.qm
 %%NLS%%%%DATADIR%%/translations/gottet_ru.qm
 %%NLS%%%%DATADIR%%/translations/gottet_tr.qm
 %%NLS%%%%DATADIR%%/translations/gottet_vi.qm
+%%NLS%%%%DATADIR%%/translations/gottet_zh.qm
 %%NLS%%%%DATADIR%%/translations/gottet_zh_TW.qm
 share/icons/hicolor/1024x1024/apps/gottet.png
 share/icons/hicolor/128x128/apps/gottet.png
@@ -35,4 +35,5 @@ share/icons/hicolor/48x48/apps/gottet.png
 share/icons/hicolor/512x512/apps/gottet.png
 share/icons/hicolor/64x64/apps/gottet.png
 share/icons/hicolor/scalable/apps/gottet.svg
+share/metainfo/gottet.appdata.xml
 share/pixmaps/gottet.xpm

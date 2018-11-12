@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	encryptpad
-PORTVERSION=	0.3.2.5
-PORTREVISION=	1
 DISTVERSIONPREFIX=	v
+DISTVERSION=	0.4.0.4
 CATEGORIES=	editors security
 
 MAINTAINER=	dg@syrec.org
@@ -14,23 +13,24 @@ LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/license.txt
 
 BUILD_DEPENDS=	bash:shells/bash
-LIB_DEPENDS=	libbotan-1.10.so:security/botan110
+LIB_DEPENDS=	libbotan-2.so:security/botan2
+
+USES=		desktop-file-utils gl gmake pkgconfig qt:5 shared-mime-info shebangfix
+USE_GL=		gl
+USE_QT=		core gui widgets buildtools_build qmake_build
+SHEBANG_FILES=	deps/libencryptmsg/configure
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	evpo
 GH_PROJECT=	EncryptPad
 
-USES=		desktop-file-utils gmake pkgconfig shared-mime-info
-USE_QT5=	core gui widgets qmake_build buildtools_build
-USE_GL=		gl
-
-PORTDOCS=	CHANGES.* README.* docs
-
 OPTIONS_DEFINE=	DOCS
 
+PORTDOCS=	*
+
 do-build:
-	(cd ${WRKSRC} && ${SETENV} MAKE=${MAKE_CMD} PATH=${QT_BINDIR}:${PATH} \
-		./configure.sh --all --use-system-libs)
+	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} MAKE=${MAKE_CMD} \
+		./configure.sh --all --use-system-libs
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/release/* ${STAGEDIR}${PREFIX}/bin
@@ -40,7 +40,7 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/mime/packages
 	${INSTALL_DATA} ${WRKSRC}/encryptpad.xml \
 		${STAGEDIR}${PREFIX}/share/mime/packages
-.for sz in 16 32 128
+.for sz in 16 32 128 256 512
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/${sz}x${sz}/apps
 	${INSTALL_DATA} ${WRKSRC}/images/icns.iconset/icon_${sz}x${sz}.png \
 		${STAGEDIR}${PREFIX}/share/icons/hicolor/${sz}x${sz}/apps/encryptpad.png
@@ -48,6 +48,6 @@ do-install:
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${CP} -a ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}/${DOCSDIR}
 
 .include <bsd.port.mk>

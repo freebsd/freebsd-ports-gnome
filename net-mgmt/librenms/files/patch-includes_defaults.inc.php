@@ -1,26 +1,17 @@
---- includes/defaults.inc.php.orig	2017-03-26 12:06:00 UTC
+--- includes/defaults.inc.php.orig	2018-08-04 20:07:12 UTC
 +++ includes/defaults.inc.php
-@@ -41,26 +41,26 @@ $config['db_port']               = 3306;
- $config['own_hostname'] = 'localhost';
- 
- // Location of executables
--$config['rrdtool']                  = '/usr/bin/rrdtool';
-+$config['rrdtool']                  = '/usr/local/bin/rrdtool';
- $config['rrdtool_version']          = 1.4; // Doesn't need to contain minor numbers.
--$config['fping']                    = '/usr/bin/fping';
--$config['fping6']                   = 'fping6';
-+$config['fping']                    = '/usr/local/sbin/fping';
-+$config['fping6']                   = '/usr/local/sbin/fping6';
- $config['fping_options']['retries'] = 3;
+@@ -47,19 +47,19 @@ $config['own_hostname'] = 'localhost';
  $config['fping_options']['timeout'] = 500;
  $config['fping_options']['count']   = 3;
- $config['fping_options']['millisec'] = 200;
+ $config['fping_options']['interval'] = 500;
 -$config['snmpwalk']                  = '/usr/bin/snmpwalk';
 -$config['snmpget']                   = '/usr/bin/snmpget';
 -$config['snmpbulkwalk']              = '/usr/bin/snmpbulkwalk';
+-$config['snmptranslate']             = '/usr/bin/snmptranslate';
 +$config['snmpwalk']                  = '/usr/local/bin/snmpwalk';
 +$config['snmpget']                   = '/usr/local/bin/snmpget';
 +$config['snmpbulkwalk']              = '/usr/local/bin/snmpbulkwalk';
++$config['snmptranslate']             = '/usr/local/bin/snmptranslate';
  $config['whois']          = '/usr/bin/whois';
 -$config['ping']           = '/bin/ping';
 -$config['mtr']            = '/usr/bin/mtr';
@@ -31,7 +22,7 @@
 -$config['dot']            = '/usr/bin/dot';
 -$config['sfdp']           = '/usr/bin/sfdp';
 +$config['ping']           = '/sbin/ping';
-+$config['mtr']            = '/usr/local/bin/mtr';
++$config['mtr']            = '/usr/local/sbin/mtr';
 +$config['nmap']           = '/usr/local/bin/nmap';
 +$config['nagios_plugins'] = '/usr/local/libexec/nagios';
 +$config['ipmitool']       = '/usr/local/bin/ipmitool';
@@ -39,5 +30,5 @@
 +$config['dot']            = '/usr/local/bin/dot';
 +$config['sfdp']           = '/usr/local/bin/sfdp';
  
- // Memcached - Keep immediate statistics
- $config['memcached']['enable'] = false;
+ $config['slow_statistics'] = true;
+ // THIS WILL CHANGE TO FALSE IN FUTURE

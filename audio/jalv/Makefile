@@ -3,11 +3,11 @@
 
 PORTNAME=	jalv
 PORTVERSION=	1.6.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://download.drobilla.net/
 
-MAINTAINER=	yuri@rawbw.com
+MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Simple but fully featured LV2 plugin host for Jack
 
 LICENSE=	PD
@@ -23,13 +23,12 @@ LIB_DEPENDS=	liblilv-0.so:audio/lilv \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
 
-USES=		compiler:c++11-lang waf tar:bz2 pkgconfig
+USES=		compiler:c++11-lang qmake:no_configure,no_env qt:5 waf tar:bz2 pkgconfig
 CONFIGURE_ARGS=	--no-qt4
 USE_CXXSTD=	c++11
-USE_QT5=	core gui widgets buildtools_build
+USE_QT=		core gui widgets buildtools_build
 USE_GNOME=	atk atkmm cairo cairomm pango pangomm libsigc++20 \
 		gdkpixbuf2 glib20 glibmm  gtk20 gtk30 gtkmm24
-QT_NONSTANDARD=	yes
 
 post-patch:
 		@${REINPLACE_CMD} 's|$${MANDIR}|${MAN1PREFIX}/man|' \

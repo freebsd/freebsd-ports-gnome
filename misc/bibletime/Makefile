@@ -1,23 +1,21 @@
 # $FreeBSD$
 
 PORTNAME=	bibletime
-PORTVERSION=	2.10.1
+PORTVERSION=	2.11.2
 CATEGORIES=	misc kde
 MASTER_SITES=	SF/${PORTNAME}/BibleTime%202/BibleTime%202%20source%20code
 
-MAINTAINER=	tabthorpe@FreeBSD.org
+MAINTAINER=	ericbsd@FreeBSD.org
 COMMENT=	Open source Bible study tool
 
 LICENSE=	GPLv2
 
-BROKEN_FreeBSD_12= does not build on 12.X
+BROKEN_powerpc64=	fails to compile: btosismorphsegmentation.cpp.o: undefined reference to sword::SWOptionFilter::SWOptionFilter
 
 LIB_DEPENDS=	libclucene-core.so:textproc/clucene \
 		libsword.so:misc/sword
 
-USES=		cmake:outsource tar:xz ssl
-USE_QT4=	corelib dbus gui iconengines network phonon qtestlib script \
-		svg webkit xml linguist_build moc_build qmake_build \
-		rcc_build uic_build
-
+USES=		cmake:outsource qt:5 tar:xz ssl
+USE_QT=		buildtools core dbus gui linguist_build network script svg \
+		webkit xml qmake_build
 .include <bsd.port.mk>

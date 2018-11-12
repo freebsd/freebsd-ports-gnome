@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	drool
-DISTVERSION=	1.0.0
-DISTVERSIONSUFFIX=	-beta.3
+DISTVERSION=	1.1.0
 CATEGORIES=	dns
 MASTER_SITES=	https://www.dns-oarc.net/files/drool/
 
@@ -20,5 +19,7 @@ GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CPPFLAGS+=	$$(pkg-config libev --cflags-only-I)
 LDFLAGS+=	$$(pkg-config libev --libs-only-L)
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

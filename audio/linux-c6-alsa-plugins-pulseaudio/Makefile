@@ -3,7 +3,7 @@
 
 PORTNAME=	alsa-plugins
 PORTVERSION=	1.1.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	audio linux
 PKGNAMESUFFIX=	-pulseaudio
 LIB_DISTNAMES=	${LINUXNAME}-${DISTVERSIONFULL}
@@ -21,5 +21,7 @@ USES=		linux:c6
 USE_LDCONFIG=	yes
 USE_LINUX=	alsalib pulseaudio-libs
 USE_LINUX_RPM=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

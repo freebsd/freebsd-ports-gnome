@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	cluster
-PORTVERSION=	1.4.0
+PORTVERSION=	1.4.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,14 +12,15 @@ COMMENT=	Create several groups (clusters) of objects from a list in Python
 LICENSE=	LGPL21+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-PORTSCOUT=	skipv:regression
+USES=		python
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	exhuma
 GH_PROJECT=	python-cluster
 
+USE_PYTHON=	autoplist concurrent distutils
 NO_ARCH=	yes
-USES=		python
-USE_PYTHON=	autoplist distutils
+
+PORTSCOUT=	skipv:regression
 
 .include <bsd.port.mk>

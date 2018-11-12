@@ -1,22 +1,16 @@
-From 8d1228cd1943bfe89ffaae32e15b2feb3f8479f5 Mon Sep 17 00:00:00 2001
-From: Cory Benfield <lukasaoz@gmail.com>
-Date: Thu, 20 Jul 2017 10:08:50 +0100
-Subject: [PATCH] Allow urllib3 1.22
+# 1: Backport bumping idna max version
+# https://github.com/requests/requests/commit/991e8b76b7a9d21f698b24fa0058d3d5968721bc
+# 2: pytest-cov and its dependencies are not compulsory
 
----
- setup.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-# pytest-cov and its dependencies are not compulsory
-
---- setup.py.orig	2017-06-14 17:44:15 UTC
+--- setup.py.orig	2017-08-15 13:19:39 UTC
 +++ setup.py
-@@ -44,11 +44,11 @@ packages = ['requests']
+@@ -43,12 +43,12 @@ packages = ['requests']
+ 
  requires = [
      'chardet>=3.0.2,<3.1.0',
-     'idna>=2.5,<2.6',
--    'urllib3>=1.21.1,<1.22',
-+    'urllib3>=1.21.1,<1.23',
+-    'idna>=2.5,<2.7',
++    'idna>=2.5,<2.8',
+     'urllib3>=1.21.1,<1.23',
      'certifi>=2017.4.17'
  
  ]

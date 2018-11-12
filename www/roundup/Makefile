@@ -12,18 +12,18 @@ COMMENT=	Issue-Tracking System for Knowledge Workers
 LICENSE=	PSFL
 LICENSE_FILE=	${WRKSRC}/COPYING.txt
 
-USES=		cpe gettext python
+USES=		cpe gettext python:2.7
 CPE_VENDOR=	roundup-tracker
 USE_PYTHON=	distutils
 NO_ARCH=	yes
 
-OPTIONS_DEFINE=	SQLITE PGSQL MYSQL NLS
+OPTIONS_DEFINE=	DOCS SQLITE PGSQL MYSQL NLS
 OPTIONS_DEFAULT=SQLITE
 OPTIONS_SUB=	yes
 
-SQLITE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3
-PGSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>0:databases/py-psycopg2
-MYSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MySQLdb>0:databases/py-MySQLdb
+SQLITE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
+PGSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>0:databases/py-psycopg2@${PY_FLAVOR}
+MYSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MySQLdb>0:databases/py-MySQLdb@${PY_FLAVOR}
 
 SCRIPTS=	roundup-admin roundup-demo roundup-gettext roundup-mailgw \
 		roundup-server roundup-xmlrpc-server

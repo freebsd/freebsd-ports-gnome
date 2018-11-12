@@ -11,10 +11,8 @@ COMMENT=	Database abstraction layer used to power the ORM package
 
 LICENSE=	LGPL21
 
-BUILD_DEPENDS=	${PEARDIR}/.channels/pear.doctrine-project.org.reg:devel/pear-channel-doctrine
-RUN_DEPENDS=	${PEARDIR}/.channels/pear.doctrine-project.org.reg:devel/pear-channel-doctrine \
-	${PEARDIR}/Doctrine/Common/Version.php:databases/pear-DoctrineCommon \
-	${PEARDIR}/Symfony/Component/Console/Application.php:devel/pear-Symfony_Component_Console
+RUN_DEPENDS=	${PEARDIR}/Doctrine/Common/Version.php:databases/pear-DoctrineCommon@${PHP_FLAVOR} \
+	${PEARDIR}/Symfony/Component/Console/Application.php:devel/pear-Symfony_Component_Console@${PHP_FLAVOR}
 
 OPTIONS_DEFINE=	DBLIB MYSQL ODBC PGSQL SQLITE
 OPTIONS_DEFAULT=MYSQL
@@ -25,11 +23,10 @@ ODBC_DESC=	Install PHP DBO driver for ODBC
 PGSQL_DESC=	Install PHP DBO driver for PostgreSQL
 SQLITE_DESC=	Install PHP DBO driver for SQLite
 
-USES=		pear
+USES=		pear php:cli
 PEAR_CHANNEL=	doctrine
 
 USE_PHP=	pdo
-WANT_PHP_CLI=	yes
 
 DBLIB_RUN_DEPENDS=	${PHPBASE}/lib/php/${PHP_EXT_DIR}/pdo_dblib.so:databases/php${PHP_VER}-pdo_dblib
 MYSQL_USE=	PHP=pdo_mysql

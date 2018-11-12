@@ -6,7 +6,7 @@ DISTVERSION=	9.5r1.5
 CATEGORIES=	databases
 MASTER_SITES=	http://files.postgres-xl.org/
 
-MAINTAINER=	amutu@amutu.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Scalable open source PostgreSQL-based database cluster
 
 LICENSE=	PostgreSQL
@@ -20,6 +20,7 @@ CONFLICTS=	postgresql[^${PORTVERSION:R:R}]?-client* \
 
 USES=		gmake readline
 USE_LDCONFIG=	yes
+LLD_UNSAFE=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-world
 

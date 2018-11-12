@@ -11,7 +11,6 @@ bin/myisam_ftdump
 bin/myisamchk
 bin/myisamlog
 bin/myisampack
-bin/mysql_client_test
 bin/mysql_client_test_embedded
 bin/mysql_convert_table_format
 bin/mysql_embedded
@@ -42,6 +41,7 @@ bin/wsrep_sst_common
 bin/wsrep_sst_mariabackup
 bin/wsrep_sst_mysqldump
 bin/wsrep_sst_rsync
+bin/wsrep_sst_rsync_wan
 bin/wsrep_sst_xtrabackup
 bin/wsrep_sst_xtrabackup-v2
 include/mysql/private/atomic/gcc_builtins.h
@@ -73,8 +73,8 @@ include/mysql/private/my_md5.h
 include/mysql/private/my_nosys.h
 include/mysql/private/my_rdtsc.h
 include/mysql/private/my_rnd.h
+include/mysql/private/my_service_manager.h
 include/mysql/private/my_stacktrace.h
-include/mysql/private/my_systemd.h
 include/mysql/private/my_time.h
 include/mysql/private/my_tree.h
 include/mysql/private/my_uctype.h
@@ -235,6 +235,9 @@ man/man8/mysqld.8.gz
 %%DATADIR%%/magic
 %%DATADIR%%/maria_add_gis_sp.sql
 %%DATADIR%%/maria_add_gis_sp_bootstrap.sql
+%%MROONGA%%%%DATADIR%%/groonga-normalizer-mysql/README.md
+%%MROONGA%%%%DATADIR%%/groonga/README.md
+%%MROONGA%%%%DATADIR%%/mroonga/AUTHORS
 %%MROONGA%%%%DATADIR%%/mroonga/install.sql
 %%MROONGA%%%%DATADIR%%/mroonga/uninstall.sql
 %%DATADIR%%/my-huge.cnf

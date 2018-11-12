@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	zim
-PORTVERSION=	0.67
+PORTVERSION=	0.68
 CATEGORIES=	deskutils python
 MASTER_SITES=	http://www.zim-wiki.org/downloads/
 
@@ -12,10 +12,10 @@ COMMENT=	Desktop wiki editor
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}xdg>0:devel/py-xdg \
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}xdg>0:devel/py-xdg@${PY_FLAVOR} \
 		xdg-open:devel/xdg-utils \
-		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3
+		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
 
 NO_ARCH=	yes
 USES=		desktop-file-utils gettext python:-2.7 shared-mime-info

@@ -5,7 +5,7 @@ PORTVERSION=	2.4.0
 PORTEPOCH=	1
 CATEGORIES=	devel
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Generic interface to metrics systems in Erlang
 
 LICENSE=	BSD3CLAUSE
@@ -15,5 +15,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	benoitc
 
 ERL_APP_NAME=	metrics
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

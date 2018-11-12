@@ -1,12 +1,14 @@
 # $FreeBSD$
 
 PORTNAME=	beadm
-PORTVERSION=	1.2.99.20150924
+PORTVERSION=	1.2.99.20180708
+PORTREVISION=	1
 CATEGORIES=	sysutils
 PKGNAMESUFFIX=	-devel
-MASTER_SITES=	GH \
-		LOCAL/bdrewery/${PORTNAME}/ \
-		http://mirror.shatow.net/freebsd/${PORTNAME}/
+MASTER_SITES=	\
+		LOCAL/bdrewery/${PORTNAME} \
+		http://mirror.shatow.net/freebsd/${PORTNAME}/ \
+		GH
 
 MAINTAINER=	bdrewery@FreeBSD.org
 COMMENT=	Solaris-like utility to manage Boot Environments on ZFS
@@ -15,7 +17,7 @@ LICENSE=	BSD2CLAUSE
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	vermaden
-GH_TAGNAME=	812292829e43786db878ee2c9102b72b59f325ce
+GH_TAGNAME=	2665f52786a12aadbe8984731b8a64d1249692f4
 
 NO_BUILD=	YES
 
@@ -28,6 +30,6 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/${PORTNAME} \
 	    ${STAGEDIR}${PREFIX}/sbin/${PORTNAME}
 	${INSTALL_MAN} ${WRKSRC}/${PORTNAME}.1 \
-	    ${STAGEDIR}${MANPREFIX}/man/man1/
+	  ${STAGEDIR}${MANPREFIX}/man/man1/
 
 .include <bsd.port.mk>

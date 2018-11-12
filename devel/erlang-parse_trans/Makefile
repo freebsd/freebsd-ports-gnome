@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	parse_trans
-PORTVERSION=	3.0.0
+PORTVERSION=	3.3.0
 CATEGORIES=	devel
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Parse transform utilities for Erlang
 
 USES=		erlang:rebar
@@ -14,7 +14,9 @@ GH_ACCOUNT=	uwiger
 
 ERL_DOCS=	doc/*
 
-post-install:
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
 

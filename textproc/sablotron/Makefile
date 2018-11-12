@@ -10,13 +10,14 @@ MASTER_SITES=	SF/sablotron/sablotron-${PORTVERSION}
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	XML toolkit implementing XSLT 1.0, XPath 1.0 and DOM Level2
 
-LICENSE=	MPL GPLv2+
+LICENSE=	MPL11 GPLv2+
 LICENSE_COMB=	dual
 
 LIB_DEPENDS=	libexpat.so:textproc/expat2
 
 GNU_CONFIGURE=	yes
 USES=		gmake iconv libtool localbase:ldflags
+USE_CXXSTD=	c++98
 USE_LDCONFIG=	yes
 LDFLAGS+=	${ICONV_LIB}
 

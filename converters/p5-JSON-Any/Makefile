@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Perl Wrapper Class for the various JSON classes
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 TEST_DEPENDS=	p5-Cpanel-JSON-XS>=0:converters/p5-Cpanel-JSON-XS \
@@ -21,9 +21,6 @@ TEST_DEPENDS=	p5-Cpanel-JSON-XS>=0:converters/p5-Cpanel-JSON-XS \
 		p5-Test-Requires>=0:devel/p5-Test-Requires \
 		p5-Test-Warnings>=0.009:devel/p5-Test-Warnings \
 		p5-Test-Without-Module>=0.17:devel/p5-Test-Without-Module
-
-DEPRECATED=	Deprecated by upstream
-EXPIRATION_DATE=	2017-03-01
 
 # Author preference: Cpanel::JSON::XS > JSON::XS > JSON::PP > JSON > JSON::DWIW
 OPTIONS_DEFINE=	CPANEL JSON_XS JSON_PP JSON JSON_DWIW

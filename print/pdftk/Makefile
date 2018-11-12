@@ -3,20 +3,22 @@
 
 PORTNAME=	pdftk
 PORTVERSION=	2.02
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	print
 MASTER_SITES=	http://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/ LOCAL/mat/pdftk
 DISTNAME=	${PORTNAME}-${PORTVERSION}-src
 
-MAINTAINER=	mat@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Simple tool for doing everyday things with PDF documents
 
 LICENSE=	GPLv2
 
+BROKEN_FreeBSD_12=	gcj6: internal compiler error: Segmentation fault (program ecj1)
+
 # Get GCC version suffix without the dot in USE_GCC
 CSUFF=		${_USE_GCC:S/.//}
 
-USE_GCC=	yes
+USE_GCC=	6	# Only GCC 6 provides Java (GCJ and libgcj).
 USES=		iconv gmake zip
 
 # gcj/libgcj don't exist on some platforms
@@ -35,7 +37,7 @@ PLIST_FILES=	bin/${PORTNAME} man/man1/${PORTNAME}.1.gz
 pre-configure:
 	@if [ ! -e ${LOCALBASE}/bin/gcj${CSUFF} ]; then \
 		${ECHO_MSG} ""; \
-		${ECHO_MSG} "Can not find gcj${CSUFF}"; \
+		${ECHO_MSG} "Cannot find gcj${CSUFF}"; \
 		${ECHO_MSG} "Please rebuild ${_GCC_PORT} with java support"; \
 		${ECHO_MSG} ""; \
 		exit 1; \

@@ -13,10 +13,14 @@
 # - We need to see if more "use_system_<FOO>" flags can be passed.
 # - The process of porting QtWebEngine needs to be documented so we can move to
 #   newer releases more easily.
+#
+# Also note that, due to the insane amount of patches this port needs, it tends
+# to lag behind the rest of the official Qt5 ones, which is why we set
+# QT5_VERSION and DISTINFO_FILE here.
 
 PORTNAME=	webengine
 DISTVERSION=	${QT5_VERSION}
-PORTREVISION=	1
+PORTREVISION=	8
 CATEGORIES=	www
 PKGNAMEPREFIX=	qt5-
 
@@ -27,54 +31,82 @@ BUILD_DEPENDS=	bison:devel/bison \
 		ninja:devel/ninja \
 		yasm:devel/yasm \
 		${LOCALBASE}/include/linux/videodev2.h:multimedia/v4l_compat
-LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg \
+		libdbus-1.so:devel/dbus \
 		libevent.so:devel/libevent \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2 \
+		libharfbuzz.so:print/harfbuzz \
 		libjsoncpp.so:devel/jsoncpp \
 		libnspr4.so:devel/nspr \
 		libnss3.so:security/nss \
 		libopus.so:audio/opus \
 		libpci.so:devel/libpci \
 		libpng.so:graphics/png \
-		libprotobuf.so:devel/protobuf \
+		libre2.so:devel/re2 \
 		libsnappy.so:archivers/snappy \
 		libsrtp.so:net/libsrtp \
 		libwebp.so:graphics/webp
 
+DISTINFO_FILE=	${.CURDIR}/distinfo
+QT5_VERSION=	5.9.5
+
 OPTIONS_SINGLE=		AUDIO
-OPTIONS_SINGLE_AUDIO=	ALSA PULSEAUDIO
+OPTIONS_SINGLE_AUDIO=	ALSA PULSEAUDIO SNDIO
 OPTIONS_DEFAULT=	ALSA
 
 AUDIO_DESC=		Audio backend
 
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
-ALSA_QMAKE_ON=		QT_CONFIG+=alsa
+ALSA_VARS=		QMAKE_CONFIGURE_ARGS+=-alsa
+ALSA_VARS_OFF=		QMAKE_CONFIGURE_ARGS+=-no-alsa
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
-PULSEAUDIO_QMAKE_ON=	QT_CONFIG+=pulseaudio
+PULSEAUDIO_VARS=	QMAKE_CONFIGURE_ARGS+=-pulseaudio
+PULSEAUDIO_VARS_OFF=	QMAKE_CONFIGURE_ARGS+=-no-pulseaudio
+SNDIO_LIB_DEPENDS=	libsndio.so:audio/sndio
+SNDIO_VARS=		QMAKE_CONFIGURE_ARGS+=-sndio
+SNDIO_VARS_OFF=		QMAKE_CONFIGURE_ARGS+=-no-sndio
 
 # We pass `norecursive' to USES=qmake because src/plugins/plugins.pro checks
 # whether webenginewidgets is available, which fails when qmake processes all
 # .pro files at once.
-USES=		gperf jpeg python:2,build pkgconfig \
-		qmake:norecursive,outsource shebangfix
+USES=		gperf jpeg python:2.7,build pkgconfig \
+		qmake:norecursive,outsource qt-dist:5,webengine shebangfix
 USE_GNOME=	glib20 libxml2 libxslt
-USE_QT5=	core designer gui location network qml quick webchannel \
-		widgets buildtools_build qmake_build
-USE_XORG=	scrnsaverproto x11 xcomposite xcursor xext xi xproto \
+USE_QT=		core designer gui location network qml quick webchannel \
+		widgets buildtools_build qmake_build printsupport
+USE_XORG=	x11 xcb xcomposite xcursor xext xi xorgproto \
 		xrandr xrender xscrnsaver xtst
 
 USE_LDCONFIG=	${QT_LIBDIR}
 
-QT_DIST=	${PORTNAME}
 
-QMAKE_ARGS=	WEBENGINE_CONFIG+=use_nss \
-		WEBENGINE_CONFIG+=use_proprietary_codecs \
-		WEBENGINE_CONFIG+=use_system_libevent
+QMAKE_CONFIGURE_ARGS=	-proprietary-codecs -system-ffmpeg
 
 # We could just set it to an empty string as well. "all" does not account for
 # dependencies correctly in the generated Makefiles, use the right target here.
 ALL_TARGET=	first
+
+.include <bsd.port.pre.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
+EXTRA_PATCHES+=	${FILESDIR}/extra-patch-10
+.endif  # ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
+
+# 1101513 is 11-STABLE after merging clang, llvm, lld, lldb, compiler-rt and
+#            libc++ 6.0.0 release, and several follow-up fixes.
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1101513
+BUILD_DEPENDS+=	clang60:devel/llvm60
+CC=		clang60
+CXX=		clang++60
+.endif  # ${OPSYS} == FreeBSD && ${OSVERSION} < 1101513
+
+# We need ar(1) from ports because the Chromium code uses the @file syntax.
+# We then need to ensure ld(1) from ports is used because of the archives ar(1)
+# generated.
+USE_BINUTILS=	yes
+CC+=		"-B${LOCALBASE}/bin"
+CXX+=		"-B${LOCALBASE}/bin"
 
 # The build system reads the environment variable $NINJA_PATH to decide whether
 # to boostrap ninja or not (and also to invoke it afterwards). CC and CXX are
@@ -84,29 +116,32 @@ ALL_TARGET=	first
 # MAKE_ENV because part of the configuration process happens during the build.
 CONFIGURE_ENV+=	NINJAFLAGS="-j${MAKE_JOBS_NUMBER}" \
 		NINJA_PATH="${LOCALBASE}/bin/ninja"  \
-		PATH=${CONFIGURE_WRKSRC}/bin:${PATH}
-MAKE_ENV+=	CC="${CC}" CXX="${CXX}" ${CONFIGURE_ENV}
+		PATH=${CONFIGURE_WRKSRC}/bin:${LOCALBASE}/bin:${PATH}
+MAKE_ENV+=	CC="${CC}" CXX="${CXX}"			\
+		C_INCLUDE_PATH=${LOCALBASE}/include	\
+		CPLUS_INCLUDE_PATH=${LOCALBASE}/include	\
+		${CONFIGURE_ENV}
 
 post-extract:
 # Install FreeBSD's freebsd.pri file.
 	${CP} ${FILESDIR}/freebsd.pri ${WRKSRC}/src/core/config/freebsd.pri
-# Unbundle libusb.
-	${RM} -r ${WRKSRC}/src/3rdparty/chromium/third_party/libusb/src
-	${CP} ${WRKSRC}/src/3rdparty/chromium/build/linux/unbundle/libusb.gyp \
-		${WRKSRC}/src/3rdparty/chromium/third_party/libusb/libusb.gyp
-# Unbundle libxml.
-	${CP} ${WRKSRC}/src/3rdparty/chromium/build/linux/unbundle/libxml.gyp \
-		${WRKSRC}/src/3rdparty/chromium/third_party/libxml/libxml.gyp
 
-post-patch:
-# Too many occurrences to keep in a patch in files/.
-	${REINPLACE_CMD} -e 's,OS == "linux",(OS == "linux" or OS == "freebsd"),g' \
-		${WRKSRC}/src/3rdparty/chromium/third_party/ffmpeg/ffmpeg_generated.gypi
+post-extract-SNDIO-on:
+	@cd ${WRKSRC}/src/3rdparty/chromium/media/audio && ${MKDIR} sndio openbsd
+	@${CP} ${FILESDIR}/sndio_*put.* \
+		${WRKSRC}/src/3rdparty/chromium/media/audio/sndio
+	@${CP} ${FILESDIR}/audio_manager_openbsd.* \
+		${WRKSRC}/src/3rdparty/chromium/media/audio/openbsd
 
 pre-configure:
-# Link in ${PYTHON_CMD} to ${CONFIGURE_WRKSRC}/bin -- the scripts hardcode 'python' 
+# Link in ${PYTHON_CMD} to ${CONFIGURE_WRKSRC}/bin -- the scripts hardcode 'python'
 # in too many places to reasonably patch. So just link in ${PYTHON_CMD} to work around
 # $LOCALBASE/bin/python being python3 if the default versions is set to 3.x.
 	${MKDIR} ${CONFIGURE_WRKSRC}/bin && ${LN} -s ${PYTHON_CMD} ${CONFIGURE_WRKSRC}/bin/python
+# Unbundle a few dependencies.
+	${PYTHON_CMD} ${WRKSRC}/src/3rdparty/chromium/build/linux/unbundle/replace_gn_files.py \
+		--system-libraries libwebp libxml libxslt yasm
+# Rerun syncqt.pl -- otherwise the resulting package misses some forwarding headers.
+	cd ${WRKSRC} && ${QT_BINDIR}/syncqt.pl -version ${QT5_VERSION}
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

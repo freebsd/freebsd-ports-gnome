@@ -3,12 +3,12 @@
 
 PORTNAME=	musescore
 PORTVERSION=	2.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://ftp.osuosl.org/pub/musescore/releases/MuseScore-${PORTVERSION}/
 DISTNAME=	MuseScore-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	adridg@FreeBSD.org
 COMMENT=	Free music composition & notation software
 
 LICENSE=	GPLv2
@@ -23,8 +23,8 @@ LIB_DEPENDS=	libmp3lame.so:audio/lame \
 		libfreetype.so:print/freetype2
 
 USES=		cmake:outsource compiler:c++11-lib desktop-file-utils \
-		pkgconfig shared-mime-info zip
-USE_QT5=	core gui widgets opengl concurrent designer help network \
+		pkgconfig qt:5 shared-mime-info zip
+USE_QT=		core gui widgets opengl concurrent designer help network \
 		scripttools qml quick svg sql printsupport testlib webkit \
 		xml xmlpatterns \
 		buildtools_build linguisttools_build qmake_build uitools_build

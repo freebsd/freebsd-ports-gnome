@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	rar2fs
-PORTVERSION=	1.25.2
+PORTVERSION=	1.27.0
 DISTVERSIONPREFIX=	v
+PORTREVISION=	2
 CATEGORIES=	sysutils
 PKGNAMEPREFIX=	fusefs-
 
@@ -19,7 +20,7 @@ BUILD_DEPENDS=	${NONEXISTENT}:${LIBUNRAR_PORT}:patch
 USE_GITHUB=	yes
 GH_ACCOUNT=	hasse69
 
-USES=		autoreconf execinfo gmake fuse
+USES=		autoreconf gmake fuse
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-static-unrar \

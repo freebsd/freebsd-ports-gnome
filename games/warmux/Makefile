@@ -11,15 +11,21 @@ MASTER_SITES=	http://download.gna.org/${PORTNAME}/ \
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Turn-based artillery game with free software mascots
 
+LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 LIB_DEPENDS=	libxml++-2.6.so:textproc/libxml++26 \
 		libcurl.so:ftp/curl
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	cxx_present=yes
-USES=		dos2unix gmake pkgconfig tar:bzip2
+USES=		compiler dos2unix gmake pkgconfig tar:bzip2
 USE_SDL=	sdl image mixer ttf gfx net
 DOS2UNIX_GLOB=	fixed_class.h
 
+# build ignores CXXFLAGS
+CFLAGS+=	${CFLAGS_${CHOSEN_COMPILER_TYPE}}
+CFLAGS_clang=	-Wno-c++11-narrowing
 WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION:R}
 
 OPTIONS_DEFINE=	FRIBIDI SERVER NLS DEBUG
@@ -27,16 +33,14 @@ OPTIONS_SUB=	yes
 
 DEBUG_CONFIGURE_ENABLE=	debug logging
 
-FRIBIDI_DESC=	Enable bi-directional unicode support
+FRIBIDI_DESC=		Enable bi-directional unicode support
 FRIBIDI_LIB_DEPENDS=	libfribidi.so:converters/fribidi
 FRIBIDI_CONFIGURE_ENABLE=	fribidi
 
-NLS_USES=		gettext
+NLS_USES=		gettext localbase:ldflags
 NLS_CONFIGURE_ENABLE=	nls
-NLS_CPPFLAGS+=	-I${LOCALBASE}/include
-NLS_LDFLAGS+=	-L${LOCALBASE}/lib
 
-SERVER_DESC=	Enable dedicated server
+SERVER_DESC=		Enable dedicated server
 SERVER_CONFIGURE_ENABLE=	servers
 
 post-patch:

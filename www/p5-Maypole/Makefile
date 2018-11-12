@@ -12,7 +12,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	MVC web application framework
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-CGI-Simple>=0:www/p5-CGI-Simple \
@@ -49,7 +49,6 @@ MODPERL2_DESC=	mod_perl2 support
 USES=		perl5
 USE_PERL5=	configure
 
-PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message
 DOC_FILES=	../Manual.pod \
 		About.pod \

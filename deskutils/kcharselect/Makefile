@@ -1,16 +1,21 @@
-# Created by: Martin Wilke <miwi@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	kcharselect
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	deskutils kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	deskutils kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Character selector for KDE
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	automoc4 kdelibs
-USE_QT4=	qmake_build moc_build rcc_build uic_build
+BUILD_DEPENDS=	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:textproc/docbook-xsl \
+		docbook-xml>0:textproc/docbook-xml
+
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs config configwidgets coreaddons crash  ecm bookmarks \
+		doctools i18n widgetsaddons xmlgui
+USE_QT=		core dbus gui widgets xml \
+		buildtools_build qmake_build
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

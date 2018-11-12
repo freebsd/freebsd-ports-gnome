@@ -1,19 +1,22 @@
-# Created by: Raphael Kubo da Costa <rakuco@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	libkcddb
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	3
-CATEGORIES=	audio kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	audio kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE CDDB library
 
 LIB_DEPENDS=	libmusicbrainz5.so:audio/libmusicbrainz5
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	automoc4 kdelibs
-USE_QT4=	qtestlib moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs completion config configwidgets \
+		coreaddons ecm i18n jobwidgets kio service \
+		widgetsaddons
+USE_QT=		core gui network widgets xml \
+		buildtools_build qmake_build
 USE_LDCONFIG=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	treesheets
-PORTVERSION=	0.0.20170806
+PORTVERSION=	1.0.0
 PORTREVISION=	1
+DISTVERSIONPREFIX=	v
 CATEGORIES=	deskutils
 
 MAINTAINER=	lightside@gmx.com
@@ -16,7 +17,6 @@ USES=		compiler:c++11-lib desktop-file-utils
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	aardappel
-GH_TAGNAME=	8a54e43
 
 USE_WX=		3.0+
 INSTALLS_ICONS=	yes

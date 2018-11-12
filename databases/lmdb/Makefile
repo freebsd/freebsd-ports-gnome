@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	lmdb
-PORTVERSION=	0.9.21
+PORTVERSION=	0.9.22
 DISTVERSIONPREFIX=	${PORTNAME:tu}_
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	databases
 
@@ -15,8 +16,6 @@ LICENSE_NAME=	OpenLDAP Public License
 LICENSE_FILE=	${WRKSRC}/LICENSE
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
-# XXX FreeBSD does not implement O_DSYNC and fdatasync at this time.
-CFLAGS+=	-DMDB_DSYNC=O_SYNC -Dfdatasync=fsync
 WRKSRC_SUBDIR=		libraries/liblmdb
 MAKE_ARGS+=	CC="${CC}"
 MAKE_ARGS+=	prefix="${PREFIX}" INSTALL_PROGRAM="${INSTALL_PROGRAM}"

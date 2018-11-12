@@ -5,7 +5,7 @@ PORTVERSION=	0.10.0
 CATEGORIES=	devel
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Parser combinator library for Elixir
 
 LICENSE=	MIT
@@ -15,5 +15,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	bitwalker
 
 MIX_REWRITE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

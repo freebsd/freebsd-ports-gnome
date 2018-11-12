@@ -3,15 +3,15 @@
 
 PORTNAME=	clucene
 DISTVERSION=	${QT4_VERSION}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	textproc
 PKGNAMEPREFIX=	qt4-
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt bindings for the CLucene full-text search library
 
-USE_QT4=	qmake_build corelib
-QT_DIST=	yes
+USES=		qmake:no_env qt-dist:4
+USE_QT=		corelib
 
 HAS_CONFIGURE=	yes
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}

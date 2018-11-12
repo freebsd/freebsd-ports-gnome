@@ -1,6 +1,3 @@
-bin/ant
-man/man1/ant.1.gz
-man/man5/build.xml.5.gz
 %%DATADIR%%/bin/antRun
 %%DATADIR%%/etc/ant-bootstrap.jar
 %%DATADIR%%/etc/changelog.xsl
@@ -53,6 +50,8 @@ man/man5/build.xml.5.gz
 %%DATADIR%%/lib/ant-junit.pom
 %%DATADIR%%/lib/ant-junit4.jar
 %%DATADIR%%/lib/ant-junit4.pom
+%%DATADIR%%/lib/ant-junitlauncher.jar
+%%DATADIR%%/lib/ant-junitlauncher.pom
 %%DATADIR%%/lib/ant-launcher.jar
 %%DATADIR%%/lib/ant-launcher.pom
 %%DATADIR%%/lib/ant-netrexx.jar
@@ -62,6 +61,11 @@ man/man5/build.xml.5.gz
 %%DATADIR%%/lib/ant-swing.pom
 %%DATADIR%%/lib/ant-testutil.jar
 %%DATADIR%%/lib/ant-testutil.pom
+%%DATADIR%%/lib/ant-xz.jar
+%%DATADIR%%/lib/ant-xz.pom
 %%DATADIR%%/lib/ant.jar
 %%DATADIR%%/lib/ant.pom
 %%DATADIR%%/lib/libraries.properties
+bin/ant
+man/man1/ant.1.gz
+man/man5/build.xml.5.gz

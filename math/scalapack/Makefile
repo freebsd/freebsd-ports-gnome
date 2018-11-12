@@ -3,7 +3,7 @@
 
 PORTNAME=	scalapack
 PORTVERSION=	2.0.2
-PORTREVISION=	12
+PORTREVISION=	15
 CATEGORIES=	math
 MASTER_SITES=	NL
 DISTFILES=	scalapack-${PORTVERSION}.tgz manpages.tgz
@@ -29,9 +29,10 @@ ARCH2FIX=	PBLAS/SRC PBLAS/SRC/PBBLAS PBLAS/SRC/PTOOLS PBLAS/SRC/PTZBLAS \
 
 DATADIR=	${PREFIX}/share/${PORTNAME:tu}
 EXAMPLESDIR=	${PREFIX}/share/examples/${PORTNAME:tu}
-PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message
 PLIST_SUB=	SVERSION=${SVERSION} PORTVERSION=${PORTVERSION}
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 .include <bsd.port.pre.mk>
 
@@ -63,9 +64,8 @@ WITH_OPENMPI=	yes
 BUILD_DEPENDS+=	${LOCALBASE}/mpi/openmpi/lib/libmpi.so:net/openmpi
 RUN_DEPENDS+=	${LOCALBASE}/mpi/openmpi/bin/mpirun:net/openmpi
 .else
-#LIB_DEPENDS+=	libmpich.so:net/mpich2
-BUILD_DEPENDS+=	${LOCALBASE}/bin/mpicc:net/mpich2
-RUN_DEPENDS+=	${LOCALBASE}/bin/mpirun:net/mpich2
+BUILD_DEPENDS+=	${LOCALBASE}/bin/mpicc:net/mpich
+RUN_DEPENDS+=	${LOCALBASE}/bin/mpirun:net/mpich
 .endif
 
 .if ${ARCH} == "sparc64" || ${ARCH} == "amd64"
@@ -99,6 +99,10 @@ MPICC=	${LOCALBASE}/mpi/openmpi/bin/mpicc
 MPIF77=	${LOCALBASE}/bin/mpif77
 MPICC=	${LOCALBASE}/bin/mpicc
 .endif
+
+# USES=fortran already forces FC to a supported fortran compiler;
+# assume mpicc points to a compatible compiler and force that, too.
+CC=	${MPICC}
 
 pre-configure:
 	${CP} -p ${WRKSRC}/Makefile ${WRKSRC}/Makefile.dist
@@ -145,7 +149,7 @@ post-install:
 .endif
 
 .if defined(MAINTAINER_MODE)
-regression-test:	build
+do-test:
 . if !exists(${HOME}/.mpd.conf)
 	@${ECHO_CMD} "MPD_SECRETWORD=change_on_install" > ${HOME}/.mpd.conf
 	${CHMOD} go-r ${HOME}/.mpd.conf

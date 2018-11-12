@@ -1,11 +1,8 @@
-# Created by: Raphael Kubo da Costa <rakuco@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	dragon
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	multimedia kde kde-kde4
-# Avoid clash with devel/dragon
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	multimedia kde kde-applications
 PKGNAMESUFFIX=	-player
 
 MAINTAINER=	kde@FreeBSD.org
@@ -13,8 +10,14 @@ COMMENT=	KDE multimedia player with a focus on simplicity
 
 LICENSE=	GPLv2
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	automoc4 kdelibs
-USE_QT4=	phonon moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs completion config configwidgets coreaddons crash \
+		dbusaddons doctools ecm  kio service sonnet textwidgets i18n \
+		iconthemes jobwidgets notifications parts solid widgetsaddons \
+		windowsystem xmlgui
+USE_QT=		core dbus gui network phonon4 widgets xml \
+		buildtools_build qmake_build
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

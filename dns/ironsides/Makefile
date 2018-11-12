@@ -3,7 +3,7 @@
 
 PORTNAME=	ironsides
 PORTVERSION=	${SNAPSHOT:S/_//g}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	dns
 MASTER_SITES=	http://ironsides.martincarlisle.com/
 DISTNAME=	ironsides_authoritative-${SNAPSHOT}
@@ -24,6 +24,8 @@ SNAPSHOT=	2015_04_15
 WRKSRC=		${WRKDIR}/${DISTFILES:S/.zip//}
 PLIST_FILES=	sbin/ironsides man/man1/ironsides.1.gz
 PORTEXAMPLES=	dfcs.usafa.edu.zonefile
+
+OPTIONS_DEFINE=	EXAMPLES
 
 post-extract:
 	@${CP} ${FILESDIR}/ironsides.gpr ${FILESDIR}/Makefile ${WRKSRC}/

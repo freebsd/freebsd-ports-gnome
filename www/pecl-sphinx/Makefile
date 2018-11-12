@@ -11,13 +11,13 @@ COMMENT=	Sphinx search engine php client
 
 LICENSE=	PHP301
 
+IGNORE_WITH_PHP=	70 71 72
+
 LIB_DEPENDS=	libsphinxclient.so:textproc/libsphinxclient
 
 USES=		php:pecl
-IGNORE_WITH_PHP=	70 71
 
 SUB_FILES=	pkg-message
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 CFLAGS+=	-I${LOCALBASE}/include
 

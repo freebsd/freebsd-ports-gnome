@@ -3,11 +3,14 @@
 
 PORTNAME=	qtscriptgenerator
 PORTVERSION=	0.2.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	devel
 
 MAINTAINER=	syncer@gmail.com
 COMMENT=	Tool that generates Qt bindings for Qt Script
+
+BROKEN_armv6=		fails to build: qtscript_QEasingCurve.cpp:332:32: cannot initialize a parameter of type 'QEasingCurve::EasingFunction' with an lvalue of type 'float'
+BROKEN_armv7=		fails to build: qtscript_QEasingCurve.cpp:332:32: cannot initialize a parameter of type 'QEasingCurve::EasingFunction' with an lvalue of type 'float'
 
 USE_GITHUB=	YES
 GH_ACCOUNT=	qt-labs
@@ -17,8 +20,8 @@ OPTIONS_DEFINE=	PHONON
 PHONON_DESC=	Build Phonon support
 OPTIONS_DEFAULT=	PHONON
 
-USES=		gmake qmake
-USE_QT4=	corelib declarative designer doc help help-tools gui \
+USES=		gmake qmake qt:4
+USE_QT=		corelib declarative designer doc help help-tools gui \
 		iconengines imageformats inputmethods linguist network \
 		opengl pixeltool porting qdbusviewer \
 		qt3support qtestlib qvfb script scripttools \
@@ -29,7 +32,7 @@ USE_LDCONFIG=	yes
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPHONON}
-USE_QT4+=	phonon
+USE_QT+=	phonon
 PLIST_SUB+=	PHONON=""
 .else
 EXTRA_PATCHES=	${FILESDIR}/extra-patch-no_phonon

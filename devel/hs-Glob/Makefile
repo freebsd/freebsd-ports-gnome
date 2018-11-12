@@ -2,6 +2,7 @@
 
 PORTNAME=	Glob
 PORTVERSION=	0.8.0
+PORTREVISION=	3
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

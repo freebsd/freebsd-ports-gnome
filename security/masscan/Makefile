@@ -10,8 +10,8 @@ COMMENT=	Very fast port scanner
 
 LICENSE=	GPLv3
 
-ONLY_FOR_ARCHS=		amd64 i386
-ONLY_FOR_ARCHS_REASON=	uses i386 assembler
+ONLY_FOR_ARCHS=		i386 amd64
+ONLY_FOR_ARCHS_REASON=	invokes x86 assembler
 
 USES=		gmake
 USE_GITHUB=	yes
@@ -24,15 +24,15 @@ PLIST_FILES=	bin/masscan man/man8/masscan.8.gz
 .include <bsd.port.pre.mk>
 
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-BUILD_DEPENDS+=	clang38:lang/clang38
-CC=	clang38
+BUILD_DEPENDS+=	clang60:devel/llvm60
+CC=		clang60
 .endif
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/bin/masscan ${STAGEDIR}${PREFIX}/bin
 	${INSTALL_MAN} ${WRKSRC}/doc/masscan.8 ${STAGEDIR}${MANPREFIX}/man/man8
 
-regression-test: build
+do-test:
 	${WRKSRC}/bin/masscan --selftest
 
 .include <bsd.port.post.mk>

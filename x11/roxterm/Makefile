@@ -3,6 +3,7 @@
 
 PORTNAME=	roxterm
 PORTVERSION=	3.3.2
+PORTREVISION=	1
 CATEGORIES=	x11
 MASTER_SITES=	SF
 
@@ -12,7 +13,7 @@ COMMENT=	GTK+ terminal emulator with tabs
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}lockfile>0:devel/py-lockfile \
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}lockfile>0:devel/py-lockfile@${PY_FLAVOR} \
 		docbook-xsl>0:textproc/docbook-xsl \
 		itstool:textproc/itstool \
 		po4a:textproc/po4a

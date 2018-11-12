@@ -6,6 +6,8 @@ PKGNAMESUFFIX=	-www
 
 COMMENT=	Netmagis web module
 
+LICENSE=	CECILL-B
+
 RUN_DEPENDS=	netmagis-config:net-mgmt/netmagis-common \
 		dot:graphics/graphviz \
 		pwgen:sysutils/pwgen \
@@ -20,6 +22,8 @@ MASTERDIR=	${.CURDIR}/../netmagis-common
 
 PKGMESSAGE=	${.CURDIR}/pkg-message
 PLIST=		${.CURDIR}/pkg-plist
+
+OPTIONS_DEFINE=	EXAMPLES
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/htgtcl

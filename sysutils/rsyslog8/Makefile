@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	rsyslog
-PORTVERSION=	8.29.0
+PORTVERSION=	8.38.0
 CATEGORIES=	sysutils
 MASTER_SITES=	http://www.rsyslog.com/files/download/rsyslog/
 
@@ -14,20 +14,23 @@ LICENSE_COMB=	multi
 LIB_DEPENDS=	libee.so:devel/libee \
 		libestr.so:devel/libestr \
 		libfastjson.so:devel/libfastjson \
-		liblogging-stdlog.so:devel/liblogging \
-		libuuid.so:misc/e2fsprogs-libuuid
-BUILD_DEPENDS=	rst2man:textproc/py-docutils
+		liblogging-rfc3195.so:devel/liblogging \
+		libuuid.so:misc/e2fsprogs-libuuid \
+		libcurl.so:ftp/curl
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}docutils>0:textproc/py-docutils@${PY_FLAVOR}
 
 PORTSCOUT=	limit:^8\.
 
-USES=		libtool pkgconfig autoreconf
+USES=		libtool pkgconfig autoreconf python:env
 
 USE_LDCONFIG=	yes
 
 CONFLICTS_BUILD=	libinotify-*
 
-OPTIONS_DEFINE=	DBI DOCS ELASTIC GCRYPT GNUTLS GSSAPI JSONPARSE  MYSQL PGSQL \
+OPTIONS_DEFINE=	DBI DOCS ELASTIC GCRYPT GSSAPI JSONPARSE  MYSQL PGSQL \
 		RELP SNMP NORMALIZE
+OPTIONS_RADIO=	SSLLIB
+OPTIONS_RADIO_SSLLIB=	GNUTLS OPENSSL
 OPTIONS_DEFAULT=GCRYPT
 OPTIONS_SUB=	yes
 
@@ -38,7 +41,6 @@ DBI_PLIST_FILES=	lib/rsyslog/omlibdbi.so
 
 ELASTIC_DESC=		Elasticsearch module for rsyslog
 ELASTIC_CONFIGURE_ENABLE=	elasticsearch
-ELASTIC_LIB_DEPENDS=	libcurl.so:ftp/curl
 ELASTIC_PLIST_FILES=	lib/rsyslog/omelasticsearch.so
 
 GCRYPT_DESC=		Enable support for encrypted logfiles
@@ -46,6 +48,7 @@ GCRYPT_CONFIGURE_ENABLE=libgcrypt
 GCRYPT_LIB_DEPENDS=	libgcrypt.so:security/libgcrypt \
 			libgpg-error.so:security/libgpg-error
 GCRYPT_BUILD_DEPENDS=	libgcrypt-config:security/libgcrypt
+GCRYPT_PLIST_FILES=	lib/rsyslog/lmcry_gcry.so
 
 GNUTLS_DESC=		GNUTLS module for rsyslog
 GNUTLS_LIB_DEPENDS=	libgnutls.so:security/gnutls
@@ -68,6 +71,13 @@ MYSQL_USES=		mysql
 MYSQL_CONFIGURE_ENABLE=	mysql
 MYSQL_PLIST_FILES=	lib/rsyslog/ommysql.so
 MYSQL_PORTDOCS=		plugins/ommysql/createDB.sql
+
+OPENSSL_USES=		ssl
+OPENSSL_CONFIGURE_ENABLE=	openssl
+OPENSSL_CONFIGURE_ENV=	OPENSSL_LIBS="-L${OPENSSLLIB} -lssl -lcrypto" \
+			OPENSSL_CFLAGS="-I ${OPENSSLINC}"
+OPENSSL_PLIST_FILES=	lib/rsyslog/lmnsd_ossl.so
+
 
 PGSQL_DESC=		PostgreSQL output module for rsyslog
 PGSQL_USES=		pgsql
@@ -123,6 +133,12 @@ SUB_FILES=	pkg-message
 
 CONFIGURE_ARGS+=	--enable-imdiag --enable-imfile --enable-impstats --enable-mail --enable-omprog --enable-omstdout --enable-omuxsock --enable-rfc3195 --disable-testbench
 
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200061
+CONFIGURE_ARGS+=	--enable-imuxsock-rfc5424
+.else
+CONFIGURE_ARGS+=	--disable-imuxsock-rfc5424
+.endif
+
 post-patch:
 	@${REINPLACE_CMD} -e 's|/lib/rsyslog/|${PREFIX}/lib/rsyslog/|'\
 		${WRKSRC}/tools/syslogd.c
@@ -137,7 +153,7 @@ post-patch:
 post-install-DOCS-on:
 .for SQL in ${PORTDOCS:M*.sql}
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}/${SQL:H}
-	@${INSTALL_DATA} ${WRKSRC}/${SQL} ${STAGEDIR}${DOCSDIR}/${SQL} 
+	${INSTALL_DATA} ${WRKSRC}/${SQL} ${STAGEDIR}${DOCSDIR}/${SQL}
 .endfor
 
 .include <bsd.port.post.mk>

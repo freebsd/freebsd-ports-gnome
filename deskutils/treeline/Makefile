@@ -2,47 +2,58 @@
 # $FreeBSD$
 
 PORTNAME=	treeline
-PORTVERSION=	1.4.1
-PORTREVISION=	9
+PORTVERSION=	3.0.0
 CATEGORIES=	deskutils python
-MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}/:treeline \
-		http://treeline.bellz.org/plugins/:plugins \
-		http://depot.fsck.ch/mirror/distfiles/:treeline,plugins
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:treeline
-EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
+MASTER_SITES=	https://github.com/doug-101/TreeLine/releases/download/v${PORTVERSION}/ \
+		SF/${PORTNAME}/${PORTVERSION}
 
-MAINTAINER=	pawel@FreeBSD.org
+MAINTAINER=	jhale@FreeBSD.org
 COMMENT=	Structured information storage program
 
-LICENSE=	GPLv2
+LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/doc/LICENSE
 
-BUILD_DEPENDS=	aspell:textproc/aspell
-RUN_DEPENDS=	aspell:textproc/aspell
+USES=		python:3.5+ pyqt:5 shebangfix
+USE_PYQT=	core gui network printsupport widgets sip
 
-USES=		python:2 pyqt:4
-USE_PYQT=	gui network sip_build	
+SHEBANG_FILES=	source/treeline.py
+
+CONFIGURE_ARGS=	-b ${STAGEDIR} -p ${PREFIX} -d ${DOCSDIR} -i ${DATADIR}/icons
 NO_BUILD=	yes
 NO_ARCH=	yes
-
 WRKSRC=		${WRKDIR}/TreeLine
 
-DESKTOP_ENTRIES=	"TreeLine" "" "${DATADIR}/icons/tree/treeline.png" \
-			"${PORTNAME}" "Utility;" false
-
-OPTIONS_DEFINE=		DOCS HTTPLOAD
+OPTIONS_DEFINE=		DOCS NLS
+SPELL_DESC=		Spell check support
+OPTIONS_SINGLE=		SPELL
+OPTIONS_SINGLE_SPELL=	ASPELL HUNSPELL ISPELL
+OPTIONS_DEFAULT=	ASPELL
 OPTIONS_SUB=		yes
 
-HTTPLOAD_DESC=		httpLoad plugin
-HTTPLOAD_DISTFILES=	httpload2.py:plugins
+ASPELL_BUILD_DEPENDS=	aspell:textproc/aspell
+ASPELL_RUN_DEPENDS=	aspell:textproc/aspell
+ASPELL_VARS=		SPELL_ENGINE=aspell
+
+HUNSPELL_BUILD_DEPENDS=	hunspell:textproc/hunspell
+HUNSPELL_RUN_DEPENDS=	hunspell:textproc/hunspell
+HUNSPELL_VARS=		SPELL_ENGINE=hunspell
+
+ISPELL_BUILD_DEPENDS=	ispell:textproc/aspell-ispell
+ISPELL_RUN_DEPENDS=	ispell:textproc/aspell-ispell
+ISPELL_VARS=		SPELL_ENGINE=ispell
+
+NLS_CONFIGURE_OFF=	-s
+
+post-patch:
+	@${REINPLACE_CMD} -e 's|%%SPELL_ENGINE%%|${SPELL_ENGINE}|' \
+		${WRKSRC}/install.py \
+		${WRKSRC}/source/spellcheck.py
 
 do-install:
-	(cd ${WRKSRC} && ${PYTHON_CMD} install.py -b ${STAGEDIR} -p ${PREFIX} \
-		-d ${DOCSDIR} -i ${DATADIR}/icons)
-	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/${PORTNAME}/plugins
-
-do-install-HTTPLOAD-on:
-	${INSTALL_DATA} ${DISTDIR}/httpload2.py \
-		${STAGEDIR}${PREFIX}/lib/${PORTNAME}/plugins
+	(cd ${WRKSRC} && ${PYTHON_CMD} install.py ${CONFIGURE_ARGS})
+	(cd ${STAGEDIR}${PREFIX} && \
+		${PYTHON_CMD} -O ${PYTHON_LIBDIR}/compileall.py \
+		-d ${DATADIR} -f ${DATADIR_REL})
+	(cd ${STAGEDIR}${DOCSDIR} && ${RM} INSTALL LICENSE)
 
 .include <bsd.port.mk>

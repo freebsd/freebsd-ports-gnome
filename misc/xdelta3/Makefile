@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	xdelta
-PORTVERSION=	3.0.11
+PORTVERSION=	3.1.0
+PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 PORTEPOCH=	1
 CATEGORIES?=	misc devel
@@ -13,11 +14,11 @@ COMMENT=	Open-source binary diff, VCDIFF/RFC 3284 delta compression
 
 LICENSE=	GPLv2+
 
-USES=		autoreconf gmake
+USES=		autoreconf compiler:c++11-lang gmake
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	jmacd
-GH_PROJECT=	xdelta-devel
+GH_PROJECT=	xdelta
 
 WRKSRC_SUBDIR=	xdelta3
 

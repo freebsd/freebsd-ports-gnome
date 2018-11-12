@@ -2,7 +2,7 @@
 
 PORTNAME=	sabbu
 PORTVERSION=	0.3.0
-PORTREVISION=	15
+PORTREVISION=	16
 CATEGORIES=	multimedia
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/Sabbu%20${PORTVERSION}
 
@@ -18,12 +18,13 @@ USES=		tar:bzip2 gmake pkgconfig iconv
 GNU_CONFIGURE=	yes
 
 USE_SDL=	sdl
+USE_CXXSTD=	gnu++98
 USE_GNOME=	gtk20
 CFLAGS+=	-I${LOCALBASE}/include/ffmpeg0 -I${LOCALBASE}/include
 LDFLAGS+=	-lpthread -L${LOCALBASE}/lib/ffmpeg0 -L${LOCALBASE}/lib
 LDFLAGS+=	-lswscale0 -lgmodule-2.0
 
-OPTIONS_DEFINE=	GTKSPELL
+OPTIONS_DEFINE=	GTKSPELL NLS
 OPTIONS_DEFAULT=GTKSPELL
 
 GTKSPELL_LIB_DEPENDS=	libgtkspell.so:textproc/gtkspell

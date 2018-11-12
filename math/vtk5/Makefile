@@ -14,6 +14,8 @@ COMMENT=	The Visualization Toolkit
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/Copyright.txt
 
+BROKEN_powerpc64=	fails to build: sibling call optimization to `_ZN14vtkProbeFilter26SetValidPointMaskArrayNameEPKc' does not allow automatic multiple TOCs
+
 LIB_DEPENDS=	libexpat.so:textproc/expat2 \
 		libpng.so:graphics/png \
 		libtiff.so:graphics/tiff
@@ -24,7 +26,7 @@ CONFLICTS=	vtk-4*
 
 SUB_FILES=	vtk.3
 
-USES=		alias cmake:outsource jpeg
+USES=		alias cmake:outsource jpeg qt:4
 USE_XORG=	xt
 USE_LDCONFIG=	${PREFIX}/lib/vtk-${PORTVERSION:R}
 CXXFLAGS+=	-DUSE_INTERP_ERRORLINE
@@ -72,7 +74,6 @@ TCLTK_CMAKE_BOOL=	VTK_WRAP_TCL
 DBGLEAKS_CMAKE_BOOL=	VTK_DEBUG_LEAKS
 LEGACY_CMAKE_BOOL_OFF=	VTK_LEGACY_REMOVE
 
-
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSHARED}
@@ -119,7 +120,7 @@ PLIST_SUB+=	X11=""
 .endif
 
 .if ${PORT_OPTIONS:MQT4}
-USE_QT4=	corelib designer gui opengl qmake_build uic_build \
+USE_QT=		corelib designer gui opengl qmake_build uic_build \
 		moc_build rcc_build
 CMAKE_ARGS+=	-DVTK_USE_QVTK:BOOL=ON \
 		-DVTK_USE_QT:BOOL=ON \
@@ -138,7 +139,7 @@ IGNORE=		python wrapping requires shared libraries.\
 		Run make config again and enable the SHARED option
 .endif
 USES+=		python
-USE_PYTHON=	distutils
+USE_PYTHON=	distutils noflavors
 PYDISTUTILS_PKGNAME=	VTK
 # INSTALLS_EGGINFO support has been removed
 # INSTALLS_EGGINFO=	yes

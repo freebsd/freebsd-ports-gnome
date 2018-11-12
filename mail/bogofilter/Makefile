@@ -3,7 +3,7 @@
 
 PORTNAME=	bogofilter
 PORTVERSION=	1.2.4
-PORTREVISION?=	7
+PORTREVISION?=	8
 CATEGORIES?=	mail
 MASTER_SITES=	SF/bogofilter/bogofilter-current/bogofilter-${PORTVERSION}
 
@@ -12,7 +12,8 @@ COMMENT=	Fast, teachable, learning spam detector
 
 LICENSE=	GPLv2
 
-BROKEN_armv6=		fails to configure: Cannot open a shared environment in Berkeley DB
+BROKEN_FreeBSD_10_armv6=	fails to configure: Cannot open a shared environment in Berkeley DB
+BROKEN_FreeBSD_10_armv7=	fails to configure: Cannot open a shared environment in Berkeley DB
 
 .if !defined(MASTERDIR) || ${MASTERDIR} == ${.CURDIR}
 # building master port

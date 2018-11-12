@@ -2,10 +2,11 @@
 
 PORTNAME=	icedtea-web
 PORTVERSION=	1.6.2
-PORTREVISION=	3
+PORTREVISION=	5
 CATEGORIES=	java www
 MASTER_SITES=	http://icedtea.wildebeest.org/download/source/ \
 		http://icedtea.classpath.org/download/source/
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	java@FreeBSD.org
 COMMENT=	Free Java plug-in and Java Web Start for OpenJDK
@@ -27,8 +28,6 @@ USE_PERL5=	build
 USE_XORG=	x11
 USES=		desktop-file-utils gmake perl5 pkgconfig shebangfix
 SHEBANG_FILES=	jrunscript.in launcher/launchers.in
-
-WANT_GNOME=	yes
 
 CONFIGURE_ARGS=		--with-hamcrest="${HAMCREST_JAR}"
 CONFIGURE_ARGS+=	--with-jdk-home="${JAVA_HOME}"
@@ -65,14 +64,17 @@ TAGSOUP_RUN_DEPENDS=	${TAGSOUP_BUILD_DEPENDS}
 TAGSOUP_VARS=		TAGSOUP_JAR="${JAVALIBDIR}/tagsoup.jar"
 TAGSOUP_VARS_OFF=	TAGSOUP_JAR=no
 
-PLUGIN_BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/libxul.pc:www/libxul
 PLUGIN_CONFIGURE_ENABLE=plugin
+PLUGIN_CONFIGURE_ENV=	MOZILLA_CFLAGS="-I${WRKDIR}/npapi-headers -DXP_UNIX" \
+			MOZILLA_LIBS=" " # needs to be set and non-empty!
+PLUGIN_DISTFILES=	libxul-npapi-headers-45.9.0${EXTRACT_SUFX}:npapi
+PLUGIN_MASTER_SITES=	LOCAL/tobik:npapi
 PLUGIN_PORTDOCS=	plugin
 PLUGIN_TEST_TARGET=	plugin-tests
 PLUGIN_USE=		GNOME=glib20
 PLUGIN_USES=		webplugin:native
-PLUGIN_VARS=		WEBPLUGIN_DIR=${PREFIX}/lib
-PLUGIN_VARS+=		WEBPLUGIN_FILES=IcedTeaPlugin.so
+PLUGIN_VARS=		WEBPLUGIN_DIR=${PREFIX}/lib \
+			WEBPLUGIN_FILES=IcedTeaPlugin.so
 
 HAMCREST_JAR=	${JAVALIBDIR}/hamcrest.jar
 JUNIT_JAR=	${JAVALIBDIR}/junit.jar
@@ -85,7 +87,9 @@ pre-extract:
 	@${ECHO_MSG} "IMPORTANT: To build IcedTea-Web ${PORTVERSION}, you have to turn on 'ICEDTEA' option"
 	@${ECHO_MSG} "for ${JAVA_PORT} (default).  Otherwise, it will neither build nor work."
 	@${ECHO_MSG}
+.  if !(defined(PACKAGE_BUILDING) || defined(BATCH))
 	@sleep 5
+.  endif
 .endif
 
 post-patch:

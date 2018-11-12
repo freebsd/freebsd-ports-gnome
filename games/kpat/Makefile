@@ -1,20 +1,23 @@
 # $FreeBSD$
 
 PORTNAME=	kpat
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	games kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	games kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	${${PORTNAME}_DESC}
 
-USES=		cmake:outsource kde:4 shared-mime-info tar:xz
-USE_KDE=	kdelibs libkdegames automoc4
-USE_QT4=	moc_build qmake_build rcc_build uic_build
+LIB_DEPENDS=	libfreecell-solver.so:games/freecell-solver
 
-post-patch:
-	${REINPLACE_CMD} -e '/^update_xdg_mimetypes/ d' \
-		${WRKSRC}/mimetypes/CMakeLists.txt
+USES=		cmake:outsource gettext kde:5 pkgconfig qt:5 shared-mime-info tar:xz
+USE_KDE=	attica auth codecs completion config configwidgets coreaddons \
+		crash dbusaddons ecm guiaddons i18n iconthemes itemviews \
+		kdeclarative kio libkdegames newstuff notifyconfig service \
+		textwidgets widgetsaddons xmlgui
+USE_QT=		core dbus gui network phonon4 qml quick svg widgets xml \
+		buildtools_build qmake_build
 
-.include <${.CURDIR}/../kdegames4/Makefile.common>
+OPTIONS_DEFINE=	DOCS
+
+.include <${.CURDIR}/../kdegames/Makefile.common>
 .include <bsd.port.mk>

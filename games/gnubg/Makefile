@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gnubg
-PORTVERSION=	1.05.002
-PORTREVISION=	4
+PORTVERSION=	1.06.001
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	http://files.gnubg.org/media/sources/
 DISTFILES=	gnubg-release-${PORTVERSION}-sources.tar.gz

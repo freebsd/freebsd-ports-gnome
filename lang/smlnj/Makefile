@@ -19,6 +19,7 @@ LICENSE_TEXT=	The text of the license can be obtained from the following URL:\
 LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
 ONLY_FOR_ARCHS=	i386 amd64
+LLD_UNSAFE=	yes
 
 NO_WRKSUBDIR=	yes
 
@@ -56,7 +57,7 @@ DISTFILES+=	MLRISC.tgz ckit.tgz cml.tgz doc.tgz heap2asm.tgz \
 		ml-burg.tgz ml-lpt.tgz ml-lex.tgz ml-yacc.tgz nlffi.tgz \
 		smlnj-lib.tgz trace-debug-profile.tgz
 
-PLIST_SUB=	MLARCH=${MLARCH}
+PLIST_SUB+=	MLARCH=${MLARCH}
 
 .if ${PORT_OPTIONS:MPOSITION64} || defined(ML_POSITION64)
 ML_POSITION64?=	${PORT_OPTIONS:MPOSITION64}
@@ -163,15 +164,9 @@ RECOMPILEDIR=	base/system
 RECOMPILEDIR=
 .endif
 
-.if (${ARCH} == "amd64") && (${OSVERSION} < 1000029)
-MLRUNTIMEPATCHES_CMD=	cd ${FILESDIR} && \
-			( ${LS} do-patch-base_runtime_* extra-patch-base_runtime_* 2>&- || \
-			  ${TRUE} )
-.else
 MLRUNTIMEPATCHES_CMD=	cd ${FILESDIR} && \
 			( ${LS} do-patch-base_runtime_* 2>&- || \
 			  ${TRUE} )
-.endif
 MLSTANDARDPATCHES_CMD=	cd ${FILESDIR} && \
 			( for srcdir in ${MLSTDSRCDIRS} ; \
 			  do ${LS} do-patch-$${srcdir}_* 2>&- ; \
@@ -197,7 +192,7 @@ do-build:
 	MLSTANDARDPATCHES=`${MLSTANDARDPATCHES_CMD}` \
 	MLSTANDARDPATCHDIRS=`${MLSTANDARDPATCHDIRS_CMD}` \
 	MLSOURCEPATCHES=`${MLSOURCEPATCHES_CMD}` \
-	CFLAGS='${CFLAGS}' AS='${AS}' EXTRA_DEFS='${EXTRA_DEFS}' \
+	CFLAGS='${CFLAGS}' LDFLAGS='${LDFLAGS}' AS='${AS}' EXTRA_DEFS='${EXTRA_DEFS}' \
 	./config/install.sh
 .if defined(ML_RECOMPILE)
 	-${RM} ${WRKSRC}/config/targets.customized
@@ -222,7 +217,7 @@ do-build:
 	cd ${WRKSRC} && unset PWD && \
 	FILESDIR="${FILESDIR}" PATCH="${PATCH}" PATCH_ARGS="-d ${PATCH_WRKSRC} ${PATCH_ARGS}" \
 	MLNORUNTIMECLEAN=yes RECOMPILEDIR="${RECOMPILEDIR}" \
-	CFLAGS='${CFLAGS}' AS='${AS}' EXTRA_DEFS='${EXTRA_DEFS}' \
+	CFLAGS='${CFLAGS}' LDFLAGS='${LDFLAGS}' AS='${AS}' EXTRA_DEFS='${EXTRA_DEFS}' \
 	./config/install.sh
 .endif
 
@@ -323,7 +318,7 @@ do-install:
 	FILESDIR="${FILESDIR}" PATCH="${PATCH}" PATCH_ARGS="-d ${PATCH_WRKSRC} ${PATCH_ARGS}" \
 	STAGEDIR="${STAGEDIR}" MLLIB="${MLLIB}" \
 	INSTALLDIR="${STAGEDIR}${MLROOT}" \
-	CFLAGS='${CFLAGS}' AS='${AS}' EXTRA_DEFS='${EXTRA_DEFS}' \
+	CFLAGS='${CFLAGS}' LDFLAGS='${LDFLAGS}' AS='${AS}' EXTRA_DEFS='${EXTRA_DEFS}' \
 	./config/install.sh
 .else
 	@${ECHO} '(* Rebuilding the recompiled libs: *)'
@@ -340,7 +335,7 @@ do-install:
 	FILESDIR="${FILESDIR}" PATCH="${PATCH}" PATCH_ARGS="-d ${PATCH_WRKSRC} ${PATCH_ARGS}" \
 	STAGEDIR="${STAGEDIR}" MLLIB="${MLLIB}" \
 	INSTALLDIR="${STAGEDIR}${MLROOT}" RECOMPILEDIR="${RECOMPILEDIR}" \
-	CFLAGS='${CFLAGS}' AS='${AS}' EXTRA_DEFS='${EXTRA_DEFS}' \
+	CFLAGS='${CFLAGS}' LDFLAGS='${LDFLAGS}' AS='${AS}' EXTRA_DEFS='${EXTRA_DEFS}' \
 	./config/install.sh
 .endif
 	[ ! -d ${STAGEDIR} ] || \

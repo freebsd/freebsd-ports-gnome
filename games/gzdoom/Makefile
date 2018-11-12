@@ -1,11 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	gzdoom
-PORTVERSION=	3.1.0
+PORTVERSION=	3.3.2
+PORTREVISION=	1
 DISTVERSIONPREFIX=	g
 CATEGORIES=	games
 
-MAINTAINER=	bsdports@kyle-evans.net
+MAINTAINER=	kevans@FreeBSD.org
 COMMENT=	GL-enhanced source port for Doom-engine games
 
 LICENSE=	BSD3CLAUSE GPLv3 LGPL3
@@ -40,13 +41,13 @@ PLIST_FILES=	bin/${PORTNAME} \
 		${DATADIR}/${PORTNAME}.pk3 \
 		share/pixmaps/${PORTNAME}.xpm
 
+.include "${.CURDIR}/../doom-data/Makefile.include"
+
 .include <bsd.port.pre.mk>
 
-.if ${OPSYS} == "FreeBSD" && ${OSVERSION} < 1004000
-BROKEN=		Fails to link due to lack of thread_local
+.if ${OPSYS} == "FreeBSD" && ${OSVERSION} < 1100000 && ${MACHINE_ARCH} == "i386"
+STRIP=	# 10.4/i386 strip(1) is incapable of stripping the gzdoom binary
 .endif
-
-.include "${.CURDIR}/../doom-data/Makefile.include"
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}

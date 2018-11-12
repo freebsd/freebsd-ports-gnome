@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	babeltrace
-PORTVERSION=	1.5.3
+PORTVERSION=	1.5.6
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
@@ -19,10 +19,11 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 LIB_DEPENDS=	libpopt.so:devel/popt \
 		libuuid.so:misc/e2fsprogs-libuuid
 
+USES=		autoreconf:build bison gmake libtool pathfix pkgconfig
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	efficios
 
-USES=		autoreconf:build bison gmake libtool pathfix pkgconfig
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-debug-info
 USE_GNOME=	glib20
@@ -30,6 +31,8 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
 
 PORTDOCS=	ChangeLog std-ext-lib.txt API.txt lttng-live.txt
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|LICENSE mit-license.txt gpl-2.0.txt||' \

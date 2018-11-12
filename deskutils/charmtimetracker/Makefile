@@ -2,32 +2,33 @@
 # $FreeBSD$
 
 PORTNAME=	charmtimetracker
-PORTVERSION=	1.11.4
+DISTVERSION=	1.12.0
+PORTREVISION=	0
 CATEGORIES=	deskutils
 
-MAINTAINER=	avg@icyb.net.ua
+# PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+
+MAINTAINER=	adridg@FreeBSD.org
 COMMENT=	Time tracker
 
+# The top-level license file is GPLv2, but all the sources say
+# (at your option) GPLv2+ .
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
-BROKEN_powerpc64=	fails to compile: cc1plus: unrecognized command line option "-std=c++0x"
+LIB_DEPENDS=	libqt5keychain.so:security/qtkeychain@qt5
+
+USES=		cmake:outsource compiler:c++11-lib pkgconfig qt:5
+CMAKE_ARGS=	-DCharm_VERSION:STRING=${PORTVERSION}
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	KDAB
 GH_PROJECT=	Charm
 
-USES=		cmake
-CMAKE_ARGS+=	-DCharm_VERSION:STRING=${PORTVERSION} -DCHARM_FORCE_QT4=true
-USE_QT4=	qmake_build moc_build rcc_build uic_build corelib dbus gui \
-		network qtestlib script sql sql-sqlite3 xml
-USE_XORG=	ice x11 xext xscrnsaver
-INSTALLS_ICONS=	yes
-
-PORTDOCS=	ReadMe.txt
-
-OPTIONS_DEFINE=	DOCS
-
-post-install:
-	${RM} ${STAGEDIR}${DOCSDIR}/License.txt
+USE_QT=		core dbus gui \
+		network printsupport script sql sql-sqlite3 \
+		testlib widgets xml \
+		buildtools_build qmake_build
+USE_XORG=	ice x11 xcb xext xscrnsaver
 
 .include <bsd.port.mk>

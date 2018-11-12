@@ -1,10 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	splat
-PORTVERSION=	1.4.0
+PORTVERSION=	1.4.2
 CATEGORIES=	comms hamradio
-MASTER_SITES=	SUNSITE/apps/ham
-
+MASTER_SITES=	http://www.qsl.net/kd2bd/
+#http://www.qsl.net/kd2bd/splat-1.4.2.tar.bz2
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Used in calculating path losses, useful to ham radio and others
 
@@ -13,6 +13,7 @@ LICENSE=	GPLv2
 USES=	tar:bzip2
 PORTDOCS=	README README2 CHANGES
 
+OPTIONS_DEFINE=	DOCS
 OPTIONS_SINGLE=	SRM
 OPTIONS_RADIO=	HRM
 OPTIONS_SINGLE_SRM=	SRM_2X2 SRM_3X3 SRM_4X4 SRM_5X5 SRM_6X6 SRM_7X7 SRM_8X8

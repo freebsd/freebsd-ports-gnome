@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	dnsrecon
-PORTVERSION=	0.8.9
-DISTVERSIONPREFIX=	v
+DISTVERSION=	0.8.13
 PORTREVISION=	1
 CATEGORIES=	dns
 
@@ -11,14 +10,15 @@ COMMENT=	DNS enumeration tool
 
 LICENSE=	GPLv2
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dnspython>=0:dns/py-dnspython \
-		${PYTHON_PKGNAMEPREFIX}netaddr>=0:net/py-netaddr \
-		${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dnspython>=0:dns/py-dnspython@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}lxml>=0:devel/py-lxml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}netaddr>=0:net/py-netaddr@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3@${PY_FLAVOR}
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	darkoperator
 
-USES=		python:2.7+ shebangfix
+USES=		python shebangfix
 NO_BUILD=	yes
 NO_ARCH=	yes
 
@@ -27,7 +27,9 @@ FILELIST=	namelist.txt subdomains-top1mil-20000.txt \
 		subdomains-top1mil-5000.txt subdomains-top1mil.txt
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|from lib|from dnsrecon|g' ${WRKSRC}/${PORTNAME}.py
+	@${REINPLACE_CMD} -e 's|from lib|from dnsrecon|g' ${WRKSRC}/${PORTNAME}.py \
+							${WRKSRC}/lib/crtenum.py \
+							${WRKSRC}/lib/gooenum.py
 
 do-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

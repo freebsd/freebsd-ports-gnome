@@ -7,9 +7,9 @@ CONFLICTS_INSTALL=	kf5-baloo-5.* \
 			kf5-kdelibs4support-5.* \
 			kf5-kfilemetadata-5.*
 
-USE_QT4=	uic_build moc_build qmake_build rcc_build xml
+USE_QT=		uic_build moc_build qmake_build rcc_build xml
 USE_KDE=	kdelibs automoc4
-USES=		cmake gettext kde:4 tar:xz
+USES=		cmake gettext kde:4 qt:4 tar:xz
 
 
 # Support for spelling dictionaries
@@ -26,7 +26,6 @@ pt_BR_CATEGORY=	portuguese
 pt_CATEGORY=	portuguese
 ru_CATEGORY=	russian
 uk_CATEGORY=	ukrainian
-vi_CATEGORY=	vietnamese
 
 en_GB_aspell_PORT_PREFIX=	en-
 en_GB_aspell_DETECT_PREFIX=	en-
@@ -72,3 +71,9 @@ HUNSPELL_DESC=		Install hunspell dictionary
 
 ASPELL_RUN_DEPENDS+=	${${KDE4_L10N}_aspell_DETECT}:${${KDE4_L10N}_aspell_PORT}
 HUNSPELL_RUN_DEPENDS+=	${${KDE4_L10N}_hunspell_DETECT}:${${KDE4_L10N}_hunspell_PORT}
+
+# Split out sysutils/filelight's localization as it ships its own.
+EXTRACT_AFTER_ARGS=	--exclude messages/kdeutils/filelight.po
+post-extract:
+	${FIND} ${WRKSRC} -type f -name CMakeLists.txt \
+		-exec ${REINPLACE_CMD} '/filelight/d' {} +

@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	sqlite3
-PORTVERSION=	3.20.1
+DISTVERSION=	3.25.1
 CATEGORIES=	databases
-MASTER_SITES=	https://www.sqlite.org/2017/ http://www2.sqlite.org/2017/ http://www3.sqlite.org/2017/
+MASTER_SITES=	https://www.sqlite.org/2018/ http://www2.sqlite.org/2018/ http://www3.sqlite.org/2018/
 DISTNAME=	sqlite-autoconf-${PORTVERSION:C/\.([[:digit:]])[[:>:]]/0\1/g:S/.//g}00
 
 MAINTAINER=	pavelivolkov@gmail.com
@@ -13,28 +13,32 @@ COMMENT=	SQL database engine in a C library
 LICENSE=	PD
 
 USES=		libtool ncurses pathfix
-USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
+USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 
 MAKE_JOBS_UNSAFE=	yes
 
 # Compilation Options For SQLite https://www.sqlite.org/compile.html
-OPTIONS_DEFINE=	FTS4 UPD_DEL_LIMIT URI URI_AUTHORITY SOUNDEX METADATA \
-		DIRECT_READ MEMMAN SECURE_DELETE UNLOCK_NOTIFY THREADS \
-		EXTENSION ARMOR STMT DBSTAT FTS5 JSON1 RBU NULL_TRIM \
-		LIKENOTBLOB STSHELL FTS3_TOKEN SESSION UNKNOWN_SQL
-OPTIONS_SINGLE=	RAMT
-OPTIONS_RADIO=	STAT
-OPTIONS_GROUP=	UNICODE RTREEG RL
+OPTIONS_DEFINE=		FTS4 URI URI_AUTHORITY METADATA \
+			DIRECT_READ MEMMAN SECURE_DELETE UNLOCK_NOTIFY THREADS \
+			EXTENSION ARMOR STMT DBPAGE DBSTAT FTS5 RBU NULL_TRIM \
+			LIKENOTBLOB STSHELL FTS3_TOKEN UNKNOWN_SQL SORT_REF
+OPTIONS_SINGLE=		RAMT
+OPTIONS_RADIO=		STAT
+OPTIONS_GROUP=		OPT_EXT OPT_FUNC UNICODE RTREEG RL
 
-UPD_DEL_LIMIT_DESC=	ORDER BY and LIMIT on UPDATE and DELETE
+OPTIONS_GROUP_OPT_EXT=	JSON1 SESSION
+OPTIONS_GROUP_OPT_FUNC=	OFFSET SER1 SOUNDEX
+
+OPT_EXT_DESC=		Optional extensions
+OPT_FUNC_DESC=		Optional functions
 URI_DESC=		Enable use the URI filename
 URI_AUTHORITY_DESC=	Allow convert URL into a UNC
-SOUNDEX_DESC=		Enables the soundex() SQL function
+SOUNDEX_DESC=		Enable the soundex() SQL function
 METADATA_DESC=		Enable column metadata
 DIRECT_READ_DESC=	File is read directly from disk
-MEMMAN_DESC=		Allows it to release unused memory
+MEMMAN_DESC=		Allow it to release unused memory
 SECURE_DELETE_DESC=	Overwrite deleted information with zeros
 UNLOCK_NOTIFY_DESC=	Enable notification on unlocking
 EXTENSION_DESC=		Allow loadable extensions
@@ -43,8 +47,14 @@ STSHELL_DESC=		Statically link libsqlite3 into shell
 # https://sqlite.org/compile.html#enable_null_trim
 NULL_TRIM_DESC=		Omits NULL columns at the ends of rows
 
+# http://www.sqlite.org/compile.html#enable_offset_sql_func
+OFFSET_DESC=		Enable sqlite_offset() returning record's file offset
+
+# https://www.sqlite.org/compile.html#enable_deserialize
+SER1_DESC=		Enable the sqlite3_[de]serialize() interface
+
 # https://www.sqlite.org/sessionintro.html
-SESSION_DESC=		Enable the Session Extension
+SESSION_DESC=		Enable the session extension
 
 # https://sqlite.org/compile.html#like_doesnt_match_blobs
 LIKENOTBLOB_DESC=	LIKE does not match blobs
@@ -53,7 +63,7 @@ LIKENOTBLOB_DESC=	LIKE does not match blobs
 ARMOR_DESC=		Detect misuse of the API
 
 # http://sqlite.org/compile.html#enable_unknown_sql_function
-UNKNOWN_SQL_DESC=	suppress unknown function errors
+UNKNOWN_SQL_DESC=	Suppress unknown function errors
 
 # https://www.sqlite.org/fts3.html
 # https://www.sqlite.org/compile.html#enable_fts3_parenthesis
@@ -70,10 +80,13 @@ FTS3_TOKEN_DESC=	Enable two-args version fts3_tokenizer
 JSON1_DESC=		Enable the JSON1 extension
 
 # https://www.sqlite.org/rbu.html
-RBU_DESC=		Enable the Resumable Bulk Update
+RBU_DESC=		Enable the resumable bulk update
 
 # https://www.sqlite.org/c3ref/stmt_scanstatus.html
-STMT_DESC=		Prepared Statement Scan Status
+STMT_DESC=		Prepared statement scan status
+
+# https://www.sqlite.org/compile.html#enable_sorter_references
+SORT_REF_DESC=		To use references in the sorter
 
 # https://www.sqlite.org/tempfiles.html#tempstore
 OPTIONS_SINGLE_RAMT=	TS0 TS1 TS2 TS3
@@ -85,9 +98,12 @@ TS3_DESC=		Always use memory
 
 # https://www.sqlite.org/queryplanner-ng.html#qpstab
 OPTIONS_RADIO_STAT=	STAT3 STAT4
-STAT_DESC=		Which query planner to use, Stability or ...
+STAT_DESC=		Which query planner to use, stability or ...
 STAT3_DESC=		collect histogram data from leftmost column
 STAT4_DESC=		collect histogram data from all columns
+
+# https://sqlite.org/compile.html#enable_dbpage_vtab
+DBPAGE_DESC=		Enable DBPAGE Virtual Table
 
 # https://www.sqlite.org/dbstat.html
 DBSTAT_DESC=		Enable DBSTAT Virtual Table
@@ -98,10 +114,13 @@ UNICODE_DESC=		Unicode support
 UNICODE61_DESC=		Unicode Version 6.1 tokenizer
 
 # https://www.sqlite.org/rtree.html
-OPTIONS_GROUP_RTREEG=	RTREE RTREE_INT
+OPTIONS_GROUP_RTREEG=	RTREE RTREE_INT GEOPOLY
 RTREEG_DESC=		Index type for range queries
 RTREE_DESC=		Enable R*Tree module
 RTREE_INT_DESC=		Store 32-bit sig int (no float) coordinates
+# https://www.sqlite.org/geopoly.html
+GEOPOLY_DESC=		Uses the GeoJSON notation (RFC-7946)
+GEOPOLY_IMPLIES=	RTREE
 
 OPTIONS_GROUP_RL=	READLINES READLINEP EDITLINE
 RL_DESC=		Which command line editing library to use:
@@ -114,10 +133,11 @@ EDITLINE_PREVENTS=	READLINES READLINEP
 
 OPTIONS_DEFAULT=	FTS4 URI METADATA SECURE_DELETE UNLOCK_NOTIFY THREADS \
 			EXTENSION TS1 UNICODE61 RTREE DBSTAT STSHELL READLINES \
-			FTS3_TOKEN
+			FTS3_TOKEN FTS5
 # SECURE_DELETE, UNLOCK_NOTIFY, DBSTAT (since 41.0) used by www/firefox et al.
 # RTREE used by graphics/mapnik, databases/spatialite
-# FTS3_TOKEN used by audio/clementine-player
+# FTS3_TOKEN used by audio/clementine-player, mail/thunderbird, www/seamonkey
+# FTS5 used by sysutils/tracker
 
 PLIST_FILES=	bin/sqlite3 include/sqlite3.h include/sqlite3ext.h \
 		lib/libsqlite3.a lib/libsqlite3.so lib/libsqlite3.so.0 \
@@ -139,6 +159,7 @@ TS3_CPPFLAGS=	-DSQLITE_TEMP_STORE=3
 
 RTREE_CPPFLAGS=	-DSQLITE_ENABLE_RTREE=1
 RTREE_INT_CPPFLAGS=	-DSQLITE_RTREE_INT_ONLY=1
+GEOPOLY_CPPFLAGS=	-DSQLITE_ENABLE_GEOPOLY=1
 
 FTS4_CPPFLAGS=	-DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS=1 -DSQLITE_ENABLE_FTS4=1
 FTS5_CONFIGURE_ENABLE=	fts5
@@ -147,14 +168,12 @@ FTS3_TOKEN_CPPFLAGS=	-DSQLITE_ENABLE_FTS3_TOKENIZER=1
 
 SOUNDEX_CPPFLAGS=	-DSQLITE_SOUNDEX=1
 MEMMAN_CPPFLAGS=	-DSQLITE_ENABLE_MEMORY_MANAGEMENT=1
-UPD_DEL_LIMIT_CPPFLAGS=	-DSQLITE_ENABLE_UPDATE_DELETE_LIMIT=1
-UPD_DEL_LIMIT_PREVENTS=	UPD_DEL_LIMIT
-UPD_DEL_LIMIT_PREVENTS_MSG=	this option may only be used when the library is built from source, not from the amalgamation. Please, do not select it with this port.
 SECURE_DELETE_CPPFLAGS=	-DSQLITE_SECURE_DELETE=1
 UNLOCK_NOTIFY_CPPFLAGS=	-DSQLITE_ENABLE_UNLOCK_NOTIFY=1
 METADATA_CPPFLAGS=	-DSQLITE_ENABLE_COLUMN_METADATA=1
 STAT3_CPPFLAGS=	-DSQLITE_ENABLE_STAT3=1
 STAT4_CPPFLAGS=	-DSQLITE_ENABLE_STAT4=1
+DBPAGE_CPPFLAGS=	-DSQLITE_ENABLE_DBPAGE_VTAB=1
 DBSTAT_CPPFLAGS=	-DSQLITE_ENABLE_DBSTAT_VTAB=1
 URI_CPPFLAGS=	-DSQLITE_USE_URI=1
 URI_AUTHORITY_CPPFLAGS=	-DSQLITE_ALLOW_URI_AUTHORITY=1
@@ -195,6 +214,12 @@ SESSION_CONFIGURE_ENABLE=	session
 UNKNOWN_SQL_CPPFLAGS=	-DSQLITE_ENABLE_UNKNOWN_SQL_FUNCTION=1
 
 NULL_TRIM_CPPFLAGS=	-DSQLITE_ENABLE_NULL_TRIM=1
+
+OFFSET_CPPFLAGS=	-DSQLITE_ENABLE_OFFSET_SQL_FUNC=1
+
+SER1_CPPFLAGS=	-DSQLITE_ENABLE_DESERIALIZE=1
+
+SORT_REF_CPPFLAGS=	-DSQLITE_ENABLE_SORTER_REFERENCES=1
 
 .include <bsd.port.options.mk>
 

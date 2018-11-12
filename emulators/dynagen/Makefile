@@ -12,7 +12,7 @@ COMMENT=	Text-based front end for Dynamips development version
 
 LICENSE=	GPLv2
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}configobj>=4.4.0:devel/py-configobj \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}configobj>=4.4.0:devel/py-configobj@${PY_FLAVOR} \
 		dynamips:emulators/dynamips-community
 
 PLIST_FILES=	bin/dynagen "@sample etc/dynagen.ini.sample"
@@ -21,12 +21,14 @@ PORTDOCS=	*
 PORTEXAMPLES=	*
 PORTDATA=	*
 
-USES=		dos2unix python shebangfix
+USES=		dos2unix python:2.7 shebangfix
 SHEBANG_FILES=	*.py dynagen
 
 USE_PYTHON=	distutils autoplist
 ALL_TARGET=	# empty
 NO_ARCH=	yes
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 .include <bsd.port.pre.mk>
 

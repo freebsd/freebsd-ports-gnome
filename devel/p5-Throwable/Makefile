@@ -10,13 +10,13 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Easy-to-use class for error objects
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
+BUILD_DEPENDS=	${RUN_DEPENDS}
 RUN_DEPENDS=	p5-Devel-StackTrace>=1.32:devel/p5-Devel-StackTrace \
 		p5-Module-Runtime>=0.002:devel/p5-Module-Runtime \
 		p5-Moo>=1.000001:devel/p5-Moo
-BUILD_DEPENDS:=	${RUN_DEPENDS}
 
 NO_ARCH=	yes
 USES=		perl5

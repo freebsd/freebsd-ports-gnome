@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nfdump
-PORTVERSION=	1.6.15
-PORTREVISION=	1
+PORTVERSION=	1.6.17
 DISTVERSIONPREFIX=v
 CATEGORIES=	net-mgmt
 
@@ -13,7 +12,7 @@ COMMENT=	Command-line tools to collect and process NetFlow data
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/BSD-license.txt
 
-USES=		autoreconf libtool
+USES=		autoreconf libtool pkgconfig
 GNU_CONFIGURE=	yes
 USE_CSTD=	gnu89
 USE_LDCONFIG=	yes
@@ -36,7 +35,8 @@ NFDUMP15_DESC=		Enable compatibility with version 1.5
 NSEL_DESC=		Read and process ASA/NSEL/NEL event data
 
 post-patch:
-	@${REINPLACE_CMD} 's|-ggdb||' ${WRKSRC}/bin/Makefile.in
+	${REINPLACE_CMD} 's|-ggdb||' ${WRKSRC}/bin/Makefile.am
+	${REINPLACE_CMD} "s|1.6.15|${PORTVERSION}|" ${WRKSRC}/bin/Makefile.am
 
 .include <bsd.port.options.mk>
 
@@ -95,6 +95,7 @@ PLIST_FILES+=	bin/ft2nfdump man/man1/ft2nfdump.1.gz
 
 .if ${PORT_OPTIONS:MREADPCAP}
 CONFIGURE_ARGS+=	--enable-readpcap
+LIB_DEPENDS+=		libpcap.so:net/libpcap
 .else
 CONFIGURE_ARGS+=	--disable-readpcap
 .endif

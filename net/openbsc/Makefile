@@ -2,7 +2,7 @@
 
 PORTNAME=	openbsc
 PORTVERSION=	0.15.0
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	net
 MASTER_SITES=	http://git.osmocom.org/${PORTNAME}/snapshot/ \
 		http://chaosophia.net/downloads/osmocom/${PORTNAME}/
@@ -22,10 +22,9 @@ WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}/${PORTNAME}
 
 USES=		autoreconf compiler:c11 gmake pathfix pkgconfig ssl
 GNU_CONFIGURE=	yes
-AUTOMAKE_ARGS=	--gnu --add-missing --copy
 CONFIGURE_ARGS+=	CFLAGS="-I${LOCALBASE}/include"
 
-OPTIONS_DEFINE=	BSC NAT SQLITE
+OPTIONS_DEFINE=	BSC NAT SQLITE DOCS
 OPTIONS_DEFAULT= BSC NAT
 
 BSC_DESC=	Enable OSMO BSC

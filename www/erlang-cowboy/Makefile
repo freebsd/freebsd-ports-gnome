@@ -5,7 +5,7 @@ PORTVERSION=	1.1.2
 CATEGORIES=	www
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Small, fast and modular HTTP server written in Erlang
 
 LICENSE=	ISCL
@@ -18,7 +18,9 @@ ERL_BUILD_DEPS=	www/erlang-cowlib
 ERL_RUN_DEPS=	www/erlang-cowlib \
 		net/erlang-ranch
 
-post-install:
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	cd ${WRKSRC}/examples && ${COPYTREE_SHARE} \* ${STAGEDIR}${EXAMPLESDIR}
 

@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	semantik
-PORTVERSION=	0.9.5
-PORTREVISION=	1
+DISTVERSION=	0.9.5
+PORTREVISION=	4
 CATEGORIES=	deskutils kde
 MASTER_SITES=	http://ftp.waf.io/pub/release/ \
 		http://www.freehackers.org/~tnagy/release/
@@ -12,14 +12,13 @@ COMMENT=	KDE mind mapping tool
 
 LICENSE=	GPLv3
 
-USES=		kde:4 pkgconfig python:2 shebangfix tar:bzip2 waf \
+USES=		kde:4 pkgconfig python:2.7 qmake:no_env,no_configure qt:4 shebangfix tar:bzip2 waf \
 		gettext shared-mime-info
 USE_KDE=	kdelibs
 USE_OCAML=	yes
 NO_OCAML_RUNDEPENDS=	yes
-USE_QT4=	corelib gui linguist_build svg webkit xml \
+USE_QT=		corelib gui linguist_build svg webkit xml \
 		moc_build qmake_build uic_build
-QT_NONSTANDARD=	yes
 CONFIGURE_ENV=	CXXFLAGS="${CXXFLAGS}" \
 		PATH="${KDE_PREFIX}/bin:$$PATH" \
 		WAF_HOME="${WRKSRC}"
@@ -29,7 +28,8 @@ MAKE_ENV=	DESTDIR="${STAGEDIR}"
 USE_LDCONFIG=	yes
 
 SHEBANG_FILES=	${WRKSRC}/src/templates/beamer/wscript \
-		${WRKSRC}/src/templates/pdflatex/wscript
+		${WRKSRC}/src/templates/pdflatex/wscript \
+		waf
 
 PLIST_SUB=	PORTVERSION="${PORTVERSION}"
 

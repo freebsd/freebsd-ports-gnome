@@ -6,7 +6,7 @@ PORTVERSION=	1.0
 PORTREVISION=	3
 CATEGORIES=	irc sysutils
 MASTER_SITES=	http://www.ratbox.org/download/${PORTNAME}/ \
-    		http://mirrors.gigenet.com/ratbox/${PORTNAME}/ \
+		http://mirrors.gigenet.com/ratbox/${PORTNAME}/ \
 		ZI
 
 MAINTAINER=	zi@FreeBSD.org
@@ -21,6 +21,8 @@ GNU_CONFIGURE=	yes
 PORTDOCS=	challenge.txt
 PORTEXAMPLES=	*
 PLIST_FILES=	bin/ratbox-respond bin/makekeypair
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 do-install:
 	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mediawiki
-PORTVERSION=	1.27.3
+PORTVERSION=	1.27.5
 CATEGORIES=	www
 MASTER_SITES=	http://releases.wikimedia.org/mediawiki/${PORTVERSION:R}/
 PKGNAMESUFFIX=	127
@@ -12,7 +12,7 @@ COMMENT=	Wiki engine used by Wikipedia
 
 LICENSE=	GPLv2
 
-CONFLICTS=	mediawiki12[389]-[0-9]*
+CONFLICTS=	mediawiki129-[0-9]* mediawiki13[01]-[0-9]*
 
 USES=		php:web shebangfix
 SHEBANG_FILES=	maintenance/dev/*.sh \
@@ -50,12 +50,11 @@ LDAP_USE=	php=ldap
 SOCKETS_USE=	php=sockets
 
 MEMCACHED_RUN_DEPENDS=	memcached:databases/memcached
-IMAGICK_RUN_DEPENDS=	${LOCALBASE}/lib/php/${PHP_EXT_DIR}/imagick.so:graphics/pecl-imagick
+IMAGICK_RUN_DEPENDS=	${LOCALBASE}/lib/php/${PHP_EXT_DIR}/imagick.so:graphics/pecl-imagick@${PHP_FLAVOR}
 XCACHE_RUN_DEPENDS=	${LOCALBASE}/lib/php/${PHP_EXT_DIR}/xcache.so:www/xcache
 
 pre-install:
 	@${FIND} -s -d ${WRKSRC} -not -type d | ${SED} "s?${WRKSRC}?${MEDIAWIKIDIR}?g" >>${PLIST}
-	@${ECHO} "@dir %%WWWDIR%%/vendor/monolog/monolog/tests/Monolog/Handler/Fixtures" >> ${PLIST}
 	@${ECHO} "@mode 0777" >> ${PLIST}
 	@${ECHO} "@dir %%WWWDIR%%/images" >> ${PLIST}
 	@${ECHO} "@mode" >> ${PLIST}

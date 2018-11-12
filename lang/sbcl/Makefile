@@ -1,7 +1,14 @@
 # $FreeBSD$
 
+# All *-sbcl ports and any other port [1] with SBCL fasl files must get a
+# PORTREVISION bump when lang/sbcl is updated.  The compiled fasl files are
+# pinned to exact versions of everything used to build them.
+#
+# [1] x11-wm/stumpwm
+
 PORTNAME=	sbcl
-DISTVERSION=	1.3.21
+DISTVERSION=	1.4.11
+PORTREVISION=	1
 DISTVERSIONSUFFIX=	-source
 PORTEPOCH=	1
 CATEGORIES=	lang lisp
@@ -46,11 +53,11 @@ MAKE_SH_ARGS?=	--prefix="${PREFIX}" \
 MAKE_SH_ARGS+=	--dynamic-space-size=${DYNAMIC_SPACE_SIZE}
 .endif
 
-SUB_FILES=	sbclrc
+SUB_FILES=	pkg-message sbclrc
 
 # All options explained into file: ${WRKSRC}/base-target-features.lisp-expr
 OPTIONS_DEFINE=	DOCS QSHOW RENAME SAFEPOINT THREADS UNICODE XREF ZLIB
-OPTIONS_DEFAULT=	RENAME SBCL UNICODE
+OPTIONS_DEFAULT=	RENAME SBCL THREADS UNICODE
 
 QSHOW_DESC=	C runtime with low-level debugging output
 RENAME_DESC=	Rename suffix .core to _core

@@ -2,21 +2,24 @@
 # $FreeBSD$
 
 PORTNAME=	Astro-Sunrise
-PORTVERSION=	0.95
+PORTVERSION=	0.97
 CATEGORIES=	astro perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	tobez@FreeBSD.org
+MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Perl extension for computing the sunrise/sunset on a given day
 
-BUILD_DEPENDS=	p5-DateTime>=0:devel/p5-DateTime
+LICENSE=	ART10 GPLv1+
+LICENSE_COMB=	dual
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BUILD_DEPENDS=	${RUN_DEPENDS}
+RUN_DEPENDS=	p5-DateTime>=0.16:devel/p5-DateTime
 
 USES=		perl5
-USE_PERL5=	configure patch
+USE_PERL5=	configure
 
-post-patch:
-	${PERL} -pi -e 's/(qw\(.*)\[1\];/($$1)[1];/; s/\r\n/\n/;' \
-		${WRKSRC}/Sunrise.pm
+NO_ARCH=	yes
 
 .include <bsd.port.mk>

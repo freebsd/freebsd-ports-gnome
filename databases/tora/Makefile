@@ -3,7 +3,7 @@
 
 PORTNAME=	tora
 PORTVERSION=	2.1.3
-PORTREVISION=	11
+PORTREVISION=	14
 PORTEPOCH=	1
 CATEGORIES=	databases
 MASTER_SITES=	SF
@@ -14,17 +14,22 @@ COMMENT=	Toolkit for Oracle
 LICENSE=	GPLv2
 
 BUILD_DEPENDS=	cppunit-config:devel/cppunit
-LIB_DEPENDS=	libqscintilla2.so:devel/qscintilla2 \
+LIB_DEPENDS=	libqscintilla2_qt4.so:devel/qscintilla2 \
 		libpcre.so:devel/pcre
 
 OPTIONS_DEFINE=	PGSQL MYSQL DOCS
 OPTIONS_DEFAULT=	PGSQL MYSQL
 
-USE_QT4=	corelib gui sql xml network moc_build uic_build rcc_build
-USES=		autoreconf gmake libtool makeinfo
+USES=		autoreconf compiler:c++11-lang gmake libtool localbase:ldflags \
+		makeinfo qmake:no_env qt:4
+USE_QT=		corelib gui sql xml network moc_build qmake_build rcc_build uic_build
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-pcre=${LOCALBASE}
-LDFLAGS+=	-L${LOCALBASE}/lib
+CONFIGURE_ARGS=	--with-pcre=${LOCALBASE} \
+		--with-qt-includes=${QT_INCDIR} \
+		--with-qt-libraries=${QT_LIBDIR} \
+		--with-extra-includes=${LOCALBASE}/include \
+		--with-extra-libs=${LOCALBASE}/lib
+
 INSTALL_TARGET=	install-strip
 
 PREFIX2FIX=	doc/help/preferences.texi doc/help/preferences.html
@@ -32,8 +37,8 @@ PREFIX2FIX=	doc/help/preferences.texi doc/help/preferences.html
 DOCS_USES=	makeinfo
 DOCS_INFO=	tora
 
-MYSQL_RUN_DEPENDS=	${QT_PLUGINDIR}/sqldrivers/libqsqlmysql.so:databases/qt4-mysql-plugin
-PGSQL_RUN_DEPENDS=	${QT_PLUGINDIR}/sqldrivers/libqsqlpsql.so:databases/qt4-pgsql-plugin
+MYSQL_USE=	QT=sql-mysql_run
+PGSQL_USE=	QT=sql-pgsql_run
 
 post-patch-DOCS-on:
 	@${REINPLACE_CMD} 's|/etc/torarc|${PREFIX}/etc/torarc|' \

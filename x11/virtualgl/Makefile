@@ -3,7 +3,7 @@
 
 PORTNAME=	virtualgl
 PORTVERSION=	2.4.1
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	x11 graphics
 MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}
 DISTNAME=	VirtualGL-${PORTVERSION}
@@ -48,5 +48,9 @@ PLIST_SUB+=	AMD64="@comment "
 PLIST_SUB+=	I386="@comment "
 PLIST_SUB+=	AMD64=""
 .endif
+
+post-patch:
+	@${REINPLACE_CMD} -e '/^#define CHECKGL/s,m);, &,' \
+		${WRKSRC}/server/VirtualDrawable.cpp
 
 .include <bsd.port.post.mk>

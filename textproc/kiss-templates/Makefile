@@ -3,7 +3,7 @@
 
 PORTNAME=		kiss-templates
 PORTVERSION=		0.19
-PORTREVISION=	1
+PORTREVISION=		7
 CATEGORIES=		textproc
 
 MAINTAINER=		andreas.sommer87@googlemail.com
@@ -12,8 +12,7 @@ COMMENT=		Type safe "Keep it simple, stupid" text templates for C++
 LICENSE=		BSD2CLAUSE
 LICENSE_FILE=		${WRKSRC}/LICENSE
 
-BROKEN_powerpc64=	fails to compile: No known features for CXX compiler GNU
-
+USES=			cmake compiler:c++11-lang
 USE_GITHUB=		yes
 GH_ACCOUNT=		rbock
 
@@ -26,12 +25,10 @@ PLIST_FILES=		bin/kiste2cpp \
 			include/kiste/serializer_builder.h \
 			include/kiste/terminal.h
 
-USES=			cmake
-
 OPTIONS_DEFINE=		TEST
 TEST_DESC=		Build with unit tests
 TEST_BUILD_DEPENDS=	boost-libs>=1.55:devel/boost-libs
-TEST_USES=		python:2,build,test shebangfix
+TEST_USES=		python:2.7,build,test shebangfix
 TEST_TEST_TARGET=	test
 SHEBANG_FILES=		tests/comparison-based/generate.py tests/differ.py
 

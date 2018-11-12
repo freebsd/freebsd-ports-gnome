@@ -13,7 +13,7 @@ COMMENT=	King James V Bible in fortune file format
 
 DIST_SUBDIR=	${PORTNAME}
 NO_WRKSUBDIR=	yes
-PKGMESSAGE=	${WRKDIR}/pkg-message
+
 USES=		tar:bzip2
 SUB_FILES+=	pkg-message
 .if exists(/usr/games/strfile)
@@ -33,6 +33,5 @@ do-build:
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/games/fortune
 	${INSTALL_DATA} ${WRKSRC}/bible* ${STAGEDIR}${PREFIX}/share/games/fortune
-
 
 .include <bsd.port.mk>

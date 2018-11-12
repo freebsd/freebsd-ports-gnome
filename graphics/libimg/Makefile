@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libimg
-PORTVERSION=	1.4.6
+PORTVERSION=	1.4.7
 CATEGORIES?=	graphics tk
 MASTER_SITES=	SF/tkimg/tkimg/${PORTVERSION:R}/tkimg%20${PORTVERSION}
 DISTNAME=	Img-Source-${PORTVERSION}
@@ -23,10 +23,8 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 
 PLIST_SUB+=	PORTVERSION=${PORTVERSION}
 
-WRKSRC=		${WRKDIR}/tkimg
 USES=		autoreconf jpeg tk:tea zip
 USE_XORG=	x11 xext xft xrender xscrnsaver
-TEST_TARGET=	test
 OPTIONS_DEFINE=	EXAMPLES
 OPTIONS_SUB=	yes
 
@@ -56,13 +54,13 @@ post-configure:
 		${WRKSRC}/$l/Makefile
 .endfor
 
-.include <bsd.port.options.mk>
+do-test:
+	cd ${WRKSRC}/tests && \
+		${SETENV} TCLLIBPATH=${WRKSRC:Q} ${WISH} ${WRKSRC}/tests/all
 
-.if ${PORT_OPTIONS:MEXAMPLES}
-post-install:
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/msgs/
+post-install-EXAMPLES-on:
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/msgs/
 	${INSTALL_DATA} ${WRKSRC}/msgs/*.msg ${STAGEDIR}${EXAMPLESDIR}/msgs/
 	${INSTALL_SCRIPT} ${WRKSRC}/demo.tcl ${WRKSRC}/tkv.tcl ${STAGEDIR}${EXAMPLESDIR}/
-.endif
 
 .include <bsd.port.mk>

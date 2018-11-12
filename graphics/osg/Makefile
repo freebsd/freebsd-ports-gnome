@@ -2,12 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	osg
-PORTVERSION=	3.4.0
+PORTVERSION=	3.4.1
+DISTVERSIONPREFIX=	OpenSceneGraph-
 PORTREVISION=	3
 CATEGORIES=	graphics
-MASTER_SITES=	http://trac.openscenegraph.org/downloads/developer_releases/ \
-		http://mirror.amdmi3.ru/distfiles/
-DISTNAME=	OpenSceneGraph-${PORTVERSION}
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	C++ OpenGL scene graph library for real-time rendering
@@ -20,15 +18,19 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 LIB_DEPENDS=	libpng.so:graphics/png \
 		libtiff.so:graphics/tiff
 
+USE_GITHUB=	yes
+GH_ACCOUNT=	openscenegraph
+GH_PROJECT=	OpenSceneGraph
+
 CONFLICTS=	osg-devel-[0-9]*
 
-USES=		alias cmake:outsource jpeg pkgconfig zip
+USES=		alias cmake:outsource jpeg pkgconfig
 USE_GL=		gl glu
 USE_XORG=	x11
 USE_LDCONFIG=	yes
 
 PLIST_SUB=	OSG_VERSION=${PORTVERSION} \
-		OSG_SHLIBVER=130 \
+		OSG_SHLIBVER=131 \
 		OPENTHREADS_VERSION=3.3.0 \
 		OPENTHREADS_SHLIBVER=20
 
@@ -46,7 +48,7 @@ GTA_DESC=	GTA file format support
 INVENTOR_DESC=	SGI OpenInventor support
 LIBLAS_DESC=	liblas support
 NVTT_DESC=	Use NVidia texture tools
-QT_DESC=	QT toolkit support (optional)
+QT_DESC=	QT toolkit support
 SDL_DESC=	Use SDL (joystick support in present3d)
 VNC_DESC=	LibVNCServer support
 
@@ -90,18 +92,20 @@ LUA_VARS_OFF=		FORCE_IGNORE+="Lua51 Lua52"
 NVTT_LIB_DEPENDS=	libnvtt.so:graphics/nvidia-texture-tools
 NVTT_VARS=		FORCE_REQUIRE+=NVTT
 NVTT_VARS_OFF=		FORCE_IGNORE+=NVTT
-OPENEXR_LIB_DEPENDS=	libIlmImf.so:graphics/OpenEXR
+OPENEXR_LIB_DEPENDS=	libIlmImf.so:graphics/openexr
 OPENEXR_VARS=		FORCE_REQUIRE+=OpenEXR
 OPENEXR_VARS_OFF=	FORCE_IGNORE+=OpenEXR
 PDF_LIB_DEPENDS=	libpoppler-glib.so:graphics/poppler-glib
 PDF_USE=		gnome=cairo
 PDF_VARS=		FORCE_REQUIRE+=Poppler-glib
 PDF_VARS_OFF=		FORCE_IGNORE+=Poppler-glib
-QT4_USE=		qt4=corelib,gui,moc_build,opengl,qmake_build,rcc_build,uic_build
+QT4_USES=		qt:4
+QT4_USE=		qt=corelib,gui,moc_build,opengl,qmake_build,rcc_build,uic_build
 QT4_CMAKE_ON=		-DDESIRED_QT_VERSION=4
 QT4_VARS=		FORCE_REQUIRE+=Qt4
 QT4_VARS_OFF=		FORCE_IGNORE+=Qt4
-QT5_USE=		qt5=buildtools_build,core,gui,opengl,qmake_build,webkit
+QT5_USE=		qt:5
+QT5_USE=		qt=buildtools_build,core,gui,opengl,qmake_build,webkit
 QT5_CMAKE_ON=		-DDESIRED_QT_VERSION=5
 QT5_VARS=		FORCE_REQUIRE+="Qt5Widgets Qt5WebKitWidgets"
 QT5_VARS_OFF=		FORCE_IGNORE+="Qt5Widgets Qt5WebKitWidgets"

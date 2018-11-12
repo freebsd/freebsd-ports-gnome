@@ -15,9 +15,11 @@ GH_PROJECT=	lshell
 GH_TAGNAME=	279d7ab
 
 NO_ARCH=	yes
-USES=		python
+USES=		python:2.7
 USE_GITHUB=	yes
 USE_PYTHON=	distutils
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e \

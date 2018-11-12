@@ -3,7 +3,7 @@
 
 PORTNAME=	wxmupen64plus
 PORTVERSION=	0.3
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	emulators
 MASTER_SITES=	https://bitbucket.org/auria/wxmupen64plus/get/
 DISTNAME=	${PORTVERSION}
@@ -22,7 +22,7 @@ RUN_DEPENDS=	${LOCALBASE}/lib/libmupen64plus.so.2:emulators/mupen64plus-core \
 
 WRKSRC=		${WRKDIR}/auria-${PORTNAME}-0564db396383
 
-USES=		compiler:c++11-lib python
+USES=		compiler:c++11-lib python:2.7
 USE_CXXSTD=	c++11
 USE_SDL=	yes
 USE_WX=		3.0

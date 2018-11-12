@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	minetest
-PORTVERSION=	0.4.16
+PORTVERSION=	0.4.17.1
 CATEGORIES=	games
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -18,6 +18,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	minetest
 
 USES=		cmake iconv:wchar_t
+LLD_UNSAFE=	yes
 CMAKE_ARGS=	-DCUSTOM_MANDIR="${PREFIX}/man" \
 		-DCUSTOM_EXAMPLE_CONF_DIR="${PREFIX}/etc"
 

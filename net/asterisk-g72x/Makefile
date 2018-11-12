@@ -1,37 +1,37 @@
 # $FreeBSD$
 
-PORTNAME=	asterisk-g72x
-PORTVERSION=	1.4
+PORTNAME=	g72x
+PORTVERSION=	1.4.2
 PORTREVISION=	1
 CATEGORIES=	net
 MASTER_SITES=	http://asterisk.hosting.lv/src/
+DISTNAME=	asterisk-${PORTNAME}-${DISTVERSIONPREFIX}${DISTVERSION}${DISTVERSIONSUFFIX}
 
 MAINTAINER=	madpilot@FreeBSD.org
 COMMENT=	G.729 codec for Asterisk PBX
 
 LIB_DEPENDS=	libbcg729.so:audio/bcg729
 
+FLAVORS=			asterisk13 asterisk15
+FLAVOR?=			${FLAVORS[1]}
+
+asterisk13_PKGNAMEPREFIX=	asterisk13-
+asterisk13_CONFLICTS_INSTALL=	asterisk15-g72x
+asterisk13_BUILD_DEPENDS=	asterisk:net/asterisk13
+asterisk13_RUN_DEPENDS=		asterisk:net/asterisk13
+asterisk15_CONFIGURE_ARGS=	--with-asterisk130
+
+asterisk15_PKGNAMEPREFIX=	asterisk15-
+asterisk15_CONFLICTS_INSTALL=	asterisk13-g72x
+asterisk15_BUILD_DEPENDS=	asterisk:net/asterisk15
+asterisk15_RUN_DEPENDS=		asterisk:net/asterisk15
+asterisk15_CONFIGURE_ARGS=	--with-asterisk150
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-bcg729
 USES=		autoreconf compiler libtool localbase tar:bzip2
-NO_OPTIONS_SORT=	yes
 
 PLIST_FILES=	lib/asterisk/modules/codec_g729.so
-
-OPTIONS_SINGLE=	ASTVER
-OPTIONS_SINGLE_ASTVER=	ASTERISK11 ASTERISK13
-
-OPTIONS_DEFAULT=	ASTERISK13
-
-ASTERISK11_DESC=	Depend on Asterisk 11
-ASTERISK13_DESC=	Depend on Asterisk 13
-
-ASTERISK11_BUILD_DEPENDS=	asterisk:net/asterisk11
-ASTERISK11_RUN_DEPENDS=	asterisk:net/asterisk11
-ASTERISK11_CONFIGURE_ON=	--with-asterisk100
-ASTERISK13_BUILD_DEPENDS=	asterisk:net/asterisk13
-ASTERISK13_RUN_DEPENDS=	asterisk:net/asterisk13
-ASTERISK13_CONFIGURE_ON=	--with-asterisk130
 
 .include <bsd.port.pre.mk>
 

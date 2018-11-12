@@ -8,7 +8,7 @@ CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	kozlov.sergey.404@gmail.com
+MAINTAINER=	skozlov@FreeBSD.org
 COMMENT=	Remote Python Call
 
 LICENSE=	MIT
@@ -16,10 +16,10 @@ LICENSE=	MIT
 OPTIONS_DEFINE=	PLUMBUM
 OPTIONS_DEFAULT=PLUMBUM
 
-PLUMBUM_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}plumbum>0:sysutils/py-plumbum
+PLUMBUM_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}plumbum>0:sysutils/py-plumbum@${PY_FLAVOR}
 PLUMBUM_DESC=	 Required for features like rpyc_classic.py and zero deploy
 
-USES=		python:-3.3
+USES=		python
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

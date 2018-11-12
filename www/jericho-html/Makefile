@@ -9,6 +9,8 @@ MASTER_SITES=	SF/jerichohtml/${PORTNAME}/${PORTVERSION}
 MAINTAINER=	saper@saper.info
 COMMENT=	Java library to analyse and manipulate HTML
 
+BROKEN_powerpc64=	fails to compile: src/java/net/htmlparser/jericho/Renderer.java:372: unmappable character for encoding ASCII
+
 USES=		zip
 USE_JAVA=	yes
 
@@ -18,6 +20,8 @@ INTERFACES:=	"compile-time-dependencies/slf4j-api-1.6.1.jar:\
 
 PORTDOCS=	*
 PLIST_FILES+=	%%JAVAJARDIR%%/${PORTNAME}.jar
+
+OPTIONS_DEFINE=	DOCS
 
 do-build:
 	(cd ${WRKSRC} && ${RM} -r classes/* && ${SETENV}         \

@@ -3,7 +3,7 @@
 
 PORTNAME=	telegram
 PORTVERSION=	1.4.1.g20161227
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	net-im
 
 MAINTAINER=	cpm@FreeBSD.org
@@ -20,7 +20,7 @@ BROKEN_mips=	Missing header
 BROKEN_mips64=	Missing header
 BROKEN_powerpc64=	Does not build: Assertion failed: (get_int () == TLS_SCHEMA_V2)
 
-USES=		execinfo gmake lua:52 ncurses pkgconfig readline ssl
+USES=		gmake lua:52 ncurses pkgconfig readline ssl
 GNU_CONFIGURE=	yes
 
 USE_GITHUB=	yes
@@ -32,6 +32,8 @@ GH_SUBDIR=	tgl:tgl tgl/tl-parser:tlparser
 PLIST_FILES=	bin/telegram-cli \
 		etc/telegram-cli/server.pub
 PORTDOCS=	*
+
+OPTIONS_DEFINE=	DOCS
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/telegram-cli

@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	octave
-PORTVERSION=	4.0.3
-PORTREVISION=	8
-CATEGORIES=	math
+PORTVERSION=	${OCTAVE_VERSION}
+PORTREVISION=	2
+CATEGORIES=	math java
 MASTER_SITES=	GNU
 
-MAINTAINER=	maho@FreeBSD.org
+MAINTAINER=	stephen@FreeBSD.org
 COMMENT=	High-level interactive language for numerical computations
 
 LICENSE=	GPLv3
@@ -33,20 +33,25 @@ LIB_DEPENDS=	libGraphicsMagick.so:graphics/GraphicsMagick \
 		libumfpack.so:math/suitesparse \
 		libglpk.so:math/glpk \
 		libgl2ps.so:print/gl2ps \
-		libqscintilla2.so:devel/qscintilla2 \
+		libqscintilla2_qt5.so:devel/qscintilla2-qt5 \
 		libfontconfig.so:x11-fonts/fontconfig \
-		libfreetype.so:print/freetype2
+		libfreetype.so:print/freetype2 \
+		libdrm.so:graphics/libdrm \
+		libOSMesa.so:graphics/libosmesa \
+		libsundials_arkode.so:math/sundials
 
-USES=		charsetfix fortran gmake libtool perl5 pkgconfig readline tar:xz
-USE_LDCONFIG=	yes
+USES=		charsetfix fortran gmake libtool perl5 pkgconfig qt:5 readline \
+		tar:xz compiler:c++14-lang
+USE_LDCONFIG=	${PREFIX}/lib/${PORTNAME}/${PORTVERSION}
 USE_PERL5=	build
-USE_TEX=	dvipsk:build
+USE_TEX=	dvipsk:build formats:build
 GNU_CONFIGURE=	yes
 USE_JAVA=	yes
 JAVA_VERSION=	1.7+
-USE_QT4=	corelib gui network opengl uic_build moc_build rcc_build linguist_build
+USE_QT=		core gui help network opengl \
+		qmake_build buildtools_build linguist_build
 USE_XORG=	x11 xext xfixes xft
-USE_GL=		gl glu 
+USE_GL=		gl glu
 
 OCTAVE_VERSION=	${PORTVERSION}
 GNU_HOST=	${ARCH}-portbld-freebsd${OSREL}
@@ -56,22 +61,30 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 CONFIGURE_ENV=	GPERF="${LOCALBASE}/bin/gperf" \
 		JAVA_HOME=${JAVA_HOME} \
 		MAKEINFO=${LOCALBASE}/bin/makeinfo \
+		MKINFO=${LOCALBASE}/bin/makeinfo \
+		MOC_QTVER=${LOCALBASE}/bin/moc \
+		UIC_QTVER=${LOCALBASE}/bin/uic \
+		RCC_QTVER=${LOCALBASE}/bin/rcc \
 		ac_cv_type_max_align_t=yes
 CONFIGURE_ARGS=	--host=${GNU_HOST} \
 		--with-blas="-L${LOCALBASE}/lib ${BLASLIB}" \
 		--with-lapack="${LAPACKLIB}" \
 		--enable-shared \
-		--disable-jit
+		--disable-jit \
+		--disable-openmp \
+		--with-qt=5 \
+		--with-OSMesa-includedir=${LOCALBASE}/include/GL \
+		--with-OSMesa-libdir=${LOCALBASE}/lib
 
 OPTIONS_DEFINE=	DOCS
 
-OPTIONS_RADIO=  BLAS
-OPTIONS_RADIO_BLAS=     OPENBLAS NETLIB ATLAS
-OPTIONS_DEFAULT=        OPENBLAS
+OPTIONS_RADIO=		BLAS
+OPTIONS_RADIO_BLAS=	OPENBLAS NETLIB ATLAS
+OPTIONS_DEFAULT=	OPENBLAS
 
-OPENBLAS_USES=  blaslapack:openblas
-NETLIB_USES=    blaslapack:netlib
-ATLAS_USES=     blaslapack:atlas
+OPENBLAS_USES=	blaslapack:openblas
+NETLIB_USES=	blaslapack:netlib
+ATLAS_USES=		blaslapack:atlas
 
 INFO=		octave liboctave
 
@@ -80,11 +93,10 @@ post-patch:
 	${REINPLACE_CMD} 's+lapack lapack_rs6k+${LAPACKLIB:C/-l//}+' ${WRKSRC}/configure
 	${REINPLACE_CMD} 's+-lumfpack+-lumfpack -lsuitesparseconfig -lamd -lcholmod -lcolamd ${LAPACKLIB}+' ${WRKSRC}/configure
 	${REINPLACE_CMD} 's+-lcholmod+-lumfpack -lsuitesparseconfig -lamd -lcholmod -lcolamd ${LAPACKLIB}+' ${WRKSRC}/configure
+	${REINPLACE_CMD} 's/"-qt$$qt_version"/"-qt=qt$$qt_version"/' ${WRKSRC}/configure
 
 post-install:
-	${INSTALL_DATA} ${WRKSRC}/etc/icons/octave.desktop \
-		${STAGEDIR}${DESKTOPDIR}/www.octave.org-octave.desktop
-	(cd ${STAGEDIR}${DATADIR} && ln -s ${PORTVERSION}/imagelib  .)
+	(cd ${STAGEDIR}${DATADIR} && ${LN} -s ${PORTVERSION}/imagelib  .)
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
@@ -93,8 +105,13 @@ post-install-DOCS-on:
 	refcard/refcard-letter.ps interpreter/octave.ps
 	${INSTALL_DATA} ${WRKSRC}/doc/${file} ${STAGEDIR}${DOCSDIR}
 .endfor
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${INFO_PATH}
+.for file in interpreter/octave.info liboctave/liboctave.info
+	${INSTALL_DATA} ${WRKSRC}/doc/${file} ${STAGEDIR}${PREFIX}/${INFO_PATH}
+.endfor
 
 check regression-test: build
 	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} check)
 
+.include "Makefile.version"
 .include <bsd.port.mk>

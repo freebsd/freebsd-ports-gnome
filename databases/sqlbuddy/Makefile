@@ -12,6 +12,8 @@ COMMENT=	Web based MySQL administration with a set of PHP scripts
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+IGNORE_WITH_PHP=	70 71 72
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	deliciousbrains
 GH_TAGNAME=	b2cdc2b
@@ -19,7 +21,7 @@ GH_TAGNAME=	b2cdc2b
 NO_BUILD=	yes
 
 USE_PHP=	ctype pcre session mysql
-WANT_PHP_WEB=	yes
+USES=		php:web
 
 PLIST_SUB=	WWWOWN="${WWWOWN}" WWWGRP="${WWWGRP}"
 SUB_FILES=	pkg-message

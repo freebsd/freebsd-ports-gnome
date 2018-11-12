@@ -1,12 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	pkg
-DISTVERSION=	1.10.99.5
+DISTVERSION=	1.10.99.10
 _PKG_VERSION=	${DISTVERSION}
 CATEGORIES=	ports-mgmt
-MASTER_SITES=	\
-		http://files.etoilebsd.net/pkg/ \
-		http://mirror.shatow.net/freebsd/${PORTNAME}/
 PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	pkg@FreeBSD.org
@@ -14,19 +11,23 @@ COMMENT=	Package manager
 
 LICENSE=	BSD2CLAUSE
 
+USE_GITHUB=	yes
+GH_ACCOUNT=	freebsd
+GH_TAGNAME=	7ee6127d
+
 WITH_DEBUG=	yes
 CFLAGS+=	-O0 -g -Wno-error
 USE_LDCONFIG=	yes
-USES=		libtool tar:xz
-GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--disable-maintainer-mode
-INSTALL_TARGET=	install-strip
+HAS_CONFIGURE=	yes
 PORTDOCS=	NEWS
 PORTSCOUT=	ignore:1
+CONFIGURE_ARGS=	--mandir=${PREFIX}/man
 
 # Use a submake as 'deinstall install' needs to reevaluate PKG_REGISTER
 # so that pkg-static is used from the wrkdir
 USE_SUBMAKE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .if !exists(/usr/include/jail.h)
 EXTRA_PATCHES=	${FILESDIR}/extra-patch-docs_pkg.8
@@ -70,14 +71,12 @@ pre-everything::
 .endif
 
 .undef INSTALLS_DEPENDS
-.if !exists(${LOCALBASE}/sbin/pkg)
+.if !exists(${LOCALBASE}/sbin/pkg) || !defined(CROSS_TOOLCHAIN)
 PKG_BIN=	${WRKSRC}/src/pkg-static
 .endif
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${WRKSRC}/NEWS ${STAGEDIR}${DOCSDIR}/NEWS
-	@${MV} ${STAGEDIR}${PREFIX}/lib/libpkg_static.a \
-		${STAGEDIR}${PREFIX}/lib/libpkg.a
 
 .include <bsd.port.post.mk>

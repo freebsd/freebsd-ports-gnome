@@ -2,7 +2,7 @@
 
 PORTNAME=	teacooker
 PORTVERSION=	0.3.0
-PORTREVISION=	12
+PORTREVISION=	13
 CATEGORIES=	deskutils kde
 MASTER_SITES=	http://www.kde-apps.org/CONTENT/content-files/
 PKGNAMEPREFIX=	plasma-applet-
@@ -13,9 +13,12 @@ COMMENT=	KDE4 tea cooker plasma applet
 
 LICENSE=	GPLv3
 
-USES=		cmake kde:4
+DEPRECATED=	KDE4 is EOL upstream
+EXPIRATION_DATE=	2018-12-31
+
+USES=		cmake kde:4 qt:4
 USE_KDE=	automoc4 kdelibs
-USE_QT4=	gui dbus network opengl svg webkit xml \
+USE_QT=		gui dbus network opengl svg webkit xml \
 		qmake_build moc_build rcc_build uic_build
 
 WRKSRC=		${WRKDIR}/TeaCooker

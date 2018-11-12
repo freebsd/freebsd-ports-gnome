@@ -1,16 +1,19 @@
 # $FreeBSD$
 
 PORTNAME=	kde-dev-utils
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	2
-CATEGORIES=	devel kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	devel kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE development utilities
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	moc_build qmake_build rcc_build uic_build \
-		corelib designer gui qt3support xml
+USES=		cmake:outsource kde:5 qt:5 tar:xz
+USE_KDE=	auth bookmarks codecs completion config configwidgets \
+		coreaddons ecm i18n itemviews jobwidgets kio parts service \
+		solid sonnet textwidgets widgetsaddons xmlgui
+USE_QT=		core dbus designer gui network widgets xml \
+		buildtools_build qmake_build
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

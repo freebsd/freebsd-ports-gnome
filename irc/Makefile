@@ -9,6 +9,7 @@
     SUBDIR += bitchx
     SUBDIR += bitlbee
     SUBDIR += bitlbee-facebook
+    SUBDIR += bitlbee-steam
     SUBDIR += bnc
     SUBDIR += bopm
     SUBDIR += cgiirc
@@ -122,11 +123,8 @@
     SUBDIR += undernet-ircu
     SUBDIR += unreal
     SUBDIR += weechat
+    SUBDIR += weechat-otr
     SUBDIR += xaric
-    SUBDIR += xchat
-    SUBDIR += xchat-fish
-    SUBDIR += xchat-mircryption
-    SUBDIR += xchat-ruby
     SUBDIR += znc
 
 .include <bsd.port.subdir.mk>

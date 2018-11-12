@@ -1,14 +1,15 @@
 # $FreeBSD$
 
 PORTNAME=	listres
-PORTVERSION=	1.0.3
+PORTVERSION=	1.0.4
+PORTREVISION=	2
 CATEGORIES=	x11
 
 MAINTAINER=	x11@FreeBSD.org
 COMMENT=	List resources in widgets
 
 XORG_CAT=	app
-USE_XORG=	xproto xt xmu xaw
+USE_XORG=	x11 xaw xmu xorgproto xt
 
 PLIST_FILES=	bin/listres man/man1/listres.1.gz
 

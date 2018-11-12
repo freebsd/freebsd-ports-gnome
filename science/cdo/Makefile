@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	cdo
-PORTVERSION=	1.9.0
+PORTVERSION=	1.9.5
 PORTREVISION=	1
 CATEGORIES=	science
-MASTER_SITES=	https://code.zmaw.de/attachments/download/15187/ \
+MASTER_SITES=	https://code.mpimet.mpg.de/attachments/download/18264/ \
 		LOCAL/sunpoet
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -13,6 +13,8 @@ COMMENT=	Climate Data Operators
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+BROKEN_powerpc64=	fails to compile: remaplib.cc:1504:6: internal compiler error: in gsi_insert_seq_nodes_after, at gimple-iterator.c:283
 
 OPTIONS_DEFINE=	CGRIBEX HDF5 JASPER NETCDF PROJ SZIP UDUNITS UUID
 OPTIONS_DEFAULT=CGRIBEX HDF5 JASPER NETCDF PROJ SZIP UDUNITS UUID
@@ -37,9 +39,9 @@ GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 MAKE_JOBS_UNSAFE=	yes
 TEST_TARGET=	check
+USES=		compiler:c++11-lib gmake libtool localbase pathfix
 USE_CXXSTD=	c++11
 USE_LDCONFIG=	yes
-USES=		compiler:c++11-lib execinfo gmake libtool localbase pathfix
 
 CGRIBEX_CONFIGURE_WITH=	cgribex
 CGRIBEX_LIB_DEPENDS=	libcgribex.so:science/cgribex
@@ -68,6 +70,9 @@ post-patch:
 	@${REINPLACE_CMD} -e '/^SUBDIRS = / s| contrib||' ${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} -e 's|$$(libdir)/\($$$$pkgconfigfile\)|${PREFIX}/libdata/\1|' ${WRKSRC}/libcdi/src/Makefile.in
 	@${REINPLACE_CMD} -e 's|unsigned32 |uint32_t |' ${WRKSRC}/libcdi/src/cdilib.c ${WRKSRC}/libcdi/src/util.c
+
+post-install:
+	${INSTALL_DATA} ${WRKSRC}/libcdi/src/cdi.inc ${STAGEDIR}${PREFIX}/include/cdi.inc
 
 test-NETCDF-on:
 	@cd ${WRKSRC}/ && ${SETENV} CDO_PATH=src/cdo src/cdotest

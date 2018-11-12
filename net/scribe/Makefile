@@ -3,13 +3,15 @@
 
 PORTNAME=	scribe
 DISTVERSION=	2.2.2013.04.15
-PORTREVISION=	8
+PORTREVISION=	13
 CATEGORIES=	net
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Aggregating log data streamed in real time
 
 LICENSE=	APACHE20
+
+BROKEN=		fails to build
 
 BUILD_DEPENDS=	fb303>0:devel/fb303 \
 		thrift:devel/thrift
@@ -18,7 +20,7 @@ LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
 		libthrift.so:devel/thrift-cpp
 RUN_DEPENDS=	p5-Class-Accessor>0:devel/p5-Class-Accessor \
 		p5-Thrift>0:devel/p5-Thrift \
-		${PYTHON_PKGNAMEPREFIX}thrift>0:devel/py-thrift
+		${PYTHON_PKGNAMEPREFIX}thrift>0:devel/py-thrift@${PY_FLAVOR}
 
 BROKEN_powerpc64=	Does not build
 
@@ -27,11 +29,14 @@ GH_ACCOUNT=	facebookarchive
 GH_TAGNAME=	7359a09
 
 USES=		autoreconf compiler gmake perl5 python
+USE_PYTHON=	py3kplist
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-boost-filesystem=boost_filesystem \
 		--with-boost-system=boost_system \
 		PY_PREFIX="${PREFIX}"
 USE_RC_SUBR=	${PORTNAME}
+
+OPTIONS_DEFINE=	EXAMPLES
 
 post-patch:
 	@${REINPLACE_CMD} -e 's/^AM_INIT_AUTOMAKE/#/' ${WRKSRC}/configure.ac

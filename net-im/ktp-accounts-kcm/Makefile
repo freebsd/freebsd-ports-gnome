@@ -1,25 +1,33 @@
 # $FreeBSD$
 
 PORTNAME=	ktp-accounts-kcm
-PORTVERSION=	${KTP_VERSION}
-PORTREVISION=	1
-CATEGORIES=	net-im kde
-MASTER_SITES=	KDE/${KTP_BRANCH}/kde-telepathy/${PORTVERSION}/src
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	net-im kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE instant messaging account management module
 
-LIB_DEPENDS=	libtelepathy-qt4.so:net-im/telepathy-qt4 \
-		libtelepathy-logger-qt4.so:net-im/telepathy-logger-qt4 \
-		libktpcommoninternalsprivate.so:net-im/ktp-common-internals
-RUN_DEPENDS=	${KDE_PREFIX}/bin/ktp-contactlist:net-im/ktp-contact-list
+LIB_DEPENDS=	libaccounts-qt5.so:net-im/libaccounts-qt5 \
+		libkaccounts.so:net-im/kaccounts-integration \
+		libtelepathy-qt5.so:net-im/telepathy-qt5 \
+		libtelepathy-logger-qt.so:net-im/telepathy-logger-qt5 \
+		libKTpCommonInternals.so:net-im/ktp-common-internals \
+		libKF5AkonadiPrivate.so:databases/akonadi \
+		libsignon-qt5.so:sysutils/signon-qt5
 
-USES=		cmake gettext kde:4 tar:bzip2
-USE_KDE=	kdelibs automoc4
-USE_QT4=	corelib moc_build qmake_build rcc_build uic_build
+RUN_DEPENDS=	${KDE_PREFIX}/bin/ktp-contactlist:net-im/ktp-contact-list  \
+		${QT_PLUGINDIR}/kaccounts/ui/owncloud_plugin_kaccounts.so:net-im/kaccounts-providers
+
+USES=		cmake:outsource gettext kde:5 pkgconfig qt:5 tar:xz
+USE_GNOME=	intltool
+USE_KDE=	auth codecs config configwidgets coreaddons ecm i18n \
+		iconthemes itemviews kcmutils kio notifications notifyconfig \
+		service texteditor wallet widgetsaddons windowsystem
+USE_QT=		core dbus gui network qml sql widgets xml \
+		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 
-OPTIONS_DEFINE=	HAZE IRC JABBER SALUT
+OPTIONS_DEFINE=	HAZE IRC JABBER SALUT DOCS
 OPTIONS_DEFAULT=JABBER
 
 HAZE_DESC=	libpurple protocols support

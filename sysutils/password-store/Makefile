@@ -1,16 +1,17 @@
 # $FreeBSD$
 
 PORTNAME=	password-store
-PORTVERSION=	1.7.1
-PORTREVISION=	1
+PORTVERSION=	1.7.3
 CATEGORIES=	sysutils
-MASTER_SITES=	http://git.zx2c4.com/password-store/snapshot/
+MASTER_SITES=	https://git.zx2c4.com/password-store/snapshot/
 
 MAINTAINER=	rene@FreeBSD.org
 COMMENT=	Stores, retrieves, generates, and synchronizes passwords securely
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+USES=		tar:xz
 
 RUN_DEPENDS=	bash:shells/bash \
 		getopt>=0:misc/getopt \
@@ -41,6 +42,8 @@ SUB_FILES=		pass
 
 post-patch:
 	@${REINPLACE_CMD} -Ee 's|/usr/local|${LOCALBASE}|g' ${WRKSRC}/src/platform/freebsd.sh
+	@${REINPLACE_CMD} -Ee 's|^SYSTEM_EXTENSION_DIR=""|SYSTEM_EXTENSION_DIR="${PREFIX}/lib/password-store/extensions"|g' \
+		${WRKSRC}/src/password-store.sh
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/pass ${STAGEDIR}${PREFIX}/bin/

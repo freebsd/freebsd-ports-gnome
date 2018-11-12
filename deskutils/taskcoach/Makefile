@@ -1,28 +1,29 @@
 # $FreeBSD$
 
 PORTNAME=	taskcoach
-PORTVERSION=	1.4.2
-PORTREVISION=	3
+DISTVERSION=	1.4.3
 CATEGORIES=	deskutils python
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/Release-${PORTVERSION}
 DISTNAME=	TaskCoach-${PORTVERSION}
 
-MAINTAINER=	kevlo@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Friendly task manager
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}twisted>=0:devel/py-twisted
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}twisted>=0:devel/py-twisted@${PY_FLAVOR}
 
-NO_ARCH=	yes
-USES=		python shebangfix
-USE_PYTHON=	distutils
-PYDISTUTILS_EGGINFO=${DISTNAME}-py${PYTHON_VER}.egg-info
+USES=		python:2.7 shebangfix
+SHEBANG_FILES=	taskcoach.py
+USE_PYTHON=	distutils autoplist noflavors
 USE_WX=		3.0+
 WX_COMPS=	python:lib
+NO_ARCH=	yes
 
-SHEBANG_FILES=	taskcoach.py
+PLIST_FILES=	bin/taskcoach \
+		share/applications/taskcoach.desktop \
+		share/pixmaps/taskcoach.png
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|taskcoach.py|taskcoach|' \

@@ -10,6 +10,7 @@ MAINTAINER=	trociny@FreeBSD.org
 COMMENT=	Lightweight malloc debugger
 
 LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/doc/LICENSE
 
 BUILD_DEPENDS=	mk-configure>=0.24:devel/mk-configure
 LIB_DEPENDS=	libJudy.so:devel/judy
@@ -27,6 +28,8 @@ MKCMAKE_ENV+=	LDFLAGS=-L${LOCALBASE}/lib
 
 INSTALL_TARGET=	install install-doc
 
+OPTIONS_DEFINE=	DOCS
+
 do-build:
 	${SETENV} ${MKCMAKE_ENV} ${MKCMAKE} -C ${WRKSRC}
 
@@ -34,7 +37,7 @@ do-install:
 	${SETENV} ${MKCMAKE_ENV} DESTDIR=${STAGEDIR} \
 		${MKCMAKE} -C ${WRKSRC} ${INSTALL_TARGET}
 
-regression-test: build
+do-test:
 	${SETENV} ${MKCMAKE_ENV} ${MKCMAKE} -C ${WRKSRC} test
 
 .include <bsd.port.mk>

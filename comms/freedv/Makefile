@@ -1,11 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	freedv
-PORTVERSION=	1.2
-PORTREVISION=	1
+DISTVERSION=	1.3.1
 CATEGORIES=	comms hamradio
-MASTER_SITES=	http://files.freedv.org/freedv/ \
-		LOCAL/db
+MASTER_SITES=	https://hobbes1069.fedorapeople.org/freetel/freedv/
 
 MAINTAINER=	hamradio@FreeBSD.org
 COMMENT=	Narrow band digital voice
@@ -21,8 +19,8 @@ LIB_DEPENDS=	libcodec2.so:audio/codec2 \
 		libspeex.so:audio/speex \
 		libspeexdsp.so:audio/speexdsp
 
-USE_WX=		3.0+
 USES=		cmake:outsource compiler:c++11-lib tar:xz
+USE_WX=		3.0+
 CMAKE_ARGS+=	-DCODEC2_INCLUDE_DIRS=${LOCALBASE}/include/codec2 \
 		-DCODEC2_LIBRARY=${LOCALBASE}/lib/libcodec2.so \
 		-DUSE_STATIC_CODEC2=FALSE \

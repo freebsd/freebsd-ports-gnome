@@ -13,10 +13,9 @@ man/man7/virkeycode-atset2.7.gz
 man/man7/virkeycode-atset3.7.gz
 man/man7/virkeycode-linux.7.gz
 man/man7/virkeycode-osx.7.gz
-man/man7/virkeycode-rfb.7.gz
+man/man7/virkeycode-qnum.7.gz
 man/man7/virkeycode-usb.7.gz
 man/man7/virkeycode-win32.7.gz
-man/man7/virkeycode-xt.7.gz
 man/man7/virkeycode-xtkbd.7.gz
 man/man7/virkeyname-linux.7.gz
 man/man7/virkeyname-osx.7.gz
@@ -115,6 +114,7 @@ share/augeas/lenses/tests/test_virtlogd.aug
 %%DOCSDIR%%%%PORTVERSION%%/html/contact.html
 %%DOCSDIR%%%%PORTVERSION%%/html/contribute.html
 %%DOCSDIR%%%%PORTVERSION%%/html/csharp.html
+%%DOCSDIR%%%%PORTVERSION%%/html/dbus.html
 %%DOCSDIR%%%%PORTVERSION%%/html/devguide.html
 %%DOCSDIR%%%%PORTVERSION%%/html/docs.html
 %%DOCSDIR%%%%PORTVERSION%%/html/downloads.html
@@ -221,7 +221,7 @@ share/augeas/lenses/tests/test_virtlogd.aug
 %%DOCSDIR%%%%PORTVERSION%%/html/migration-tunnel.png
 %%DOCSDIR%%%%PORTVERSION%%/html/migration-unmanaged-direct.png
 %%DOCSDIR%%%%PORTVERSION%%/html/migration.html
-%%DOCSDIR%%%%PORTVERSION%%/html/mobile.css                                   
+%%DOCSDIR%%%%PORTVERSION%%/html/mobile.css
 %%DOCSDIR%%%%PORTVERSION%%/html/news-2005.html
 %%DOCSDIR%%%%PORTVERSION%%/html/news-2006.html
 %%DOCSDIR%%%%PORTVERSION%%/html/news-2007.html
@@ -237,13 +237,15 @@ share/augeas/lenses/tests/test_virtlogd.aug
 %%DOCSDIR%%%%PORTVERSION%%/html/news.html
 %%DOCSDIR%%%%PORTVERSION%%/html/node.gif
 %%DOCSDIR%%%%PORTVERSION%%/html/nss.html
-%%DOCSDIR%%%%PORTVERSION%%/html/pci-hotplug.html   
+%%DOCSDIR%%%%PORTVERSION%%/html/pci-hotplug.html
 %%DOCSDIR%%%%PORTVERSION%%/html/php.html
+%%DOCSDIR%%%%PORTVERSION%%/html/platforms.html
 %%DOCSDIR%%%%PORTVERSION%%/html/python.html
 %%DOCSDIR%%%%PORTVERSION%%/html/remote.html
 %%DOCSDIR%%%%PORTVERSION%%/html/secureusage.html
 %%DOCSDIR%%%%PORTVERSION%%/html/securityprocess.html
 %%DOCSDIR%%%%PORTVERSION%%/html/storage.html
+%%DOCSDIR%%%%PORTVERSION%%/html/support.html
 %%DOCSDIR%%%%PORTVERSION%%/html/testapi.html
 %%DOCSDIR%%%%PORTVERSION%%/html/testsuites.html
 %%DOCSDIR%%%%PORTVERSION%%/html/testtck.html
@@ -262,11 +264,65 @@ share/gtk-doc/html/libvirt/libvirt.devhelp
 share/gtk-doc/html/libvirt/right.png
 share/gtk-doc/html/libvirt/style.css
 share/gtk-doc/html/libvirt/up.png
-%%DATADIR%%/cpu_map.xml
 %%DATADIR%%/api/libvirt-admin-api.xml
 %%DATADIR%%/api/libvirt-api.xml
 %%DATADIR%%/api/libvirt-lxc-api.xml
 %%DATADIR%%/api/libvirt-qemu-api.xml
+%%DATADIR%%/cpu_map/index.xml
+%%DATADIR%%/cpu_map/ppc64_POWER6.xml
+%%DATADIR%%/cpu_map/ppc64_POWER7.xml
+%%DATADIR%%/cpu_map/ppc64_POWER8.xml
+%%DATADIR%%/cpu_map/ppc64_POWER9.xml
+%%DATADIR%%/cpu_map/ppc64_POWERPC_e5500.xml
+%%DATADIR%%/cpu_map/ppc64_POWERPC_e6500.xml
+%%DATADIR%%/cpu_map/ppc64_vendors.xml
+%%DATADIR%%/cpu_map/x86_486.xml
+%%DATADIR%%/cpu_map/x86_Broadwell-IBRS.xml
+%%DATADIR%%/cpu_map/x86_Broadwell-noTSX-IBRS.xml
+%%DATADIR%%/cpu_map/x86_Broadwell-noTSX.xml
+%%DATADIR%%/cpu_map/x86_Broadwell.xml
+%%DATADIR%%/cpu_map/x86_Conroe.xml
+%%DATADIR%%/cpu_map/x86_EPYC-IBRS.xml
+%%DATADIR%%/cpu_map/x86_EPYC.xml
+%%DATADIR%%/cpu_map/x86_Haswell-IBRS.xml
+%%DATADIR%%/cpu_map/x86_Haswell-noTSX-IBRS.xml
+%%DATADIR%%/cpu_map/x86_Haswell-noTSX.xml
+%%DATADIR%%/cpu_map/x86_Haswell.xml
+%%DATADIR%%/cpu_map/x86_IvyBridge-IBRS.xml
+%%DATADIR%%/cpu_map/x86_IvyBridge.xml
+%%DATADIR%%/cpu_map/x86_Nehalem-IBRS.xml
+%%DATADIR%%/cpu_map/x86_Nehalem.xml
+%%DATADIR%%/cpu_map/x86_Opteron_G1.xml
+%%DATADIR%%/cpu_map/x86_Opteron_G2.xml
+%%DATADIR%%/cpu_map/x86_Opteron_G3.xml
+%%DATADIR%%/cpu_map/x86_Opteron_G4.xml
+%%DATADIR%%/cpu_map/x86_Opteron_G5.xml
+%%DATADIR%%/cpu_map/x86_Penryn.xml
+%%DATADIR%%/cpu_map/x86_SandyBridge-IBRS.xml
+%%DATADIR%%/cpu_map/x86_SandyBridge.xml
+%%DATADIR%%/cpu_map/x86_Skylake-Client-IBRS.xml
+%%DATADIR%%/cpu_map/x86_Skylake-Client.xml
+%%DATADIR%%/cpu_map/x86_Skylake-Server-IBRS.xml
+%%DATADIR%%/cpu_map/x86_Skylake-Server.xml
+%%DATADIR%%/cpu_map/x86_Westmere-IBRS.xml
+%%DATADIR%%/cpu_map/x86_Westmere.xml
+%%DATADIR%%/cpu_map/x86_athlon.xml
+%%DATADIR%%/cpu_map/x86_core2duo.xml
+%%DATADIR%%/cpu_map/x86_coreduo.xml
+%%DATADIR%%/cpu_map/x86_cpu64-rhel5.xml
+%%DATADIR%%/cpu_map/x86_cpu64-rhel6.xml
+%%DATADIR%%/cpu_map/x86_features.xml
+%%DATADIR%%/cpu_map/x86_kvm32.xml
+%%DATADIR%%/cpu_map/x86_kvm64.xml
+%%DATADIR%%/cpu_map/x86_n270.xml
+%%DATADIR%%/cpu_map/x86_pentium.xml
+%%DATADIR%%/cpu_map/x86_pentium2.xml
+%%DATADIR%%/cpu_map/x86_pentium3.xml
+%%DATADIR%%/cpu_map/x86_pentiumpro.xml
+%%DATADIR%%/cpu_map/x86_phenom.xml
+%%DATADIR%%/cpu_map/x86_qemu32.xml
+%%DATADIR%%/cpu_map/x86_qemu64.xml
+%%DATADIR%%/cpu_map/x86_vendors.xml
 %%DATADIR%%/schemas/basictypes.rng
 %%DATADIR%%/schemas/capability.rng
 %%DATADIR%%/schemas/cputypes.rng
@@ -279,6 +335,8 @@ share/gtk-doc/html/libvirt/up.png
 %%DATADIR%%/schemas/networkcommon.rng
 %%DATADIR%%/schemas/nodedev.rng
 %%DATADIR%%/schemas/nwfilter.rng
+%%DATADIR%%/schemas/nwfilter_params.rng
+%%DATADIR%%/schemas/nwfilterbinding.rng
 %%DATADIR%%/schemas/secret.rng
 %%DATADIR%%/schemas/storagecommon.rng
 %%DATADIR%%/schemas/storagepool.rng
@@ -313,7 +371,10 @@ share/gtk-doc/html/libvirt/up.png
 %%NLS%%share/locale/eu/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/fa/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/fi/LC_MESSAGES/libvirt.mo
+%%NLS%%share/locale/fil/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/fr/LC_MESSAGES/libvirt.mo
+%%NLS%%share/locale/fur/LC_MESSAGES/libvirt.mo
+%%NLS%%share/locale/ga/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/gl/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/gu/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/he/LC_MESSAGES/libvirt.mo
@@ -344,6 +405,7 @@ share/gtk-doc/html/libvirt/up.png
 %%NLS%%share/locale/mn/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/mr/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/ms/LC_MESSAGES/libvirt.mo
+%%NLS%%share/locale/my/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/nb/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/nds/LC_MESSAGES/libvirt.mo
 %%NLS%%share/locale/ne/LC_MESSAGES/libvirt.mo
@@ -388,11 +450,17 @@ lib/libvirt/connection-driver/libvirt_driver_vbox.so
 %%XEN%%lib/libvirt/connection-driver/libvirt_driver_libxl.so
 lib/libvirt/storage-backend/libvirt_storage_backend_fs.so
 %%ZFS%%lib/libvirt/storage-backend/libvirt_storage_backend_zfs.so
-%%QEMU%%@dir /var/run/libvirt/qemu
+lib/libvirt/storage-file/libvirt_storage_file_fs.so
+%%QEMU%%@dir /var/cache/libvirt/qemu
 %%QEMU%%@dir /var/lib/libvirt/qemu/channel/target
 %%QEMU%%@dir /var/lib/libvirt/qemu/channel
 %%QEMU%%@dir /var/lib/libvirt/qemu
-%%QEMU%%@dir /var/cache/libvirt/qemu
+%%QEMU%%@dir /var/lib/libvirt/swtpm
+%%QEMU%%@dir /var/log/swtpm/libvirt/qemu
+%%QEMU%%@dir /var/log/swtpm/libvirt
+%%QEMU%%@dir /var/log/swtpm
+%%QEMU%%@dir /var/run/libvirt/qemu/swtpm
+%%QEMU%%@dir /var/run/libvirt/qemu
 %%XEN%%@dir /var/lib/libvirt/libxl
 %%XEN%%@dir /var/log/libvirt/libxl
 %%XEN%%@dir /var/run/libvirt/libxl

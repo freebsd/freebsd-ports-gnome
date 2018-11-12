@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	timex_ecto
-PORTVERSION=	3.2.0
+PORTVERSION=	3.3.0
 CATEGORIES=	databases
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Adapter for using Timex DateTimes with Ecto
 
 LICENSE=	MIT
@@ -18,5 +18,7 @@ MIX_BUILD_DEPS=	databases/elixir-ecto \
 		devel/elixir-timex
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
 MIX_REWRITE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

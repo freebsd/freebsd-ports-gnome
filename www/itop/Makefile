@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	itop
-PORTVERSION=	2.3.1
+PORTVERSION=	2.4.1
 CATEGORIES=	www
 MASTER_SITES=	SF
-DISTNAME=	iTop-${PORTVERSION}-2832
+DISTNAME=	iTop-${PORTVERSION}-3714
 
-MAINTAINER=	olevole@olevole.ru
+MAINTAINER=	neel@neelc.org
 COMMENT=	Simple, web based IT Service Management tool
 
 LICENSE=	AGPLv3

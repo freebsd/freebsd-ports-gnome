@@ -4,8 +4,7 @@
 PORTNAME=	malint
 DISTVERSION=	0.2
 CATEGORIES=	audio
-MASTER_SITES=	http://www.nih.at/malint/ \
-		ftp://sunsite.univie.ac.at/pub/nih/malint/ \
+MASTER_SITES=	https://www.nih.at/malint/ \
 		LOCAL/ehaupt
 
 MAINTAINER=	ehaupt@FreeBSD.org

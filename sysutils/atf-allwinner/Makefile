@@ -1,21 +1,23 @@
 # $FreeBSD$
 
 PORTNAME=	atf-allwinner
-PORTVERSION=	1.2.20170726
+PORTVERSION=	1.2.20180112
 CATEGORIES=	sysutils
 MASTER_SITES=	GH
 
-MAINTAINER=	manu@freebsd.org
+MAINTAINER=	manu@FreeBSD.org
 COMMENT=	Arm Trusted Framework for Allwinner SoCs
 
-LICENSE=	BSD
+LICENSE=	BSD2CLAUSE BSD3CLAUSE GPLv2+
+LICENSE_COMB=	multi
+LICENSE_FILE_BSD3CLAUSE=	${WRKSRC}/license.md
 
 BUILD_DEPENDS=	aarch64-none-elf-gcc:devel/aarch64-none-elf-gcc
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	apritzel
 GH_PROJECT=	arm-trusted-firmware
-GH_TAGNAME=	87e8aed
+GH_TAGNAME=	ae78724
 
 SSP_UNSAFE=	yes
 USES=	gmake

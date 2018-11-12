@@ -1,11 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	kanboard
-PORTVERSION=	1.0.46
+PORTVERSION=	1.2.5
+DISTVERSIONPREFIX=	v
 CATEGORIES=	www
-MASTER_SITES=	http://kanboard.net/ \
-		https://bitbucket.org/if0/kanboard-archives/downloads/ \
-		https://github.com/freebsd-kanboard/archives/raw/master/
 
 MAINTAINER=	bsd@if0.eu
 COMMENT=	Simple visual task board software
@@ -13,10 +11,10 @@ COMMENT=	Simple visual task board software
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-WRKSRC=		${WRKDIR}/${PORTNAME}
 NO_BUILD=	yes
 NO_ARCH=	yes
-USES=		php zip
+USES=		php
+USE_GITHUB=	yes
 USE_PHP=	ctype curl dom gd hash filter iconv json mcrypt mbstring \
 		openssl pdo session simplexml \
 		zlib xml

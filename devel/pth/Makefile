@@ -21,7 +21,6 @@ CONFIGURE_ARGS=	--enable-optimize \
 USES=		libtool
 USE_LDCONFIG=	${PREFIX}/lib/pth
 
-
 OPTIONS_DEFINE=	OPTIMIZED_CFLAGS
 OPTIONS_DEFAULT=	OPTIMIZED_CFLAGS
 
@@ -31,10 +30,10 @@ CONFLICTS?=	pth-hard-2.*
 
 .if ${PKGNAMESUFFIX} == "-hard"
 CONFIGURE_ARGS+=	--enable-syscall-hard --disable-syscall-soft
-PLIST_SUB=	PTHREAD="@comment "
+PLIST_SUB+=	PTHREAD="@comment "
 .else
 CONFIGURE_ARGS+=	--enable-syscall-soft --enable-pthread
-PLIST_SUB=	PTHREAD=""
+PLIST_SUB+=	PTHREAD=""
 .endif
 
 post-patch:

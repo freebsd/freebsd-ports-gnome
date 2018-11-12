@@ -11,8 +11,8 @@ MASTER_SITES=	http://www.fishies.org.uk/ \
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Fly a little plane around and shoot things and drop bombs
 
+USES=		compiler dos2unix
 USE_SDL=	sdl
-USES=		dos2unix
 DOS2UNIX_GLOB=	*.cpp
 SUB_FILES=	${PORTNAME}
 
@@ -20,6 +20,10 @@ PLIST_FILES=	bin/${PORTNAME} libexec/${PORTNAME}
 PORTDATA=	*
 PORTDOCS=	*
 CPPFLAGS+=	-DAP_PATH="\"${DATADIR}/\""
+LLD_UNSAFE=	yes
+
+CXXFLAGS+=	${CXXFLAGS_${CHOSEN_COMPILER_TYPE}}
+CXXFLAGS_clang=	-Wno-c++11-narrowing
 
 DESKTOP_ENTRIES="Apricots" \
 		"${COMMENT}" \

@@ -3,7 +3,7 @@
 
 PORTNAME=	ibus-libpinyin
 PORTVERSION=	1.7.2
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	chinese
 MASTER_SITES=	SF/libpinyin/${PORTNAME}
 
@@ -12,12 +12,15 @@ COMMENT=	Intelligent Pinyin engine based on libpinyin for IBus
 
 LICENSE=	GPLv2
 
+BROKEN_powerpc64=	fails to compile: PYLibPinyin.cc:222:54: 'getline' was not declared in this scope
+
 LIB_DEPENDS=	libsqlite3.so:databases/sqlite3 \
 		libibus-1.0.so:textproc/ibus \
 		libpinyin.so:chinese/libpinyin
 
 USES=		compiler:c++11-lib gmake python pkgconfig gettext
 USE_GNOME=	glib20
+USE_PYTHON=	py3kplist
 
 WRKSRC=	${WRKDIR}/${DISTNAME}
 

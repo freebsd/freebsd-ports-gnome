@@ -17,7 +17,7 @@ LIB_DEPENDS=		libnspr4.so:devel/nspr
 
 CONFLICTS=		njs-[0-9]*
 
-USES=			gmake pathfix perl5 pkgconfig python:2,build
+USES=			gmake pathfix perl5 pkgconfig python:2.7,build
 GNU_CONFIGURE=		yes
 USE_LDCONFIG=		yes
 USE_PERL5=		build
@@ -110,7 +110,7 @@ PLIST_SUB+=	SPARC="@comment "
 pre-configure:
 	(cd ${WRKSRC} && ${LOCALBASE}/bin/autoconf-2.13)
 
-regression-test: build
+do-test:
 	@${ECHO_MSG} -n "===> Running jstests.py: "
 	@cd ${WRKSRC} && ${SETENV} TZ=PST8PDT ${PYTHON_CMD} tests/jstests.py \
 	--no-progress --worker-count=${MAKE_JOBS_NUMBER} ./js

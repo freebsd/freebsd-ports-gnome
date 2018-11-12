@@ -2,66 +2,51 @@
 # $FreeBSD$
 
 PORTNAME=	chicken
-PORTVERSION=	4.12.0
+DISTVERSION=	4.13.0
 PORTEPOCH=	1
 CATEGORIES=	lang scheme
-MASTER_SITES=	http://code.call-cc.org/releases/${PORTVERSION}/
+MASTER_SITES=	http://code.call-cc.org/releases/${DISTVERSION}/
 
-MAINTAINER=	vmagerya@gmail.com
+MAINTAINER=	tobik@FreeBSD.org
 COMMENT=	Scheme-to-C compiler
 
 USES=		cpe gmake
 CPE_VENDOR=	call-cc
 MAKEFILE=	GNUmakefile
 USE_LDCONFIG=	yes
-MAKE_ARGS+=	PLATFORM=bsd \
+MAKE_ARGS=	PLATFORM=bsd \
 		PREFIX=${PREFIX} \
 		MANDIR=${PREFIX}/man \
 		LIBDIR="${PREFIX}/lib" \
 		DOCDIR="${DOCSDIR}" \
-		ARCH=${NEW_ARCH} \
 		C_COMPILER="${CC}" \
 		CXX_COMPILER="${CXX}" \
 		LIBRARIAN="${AR}" \
-		C_COMPILER_OPTIMIZATION_OPTIONS="${CFLAGS}"
-
-NEW_ARCH=	${ARCH:S/i386/x86/:S/amd64/x86-64/}
+		C_COMPILER_OPTIMIZATION_OPTIONS="${CFLAGS}" \
+		LINKER_OPTIONS="${LDFLAGS}"
+TEST_TARGET=	check
 
 OPTIONS_DEFINE=	DOCS FEATHERS
-FEATHERS_DESC=	Install the Feathers debugger (requires Tcl/Tk)
-
-FEATHERS_RUN_DEPENDS=\
-		wish:x11-toolkits/tk-wrapper
-
 OPTIONS_SUB=	yes
 
-.include <bsd.port.pre.mk>
+# XXX: This should be a subpackage and on by default
+FEATHERS_DESC=	Install the Feathers debugger (requires Tcl/Tk)
 
-.if !${PORT_OPTIONS:MFEATHERS}
-post-patch:
-	${REINPLACE_CMD} \
+FEATHERS_USES=	tk:wrapper,run
+
+post-patch-FEATHERS-off:
+	@${REINPLACE_CMD} \
 		-e 's/feathers.1//g' \
 		-e '/INSTALL_PROGRAM.*_DEBUGGER_/{N;d;}' \
 		-e '/INSTALL_PROGRAM.*feathers/d' \
 		${WRKSRC}/rules.make
-.endif
 
 post-install:
+	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/c* \
+		${STAGEDIR}${PREFIX}/lib/chicken/?/*.so \
+		${STAGEDIR}${PREFIX}/lib/libchicken.so
+
+post-install-DOCS-on:
 	${INSTALL_DATA} ${WRKSRC}/NEWS ${STAGEDIR}${DOCSDIR}
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/chicken
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/chicken-bug
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/chicken-install
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/chicken-profile
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/chicken-status
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/chicken-uninstall
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/csc
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/csi
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/chicken/8/*.so
-	${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/libchicken.so.8
 
-# This only works *after* chicken is installed.
-regression-test: build
-	(cd ${BUILD_WRKSRC}; ${SETENV} ${MAKE_ENV} \
-		${MAKE_CMD} ${MAKE_FLAGS} ${MAKEFILE} ${MAKE_ARGS} check)
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

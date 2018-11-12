@@ -3,7 +3,7 @@
 
 PORTNAME=	libde265
 PORTVERSION=	1.0.2
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONPREFIX=	v
 CATEGORIES=	multimedia
 
@@ -18,5 +18,6 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-sherlock265 --disable-dec265
 
 BROKEN_armv6=		fails to compile: invokes x86 assembler
+BROKEN_armv7=		fails to compile: invokes x86 assembler
 
 .include <bsd.port.mk>

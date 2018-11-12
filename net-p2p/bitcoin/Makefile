@@ -2,12 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	bitcoin
-PORTVERSION=	0.14.2
-DISTVERSIONPREFIX=	v
-PORTREVISION=	2
+PORTVERSION=	0.16.3
+PORTREVISION?=	0
 CATEGORIES=	net-p2p finance
+MASTER_SITES=	https://bitcoincore.org/bin/bitcoin-core-${PORTVERSION}/:DEFAULT \
+		LOCAL/swills:icon
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX} bitcoin128.png:icon
+DIST_SUBDIR=	${PORTNAME}
+EXTRACT_ONLY=	${_DISTFILES:N*.png}
 
-MAINTAINER=	robbak@robbak.com
+MAINTAINER=	kbowling@FreeBSD.org
 COMMENT?=	Virtual Peer-to-Peer Currency Client (QT)
 
 LICENSE=	MIT
@@ -15,40 +19,42 @@ LICENSE=	MIT
 LIB_DEPENDS=	libboost_date_time.so:devel/boost-libs \
 		libevent.so:devel/libevent
 
-BROKEN_powerpc64=	fails to compile: util.cpp: undefined reference to boost::program_options::to_internal
-
-USES=		autoreconf compiler:c++11-lib gmake libtool pkgconfig shebangfix ssl
-SHEBANG_FILES=	src/test/*.py
-USE_GITHUB=	yes
+USES=		autoreconf compiler:c++11-lib gmake libtool pkgconfig qt:5 shebangfix ssl
 GNU_CONFIGURE=	yes
 
 SLAVE_PORT?=	no
 
 .if defined(SLAVE_PORT) && ${SLAVE_PORT} == "no"
 USES+=		desktop-file-utils
-USE_QT5=	core gui network widgets \
+USE_QT=		core gui network widgets \
 		buildtools_build linguisttools_build qmake_build
 
 BUILD_DEPENDS+=	protoc:devel/protobuf
 LIB_DEPENDS+=	libprotobuf.so:devel/protobuf
 
-TESTS_USE=		QT5=testlib
+TESTS_USES=	qt:5
+TESTS_USE=		QT=testlib
 TESTS_PLIST_FILES=	bin/test_bitcoin-qt \
 			bin/test_bitcoin
 .endif
 
-OPTIONS_DEFINE?=	DBUS DEBUG HARDENING QRCODES TESTS UPNP WALLET ZMQ
-OPTIONS_DEFAULT?=	DBUS HARDENING QRCODES UPNP WALLET
+OPTIONS_DEFINE?=	DBUS DEBUG HARDENING QRCODES TESTS UPNP ZMQ
+OPTIONS_RADIO?=		WALLET
+OPTIONS_RADIO_WALLET?=	WALLET_BDB48 WALLET_BDBMODERN
+OPTIONS_DEFAULT?=	DBUS HARDENING QRCODES UPNP WALLET_BDBMODERN
 OPTIONS_SUB=		yes
 
 HARDENING_DESC=	Attempt to harden binaries (PIE for ASLR, NX Stack)
 QRCODES_DESC=	Display QR Codes
 TESTS_DESC=	Build test binary and unit tests
 WALLET_DESC=	Wallet Management Support
+WALLET_BDB48_DESC=	Wallet using BDB 4.8
+WALLET_BDBMODERN_DESC=	Wallet using modern BDB 5.x or 6.x
 ZMQ_DESC=	Block and transaction broadcasting with ZeroMQ
 
 DBUS_CONFIGURE_WITH=	dbus
-DBUS_USE=		QT5=dbus
+DBUS_USES=	qt:5
+DBUS_USE=		QT=dbus
 
 DEBUG_CONFIGURE_ENABLE=		debug
 DEBUG_INSTALL_TARGET_OFF=	install-strip
@@ -69,11 +75,6 @@ UPNP_LIBS=		-L${LOCALBASE}/lib
 QRCODES_CONFIGURE_WITH=	qrencode
 QRCODES_LIB_DEPENDS=	libqrencode.so:graphics/libqrencode
 
-WALLET_CONFIGURE_ENABLE=	wallet
-WALLET_CXXFLAGS=		-I${BDB_INCLUDE_DIR}
-WALLET_LIBS=			-L${BDB_LIB_DIR}
-WALLET_USES=			bdb:48
-
 ZMQ_CONFIGURE_ENABLE=	zmq
 ZMQ_BUILD_DEPENDS=	libzmq4>0:net/libzmq4
 ZMQ_RUN_DEPENDS=	libzmq4>0:net/libzmq4
@@ -93,14 +94,35 @@ MAKE_ENV+=	V=1
 PLIST_FILES?=	bin/bitcoin-qt man/man1/bitcoin-qt.1.gz \
 		share/applications/bitcoin-qt.desktop share/pixmaps/bitcoin128.png
 
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MWALLET_BDB48}
+CONFIGURE_ARGS+=	--enable-wallet
+USES+=			bdb:48
+.elif ${PORT_OPTIONS:MWALLET_BDBMODERN}
+CONFIGURE_ARGS+=	--enable-wallet --with-incompatible-bdb
+USES+=			bdb:5+
+.else
+CONFIGURE_ARGS+=	--disable-wallet
+.endif
+
+.include <bsd.port.pre.mk>
+
+.if ${PORT_OPTIONS:MWALLET_BDB48} || ${PORT_OPTIONS:MWALLET_BDBMODERN}
+CPPFLAGS+=	-I${BDB_INCLUDE_DIR}
+LIBS+=		-L${BDB_LIB_DIR}
+.endif
+
+.if ${OSVERSION} < 1100000
+CONFIGURE_ARGS+=--disable-asm
+.endif
+
 .if defined(SLAVE_PORT) && ${SLAVE_PORT} == "no"
 
 post-install:
-	${REINPLACE_CMD} -e 's,=/usr,=${PREFIX},' \
-		${WRKSRC}/contrib/debian/bitcoin-qt.desktop
-	${INSTALL} ${WRKSRC}/contrib/debian/bitcoin-qt.desktop \
+	${INSTALL} ${FILESDIR}/bitcoin-qt.desktop \
 		${STAGEDIR}${PREFIX}/share/applications
-	${INSTALL} ${WRKSRC}/share/pixmaps/bitcoin128.png \
+	${INSTALL} ${DISTDIR}/${DIST_SUBDIR}/bitcoin128.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps/
 
 .endif
@@ -111,4 +133,4 @@ regression-test: build
 
 	@cd ${WRKSRC} && ${GMAKE} check
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

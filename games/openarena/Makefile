@@ -2,15 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	openarena
-DISTVERSION=	${GAMEVERSION}.s${SVNREVISION}
-PORTREVISION=	3
-PORTEPOCH=	1
+PORTVERSION=	${GAMEVERSION}.s${SVNREVISION}
+PORTEPOCH=	2
 MASTER_SITES=	SF/oarena/src \
 		http://files.poulsander.com/~poul19/public_files/oa/dev088/
 DISTNAME=	${PORTNAME}-engine-source-${GAMEVERSION}
 EXTRACT_SUFX=	.tar.bz2 # override master port
 
-MAINTAINER=	kami@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Quake3 total conversion based on the ioquake3 engine
 
 LICENSE?=	GPLv2

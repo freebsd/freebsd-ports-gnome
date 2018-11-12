@@ -2,15 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	gedit
-PORTVERSION=	3.22.0
+PORTVERSION=	3.28.1
 CATEGORIES=	editors gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Small but powerful text editor for GNOME 3 Desktop Environment
 
-LICENSE=	GPLv2
+LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
@@ -23,14 +23,16 @@ LIB_DEPENDS=	libenchant.so:textproc/enchant \
 		libsoup-2.4.so:devel/libsoup
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
-		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py3-libpeas
+		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR}
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake gnome libtool localbase \
-		pathfix pkgconfig python:3.2+ tar:xz
+USES=		compiler:c11 desktop-file-utils gettext gmake gnome libtool \
+		localbase pathfix pkgconfig python:3.4+ shebangfix tar:xz
+USE_CSTD=	c11
 USE_GNOME=	cairo gdkpixbuf2 gtksourceview3 intlhack introspection \
-		libxml2 py3gobject3
+		libxml2 pygobject3
+SHEBANG_FILES=	plugins/externaltools/data/send-to-fpaste.tool.in
 USE_XORG=	sm x11
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-updater \
@@ -40,6 +42,7 @@ CPPFLAGS+=	-Wno-error=format-nonliteral
 CFLAGS+=	-Wno-error=format-nonliteral
 LDFLAGS+=	-L${LOCALBASE}/lib
 USE_LDCONFIG=	yes
+SHEBANG_FILES=	plugins/externaltools/data/send-to-fpaste.tool.in
 PLIST_SUB=	VERSION="3.14"
 INSTALL_TARGET=	install-strip
 

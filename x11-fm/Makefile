@@ -6,6 +6,7 @@
     SUBDIR += caja
     SUBDIR += catseye-fm
     SUBDIR += deforaos-browser
+    SUBDIR += dolphin
     SUBDIR += doublecmd
     SUBDIR += emelfm2
     SUBDIR += ezfm
@@ -13,14 +14,15 @@
     SUBDIR += gentoo
     SUBDIR += gnome-commander2
     SUBDIR += gprename
+    SUBDIR += konqueror
     SUBDIR += krusader2
+    SUBDIR += krusader2-kde4
     SUBDIR += librfm
     SUBDIR += libtubo
     SUBDIR += mtoolsfm
     SUBDIR += mucommander
     SUBDIR += nautilus
     SUBDIR += nemo
-    SUBDIR += p5-PerlFM
     SUBDIR += pcmanfm
     SUBDIR += pcmanfm-qt
     SUBDIR += pcmanfmqt-l10n

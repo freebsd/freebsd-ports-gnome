@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	redis
-DISTVERSION=	4.0.1
+DISTVERSION=	5.0-rc5
 CATEGORIES=	databases
-MASTER_SITES=	http://download.redis.io/releases/
 PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	osa@FreeBSD.org
@@ -12,24 +11,32 @@ COMMENT=	Persistent key-value database with built-in net interface
 
 LICENSE=	BSD3CLAUSE
 
-BROKEN_i386=	undefined reference to __atomic_fetch_add_8
+USE_GITHUB=	yes
+GH_ACCOUNT=	antirez
 
-USES=		execinfo
-
-OPTIONS_DEFINE=	TESTS TRIB
+OPTIONS_DEFINE=	JEMALLOC TESTS TRIB
 OPTIONS_RADIO=	EXTLUA
 OPTIONS_RADIO_EXTLUA=	LUA LUAJIT
 OPTIONS_SUB=	yes
+JEMALLOC_DESC=	Use jemalloc
 LUA_DESC=	Use lang/lua instead of builtin lua
 LUAJIT_DESC=	Use lang/luajit instead of builtin lua
 TESTS_DESC=	Install lang/tcl for redis unit tests
 TRIB_DESC=	Install redis-trib.rb (lang/ruby req.)
 
+USES+=		gmake
+MAKE_ENV=	"V=yo"
+
 .include <bsd.port.options.mk>
 
 .if ${ARCH} == i386 && ! ${CFLAGS:M-march=*}
 # Needed for __atomic_fetch_add_8
+USE_GCC=	yes
 CFLAGS+=	-march=i586
+.endif
+
+.if ${PORT_OPTIONS:MJEMALLOC}
+MAKE_ENV=	"USE_JEMALLOC=yes"
 .endif
 
 .if ${PORT_OPTIONS:MTRIB}
@@ -57,18 +64,13 @@ LDFLAGS+=	-Wl,-E
 USES+=		tcl:build
 .endif
 
-CFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib -lpthread -lm -lexecinfo
+LDFLAGS+=	-lpthread -lm -lexecinfo
 
-CONFLICTS?=	redis-3.*
+CONFLICTS?=	redis-4.*
 
-USES+=		gmake
-MAKE_ENV=	"V=yo"
 USE_RC_SUBR=	redis sentinel
 BIN_FILES=	redis-benchmark redis-check-aof redis-check-rdb \
 		redis-cli redis-sentinel redis-server
-
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 USERS=	redis
 GROUPS=	redis
@@ -90,8 +92,11 @@ PLIST_SUB+=	REDIS_USER=${USERS} \
 	REDIS_DBDIR=${REDIS_DBDIR} \
 	REDIS_RUNDIR=${REDIS_RUNDIR}
 
-.if ${PORT_OPTIONS:MLUAJIT} || ${PORT_OPTIONS:MLUA}
 post-patch:
+.if ${PORT_OPTIONS:MJEMALLOC}
+	@${REINPLACE_CMD} '35s!Linux!FreeBSD!g' ${WRKSRC}/src/Makefile
+.endif
+.if ${PORT_OPTIONS:MLUAJIT} || ${PORT_OPTIONS:MLUA}
 	@cd ${WRKSRC}/deps/lua/src && ${CP} fpconv.* lua_* strbuf.* ${WRKSRC}/src/
 .endif
 
@@ -110,7 +115,7 @@ do-install:
 		${STAGEDIR}${REDIS_DBDIR} \
 		${STAGEDIR}${REDIS_RUNDIR}
 
-regression-test: build
+do-test:
 	@cd ${WRKSRC} && ${TCLSH} tests/test_helper.tcl
 
 .include <bsd.port.mk>

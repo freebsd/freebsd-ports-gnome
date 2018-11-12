@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	sphinx_rtd_theme
-PORTVERSION=	0.2.4
+PORTVERSION=	0.4.0
 CATEGORIES=	textproc python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -13,7 +13,7 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 NO_ARCH=	yes
-USES?=		python
+USES=		python
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

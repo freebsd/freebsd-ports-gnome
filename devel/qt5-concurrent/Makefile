@@ -8,8 +8,8 @@ PKGNAMEPREFIX=	qt5-
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt multi-threading module
 
-USE_QT5=	core qmake_build buildtools_build
-QT_DIST=	base
+USES=		qmake:no_env qt-dist:5,base
+USE_QT=		core qmake_build buildtools_build
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	-no-gui -no-xcb
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}
@@ -19,5 +19,11 @@ INSTALL_WRKSRC=	${BUILD_WRKSRC}
 
 QT_DEFINES=	CONCURRENT
 QT_CONFIG=	concurrent
+
+post-configure:
+.for d in src/concurrent
+	${MKDIR} ${WRKSRC}/${d}
+	cd ${WRKSRC}/${d} && ${SETENV} ${QMAKE_ENV} ${_QMAKE} ${QMAKE_ARGS} ${WRKSRC}/${d}
+.endfor
 
 .include <bsd.port.mk>

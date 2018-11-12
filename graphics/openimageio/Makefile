@@ -3,8 +3,8 @@
 
 PORTNAME=	openimageio
 PORTVERSION=	1.7.17
-PORTREVISION=	1
 DISTVERSIONPREFIX=	Release-
+PORTREVISION=	14
 CATEGORIES?=	graphics multimedia
 
 MAINTAINER?=	FreeBSD@Shaneware.biz
@@ -14,8 +14,8 @@ LICENSE=	BSD3CLAUSE
 
 LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 		libImath.so:graphics/ilmbase \
-		libIlmImf.so:graphics/OpenEXR \
-		libpng16.so:graphics/png \
+		libIlmImf.so:graphics/openexr \
+		libpng.so:graphics/png \
 		libtiff.so:graphics/tiff \
 		libwebp.so:graphics/webp \
 		libhdf5.so:science/hdf5
@@ -58,10 +58,11 @@ GIF_CMAKE_ON=		-DUSE_GIF:BOOL=ON
 GIF_CMAKE_OFF=		-DUSE_GIF:BOOL=OFF
 GIF_LIB_DEPENDS=	libgif.so:graphics/giflib
 
+IMAGEVIEWER_USES=	qt:4
 IMAGEVIEWER_CMAKE_ON=	-DUSE_QT:BOOL=ON -DUSE_OPENGL:BOOL=ON
 IMAGEVIEWER_CMAKE_OFF=	-DUSE_OPENGL:BOOL=OFF -DUSE_QT:BOOL=OFF
 IMAGEVIEWER_USE=	GL=gl,glu,glew \
-			QT4=corelib,gui,opengl,qmake_build,moc_build,rcc_build,uic_build
+			QT=corelib,gui,opengl,qmake_build,moc_build,rcc_build,uic_build
 
 OCIO_CMAKE_ON=		-DUSE_OCIO:BOOL=ON
 OCIO_CMAKE_OFF=		-DUSE_OCIO:BOOL=OFF
@@ -94,10 +95,10 @@ CMAKE_ARGS+=	-DUSE_PYTHON:BOOL=OFF -DUSE_PYTHON3:BOOL=OFF \
 		-DOIIO_BUILD_TOOLS:BOOL=ON
 .else
 LIB_DEPENDS+=	libOpenImageIO.so:graphics/openimageio \
-		libboost_python.so:devel/boost-python-libs
+		${PY_BOOST}
 PLIST=		${PKGDIR}/pkg-plist-pybind
-#while oiio supports py3, ports doesn't have py3 support for boost-python yet
-USES+=		python:2
+USES+=		python
+USE_PYTHON=	flavors
 CMAKE_ARGS+=	-DUSE_PYTHON:BOOL=ON -DUSE_PYTHON3:BOOL=OFF \
 		-DOIIO_BUILD_TOOLS:BOOL=OFF -DUSE_FFMPEG:BOOL=OFF
 .endif
@@ -105,6 +106,8 @@ CMAKE_ARGS+=	-DUSE_PYTHON:BOOL=ON -DUSE_PYTHON3:BOOL=OFF \
 post-patch:
 	@${REINPLACE_CMD} -e 's|share/doc/OpenImageIO|${DOCSDIR}|g' \
 		${WRKSRC}/CMakeLists.txt
+	${REINPLACE_CMD} -e '/find_/s/ boost_python[[:>:]]/ ${PY_BOOST_LIB}/' \
+		${WRKSRC}/src/cmake/externalpackages.cmake
 
 post-install:
 .if ${SLAVE_PORT} == no

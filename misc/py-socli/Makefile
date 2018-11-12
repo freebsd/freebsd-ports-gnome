@@ -12,13 +12,13 @@ COMMENT=	Stack overflow command line interface
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}colorama>=0:devel/py-colorama \
-		${PYTHON_PKGNAMEPREFIX}stackexchange>=0:devel/py-stackexchange \
-		${PYTHON_PKGNAMEPREFIX}urwid>=0:devel/py-urwid \
-		${PYTHON_PKGNAMEPREFIX}beautifulsoup>=0:www/py-beautifulsoup \
-		${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}colorama>=0:devel/py-colorama@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}stackexchange>=0:devel/py-stackexchange@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}urwid>=0:devel/py-urwid@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}beautifulsoup>=0:www/py-beautifulsoup@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR}
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	autoplist concurrent distutils
 
 USE_GITHUB=	yes

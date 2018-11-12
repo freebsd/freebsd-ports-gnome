@@ -1,18 +1,20 @@
-AMD_UCODE_DIR=	amd-ucode
-AMD_UCODE=	$(AMD_UCODE_DIR)/microcode_amd.bin \
-		$(AMD_UCODE_DIR)/microcode_amd_fam15h.bin \
-		$(AMD_UCODE_DIR)/microcode_amd_fam16h.bin
-INTEL_UCODE=	microcode.dat
-OUTPUT_DIR=	mcodes
-all:	ucode
-ucode:	ucode-tool
-	mkdir -p $(OUTPUT_DIR)
-	./ucode-tool -o $(OUTPUT_DIR) -i $(INTEL_UCODE)
-	./ucode-tool -o $(OUTPUT_DIR) -a $(AMD_UCODE)
+# $FreeBSD$
 
-# Use the host cc to compile ucode-tool in case of cross-compile
-ucode-tool: ucode-tool.c
-	cc ucode-tool.c -o $@
+INTEL_UCODE=	intel-ucode
+OUTPUT_DIR=	mcodes
+
+all:	ucode
+ucode:	ucode-split
+	mkdir -p $(OUTPUT_DIR)
+	cd ${OUTPUT_DIR} && \
+	for file in \
+	  ../${INTEL_UCODE}/[0-9,a-f][0-9,a-f]-[0-9,a-f][0-9,a-f]-[0-9,a-f][0-9,a-f]; do \
+		../ucode-split $$file; \
+	done
+
+# Use the host cc to compile ucode-split in case of cross-compile
+ucode-split: ucode-split.c
+	cc ucode-split.c -o $@
 
 clean:
-	rm -rf $(OUTPUT_DIR) ucode-tool
+	rm -rf $(OUTPUT_DIR) ucode-split

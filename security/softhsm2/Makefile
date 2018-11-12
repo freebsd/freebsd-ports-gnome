@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	softhsm
-PORTVERSION=	2.3.0
+PORTVERSION=	2.4.0
 PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	http://dist.opendnssec.org/source/ \
@@ -27,9 +27,11 @@ USE_LDCONFIG=	yes
 
 LIB_DEPENDS+=		libcppunit.so:devel/cppunit
 
-OPTIONS_DEFINE=		SQLITE
+OPTIONS_DEFINE=		SQLITE MIGRATE
+MIGRATE_IMPLIES=	SQLITE
 OPTIONS_SUB=		yes
 SQLITE_DESC=		Build with object store backend DB support (SQLITE3)
+MIGRATE_DESC=		Build the migration tool
 
 OPTIONS_SINGLE=		CRYP
 OPTIONS_SINGLE_CRYP=	CRYP_OPEN CRYP_BOTAN
@@ -37,10 +39,11 @@ OPTIONS_SINGLE_CRYP=	CRYP_OPEN CRYP_BOTAN
 CRYP_OPEN_DESC=		Build with OpenSSL crypto library
 CRYP_BOTAN_DESC=	Build with Botan crypto library
 
-OPTIONS_DEFAULT=	CRYP_OPEN
+OPTIONS_DEFAULT=	CRYP_OPEN SQLITE MIGRATE
 
 SQLITE_CONFIGURE_WITH=	sqlite3=${LOCALBASE} objectstore-backend-db
 SQLITE_USES=		sqlite
+MIGRATE_CONFIGURE_WITH=	migrate
 
 CRYP_BOTAN_CONFIGURE_ON=	--with-crypto-backend=botan
 CRYP_BOTAN_LIB_DEPENDS=	libbotan-1.10.so:security/botan110
@@ -56,5 +59,10 @@ CONFIGURE_ARGS+=	--disable-gost
 .if ${SSL_DEFAULT:Mopenssl-devel}
 CONFIGURE_ARGS+=	--disable-gost
 .endif
+
+post-install:
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/p11-kit/modules
+	${INSTALL_DATA} ${WRKSRC}/softhsm2.module \
+		${STAGEDIR}${PREFIX}/share/p11-kit/modules
 
 .include <bsd.port.mk>

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	javavmwrapper
-PORTVERSION=	2.5
-PORTREVISION=	2
+PORTVERSION=	2.6
 CATEGORIES=	java
 MASTER_SITES=	# none
 DISTFILES=	# none
@@ -11,7 +10,14 @@ DISTFILES=	# none
 MAINTAINER=	glewis@FreeBSD.org
 COMMENT=	Wrapper script for various Java Virtual Machines
 
+LICENSE=	BEERWARE BSD2CLAUSE
+LICENSE_COMB=	multi
+LICENSE_NAME_BEERWARE=	"THE BEER-WARE LICENSE" (Revision 42, (c) Poul-Henning Kamp)
+LICENSE_TEXT_BEERWARE=	See ${SRC}/javavmwrapper.sh for license text
+LICENSE_PERMS_BEERWARE=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
+
 NO_BUILD=	yes
+NO_ARCH=	yes
 NO_WRKSUBDIR=	yes
 
 PKGINSTALL=	${WRKDIR}/pkg-install

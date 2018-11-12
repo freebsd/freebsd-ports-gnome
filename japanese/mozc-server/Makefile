@@ -4,7 +4,7 @@
 PORTNAME=	mozc
 PORTVERSION=	2.20.2677.102.02
 DISTVERSIONPREFIX=	v
-PORTREVISION=	7
+PORTREVISION=	12
 CATEGORIES=	japanese
 
 MAINTAINER=	hrs@FreeBSD.org
@@ -48,8 +48,9 @@ LICENSE_PERMS_NAISTL=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 LICENSE_FILE_NAISTL=	${WRKSRC}/src/data/dictionary_oss/README.txt
 LICENSE_DISTFILES_NAISTL=${DISTNAME}${EXTRACT_SUFX}
 .elif ${BUILD_MOZC_LIST:Mmozc_tool} == "mozc_tool"
+USES+=		qt:5
 USE_GNOME=	glib20 gtk20
-USE_QT5=	buildtools core gui widgets
+USE_QT=		buildtools core gui widgets
 .elif ${BUILD_MOZC_LIST:Mibus_mozc} == "ibus_mozc"
 USES+=		gettext-runtime
 USE_XORG=	xcb
@@ -57,7 +58,7 @@ USE_GNOME=	cairo gdkpixbuf2 glib20 gtk20
 LIB_DEPENDS+=	libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
 .elif ${BUILD_MOZC_LIST:Mmozc_el} == "mozc_el"
-USE_EMACS=	yes
+USES+=		emacs
 .elif ${BUILD_MOZC_LIST:Mfcitx_mozc}
 USES+=		gettext-tools
 .endif
@@ -85,6 +86,7 @@ BUILD_MODE=	Release
 BUILD_CMD=	${SETENV} ${MAKE_ENV} PATH=/bin:/usr/bin:${PATH} ${MAKE_CMD}
 BUILD_MOZC_CMD=	cd ${BUILD_WRKSRC} && \
 		${SETENV} BUILD_COMMAND="${BUILD_WRKSRC}/mozcmake" \
+		    PATH="${PATH}" \
 		    GYP_DEFINES="${GYP_DEFINES}" \
 		    PYTHONPATH=${PYTHON_SITELIBDIR}/gyp \
 		    CC_host="${CC}" \
@@ -93,6 +95,7 @@ BUILD_MOZC_CMD=	cd ${BUILD_WRKSRC} && \
 		    CXX_target="${CXX}" \
 		    LD_host="${CXX}" \
 		    AR_host="${AR}" \
+		    ${MAKE_ENV} \
 		    ${PYTHON_CMD} build_mozc.py
 BUILD_MOZC_CMD_BUILD=	${BUILD_MOZC_CMD} build -c ${BUILD_MODE} ${_MAKE_JOBS}
 BUILD_GYP_CMD=	${SETENV} ${MAKE_ENV} ${LOCALBASE}/bin/gyp

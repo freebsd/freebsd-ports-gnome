@@ -4,15 +4,19 @@
 PORTNAME=	mixxx
 PORTVERSION=	2.0.0
 DISTVERSIONSUFFIX=	-src
-PORTREVISION=	4
+PORTREVISION=	9
 CATEGORIES=	audio
 MASTER_SITES=	http://downloads.mixxx.org/${PORTNAME}-${PORTVERSION}/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	acm@FreeBSD.org
 COMMENT=	DJ mixing application
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BROKEN_aarch64=		fails to compile: Exception("invalid machine type")
+BROKEN_powerpc64=	fails to configure: unmet dependencies: Could not find libprotobuf, libchromaprint, libmp4, and libwavpack
+IGNORE=		it will be updated to mixxx 2.1.0. FLAVOR needs portmgr approval
 
 LIB_DEPENDS=	libchromaprint.so:audio/chromaprint \
 		libFLAC.so:audio/flac \
@@ -28,12 +32,9 @@ LIB_DEPENDS=	libchromaprint.so:audio/chromaprint \
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
-BROKEN_aarch64=		fails to compile: Exception("invalid machine type")
-BROKEN_powerpc64=	fails to configure: unmet dependencies: Could not find libprotobuf, libchromaprint, libmp4, and libwavpack
-
-USES=		scons iconv pkgconfig
-USE_QT4=	corelib gui network opengl script scripttools sql svg \
-		testlib xml xmlpatterns linguisttools_build moc_build \
+USES=		qt:4 scons iconv pkgconfig
+USE_QT=		corelib gui network opengl script scripttools sql sql-sqlite3 \
+		svg testlib xml xmlpatterns linguisttools_build moc_build \
 		qmake_build rcc_build uic_build
 USE_GL=		gl glu
 MAKE_ARGS=	qtdir="${PREFIX}" install_root="${PREFIX}" \

@@ -16,7 +16,6 @@
     SUBDIR += genplist
     SUBDIR += hs-porte
     SUBDIR += jailaudit
-    SUBDIR += kpackagekit
     SUBDIR += lsknobs
     SUBDIR += managepkg
     SUBDIR += mkreadmes
@@ -25,11 +24,11 @@
     SUBDIR += p5-FreeBSD-Ports
     SUBDIR += p5-FreeBSD-Ports-INDEXhash
     SUBDIR += packagekit
-    SUBDIR += packagekit-qt4
     SUBDIR += pchecker
     SUBDIR += pkg
     SUBDIR += pkg-devel
     SUBDIR += pkg-plist
+    SUBDIR += pkg-provides
     SUBDIR += pkg-rmleaf
     SUBDIR += pkg_cleanup
     SUBDIR += pkg_cutleaves
@@ -49,6 +48,7 @@
     SUBDIR += portell
     SUBDIR += portest
     SUBDIR += portfind
+    SUBDIR += portgraph
     SUBDIR += portless
     SUBDIR += portlint
     SUBDIR += portmaster
@@ -69,7 +69,6 @@
     SUBDIR += psearch
     SUBDIR += py-pytoport
     SUBDIR += py-skog
-    SUBDIR += redports-node
     SUBDIR += symports
     SUBDIR += synth
     SUBDIR += tinderbox

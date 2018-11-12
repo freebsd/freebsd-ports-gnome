@@ -1,18 +1,18 @@
 # $FreeBSD$
 
 PORTNAME?=	alpine
-PORTVERSION=	2.21
-PORTREVISION?=	1
+DISTVERSION=	2.21.9999
+PORTREVISION?=	0
 CATEGORIES?=	mail news ipv6
-MASTER_SITES=	http://alpine.freeiz.com/alpine/release/src/
-DIST_SUBDIR=	alpine-${PORTVERSION}
+MASTER_SITES=	http://repo.or.cz/alpine.git/snapshot/${GIT_COMMIT}${EXTRACT_SUFX}?dummy=/
 
 MAINTAINER=	mbeis@xs4all.nl
 COMMENT?=	Mail and news client descended from Pine
 
 LICENSE=	APACHE20
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES+=			ssl libtool ncurses tar:xz gettext-runtime
+USES+=			ssl libtool ncurses gettext-runtime
 GNU_CONFIGURE=		yes
 MAKE_JOBS_UNSAFE=	yes
 CONFIGURE_ARGS+=	--with-debug-level=2 \
@@ -28,15 +28,20 @@ CONFIGURE_ARGS+=	--with-debug-level=2 \
 			--with-ssl-lib-dir=${OPENSSLLIB} \
 			--with-ssl-certs-dir=${OPENSSLDIR}/certs
 MAKE_ARGS+=		CC="${CC}" CXX="${CXX}" GCCCFLAGS="${CFLAGS}"
+# When you update please double check that the commit corresponds to
+# the actual version you've set in PORTVERSION.
+GIT_COMMIT=		d3e6f3932f2af9deca8eed09e30a55e9bd524362
+GIT_COMMIT_SHORT=	d3e6f39
+WRKSRC=			${WRKDIR}/alpine-${GIT_COMMIT_SHORT}
 
-OPTIONS_DEFINE=		ASPELL CONS25 DOCS IPV6 LDAP MAILDIR MOUSE PASSFILE NLS THREADS
+OPTIONS_DEFINE=		ASPELL CONS25 DOCS IPV6 LDAP MAILDIR MOUSE NLS NTLM PASSFILE THREADS
 OPTIONS_DEFAULT=	ASPELL MOUSE THREADS
 .if defined(PICO_ALPINE_SLAVE)
-OPTIONS_EXCLUDE=	CONS25 IPV6 LDAP MAILDIR PASSFILE
+OPTIONS_EXCLUDE=	CONS25 IPV6 LDAP PASSFILE
 .endif
 
 CONS25_DESC=	Add a patch to support color for default console
-MAILDIR_DESC=	Add a patch for maildir support
+NTLM_DESC=	Support for Windows NT Lan Manager authentication
 PASSFILE_DESC=	Support for a stored password file
 
 # Option ASPELL
@@ -57,7 +62,7 @@ LDAP_CONFIGURE_WITH=		ldap
 LDAP_CONFIGURE_ON=		--with-ldap-dir=${LOCALBASE}
 
 # Option MAILDIR
-MAILDIR_PATCH_SITES=		http://alpine.freeiz.com/alpine/patches/alpine-${PORTVERSION}/
+MAILDIR_PATCH_SITES=		http://alpine.x10host.com/alpine/patches/alpine-2.21/
 MAILDIR_PATCHFILES+=		maildir.patch.gz:-p1
 
 # Option MOUSE
@@ -65,6 +70,10 @@ MOUSE_CONFIGURE_ENABLE=		mouse
 
 # Option NLS
 NLS_CONFIGURE_ENABLE=		nls
+
+# Option NTLM
+NTLM_CONFIGURE_WITH=		ntlm
+NTLM_LIB_DEPENDS=		libntlm.so:security/libntlm
 
 # Option PASSFILE
 PASSFILE_CONFIGURE_WITH=	passfile
@@ -119,13 +128,13 @@ post-install:
 post-install-DOCS-on:
 	${INSTALL} -d ${STAGEDIR}${DOCSDIR} ${STAGEDIR}${DOCSDIR}/tech-notes
 .for f in ${PORTDOCSbase}
-	${INSTALL_MAN} ${WRKSRC}/$f ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/$f ${STAGEDIR}${DOCSDIR}
 .endfor
 .for f in ${PORTDOCSdoc}
-	${INSTALL_MAN} ${WRKSRC}/doc/$f ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/doc/$f ${STAGEDIR}${DOCSDIR}
 .endfor
 .for f in ${PORTDOCShtml}
-	${INSTALL_MAN} ${WRKSRC}/doc/$f ${STAGEDIR}${DOCSDIR}/tech-notes
+	${INSTALL_DATA} ${WRKSRC}/doc/$f ${STAGEDIR}${DOCSDIR}/tech-notes
 .endfor
 .endif # !defined(PICO_ALPINE_SLAVE)
 

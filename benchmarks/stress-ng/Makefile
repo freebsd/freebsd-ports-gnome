@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	stress-ng
-PORTVERSION=	0.08.14
+PORTVERSION=	0.09.41
 CATEGORIES=	benchmarks
 MASTER_SITES=	http://kernel.ubuntu.com/~cking/tarballs/stress-ng/
 
@@ -13,10 +13,15 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BROKEN_aarch64=	Fails to link: missing sbrk
 
-USES=		gmake compiler:c11
+USES=		compiler:c11 gmake tar:xz
 ALL_TARGET=	# empty
 
 PLIST_FILES=	bin/stress-ng man/man1/stress-ng.1.gz
+
+post-patch:
+	${REINPLACE_CMD} -e \
+		's/int main(void)/int main(void) __attributes__((noinline))/' \
+		${WRKSRC}/stress-atomic.c
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/stress-ng ${STAGEDIR}${PREFIX}/bin

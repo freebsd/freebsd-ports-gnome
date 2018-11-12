@@ -3,7 +3,7 @@
 
 PORTNAME=	xpra
 PORTVERSION=	2.0.3
-PORTREVISION=	2
+PORTREVISION=	12
 CATEGORIES=	x11
 MASTER_SITES=	http://xpra.org/src/
 
@@ -12,35 +12,36 @@ COMMENT=	Xpra gives you persistent remote applications for X
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS=	cython:lang/cython \
-		${PYTHON_PKGNAMEPREFIX}gtk2>2:x11-toolkits/py-gtk2 \
+BROKEN=		fails to build with cython 0.28
+
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}gtk2>2:x11-toolkits/py-gtk2@${PY_FLAVOR} \
 		${PYNUMPY}
 LIB_DEPENDS=	libturbojpeg.so:graphics/libjpeg-turbo \
 		libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}lz4>=0.7.0_1:archivers/py-lz4 \
-		${PYTHON_PKGNAMEPREFIX}rencode>1:converters/py-rencode \
-		${PYTHON_PKGNAMEPREFIX}dbus>1:devel/py-dbus \
-		${PYTHON_PKGNAMEPREFIX}pyinotify>0:devel/py-pyinotify \
-		${PYTHON_PKGNAMEPREFIX}xxhash>0:devel/py-xxhash \
-		${PYTHON_PKGNAMEPREFIX}pillow>=3.0:graphics/py-pillow \
-		${PYTHON_PKGNAMEPREFIX}PyOpenGL>=3.1.0:graphics/py-PyOpenGL \
-		${PYTHON_PKGNAMEPREFIX}PyOpenGL-accelerate>=3.1.0:graphics/py-PyOpenGL-accelerate \
-		${PYTHON_PKGNAMEPREFIX}netifaces>0:net/py-netifaces \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}lz4>=0.7.0_1:archivers/py-lz4@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}rencode>1:converters/py-rencode@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dbus>1:devel/py-dbus@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pyinotify>0:devel/py-pyinotify@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}xxhash>0:devel/py-xxhash@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pillow>=3.0:graphics/py-pillow@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}PyOpenGL>=3.1.0:graphics/py-PyOpenGL@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}PyOpenGL-accelerate>=3.1.0:graphics/py-PyOpenGL-accelerate@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}netifaces>0:net/py-netifaces@${PY_FLAVOR} \
 		ssh-askpass:security/openssh-askpass \
-		${PYTHON_PKGNAMEPREFIX}cryptography>1:security/py-cryptography \
+		${PYTHON_PKGNAMEPREFIX}cryptography>1:security/py-cryptography@${PY_FLAVOR} \
 		setxkbmap:x11/setxkbmap \
 		xauth:x11/xauth \
 		xkbcomp:x11/xkbcomp \
 		${LOCALBASE}/share/X11/xkb/rules/base:x11/xkeyboard-config \
 		Xvfb:x11-servers/xorg-vfbserver \
-		${PYTHON_PKGNAMEPREFIX}gtk2>2:x11-toolkits/py-gtk2 \
-		${PYTHON_PKGNAMEPREFIX}gtkglext>1:x11-toolkits/py-gtkglext \
+		${PYTHON_PKGNAMEPREFIX}gtk2>2:x11-toolkits/py-gtk2@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}gtkglext>1:x11-toolkits/py-gtkglext@${PY_FLAVOR} \
 		${PYNUMPY}
 
-USES=		desktop-file-utils fortran gettext-runtime pkgconfig python:2 shared-mime-info shebangfix tar:xz
+USES=		desktop-file-utils fortran gettext-runtime pkgconfig python:2.7 shared-mime-info shebangfix tar:xz
 USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk20 pango
-USE_PYTHON=	distutils
+USE_PYTHON=	distutils cython
 USE_XORG=	x11 xcomposite xdamage xext xfixes xkbfile xrandr xtst
 PLIST_SUB+=	PORTVERSION=${PORTVERSION} PYTHON_VER=${PYTHON_VER}
 SHEBANG_FILES=	cups/xpraforwarder
@@ -61,14 +62,14 @@ WEBCAM_DESC=	Enable webcam forwarding (client only)
 X264_DESC=	Enable X264 encoder
 X265_DESC=	Enable X265 encoder (slow)
 
-AVAHI_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}avahi>0:net/py-avahi
+AVAHI_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}avahi>0:net/py-avahi@${PY_FLAVOR}
 AVAHI_VARS=		XPRA_OPTIONS+=mdns
 AVCODEC_VARS=		XPRA_OPTIONS+=dec_avcodec2
-CUPS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycups>1:print/py-pycups
+CUPS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycups>1:print/py-pycups@${PY_FLAVOR}
 CUPS_VARS=		XPRA_OPTIONS+=printing
 FFMPEG_VARS=		XPRA_OPTIONS+=enc_ffmpeg
-GSTREAMER_BUILD_DEPENDS=${PYTHON_PKGNAMEPREFIX}gstreamer1>1:multimedia/py-gstreamer1
-GSTREAMER_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}gstreamer1>1:multimedia/py-gstreamer1
+GSTREAMER_BUILD_DEPENDS=${PYTHON_PKGNAMEPREFIX}gstreamer1>1:multimedia/py-gstreamer1@${PY_FLAVOR}
+GSTREAMER_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}gstreamer1>1:multimedia/py-gstreamer1@${PY_FLAVOR}
 GSTREAMER_USE=		GSTREAMER1=flac,lame,mpg123,ogg,opus,vorbis,wavpack
 GSTREAMER_VARS=		XPRA_OPTIONS+=sound
 HTML5_VARS=		XPRA_OPTIONS+=html5
@@ -78,7 +79,7 @@ SWSCALE_LIB_DEPENDS=	libswscale.so:multimedia/ffmpeg
 SWSCALE_VARS=		XPRA_OPTIONS+=csc_swscale
 VPX_LIB_DEPENDS=	libvpx.so:multimedia/libvpx
 VPX_VARS=		XPRA_OPTIONS+=vpx
-WEBCAM_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}opencv>2:graphics/py-opencv
+WEBCAM_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}opencv>2:graphics/py-opencv@${PY_FLAVOR}
 WEBCAM_VARS=		XPRA_OPTIONS+=webcam
 X264_LIB_DEPENDS=	libx264.so:multimedia/libx264
 X264_VARS=		XPRA_OPTIONS+=enc_x264

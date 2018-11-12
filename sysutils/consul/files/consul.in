@@ -22,7 +22,7 @@
 
 name=consul
 rcvar=consul_enable
-extra_commands="reload"
+extra_commands="reload configtest"
 
 load_rc_config $name
 
@@ -47,7 +47,6 @@ consul_startprecmd()
         if [ ! -d ${consul_dir} ]; then
                 install -d -o ${consul_user} -g ${consul_group} ${consul_dir}
         fi
-
 }
 
 run_rc_command "$1"

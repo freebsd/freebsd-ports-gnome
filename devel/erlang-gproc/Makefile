@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	gproc
-PORTVERSION=	0.6.1
+PORTVERSION=	0.8.0
 CATEGORIES=	devel
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Process dictionary for Erlang
 
 LICENSE=	EPLICENCE
@@ -18,5 +18,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	uwiger
 
 ERL_DOCS=	doc/*
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

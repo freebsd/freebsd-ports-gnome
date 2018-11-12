@@ -1,22 +1,24 @@
 # $FreeBSD$
 
 PORTNAME=	artikulate
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	4
-CATEGORIES=	misc kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	misc kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Pronunciation trainer for KDE
 
-LIB_DEPENDS=	libQtGStreamer-1.0.so:multimedia/gstreamer1-qt4 \
-		libboost_thread.so:devel/boost-libs
-RUN_DEPENDS=	${LOCALBASE}/lib/kde4/imports/org/kde/charts/qmldir:graphics/kqtquickcharts
+LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
+		libQt5GStreamer-1.0.so:multimedia/gstreamer1-qt@qt5
 
-IGNORE=		not usable, links to both GStreamer 0.10.x and 1.x
-
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	automoc4 kdelibs libkdeedu runtime_run
-USE_QT4=	moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	archive attica auth codecs config configwidgets coreaddons \
+		crash doctools ecm i18n kdeclarative newstuff service \
+		widgetsaddons xmlgui
+USE_QT=		core dbus gui multimedia network qml quick sql testlib widgets \
+		xml xmlpatterns \
+		buildtools_build qmake_build
 USE_LDCONFIG=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

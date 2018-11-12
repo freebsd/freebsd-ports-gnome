@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	MooX-ConfigFromFile
-PORTVERSION=	0.008
+PORTVERSION=	0.009
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Moo eXtension for initializing objects from config file
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-Config-Any>=0:devel/p5-Config-Any \

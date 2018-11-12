@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	geojson
-PORTVERSION=	2.1.0
+PORTVERSION=	2.3.0
 PORTEPOCH=	1
 CATEGORIES=	devel geography python
 MASTER_SITES=	CHEESESHOP
@@ -13,8 +13,8 @@ COMMENT=	Python's Encoder/decoder for simple GIS features
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}nose>=1.3.0:devel/py-nose
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}simplejson>1.9:devel/py-simplejson
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}nose>=1.3.0:devel/py-nose@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}simplejson>1.9:devel/py-simplejson@${PY_FLAVOR}
 
 PORTDOCS=	LICENSE.rst CHANGELOG.rst README.rst
 

@@ -3,6 +3,7 @@
 
 PORTNAME=	pantomime
 PORTVERSION=	1.2.3
+PORTREVISION=	2
 CATEGORIES=	mail gnustep
 MASTER_SITES=	SAVANNAH/gnustep-nonfsf/
 DISTNAME=	Pantomime-${PORTVERSION}

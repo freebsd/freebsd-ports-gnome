@@ -20,7 +20,7 @@ RUN_DEPENDS=	lsof:sysutils/lsof \
 
 IGNORE=		does not build with new polkit
 
-USES=		cpe execinfo gettext gmake iconv libtool pathfix pkgconfig \
+USES=		cpe gettext gmake iconv libtool pathfix pkgconfig \
 		python:build shared-mime-info shebangfix sqlite:3
 CPE_VENDOR=	packagekit_project
 SHEBANG_FILES=	backends/test/helpers/search-name.sh \
@@ -28,8 +28,7 @@ SHEBANG_FILES=	backends/test/helpers/search-name.sh \
 USE_GNOME=	glib20 intltool introspection
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib -lexecinfo
+LIBS+=		-lexecinfo
 CONFIGURE_ARGS+=--with-security-framework=polkit \
 		--localstatedir=/var \
 		--disable-static \
@@ -80,7 +79,8 @@ LIB_DEPENDS+=	libpackagekit-glib2.so:ports-mgmt/packagekit
 
 CONFIGURE_ARGS+=--enable-qt
 LIB_DEPENDS+=	libcppunit.so:devel/cppunit
-USE_QT4+=	dbus gui xml sql moc_build
+USES=		qt:4
+USE_QT+=	dbus gui xml sql moc_build
 #.include "${PORTSDIR}/Mk/bsd.qt.mk"
 .endif
 

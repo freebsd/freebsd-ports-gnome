@@ -2,7 +2,7 @@
 
 PORTNAME=	llvm
 DISTVERSION=	3.8.1
-PORTREVISION=	9
+PORTREVISION=	13
 CATEGORIES=	devel lang
 MASTER_SITES=	http://llvm.org/${PRE_}releases/${LLVM_RELEASE}/${RCDIR}
 DISTNAME=	${PORTNAME}-${DISTVERSION}.src
@@ -12,7 +12,8 @@ PKGNAMESUFFIX=	${LLVM_SUFFIX}
 MAINTAINER=	brooks@FreeBSD.org
 COMMENT=	LLVM and Clang
 
-BROKEN_armv6=		fails to compile: fatal error: llvm/IR/Attributes.inc file not found
+DEPRECATED=	Obsolete and unmaintained
+
 BROKEN_powerpc64=	fails to compile: internal compiler error: Killed (program cc1plus)
 
 LLVM_RELEASE=	${DISTVERSION:C/rc.*//}
@@ -24,7 +25,7 @@ LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
 
-USES=		cmake:outsource compiler:c++11-lib libedit perl5 tar:xz \
+USES=		cmake:outsource,noninja compiler:c++11-lib libedit perl5 tar:xz \
 		shebangfix
 USE_LDCONFIG=	${LLVM_PREFIX}/lib
 SHEBANG_FILES=	utils/lit/lit.py utils/llvm-lit/llvm-lit.in \
@@ -41,13 +42,14 @@ CMAKE_ARGS=
 # we need to either change the whole man-shuffle below, or simply
 # redefine CMAKE_INSTALL_MANDIR
 CMAKE_ARGS+=	-DCMAKE_INSTALL_MANDIR:PATH="share/man"
+CMAKE_ARGS+=	-DLLVM_PARALLEL_LINK_JOBS=1
 
 OPTIONS_DEFINE=	CLANG DOCS EXTRAS LIT LLD LLDB
-OPTIONS_DEFINE_amd64=	COMPILER_RT GOLD OPENMP
-OPTIONS_DEFINE_i386=	COMPILER_RT
+OPTIONS_DEFINE_amd64=	GOLD OPENMP
+OPTIONS_DEFINE_i386=	OPENMP
 OPTIONS_DEFAULT=	CLANG EXTRAS LIT LLD LLDB
-OPTIONS_DEFAULT_amd64=	COMPILER_RT GOLD OPENMP
-OPTIONS_DEFAULT_i386=	COMPILER_RT
+OPTIONS_DEFAULT_amd64=	GOLD OPENMP
+OPTIONS_DEFAULT_i386=	OPENMP
 OPTIONS_SUB=	yes
 
 PLIST_FILES=
@@ -77,13 +79,15 @@ EXTRAS_DISTFILES= clang-tools-extra-${DISTVERSION}.src${EXTRACT_SUFX}
 LIT_DESC=		Install lit and FileCheck test tools
 LLD_DESC=		Install lld, the LLVM linker
 LLD_DISTFILES=		lld-${DISTVERSION}.src${EXTRACT_SUFX}
-LLDB_BUILD_DEPENDS=	swig:devel/swig13
+LLDB_BUILD_DEPENDS=	swig3.0:devel/swig30
+LLDB_BINARY_ALIAS=	swig=swig3.0
 LLDB_DESC=		Install lldb, the LLVM debugger
 LLDB_DISTFILES=		lldb-${DISTVERSION}.src${EXTRACT_SUFX}
 LLDB_IMPLIES=		CLANG
 OPENMP_DESC=		Install libomp, the LLVM OpenMP runtime library
 OPENMP_DISTFILES=	openmp-${DISTVERSION}.src${EXTRACT_SUFX}
 OPENMP_EXTRA_PATCHES=	${PATCHDIR}/openmp-patch-bug32279
+OPENMP_EXTRA_PATCHES+=	${PATCHDIR}/openmp-patch-i386
 GOLD_DESC=		Build the LLVM Gold plugin for LTO
 GOLD_CMAKE_ON=		-DLLVM_BINUTILS_INCDIR=${LOCALBASE}/include
 GOLD_BUILD_DEPENDS=	${LOCALBASE}/bin/ld.gold:devel/binutils
@@ -181,7 +185,7 @@ CLANG_PATTERN=	(c-index-test|clang|scan-|Reporter.py|ScanView.py|scanview.css|so
 
 .if ${PORT_OPTIONS:MLIT}
 MAN1SRCS+=	lit.1 FileCheck.1
-_USES_PYTHON=	python
+_USES_PYTHON=	python:2.7
 LIT_COMMANDS=	lit llvm-lit FileCheck
 .endif
 
@@ -190,7 +194,7 @@ COMMANDS+=	argdumper \
 		lldb \
 		lldb-mi \
 		lldb-server
-_USES_PYTHON=	python
+_USES_PYTHON=	python:2.7
 .endif
 
 .if ! ${OPTIONS_DEFINE:MCOMPILER_RT}
@@ -210,7 +214,7 @@ PLIST_SUB+=    OPENMP="@comment "
 .else
 .endif
 
-_USES_PYTHON?=	python:build
+_USES_PYTHON?=	python:2.7,build
 USES+=		${_USES_PYTHON}
 
 MAN1SRCS+=	bugpoint.1 llc.1 lli.1 llvm-ar.1 llvm-as.1 \
@@ -271,10 +275,7 @@ COMMANDS+=	lld
 PORTDOCS+=	lld
 .endif
 
-.if ${PYTHON_REL} < 3400
-LLDB_BUILD_DEPENDS+= \
-	${PYTHON_PKGNAMEPREFIX}enum34>0:devel/py-enum34
-.endif
+LLDB_BUILD_DEPENDS+= ${PY_ENUM34}
 
 .if ${PORT_OPTIONS:MLLDB} && ${PYTHON_REL} >= 3000
 BROKEN=	LLDB does not build with Python 3
@@ -315,7 +316,7 @@ post-patch-COMPILER_RT-on:
 post-build-COMPILER_RT-on:
 	${MKDIR} ${WRKDIR}/compiler-rt-build
 	cd ${WRKDIR}/compiler-rt-build && \
-	${CMAKE_BIN} ${CMAKE_ARGS} \
+	${SETENV} ${CONFIGURE_ENV} ${CMAKE_BIN} ${CMAKE_ARGS} \
 	    -DLLVM_CONFIG_PATH=${CONFIGURE_WRKSRC}/bin/llvm-config \
 	    ${WRKSRC_compiler_rt} && \
 	${MAKE_ENV} ${MAKE_CMD}
@@ -388,7 +389,7 @@ post-install-LIT-on:
 	    ${STAGEDIR}${PREFIX}/bin/FileCheck${LLVM_SUFFIX}
 
 TEST_CMD=	'(cd ${WRKSRC}/test; ${SETENV} ${MAKE_ENV} LD_LIBRARY_PATH=${WRKSRC}/Release/lib ${MAKE_CMD} check-local-lit)'
-regression-test: ${BUILD_COOKIE}
+do-test:
 	if [ `${ID} -u` = 0 ]; then \
 		${CHOWN} -R nobody ${WRKSRC}/test; \
 		su -m nobody -c ${TEST_CMD}; \

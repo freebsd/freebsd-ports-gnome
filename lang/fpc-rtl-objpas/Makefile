@@ -2,10 +2,11 @@
 
 CATEGORIES=	lang
 PKGNAMESUFFIX=	-rtl-objpas
+PORTREVISION=	1
 
 COMMENT=	Free Pascal compatibility unit with Delphi
 
-USE_FPC=	yes
+USES=		fpc
 
 MASTERDIR=	${.CURDIR}/../../lang/fpc
 WRKUNITDIR=	${FPCSRCDIR}/packages/${PKGNAMESUFFIX:S/-//}

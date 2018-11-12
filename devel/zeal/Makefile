@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	zeal
-PORTVERSION=	0.4.0
+PORTVERSION=	0.6.0
 PORTREVISION=	1
 DISTVERSIONPREFIX=v
 CATEGORIES=	devel
@@ -16,11 +16,11 @@ LIB_DEPENDS=	libxcb.so:x11/libxcb \
 		libxcb-keysyms.so:x11/xcb-util-keysyms
 
 USES=		cmake:outsource compiler:c++11-lib desktop-file-utils \
-		kde:5 libarchive pkgconfig sqlite
+		kde:5 libarchive pkgconfig qt:5 sqlite
 USE_GL=		gl  # Dependency added by qt5-gui.
 USE_GITHUB=	yes
 USE_KDE=	ecm
-USE_QT5=	concurrent core gui network webkit widgets x11extras \
+USE_QT=		concurrent core gui network webkit widgets x11extras \
 		buildtools_build qmake_build
 USE_XORG=	ice sm x11 xcb xext
 

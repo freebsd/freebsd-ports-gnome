@@ -5,7 +5,7 @@ PORTVERSION=	0.5.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 
-MAINTAINER=	jhixson@gmail.com
+MAINTAINER=	jhixson@FreeBSD.org
 COMMENT=	Simple daemon to send notifications based on Consul health checks
 
 LICENSE=	GPLv2+
@@ -25,11 +25,9 @@ PLIST_FILES=	${PREFIX}/bin/${PORTNAME}
 
 USE_RC_SUBR=	${PORTNAME}
 
-STRIP=		#none
-
 do-build:
 	cd ${GO_WRKSRC} && \
-		${SETENV} ${BUILD_ENV} GOPATH=${WRKSRC} go build -v -x \
+		${SETENV} ${MAKE_ENV} ${BUILD_ENV} GOPATH=${WRKSRC} go build -v -x \
 			-ldflags "-X main.GitDescribe=${DISTVERSIONFULL}" -o bin/${PORTNAME}
 
 do-install:

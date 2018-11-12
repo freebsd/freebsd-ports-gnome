@@ -1,18 +1,27 @@
 # $FreeBSD$
 
 PORTNAME=	krfb
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	net kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	net kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	VNC server for KDE
 
-LIB_DEPENDS=	libtelepathy-qt4.so:net-im/telepathy-qt4
+LIB_DEPENDS=	libvncserver.so:net/libvncserver \
+		libxcb-image.so:x11/xcb-util-image
 
-USES=		alias cmake:outsource jpeg kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	corelib gui network \
-		moc_build qmake_build rcc_build uic_build
+USES=		alias cmake:outsource compiler:c++11-lib gettext jpeg \
+		kde:5 pkgconfig qt:5 tar:xz
+USE_KDE=	auth codecs completion config configwidgets coreaddons \
+		crash dbusaddons dnssd doctools ecm i18n notifications \
+		wallet widgetsaddons xmlgui
+USE_QT=		core dbus gui network widgets x11extras xml \
+		buildtools_build qmake_build
+USE_XORG=	x11 xcb xdamage xext xtst
+
+OPTIONS_DEFINE=		TELEPATHY DOCS
+OPTIONS_SUB=		yes
+TELEPATHY_DESC=		Support for Telepathy Tubes
+TELEPATHY_LIB_DEPENDS=	libtelepathy-qt5.so:net-im/telepathy-qt5
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 
 PORTNAME=	panelspacer
 PORTVERSION=	0.2
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	deskutils kde
 MASTER_SITES=	http://danakil.free.fr/linux/releases/${PORTNAME}-${PORTVERSION}/
 PKGNAMEPREFIX=	plasma-applet-
@@ -13,9 +13,12 @@ COMMENT=	Panel spacer plasma applet for KDE4
 
 LICENSE=	GPLv2
 
-USES=		cmake kde:4
+DEPRECATED=	KDE4 is EOL upstream
+EXPIRATION_DATE=	2018-12-31
+
+USES=		cmake kde:4 qt:4
 USE_KDE=	automoc4 workspace
-USE_QT4=	gui dbus network opengl svg webkit xml \
+USE_QT=		gui dbus network opengl svg webkit xml \
 		qmake_build moc_build rcc_build uic_build
 
 WRKSRC=		${WRKDIR}/Panelspacer_from_svn_pour_kdelook-tmp

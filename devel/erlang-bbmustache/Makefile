@@ -6,7 +6,7 @@ DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Mustache template engine for Erlang
 
 LICENSE=	MIT
@@ -14,5 +14,7 @@ LICENSE=	MIT
 USES=		erlang:rebar3
 USE_GITHUB=	yes
 GH_ACCOUNT=	soranoba
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

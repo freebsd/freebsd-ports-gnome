@@ -19,6 +19,8 @@ PORTDOCS=	Changelog.txt README.txt CREDITS.txt use_cases.txt
 
 PLIST_FILES=	bin/dnsmap bin/dnsmap-bulk ${DATADIR}/wordlist_TLAs.txt
 
+OPTIONS_DEFINE=	DOCS
+
 do-build:
 	${CC} ${CFLAGS} ${WRKSRC}/dnsmap.c -o ${WRKSRC}/dnsmap
 
@@ -27,7 +29,7 @@ do-install:
 	 ${INSTALL_SCRIPT}   ${WRKSRC}/${PORTNAME}-bulk.sh    ${STAGEDIR}${PREFIX}/bin/${PORTNAME}-bulk
 	 ${MKDIR}	     ${STAGEDIR}${DATADIR}
 	 ${INSTALL_DATA}     ${WRKSRC}/wordlist_TLAs.txt      ${STAGEDIR}${DATADIR}
-	 ${MKDIR}  	     ${STAGEDIR}${DOCSDIR}
+	 ${MKDIR}	     ${STAGEDIR}${DOCSDIR}
 	 ${INSTALL_DATA}     ${PORTDOCS:S|^|${WRKSRC}/|}      ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

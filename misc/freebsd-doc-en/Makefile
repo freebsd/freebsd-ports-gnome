@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freebsd-doc
-PORTVERSION=	50775
+PORTVERSION=	52287
 PORTEPOCH=	1
 CATEGORIES=	misc docs
 MASTER_SITES=	LOCAL/blackend
@@ -12,6 +12,9 @@ MAINTAINER=	doceng@FreeBSD.org
 COMMENT?=	Documentation from the FreeBSD Documentation Project
 
 LICENSE=	BSD2CLAUSE
+
+BROKEN_aarch64=		fails to build: Exception in thread "main" java.lang.StackOverflowError at org.apache.fop.hyphenation.TernaryTree.insert(TernaryTree.java:180)
+BROKEN_powerpc64=	fails to build: Java Runtime Environment: SIGSEGV happened inside stack but outside yellow and red zone.
 
 BUILD_DEPENDS=	docproj>=2.0_6:textproc/docproj
 
@@ -67,11 +70,7 @@ PLIST_FORMATS+=	${O:tl:S,_,-,}
 BUILD_DEPENDS+=	fop:textproc/fop \
 		${LOCALBASE}/share/fonts/GentiumPlus/GentiumPlus-R.ttf:x11-fonts/gentium-plus \
 		${LOCALBASE}/share/fonts/Droid/DroidSans.ttf:x11-fonts/droid-fonts-ttf \
-		${LOCALBASE}/share/fonts/Lohit/Lohit-Bengali.ttf:x11-fonts/lohit \
-		${LOCALBASE}/share/fonts/dejavu/DejaVuSansMono.ttf:x11-fonts/dejavu \
-		${LOCALBASE}/share/fonts/TrueType/gkai00mp.ttf:chinese/arphicttf \
-		${LOCALBASE}/share/fonts/OTF/ipam.otf:japanese/font-ipa \
-		${LOCALBASE}/share/fonts/nanum-ttf/NanumBarunGothic.ttf:korean/nanumfonts-ttf
+		${LOCALBASE}/share/fonts/dejavu/DejaVuSansMono.ttf:x11-fonts/dejavu
 .endif
 
 # when html or html-split is defined as the format, add HTML_COMMON.

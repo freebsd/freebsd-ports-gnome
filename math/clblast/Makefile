@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	clblast
-PORTVERSION=	1.0.0
+PORTVERSION=	1.1.0
+PORTREVISION=	1
 CATEGORIES=	math
 
 MAINTAINER=	jmd@FreeBSD.org
@@ -19,7 +20,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	CNugteren
 GH_PROJECT=	CLBlast
 
-USE_LDCONFIG=	yes
 USES=		cmake
+USE_GCC=	yes
+USE_LDCONFIG=	yes
 
 .include <bsd.port.mk>

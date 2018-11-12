@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	anvil
-PORTVERSION=	0.0.11
+PORTVERSION=	0.0.12
 CATEGORIES=	sysutils
 
 MAINTAINER=	dvl@FreeBSD.org

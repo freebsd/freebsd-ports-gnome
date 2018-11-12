@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	seabios
-PORTVERSION=	1.10.2
+PORTVERSION=	1.11.0
 PORTREVISION=	1
 CATEGORIES=	misc
 MASTER_SITES=	http://code.coreboot.org/p/seabios/downloads/get/
@@ -16,9 +16,9 @@ ONLY_FOR_ARCHS_REASON=	specific to x86
 
 USES=	gmake python:build
 
-MAKE_ARGS=	HOSTCC="${CC}" LD32BIT_FLAG="-melf_i386_fbsd" \
-		PYTHON="${PYTHON_CMD}"
+MAKE_ARGS=	HOSTCC="${CC}" LD="${LD}" PYTHON="${PYTHON_CMD}"
 USE_GCC=	yes
+USE_BINUTILS=	yes
 
 PLIST_FILES=	${DATADIR}/bios.bin
 

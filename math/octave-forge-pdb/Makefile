@@ -3,7 +3,7 @@
 
 PORTNAME=	octave-forge-pdb
 PORTVERSION=	1.0.7
-PORTREVISION=	14
+PORTREVISION=	17
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org
@@ -11,6 +11,8 @@ COMMENT=	Octave-forge package ${OCTAVE_PKGNAME}
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+BROKEN=		does not build with octave version >= 4.4.0
 
 GNU_CONFIGURE=	yes
 

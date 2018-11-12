@@ -1,17 +1,27 @@
 # $FreeBSD$
 
 PORTNAME=	parley
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	misc kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	misc kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	Vocabulary trainer for KDE 4
+COMMENT=	Vocabulary trainer for KDE
 
-USES=		cmake:outsource kde:4 tar:xz
+BUILD_DEPENDS=	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:textproc/docbook-xsl \
+		docbook-xml>0:textproc/docbook-xml
+
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
 USE_GNOME=	libxml2 libxslt
-USE_KDE=	kdelibs libkdeedu attica automoc4
-USE_QT4=	corelib gui moc_build qmake_build rcc_build uic_build
+USE_KDE=	attica auth codecs completion configwidgets coreaddons config \
+		crash doctools ecm i18n jobwidgets kcmutils kio newstuff \
+		notifications kross khtml service sonnet textwidgets \
+		widgetsaddons xmlgui \
+		libkeduvocdocument
+USE_QT=		concurrent core dbus gui location network multimedia qml quick \
+		script svg webchannel webengine widgets xml \
+		buildtools_build qmake_build
 USE_XORG=	x11 xrender
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

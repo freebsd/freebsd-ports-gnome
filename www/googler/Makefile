@@ -2,24 +2,28 @@
 # $FreeBSD$
 
 PORTNAME=	googler
-PORTVERSION=	3.2
+PORTVERSION=	3.6
 DISTVERSIONPREFIX=	v
+PORTREVISION=	0
 CATEGORIES=	www
 
 MAINTAINER=	nivit@FreeBSD.org
 COMMENT=	Google Search, Google Site Search, Google News from the terminal
 
-LICENSE=	GPLv3
+LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+RUN_DEPENDS=	xclip:x11/xclip
+
+USES=		python:3.3+ shebangfix
+SHEBANG_FILES=	googler
+USE_GITHUB=	yes
 GH_ACCOUNT=	jarun
 
 NO_BUILD=	yes
+NO_ARCH=	yes
 
 PLIST_FILES=	bin/googler man/man1/googler.1.gz
-
-USE_GITHUB=	yes
-USES=		python:3.3+
 
 post-patch:
 	@${SED} -i.bak 's/^\(ENABLE_SELF_UPGRADE_MECHANISM=\)True$$/\1False/' \

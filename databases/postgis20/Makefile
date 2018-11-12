@@ -2,7 +2,7 @@
 
 PORTNAME=	postgis
 PORTVERSION=	2.0.7
-PORTREVISION=	3
+PORTREVISION=	5
 CATEGORIES=	databases geography
 MASTER_SITES=	http://download.osgeo.org/postgis/source/
 PKGNAMESUFFIX=	20
@@ -17,7 +17,7 @@ LIB_DEPENDS=	libgeos.so:graphics/geos \
 		libjson-c.so:devel/json-c \
 		libproj.so:graphics/proj
 
-CONFLICTS_INSTALL=	postgis postgis22 postgis23
+CONFLICTS_INSTALL=	postgis21 postgis22 postgis23 postgis24 postgis
 
 OPTIONS_DEFINE=	LOADERGUI NLS RASTER TOPOLOGY
 OPTIONS_DEFAULT=RASTER TOPOLOGY
@@ -28,6 +28,10 @@ TOPOLOGY_DESC=	Topology support
 
 PORTSCOUT=	limit:^2.0.[0-9]*
 
+USES=		gmake gnome iconv:wchar_t libtool perl5 pgsql pkgconfig shebangfix
+USE_GNOME=	libxml2
+USE_PERL5=	build
+
 CONFIGURE_ARGS=	--with-geosconfig=${LOCALBASE}/bin/geos-config \
 		--with-jsondir=${LOCALBASE} \
 		--with-pgconfig=${LOCALBASE}/bin/pg_config \
@@ -35,10 +39,8 @@ CONFIGURE_ARGS=	--with-geosconfig=${LOCALBASE}/bin/geos-config \
 		--with-xml2config=${LOCALBASE}/bin/xml2-config \
 		${ICONV_CONFIGURE_ARG} ${ICONV_CONFIGURE_BASE}
 GNU_CONFIGURE=	yes
-USE_GNOME=	libxml2
+LLD_UNSAFE=	yes
 USE_LDCONFIG=	yes
-USE_PERL5=	build
-USES=		gmake gnome iconv:wchar_t libtool perl5 pgsql pkgconfig shebangfix
 WANT_PGSQL=	lib server
 
 PLIST_SUB=	PORTVERSION=${PORTVERSION}

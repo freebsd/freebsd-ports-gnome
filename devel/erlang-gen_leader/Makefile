@@ -6,7 +6,7 @@ PORTREVISION=	1
 CATEGORIES=	devel
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Leader election behavior for Erlang
 
 USES=		erlang:rebar
@@ -15,7 +15,9 @@ GH_ACCOUNT=	garret-smith
 GH_PROJECT=	gen_leader_revival
 GH_TAGNAME=	a12a4e3
 
-post-install:
+OPTIONS_DEFINE=	DOCS EXAMPLES
+
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${WRKSRC}/examples/* ${STAGEDIR}${EXAMPLESDIR}
 

@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	amule
-PORTVERSION=	10990
-PORTREVISION=	2
+PORTVERSION=	10998
+PORTREVISION=	1
 CATEGORIES=	net-p2p
 MASTER_SITES=	http://amule.sourceforge.net/tarballs/
 PKGNAMESUFFIX=	-devel
@@ -32,6 +32,7 @@ CONFIGURE_ENV=	LEX="${FLEX}" PKG_CONFIG="${PKG_CONFIG}" \
 		docdir='$${prefix}/${DOCSDIR_REL}'
 
 CPPFLAGS+=	-I${LOCALBASE}/include
+CXXFLAGS+=	`pkgconf --cflags-only-other libcryptopp`
 LDFLAGS+=	-lpthread -L${LOCALBASE}/lib
 
 OPTIONS_DEFINE=	ALC ALCC AMULECMD AMULEDAEMON AMULEGUI CAS DEBUG DOCS ED2K \
@@ -44,7 +45,7 @@ AMULEDAEMON_DESC=	Compile aMule daemon version
 AMULEGUI_DESC=		Compile aMule remote GUI
 CAS_DESC=		Compile aMule Statistics for console
 ED2K_DESC=		Compile aMule ed2k links handler
-FILEVIEW_DESC=		Compile file viewer for console (EXPERIMENTAL)
+FILEVIEW_DESC=		Compile file viewer for console
 MMAP_DESC=		Use mapped memory
 MONOLITHIC_DESC=	Compile monolithic aMule
 PLASMAMULE_DESC=	Compile aMule plasma applet and engine
@@ -90,8 +91,8 @@ MMAP_CONFIGURE_ON=	--enable-mmap
 MONOLITHIC_CONFIGURE_OFF=	--disable-monolithic
 
 PLASMAMULE_CONFIGURE_ON=	--enable-plasmamule
-PLASMAMULE_USES=	kde:4
-PLASMAMULE_USE=	KDE=kdelibs QT4=dbus,gui,moc_build
+PLASMAMULE_USES=	kde:4 qt:4
+PLASMAMULE_USE=	KDE=kdelibs QT=dbus,gui,moc_build
 PLASMAMULE_CONFIGURE_ENV= \
 			ac_cv_path_KDE4_CONFIG=${KDE_PREFIX}/bin/kde4-config \
 			KBUILDSYCOCA=${KDE_PREFIX}/bin/kbuildsycoca4 \
@@ -101,7 +102,7 @@ UPNP_LIB_DEPENDS=	libupnp.so:devel/upnp
 UPNP_CONFIGURE_OFF=	--disable-upnp
 
 WEBSERVER_CONFIGURE_ON=	--enable-webserver
-WEBSERVER_LIB_DEPENDS=	libpng16.so:graphics/png
+WEBSERVER_LIB_DEPENDS=	libpng.so:graphics/png
 
 WXCAS_CONFIGURE_ON=	--enable-wxcas
 
@@ -109,10 +110,6 @@ XAS_CONFIGURE_ON=	--enable-xas
 XAS_USE=	PERL5+=run
 
 .include <bsd.port.options.mk>
-
-.if ${ARCH} == "i386" && ( ${OSVERSION} >= 1000024 || ${CXX:T} == "clang++" )
-CPPFLAGS+=	-DCRYPTOPP_DISABLE_ASM
-.endif
 
 .if ${PORT_OPTIONS:MED2K}
 CONFLICTS+=		ed2k-hash*

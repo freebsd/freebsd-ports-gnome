@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	calibre
-PORTVERSION=	3.7.0
+PORTVERSION=	3.32.0
 CATEGORIES=	deskutils python
 MASTER_SITES=	http://download.calibre-ebook.com/${PORTVERSION}/
 
@@ -19,42 +19,42 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libpodofo.so:graphics/podofo \
 		libmtp.so:multimedia/libmtp \
 		libfreetype.so:print/freetype2
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3 \
-		${PYTHON_PKGNAMEPREFIX}dateutil>=0:devel/py-dateutil \
-		${PYTHON_PKGNAMEPREFIX}pillow>=0:graphics/py-pillow \
-		${PYTHON_PKGNAMEPREFIX}lxml>=0:devel/py-lxml \
-		${PYTHON_PKGNAMEPREFIX}cssutils>=1.0.1,1:www/py-cssutils \
-		${PYTHON_PKGNAMEPREFIX}apsw>=0:databases/py-apsw \
-		${PYTHON_PKGNAMEPREFIX}msgpack-python>=0.3:devel/py-msgpack-python \
-		${PYTHON_PKGNAMEPREFIX}regex>=0:textproc/py-regex \
-		${PYTHON_PKGNAMEPREFIX}html5-parser>=0.4.3:www/py-html5-parser
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dateutil>=0:devel/py-dateutil@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pillow>=0:graphics/py-pillow@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}lxml>=0:devel/py-lxml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}cssutils>=1.0.1,1:www/py-cssutils@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}apsw>=0:databases/py-apsw@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}msgpack>=0.3:devel/py-msgpack@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}regex>=0:textproc/py-regex@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}html5-parser>=0.4.3:www/py-html5-parser@${PY_FLAVOR}
 RUN_DEPENDS=	xdg-open:devel/xdg-utils \
-		${PYTHON_PKGNAMEPREFIX}cssutils>=1.0.1,1:www/py-cssutils \
-		${PYTHON_PKGNAMEPREFIX}dnspython>=0:dns/py-dnspython \
-		${PYTHON_PKGNAMEPREFIX}dateutil>=0:devel/py-dateutil \
-		${PYTHON_PKGNAMEPREFIX}beautifulsoup32>=0:www/py-beautifulsoup32 \
-		${PYTHON_PKGNAMEPREFIX}pillow>=0:graphics/py-pillow \
-		${PYTHON_PKGNAMEPREFIX}lxml>=0:devel/py-lxml \
-		${PYTHON_PKGNAMEPREFIX}mechanize>=0:www/py-mechanize \
-		${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3 \
-		${PYTHON_PKGNAMEPREFIX}dbus>=0:devel/py-dbus \
-		${PYTHON_PKGNAMEPREFIX}netifaces>=0:net/py-netifaces \
-		${PYTHON_PKGNAMEPREFIX}cssselect>=0:www/py-cssselect \
-		${PYTHON_PKGNAMEPREFIX}apsw>=0:databases/py-apsw \
-		${PYTHON_PKGNAMEPREFIX}msgpack-python>=0.3:devel/py-msgpack-python \
-		${PYTHON_PKGNAMEPREFIX}regex>=0:textproc/py-regex \
-		${PYTHON_PKGNAMEPREFIX}chardet>=0:textproc/py-chardet \
-		${PYTHON_PKGNAMEPREFIX}html5-parser>=0.4.3:www/py-html5-parser \
+		${PYTHON_PKGNAMEPREFIX}cssutils>=1.0.1,1:www/py-cssutils@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dnspython>=0:dns/py-dnspython@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dateutil>=0:devel/py-dateutil@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}beautifulsoup32>=0:www/py-beautifulsoup32@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pillow>=0:graphics/py-pillow@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}lxml>=0:devel/py-lxml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}mechanize>=0:www/py-mechanize@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dbus>=0:devel/py-dbus@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}netifaces>=0:net/py-netifaces@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}cssselect>=0:www/py-cssselect@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}apsw>=0:databases/py-apsw@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}msgpack>=0.3:devel/py-msgpack@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}regex>=0:textproc/py-regex@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}chardet>=0:textproc/py-chardet@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}html5-parser>=0.4.3:www/py-html5-parser@${PY_FLAVOR} \
 		pdftohtml:graphics/poppler-utils
 
 USES=		desktop-file-utils gettext-runtime gnome localbase:ldflags pkgconfig \
-		python:2 pyqt:5 shared-mime-info shebangfix ssl tar:xz
+		python:2.7 pyqt:5 qt:5 shared-mime-info shebangfix ssl tar:xz
 USE_RC_SUBR=	calibre
 EXTRACT_BEFORE_ARGS=	-x -s '/^calibre/~-src/' -f
 SHEBANG_GLOB=	*.sh *.py
 python_OLD_CMD=	"/usr/bin/env python2" /bin/python2 /usr/bin/python2 /usr/local/bin/python2
 USE_PYQT=	core gui network sip svg webkit widgets webkitwidgets xmlpatterns
-USE_QT5=	buildtools_build core dbus gui qmake_build widgets
+USE_QT=		buildtools_build core dbus gui qmake_build widgets
 USE_GL=		egl gl
 USE_GNOME=	glib20
 USE_XORG=	xrender xext x11
@@ -70,7 +70,8 @@ MAKE_ENV+=	FC_INC_DIR="${LOCALBASE}/include/fontconfig" \
 		XDG_DATA_DIRS=${STAGEDIR}${PREFIX}/share \
 		XDG_CONFIG_HOME=${WRKDIR}/xdg-config \
 		XDG_UTILS_INSTALL_MODE=system \
-		QMAKE=${QMAKE}
+		QMAKE=${QMAKE} \
+		SIP_BIN=sip-${PYTHON_VER}
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|#!/usr/bin/env python2|#!${PYTHON_CMD}|" \
@@ -93,8 +94,12 @@ do-install:
 		${PYSETUP} install --prefix ${PREFIX} \
 		--staging-root ${STAGEDIR}${PREFIX})
 	@${RM} ${STAGEDIR}${PREFIX}/bin/calibre-uninstall \
-		${STAGEDIR}${PREFIX}/share/applications/defaults.list
-	@${RMDIR} ${STAGEDIR}${PREFIX}/share/desktop-directories
+		${STAGEDIR}${PREFIX}/share/applications/defaults.list \
+		${STAGEDIR}${PREFIX}/share/mime/application/* \
+		${STAGEDIR}${PREFIX}/share/mime/text/*
+	@${RMDIR} ${STAGEDIR}${PREFIX}/share/desktop-directories \
+		${STAGEDIR}${PREFIX}/share/mime/application \
+		${STAGEDIR}${PREFIX}/share/mime/text
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/calibre/calibre/plugins/*
 
 .include <bsd.port.mk>

@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	octave-forge-parallel
-PORTVERSION=	3.1.1
-PORTREVISION=	4
+PORTVERSION=	3.1.3
+PORTREVISION=	1
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org
@@ -16,9 +16,13 @@ LICENSE_FILE=	${WRKDIR}/${OCTSRC}/COPYING
 # It is usually ${OCTAVE_PKGNAME} or ${DISTNAME}.
 OCTSRC=		${DISTNAME}
 
+RUN_DEPENDS+=	${TARBALLS_DIR}/struct.tar.gz:math/octave-forge-struct
+
 WRKSRC=		${WRKDIR}/${OCTSRC}/src
 GNU_CONFIGURE=	yes
-USES=		compiler:gcc-c++11-lib
+USES+=		compiler:gcc-c++11-lib perl5 shebangfix
+USE_PERL5=	build
+SHEBANG_FILES=	*.pl
 
 .include "${.CURDIR}/../../Mk/bsd.octave.mk"
 

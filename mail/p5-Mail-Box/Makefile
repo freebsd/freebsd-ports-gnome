@@ -9,7 +9,7 @@ MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:MARKOV
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	tobez@FreeBSD.org
+MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Perl module implementing a modern mail folder management
 
 COMMON_DEPENDS=	\
@@ -36,6 +36,5 @@ USES=		perl5
 USE_PERL5=	configure
 CONFIGURE_ARGS=	</dev/null
 CONFIGURE_ENV+=	MAILBOX_INSTALL_OPTIONALS=n
-
 
 .include <bsd.port.mk>

@@ -15,10 +15,10 @@ LICENSE=	BSD2CLAUSE MIT APACHE20
 LICENSE_COMB=	multi
 
 RUN_DEPENDS=	rtmpdump:multimedia/rtmpdump \
-		${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests \
-		${PYTHON_PKGNAMEPREFIX}futures>=0:devel/py-futures \
-		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six \
-		${PYTHON_PKGNAMEPREFIX}librtmp>=0:multimedia/py-librtmp
+		${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR} \
+		${PY_FUTURES} \
+		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}librtmp>=0:multimedia/py-librtmp@${PY_FLAVOR}
 
 USES=		python
 USE_PYTHON=	autoplist distutils

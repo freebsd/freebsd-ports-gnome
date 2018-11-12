@@ -1,0 +1,106 @@
+#!/bin/sh
+
+# PROVIDE: prometheus
+# REQUIRE: LOGIN
+# KEYWORD: shutdown
+#
+# Add the following lines to /etc/rc.conf.local or /etc/rc.conf
+# to enable this service:
+#
+# prometheus_enable (bool)
+#     Set to NO by default
+#     Set it to YES to enable prometheus
+# prometheus_user (string)
+#     Set user to run prometheus
+#     Default is "%%PROMETHEUS_USER%%"
+# prometheus_group (string)
+#     Set group to run prometheus
+#     Default is "%%PROMETHEUS_GROUP%%"
+# prometheus_data_dir (string)
+#     Set dir to run prometheus in
+#     Default is "%%PROMETHEUS_DB_DIR%%"
+# prometheus_consoles (string)
+#     Set dir that contains Prometheus consoles
+#     Default is "%%PROMETHEUS_CONSOLES_DIR%%"
+# prometheus_console_libraries (string)
+#     Set dir containing Prometheus console libraries
+#     Default is "%%PROMETHEUS_CONSOLE_LIBRARIES_DIR%%"
+# prometheus_args (string)
+#     Set additional command line arguments
+#     Default is ""
+
+. /etc/rc.subr
+
+name=prometheus
+rcvar=prometheus_enable
+
+load_rc_config $name
+
+: ${prometheus_enable:="NO"}
+: ${prometheus_user:="%%PROMETHEUS_USER%%"}
+: ${prometheus_group:="%%PROMETHEUS_GROUP%%"}
+: ${prometheus_config:="%%PREFIX%%/etc/prometheus.yml"}
+: ${prometheus_data_dir:="%%PROMETHEUS_DB_DIR%%"}
+: ${prometheus_consoles_dir:="%%PROMETHEUS_CONSOLES_DIR%%"}
+: ${prometheus_console_libraries_dir:="%%PROMETHEUS_CONSOLE_LIBRARIES_DIR%%"}
+: ${prometheus_args:=""}
+
+pidfile="/var/run/${name}.pid"
+required_files="${prometheus_config}"
+command="/usr/sbin/daemon"
+procname="%%PREFIX%%/bin/${name}"
+sig_reload="HUP"
+extra_commands="reload"
+command_args="-p ${pidfile} -m 3 -T ${name} \
+                /usr/bin/env ${procname} \
+                --config.file=${prometheus_config} \
+                --storage.tsdb.path=${prometheus_data_dir} \
+                --web.console.templates=${prometheus_consoles_dir} \
+                --web.console.libraries=${prometheus_console_libraries_dir} \
+                ${prometheus_args}"
+
+start_precmd=prometheus_startprecmd
+
+# This checks for the existence of a prometheus 1.x data dir at the
+# $prometheus_data_dir location. If one is found, Prometheus will not start.
+prometheus_check_data_dir_version()
+{
+    local data_dir_version_file="${prometheus_data_dir}/VERSION"
+
+    if [ -f "${data_dir_version_file}" ]; then
+        local data_dir_version="0"
+
+        read data_dir_version < "${data_dir_version_file}"
+
+        if [ "${data_dir_version}" = "1" ]; then
+            return 1
+        fi
+    fi
+}
+
+prometheus_startprecmd()
+{
+    if [ ! -e ${pidfile} ]; then
+        install \
+            -o ${prometheus_user} \
+            -g ${prometheus_group} \
+            /dev/null ${pidfile};
+    fi
+    if [ ! -d ${prometheus_data_dir} ]; then
+        install \
+            -d \
+            -o ${prometheus_user} \
+            -g ${prometheus_group} \
+            -m 750 \
+            ${prometheus_data_dir}
+    else
+        # The directory already existed. Ensure it's not a prometheus 1.x
+        # data dir.
+        if ! prometheus_check_data_dir_version; then
+            err 1 "Found net-mgmt/prometheus1 data dir, refusing to start."
+        fi
+    fi
+}
+
+load_rc_config $name
+run_rc_command "$1"

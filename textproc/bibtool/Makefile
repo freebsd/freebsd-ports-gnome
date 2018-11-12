@@ -23,6 +23,8 @@ INSTALL_TARGET=	install install.man
 
 PORTDOCS=	bibtool.pdf ref_card.pdf c_lib.pdf
 
+OPTIONS_DEFINE=	DOCS
+
 post-patch:
 	${REINPLACE_CMD} 's/bibtex$$/&8/' ${WRKSRC}/doc/Makefile
 
@@ -31,7 +33,7 @@ post-build:
 
 post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC}/doc && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	cd ${WRKSRC}/doc && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 
 .include <bsd.port.mk>

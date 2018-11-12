@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	sysbench
-PORTVERSION=	1.0.9
+PORTVERSION=	1.0.15
 CATEGORIES=	benchmarks databases
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -11,7 +11,6 @@ COMMENT=	Scriptable database and system performance benchmark
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	xxd:editors/vim
 LIB_DEPENDS=	libck.so:devel/concurrencykit \
 		libluajit-5.1.so:lang/luajit
 
@@ -33,6 +32,5 @@ PGSQL_USES=		pgsql
 
 post-patch:
 	@${REINPLACE_CMD} -e '/^SUBDIRS = / s| doc||' ${WRKSRC}/Makefile.am
-	@${REINPLACE_CMD} -e 's|__linux__|__FreeBSD__|' ${WRKSRC}/src/sb_util.h
 
 .include <bsd.port.mk>

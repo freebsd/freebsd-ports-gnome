@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	phoenix_ecto
-PORTVERSION=	3.2.3
+PORTVERSION=	3.3.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Ecto integration for the Phoenix framework
 
 LICENSE=	MIT
@@ -21,5 +21,7 @@ MIX_BUILD_DEPS=	databases/elixir-ecto \
 		www/elixir-phoenix_html
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
 MIX_REWRITE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

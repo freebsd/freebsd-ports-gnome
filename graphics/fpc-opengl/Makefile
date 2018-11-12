@@ -1,12 +1,12 @@
 # Created by: Alonso Cardenas Marquez <acm@FreeBSD.org>
 # $FreeBSD$
 
-PORTREVISION=	1
 CATEGORIES=	graphics lang
 PKGNAMESUFFIX=	-opengl
 
 COMMENT=	Free Pascal interface to the OpenGL library
 
+USES=		fpc
 USE_FPC=	x11
 
 MASTERDIR=	${.CURDIR}/../../lang/fpc

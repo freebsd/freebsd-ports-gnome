@@ -1,17 +1,20 @@
 # $FreeBSD$
 
 PORTNAME=	picmi
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	games kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	games kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	${${PORTNAME}_DESC}
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs libkdegames automoc4
-USE_QT4=	moc_build qmake_build rcc_build uic_build \
-		svg xml
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs completion config configwidgets coreaddons crash \
+		dbusaddons doctools ecm i18n jobwidgets kdeclarative kio \
+		libkdegames newstuff service widgetsaddons xmlgui
+USE_QT=		core dbus gui network qml quick svg testlib widgets xml \
+		buildtools_build qmake_build
 
-.include <${.CURDIR}/../kdegames4/Makefile.common>
+OPTIONS_DEFINE=	DOCS
+
+.include <${.CURDIR}/../kdegames/Makefile.common>
 .include <bsd.port.mk>

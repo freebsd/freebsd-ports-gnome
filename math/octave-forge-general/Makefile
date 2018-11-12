@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	octave-forge-general
-PORTVERSION=	2.0.0
-PORTREVISION=	3
+PORTVERSION=	2.1.0
+PORTREVISION=	2
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org
@@ -14,6 +14,7 @@ COMMENT=	Octave-forge package ${OCTAVE_PKGNAME}
 OCTSRC=		${DISTNAME}
 
 WRKSRC=		${WRKDIR}/${OCTSRC}/src
+GNU_CONFIGURE=	yes
 
 .include "${.CURDIR}/../../Mk/bsd.octave.mk"
 

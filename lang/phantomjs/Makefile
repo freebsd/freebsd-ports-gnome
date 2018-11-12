@@ -2,7 +2,7 @@
 
 PORTNAME=	phantomjs
 PORTVERSION=	2.1.1
-PORTREVISION=	5
+PORTREVISION=	10
 CATEGORIES=	lang
 
 MAINTAINER=	feld@FreeBSD.org
@@ -10,17 +10,16 @@ COMMENT=	Minimalistic, headless, WebKit-based, JavaScript-driven tool
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	bash:shells/bash \
-		python:lang/python
+BROKEN_powerpc64=	fails to build: g++48: not found
+BROKEN_sparc64=		does not link on sparc64
+BROKEN_SSL=	openssl-devel
+BROKEN_SSL_REASON_openssl-devel=	error: member access into incomplete type 'X509' (aka 'x509_st')
+
+BUILD_DEPENDS=	bash:shells/bash
 LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libicui18n.so:devel/icu \
 		libpng.so:graphics/png
-
-BROKEN_powerpc64=	fails to build: g++48: not found
-BROKEN_sparc64=		does not link on sparc64
-NOT_FOR_ARCHS=		armv6
-NOT_FOR_ARCHS_REASON=	Platform.h: Not supported ARM architecture
 
 USES=		bison:build compiler:c++11-lang gmake gperf jpeg perl5 pkgconfig python:build ssl sqlite
 USE_GNOME+=	libxml2
@@ -34,6 +33,7 @@ GH_TUPLE=	Vitallium:phantomjs-3rdparty-win:19051aa:msvc2013/src/qt/3rdparty \
 RUBY_NO_RUN_DEPENDS=	yes
 PLIST_FILES=	bin/phantomjs
 NO_CCACHE=	yes
+BINARY_ALIAS=	python=${PYTHON_CMD}
 
 OPTIONS_DEFINE=	X11
 X11_USE=	XORG=x11
@@ -50,7 +50,7 @@ post-extract:
 	${MKDIR} ${WRKSRC}/src/qt/qtwebkit/.git
 	${RM} ${WRKSRC}/src/qt/qtwebkit/Source/WebCore/DerivedSources.cpp
 
-_ENV=	CC=${CC} CXX=${CXX} GMAKE=${GMAKE} OSTYPE=freebsd MAKEFLAGS=
+_ENV=	CC=${CC} CXX=${CXX} GMAKE=${GMAKE} OSTYPE=freebsd MAKEFLAGS= LOCALBASE=${LOCALBASE}
 _BLD=	${PYTHON_CMD} build.py --jobs ${MAKE_JOBS_NUMBER} --confirm
 do-build:
 .if defined(_PHANTOMJS_USE_QT_SYSTEM)

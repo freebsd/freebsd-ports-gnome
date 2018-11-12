@@ -7,7 +7,7 @@ CATEGORIES=	dns
 MASTER_SITES=	http://www.corpit.ru/mjt/rbldnsd/ \
 		ftp://ftp.renatasystems.org/pub/FreeBSD/ports/distfiles/
 
-MAINTAINER=	alexey@renatasystems.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Small and fast DNS daemon especially for DNSBL zones
 
 LICENSE=	GPLv2
@@ -16,7 +16,6 @@ HAS_CONFIGURE=	yes
 USE_RC_SUBR=	rbldnsd
 USERS=		rbldns
 GROUPS=		${USERS}
-PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message
 
 OPTIONS_DEFINE=	DOCS

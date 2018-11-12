@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	udunits
-PORTVERSION=	2.2.25
+PORTVERSION=	2.2.26
+PORTREVISION=	1
 CATEGORIES=	science math
 MASTER_SITES=	ftp://ftp.unidata.ucar.edu/pub/udunits/ \
 		LOCAL/sunpoet
@@ -27,10 +28,11 @@ USE_LDCONFIG=	yes
 USES=		libtool localbase
 
 INFO=		udunits2 udunits2lib udunits2prog
-PORTDATA=	*
-PORTDOCS=	*
 
 post-patch:
 	@${REINPLACE_CMD} -e '/install-data-hook$$/d' ${WRKSRC}/lib/Makefile.in
+
+post-patch-DOCS-on:
+	@${REINPLACE_CMD} -e '/^dist_doc_DATA = / s| COPYRIGHT||' ${WRKSRC}/Makefile.in
 
 .include <bsd.port.mk>

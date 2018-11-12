@@ -6,7 +6,7 @@ DISTVERSIONPREFIX=	v
 CATEGORIES=	security
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Password hashing library for Elixir
 
 LICENSE=	BSD3CLAUSE BSD4CLAUSE
@@ -19,6 +19,8 @@ GH_ACCOUNT=	elixircnx
 MIX_BUILD_DEPS=	devel/elixir-make \
 		security/elixir-comeonin_i18n
 MIX_RUN_DEPS:=	security/elixir-comeonin_i18n
+
+OPTIONS_DEFINE=	DOCS
 
 post-build:
 	${STRIP_CMD} ${WRKSRC}/priv/bcrypt_nif.so

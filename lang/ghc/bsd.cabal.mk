@@ -54,10 +54,7 @@ GHC_LIB_DOCSDIR_REL=	share/doc/ghc-${GHC_VERSION}/html/libraries
 
 CABAL_LIBDIR=		${PREFIX}/lib/cabal/ghc-${GHC_VERSION}
 CABAL_LIBSUBDIR=	${PACKAGE}
-CABAL_ARCH=		x86_64
-.if ("${ARCH}" == "i386")
-CABAL_ARCH=		i386
-.endif
+CABAL_ARCH=		${ARCH:S/amd64/x86_64/:C/armv.*/arm/}
 CABAL_ARCHSUBDIR=	${CABAL_ARCH}-freebsd-ghc-${GHC_VERSION}
 CABAL_LIBDIR_REL=	${CABAL_LIBDIR:S,^${PREFIX}/,,}
 
@@ -95,13 +92,6 @@ RUN_DEPENDS+=	ghc>=${GHC_VERSION}:lang/ghc
 BUILD_DEPENDS+=	ghc:lang/ghc
 BUILD_DEPENDS+=	ghc>=${GHC_VERSION}:lang/ghc
 .endif
-
-# LLVM is still not properly supported, further it does not make sense to have
-# to depend on old llvm ports that will be removed from the ports soon.
-# So for now, stick to GCC -- this might change with ghc-8.4.
-# https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/Backends/LLVM/Installing
-# We should however investigate whether base's clang is enough to build ghc&co.
-USE_GCC=	yes
 
 
 CONFIGURE_ARGS+=	--with-gcc=${CC} --with-ld=${LD} --with-ar=${AR}
@@ -178,15 +168,19 @@ HADDOCK_OPTS+=		--hyperlink-source --hscolour-css=${HSCOLOUR_DATADIR}/hscolour.c
 .      endif # HSCOLOUR
 .    endif # HADDOCK_AVAILABLE
 
-.  endif
+.  endif # !XMLDOCS
 
 .  if defined(XMLDOCS)
 BUILD_DEPENDS+=	docbook-xsl>0:textproc/docbook-xsl \
 		${LOCALBASE}/bin/xsltproc:textproc/libxslt
 
+.    if defined(XMLDOCS_CONF)
+BUILD_DEPENDS+=	autoconf>0:devel/autoconf
+.    endif
+
 USES+=		gmake
 
-.  endif # !XMLDOCS
+.  endif # XMLDOCS
 
 .endif # DOCS
 
@@ -211,7 +205,7 @@ CONFIGURE_ARGS+=	--disable-profiling --disable-library-profiling
 .SILENT:
 
 post-patch::
-.if defined(XMLDOCS) && defined(USE_AUTOTOOLS)
+.if defined(XMLDOCS) && defined(XMLDOCS_CONF)
 	@${REINPLACE_CMD} -e 's|/usr/local/share/xsl/docbook|${LOCALBASE}/share/xsl/docbook|' \
 		${WRKSRC}/doc/configure.ac
 .endif
@@ -237,8 +231,8 @@ do-configure:
 	fi
 
 .    if ${PORT_OPTIONS:MDOCS}
-.      if defined(XMLDOCS) && defined(USE_AUTOTOOLS)
-	cd ${WRKSRC}/doc && ${AUTOCONF} && ./configure --prefix=${PREFIX}
+.      if defined(XMLDOCS) && defined(XMLDOCS_CONF)
+	cd ${WRKSRC}/doc && ${LOCALBASE}/bin/autoconf && ./configure --prefix=${PREFIX}
 .      endif
 .    endif # DOCS
 .  endif # target(do-configure)
@@ -328,7 +322,7 @@ add-plist-post: add-plist-cabal
 add-plist-cabal:
 
 .  if !defined(STANDALONE)
-	@${ECHO_CMD} '@postunexec ${LOCALBASE}/bin/ghc-pkg unregister --force ${PORTNAME}-${PORTVERSION}' >> ${TMPPLIST}
+	@${ECHO_CMD} '@postunexec ${LOCALBASE}/bin/ghc-pkg unregister --no-user-package-db --force ${PORTNAME}-${PORTVERSION}' >> ${TMPPLIST}
 .  endif
 
 .  if defined(HADDOCK_AVAILABLE) && ${PORT_OPTIONS:MDOCS}

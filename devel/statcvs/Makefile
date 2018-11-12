@@ -15,6 +15,7 @@ LICENSE=	LGPL21+
 LICENSE_FILE=	${WRKSRC}/etc/LICENSE
 
 BROKEN_armv6=		fails to compile: build.xml: compilation failed
+BROKEN_armv7=		fails to compile: build.xml: compilation failed
 
 USES=		zip
 USE_JAVA=	yes
@@ -38,9 +39,9 @@ DOCS_ALL_TARGET=javadoc
 .include <bsd.port.pre.mk>
 
 .if ${JAVA_PORT_VERSION} == "1.6.0"
-PLIST_SUB=	JDK6=""
+PLIST_SUB+=	JDK6=""
 .else
-PLIST_SUB=	JDK6="@comment "
+PLIST_SUB+=	JDK6="@comment "
 .endif
 
 do-install:

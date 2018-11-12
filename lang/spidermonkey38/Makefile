@@ -3,7 +3,7 @@
 
 PORTNAME=	spidermonkey38
 PORTVERSION=	38.8.0
-PORTREVISION=	2
+PORTREVISION=	7
 CATEGORIES=	lang
 MASTER_SITES=	MOZILLA/firefox/releases/${PORTVERSION}esr/source
 DISTNAME=	firefox-${PORTVERSION}esr.source
@@ -33,6 +33,11 @@ CONFIGURE_ARGS=	--with-pthreads \
 OPTIONS_DEFINE=	DEBUG GCZEAL JEMALLOC METHODJIT OPTIMIZE READLINE \
 		THREADSAFE TRACEJIT UTF8 DTRACE
 OPTIONS_DEFAULT=METHODJIT OPTIMIZE READLINE THREADSAFE TRACEJIT
+# ld(1) fails to link probes: Relocations in generic ELF (EM: 0)
+OPTIONS_EXCLUDE_aarch64=	DTRACE
+# dt_modtext:opensolaris/lib/libdtrace/common/dt_link.c: arm not implemented
+OPTIONS_EXCLUDE_armv6=	DTRACE
+OPTIONS_EXCLUDE_armv7=	DTRACE
 OPTIONS_SUB=	yes
 
 DEBUG_CONFIGURE_ENABLE=	debug debug-symbols
@@ -77,7 +82,7 @@ post-patch:
 		${WRKSRC}/tests/Intl/DateTimeFormat/format.js \
 		${WRKSRC}/tests/ecma_6/String/normalize-generateddata-part1-not-listed.js
 
-regression-test: build
+do-test:
 	@${ECHO_MSG} -n "===> Running jstests.py: "
 	@cd ${WRKSRC} && ${SETENV} TZ=PST8PDT ${PYTHON_CMD} tests/jstests.py \
 	-d -s --no-progress ./js/src/shell/js

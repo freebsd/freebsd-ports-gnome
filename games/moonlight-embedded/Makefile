@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	moonlight-embedded
-PORTVERSION=	2.4.3
-DISTVERSIONPREFIX=	v
+DISTVERSION=	2.4.7
 CATEGORIES=	games
+MASTER_SITES=	https://github.com/irtimmer/moonlight-embedded/releases/download/v${DISTVERSION}/
 
 MAINTAINER=	tobik@FreeBSD.org
 COMMENT=	Gamestream client
@@ -18,10 +18,7 @@ LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg \
 		libopus.so:audio/opus \
 		libuuid.so:misc/e2fsprogs-libuuid
 
-USES=		cmake localbase:ldflags perl5 pkgconfig ssl
-USE_GITHUB=	yes
-GH_ACCOUNT=	irtimmer
-GH_TUPLE=	irtimmer:moonlight-common-c:a1bdb36766f8db5dc9cc0694c9a376f0dca3ab59:common/third_party/moonlight-common-c
+USES=		cmake localbase:ldflags perl5 pkgconfig ssl tar:xz
 USE_LDCONFIG=	yes
 USE_PERL5=	build
 USE_SDL=	sdl2
@@ -46,7 +43,7 @@ post-patch:
 		${WRKSRC}/libgamestream/CMakeLists.txt
 	@${RM} ${WRKSRC}/libgamestream/discover.c
 	@${REINPLACE_CMD} -e 's@/etc/moonlight/moonlight.conf@${PREFIX}/etc/moonlight.conf@' \
-		-e 's@moonligt@moonlight@' \
+		-e 's@moonligt@moonlight@g' \
 		${WRKSRC}/docs/README.pod
 
 post-install:

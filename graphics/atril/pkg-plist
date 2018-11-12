@@ -34,6 +34,7 @@ include/atril/1.5.0/libdocument/ev-layer.h
 include/atril/1.5.0/libdocument/ev-link-action.h
 include/atril/1.5.0/libdocument/ev-link-dest.h
 include/atril/1.5.0/libdocument/ev-link.h
+include/atril/1.5.0/libdocument/ev-macros.h
 include/atril/1.5.0/libdocument/ev-mapping-list.h
 include/atril/1.5.0/libdocument/ev-page.h
 include/atril/1.5.0/libdocument/ev-render-context.h
@@ -80,9 +81,6 @@ man/man1/atril-thumbnailer.1.gz
 man/man1/atril.1.gz
 share/appdata/atril.appdata.xml
 share/applications/atril.desktop
-%%DATADIR%%/atril-previewer-ui.xml
-%%DATADIR%%/atril-toolbar.xml
-%%DATADIR%%/atril-ui.xml
 %%DATADIR%%/hand-open.png
 %%DATADIR%%/icons/hicolor/16x16/actions/object-rotate-left.png
 %%DATADIR%%/icons/hicolor/16x16/actions/object-rotate-right.png
@@ -323,6 +321,7 @@ share/locale/am/LC_MESSAGES/atril.mo
 share/locale/ar/LC_MESSAGES/atril.mo
 share/locale/as/LC_MESSAGES/atril.mo
 share/locale/ast/LC_MESSAGES/atril.mo
+share/locale/az/LC_MESSAGES/atril.mo
 share/locale/be/LC_MESSAGES/atril.mo
 share/locale/bg/LC_MESSAGES/atril.mo
 share/locale/bn/LC_MESSAGES/atril.mo
@@ -336,6 +335,7 @@ share/locale/cs/LC_MESSAGES/atril.mo
 share/locale/cy/LC_MESSAGES/atril.mo
 share/locale/da/LC_MESSAGES/atril.mo
 share/locale/de/LC_MESSAGES/atril.mo
+share/locale/de_CH/LC_MESSAGES/atril.mo
 share/locale/dz/LC_MESSAGES/atril.mo
 share/locale/el/LC_MESSAGES/atril.mo
 share/locale/en_AU/LC_MESSAGES/atril.mo

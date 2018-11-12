@@ -3,7 +3,7 @@
 
 PORTNAME=	astrometry
 PORTVERSION=	0.65
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	astro
 MASTER_SITES=	http://www.astrometry.net/downloads/
 DISTNAME=	${PORTNAME}.net-${PORTVERSION}
@@ -13,6 +13,10 @@ COMMENT=	Software for describing astronomical images
 
 LICENSE=	GPLv2
 
+BROKEN_aarch64=		fails to link: os-features-test.c:10: undefined symbol 'canonicalize_file_name'
+BROKEN_armv6=		fails to link: os-features-test.c:10: undefined symbol 'canonicalize_file_name'
+BROKEN_armv7=		fails to link: os-features-test.c:10: undefined symbol 'canonicalize_file_name'
+
 BUILD_DEPENDS=	${PYNUMPY}
 LIB_DEPENDS=	libcairo.so:graphics/cairo \
 		libcfitsio.so:astro/cfitsio \
@@ -20,14 +24,14 @@ LIB_DEPENDS=	libcairo.so:graphics/cairo \
 		libnetpbm.so:graphics/netpbm
 RUN_DEPENDS=	${PYNUMPY}
 
-USES=		gmake jpeg pkgconfig python shebangfix tar:bzip2
+USES=		gmake jpeg pkgconfig python:2.7 shebangfix tar:bzip2
 SHEBANG_FILES=	blind/*.py sdss/*.py util/[!c]*.py util/casjobs.py
 USE_LDCONFIG=	${PREFIX}/${PORTNAME}/lib
 ALL_TARGET=	all extra
 MAKE_ENV=	INSTALL_DIR=${STAGEDIR}${PREFIX}/${PORTNAME}
 MAKE_JOBS_UNSAFE=	yes
 SUB_FILES=	pkg-message
-LDFLAGS=	-lz
+LDFLAGS+=	-lz
 
 post-patch:
 	@${REINPLACE_CMD} -E 's,python (setup|-c),${PYTHON_CMD} \1,' \

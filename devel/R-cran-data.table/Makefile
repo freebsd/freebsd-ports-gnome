@@ -2,14 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	data.table
-PORTVERSION=	1.10.4
+DISTVERSION=	1.11.6
 CATEGORIES=	devel
-DISTNAME=	${PORTNAME}_${PORTVERSION}
+DISTNAME=	${PORTNAME}_${DISTVERSION}
 
 MAINTAINER=	tota@FreeBSD.org
 COMMENT=	Extension of Data.frame
 
-LICENSE=	GPLv3
+LICENSE=	MPL20
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BROKEN_FreeBSD_11_i386=	unable to load datatable.so
+BROKEN_FreeBSD_12_i386=	unable to load datatable.so
 
 USES=		cran:auto-plist,compiles
 

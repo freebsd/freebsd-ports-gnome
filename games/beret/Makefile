@@ -31,13 +31,15 @@ PORTDOCS=	README.txt
 FONT_DEP=	AveriaSansGWF-Regular.ttf
 FONTDIR_DEP=	${LOCALBASE}/share/fonts/averiagwf
 
+OPTIONS_DEFINE=	DOCS
+
 post-patch:
 	@${REINPLACE_CMD} -e "s|%%PREFIX%%|${PREFIX}|g" ${WRKSRC}/game.c
 
 do-install:
 	${INSTALL_PROGRAM} ${WORKINGSRC}/beret ${STAGEDIR}${PREFIX}/bin
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WORKINGSRC} && ${INSTALL_MAN} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+	cd ${WORKINGSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
 	${MKDIR} ${STAGEDIR}${DATADIR}
 .for datadir in images music rooms sfx
 	${MKDIR} ${STAGEDIR}${DATADIR}/${datadir}

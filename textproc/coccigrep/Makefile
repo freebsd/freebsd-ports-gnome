@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	coccigrep
-PORTVERSION=	1.16
+PORTVERSION=	1.17
 DISTVERSIONPREFIX=	v
 CATEGORIES=	textproc
 
-MAINTAINER=	pawel@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Semantic grep for the C language
 
 LICENSE=	GPLv3
@@ -17,7 +17,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	regit
 
 USES=		python
-USE_PYTHON=	distutils autoplist
+USE_PYTHON=	distutils autoplist concurrent optsuffix
 
 PLIST_FILES=	man/man1/coccigrep.1.gz \
 		${DATADIR_REL}/cocci-grep.el \

@@ -1,3 +1,3 @@
-TIMESTAMP = 1502917562
-SHA256 (cockroach-v1.0.4.src.tgz) = 1d135016ccef6c684b7414b6b26219cad74ebec9dea5421862ac8288025476b6
-SIZE (cockroach-v1.0.4.src.tgz) = 69123903
+TIMESTAMP = 1528529382
+SHA256 (cockroach-v2.0.2.src.tgz) = ee0e68ce9c74b8b1157e4c5d470b140960a5a281a70460c82bd79258a18e7d2b
+SIZE (cockroach-v2.0.2.src.tgz) = 45521739

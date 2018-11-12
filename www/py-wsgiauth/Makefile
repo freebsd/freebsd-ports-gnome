@@ -11,7 +11,9 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	bamby@sippysoft.com
 COMMENT=	WSGI authentication middleware
 
-USES=		python
+LICENSE=	MIT
+
+USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

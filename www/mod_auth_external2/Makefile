@@ -14,14 +14,16 @@ COMMENT=	Allows users authentication based on external mechanisms
 
 LICENSE=	APACHE20
 
-USE_APACHE=	22+
+USES=		apache:2.2+
 AP_FAST_BUILD=	yes
 AP_GENPLIST=	yes
 SHORTMODNAME=	auth_external
 
 PORTDOCS=	AUTHENTICATORS INSTALL README
 
-post-install:
+OPTIONS_DEFINE=	DOCS
+
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
 

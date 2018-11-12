@@ -3,7 +3,7 @@
 
 PORTNAME=	classpath
 PORTVERSION=	0.99
-PORTREVISION=	4
+PORTREVISION=	8
 CATEGORIES=	java devel
 MASTER_SITES=	GNU \
 		SAVANNAH
@@ -17,14 +17,14 @@ LICENSE=	GPLv2
 
 BROKEN_aarch64=		fails to configure: error: The jar tool /usr/local/bin/gjar5 was not found
 BROKEN_armv6=		fails to configure: error: The jar tool /usr/local/bin/gjar5 was not found
+BROKEN_armv7=		fails to configure: error: The jar tool /usr/local/bin/gjar5 was not found
 BROKEN_powerpc64=	fails to configure: error: The jar tool /usr/local/bin/gjar5 was not found
 
 GNU_CONFIGURE=	yes
 USES=		gmake iconv libtool perl5 pkgconfig
 USE_LDCONFIG=	yes
 USE_PERL5=	build
-USE_XORG=	x11 ice xtst xaw xproto xext
-WANT_GNOME=	yes
+USE_XORG=	x11 ice xtst xaw xorgproto xext
 
 CPPFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
@@ -115,17 +115,18 @@ CONFIGURE_ARGS+=	--enable-qt-peer
 CONFIGURE_ARGS+=	--enable-default-toolkit=gnu.java.awt.peer.qt.QtToolkit
 .endif
 CONFIGURE_ENV+=		MOC="${LOCALBASE}/bin/moc-qt4"
-USE_QT4=		moc_build corelib gui
+USES+=			qt:4
+USE_QT=			moc_build corelib gui
 PLIST_SUB+=		QT4=""
 .else
 PLIST_SUB+=		QT4="@comment "
 .endif
 
 .if !defined(WITH_GCJ) && (${ARCH} == "amd64" || ${ARCH} == "i386")
-BUILD_DEPENDS+=		${LOCALBASE}/bootstrap-openjdk/bin/javac:java/bootstrap-openjdk
-JAR?=			${LOCALBASE}/bootstrap-openjdk/bin/jar
-JAVA?=			${LOCALBASE}/bootstrap-openjdk/bin/java
-JAVAC?=			${LOCALBASE}/bootstrap-openjdk/bin/javac
+BUILD_DEPENDS+=		${LOCALBASE}/bootstrap-openjdk6/bin/javac:java/bootstrap-openjdk6
+JAR?=			${LOCALBASE}/bootstrap-openjdk6/bin/jar
+JAVA?=			${LOCALBASE}/bootstrap-openjdk6/bin/java
+JAVAC?=			${LOCALBASE}/bootstrap-openjdk6/bin/javac
 .else
 USE_BINUTILS=		yes
 USE_GCC=		yes

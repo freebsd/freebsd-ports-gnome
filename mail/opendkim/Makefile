@@ -1,24 +1,27 @@
 # Created by: Hirohisa Yamaguchi <umq@ueo.co.jp>
 # $FreeBSD$
 
-PORTNAME=		opendkim
-PORTVERSION=		2.10.3
-PORTREVISION=		7
-CATEGORIES=		mail security
-MASTER_SITES=		SF/${PORTNAME} \
-			SF/${PORTNAME}/Previous%20Releases \
-			ftp://ftpmirror.uk/freebsd-ports/${PORTNAME}/
+PORTNAME=	opendkim
+PORTVERSION=	2.10.3
+PORTREVISION=	9
+CATEGORIES=	mail security
+MASTER_SITES=	SF/${PORTNAME} \
+		SF/${PORTNAME}/Previous%20Releases \
+		ftp://ftpmirror.uk/freebsd-ports/${PORTNAME}/
 
-MAINTAINER=		freebsd-ports@dan.me.uk
-COMMENT=		DKIM library and milter implementation
+MAINTAINER=	freebsd-ports@dan.me.uk
+COMMENT=	DKIM library and milter implementation
 
-LICENSE=		BSD3CLAUSE SENDMAIL
-LICENSE_COMB=		multi
+LICENSE=	BSD3CLAUSE SENDMAIL
+LICENSE_COMB=	multi
 
 LICENSE_FILE_SENDMAIL=	${WRKSRC}/LICENSE.Sendmail
-LICENSE_GROUPS_SENDMAIL=	FSF OSI
+LICENSE_GROUPS_SENDMAIL=FSF OSI
 LICENSE_NAME_SENDMAIL=	Sendmail Open Source License
 LICENSE_PERMS_SENDMAIL=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
+
+BROKEN_SSL=	openssl-devel
+BROKEN_SSL_REASON_openssl-devel=	checking for library containing SSL_library_init... no
 
 GNU_CONFIGURE=	yes
 NO_OPTIONS_SORT=yes
@@ -27,6 +30,7 @@ USE_PERL5=	run
 SHEBANG_FILES=	opendkim/opendkim-genkey* reputation/opendkim-* stats/opendkim-* \
 		reprrd/opendkim-reprrdimport*
 USE_LDCONFIG=	yes
+TEST_TARGET=	check  # XXX: 1 of 30 tests fails
 
 PORTDOCS=	*
 
@@ -36,7 +40,7 @@ OPTIONS_SUB=		yes
 OPTIONS_SINGLE=		RESOLV
 OPTIONS_SINGLE_RESOLV=	STOCK_RESOLVER UNBOUND
 OPTIONS_DEFINE=		FILTER CURL GNUTLS JANSSON LDNS LMDB LUA MEMCACHED \
-			BDB_BASE OPENDBX OPENLDAP POPAUTH QUERY_CACHE SASL
+			BDB_BASE OPENDBX OPENLDAP POPAUTH QUERY_CACHE SASL DOCS
 OPTIONS_DEFAULT=	FILTER LUA UNBOUND
 
 STOCK_RESOLVER_DESC=	Use the stock resolver library
@@ -96,8 +100,6 @@ QUERY_CACHE_CONFIGURE_ENABLE=	query_cache
 SASL_DESC=		Enable SASL authentication with LDAP
 SASL_CONFIGURE_WITH=	sasl
 
-DOCS_CONFIGURE_ON=	--docdir=${WRKDIR}/doc
-
 MAKE_ARGS+=	pkgconfigdir="${PREFIX}/libdata/pkgconfig"
 MAKE_ENV=	INSTALL_STRIP_FLAG=${STRIP}
 
@@ -120,19 +122,19 @@ CONFIGURE_ARGS+=	--with-milter=${MILTERBASE}
 .if ${PORT_OPTIONS:MLUA_ONLY_SIGNING} || \
     ${PORT_OPTIONS:MRBL}
 .if !${PORT_OPTIONS:MLUA}
-IGNORE= options LUA_ONLY_SIGNING and RBL require LUA as well
+IGNORE=	options LUA_ONLY_SIGNING and RBL require LUA as well
 .endif
 .endif
 
 .if ${PORT_OPTIONS:MREPUTATION}
 .if !${PORT_OPTIONS:MCURL} || !${PORT_OPTIONS:MJANSSON}
-IGNORE= option REPUTATION requires CURL and JANSSON as well
+IGNORE=	option REPUTATION requires CURL and JANSSON as well
 .endif
 .endif
 
 .if ${PORT_OPTIONS:MSTATSEXT}
 .if !${PORT_OPTIONS:MSTATS} || !${PORT_OPTIONS:MLUA}
-IGNORE= option STATSEXT requires STATS and LUA as well
+IGNORE=	option STATSEXT requires STATS and LUA as well
 .endif
 .endif
 
@@ -161,19 +163,14 @@ pre-configure:
 	    -e '/PKG_CONFIG/s/cyrussasl/libsasl2/'			 \
 	    ${WRKSRC}/configure
 
-post-patch:
-.if ${PORT_OPTIONS:MLCOV}
+post-patch-LCOV-on:
 	${CP} ${FILESDIR}/lcov-helper.sh ${WRKSRC}/libopendkim/tests/
 	${CP} ${FILESDIR}/lcov-helper.sh ${WRKSRC}/opendkim/tests/
 	${FIND} ${WRKSRC} -type f -name \*-helper.sh -exec ${CHMOD} 755 {} +
-.endif
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/mail
 	${INSTALL_DATA} ${WRKSRC}/opendkim/opendkim.conf.sample \
 	    ${STAGEDIR}${PREFIX}/etc/mail/
-
-regression-test: build
-	cd ${WRKSRC} ; ${MAKE} check
 
 .include <bsd.port.mk>

@@ -3,7 +3,7 @@
 
 PORTNAME=	scorched3d
 PORTVERSION=	0.${SCORCH_VERSION}${SCORCH_REVISION}
-PORTREVISION=	10
+PORTREVISION=	11
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/Version%20${SCORCH_VERSION}
 DISTNAME=	Scorched3D-${SCORCH_VERSION}-src
@@ -30,6 +30,7 @@ WX_CONF_ARGS=	absolute
 USES=		autoreconf dos2unix gmake iconv jpeg openal:al,alut perl5 pkgconfig
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--datadir=${DATADIR}
+LLD_UNSAFE=	yes
 
 DOS2UNIX_GLOB=	*.h *.cpp
 

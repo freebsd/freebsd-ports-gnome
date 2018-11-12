@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	System-Command
-PORTVERSION=	1.118
+PORTVERSION=	1.119
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,8 +10,9 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Object for running system commands
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 TEST_DEPENDS=	p5-Test-Command>=0:devel/p5-Test-Command \
 		p5-Test-Output>=0:devel/p5-Test-Output

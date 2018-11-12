@@ -3,13 +3,15 @@
 
 PORTNAME=	smack
 PORTVERSION=	0.5.0
-PORTREVISION=	7
+PORTREVISION=	12
 CATEGORIES=	devel
 
-MAINTAINER=	vg@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Low-level I/O storage library which packs data
 
 LICENSE=	GPLv2
+
+BROKEN_powerpc64=	fails to build: libboost_filesystem.so: undefined reference to std::__cxx11::basic_string
 
 LIB_DEPENDS=	libboost_iostreams.so:devel/boost-libs \
 		libsnappy.so:archivers/snappy
@@ -26,11 +28,11 @@ OPTIONS_DEFINE=	EXAMPLES
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MEXAMPLES}
-PLIST_SUB=	EXAMPLES=""
+PLIST_SUB+=	EXAMPLES=""
 CMAKE_ARGS=	-DENABLE_EXAMPLES=ON
 .else
 CMAKE_ARGS=	-DENABLE_EXAMPLES=OFF
-PLIST_SUB=	EXAMPLES="@comment "
+PLIST_SUB+=	EXAMPLES="@comment "
 .endif
 
 .include <bsd.port.mk>

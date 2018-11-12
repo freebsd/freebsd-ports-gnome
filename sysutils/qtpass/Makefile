@@ -1,9 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	qtpass
-PORTVERSION=	1.1.6
-PORTREVISION=	1
-DISTVERSIONPREFIX=v
+DISTVERSIONPREFIX=	v
+DISTVERSION=	1.2.3
 CATEGORIES=	sysutils
 
 MAINTAINER=	brouwer@annejan.com
@@ -14,12 +13,11 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	pass:sysutils/password-store
 
-USES=		qmake:outsource
+USES=		qmake:outsource qt:5
 USE_GITHUB=	yes
 GH_ACCOUNT=	IJhack
 GH_PROJECT=	QtPass
-
-USE_QT5=	buildtools_build core gui linguisttools_build network widgets
+USE_QT=		core gui network testlib widgets buildtools_build linguisttools_build
 USE_GL=		gl
 
 PLIST_FILES=	bin/qtpass \

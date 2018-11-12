@@ -22,13 +22,12 @@ CONFIGURE_ARGS=	--with-mysql=${LOCALBASE} \
 		--with-pam=/usr
 
 SUB_FILES=	pkg-message
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 PORTDOCS=	*
 PLIST_FILES=	lib/pam_mysql.so lib/pam_mysql.la
 
-OPTIONS_DEFINE= SSL
-SSL_DESC= 	Build with OpenSSL support (non-crypt()ish MD5 hash)
+OPTIONS_DEFINE= DOCS SSL
+SSL_DESC=	Build with OpenSSL support (non-crypt()ish MD5 hash)
 SSL_CONFIGURE_WITH= openssl
 
 post-install:

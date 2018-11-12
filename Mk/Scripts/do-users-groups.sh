@@ -31,7 +31,6 @@ set -f
 
 rm -f "${dp_UG_INSTALL}" "${dp_UG_DEINSTALL}" || :
 
-# Before FreeBSD 10.2, PW did not have -R support.
 if [ "${dp_OPSYS}" = FreeBSD ] ; then
 	cat >> "${dp_UG_INSTALL}" <<-eot
 	if [ -n "\${PKG_ROOTDIR}" ] && [ "\${PKG_ROOTDIR}" != "/" ]; then
@@ -139,7 +138,7 @@ if [ -n "${USERS}" ]; then
 				/|/nonexistent|/var/empty)
 					;;
 				*)
-					group=$(awk -F: -v gid=${gid} '$3 == gid { print $1 }' ${dp_GID_FILES})
+					group=$(awk -F: -v gid=${gid} '$1 !~ /^#/ && $3 == gid { print $1 }' ${dp_GID_FILES})
 					echo "${dp_INSTALL} -d -g $group -o $login $homedir" >> "${dp_UG_INSTALL}"
 					;;
 			esac

@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=		cantata
-PORTVERSION=		2.1.0
 DISTVERSIONPREFIX=	v
+DISTVERSION=		2.3.2
 CATEGORIES=		audio kde
 
 MAINTAINER=		kde@FreeBSD.org
@@ -11,18 +11,16 @@ COMMENT=		Graphical client for MPD using Qt5
 LICENSE=		GPLv3
 LICENSE_FILE=		${WRKSRC}/LICENSE
 
+USES=			cmake:outsource cpe pkgconfig qt:5 shebangfix
 USE_GITHUB=		yes
 GH_ACCOUNT=		CDrummond
 
-USE_QT5=		buildtools_build concurrent core dbus gui network \
+USE_QT=			buildtools_build concurrent core dbus gui network \
 			qmake_build sql sql-sqlite3_run svg widgets xml
 
-CMAKE_ARGS=		-DENABLE_QT5:BOOL=TRUE	\
-			-DENABLE_KDE:BOOL=FALSE	\
-			-DCMAKE_DISABLE_FIND_PACKAGE_UDev:BOOL=TRUE
+CMAKE_ON=		CMAKE_DISABLE_FIND_PACKAGE_UDev
 
-USES=			cmake:outsource cpe pkgconfig shebangfix
-SHEBANG_FILES=		dynamic/cantata-dynamic cantata-remote.cmake
+SHEBANG_FILES=		playlists/cantata-dynamic cantata-remote.cmake
 CPE_VENDOR=		craig_drummond
 USE_LDCONFIG=		yes
 
@@ -70,7 +68,7 @@ MUSICBRAINZ_IMPLIES=	CDPARANOIA
 MUSICBRAINZ_LIB_DEPENDS=libmusicbrainz5.so:audio/libmusicbrainz5
 MUSICBRAINZ_CMAKE_BOOL=	ENABLE_MUSICBRAINZ
 
-NLS_USE=		QT5=linguisttools_build
+NLS_USE=		QT=linguisttools_build
 NLS_CMAKE_ON=		-DLCONVERT_EXECUTABLE:STRING=${QT_BINDIR}/lconvert \
 			-DLRELEASE_EXECUTABLE:STRING=${QT_BINDIR}/lrelease
 NLS_CMAKE_OFF=		-DLCONVERT_EXECUTABLE:BOOL=FALSE \
@@ -78,7 +76,7 @@ NLS_CMAKE_OFF=		-DLCONVERT_EXECUTABLE:BOOL=FALSE \
 
 PROXY_CMAKE_BOOL=	ENABLE_PROXY_CONFIG
 
-QT5_USE=		QT5=multimedia
+QT5_USE=		QT=multimedia
 
 TAGLIB_LIB_DEPENDS=	libtag.so:audio/taglib \
 			libtag-extras.so:audio/taglib-extras

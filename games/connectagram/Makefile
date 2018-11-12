@@ -2,35 +2,38 @@
 # $FreeBSD$
 
 PORTNAME=	connectagram
-PORTVERSION=	1.2.5
+PORTVERSION=	1.2.9
 PORTREVISION=	1
 DISTVERSIONSUFFIX=	-src
 CATEGORIES=	games
 MASTER_SITES=	http://gottcode.org/connectagram/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	jhale@FreeBSD.org
 COMMENT=	Word unscrambling game
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+USES=		compiler:c++11-lib qmake qt:5 tar:bzip2
+USE_GL=		gl
+USE_QT=		buildtools_build core gui linguisttools_build network widgets
+
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
-USES=		compiler:c++11-lib qmake tar:bzip2
-USE_QT5=	buildtools_build core gui linguisttools_build network widgets
-INSTALLS_ICONS=	yes
-
-OPTIONS_DEFINE=	DOCS
+OPTIONS_DEFINE=	DOCS NLS
+OPTIONS_SUB=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e \
-		's|share/man|man|;s|metainfo|appdata|' ${WRKSRC}/connectagram.pro
+		's|share/man|man|' ${WRKSRC}/connectagram.pro
+
+post-patch-NLS-off:
 	@${REINPLACE_CMD} -e \
-		's|std::lround|lround|' ${WRKSRC}/src/*.cpp
+		'/INSTALLS/s|qm||' ${WRKSRC}/connectagram.pro
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	(cd ${WRKSRC} && ${INSTALL_DATA} CREDITS ChangeLog NEWS README \
+	(cd ${WRKSRC} && ${INSTALL_DATA} CREDITS ChangeLog README \
 		${STAGEDIR}${DOCSDIR})
 
 .include <bsd.port.mk>

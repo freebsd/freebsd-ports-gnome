@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	remmina
-DISTVERSIONPREFIX=v
-DISTVERSION=	1.2.0-rcgit.19
+DISTVERSION=	1.2.31.4
 CATEGORIES=	net gnome
 
 MAINTAINER=	woodsb02@FreeBSD.org
@@ -12,14 +11,18 @@ COMMENT=	GTK+ Remote Desktop Client
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USE_GITHUB=	yes
-GH_ACCOUNT=	FreeRDP
-GH_PROJECT=	Remmina
+LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
+		libsoup-2.4.so:devel/libsoup
 
-USES=		cmake:outsource gettext localbase:ldflags pathfix pkgconfig
+USE_GITLAB=	yes
+GL_ACCOUNT=	Remmina
+GL_PROJECT=	Remmina
+GL_COMMIT=	65d552c9becc957cae124ab5c26562cf22c052b9
+
+USES=		cmake:outsource desktop-file-utils gettext localbase:ldflags pathfix \
+		pkgconfig shared-mime-info ssl
 USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 pango
-USE_XORG=	ice sm x11 xext
-PATHFIX_WRKSRC=		${WRKSRC}/remmina
+USE_XORG=	ice sm x11 xext xkbfile
 INSTALLS_ICONS=	yes
 CMAKE_ARGS=	--build=build \
 		-DWITH_APPINDICATOR:BOOL=false
@@ -51,12 +54,10 @@ TERM_CMAKE_BOOL=	WITH_VTE
 
 post-patch:
 	# do not build plugins and locales , they are provided by separated ports
-	${REINPLACE_CMD} -e's|add_subdirectory(remmina-plugins)||' \
-		-e 's,FreeBSD,FreeBSD|DragonFly,' ${WRKSRC}/CMakeLists.txt
-	${REINPLACE_CMD} -e's|add_subdirectory(remmina-plugins-gnome)||' \
-		${WRKSRC}/CMakeLists.txt
-	${REINPLACE_CMD} -e's|add_subdirectory(external_tools)||' \
+	${REINPLACE_CMD} -e '/add_subdirectory(plugins/d' \
 		-e 's,FreeBSD,FreeBSD|DragonFly,' \
-		${WRKSRC}/remmina/CMakeLists.txt
+		${WRKSRC}/CMakeLists.txt
+	${REINPLACE_CMD} -e 's,FreeBSD,FreeBSD|DragonFly,' \
+		${WRKSRC}/src/CMakeLists.txt
 
 .include <bsd.port.mk>

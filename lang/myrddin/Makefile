@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	myrddin
-PORTVERSION=	0.1.1
+PORTVERSION=	0.3.1
 CATEGORIES=	lang
 MASTER_SITES=	http://myrlang.org/releases/
 
@@ -16,8 +16,10 @@ ONLY_FOR_ARCHS=	amd64
 USES=	gmake
 
 HAS_CONFIGURE=	yes
-WRKSRC=	${WRKDIR}/mc
+CONFIGURE_ARGS=	--prefix "${PREFIX}"
+ALL_TARGET=	bootstrap
 TEST_TARGET=	check
+WRKSRC=	${WRKDIR}/mc
 
 OPTIONS_DEFINE=	DEBUG VIM
 OPTIONS_DEFAULT=	VIM

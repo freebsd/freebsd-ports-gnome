@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lava
-DISTVERSION=	1.5
+DISTVERSION=	1.6.3
 CATEGORIES=	math
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
@@ -11,7 +11,8 @@ COMMENT=	Latent Variable Models
 
 LICENSE=	GPLv3
 
-CRAN_DEPENDS=	R-cran-numDeriv>0:math/R-cran-numDeriv
+CRAN_DEPENDS=	R-cran-numDeriv>0:math/R-cran-numDeriv \
+		R-cran-SQUAREM>0:math/R-cran-SQUAREM
 BUILD_DEPENDS=	${CRAN_DEPENDS}
 RUN_DEPENDS=	${CRAN_DEPENDS}
 

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fasm
-PORTVERSION=	1.71.58
+PORTVERSION=	1.73.02
 CATEGORIES=	lang devel
 MASTER_SITES=	http://flatassembler.net/
 
@@ -18,6 +18,8 @@ IA32_BINARY_PORT=	yes
 PLIST_FILES=	bin/fasm
 PORTDOCS=	*
 WRKSRC=		${WRKDIR}/${PORTNAME}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
 

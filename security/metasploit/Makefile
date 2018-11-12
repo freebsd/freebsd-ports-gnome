@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	metasploit
-PORTVERSION=	4.16.6
+PORTVERSION=	4.17.14
 CATEGORIES=	security
 
 MAINTAINER=	tanawts@gmail.com
@@ -19,22 +19,22 @@ RUN_DEPENDS=	nmap:security/nmap \
 		rubygem-bcrypt>=0:security/rubygem-bcrypt \
 		rubygem-bundler>=0:sysutils/rubygem-bundler \
 		rubygem-jsobfu>=0:www/rubygem-jsobfu \
-		rubygem-json1>=0:devel/rubygem-json1 \
+		rubygem-json>=0:devel/rubygem-json \
 		rubygem-metasm>=0:devel/rubygem-metasm \
 		rubygem-metasploit-aggregator>=0:security/rubygem-metasploit-aggregator \
 		rubygem-metasploit-concern>=0:security/rubygem-metasploit-concern \
 		rubygem-metasploit-credential>=0:security/rubygem-metasploit-credential \
 		rubygem-metasploit_data_models>=0:security/rubygem-metasploit_data_models \
 		rubygem-metasploit-model>=0:security/rubygem-metasploit-model \
-		rubygem-metasploit-payloads>=1.3.7:security/rubygem-metasploit-payloads \
-		rubygem-metasploit_payloads-mettle>=0.2.2:security/rubygem-metasploit_payloads-mettle \
+		rubygem-metasploit-payloads>=1.3.47:security/rubygem-metasploit-payloads \
+		rubygem-metasploit_payloads-mettle>=0.4.1:security/rubygem-metasploit_payloads-mettle \
 		rubygem-msgpack1>=0:devel/rubygem-msgpack1 \
 		rubygem-network_interface>=0:net/rubygem-network_interface \
 		rubygem-rubyntlm>=0:net/rubygem-rubyntlm \
 		rubygem-nokogiri>=0:textproc/rubygem-nokogiri \
 		rubygem-packetfu>=0:net/rubygem-packetfu \
 		rubygem-pcaprub>=0:net/rubygem-pcaprub \
-		rubygem-pg>=0:databases/rubygem-pg \
+		rubygem-pg0>=0:databases/rubygem-pg0 \
 		rubygem-railties4>=4.2.6:www/rubygem-railties4 \
 		rubygem-recog>=0:security/rubygem-recog \
 		rubygem-openssl-ccm>=0:security/rubygem-openssl-ccm \
@@ -45,7 +45,9 @@ RUN_DEPENDS=	nmap:security/nmap \
 		rubygem-bit-struct>=0:devel/rubygem-bit-struct \
 		rubygem-windows_error>=0:devel/rubygem-windows_error \
 		rubygem-pdf-reader>=0:print/rubygem-pdf-reader \
+		rubygem-ruby-macho>=0:devel/rubygem-ruby-macho \
 		rubygem-dnsruby>=0:dns/rubygem-dnsruby \
+		rubygem-mqtt>=0:net/rubygem-mqtt \
 		rubygem-net-ssh>=0:security/rubygem-net-ssh \
 		rubygem-ruby_smb>=0:net/rubygem-ruby_smb \
 		rubygem-rex-arch>=0:security/rubygem-rex-arch \
@@ -74,7 +76,8 @@ RUN_DEPENDS=	nmap:security/nmap \
 		rubygem-openvas-omp>=0:security/rubygem-openvas-omp \
 		rubygem-nessus_rest>=0:security/rubygem-nessus_rest \
 		rubygem-nexpose>=0:security/rubygem-nexpose \
-		rubygem-xdr>=0:converters/rubygem-xdr
+		rubygem-xdr>=0:converters/rubygem-xdr \
+		rubygem-faker>=0:devel/rubygem-faker
 
 SCRIPTS=	msfconsole msfd msfrpc msfrpcd msfvenom
 
@@ -88,21 +91,30 @@ STRIP=
 
 USES=		python shebangfix
 USE_RUBY=	yes
-PYTHON_NO_DEPENDS=	yes
-SHEBANG_FILES=	data/exploits/CVE-2017-7494/build.sh \
+SHEBANG_FILES=	data/exploits/CVE-2017-17562/build.sh \
+		data/exploits/CVE-2017-17562/install-deps.sh \
+		data/exploits/CVE-2017-7494/build.sh \
 		data/exploits/CVE-2017-7494/install-deps.sh \
+		docker/entrypoint.sh \
+		external/source/exploits/CVE-2016-4655/ssh_build.sh \
 		external/source/shellcode/windows/build.sh \
 		external/source/msfJavaToolkit/compile.sh \
 		external/source/msfJavaToolkit/testKeytool.rb \
 		external/source/msfJavaToolkit/testCompilation.rb \
 		external/source/metsvc/test.rb \
 		docker/bin/msfvenom \
-		docker/bin/msfvenom-dev \
 		docker/bin/msfconsole \
-		docker/bin/msfconsole-dev \
-		tools/hardware/killerbee_msfrelay \
+		modules/auxiliary/dos/http/slowloris.py \
+		modules/auxiliary/dos/tcp/claymore_dos.py \
+		modules/auxiliary/scanner/smb/impacket/dcomexec.py \
+		modules/auxiliary/scanner/smb/impacket/secretsdump.py \
+		modules/auxiliary/scanner/smb/impacket/wmiexec.py \
+		modules/auxiliary/scanner/ssl/bleichenbacher_oracle.py \
+		modules/auxiliary/scanner/wproxy/att_open_proxy.py \
 		tools/dev/import-dev-keys.sh \
-		tools/dev/sign-dev-keys.sh
+		tools/dev/sign-dev-keys.sh \
+		tools/hardware/killerbee_msfrelay.py \
+		tools/modules/aws-aggregator-userdata.sh
 
 .include <bsd.port.pre.mk>
 

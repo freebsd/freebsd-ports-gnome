@@ -1,26 +1,25 @@
 # $FreeBSD$
 
 PORTNAME=	tortoisehg
-PORTVERSION=	4.3.1
+DISTVERSION=	4.6
 CATEGORIES=	devel
 MASTER_SITES=	https://bitbucket.org/tortoisehg/targz/downloads/
-#MASTER_SITES=	http://cdn.bitbucket.org/tortoisehg/targz/downloads/
 
-MAINTAINER=	6yearold@gmail.com
+MAINTAINER=	arrowd@FreeBSD.org
 COMMENT=	GUI for Mercurial VCS
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING.txt
 
 RUN_DEPENDS=	hg:devel/mercurial \
-		${PYTHON_PKGNAMEPREFIX}iniparse>=0.4:devel/py-iniparse \
-		pygmentize:textproc/py-pygments
+		${PYTHON_PKGNAMEPREFIX}iniparse>=0.4:devel/py-iniparse@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pygments>=0:textproc/py-pygments@${PY_FLAVOR}
 
 OPTIONS_DEFINE=	NAUTILUS NLS
 NAUTILUS_DESC=	Install TortoiseHG Nautilus extension
 OPTIONS_SUB=	yes
 
-USES=		pyqt:4 python:2.7
+USES=		pyqt:5 python:2.7
 USE_PYQT=	core gui network qscintilla2 xml
 NLS_USES=	gettext
 

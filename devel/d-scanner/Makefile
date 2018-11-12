@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	d-scanner
-PORTVERSION=	0.4.0
+PORTVERSION=	0.5.3
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
@@ -17,7 +17,9 @@ BUILD_DEPENDS=	ldmd2:lang/ldc \
 		${LOCALBASE}/lib/d/libdsymbol.a:devel/dsymbol \
 		${LOCALBASE}/lib/d/libinifiled.a:devel/inifiled \
 		${LOCALBASE}/lib/d/libddoc.a:devel/libddoc \
-		${LOCALBASE}/lib/d/libdparse.a:devel/libdparse
+		${LOCALBASE}/lib/d/libdparse.a:devel/libdparse \
+		${LOCALBASE}/lib/d/libstdx-allocator.a:devel/stdx-allocator \
+		rdmd:lang/dlang-tools
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	dlang-community
@@ -26,10 +28,13 @@ GH_PROJECT=	D-Scanner
 PLIST_FILES=	bin/dscanner
 DUB_CMD=	${LOCALBASE}/bin/dub build --build=release
 
+post-patch:
+	${REINPLACE_CMD} 's|%%LOCALBASE%%|${LOCALBASE}|g' ${WRKSRC}/dub.json
+
 do-build:
 	@cd ${WRKSRC} && ${DUB_CMD}
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/dscanner ${STAGEDIR}${PREFIX}/bin/
+	${INSTALL_PROGRAM} ${WRKSRC}/bin/dscanner ${STAGEDIR}${PREFIX}/bin/
 
 .include <bsd.port.mk>

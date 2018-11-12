@@ -1,15 +1,17 @@
 # $FreeBSD$
 
 PORTNAME=	zeroconf-ioslave
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	net kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	net kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE Network monitor for DNS-SD services (Zeroconf)
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource kde:5 qt:5 tar:xz
+USE_KDE=	config coreaddons dbusaddons dnssd i18n kio service
+USE_QT=		core dbus network \
+		buildtools_build qmake_build
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

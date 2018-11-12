@@ -23,6 +23,7 @@ USE_RC_SUBR=	pbs_server pbs_sched pbs_mom
 SUB_FILES=	pkg-message torque-config
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
+CFLAGS+=	-D_WANT_VMMETER
 
 CONFLICTS_INSTALL=	qstat-[0-9]* zh-qterm-[0-9]*
 

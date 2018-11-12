@@ -1,13 +1,12 @@
-# Created by: Jason Bacon <bacon4000@gmail.com>
 # $FreeBSD$
 
 PORTNAME=		bowtie
 PORTVERSION=		1.1.2
-PORTREVISION=	4
+PORTREVISION=	6
 DISTVERSIONPREFIX=	v
 CATEGORIES=		biology
 
-MAINTAINER=	bacon4000@gmail.com
+MAINTAINER=	jwb@FreeBSD.org
 COMMENT=	Ultrafast, memory-efficient short read aligner
 
 LICENSE=	ART10
@@ -24,6 +23,8 @@ SHEBANG_FILES=	scripts/*.pl bowtie bowtie-build \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	BenLangmead
+
+OPTIONS_DEFINE=	DOCS
 
 post-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/scripts

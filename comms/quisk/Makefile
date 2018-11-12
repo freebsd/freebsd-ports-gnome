@@ -3,6 +3,7 @@
 
 PORTNAME=	quisk
 PORTVERSION=	4.1.3
+PORTREVISION=	3
 CATEGORIES=	comms hamradio
 MASTER_SITES=	http://james.ahlstrom.name/quisk/ \
 		LOCAL/db
@@ -17,7 +18,7 @@ LIB_DEPENDS=	libfftw3.so:math/fftw3 \
 		libasound.so:audio/alsa-lib \
 		libpulse.so:audio/pulseaudio
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 USE_WX=		3.0+
 WX_COMPS=	python

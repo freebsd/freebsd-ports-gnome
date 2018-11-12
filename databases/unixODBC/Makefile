@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	unixODBC
-PORTVERSION=	2.3.4
+PORTVERSION=	2.3.7
 CATEGORIES=	databases
-MASTER_SITES=	ftp://ftp.unixodbc.org/pub/unixODBC/
+MASTER_SITES=	http://www.unixodbc.org/ \
+		ftp://ftp.unixodbc.org/pub/unixODBC/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	brnrd@FreeBSD.org
 COMMENT=	ODBC library suite for Unix
 
 LICENSE=	GPLv2 LGPL21

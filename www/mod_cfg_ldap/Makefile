@@ -13,7 +13,7 @@ COMMENT=	Allows you to keep your virtual host configuration in a LDAP directory
 
 LICENSE=	BSD3CLAUSE
 
-USE_APACHE=	22+
+USES=		apache:2.2+
 USE_OPENLDAP=	yes
 AP_FAST_BUILD=	yes
 AP_GENPLIST=	yes
@@ -26,7 +26,9 @@ AP_LIB+=	${LDAP_LIB}
 PORTDOCS=	AUTHORS cfg_ldap.conf ChangeLog COPYING INSTALL \
 		mod_cfg_ldap.schema README TODO
 
-post-install:
+OPTIONS_DEFINE=	DOCS
+
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
 

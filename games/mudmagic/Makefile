@@ -3,7 +3,7 @@
 
 PORTNAME=	mudmagic
 PORTVERSION=	1.9
-PORTREVISION=	17
+PORTREVISION=	18
 CATEGORIES=	games
 MASTER_SITES=	http://www.mudmagic.com/mud-client/downloads/
 
@@ -13,6 +13,8 @@ COMMENT=	GTK+ based MUD client
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BROKEN=		Does not build with recent devel/glib20
+
 LIB_DEPENDS=	libcurl.so:ftp/curl \
 		libpcre.so:devel/pcre \
 		libpng.so:graphics/png \
@@ -21,7 +23,7 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 		libfontconfig.so:x11-fonts/fontconfig
 
 USES=		gettext-runtime gmake libtool localbase pathfix \
-		pkgconfig python sqlite
+		pkgconfig python:2.7 sqlite
 USE_GNOME=	cairo gdkpixbuf2 gtk20 libglade2 libxml2
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip

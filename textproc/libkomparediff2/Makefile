@@ -1,16 +1,19 @@
 # $FreeBSD$
 
 PORTNAME=	libkomparediff2
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	2
-CATEGORIES=	textproc kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	textproc kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Library to compare files and strings
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	qmake_build moc_build uic_build rcc_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs config configwidgets coreaddons ecm i18n kio parts \
+		service widgetsaddons xmlgui
+USE_QT=		core dbus gui widgets xml \
+		buildtools_build qmake_build
 USE_LDCONFIG=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

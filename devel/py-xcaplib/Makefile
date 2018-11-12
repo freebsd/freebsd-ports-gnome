@@ -13,9 +13,9 @@ COMMENT=	Python XCAP client library
 
 LICENSE=	LGPL20+
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}application>=1.1.5:devel/py-application \
-		${PYTHON_PKGNAMEPREFIX}lxml>=2.1.2:devel/py-lxml \
-		${PYTHON_PKGNAMEPREFIX}twisted>=0:devel/py-twisted
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}application>=1.1.5:devel/py-application@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}lxml>=2.1.2:devel/py-lxml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}twisted>=0:devel/py-twisted@${PY_FLAVOR}
 
 NO_ARCH=	yes
 USES=		python

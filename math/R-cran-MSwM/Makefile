@@ -2,15 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	MSwM
-PORTVERSION=	1.2
+PORTVERSION=	1.4
 CATEGORIES=	math
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 
 MAINTAINER=	tota@FreeBSD.org
 COMMENT=	Fitting Markov Switching Models
 
-LICENSE=	GPLv2 GPLv3
-LICENSE_COMB=	dual
+LICENSE=	GPLv2+
 
 USES=	cran:auto-plist
 

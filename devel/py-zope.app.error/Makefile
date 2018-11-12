@@ -13,12 +13,12 @@ COMMENT=	Error reporting utility management UI for Zope3
 
 LICENSE=	ZPL21
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.component>=0:devel/py-zope.component \
-		${PYTHON_PKGNAMEPREFIX}zope.error>=0:devel/py-zope.error \
-		${PYTHON_PKGNAMEPREFIX}zope.publisher>=0:devel/py-zope.publisher \
-		${PYTHON_PKGNAMEPREFIX}zope.traversing>=0:devel/py-zope.traversing
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}zope.component>=0:devel/py-zope.component@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.error>=0:devel/py-zope.error@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.publisher>=0:devel/py-zope.publisher@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.traversing>=0:devel/py-zope.traversing@${PY_FLAVOR}
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

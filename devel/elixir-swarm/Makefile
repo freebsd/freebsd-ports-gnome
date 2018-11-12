@@ -1,11 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	swarm
-DISTVERSION=	3.0.5
+DISTVERSION=	3.3.1
 CATEGORIES=	devel
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Clustering, registration, and distribution for Elixir
 
 LICENSE=	MIT
@@ -19,5 +19,7 @@ MIX_BUILD_DEPS=	devel/elixir-gen_state_machine \
 		devel/elixir-poison
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
 MIX_REWRITE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

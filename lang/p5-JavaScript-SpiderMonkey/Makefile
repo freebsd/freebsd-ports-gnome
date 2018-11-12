@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	JavaScript-SpiderMonkey
-PORTVERSION=	0.21
-PORTREVISION=	2
+PORTVERSION=	0.25
 CATEGORIES=	lang perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -11,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Perl interface to Mozilla JavaScript implementation
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 LIB_DEPENDS=	libjs.so:lang/spidermonkey17

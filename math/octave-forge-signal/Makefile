@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	octave-forge-signal
-PORTVERSION=	1.3.2
-PORTREVISION=	4
+PORTVERSION=	1.4.0
+PORTREVISION=	2
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org

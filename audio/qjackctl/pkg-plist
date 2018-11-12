@@ -1,9 +1,9 @@
 bin/qjackctl
 man/man1/qjackctl.1.gz
 man/man1/qjackctl.fr.1.gz
-share/appdata/qjackctl.appdata.xml
 share/applications/qjackctl.desktop
 share/icons/hicolor/32x32/apps/qjackctl.png
+share/metainfo/qjackctl.appdata.xml
 %%DATADIR%%/translations/qjackctl_cs.qm
 %%DATADIR%%/translations/qjackctl_de.qm
 %%DATADIR%%/translations/qjackctl_es.qm
@@ -11,4 +11,5 @@ share/icons/hicolor/32x32/apps/qjackctl.png
 %%DATADIR%%/translations/qjackctl_it.qm
 %%DATADIR%%/translations/qjackctl_ja.qm
 %%DATADIR%%/translations/qjackctl_nl.qm
+%%DATADIR%%/translations/qjackctl_pt.qm
 %%DATADIR%%/translations/qjackctl_ru.qm

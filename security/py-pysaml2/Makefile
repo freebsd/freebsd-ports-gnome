@@ -2,34 +2,35 @@
 # $FreeBSD$
 
 PORTNAME=	pysaml2
-PORTVERSION=	4.0.2
+PORTVERSION=	4.6.2
 CATEGORIES=	security devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	brendan+freebsd@bbqsrc.net
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Python implementation of SAML Version 2
 
 LICENSE=	APACHE20
-LICENSE_FILE=	${WRKSRC}/LICENSE.txt
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}decorator>0:devel/py-decorator \
-		${PYTHON_PKGNAMEPREFIX}requests>1.0.0:www/py-requests \
-		${PYTHON_PKGNAMEPREFIX}Paste>0:www/py-paste \
-		${PYTHON_PKGNAMEPREFIX}zope.interface>0:devel/py-zope.interface \
-		${PYTHON_PKGNAMEPREFIX}repoze.who>0:devel/py-repoze.who \
-		${PYTHON_PKGNAMEPREFIX}pycrypto>2.5:security/py-pycrypto \
-		${PYTHON_PKGNAMEPREFIX}pytz>0:devel/py-pytz \
-		${PYTHON_PKGNAMEPREFIX}openssl>0:security/py-openssl \
-		${PYTHON_PKGNAMEPREFIX}dateutil>0:devel/py-dateutil \
-		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cryptography>=1.4:security/py-cryptography@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dateutil>=0:devel/py-dateutil@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}defusedxml>=0:devel/py-defusedxml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}future>=0:devel/py-future@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}openssl>=0:security/py-openssl@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}Paste>=0:www/py-paste@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytz>=0:devel/py-pytz@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}repoze.who>=0:devel/py-repoze.who@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>=1.0.0:www/py-requests@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}six>=0:devel/py-six@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}zope.interface>=0:devel/py-zope.interface@${PY_FLAVOR} \
 		xmlsec1:security/xmlsec1
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:devel/py-pytest \
-		${PYTHON_PKGNAMEPREFIX}mock>0:devel/py-mock \
-		${PYTHON_PKGNAMEPREFIX}responses>0:devel/py-responses
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mock>=0:devel/py-mock@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytest>=0:devel/py-pytest@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}responses>=0:devel/py-responses@${PY_FLAVOR}
 
 USES=		python
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	autoplist concurrent distutils
 
 NO_ARCH=	yes
 

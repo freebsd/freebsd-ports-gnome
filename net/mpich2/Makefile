@@ -3,7 +3,7 @@
 
 PORTNAME=	mpich2
 DISTVERSION=	1.5
-PORTREVISION=	8
+PORTREVISION=	11
 PORTEPOCH=	5
 CATEGORIES=	net java parallel
 MASTER_SITES=	http://www.mcs.anl.gov/research/projects/mpich2/downloads/tarballs/${DISTVERSION}/
@@ -20,9 +20,9 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 BUILD_DEPENDS=	bash:shells/bash
 RUN_DEPENDS=	bash:shells/bash
 
+USES=		libtool:keepla localbase fortran perl5 \
+		pkgconfig python:2.7
 GNU_CONFIGURE=	yes
-USES=		execinfo libtool:keepla localbase fortran perl5 \
-		pkgconfig python
 USE_GCC=	yes
 USE_LDCONFIG=	yes
 USE_PERL5=	build
@@ -44,12 +44,13 @@ CONFIGURE_ARGS=	--enable-romio --enable-shared	\
 CONFIGURE_ENV=	FCFLAGS="${FFLAGS}" \
 		MPI_CFLAGS="-I${LOCALBASE}/include" \
 		PACKAGE="${PORTNAME}" \
-		PTHREAD_LIBS="-lpthread"
+		PTHREAD_LIBS="-lpthread" \
+		BASH_SHELL="${LOCALBASE}/bin/bash"
 
 .if ${FFLAGS} == "-O"
 FFLAGS=		-O2
 .endif
-LDFLAGS+=	-lpthread -L${LOCALBASE}/lib -lexecinfo
+LDFLAGS+=	-lpthread -lexecinfo
 
 MAKE_ENV=	CCACHE_DISABLE=yes PACKAGE=${PORTNAME}
 NOCCACHE=	yes

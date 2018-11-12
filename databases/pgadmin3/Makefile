@@ -3,7 +3,7 @@
 
 PORTNAME=	pgadmin3
 PORTVERSION=	1.22.1
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	databases
 MASTER_SITES=	PGSQL/pgadmin3/release/v${PORTVERSION}/src
 DIST_SUBDIR=	postgresql
@@ -34,7 +34,7 @@ PORTDATA=	*
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,/wx-config,/${WX_CONFIG:T},' ${WRKSRC}/configure
-	@${REINPLACE_CMD} -e 's,wxrc,wxrc-gtk2u-${WX_VERSION},' ${WRKSRC}/pgadmin/ui/embed-xrc
+	@${REINPLACE_CMD} -e 's,wxrc ,${WXRC_CMD:T} ,' ${WRKSRC}/pgadmin/ui/embed-xrc
 	@${REINPLACE_CMD} -e 's,/usr/bin/xterm,${LOCALBASE}/bin/xterm,' ${WRKSRC}/plugins.d/plugins.ini
 	@${REINPLACE_CMD} -e 's,/bin/bash,/bin/sh,' ${WRKSRC}/pgadmin/ver_svn.sh
 	@${REINPLACE_CMD} -e 's,Exec=/usr/bin/pgadmin3,Exec=${LOCALBASE}/bin/pgadmin3,'\

@@ -2,28 +2,39 @@
 # $FreeBSD$
 
 PORTNAME=	elscreen
-PORTVERSION=	1.4.6
-PORTREVISION=	11
+PORTVERSION=	1.4.6.20180320
 CATEGORIES=	misc elisp
-MASTER_SITES=	ftp://ftp.morishima.net/pub/morishima.net/naoto/ElScreen/%SUBDIR%/
-MASTER_SITE_SUBDIR=	. old
+PKGNAMESUFFIX=	${EMACS_PKGNAMESUFFIX}
 
 MAINTAINER=	kuriyama@FreeBSD.org
-COMMENT=	GNU screen like utility on Emacsen
+COMMENT=	Emacs utility similar to GNU Screen
 
-RUN_DEPENDS=	${LOCALBASE}/${EMACS_VERSION_SITE_LISPDIR}/emu/emu.el:editors/apel
+LICENSE=	GPLv2
 
-USE_EMACS=	yes
+RUN_DEPENDS=	apel${EMACS_PKGNAMESUFFIX}>0:editors/apel@${EMACS_FLAVOR}
 
-EMACS_NO_BUILD_DEPENDS=	YES
+USES=		emacs
+USE_GITHUB=	yes
+
+GH_ACCOUNT=	TakaakiFuruse
+GH_PROJECT=	${PORTNAME}
+GH_TAGNAME=	329b438
+
+NO_ARCH=	yes
 NO_BUILD=	YES
+
+PORTDOCS=	GF-QuickStart GF-README Readme.md
 
 OPTIONS_DEFINE=	DOCS
 
 do-install:
-	${INSTALL_DATA} ${WRKSRC}/elscreen.el ${STAGEDIR}${PREFIX}/${EMACS_SITE_LISPDIR}
+	${MKDIR} ${STAGEDIR}${PREFIX}/${EMACS_SITE_LISPDIR}/${PORTNAME}
+	(cd ${WRKSRC}; ${INSTALL_DATA} ${WRKSRC}/*.el \
+		${STAGEDIR}${PREFIX}/${EMACS_SITE_LISPDIR}/${PORTNAME})
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-.for i in ChangeLog README
+
+do-install-DOCS-on:
+.for i in ${PORTDOCS}
 	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
 

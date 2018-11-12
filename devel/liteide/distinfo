@@ -1,3 +1,5 @@
-TIMESTAMP = 1500472890
-SHA256 (visualfc-liteide-x32.2_GH0.tar.gz) = 36c1b9cb8632577ea89e8c955d5f94079245b99f4020d5c350bb9199df3f4a8a
-SIZE (visualfc-liteide-x32.2_GH0.tar.gz) = 2559354
+TIMESTAMP = 1537528122
+SHA256 (visualfc-liteide-x34.2_GH0.tar.gz) = 6c4dedb5a2351f9790ddf84998b05aa403bac2dfb2595a0efb5e89c9ecd578cd
+SIZE (visualfc-liteide-x34.2_GH0.tar.gz) = 2730804
+SHA256 (visualfc-gotools-77fd0f0_GH0.tar.gz) = a2f9ef81a77463330ed79744345ea45f559d9e7d73cd26fe339bf24eb3d11062
+SIZE (visualfc-gotools-77fd0f0_GH0.tar.gz) = 538090

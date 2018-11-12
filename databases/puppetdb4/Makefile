@@ -16,7 +16,7 @@ RUN_DEPENDS=	bash:shells/bash \
 
 USE_RC_SUBR=	puppetdb
 
-CONFLICTS_INSTALL=	puppetdb3-* puppetdb5-*
+CONFLICTS_INSTALL=	puppetdb5-* puppetdb6-*
 USES=		shebangfix
 SHEBANG_FILES=	ext/bin/puppetdb \
 		ext/cli/anonymize \
@@ -39,8 +39,6 @@ GROUPS=		puppetdb
 
 SUB_LIST=	JAVA_HOME=${JAVA_HOME}
 SUB_FILES=	pkg-message
-
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 post-patch:
 .for file in Makefile ext/bin/puppetdb ext/cli/ssl-setup \

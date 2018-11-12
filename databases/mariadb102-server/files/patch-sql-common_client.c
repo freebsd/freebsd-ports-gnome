@@ -1,6 +1,6 @@
---- sql-common/client.c.orig	2017-05-14 23:13:18 UTC
-+++ sql-common/client.c
-@@ -104,6 +104,10 @@ my_bool	net_flush(NET *net);
+--- sql-common/client.c.orig	2018-01-03 14:48:29.000000000 +0100
++++ sql-common/client.c	2018-01-24 00:45:11.194419000 +0100
+@@ -104,6 +104,10 @@
  #define CONNECT_TIMEOUT 0
  #endif
  

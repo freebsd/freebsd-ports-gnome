@@ -2,6 +2,7 @@
 
 PORTNAME=	dbd-pg
 PORTVERSION=	0.3.9
+PORTREVISION=	2
 CATEGORIES=	databases rubygems
 MASTER_SITES=	RG
 

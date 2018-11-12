@@ -27,7 +27,7 @@ STATUS=		debug
 STATUS=		release
 .endif
 
-USES=		compiler gmake iconv localbase pkgconfig sqlite tar:tgz
+USES=		compiler gmake iconv localbase pkgconfig sqlite
 USE_LDCONFIG=	yes
 
 INSTALL_TARGET=	do_install
@@ -45,7 +45,8 @@ OPTIONS_SUB=		yes
 GTK2_USE=	gnome=gtk20
 GTK2_MAKE_ENV=	UI_TYPE=gtk
 
-QT4_USE=	qt4=gui,corelib,imageformats,network,moc_build
+QT4_USES=	qt:4
+QT4_USE=	qt=gui,corelib,imageformats,network,moc_build
 QT4_LIBS=	-L${QT_LIBDIR}
 QT4_MAKE_ENV=	UI_TYPE=qt4
 

@@ -1,4 +1,3 @@
-@unexec %D/etc/rc.d/syslog-ng.sh stop > /dev/null 2>&1 || true
 @sample etc/scl.conf.sample
 etc/syslog-ng.conf.dist
 @sample etc/syslog-ng.conf.sample
@@ -246,7 +245,6 @@ lib/syslog-ng/libafsocket.so
 lib/syslog-ng/libaffile.so
 lib/syslog-ng/libafprog.so
 lib/syslog-ng/libafuser.so
-lib/syslog-ng/libafamqp.so
 lib/syslog-ng/libcsvparser.so
 lib/syslog-ng/libconfgen.so
 lib/syslog-ng/libsystem-source.so

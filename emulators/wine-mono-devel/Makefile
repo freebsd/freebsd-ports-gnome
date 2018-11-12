@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	wine-mono
-DISTVERSION=	4.7.1
+DISTVERSION=	4.7.3
 CATEGORIES=	emulators
 MASTER_SITES=	http://dl.winehq.org/wine/wine-mono/${DISTVERSION}/
 PKGNAMESUFFIX=	-devel
@@ -15,10 +15,12 @@ COMMENT=	Mono .NET implementation for Wine development branch (HTML support)
 LICENSE=	MIT GPLv2 LGPL20
 LICENSE_COMB=	multi
 
+CONFLICTS_INSTALL=	wine-mono-[0-9]*
+
 NO_BUILD=	yes
 PLIST_SUB+=	MONO_VERSION="${DISTVERSION}"
 DATADIR=	${PREFIX}/share/wine
-PLIST_FILES=	%%DATADIR%%/mono/wine-mono-%%MONO_VERSION%%.msi
+PLIST_FILES=	${DATADIR}/mono/wine-mono-${DISTVERSION}.msi
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}/mono

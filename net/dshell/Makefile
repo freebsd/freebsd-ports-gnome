@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dshell
-PORTVERSION=	3.0.20150220
-PORTREVISION=	1
+PORTVERSION=	3.0.20171116
 CATEGORIES=	net
 
 MAINTAINER=	nobutaka@FreeBSD.org
@@ -13,11 +12,11 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 BUILD_DEPENDS=	bash:shells/bash \
-		${PYTHON_PKGNAMEPREFIX}pygeoip>0:net/py-pygeoip \
-		${PYTHON_PKGNAMEPREFIX}pycrypto>0:security/py-pycrypto \
-		${PYTHON_PKGNAMEPREFIX}dpkt>0:net/py-dpkt \
-		${PYTHON_PKGNAMEPREFIX}ipy>0:net-mgmt/py-ipy \
-		${PYTHON_PKGNAMEPREFIX}pypcap>0:net/py-pypcap
+		${PYTHON_PKGNAMEPREFIX}pygeoip>0:net/py-pygeoip@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pycrypto>0:security/py-pycrypto@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dpkt>0:net/py-dpkt@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}ipy>0:net-mgmt/py-ipy@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pypcap>0:net/py-pypcap@${PY_FLAVOR}
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USE_GITHUB=	yes
@@ -27,7 +26,7 @@ SHEBANG_FILES=	bin/*.py
 
 GH_ACCOUNT=	USArmyResearchLab
 GH_PROJECT=	Dshell
-GH_TAGNAME=	46e691c
+GH_TAGNAME=	5850adf
 
 OPTIONS_DEFINE=	DOCS
 

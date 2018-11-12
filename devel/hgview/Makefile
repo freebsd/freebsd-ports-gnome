@@ -3,6 +3,7 @@
 
 PORTNAME=	hgview
 PORTVERSION=	1.9.0
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	CHEESESHOP \
 		http://download.logilab.org/pub/${PORTNAME}/
@@ -12,17 +13,18 @@ COMMENT=	Fast Mercurial log navigator written in pyqt4
 
 LICENSE=	GPLv2
 
+BROKEN=		fails to configure
+
 RUN_DEPENDS=	hg:devel/mercurial \
-		${PYTHON_PKGNAMEPREFIX}mx-base>0:lang/py-mx-base \
-		${PYTHON_PKGNAMEPREFIX}docutils>0:textproc/py-docutils
+		${PYTHON_PKGNAMEPREFIX}mx-base>0:lang/py-mx-base@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}docutils>0:textproc/py-docutils@${PY_FLAVOR}
 BUILD_DEPENDS=	hg:devel/mercurial \
-		pyrcc4:textproc/py-qt4-xml \
 		xmlto:textproc/xmlto \
 		asciidoc:textproc/asciidoc
 
 NO_ARCH=	yes
-USES=		gmake pyqt:4 python:2
-USE_PYQT=	gui_run qscintilla2_run
+USES=		gmake pyqt:4 python:2.7
+USE_PYQT=	gui_run qscintilla2_run xml_build
 USE_PYTHON=	distutils
 PORTDOCS=	*
 

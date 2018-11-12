@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	SOAP-Lite
-PORTVERSION=	1.20
+PORTVERSION=	1.27
 CATEGORIES=	net perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	svysh.fbsd@gmail.com
 COMMENT=	Client and server side SOAP implementation
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
@@ -22,18 +22,19 @@ BUILD_DEPENDS=	p5-Class-Inspector>=0:devel/p5-Class-Inspector \
 		p5-Task-Weaken>=0:devel/p5-Task-Weaken \
 		p5-URI>=0:net/p5-URI \
 		p5-XML-Parser>=2.23:textproc/p5-XML-Parser \
-		p5-XML-Parser-Lite>=0:textproc/p5-XML-Parser-Lite \
+		p5-XML-Parser-Lite>=0.715:textproc/p5-XML-Parser-Lite \
 		p5-libwww>=0:www/p5-libwww
 RUN_DEPENDS:=	${BUILD_DEPENDS}
-TEST_DEPENDS=	p5-Test-Warn>=0:devel/p5-Test-Warn \
+TEST_DEPENDS=	p5-Test-MockObject>=0:devel/p5-Test-MockObject \
+		p5-Test-Warn>=0:devel/p5-Test-Warn \
 		p5-Test-XML>=0:devel/p5-Test-XML
 
 CONFLICTS_INSTALL=	p5-SOAP-Lite-0.60* p5-SOAP-[0-9]*
 
 CONFIGURE_ARGS=	--noprompt
 INSTALL_TARGET=	pure_install
-USE_PERL5=	configure
 USES=		perl5 shebangfix
+USE_PERL5=	configure
 NO_ARCH=	yes
 
 SHEBANG_FILES=	bin/SOAPsh.pl

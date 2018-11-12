@@ -27,26 +27,24 @@
 #include <sys/cdefs.h>
 __FBSDID("$FreeBSD$");
 
-#include <sys/param.h>
-#include <sys/proc.h>
+#include "defs.h"
+#include "frame-unwind.h"
+#include "gdbcore.h"
+#include "inferior.h"
+#include "osabi.h"
+#include "regcache.h"
+#include "progspace.h"
+#include "solib.h"
+#include "trad-frame.h"
+#include "i386-tdep.h"
+
 #ifdef __i386__
+#include <sys/proc.h>
 #include <machine/pcb.h>
 #include <machine/frame.h>
 #include <machine/segments.h>
 #include <machine/tss.h>
 #endif
-#include <string.h>
-
-#include <defs.h>
-#include <frame-unwind.h>
-#include "gdbcore.h"
-#include <inferior.h>
-#include "osabi.h"
-#include <regcache.h>
-#include "progspace.h"
-#include "solib.h"
-#include "trad-frame.h"
-#include <i386-tdep.h>
 
 #include "kgdb.h"
 
@@ -130,19 +128,26 @@ i386fbsd_supply_pcb(struct regcache *regcache, CORE_ADDR pcb_addr)
   gdb_byte buf[4];
   int i;
 
+  memset(buf, 0, sizeof(buf));
+
+  /*
+   * XXX The PCB may have been swapped out.  Supply a dummy %eip value
+   * so as to avoid triggering an exception during stack unwinding.
+   */
+  regcache->raw_supply(I386_EIP_REGNUM, buf);
   for (i = 0; i < ARRAY_SIZE (i386fbsd_pcb_offset); i++)
     if (i386fbsd_pcb_offset[i] != -1) {
       if (target_read_memory(pcb_addr + i386fbsd_pcb_offset[i], buf, sizeof buf)
 	  != 0)
 	continue;
-      regcache_raw_supply(regcache, i, buf);
+      regcache->raw_supply(i, buf);
     }
-  regcache_raw_supply_unsigned(regcache, I386_CS_REGNUM, CODE_SEL);
-  regcache_raw_supply_unsigned(regcache, I386_DS_REGNUM, DATA_SEL);
-  regcache_raw_supply_unsigned(regcache, I386_ES_REGNUM, DATA_SEL);
-  regcache_raw_supply_unsigned(regcache, I386_FS_REGNUM, PRIV_SEL);
-  regcache_raw_supply_unsigned(regcache, I386_GS_REGNUM, DATA_SEL);
-  regcache_raw_supply_unsigned(regcache, I386_SS_REGNUM, DATA_SEL);
+  regcache->raw_supply_unsigned(I386_CS_REGNUM, CODE_SEL);
+  regcache->raw_supply_unsigned(I386_DS_REGNUM, DATA_SEL);
+  regcache->raw_supply_unsigned(I386_ES_REGNUM, DATA_SEL);
+  regcache->raw_supply_unsigned(I386_FS_REGNUM, PRIV_SEL);
+  regcache->raw_supply_unsigned(I386_GS_REGNUM, DATA_SEL);
+  regcache->raw_supply_unsigned(I386_SS_REGNUM, DATA_SEL);
 }
 
 #ifdef __i386__
@@ -181,7 +186,7 @@ i386fbsd_fetch_tss(void)
 	struct segment_descriptor sd;
 	CORE_ADDR addr, cpu0prvpage, tss;
 
-	kt = kgdb_thr_lookup_tid(ptid_get_tid(inferior_ptid));
+	kt = kgdb_thr_lookup_tid(inferior_ptid.tid());
 	if (kt == NULL || kt->cpu == NOCPU || kt->cpu < 0)
 		return (0);
 
@@ -461,8 +466,6 @@ i386fbsd_kernel_init_abi(struct gdbarch_info info, struct gdbarch *gdbarch)
 	fbsd_vmcore_set_supply_pcb(gdbarch, i386fbsd_supply_pcb);
 	fbsd_vmcore_set_cpu_pcb_addr(gdbarch, kgdb_trgt_stop_pcb);
 }
-
-void _initialize_i386_kgdb_tdep(void);
 
 void
 _initialize_i386_kgdb_tdep(void)

@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	apex
-PORTVERSION=	1.0.0
+PORTVERSION=	1.2.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Term printing library for Elixir
 
 LICENSE=	MIT
@@ -17,5 +17,7 @@ GH_ACCOUNT=	BjRo
 
 MIX_REWRITE=	yes
 MIX_BUILD_NAME=	shared
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

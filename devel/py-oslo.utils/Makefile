@@ -1,31 +1,37 @@
 # $FreeBSD$
 
 PORTNAME=	oslo.utils
-PORTVERSION=	3.21.0
+PORTVERSION=	3.37.0
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	novel@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Oslo Utility library
 
 LICENSE=	APACHE20
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pbr>=1.8:devel/py-pbr
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}debtcollector>0:devel/py-debtcollector \
-		${PYTHON_PKGNAMEPREFIX}funcsigs>0:devel/py-funcsigs \
-		${PYTHON_PKGNAMEPREFIX}iso8601>0:devel/py-iso8601 \
-		${PYTHON_PKGNAMEPREFIX}monotonic>=0.3:devel/py-monotonic \
-		${PYTHON_PKGNAMEPREFIX}netaddr>0:net/py-netaddr \
-		${PYTHON_PKGNAMEPREFIX}netifaces>0:net/py-netifaces \
-		${PYTHON_PKGNAMEPREFIX}oslo.i18n>0:devel/py-oslo.i18n \
-		${PYTHON_PKGNAMEPREFIX}pytz>0:devel/py-pytz \
-		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six \
-		${PYTHON_PKGNAMEPREFIX}pyparsing>0:devel/py-pyparsing
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pbr>=2.0.0:devel/py-pbr@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}debtcollector>=1.2.0:devel/py-debtcollector@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}iso8601>=0.1.11:devel/py-iso8601@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}monotonic>=0.6:devel/py-monotonic@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}netaddr>=0.7.18:net/py-netaddr@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}netifaces>=0.10.4:net/py-netifaces@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}oslo.i18n>=3.15.3:devel/py-oslo.i18n@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pyparsing>=2.1.0:devel/py-pyparsing@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytz>=2013.6:devel/py-pytz@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}six>=1.10.0:devel/py-six@${PY_FLAVOR}
+
+USES=		python
+USE_PYTHON=	autoplist concurrent distutils
 
 NO_ARCH=	yes
 
-USES=		python
-USE_PYTHON=	autoplist distutils
+.include <bsd.port.pre.mk>
 
-.include <bsd.port.mk>
+.if ${PYTHON_REL} < 3000
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}funcsigs>=1.0.0:devel/py-funcsigs@${PY_FLAVOR}
+.endif
+
+.include <bsd.port.post.mk>

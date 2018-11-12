@@ -3,7 +3,7 @@
 
 PORTNAME=	vdr-plugin-live
 PORTVERSION=	0.3.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	www multimedia
 MASTER_SITES=	http://live.vdr-developer.org/downloads/:release \
 		LOCAL/nox/:snapshot
@@ -22,7 +22,8 @@ WRKSRC=		${WRKDIR}/${PLUGIN}-${PORTVERSION}
 VDR_PLUGIN_MAKEFILES=	${WRKSRC}/httpd/Makefile ${WRKSRC}/pages/Makefile
 MAKE_ARGS+=	INCLUDES="-I${LOCALBASE}/include -I${WRKSRC}"
 MAKE_ARGS+=	PREFIX="${PREFIX}"
-USES=		compiler:features
+USES=		compiler:c++11-lang
+USE_CXXSTD=	c++11
 
 OPTIONS_DEFINE=	DOCS
 

@@ -49,7 +49,9 @@ include/krb5/ccselect_plugin.h
 include/krb5/certauth_plugin.h
 include/krb5/clpreauth_plugin.h
 include/krb5/hostrealm_plugin.h
+include/krb5/kadm5_auth_plugin.h
 include/krb5/kadm5_hook_plugin.h
+include/krb5/kdcpolicy_plugin.h
 include/krb5/kdcpreauth_plugin.h
 include/krb5/localauth_plugin.h
 include/krb5/krb5.h
@@ -94,10 +96,12 @@ lib/libkrb5support.so
 lib/libkrb5support.so.0
 lib/libkrb5support.so.0.1
 lib/krb5/plugins/kdb/db2.so
+%%LMDB%%lib/krb5/plugins/kdb/klmdb.so
 lib/krb5/plugins/tls/k5tls.so
 %%LDAP%%lib/krb5/plugins/kdb/kldap.so
 lib/krb5/plugins/preauth/otp.so
 lib/krb5/plugins/preauth/pkinit.so
+lib/krb5/plugins/preauth/spake.so
 lib/krb5/plugins/preauth/test.so
 %%LDAP%%lib/libkdb_ldap.so
 %%LDAP%%lib/libkdb_ldap.so.1
@@ -160,6 +164,7 @@ sbin/sserver
 sbin/uuserver
 share/et/et_c.awk
 share/et/et_h.awk
+%%NLS%%share/locale/de/LC_MESSAGES/mit-krb5.mo
 %%NLS%%share/locale/en_US/LC_MESSAGES/mit-krb5.mo
 %%LDAP%%%%DATADIR%%/kerberos.schema
 %%LDAP%%%%DATADIR%%/kerberos.ldif

@@ -13,19 +13,17 @@ COMMENT=	Task management & automation tool
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six \
-		${PYTHON_PKGNAMEPREFIX}cloudpickle>0:devel/py-cloudpickle
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:devel/py-pytest \
-		${PYTHON_PKGNAMEPREFIX}mock>0:devel/py-mock
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}cloudpickle>0:devel/py-cloudpickle@${PY_FLAVOR}
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pytest>0:devel/py-pytest@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}mock>0:devel/py-mock@${PY_FLAVOR}
 
 USES=		python:3.3+
 USE_PYTHON=	distutils autoplist
 
 NO_ARCH=	yes
 
-.include <bsd.port.pre.mk>
-
 do-test:
 	@cd ${WRKSRC} && ${PYTHON_CMD} -m pytest
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

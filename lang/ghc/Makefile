@@ -3,10 +3,10 @@
 
 PORTNAME=	ghc
 PORTVERSION=	${GHC_VERSION}
-PORTREVISION=	2
+PORTREVISION=	1
 CATEGORIES=	lang haskell
 MASTER_SITES=	http://www.haskell.org/ghc/dist/${PORTVERSION}/:source \
-		LOCAL/pgj/:boot
+		LOCAL/arrowd/:boot
 DISTFILES=	ghc-${PORTVERSION}-src${EXTRACT_SUFX}:source
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -15,21 +15,22 @@ COMMENT=	Compiler for the functional language Haskell
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-ONLY_FOR_ARCHS=	i386 amd64
+ONLY_FOR_ARCHS=	aarch64 amd64 armv6 armv7 i386
 
-GHC_VERSION=		8.0.2
-HSCOLOUR_VERSION=	1.24.1
+GHC_VERSION=		8.4.3
+HSCOLOUR_VERSION=	1.24.4
 
 DATADIR=	${PREFIX}/share/ghc-${GHC_VERSION}
 EXAMPLESDIR=	${PREFIX}/share/examples/ghc-${GHC_VERSION}
 
-CONFLICTS=	ghc-7.4.* ghc-7.6.* ghc-7.8.* ghc-7.10.*
+CONFLICTS=	ghc-7.4.* ghc-7.6.* ghc-7.8.* ghc-7.10.* ghc-8.0.*
 
 LIB_DEPENDS+=	libgmp.so:math/gmp
 
 USES=		autoreconf gmake iconv:translit localbase:ldflags ncurses perl5 tar:xz
 USE_LOCALE=	en_US.UTF-8
 USE_PERL5=	build
+NO_CCACHE=	ccache: error: Failed to create directory /nonexistent/.ccache/tmp: Permission denied
 
 # The configure process accepts,filters and canonicalises
 # the CONFIGURE_TARGET variable. You can read the files
@@ -37,8 +38,7 @@ USE_PERL5=	build
 # This is better fixed in files/build.mk.in
 GNU_CONFIGURE=	yes
 
-CONFIGURE_ARGS=		--with-ld=${LD} \
-			--with-gmp-includes=${LOCALBASE}/include \
+CONFIGURE_ARGS=		--with-gmp-includes=${LOCALBASE}/include \
 			--with-gmp-libraries=${LOCALBASE}/lib \
 			--with-iconv-includes=${LOCALBASE}/include \
 			--with-iconv-libraries=${LOCALBASE}/lib
@@ -46,7 +46,7 @@ CONFIGURE_ARGS=		--with-ld=${LD} \
 SUB_FILES=		build.mk \
 			build.boot.mk
 SUB_LIST=		GHC_VERSION=${GHC_VERSION} \
-			NCURSESINC="${NCURSESINC}" NCURSESLIB="${NCURSESLIB}" \
+			NCURSESINC="${NCURSESBASE}/include" NCURSESLIB="${NCURSESLIB}" \
 			CFLAGS="${CFLAGS}"
 
 OPTIONS_GROUP=		BOOTSTRAP
@@ -56,6 +56,10 @@ OPTIONS_DEFINE=		DYNAMIC PROFILE DOCS
 OPTIONS_SUB=		yes
 
 OPTIONS_DEFAULT=	PROFILE DYNAMIC
+# ghci segfaults on arm when dynamic linking is used
+OPTIONS_EXCLUDE_armv6=	DYNAMIC
+OPTIONS_EXCLUDE_armv7=	DYNAMIC
+OPTIONS_EXCLUDE_aarch64=	DYNAMIC
 
 BOOT_DESC=		Use installed GHC for bootstrapping
 BOOTH_DESC=		Use installed HsColour for bootstrapping
@@ -89,21 +93,38 @@ LOCALBASE?=	/usr/local
 .include <bsd.port.options.mk>
 
 .if empty(PORT_OPTIONS:MBOOT)
-BOOT_GHC_VERSION=	7.10.2
+BOOT_GHC_VERSION=	8.4.2
 DISTFILES+=		ghc-${BOOT_GHC_VERSION}-boot-${ARCH}-freebsd${EXTRACT_SUFX}:boot
 .endif # MBOOT
 
-# LLVM is still not properly supported, further it does not make sense to have
-# to depend on old llvm ports that will be removed from the ports soon.
-# So for now, stick to GCC.
-# https://ghc.haskell.org/trac/ghc/wiki/Commentary/Compiler/Backends/LLVM/Installing
-# We should however investigate whether base's clang is enough to build ghc&co.
-# This will likely require some modifications to compiler/main/*hs
+.if ${ARCH} == aarch64 || ${ARCH} == armv6 || ${ARCH} == armv7
+# CONFIGURE_TARGET must to be the same as the llvm triple
+CONFIGURE_TARGET=	${ARCH}-unknown-freebsd${"${ARCH:Maarch64}" != "":?:-gnueabihf}
+EXTRA_PATCHES+=		${PATCHDIR}/extra-patch-aclocal.m4
+BUILD_DEPENDS+=		ld.gold:devel/binutils \
+			llc50:devel/llvm50
+RUN_DEPENDS+=		ld.gold:devel/binutils \
+			llc50:devel/llvm50
 USE_GCC=		yes
-CONFIGURE_ARGS+=	-with-gcc=${CC}
-.if empty(PORT_OPTIONS:MBOOT)
-CONFIGURE_ARGS_BOOT+=	--with-gcc=${CC}
+CONFIGURE_ENV+=		OPT=opt50 LLC=llc50
+
+.  if ${OSVERSION} < 1200064
+IGNORE=	lang/ghc on ARM requires at least __FreeBSD_version 1200064
+.  endif
+
+.  ifdef QEMU_EMULATING
+IGNORE=	qemu-user-static isn't able to build lang/ghc, but it builds fine on a real hardware
+.  endif
 .endif
+
+# Turn off for a while, see PR 228727
+CONFIGURE_ARGS+=	--enable-dtrace=0
+.if ${OSVERSION} < 1200000
+USE_GCC=	yes
+.else
+LD=		ld.bfd
+.endif
+CONFIGURE_ENV+=		CC=${CC} LD=${LD}
 
 DOCSDIR=	${PREFIX}/share/doc/${DISTNAME}
 GHC_LIBDIR=	${STAGEDIR}${PREFIX}/lib/ghc-${GHC_VERSION}
@@ -121,7 +142,7 @@ BOOT_HSC2HS=	${BOOT_DIR}/bin/hsc2hs
 
 SLAVE_CMD=	${SETENV} PATH=${BOOT_DIR}/bin:${PATH}
 
-CONFIGURE_ARGS_BOOT+=	--prefix=${BOOT_DIR} --with-ld=${LD}
+CONFIGURE_ARGS_BOOT+=	--prefix=${BOOT_DIR}
 CONFIGURE_ARGS+=	--with-ghc=${BOOT_GHC}
 .else # MBOOT
 SLAVE_CMD=		# empty
@@ -162,7 +183,9 @@ CONFIGURE_ENV+=	PATH=${SLAVES_PREFIX}/bin:${PATH}
 .endif # MDOCS
 
 post-extract:
-.if empty(PORT_OPTIONS:MBOOT) && ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200031
+# don't use the "wrap" trick on arches that use post-ino64 bootstrap binaries (arm*)
+.if empty(PORT_OPTIONS:MBOOT) && ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200031 && \
+    ${ARCH} != aarch64 && ${ARCH} != armv6 && ${ARCH} != armv7
 	@${REINPLACE_CMD} -e 's|@SettingsCCompilerLinkFlags@|& -Wl,--wrap=readdir_r,--wrap=stat,--wrap=lstat,--wrap=fstat,--wrap=mknod|' ${BOOT_DIR}/settings.in
 .endif
 
@@ -195,14 +218,27 @@ post-patch:
 		s|%%AR%%|${AR}|; \
 		s|%%LD%%|${LD}|' \
 		${WRKSRC}/libraries/Cabal/Cabal/Distribution/Simple/Program/Builtin.hs
+# we must use binutils:ld on arm
+.if ${ARCH} == aarch64 || ${ARCH} == armv6 || ${ARCH} == armv7
+	@${REINPLACE_CMD} -e 's|LD_NO_GOLD=ld|LD_NO_GOLD=${LOCALBASE}/bin/ld|' \
+		${WRKSRC}/aclocal.m4
+.endif
+
+.if empty(PORT_OPTIONS:MBOOT)
+	@${REINPLACE_CMD} -e '/^mandir/d' ${BOOT_DIR}/mk/build.mk
+	@${REINPLACE_CMD} -e '/^infodir/d' ${BOOT_DIR}/mk/build.mk
+	@${REINPLACE_CMD} -e '/^docdir/d' ${BOOT_DIR}/mk/build.mk
+	@${REINPLACE_CMD} -e '/^htmldir/d' ${BOOT_DIR}/mk/build.mk
+.endif
 
 pre-configure: apply-slist
 	# Copy the subbed build.mk to the proper position
 	${CP} ${WRKDIR}/build.mk ${WRKSRC}/mk/build.mk
 
 	@${MKDIR} ${TMPDIR}
-.if empty(PORT_OPTIONS:MBOOTH) && ${OPSYS} == FreeBSD && \
-    ${OSVERSION} >= 1200031
+.if empty(PORT_OPTIONS:MBOOT) && ${OPSYS} == FreeBSD && \
+    ${OSVERSION} >= 1200031 && \
+    ${ARCH} != aarch64 && ${ARCH} != armv6 && ${ARCH} != armv7
 	${CC} ${CFLAGS} -c -o ${BOOT_DIR}/wrap.o ${PATCHDIR}/wrap.c
 	for x in ${BOOT_DIR}/rts/dist/build/libCffi*.a; do \
 	    ${AR} q $$x ${BOOT_DIR}/wrap.o; ${RANLIB} $$x; \
@@ -222,7 +258,9 @@ pre-configure: apply-slist
 	@${ECHO_MSG} "           registration of both takes place.                          "
 	@${ECHO_MSG} "======================================================================"
 	@${ECHO_MSG} ""
+.  if !(defined(PACKAGE_BUILDING) || defined(BATCH))
 	@sleep 3
+.  endif
 
 	@${MKDIR} ${SLAVES_PREFIX}
 	@${MKDIR} ${SLAVES_WRKDIRPREFIX}
@@ -236,14 +274,14 @@ pre-configure: apply-slist
 		${SLAVE_CMD} ./Setup install)
 .endif
 
-_EXECUTABLES=	${STAGEDIR}${PREFIX}/bin/hp2ps \
-		${GHC_LIBDIR}/bin/unlit \
+_EXECUTABLES=	${GHC_LIBDIR}/bin/unlit \
 		${GHC_LIBDIR}/bin/hpc \
 		${GHC_LIBDIR}/bin/ghc-iserv \
 		${GHC_LIBDIR}/bin/ghc-pkg \
 		${GHC_LIBDIR}/bin/hsc2hs \
 		${GHC_LIBDIR}/bin/runghc \
-		${GHC_LIBDIR}/bin/ghc
+		${GHC_LIBDIR}/bin/ghc \
+		${GHC_LIBDIR}/bin/hp2ps
 
 .if ${PORT_OPTIONS:MPROFILE}
 _EXECUTABLES+=	${GHC_LIBDIR}/bin/ghc-iserv-prof
@@ -260,7 +298,7 @@ post-install:
 .if ${PORT_OPTIONS:MDOCS}
 	${LN} -sf haddock-ghc-${GHC_VERSION} ${STAGEDIR}${PREFIX}/bin/haddock
 .endif
-	(for f in ${_EXECUTABLES} $$(${FIND} ${GHC_LIBDIR} -name '*.so'); do \
+	(for f in ${_EXECUTABLES} $$(${FIND} ${GHC_LIBDIR} -name '*.so*'); do \
 		${STRIP_CMD} $$f; done)
 
 .include <bsd.port.mk>
@@ -268,12 +306,8 @@ post-install:
 # Create a bootstrap compiler tar ball: run this in an interactive poudriere jail
 .PHONY: create-bootstrap
 create-bootstrap:
-	@${ECHO} "TODO: https://github.com/freebsd-haskell/ports/wiki/Updating-the-Bootstrap-Compiler"
-	cd ${WRKSCR} \
-	&& ${CP} ${WRKDIR}/build.boot.mk mk \
-	&& setenv ${CONFIGURE_ENV} ./configure	--with-iconv-includes=${LOCALBASE}/include \
-						--with-iconv-libraries=${LOCALBASE}/lib \
-						--with-gcc=${CC} \
-						--with-ld=${LD} \
-	&& make binary-dist TAR_COMP=xz \\
-	&& mv ghc-${GHC_VERSION}-boot-${GHC_ARCH}-unknown-freebsd.tar.xz /tmp/ghc-${GHC_VERSION}-${ARCH}-freebsd${FREEBSD_MAJOR_VERSION}-boot.tar.xz
+	cd ${WRKSRC} \
+	&& gmake binary-dist TAR_COMP=xz \
+	&& mv ${WRKSRC}/ghc-${GHC_VERSION}-${ARCH}-portbld-freebsd.tar.xz /tmp/ghc-${GHC_VERSION}-boot-${ARCH}-freebsd.tar.xz
+	&& sha256 ghc-${GHC_VERSION}-boot-${ARCH}-freebsd.tar.xz
+	&& stat -f %z ghc-${GHC_VERSION}-boot-${ARCH}-freebsd.tar.xz

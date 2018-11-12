@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	grive2
-PORTVERSION=	0.5.0
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
+DISTVERSION=	0.5.1-dev
+PORTREVISION=	2
 CATEGORIES=	net
 
 MAINTAINER=	cpm@FreeBSD.org
@@ -20,14 +20,22 @@ LIB_DEPENDS=	libboost_filesystem.so:devel/boost-libs \
 		libgpg-error.so:security/libgpg-error \
 		libyajl.so:devel/yajl
 
-CONFLICTS_INSTALL=	grive-[0-9]*
+USES=		cmake compiler localbase pkgconfig
+CXXFLAGS+=	${CXXFLAGS_${CHOSEN_COMPILER_TYPE}}
+CXXFLAGS_clang=	-Wno-c++11-narrowing
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	vitalif
-
-USES=		cmake pkgconfig localbase
+GH_TAGNAME=	ad9b66a
 
 PLIST_FILES=	bin/grive \
 		man/man1/grive.1.gz
+
+OPTIONS_DEFINE=	BACKTRACE
+
+BACKTRACE_DESC=	Enable backtrace support
+BACKTRACE_LIB_DEPENDS=	libbfd.so:devel/libbfd
+BACKTRACE_LDFLAGS=	-lexecinfo
+BACKTRACE_CMAKE_OFF=	-DCMAKE_DISABLE_FIND_PACKAGE_BFD=true
 
 .include <bsd.port.mk>

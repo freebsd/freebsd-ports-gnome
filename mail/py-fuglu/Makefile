@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fuglu
-PORTVERSION=	0.6.6
+PORTVERSION=	0.8.0
 CATEGORIES=	mail python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -13,9 +13,11 @@ COMMENT=	Mail scanning daemon for Postfix written in Python
 LICENSE=	APACHE20
 
 RUN_DEPENDS=	postfix:mail/postfix \
-		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six
+		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}rarfile>0:archivers/py-rarfile@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}lzma>0:archivers/py-lzma@${PY_FLAVOR}
 
-USES=		python:2.4+
+USES=		python
 USE_PYTHON=	autoplist distutils
 
 USE_RC_SUBR=	fuglu
@@ -36,13 +38,13 @@ SPAMASSASSIN_DESC=	Use SpamAssassin
 SPF_DESC=		Use SPF (in FuGlu)
 SQL_DESC=		Use SQL
 
-BEAUTIFULSOUP_RUN_DEPENDS=	${PYTHON_SITELIBDIR}/bs4/__init__.py:www/py-beautifulsoup
+BEAUTIFULSOUP_RUN_DEPENDS=	${PYTHON_SITELIBDIR}/bs4/__init__.py:www/py-beautifulsoup@${PY_FLAVOR}
 CLAMAV_RUN_DEPENDS=	clamd:security/clamav
-DKIM_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dkimpy>0:mail/py-dkimpy
-MAGIC_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}magic>0:devel/py-magic
+DKIM_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dkimpy>0:mail/py-dkimpy@${PY_FLAVOR}
+MAGIC_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}magic>0:devel/py-magic@${PY_FLAVOR}
 SPAMASSASSIN_RUN_DEPENDS=	spamassassin>=0:mail/spamassassin
-SPF_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyspf>0:mail/py-pyspf
-SQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlalchemy10>=1.0:databases/py-sqlalchemy10
+SPF_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyspf>0:mail/py-pyspf@${PY_FLAVOR}
+SQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlalchemy10>=1.0:databases/py-sqlalchemy10@${PY_FLAVOR}
 
 post-extract:
 	@${REINPLACE_CMD} -e "s|'/etc|'etc|g" ${WRKSRC}/setup.py

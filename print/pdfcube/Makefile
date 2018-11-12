@@ -3,7 +3,7 @@
 
 PORTNAME=	pdfcube
 PORTVERSION=	0.0.5
-PORTREVISION=	15
+PORTREVISION=	20
 CATEGORIES=	print
 MASTER_SITES=	http://code.100allora.it/releases/pdfcube/
 
@@ -14,7 +14,7 @@ LIB_DEPENDS=	libgtkglext-x11-1.0.so:x11-toolkits/gtkglext \
 		libpoppler-glib.so:graphics/poppler-glib \
 		libboost_program_options.so:devel/boost-libs
 
-USES=		pkgconfig
+USES=		compiler:c++11-lang pkgconfig
 USE_GL=		glut
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--libdir=${LOCALBASE}/lib --includedir=${LOCALBASE}/include

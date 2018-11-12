@@ -1,7 +1,7 @@
-TIMESTAMP = 1469928404
-SHA256 (hevea-2.29.tar.gz) = 06bf0b01834a25358415c666a0a477effc12eeeb1da4da1eeefaca67b29af8c4
-SIZE (hevea-2.29.tar.gz) = 969599
-SHA256 (hevea-2.29-manual.pdf) = df073c953bbae5dec1ed94079f14c4b7800a4bb7f98b464c49c3e4060b907493
-SIZE (hevea-2.29-manual.pdf) = 645322
-SHA256 (hevea-2.29-manual.tar.gz) = 1ff955e8af6a1837566ac39056ffea40fb4e55d20d346de68b4717010630c8ed
-SIZE (hevea-2.29-manual.tar.gz) = 480641
+TIMESTAMP = 1530810806
+SHA256 (hevea-2.32.tar.gz) = de55c6809ae077cd9b2cd5c758449907845677258815c96a713764e6e0c59ee8
+SIZE (hevea-2.32.tar.gz) = 996925
+SHA256 (hevea-2.32-manual.pdf) = e1c0440df187210e7a8480a99995ca5b49802175c7966f665d634a6ef07552df
+SIZE (hevea-2.32-manual.pdf) = 749021
+SHA256 (hevea-2.32-manual.tar.gz) = c7961558d4f6963b0d4e9a64642893bfa2b0303457d2e5b1c29cb72c48c33fee
+SIZE (hevea-2.32-manual.tar.gz) = 513861

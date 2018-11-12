@@ -3,7 +3,7 @@
 
 PORTNAME=	irssi-fish
 DISTVERSION=	1.4.20160122
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	irc security
 
 MAINTAINER=	ashish@FreeBSD.org
@@ -26,6 +26,8 @@ USE_LDCONFIG=	yes
 
 PLIST_FILES=	lib/irssi/modules/libfish.so
 PORTDOCS=	README.md FiSH-irssi.txt
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	${REINPLACE_CMD} -e "s,/usr/local,${LOCALBASE},g" \

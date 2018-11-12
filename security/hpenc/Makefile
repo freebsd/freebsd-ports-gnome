@@ -2,7 +2,7 @@
 
 PORTNAME=	hpenc
 PORTVERSION=	2.0
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	security
 MASTER_SITES=	http://highsecure.ru/distfiles/
 
@@ -12,6 +12,7 @@ COMMENT=	Fast authenticated encryption CLI tool
 LICENSE=	BSD2CLAUSE
 
 BROKEN_armv6=		fails to build: fatal error: cpuid_flags.inc: No such file or directory
+BROKEN_armv7=		fails to build: fatal error: cpuid_flags.inc: No such file or directory
 BROKEN_powerpc64=	fails to build: fatal error: cpuid_flags.inc: No such file or directory
 
 NOT_FOR_ARCHS=		aarch64 sparc64

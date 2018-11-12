@@ -3,9 +3,10 @@
 PORTNAME=	xi-core
 PORTVERSION=	g20170612
 DISTVERSIONPREFIX=	v
+PORTREVISION=	2
 CATEGORIES=	editors
 
-MAINTAINER=	tobik@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Modern editor backend written in Rust
 
 LICENSE=	APACHE20
@@ -26,7 +27,7 @@ CARGO_CRATES=	bytecount-0.1.6 \
 		dtoa-0.4.1 \
 		itoa-0.3.1 \
 		kernel32-sys-0.2.2 \
-		libc-0.2.23 \
+		libc-0.2.40 \
 		memchr-1.0.1 \
 		num-traits-0.1.37 \
 		quote-0.3.15 \

@@ -2,9 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	gexiv2
-PORTVERSION=	0.10.6
+PORTVERSION=	0.10.8
+PORTREVISION=	1
 CATEGORIES=	graphics
-MASTER_SITES=	GNOME/sources/gexiv2/${PORTVERSION:R}
+# MASTER_SITES=	GNOME/sources/gexiv2/${PORTVERSION:R}
+MASTER_SITES=	GNOME
 
 MAINTAINER=	cmt@FreeBSD.org
 COMMENT=	GObject-based wrapper around Exiv2 library
@@ -15,8 +17,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	gm4:devel/m4 \
 		vala>=0:lang/vala
 LIB_DEPENDS=	libexiv2.so:graphics/exiv2
-
-BROKEN_powerpc64=	fails to compile: gexiv2-metadata-gps.cpp: 'overflow_error' is not a member of 'std'
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--enable-introspection=yes \

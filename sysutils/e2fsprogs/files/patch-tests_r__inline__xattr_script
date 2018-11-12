@@ -1,22 +1,20 @@
---- tests/r_inline_xattr/script.orig	2017-04-09 19:31:41 UTC
+--- tests/r_inline_xattr/script.orig	2018-07-10 05:14:26 UTC
 +++ tests/r_inline_xattr/script
-@@ -10,8 +10,8 @@ gunzip < $IMAGE > $TMPFILE
- echo "resize2fs test" > $OUT
+@@ -14,7 +14,7 @@ echo "resize2fs test" > $OUT.new
  
  # Look at existing inline extended attribute
- echo "debugfs -R ''stat file'' test.img 2>&1 | grep ''^Inode\|in inode body\|user.name (''" >> $OUT
--$DEBUGFS -R "stat file" $TMPFILE 2>&1 | grep "^Inode\|in inode body\|user.name (" >> $OUT
-+$DEBUGFS -R "stat file" $TMPFILE 2>&1 | grep -E "^Inode|in inode body|user.name \(" >> $OUT
+ echo "debugfs -R ''stat file'' test.img 2>&1 | grep ''^Inode\|in inode body\|user.name (''" >> $OUT.new
+-$DEBUGFS -R "stat file" $TMPFILE 2>&1 | grep "^Inode\|in inode body\|user.name (" >> $OUT.new
++$DEBUGFS -R "stat file" $TMPFILE 2>&1 | grep -E "^Inode|in inode body|user.name \(" >> $OUT.new
  status=$?
- echo Exit status is $status >> $OUT
+ echo Exit status is $status >> $OUT.new
  
-@@ -23,8 +23,8 @@ echo Exit status is $status >> $OUT.new
- sed -f $cmd_dir/filter.sed -e "s;$TMPFILE;test.img;" $OUT.new >> $OUT
+@@ -26,7 +26,7 @@ echo Exit status is $status >> $OUT.new
  
  # Look at inline extended attribute in resized fs
- echo "debugfs -R ''stat file'' test.img 2>&1 | grep ''^Inode\|in inode body\|user.name (''" >> $OUT
--$DEBUGFS -R "stat file" $TMPFILE 2>&1 | grep "^Inode\|in inode body\|user.name (" >> $OUT
-+$DEBUGFS -R "stat file" $TMPFILE 2>&1 | grep -E "^Inode|in inode body|user.name \(" >> $OUT
+ echo "debugfs -R ''stat file'' test.img 2>&1 | grep ''^Inode\|in inode body\|user.name (''" >> $OUT.new
+-$DEBUGFS -R "stat file" $TMPFILE 2>&1 | grep "^Inode\|in inode body\|user.name (" >> $OUT.new
++$DEBUGFS -R "stat file" $TMPFILE 2>&1 | grep -E "^Inode|in inode body|user.name \(" >> $OUT.new
  status=$?
- echo Exit status is $status >> $OUT
+ echo Exit status is $status >> $OUT.new
  

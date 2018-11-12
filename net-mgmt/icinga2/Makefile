@@ -2,8 +2,7 @@
 
 PORTNAME=	icinga2
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.7.0
-PORTREVISION=	1
+DISTVERSION=	2.9.2
 CATEGORIES=	net-mgmt
 
 MAINTAINER=	lme@FreeBSD.org
@@ -16,10 +15,7 @@ LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
 		libyajl.so:devel/yajl
 RUN_DEPENDS=	${LOCALBASE}/bin/bash:shells/bash
 
-BROKEN_powerpc64=	does not build: Your version of GCC (4.2.1) is too old for building Icinga 2 (GCC >= 4.6.0)
-
-USES=		alias bison cmake execinfo libedit
-
+USES=		alias bison cmake compiler:c++0x libedit ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	icinga
 
@@ -27,7 +23,7 @@ USE_LDCONFIG=	yes
 
 USE_RC_SUBR=	${PORTNAME}
 
-OPTIONS_DEFINE=		DOCS
+OPTIONS_DEFINE=		DOCS EXAMPLES
 OPTIONS_GROUP=		BACKEND
 OPTIONS_GROUP_BACKEND=	MYSQL PGSQL
 OPTIONS_RADIO=		PLUGINS

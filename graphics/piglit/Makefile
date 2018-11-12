@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	piglit
-PORTVERSION=	20160809
-PORTREVISION=	3
+PORTVERSION=	20180910
 CATEGORIES=	graphics
 
 MAINTAINER=	x11@FreeBSD.org
@@ -14,25 +13,26 @@ LICENSE_COMB=	multi
 
 BUILD_DEPENDS=	${LOCALBASE}/include/CL/opencl.h:devel/opencl \
 		${PYNUMPY} \
-		${PYTHON_PKGNAMEPREFIX}mako>0:textproc/py-mako \
-		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six
+		${PYTHON_PKGNAMEPREFIX}mako>0:textproc/py-mako@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six@${PY_FLAVOR}
 LIB_DEPENDS=	libcaca.so:graphics/libcaca \
 		libdrm.so:graphics/libdrm \
 		libOpenCL.so:devel/ocl-icd \
 		libpng.so:graphics/png \
 		libwaffle-1.so:graphics/waffle
 RUN_DEPENDS=	${PYNUMPY} \
-		${PYTHON_PKGNAMEPREFIX}mako>0:textproc/py-mako \
-		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six
+		${PYTHON_PKGNAMEPREFIX}mako>0:textproc/py-mako@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}six>0:devel/py-six@${PY_FLAVOR}
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	dumbbell
 GH_PROJECT=	piglit
-GH_TAGNAME=	ca5350b4056ae63a93c4c207087b7634873b2ce2
+GH_TAGNAME=	a0db4427446ab50882a721ae3084fa26cc9e751a
 
-USES=		cmake:outsource compiler:c11 pkgconfig python:2
+USES=		cmake:outsource compiler:c11 pkgconfig python:2.7 shebangfix
 USE_GL=		egl gbm gl glu
 USE_XORG=	x11 xcb xext xrender
+SHEBANG_FILES=	piglit
 
 CMAKE_ARGS+=	-DPIGLIT_BUILD_CL_TESTS:BOOL=ON
 
@@ -43,5 +43,7 @@ SUB_FILES=	pkg-message
 
 DATADIR=	${PREFIX}/lib/piglit
 PORTDATA=	*
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

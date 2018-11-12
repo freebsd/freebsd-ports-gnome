@@ -1,8 +1,7 @@
-# Created by: Steve Wills <swills@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	syncthing
-PORTVERSION=	0.14.36
+PORTVERSION=	0.14.50
 DISTVERSIONPREFIX=	v
 CATEGORIES=	net
 
@@ -13,23 +12,36 @@ BUILD_DEPENDS=	${LOCALBASE}/bin/go:lang/go
 
 USE_GITHUB=	yes
 GH_SUBDIR=	src/github.com/${PORTNAME}/${PORTNAME}
-USE_RC_SUBR=	syncthing
-PLIST_FILES=	bin/syncthing
+USE_RC_SUBR=	syncthing syncthing-discosrv syncthing-relaysrv syncthing-relaypoolsrv
+BINS=		stbench stcli stcompdirs stdisco stdiscosrv stevents stfileinfo \
+		stfinddevice stgenfiles stindex strelaypoolsrv strelaysrv \
+		stsigtool sttestutil stvanity stwatchfile syncthing
+
+.for x in ${BINS}
+PLIST_FILES+=	bin/${x}
+.endfor
+
 PORTDOCS=	*
 
 USERS=		syncthing
 GROUPS=		syncthing
 
+OPTIONS_DEFINE=	DOCS
+
 do-build:
 	@cd ${WRKSRC}/src/github.com/${PORTNAME}/${PORTNAME} ; \
-		${SETENV} go run build.go -no-upgrade=true -version v${PORTVERSION}
+		${SETENV} ${MAKE_ENV} CGO_ENABLED=0 go run build.go -no-upgrade=true -version v${PORTVERSION}
+	@${MV} ${WRKSRC}/src/github.com/${PORTNAME}/${PORTNAME}/bin/testutil \
+		${WRKSRC}/src/github.com/${PORTNAME}/${PORTNAME}/bin/sttestutil
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/src/github.com/${PORTNAME}/${PORTNAME}/bin/syncthing \
+.for x in ${BINS}
+	${INSTALL_PROGRAM} ${WRKSRC}/src/github.com/${PORTNAME}/${PORTNAME}/bin/${x} \
 		${STAGEDIR}${PREFIX}/bin/
+.endfor
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-.for x in AUTHORS CONTRIBUTING.md LICENSE README.md
-	${INSTALL_MAN} ${WRKSRC}/src/github.com/${PORTNAME}/${PORTNAME}/${x} \
+.for x in AUTHORS LICENSE README.md
+	${INSTALL_DATA} ${WRKSRC}/src/github.com/${PORTNAME}/${PORTNAME}/${x} \
 		${STAGEDIR}${DOCSDIR}
 .endfor
 

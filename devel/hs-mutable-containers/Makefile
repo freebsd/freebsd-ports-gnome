@@ -2,6 +2,7 @@
 
 PORTNAME=	mutable-containers
 PORTVERSION=	0.3.3
+PORTREVISION=	3
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

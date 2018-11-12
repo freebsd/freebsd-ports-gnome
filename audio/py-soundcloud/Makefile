@@ -8,12 +8,12 @@ MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	brnrd@FreeBSD.org
-COMMENT=	A friendly wrapper library for the Soundcloud API
+COMMENT=	Friendly wrapper library for the Soundcloud API
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}nose>=1.1.2:devel/py-nose
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}nose>=1.1.2:devel/py-nose@${PY_FLAVOR}
 
 USES=		python
 USE_PYTHON=	autoplist distutils
@@ -21,9 +21,11 @@ USE_PYTHON=	autoplist distutils
 PORTDOCS=	README.rst
 DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 
+OPTIONS_DEFINE=	DOCS
+
 post-install:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_MAN} ${WRKSRC}/README.rst ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README.rst ${STAGEDIR}${DOCSDIR}
 
 do-test:
 	cd ${WRKSRC} ; nosetests --with-doctest

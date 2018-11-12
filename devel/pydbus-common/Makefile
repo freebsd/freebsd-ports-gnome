@@ -3,7 +3,7 @@
 
 PORTNAME=	dbus
 PORTVERSION=	1.2.0
-PORTREVISION?=	1
+PORTREVISION?=	2
 CATEGORIES=	devel gnome python
 MASTER_SITES=	http://dbus.freedesktop.org/releases/dbus-python/
 PKGNAMEPREFIX?=	py
@@ -25,14 +25,15 @@ CONFIGURE_ARGS=	--docdir=${DOCSDIR} \
 INSTALL_TARGET=	install-strip
 
 .if ${SLAVE_PORT} == no
-USES+=		python:2,build
+USES+=		python:2.7,build
 
 DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	HTMLDOCS
+OPTIONS_DEFINE=	HTMLDOCS DOCS EXAMPLES
 HTMLDOCS_DESC=	build html documentation
+HTMLDOCS_IMPLIES=	DOCS
 HTMLDOCS_CONFIGURE_OFF=	--disable-html-docs
 HTMLDOCS_BUILD_DEPENDS=	rst2html:textproc/py-docutils
 
@@ -68,12 +69,8 @@ do-install:
 LIB_DEPENDS+=	libdbus-glib-1.so:devel/dbus-glib
 RUN_DEPENDS+=	pydbus-common>=0:devel/pydbus-common
 USE_LDCONFIG=	yes
-.if ${SLAVE_PORT} == python2
-USES+=		python:2
-.endif
-.if ${SLAVE_PORT} == python3
-USES+=		python:3
-.endif
+USES+=		python
+USE_PYTHON=	flavors
 
 post-install:
 	@${RM} -r ${STAGEDIR}${PREFIX}/include/dbus-1.0 \

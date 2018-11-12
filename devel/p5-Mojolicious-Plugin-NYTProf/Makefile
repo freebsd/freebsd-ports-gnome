@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Auto handling of Devel::NYTProf in your Mojolicious app
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-Devel-NYTProf>=5.07:devel/p5-Devel-NYTProf \
@@ -23,8 +23,5 @@ TEST_DEPENDS=	p5-Algorithm-Combinatorics>=0:math/p5-Algorithm-Combinatorics \
 USES=		perl5
 USE_PERL5=	configure
 NO_ARCH=	yes
-
-post-patch:
-	@${RM} ${WRKSRC}/README.pod
 
 .include <bsd.port.mk>

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Nmap-Parser
-PORTVERSION=	1.33
-PORTREVISION=	1
+PORTVERSION=	1.36
 CATEGORIES=	security perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -21,8 +20,5 @@ RUN_DEPENDS:=	${BUILD_DEPENDS} \
 NO_ARCH=	yes
 USES=		perl5
 USE_PERL5=	configure
-
-post-configure:
-	@${PERL} -pi -e 's/^(POD2MAN_EXE.*)$$/\1 --lax/;' ${WRKSRC}/Makefile
 
 .include <bsd.port.mk>

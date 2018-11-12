@@ -1,0 +1,24 @@
+# Created by: Po-Chuan Hsieh <sunpoet@FreeBSD.org>
+# $FreeBSD$
+
+PORTNAME=	libcjson
+PORTVERSION=	1.7.8
+DISTVERSIONPREFIX=	v
+CATEGORIES=	devel
+
+MAINTAINER=	sunpoet@FreeBSD.org
+COMMENT=	Ultralightweight JSON parser in ANSI C
+
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+CMAKE_ON=	BUILD_SHARED_AND_STATIC_LIBS ENABLE_CJSON_UTILS ENABLE_TARGET_EXPORT
+USES=		cmake compiler:c11
+
+PLIST_SUB=	PORTVERSION=${PORTVERSION}
+
+GH_ACCOUNT=	DaveGamble
+GH_PROJECT=	cJSON
+USE_GITHUB=	yes
+
+.include <bsd.port.mk>

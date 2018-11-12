@@ -2,7 +2,7 @@
 
 PORTNAME=	glusterfs
 PORTVERSION=	3.11.1
-PORTREVISION=	2
+PORTREVISION=	5
 CATEGORIES=	net
 MASTER_SITES=	http://bits.gluster.org/pub/gluster/glusterfs/src/
 
@@ -14,7 +14,7 @@ LICENSE_COMB=	dual
 
 LIB_DEPENDS=	libargp.so:devel/argp-standalone liburcu-bp.so:sysutils/liburcu
 
-USES=		bison gettext libtool pkgconfig python readline shebangfix \
+USES=		bison gettext libtool pkgconfig python:2.7 readline shebangfix \
 		sqlite ssl
 
 BROKEN_SSL=	libressl
@@ -47,13 +47,15 @@ CONFIGURE_ARGS=	--with-pkgconfigdir=${PREFIX}/libdata/pkgconfig \
 		--enable-glupy \
 		--disable-georeplication \
 		ac_cv_lib_aio_io_setup=no ac_cv_func_fallocate=no \
-		ac_cv_func_setfsuid=no 	ac_cv_func_fdatasync=no \
+		ac_cv_func_setfsuid=no ac_cv_func_fdatasync=no \
 		ac_cv_func_llistxattr=no ac_cv_func_malloc_stats=no
 CPPFLAGS+=	-I"${LOCALBASE}/include"
 LDFLAGS+=	-L"${LOCALBASE}/lib" -largp
 INSTALL_TARGET=	install-strip
 PLIST_SUB=	GLUSTERLIBDIR="lib/${PORTNAME}/${PORTVERSION}"
 KMODDIR?=	/boot/modules
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.options.mk>
 

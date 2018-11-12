@@ -10,6 +10,9 @@ DISTNAME=	${PORTNAME}-src-${DISTVERSION}
 MAINTAINER=	crees@FreeBSD.org
 COMMENT=	Common Desktop Environment
 
+BROKEN_mips64=		fails to build: ./config/imake/imake: No such file or directory
+BROKEN_powerpc64=	fails to build: ./config/imake/imake: No such file or directory
+
 BUILD_DEPENDS=	ksh93:shells/ksh93			\
 		bdftopcf:x11-fonts/bdftopcf		\
 		mkfontdir:x11-fonts/mkfontdir	\
@@ -21,7 +24,6 @@ SHEBANG_FILES=	programs/dtdocbook/sgmls/sgmls.pl \
 USE_LDCONFIG=	${PREFIX}/dt/lib
 USE_RC_SUBR=	dtcms dtspc
 USE_XORG=	xinerama xp xt
-USE_XZ=		yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION}
 ALL_TARGET=	World

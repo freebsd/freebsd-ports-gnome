@@ -3,7 +3,7 @@
 
 PORTNAME=	freerdp
 PORTVERSION=	1.2.0
-PORTREVISION=	6
+PORTREVISION=	12
 CATEGORIES=	net comms ipv6
 PKGNAMESUFFIX=	1
 
@@ -13,12 +13,14 @@ COMMENT=	Free implementation of Remote Desktop Protocol
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BROKEN_powerpc64=	fails to build: ninja: error: build.ninja:315: bad $-escape (literal $ must be written as $$)
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	FreeRDP
 GH_PROJECT=	${GH_ACCOUNT}
 GH_TAGNAME=	f5ff6e1
 
-USES=		alias cmake:outsource compiler:c++11-lib cpe execinfo gettext localbase pathfix pkgconfig ssl
+USES=		alias cmake:outsource compiler:c++11-lib cpe gettext localbase pathfix pkgconfig ssl
 USE_LDCONFIG=	yes
 CPE_VENDOR=	freerdp_project
 
@@ -42,12 +44,13 @@ ALSA_CMAKE_BOOL=	WITH_ALSA
 CUPS_LIB_DEPENDS=	libcups.so:print/cups
 CUPS_CMAKE_BOOL=	WITH_CUPS
 
+FFMPEG_BROKEN=		fails to build with ffmpeg 4.0
 FFMPEG_LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg \
 			libavutil.so:multimedia/ffmpeg
 FFMPEG_CMAKE_BOOL=	WITH_FFMPEG
 
 GSTREAMER_CMAKE_BOOL=	WITH_GSTREAMER_1_0
-GSTREAMER_USE=		gnome=glib20 gstreamer1=yes xorg=x11,xextproto,xext,xrandr
+GSTREAMER_USE=		gnome=glib20 gstreamer1=yes xorg=x11,xorgproto,xext,xrandr
 GSTREAMER_LIB_DEPENDS=	libgstbase-1.0.so:multimedia/gstreamer1
 
 NEON_DESC=		Enable	Media Processing Engine instructions
@@ -65,7 +68,7 @@ X11_DESC=		Build FreeRDP X11 client
 X11_BUILD_DEPENDS=	xmlto:textproc/xmlto
 X11_CMAKE_BOOL=		WITH_X11
 X11_CMAKE_OFF=		-DWITH_XKBFILE=OFF
-X11_USE=		xorg=x11,xkbfile,xcursor,xextproto,xv,xinerama,xext,xrandr,xi,xfixes,xrender
+X11_USE=		xorg=x11,xkbfile,xcursor,xorgproto,xv,xinerama,xext,xrandr,xi,xfixes,xrender
 
 .include <bsd.port.pre.mk>
 

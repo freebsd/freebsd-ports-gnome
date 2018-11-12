@@ -3,6 +3,7 @@
 
 PORTNAME=	awesome
 PORTVERSION=	4.2
+PORTREVISION=	2
 DISTVERSIONPREFIX=	v
 PORTEPOCH=	1
 CATEGORIES=	x11-wm
@@ -14,7 +15,6 @@ LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	convert:graphics/ImageMagick \
-		xproto>=7.0.15:x11/xproto \
 		${LUA_MODLIBDIR}/lgi/corelgilua${LUA_VER_STR}.so:devel/lua-lgi
 RUN_DEPENDS=	${LUA_MODLIBDIR}/lgi/corelgilua${LUA_VER_STR}.so:devel/lua-lgi \
 		bash:shells/bash
@@ -34,14 +34,14 @@ CONFLICTS_INSTALL=	awesome3-[0-9]*
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	awesomewm
-USES=		cmake:outsource execinfo gettext iconv pkgconfig lua shebangfix
+USES=		cmake:outsource gettext iconv pkgconfig lua shebangfix
 SHEBANG_FILES=	utils/awesome-client
 CMAKE_ARGS=	-DSYSCONFDIR=${PREFIX}/etc \
 		-DAWESOME_MAN_PATH=${MANPREFIX}/man \
 		-DGENERATE_DOC=OFF
 USE_GNOME=	glib20 pango gdkpixbuf2
 USE_XORG=	pixman x11 xau xcb xdmcp xext xft xinerama xrandr xrender \
-		xproto
+		xorgproto
 
 OPTIONS_DEFINE=	DBUS DOCS MANPAGES
 OPTIONS_DEFAULT=DBUS MANPAGES

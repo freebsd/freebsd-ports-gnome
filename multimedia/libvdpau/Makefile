@@ -2,6 +2,7 @@
 
 PORTNAME=	libvdpau
 PORTVERSION=	1.1.1
+PORTREVISION=	2
 CATEGORIES=	multimedia
 MASTER_SITES=	http://cgit.freedesktop.org/~aplattner/libvdpau/snapshot/
 
@@ -14,24 +15,14 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 USES=		autoreconf libtool pkgconfig tar:xz
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-documentation
-USE_XORG=	dri2proto xext
+USE_XORG=	xorgproto xext
 USE_LDCONFIG=	yes
+INSTALL_TARGET=	install-strip
 
 OPTIONS_DEFINE=	DEBUG
 
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MDEBUG}
-CFLAGS+=	-D_DEBUG
-.else
-CFLAGS+=	-DNDEBUG
-.endif
-
-.include <bsd.port.pre.mk>
-
-.if defined(STRIP) && ${STRIP} != ""
-INSTALL_TARGET=	install-strip
-.endif
+DEBUG_CFLAGS=		-D_DEBUG
+DEBUG_CFLAGS_OFF=	-DNDEBUG
 
 post-patch:	.SILENT
 	${REINPLACE_CMD} 's|$$(libdir)/\(pkgconfig\)|$$(prefix)/libdata/\1|' \
@@ -41,4 +32,4 @@ post-patch:	.SILENT
 	${REINPLACE_CMD} 's/vdpau_wrapper.cfg/&.sample/' \
 		${WRKSRC}/src/Makefile.am
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

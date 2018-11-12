@@ -2,7 +2,7 @@
 
 PORTNAME=	enumerator
 PORTVERSION=	0.4.20
-PORTREVISION=	3
+PORTREVISION=	6
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org
@@ -10,7 +10,9 @@ COMMENT=	Reliable, high-performance processing with left-fold enumerators
 
 LICENSE=	MIT
 
-USE_CABAL=	text>=0.7
+IGNORE=		Doesn't build with recent GHC version
+DEPRECATED=	Doesn't build with recent GHC version
+EXPIRATION_DATE=	2018-10-22
 
 .include "${.CURDIR}/../../lang/ghc/bsd.cabal.mk"
 .include <bsd.port.mk>

@@ -3,30 +3,31 @@
 
 PORTNAME=	RO
 PORTVERSION=	3.6.9
+PORTREVISION=	2
 CATEGORIES=	astro python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Package of Python astronomical utilities
 
 LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/docs/License.txt
 
-BUILD_DEPENDS=	${PYTHON_SITELIBDIR}/numpy/core/numeric.py:math/py-numpy
-RUN_DEPENDS:=	${BUILD_DEPENDS}
+RUN_DEPENDS=	${PYNUMPY}
 
-OPTIONS_DEFINE=		MATPLOTLIB PYFITS PYGAME
-OPTIONS_DEFAULT=	PYFITS
+OPTIONS_DEFINE=	ASTROPY MATPLOTLIB PYGAME
+OPTIONS_DEFAULT=ASTROPY
+ASTROPY_DESC=	Add Support for Astropy
+MATPLOTLIB_DESC=Add support for Matplotlib
+PYGAME_DESC=	Add Support for PyGame
 
-MATPLOTLIB_DESC=	Add support for Matplotlib
-PYFITS_DESC=		Add Support for PyFITS
-PYGAME_DESC=		Add Support for PyGame
-
+NO_ARCH=	yes
 USES=		python
 USE_PYTHON=	autoplist distutils
 
-MATPLOTLIB_RUN_DEPENDS=	${PKGNAMEPREFIX}matplotlib>=0.98:math/py-matplotlib
-PYFITS_RUN_DEPENDS=	${PKGNAMEPREFIX}pyfits>=1.1:astro/py-pyfits
-PYGAME_RUN_DEPENDS=	${PKGNAMEPREFIX}game>=1.8.1:devel/py-game
+ASTROPY_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}astropy>=0:astro/py-astropy@${PY_FLAVOR}
+MATPLOTLIB_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}matplotlib>=0.98:math/py-matplotlib@${PY_FLAVOR}
+PYGAME_RUN_DEPENDS=	${PYGAME}
 
 .include <bsd.port.mk>

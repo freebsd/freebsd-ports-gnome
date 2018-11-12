@@ -2,6 +2,7 @@
 
 PORTNAME=	X11-XCB
 PORTVERSION=	0.16
+PORTREVISION=	2
 CATEGORIES=	x11 perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -9,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	pi@FreeBSD.org
 COMMENT=	Perl bindings for libxcb
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 LIB_DEPENDS=	libxcb.so:x11/libxcb \
@@ -32,7 +33,7 @@ RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USES=		localbase perl5
 USE_PERL5=	configure
-USE_XORG=	x11 xcb xproto xinerama
+USE_XORG=	x11 xcb xorgproto xinerama
 MAKE_JOBS_UNSAFE=	yes
 
 post-install:

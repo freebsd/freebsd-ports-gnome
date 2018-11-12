@@ -113,6 +113,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/circles/dev_printer.png
 %%DATADIR%%/img/circles/dev_punchtape.png
 %%DATADIR%%/img/circles/dev_quickload.png
+%%DATADIR%%/img/circles/dev_rom.png
 %%DATADIR%%/img/circles/dev_serial.png
 %%DATADIR%%/img/circles/dev_snapshot.png
 %%DATADIR%%/img/circles/dice.png
@@ -136,6 +137,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/circles/embed_multiple.png
 %%DATADIR%%/img/circles/embed_multiple_recordmovie.png
 %%DATADIR%%/img/circles/embed_recordmovie.png
+%%DATADIR%%/img/circles/enforce.png
 %%DATADIR%%/img/circles/exit.png
 %%DATADIR%%/img/circles/exit_small.png
 %%DATADIR%%/img/circles/export_rom_status.png
@@ -150,6 +152,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/circles/filesaveas.png
 %%DATADIR%%/img/circles/filesaveas_and_apply.png
 %%DATADIR%%/img/circles/filter.png
+%%DATADIR%%/img/circles/filtered_view.png
 %%DATADIR%%/img/circles/find.png
 %%DATADIR%%/img/circles/find_negate.png
 %%DATADIR%%/img/circles/find_softlist.png
@@ -163,10 +166,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/circles/forum.png
 %%DATADIR%%/img/circles/forward.png
 %%DATADIR%%/img/circles/ghost.png
-%%DATADIR%%/img/circles/ghost_video.png
 %%DATADIR%%/img/circles/google.png
-%%DATADIR%%/img/circles/gradient1.png
-%%DATADIR%%/img/circles/gradient2.png
 %%DATADIR%%/img/circles/halt.png
 %%DATADIR%%/img/circles/hash.png
 %%DATADIR%%/img/circles/help.png
@@ -341,6 +341,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/circles/update.png
 %%DATADIR%%/img/circles/url.png
 %%DATADIR%%/img/circles/version.png
+%%DATADIR%%/img/circles/video_thumbnail.png
 %%DATADIR%%/img/circles/view_detail.png
 %%DATADIR%%/img/circles/view_tree.png
 %%DATADIR%%/img/circles/viewmag+.png
@@ -426,6 +427,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/classic/dev_printer.png
 %%DATADIR%%/img/classic/dev_punchtape.png
 %%DATADIR%%/img/classic/dev_quickload.png
+%%DATADIR%%/img/classic/dev_rom.png
 %%DATADIR%%/img/classic/dev_serial.png
 %%DATADIR%%/img/classic/dev_snapshot.png
 %%DATADIR%%/img/classic/dice.png
@@ -449,6 +451,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/classic/embed_multiple.png
 %%DATADIR%%/img/classic/embed_multiple_recordmovie.png
 %%DATADIR%%/img/classic/embed_recordmovie.png
+%%DATADIR%%/img/classic/enforce.png
 %%DATADIR%%/img/classic/exit.png
 %%DATADIR%%/img/classic/exit_small.png
 %%DATADIR%%/img/classic/export_rom_status.png
@@ -463,6 +466,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/classic/filesaveas.png
 %%DATADIR%%/img/classic/filesaveas_and_apply.png
 %%DATADIR%%/img/classic/filter.png
+%%DATADIR%%/img/classic/filtered_view.png
 %%DATADIR%%/img/classic/find.png
 %%DATADIR%%/img/classic/find_negate.png
 %%DATADIR%%/img/classic/find_softlist.png
@@ -476,10 +480,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/classic/forum.png
 %%DATADIR%%/img/classic/forward.png
 %%DATADIR%%/img/classic/ghost.png
-%%DATADIR%%/img/classic/ghost_video.png
 %%DATADIR%%/img/classic/google.png
-%%DATADIR%%/img/classic/gradient1.png
-%%DATADIR%%/img/classic/gradient2.png
 %%DATADIR%%/img/classic/halt.png
 %%DATADIR%%/img/classic/hash.png
 %%DATADIR%%/img/classic/help.png
@@ -654,6 +655,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/classic/update.png
 %%DATADIR%%/img/classic/url.png
 %%DATADIR%%/img/classic/version.png
+%%DATADIR%%/img/classic/video_thumbnail.png
 %%DATADIR%%/img/classic/view_detail.png
 %%DATADIR%%/img/classic/view_tree.png
 %%DATADIR%%/img/classic/viewmag+.png
@@ -760,6 +762,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy-black/dev_printer.png
 %%DATADIR%%/img/crazy-black/dev_punchtape.png
 %%DATADIR%%/img/crazy-black/dev_quickload.png
+%%DATADIR%%/img/crazy-black/dev_rom.png
 %%DATADIR%%/img/crazy-black/dev_serial.png
 %%DATADIR%%/img/crazy-black/dev_snapshot.png
 %%DATADIR%%/img/crazy-black/dice.png
@@ -783,6 +786,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy-black/embed_multiple.png
 %%DATADIR%%/img/crazy-black/embed_multiple_recordmovie.png
 %%DATADIR%%/img/crazy-black/embed_recordmovie.png
+%%DATADIR%%/img/crazy-black/enforce.png
 %%DATADIR%%/img/crazy-black/exit.png
 %%DATADIR%%/img/crazy-black/exit_small.png
 %%DATADIR%%/img/crazy-black/export_rom_status.png
@@ -797,6 +801,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy-black/filesaveas.png
 %%DATADIR%%/img/crazy-black/filesaveas_and_apply.png
 %%DATADIR%%/img/crazy-black/filter.png
+%%DATADIR%%/img/crazy-black/filtered_view.png
 %%DATADIR%%/img/crazy-black/find.png
 %%DATADIR%%/img/crazy-black/find_negate.png
 %%DATADIR%%/img/crazy-black/find_softlist.png
@@ -810,10 +815,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy-black/forum.png
 %%DATADIR%%/img/crazy-black/forward.png
 %%DATADIR%%/img/crazy-black/ghost.png
-%%DATADIR%%/img/crazy-black/ghost_video.png
 %%DATADIR%%/img/crazy-black/google.png
-%%DATADIR%%/img/crazy-black/gradient1.png
-%%DATADIR%%/img/crazy-black/gradient2.png
 %%DATADIR%%/img/crazy-black/halt.png
 %%DATADIR%%/img/crazy-black/hash.png
 %%DATADIR%%/img/crazy-black/help.png
@@ -988,6 +990,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy-black/update.png
 %%DATADIR%%/img/crazy-black/url.png
 %%DATADIR%%/img/crazy-black/version.png
+%%DATADIR%%/img/crazy-black/video_thumbnail.png
 %%DATADIR%%/img/crazy-black/view_detail.png
 %%DATADIR%%/img/crazy-black/view_tree.png
 %%DATADIR%%/img/crazy-black/viewmag+.png
@@ -1072,6 +1075,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy/dev_printer.png
 %%DATADIR%%/img/crazy/dev_punchtape.png
 %%DATADIR%%/img/crazy/dev_quickload.png
+%%DATADIR%%/img/crazy/dev_rom.png
 %%DATADIR%%/img/crazy/dev_serial.png
 %%DATADIR%%/img/crazy/dev_snapshot.png
 %%DATADIR%%/img/crazy/dice.png
@@ -1095,6 +1099,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy/embed_multiple.png
 %%DATADIR%%/img/crazy/embed_multiple_recordmovie.png
 %%DATADIR%%/img/crazy/embed_recordmovie.png
+%%DATADIR%%/img/crazy/enforce.png
 %%DATADIR%%/img/crazy/exit.png
 %%DATADIR%%/img/crazy/exit_small.png
 %%DATADIR%%/img/crazy/export_rom_status.png
@@ -1109,6 +1114,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy/filesaveas.png
 %%DATADIR%%/img/crazy/filesaveas_and_apply.png
 %%DATADIR%%/img/crazy/filter.png
+%%DATADIR%%/img/crazy/filtered_view.png
 %%DATADIR%%/img/crazy/find.png
 %%DATADIR%%/img/crazy/find_negate.png
 %%DATADIR%%/img/crazy/find_softlist.png
@@ -1122,10 +1128,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy/forum.png
 %%DATADIR%%/img/crazy/forward.png
 %%DATADIR%%/img/crazy/ghost.png
-%%DATADIR%%/img/crazy/ghost_video.png
 %%DATADIR%%/img/crazy/google.png
-%%DATADIR%%/img/crazy/gradient1.png
-%%DATADIR%%/img/crazy/gradient2.png
 %%DATADIR%%/img/crazy/halt.png
 %%DATADIR%%/img/crazy/hash.png
 %%DATADIR%%/img/crazy/help.png
@@ -1300,6 +1303,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/crazy/update.png
 %%DATADIR%%/img/crazy/url.png
 %%DATADIR%%/img/crazy/version.png
+%%DATADIR%%/img/crazy/video_thumbnail.png
 %%DATADIR%%/img/crazy/view_detail.png
 %%DATADIR%%/img/crazy/view_tree.png
 %%DATADIR%%/img/crazy/viewmag+.png
@@ -1384,6 +1388,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/cubes/dev_printer.png
 %%DATADIR%%/img/cubes/dev_punchtape.png
 %%DATADIR%%/img/cubes/dev_quickload.png
+%%DATADIR%%/img/cubes/dev_rom.png
 %%DATADIR%%/img/cubes/dev_serial.png
 %%DATADIR%%/img/cubes/dev_snapshot.png
 %%DATADIR%%/img/cubes/dice.png
@@ -1407,6 +1412,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/cubes/embed_multiple.png
 %%DATADIR%%/img/cubes/embed_multiple_recordmovie.png
 %%DATADIR%%/img/cubes/embed_recordmovie.png
+%%DATADIR%%/img/cubes/enforce.png
 %%DATADIR%%/img/cubes/exit.png
 %%DATADIR%%/img/cubes/exit_small.png
 %%DATADIR%%/img/cubes/export_rom_status.png
@@ -1421,6 +1427,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/cubes/filesaveas.png
 %%DATADIR%%/img/cubes/filesaveas_and_apply.png
 %%DATADIR%%/img/cubes/filter.png
+%%DATADIR%%/img/cubes/filtered_view.png
 %%DATADIR%%/img/cubes/find.png
 %%DATADIR%%/img/cubes/find_negate.png
 %%DATADIR%%/img/cubes/find_softlist.png
@@ -1434,10 +1441,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/cubes/forum.png
 %%DATADIR%%/img/cubes/forward.png
 %%DATADIR%%/img/cubes/ghost.png
-%%DATADIR%%/img/cubes/ghost_video.png
 %%DATADIR%%/img/cubes/google.png
-%%DATADIR%%/img/cubes/gradient1.png
-%%DATADIR%%/img/cubes/gradient2.png
 %%DATADIR%%/img/cubes/halt.png
 %%DATADIR%%/img/cubes/hash.png
 %%DATADIR%%/img/cubes/help.png
@@ -1612,6 +1616,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/cubes/update.png
 %%DATADIR%%/img/cubes/url.png
 %%DATADIR%%/img/cubes/version.png
+%%DATADIR%%/img/cubes/video_thumbnail.png
 %%DATADIR%%/img/cubes/view_detail.png
 %%DATADIR%%/img/cubes/view_tree.png
 %%DATADIR%%/img/cubes/viewmag+.png
@@ -1648,6 +1653,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/dev_printer.png
 %%DATADIR%%/img/dev_punchtape.png
 %%DATADIR%%/img/dev_quickload.png
+%%DATADIR%%/img/dev_rom.png
 %%DATADIR%%/img/dev_serial.png
 %%DATADIR%%/img/dev_snapshot.png
 %%DATADIR%%/img/dice.png
@@ -1671,6 +1677,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/embed_multiple.png
 %%DATADIR%%/img/embed_multiple_recordmovie.png
 %%DATADIR%%/img/embed_recordmovie.png
+%%DATADIR%%/img/enforce.png
 %%DATADIR%%/img/exit.png
 %%DATADIR%%/img/exit_small.png
 %%DATADIR%%/img/export_rom_status.png
@@ -1685,6 +1692,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/filesaveas.png
 %%DATADIR%%/img/filesaveas_and_apply.png
 %%DATADIR%%/img/filter.png
+%%DATADIR%%/img/filtered_view.png
 %%DATADIR%%/img/find.png
 %%DATADIR%%/img/find_negate.png
 %%DATADIR%%/img/find_softlist.png
@@ -1698,10 +1706,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/forum.png
 %%DATADIR%%/img/forward.png
 %%DATADIR%%/img/ghost.png
-%%DATADIR%%/img/ghost_video.png
 %%DATADIR%%/img/google.png
-%%DATADIR%%/img/gradient1.png
-%%DATADIR%%/img/gradient2.png
 %%DATADIR%%/img/halt.png
 %%DATADIR%%/img/hash.png
 %%DATADIR%%/img/help.png
@@ -1876,6 +1881,7 @@ bin/qmc2-sdlmame
 %%DATADIR%%/img/update.png
 %%DATADIR%%/img/url.png
 %%DATADIR%%/img/version.png
+%%DATADIR%%/img/video_thumbnail.png
 %%DATADIR%%/img/view_detail.png
 %%DATADIR%%/img/view_tree.png
 %%DATADIR%%/img/viewmag+.png

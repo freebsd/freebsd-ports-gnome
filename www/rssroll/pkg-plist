@@ -1,7 +1,5 @@
 bin/rssroll
 @sample etc/rssrollrc.sample
-@owner %%WWWOWN%%
-@group %%WWWGRP%%
 %%WWWDIR%%/css/common.css
 %%WWWDIR%%/css/default.css
 %%WWWDIR%%/css/flak.css
@@ -12,5 +10,6 @@ bin/rssroll
 %%WWWDIR%%/html/flak/footer.html
 %%WWWDIR%%/html/flak/header.html
 %%WWWDIR%%/html/main.html
+%%WWWDIR%%/html/summary.rss
+%%WWWDIR%%/html/summary_item.rss
 %%WWWDIR%%/index.cgi
-@dir %%WWWDIR%%

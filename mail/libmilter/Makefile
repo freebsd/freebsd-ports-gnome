@@ -2,6 +2,7 @@
 
 PORTNAME=	libmilter
 PORTVERSION=	8.15.2
+PORTREVISION=	1
 CATEGORIES=	mail ipv6
 MASTER_SITES=	ftp://ftp.sendmail.org/pub/sendmail/
 DISTNAME=	sendmail.${PORTVERSION}
@@ -12,9 +13,9 @@ COMMENT=	Library providing Sendmail Mail Filter API
 LICENSE=	Sendmail
 LICENSE_NAME=	Sendmail License
 LICENSE_FILE=	${WRKSRC}/LICENSE
-LICENSE_PERMS=	${_LICENSE_PERMS_DEFAULT}
+LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
-MILTER_SOVER?=	6
+MILTER_SOVER?=	7
 
 OPTIONS_DEFINE?=	IPV6 MILTER_SHARED MILTER_POOL DOCS
 OPTIONS_DEFAULT?=	MILTER_SHARED MILTER_POOL

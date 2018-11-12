@@ -2,11 +2,12 @@
 
 PORTNAME=	sdl2_mixer
 PORTVERSION=	2.0.1
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://www.libsdl.org/projects/SDL_mixer/release/
 DISTNAME=	SDL2_mixer-${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Sample multi-channel audio mixer library
 
 LICENSE=	ZLIB

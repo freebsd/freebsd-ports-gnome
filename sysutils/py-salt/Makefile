@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	salt
-PORTVERSION=	2017.7.1
-PORTREVISION=	1
+PORTVERSION=	2018.3.2
 CATEGORIES=	sysutils python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,17 +13,19 @@ COMMENT=	Distributed remote execution and configuration management system
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2 \
-		${PYTHON_PKGNAMEPREFIX}MarkupSafe>0:textproc/py-MarkupSafe \
-		${PYTHON_PKGNAMEPREFIX}botocore>0:devel/py-botocore \
-		${PYTHON_PKGNAMEPREFIX}libcloud>=0.14.0:net/py-libcloud \
-		${PYTHON_PKGNAMEPREFIX}msgpack-python>=0.3:devel/py-msgpack-python \
-		${PYTHON_PKGNAMEPREFIX}progressbar>0:misc/py-progressbar \
-		${PYTHON_PKGNAMEPREFIX}requests>=1.0.0:www/py-requests \
-		${PYTHON_PKGNAMEPREFIX}tornado>=4.2.1:www/py-tornado \
-		${PYTHON_PKGNAMEPREFIX}yaml>0:devel/py-yaml
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Jinja2>0:devel/py-Jinja2@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}MarkupSafe>0:textproc/py-MarkupSafe@${PY_FLAVOR} \
+		${PY_ENUM34} \
+		${PY_FUTURES} \
+		${PYTHON_PKGNAMEPREFIX}libcloud>=0.14.0:net/py-libcloud@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}msgpack>=0.3:devel/py-msgpack@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}progressbar>0:misc/py-progressbar@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>=1.0.0:www/py-requests@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}tornado4>=4.2.1:www/py-tornado4@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}yaml>0:devel/py-yaml@${PY_FLAVOR}
 
-USES=		cpe python:2.7+
+USES=		cpe python
+
 CPE_VENDOR=	saltstack
 CPE_PRODUCT=	salt
 USE_PYTHON=	autoplist distutils
@@ -55,34 +56,28 @@ SUB_LIST+=	PYTHON_CMD=${PYTHON_CMD}
 
 SUB_FILES=	pkg-message
 
-OPTIONS_DEFINE=	RAET TCP ZEROMQ
+OPTIONS_DEFINE=	AWS RAET TCP ZEROMQ
 OPTIONS_DEFAULT=ZEROMQ
 
+AWS_DESC=	Install dependencies required for Amazon Web Services
 RAET_DESC=	Install dependencies required for RAET transport
 TCP_DESC=	Install dependencies required for TCP transport
 ZEROMQ_DESC=	Install dependencies required for ZeroMQ transport
 
-RAET_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}libnacl>=1.0.0:security/py-libnacl \
-			${PYTHON_PKGNAMEPREFIX}ioflo>=1.1.7:devel/py-ioflo \
-			${PYTHON_PKGNAMEPREFIX}raet>=0.6.0:net/py-raet
+# AWS dependencies (Note: the devel/py-botocore port is updated very frequently)
+AWS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}boto3>0:www/py-boto3@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}boto>=2.32.1:devel/py-boto@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}botocore>0:devel/py-botocore@${PY_FLAVOR}
 
-TCP_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycrypto>=2.6.1:security/py-pycrypto
+RAET_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}libnacl>=1.0.0:security/py-libnacl@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}ioflo>=1.1.7:devel/py-ioflo@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}raet>=0.6.0:net/py-raet@${PY_FLAVOR}
 
-ZEROMQ_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyzmq>=2.2.0:net/py-pyzmq
-ZEROMQ_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyzmq>=2.2.0:net/py-pyzmq \
-			${PYTHON_PKGNAMEPREFIX}pycrypto>=2.6.1:security/py-pycrypto
+TCP_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pycrypto>=2.6.1:security/py-pycrypto@${PY_FLAVOR}
 
-.include <bsd.port.pre.mk>
-
-# Python 2.7-3.3 require enum34, unnecessary for Python 3.4+
-.if ${PYTHON_REL} < 3400
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}enum34>0:devel/py-enum34
-.endif
-
-# Python 3+ comes with futures built-in
-.if ${PYTHON_REL} < 3200
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}futures>=2.0:devel/py-futures
-.endif
+ZEROMQ_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyzmq>=2.2.0:net/py-pyzmq@${PY_FLAVOR}
+ZEROMQ_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyzmq>=2.2.0:net/py-pyzmq@${PY_FLAVOR} \
+			${PYTHON_PKGNAMEPREFIX}pycrypto>=2.6.1:security/py-pycrypto@${PY_FLAVOR}
 
 post-patch:
 .for file in conf/minion conf/master doc/man/salt-key.1 \
@@ -96,10 +91,11 @@ post-patch:
 		-e 's|/srv/pillar|${ETCDIR}/pillar|' ${WRKSRC}/${file}
 .endfor
 	@${REINPLACE_CMD} -e 's|yumpkg5|pkgng|' ${WRKSRC}/conf/minion
+	@${REINPLACE_CMD} -e 's|msgpack-python|msgpack|' ${WRKSRC}/requirements/base.txt
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${ETCDIR}
 	${INSTALL_DATA} ${WRKSRC}/conf/master ${STAGEDIR}${ETCDIR}/master.sample
 	${INSTALL_DATA} ${WRKSRC}/conf/minion ${STAGEDIR}${ETCDIR}/minion.sample
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

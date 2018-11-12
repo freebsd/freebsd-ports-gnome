@@ -1,47 +1,39 @@
 # $FreeBSD$
 
 PORTNAME=	cppcms
-PORTVERSION=	1.0.5
-PORTREVISION=	9
+PORTVERSION=	1.2.1
+PORTREVISION=	2
 CATEGORIES=	www
-MASTER_SITES=	SF/cppcms/${PORTNAME}/${PORTVERSION}
+MASTER_SITES=	SF
 
-MAINTAINER=	kevlo@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	C++ web development framework
 
-LICENSE=	LGPL3
+LICENSE=	MIT
 
 LIB_DEPENDS=	libpcre.so:devel/pcre
 
-BROKEN_powerpc64=	Does not build: error: 'localeconv_l' was not declared in this scope
-
-USES=		cmake python:2 shebangfix tar:bzip2 ssl
+USES=		cmake python:2.7 shebangfix ssl tar:bzip2
 USE_LDCONFIG=	yes
 SHEBANG_FILES=	bin/cppcms_tmpl_cc
 
-OPTIONS_DEFINE=		EXAMPLES GCRYPT ICU
-OPTIONS_DEFAULT=	ICU
-ICU_DESC=		ICU unicode support
+OPTIONS_DEFINE=	EXAMPLES GCRYPT ICU
+OPTIONS_DEFAULT=ICU
+ICU_DESC=	ICU unicode support
 
-.include <bsd.port.options.mk>
+GCRYPT_CMAKE_BOOL=	DISABLE_GCRYPT
+GCRYPT_LIB_DEPENDS=	libgcrypt.so:security/libgcrypt
+ICU_CMAKE_BOOL=		DISABLE_ICONV
+ICU_LIB_DEPENDS=	libicuuc.so:devel/icu
+ICU_USE=		CXXSTD=gnu++11
+ICU_USES=		compiler:c++11-lib
+ICU_USES_OFF=		iconv
 
-.if ${PORT_OPTIONS:MICU}
-LIB_DEPENDS+=	libicuuc.so:devel/icu
-CMAKE_ARGS+=	-DDISABLE_ICONV:BOOL=ON
-.else
-USES+=		iconv
-CMAKE_ARGS+=	-DDISABLE_ICU_LOCALE:BOOL=ON
-.endif
+post-patch:
+	@${REINPLACE_CMD} -e 's|python2|${PYTHON_VERSION}|' ${WRKSRC}/CMakeLists.txt
 
-.if ${PORT_OPTIONS:MGCRYPT}
-LIB_DEPENDS+=	libgcrypt.so:security/libgcrypt
-CMAKE_ARGS+=	-DDISABLE_GCRYPT:BOOL=OFF
-.else
-CMAKE_ARGS+=	-DDISABLE_GCRYPT:BOOL=ON
-.endif
-
-post-install:
-	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	@(cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR})
+post-install-EXAMPLES-on:
+	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>

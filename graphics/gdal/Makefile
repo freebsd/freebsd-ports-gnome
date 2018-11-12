@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
-PORTVERSION=	2.2.1
+PORTVERSION=	2.2.4
+PORTREVISION=	1
 CATEGORIES=	graphics geography
-MASTER_SITES=	http://download.osgeo.org/gdal/${PORTVERSION}/ \
+MASTER_SITES=	https://download.osgeo.org/gdal/${PORTVERSION}/ \
 		ftp://ftp.remotesensing.org/pub/gdal/${PORTVERSION}/ \
 		LOCAL/sunpoet
 
@@ -53,8 +54,7 @@ MAKEFILE=	GNUmakefile
 USE_LDCONFIG=	yes
 USES=		gmake iconv jpeg localbase tar:xz
 
-PLIST_SUB=	MAJOR_VER=${PORTVERSION:R:R} PORTVERSION=${PORTVERSION}
-PORTDATA=	*
+PLIST_SUB=	PORTVERSION=${PORTVERSION}
 
 SLAVEDIRS=	graphics/p5-Geo-GDAL graphics/php-gdal graphics/py-gdal
 
@@ -117,7 +117,7 @@ XERCES_LIB_DEPENDS=	libxerces-c.so:textproc/xerces-c3
 
 post-patch:
 	@${REINPLACE_CMD} -e '/^#GDAL_SLIB_SONAME/ s|^#||' ${WRKSRC}/GDALmake.opt.in
-	@${REINPLACE_CMD} -e 's|$$(INST_LIB)/pkgconfig|${PREFIX}/libdata/pkgconfig|' ${WRKSRC}/GNUmakefile
+	@${REINPLACE_CMD} -e 's|$$(INST_LIB)/pkgconfig|${PREFIX}/libdata/pkgconfig|; s| LICENSE.TXT||' ${WRKSRC}/GNUmakefile
 	@${REINPLACE_CMD} -e 's|-lminizip|-lkmlminizip|' ${WRKSRC}/configure
 # Clean up bundled libraries
 	@${RM} -r ${WRKSRC}/frmts/gif/giflib/

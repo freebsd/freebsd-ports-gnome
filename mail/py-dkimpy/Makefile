@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	dkimpy
-PORTVERSION=	0.6.1
+DISTVERSION=	0.8.1
 CATEGORIES=	mail python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,11 +12,12 @@ COMMENT=	Python library for DKIM email signing and verification
 
 LICENSE=	ZLIB
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dns>=0:dns/py-dns
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}authres>=0:mail/py-authres@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dnspython>=0:dns/py-dnspython@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pynacl>=0:security/py-pynacl@${PY_FLAVOR}
 
+USES=		python
+USE_PYTHON=	distutils autoplist concurrent
 NO_ARCH=	yes
-
-USES=		python:2.7
-USE_PYTHON=	autoplist distutils
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pioneers
-PORTVERSION=	15.4
+PORTVERSION=	15.5
 CATEGORIES=	games gnome
 MASTER_SITES=	SF/pio/Source
 
@@ -10,7 +10,9 @@ MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Internet playable version of the Settlers of Catan
 
 LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	itstool:textproc/itstool
 RUN_DEPENDS=	yelp:x11/yelp
 
 USES=		gettext gmake pkgconfig

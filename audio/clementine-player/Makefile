@@ -2,8 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	clementine
-PORTVERSION=	1.3.1
-PORTREVISION=	12
+DISTVERSIONPREFIX=	v
+DISTVERSION=		1.3.1-441
+DISTVERSIONSUFFIX=	-gc01b7bc
+PORTREVISION=	5
 CATEGORIES=	audio
 PKGNAMESUFFIX=	-player
 
@@ -17,8 +19,8 @@ BUILD_DEPENDS=	${LOCALBASE}/include/boost/shared_ptr.hpp:devel/boost-libs
 LIB_DEPENDS=	libtag.so:audio/taglib \
 		libchromaprint.so:audio/chromaprint \
 		libprotobuf.so:devel/protobuf \
-		libqca.so:devel/qca \
-		libqjson.so:devel/qjson \
+		libqca.so:devel/qca@qt4 \
+		libqjson.so:devel/qjson@qt4 \
 		libfftw3.so:math/fftw3 \
 		libechonest.so:audio/libechonest \
 		libcryptopp.so:security/cryptopp
@@ -32,15 +34,15 @@ GH_PROJECT=	Clementine
 USES=		cmake \
 		compiler:c++11-lib \
 		desktop-file-utils \
-		execinfo \
 		gettext-tools \
 		pkgconfig \
-		sqlite
+		qt:4 sqlite
 
-USE_GL=		glew
+USE_GL=		gl glew glu
+USE_XORG=	x11
 
 CONFLICTS_BUILD=	qt-3.*
-USE_QT4=	corelib \
+USE_QT=		corelib \
 		dbus \
 		gui \
 		imageformats \
@@ -78,16 +80,7 @@ CFLAGS+=	-Wno-inconsistent-missing-override \
 
 CMAKE_ARGS+=	-DCMAKE_LIBRARY_PATH:PATH="${LOCALBASE}/lib:${PREFIX}/lib" \
 		-DENABLE_DBUS=ON \
-		-DENABLE_SPOTIFY_BLOB=OFF \
-		-DCRYPTOPP_LIBS=${LOCALBASE}/lib/libcryptopp.so \
-		-DCRYPTOPP_INCLUDEDIR=${LOCALBASE}/include/cryptopp \
-		-DCRYPTOPP_LIBDIR=${LOCALBASE}/lib \
-		-DCRYPTOPP_LDFLAGS=-lcryptopp \
-		-DCRYPTOPP_LIBRARIES=cryptopp \
-		-DCRYPTOPP_LIBRARY_DIRS=${LOCALBASE}/lib \
-		-DCRYPTOPP_cryptopp_INCLUDEDIR=${LOCALBASE}/include/cryptopp \
-		-DCRYPTOPP_cryptopp_LIBDIR=${LOCALBASE}/lib \
-		-DCRYPTOPP_FOUND=1
+		-DENABLE_SPOTIFY_BLOB=OFF
 
 OPTIONS_DEFINE=		AMAZON \
 			AUDIOCD \
@@ -106,7 +99,7 @@ OPTIONS_DEFINE=		AMAZON \
 			VISUALISATION \
 			WIIMOTEDEV
 
-OPTIONS_SUB=		VISUALISATION
+OPTIONS_SUB=		yes
 
 AMAZON_DESC=		Amazon Drive support
 AUDIOCD_DESC=		Devices: Audio CD support
@@ -171,7 +164,8 @@ GOOGLE_DRIVE_CMAKE_OFF=	-DENABLE_GOOGLE_DRIVE=OFF
 
 GPOD_LIB_DEPENDS=	libgpod.so:audio/libgpod \
 			libplist.so:devel/libplist \
-			libusbmuxd.so:comms/libusbmuxd
+			libusbmuxd.so:comms/libusbmuxd \
+			libimobiledevice.so:comms/libimobiledevice
 GPOD_CMAKE_ON=		-DENABLE_LIBGPOD=ON
 GPOD_CMAKE_OFF=		-DENABLE_LIBGPOD=OFF
 

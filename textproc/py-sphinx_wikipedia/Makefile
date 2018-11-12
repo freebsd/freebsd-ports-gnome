@@ -11,9 +11,10 @@ COMMENT=	Sphinx extension which adds role to create links to Wikipedia articles
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	${PKGNAMEPREFIX}sphinx>=1.3.1:textproc/py-sphinx
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinx>=1.3.1:textproc/py-sphinx@${PY_FLAVOR}
 
 USES=		python
+USE_PYTHON=	flavors
 NO_BUILD=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	quiver

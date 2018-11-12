@@ -3,18 +3,21 @@
 
 PORTNAME=	qtfm
 DISTVERSION=	5.5
+PORTREEVISION=	1
 CATEGORIES=	x11-fm
 MASTER_SITES=	http://www.qtfm.org/
 
-MAINTAINER=	lichray@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Small, lightweight file manager based on pure Qt
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		dos2unix qmake
+LIB_DEPENDS=	libinotify.so:devel/libinotify
+
+USES=		dos2unix qmake qt:4
 DOS2UNIX_REGEX=	.*\.(h|cpp)
-USE_QT4=	gui network moc_build rcc_build \
+USE_QT=		gui network moc_build rcc_build \
 		imageformats_run
 
 post-patch:

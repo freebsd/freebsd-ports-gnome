@@ -4,7 +4,7 @@
 
 PORTNAME=	hal
 DISTVERSION=	0.5.14
-PORTREVISION=	32
+PORTREVISION=	34
 CATEGORIES=	sysutils
 MASTER_SITES=	http://hal.freedesktop.org/releases/
 
@@ -70,7 +70,7 @@ FIXED_MOUNTPOINTS_EXTRA_PATCHES=	${FILESDIR}/extra-patch-tools_hal-storage-mount
 
 .include <bsd.port.pre.mk>
 
-.if (${ARCH}=="i386" || ${ARCH}=="amd64" || ${ARCH}=="ia64")
+.if ${ARCH} == amd64 || ${ARCH} == i386
 RUN_DEPENDS+=	dmidecode:sysutils/dmidecode
 .endif
 

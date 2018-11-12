@@ -1,25 +1,31 @@
 # $FreeBSD$
 
 PORTNAME=	cockroach
-PORTVERSION=	1.0.4
 DISTVERSIONPREFIX=	v
+DISTVERSION=	2.0.2
 CATEGORIES=	databases
 MASTER_SITES=	https://binaries.cockroachdb.com/
 EXTRACT_SUFX=	.src.tgz
 
-MAINTAINER=	james@jen20.com
+MAINTAINER=	freebsd@jen20.com
 COMMENT=	Cloud-native SQL database that survive disasters
 
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/src/github.com/cockroachdb/cockroach/LICENSE
 
-BUILD_DEPENDS=	bash:shells/bash \
+ONLY_FOR_ARCHS=	amd64
+ONLY_FOR_ARCHS_REASON=	"Only supported on amd64"
+
+BUILD_DEPENDS=	autoconf:devel/autoconf \
+		bash:shells/bash \
 		cmake:devel/cmake \
 		go:lang/go
 
-USES=		gmake
+USES=		gmake libedit
 
 USE_RC_SUBR=	cockroach
+
+NO_CCACHE=	yes
 
 PLIST_FILES=	bin/cockroach
 
@@ -27,8 +33,9 @@ USERS=		cockroach
 GROUPS=		cockroach
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|-DCMAKE_CXX_FLAGS=-DNDEBUG)|-DCMAKE_CXX_FLAGS=-DNDEBUG) -DFAIL_ON_WARNINGS=OFF|g' \
-	  	${WRKSRC}/src/github.com/cockroachdb/cockroach/build/common.mk
+	@${REINPLACE_CMD} -e 's|LDFLAGS: -ledit|LDFLAGS: -L${LOCALBASE}/lib -ledit|g' \
+			  -e 's|CPPFLAGS: -Ishim|CPPFLAGS: -I${LOCALBASE}/include -Ishim|g' \
+		${WRKSRC}/src/github.com/cockroachdb/cockroach/vendor/github.com/knz/go-libedit/unix/editline_unix.go
 
 do-build:
 	@${SETENV} -i PATH="${PATH}" \

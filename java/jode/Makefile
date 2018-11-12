@@ -19,8 +19,11 @@ USE_JAVA=	yes
 JAVA_VERSION=	1.6+
 NEED_JAVAC=	yes
 GNU_CONFIGURE=	yes
-USES=		gmake
+USES=		gmake perl5 shebangfix
+SHEBANG_FILES=	${WRKSRC}/jcpp
+USE_PERL5=	test
 MAKE_JOBS_UNSAFE=	yes
+TEST_TARGET=	check
 
 GETOPT_JAR=	${JAVALIBDIR}/java-getopt.jar
 CLASSLIB=	${JAVA_CLASSES}:${GETOPT_JAR}
@@ -47,8 +50,5 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/${PORTNAME}-${VENDOR_VERSION}.jar \
 		${STAGEDIR}/${JAVAJARDIR}/
 	${INSTALL_SCRIPT} ${WRKDIR}/jode ${STAGEDIR}/${PREFIX}/bin/
-
-test check regression-test: build
-	${MAKE} -C ${WRKSRC}/test check-TESTS
 
 .include <bsd.port.mk>

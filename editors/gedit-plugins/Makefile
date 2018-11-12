@@ -2,7 +2,7 @@
 # $FreeBSD: head/editors/gedit-plugins/Makefile 412346 2016-04-01 14:00:51Z mat $
 
 PORTNAME=	gedit-plugins
-PORTVERSION=	3.22.0
+PORTVERSION=	3.28.1
 CATEGORIES=	editors gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -23,9 +23,10 @@ RUN_DEPENDS=	gedit>=0:editors/gedit
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome libtool localbase pathfix pkgconfig \
-		python:3.3+ tar:xz
+USES=		compiler:c11 gettext gmake gnome libtool localbase pathfix pkgconfig \
+		python:3.4+ tar:xz
 USE_GNOME=	cairo gdkpixbuf2 gtk30 gtksourceview3 intlhack introspection
+USE_CSTD=	c11
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
@@ -34,13 +35,14 @@ GLIB_SCHEMAS=	org.gnome.gedit.plugins.drawspaces.gschema.xml \
 		org.gnome.gedit.plugins.wordcompletion.gschema.xml
 
 USES+=		python
-BUILD_DEPENDS+=	py3?-dbus>=0:devel/py3-dbus
+BUILD_DEPENDS+=	py3?-dbus>=0:devel/py-dbus@${PY_FLAVOR}
 LIB_DEPENDS+=	libgucharmap_2_90.so:deskutils/gucharmap
-RUN_DEPENDS+=	py3?-dbus>=0:devel/py3-dbus \
-		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py3-libpeas
+RUN_DEPENDS+=	py3?-dbus>=0:devel/py-dbus@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR}
 USE_GNOME+=	vte3
 CONFIGURE_ARGS+=--enable-python
-GLIB_SCHEMAS+=	org.gnome.gedit.plugins.terminal.gschema.xml
+GLIB_SCHEMAS+=	org.gnome.gedit.plugins.terminal.gschema.xml \
+		org.gnome.gedit.plugins.translate.gschema.xml
 
 post-patch:
 	@${REINPLACE_CMD} -e 's| \\t\\r\\n\\f|[:space:]|g' \

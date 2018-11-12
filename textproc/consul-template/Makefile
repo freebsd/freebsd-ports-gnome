@@ -2,14 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	consul-template
-PORTVERSION=	0.19.2
+PORTVERSION=	0.19.5
 DISTVERSIONPREFIX=	v
 CATEGORIES=	textproc
 
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	Generic template rendering and notifications with Consul
 
-LICENSE=	MPL
+LICENSE=	MPL20
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/go:lang/go
 
@@ -23,7 +23,7 @@ USE_RC_SUBR=	consul-template
 
 do-build:
 	@cd ${WRKSRC}/src/github.com/hashicorp/consul-template ; \
-		${SETENV} GOPATH=${WRKSRC} go build
+		${SETENV} ${MAKE_ENV} GOPATH=${WRKSRC} go build
 
 do-install:
 	${INSTALL_PROGRAM} \

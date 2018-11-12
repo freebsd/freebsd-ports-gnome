@@ -1,11 +1,34 @@
---- CMakeLists.txt.orig	2012-04-19 18:05:29.938959913 +0300
-+++ CMakeLists.txt	2012-04-19 18:05:39.398959691 +0300
-@@ -191,7 +191,7 @@
+ - Shuffle a little to enforce C++11 in a normal way
+ - Don't install license, since the ports LICENSE_FILE already does that
+
+Hopefully the bundled parts of ECM handle compiler flags properly.
+
+--- CMakeLists.txt.orig	2018-06-15 07:34:16 UTC
++++ CMakeLists.txt
+@@ -1,5 +1,7 @@
+-CMAKE_MINIMUM_REQUIRED( VERSION 2.8.12 )
+-PROJECT( Charm CXX )
++CMAKE_MINIMUM_REQUIRED( VERSION 3.10 )
++PROJECT( Charm VERSION ${Charm_VERSION} LANGUAGES CXX )
++SET( CMAKE_CXX_STANDARD 11 )
++SET( CMAKE_CXX_STANDARD_REQUIRED ON )
+ 
+ include(FeatureSummary)
+ 
+@@ -12,7 +14,6 @@ include(KDEFrameworkCompilerSettings NO_
+ 
+ include(ECMInstallIcons)
+ 
+-
+ IF( NOT Charm_VERSION )
+     FIND_PACKAGE( Git QUIET )
+     IF( EXISTS ${GIT_EXECUTABLE} )
+@@ -119,7 +120,7 @@ CONFIGURE_FILE( CharmCMake.h.cmake ${CMA
+ SET( LICENSE_FILE "License.txt" )
+ SET( README_FILE "ReadMe.md" )
+ IF( NOT APPLE )
+-    INSTALL( FILES "${LICENSE_FILE}" "${README_FILE}" DESTINATION ${DOC_INSTALL_DIR} )
++    INSTALL( FILES "${README_FILE}" DESTINATION ${DOC_INSTALL_DIR} )
  ENDIF()
  
- IF( CMAKE_BUILD_TYPE MATCHES "^[Rr]elease$" )
--    ADD_DEFINITIONS( -DQT_NO_DEBUG_OUTPUT )
-+    ADD_DEFINITIONS( -DQT_NO_DEBUG_OUTPUT -DNDEBUG )
- ENDIF()
- 
- # Always include the source and build directories in the include path
+ IF (WIN32)

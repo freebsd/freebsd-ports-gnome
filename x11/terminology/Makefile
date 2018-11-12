@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	terminology
-PORTVERSION=	1.0.0
-PORTREVISION=	3
+PORTVERSION=	1.2.1
+PORTREVISION=	1
 CATEGORIES=	x11 enlightenment
 MASTER_SITES=	http://download.enlightenment.org/rel/apps/${PORTNAME}/
 
@@ -15,15 +15,13 @@ LICENSE=	BSD2CLAUSE
 LIB_DEPENDS=	libefl.so:devel/efl
 
 DIST_SUBDIR=	enlightenment
-GNU_CONFIGURE=	yes
-USES=		compiler:c11 pkgconfig tar:xz
+USES=		compiler:c11 meson pkgconfig tar:xz
 
 OPTIONS_DEFINE=		NLS
 OPTIONS_SUB=		yes
 
-.include <bsd.port.options.mk>
-
 NLS_USES=		gettext
-NLS_CONFIGURE_ENABLE=	nls
+NLS_MESON_TRUE=		nls
+NLS_LDFLAGS=		-lintl
 
 .include <bsd.port.mk>

@@ -2,7 +2,7 @@
 
 PORTNAME=	rox-videothumbnail
 PORTVERSION=	0.1.14
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	multimedia
 MASTER_SITES=	http://www.kerofin.demon.co.uk/rox/
 DISTNAME=	VideoThumbnail-${PORTVERSION}
@@ -11,11 +11,13 @@ MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	Video thumbnail provider for the ROX file manager
 
 RUN_DEPENDS=	${LOCALBASE}/bin/rox:x11-fm/rox-filer \
-		${LOCALBASE}/lib/ROX-Lib2/python/rox/__init__.py:devel/py-roxlib
+		${PYTHON_PKGNAMEPREFIX}roxlib>=0:devel/py-roxlib@${PY_FLAVOR}
 
 WRKSRC=		${WRKDIR}/VideoThumbnail
 
-USES=		python
+USES=		python:2.7 shebangfix
+SHEBANG_FILES=	AppRun vidthumb.py
+NO_ARCH=	yes
 
 do-build:
 	@${PYTHON_CMD} -m compileall ${WRKSRC}

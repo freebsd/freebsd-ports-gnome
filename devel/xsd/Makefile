@@ -3,7 +3,7 @@
 PORTNAME=	xsd
 PORTVERSION=	4.0.0
 DISTVERSIONSUFFIX=	+dep
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	http://www.codesynthesis.com/download/${PORTNAME}/${PORTVERSION:R}/
 
@@ -33,7 +33,7 @@ MAKE_ARGS=	EXTERNAL_LIBCUTL=y \
 		install_prefix=${STAGEDIR}${PREFIX} \
 		install_man_dir=${STAGEDIR}${MANPREFIX}/man \
 		verbose=1
-USES=		gmake tar:bzip2
+USES=		compiler:c++11-lang gmake tar:bzip2
 
 post-patch:
 # Use devel/build instead of the port's bundled copy.

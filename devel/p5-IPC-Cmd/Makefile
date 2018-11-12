@@ -2,21 +2,28 @@
 # $FreeBSD$
 
 PORTNAME=	IPC-Cmd
-PORTVERSION=	0.84
-PORTREVISION=	1
+PORTVERSION=	1.02
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:BINGOS
 PKGNAMEPREFIX=	p5-
 
-MAINTAINER=	tobez@FreeBSD.org
+MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Finding and running system commands made easy
 
-COMMON_DEPENDS=	p5-IPC-Run>=0.55:devel/p5-IPC-Run
-BUILD_DEPENDS=	${COMMON_DEPENDS}
-RUN_DEPENDS=	${COMMON_DEPENDS}
+LICENSE=	ART10 GPLv1+
+LICENSE_COMB=	dual
 
 USES=		perl5
 USE_PERL5=	configure
 
-.include <bsd.port.mk>
+NO_ARCH=	yes
+
+.include <bsd.port.pre.mk>
+
+.if ${PERL_LEVEL} < 502504
+BUILD_DEPENDS+=	p5-Module-Load-Conditional>=0.66:devel/p5-Module-Load-Conditional
+RUN_DEPENDS+=	p5-Module-Load-Conditional>=0.66:devel/p5-Module-Load-Conditional
+.endif
+
+.include <bsd.port.post.mk>

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	plaso
-DISTVERSION=	1.5.1
+PORTVERSION=	20180818
 CATEGORIES=	security python
 MASTER_SITES=	https://github.com/log2timeline/plaso/releases/download/${PORTVERSION}/ \
 		LOCAL/antoine
@@ -14,10 +14,7 @@ COMMENT=	Automatic creation of a super timeline
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	hachoir-core>=0:devel/hachoir-core \
-		hachoir-metadata>=0:sysutils/hachoir-metadata \
-		hachoir-parser>=0:devel/hachoir-parser \
-		libesedb>=e:devel/libesedb \
+RUN_DEPENDS=	libesedb>=e:devel/libesedb \
 		libevt>=a:devel/libevt \
 		libevtx>=a:devel/libevtx \
 		libfwsi>=e:devel/libfwsi \
@@ -26,36 +23,55 @@ RUN_DEPENDS=	hachoir-core>=0:devel/hachoir-core \
 		libolecf>=a:devel/libolecf \
 		libregf>=a:devel/libregf \
 		libscca>=a:devel/libscca \
-		${PYTHON_PKGNAMEPREFIX}artifacts>=0:security/py-artifacts \
-		${PYTHON_PKGNAMEPREFIX}bencode>=0:converters/py-bencode \
-		${PYTHON_PKGNAMEPREFIX}binplist>=0:devel/py-binplist \
-		${PYTHON_PKGNAMEPREFIX}construct>=0:devel/py-construct \
-		${PYTHON_PKGNAMEPREFIX}dateutil>=0:devel/py-dateutil \
-		${PYTHON_PKGNAMEPREFIX}dfvfs>=0:security/py-dfvfs \
-		${PYTHON_PKGNAMEPREFIX}dfwinreg>=0:security/py-dfwinreg \
-		${PYTHON_PKGNAMEPREFIX}dpkt>=0:net/py-dpkt \
-		${PYTHON_PKGNAMEPREFIX}efilter>=0:devel/py-efilter \
-		${PYTHON_PKGNAMEPREFIX}ipython>=0:devel/ipython \
-		${PYTHON_PKGNAMEPREFIX}pefile>=0:devel/py-pefile \
-		${PYTHON_PKGNAMEPREFIX}psutil>=0:sysutils/py-psutil \
-		${PYTHON_PKGNAMEPREFIX}pyparsing>=0:devel/py-pyparsing \
-		${PYTHON_PKGNAMEPREFIX}pytsk>=0:sysutils/py-pytsk \
-		${PYTHON_PKGNAMEPREFIX}pytz>=0:devel/py-pytz \
-		${PYTHON_PKGNAMEPREFIX}pyzmq>=0:net/py-pyzmq \
-		${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests \
-		${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3 \
-		${PYTHON_PKGNAMEPREFIX}XlsxWriter>=0:textproc/py-xlsxwriter \
-		${PYTHON_PKGNAMEPREFIX}yaml>=0:devel/py-yaml \
-		${PYTHON_PKGNAMEPREFIX}yara>=0:security/py-yara
-TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mock>=0:devel/py-mock
+		${PYTHON_PKGNAMEPREFIX}artifacts>=0:security/py-artifacts@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}bencode.py>=0:converters/py-bencode.py@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}biplist>=0:devel/py-biplist@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}construct>=0:devel/py-construct@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dateutil>=0:devel/py-dateutil@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dfvfs>=0:security/py-dfvfs@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}dfwinreg>=0:security/py-dfwinreg@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}efilter>=0:devel/py-efilter@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}elasticsearch>=0:textproc/py-elasticsearch@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}lz4>=0:archivers/py-lz4@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pefile>=0:devel/py-pefile@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}psutil>=0:sysutils/py-psutil@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pyparsing>=0:devel/py-pyparsing@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytsk>=0:sysutils/py-pytsk@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytz>=0:devel/py-pytz@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pyzmq>=0:net/py-pyzmq@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}XlsxWriter>=0:textproc/py-xlsxwriter@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}yaml>=0:devel/py-yaml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}yara>=0:security/py-yara@${PY_FLAVOR}
+TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mock>=0:devel/py-mock@${PY_FLAVOR}
 
 NO_ARCH=	yes
 USES=		python:2.7
 USE_LOCALE=	en_US.UTF-8
 USE_PYTHON=	distutils autoplist
+
+.include <bsd.port.pre.mk>
+
+.if ${PYTHON_REL} < 3000
+RUN_DEPENDS+=	hachoir-core>=0:devel/hachoir-core@${PY_FLAVOR} \
+		hachoir-metadata>=0:sysutils/hachoir-metadata@${PY_FLAVOR} \
+		hachoir-parser>=0:devel/hachoir-parser@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}backports.lzma>=0:archivers/py-backports.lzma@${PY_FLAVOR}
 TEST_ENV=	${MAKE_ENV} PYTHONHTTPSVERIFY=0
+.else
+TEST_DEPENDS+=	ca_root_nss>=0:security/ca_root_nss
+.endif
+
+post-patch:
+	${REINPLACE_CMD} "/scripts=glob/s/*.py/[a-z]*.py/" ${WRKSRC}/setup.py
+	${REINPLACE_CMD} "/elasticsearch5/d" ${WRKSRC}/plaso/dependencies.py
+	${REINPLACE_CMD} "/^\[elasticsearch5/,/^$$/d" ${WRKSRC}/dependencies.ini
+	${REINPLACE_CMD} "s|'share', 'artifacts'|'share', '${PYTHON_PKGNAMEPREFIX}artifacts'|" \
+		${WRKSRC}/plaso/cli/helpers/artifact_definitions.py
 
 do-test:
+	@${TOUCH} ${TEST_WRKSRC}/utils/__init__.py
 	@(cd ${TEST_WRKSRC} && ${SETENV} ${TEST_ENV} ${PYTHON_CMD} run_tests.py)
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

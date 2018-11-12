@@ -4,7 +4,7 @@
 PORTNAME=	cmus
 DISTVERSIONPREFIX=	v
 DISTVERSION=	2.8.0-rc0
-PORTREVISION=	3
+PORTREVISION=	7
 CATEGORIES=	audio
 DIST_SUBDIR=	cmus
 
@@ -18,11 +18,9 @@ COMMENT=	Console-based music player with really cool features
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BROKEN_powerpc64=	fails to configure: checking for successful build of ffmpeg.c... no
-
+USES=		compiler:c11 gmake iconv ncurses pkgconfig
 USE_GITHUB=	yes
 
-USES=		gmake iconv ncurses pkgconfig
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	prefix=${PREFIX} mandir=${MANPREFIX}/man \
 		exampledir=${EXAMPLESDIR}
@@ -31,7 +29,8 @@ CONFIGURE_ARGS=	prefix=${PREFIX} mandir=${MANPREFIX}/man \
 CONFIGURE_ARGS+=	HOSTCC=${CC}
 
 # Verbose build makes it easier to spot problems
-MAKE_ARGS=	V=2
+MAKE_ARGS=	V=2 ${MAKE_ARGS_${ARCH:U}}
+MAKE_ARGS_powerpc=	COMPAT_LIBS="-latomic" # undefined reference to `__atomic_fetch_add_8'
 
 # Disable all configure options first.  These will be overwritten by
 # enabled port options later.  The args to cmus' configure script
@@ -46,6 +45,7 @@ _CMUS_CONFIGURE_OPTS=	AAC ALSA AO ARTS CDDB CDIO COREAUDIO CUE DISCID	\
 CONFIGURE_ARGS+=	CONFIG_${opt}=n
 .endfor
 
+OPTIONS_DEFINE=		EXAMPLES
 OPTIONS_DEFAULT=	AAC FFMPEG FLAC MAD MODPLUG MP4 OPUS OSS SNDIO VORBIS WAV
 OPTIONS_SUB=	yes
 

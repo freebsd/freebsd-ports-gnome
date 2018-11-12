@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=		bazel
-PORTVERSION=		0.5.3
+DISTVERSION=		0.17.1
 CATEGORIES=		devel java
 MASTER_SITES=		https://storage.googleapis.com/bazel/${PORTVERSION}/rc${FINALRC}/
 DISTNAME=		bazel-${PORTVERSION}rc${FINALRC}-dist
@@ -13,7 +13,10 @@ COMMENT=		Fast and correct build system
 LICENSE=		APACHE20
 LICENSE_FILE=		${WRKSRC}/LICENSE
 
+BROKEN_aarch64=		fails to build: java.lang.OutOfMemoryError: Java heap space
 BROKEN_armv6=		fails to package: cp: bazel: No such file or directory
+BROKEN_armv7=		fails to package: cp: bazel: No such file or directory
+BROKEN_powerpc64=	fails to compile: Action failed to execute: java.io.IOException: Cannot run program /usr/bin/clang
 
 BUILD_DEPENDS=		bash:shells/bash \
 			zip:archivers/zip
@@ -21,9 +24,9 @@ BUILD_DEPENDS=		bash:shells/bash \
 # In bazel, a release is always code-wise identical to the final release candidate.
 # Hence we can also download that one and so have a simple way to also test earlier release
 # candidates.
-FINALRC=		4
+FINALRC=		7
 
-USES=			shebangfix zip
+USES=			shebangfix zip:infozip python
 SHEBANG_REGEX=		.*(sh|txt|_stub|stub_.*|bazel|get_workspace_status|protobuf_support|_so)
 USE_JAVA=		yes
 JAVA_VENDOR=		openjdk
@@ -33,19 +36,12 @@ JAVA_RUN=		yes
 
 NO_WRKSUBDIR=		YES
 
-CONFLICTS_INSTALL?=	bazel-clang38
-
-OPTIONS_DEFINE=	CLANG38
-CLANG38_DESC=	Use clang38 as default crosstool
-CLANG38_BUILD_DEPENDS=	clang38:devel/llvm38
-CLANG38_RUN_DEPENDS=	clang38:devel/llvm38
-
 STRIP=	# The bazel binary is also a zip archive (extracted by the elf part), it must not be stripped
 
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == "i386"
-EXTRA_PATCHES=	${FILESDIR}/extra-i386_src_BUILD
+EXTRA_PATCHES=	${FILESDIR}/extra-i386_src_BUILD ${FILESDIR}/extra-i386_tools_cpp_BUILD.static.freebsd
 .endif
 
 # Have the location of the system-wide rc file reside ${ETCDIR}.
@@ -55,11 +51,14 @@ post-patch:
 	@${REINPLACE_CMD} \
 	-e "s|\"/etc/bazel.bazelrc\"|\"${ETCDIR}/bazel.bazelrc\"|" \
 	${WRKSRC}/src/main/cpp/blaze_util_posix.cc
-	@${ECHO_CMD} build --strategy=Javac=standalone >> ${WRKSRC}/scripts/packages/debian/bazel.bazelrc
-
-post-patch-CLANG38-on:
-	@${REINPLACE_CMD} -e 's=/usr/lib/clang=${LOCALBASE}/llvm38/lib/clang=' \
-	-e 's=/usr/bin/clang=${LOCALBASE}/bin/clang38=' ${WRKSRC}/tools/cpp/CROSSTOOL
+	@${ECHO_CMD} build --strategy=Javac=standalone >> ${WRKSRC}/scripts/packages/bazel.bazelrc
+	@${ECHO_CMD} build --python_path=${PYTHON_CMD} >> ${WRKSRC}/scripts/packages/bazel.bazelrc
+	@${REINPLACE_CMD} \
+	-e 's|\$$command|$$command --python_path=${PYTHON_CMD}|' \
+	${WRKSRC}/scripts/bootstrap/bootstrap.sh
+	@${REINPLACE_CMD} \
+	-e 's|/usr/bin/env python|${PYTHON_CMD}|' \
+	${WRKSRC}/src/main/java/com/google/devtools/build/lib/bazel/rules/python/BazelPythonSemantics.java
 
 do-build:
 	@${MKDIR} ${WRKDIR}/bazel_tmp
@@ -71,12 +70,13 @@ do-build:
 	${SETENV} BAZEL_SH=${LOCALBASE}/bin/bash \
 	TMPDIR=${WRKDIR}/bazel_tmp \
 	EMBED_LABEL='${PORTVERSION}' \
+	PATH=${LOCALBASE}/bin:$$PATH \
 	SOURCE_DATE_EPOCH=$${SOURCE_DATE_EPOCH} \
 	${LOCALBASE}/bin/bash ./compile.sh)
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/output/bazel ${STAGEDIR}${PREFIX}/bin
 	@${MKDIR} ${STAGEDIR}${ETCDIR}
-	${INSTALL_DATA} ${WRKSRC}/scripts/packages/debian/bazel.bazelrc ${STAGEDIR}${ETCDIR}/bazel.bazelrc.sample
+	${INSTALL_DATA} ${WRKSRC}/scripts/packages/bazel.bazelrc ${STAGEDIR}${ETCDIR}/bazel.bazelrc.sample
 
 .include <bsd.port.post.mk>

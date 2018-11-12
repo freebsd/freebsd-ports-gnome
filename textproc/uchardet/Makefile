@@ -6,11 +6,12 @@ PORTVERSION=	0.0.6
 CATEGORIES=	textproc
 MASTER_SITES=	https://www.freedesktop.org/software/${PORTNAME}/releases/
 
-MAINTAINER=	yuri@rawbw.com
+MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Universal charset detection library
 
-LICENSE=	GPLv2+ LGPL21+ MPL
+LICENSE=	GPLv2+ LGPL21+ MPL11
 LICENSE_COMB=	dual
+LICENSE_FILE_MPL11=	${WRKSRC}/COPYING
 
 USES=		cmake pathfix tar:xz
 USE_LDCONFIG=	yes

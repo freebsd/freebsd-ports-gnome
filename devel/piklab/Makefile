@@ -3,7 +3,7 @@
 
 PORTNAME=	piklab
 PORTVERSION=	0.16.2
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	devel kde
 MASTER_SITES=	SF
 
@@ -13,9 +13,10 @@ COMMENT=	KDE/Qt IDE for microcontroller development
 LICENSE=	GPLv2+
 
 DOS2UNIX_FILES=	cmake/Piklab.cmake
-USE_QT4=	corelib gui qt3support qtestlib xml \
+USE_QT=		corelib gui qt3support qtestlib xml \
 		moc_build qmake_build rcc_build uic_build
-USES=		cmake gettext readline dos2unix tar:bzip2
+USES=		cmake gettext qt:4 readline dos2unix tar:bzip2
+USE_CXXSTD=	gnu++98
 
 OPTIONS_DEFINE=	KDE4
 OPTIONS_DEFAULT=	KDE4

@@ -1,13 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	gnupg
-PORTVERSION=	2.1.23
+PORTVERSION=	2.2.10
 PORTREVISION=	1
 CATEGORIES=	security
 MASTER_SITES=	GNUPG
 
 MAINTAINER=	adamw@FreeBSD.org
-COMMENT=	The GNU Privacy Guard (modern version)
+COMMENT=	Complete and free PGP implementation
 
 LICENSE=	GPLv3 LGPL3
 LICENSE_COMB=	multi
@@ -19,33 +19,35 @@ LIB_DEPENDS=	libassuan.so:security/libassuan \
 		libgpg-error.so:security/libgpg-error \
 		libksba.so:security/libksba \
 		libnpth.so:devel/npth
-BUILD_DEPENDS=	libassuan>=2.4.3:security/libassuan \
+BUILD_DEPENDS=	libassuan>=2.5.1:security/libassuan \
 		libgpg-error>=1.16:security/libgpg-error
 RUN_DEPENDS=	pinentry:security/pinentry
 
-CONFLICTS=	gnupg-2.0.* gnupg-2.2.* dirmngr-[0-9]*
+CONFLICTS=	gnupg-2.0.* dirmngr-[0-9]*
 CPE_VENDOR=	gnupg
 
 USES=		compiler:c11 cpe gmake iconv pkgconfig readline sqlite tar:bzip2
 CONFIGURE_ARGS=	--disable-ntbtls --disable-wks-tools \
 		--enable-gpg-is-gpg2 --enable-symcryptrun
 GNU_CONFIGURE=	yes
-USE_LDCONFIG=	yes
 INFO=		gnupg
 TEST_TARGET=	check
 
-OPTIONS_DEFINE=	GNUTLS LDAP SCDAEMON NLS DOCS SUID_GPG
+SUB_FILES=	pkg-message
+
+OPTIONS_DEFINE=	DOCS GNUTLS LARGE_RSA LDAP NLS SCDAEMON SUID_GPG
 OPTIONS_DEFAULT=GNUTLS SCDAEMON
-NO_OPTIONS_SORT=yes
 OPTIONS_SUB=	yes
 
+LARGE_RSA_DESC=	Enable support for 8192-bit RSA keys
 LDAP_DESC=	LDAP keyserver interface
 SCDAEMON_DESC=	Enable Smartcard daemon (with libusb)
 SUID_GPG_DESC=	Install GPG with suid
-# In jail, SUID is required to avoid warning (security.bsd.unprivileged_mlock sysctl is not used in jail).
 
 GNUTLS_CONFIGURE_ENABLE=gnutls
 GNUTLS_LIB_DEPENDS=	libgnutls.so:security/gnutls
+
+LARGE_RSA_CONFIGURE_ENABLE=	large-secmem
 
 LDAP_CONFIGURE_WITH=	ldap=${LOCALBASE}
 LDAP_LIBS=		-L${LOCALBASE}/lib

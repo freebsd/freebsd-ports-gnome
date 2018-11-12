@@ -1,4 +1,6 @@
-MUNIN_VERSION=	2.0.33
+LICENSE=	GPLv2
+
+MUNIN_VERSION=	2.0.42
 MUNIN_SITES=	http://downloads.munin-monitoring.org/munin/stable/${MUNIN_VERSION}/
 DISTINFO_FILE=	${.CURDIR}/../../sysutils/munin-common/distinfo
 PATCHDIR=	${.CURDIR}/../../sysutils/munin-common/files

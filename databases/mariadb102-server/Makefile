@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	10.2.7
-PORTREVISION?=	1
+PORTVERSION=	10.2.17
+PORTREVISION?=	0
 CATEGORIES=	databases ipv6
 MASTER_SITES=	http://mirrors.supportex.net/${SITESDIR}/ \
 		http://mirror2.hs-esslingen.de/pub/Mirrors/${SITESDIR}/ \
@@ -22,15 +22,12 @@ LICENSE_NAME_PerconaFT=	PerconaFT patents license
 LICENSE_FILE_PerconaFT=	${WRKSRC}/storage/tokudb/PerconaFT/PATENTS
 LICENSE_PERMS_PerconaFT=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 
-BROKEN_aarch64=		fails to link: stacktrace.c: undefined reference to 'sbrk'
-
 SUB_FILES=	pkg-message
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 SLAVEDIRS=	databases/mariadb102-client
-USES=		bison:build cmake compiler:c++11-lib cpe execinfo iconv:translit libedit ncurses shebangfix ssl
+USES=		bison:build cmake:noninja compiler:c++11-lib cpe iconv:translit libedit ncurses shebangfix ssl
 USE_LDCONFIG=	${PREFIX}/lib/mysql
-SHEBANG_FILES=	scripts/*.sh
+SHEBANG_FILES=	scripts/*.sh storage/rocksdb/myrocks_hotbackup
 SITESDIR=	mariadb/mariadb-${PORTVERSION}/source
 DOCSDIR=	${PREFIX}/share/doc/mysql
 
@@ -42,7 +39,7 @@ OPTIONS_DEFAULT=	GSSAPI_BASE
 # MySQL-Server options
 OPTIONS_DEFAULT+=	CONNECT_EXTRA INNOBASE SPHINX SPIDER
 OPTIONS_GROUP=		COMPRESSION ENGINES GROONGA
-OPTIONS_DEFINE=		CONNECT_EXTRA
+OPTIONS_DEFINE=		CONNECT_EXTRA DOCS
 OPTIONS_GROUP_COMPRESSION=	LZ4 LZO SNAPPY ZSTD
 OPTIONS_GROUP_ENGINES=	INNOBASE MROONGA OQGRAPH ROCKSDB SPHINX SPIDER TOKUDB XTRADB
 OPTIONS_GROUP_GROONGA=	ZMQ MSGPACK
@@ -93,7 +90,6 @@ CMAKE_ARGS+=	-DINSTALL_DOCDIR="share/doc/mysql" \
 		-DCURSES_CURSES_LIBRARY="/usr/lib/libcurses.so" \
 		-DCURSES_FORM_LIBRARY="/usr/lib/libform.so" \
 		-DCURSES_CURSES_LIBRARY="/usr/lib/libncurses.so" \
-		-DEXECINFO_ROOT="${LOCALBASE}" \
 		-DICONV_LIBRARIES="${ICONV_LIB_PATH}" \
 		-DKRB5_CONFIG="${KRB5CONFIG}" \
 		-DCURSES_NCURSES_LIBRARY="${NCURSESLIB}/libncurses.so" \
@@ -156,6 +152,7 @@ MROONGA_IMPLIES=	LZ4
 MSGPACK_LIB_DEPENDS=	libmsgpackc.so:devel/msgpack
 OQGRAPH_LIB_DEPENDS=	libboost_system.so:devel/boost-libs \
 			libJudy.so:devel/judy
+ROCKSDB_USES=		python
 SNAPPY_CMAKE_OFF=	-DWITH_INNODB_SNAPPY=OFF -DWITH_ROCKSDB_snappy=OFF
 SNAPPY_CMAKE_ON=	-DWITH_INNODB_SNAPPY=ON  -DWITH_ROCKSDB_snappy=ON
 SNAPPY_LIB_DEPENDS=	libsnappy.so:archivers/snappy
@@ -181,10 +178,25 @@ post-install:
 	${RM} -r ${STAGEDIR}/${PREFIX}/share/mysql/policy \
 		${STAGEDIR}/${PREFIX}/share/pkgconfig
 	${RM} ${STAGEDIR}${LOCALBASE}/lib/mysql/libmysqlclient*
+	${RM} ${STAGEDIR}${LOCALBASE}/share/doc/mysql/COPYING \
+		${STAGEDIR}${LOCALBASE}/share/doc/mysql/COPYING.thirdparty \
+		${STAGEDIR}${LOCALBASE}/share/groonga-normalizer-mysql/lgpl-2.0.txt \
+		${STAGEDIR}${LOCALBASE}/share/groonga/COPYING \
+		${STAGEDIR}${LOCALBASE}/storage/groonga/COPYING \
+		${STAGEDIR}${LOCALBASE}/share/mysql/mroonga/COPYING
+	${RM} ${STAGEDIR}${PREFIX}/include/mysql/*.h
 .endif # defined(CLIENT_ONLY)
 
 .if defined(WITH_OPENSSL_PORT)
 GSSAPI_BASE_IGNORE=	BASE_GSSAPI is not compatible with OpenSSL from ports. Use other GSSAPI options or OpenSSL from base system
+.endif
+
+.include <bsd.port.options.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200057
+SUB_LIST+=	LEGACY_LIMITS="@comment " MODERN_LIMITS=""
+.else
+SUB_LIST+=	LEGACY_LIMITS="" MODERN_LIMITS="@comment "
 .endif
 
 .include <bsd.port.pre.mk>
@@ -202,8 +214,12 @@ post-patch:
 		${WRKSRC}/cmake/os/DragonFly.cmake
 .endif
 
-#post-configure-MROONGA-on:
-#	${REINPLACE_CMD} 's|-llz4|-L${LOCALBASE}/lib -llz4|' \
-#		${WRKSRC}/storage/mroonga/CMakeFiles/mroonga.dir/link.txt
+# Fix build failure in mbstream, see https://jira.mariadb.org/browse/MDEV-14072
+post-configure-INNOBASE-on:
+	${REINPLACE_CMD} -e 's| ${PREFIX}/lib/liblz4.so\(.* ${PREFIX}/lib/liblz4.so.*\)|\1|' \
+		-e 's| ${PREFIX}/lib/liblzo2.so\(.* ${PREFIX}/lib/liblzo2.so.*\)|\1|' \
+		-e 's| ${PREFIX}/lib/libsnappy.so\(.* ${PREFIX}/lib/libsnappy.so\)|\1|' \
+		-e 's| -llzma\(.* -llzma\)|\1|;s| -lbz2\(.* -lbz2\)|\1|;' \
+		${WRKSRC}/extra/mariabackup/CMakeFiles/mbstream.dir/link.txt
 
 .include <bsd.port.post.mk>

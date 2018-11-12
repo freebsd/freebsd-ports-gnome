@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	higan
-PORTVERSION=	103
+PORTVERSION=	106
 PORTREVISION=	2
-CATEGORIES=	emulators
+CATEGORIES=	emulators games
 MASTER_SITES=	http://download.byuu.org/ \
 		http://www.cyberbotx.com/higan/
 DISTNAME=	${PORTNAME}_v${PORTVERSION}-source
@@ -15,7 +15,6 @@ COMMENT=	Nintendo multi-system emulator
 ONLY_FOR_ARCHS=	amd64 i386
 
 USES=		7z:p7zip compiler:c++14-lang gmake pkgconfig
-USE_LDCONFIG=	yes
 USE_XORG=	x11 xext
 USE_CSTD=	c99
 USE_CXXSTD=	c++14
@@ -46,7 +45,8 @@ GTK2_USE=	GNOME=cairo,gdkpixbuf2,gtk20,gtksourceview2
 GTK2_USES=	gettext
 
 QT4_MAKE_ENV=	hiro="qt"
-QT4_USE=	QT4=corelib,gui,moc_build
+QT4_USES=	qt:4
+QT4_USE=	QT=corelib,gui,moc_build
 
 GLX_USE=	GL=gl
 GLX_VARS=	VIDEO_DRIVER+=video.glx
@@ -58,7 +58,7 @@ XSHM_USE=	XORG=xext
 XSHM_VARS=	VIDEO_DRIVER+=video.xshm
 
 XV_USE=		XORG=xv
-XV_VARS=	VIDEO_DRIVER+=video.xv
+XV_VARS=	VIDEO_DRIVER+=video.xvideo
 
 AO_LIB_DEPENDS=	libao.so:audio/libao
 AO_VARS=	AUDIO_DRIVER+=audio.ao

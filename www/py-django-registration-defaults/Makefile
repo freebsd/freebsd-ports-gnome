@@ -8,12 +8,12 @@ CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	kozlov.sergey.404@gmail.com
+MAINTAINER=	skozlov@FreeBSD.org
 COMMENT=	Default templates and settings for django-registration
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django-registration>=0:www/py-django-registration
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}django-registration>=0:www/py-django-registration@${PY_FLAVOR}
 
 USES=		python
 USE_PYTHON=	distutils autoplist

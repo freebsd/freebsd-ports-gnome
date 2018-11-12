@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	nagcon
-PORTVERSION=	0.0.30
+PORTVERSION=	0.0.32
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://www.vanheusden.com/nagcon/
 
-MAINTAINER=	rand@meridian-enviro.com
+MAINTAINER=	rand@iteris.com
 COMMENT=	Nagios console monitor
 
 LIB_DEPENDS=	libstrfunc.so:devel/libstrfunc
@@ -18,7 +18,7 @@ CPPFILES=	utils.cpp br.cpp nc.cpp pl.cpp
 
 USES=		ncurses tar:tgz
 CFLAGS+=	-DVERSION=\"${PORTVERSION}\" -I${LOCALBASE}/include
-LDFLAGS+=	-lncurses -lstdc++ -L${LOCALBASE}/lib -lstrfunc
+LDFLAGS+=	-lncurses -lstdc++ -L${LOCALBASE}/lib -lstrfunc -ltinfo
 
 do-build:
 	${CC} ${CFLAGS} -c -o ${WRKSRC}/${CFILES:C/\.c//}.o ${WRKSRC}/${CFILES}

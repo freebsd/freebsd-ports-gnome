@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	fftw3
-DISTVERSION=	3.3.6-pl2
-PORTREVISION?=	2
+DISTVERSION=	3.3.8
+PORTREVISION?=	1
 CATEGORIES=	math
 MASTER_SITES=	http://www.fftw.org/ \
 		ftp://ftp.fftw.org/pub/fftw/
@@ -36,7 +36,7 @@ INFO=	fftw3
 .else
 #For non-default flavors, build and install the flavor-dependent components
 #only, so that these flavors may coexist with the default flavor
-INSTALL_TARGET=	install-pkgconfigDATA install-libLTLIBRARIES install-exec
+INSTALL_TARGET=	install-cmakeDATA install-pkgconfigDATA install-libLTLIBRARIES install-exec
 .endif
 
 OPTIONS_DEFINE=		G77_WRAPPERS OPENMP OPENMPI OPTIMIZED_CFLAGS SIMD
@@ -117,7 +117,7 @@ PLIST_SUB+=	FFTW3_SUFX="${FFTW3_SUFX}"
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MOPTIMIZED_CFLAGS}
-CFLAGS+=	-O3 -ffast-math -fstrict-aliasing
+CFLAGS+=	-O3 -fstrict-aliasing
 .  if !defined(WITH_DEBUG)
 CFLAGS+=	-fomit-frame-pointer
 .  endif

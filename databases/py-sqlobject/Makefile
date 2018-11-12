@@ -13,28 +13,29 @@ COMMENT=	Python object for manipulation with SQL table row
 
 LICENSE=	LGPL21
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}formencode>=1.2.2:www/py-formencode
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}formencode>=1.2.2:www/py-formencode@${PY_FLAVOR}
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 NO_ARCH=	yes
-USES=		python
+USES=		python${PY_MYSQL}
 USE_PYTHON=	autoplist distutils
 
 # currently MaxDB(SAP), ADODB are not supported
-OPTIONS_DEFINE=	MYSQL PGSQL SQLITE MSSQL SYBASE
+OPTIONS_DEFINE=	DOCS MYSQL PGSQL SQLITE MSSQL SYBASE
 SYBASE_DESC=	sybase support
 
 PORTDOCS=	*
 
-MYSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MySQLdb>=0:databases/py-MySQLdb
-PGSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>=0:databases/py-psycopg2
-SQLITE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3
-MSSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pymssql>=0:databases/py-pymssql
-SYBASE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sybase>=0.37:databases/py-sybase
+MYSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MySQLdb>=0:databases/py-MySQLdb@${PY_FLAVOR}
+MYSQL_VARS=	PY_MYSQL=:2.7
+PGSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>=0:databases/py-psycopg2@${PY_FLAVOR}
+SQLITE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3@${PY_FLAVOR}
+MSSQL_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pymssql>=0:databases/py-pymssql@${PY_FLAVOR}
+SYBASE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sybase>=0.37:databases/py-sybase@${PY_FLAVOR}
 
 post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_MAN} ${WRKSRC}/README.txt ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/README.txt ${STAGEDIR}${DOCSDIR}
 	(cd ${WRKSRC}/docs && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR})
 
 .include <bsd.port.mk>

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	nmsg
-PORTVERSION=	0.13.0
+PORTVERSION=	0.13.2
+PORTREVISION=	1
 CATEGORIES=	net
 MASTER_SITES=	FARSIGHT LOCAL/truckman/farsight
 
@@ -17,8 +18,8 @@ LIB_DEPENDS=	libprotobuf-c.so:devel/protobuf-c \
 		libyajl.so:devel/yajl
 
 GNU_CONFIGURE=	yes
-USE_LDCONFIG=	yes
 USES=		gmake libtool pathfix pkgconfig
+USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--with-pkgconfigdir='$${exec_prefix}/libdata/pkgconfig'
 INSTALL_TARGET=	install-strip
 
@@ -26,13 +27,14 @@ PORTDOCS=	*
 
 # The DOXYGEN option is best effort.
 # If doxygen is installed, it will get used if the option is set to NO.
-OPTIONS_DEFINE=		DOXYGEN EXAMPLES MANPAGES
+OPTIONS_DEFINE=		DOXYGEN EXAMPLES MANPAGES DOCS
 OPTIONS_DEFAULT=	DOXYGEN MANPAGES
 OPTIONS_SUB=		yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include/yajl
 
 ALL_TARGET=	all
+DOXYGEN_IMPLIES=	DOCS
 DOXYGEN_BUILD_DEPENDS=	doxygen:devel/doxygen
 DOXYGEN_ALL_TARGET=	html-local
 DOCBOOK_XML=	${LOCALBASE}/share/xml/docbook/4.2

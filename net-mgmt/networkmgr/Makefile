@@ -2,23 +2,29 @@
 # $FreeBSD$
 
 PORTNAME=	networkmgr
-PORTVERSION=	2.2
+DISTVERSION=	3.0
 CATEGORIES=	net-mgmt
 
-MAINTAINER=	ericturgeon.bsd@gmail.com
+MAINTAINER=	ericbsd@FreeBSD.org
 COMMENT=	FreeBSD/GhostBSD network conection manager
 
 LICENSE=	BSD3CLAUSE
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	doas:security/doas
+RUN_DEPENDS=	doas:security/doas \
+		${LOCALBASE}/share/icons/hicolor/index.theme:misc/hicolor-icon-theme
+
+USES=		python:3.6 gnome shebangfix
+SHEBANG_GLOB=	*.py
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	GhostBSD
 
-USES=		python:2.7
+NO_ARCH=	yes
 USE_PYTHON=	distutils
-USE_GNOME=	pygtk2
+USE_GNOME=	pygobject3 gtk-update-icon-cache
 
 SUB_FILES=	pkg-message
+
 
 .include <bsd.port.mk>

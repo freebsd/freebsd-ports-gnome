@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	stellarium
-PORTVERSION=	0.16.0
+PORTVERSION=	0.18.2
+DISTVERSIONPREFIX=	v
 CATEGORIES=	astro
-MASTER_SITES=	SF/${PORTNAME}/Stellarium-sources/${PORTVERSION}
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 EXTRACT_ONLY=	${_DISTFILES:Nstars_*.cat:N*.pdf}
 
 MAINTAINER=	danfe@FreeBSD.org
@@ -15,15 +14,18 @@ LICENSE=	GPLv2+
 
 CONFLICTS_INSTALL=	${PORTNAME}-qt4-0.12.*
 
-USES=		cmake gettext
-USE_QT5=	qmake_build buildtools_build linguisttools_build \
+USE_GITHUB=	yes
+GH_ACCOUNT=	Stellarium
+
+USES=		cmake gettext qt:5
+USE_QT=		qmake_build buildtools_build linguisttools_build \
 		concurrent core gui network opengl printsupport widgets
 
 CMAKE_ARGS=	-DENABLE_GPS:BOOL=OFF	# XXX: requires Qt5Positioning
 
-GUIDE_VERSION=	${PORTVERSION}
+GUIDE_VERSION=	0.16.1
 
-PORTDOCS=	AUTHORS ChangeLog README \
+PORTDOCS=	CREDITS.md ChangeLog README.md \
 		stellarium_user_guide-${GUIDE_VERSION}-1.pdf
 
 OPTIONS_DEFINE=		DOCS MORE_STARS MULTIMEDIA SCRIPTING TEXTURES \
@@ -42,10 +44,10 @@ DOCS_DISTFILES=		stellarium_user_guide-${GUIDE_VERSION}-1.pdf:ug
 TEXTURES_MASTER_SITES=	SF/${PORTNAME}/Extra-data-files/textures:gfx
 TEXTURES_DISTFILES=	textures-1K.zip:gfx
 
-MULTIMEDIA_USE=		QT5=multimedia
+MULTIMEDIA_USE=		QT=multimedia
 MULTIMEDIA_CMAKE_OFF=	-DENABLE_MEDIA:BOOL=OFF
 
-TELESCOPE_USE=		QT5=serialport
+TELESCOPE_USE=		QT=serialport
 TELESCOPE_CMAKE_OFF=	-DUSE_PLUGIN_TELESCOPECONTROL:BOOL=OFF
 
 .include <bsd.port.options.mk>
@@ -63,12 +65,17 @@ PLIST_SUB+=	MORE_STARS="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MSCRIPTING}
-USE_QT5+=	script
+USE_QT+=	script
 PLIST_SUB+=	SCRIPTS=""
 .else
 CMAKE_ARGS+=	-DENABLE_SCRIPTING:BOOL=OFF
 PLIST_SUB+=	SCRIPTS="@comment "
 .endif
+
+# Work-around the vestige of bzr->git conversion upstream
+post-extract:
+	@${MV} ${WRKSRC}/textures/earth-shadow-new.png \
+		${WRKSRC}/textures/earth-shadow.png
 
 post-extract-DOCS-on:
 	@${LN} -sf ${_DISTDIR}/stellarium_user_guide-${GUIDE_VERSION}-1.pdf \
@@ -76,6 +83,9 @@ post-extract-DOCS-on:
 
 post-patch:
 	@${REINPLACE_CMD} -e 's, -Wno-unused-result,,' ${WRKSRC}/CMakeLists.txt
+	@${REINPLACE_CMD} -e '/<netinet\/in\.h>/ { x ; \
+		s,.*,#include <sys/socket.h>, ; G ; }' \
+		${WRKSRC}/src/external/libindi/libs/indibase/baseclient.cpp
 
 post-install-MORE_STARS-on:
 	${INSTALL_DATA} ${DISTDIR}/stars_[45678]_[12]v0_1.cat \

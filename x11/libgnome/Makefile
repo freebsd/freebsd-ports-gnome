@@ -3,8 +3,7 @@
 #   $MCom: ports/x11/libgnome/Makefile,v 1.135 2010/09/27 20:06:45 kwm Exp $
 
 PORTNAME=	libgnome
-PORTVERSION=	2.32.0
-PORTREVISION?=	4
+PORTVERSION=	2.32.1
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -17,18 +16,16 @@ USES=	tar:bzip2
 .if !defined(REFERENCE_PORT)
 
 BUILD_DEPENDS=	rarian-sk-config:textproc/rarian
-LIB_DEPENDS=	libcanberra-gtk.so:audio/libcanberra
+LIB_DEPENDS=	libcanberra-gtk.so:audio/libcanberra \
+		libpopt.so:devel/popt
 RUN_DEPENDS=	rarian-sk-config:textproc/rarian
 
 INSTALL_TARGET=	install-strip
-USE_GNOME=	gnomeprefix intlhack esound libbonobo \
-		gnomevfs2 referencehack
-USES+=		bison gettext gmake libtool:keepla pathfix pkgconfig
+USE_GNOME=	gnomeprefix intlhack libbonobo gnomevfs2 referencehack
+USES+=		bison gettext gmake localbase libtool:keepla pathfix pkgconfig
 USE_XORG=	xpm
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 
 SUB_FILES=	pkg-deinstall
 

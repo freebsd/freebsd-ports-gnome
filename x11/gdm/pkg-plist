@@ -5,9 +5,10 @@ etc/dbus-1/system.d/gdm.conf
 @sample %%ETCDIR%%/PostLogin/Default.sample
 @sample %%ETCDIR%%/PostSession/Default.sample
 @sample %%ETCDIR%%/PreSession/Default.sample
+%%ETCDIR%%/Xsession
 @sample %%ETCDIR%%/custom.conf.sample
-%%ETCDIR%%/home/.pulse/client.conf
-%%ETCDIR%%/locale.conf
+@sample %%ETCDIR%%/home/.pulse/client.conf.sample
+@sample %%ETCDIR%%/locale.conf.sample
 etc/pam.d/gdm-autologin
 etc/pam.d/gdm-launch-environment
 etc/pam.d/gdm-password
@@ -35,6 +36,7 @@ share/dconf/profile/gdm
 %%DATADIR%%/greeter/autostart/orca-autostart.desktop
 %%DATADIR%%/locale.alias
 share/gir-1.0/Gdm-1.0.gir
+share/gnome-session/sessions/gnome-login.session
 share/help/C/gdm/index.docbook
 share/help/C/gdm/legal.xml
 share/help/ca/gdm/index.docbook

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	worker
-PORTVERSION=	3.11.0
-PORTREVISION=	2
+PORTVERSION=	3.15.2
 CATEGORIES=	x11-fm
 MASTER_SITES=	http://www.boomerangsworld.de/cms/worker/downloads/
 
@@ -14,15 +13,16 @@ LICENSE=	GPLv2
 
 RUN_DEPENDS=	bash:shells/bash
 
-USES=		compiler:c++11-lib pkgconfig shebangfix tar:bzip2
+USES=		compiler:c++11-lib pkgconfig python:2.7 shebangfix tar:bzip2
 GNU_CONFIGURE=	yes
 USE_XORG=	x11 xinerama
 
 SHEBANG_FILES=	${WRKSRC}/scripts/*.sh \
-		${WRKSRC}/scripts/xeditor
+		${WRKSRC}/scripts/xeditor \
+		${WRKSRC}/scripts/find_file_by_chksum.py
 
 OPTIONS_DEFINE=	AVFS HAL INOTIFY LUA XFT
-OPTIONS_DEFAULT=	AVFS INOTIFY
+OPTIONS_DEFAULT=	AVFS INOTIFY XFT
 
 OPTIONS_EXCLUDE_DragonFly=	AVFS
 

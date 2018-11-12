@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	freeipmi
-PORTVERSION=	1.5.7
+PORTVERSION=	1.6.2
 CATEGORIES=	sysutils
 MASTER_SITES=	GNU \
 		http://ftp.gluster.com/pub/${PORTNAME}/${PORTVERSION}/
@@ -13,15 +13,21 @@ COMMENT=	Library and tools to support IPMI-capable hardware
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-ONLY_FOR_ARCHS=	amd64 i386
-ONLY_FOR_ARCHS_REASON=	invokes i386 asm
+BROKEN_aarch64=		invokes x86 assembler
+BROKEN_armv6=		invokes x86 assembler
+BROKEN_armv7=		invokes x86 assembler
+BROKEN_mips=		invokes x86 assembler
+BROKEN_mips64=		invokes x86 assembler
+BROKEN_sparc64=		invokes x86 assembler
+BROKEN_powerpc64=	invokes x86 assembler
 
 LIB_DEPENDS=	libargp.so:devel/argp-standalone \
 		libgcrypt.so:security/libgcrypt
 
-OPTIONS_DEFINE=	DEBUG DOCS IOPERM
+OPTIONS_DEFINE=	DEBUG DOCS IOPERM IPV6
 IOPERM_DESC=	Use i386_set_ioperm
 
+CFLAGS+=	-D_WANT_SEMUN
 CONFIGURE_ARGS=	--disable-init-scripts \
 		--sysconfdir=${ETCDIR} \
 		--with-ipmi-monitoring-sdr-cache-dir=${CACHE_DIR}/ipmimonitoringsdrcache \
@@ -47,6 +53,7 @@ DEBUG_CONFIGURE_ARGS=	--enable-debug --enable-trace
 DEBUG_INSTALL_TARGET=	install
 DEBUG_INSTALL_TARGET_OFF=	install-strip
 IOPERM_CPPFLAGS=	-DUSE_IOPERM
+IPV6_CPPFLAGS=		-DIPV6
 
 post-patch:
 	@${FIND} ${WRKSRC} -name '*.man' -o -name '*.pre.in' | ${XARGS} -I % ${REINPLACE_CMD} -e '/^\.\\\"/ s|$$|"|' %

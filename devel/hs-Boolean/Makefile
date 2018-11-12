@@ -2,6 +2,7 @@
 
 PORTNAME=	Boolean
 PORTVERSION=	0.2.4
+PORTREVISION=	3
 CATEGORIES=	devel haskell
 
 MAINTAINER=	haskell@FreeBSD.org

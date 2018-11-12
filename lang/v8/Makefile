@@ -3,7 +3,7 @@
 
 PORTNAME=	v8
 PORTVERSION=	3.18.5
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	lang
 MASTER_SITES=	LOCAL/vanilla
 
@@ -22,7 +22,7 @@ ALL_TARGET=	native
 MAKE_ARGS=	library=shared
 MAKE_ENV=	CC.host=${CC} CXX.host=${CXX} LINK.host=${CXX} LINK.target=${CXX}
 USE_LDCONFIG=	yes
-USES=		alias compiler cpe execinfo gmake python:2 shebangfix tar:xz
+USES=		alias compiler cpe gmake python:2.7 shebangfix tar:xz
 
 CPE_VENDOR=	google
 
@@ -39,6 +39,10 @@ CXXFLAGS+=	-Wno-unused-const-variable
 CXXFLAGS+=	-Wno-tautological-undefined-compare
 .if ${COMPILER_VERSION} >= 36
 CXXFLAGS+=	-Wno-unused-local-typedef
+.if ${COMPILER_VERSION} >= 60
+CXXFLAGS+=	-Wno-null-pointer-arithmetic -Wno-vexing-parse
+EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-src-stub-cache.cc
+.endif
 .endif
 .endif
 .endif

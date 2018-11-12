@@ -3,8 +3,8 @@
 
 PORTNAME=	openshadinglanguage
 PORTVERSION=	1.8.10
-PORTREVISION=	1
 DISTVERSIONPREFIX=	Release-
+PORTREVISION=	10
 CATEGORIES=	graphics devel
 
 MAINTAINER=	FreeBSD@Shaneware.biz
@@ -14,7 +14,7 @@ LICENSE=	BSD3CLAUSE
 
 BUILD_DEPENDS=	llvm-config40:devel/llvm40
 LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
-		libIlmImf.so:graphics/OpenEXR \
+		libIlmImf.so:graphics/openexr \
 		libImath.so:graphics/ilmbase \
 		libOpenImageIO.so:graphics/openimageio
 RUN_DEPENDS=	llvm-config40:devel/llvm40
@@ -25,7 +25,7 @@ GH_ACCOUNT=	imageworks
 GH_PROJECT=	OpenShadingLanguage
 
 CMAKE_ARGS=	-DLLVM_CONFIG:STRING="${LOCALBASE}/bin/llvm-config40" \
-		-DENABLERTTI:BOOL=OFF -DUSE_BOOST_WAVE:BOOL=OFF
+		-DENABLERTTI:BOOL=ON -DUSE_BOOST_WAVE:BOOL=OFF
 USE_LDCONFIG=	yes
 
 post-patch:

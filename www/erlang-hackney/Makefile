@@ -5,7 +5,7 @@ PORTVERSION=	1.8.6
 CATEGORIES=	www
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Simple HTTP client in Erlang
 
 LICENSE=	APACHE20
@@ -20,6 +20,8 @@ ERL_BUILD_DEPS=	dns/erlang-idna \
 		devel/erlang-metrics \
 		misc/erlang-mimerl
 ERL_RUN_DEPS:=	${ERL_BUILD_DEPS}
+
+OPTIONS_DEFINE=	DOCS
 
 pre-build:
 	@${MKDIR} ${WRKSRC}/_build/default/lib

@@ -14,19 +14,23 @@ COMMENT=	Python interface to FLTK window toolkit
 LICENSE=	LGPL20
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BROKEN_powerpc64=	fails to compile: fltk_wrap.cpp:5355: \#pragma GCC diagnostic not allowed inside functions
+
 LIB_DEPENDS=	libfltk.so:x11-toolkits/fltk
 
 CFLAGS+=	-DFL_LIBRARY
 MAKE_ENV=	FLTK_HOME=${LOCALBASE}/bin
+USES=		python
 USE_PYTHON=	autoplist distutils
 USE_XORG=	x11
-USES=		python
 
 DOCSDIR=	${PREFIX}/share/doc/py-${PORTNAME}
 EXAMPLESDIR=	${PREFIX}/share/examples/py-${PORTNAME}
 PORTDOCS=	*
 PORTEXAMPLES=	*
 WRKSRC=		${WRKDIR}/pyFltk-${PORTVERSION}
+
+OPTIONS_DEFINE=	DOCS EXAMPLES
 
 post-patch:
 	@${REINPLACE_CMD} -e "s|/usr/X11R6|${LOCALBASE}|g;s|package_data.*},||g;s|sunos5|dragonfly4', 'freebsd8', 'freebsd9', 'freebsd10', 'freebsd11', 'freebsd12|g" ${WRKSRC}/setup.py

@@ -3,7 +3,7 @@
 
 PORTNAME=	elinks
 DISTVERSION=	0.11.7
-PORTREVISION=	8
+PORTREVISION=	10
 CATEGORIES=	www
 MASTER_SITES=	http://elinks.or.cz/download/
 
@@ -14,7 +14,7 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 GNU_CONFIGURE=	yes
-USES=		bison cpe execinfo gmake localbase ssl tar:bzip2
+USES=		bison cpe gmake localbase ssl tar:bzip2
 CONFIGURE_ARGS=	--without-zlib
 
 LIBS+=		-lexecinfo

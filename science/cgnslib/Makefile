@@ -3,7 +3,7 @@
 
 PORTNAME=	cgnslib
 DISTVERSION=	3.2.1
-PORTREVISION=	10
+PORTREVISION=	13
 PORTEPOCH=	1
 CATEGORIES=	science
 MASTER_SITES=	SF/cgns/${PORTNAME}_${PORTVERSION:R}/
@@ -34,13 +34,13 @@ OPTIONS_DEFAULT=HDF5 TESTS TOOLS
 LIB_DEPENDS+=	libhdf5.so:science/hdf5
 CMAKE_ARGS+=	-DCGNS_ENABLE_HDF5:BOOL=TRUE -DHDF5_NEED_ZLIB:BOOL=TRUE	\
 		-DHDF5_INCLUDE_PATH:PATH="${LOCALBASE}/include"
-PLIST_SUB=	HDF5=""
+PLIST_SUB+=	HDF5=""
 . if ${PORT_OPTIONS:MSZIP}
 CMAKE_ARGS+=	-DHDF5_NEED_SZIP:BOOL=OFF
 . endif
 .else
 CMAKE_ARGS+=	-DCGNS_ENABLE_HDF5:BOOL=OFF
-PLIST_SUB=	HDF5="@comment "
+PLIST_SUB+=	HDF5="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MTESTS}
@@ -52,23 +52,21 @@ TESTSBIN=	cgwrite cgread test_partial
 .if ${PORT_OPTIONS:MTOOLS}
 USES+=		tk
 USE_GL=		gl glu
-USE_XORG=	xmu
+USE_XORG=	x11 xmu
 CMAKE_ARGS+=	-DCGNS_BUILD_CGNSTOOLS:BOOL=TRUE			\
 		-DTCL_INCLUDE_PATH:STRING="${TCL_INCLUDEDIR}"	\
 		-DTK_INCLUDE_PATH:STRING="${TK_INCLUDEDIR}"
-PLIST_SUB=	TOOLS=""
+PLIST_SUB+=	TOOLS=""
 .else
-PLIST_SUB=	TOOLS="@comment "
+PLIST_SUB+=	TOOLS="@comment "
 .endif
 
 LIBVER=		${PORTVERSION:R}
 
-.if ${PORT_OPTIONS:MTESTS}
-regression-test:
-. for pg in ${TESTSBIN}
+do-test-TESTS-on:
+.for pg in ${TESTSBIN}
 	@(cd ${BUILD_WRKSRC}/src/tests; ./${pg})
-. endfor
-.endif
+.endfor
 
 post-install:
 	${LN} -sf libcgns.so.${LIBVER} ${STAGEDIR}${PREFIX}/lib/libcgns.so.${LIBVER:R}

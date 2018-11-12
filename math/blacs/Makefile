@@ -3,7 +3,7 @@
 
 PORTNAME=	blacs
 PORTVERSION=	1.7
-PORTREVISION=	30
+PORTREVISION=	32
 CATEGORIES=	math
 MASTER_SITES=	NETLIB/blacs
 DISTNAME=	BLACS
@@ -14,10 +14,11 @@ EXTRACT_ONLY=	mpiblacs.tgz blacstester.tgz mpiblacs-patch03.tgz
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	The BLACS (Basic Linear Algebra Communication Subprograms)
 
-PKGMESSAGE=	${WRKDIR}/pkg-message
 SUB_FILES=	pkg-message
 USES=		fortran gmake
 USE_LDCONFIG=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.pre.mk>
 

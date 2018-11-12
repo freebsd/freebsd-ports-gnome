@@ -4,7 +4,15 @@ MAKE_CMD=	bjam
 MAKEFILE=	#
 MAKE_FLAGS=	#
 ALL_TARGET=	stage
-USES+=		compiler:features
+# XXX Drop conditional after 10.4 EOL as both libstdc++ 7 and libc++ 6
+#     have near complete C++17 support.
+.if exists(/usr/lib/libstdc++.so) || exists(/usr/include/c++/v1/__undef_macros)
+USES+=		compiler:c++17-lang
+USE_CXXSTD=	gnu++17
+.else
+USES+=		compiler:c++14-lang
+USE_CXXSTD=	gnu++14
+.endif
 
 PLIST_SUB+=	BOOST_SHARED_LIB_VER=${PORTVERSION}
 
@@ -18,7 +26,7 @@ MAKE_ARGS=	--layout=system \
 # Our compiler-flags will be added AFTER those set by bjam. We remove
 # the optimization level, because Boost sets it itself (to -O3 in case
 # of gcc/g++):
-MAKE_ARGS+=    cxxflags="${CXXFLAGS:N-O*}" cflags="${CFLAGS:N-O*}"
+MAKE_ARGS+=	cxxflags="${CXXFLAGS:N-O*}" cflags="${CFLAGS:N-O*}"
 
 MAKE_ARGS+=	--toolset=${CHOSEN_COMPILER_TYPE} \
 		${_MAKE_JOBS}

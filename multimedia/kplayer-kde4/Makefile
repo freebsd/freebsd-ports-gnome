@@ -3,17 +3,20 @@
 
 PORTNAME=	kplayer
 PORTVERSION=	0.7
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	multimedia kde
 MASTER_SITES=	SF
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Movie player based on mplayer
 
+DEPRECATED=	KDE4 is EOL upstream
+EXPIRATION_DATE=	2018-12-31
+
 RUN_DEPENDS=	mplayer:multimedia/mplayer
 
-USES=		cmake gettext kde:4 tar:bzip2
-USE_QT4=	corelib qmake_build moc_build rcc_build uic_build
+USES=		cmake gettext kde:4 qt:4 tar:bzip2
+USE_QT=		corelib qmake_build moc_build rcc_build uic_build
 USE_KDE=	kdelibs automoc4
 LDFLAGS+=	-L${LOCALBASE}/lib -lX11 -L${LOCALBASE}/kde4/lib -lsolid
 

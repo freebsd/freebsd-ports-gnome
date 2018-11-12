@@ -1,17 +1,17 @@
 # Created by: Ivan "Rambius" Ivanov <rambiusparkisanius@gmail.com>
 # $FreeBSD$
 
-# Also created by: Jason Bacon <bacon4000@gmail.com>
-
 PORTNAME=		nbc
 PORTVERSION=		1.2.1.r4
-PORTREVISION=		10
+PORTREVISION=		12
 CATEGORIES=		lang
 MASTER_SITES=		SF/bricxcc/NBC_NXC/NBC%20release%20${PORTVERSION:S/.r/%20r/}
 DISTNAME=		${PORTNAME}-${PORTVERSION}.src
 
 MAINTAINER=		rene@FreeBSD.org
 COMMENT=		Programming language for the LEGO MINDSTORMS NXT
+
+LICENSE=		MPL11
 
 MAKE_JOBS_UNSAFE=	yes
 MAKEFILE=		nbcunix.mak
@@ -22,7 +22,7 @@ ROBOCTL_DESC=		Include roboctl to communicate with the NXT
 
 ROBOCTL_RUN_DEPENDS=	legoctl:devel/roboctl
 
-USES=			dos2unix gmake tar:tgz
+USES=			dos2unix fpc gmake tar:tgz
 USE_FPC=		fcl-base fcl-image pasjpeg rtl-objpas
 
 PLIST_FILES=		bin/nbc \
@@ -32,6 +32,8 @@ PLIST_FILES=		bin/nbc \
 
 PORTDOCS=		Changelog \
 			Readme
+
+LLD_UNSAFE=		yes # PR 228613, needs FPC changes?
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' ${WRKSRC}/${MAKEFILE}

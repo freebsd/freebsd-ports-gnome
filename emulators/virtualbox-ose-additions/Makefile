@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	virtualbox-ose
-PORTVERSION=	5.1.26
+PORTVERSION=	5.2.18
 PORTREVISION=	1
 CATEGORIES=	emulators
 MASTER_SITES=	http://download.virtualbox.org/virtualbox/${PORTVERSION}/
@@ -16,7 +16,8 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	yasm:devel/yasm \
-		kmk:devel/kBuild
+		kmk:devel/kBuild \
+		xsltproc:textproc/libxslt
 
 CPE_VENDOR=	oracle
 CPE_PRODUCT=	vm_virtualbox
@@ -24,7 +25,7 @@ CPE_PRODUCT=	vm_virtualbox
 PATCHDIR=	${.CURDIR}/../${PORTNAME}/files
 WRKSRC=		${WRKDIR}/VirtualBox-${PORTVERSION}
 USE_RC_SUBR=	vboxguest vboxservice
-USES=		compiler:features cpe iconv kmod python:build tar:bzip2
+USES=		compiler:c++11-lang cpe iconv kmod python:build tar:bzip2
 ONLY_FOR_ARCHS=	i386 amd64
 MAKE_JOBS_UNSAFE=	yes
 
@@ -99,8 +100,9 @@ VBOX_LIBS=	VBoxEGL.so \
 .endif
 
 .if ${PORT_OPTIONS:MX11}
-BUILD_DEPENDS+=	${LOCALBASE}/bin/X:x11-servers/xorg-server
-USE_XORG+=	inputproto x11 xcursor xext xmu xorg-server xrandr xt
+BUILD_DEPENDS+=	${LOCALBASE}/libdata/pkgconfig/xorg-server.pc:x11-servers/xorg-server
+RUN_DEPENDS+=	xrandr:x11/xrandr
+USE_XORG+=	xorgproto x11 xcursor xext xmu xorg-server xrandr xt
 USES+=		pkgconfig
 VBOX_WITH_X11=	1
 XORG_DRV_ABI=	pkgconf --modversion xorg-server | \
@@ -126,15 +128,6 @@ EXTRA_PATCHES+=	${PATCHDIR}/extrapatch-src-VBox-Additions-x11-VBoxClient-Makefil
 .endif
 .endif
 
-.if ${ARCH} == "amd64"
-.if !exists(/usr/lib32/libc.so)
-pre-everything::
-	@${ECHO} 'Requires 32-bit libraries installed under /usr/lib32.'
-	@${ECHO} 'Do: cd /usr/src; make build32 install32; service ldconfig restart'
-	@${FALSE}
-.endif
-.endif
-
 post-patch:
 	@${ECHO} 'VBOX_ONLY_ADDITIONS = 1' > ${WRKSRC}/LocalConfig.kmk
 	@${ECHO} 'VBOX_WITH_DRAG_AND_DROP = ${VBOX_WITH_X11}' >> \
@@ -143,16 +136,14 @@ post-patch:
 	    ${WRKSRC}/LocalConfig.kmk
 	@${ECHO} 'VBOX_WITH_X11_ADDITIONS = ${VBOX_WITH_X11}' >> \
 	    ${WRKSRC}/LocalConfig.kmk
+	@${ECHO} 'VBOX_GCC_std = -std=c++11' >> ${WRKSRC}/LocalConfig.kmk
 .if ${COMPILER_TYPE} == clang
 	@${REINPLACE_CMD} -e 's| -finline-limit=8000||' \
 	    -e 's| -fno-merge-constants||' \
 	    -e 's| -mpreferred-stack-boundary=2||' ${WRKSRC}/Config.kmk
-.if ${COMPILER_FEATURES:Mlibc++}
-	@${ECHO} 'VBOX_GCC_std = -std=c++11' >> ${WRKSRC}/LocalConfig.kmk
 .endif
-	@${ECHO} 'VBOX_GCC_Wno-unused-parameter = -Wno-unused-parameter' >> \
-	    ${WRKSRC}/LocalConfig.kmk
-.endif
+	@${REINPLACE_CMD} -e 's|/usr/X11|${LOCALBASE}|g' \
+	    ${WRKSRC}/src/VBox/Additions/x11/VBoxClient/display.cpp
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
 	    ${WRKSRC}/Config.kmk ${WRKSRC}/configure \
 	    ${WRKSRC}/kBuild/header.kmk ${WRKSRC}/kBuild/units/qt4.kmk \

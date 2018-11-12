@@ -1,6 +1,6 @@
---- lib/compat/CMakeLists.txt.orig	2016-08-17 14:19:24 UTC
+--- lib/compat/CMakeLists.txt.orig	2018-07-17 12:27:32 UTC
 +++ lib/compat/CMakeLists.txt
-@@ -42,17 +42,17 @@ set_target_properties (
+@@ -41,17 +41,17 @@ set_target_properties (
  )
  
  install_if_not_exists(

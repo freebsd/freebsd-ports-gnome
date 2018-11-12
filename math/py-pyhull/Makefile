@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	pyhull
-PORTVERSION=	2015.2.0
+DISTVERSION=	2015.2.1
 CATEGORIES=	math python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	yuri@rawbw.com
+MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Computation of convex hull, Delaunay triangulation and Voronoi diagram
 
 LICENSE=	MIT

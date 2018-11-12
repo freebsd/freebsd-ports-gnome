@@ -1,7 +1,7 @@
---- Makerules.orig	2017-04-05 11:02:21 UTC
+--- Makerules.orig	2018-06-18 11:40:10 UTC
 +++ Makerules
-@@ -110,27 +110,21 @@ LD := xcrun ld
- RANLIB_CMD := xcrun ranlib $@
+@@ -87,7 +87,7 @@ LD = xcrun ld
+ RANLIB_CMD = xcrun ranlib $@
  
  # Linux uses pkg-config for system libraries.
 -else ifeq "$(OS)" "Linux"
@@ -9,9 +9,11 @@
  
  HAVE_PTHREAD := yes
  SYS_PTHREAD_CFLAGS :=
- SYS_PTHREAD_LIBS := -lpthread
+@@ -97,21 +97,15 @@ HAVE_GLUT := yes
+ SYS_GLUT_CFLAGS :=
+ SYS_GLUT_LIBS := -lglut -lGL
  
--ifeq "$(shell pkg-config --exists 'libcrypto <= 1.0.1t' && echo yes)" "yes"
+-ifeq "$(shell pkg-config --exists 'libcrypto >= 1.1.0' && echo yes)" "yes"
 -HAVE_LIBCRYPTO := yes
 -SYS_LIBCRYPTO_CFLAGS := -DHAVE_LIBCRYPTO $(shell pkg-config --cflags libcrypto)
 -SYS_LIBCRYPTO_LIBS := $(shell pkg-config --libs libcrypto)

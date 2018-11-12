@@ -11,6 +11,8 @@ DIST_SUBDIR=	${PORTNAME}
 MAINTAINER=	crees@FreeBSD.org
 COMMENT=	Port build tinderbox system
 
+IGNORE_WITH_PHP=	70 71 72
+
 RUN_DEPENDS=	dialog4ports-static:ports-mgmt/dialog4ports-static
 
 CONFLICTS=	tinderbox-devel-[0-9]*
@@ -80,7 +82,7 @@ RUN_DEPENDS+=	p5-DBD-SQLite>=0:databases/p5-DBD-SQLite
 .endif
 
 .if ${PORT_OPTIONS:MAPACHE}
-USE_APACHE_RUN=	22+
+USES+=		apache:run,2.2+
 .elif ${PORT_OPTIONS:MLIGHTTPD}
 RUN_DEPENDS+=	lighttpd:www/lighttpd
 .elif ${PORT_OPTIONS:MHIAWATHA}

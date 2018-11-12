@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	peewee
-PORTVERSION=	2.9.2
+DISTVERSION=	3.6.4
 CATEGORIES=	databases python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -13,15 +13,22 @@ COMMENT=	Small, expressive Python ORM
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-OPTIONS_DEFINE=		DOCS SQLITE MYSQL PGSQL
+OPTIONS_DEFINE=		SQLITE MYSQL PGSQL
 OPTIONS_DEFAULT=	SQLITE
 
-NO_ARCH=	yes
-USES=		python
-USE_PYTHON=	autoplist distutils
+USES=			localbase python sqlite
+USE_PYTHON=		distutils cython autoplist concurrent
 
-SQLITE_BUILD_DEPENDS=	${PYTHON_LIBDIR}/lib-dynload/_sqlite3.so:databases/py-sqlite3
-MYSQL_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MySQLdb>=1.2.3:databases/py-MySQLdb
-PGSQL_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>=2.5.1:databases/py-psycopg2
+SQLITE_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
+MYSQL_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}MySQLdb>=1.2.3:databases/py-MySQLdb@${PY_FLAVOR}
+PGSQL_BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}psycopg2>=2.5.1:databases/py-psycopg2@${PY_FLAVOR}
+
+post-install:
+	@${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/playhouse/_speedups.so
+	@${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/playhouse/_sqlite_ext.so
+	@${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/playhouse/_sqlite_udf.so
+
+do-test:
+	${PYTHON_CMD} ${WRKSRC}/runtests.py
 
 .include <bsd.port.mk>

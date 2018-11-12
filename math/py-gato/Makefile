@@ -3,6 +3,7 @@
 
 PORTNAME=	gato
 PORTVERSION=	1.2.2
+PORTREVISION=	1
 CATEGORIES=	math python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,12 +15,14 @@ COMMENT=	Python-based toolbox to visualise algorithms on graphs
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/LGPL.txt
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}tkinter>0:x11-toolkits/py-tkinter@${PY_FLAVOR}
 
 NO_ARCH=	yes
 PORTEXAMPLES=	*
-USES=		python:2
+USES=		python:2.7
 USE_PYTHON=	autoplist distutils
+
+OPTIONS_DEFINE=	EXAMPLES
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}

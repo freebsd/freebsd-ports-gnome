@@ -2,12 +2,15 @@
 
 PORTNAME=	kipi-plugins
 PORTVERSION=	${DIGIKAM_VER}
-PORTREVISION=	2
+PORTREVISION=	4
 PORTEPOCH=	1
 CATEGORIES=	graphics kde
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE 4 kipi graphics plugins (meta port)
+
+DEPRECATED=	KDE4 is EOL upstream
+EXPIRATION_DATE=	2018-12-31
 
 NO_BUILD=	yes
 NO_INSTALL=	yes

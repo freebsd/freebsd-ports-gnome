@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	bftpd
-PORTVERSION=	4.4
+PORTVERSION=	4.9
 CATEGORIES=	ftp
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -11,14 +11,17 @@ COMMENT=	Very configurable FTP server that can do chroot easily
 
 LICENSE=	GPLv2
 
-USE_AUTOTOOLS=	autoconf
-CONFIGURE_ARGS+=	--enable-pam
+GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--enable-pam
+USES=		autoreconf
 
 WRKSRC=	${WRKDIR}/${PORTNAME}
 
 PLIST_FILES=	sbin/${PORTNAME} etc/${PORTNAME}.conf.sample \
 		man/man8/bftpd.8.gz
 PORTDOCS=	en pl sk
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,/etc/bftpd.conf,${PREFIX}/etc/bftpd.conf,' \

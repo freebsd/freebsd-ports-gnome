@@ -3,6 +3,7 @@
 
 PORTNAME=	mp3blaster
 PORTVERSION=	3.2.6
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 
@@ -36,6 +37,7 @@ SDL_USE=		SDL=yes
 NAS_CONFIGURE_WITH=	nas
 NAS_LIB_DEPENDS=	libaudio.so:audio/nas
 NAS_LDFLAGS=		-laudio
+NAS_USE=		XORG=x11,xt,ice,sm
 
 ESOUND_CONFIGURE_WITH=	esd
 ESOUND_USE=		GNOME=esound
@@ -47,7 +49,7 @@ post-patch:
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for i in ${PORTDOCS}
-	@${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/${i} ${STAGEDIR}${DOCSDIR}
 .endfor
 
 .include <bsd.port.mk>

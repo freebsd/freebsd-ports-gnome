@@ -1,5 +1,5 @@
-TIMESTAMP = 1481025515
-SHA256 (sublime_text_3_build_3126_x32.tar.bz2) = 92ffefa470f0777897ed0dfb7c1635426105271da9b5affbe8c1e82039718e29
-SIZE (sublime_text_3_build_3126_x32.tar.bz2) = 9258647
-SHA256 (sublime_text_3_build_3126_x64.tar.bz2) = 18db132e9a305fa3129014b608628e06f9442f48d09cfe933b3b1a84dd18727a
-SIZE (sublime_text_3_build_3126_x64.tar.bz2) = 9313954
+TIMESTAMP = 1527104093
+SHA256 (sublime_text_3_build_3176_x32.tar.bz2) = 43e49dfdbea61cc0a1b6ebcdf0ff522d8531e6998e05f4756ba4218446f85a21
+SIZE (sublime_text_3_build_3176_x32.tar.bz2) = 10352060
+SHA256 (sublime_text_3_build_3176_x64.tar.bz2) = 74f17c1aec4ddec9d4d4c39f5aec0414a4755d407a05efa571e8892e0b9cf732
+SIZE (sublime_text_3_build_3176_x64.tar.bz2) = 10314226

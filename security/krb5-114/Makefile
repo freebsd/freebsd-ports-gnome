@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=		krb5
-PORTVERSION=		1.14.5
-PORTREVISION=	5
+PORTVERSION=		1.14.6
+PORTREVISION=		4
 CATEGORIES=		security
 MASTER_SITES=		http://web.mit.edu/kerberos/dist/${PORTNAME}/${PORTVERSION:C/^[0-9]*\.[0-9]*/&X/:C/X\.[0-9]*$//:C/X//}/
 .if !defined(MASTERDIR)
@@ -18,7 +18,16 @@ COMMENT=		MIT implementation of RFC 4120 network authentication service
 
 LICENSE=		MIT
 
-CONFLICTS=		heimdal-[0-9]* srp-[0-9]* krb5-11[35]-[0-9]* krb5-1.[0-9]*
+DEPRECATED=		EOL twelve months after release of krb5-1.16
+EXPIRATION_DATE=	2018-12-31
+
+BROKEN_SSL=		openssl-devel
+BROKEN_SSL_REASON_openssl-devel=	 OpenSSL >= 1.1.0 unsupported.
+
+
+CONFLICTS=		heimdal-[0-9]* srp-[0-9]* krb5-11[35]-[0-9]* \
+			krb5-1.[0-9]* krb5-devel-*
+CONFLICTS_BUILD=	boringssl-*
 
 KERBEROSV_URL=		http://web.mit.edu/kerberos/
 USE_PERL5=		build
@@ -26,7 +35,8 @@ USE_LDCONFIG=		yes
 USE_CSTD=		gnu99
 GNU_CONFIGURE=		yes
 USES=			cpe gmake localbase perl5 libtool:build \
-			gssapi:bootstrap,mit pkgconfig:run ssl
+			gssapi:bootstrap,mit pkgconfig:run ssl \
+			gettext-runtime
 CONFIGURE_ARGS?=	--enable-shared --without-system-verto \
 			--disable-rpath --localstatedir="${PREFIX}/var"
 CONFIGURE_ENV=		INSTALL="${INSTALL}" INSTALL_LIB="${INSTALL_LIB}" YACC="${YACC}"
@@ -109,7 +119,7 @@ post-install:
 		${MKDIR} ${STAGEDIR}${PREFIX}/share/doc/krb5/$${i}; \
 	done; \
 	for i in $${pdf_files}; do \
-		${INSTALL_MAN} $${pdf} ${PREFIX}/share/doc/krb5/$${i}; \
+		${INSTALL_DATA} $${pdf} ${PREFIX}/share/doc/krb5/$${i}; \
 		${ECHO_CMD} share/doc/krb5/$${i} >> ${TMPPLIST}; \
 	done
 .endif
@@ -120,7 +130,7 @@ post-install:
 		${MKDIR} ${PREFIX}/share/doc/krb5/$${i}; \
 	done; \
 	for i in $${html_files}; do \
-		${INSTALL_MAN} $${i} ${PREFIX}/share/doc/krb5/$${i}; \
+		${INSTALL_DATA} $${i} ${PREFIX}/share/doc/krb5/$${i}; \
 		${ECHO_CMD} share/doc/krb5/$${i} >> ${TMPPLIST}; \
 	done
 .endif

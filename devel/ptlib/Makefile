@@ -3,14 +3,17 @@
 
 PORTNAME=	ptlib
 PORTVERSION=	2.10.11
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Cross platform C++ library, used by OPAL
 
-LICENSE=	MPL
+LICENSE=	MPL10
+
+BROKEN_SSL=	openssl-devel
+BROKEN_SSL_REASON_openssl-devel=	use of undeclared identifier 'BIO_s_file_internal'
 
 LIB_DEPENDS=	libexpat.so:textproc/expat2
 

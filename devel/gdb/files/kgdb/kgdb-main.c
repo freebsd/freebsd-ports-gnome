@@ -50,7 +50,6 @@ __FBSDID("$FreeBSD$");
 #include <cli-out.h>
 #include <main.h>
 #include <objfiles.h>
-#include "observer.h"
 #include <target.h>
 #include <top.h>
 #include <ui-file.h>
@@ -203,7 +202,7 @@ verify_remote(void)
 }
 
 static void
-add_arg(struct captured_main_args *args, char *arg)
+add_arg(struct captured_main_args *args, char const *arg)
 {
 
 	args->argc++;
@@ -211,7 +210,7 @@ add_arg(struct captured_main_args *args, char *arg)
 	    sizeof(char *));
 	if (args->argv == NULL)
 		err(1, "Out of memory building argument list");
-	args->argv[args->argc] = arg;
+	args->argv[args->argc] = (char *)arg;
 }
 
 int
@@ -221,9 +220,10 @@ main(int argc, char *argv[])
 	struct stat st;
 	struct captured_main_args args;
 	char *s;
-	int a, ch;
+	int a, ch, writeable;
 
 	dumpnr = NULL;
+	writeable = 0;
 
 	strlcpy(crashdir, "/var/crash", sizeof(crashdir));
 	s = getenv("KGDB_CRASH_DIR");
@@ -239,9 +239,9 @@ main(int argc, char *argv[])
 			if (s[0] == '-')
 				s++;
 			if (strcmp(s, "quiet") == 0)
-				argv[a] = "-q";
+				argv[a] = (char *)"-q";
 			else if (strcmp(s, "fullname") == 0)
-				argv[a] = "-f";
+				argv[a] = (char *)"-f";
 		}
 	}
 
@@ -303,7 +303,7 @@ main(int argc, char *argv[])
 			verbose++;
 			break;
 		case 'w':	/* core file is writeable. */
-			add_arg(&args, "--write");
+			writeable = 1;
 			break;
 		case '?':
 		default:
@@ -379,10 +379,15 @@ main(int argc, char *argv[])
 	add_arg(&args, "-iex");
 	add_arg(&args, "set prompt (kgdb) ");
 
+	/* Change osabi to assume a FreeBSD kernel. */
+	add_arg(&args, "-iex");
+	add_arg(&args, "set osabi FreeBSD/kernel");
+
 	/* Open the vmcore if requested. */
 	if (vmcore != NULL) {
 		add_arg(&args, "-ex");
-		if (asprintf(&s, "target vmcore %s", vmcore) < 0)
+		if (asprintf(&s, "target vmcore %s%s", writeable ? "-w " : "",
+		    vmcore) < 0)
 			err(1, "couldn't build command line");
 		add_arg(&args, s);
 	}

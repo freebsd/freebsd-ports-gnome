@@ -5,7 +5,7 @@ PORTVERSION=	3.0.3
 CATEGORIES=	devel
 PKGNAMEPREFIX=	erlang-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Syslog backend for Lager
 
 LICENSE=	APACHE20
@@ -17,5 +17,7 @@ GH_ACCOUNT=	basho
 ERL_BUILD_DEPS=	devel/erlang-lager \
 		devel/erlang-syslog
 RUN_DEPENDS:=	${BUILD_DEPENDS}
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

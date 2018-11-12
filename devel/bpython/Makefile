@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	bpython
-PORTVERSION=	0.17
+PORTVERSION=	0.17.1
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP \
 		https://bpython-interpreter.org/releases/
@@ -14,12 +14,12 @@ COMMENT=	Fancy interface to the Python interpreter
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinx>=0:textproc/py-sphinx
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}curtsies>=0.1.18:devel/py-curtsies \
-		${PYTHON_PKGNAMEPREFIX}greenlet>=0:devel/py-greenlet \
-		${PYTHON_PKGNAMEPREFIX}pygments>=0:textproc/py-pygments \
-		${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests \
-		${PYTHON_PKGNAMEPREFIX}six>=1.5:devel/py-six
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sphinx>=0:textproc/py-sphinx@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}curtsies>=0.1.18:devel/py-curtsies@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}greenlet>=0:devel/py-greenlet@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pygments>=0:textproc/py-pygments@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}six>=1.5:devel/py-six@${PY_FLAVOR}
 
 OPTIONS_DEFINE=	EXAMPLES NLS
 OPTIONS_SUB=	yes

@@ -49,7 +49,6 @@
     SUBDIR += gngb
     SUBDIR += gngeo
     SUBDIR += gns3
-    SUBDIR += gnuboy
     SUBDIR += gxemul
     SUBDIR += hatari
     SUBDIR += hercules
@@ -57,7 +56,6 @@
     SUBDIR += hugo
     SUBDIR += i386-wine
     SUBDIR += i386-wine-devel
-    SUBDIR += i386-wine-staging
     SUBDIR += ia64sim
     SUBDIR += ines
     SUBDIR += javatari
@@ -74,11 +72,11 @@
     SUBDIR += linux_base-c7
     SUBDIR += lisaem
     SUBDIR += loemu
-    SUBDIR += m2000
     SUBDIR += mame
     SUBDIR += mastergear
     SUBDIR += mednafen
     SUBDIR += mess
+    SUBDIR += mgba
     SUBDIR += mtools
     SUBDIR += mupen64plus
     SUBDIR += mupen64plus-audio-sdl
@@ -117,10 +115,7 @@
     SUBDIR += q4wine
     SUBDIR += qemu
     SUBDIR += qemu-cheri
-    SUBDIR += qemu-cheri128
-    SUBDIR += qemu-cheri128m
     SUBDIR += qemu-devel
-    SUBDIR += qemu-launcher
     SUBDIR += qemu-ppcnv
     SUBDIR += qemu-riscv
     SUBDIR += qemu-sbruno
@@ -129,7 +124,6 @@
     SUBDIR += qmc2
     SUBDIR += qtemu
     SUBDIR += quasi88
-    SUBDIR += raine
     SUBDIR += riscv-fesvr
     SUBDIR += riscv-isa-sim
     SUBDIR += rpcs3
@@ -137,8 +131,6 @@
     SUBDIR += rubygem-fission
     SUBDIR += simh
     SUBDIR += skyeye
-    SUBDIR += snes9express
-    SUBDIR += snes9x
     SUBDIR += snes9x-gtk
     SUBDIR += spim
     SUBDIR += stella
@@ -175,15 +167,14 @@
     SUBDIR += wine-gecko-devel
     SUBDIR += wine-mono
     SUBDIR += wine-mono-devel
-    SUBDIR += wine-staging
     SUBDIR += winetricks
     SUBDIR += wxmupen64plus
     SUBDIR += x48
     SUBDIR += x49gp
     SUBDIR += xbraitenberg
     SUBDIR += xcpc
-    SUBDIR += xen
-    SUBDIR += xen-kernel
+    SUBDIR += xen-kernel411
+    SUBDIR += xen-kernel47
     SUBDIR += xhomer
     SUBDIR += xsystem35
     SUBDIR += xzx

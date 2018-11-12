@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	tesseract
-PORTVERSION=	3.05.01
-PORTREVISION=	1
+PORTVERSION=	3.05.02
+PORTREVISION=	2
 CATEGORIES=	graphics
 
 MAINTAINER=	pkubaj@anongoth.pl
@@ -12,8 +12,9 @@ COMMENT=	Commercial quality open source OCR engine
 LICENSE=	APACHE20
 
 LIB_DEPENDS=	liblept.so:graphics/leptonica
+RUN_DEPENDS=	tesseract-data>=0:graphics/tesseract-data
 
-USES=		autoreconf localbase libtool pathfix pkgconfig
+USES=		autoreconf compiler:c++11-lang localbase libtool pathfix pkgconfig
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 

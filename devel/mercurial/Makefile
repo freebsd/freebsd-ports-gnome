@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mercurial
-PORTVERSION=	4.3.1
+PORTVERSION=	4.7.1
 CATEGORIES=	devel python
 MASTER_SITES=	https://www.mercurial-scm.org/release/
 
@@ -21,7 +21,7 @@ OPTIONS_SUB=	yes
 
 CA_BUNDLE_DESC=		Install CA Certificates
 CA_BUNDLE_RUN_DEPENDS=	${LOCALBASE}/share/certs/ca-root-nss.crt:security/ca_root_nss
-DATA_SUB_FILES=	pkg-message
+DATA_SUB_FILES=		pkg-message
 FREEBSD_DESC=		Patches used internally by the FreeBSD Project
 FREEBSD_EXTRA_PATCHES=	${FILESDIR}/extra-patch-authormapsuffix
 NLS_EXTRA_PATCHES_OFF=	${FILESDIR}/extra-patch-setup.py
@@ -52,7 +52,7 @@ CONTRIB_FILES=	bash_completion \
 		vim/hgtest.vim \
 		vim/patchreview.txt \
 		vim/patchreview.vim
-PORTDOCS=	CONTRIBUTORS README
+PORTDOCS=	CONTRIBUTORS README.rst
 
 post-install:
 	${INSTALL_MAN} ${WRKSRC}/doc/*.1 ${STAGEDIR}${PREFIX}/man/man1/
@@ -68,7 +68,7 @@ post-install-DATA-on:
 	${INSTALL_DATA} ${WRKSRC}/contrib/${f} \
 		${STAGEDIR}${DATADIR}/contrib/${f}
 .endfor
-	${INSTALL_DATA} ${WRKSRC}/contrib/hgweb.* ${STAGEDIR}${DATADIR}/www
+	${INSTALL_DATA} ${WRKSRC}/hgweb.cgi ${WRKSRC}/contrib/hgweb.* ${STAGEDIR}${DATADIR}/www
 
 post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}

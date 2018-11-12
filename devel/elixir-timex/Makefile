@@ -1,12 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	timex
-PORTVERSION=	3.1.24
-PORTREVISION=	1
+PORTVERSION=	3.3.0
 CATEGORIES=	devel
 PKGNAMEPREFIX=	elixir-
 
-MAINTAINER=	olgeni@FreeBSD.org
+MAINTAINER=	erlang@FreeBSD.org
 COMMENT=	Complete date/time library for Elixir
 
 LICENSE=	MIT
@@ -21,5 +20,7 @@ MIX_BUILD_DEPS= devel/elixir-combine \
 		www/elixir-httpoison
 MIX_RUN_DEPS:=	${MIX_BUILD_DEPS}
 MIX_REWRITE=	yes
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

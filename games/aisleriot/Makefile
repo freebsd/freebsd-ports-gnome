@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	aisleriot
-PORTVERSION=	3.22.2
-PORTREVISION=	1
+PORTVERSION=	3.22.5
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -35,4 +34,5 @@ GCONF_SCHEMAS=	aisleriot.schemas
 GLIB_SCHEMAS=	org.gnome.Patience.WindowState.gschema.xml
 
 INSTALLS_ICONS=	yes
+
 .include <bsd.port.mk>

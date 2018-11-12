@@ -2,8 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	protobuf
-PORTVERSION=	3.4.0
+PORTVERSION=	3.5.2
 DISTVERSIONPREFIX=	v
+PORTEPOCH=	1
 CATEGORIES=	devel python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -13,14 +14,14 @@ COMMENT=	Google protobuf Python Client Library
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/../LICENSE
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>=1.9:devel/py-six \
-		protoc:devel/protobuf
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>=1.9:devel/py-six
+BUILD_DEPENDS=	protoc:devel/protobuf \
+		${PYTHON_PKGNAMEPREFIX}six>=1.9:devel/py-six@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>=1.9:devel/py-six@${PY_FLAVOR}
 
 DO_MAKE_TEST=	${PYTHON_CMD} ${PYDISTUTILS_SETUP}
 NO_ARCH=	yes
 TEST_TARGET=	test
-USE_PYTHON=	autoplist distutils
+USE_PYTHON=	autoplist concurrent distutils
 USES=		python
 WRKSRC_SUBDIR=	python
 

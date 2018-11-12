@@ -2,45 +2,48 @@
 # $FreeBSD$
 
 PORTNAME=	hmmer
-PORTVERSION=	3.0
-PORTREVISION=	1
+PORTVERSION=	3.2.1
 CATEGORIES=	biology
-MASTER_SITES=	ftp://selab.janelia.org/pub/software/hmmer3/3.0/ \
-		http://selab.janelia.org/software/hmmer3/3.0/
+MASTER_SITES=	http://eddylab.org/software/hmmer/
 
-MAINTAINER=	bacon4000@gmail.com
+MAINTAINER=	mzaki@niid.go.jp
 COMMENT=	Profile hidden Markov models for biological sequence analysis
 
-LICENSE=	GPLv3
+LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+ONLY_FOR_ARCHS=	amd64 i386 ia64 powerpc powerpc64
+ONLY_FOR_ARCHS_REASON=	requires SSE2 or AltiVec instructions
+
+USES=		gmake perl5 shebangfix
+
 GNU_CONFIGURE=	yes
-USES=		perl5
-CONFIGURE_ARGS+=--enable-threads
+MAKE_ARGS=	V=1
 
-DOCFILES=	COPYRIGHT INSTALL LICENSE Userguide.pdf
-EXAMPLES=	7LESS_DROME Pkinase.sto fn3.sto globins4.sto minifam.h3f minifam.h3p \
-		HBB_HUMAN fn3.hmm globins4.hmm globins45.fa minifam.h3i \
-		Pkinase.hmm fn3.out globins4.out minifam minifam.h3m
+TEST_TARGET=	check
+USE_PERL5=	test
+SHEBANG_GLOB=	*.pl
+SHEBANG_FILES=	easel/devkit/*
 
-OPTIONS_DEFINE=	DOCS EXAMPLES
+OPTIONS_DEFINE=	DOCS EXAMPLES TEST
 
-.include <bsd.port.options.mk>
+DOCFILES=	Userguide.pdf
+EXAMPLES=	7LESS_DROME HBB_HUMAN MADE1.hmm MADE1.sto \
+		Pkinase.hmm Pkinase.sto dna_target.fa fn3.hmm fn3.sto \
+		globins4.hmm globins4.sto globins45.fa
 
-# HMMER is useless without SSE and any PC in use today should support it
-# Should probably also do enable-vmx on Power processors to enable
-# Altivec/VMX, but I don't have a machine to test this.
-.if ${ARCH} == "amd64" || ${ARCH} == "i386"
-CONFIGURE_ARGS+=--enable-sse
-.endif
+TEST_VARS=	use_perl5=build
+
+post-build-TEST-on:	do-test
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/*
-	(cd ${WRKSRC}/documentation/man; for i in *.man; do \
-		${INSTALL_MAN} $$i ${STAGEDIR}${PREFIX}/man/man1/`echo $$i|${SED} 's/.man/.1/'`; \
-	done)
+
+post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOCFILES:S,^,${WRKSRC}/,} ${STAGEDIR}${DOCSDIR}
+
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	${INSTALL_DATA} ${EXAMPLES:S,^,${WRKSRC}/tutorial/,} ${STAGEDIR}${EXAMPLESDIR}
 

@@ -3,11 +3,11 @@
 
 PORTNAME=	wmii
 DISTVERSION=	3.6	# this is stable version; for 3.9.x, use -devel port
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	x11-wm
 MASTER_SITES=	http://dl.suckless.org/wmii/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	rodrigo@FreeBSD.org
 COMMENT=	Dynamic, minimalist window manager for X11
 
 LICENSE=	MIT
@@ -18,7 +18,7 @@ RUN_DEPENDS=	dmenu:x11/dmenu
 
 CONFLICTS=	wmii-devel-[0-9]*
 
-USE_XORG=	x11 xextproto xt xext
+USE_XORG=	x11 xorgproto xt xext
 
 MAKE_ARGS=	PREFIX="${PREFIX}" MAN="${MANPREFIX}/man" \
 		INCLUDE="${LOCALBASE}/include" \

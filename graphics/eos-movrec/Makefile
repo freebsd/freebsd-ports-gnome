@@ -3,7 +3,7 @@
 
 PORTNAME=	eos-movrec
 DISTVERSION=	0.3.2_beta
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	graphics multimedia
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${DISTVERSION}/
 
@@ -14,9 +14,9 @@ LICENSE=	GPLv2
 
 LIB_DEPENDS=	libgphoto2.so:graphics/libgphoto2
 
-USES=		cmake dos2unix pkgconfig tar:bzip2
+USES=		cmake dos2unix pkgconfig qt:4 tar:bzip2
 DOS2UNIX_GLOB=	*.pro *.cpp *.h
-USE_QT4=	qmake_build moc_build rcc_build uic_build gui
+USE_QT=		qmake_build moc_build rcc_build uic_build gui
 
 INSTALLS_ICONS=	yes
 ICON_SIZES=	16x16 32x32 128x128 256x256 512x512

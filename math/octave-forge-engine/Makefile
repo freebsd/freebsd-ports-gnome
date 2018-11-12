@@ -3,7 +3,7 @@
 
 PORTNAME=	octave-forge-engine
 PORTVERSION=	1.0.9
-PORTREVISION=	15
+PORTREVISION=	18
 CATEGORIES=	math
 
 MAINTAINER=	stephen@FreeBSD.org
@@ -11,6 +11,8 @@ COMMENT=	Octave-forge package ${OCTAVE_PKGNAME}
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+BROKEN=		does not build with octave version >= 4.4.0
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV+=	HOME=${WRKSRC}

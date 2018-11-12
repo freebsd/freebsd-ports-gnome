@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	integer-logarithms
-PORTVERSION=	1.0.2
+PORTVERSION=	1.0.2.1
+PORTREVISION=	1
 CATEGORIES=	math haskell
 
 MAINTAINER=	haskell@FreeBSD.org

@@ -2,12 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	boost-libs
+PORTREVISION=	1
 
 COMMENT=	Free portable C++ libraries (without Boost.Python)
 
 BROKEN_sparc64=	https://github.com/boostorg/context/commit/f2ef6326b6ed
 
 BUILD_DEPENDS+=	bjam:devel/boost-jam
+
+# libs/config/test/boost_no_cxx11_thread_local.ipp fails (see base r303795)
+PLIST_SUB+=	FIBER="${"${OPSYS}"=="FreeBSD" && ${OSREL:R} < 11:?@comment :}"
 
 OPTIONS_DEFINE=		DEBUG OPTIMIZED_CFLAGS
 OPTIONS_MULTI=		LOCALE
@@ -28,6 +32,8 @@ ICU_MAKE_ARGS_OFF=	boost.locale.icu=off
 .include "${.CURDIR}/../boost-all/compiled.mk"
 
 MAKE_ARGS+=	--without-python
+MAKE_ARGS+=	${MAKE_ARGS_${CHOSEN_COMPILER_TYPE}}
+MAKE_ARGS_gcc=	xdll-path=${_GCC_RUNTIME}
 ALL_TARGET=	stage
 
 do-install:

@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mozjpeg
-PORTVERSION=	3.2
+PORTVERSION=	3.3.1
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
 CATEGORIES=	graphics
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -12,7 +11,6 @@ COMMENT=	Improved JPEG encoder by Mozilla
 
 LICENSE=	BSD3CLAUSE
 
-BROKEN_aarch64=	does not configure: error: SIMD support cannot be enabled
 BROKEN_mips64=	does not configure: error: SIMD support cannot be enabled
 BROKEN_powerpc64=	does not build: undefined reference to htole32
 BROKEN_sparc64=	does not configure: error: SIMD support cannot be enabled

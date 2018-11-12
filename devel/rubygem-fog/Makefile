@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	fog
-PORTVERSION=	1.41.0
+PORTVERSION=	2.0.0
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 
-MAINTAINER=	ruby@FreeBSD.org
+MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Ruby cloud services library
 
 LICENSE=	MIT
@@ -22,12 +22,13 @@ RUN_DEPENDS=	rubygem-fog-aliyun>=0.1.0:net/rubygem-fog-aliyun \
 		rubygem-fog-dnsimple>=1.0:net/rubygem-fog-dnsimple \
 		rubygem-fog-dynect>=0.0.2:net/rubygem-fog-dynect \
 		rubygem-fog-ecloud>=0.1:net/rubygem-fog-ecloud \
-		rubygem-fog-google>=0.1.1:net/rubygem-fog-google \
+		rubygem-fog-google>=1.0:net/rubygem-fog-google \
 		rubygem-fog-internet-archive>=0:net/rubygem-fog-internet-archive \
 		rubygem-fog-joyent>=0:net/rubygem-fog-joyent \
 		rubygem-fog-json>=0:devel/rubygem-fog-json \
 		rubygem-fog-local>=0:net/rubygem-fog-local \
 		rubygem-fog-openstack>=0:net/rubygem-fog-openstack \
+		rubygem-fog-ovirt>=0:net/rubygem-fog-ovirt \
 		rubygem-fog-powerdns>=0.1.1:net/rubygem-fog-powerdns \
 		rubygem-fog-profitbricks>=0:net/rubygem-fog-profitbricks \
 		rubygem-fog-rackspace>=0:net/rubygem-fog-rackspace \
@@ -44,7 +45,7 @@ RUN_DEPENDS=	rubygem-fog-aliyun>=0.1.0:net/rubygem-fog-aliyun \
 		rubygem-fog-xenserver>=0:net/rubygem-fog-xenserver \
 		rubygem-fog-xml>=0.1.1:textproc/rubygem-fog-xml \
 		rubygem-ipaddress>=0.5:net/rubygem-ipaddress \
-		rubygem-json1>=1.8:devel/rubygem-json1
+		rubygem-json>=2.0:devel/rubygem-json
 
 NO_ARCH=	yes
 USE_RUBY=	yes

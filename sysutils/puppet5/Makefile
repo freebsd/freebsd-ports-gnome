@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	puppet
-PORTVERSION=	5.1.0
+PORTVERSION=	5.5.6
 CATEGORIES=	sysutils
-MASTER_SITES=	http://downloads.puppetlabs.com/puppet/
+MASTER_SITES=	https://downloads.puppetlabs.com/puppet/
 PKGNAMESUFFIX=	5
 
 MAINTAINER=	puppet@FreeBSD.org
@@ -12,16 +12,19 @@ COMMENT=	Configuration management framework written in Ruby
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BROKEN_aarch64=		fails to install: Could not load facter; cannot install
+
 BUILD_DEPENDS=	rubygem-hiera>=2.0:sysutils/rubygem-hiera \
 		rubygem-json_pure>=0:devel/rubygem-json_pure
-RUN_DEPENDS=	rubygem-hiera>=2.0:sysutils/rubygem-hiera \
+RUN_DEPENDS=	rubygem-gettext-setup>=0:devel/rubygem-gettext-setup \
+		rubygem-hiera>=2.0:sysutils/rubygem-hiera \
 		rubygem-hocon>=0:devel/rubygem-hocon \
 		rubygem-json_pure>=0:devel/rubygem-json_pure \
 		rubygem-ruby-augeas>=0:textproc/rubygem-ruby-augeas
 
 USES=		cpe
 CPE_VENDOR=	puppetlabs
-CONFLICTS_INSTALL=	puppet4-*
+CONFLICTS_INSTALL=	puppet4-* puppet6-*
 NO_ARCH=	yes
 NO_BUILD=	yes
 USE_RUBY=	yes
@@ -72,12 +75,14 @@ post-patch:
 		${WRKSRC}/lib/puppet/provider/package/puppet_gem.rb
 	@${REINPLACE_CMD} -e "s|\$$confdir/ssl|/var/puppet/ssl|" \
 		${WRKSRC}/lib/puppet/defaults.rb
+	@${REINPLACE_CMD} -e "s|\.\./\.\./\.\./locales|../locales|" \
+		${WRKSRC}/lib/puppet/gettext/config.rb
 	@${REINPLACE_CMD} -e "s|%%PREFIX%%|${PREFIX}|" \
 		${WRKSRC}/ext/rack/config.ru
 
 do-install:
 	@cd ${WRKSRC} && ${SETENV} PREFIX=${PREFIX} LC_ALL=C.UTF-8 ${RUBY} ${WRKSRC}/install.rb --no-configs --destdir=${STAGEDIR} \
-		--localedir=/var/puppet/share/locales
+		--localedir=${RUBY_SITELIBDIR}/puppet/locales
 
 post-install:
 	${MKDIR} ${STAGEDIR}${ETCDIR}/manifests

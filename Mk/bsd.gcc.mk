@@ -14,15 +14,15 @@
 # 
 # If your port needs a specific (minimum) version of GCC, you can easily
 # specify that with a USE_GCC= statement.  Unless absolutely necessary
-# do so by specifying USE_GCC=X.Y+ which requests at least GCC version
-# X.Y.  To request a specific version omit the trailing + sign.
+# do so by specifying USE_GCC=X+ which requests at least GCC version X.
+# To request a specific version omit the trailing + sign.
 #
 # Examples:
 #   USE_GCC=	yes			# port requires a current version of GCC
 #							# as defined in bsd.default-versions.mk.
 #   USE_GCC=	any			# port requires GCC 4.2 or later.
-#   USE_GCC=	6+			# port requires GCC 6 or later.
-#   USE_GCC=	4.9			# port requires GCC 4.9.
+#   USE_GCC=	7+			# port requires GCC 7 or later.
+#   USE_GCC=	5			# port requires GCC 5.
 #
 # If you are wondering what your port exactly does, use "make test-gcc"
 # to see some debugging.
@@ -35,7 +35,7 @@ GCC_Include_MAINTAINER=		gerald@FreeBSD.org
 # ascending order and in sync with the table below. 
 # When adding a version, please keep the comment in
 # Mk/bsd.default-versions.mk in sync.
-GCCVERSIONS=	040200 040800 040900 050000 060000 070000
+GCCVERSIONS=	040200 040800 040900 050000 060000 070000 080000
 
 # The first field is the OSVERSION in which it disappeared from the base.
 # The second field is the version as USE_GCC would use.
@@ -45,6 +45,7 @@ GCCVERSION_040900=	      0 4.9
 GCCVERSION_050000=	      0 5
 GCCVERSION_060000=	      0 6
 GCCVERSION_070000=	      0 7
+GCCVERSION_080000=	      0 8
 
 # No configurable parts below this. ####################################
 #
@@ -165,6 +166,10 @@ CPP:=			cpp
 .endfor
 .undef V
 
+# Now filter unsupported flags for CC and CXX.
+CFLAGS:=		${CFLAGS:N-mretpoline}
+CXXFLAGS:=		${CXXFLAGS:N-mretpoline}
+
 .if defined(_GCC_PORT_DEPENDS)
 BUILD_DEPENDS+=	${_GCC_PORT_DEPENDS}:lang/${_GCC_PORT}
 RUN_DEPENDS+=	${_GCC_PORT_DEPENDS}:lang/${_GCC_PORT}
@@ -196,7 +201,9 @@ test-gcc:
 .endfor
 	@echo Using GCC version ${_USE_GCC}
 .endif
-	@echo CC=${CC} - CXX=${CXX} - CPP=${CPP} - CFLAGS=\"${CFLAGS}\"
+	@echo CC=${CC} - CXX=${CXX} - CPP=${CPP}
+	@echo CFLAGS=\"${CFLAGS}\"
+	@echo CXXFLAGS=\"${CXXFLAGS}\"
 	@echo LDFLAGS=\"${LDFLAGS}\"
 	@echo "BUILD_DEPENDS=${BUILD_DEPENDS}"
 	@echo "RUN_DEPENDS=${RUN_DEPENDS}"

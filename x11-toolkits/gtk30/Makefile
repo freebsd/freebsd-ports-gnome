@@ -4,24 +4,19 @@
 # adwaita-icon-theme, gnome-themes-standard and mate-themes
 
 PORTNAME=	gtk
-PORTVERSION=	3.22.15
-PORTREVISION?=	1
+PORTVERSION=	3.22.30
+PORTREVISION=	1
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMESUFFIX=	3
 DISTNAME=	gtk+-${PORTVERSION}
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gimp Toolkit for X11 GUI (current stable version)
 
 LICENSE=	LGPL20
 
-USES=		tar:xz
-
-.if defined(REFERENCE_PORT)
-PORTSCOUT=	ignore:1
-.else
 PORTSCOUT=	limit:1,even
 
 BUILD_DEPENDS+=	at-spi2-atk>=0:accessibility/at-spi2-atk
@@ -31,34 +26,36 @@ LIB_DEPENDS=	libepoxy.so:graphics/libepoxy \
 		libharfbuzz.so:print/harfbuzz
 RUN_DEPENDS+=	hicolor-icon-theme>=0:misc/hicolor-icon-theme \
 		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
-		at-spi2-atk>=0:accessibility/at-spi2-atk
+		at-spi2-atk>=0:accessibility/at-spi2-atk \
+		librsvg2>=0:graphics/librsvg2
 
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 USE_GNOME=	atk cairo gdkpixbuf2 introspection:build pango
 #gtk-update-icon-cache
-USES+=		compiler:c11 gettext gmake gnome libtool localbase \
-		pathfix perl5 pkgconfig
+USES=		compiler:c11 gettext gmake gnome libtool localbase \
+		pathfix perl5 pkgconfig tar:xz
 USE_XORG=	xext xrender x11 xinerama xi xrandr xcursor xfixes xdamage \
 		xcomposite
 CONFIGURE_ARGS=	--enable-x11-backend \
-		--disable-wayland-backend \
 		--enable-introspection
 CPPFLAGS+=	-fno-omit-frame-pointer
 INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
 
-LIBVERSION=	0.2200.15
+LIBVERSION=	0.2200.30
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
 		org.gtk.Settings.ColorChooser.gschema.xml \
 		org.gtk.Settings.Debug.gschema.xml \
+		org.gtk.Settings.EmojiChooser.gschema.xml \
 		org.gtk.Settings.FileChooser.gschema.xml
 
-OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD BROADWAY
+OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD DEBUG BROADWAY WAYLAND
 OPTIONS_DEFAULT=CUPS COLORD BROADWAY
+OPTIONS_EXCLUDE_FreeBSD_10=	WAYLAND
 OPTIONS_SUB=	yes
 
 BROADWAY_DESC=	Enable GDK Broadway backend for showing GTK+ in the webbrowser using HTML5 and web sockets.
@@ -73,11 +70,31 @@ CUPS_CONFIGURE_ENABLE=	cups
 
 CLOUDPRINT_DESC=	Cloud printing support
 CLOUDPRINT_CONFIGURE_ENABLE=	cloudprint
+CLOUDPRINT_USE=		gnome=libxml2
 CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
+			libsoup-2.4.so:devel/libsoup \
 			libjson-glib-1.0.so:devel/json-glib
+
+WAYLAND_DESC=		GDK Wayland backend
+WAYLAND_CONFIGURE_ENABLE=	wayland-backend
+WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols \
+			v4l_compat>=0:multimedia/v4l_compat
+WAYLAND_LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
+			libxkbcommon.so:x11/libxkbcommon
+WAYLAND_RUN_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_USE=		GL=egl
+
+.include <bsd.port.options.mk>
 
 # don't explicitly disable debug, this causes segfaults. ports r437293
 DEBUG_CONFIGURE_ON=	--enable-debug=yes
+
+WAYLAND_BUILD_DEPENDS=		wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_CONFIGURE_ENABLE=	wayland-backend
+WAYLAND_LIB_DEPENDS=		libwayland-client.so:graphics/wayland \
+				libwayland-egl.so:graphics/mesa-libs \
+				libxkbcommon.so:x11/libxkbcommon
+WAYLAND_RUN_DEPENDS=		wayland-protocols>=0:graphics/wayland-protocols
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|[{]libdir[}]/locale|{datadir}/locale|g' \
@@ -89,6 +106,12 @@ pre-configure:
 		${ECHO_MSG} "${PKGNAME}: Needs cairo with X11 support enabled."; \
 		${FALSE}; \
 	fi
+.if ${PORT_OPTIONS:MWAYLAND}
+	@if ! pkg-config --exists wayland-egl; then \
+		${ECHO_MSG} "${PKGNAME}: Needs mesa-libs with wayland support enabled."; \
+		${FALSE}; \
+	fi
+.endif
 
 pre-build:
 	@${RM} -r ${WRKSRC}/docs/gtk.info*
@@ -101,5 +124,3 @@ post-install:
 		${STAGEDIR}${PREFIX}/man/man1
 
 .include <bsd.port.mk>
-
-.endif

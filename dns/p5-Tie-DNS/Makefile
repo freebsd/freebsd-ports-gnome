@@ -11,7 +11,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Tie interface to Net::DNS
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-Net-DNS>=0:dns/p5-Net-DNS \
@@ -26,11 +26,9 @@ NO_ARCH=	yes
 USE_PERL5=	configure
 USES=		perl5 shebangfix
 
-PORTEXAMPLES=	*
-
 SHEBANG_FILES=	eg/*.pl
 
-post-install:
+post-install-EXAMPLES-on:
 	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}/
 	${INSTALL_DATA} ${WRKSRC}/eg/*.pl ${STAGEDIR}${EXAMPLESDIR}/
 

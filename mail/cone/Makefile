@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	cone
-PORTVERSION=	0.96.1
+PORTVERSION=	0.96.2
+PORTREVISION=	1
 CATEGORIES=	mail
 # This is for beta versions, leave it in please:
 #MASTER_SITES=	http://www.courier-mta.org/beta/${PORTNAME}/ \
@@ -10,7 +11,7 @@ CATEGORIES=	mail
 # This is for release versions, leave it in please:
 MASTER_SITES=	SF/courier/${PORTNAME}/${PORTVERSION}
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	chris@bsdjunk.com
 COMMENT=	Console based mail client with POP3/IMAP/SMAP support
 
 LICENSE=	GPLv3
@@ -21,7 +22,8 @@ LIB_DEPENDS=	libaspell.so:textproc/aspell \
 BUILD_DEPENDS=	gpgv:security/gnupg1
 RUN_DEPENDS=	gpgv:security/gnupg1
 
-USES=		fam gettext gmake iconv localbase:ldflags ncurses perl5 shebangfix ssl tar:bzip2
+USES=		compiler:c++11-lang fam gettext gmake iconv localbase:ldflags \
+		ncurses perl5 shebangfix ssl tar:bzip2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-certdb=${PREFIX}/share/cone/rootcerts --exec-prefix=${PREFIX}
 SHEBANG_FILES=	sysconftool
@@ -41,6 +43,6 @@ post-install:
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	${INSTALL_MAN} ${WRKSRC}/ChangeLog ${STAGEDIR}${DOCSDIR}
+	${INSTALL_DATA} ${WRKSRC}/ChangeLog ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	qcad
-PORTVERSION=	3.17.3.6
+PORTVERSION=	3.21.1.1
 DISTVERSIONPREFIX=	v
-#PORTREVISION=	1
+PORTREVISION=	4
 CATEGORIES=	cad
 DIST_SUBDIR=	${PORTNAME}
 
@@ -15,16 +15,16 @@ LICENSE=	GPLv3
 
 BUILD_DEPENDS=	bash:shells/bash	\
 		${LOCALBASE}/lib/libopenNURBS.a:graphics/opennurbs
-LIB_DEPENDS=	libquazip.so:archivers/quazip
+LIB_DEPENDS=	libquazip5.so:archivers/quazip@qt5
 
 MAKE_JOBS_UNSAFE=yes
 
-USES=		execinfo gmake qmake
+USES=		gmake qmake qt:5
 USE_GITHUB=	yes
 USE_LDCONFIG=	yes
-USE_QT4=	qmake_build codecs-cn codecs-jp codecs-kr codecs-tw corelib \
-		designer gui help imageformats moc_build network opengl rcc_build script \
-		scripttools sql svg uic_build xml xmlpatterns webkit
+USE_QT=		buildtools qmake_build \
+		designer gui help imageformats network opengl script \
+		scripttools sql svg uitools xml xmlpatterns webkit
 USE_GL=		glu
 
 DESKTOP_ENTRIES="QCad"	\
@@ -43,22 +43,17 @@ RESDIR=		${WRKSRC}/release
 SHRLIBS=	qcadcore qcadecmaapi qcadentity qcadgrid qcadgui qcadoperations	\
 		qcadsnap qcadspatialindex qcadstemmer spatialindexnavel qcadzip
 STALIBS=	dxflib stemmer
-SHRDIR=		fonts libraries linetypes patterns plugins scripts ts
+SHRDIR=		fonts libraries linetypes patterns plugins scripts themes ts
 #QSCRIPTS should not be installed to avoid conflicts with texlive-base
 QSCRIPTS=	bbox dwg2bmp dwg2pdf dwg2svg
+
+OPTIONS_DEFINE=	EXAMPLES
 
 pre-configure:
 	${REINPLACE_CMD} -e "s|%%DATADIR%%|${DATADIR}|"	\
 		${WRKSRC}/src/core/RS.cpp
 	${REINPLACE_CMD} -e "s|%%DATADIR%%|${DATADIR}|"	\
 		${WRKSRC}/src/core/RSettings.cpp
-
-# Temporary hack for Qt 4.8.7 support while upstream does not add proper
-# bindings.
-#	(cd ${WRKSRC}/src/3rdparty/qt-labs-qtscriptgenerator-4.8.5 && \
-#		${COPYTREE_SHARE} . ../qt-labs-qtscriptgenerator-4.8.7)
-#	(cd ${WRKSRC}/src/3rdparty/qt-labs-qtscriptgenerator-4.8.7 && \
-#		mv qt-labs-qtscriptgenerator-4.8.5.pro qt-labs-qtscriptgenerator-4.8.7.pro)
 
 do-install:
 	${INSTALL_PROGRAM} ${RESDIR}/qcad-bin ${STAGEDIR}${PREFIX}/bin/

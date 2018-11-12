@@ -71,6 +71,7 @@
 %%QT_INCDIR%%/QtDesigner/%%FULLVER%%/QtDesigner/private/rcc_p.h
 %%QT_INCDIR%%/QtDesigner/%%FULLVER%%/QtDesigner/private/resourcebuilder_p.h
 %%QT_INCDIR%%/QtDesigner/%%FULLVER%%/QtDesigner/private/richtexteditor_p.h
+%%QT_INCDIR%%/QtDesigner/%%FULLVER%%/QtDesigner/private/selectsignaldialog_p.h
 %%QT_INCDIR%%/QtDesigner/%%FULLVER%%/QtDesigner/private/shared_enums_p.h
 %%QT_INCDIR%%/QtDesigner/%%FULLVER%%/QtDesigner/private/shared_global_p.h
 %%QT_INCDIR%%/QtDesigner/%%FULLVER%%/QtDesigner/private/shared_settings_p.h
@@ -177,7 +178,7 @@
 %%QT_CMAKEDIR%%/Qt5Designer/Qt5DesignerConfig.cmake
 %%QT_CMAKEDIR%%/Qt5Designer/Qt5DesignerConfigVersion.cmake
 %%QT_CMAKEDIR%%/Qt5Designer/Qt5Designer_QQuickWidgetPlugin.cmake
-%%QT_CMAKEDIR%%/Qt5Designer/Qt5Designer_QWebViewPlugin.cmake
+%%WEBKIT%%%%QT_CMAKEDIR%%/Qt5Designer/Qt5Designer_QWebViewPlugin.cmake
 %%QT_BINDIR%%/designer
 %%QT_LIBDIR%%/libQt5Designer.prl
 %%QT_LIBDIR%%/libQt5Designer.so
@@ -196,7 +197,7 @@
 %%QT_MKSPECDIR%%/modules/qt_lib_designercomponents_private.pri
 %%QT_PLUGINDIR%%/designer/libqquickwidget.so
 %%DEBUG%%%%QT_PLUGINDIR%%/designer/libqquickwidget.so.debug
-%%QT_PLUGINDIR%%/designer/libqwebview.so
-%%DEBUG%%%%QT_PLUGINDIR%%/designer/libqwebview.so.debug
+%%WEBKIT%%%%QT_PLUGINDIR%%/designer/libqwebview.so
+%%WEBKIT%%%%DEBUG%%%%QT_PLUGINDIR%%/designer/libqwebview.so.debug
 libdata/pkgconfig/Qt5Designer.pc
 share/pixmaps/designer-qt5.png

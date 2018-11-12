@@ -56,6 +56,7 @@ OPTIONS_DEFAULT=	PERL XIM UNICODE3 ISO14755 COMBINING RXVT_SCROLLBAR	\
 			MOUSEWHEEL SMART_RESIZE IMLOCALE_FIX GDK_PIXBUF		\
 			256_COLOR
 OPTIONS_EXCLUDE_armv6=	IMLOCALE_FIX
+OPTIONS_EXCLUDE_armv7=	IMLOCALE_FIX
 
 PORTDOCS1=	Changes README.FAQ README.configure
 PORTDOCS=	README.xvt ${PORTDOCS1}
@@ -72,10 +73,10 @@ PATCH_DEPENDS+=	p5-Encode-HanExtra>=0:chinese/p5-Encode-HanExtra \
 CONFIGURE_ARGS+=	--disable-perl
 USES+=			perl5
 USE_PERL5=		build
-PLIST_SUB=		PERL="@comment "
+PLIST_SUB+=		PERL="@comment "
 .else
 USES+=			perl5
-PLIST_SUB=		PERL=""
+PLIST_SUB+=		PERL=""
 .endif
 
 # disable XIM (X Input Method) protocol support

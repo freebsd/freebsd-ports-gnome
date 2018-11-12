@@ -11,20 +11,21 @@ DISTNAME=	AutoQ3DCommunity${PORTVERSION:C/\./-/}qt4source
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Qt 4 quick 3D model editor
 
-LICENSE=	GPLv2 GPLv3
-LICENSE_COMB=	dual
+LICENSE=	GPLv2+
+LICENSE_FILE=	${WRKSRC}/docs/license.txt
 
-USES=		dos2unix qmake zip
+USES=		dos2unix qmake qt:4 zip
 DOS2UNIX_FILES=	*.pro src/cmds/*.cpp src/fgui/*.cpp docs/*.txt
 DOS2UNIX_REGEX=	.*.[^p][^n][^g]$
 USE_GL=		glu
-USE_QT4=	corelib gui opengl moc_build
+USE_QT=		corelib gui opengl moc_build
 
 PORTDOCS=	3DQformat.txt ChangeLog.txt
-OPTIONS_DEFINE=	DOCS
 
 DESKTOP_ENTRIES="AutoQ3D" "" "AutoQ3D" \
 		"AutoQ3D" "Graphics;3DGraphics;Qt;" ""
+
+OPTIONS_DEFINE=	DOCS
 
 post-patch:
 .for file in src/main.cpp src/fgui/cadform.cpp src/dialogs/prgsettings.cpp
@@ -40,6 +41,7 @@ do-install:
 	${INSTALL_DATA} ${WRKSRC}/AutoQ3D.png \
 		${STAGEDIR}${PREFIX}/share/pixmaps/
 
+do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/docs/|} ${STAGEDIR}${DOCSDIR}
 

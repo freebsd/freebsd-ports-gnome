@@ -10,6 +10,8 @@ MASTER_SITES=	SF/phpcollab/final/${PORTVERSION}/
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	PHPcollab is project management and collaboration over the internet
 
+IGNORE_WITH_PHP=	70 71 72
+
 USES=		zip
 NO_BUILD=	yes
 WRKSRC=		${WRKDIR}/${PORTNAME}
@@ -26,7 +28,7 @@ OPTIONS_RADIO_DB=	PGSQL MYSQL
 MYSQL_USE=	PHP=mysql MYSQL=yes
 PGSQL_USE=	PHP=pgsql,pdo_pgsql
 PGSQL_USES=	pgsql
-APACHE_USE=	APACHE_RUN=22
+APACHE_USE=	APACHE_RUN=22+
 LIGHTTPD_RUN_DEPENDS=	lighttpd:ww/lighttpd
 
 do-install:

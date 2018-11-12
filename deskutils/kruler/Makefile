@@ -1,16 +1,19 @@
 # $FreeBSD$
 
 PORTNAME=	kruler
-PORTVERSION=	${KDE4_VERSION}
-PORTREVISION=	1
-CATEGORIES=	deskutils kde kde-kde4
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	deskutils kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
-COMMENT=	KDE 4 screen ruler
+COMMENT=	KDE screen ruler
 
-USES=		cmake:outsource kde:4 tar:xz
-USE_KDE=	kdelibs automoc4
-USE_QT4=	moc_build qmake_build rcc_build uic_build
-USE_XORG=	x11
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	auth codecs config configwidgets coreaddons ecm doctools i18n \
+		notifications widgetsaddons windowsystem xmlgui
+USE_QT=		core dbus gui widgets x11extras xml \
+		buildtools_build qmake_build
+USE_XORG=	x11 xcb
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

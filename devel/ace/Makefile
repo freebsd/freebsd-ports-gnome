@@ -8,7 +8,7 @@ MASTER_SITES=	ftp://download.dre.vanderbilt.edu/previous_versions/ \
 		http://download.dre.vanderbilt.edu/previous_versions/
 DISTNAME=	${PORTNAME:tu}-${PORTVERSION}
 
-MAINTAINER=	amutu@amutu.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Adaptive Communication Environment for C++
 
 LICENSE=	ACE
@@ -27,6 +27,7 @@ MAKEFILE=	GNUmakefile
 USE_LDCONFIG=	yes
 
 CPPFLAGS+=	-I${LOCALBASE}/include
+CPPFLAGS+=	-D_WANT_SEMUN
 LDFLAGS+=	-L${LOCALBASE}/lib
 
 PLIST_SUB=	VERSION="${PORTVERSION}"
@@ -45,7 +46,8 @@ OPTIONS_SUB=		yes
 FLTK_DESC=		FLTK GUI toolkit
 FLTK_LIB_DEPENDS=	libfltk.so:x11-toolkits/fltk
 FLTK_MAKE_ENV=		fl=1
-QT4_USE=		QT4=corelib,gui,moc_build
+QT4_USES=		qt:4
+QT4_USE=		QT=corelib,gui,moc_build
 QT4_MAKE_ENV=		qt=1 qt4=1 QTDIR="${PREFIX}"
 QT4_CPPFLAGS=		-I${QT_INCDIR}
 QT4_LDFLAGS=		-L${QT_LIBDIR}

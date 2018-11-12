@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gtk-update-icon-cache
-PORTVERSION=	2.24.29
+PORTVERSION=	2.24.32
 CATEGORIES=	graphics
 MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 DISTNAME=	gtk+-${PORTVERSION}
@@ -30,6 +30,7 @@ USE_XORG=	xext xrender x11 xinerama xi xrandr xcursor xfixes xdamage \
 PATCHDIR=	${.CURDIR}/../../x11-toolkits/gtk20/files
 CONFIGURE_ARGS=	--enable-static --with-xinput=yes
 BUILD_WRKSRC=	${WRKSRC}/gtk
+
 ALL_TARGET=	${PORTNAME}
 PLIST_FILES=	bin/gtk-update-icon-cache
 #		man/man1/gtk-update-icon-cache.1.gz

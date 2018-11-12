@@ -2,20 +2,19 @@
 # $FreeBSD$
 
 PORTNAME=	super
-PORTVERSION=	3.30.0
-PORTREVISION=	1
+PORTVERSION=	3.30.1
 CATEGORIES=	security sysutils
 MASTER_SITES=	ftp://ftp.ucolick.org/pub/users/will/ \
 		http://www.ucolick.org/~will/RUE/super/
 EXTRACT_SUFX=	-tar.gz
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	egypcio@googlemail.com
 COMMENT=	Allow others to run commands as root
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 LICENSE_FILE_ART10=	${WRKSRC}/Artistic
-LICENSE_FILE_GPLv1=	${WRKSRC}/Copying
+LICENSE_FILE_GPLv1+ =	${WRKSRC}/Copying
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--localstatedir="${PREFIX}/var"

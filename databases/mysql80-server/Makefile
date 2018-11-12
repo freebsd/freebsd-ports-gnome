@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME?=		mysql
-PORTVERSION=		8.0.0
-DISTVERSIONSUFFIX?=	-dmr
-PORTREVISION?=		5
+PORTVERSION=		8.0.12
+PORTREVISION?=		0
 CATEGORIES=		databases ipv6
 MASTER_SITES=		MYSQL/MySQL-8.0
 PKGNAMESUFFIX?=		80-server
@@ -18,8 +17,8 @@ LICENSE=		GPLv2
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}${DISTVERSIONSUFFIX}
 
 SLAVEDIRS=	databases/mysql80-client
-USES=		bison:build cmake:outsource,noninja compiler:c11 compiler:c++11-lib \
-		cpe libedit localbase perl5 shebangfix ssl
+USES=		bison:build cmake:outsource,noninja compiler:c++14-lang \
+		compiler:c++14-lib cpe libedit localbase perl5 shebangfix ssl
 
 USE_PERL5=	run
 
@@ -28,9 +27,13 @@ MY_SECDIR=	/var/db/mysql_secure
 MY_TMPDIR=	/var/db/mysql_tmpdir
 
 LIB_DEPENDS+=	libevent.so:devel/libevent \
-		liblz4.so:archivers/liblz4
+		libicutu.so:devel/icu \
+		liblz4.so:archivers/liblz4 \
+		libre2.so:devel/re2 \
+		libprotobuf.so:devel/protobuf
 
 CMAKE_BUILD_TYPE=	Release
+CFLAGS+=		-fPIC
 
 CMAKE_ARGS+=	-DINSTALL_LAYOUT=FREEBSD \
 		-DINSTALL_LDCONFIGDIR="${LOCALBASE}/libdata/ldconfig" \
@@ -57,6 +60,9 @@ CMAKE_ARGS+=	-DINSTALL_LAYOUT=FREEBSD \
 		-DWITH_LIBEVENT=system \
 		-DWITH_LZ4=system \
 		-DWITH_ZLIB=system \
+		-DWITH_ICU=system \
+		-DWITH_RE2=system \
+		-DWITH_PROTOBUF=system \
 		-DINSTALL_MYSQLTESTDIR=0
 
 SHEBANG_FILES=	scripts/*.pl* scripts/*.sh
@@ -132,6 +138,14 @@ PERFSCHM_SUB_LIST+=		PERFSCHEMRC=""
 PERFSCHM_SUB_LIST_OFF+=		PERFSCHEMRC="--skip-performance-schema"
 FEDERATED_SUB_LIST+=		FEDER="--federated"
 FEDERATED_SUB_LIST_OFF+=	FEDER=""
+.endif
+
+.include <bsd.port.options.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200057
+SUB_LIST+=	LEGACY_LIMITS="@comment " MODERN_LIMITS=""
+.else
+SUB_LIST+=	LEGACY_LIMITS="" MODERN_LIMITS="@comment "
 .endif
 
 .include <bsd.port.pre.mk>

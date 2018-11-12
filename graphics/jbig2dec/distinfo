@@ -1,4 +1,5 @@
-SHA256 (jbig2dec-0.13.tar.gz) = 5aaca0070992cc2e971e3bb2338ee749495613dcecab4c868fc547b4148f5311
-SIZE (jbig2dec-0.13.tar.gz) = 442571
+TIMESTAMP = 1536075971
 SHA256 (jb2streams.tar.gz) = 1b070a15468d186010047b5525b2eb99cdcda655576600d2d8a0d008b80a5ba2
 SIZE (jb2streams.tar.gz) = 1000034
+SHA256 (ArtifexSoftware-jbig2dec-0.15_GH0.tar.gz) = 1bae90922610244334f3d93d7d4f76ba31d8618e2f62c203e8b8e5de7023e4e3
+SIZE (ArtifexSoftware-jbig2dec-0.15_GH0.tar.gz) = 130944

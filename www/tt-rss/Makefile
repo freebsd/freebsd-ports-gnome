@@ -2,25 +2,28 @@
 # $FreeBSD$
 
 PORTNAME=	tt-rss
-PORTVERSION=	2017.06.05
+PORTVERSION=	g20180908
+PORTEPOCH=	1
 CATEGORIES=	www
-MASTER_SITES=	https://tt-rss.org/fox/tt-rss/repository/archive${EXTRACT_SUFX}?ref=${GL_TAGNAME}&num;/
+MASTER_SITES=	https://git.tt-rss.org/git/tt-rss/archive/
+DISTNAME=	${GIT_TAGNAME}
+DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	thierry@FreeBSD.org
 COMMENT=	Tiny Tiny RSS: web-based news feed (RSS/Atom) aggregator
 
 LICENSE=	GPLv2
 
-GL_TAGNAME=	b0113adac42383b8039eb92ccf3ee2ec0ee70346
+GIT_TAGNAME=	5a35b31b89
 
 NO_BUILD=	yes
 NO_ARCH=	yes
 
+USES=		php:cli,web shebangfix gettext-tools
 USE_PHP=	ctype dom fileinfo hash json mbstring pcntl posix session xmlrpc
 REINPLACE_ARGS=	-i ""
-USES=		php:cli,web shebangfix tar:bz2
 SHEBANG_FILES=	lib/dojo-src/rebuild-dojo.sh utils/extract-i18n-js.pl
-WRKSRC=		${WRKDIR}/tt-rss-${GL_TAGNAME}-${GL_TAGNAME}
+WRKSRC=		${WRKDIR}/tt-rss
 
 USE_RC_SUBR=	ttrssd
 
@@ -34,14 +37,14 @@ GD_DESC=	Use OTP QR code generation
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MPGSQL}
-USE_PHP+=	pgsql
+USE_PHP+=	pdo_pgsql pgsql
 DB=		pgsql
 MYSQL=		"\#"
 PGSQL=
 .endif
 
 .if ${PORT_OPTIONS:MMYSQL}
-USE_PHP+=	mysqli
+USE_PHP+=	pdo_mysql mysqli
 DB=		mysql
 MYSQL=
 PGSQL=		"\#"
@@ -58,14 +61,13 @@ USE_PHP+=	gd
 SUB_FILES=	httpd-tt-rss.conf pkg-message
 SUB_LIST=	DB=${DB} WWWOWN=${WWWOWN} MYSQL=${MYSQL} PGSQL=${PGSQL}
 PLIST_SUB=	WWWOWN=${WWWOWN} WWWGRP=${WWWGRP}
-PKGMESSAGE=	${WRKDIR}/pkg-message
 
 PHP2FIX=	config.php-dist update.php update_daemon2.php
 
 SCRIPTS=	update.php update_daemon2.php
 
 pre-configure:
-	${REINPLACE_CMD} -E "1,/define.*VERSION_STATIC/s/([0-9]+\.[0-9]+)/\1 (${GL_TAGNAME})/" ${WRKSRC}/include/version.php
+	${REINPLACE_CMD} -E "1,/define.*VERSION_STATIC/s/([0-9]+\.[0-9]+)/\1 (${GIT_TAGNAME})/" ${WRKSRC}/include/version.php
 .for script in ${PHP2FIX}
 	${REINPLACE_CMD} -e 's|/usr/bin/php|${LOCALBASE}/bin/php|'	\
 		-e 's|/usr/bin/env php| ${LOCALBASE}/bin/php|'		\

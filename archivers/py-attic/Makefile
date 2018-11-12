@@ -3,6 +3,7 @@
 
 PORTNAME=	attic
 PORTVERSION=	0.16
+PORTREVISION=	1
 CATEGORIES=	archivers python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,27 +15,23 @@ COMMENT=	Deduplicating backup program
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack-python>=0.1.10:devel/py-msgpack-python
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack-python>=0.1.10:devel/py-msgpack-python
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=0.1.10:devel/py-msgpack@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=0.1.10:devel/py-msgpack@${PY_FLAVOR}
 
 USES=		python:3.3+ ssl
 USE_PYTHON=	autoplist distutils
 
-STRIP_FILES=	hashindex.so platform_freebsd.so chunker.so crypto.so
 PYDISTUTILS_BUILDPATH=${BUILD_WRKSRC}/build/lib.${OPSYS:tl}-${UNAMER}-${ARCH}-${PYTHON_VER}
+REINPLACE_ARGS=	-i ''
 
-.include <bsd.port.pre.mk>
-
-.if defined(PACKAGE_BUILDING) && !defined(PACKAGE_BUILDING_FLAVORS) && \
-    ${PYTHON_VER} != ${PYTHON_DEFAULT}
-IGNORE=	you have python ${PYTHON_DEFAULT} set as the default, and this needs ${PYTHON_VER}
-.endif
-
-regression-test: build
-	${SETENV} PYTHONPATH="${PYDISTUTILS_BUILDPATH}:${PYTHONPATH}" \
-	  ${PYTHON_CMD} -m attic.testsuite.run
+post-patch:
+	@${REINPLACE_CMD} -e 's|msgpack-python|msgpack|' ${WRKSRC}/setup.py
 
 post-install:
-	${STRIP_CMD} ${STRIP_FILES:S,^,${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/attic/,}
+	@${STRIP_CMD} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/attic/*.so
 
-.include <bsd.port.post.mk>
+do-test:
+	cd ${WRKDIR} && ${SETENV} PYTHONPATH="${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}:${PYTHONPATH}" \
+		${PYTHON_CMD} -m attic.testsuite.run
+
+.include <bsd.port.mk>

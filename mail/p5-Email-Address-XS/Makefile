@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Email-Address-XS
-PORTVERSION=	1.00
+PORTVERSION=	1.04
 CATEGORIES=	mail perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Parse and format RFC 2822 email addresses and groups
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 USE_PERL5=	configure

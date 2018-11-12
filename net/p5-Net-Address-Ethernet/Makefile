@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Net-Address-Ethernet
-PORTVERSION=	1.125
+PORTVERSION=	1.126
 CATEGORIES=	net perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -10,7 +10,7 @@ PKGNAMEPREFIX=	p5-
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Find hardware ethernet address
 
-LICENSE=	ART10 GPLv1
+LICENSE=	ART10 GPLv1+
 LICENSE_COMB=	dual
 
 BUILD_DEPENDS=	p5-Env-Path>=0:devel/p5-Env-Path \

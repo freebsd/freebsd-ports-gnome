@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	actionmailer
-PORTVERSION=	4.2.9
+PORTVERSION=	4.2.10
 CATEGORIES=	mail rubygems
 MASTER_SITES=	RG
 PKGNAMESUFFIX=	4
@@ -19,8 +19,8 @@ RUN_DEPENDS=	rubygem-actionpack4>=${PORTVERSION}:www/rubygem-actionpack4 \
 		rubygem-mail>=2.6.1:mail/rubygem-mail \
 		rubygem-rails-dom-testing1>=1.0.5:textproc/rubygem-rails-dom-testing1
 
+USES=		gem
 NO_ARCH=	yes
 USE_RUBY=	yes
-USES=		gem
 
 .include <bsd.port.mk>

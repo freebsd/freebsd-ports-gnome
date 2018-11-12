@@ -4,7 +4,7 @@
 PORTNAME=	mongo-cxx-driver
 PORTVERSION=	1.1.2
 DISTVERSIONPREFIX=legacy-
-PORTREVISION=	3
+PORTREVISION=	8
 CATEGORIES=	devel
 
 MAINTAINER=	numisemis@yahoo.com
@@ -12,6 +12,10 @@ COMMENT=	MongoDB Legacy C++ Driver
 
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/APACHE-2.0.txt
+
+BROKEN_SSL=	openssl-devel
+BROKEN_SSL_REASON_openssl-devel=	use of undeclared identifier 'BIO_s_file_internal'
+BROKEN_powerpc64=			fails to configure: Checking for C++ library boost_regex... no
 
 LIB_DEPENDS=	libboost_system.so:devel/boost-libs
 
@@ -28,7 +32,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	mongodb
 GH_PROJECT=	mongo-cxx-driver
 
-USES=		execinfo scons
+USES=		scons ssl
 MAKE_ARGS=	--prefix=${STAGEDIR}${PREFIX} \
 		--cc=${CC} \
 		--cxx=${CXX}

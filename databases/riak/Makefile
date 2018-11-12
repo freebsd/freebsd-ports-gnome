@@ -7,10 +7,15 @@ CATEGORIES=	databases
 MASTER_SITES=	http://s3.amazonaws.com/downloads.basho.com/riak/${PORTVERSION:R}/${PORTVERSION}/ \
 		http://downloads.basho.com.s3.amazonaws.com/riak/${PORTVERSION:R}/${PORTVERSION}/
 
-MAINTAINER=	robak@FreeBSD.org
+MAINTAINER=	rm@FreeBSD.org
 COMMENT=	Open source, distributed, noSQL database
 
 LICENSE=	APACHE20
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
+BROKEN_aarch64=	Does not compile: error: Unknown CPU architecture
+BROKEN_powerpc64=	Does not compile: error: Unknown CPU architecture
+BROKEN_sparc64=	Does not compile: Please implement AtomicPointer for this platform
 
 BUILD_DEPENDS=	${LOCALBASE}/lib/erlang15/bin/erlc:lang/erlang-runtime15
 
@@ -41,12 +46,7 @@ RIAK_LIBDIR?=	${PREFIX}/lib/${PORTNAME}/lib
 RIAK_HOMEDIR?=	${PREFIX}/lib/${PORTNAME}
 
 ALL_TARGET=	rel
-MAKE_JOBS_UNSAFE=yes
 MAKE_ENV=	PATH=${LOCALBASE}/lib/erlang15/bin:${PATH}
-
-BROKEN_aarch64=		Does not compile: error: Unknown CPU architecture
-BROKEN_powerpc64=	Does not compile: error: Unknown CPU architecture
-BROKEN_sparc64=		Does not compile: Please implement AtomicPointer for this platform
 
 .include <bsd.port.pre.mk>
 

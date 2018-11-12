@@ -1,18 +1,19 @@
 # $FreeBSD$
 
 PORTNAME=	ktp-desktop-applets
-PORTVERSION=	${KTP_VERSION}
-PORTREVISION=	1
-CATEGORIES=	net-im kde
-MASTER_SITES=	KDE/${KTP_BRANCH}/kde-telepathy/${PORTVERSION}/src
+DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+CATEGORIES=	net-im kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE instant messaging plasma widgets
 
-LIB_DEPENDS=	libktpcommoninternalsprivate.so:net-im/ktp-common-internals
+LIB_DEPENDS=	libKTpCommonInternals.so:net-im/ktp-common-internals
 
-USES=		cmake gettext kde:4 tar:bzip2
-USE_KDE=	kdelibs automoc4
-USE_QT4=	corelib moc_build qmake_build rcc_build uic_build
+USES=		cmake:outsource gettext kde:5 qt:5 tar:xz
+USE_KDE=	ecm plasma-framework windowsystem
+USE_QT=		core dbus gui network qml widgets \
+		buildtools_build qmake_build
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

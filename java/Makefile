@@ -7,7 +7,8 @@
     SUBDIR += avis
     SUBDIR += berkeley-db
     SUBDIR += bluej
-    SUBDIR += bootstrap-openjdk
+    SUBDIR += bootstrap-openjdk6
+    SUBDIR += bootstrap-openjdk8
     SUBDIR += bouncycastle
     SUBDIR += bouncycastle15
     SUBDIR += cacao
@@ -36,7 +37,6 @@
     SUBDIR += intellij-rubymine
     SUBDIR += intellij-ultimate
     SUBDIR += jad
-    SUBDIR += jaf
     SUBDIR += jai
     SUBDIR += jakarta-bcel
     SUBDIR += jakarta-commons-beanutils
@@ -47,6 +47,7 @@
     SUBDIR += jakarta-commons-discovery
     SUBDIR += jakarta-commons-httpclient
     SUBDIR += jakarta-commons-lang
+    SUBDIR += jakarta-commons-lang3
     SUBDIR += jakarta-commons-logging
     SUBDIR += jakarta-commons-pool
     SUBDIR += jakarta-commons-primitives
@@ -54,6 +55,7 @@
     SUBDIR += jakarta-regexp
     SUBDIR += jamvm
     SUBDIR += jasmin
+    SUBDIR += jattach
     SUBDIR += java-checkstyle
     SUBDIR += java-cup
     SUBDIR += java-getopt
@@ -70,11 +72,11 @@
     SUBDIR += jd-gui
     SUBDIR += jdbcpool
     SUBDIR += jdk8-doc
+    SUBDIR += jdk9-doc
     SUBDIR += jdom
     SUBDIR += jflex
     SUBDIR += jfreechart
     SUBDIR += jgraph
-    SUBDIR += jgrapht
     SUBDIR += jgraphx
     SUBDIR += jikes
     SUBDIR += jlex
@@ -90,8 +92,13 @@
     SUBDIR += jxgrabkey
     SUBDIR += langspec
     SUBDIR += lightweight-java-profiler
+    SUBDIR += linux-oracle-jdk10
     SUBDIR += linux-oracle-jdk18
+    SUBDIR += linux-oracle-jdk9
+    SUBDIR += linux-oracle-jre10
     SUBDIR += linux-oracle-jre18
+    SUBDIR += linux-oracle-jre9
+    SUBDIR += linux-oracle-serverjre10
     SUBDIR += mmake
     SUBDIR += mx4j
     SUBDIR += netbeans
@@ -106,6 +113,7 @@
     SUBDIR += openjdk8
     SUBDIR += openjdk8-jre
     SUBDIR += openjfx8-devel
+    SUBDIR += openjfx8-scenebuilder
     SUBDIR += phpeclipse
     SUBDIR += proguard
     SUBDIR += sablevm
@@ -119,6 +127,7 @@
     SUBDIR += veditor
     SUBDIR += visualvm
     SUBDIR += wildfly10
+    SUBDIR += wildfly11
     SUBDIR += wildfly90
     SUBDIR += xdoclet
 

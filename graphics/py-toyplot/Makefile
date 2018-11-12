@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	toyplot
-PORTVERSION=	0.15.1
+PORTVERSION=	0.17.0
 CATEGORIES=	graphics python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,13 +12,13 @@ COMMENT=	Modern plotting toolkit supporting electronic publishing
 
 LICENSE=	BSD3CLAUSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}numpy>=1.8:math/py-numpy \
-		${PYTHON_PKGNAMEPREFIX}colormath>=2.1.1:math/py-colormath \
-		${PYTHON_PKGNAMEPREFIX}multipledispatch>=0.4.7:devel/py-multipledispatch \
-		${PYTHON_PKGNAMEPREFIX}png>=0.0.17:graphics/py-png \
-		${PYTHON_PKGNAMEPREFIX}reportlab>=3.2.0:print/py-reportlab
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}numpy>=1.8:math/py-numpy@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}colormath>=2.1.1:math/py-colormath@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}multipledispatch>=0.4.7:devel/py-multipledispatch@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}png>=0.0.17:graphics/py-png@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}reportlab>=3.2.0:print/py-reportlab@${PY_FLAVOR}
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	autoplist distutils
 
 .include <bsd.port.mk>

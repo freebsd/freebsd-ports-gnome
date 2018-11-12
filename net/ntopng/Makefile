@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	ntopng
-PORTVERSION=	3.0.2017.08.12
+PORTVERSION=	3.6.d201800910
+PORTEPOCH=	1
 CATEGORIES=	net
 
 MAINTAINER=	madpilot@FreeBSD.org
@@ -12,27 +13,28 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	librrd.so:databases/rrdtool \
-		libluajit-5.1.so:lang/luajit \
 		libzmq.so:net/libzmq4 \
 		libcurl.so:ftp/curl \
 		libndpi.so:net/ndpi \
 		libjson-c.so:devel/json-c \
-		libsodium.so:security/libsodium
+		libsodium.so:security/libsodium \
+		libmaxminddb.so:net/libmaxminddb
 BUILD_DEPENDS=  bash:shells/bash
 
-USES=	 	autoreconf cpe gmake libtool localbase mysql pathfix pkgconfig \
+USES=		autoreconf cpe gmake libtool localbase mysql pathfix pkgconfig \
 		shebangfix sqlite ssl
 SUB_FILES=	ntopng-geoipupdate.sh pkg-deinstall
-SHEBANG_FILES=	httpdocs/misc/ntopng-add-user.sh
+SHEBANG_FILES=	httpdocs/misc/ntopng-add-user.sh \
+		httpdocs/misc/ntopng-utils-manage-config.in
 GNU_CONFIGURE=	yes
-USE_LDCONFIG=	yes
+CONFIGURE_ARGS=	--with-ndpi-includes=${LOCALBASE}/include/ndpi
 
 USERS=		ntopng
 GROUPS=		ntopng
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	ntop
-GH_TAGNAME=	8e2a743
+GH_TAGNAME=	96a403a
 
 CPE_VENDOR=	ntop
 
@@ -50,6 +52,8 @@ USE_RC_SUBR=	ntopng
 post-patch:
 	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|' \
 		${WRKSRC}/configure.seed
+	@${REINPLACE_CMD} -e 's|^\(export PREFIX=\).*|\1 ${PREFIX}|' \
+		${WRKSRC}/third-party/LuaJIT-2.1.0-git/Makefile
 	cd ${WRKSRC} && ${SH} autogen.sh
 
 post-install:

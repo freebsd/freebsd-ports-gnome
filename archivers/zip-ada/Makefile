@@ -3,6 +3,7 @@
 
 PORTNAME=	zip-ada
 PORTVERSION=	52
+PORTREVISION=	1
 CATEGORIES=	archivers
 MASTER_SITES=	SF/unzip-ada/
 DISTNAME=	zipada${PORTVERSION}
@@ -43,6 +44,8 @@ DEMOS=		demo_csv_into_zip \
 		test_lz_scramble \
 		test_llhc \
 		test_lz77
+
+OPTIONS_DEFINE=	EXAMPLES
 
 do-build:
 	(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} gnatmake -p -P zipada.gpr)

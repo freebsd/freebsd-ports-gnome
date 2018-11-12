@@ -9,8 +9,13 @@ MASTER_SITES=	LOCAL/madpilot/xearth
 MAINTAINER=	ler@FreeBSD.org
 COMMENT=	Set the root window to the image of earth
 
-USE_XORG=	x11 xext sm ice xt
+LICENSE=	Xearth
+LICENSE_NAME=	Xearth license
+LICENSE_FILE=	${WRKSRC}/README
+LICENSE_PERMS=	dist-mirror no-dist-sell pkg-mirror no-pkg-sell auto-accept
+
 USES=		tar:xz
+USE_XORG=	x11 xext sm ice xt
 PLIST_FILES=	bin/xearth \
 		man/man1/xearth.1.gz \
 		lib/X11/xearth/freebsd.committers.markers \
@@ -18,12 +23,12 @@ PLIST_FILES=	bin/xearth \
 PLIST_DIRS=	lib/X11/xearth
 
 do-install:
-	@${INSTALL_PROGRAM} ${WRKSRC}/xearth ${STAGEDIR}${PREFIX}/bin
-	@${INSTALL_MAN} ${WRKSRC}/xearth.man ${STAGEDIR}${MANPREFIX}/man/man1/xearth.1
+	${INSTALL_PROGRAM} ${WRKSRC}/xearth ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_MAN} ${WRKSRC}/xearth.man ${STAGEDIR}${MANPREFIX}/man/man1/xearth.1
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/X11/xearth
 # Copy the list of FreeBSD sites & committers locations
 .for marker in freebsd.committers.markers freebsd.ftp.markers
-	@${INSTALL_DATA} ${FILESDIR}/${marker} ${STAGEDIR}${PREFIX}/lib/X11/xearth
+	${INSTALL_DATA} ${FILESDIR}/${marker} ${STAGEDIR}${PREFIX}/lib/X11/xearth
 .endfor
 
 .include <bsd.port.mk>

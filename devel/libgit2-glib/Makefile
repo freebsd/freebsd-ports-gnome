@@ -1,8 +1,10 @@
 # Created by: Gustau Perez <gustau.perez@gmail.com>
 # $FreeBSD$
 
+# Also update devel/libgit2, devel/rubygem-rugged, devel/py-pygit2
+
 PORTNAME=	libgit2-glib
-PORTVERSION=	0.25.0
+PORTVERSION=	0.26.0
 PORTREVISION=	1
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
@@ -25,5 +27,7 @@ GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 CONFIGURE_ARGS=	--disable-python
 INSTALL_TARGET=	install-strip
+
+OPTIONS_DEFINE=	DOCS
 
 .include <bsd.port.mk>

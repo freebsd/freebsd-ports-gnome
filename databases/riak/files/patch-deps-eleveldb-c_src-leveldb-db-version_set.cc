@@ -1,5 +1,5 @@
---- deps/eleveldb/c_src/leveldb/db/version_set.cc.orig	2014-04-02 12:26:08.746672588 +0000
-+++ deps/eleveldb/c_src/leveldb/db/version_set.cc	2014-04-02 12:37:06.719627543 +0000
+--- deps/eleveldb/c_src/leveldb/db/version_set.cc.orig	2014-12-04 17:57:13 UTC
++++ deps/eleveldb/c_src/leveldb/db/version_set.cc
 @@ -2,10 +2,12 @@
  // Use of this source code is governed by a BSD-style license that can be
  // found in the LICENSE file. See the AUTHORS file for names of contributors.
@@ -13,7 +13,7 @@
  #include "db/filename.h"
  #include "db/log_reader.h"
  #include "db/log_writer.h"
-@@ -53,13 +55,13 @@
+@@ -56,13 +58,13 @@ static struct
  
  // WARNING: m_OverlappedFiles flags need to match config::kNumOverlapFiles ... until unified
  {

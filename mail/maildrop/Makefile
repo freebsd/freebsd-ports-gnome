@@ -16,7 +16,8 @@
 # MAILDROP_MBOX_DIR=<dir>	Specify DEFAULT mailbox location
 
 PORTNAME=	maildrop
-PORTVERSION=	2.9.1
+PORTVERSION=	2.9.3
+PORTREVISION=	1
 CATEGORIES=	mail
 MASTER_SITES=	SF/courier/${PORTNAME}/${PORTVERSION}
 
@@ -25,7 +26,10 @@ COMMENT=	Mail delivery agent (MDA) with filtering abilities
 
 LICENSE=	GPLv3
 
-USES=		iconv localbase:ldflags perl5 tar:bzip2
+LIB_DEPENDS=	libpcre.so:devel/pcre \
+		libcourier-unicode.so:devel/courier-unicode
+
+USES=		compiler:c++11-lang iconv localbase:ldflags perl5 tar:bzip2
 USE_PERL5=	build
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-syslog=1 \
@@ -35,9 +39,6 @@ CONFIGURE_ARGS=	--enable-syslog=1 \
 INSTALL_TARGET=	install-strip
 
 CONFLICTS=	courier-0.65* libunicode-[0-9]*
-
-LIB_DEPENDS=	libpcre.so:devel/pcre \
-		libcourier-unicode.so:devel/courier-unicode
 
 MAILDROP_LOG_COLUMNS?=	72	# lenght of 'File:' line in log
 
