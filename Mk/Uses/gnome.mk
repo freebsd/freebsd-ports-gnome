@@ -98,7 +98,7 @@ _USE_GNOME_ALL+=dconf evolutiondataserver3 gnomecontrolcenter3 gnomedesktop3 \
 _USE_GNOME_ALL+=atkmm cairomm gconfmm26 glibmm gtkmm20 gtkmm24 \
 		gtkmm30 gtksourceviewmm3 libgdamm5 \
 		libgtksourceviewmm libxml++26 libsigc++12 libsigc++20 \
-		pangomm
+		libsigc++30 pangomm
 
 # glib-mkenums often fails with C locale
 # https://gitlab.gnome.org/GNOME/glib/issues/1430
@@ -164,6 +164,8 @@ libgtksourceviewmm_USE_GNOME_IMPL=	gtksourceview2 gtkmm24
 libsigc++12_LIB_DEPENDS=	libsigc-1.2.so:devel/libsigc++12
 
 libsigc++20_LIB_DEPENDS=	libsigc-2.0.so:devel/libsigc++20
+
+libsigc++30_LIB_DEPENDS=	libsigc-3.0.so:devel/libsigc++30
 
 pangomm_LIB_DEPENDS=	libpangomm-1.4.so:x11-toolkits/pangomm
 pangomm_USE_GNOME_IMPL=	pango glibmm cairomm
