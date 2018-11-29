@@ -36,6 +36,7 @@
     SUBDIR += R-cran-foreach
     SUBDIR += R-cran-gbm
     SUBDIR += R-cran-gdata
+    SUBDIR += R-cran-generics
     SUBDIR += R-cran-glmnet
     SUBDIR += R-cran-glue
     SUBDIR += R-cran-gmodels
@@ -761,7 +762,6 @@
     SUBDIR += gettext-tools
     SUBDIR += gflags
     SUBDIR += ghub
-    SUBDIR += giggle
     SUBDIR += gindent
     SUBDIR += gio-sharp
     SUBDIR += git
@@ -1226,6 +1226,12 @@
     SUBDIR += icu-le-hb
     SUBDIR += icu-lx
     SUBDIR += idutils
+    SUBDIR += ignition-cmake
+    SUBDIR += ignition-common
+    SUBDIR += ignition-msgs
+    SUBDIR += ignition-plugin
+    SUBDIR += ignition-tools
+    SUBDIR += ignition-transport
     SUBDIR += imake
     SUBDIR += inastemp
     SUBDIR += include-what-you-use
@@ -1513,6 +1519,7 @@
     SUBDIR += libmsocket
     SUBDIR += libmtdev
     SUBDIR += libmtrie
+    SUBDIR += libmustache
     SUBDIR += libnaji
     SUBDIR += libnfc
     SUBDIR += libnotify
@@ -1709,6 +1716,7 @@
     SUBDIR += love
     SUBDIR += love07
     SUBDIR += love08
+    SUBDIR += love10
     SUBDIR += love5
     SUBDIR += lpc21isp
     SUBDIR += lrmi
@@ -1785,6 +1793,7 @@
     SUBDIR += mips64-binutils
     SUBDIR += mips64-gcc
     SUBDIR += mips64-xtoolchain-gcc
+    SUBDIR += mir-core
     SUBDIR += mk-configure
     SUBDIR += mkcmd
     SUBDIR += mm
@@ -2889,6 +2898,7 @@
     SUBDIR += p5-Log-Log4perl
     SUBDIR += p5-Log-Log4perl-Appender-RabbitMQ
     SUBDIR += p5-Log-Log4perl-Appender-Socket-UNIX
+    SUBDIR += p5-Log-Log4perl-Layout-JSON
     SUBDIR += p5-Log-Log4perl-Tiny
     SUBDIR += p5-Log-Message
     SUBDIR += p5-Log-Message-Simple
@@ -4068,11 +4078,13 @@
     SUBDIR += pecl-memoize
     SUBDIR += pecl-msgpack
     SUBDIR += pecl-msgpack0
+    SUBDIR += pecl-mustache
     SUBDIR += pecl-ncurses
     SUBDIR += pecl-newt
     SUBDIR += pecl-params
     SUBDIR += pecl-propro
     SUBDIR += pecl-propro2
+    SUBDIR += pecl-psr
     SUBDIR += pecl-pthreads
     SUBDIR += pecl-pthreads2
     SUBDIR += pecl-qb
@@ -4345,6 +4357,7 @@
     SUBDIR += py-amalgamate
     SUBDIR += py-aniso8601
     SUBDIR += py-anonfunc
+    SUBDIR += py-antlr4-python3-runtime
     SUBDIR += py-anyconfig
     SUBDIR += py-anyjson
     SUBDIR += py-apache_conf_parser
@@ -4501,6 +4514,7 @@
     SUBDIR += py-darts.util.lru
     SUBDIR += py-dateutil
     SUBDIR += py-dateutils
+    SUBDIR += py-datrie
     SUBDIR += py-dbus
     SUBDIR += py-ddt
     SUBDIR += py-debtcollector
@@ -4769,6 +4783,7 @@
     SUBDIR += py-msgpack
     SUBDIR += py-multi_key_dict
     SUBDIR += py-multipledispatch
+    SUBDIR += py-multiprocess
     SUBDIR += py-munch
     SUBDIR += py-mwlib
     SUBDIR += py-mwlib.ext
@@ -4776,6 +4791,7 @@
     SUBDIR += py-mx-experimental
     SUBDIR += py-mygpoclient
     SUBDIR += py-mypy
+    SUBDIR += py-mypy_extensions
     SUBDIR += py-nagioscheck
     SUBDIR += py-naiveBayesClassifier
     SUBDIR += py-natsort
@@ -4790,6 +4806,7 @@
     SUBDIR += py-notifier
     SUBDIR += py-notify
     SUBDIR += py-notify2
+    SUBDIR += py-num2words
     SUBDIR += py-numba
     SUBDIR += py-ocempgui
     SUBDIR += py-odfpy
@@ -5698,19 +5715,19 @@
     SUBDIR += rubygem-git
     SUBDIR += rubygem-git-version-bump
     SUBDIR += rubygem-github_api
-    SUBDIR += rubygem-gitlab-sidekiq-fetcher
     SUBDIR += rubygem-gitlab-pygments.rb
+    SUBDIR += rubygem-gitlab-sidekiq-fetcher
     SUBDIR += rubygem-gitlab_git
     SUBDIR += rubygem-gitlab_meta
     SUBDIR += rubygem-glib2
     SUBDIR += rubygem-gobject-introspection
     SUBDIR += rubygem-google-api-client
     SUBDIR += rubygem-google-protobuf
-    SUBDIR += rubygem-google-protobuf351
     SUBDIR += rubygem-googleapis-common-protos
     SUBDIR += rubygem-googleapis-common-protos-types
     SUBDIR += rubygem-graf
     SUBDIR += rubygem-grape
+    SUBDIR += rubygem-grape11
     SUBDIR += rubygem-grape-entity
     SUBDIR += rubygem-grape-path-helpers
     SUBDIR += rubygem-grape-route-helpers
@@ -6007,7 +6024,7 @@
     SUBDIR += rubygem-shoulda-context
     SUBDIR += rubygem-shoulda-matchers
     SUBDIR += rubygem-sidekiq
-    SUBDIR += rubygem-sidekiq-bulk-rails5
+    SUBDIR += rubygem-sidekiq-bulk
     SUBDIR += rubygem-sidekiq-cron
     SUBDIR += rubygem-sidekiq-cron0
     SUBDIR += rubygem-sidekiq-scheduler
@@ -6175,6 +6192,7 @@
     SUBDIR += shedskin
     SUBDIR += shell-toolbox
     SUBDIR += shflags
+    SUBDIR += shfmt
     SUBDIR += shiboken
     SUBDIR += shmap
     SUBDIR += shtk
@@ -6283,6 +6301,7 @@
     SUBDIR += tex-libtexluajit
     SUBDIR += tex-synctex
     SUBDIR += tex-web2c
+    SUBDIR += thonny
     SUBDIR += thrift
     SUBDIR += thrift-c_glib
     SUBDIR += thrift-cpp
@@ -6305,8 +6324,8 @@
     SUBDIR += tortoisehg
     SUBDIR += tpasm
     SUBDIR += trac-bitten
-    SUBDIR += treepy.el
     SUBDIR += tradcpp
+    SUBDIR += treepy.el
     SUBDIR += trio
     SUBDIR += truc
     SUBDIR += ua_parser-core

@@ -53,6 +53,7 @@
     SUBDIR += compat7x
     SUBDIR += compat8x
     SUBDIR += compat9x
+    SUBDIR += console-bridge
     SUBDIR += countrycodes
     SUBDIR += cpuid
     SUBDIR += crosspad
@@ -182,6 +183,7 @@
     SUBDIR += histring
     SUBDIR += hotkeys
     SUBDIR += hulgalugha
+    SUBDIR += ignition-fuel-tools
     SUBDIR += imerge
     SUBDIR += img2xterm
     SUBDIR += ini_file_manager
@@ -493,6 +495,7 @@
     SUBDIR += rubygem-vpim
     SUBDIR += rump
     SUBDIR += saaghar
+    SUBDIR += sdformat
     SUBDIR += seabios
     SUBDIR += sent
     SUBDIR += seq2
@@ -505,6 +508,7 @@
     SUBDIR += sloccount
     SUBDIR += sls
     SUBDIR += smssend
+    SUBDIR += snakemake
     SUBDIR += soapysdr
     SUBDIR += solarized
     SUBDIR += spamcalc
@@ -545,6 +549,8 @@
     SUBDIR += unicode-emoji
     SUBDIR += upclient
     SUBDIR += urbit
+    SUBDIR += urdfdom
+    SUBDIR += urdfdom-headers
     SUBDIR += urh
     SUBDIR += us-zipcodes
     SUBDIR += usbids
