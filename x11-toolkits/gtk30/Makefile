@@ -4,8 +4,7 @@
 # adwaita-icon-theme, gnome-themes-standard and mate-themes
 
 PORTNAME=	gtk
-PORTVERSION=	3.22.30
-PORTREVISION=	3
+PORTVERSION=	3.24.1
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMESUFFIX=	3
@@ -25,6 +24,7 @@ LIB_DEPENDS=	libepoxy.so:graphics/libepoxy \
 		libfreetype.so:print/freetype2 \
 		libharfbuzz.so:print/harfbuzz
 RUN_DEPENDS+=	hicolor-icon-theme>=0:misc/hicolor-icon-theme \
+		gtk-gettext>=0:misc/gtk-gettext \
 		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
 		at-spi2-atk>=0:accessibility/at-spi2-atk \
 		librsvg2>=0:graphics/librsvg2
@@ -44,7 +44,7 @@ CPPFLAGS+=	-fno-omit-frame-pointer
 INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
 
-LIBVERSION=	0.2200.30
+LIBVERSION=	0.2400.1
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
@@ -67,12 +67,12 @@ COLORD_CONFIGURE_ENABLE=colord
 CUPS_LIB_DEPENDS=	libcups.so:print/cups
 CUPS_CONFIGURE_ENABLE=	cups
 
-CLOUDPRINT_DESC=	Cloud printing support
-CLOUDPRINT_CONFIGURE_ENABLE=	cloudprint
-CLOUDPRINT_USE=		gnome=libxml2
-CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
-			libsoup-2.4.so:devel/libsoup \
-			libjson-glib-1.0.so:devel/json-glib
+#CLOUDPRINT_DESC=	Cloud printing support
+#CLOUDPRINT_CONFIGURE_ENABLE=	cloudprint
+#CLOUDPRINT_USE=		gnome=libxml2
+#CLOUDPRINT_LIB_DEPENDS=	librest-0.7.so:devel/librest \
+#			libsoup-2.4.so:devel/libsoup \
+#			libjson-glib-1.0.so:devel/json-glib
 
 # don't explicitly disable debug, this causes segfaults. See ports r437293
 DEBUG_CONFIGURE_ON=	--enable-debug=yes
@@ -84,6 +84,7 @@ WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols \
 WAYLAND_LIB_DEPENDS=	libwayland-egl.so:graphics/wayland \
 			libxkbcommon.so:x11/libxkbcommon
 WAYLAND_RUN_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_USES=		gl
 WAYLAND_USE=		GL=egl
 
 post-patch:

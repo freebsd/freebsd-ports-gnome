@@ -94,6 +94,9 @@ _USE_GNOME_ALL+=dconf evolutiondataserver3 gnomecontrolcenter3 gnomedesktop3 \
 		libgda5-ui libwnck3 metacity nautilus3 \
 		pygobject3 vte3
 
+# GTK/GNOME 4 components
+_USE_GNOME_ALL+=gtk40
+
 # C++ bindings
 _USE_GNOME_ALL+=atkmm cairomm gconfmm26 glibmm gtkmm20 gtkmm24 \
 		gtkmm30 gtksourceviewmm3 libgdamm5 \
@@ -226,6 +229,10 @@ GTK2_VERSION=		2.10.0
 gtk30_LIB_DEPENDS=	libgtk-3.so:x11-toolkits/gtk30
 gtk30_USE_GNOME_IMPL=	atk pango
 GTK3_VERSION=		3.0.0
+
+gtk40_BUILD_DEPENDS=	gtk4>=0:x11-toolkits/gtk40
+gtk40_LIB_DEPENDS=	libgtk-4.so:x11-toolkits/gtk40
+gtk40_RUN_DEPENDS=	gtk4>=0:x11-toolkits/gtk40
 
 libidl_LIB_DEPENDS=	libIDL-2.so:devel/libIDL
 libidl_USE_GNOME_IMPL=	glib20
