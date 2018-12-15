@@ -3,6 +3,7 @@
 
 PORTNAME=	codequery
 PORTVERSION=	0.21.1
+PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
@@ -11,6 +12,9 @@ COMMENT=	Code understanding, browsing and search tool
 
 LICENSE=	MPL20 MIT
 LICENSE_COMB=	multi
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2019-03-15
 LICENSE_FILE_MPL20=	${WRKSRC}/LICENSE.md
 LICENSE_FILE_MIT=	${WRKSRC}/querylib/README.txt
 

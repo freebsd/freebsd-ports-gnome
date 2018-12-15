@@ -33,13 +33,13 @@ USE_XORG=	ice sm x11 xcb xext xfixes xinerama xmu xrandr xt
 CPE_VENDOR=	gnu
 USE_GITHUB=	yes
 GH_ACCOUNT=	emacs-mirror
-GH_TAGNAME=	d281189
+GH_TAGNAME=	712e74a
 
 CONFIGURE_ARGS=	--disable-build-details \
 		--localstatedir=/var \
 		--with-gameuser=games:games \
 		--without-libsystemd \
-		--without-mini-gmp \
+		--without-gpm \
 		--with-wide-int=no
 
 .if ${FLAVOR:U} == nox
@@ -200,7 +200,7 @@ XWIDGETS_LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 XWIDGETS_IMPLIES=	GTK3
 
 EMACS_VER=	27.0.50
-EMACS_REV=	20181126
+EMACS_REV=	20181210
 
 .include <bsd.port.options.mk>
 

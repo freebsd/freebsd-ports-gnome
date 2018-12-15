@@ -3,6 +3,7 @@
 PORTNAME=	libprojectM
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.1.0
+PORTREVISION=	1
 CATEGORIES=	graphics audio
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -17,7 +18,8 @@ LIB_DEPENDS=	libftgl.so:graphics/ftgl \
 		libvisual-0.4.so:graphics/libvisual04
 RUN_DEPENDS=	${LOCALBASE}/include/glm/glm.hpp:math/glm
 
-USES=		autoreconf:build gl gmake libtool localbase:ldflags pkgconfig qt:5
+USES=		autoreconf:build compiler:c++11-lang gl gmake libtool \
+		localbase:ldflags pkgconfig qt:5
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	projectM-visualizer

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rust
-PORTVERSION?=	1.30.1
+PORTVERSION?=	1.31.0
 PORTREVISION?=	0
 CATEGORIES=	lang
 MASTER_SITES=	http://static.rust-lang.org/dist/:src \
@@ -26,7 +26,7 @@ COMMENT=	Language with a focus on memory safety and concurrency
 LICENSE=	APACHE20 \
 		MIT
 LICENSE_COMB=	dual
-# APACHE20 license is standard, see Templates/Licenses/APACHE20
+LICENSE_FILE_APACHE=	${WRKSRC}/LICENSE-APACHE
 LICENSE_FILE_MIT=	${WRKSRC}/LICENSE-MIT
 
 BUILD_DEPENDS=		cmake:devel/cmake
@@ -47,13 +47,13 @@ BROKEN_aarch64=		fails to build: bootstrap compiler crashes
 CONFLICTS_INSTALL?=	rust-nightly
 
 # See WRKSRC/src/stage0.txt for this date and version values.
-BOOTSTRAPS_DATE?=		2018-10-12
+BOOTSTRAPS_DATE?=		2018-10-25
 
-RUST_BOOTSTRAP_VERSION?=	1.29.2
+RUST_BOOTSTRAP_VERSION?=	1.30.0
 RUSTC_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}.tar.gz
 RUST_STD_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}.tar.gz
 
-CARGO_BOOTSTRAP_VERSION?=	0.30.0
+CARGO_BOOTSTRAP_VERSION?=	0.31.0
 CARGO_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/cargo-${CARGO_BOOTSTRAP_VERSION_${ARCH}:U${CARGO_BOOTSTRAP_VERSION}}-${RUST_TARGET}.tar.gz
 
 RUST_CHANNEL=	${PKGNAMESUFFIX:Ustable:S/^-//}
@@ -103,7 +103,7 @@ X_PY_ENV=	HOME="${WRKDIR}" \
 		OPENSSL_DIR="${OPENSSLBASE}"
 X_PY_CMD=	${PYTHON_CMD} ${WRKSRC}/x.py
 
-CRATES_PATCHED_BY_FBSD10_FIX=	src/vendor/libssh2-sys \
+CRATES_PATCHED_BY_FBSD10_FIX?=	src/vendor/libssh2-sys \
 				src/vendor/lzma-sys
 
 pre-fetch:
@@ -194,12 +194,14 @@ CCACHE_VALUE=	"${CCACHE_WRAPPER_PATH:C,/libexec/ccache$,,}/bin/ccache"
 CCACHE_VALUE=	false
 .endif
 
+.if !target(pre-configure)
 pre-configure:
 	@for file in \
 		${WRKSRC}/src/vendor/backtrace-sys/src/libbacktrace/configure \
 		${WRKSRC}/src/vendor/backtrace-sys/src/libbacktrace/config/libtool.m4; do \
 		mv "$$file" "$$file.dont-fix"; \
 	done
+.endif
 
 do-configure:
 	${SED} -E \
@@ -230,12 +232,14 @@ do-configure:
 		fi; \
 	done
 
+.if !target(post-configure)
 post-configure:
 	@for file in \
 		${WRKSRC}/src/vendor/backtrace-sys/src/libbacktrace/configure \
 		${WRKSRC}/src/vendor/backtrace-sys/src/libbacktrace/config/libtool.m4; do \
 		mv "$$file.dont-fix" "$$file"; \
 	done
+.endif
 
 post-configure-DOCS-on:
 	${REINPLACE_CMD} -e 's,%DOCS%,true,' ${WRKSRC}/config.toml

@@ -2,7 +2,11 @@
 
 PORTNAME=	nwchem
 PORTVERSION=	6.8.1.20181107
+PORTREVISION=	1
 CATEGORIES=	science
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${PORTNAME}/commit/
+PATCHFILES=	ce7c387b4f37c70947cb3b41a6beaf8fce628634.patch:-p2
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	High-performance computational chemistry software

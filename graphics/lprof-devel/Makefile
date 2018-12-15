@@ -3,7 +3,7 @@
 
 PORTNAME=	lprof
 PORTVERSION=	20080514
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	graphics
 MASTER_SITES=	http://mirror.amdmi3.ru/distfiles/ \
 		LOCAL/amdmi3
@@ -11,6 +11,9 @@ PKGNAMESUFFIX=	-devel
 
 MAINTAINER=	amdmi3@FreeBSD.org
 COMMENT=	Open source color profiler
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2019-03-15
 
 LIB_DEPENDS=	liblcms.so:graphics/lcms \
 		libtiff.so:graphics/tiff \

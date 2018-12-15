@@ -3,12 +3,15 @@
 
 PORTNAME=	qtiplot
 DISTVERSION=	0.9.8.9
-PORTREVISION=	16
+PORTREVISION=	17
 CATEGORIES=	math science
 MASTER_SITES=	BERLIOS http://soft.proindependent.com/src/
 
 MAINTAINER=	makc@FreeBSD.org
 COMMENT=	Data analysis and scientific plotting
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2019-03-15
 
 LIB_DEPENDS=	libgsl.so:math/gsl \
 		libmuparser.so:math/muparser \

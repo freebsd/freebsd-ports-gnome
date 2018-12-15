@@ -2,7 +2,7 @@
 
 PORTNAME=	libkolab
 PORTVERSION=	0.6.3
-PORTREVISION=	12
+PORTREVISION=	13
 CATEGORIES=	devel kde
 MASTER_SITES=	http://mirror.kolabsys.com/pub/releases/
 
@@ -12,6 +12,9 @@ COMMENT=	Advanced Kolab Object Handling Library
 # The code in kolabformatV2 is LGPL21, but we consider the library
 # itself to be LGPL3-licensed (and so are all the installed headers).
 LICENSE=	LGPL3
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2018-12-31
 
 PORTSCOUT=	limit:^0\.
 

@@ -3,7 +3,7 @@
 
 PORTNAME=	qt4-gui
 PORTVERSION=	1.8.2
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	net-im
 PKGNAMESUFFIX?=	${KDE_SUFFIX}${PKGNAMESUFFIX2}
 
@@ -11,6 +11,9 @@ MAINTAINER=	dinoex@FreeBSD.org
 COMMENT=	Qt plugin for licq
 
 LICENSE=	GPLv2
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2019-03-15
 
 LIB_DEPENDS=	libboost_regex.so:devel/boost-libs
 RUN_DEPENDS=	${LOCALBASE}/lib/licq/protocol_icq.so:${LICQ_PORT}-icq

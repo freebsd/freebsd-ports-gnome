@@ -3,7 +3,7 @@
 
 PORTNAME=	MOOSE-neural-simulator
 DISTVERSION=	3.1.2
-PORTREVISION=	5
+PORTREVISION=	6
 DISTVERSIONSUFFIX=	-382-gc93d23a
 CATEGORIES=	science biology
 
@@ -12,6 +12,9 @@ COMMENT=	Multiphysics Object Oriented Simulation Environment
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENCE
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2019-03-15
 
 LIB_DEPENDS=	libgsl.so:math/gsl \
 		libhdf5.so:science/hdf5 \

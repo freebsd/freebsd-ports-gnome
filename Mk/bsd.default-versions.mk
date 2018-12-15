@@ -45,10 +45,10 @@ FPC_DEFAULT?=		3.0.4
 # Possible values: 50, 60, 70 (to be used when non-base compiler is required)
 LLVM_DEFAULT?=		70
 # Possible values: 5, 6, 7, 8
-GCC_DEFAULT?=		7
+GCC_DEFAULT?=		8
 # Possible values: 7, 8, 9, agpl
 GHOSTSCRIPT_DEFAULT?=	agpl
-# Possible values: 1.8.2
+# Possible values: 1.8.4
 LAZARUS_DEFAULT?=	1.8.4
 .if ${ARCH} == amd64
 # Possible values: c6, c6_64, c7
@@ -64,7 +64,7 @@ MYSQL_DEFAULT?=		5.6
 # Possible values: 5.24, 5.26, 5.28, devel
 .if !exists(${LOCALBASE}/bin/perl) || (!defined(_PORTS_ENV_CHECK) && \
     defined(PACKAGE_BUILDING))
-PERL5_DEFAULT?=		5.26
+PERL5_DEFAULT?=		5.28
 .elif !defined(PERL5_DEFAULT)
 # There's no need to replace development versions, like "5.23" with "devel"
 # because 1) nobody is supposed to use it outside of poudriere, and 2) it must
@@ -78,7 +78,7 @@ PERL5_DEFAULT:=		${_PERL5_FROM_BIN:R}
 .endif
 # Possible values: 9.3, 9.4, 9.5, 9.6, 10, 11
 PGSQL_DEFAULT?=		9.5
-# Possible values: 5.6, 7.0, 7.1, 7.2, 7.3
+# Possible values: 5.6, 7.1, 7.2, 7.3
 PHP_DEFAULT?=		7.2
 # Possible values: 2.7, 3.4, 3.5, 3.6, 3.7
 PYTHON_DEFAULT?=	2.7

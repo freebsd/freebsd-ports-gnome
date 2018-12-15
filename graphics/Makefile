@@ -45,7 +45,6 @@
     SUBDIR += agg
     SUBDIR += alembic
     SUBDIR += alpng
-    SUBDIR += amide
     SUBDIR += ampasACES-container
     SUBDIR += ampasCTL
     SUBDIR += animorph
@@ -87,7 +86,6 @@
     SUBDIR += cal3d
     SUBDIR += camera
     SUBDIR += camerakit
-    SUBDIR += cbrpager
     SUBDIR += cbview
     SUBDIR += cbviewer
     SUBDIR += cegui
@@ -123,6 +121,7 @@
     SUBDIR += darktable
     SUBDIR += dataplot
     SUBDIR += dc20pack
+    SUBDIR += dcmtk
     SUBDIR += dcp2icc
     SUBDIR += dcraw
     SUBDIR += dcraw-m
@@ -152,11 +151,11 @@
     SUBDIR += dmtx-utils
     SUBDIR += drawpile
     SUBDIR += driconf
-    SUBDIR += drm-devel-kmod
+    SUBDIR += drm-current-kmod
+    SUBDIR += drm-fbsd11.2-kmod
+    SUBDIR += drm-fbsd12.0-kmod
     SUBDIR += drm-kmod
     SUBDIR += drm-legacy-kmod
-    SUBDIR += drm-next-kmod
-    SUBDIR += drm-stable-kmod
     SUBDIR += dspdfviewer
     SUBDIR += duhdraw
     SUBDIR += dynamechs
@@ -272,7 +271,6 @@
     SUBDIR += gimp-wavelet-decompose-plugin
     SUBDIR += gimp-wavelet-denoise-plugin
     SUBDIR += gimp-wavelet-sharpen-plugin
-    SUBDIR += gimpfx-foundry
     SUBDIR += giram
     SUBDIR += gkrellkam2
     SUBDIR += gle
@@ -354,7 +352,6 @@
     SUBDIR += guilib
     SUBDIR += gwenview
     SUBDIR += gwenview-kde4
-    SUBDIR += gx
     SUBDIR += hdr_tools
     SUBDIR += hiptext
     SUBDIR += hobbes-icons-xpm
@@ -387,6 +384,7 @@
     SUBDIR += imgv
     SUBDIR += imlib2
     SUBDIR += imlib2_loaders
+    SUBDIR += imlib2-webp
     SUBDIR += impressive
     SUBDIR += imv
     SUBDIR += inkscape
@@ -676,6 +674,7 @@
     SUBDIR += openfx-io
     SUBDIR += openfx-misc
     SUBDIR += opengl-man
+    SUBDIR += opengv
     SUBDIR += openicc-config
     SUBDIR += openimageio
     SUBDIR += openjpeg
@@ -833,8 +832,6 @@
     SUBDIR += php5-ffmpeg
     SUBDIR += php56-exif
     SUBDIR += php56-gd
-    SUBDIR += php70-exif
-    SUBDIR += php70-gd
     SUBDIR += php71-exif
     SUBDIR += php71-gd
     SUBDIR += php72-exif
@@ -990,6 +987,7 @@
     SUBDIR += qt5-svg
     SUBDIR += qt5-wayland
     SUBDIR += qtawesome
+    SUBDIR += qtpbfimageplugin
     SUBDIR += quat
     SUBDIR += quat-gui
     SUBDIR += quesa
@@ -1112,7 +1110,6 @@
     SUBDIR += tinyows
     SUBDIR += tkpng
     SUBDIR += togl
-    SUBDIR += truevision
     SUBDIR += ttygif
     SUBDIR += tulip
     SUBDIR += tumble
@@ -1140,6 +1137,7 @@
     SUBDIR += wayland-protocols
     SUBDIR += waylandpp
     SUBDIR += webp
+    SUBDIR += webp-pixbuf-loader
     SUBDIR += wings
     SUBDIR += wmicons
     SUBDIR += wxsvg

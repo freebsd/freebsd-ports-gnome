@@ -11,6 +11,7 @@
     SUBDIR += blt
     SUBDIR += bwidget
     SUBDIR += c++-gtk-utils
+    SUBDIR += ctk
     SUBDIR += diorite
     SUBDIR += flowcanvas
     SUBDIR += fltk
@@ -286,7 +287,6 @@
     SUBDIR += vte
     SUBDIR += vte-reference
     SUBDIR += vte3
-    SUBDIR += vtkfox
     SUBDIR += wlc
     SUBDIR += wmapp
     SUBDIR += wxgtk28

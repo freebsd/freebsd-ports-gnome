@@ -3,9 +3,10 @@
 
 PORTNAME=	shim
 PORTVERSION=	0.9
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
-MAINTAINER=	egypcio@googlemail.com
+MAINTAINER=	egypcio@FreeBSD.org
 COMMENT=	UEFI Secure Boot shim loader
 
 LICENSE=	BSD2CLAUSE

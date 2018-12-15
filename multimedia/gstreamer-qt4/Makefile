@@ -3,7 +3,7 @@
 
 PORTNAME=	gstreamer
 PORTVERSION=	0.10.3
-PORTREVISION=	12
+PORTREVISION=	13
 CATEGORIES=	multimedia
 MASTER_SITES=	http://gstreamer.freedesktop.org/src/qt-${PORTNAME}/
 PKGNAMESUFFIX=	-qt4
@@ -14,6 +14,9 @@ COMMENT=	Qt4 bindings for GStreamer multimedia library
 
 LICENSE=	LGPL21+
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2019-03-15
 
 LIB_DEPENDS=	libboost_thread.so:devel/boost-libs
 

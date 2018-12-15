@@ -3,7 +3,7 @@
 
 PORTNAME=	adwaita-qt
 DISTVERSION=	1.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	x11-themes
 
 MAINTAINER=	tcberner@FreeBSD.org
@@ -16,6 +16,9 @@ FLAVORS=	qt5 qt4
 FLAVOR?=	${FLAVORS:[1]}
 qt4_PKGNAMESUFFIX=	4
 qt5_PKGNAMESUFFIX=	5
+qt4_DEPRECATED=		Qt4 has been EOL since december 2015
+qt4_EXPIRATION_DATE=	2019-03-15
+
 
 USES=		cmake:outsource compiler:c++11-lib localbase pkgconfig
 .  if ${FLAVOR} == qt4

@@ -2,7 +2,7 @@
 
 PORTNAME=	openstructure
 DISTVERSION=	1.7.1
-PORTREVISION=	7
+PORTREVISION=	9
 CATEGORIES=	science
 MASTER_SITES=	https://git.scicore.unibas.ch/schwede/${PORTNAME}/repository/${DISTVERSION}/archive.tar.gz?dummy=/
 
@@ -11,6 +11,9 @@ COMMENT=	Molecular modelling and visualization environment
 
 LICENSE=	LGPL3
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2019-03-15
 
 BUILD_DEPENDS=	fftw3>0:math/fftw3
 LIB_DEPENDS=	libboost_filesystem.so:devel/boost-libs \

@@ -11,6 +11,7 @@
     SUBDIR += alltray
     SUBDIR += alttab
     SUBDIR += altyo
+    SUBDIR += aminal
     SUBDIR += antimicro
     SUBDIR += appres
     SUBDIR += apwal
@@ -27,7 +28,6 @@
     SUBDIR += blast
     SUBDIR += bmpanel2
     SUBDIR += bricons
-    SUBDIR += brightside
     SUBDIR += brisk-menu
     SUBDIR += cde
     SUBDIR += cinnamon

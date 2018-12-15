@@ -2,9 +2,8 @@
 
 PORTNAME=	lamprop
 PORTVERSION=	3.4
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	science python
-MASTER_SITES=	GH
 
 MAINTAINER=	rsmith@xs4all.nl
 COMMENT=	Calculates properties of fiber reinforced composites

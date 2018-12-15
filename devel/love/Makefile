@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	love
-PORTVERSION=	11.1
+PORTVERSION=	11.2
+PORTREVISION=	1
 CATEGORIES=	devel games
 MASTER_SITES=	https://bitbucket.org/rude/love/downloads/ \
 		http://mirror.amdmi3.ru/distfiles/

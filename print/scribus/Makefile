@@ -3,7 +3,7 @@
 
 PORTNAME=	scribus
 PORTVERSION=	1.4.7
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	print editors
 MASTER_SITES=	SF \
 		http://www.scribus.net/downloads/${PORTVERSION}/
@@ -12,6 +12,9 @@ MAINTAINER=	bsam@FreeBSD.org
 COMMENT=	Comprehensive desktop publishing program
 
 LICENSE=	GPLv2+
+
+DEPRECATED=		Qt4 has been EOL since december 2015
+EXPIRATION_DATE=	2019-03-15
 
 BROKEN_armv6=		fails to build: scribus.cpp:6711:36: assigning to 'double *' from incompatible type 'qreal *'
 BROKEN_armv7=		fails to build: scribus.cpp:6711:36: assigning to 'double *' from incompatible type 'qreal *'

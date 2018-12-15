@@ -3,7 +3,7 @@
 
 PORTNAME=	gnash
 PORTVERSION=	0.8.10
-PORTREVISION=	38
+PORTREVISION=	40
 CATEGORIES=	graphics
 MASTER_SITES=	http://git.savannah.gnu.org/cgit/gnash.git/snapshot/
 DISTNAME=	gnash-2b3bdede0305c4fc3ad21a0a4197330606c9b880
@@ -107,6 +107,8 @@ GNASH_GUIS+=	gtk
 .endif
 
 .if ${PORT_OPTIONS:MKDE4}
+DEPRECATED=	KDE4 is end-of-life
+EXPIRATION_DATE=2018-12-31
 GNASH_GUIS+=	kde4
 USE_QT=		moc_build
 USE_KDE=	kdelibs
