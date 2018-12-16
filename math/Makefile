@@ -175,6 +175,7 @@
     SUBDIR += coin-or-data-stochastic
     SUBDIR += coinmp
     SUBDIR += coinutils
+    SUBDIR += combblas
     SUBDIR += concorde
     SUBDIR += convertall
     SUBDIR += coq
@@ -263,6 +264,7 @@
     SUBDIR += grpn
     SUBDIR += gsl
     SUBDIR += hexcalc
+    SUBDIR += hipmcl
     SUBDIR += hs-Agda
     SUBDIR += hs-Agda-stdlib
     SUBDIR += hs-NumInstances
@@ -691,6 +693,7 @@
     SUBDIR += py-CyLP
     SUBDIR += py-Diofant
     SUBDIR += py-GridDataFormats
+    SUBDIR += py-MutatorMath
     SUBDIR += py-PuLP
     SUBDIR += py-PyMetis
     SUBDIR += py-PySCIPOpt
@@ -755,6 +758,7 @@
     SUBDIR += py-pyFFTW
     SUBDIR += py-pyasp
     SUBDIR += py-pybloom
+    SUBDIR += py-pyclipper
     SUBDIR += py-pycosat
     SUBDIR += py-pygsl
     SUBDIR += py-pygslodeiv2
