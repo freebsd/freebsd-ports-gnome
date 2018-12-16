@@ -173,7 +173,7 @@
     SUBDIR += granulate
     SUBDIR += grc
     SUBDIR += gregexp
-    SUBDIR += gtk-gettext
+    SUBDIR += gtk-common
     SUBDIR += gtkfind
     SUBDIR += gwhich
     SUBDIR += hb
