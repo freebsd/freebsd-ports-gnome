@@ -14,7 +14,7 @@ DIST_SUBDIR=	gnome
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Common gettext files shared between gtk+ versions
 
-USES=		gettext gnome meson python:3.4+,build tar:xz
+USES=		gettext gnome meson pkgconfig python:3.4+,build tar:xz
 USE_GNOME=	gdkpixbuf2 glib20
 
 MESON_ARGS=	-Dprint-backends=file \
