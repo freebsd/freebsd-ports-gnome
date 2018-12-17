@@ -87,7 +87,7 @@ MESON_ARGS+=-Dcloudpriders=false
 
 GSTREAMER_MESON_ON=	-Dmedia=gstreamer
 GSTREAMER_MESON_OFF=	-Dmedia=none
-GSTREAMER_USE=		gstreamer=bad
+GSTREAMER_USE=		gstreamer1=bad
 
 WAYLAND_DESC=		Wayland GDK backend (support Wayland applications)
 WAYLAND_MESON_TRUE=	wayland-backend
