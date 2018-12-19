@@ -50,7 +50,7 @@ OPTIONS_SUB=	yes
 MANPAGES_BUILD_DEPENDS=		docbook-xml>4.1.2:textproc/docbook-xml \
 				docbook-xsl>0:textproc/docbook-xsl
 MANPAGES_USE=			GNOME=libxslt:build
-MANPAGES_MESON_TRUEE=	man
+MANPAGES_MESON_TRUE=	man
 
 .include <bsd.port.pre.mk>
 
@@ -80,13 +80,6 @@ post-patch:
 		-e '/inotify.h/d' \
 		${WRKSRC}/meson.build
 
-do-build-MANPAGES-on:
-.for m in glib gio gobject
-. for file in ${${m}_MAN}
-	cd ${WRKSRC}/docs/reference/${m} && ${GMAKE} ${file}
-. endfor
-.endfor
-
 CODEGENDIR=	${PREFIX}/share/glib-2.0/codegen
 
 post-install:
@@ -101,12 +94,6 @@ post-install:
 		-d ${CODEGENDIR} -f ${CODEGENDIR:S;${PREFIX}/;;} && \
 	${PYTHON_CMD} -O ${PYTHON_LIBDIR}/compileall.py \
 		-d ${CODEGENDIR} -f ${CODEGENDIR:S;${PREFIX}/;;})
-
-post-install-MANPAGES-on:
-.for m in glib gio gobject
-	${INSTALL_MAN} ${${m}_MAN:S|^|${WRKSRC}/docs/reference/${m}/|} \
-		${STAGEDIR}${PREFIX}/man/man1
-.endfor
 
 .include <bsd.port.post.mk>
 
