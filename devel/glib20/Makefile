@@ -94,6 +94,12 @@ post-install:
 		-d ${CODEGENDIR} -f ${CODEGENDIR:S;${PREFIX}/;;} && \
 	${PYTHON_CMD} -O ${PYTHON_LIBDIR}/compileall.py \
 		-d ${CODEGENDIR} -f ${CODEGENDIR:S;${PREFIX}/;;})
+	# install bash completion regardless if bash is present
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/bash-completion/completions
+.for file in gapplication gdbus gio gresource gsettings
+	${INSTALL_DATA} ${WRKSRC}/gio/completion/${file} \
+		${STAGEDIR}${PREFIX}/share/bash-completion/completions/
+.endfor
 
 .include <bsd.port.post.mk>
 
