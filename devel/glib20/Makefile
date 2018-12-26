@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	glib
-PORTVERSION=	2.58.2
+PORTVERSION=	2.59.0
 PORTEPOCH=	1
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome2
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Some useful routines of C programming (current stable version)
@@ -30,11 +30,12 @@ USE_PERL5=	build
 USE_LDCONFIG=	yes
 MESON_ARGS=	-Db_lundef=false \
 		-Dlibmount=false \
-		-Dselinux=false \
+		-Dselinux=disabled \
+		-Dinstalled_tests=false \
 		-Dxattr=false
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
-LIBVERSION=	0.5800.2
+LIBVERSION=	0.5900.0
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 glib_MAN=	gtester.1 gtester-report.1 glib-gettextize.1
@@ -100,6 +101,7 @@ post-install:
 	${INSTALL_DATA} ${WRKSRC}/gio/completion/${file} \
 		${STAGEDIR}${PREFIX}/share/bash-completion/completions/
 .endfor
+	@${RM} -r ${STAGEDIR}${PREFIX}/libexec/installed-tests
 
 .include <bsd.port.post.mk>
 
