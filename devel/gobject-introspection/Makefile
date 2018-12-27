@@ -27,6 +27,7 @@ USES=		bison gettext gnome localbase meson \
 USE_GNOME=	glib20
 USE_LDCONFIG=	yes
 
+BINARY_ALIAS=	python3=${PYTHON_VERSION}
 # Force it to put the .cache in ${WRKSRC} instead of ~/.cache. ports/143260
 MAKE_ENV=	HOME=${WRKDIR}
 
