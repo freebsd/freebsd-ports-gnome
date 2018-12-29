@@ -1,2 +1,3 @@
-SHA256 (gnome3/linuxmint-cinnamon-settings-daemon-2.4.3_GH0.tar.gz) = 1d3c47aad65f9c5064686352012cf1783e51440fa45f4ee030bb33ac66304fd2
-SIZE (gnome3/linuxmint-cinnamon-settings-daemon-2.4.3_GH0.tar.gz) = 2998895
+TIMESTAMP = 1546102982
+SHA256 (gnome/linuxmint-cinnamon-settings-daemon-4.0.3_GH0.tar.gz) = 2b2530c089cf4d1f52510d00b38abc8f037776f61cb02942f3a3bbf242239c4f
+SIZE (gnome/linuxmint-cinnamon-settings-daemon-4.0.3_GH0.tar.gz) = 663186
