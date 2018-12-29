@@ -1,0 +1,12 @@
+Don't automate installing these files hardcoded into /usr
+
+--- meson.build.orig	2018-12-29 17:14:04.076899000 +0100
++++ meson.build	2018-12-29 17:14:11.019389000 +0100
+@@ -29,7 +29,6 @@
+ subdir('libxapp')
+ subdir('po')
+ subdir('pygobject')
+-subdir('files')
+ subdir('schemas')
+ 
+ if get_option('docs')
