@@ -1,2 +1,3 @@
-SHA256 (gnome3/linuxmint-cinnamon-session-2.4.3_GH0.tar.gz) = 07afa992ae1c513b3a1e83a2fd29f83305f697dd45ba04121521ba8a7c005733
-SIZE (gnome3/linuxmint-cinnamon-session-2.4.3_GH0.tar.gz) = 903363
+TIMESTAMP = 1546098330
+SHA256 (gnome/linuxmint-cinnamon-session-4.0.0_GH0.tar.gz) = cfd6d71ff4000f463b36ffa97ab415557d627776eefbe2720d8d954319a5bdc5
+SIZE (gnome/linuxmint-cinnamon-session-4.0.0_GH0.tar.gz) = 198396
