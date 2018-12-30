@@ -1,37 +1,55 @@
 # $FreeBSD$
 
 PORTNAME=	xapps
-PORTVERSION=	1.4.5
-CATEGORIES=	x11
+DISTVERSION=	1.4.5
+CATEGORIES=	x11 gnome
+DIST_SUBDIR=	gnome3
 
-MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	apps
+MAINTAINER=	gnome@freebsd.org
+COMMENT=	Common library for X-Apps project
 
-LICENSE=	GPLv3 LGPL3
-LICENSE_COMB=	multi
+LICENSE=	LGPL3
+LICENSE_FILE?=	${WRKSRC}/COPYING.LESSER
 
-RUN_DEPENDS=	bash:shells/bash
-
-USES=		gnome meson pkgconfig python:3.5+ shebangfix
-USE_GNOME=	cairo gdkpixbuf2 gtk30 introspection libgnomekbd pygobject3
-USE_XORG=	x11
+USES?=		gettext-tools:build gnome meson pkgconfig python:3.5+ \
+		shebangfix
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
 
+SLAVE_PORT?=	no
+
+OPTIONS_DEFINE=	DOCS
+OPTIONS_DEFAULT=	DOCS
+
+DOCS_BUILD_DEPENDS=	gtkdocize:textproc/gtk-doc
+DOCS_MESON_TRUE=	docs
+
+.if ${SLAVE_PORT} == "no"
+BUILD_DEPENDS=	vapigen:lang/vala
+LIB_DEPENDS=	libxklavier.so:x11/libxklavier
+RUN_DEPENDS=	bash:shells/bash
+
+SHEBANG_FILES=	files/usr/bin/* schemas/*.py test-scripts/*
+
+USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 introspection intltool \
+		libgnomekbd
+
 GLIB_SCHEMAS=	org.x.apps.gschema.xml
+INSTALLS_ICONS=	yes
 
-SHEBANG_FILES=	files/usr/bin/pastebin \
-		files/usr/bin/upload-system-info \
-		files/usr/bin/xfce4-set-wallpaper \
-		schemas/meson_install_schemas.py \
-		test-scripts/xapp-icon-chooser-dialog \
-		test-scripts/xapp-kbd-layout-controller
+USE_XORG=	x11
 
-post-install:
-	cd ${WRKSRC}/files/usr/bin && ${COPYTREE_BIN} . \
-		${STAGEDIR}${PREFIX}/bin/
-	cd ${WRKSRC}/files/usr/share && ${COPYTREE_SHARE} . \
-		${STAGEDIR}${PREFIX}/share/
+USE_LDCONFIG=	yes
+
+post-patch:
+	# pygobject split to x11/py-xapps, as consumers need both python versions
+	@${REINPLACE_CMD} -e "/subdir('pygobject')/d" ${WRKSRC}/meson.build
+	# Adhere to our hier(7).
+	@${MKDIR} ${WRKSRC}/files${PREFIX}
+.for d in bin share
+	@${MV} ${WRKSRC}/files/usr/${d} ${WRKSRC}/files${PREFIX}
+.endfor
+.endif
 
 .include <bsd.port.mk>

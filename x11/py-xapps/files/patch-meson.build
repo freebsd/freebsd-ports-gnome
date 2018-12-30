@@ -1,0 +1,37 @@
+Since this was originally a subdirectory build file, the normally-required
+project() call for root build files does not exist. Add a dummy one
+for this port.
+
+Since each port flavour only installs for one Python installation
+at a time, remove the foreach loop. To simplify the logic, the exec
+variable itself will be REINPLACEd by a string literal to the real
+PYTHON_CMD.
+
+--- meson.build.orig	2018-12-11 14:21:46 UTC
++++ meson.build
+@@ -1,16 +1,16 @@
++project('xapp')
++
+ pygobject = dependency('pygobject-3.0',
+     version: '>=2.9.0',
+     required: true,
+ )
+ 
+-foreach exec : ['python2', 'python3']
+-    r = run_command(exec, '-c', 'import gi;print(gi._overridesdir)')
++r = run_command(exec, '-c', 'import gi;print(gi._overridesdir)')
+ 
+-    if r.returncode() == 0
+-        override_dir = r.stdout().strip()
+-        install_data(['XApp.py'],
+-            install_dir: override_dir
+-        )
+-    endif
+-endforeach
++if r.returncode() == 0
++    override_dir = r.stdout().strip()
++    install_data(['XApp.py'],
++        install_dir: override_dir
++    )
++endif
+ 
