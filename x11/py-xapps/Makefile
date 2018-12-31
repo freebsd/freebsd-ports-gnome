@@ -15,7 +15,7 @@ USE_PYTHON=	concurrent flavors
 MASTERDIR=	${.CURDIR}/../xapps
 PATCHDIR=	${.CURDIR}/files
 PLIST=		${.CURDIR}/pkg-plist
-PLIST_FILES=	${PYTHON_SITELIBDIR}/gi/overrides/XApp.py
+PLIST_FILES=	${PYTHONPREFIX_SITELIBDIR}/gi/overrides/XApp.py
 WRKSRC_SUBDIR=	pygobject
 
 SLAVE_PORT=	yes
