@@ -43,13 +43,14 @@ USE_XORG=	x11
 USE_LDCONFIG=	yes
 
 post-patch:
-	# pygobject split to x11/py-xapps, as consumers need both python versions
+	# pygobject split to x11/py-xapps, as consumers (which may
+	# or may not be in ports) can use either python version
 	@${REINPLACE_CMD} -e "/subdir('pygobject')/d" ${WRKSRC}/meson.build
 	# Adhere to our hier(7).
 	@${MKDIR} ${WRKSRC}/files${PREFIX}
-.for d in bin share
-	@${MV} ${WRKSRC}/files/usr/${d} ${WRKSRC}/files${PREFIX}
-.endfor
+.	for d in bin share
+		@${MV} ${WRKSRC}/files/usr/${d} ${WRKSRC}/files${PREFIX}
+.	endfor
 .endif
 
 .include <bsd.port.mk>
