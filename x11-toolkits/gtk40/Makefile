@@ -34,34 +34,33 @@ LIB_DEPENDS=	libepoxy.so:graphics/libepoxy \
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gtk-common>=${PORTVERSION}:misc/gtk-common
 #		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
-#		at-spi2-atk>=0:accessibility/at-spi2-atk
 
-# optional?
-
-USE_LDCONFIG=	yes
-#USE_GNOME=	atk cairo gdkpixbuf2 introspection:build pango
-USE_GNOME=	atk cairo gdkpixbuf2 pango
 USES=		compiler:c11 gettext gnome localbase:ldflags meson \
-		pathfix perl5 python:3.5+ pkgconfig tar:xz
+		pathfix perl5 python:3.5+ pkgconfig shebangfix tar:xz
+
+USE_GNOME=	atk cairo gdkpixbuf2 introspection:build pango
 USE_PERL5=	build
 MESON_ARGS=	-Dwin32-backend=false \
-		-Dvulkan=no \
 		-Dquartz-backend=false \
+		-Dinstall-tests=false \
 		-Db_lundef=false
-#INSTALLS_ICONS=	yes
+USE_LDCONFIG=	yes
 
 LIBVERSION=	0.9400.0
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
+SHEBANG_FILES=	testsuite/tools/simplify.in \
+		testsuite/tools/settings.in
+
 # TODO?
 # meson:
-# documentation, man-pages
+# documentation
 
 #CLOUDPROVIDERS
-OPTIONS_DEFINE=	CUPS COLORD GSTREAMER
-OPTIONS_DEFAULT=CUPS COLORD BROADWAY X11 GSTREAMER
+OPTIONS_DEFINE=	CUPS COLORD VULKAN GSTREAMER
+OPTIONS_DEFAULT=CUPS COLORD BROADWAY VULKAN X11 WAYLAND GSTREAMER
 OPTIONS_SUB=	yes
 
 BACKEND_DESC=	GDK backends
@@ -79,8 +78,8 @@ CUPS_LIB_DEPENDS=	libcups.so:print/cups
 CUPS_MESON_ON=		-Dprint-backends=cups,file
 CUPS_MESON_OFF=		-Dprint-backends=file
 
-MESON_ARGS+=-Dcloudpriders=false
-#CLOUDPROVIDERS_DESC=		Cloudproviders suport
+MESON_ARGS+=-Dcloudproviders=false
+#CLOUDPROVIDERS_DESC=		Cloud support
 #CLOUDPROVIDERS_MESON_TRUE=	cloudproviders
 #CLOUDPROVIDERS_LIB_DEPENDS=	librest-0.7.so:devel/librest \
 #				libjson-glib-1.0.so:devel/json-glib
@@ -89,14 +88,18 @@ GSTREAMER_MESON_ON=	-Dmedia=gstreamer
 GSTREAMER_MESON_OFF=	-Dmedia=none
 GSTREAMER_USE=		gstreamer1=bad
 
+VULKAN_DESC=		Vulkan GSK backend
+VULKAN_MESON_YES=	vulkan
+VULKAN_BUILD_DEPENDS=	${LOCALBASE}/include/vulkan/vulkan.h:devel/vulkan-headers
+VULKAN_LIB_DEPENDS=	libvulkan.so:graphics/vulkan-loader
+
 WAYLAND_DESC=		Wayland GDK backend (support Wayland applications)
 WAYLAND_MESON_TRUE=	wayland-backend
-#WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols \
-#			v4l_compat>=0:multimedia/v4l_compat
-WAYLAND_LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
+WAYLAND_BUILD_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
+WAYLAND_LIB_DEPENDS=	libwayland-egl.so:graphics/wayland \
 			libxkbcommon.so:x11/libxkbcommon
-#WAYLAND_RUN_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
-#WAYLAND_USE=		GL=egl
+WAYLAND_USES=		gl
+WAYLAND_USE=		GL=egl
 
 X11_DESC=		X11 GDK backend (support X.org applications)
 X11_MESON_TRUE=		x11-backend
@@ -105,19 +108,14 @@ X11_USE=		XORG=x11,xcomposite,xcursor,xdamage,xext,xfixes,xi,xinerama,xrandr
 
 DEBUG_DESC=	Debug related
 OPTIONS_GROUP=	DEBUG
-OPTIONS_GROUP_DEBUG=	DEMOS BUILDEXAMPLES BUILDTEST INSTALLTEST
+OPTIONS_GROUP_DEBUG=	DEMOS BUILDTEST
 
 DEMOS_DESC=		Build demos and example programs
 DEMOS_MESON_TRUE=	demos
-
-#BUILDEXAMPLES=	#
+DEMOS_VARS=		INSTALLS_ICONS=yes
 
 BUILDTEST_DESC=		Build tests
 BUILDTEST_MESON_TRUE=	build-tests
-
-INSTALLTEST_DESC=	Install tests
-INSTALLTEST_MESON_TRUE=	install-tests
-INSTALLTEST_IMPLIES=	BUILDTEST
 
 .include <bsd.port.options.mk>
 
@@ -127,18 +125,5 @@ pre-configure:
 		${ECHO_MSG} "${PKGNAME}: Needs cairo with X11 support enabled."; \
 		${FALSE}; \
 	fi
-.if ${PORT_OPTIONS:MWAYLAND}
-	@if ! pkg-config --exists wayland-egl; then \
-		${ECHO_MSG} "${PKGNAME}: Needs mesa-libs build with wayland support enabled."; \
-		${FALSE}; \
-	fi
-.endif
-
-#post-install:
-#	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/gtk-4.0/modules
-#	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/gtk-4.0/${GTK4_VERSION}/engines
-#	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/gtk-4.0/${GTK4_VERSION}/loaders
-##	${INSTALL_MAN} ${WRKSRC}/docs/reference/gtk/gtk-query-immodules-4.0.1 \
-##		${STAGEDIR}${PREFIX}/man/man1
 
 .include <bsd.port.mk>
