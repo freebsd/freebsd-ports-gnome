@@ -21,7 +21,7 @@ FLAVOR?=	${FLAVORS:[1]}
 qt4_LIB_DEPENDS=	libvlc.so:multimedia/vlc-qt4
 qt5_LIB_DEPENDS=	libvlc.so:multimedia/vlc3
 
-USES=		cmake:outsource pkgconfig tar:xz
+USES=		cmake pkgconfig tar:xz
 
 .  if ${FLAVOR} == qt4
 DEPRECATED=	Qt4 has been EOL since december 2015
@@ -34,7 +34,7 @@ PLIST_FILES=	lib/kde4/plugins/phonon_backend/phonon_vlc.so \
 		share/kde4/services/phononbackends/vlc.desktop \
 		${QT_PLUGINDIR}/phonon_backend/libphonon_vlc.so
 .  else
-USES+=		kde:5 qt:5
+USES+=		compiler:c++11-lang kde:5 qt:5
 USE_KDE=	ecm
 USE_QT=		core gui widgets phonon4 \
 		buildtools_build qmake_build

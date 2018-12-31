@@ -56,7 +56,6 @@
     SUBDIR += asmem
     SUBDIR += asmon
     SUBDIR += asusoled
-    SUBDIR += ataidle
     SUBDIR += atf-allwinner
     SUBDIR += atitvout
     SUBDIR += atop
@@ -83,9 +82,7 @@
     SUBDIR += bacula9-client-static
     SUBDIR += bacula9-docs
     SUBDIR += bacula9-server
-    SUBDIR += baloo-kde4
     SUBDIR += baloo-widgets
-    SUBDIR += baloo-widgets-kde4
     SUBDIR += bamf
     SUBDIR += bareos-client
     SUBDIR += bareos-client-static
@@ -100,7 +97,6 @@
     SUBDIR += batmon
     SUBDIR += battmond
     SUBDIR += battray
-    SUBDIR += bbapm
     SUBDIR += bbcp
     SUBDIR += bchunk
     SUBDIR += beadm
@@ -158,7 +154,6 @@
     SUBDIR += cfengine-masterfiles37
     SUBDIR += cfengine-masterfiles38
     SUBDIR += cfengine-masterfiles39
-    SUBDIR += cfengine22
     SUBDIR += cfengine310
     SUBDIR += cfengine311
     SUBDIR += cfengine312
@@ -334,7 +329,6 @@
     SUBDIR += file
     SUBDIR += filedupe
     SUBDIR += filelight
-    SUBDIR += filelight-kde4
     SUBDIR += fileprune
     SUBDIR += fileschanged
     SUBDIR += filetype
@@ -418,7 +412,6 @@
     SUBDIR += gapcmon
     SUBDIR += garcon
     SUBDIR += gather
-    SUBDIR += gcombust
     SUBDIR += gconf-editor
     SUBDIR += gdisk
     SUBDIR += gdmap
@@ -555,38 +548,27 @@
     SUBDIR += jvmtop
     SUBDIR += jx
     SUBDIR += k3b
-    SUBDIR += k3b-kde4
     SUBDIR += k8temp
     SUBDIR += kbackup
-    SUBDIR += kcm-polkit-kde
     SUBDIR += kcron
-    SUBDIR += kcron-kde4
     SUBDIR += kdeadmin
-    SUBDIR += kdeadmin-kde4
     SUBDIR += kdebugsettings
     SUBDIR += kdf
-    SUBDIR += kdf-kde4
     SUBDIR += kdialog
     SUBDIR += kdirstat
     SUBDIR += keyboard-daemon
     SUBDIR += kf5-baloo
     SUBDIR += kf5-kwallet
-    SUBDIR += kfilemetadata-kde4
     SUBDIR += kfloppy
-    SUBDIR += kfloppy-kde4
     SUBDIR += khelpcenter
     SUBDIR += kiconvtool
     SUBDIR += kldfind
     SUBDIR += kldpatch
-    SUBDIR += knutclient-kde4
     SUBDIR += kops
     SUBDIR += krename
-    SUBDIR += kshutdown-kde4
-    SUBDIR += ksysguardd-kde4
+    SUBDIR += kshutdown
     SUBDIR += ksystemlog
-    SUBDIR += ksystemlog-kde4
     SUBDIR += kubectl
-    SUBDIR += kuser-kde4
     SUBDIR += lava
     SUBDIR += lbl-cf
     SUBDIR += lbl-hf
@@ -730,7 +712,6 @@
     SUBDIR += moosefs3-netdump
     SUBDIR += moreutils
     SUBDIR += most
-    SUBDIR += mount.app
     SUBDIR += mountsmb2
     SUBDIR += mpiexec
     SUBDIR += mping
@@ -756,8 +737,6 @@
     SUBDIR += ncdu
     SUBDIR += ndmpd
     SUBDIR += neofetch
-    SUBDIR += nepomuk-core-kde4
-    SUBDIR += nepomuk-widgets-kde4
     SUBDIR += nfcutils
     SUBDIR += nfsping
     SUBDIR += nitrogen
@@ -893,7 +872,6 @@
     SUBDIR += pear-I18Nv2
     SUBDIR += pear-Log
     SUBDIR += pear-Translation2
-    SUBDIR += pecl-mogilefs
     SUBDIR += pecl-proctitle
     SUBDIR += pefs-kmod
     SUBDIR += personality
@@ -935,7 +913,6 @@
     SUBDIR += policykit-qt
     SUBDIR += polkit
     SUBDIR += polkit-gnome
-    SUBDIR += polkit-kde
     SUBDIR += polkit-qt
     SUBDIR += pot
     SUBDIR += potnet
@@ -1255,7 +1232,6 @@
     SUBDIR += swapexd
     SUBDIR += swapmon
     SUBDIR += sweeper
-    SUBDIR += sweeper-kde4
     SUBDIR += symlinks
     SUBDIR += symon
     SUBDIR += synergy
@@ -1266,7 +1242,6 @@
     SUBDIR += sysinfo
     SUBDIR += syslinux
     SUBDIR += syslog-ng
-    SUBDIR += syslog-ng-incubator
     SUBDIR += syslog-ng310
     SUBDIR += syslog-ng311
     SUBDIR += syslog-ng312
@@ -1275,8 +1250,7 @@
     SUBDIR += syslog-ng315
     SUBDIR += syslog-ng317
     SUBDIR += syslog-ng318
-    SUBDIR += syslog-ng36
-    SUBDIR += syslog-ng37
+    SUBDIR += syslog-ng319
     SUBDIR += syslog-ng39
     SUBDIR += syslogger
     SUBDIR += sysrc
@@ -1440,7 +1414,6 @@
     SUBDIR += wmbsdbatt
     SUBDIR += wmcpuload
     SUBDIR += wmcube
-    SUBDIR += wmcube-gdk
     SUBDIR += wmdiskmon
     SUBDIR += wmfire
     SUBDIR += wmflame
@@ -1479,7 +1452,6 @@
     SUBDIR += xfsprogs
     SUBDIR += xin
     SUBDIR += xjobs
-    SUBDIR += xlogmaster
     SUBDIR += xmbmon
     SUBDIR += xorriso
     SUBDIR += xosview

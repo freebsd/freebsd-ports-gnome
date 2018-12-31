@@ -103,7 +103,6 @@
     SUBDIR += geminifonts
     SUBDIR += gentium-basic
     SUBDIR += gentium-plus
-    SUBDIR += gfe
     SUBDIR += gnu-unifont
     SUBDIR += gnu-unifont-ttf
     SUBDIR += gofont-ttf
@@ -193,6 +192,7 @@
     SUBDIR += suxus
     SUBDIR += symbola
     SUBDIR += tamsyn
+    SUBDIR += tamzen
     SUBDIR += terminus-font
     SUBDIR += terminus-ttf
     SUBDIR += tkfont

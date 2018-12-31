@@ -23,7 +23,7 @@
     SUBDIR += alsa-sndio
     SUBDIR += alsa-utils
     SUBDIR += alure
-    SUBDIR += amarok-kde4
+    SUBDIR += amarok
     SUBDIR += amb-plugins
     SUBDIR += ample
     SUBDIR += amsynth
@@ -43,7 +43,6 @@
     SUBDIR += aubio
     SUBDIR += aucatctl
     SUBDIR += audacity
-    SUBDIR += audex
     SUBDIR += audiere
     SUBDIR += audiocd-kio
     SUBDIR += audiotag
@@ -91,7 +90,6 @@
     SUBDIR += cpige
     SUBDIR += cplay
     SUBDIR += cpp-xmms2
-    SUBDIR += creox
     SUBDIR += crip
     SUBDIR += csound
     SUBDIR += csoundqt
@@ -212,11 +210,9 @@
     SUBDIR += ghostess
     SUBDIR += giada
     SUBDIR += gimmix
-    SUBDIR += gkrellmms2
     SUBDIR += gkrellmvolume2
     SUBDIR += glurp
     SUBDIR += gmidimonitor
-    SUBDIR += gmixer
     SUBDIR += gmpc
     SUBDIR += gmpc-alarm
     SUBDIR += gmpc-albumview
@@ -245,7 +241,6 @@
     SUBDIR += goattracker
     SUBDIR += gogglesmm
     SUBDIR += goobox
-    SUBDIR += gqmpeg
     SUBDIR += gqradio
     SUBDIR += gradio
     SUBDIR += gramofile
@@ -300,6 +295,7 @@
     SUBDIR += gstreamer1-plugins-jack
     SUBDIR += gstreamer1-plugins-ladspa
     SUBDIR += gstreamer1-plugins-lame
+    SUBDIR += gstreamer1-plugins-lv2
     SUBDIR += gstreamer1-plugins-modplug
     SUBDIR += gstreamer1-plugins-mpg123
     SUBDIR += gstreamer1-plugins-musepack
@@ -336,6 +332,7 @@
     SUBDIR += hs-OpenAL
     SUBDIR += hs-libmpd
     SUBDIR += hts_engine-API
+    SUBDIR += hvl2wav
     SUBDIR += hydrogen
     SUBDIR += icecast
     SUBDIR += icecast-kh
@@ -366,20 +363,13 @@
     SUBDIR += jmusic
     SUBDIR += jokosher
     SUBDIR += juk
-    SUBDIR += juk-kde4
     SUBDIR += juke
     SUBDIR += julius
     SUBDIR += kexis
-    SUBDIR += kid3-kde4
     SUBDIR += kid3-kf5
-    SUBDIR += kid3-qt4
     SUBDIR += kid3-qt5
-    SUBDIR += kio-audiocd-kde4
     SUBDIR += kmix
-    SUBDIR += kmix-kde4
-    SUBDIR += kscd-kde4
     SUBDIR += ksmp3play
-    SUBDIR += kstreamripper
     SUBDIR += kwave
     SUBDIR += ladspa
     SUBDIR += lame
@@ -417,9 +407,7 @@
     SUBDIR += libid3tag
     SUBDIR += libinstpatch
     SUBDIR += libkcddb
-    SUBDIR += libkcddb-kde4
     SUBDIR += libkcompactdisc
-    SUBDIR += libkcompactdisc-kde4
     SUBDIR += liblastfm
     SUBDIR += liblastfm-qt5
     SUBDIR += liblo
@@ -514,7 +502,6 @@
     SUBDIR += maplay
     SUBDIR += mate-media
     SUBDIR += mbox
-    SUBDIR += mcplay
     SUBDIR += mctoolame-decoder
     SUBDIR += mctoolame-encoder
     SUBDIR += mda-lv2
@@ -528,6 +515,7 @@
     SUBDIR += mixmos
     SUBDIR += mixxx
     SUBDIR += mixxx20
+    SUBDIR += mixxx21
     SUBDIR += mma
     SUBDIR += moc
     SUBDIR += modplugplay
@@ -731,7 +719,6 @@
     SUBDIR += rhvoice
     SUBDIR += rhvoice-dictionary
     SUBDIR += rhythmbox
-    SUBDIR += rio500
     SUBDIR += rioutil
     SUBDIR += ripit
     SUBDIR += ripperx
@@ -756,7 +743,6 @@
     SUBDIR += sc3-plugins
     SUBDIR += schismtracker
     SUBDIR += screcord-lv2
-    SUBDIR += scrobbler
     SUBDIR += sdl2_mixer
     SUBDIR += sdl_mixer
     SUBDIR += sdl_sound
@@ -768,11 +754,9 @@
     SUBDIR += shorten
     SUBDIR += shout
     SUBDIR += shout-idjc
-    SUBDIR += shoutcast
     SUBDIR += sidplay
     SUBDIR += sidplay2
     SUBDIR += sidplayer
-    SUBDIR += simon
     SUBDIR += simplemod
     SUBDIR += siren
     SUBDIR += skype-call-recorder
@@ -789,7 +773,6 @@
     SUBDIR += soundgrab
     SUBDIR += soundkonverter
     SUBDIR += soundtouch
-    SUBDIR += soundtracker
     SUBDIR += sox
     SUBDIR += spc2it
     SUBDIR += specimen
@@ -830,7 +813,6 @@
     SUBDIR += tcd
     SUBDIR += teamspeak3-server
     SUBDIR += tempest_for_eliza
-    SUBDIR += terminatorx
     SUBDIR += thunar-media-tags-plugin
     SUBDIR += timemachine
     SUBDIR += timidity
@@ -880,7 +862,6 @@
     SUBDIR += webrtc-audio-processing
     SUBDIR += whysynth
     SUBDIR += wildmidi
-    SUBDIR += wmalbum
     SUBDIR += wmix
     SUBDIR += wmmp
     SUBDIR += wmrecord
@@ -901,27 +882,8 @@
     SUBDIR += xmix
     SUBDIR += xmixer
     SUBDIR += xmmix
-    SUBDIR += xmms-ahx
-    SUBDIR += xmms-curses
-    SUBDIR += xmms-faad
-    SUBDIR += xmms-festalon
-    SUBDIR += xmms-flac
-    SUBDIR += xmms-gbsplay
-    SUBDIR += xmms-ladspa
-    SUBDIR += xmms-mailnotify
-    SUBDIR += xmms-nas
-    SUBDIR += xmms-nsf
-    SUBDIR += xmms-sapplug
-    SUBDIR += xmms-scrobbler
-    SUBDIR += xmms-sexypsf
-    SUBDIR += xmms-shn
-    SUBDIR += xmms-volnorm
-    SUBDIR += xmms-wavpack
-    SUBDIR += xmms-xf86audio
-    SUBDIR += xmms-xymms
     SUBDIR += xmms2
     SUBDIR += xmms2-scrobbler
-    SUBDIR += xmmsctrl
     SUBDIR += xmp
     SUBDIR += xmradio
     SUBDIR += xoscope

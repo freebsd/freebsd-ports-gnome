@@ -31,7 +31,6 @@
     SUBDIR += eiskaltdcpp-qt
     SUBDIR += frost
     SUBDIR += gkremldk
-    SUBDIR += gnewtellium
     SUBDIR += go-ethereum
     SUBDIR += gtk-gnutella
     SUBDIR += gtorrentviewer
@@ -39,11 +38,9 @@
     SUBDIR += jackett
     SUBDIR += jigdo
     SUBDIR += ktorrent
-    SUBDIR += ktorrent-kde4
     SUBDIR += libbt
     SUBDIR += liberator
     SUBDIR += libktorrent
-    SUBDIR += libktorrent-kde4
     SUBDIR += libpdtp
     SUBDIR += libswift
     SUBDIR += libtorrent
@@ -62,7 +59,6 @@
     SUBDIR += namecoin
     SUBDIR += namecoin-daemon
     SUBDIR += namecoin-utils
-    SUBDIR += napshare
     SUBDIR += ncdc
     SUBDIR += opendchub
     SUBDIR += p5-Net-BitTorrent

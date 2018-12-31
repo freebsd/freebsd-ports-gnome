@@ -109,7 +109,6 @@
     SUBDIR += SCIP
     SUBDIR += SoPlex
     SUBDIR += aamath
-    SUBDIR += abakus
     SUBDIR += abs
     SUBDIR += acalc
     SUBDIR += add
@@ -122,7 +121,6 @@
     SUBDIR += amath
     SUBDIR += ambit
     SUBDIR += analitza
-    SUBDIR += analitza-kde4
     SUBDIR += ann
     SUBDIR += antic
     SUBDIR += apc
@@ -136,6 +134,7 @@
     SUBDIR += asymptote
     SUBDIR += atlas
     SUBDIR += barvinok
+    SUBDIR += bcal
     SUBDIR += biggles
     SUBDIR += blacs
     SUBDIR += blas
@@ -150,7 +149,6 @@
     SUBDIR += calcoo
     SUBDIR += calctool
     SUBDIR += cantor
-    SUBDIR += cantor-kde4
     SUBDIR += cbc
     SUBDIR += cblas
     SUBDIR += ccmath
@@ -231,7 +229,6 @@
     SUBDIR += gambit
     SUBDIR += gap
     SUBDIR += gau2grid
-    SUBDIR += geg
     SUBDIR += geogebra
     SUBDIR += geogram
     SUBDIR += geonext
@@ -261,7 +258,6 @@
     SUBDIR += gretl
     SUBDIR += gri
     SUBDIR += gringo
-    SUBDIR += grpn
     SUBDIR += gsl
     SUBDIR += hexcalc
     SUBDIR += hipmcl
@@ -304,16 +300,11 @@
     SUBDIR += jtransforms
     SUBDIR += jts
     SUBDIR += kalgebra
-    SUBDIR += kalgebra-kde4
     SUBDIR += kbruch
-    SUBDIR += kbruch-kde4
     SUBDIR += kcalc
-    SUBDIR += kcalc-kde4
     SUBDIR += kig
-    SUBDIR += kig-kde4
     SUBDIR += kktdirect
     SUBDIR += kmplot
-    SUBDIR += kmplot-kde4
     SUBDIR += labplot
     SUBDIR += latte-integrale
     SUBDIR += lambda
@@ -380,7 +371,6 @@
     SUBDIR += mpir
     SUBDIR += mppp
     SUBDIR += mprime
-    SUBDIR += msieve
     SUBDIR += mtrxmath
     SUBDIR += multichoose
     SUBDIR += mumps
@@ -404,7 +394,6 @@
     SUBDIR += octave
     SUBDIR += octave-forge
     SUBDIR += octave-forge-actuarial
-    SUBDIR += octave-forge-audio
     SUBDIR += octave-forge-base
     SUBDIR += octave-forge-bim
     SUBDIR += octave-forge-bioinfo
@@ -419,11 +408,9 @@
     SUBDIR += octave-forge-divand
     SUBDIR += octave-forge-doctest
     SUBDIR += octave-forge-econometrics
-    SUBDIR += octave-forge-engine
     SUBDIR += octave-forge-fenv
     SUBDIR += octave-forge-financial
     SUBDIR += octave-forge-fits
-    SUBDIR += octave-forge-fl-core
     SUBDIR += octave-forge-fpl
     SUBDIR += octave-forge-fuzzy-logic-toolkit
     SUBDIR += octave-forge-ga
@@ -465,7 +452,6 @@
     SUBDIR += octave-forge-optiminterp
     SUBDIR += octave-forge-outliers
     SUBDIR += octave-forge-parallel
-    SUBDIR += octave-forge-pdb
     SUBDIR += octave-forge-plot
     SUBDIR += octave-forge-quaternion
     SUBDIR += octave-forge-queueing
@@ -659,12 +645,9 @@
     SUBDIR += pdal
     SUBDIR += pear-Math_BigInteger
     SUBDIR += pear-Math_Combinatorics
-    SUBDIR += pecl-big_int
     SUBDIR += pecl-bitset
     SUBDIR += pecl-bitset2
-    SUBDIR += pecl-stats
     SUBDIR += pecl-stats2
-    SUBDIR += pecl-trader
     SUBDIR += petiga
     SUBDIR += php56-bcmath
     SUBDIR += php56-gmp
@@ -820,7 +803,6 @@
     SUBDIR += rkward-kde
     SUBDIR += rngstreams
     SUBDIR += rocs
-    SUBDIR += rocs-kde4
     SUBDIR += rpcalc
     SUBDIR += rpy
     SUBDIR += rubygem-algebra
@@ -866,7 +848,6 @@
     SUBDIR += sundials
     SUBDIR += superlu
     SUBDIR += superlu_mt
-    SUBDIR += surf
     SUBDIR += symmetrica
     SUBDIR += tablix
     SUBDIR += taucs

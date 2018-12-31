@@ -5,6 +5,75 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20181228:
+  AFFECTS: users of devel/trio
+  AUTHOR: rodrigo@freebsd.org
+
+  Since trio 1.16-1, the shared lib previously misnamed libtrio.so.2.0.0
+  is now named libtrio.so.2 and the symlink libtrio.so is created.
+
+20181222:
+  AFFECTS: users of net/ntopng
+  AUTHOR: madpilot@FreeBSD.org
+
+  Since ntopng 3.7, for security reasons, the default setting for
+  the data directory has been changed to "/var/db/ntopng", and the
+  default user has been changed to "ntopng". This new directory is
+  created automatically by the port/package with correct permissions.
+
+  In order to maintain backward compatibility, if you are already
+  using "/var/tmp/ntopng" as data directory, ntopng keeps using that
+  folder, owned by "nobody". This said, using the old defaults is not
+  recommended and a manual action is required in order to migrate to
+  the new settings, unless you are already using a custom directory:
+
+  # service ntopng stop
+  # mv /var/tmp/ntopng/* /var/db/ntopng/
+  # chown -R ntopng:ntopng /var/db/ntopng
+  # service ntopng start
+
+  Please check hte upstream FAQ for reference:
+	https://www.ntop.org/support/faq/migrate-the-data-directory-in-ntopng/
+
+20181218:
+  AFFECTS: users of misc/openhab2
+  AUTHOR: netchild@FreeBSD.org
+
+  If you upgrade from a previous version, make a backup of
+       /var/db/openhab2
+  and run
+       %%PREFIX%%/libexec/openhab2/runtime/bin/update.freebsd
+
+  Config specific info (changes from 2.3.0 to 2.4.0):
+  Astro Binding: The 'kilometer' and 'miles' channels have been replaced
+                 by a new 'distance' channel
+  Jeelink Binding: The 'currentWatt' and 'maxWatt' channels have been
+                   replaced with 'currentPower' and 'maxPower' channels
+  WeatherUnderground Binding: A bridge has been added on top of the
+                              current things, you need to add a bridge
+                              containing your api-key.
+  ZWave Binding: Major changes have been merged to support features
+                 such as security. All things must be deleted and
+                 re-added. Refer to
+                 https://community.openhab.org/t/zwave-binding-updates/51080
+                 for further information.
+  Synop Binding is now using UoM. 'wind-speed-ms' and 'wind-speed-knots'
+                channels have been replaced by a single 'wind-speed'
+                channel.
+  Amazonechocontrol Binding: The account thing does not have settings
+                             anymore. You have to login at amazon
+                             once again through the proxy server
+                             http(s)://<YourOpenHAB>/amazonechocontrol
+  Milight Binding: The various available bulb types do not appear in
+                   the Paper UI Inbox anymore. The correct bulb need
+                   to be added manually. The bulb "zone" is now a
+                   configuration. Bulb Things need to be recreated
+                   to apply this change.
+  Hue emulation: The item to hue ID mapping is no longer stored in
+                 files, but in the openHAB storage service. You need
+                 to rediscover "devices" in all services that use the
+                 hue emulation (Amazon Echo, Google Home, etc).
+
 20181215:
   AFFECTS: users of sysutils/graylog
   AUTHOR: dch@FreeBSD.org
@@ -31,9 +100,26 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: users of net-im/ejabberd
   AUTHOR: ashish@FreeBSD.org
 
-  There are some new features added in ejabberd 18.12, esp. related to 
+  There are some new features added in ejabberd 18.12, esp. related to
   bookmarks, and XML compression in message archive storage. Please
-  refer to: https://blog.process-one.net/ejabberd-18-12/ 
+  refer to: https://blog.process-one.net/ejabberd-18-12/
+
+20181211:
+  AFFECTS: users of news/inn when upgrading to FreeBSD 12
+  AUTHOR: naddy@FreeBSD.org
+
+  When upgrading from FreeBSD 11 to 12, a change in the size of the
+  ino_t type causes a binary incompatibility in the overview database
+  if the default tradindexed format is used.
+
+  After upgrading the inn package, remove the overview/group.index
+  file and regenerate the history and overview database with
+  makehistory(8) before starting innd.
+
+  # echo '. /usr/local/news/lib/innshellvars && \
+        rm -f $OVERVIEWDIR/group.index && \
+        $NEWSBIN/makehistory -O -s `wc -l <$HISTORY`' | \
+        su -fm news -c '/bin/sh -s'
 
 20181209:
   AFFECTS: users of DRM ports other than graphics/drm-kmod
@@ -59,7 +145,7 @@ you update your ports collection, before attempting any port upgrades.
   If you want to stay with the gtk2 version you need to use "pkg install"
   to install the new gtk2 flavor, pkg will automatically deinstall the
   gtk3 flavors.
- 
+
   If using port, to maintain the gtk2 version, you will need to deinstall
   geany and its plugins and reinstall specifying the gtk2 flavor.
 
@@ -81,7 +167,7 @@ you update your ports collection, before attempting any port upgrades.
   and run
        %%PREFIX%%/libexec/openhab2/runtime/bin/update.freebsd
 
-  Config specific info:
+  Config specific info (changes from 2.2.0 to 2.3.0):
   Nest Binding: The 'camera' Thing Type now has channel groups.
                 Add 'camera#' before the channel ID in the channel UID of
                 existing camera channels. The 'time_to_target_mins' channel
@@ -344,7 +430,7 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: net-mgmt/librenms
   AUTHOR: dvl@FreeBSD.org
 
-  As of version 1.42, to conform with man hier, logs and rrd files have 
+  As of version 1.42, to conform with man hier, logs and rrd files have
   relocated outside the WWW directory. When upgrading from < 1.42 to more
   recent versions, the following steps are required.
 
@@ -390,7 +476,7 @@ you update your ports collection, before attempting any port upgrades.
    > y
 
   Application key [base64:P62La9V........qw=] set successfully.
- 
+
 
 20180901:
   AFFECTS: users of samba46
@@ -438,7 +524,7 @@ you update your ports collection, before attempting any port upgrades.
   datatype per default. To retain support for the XML datatype you should build
   the port and check the XML option in the option dialog. The reason for this
   is the bad security reputation of libxml2.
- 
+
 20180806:
   AFFECTS: www/tt-rss
   AUTHOR: thierry@FreeBSD.org
@@ -525,9 +611,9 @@ you update your ports collection, before attempting any port upgrades.
   escalation by allowing an unprivileged user to connect to the console and
   execute Lua code as the dnsdist user. We therefore decided to refuse any
   connection to the console until a key has been set, so please check that
-  you do set a key before upgrading if you use the console.  
+  you do set a key before upgrading if you use the console.
 
-  For further details read: 
+  For further details read:
   https://blog.powerdns.com/2018/07/10/dnsdist-1-3-2-released/
 
 20180704:
@@ -761,7 +847,7 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: users of databases/pecl-redis
   AUTHOR: daniel@blodan.se
 
-  pecl-redis 4.0.0 breaks backwards compatibility, users 
+  pecl-redis 4.0.0 breaks backwards compatibility, users
   not aware if you are using the changed functionality or not
   should swap to databases/pecl-redis3
 
@@ -1100,9 +1186,9 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: users of x11-toolkits/kf5-kirigami2 and x11/kf5-plasma-framework
   AUTHOR: kde@FreeBSD.org
 
-  Files that were previously installed by kf5-kirigami2 are now installed 
+  Files that were previously installed by kf5-kirigami2 are now installed
   by kf5-plasma-framework. This can lead to a conflict during the upgrade
-  of the packages. 
+  of the packages.
   It is recommended to first remove the package kf5-kirigami2.
 
 20180115:
@@ -1181,7 +1267,7 @@ you update your ports collection, before attempting any port upgrades.
   AFFECTS: users of net-im/ejabberd
   AUTHOR: ashish@FreeBSD.org
 
-  If you are building ejabberd 17.11 on a host, which already has an older 
+  If you are building ejabberd 17.11 on a host, which already has an older
   version of ejabberd installed, then build process will fail with "unknown type
   specifier" errors. As a workaround, please uninstall ejabberd before building
   ejabberd.
@@ -1406,7 +1492,7 @@ you update your ports collection, before attempting any port upgrades.
 
 20171107:
   AFFECTS: users of www/node
-  AUTHOR: bhughes@FreeBSD.org	
+  AUTHOR: bhughes@FreeBSD.org
 
   The www/node port has been updated to node.js v9.0.0, the latest
   upstream release. A new port, www/node8, has been created for the
@@ -1456,7 +1542,7 @@ you update your ports collection, before attempting any port upgrades.
   AUTHOR: brnrd@FreeBSD.org
 
   The configuration of mod_rpaf2 has been heavily modified since version
-  0.6. Have a look at https://github.com/gnif/mod_rpaf/tree/v0.8.4 to 
+  0.6. Have a look at https://github.com/gnif/mod_rpaf/tree/v0.8.4 to
   determine what you need to change in your configuration.
 
 20171031:
@@ -1586,7 +1672,7 @@ you update your ports collection, before attempting any port upgrades.
 
   Users should delete the devel/cmake-modules package and then
   upgrade or reinstall devel/cmake.
- 
+
   All ports have been updated to depend only on CMake.
 
 20170904:

@@ -3,7 +3,7 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	4.1
-PORTREVISION=	1
+PORTREVISION=	3
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio ipv6 net
 MASTER_SITES=	https://ffmpeg.org/releases/
@@ -18,6 +18,7 @@ BUILD_DEPENDS=	nasm:devel/nasm \
 		${LOCALBASE}/bin/as:devel/binutils
 
 HAS_CONFIGURE=	yes
+CONFIGURE_LOG=	ffbuild/config.log
 USES=		compiler:c11 cpe gmake localbase:ldflags perl5 \
 		pkgconfig shebangfix tar:xz
 USE_LDCONFIG=	yes

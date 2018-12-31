@@ -2,7 +2,7 @@
 
 PORTNAME=	falkon
 DISTVERSION=	3.0.0
-PORTREVISION=	2
+PORTREVISION=	4
 CATEGORIES=	www
 MASTER_SITES=	KDE/stable/falkon/${DISTVERSION:R}/src/
 
@@ -12,7 +12,7 @@ COMMENT=	Web browser based on WebKit engine and Qt Framework
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		cmake:outsource desktop-file-utils kde:5 qt:5 ssl tar:xz
+USES=		cmake desktop-file-utils kde:5 qt:5 ssl tar:xz
 USE_KDE=	wallet
 USE_QT=		core dbus declarative gui location network printsupport \
 		sql webchannel webengine widgets x11extras \

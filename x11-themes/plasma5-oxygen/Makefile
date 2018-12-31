@@ -2,7 +2,6 @@
 
 PORTNAME=	oxygen
 DISTVERSION=	${KDE_PLASMA_VERSION}
-PORTREVISION=	2
 CATEGORIES=	x11-themes kde kde-plasma
 
 MAINTAINER=	kde@FreeBSD.org
@@ -13,7 +12,7 @@ LICENSE_COMB=	multi
 LICENSE_FILE=	${WRKSRC}/COPYING
 LICENSE_FILE_LGPL21=	${WRKSRC}/COPYING.LIB
 
-USES=		cmake:outsource compiler:c++11-lib cpe gettext \
+USES=		cmake compiler:c++11-lib cpe gettext \
 		kde:5 pkgconfig qt:5 tar:xz
 USE_LDCONFIG=	yes
 USE_KDE=	auth codecs completion config configwidgets coreaddons decoration ecm \
