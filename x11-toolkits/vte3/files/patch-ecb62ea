@@ -1,0 +1,26 @@
+From ecb62ea5a5b24a5bff38356ab3575b1d9852938b Mon Sep 17 00:00:00 2001
+From: Ting-Wei Lan <lantw@src.gnome.org>
+Date: Sun, 18 Nov 2018 23:09:45 +0800
+Subject: [PATCH] parser: cat: Fix clang build error
+
+seq.param returns int, so param should not be declared as unsigned int.
+---
+ src/parser-cat.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/parser-cat.cc b/src/parser-cat.cc
+index 6be96ed6..9ba4e214 100644
+--- src/parser-cat.cc
++++ src/parser-cat.cc
+@@ -521,7 +521,7 @@ private:
+         {
+                 auto const sgr = seq.param(idx);
+ 
+-                unsigned int param = 1;
++                int param = 1;
+                 /* If we have a subparameter, get it */
+                 if (seq.param_nonfinal(idx))
+                         param = seq.param(idx + 1);
+-- 
+2.18.1
+
