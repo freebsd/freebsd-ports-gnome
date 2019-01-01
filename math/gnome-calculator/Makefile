@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-calculator
-PORTVERSION=	3.28.2
-PORTREVISION=	1
+PORTVERSION=	3.31.3
 CATEGORIES=	math gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -24,7 +23,9 @@ PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c11 gettext gnome localbase:ldflags meson \
 		pkgconfig python:3.6+,build tar:xz
-USE_GNOME=	gtksourceview3 libxml2
+USE_GNOME=	gtksourceview4 libxml2
+
+INSTALLS_ICONS=	yes
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
 GLIB_SCHEMAS=	org.gnome.calculator.gschema.xml
