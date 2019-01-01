@@ -21,7 +21,7 @@ LIB_DEPENDS=	libgnutls.so:security/gnutls \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c++11-lang gettext gmake gnome gperf libtool localbase \
+USES=		compiler:c++17-lang gettext gmake gnome gperf libtool localbase \
 		pathfix pkgconfig tar:xz
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
