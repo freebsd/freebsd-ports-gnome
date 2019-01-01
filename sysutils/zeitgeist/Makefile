@@ -20,17 +20,17 @@ BUILD_DEPENDS=	valac:lang/vala \
 RUN_DEPENDS=	${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-xdg@${PY_FLAVOR} \
 		${PYTHON_SITELIBDIR}/dbus/__init__.py:devel/py-dbus@${PY_FLAVOR}
 
-USES=		gettext gmake gnome pathfix python:2.7 pkgconfig libtool sqlite tar:xz
+USES=		gettext gmake gnome pathfix python:2.7 pkgconfig libtool localbase shebangfix sqlite tar:xz
 USE_GNOME=	intlhack glib20 introspection:build
 
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
 INSTALL_TARGET=	install-strip
 
 CONFIGURE_ARGS=	--disable-fts --disable-telepathy \
 		--disable-downloads-monitor
+
+SHEBANG_FILES=	data/ontology2code
 
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	DATAHUB
