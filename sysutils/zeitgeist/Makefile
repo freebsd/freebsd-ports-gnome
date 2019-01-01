@@ -3,8 +3,7 @@
 # NOTE: please keep zeitgeist in sysutils/qzeitgeist in sync
 
 PORTNAME=	zeitgeist
-PORTVERSION=	0.9.16
-PORTREVISION=	2
+PORTVERSION=	1.0.1
 CATEGORIES=	sysutils
 MASTER_SITES=	https://launchpad.net/${PORTNAME}/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}/${PORTVERSION}/+download/
 
@@ -21,8 +20,9 @@ BUILD_DEPENDS=	valac:lang/vala \
 RUN_DEPENDS=	${PYTHON_SITELIBDIR}/xdg/__init__.py:devel/py-xdg@${PY_FLAVOR} \
 		${PYTHON_SITELIBDIR}/dbus/__init__.py:devel/py-dbus@${PY_FLAVOR}
 
-USES=		gmake gettext pathfix python:2.7 pkgconfig libtool sqlite tar:xz
+USES=		gettext gmake gnome pathfix python:2.7 pkgconfig libtool sqlite tar:xz
 USE_GNOME=	intlhack glib20 introspection:build
+
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -35,13 +35,16 @@ CONFIGURE_ARGS=	--disable-fts --disable-telepathy \
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	DATAHUB
 OPTIONS_DEFAULT=DATAHUB
+
 DATAHUB_LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib
-DATAHUB_USE=	gnome=gtk30
+DATAHUB_USE=	gnome=cairo,gdkpixbuf2,gtk30
 DATAHUB_CONFIGURE_ENABLE=	datahub
 DATAHUB_DESC=	Passive loggers for Zeitgeist
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|python -|${PYTHON_CMD} -|g' \
 		${WRKSRC}/configure
+post-install:
+	@${RM} -r ${STAGEDIR}${PREFIX}/lib/systemd
 
 .include <bsd.port.mk>
