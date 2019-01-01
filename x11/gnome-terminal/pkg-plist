@@ -544,6 +544,8 @@ share/help/sv/gnome-terminal/txt-links.page
 share/help/sv/gnome-terminal/txt-save-text.page
 share/help/sv/gnome-terminal/txt-search.page
 share/help/sv/gnome-terminal/txt-select-text.page
+share/icons/hicolor/scalable/apps/org.gnome.Terminal.svg
+share/icons/hicolor/symbolic/apps/org.gnome.Terminal-symbolic.svg
 share/locale/am/LC_MESSAGES/gnome-terminal.mo
 share/locale/an/LC_MESSAGES/gnome-terminal.mo
 share/locale/ar/LC_MESSAGES/gnome-terminal.mo

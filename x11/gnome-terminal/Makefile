@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-terminal
-PORTVERSION=	3.28.2
+PORTVERSION=	3.31.0
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Terminal component for the GNOME 3 Desktop
