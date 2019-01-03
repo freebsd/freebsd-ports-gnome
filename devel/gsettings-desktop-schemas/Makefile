@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gsettings-desktop-schemas
-PORTVERSION=	3.28.1
+PORTVERSION=	3.31.0.1
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Collection of globally shared GSetting schemas
@@ -15,10 +15,9 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix perl5 pkgconfig tar:xz
+USES=		gettext gnome localbase meson perl5 pkgconfig tar:xz
 USE_PERL5=	build
 USE_GNOME=	intltool glib20 introspection:build
-GNU_CONFIGURE=	yes
 
 GLIB_SCHEMAS=	org.gnome.desktop.a11y.applications.gschema.xml \
 		org.gnome.desktop.a11y.gschema.xml \
@@ -30,7 +29,6 @@ GLIB_SCHEMAS=	org.gnome.desktop.a11y.applications.gschema.xml \
 		org.gnome.desktop.calendar.gschema.xml \
 		org.gnome.desktop.default-applications.gschema.xml \
 		org.gnome.desktop.datetime.gschema.xml \
-		org.gnome.desktop.enums.xml \
 		org.gnome.desktop.input-sources.gschema.xml \
 		org.gnome.desktop.interface.gschema.xml \
 		org.gnome.desktop.lockdown.gschema.xml \
@@ -49,5 +47,9 @@ GLIB_SCHEMAS=	org.gnome.desktop.a11y.applications.gschema.xml \
 		org.gnome.system.locale.gschema.xml \
 		org.gnome.system.location.gschema.xml \
 		org.gnome.system.proxy.gschema.xml
+
+post-install:
+	@${MV} ${STAGEDIR}${PREFIX}/share/pkgconfig \
+		${STAGEDIR}${PREFIX}/libdata/
 
 .include <bsd.port.mk>
