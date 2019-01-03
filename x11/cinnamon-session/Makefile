@@ -26,12 +26,21 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
 
 USE_GNOME=	cairo gdkpixbuf2 gtk30
-USE_XORG=	ice sm x11 xau xcomposite xext xrender xtst
+USE_XORG=	ice sm x11 xau xcomposite xext xrender xtrans xtst
 USE_GL=		gl
 INSTALLS_ICONS=	yes
 
 GLIB_SCHEMAS=	org.cinnamon.SessionManager.gschema.xml
-MESON_ARGS=	-Dwith-gconf=false
 
+OPTIONS_DEFINE=	DOCS GCONF IPV6
+OPTIONS_DEFAULT=	DOCS IPV6
+
+DOCS_BUILD_DEPENDS=	xmlto:textproc/xmlto
+DOCS_MESON_TRUE=	with-docbook
+
+GCONF_USE=		gnome=gconf2
+GCONF_MESON_TRUE=	with-gconf
+
+IPV6_MESON_TRUE=	with-ipv6
 
 .include <bsd.port.mk>
