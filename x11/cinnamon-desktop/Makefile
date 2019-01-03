@@ -11,6 +11,8 @@ COMMENT=	Additional UI API for cinnamon
 
 LICENSE=	GPLv2 LGPL20
 LICENSE_COMB=	multi
+LICENSE_FILE_GPLv2=	${WRKSRC}/COPYING
+LICENSE_FILE_LGPL20=	${WRKSRC}/COPYING.LIB
 
 BUILD_DEPENDS=	xkeyboard-config>=0:x11/xkeyboard-config \
 		libxkbfile>=0:x11/libxkbfile
@@ -51,5 +53,10 @@ GLIB_SCHEMAS=	org.cinnamon.desktop.a11y.applications.gschema.xml \
 		org.cinnamon.desktop.thumbnail-cache.gschema.xml \
 		org.cinnamon.desktop.thumbnailers.gschema.xml \
 		org.cinnamon.desktop.wm.preferences.gschema.xml
+
+OPTIONS_DEFINE=	ALSA
+
+ALSA_LIB_DEPENDS+=	libasound.so:audio/alsa-lib
+ALSA_MESON_TRUE=	alsa
 
 .include <bsd.port.mk>
