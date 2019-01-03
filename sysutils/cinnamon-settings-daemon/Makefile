@@ -9,7 +9,13 @@ DIST_SUBDIR=	gnome
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Cinnamon desktop settings daemon
 
-BUILD_DEPENDS=	cinnamon-session:x11/cinnamon-session
+LICENSE=	GPLv2 LGPL21
+LICENSE_COMB=	multi
+LICENSE_FILE_GPLv2=	${WRKSRC}/COPYING
+LICENSE_FILE_LGPL21=	${WRKSRC}/COPYING.LIB
+
+BUILD_DEPENDS=	cinnamon-session:x11/cinnamon-session \
+		xf86-input-wacom>0:x11-drivers/xf86-input-wacom
 LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 		libpolkit-gobject-1.so:sysutils/polkit \
@@ -25,12 +31,14 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libupower-glib.so:sysutils/upower \
 		libpulse.so:audio/pulseaudio \
-		libnotify.so:devel/libnotify
+		libnotify.so:devel/libnotify \
+		libwacom.so:x11/libwacom \
+		librsvg-2.so:graphics/librsvg2
 RUN_DEPENDS=	cinnamon-session:x11/cinnamon-session
 
-USES=		autoreconf gmake gnome localbase libtool pkgconfig
-USE_GNOME=	cairo gdkpixbuf2 gtk30 libgnomekbd
-USE_XORG=	x11 xext xfixes xi
+USES=		autoreconf gettext-tools gmake gnome localbase libtool pkgconfig
+USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool libgnomekbd
+USE_XORG=	x11 xext xfixes xi xtst
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
@@ -53,6 +61,7 @@ GLIB_SCHEMAS=	org.cinnamon.settings-daemon.enums.xml \
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	CUPS SMARTCARD
 OPTIONS_DEFAULT=CUPS SMARTCARD
+OPTIONS_SUB=	yes
 
 CUPS_CONFIGURE_ENABLE=	cups
 CUPS_LIB_DEPENDS=	libcups.so:print/cups
@@ -64,5 +73,8 @@ SMARTCARD_LIB_DEPENDS=	libnss3.so:security/nss
 post-patch:
 	@${REINPLACE_CMD} -e 's|/etc/gnome|${PREFIX}/etc/gnome|g' \
 		${WRKSRC}/data/org.cinnamon.settings-daemon.plugins.xrandr.gschema.xml.in.in
+	# Adhere to our hier(7).
+	@${MKDIR} -p ${WRKSRC}/files${PREFIX}
+	@${MV} ${WRKSRC}/files/usr/share ${WRKSRC}/files${PREFIX}
 
 .include <bsd.port.mk>
