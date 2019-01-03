@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	pango
-PORTVERSION=	1.42.4
-PORTREVISION=	1
+PORTVERSION=	1.43.0
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome2
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Open-source framework for the layout and rendering of i18n text
@@ -27,24 +26,14 @@ PORTSCOUT=	limitw:1,even
 USES=		compiler:c11 gettext gnome localbase meson pkgconfig tar:xz
 USE_LDCONFIG=	yes
 USE_GNOME=	cairo glib20 introspection:build
+USE_XORG=	x11 xft xrender
 
 VERSION=	1.8.0
-LIBVERSION=	0.4200.3
+LIBVERSION=	0.4300.0
 PLIST_SUB+=     VERSION=${VERSION} LIBVERSION=${LIBVERSION}
 
 FONTSCALE=	${LOCALBASE}/share/fonts/TTF/luximb.ttf
 FONTENCOD=	${LOCALBASE}/share/fonts/encodings/encodings.dir
-
-OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	X11 GTKDOC
-OPTIONS_DEFAULT=X11
-
-GTKDOC_DESC=		Build and install gtk-doc generated documentation
-GTKDOC_MESON_TRUE=	enable_docs
-GTKDOC_BUILD_DEPENDS=	gtk-doc>=0:textproc/gtk-doc
-
-X11_MESON_TRUE=	xft
-X11_USE=	XORG=x11,xft,xrender
 
 pre-configure:
 # .if !exists() evaluates too early before cairo has a chance to be installed
@@ -52,5 +41,9 @@ pre-configure:
 		${ECHO_MSG} "${PKGNAME}: Needs cairo with GLIB (GObject) support enabled."; \
 		${FALSE}; \
 	fi
+
+post-install:
+	@${RM} -r ${STAGEDIR}${PREFIX}/libexec/installed-tests
+	@${RM} -r ${STAGEDIR}${PREFIX}/share/installed-tests
 
 .include <bsd.port.mk>
