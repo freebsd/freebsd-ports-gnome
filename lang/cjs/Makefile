@@ -11,13 +11,14 @@ COMMENT=	JavaScript bindings based on gobject-introspection
 
 LICENSE=		MIT LGPL20+
 LICENSE_COMB=		dual
+LICENSE_FILE_MIT=	${WRKSRC}/COPYING
 LICENSE_FILE_LGPL20+ =	${WRKSRC}/COPYING.LGPL
 
-BUILD_DEPENDS=	dbus>=0:devel/dbus
+BUILD_DEPENDS=	gnome-autogen.sh:devel/gnome-common
 LIB_DEPENDS=	libffi.so:devel/libffi \
 		libmozjs-52.so:lang/spidermonkey52
 
-USES=		autoreconf compiler:c11 libtool gettext gmake gnome pkgconfig
+USES=		autoreconf compiler:c11 gettext libtool gmake gnome pathfix pkgconfig
 USE_GNOME=	cairo gdkpixbuf2 gtk30 introspection
 USE_XORG=	x11 xext
 
