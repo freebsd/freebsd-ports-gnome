@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-shell-extensions
-PORTVERSION=	3.28.1
+PORTVERSION=	3.31.2
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME desktop shell extensions
@@ -26,9 +26,8 @@ USE_LDCONFIG=	yes
 MESON_ARGS=	-Dextension_set=all \
 		-Dclassic_mode=true
 
-GLIB_SCHEMAS=	org.gnome.shell.extensions.auto-move-windows.gschema.xml \
-		org.gnome.shell.extensions.classic-overrides.gschema.xml \
-		org.gnome.shell.extensions.example.gschema.xml \
+GLIB_SCHEMAS=	00_org.gnome.shell.extensions.classic.gschema.override \
+		org.gnome.shell.extensions.auto-move-windows.gschema.xml \
 		org.gnome.shell.extensions.native-window-placement.gschema.xml \
 		org.gnome.shell.extensions.screenshot-window-sizer.gschema.xml \
 		org.gnome.shell.extensions.user-theme.gschema.xml \
