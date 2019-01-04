@@ -2,29 +2,35 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-menus
-PORTVERSION=	2.4.1
-PORTREVISION=	1
+PORTVERSION=	4.0.0
 CATEGORIES=	x11 gnome
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Additional UI API for cinnamon
 
-BUILD_DEPENDS=	gnome-autogen.sh:devel/gnome-common \
-		xkeyboard-config>=0:x11/xkeyboard-config \
-		libxkbfile>=0:x11/libxkbfile
-RUN_DEPENDS=	xkeyboard-config>=0:x11/xkeyboard-config \
-		libxkbfile>=0:x11/libxkbfile
+LICENSE=	GPLv2 LGPL21
+LICENSE_COMB=	multi
+LICENSE_FILE_GPLv2=	${WRKSRC}/COPYING
+LICENSE_FILE_LGPL21=	${WRKSRC}/COPYING.LIB
 
-USES=		autoreconf gettext gmake libtool pathfix pkgconfig \
-		python:2.7 tar:xz
-USE_GNOME=	gnomemenus3 gnomeprefix gtk30 introspection:build
+BUILD_DEPENDS=	gnome-autogen.sh:devel/gnome-common \
+		xkeyboard-config>=0:x11/xkeyboard-config
+RUN_DEPENDS=	xkeyboard-config>=0:x11/xkeyboard-config
+
+USES=		autoreconf gettext-runtime gmake gnome libtool pathfix pkgconfig
+
+USE_GNOME=	gtk30 intltool introspection:build
+
+USE_XORG=	xkbfile
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
+
 USE_LDCONFIG=	yes
+
 GNU_CONFIGURE=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LDFLAGS+=	-L${LOCALBASE}/lib
+
 INSTALL_TARGET=	install-strip
 
 .include <bsd.port.mk>
