@@ -13,8 +13,8 @@ COMMENT=	SOAP (Simple Object Access Protocol) implementation in C
 LICENSE=	LGPL20
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	valac:lang/vala
-BUILD_DEPENDS=	glib-networking>=2.29.18:net/glib-networking
+BUILD_DEPENDS=	valac:lang/vala \
+		glib-networking>=2.29.18:net/glib-networking
 LIB_DEPENDS=	libpsl.so:dns/libpsl
 RUN_DEPENDS=	glib-networking>=2.29.18:net/glib-networking
 
