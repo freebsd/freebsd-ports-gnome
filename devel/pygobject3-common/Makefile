@@ -19,6 +19,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 SLAVE_PORT?=	no
 
+BUILD_DEPENDS=	python3:lang/python3
+
 USES=		meson pkgconfig tar:xz
 
 # this port doesn't work with py-gobject < 2.28.6_2, clungle below
