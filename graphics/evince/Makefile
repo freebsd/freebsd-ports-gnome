@@ -14,6 +14,7 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	itstool:textproc/itstool \
+		appstream-builder:devel/appstream-glib \
 		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 LIB_DEPENDS=	libpoppler-glib.so:graphics/poppler-glib \
