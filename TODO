@@ -4,3 +4,5 @@ gsd: fix build with gudev (includes not passed around)
 evince: upstream patch
 mutter: sort out options and meson args, wayland support and such
 shell: what to do with the browser plugin..
+gdm: update to 3.30, hello patch hell
+pygobject3*: switch to default python3.
