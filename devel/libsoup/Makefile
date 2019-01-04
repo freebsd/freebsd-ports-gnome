@@ -20,7 +20,7 @@ RUN_DEPENDS=	glib-networking>=2.29.18:net/glib-networking
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gnome meson pkgconfig sqlite tar:xz
+USES=		gettext gnome meson pkgconfig sqlite tar:xz
 USE_GNOME=	glib20 libxml2 introspection:build
 
 USE_LDCONFIG=	yes
