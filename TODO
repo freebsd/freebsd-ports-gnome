@@ -2,3 +2,4 @@ spidermonkey60 needs more work + i386 fixes
 pango: make patches for xft split and upstream
 gsd: fix build with gudev (includes not passed around)
 evince: upstream patch
+mutter: sort out options and meson args, wayland support and such
