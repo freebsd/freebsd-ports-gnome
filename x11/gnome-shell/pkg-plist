@@ -2,6 +2,7 @@ bin/gnome-shell
 bin/gnome-shell-extension-prefs
 bin/gnome-shell-extension-tool
 bin/gnome-shell-perf-tool
+etc/xdg/autostart/gnome-shell-overrides-migration.desktop
 lib/gnome-shell/Gvc-1.0.typelib
 lib/gnome-shell/Shell-0.1.typelib
 lib/gnome-shell/ShellMenu-0.1.typelib
@@ -10,15 +11,16 @@ lib/gnome-shell/libgnome-shell-menu.so
 lib/gnome-shell/libgnome-shell.so
 lib/gnome-shell/libgvc.so
 lib/gnome-shell/libst-1.0.so
-%%WEBPLUGIN_DIR%%libgnome-shell-browser-plugin.so
 libexec/gnome-shell-calendar-server
 libexec/gnome-shell-hotplug-sniffer
+libexec/gnome-shell-overrides-migration.sh
 libexec/gnome-shell-perf-helper
 man/man1/gnome-shell.1.gz
 share/GConf/gsettings/gnome-shell-overrides.convert
 share/applications/evolution-calendar.desktop
 share/applications/gnome-shell-extension-prefs.desktop
 share/applications/org.gnome.Shell.desktop
+share/dbus-1/interfaces/org.gnome.Shell.Extensions.xml
 share/dbus-1/interfaces/org.gnome.Shell.PadOsd.xml
 share/dbus-1/interfaces/org.gnome.Shell.Screencast.xml
 share/dbus-1/interfaces/org.gnome.Shell.Screenshot.xml
@@ -31,6 +33,7 @@ share/gnome-control-center/keybindings/50-gnome-shell-system.xml
 %%DATADIR%%/Shell-0.1.gir
 %%DATADIR%%/ShellMenu-0.1.gir
 %%DATADIR%%/St-1.0.gir
+%%DATADIR%%/gnome-shell-dbus-interfaces.gresource
 %%DATADIR%%/gnome-shell-osk-layouts.gresource
 %%DATADIR%%/gnome-shell-theme.gresource
 %%DATADIR%%/perf-background.xml

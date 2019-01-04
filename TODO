@@ -3,3 +3,4 @@ pango: make patches for xft split and upstream
 gsd: fix build with gudev (includes not passed around)
 evince: upstream patch
 mutter: sort out options and meson args, wayland support and such
+shell: what to do with the browser plugin..

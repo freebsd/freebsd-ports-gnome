@@ -13,20 +13,11 @@ Date: Thu, 24 Apr 2014 17:55:56 +0200
 Subject: loginManager: Kill ConsoleKit support
 
 
---- js/misc/loginManager.js.orig	2018-04-05 22:23:32.831383000 +0200
-+++ js/misc/loginManager.js	2018-04-05 22:30:34.647201000 +0200
-@@ -40,15 +40,38 @@ const SystemdLoginSessionIface = '<node> \
- <signal name="Lock" /> \
- <signal name="Unlock" /> \
- <property name="Active" type="b" access="read" /> \
--<method name="SetLockedHint"> \
--    <arg type="b" direction="in"/> \
--</method> \
- </interface> \
- </node>';
- 
- const SystemdLoginManager = Gio.DBusProxy.makeProxyWrapper(SystemdLoginManagerIface);
+--- js/misc/loginManager.js.orig	2018-11-14 00:05:05 UTC
++++ js/misc/loginManager.js
+@@ -17,6 +17,32 @@ const SystemdLoginManager = Gio.DBusProxy.makeProxyWra
  const SystemdLoginSession = Gio.DBusProxy.makeProxyWrapper(SystemdLoginSessionIface);
+ const SystemdLoginUser = Gio.DBusProxy.makeProxyWrapper(SystemdLoginUserIface);
  
 +const ConsoleKitManagerIface = '<node> \
 +<interface name="org.freedesktop.ConsoleKit.Manager"> \
@@ -57,7 +48,7 @@ Subject: loginManager: Kill ConsoleKit support
  function haveSystemd() {
      return GLib.access("/run/systemd/seats", 0) >= 0;
  }
-@@ -78,7 +101,7 @@ function canLock() {
+@@ -46,7 +72,7 @@ function canLock() {
                                                 -1, null);
  
          let version = result.deep_unpack()[0].deep_unpack();
@@ -66,7 +57,7 @@ Subject: loginManager: Kill ConsoleKit support
      } catch(e) {
          return false;
      }
-@@ -96,7 +119,7 @@ function getLoginManager() {
+@@ -64,7 +90,7 @@ function getLoginManager() {
          if (haveSystemd())
              _loginManager = new LoginManagerSystemd();
          else
@@ -75,7 +66,7 @@ Subject: loginManager: Kill ConsoleKit support
      }
  
      return _loginManager;
-@@ -113,6 +136,9 @@ var LoginManagerSystemd = new Lang.Class({
+@@ -84,6 +110,9 @@ var LoginManagerSystemd = new Lang.Class({
                                    this._prepareForSleep.bind(this));
      },
  
@@ -85,7 +76,7 @@ Subject: loginManager: Kill ConsoleKit support
      getCurrentSessionProxy(callback) {
          if (this._currentSession) {
              callback (this._currentSession);
-@@ -188,13 +214,35 @@ var LoginManagerSystemd = new Lang.Class({
+@@ -182,13 +211,35 @@ var LoginManagerSystemd = new Lang.Class({
  });
  Signals.addSignalMethods(LoginManagerSystemd.prototype);
  
@@ -126,7 +117,7 @@ Subject: loginManager: Kill ConsoleKit support
      },
  
      canSuspend(asyncCallback) {
-@@ -214,4 +262,4 @@ var LoginManagerDummy = new Lang.Class({
+@@ -208,4 +259,4 @@ var LoginManagerDummy = new Lang.Class({
          callback(null);
      }
  });
