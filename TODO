@@ -6,7 +6,13 @@ mutter: sort out options and meson args, wayland support and such
 shell: what to do with the browser plugin..
 gdm: update to 3.30, hello patch hell
 pygobject3*: switch to default python3.
+gnome-photos: git workaround and mesonbuild type?
 
 
 find out where gnome-icon-theme (3.12) is used and axe it
+find out where nome-icon-theme-extras (3.12) is used and axe it
 find out where gconf2 is used in GNOME 3 and see if it axeable
+
+figure out what to do with vinagre and vino (former still works?, latter drop from meta)
+
+Update gnome-shell extensions
