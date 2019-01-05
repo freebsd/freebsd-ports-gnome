@@ -43,9 +43,11 @@ INSTALL_TARGET=		install
 
 # should we have strip separate from WITH_DEBUG?
 .if defined(WITH_DEBUG)
-CONFIGURE_ARGS+=	--buildtype debug
+MESON_BUILDTYPE?=	debug
+CONFIGURE_ARGS+=	--buildtype ${MESON_BUILDTYPE}
 .else
-CONFIGURE_ARGS+=	--buildtype release \
+MESON_BUILDTYPE?=	release
+CONFIGURE_ARGS+=	--buildtype ${MESON_BUILDTYPE} \
 			--strip
 .endif
 
