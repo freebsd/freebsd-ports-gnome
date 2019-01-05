@@ -16,7 +16,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		xkeyboard-config>=0:x11/xkeyboard-config \
 		evdev-proto>=0:devel/evdev-proto \
-		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas
+		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas \
+		gnome-settings-daemon>=3.28:sysutils/gnome-settings-daemon
 LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libfribidi.so:converters/fribidi \
 		libxkbcommon.so:x11/libxkbcommon \
@@ -30,7 +31,8 @@ LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libdrm.so:graphics/libdrm
 RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		xkeyboard-config>=0:x11/xkeyboard-config \
-		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas
+		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas \
+		gnome-settings-daemon>=3.28:sysutils/gnome-settings-daemon
 
 TEST_DEPENDS=	bash:shell/bash
 
@@ -59,7 +61,8 @@ MESON_ARGS+=	-Dnative_backend=false
 MESON_ARGS+=	-Dremote_desktop=false
 
 # Wayland deps:
-# Xwayland???
+# Xwayland??? this seems wrong, disable and still require
+BUILD_DEPENDS=	xwayland:x11-servers/xwayland
 MESON_ARGS+=	-Dwayland=false \
 		-Dtests=false
 
