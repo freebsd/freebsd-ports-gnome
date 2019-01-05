@@ -13,7 +13,7 @@ LICENSE=	LGPL21
 BUILD_DEPENDS=	valac:lang/vala
 LIB_DEPENDS=	libgladeui-2.so:devel/glade
 
-USES=		gettext gnome meson
+USES=		gettext gnome meson pkgconfig
 USE_GNOME=	cairo gtk30 introspection:build
 
 USE_GITLAB=	yes
