@@ -38,10 +38,15 @@ RUN_DEPENDS=	geoclue>=0:net/geoclue
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c11 gettext gnome jpeg \
-		localbase meson pkgconfig tar:xz
+		localbase meson pkgconfig python:3.4+,build tar:xz
 USE_GNOME=	cairo gnomedesktop3 gtk30 libxml2
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
+
+# wut, otherwise git is needed ..., maybe this is fixed for stable releases
+MESON_BUILDTYPE=	plain
+
+BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
 GLIB_SCHEMAS=	org.gnome.photos.gschema.xml
 
