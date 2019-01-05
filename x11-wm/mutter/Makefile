@@ -62,7 +62,7 @@ MESON_ARGS+=	-Dremote_desktop=false
 
 # Wayland deps:
 # Xwayland??? this seems wrong, disable and still require
-BUILD_DEPENDS=	xwayland:x11-servers/xwayland
+BUILD_DEPENDS=	Xwayland:x11-servers/xwayland
 MESON_ARGS+=	-Dwayland=false \
 		-Dtests=false
 
