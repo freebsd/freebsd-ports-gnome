@@ -54,6 +54,10 @@ USE_LDCONFIG=	yes
 # udev support when using the X11 backend
 MESON_ARGS+=	-Dudev=false
 
+# tests break in poudrere (probably needs xorg-server)
+MESON_ARGS+=	-Dcogl_tests=false \
+		-Dclutter_tests=false
+
 #needs systemd
 MESON_ARGS+=	-Dnative_backend=false
 
@@ -62,7 +66,8 @@ MESON_ARGS+=	-Dremote_desktop=false
 
 # Wayland deps:
 # Xwayland??? this seems wrong, disable and still require
-BUILD_DEPENDS+=	Xwayland:x11-servers/xwayland
+BUILD_DEPENDS+=	Xwayland:x11-servers/xwayland \
+		cvt:x11-servers/xorg-server
 MESON_ARGS+=	-Dwayland=false \
 		-Dtests=false
 
