@@ -48,7 +48,6 @@
     SUBDIR += belier
     SUBDIR += bfbtester
     SUBDIR += binwalk
-    SUBDIR += bitwarden-ruby
     SUBDIR += blindelephant
     SUBDIR += boringssl
     SUBDIR += botan110
@@ -315,6 +314,7 @@
     SUBDIR += krb5
     SUBDIR += krb5-115
     SUBDIR += krb5-116
+    SUBDIR += krb5-117
     SUBDIR += krb5-appl
     SUBDIR += krb5-devel
     SUBDIR += kripp
@@ -827,16 +827,11 @@
     SUBDIR += pecl-pam
     SUBDIR += pecl-scrypt
     SUBDIR += pecl-ssh2
-    SUBDIR += pecl-ssh2-0
     SUBDIR += peda
     SUBDIR += pev
     SUBDIR += pgpdump
     SUBDIR += pgpgpg
     SUBDIR += pgpin
-    SUBDIR += php56-filter
-    SUBDIR += php56-hash
-    SUBDIR += php56-mcrypt
-    SUBDIR += php56-openssl
     SUBDIR += php71-filter
     SUBDIR += php71-hash
     SUBDIR += php71-mcrypt

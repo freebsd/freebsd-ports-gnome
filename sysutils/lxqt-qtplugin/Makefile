@@ -3,7 +3,7 @@
 
 PORTNAME=	lxqt-qtplugin
 PORTVERSION=	0.13.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	sysutils
 MASTER_SITES=	LXQT
 
@@ -13,7 +13,7 @@ COMMENT=	LXQt system integration plugin for Qt
 LICENSE=	LGPL21+
 
 LIB_DEPENDS=	libdbusmenu-qt5.so:devel/libdbusmenu-qt@qt5 \
-		libfm.so:x11/libfm \
+		libfm.so:x11/libfm@gtk2 \
 		libmenu-cache.so:x11/menu-cache \
 		libexif.so:graphics/libexif
 

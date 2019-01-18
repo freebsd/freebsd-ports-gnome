@@ -3,7 +3,7 @@
 
 PORTNAME=	code_saturne
 PORTVERSION=	5.3.1
-PORTREVISION=	1
+PORTREVISION=	3
 DISTVERSIONPREFIX=	v
 CATEGORIES=	science parallel
 
@@ -12,7 +12,6 @@ COMMENT=	EDF's general purpose Computational Fluid Dynamics (CFD) software
 
 LICENSE=	GPLv2
 
-BUILD_DEPENDS=	python:lang/python
 LIB_DEPENDS=	libsysinfo.so:devel/libsysinfo	\
 		libcgns.so:science/cgnslib	\
 		libhdf5.so:science/hdf5		\
@@ -32,6 +31,9 @@ USE_PYQT=	core gui sip widgets xml_build
 CPPFLAGS+=	-I${LOCALBASE}/include -I${LOCALBASE}/include/libxml2
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
+BINARY_ALIAS=	python=${PYTHON_CMD} \
+		pyrcc5=pyrcc5-${PYTHON_VER} \
+		pyuic5=pyuic5-${PYTHON_VER}
 
 OPTIONS_DEFINE=		DOCS EXAMPLES ATLAS BATCH MPI
 OPTIONS_DEFAULT=	BATCH MPI METIS
@@ -72,7 +74,8 @@ USE_TEX=	tex:build
 BUILD_DEPENDS+=	fig2dev:print/transfig		\
 		doxygen:devel/doxygen		\
 		dot:graphics/graphviz		\
-		sphinx-build:textproc/py-sphinx@${PY_FLAVOR}
+		sphinx-build-${PYTHON_VER}:textproc/py-sphinx@${PY_FLAVOR}
+BINARY_ALIAS+=	sphinx-build=sphinx-build-${PYTHON_VER}
 ALL_TARGET=	all pdf
 DOCS=		AUTHORS ChangeLog README
 .endif

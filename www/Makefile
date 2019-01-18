@@ -382,6 +382,7 @@
     SUBDIR += mediawiki127
     SUBDIR += mediawiki130
     SUBDIR += mediawiki131
+    SUBDIR += mediawiki132
     SUBDIR += mergelog
     SUBDIR += mgstat
     SUBDIR += mhonarc
@@ -434,7 +435,6 @@
     SUBDIR += mod_gnutls
     SUBDIR += mod_gzip2
     SUBDIR += mod_h264_streaming
-    SUBDIR += mod_http2-devel
     SUBDIR += mod_jk
     SUBDIR += mod_layout22
     SUBDIR += mod_limitipconn2
@@ -447,7 +447,6 @@
     SUBDIR += mod_mpm_itk
     SUBDIR += mod_pagespeed
     SUBDIR += mod_perl2
-    SUBDIR += mod_php56
     SUBDIR += mod_php71
     SUBDIR += mod_php72
     SUBDIR += mod_php73
@@ -539,6 +538,7 @@
     SUBDIR += nuvolaplayer-yandex-music
     SUBDIR += nuvolaplayer-youtube
     SUBDIR += obhttpd
+    SUBDIR += onionbalance
     SUBDIR += onionshare
     SUBDIR += opencart
     SUBDIR += opera
@@ -806,6 +806,7 @@
     SUBDIR += p5-Corona
     SUBDIR += p5-Dancer
     SUBDIR += p5-Dancer-Logger-Log4perl
+    SUBDIR += p5-Dancer-Plugin-CORS
     SUBDIR += p5-Dancer-Plugin-ExtDirect
     SUBDIR += p5-Dancer-Plugin-Feed
     SUBDIR += p5-Dancer-Plugin-FlashMessage
@@ -844,6 +845,7 @@
     SUBDIR += p5-Furl
     SUBDIR += p5-FurlX-Coro
     SUBDIR += p5-Gantry
+    SUBDIR += p5-Gazelle
     SUBDIR += p5-Geo-Caching
     SUBDIR += p5-Google-Search
     SUBDIR += p5-Gtk2-WebKit
@@ -1313,6 +1315,7 @@
     SUBDIR += p5-WWW-Shorten-isgd
     SUBDIR += p5-WWW-SourceForge
     SUBDIR += p5-WWW-Spinn3r
+    SUBDIR += p5-WWW-Telegram-BotAPI
     SUBDIR += p5-WWW-TV
     SUBDIR += p5-WWW-TWSMS
     SUBDIR += p5-WWW-TinySong
@@ -1349,6 +1352,7 @@
     SUBDIR += p5-WebService-Simple
     SUBDIR += p5-WebService-Technorati
     SUBDIR += p5-WebService-YouTube
+    SUBDIR += p5-Woothee
     SUBDIR += p5-WordPress-XMLRPC
     SUBDIR += p5-Yahoo-Search
     SUBDIR += p5-chklinks
@@ -1426,9 +1430,6 @@
     SUBDIR += phalcon
     SUBDIR += photo_gallery
     SUBDIR += php-screw
-    SUBDIR += php56-opcache
-    SUBDIR += php56-session
-    SUBDIR += php56-tidy
     SUBDIR += php71-opcache
     SUBDIR += php71-session
     SUBDIR += php71-tidy
@@ -1478,6 +1479,7 @@
     SUBDIR += py-aioh2
     SUBDIR += py-aiohttp
     SUBDIR += py-aiohttp-wsgi
+    SUBDIR += py-aiohttp2
     SUBDIR += py-albatross
     SUBDIR += py-amf
     SUBDIR += py-apachelog
@@ -1507,6 +1509,7 @@
     SUBDIR += py-collective.easytemplate
     SUBDIR += py-collective.templateengines
     SUBDIR += py-cookies
+    SUBDIR += py-css-parser
     SUBDIR += py-cssmin
     SUBDIR += py-cssselect
     SUBDIR += py-cssutils
@@ -1892,6 +1895,7 @@
     SUBDIR += qt5-webkit
     SUBDIR += qt5-websockets
     SUBDIR += qt5-websockets-qml
+    SUBDIR += qt5-webview
     SUBDIR += quark
     SUBDIR += qupzilla-qt4
     SUBDIR += qupzilla-qt5
@@ -2394,7 +2398,6 @@
     SUBDIR += varnish-modules
     SUBDIR += varnish-nagios
     SUBDIR += varnish4
-    SUBDIR += varnish5
     SUBDIR += varnish6
     SUBDIR += vdr-plugin-live
     SUBDIR += vdradmin-am
@@ -2540,6 +2543,7 @@
     SUBDIR += xshttpd
     SUBDIR += xshttpd-devel
     SUBDIR += xsp
+    SUBDIR += wml
     SUBDIR += yabb
     SUBDIR += yanopaste
     SUBDIR += yarn

@@ -12,11 +12,10 @@ COMMENT=	Grassroots DICOM library
 
 LICENSE=	BSD3CLAUSE
 
-BUILD_DEPENDS=	pkgconf:devel/pkgconf
 LIB_DEPENDS=	libopenjp2.so:graphics/openjpeg \
 		libexpat.so:textproc/expat2
 
-USES=		alias cmake compiler:c++11-lang tar:bzip2 ssl
+USES=		alias cmake compiler:c++11-lang pkgconfig tar:bzip2 ssl
 
 OPTIONS_DEFINE=		VTK6
 OPTIONS_SUB=		yes
@@ -34,7 +33,6 @@ GDCM_PATCH=	8
 # Change this whenever VTK is updated
 VTK6_VERSION=	6.2
 
-USES=		alias cmake tar:bzip2 ssl
 USE_LDCONFIG=	yes
 CFLAGS+=	-I${LOCALBASE}/include
 CMAKE_ARGS=	-DGDCM_USE_SYSTEM_OPENSSL:BOOL=ON \

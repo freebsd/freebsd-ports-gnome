@@ -2,7 +2,7 @@
 
 PORTNAME=	cbindgen
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.6.7
+DISTVERSION=	0.6.8
 PORTREVISION=	1
 CATEGORIES=	devel
 PKGNAMEPREFIX=	rust-
@@ -12,7 +12,7 @@ COMMENT=	Generate C bindings from Rust code
 
 LICENSE=	MPL20
 
-RUN_DEPENDS=	cargo:lang/rust
+RUN_DEPENDS=	cargo:lang/${RUST_DEFAULT}
 
 USES=		cargo
 USE_GITHUB=	yes
@@ -45,7 +45,7 @@ CARGO_CRATES=	ansi_term-0.11.0 \
 		serde_json-1.0.19 \
 		strsim-0.7.0 \
 		syn-0.13.11 \
-		syn-0.14.1 \
+		syn-0.15.23 \
 		tempfile-3.0.3 \
 		termion-1.5.1 \
 		textwrap-0.9.0 \

@@ -2,8 +2,8 @@
 
 PORTNAME=	kimagemapeditor
 DISTVERSION=	${KDE_APPLICATIONS_VERSION}
+PORTREVISION=	1
 CATEGORIES=	graphics kde kde-applications
-PKGNAMESUFFIX=	# hack: uses kde:4 but we don't want the pkgname suffix
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	KDE generator of HTML image maps

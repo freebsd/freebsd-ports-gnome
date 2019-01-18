@@ -3,7 +3,7 @@
 
 PORTNAME=	phonon
 PORTVERSION=	4.9.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	multimedia kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTNAME}-backend-${PHONON_PLUGIN}/${DISTVERSION}
 DISTNAME=	${PORTNAME}-backend-${PHONON_PLUGIN}-${DISTVERSION}
@@ -31,8 +31,7 @@ USE_XORG=	x11
 .  if ${FLAVOR} == qt4
 DEPRECATED=	Qt4 has been EOL since december 2015
 EXPIRATION_DATE=2019-03-15
-USES+=		kde:4 qt:4
-USE_KDE=	automoc4
+USES+=		qt:4
 USE_QT=		corelib gui opengl phonon \
 		qmake_build moc_build rcc_build uic_build
 .  else

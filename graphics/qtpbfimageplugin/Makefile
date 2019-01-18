@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	qtpbfimageplugin
-DISTVERSION=	1.1
+PORTVERSION=	1.2
+PORTREVISION=	1
 CATEGORIES=	graphics
 
 MAINTAINER=	sikmir@gmail.com
@@ -12,7 +13,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libprotobuf-lite.so:devel/protobuf
 
-USES=		gl qmake qt:5
+USES=		compiler:c++11-lang gl qmake qt:5
 USE_QT=		core gui buildtools_build
 USE_GL=		gl
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}

@@ -2,7 +2,7 @@
 
 PORTNAME=	simplescreenrecorder
 DISTVERSION=	0.3.11
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	multimedia
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		libavformat.so:multimedia/ffmpeg
 
-USES=		cmake pkgconfig qt:5
+USES=		cmake compiler:c++11-lang pkgconfig qt:5
 USE_GITHUB=	yes
 GH_ACCOUNT=	MaartenBaert
 GH_PROJECT=	ssr

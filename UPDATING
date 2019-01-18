@@ -5,6 +5,89 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20190114:
+  AFFECTS: users of graphics/qgis
+  AUTHOR: rhurlin@gwdg.de
+
+  GIS 3.4 LTR, the first long-term release (LTR) of QGIS 3, has landed
+  in the FreeBSD ports tree. It will also replace the previous 2.18 LTR
+  in the QGIS package repositories in February 2019 [1].
+
+  Beside, the latest QT4 version 4.8.7 has been EOL since December 2015
+  and its expiration date on FreeBSD is set to March, 15th 2019.
+  Because QGIS 2 is based on QT4 and Python2, it was decided to not create
+  a legacy port for QGIS 2, after graphics/qgis changed to QGIS 3.
+
+  For users moving over from the 2.18 LTR there is a huge list of new
+  features and impactful changes in this new 3.4 LTR version. Most notably
+  3.x plugins are incompatible with 2.x plugins, so please review your
+  plugin usage carefully. Before moving over, if you have not already
+  done so, take a look at the changelogs from versions 3.0, 3.2, and
+  3.4 [2][3][4] to understand the full scope of changes in the 3.x release.
+
+
+  [1] https://qgis.org/en/site/getinvolved/development/roadmap.html#release-schedule
+  [2] http://changelog.qgis.org/en/qgis/version/3.0.0/
+  [3] http://changelog.qgis.org/en/qgis/version/3.2.0/
+  [4] http://changelog.qgis.org/en/qgis/version/3.4-LTR/
+
+20190114:
+  AFFECTS: x11-wm/sway
+  AUTHOR: jbeich@FreeBSD.org
+
+  swayidle and swaylock split out into x11/swayidle and x11/swaylock.
+  Check your sway config and install those if required.
+
+20190113:
+  AFFECTS: users of net/GeoIP
+  AUTHOR: adamw@FreeBSD.org
+
+  Maxmind no longer provides geolocation data in the legacy format used
+  by net/GeoIP. All GEOIP-related OPTIONS have been removed, and all
+  GeoIP-dependent ports will be removed soon.
+
+  Where possible, you must switch to net/libmaxminddb, which uses the
+  newer (and fully supported) GeoIP 2 format. Unfortunately, this is
+  not a drop-in replacement.
+
+  The legacy database is no longer available, and we cannot distribute
+  it by the Maxmind license, so the legacy GeoIP format is essentially
+  dead.
+
+20190108:
+  AFFECTS: users of databases/mysql-connector-java
+  AUTHOR: matthew@FreeBSD.org
+
+  The databases/mysql-connector-java port has been updated to 8.0.13,
+  which requires a minimum of Java 1.8, so dropping support for Java
+  1.6 and 1.7.  Users of those versions of Java should substitute the
+  databases/mysql-connector-java51 port which remains at version
+  5.1.47
+
+20190103:
+  AFFECTS: users of multimedia/vlc*
+  AUTHOR: riggs@FreeBSD.org
+
+  The multimedia/vlc port has been upgraded to 3.0.5, the latest upstream
+  release. Subsequently, multimedia/vlc-qt4 and multimedia/vlc3 have been
+  retired and removed from the ports tree. Users who previously used
+  multimedia/vlc3 might want to switch to multimedia/vlc with the following
+  commands:
+
+  # pkg install multimedia/vlc
+    or
+  # portmaster -o multimedia/vlc multimedia/vlc3
+    or
+  # portupgrade -o multimedia/vlc multimedia/vlc3
+
+20190102:
+  AFFECTS: users of net/serviio
+  AUTHOR: netchild@FreeBSD.org
+
+  If you have customized your etc/serviio/profile.xml you need to review
+  and merge changes from the profile.xml.sample file, else you may not be
+  able to watch mkv files.
+
 20181228:
   AFFECTS: users of devel/trio
   AUTHOR: rodrigo@freebsd.org

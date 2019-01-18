@@ -99,7 +99,6 @@
     SUBDIR += dovecot-pigeonhole
     SUBDIR += dovecot-pigeonhole04
     SUBDIR += dovecot22
-    SUBDIR += drac
     SUBDIR += dspam
     SUBDIR += ecartis
     SUBDIR += elm
@@ -316,6 +315,7 @@
     SUBDIR += p5-Email-Address
     SUBDIR += p5-Email-Address-List
     SUBDIR += p5-Email-Address-Loose
+    SUBDIR += p5-Email-Address-UseXS
     SUBDIR += p5-Email-Address-XS
     SUBDIR += p5-Email-AddressParser
     SUBDIR += p5-Email-Date
@@ -481,7 +481,6 @@
     SUBDIR += perdition
     SUBDIR += pflogsumm
     SUBDIR += pfqueue
-    SUBDIR += php56-imap
     SUBDIR += php71-imap
     SUBDIR += php72-imap
     SUBDIR += php73-imap
@@ -654,6 +653,7 @@
     SUBDIR += smtpfeed
     SUBDIR += smtpmail
     SUBDIR += smtprc
+    SUBDIR += smtprelay
     SUBDIR += smtptrapd
     SUBDIR += sortmail
     SUBDIR += spamass-ixhash

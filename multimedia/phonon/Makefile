@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	phonon
-DISTVERSION=	4.10.1
-PORTREVISION=	2
+DISTVERSION=	4.10.2
+PORTREVISION=	1
 CATEGORIES=	multimedia kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${DISTVERSION}
 DIST_SUBDIR=	KDE/phonon
@@ -17,6 +17,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING.LIB
 FLAVORS=	qt5 qt4
 FLAVOR?=	${FLAVORS:[1]}
 
+qt4_BUILD_DEPENDS=	automoc4:devel/automoc4
 qt4_LIB_DEPENDS=	libqzeitgeist.so:sysutils/qzeitgeist
 qt4_PKGNAMESUFFIX=	-qt4
 qt5_PKGNAMESUFFIX=	-qt5
@@ -26,14 +27,13 @@ qt5_PLIST=	${.CURDIR}/pkg-plist.qt5
 USES=		cmake compiler:c++11-lang pathfix tar:xz
 CMAKE_ON=	PHONON_INSTALL_QT_EXTENSIONS_INTO_SYSTEM_QT \
 		PHONON_NO_PLATFORMPLUGIN
-CMAKE_OFF=	PHONON_BUILD_DESIGNER_PLUGIN:BOOL=OFF
+CMAKE_OFF=	PHONON_BUILD_DESIGNER_PLUGIN
 USE_LDCONFIG=	yes
 
 .  if ${FLAVOR} == qt4
 DEPRECATED=	Qt4 has been EOL since december 2015
 EXPIRATION_DATE=2019-03-15
-USES+=		kde:4 qt:4
-USE_KDE=	automoc4
+USES+=		qt:4
 USE_QT=		corelib dbus declarative gui testlib \
 		qmake_build moc_build rcc_build uic_build
 .  else

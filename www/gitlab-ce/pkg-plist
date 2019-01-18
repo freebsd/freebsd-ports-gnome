@@ -3902,6 +3902,7 @@
 %%WWWDIR%%/app/models/concerns/from_union.rb
 %%WWWDIR%%/app/models/concerns/ghost_user.rb
 %%WWWDIR%%/app/models/concerns/group_descendant.rb
+%%WWWDIR%%/app/models/concerns/has_ref.rb
 %%WWWDIR%%/app/models/concerns/has_status.rb
 %%WWWDIR%%/app/models/concerns/has_variable.rb
 %%WWWDIR%%/app/models/concerns/ignorable_column.rb
@@ -9957,6 +9958,7 @@
 %%WWWDIR%%/lib/gitlab/git/blame.rb
 %%WWWDIR%%/lib/gitlab/git/blob.rb
 %%WWWDIR%%/lib/gitlab/git/branch.rb
+%%WWWDIR%%/lib/gitlab/git/bundle_file.rb
 %%WWWDIR%%/lib/gitlab/git/commit.rb
 %%WWWDIR%%/lib/gitlab/git/commit_stats.rb
 %%WWWDIR%%/lib/gitlab/git/compare.rb
@@ -11505,6 +11507,7 @@
 %%WWWDIR%%/spec/features/merge_request/user_selects_branches_for_new_mr_spec.rb
 %%WWWDIR%%/spec/features/merge_request/user_suggests_changes_on_diff_spec.rb
 %%WWWDIR%%/spec/features/merge_request/user_toggles_whitespace_changes_spec.rb
+%%WWWDIR%%/spec/features/merge_request/user_tries_to_access_private_repository_through_new_mr_spec.rb
 %%WWWDIR%%/spec/features/merge_request/user_uses_quick_actions_spec.rb
 %%WWWDIR%%/spec/features/merge_request/user_views_diffs_spec.rb
 %%WWWDIR%%/spec/features/merge_request/user_views_open_merge_request_spec.rb
@@ -12070,6 +12073,7 @@
 %%WWWDIR%%/spec/fixtures/junit/junit_with_three_testsuites_2.xml
 %%WWWDIR%%/spec/fixtures/junit/junit_with_three_testsuites_3.xml
 %%WWWDIR%%/spec/fixtures/logo_sample.svg
+%%WWWDIR%%/spec/fixtures/malicious.bundle
 %%WWWDIR%%/spec/fixtures/markdown.md.erb
 %%WWWDIR%%/spec/fixtures/metrics.json
 %%WWWDIR%%/spec/fixtures/missing_metadata.po
@@ -12134,6 +12138,7 @@
 %%WWWDIR%%/spec/graphql/types/query_type_spec.rb
 %%WWWDIR%%/spec/graphql/types/time_type_spec.rb
 %%WWWDIR%%/spec/helpers/application_helper_spec.rb
+%%WWWDIR%%/spec/helpers/application_settings_helper_spec.rb
 %%WWWDIR%%/spec/helpers/auth_helper_spec.rb
 %%WWWDIR%%/spec/helpers/auto_devops_helper_spec.rb
 %%WWWDIR%%/spec/helpers/avatars_helper_spec.rb
@@ -13376,6 +13381,7 @@
 %%WWWDIR%%/spec/lib/gitlab/git/blame_spec.rb
 %%WWWDIR%%/spec/lib/gitlab/git/blob_spec.rb
 %%WWWDIR%%/spec/lib/gitlab/git/branch_spec.rb
+%%WWWDIR%%/spec/lib/gitlab/git/bundle_file_spec.rb
 %%WWWDIR%%/spec/lib/gitlab/git/commit_spec.rb
 %%WWWDIR%%/spec/lib/gitlab/git/compare_spec.rb
 %%WWWDIR%%/spec/lib/gitlab/git/conflict/file_spec.rb
@@ -13979,6 +13985,7 @@
 %%WWWDIR%%/spec/models/concerns/feature_gate_spec.rb
 %%WWWDIR%%/spec/models/concerns/from_union_spec.rb
 %%WWWDIR%%/spec/models/concerns/group_descendant_spec.rb
+%%WWWDIR%%/spec/models/concerns/has_ref_spec.rb
 %%WWWDIR%%/spec/models/concerns/has_status_spec.rb
 %%WWWDIR%%/spec/models/concerns/has_variable_spec.rb
 %%WWWDIR%%/spec/models/concerns/ignorable_column_spec.rb

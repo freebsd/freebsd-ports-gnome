@@ -2,7 +2,7 @@
 
 PORTNAME=	llvm
 DISTVERSION=	5.0.2
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel lang
 MASTER_SITES=	https://releases.llvm.org/${LLVM_RELEASE}/${RCDIR} LOCAL/brooks
 PKGNAMESUFFIX=	${LLVM_SUFFIX}
@@ -28,8 +28,7 @@ LLVM_PREFIX=	${PREFIX}/llvm${LLVM_SUFFIX}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${LLVM_SUFFIX}
 DATADIR=	${PREFIX}/share/${PORTNAME}${LLVM_SUFFIX}
 
-USES=		cmake compiler:c++11-lib libedit perl5 tar:xz \
-		shebangfix
+USES=		cmake compiler libedit perl5 tar:xz shebangfix
 _USES_PYTHON?=	python:2.7,build
 USES+=		${_USES_PYTHON}
 USE_LDCONFIG=	${LLVM_PREFIX}/lib
@@ -48,6 +47,11 @@ CMAKE_ARGS+=	-DLLVM_HOST_TRIPLE=${CONFIGURE_TARGET}
 # redefine CMAKE_INSTALL_MANDIR
 CMAKE_ARGS+=	-DCMAKE_INSTALL_MANDIR:PATH="share/man"
 CMAKE_ARGS+=	-DLLVM_PARALLEL_LINK_JOBS=1
+
+# Disable assertions.  They should be disabled by cmake, but USES=cmake
+# overrides -DCMAKE_*_FLAGS_RELEASE.
+CFLAGS+=	-DNDEBUG
+CXXFLAGS+=	-DNDEBUG
 
 OPTIONS_DEFINE=	CLANG DOCS EXTRAS LIT LLD LLDB
 OPTIONS_DEFINE_amd64=	COMPILER_RT GOLD OPENMP
@@ -113,8 +117,6 @@ _CRTLIBDIR=	${LLVM_PREFIX:S|${PREFIX}/||}/lib/clang/${LLVM_RELEASE}/lib/freebsd
 .for option in CLANG COMPILER_RT EXTRAS LLD LLDB OPENMP
 WRKSRC_${option:tl}=		${WRKDIR}/${${option}_DISTFILES:S/${EXTRACT_SUFX}//}
 .endfor
-
-OPTIONS_SUB=	yes
 
 PLIST_SUB+=	LLVM_LIB_VER=${LLVM_LIB_VER} \
 		LLVM_MAJOR=${LLVM_MAJOR} \
@@ -196,6 +198,11 @@ EXTRAS_LIBS=	libclangApplyReplacements \
 		libfindAllSymbols \
 		libmodernizeCore
 EXTRAS_PATTERN=	${EXTRAS_COMMANDS:tW:C/  */|/g}|${EXTRAS_LIBS:tW:C/  */|/g}
+
+# Force GCC 5 on non-clang systems because GCC 8 won't compile this code.
+.if exists(/usr/lib/libstdc++.so)
+USE_GCC=	5
+.endif
 
 .include <bsd.port.options.mk>
 
