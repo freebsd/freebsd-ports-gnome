@@ -508,9 +508,9 @@
     SUBDIR += nginx-prometheus-exporter
     SUBDIR += nibbleblog
     SUBDIR += node
+    SUBDIR += node10
     SUBDIR += node6
     SUBDIR += node8
-    SUBDIR += node10
     SUBDIR += nostromo
     SUBDIR += novnc
     SUBDIR += novnc-websockify
@@ -1075,6 +1075,7 @@
     SUBDIR += p5-Net-Amazon-AWIS
     SUBDIR += p5-Net-Async-FastCGI
     SUBDIR += p5-Net-Async-HTTP
+    SUBDIR += p5-Net-Curl
     SUBDIR += p5-Net-FastCGI
     SUBDIR += p5-Net-FireEagle
     SUBDIR += p5-Net-Flickr-API
@@ -1315,9 +1316,9 @@
     SUBDIR += p5-WWW-Shorten-isgd
     SUBDIR += p5-WWW-SourceForge
     SUBDIR += p5-WWW-Spinn3r
-    SUBDIR += p5-WWW-Telegram-BotAPI
     SUBDIR += p5-WWW-TV
     SUBDIR += p5-WWW-TWSMS
+    SUBDIR += p5-WWW-Telegram-BotAPI
     SUBDIR += p5-WWW-TinySong
     SUBDIR += p5-WWW-Tumblr
     SUBDIR += p5-WWW-VenusEnvy
@@ -2441,6 +2442,7 @@
     SUBDIR += webtrees
     SUBDIR += wgetpaste
     SUBDIR += wikicalc
+    SUBDIR += wml
     SUBDIR += woof
     SUBDIR += wordpress
     SUBDIR += wsdlpull
@@ -2543,7 +2545,6 @@
     SUBDIR += xshttpd
     SUBDIR += xshttpd-devel
     SUBDIR += xsp
-    SUBDIR += wml
     SUBDIR += yabb
     SUBDIR += yanopaste
     SUBDIR += yarn

@@ -2,10 +2,9 @@
 
 PORTNAME=	asterisk
 PORTVERSION=	16.1.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net
-MASTER_SITES=	https://downloads.asterisk.org/pub/telephony/%SUBDIR%/:DEFAULT,g729 \
-		https://github.com/traud/asterisk-opus/archive/:opus
+MASTER_SITES=	https://downloads.asterisk.org/pub/telephony/%SUBDIR%/:DEFAULT,g729
 MASTER_SITE_SUBDIR=	asterisk/ \
 			asterisk/old-releases/ \
 			sounds/releases/:g729
@@ -32,6 +31,7 @@ USE_CSTD=	gnu89
 USE_GNOME=	libxml2
 USE_LDCONFIG=	yes
 USE_RC_SUBR=	asterisk
+USE_GITHUB=	nodefault
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=	--datarootdir=${DATADIR} \
@@ -60,11 +60,11 @@ CONFLICTS=		ossp-uuid-[0-9]*
 CONFLICTS_BUILD=	linuxthreads-*
 CONFLICTS_INSTALL=	asterisk13 asterisk15
 
-OPTIONS_DEFINE=			ASTVERSION BACKTRACE CURL EXCHANGE FREETDS LDAP LUA \
+OPTIONS_DEFINE=			ASTVERSION BACKTRACE CURL EXCHANGE FREETDS LDAP LUA MACRO \
 				MP3PLAYER OOH323 OPTIMIZED_CFLAGS PJSIP PORTAUDIO RADIUS SNMP \
 				SPANDSP SRTP SYSINFO XMPP
-OPTIONS_DEFAULT=		CURL FREETDS GSM LUA MP3PLAYER NEWT ODBC MYSQL PGSQL PJSIP \
-				PORTAUDIO RADIUS SNMP SPANDSP SPEEX SQLITE2 SRTP VORBIS
+OPTIONS_DEFAULT=		CURL FREETDS GSM LUA MACRO MP3PLAYER NEWT ODBC MYSQL PGSQL \
+				PJSIP PORTAUDIO RADIUS SNMP SPANDSP SPEEX SQLITE2 SRTP VORBIS
 
 OPTIONS_DEFINE_i386=		DAHDI
 OPTIONS_DEFINE_amd64=		DAHDI
@@ -109,6 +109,7 @@ BACKTRACE_DESC?= Stack backtrace support via (lib)execinfo
 BASE_DESC=	Use base compiler
 DAHDI_DESC?=	DAHDI support
 EXCHANGE_DESC?=	Exchange calendar support
+MACRO_DESC?=	Enable app_macro (deprecated)
 MP3PLAYER_DESC=	Install MP3 Player for Music-On-Hold (mpg123)
 NEWG711_DESC?=	New G711 Codec
 OOH323_DESC?=	ooh323 support
@@ -172,10 +173,8 @@ ODBC_LIB_DEPENDS=	libodbc.so:databases/unixODBC \
 			libltdl.so:devel/libltdl
 
 OPUS_LIB_DEPENDS=	libopus.so:audio/opus
-OPUS_COMMIT=	83e1b458c77e0e287adeca494eeb79edb077b0ff
-OPUS_SRC=	asterisk-opus-${OPUS_COMMIT}
-OPUS_EXTRACT_ONLY=	${OPUS_COMMIT}${EXTRACT_SUFX}
-OPUS_DISTFILES=	${OPUS_COMMIT}${EXTRACT_SUFX}:opus
+OPUS_EXTRACT_ONLY=	${DISTFILE_opus}
+OPUS_GH_TUPLE=		traud:asterisk-opus:83e1b458c77e0e287adeca494eeb79edb077b0ff:opus
 
 PGSQL_CONFIGURE_WITH=	postgres
 PGSQL_USES=		pgsql
@@ -258,9 +257,9 @@ post-extract-G729-on:
 	${CP} ${DISTDIR}/${DIST_SUBDIR}/${ASTERISK_MOH_G729_SOUNDS} ${WRKSRC}/sounds
 
 post-extract-OPUS-on:
-	${CP} ${WRKDIR}/${OPUS_SRC}/include/asterisk/* ${WRKSRC}/include/asterisk
-	${CP} ${WRKDIR}/${OPUS_SRC}/codecs/* ${WRKSRC}/codecs
-	${CP} ${WRKDIR}/${OPUS_SRC}/res/* ${WRKSRC}/res
+	${CP} ${WRKSRC_opus}/include/asterisk/* ${WRKSRC}/include/asterisk
+	${CP} ${WRKSRC_opus}/codecs/* ${WRKSRC}/codecs
+	${CP} ${WRKSRC_opus}/res/* ${WRKSRC}/res
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/var/lib|${PREFIX}/share|g' ${WRKSRC}/configs/samples/musiconhold.conf.sample
@@ -280,6 +279,9 @@ post-configure:
 	@cd ${WRKSRC} && ./menuselect/menuselect --disable res_timing_kqueue menuselect.makeopts
 	@cd ${WRKSRC} && ./menuselect/menuselect --enable chan_mgcp menuselect.makeopts
 	@cd ${WRKSRC} && ./menuselect/menuselect --enable res_pktccops menuselect.makeopts
+
+post-configure-MACRO-on:
+	@cd ${WRKSRC} && ./menuselect/menuselect --enable app_macro menuselect.makeopts
 
 post-configure-MYSQL-on:
 	@cd ${WRKSRC} && ./menuselect/menuselect --enable res_config_mysql menuselect.makeopts

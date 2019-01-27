@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	ponyc
-DISTVERSION=	0.25.0
-PORTREVISION=	1
+DISTVERSION=	0.26.0
 CATEGORIES=	lang
 
 MAINTAINER=	greg@unrelenting.technology
@@ -14,7 +13,6 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 ONLY_FOR_ARCHS=		aarch64 amd64
 ONLY_FOR_ARCHS_REASON=	Undefined reference to __atomic_compare_exchange_8
 
-LIB_DEPENDS=	libunwind.so:devel/libunwind
 BUILD_DEPENDS=	llvm-link${LLVM_VERSION}:devel/llvm${LLVM_VERSION}
 RUN_DEPENDS=	llvm-link${LLVM_VERSION}:devel/llvm${LLVM_VERSION}
 
@@ -54,11 +52,20 @@ PONYARCH?=	armv8-a
 PONYARCH?=	core2
 .endif
 
+# keep in sync with all platforms where libunwind is available
+.if (${ARCH} == amd64 || ${ARCH} == i386 || ${ARCH} == aarch64)
+LIB_DEPENDS+=	libunwind.so:devel/libunwind
+.endif
+
 .if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1200085
 MAKE_ENV+=	default_ssl=openssl_1.1.0
 .endif
 
 .if ${CHOSEN_COMPILER_TYPE} == clang
+# Building the bitcode with clang70 and linking with llvm50 fails,
+# so let's use the clang from the LLVM version that will be used by ponyc
+CC=		${LOCALBASE}/bin/clang${LLVM_VERSION}
+CXX=		${LOCALBASE}/bin/clang++${LLVM_VERSION}
 MAKE_ENV+=	runtime-bitcode=yes
 PLIST_SUB+=	BITCODE=""
 .else
