@@ -1,3 +1,3 @@
-TIMESTAMP = 1546554110
-SHA256 (gnome/gsettings-desktop-schemas-3.31.0.1.tar.xz) = 248ce64de76e99b840eac1060586db025b6d28d2a1f65037b90dff4e6d1a0903
-SIZE (gnome/gsettings-desktop-schemas-3.31.0.1.tar.xz) = 632084
+TIMESTAMP = 1548874249
+SHA256 (gnome/gsettings-desktop-schemas-3.31.0.2.tar.xz) = c676ebb5c2e15d7d4a2e13a57c3a32048e851c5961fb594b78f4458c2df59511
+SIZE (gnome/gsettings-desktop-schemas-3.31.0.2.tar.xz) = 637124

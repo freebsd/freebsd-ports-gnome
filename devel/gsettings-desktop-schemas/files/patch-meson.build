@@ -1,0 +1,9 @@
+--- meson.build.orig	2019-01-30 19:51:49 UTC
++++ meson.build
+@@ -43,6 +43,3 @@ subdir('headers')
+ subdir('schemas')
+ subdir('po')
+ 
+-# Keep this in sync with post-install.py expected arguments
+-meson.add_install_script('build-aux/meson/post-install.py',
+-                         datadir)
