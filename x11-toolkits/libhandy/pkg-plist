@@ -1,4 +1,4 @@
-bin/example
+bin/example-libhandy
 include/libhandy-0.0/handy.h
 include/libhandy-0.0/hdy-action-row.h
 include/libhandy-0.0/hdy-arrows.h
@@ -7,6 +7,7 @@ include/libhandy-0.0/hdy-combo-row.h
 include/libhandy-0.0/hdy-dialer-button.h
 include/libhandy-0.0/hdy-dialer-cycle-button.h
 include/libhandy-0.0/hdy-dialer.h
+include/libhandy-0.0/hdy-dialog.h
 include/libhandy-0.0/hdy-enum-value-object.h
 include/libhandy-0.0/hdy-enums.h
 include/libhandy-0.0/hdy-expander-row.h
