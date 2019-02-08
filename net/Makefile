@@ -78,6 +78,7 @@
     SUBDIR += calendarsupport
     SUBDIR += ccxstream
     SUBDIR += ceph
+    SUBDIR += ceph13
     SUBDIR += cf
     SUBDIR += charm
     SUBDIR += chrony
@@ -344,6 +345,8 @@
     SUBDIR += krfb
     SUBDIR += ksmtp
     SUBDIR += ktnef
+    SUBDIR += kube-controller-manager
+    SUBDIR += kube-scheduler
     SUBDIR += l2tpd
     SUBDIR += ladvd
     SUBDIR += lambdamoo
@@ -467,6 +470,7 @@
     SUBDIR += miruo
     SUBDIR += mlvpn
     SUBDIR += mobile-broadband-provider-info
+    SUBDIR += mod_amd
     SUBDIR += mono-zeroconf
     SUBDIR += mopd
     SUBDIR += morebalance
@@ -909,7 +913,6 @@
     SUBDIR += passlogd
     SUBDIR += pathneck
     SUBDIR += pbnc
-    SUBDIR += pdb
     SUBDIR += pear-Auth_RADIUS
     SUBDIR += pear-File_Bittorrent2
     SUBDIR += pear-Horde_Kolab_Server
@@ -1023,6 +1026,7 @@
     SUBDIR += py-cjdns
     SUBDIR += py-cloudflare-scrape
     SUBDIR += py-coherence
+    SUBDIR += py-confluent-kafka
     SUBDIR += py-cymruwhois
     SUBDIR += py-dpkt
     SUBDIR += py-dugong
@@ -1035,6 +1039,7 @@
     SUBDIR += py-haproxy-log-analysis
     SUBDIR += py-haproxyctl
     SUBDIR += py-httpstat
+    SUBDIR += py-ifaddr
     SUBDIR += py-impacket
     SUBDIR += py-ipaddress
     SUBDIR += py-iplib
@@ -1071,7 +1076,6 @@
     SUBDIR += py-pamqp
     SUBDIR += py-pcap
     SUBDIR += py-pcapy
-    SUBDIR += py-pcs
     SUBDIR += py-port-for
     SUBDIR += py-portend
     SUBDIR += py-pygeoip
@@ -1438,6 +1442,7 @@
     SUBDIR += throttled
     SUBDIR += tigervnc
     SUBDIR += tightvnc
+    SUBDIR += timed
     SUBDIR += tintin++
     SUBDIR += tiny-network-utilities
     SUBDIR += tinyfugue

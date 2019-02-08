@@ -65,7 +65,7 @@ MESON_ARGS+=	-Diconv=gnu
 .endif
 
 .if ${ARCH} == powerpc64
-EXTRA_PATCHES=	${FILESDIR}/extra-arch-powerpc64
+EXTRA_PATCHES+=	${FILESDIR}/extra-arch-powerpc64
 .endif
 
 post-patch:

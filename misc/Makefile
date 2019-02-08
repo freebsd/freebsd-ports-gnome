@@ -458,6 +458,7 @@
     SUBDIR += smssend
     SUBDIR += snakemake
     SUBDIR += soapysdr
+    SUBDIR += soapysdr-hackrf
     SUBDIR += solarized
     SUBDIR += spamcalc
     SUBDIR += sshbuddy

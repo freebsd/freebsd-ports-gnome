@@ -25,6 +25,7 @@
     SUBDIR += cytoscape
     SUBDIR += ddocent
     SUBDIR += diamond
+    SUBDIR += dsr-pdb
     SUBDIR += emboss
     SUBDIR += exonerate
     SUBDIR += fasta
@@ -35,6 +36,7 @@
     SUBDIR += fastqc
     SUBDIR += fasttree
     SUBDIR += fastx-toolkit
+    SUBDIR += figtree
     SUBDIR += fluctuate
     SUBDIR += freebayes
     SUBDIR += garlic
@@ -42,6 +44,7 @@
     SUBDIR += gff2ps
     SUBDIR += gmap
     SUBDIR += gperiodic
+    SUBDIR += graphlan
     SUBDIR += grappa
     SUBDIR += groopm
     SUBDIR += hisat2
@@ -100,6 +103,8 @@
     SUBDIR += phyml
     SUBDIR += plinkseq
     SUBDIR += primer3
+    SUBDIR += prodigal
+    SUBDIR += prodigy-lig
     SUBDIR += protomol
     SUBDIR += psi88
     SUBDIR += py-Genesis-PyAPI

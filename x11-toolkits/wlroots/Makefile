@@ -1,9 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	wlroots
-DISTVERSION=	0.2-172
-DISTVERSIONSUFFIX=	-g209210d3
+DISTVERSION=	0.3
 CATEGORIES=	x11-toolkits
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=	59d1b6790dd1.patch:-p1 # version bump
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Modular Wayland compositor library
@@ -18,7 +20,6 @@ LIB_DEPENDS=	libudev.so:devel/libudev-devd \
 		libwayland-egl.so:graphics/wayland \
 		libinput.so:x11/libinput \
 		libxkbcommon.so:x11/libxkbcommon
-RUN_DEPENDS=	xkeyboard-config>0:x11/xkeyboard-config
 
 USES=		compiler:c11 gl meson pkgconfig
 USE_GITHUB=	yes

@@ -2,12 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	zsh
-DISTVERSION=	5.7
-PORTREVISION=	1
+DISTVERSION=	5.7.1
 CATEGORIES=	shells
-MASTER_SITES=	http://www.zsh.org/pub/ \
+MASTER_SITES=	https://www.zsh.org/pub/ \
 		SF \
-		http://www.zsh.org/pub/:doc \
+		https://www.zsh.org/pub/:doc \
 		SF/${PORTNAME}/${PORTNAME}-doc/${PORTVERSION}:doc
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
@@ -22,8 +21,6 @@ LICENSE_PERMS=	dist-mirror dist-sell pkg-mirror pkg-sell auto-accept
 MAKE_JOBS_UNSAFE=	yes
 
 USES=		autoreconf iconv ncurses shebangfix tar:xz
-
-EXTRA_PATCHES=	${FILESDIR}/vcs_info_p4.patch:-p1
 
 SHEBANG_LANG=	zsh
 zsh_OLD_CMD=	zsh	# shebang appears as /bin/zsh and just zsh

@@ -8,6 +8,7 @@
     SUBDIR += afterstep-stable
     SUBDIR += amiwm
     SUBDIR += antiwm
+    SUBDIR += aphelia
     SUBDIR += awesome
     SUBDIR += awesome-vicious
     SUBDIR += bbkeys
@@ -73,6 +74,7 @@
     SUBDIR += lwm
     SUBDIR += lxappearance-obconf
     SUBDIR += lxmed
+    SUBDIR += lxqt
     SUBDIR += lxqt-panel
     SUBDIR += lxqt-session
     SUBDIR += lxsession

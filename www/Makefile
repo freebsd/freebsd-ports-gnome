@@ -333,6 +333,7 @@
     SUBDIR += kf5-khtml
     SUBDIR += kf5-kjs
     SUBDIR += kf5-kjsembed
+    SUBDIR += kiwix-tools
     SUBDIR += kohana
     SUBDIR += kurly
     SUBDIR += larbin
@@ -440,6 +441,7 @@
     SUBDIR += mod_limitipconn2
     SUBDIR += mod_line_edit
     SUBDIR += mod_log_sql2
+    SUBDIR += mod_maxminddb
     SUBDIR += mod_md-devel
     SUBDIR += mod_memcache
     SUBDIR += mod_memcache_block
@@ -1562,6 +1564,7 @@
     SUBDIR += py-django-mezzanine-filebrowser
     SUBDIR += py-django-mezzanine-grappelli
     SUBDIR += py-django-model-utils
+    SUBDIR += py-django-modelcluster
     SUBDIR += py-django-modern-rpc
     SUBDIR += py-django-mptt
     SUBDIR += py-django-netfields
@@ -1620,6 +1623,7 @@
     SUBDIR += py-djangorestframework36
     SUBDIR += py-djangotoolbox
     SUBDIR += py-dojango
+    SUBDIR += py-draftjs_exporter
     SUBDIR += py-drf-yasg
     SUBDIR += py-dtflickr
     SUBDIR += py-evernote
@@ -1866,6 +1870,7 @@
     SUBDIR += py-user_agent
     SUBDIR += py-utidylib
     SUBDIR += py-w3lib
+    SUBDIR += py-wagtail
     SUBDIR += py-waitress
     SUBDIR += py-webassets
     SUBDIR += py-webhelpers
@@ -2400,6 +2405,7 @@
     SUBDIR += varnish-nagios
     SUBDIR += varnish4
     SUBDIR += varnish6
+    SUBDIR += varnish_exporter
     SUBDIR += vdr-plugin-live
     SUBDIR += vdradmin-am
     SUBDIR += vee
@@ -2552,6 +2558,7 @@
     SUBDIR += you-get
     SUBDIR += yourls
     SUBDIR += youtube_dl
+    SUBDIR += ytdl
     SUBDIR += yuicompressor
     SUBDIR += zend-framework
     SUBDIR += zend-framework1
