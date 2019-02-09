@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gsettings-desktop-schemas
-PORTVERSION=	3.31.0.1
+PORTVERSION=	3.31.90
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -15,9 +15,12 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gnome localbase meson perl5 pkgconfig tar:xz
+USES=		gettext gnome localbase meson perl5 pkgconfig \
+		python:3.5+,build tar:xz
 USE_PERL5=	build
 USE_GNOME=	intltool glib20 introspection:build
+
+BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
 GLIB_SCHEMAS=	org.gnome.desktop.a11y.applications.gschema.xml \
 		org.gnome.desktop.a11y.gschema.xml \
@@ -29,6 +32,7 @@ GLIB_SCHEMAS=	org.gnome.desktop.a11y.applications.gschema.xml \
 		org.gnome.desktop.calendar.gschema.xml \
 		org.gnome.desktop.default-applications.gschema.xml \
 		org.gnome.desktop.datetime.gschema.xml \
+		org.gnome.desktop.enums.xml \
 		org.gnome.desktop.input-sources.gschema.xml \
 		org.gnome.desktop.interface.gschema.xml \
 		org.gnome.desktop.lockdown.gschema.xml \
