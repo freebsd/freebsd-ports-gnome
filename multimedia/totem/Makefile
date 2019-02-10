@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	totem
-PORTVERSION=	3.26.2
+PORTVERSION=	3.31.90
 CATEGORIES=	multimedia gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gstreamer-based video player for the GNOME 3 Desktop
@@ -26,7 +26,6 @@ LIB_DEPENDS=	libgdata.so:devel/libgdata \
 		libpeas-1.0.so:devel/libpeas \
 		libjson-glib-1.0.so:devel/json-glib \
 		libgrilo-0.3.so:net/grilo \
-		libzeitgeist-2.0.so:sysutils/zeitgeist \
 		libtotem-plparser.so:multimedia/totem-pl-parser
 RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
 		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR} \
