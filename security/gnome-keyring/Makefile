@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-keyring
-PORTVERSION=	3.28.2
-PORTREVISION=	1
+PORTVERSION=	3.31.90
 CATEGORIES=	security gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Program that keeps passwords and other secrets
