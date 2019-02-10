@@ -267,6 +267,7 @@ include/glib-2.0/gobject/glib-types.h
 include/glib-2.0/gobject/gmarshal.h
 include/glib-2.0/gobject/gobject-autocleanups.h
 include/glib-2.0/gobject/gobject.h
+include/glib-2.0/gobject/gobjectenumtypes.h
 include/glib-2.0/gobject/gobjectnotifyqueue.c
 include/glib-2.0/gobject/gparam.h
 include/glib-2.0/gobject/gparamspecs.h
