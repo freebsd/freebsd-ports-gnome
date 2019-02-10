@@ -85,7 +85,7 @@ _USE_GNOME_ALL+= atk cairo \
 		pygtksourceview vte
 
 # GNOME 3 components
-_USE_GNOME_ALL+=dconf evolutiondataserver3 gnomecontrolcenter3 gnomedesktop3 \
+_USE_GNOME_ALL+=amtk dconf evolutiondataserver3 gnomecontrolcenter3 gnomedesktop3 \
 		gnomemenus3 gsound gtk30 gtkhtml4 gtksourceview3 \
 		gtksourceview4 libgda5 \
 		libgda5-ui libwnck3 metacity nautilus3 \
@@ -120,6 +120,8 @@ gnomeprefix_CONFIGURE_ARGS=--localstatedir=${GNOME_LOCALSTATEDIR} \
 			   --with-html-dir=${GNOME_HTML_DIR} \
 			   --disable-gtk-doc \
 			   --with-gconf-source=${GCONF_CONFIG_SOURCE}
+
+amtk_LIB_DEPENDS=	libamtk-5.so:x11-toolkits/amtk
 
 atkmm_LIB_DEPENDS=	libatkmm-1.6.so:accessibility/atkmm
 atkmm_USE_GNOME_IMPL=	glibmm atk
