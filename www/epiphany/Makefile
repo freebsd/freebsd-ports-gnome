@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	epiphany
-PORTVERSION=	3.28.5
-PORTREVISION=	1
+PORTVERSION=	3.31.90
 CATEGORIES=	www gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Extremely lightweight and simple web browser for GNOME 3
@@ -31,6 +30,8 @@ LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libgmp.so:math/gmp \
 		libnettle.so:security/nettle \
 		libsecret-1.so:security/libsecret \
+		libdazzle-1.0.so:x11-toolkits/libdazzle \
+		x11-toolkits/libhandy \
 		libp11-kit.so:security/p11-kit
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
@@ -47,8 +48,7 @@ USE_GNOME=	cairo gnomedesktop3 intlhack libwnck3 libxml2 libxslt
 USE_XORG=	x11
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
-MESON_ARGS=	-Ddistributor_name="GNOME Web by the FreeBSD GNOME Project" \
-		-Db_lundef=false \
+MESON_ARGS=	-Db_lundef=false \
 		-Dunit_tests=false
 GLIB_SCHEMAS=	org.gnome.Epiphany.enums.xml \
 		org.gnome.epiphany.gschema.xml
