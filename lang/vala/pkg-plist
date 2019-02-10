@@ -130,6 +130,8 @@ share/devhelp/books/vala-%%VERSION%%/vala-%%VERSION%%.devhelp2
 %%DATADIR%%-%%VERSION%%/vapi/gnutls.vapi
 %%DATADIR%%-%%VERSION%%/vapi/gobject-2.0.vapi
 %%DATADIR%%-%%VERSION%%/vapi/gobject-introspection-1.0.vapi
+%%DATADIR%%-%%VERSION%%/vapi/goocanvas-2.0.deps
+%%DATADIR%%-%%VERSION%%/vapi/goocanvas-2.0.vapi
 %%DATADIR%%-%%VERSION%%/vapi/goocanvas.deps
 %%DATADIR%%-%%VERSION%%/vapi/goocanvas.vapi
 %%DATADIR%%-%%VERSION%%/vapi/graphene-1.0.deps
