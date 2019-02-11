@@ -7,9 +7,9 @@ Date: Thu, 12 May 2016 09:25:49 +0200
 Subject: ScreenShield: set LockedHint property from systemd
 
 Index: js/ui/screenShield.js
---- js/ui/screenShield.js.orig	2018-11-14 00:05:05 UTC
+--- js/ui/screenShield.js.orig	2019-02-07 01:45:13 UTC
 +++ js/ui/screenShield.js
-@@ -582,9 +582,6 @@ var ScreenShield = new Lang.Class({
+@@ -589,9 +589,6 @@ var ScreenShield = class {
          if (prevIsActive != this._isActive)
              this.emit('active-changed');
  
@@ -17,5 +17,5 @@ Index: js/ui/screenShield.js
 -            this._loginSession.SetLockedHintRemote(active);
 -
          this._syncInhibitor();
-     },
+     }
  

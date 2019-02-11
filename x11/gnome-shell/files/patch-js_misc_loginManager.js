@@ -13,34 +13,36 @@ Date: Thu, 24 Apr 2014 17:55:56 +0200
 Subject: loginManager: Kill ConsoleKit support
 
 
---- js/misc/loginManager.js.orig	2018-11-14 00:05:05 UTC
+--- js/misc/loginManager.js.orig	2019-02-07 01:45:13 UTC
 +++ js/misc/loginManager.js
-@@ -17,6 +17,32 @@ const SystemdLoginManager = Gio.DBusProxy.makeProxyWra
+@@ -16,6 +16,34 @@ const SystemdLoginManager = Gio.DBusProxy.makeProxyWra
  const SystemdLoginSession = Gio.DBusProxy.makeProxyWrapper(SystemdLoginSessionIface);
  const SystemdLoginUser = Gio.DBusProxy.makeProxyWrapper(SystemdLoginUserIface);
  
-+const ConsoleKitManagerIface = '<node> \
-+<interface name="org.freedesktop.ConsoleKit.Manager"> \
-+<method name="CanRestart"> \
-+    <arg type="b" direction="out"/> \
-+</method> \
-+<method name="CanStop"> \
-+    <arg type="b" direction="out"/> \
-+</method> \
-+<method name="Restart" /> \
-+<method name="Stop" /> \
-+<method name="GetCurrentSession"> \
-+    <arg type="o" direction="out" /> \
-+</method> \
-+</interface> \
-+</node>';
++const ConsoleKitManagerIface = `
++<node>
++<interface name="org.freedesktop.ConsoleKit.Manager">
++<method name="CanRestart">
++    <arg type="b" direction="out"/>
++</method>
++<method name="CanStop">
++    <arg type="b" direction="out"/>
++</method>
++<method name="Restart" />
++<method name="Stop" />
++<method name="GetCurrentSession">
++    <arg type="o" direction="out" />
++</method>
++</interface>
++</node>`;
 +
-+const ConsoleKitSessionIface = '<node> \
-+<interface name="org.freedesktop.ConsoleKit.Session"> \
-+<signal name="Lock" /> \
-+<signal name="Unlock" /> \
-+</interface> \
-+</node>';
++const ConsoleKitSessionIface = `
++<node>
++<interface name="org.freedesktop.ConsoleKit.Session">
++<signal name="Lock" />
++<signal name="Unlock" />
++</interface>
++</node>`;
 +
 +const ConsoleKitSession = Gio.DBusProxy.makeProxyWrapper(ConsoleKitSessionIface);
 +const ConsoleKitManager = Gio.DBusProxy.makeProxyWrapper(ConsoleKitManagerIface);
@@ -48,7 +50,7 @@ Subject: loginManager: Kill ConsoleKit support
  function haveSystemd() {
      return GLib.access("/run/systemd/seats", 0) >= 0;
  }
-@@ -46,7 +72,7 @@ function canLock() {
+@@ -45,7 +73,7 @@ function canLock() {
                                                 -1, null);
  
          let version = result.deep_unpack()[0].deep_unpack();
@@ -57,7 +59,7 @@ Subject: loginManager: Kill ConsoleKit support
      } catch(e) {
          return false;
      }
-@@ -64,7 +90,7 @@ function getLoginManager() {
+@@ -63,7 +91,7 @@ function getLoginManager() {
          if (haveSystemd())
              _loginManager = new LoginManagerSystemd();
          else
@@ -66,9 +68,9 @@ Subject: loginManager: Kill ConsoleKit support
      }
  
      return _loginManager;
-@@ -84,6 +110,9 @@ var LoginManagerSystemd = new Lang.Class({
+@@ -81,6 +109,9 @@ var LoginManagerSystemd = class {
                                    this._prepareForSleep.bind(this));
-     },
+     }
  
 +    // Having this function is a bit of a hack since the Systemd and ConsoleKit
 +    // session objects have different interfaces - but in both cases there are
@@ -76,20 +78,17 @@ Subject: loginManager: Kill ConsoleKit support
      getCurrentSessionProxy(callback) {
          if (this._currentSession) {
              callback (this._currentSession);
-@@ -182,13 +211,35 @@ var LoginManagerSystemd = new Lang.Class({
- });
+@@ -179,11 +210,33 @@ var LoginManagerSystemd = class {
+ };
  Signals.addSignalMethods(LoginManagerSystemd.prototype);
  
--var LoginManagerDummy = new Lang.Class({
--    Name: 'LoginManagerDummy',
-+const LoginManagerConsoleKit = new Lang.Class({
-+    Name: 'LoginManagerConsoleKit',
- 
-+    _init: function() {
+-var LoginManagerDummy = class {
++var LoginManagerConsoleKit = class {
++    constructor() {
 +        this._proxy = new ConsoleKitManager(Gio.DBus.system,
 +                                            'org.freedesktop.ConsoleKit',
 +                                            '/org/freedesktop/ConsoleKit/Manager');
-+    },
++    }
 +
 +    // Having this function is a bit of a hack since the Systemd and ConsoleKit
 +    // session objects have different interfaces - but in both cases there are
@@ -114,12 +113,12 @@ Subject: loginManager: Kill ConsoleKit support
 +                    callback(this._currentSession);
 +                }
 +            }));
-     },
+     }
  
      canSuspend(asyncCallback) {
-@@ -208,4 +259,4 @@ var LoginManagerDummy = new Lang.Class({
+@@ -203,4 +256,4 @@ var LoginManagerDummy = class {
          callback(null);
      }
- });
+ };
 -Signals.addSignalMethods(LoginManagerDummy.prototype);
 +Signals.addSignalMethods(LoginManagerConsoleKit.prototype);
