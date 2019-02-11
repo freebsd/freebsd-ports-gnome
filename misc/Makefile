@@ -217,6 +217,7 @@
     SUBDIR += lesspipe
     SUBDIR += libeatmydata
     SUBDIR += libemos
+    SUBDIR += libiio
     SUBDIR += libisocodes
     SUBDIR += libkeduvocdocument
     SUBDIR += liblxi
@@ -458,7 +459,7 @@
     SUBDIR += smssend
     SUBDIR += snakemake
     SUBDIR += soapysdr
-    SUBDIR += soapysdr-hackrf
+    SUBDIR += soapysdr-rtlsdr
     SUBDIR += solarized
     SUBDIR += spamcalc
     SUBDIR += sshbuddy
