@@ -12,11 +12,12 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 13:28:01 -0400
 Subject: drop consolekit support
 
---- common/gdm-common.c.orig	Sun Oct 18 14:26:27 2015
-+++ common/gdm-common.c	Sun Oct 18 14:24:34 2015
-@@ -39,12 +39,25 @@
- #include "mkdtemp.h"
- #endif
+
+--- common/gdm-common.c.orig	2018-11-06 22:26:11.000000000 +0100
++++ common/gdm-common.c	2019-01-04 10:48:53.846800000 +0100
+@@ -36,12 +36,25 @@
+ 
+ #include "gdm-common.h"
  
 +#ifdef WITH_SYSTEMD
  #include <systemd/sd-login.h>
@@ -39,24 +40,21 @@ Subject: drop consolekit support
 +
  G_DEFINE_QUARK (gdm-common-error, gdm_common_error);
  
- const char *
-@@ -343,15 +356,306 @@ create_transient_display (GDBusConnection *connection,
+ gboolean
+@@ -352,6 +365,297 @@
          return TRUE;
  }
  
 +#ifdef WITH_CONSOLE_KIT
 +
- static gboolean
--activate_session_id (GDBusConnection *connection,
--                     const char      *seat_id,
--                     const char      *session_id)
++static gboolean
 +get_current_session_id (GDBusConnection  *connection,
 +                        char            **session_id)
- {
-         GError *local_error = NULL;
-         GVariant *reply;
- 
-         reply = g_dbus_connection_call_sync (connection,
++{
++        GError *local_error = NULL;
++        GVariant *reply;
++
++        reply = g_dbus_connection_call_sync (connection,
 +                                             CK_NAME,
 +                                             CK_MANAGER_PATH,
 +                                             CK_MANAGER_INTERFACE,
@@ -232,7 +230,7 @@ Subject: drop consolekit support
 +        GVariant *reply;
 +        const char **value;
 +
-+        reply = g_dbus_connection_call_sync (connection,
++       reply = g_dbus_connection_call_sync (connection,
 +                                             CK_NAME,
 +                                             seat_id,
 +                                             CK_SEAT_INTERFACE,
@@ -294,10 +292,10 @@ Subject: drop consolekit support
 +goto_login_session_for_ck (GDBusConnection  *connection,
 +                           GError          **error)
 +{
-+        gboolean        ret;
-+        gboolean        res;
-+        char           *session_id;
-+        char           *seat_id;
++       gboolean        ret;
++       gboolean        res;
++       char           *session_id;
++       char           *seat_id;
 +
 +        ret = FALSE;
 +
@@ -338,30 +336,19 @@ Subject: drop consolekit support
 +
 +#ifdef WITH_SYSTEMD
 +
-+static gboolean
-+activate_session_id_for_systemd (GDBusConnection *connection,
-+                                 const char      *seat_id,
-+                                 const char      *session_id)
-+{
-+        GError *local_error = NULL;
-+        GVariant *reply;
-+
-+        reply = g_dbus_connection_call_sync (connection,
-                                              "org.freedesktop.login1",
-                                              "/org/freedesktop/login1",
-                                              "org.freedesktop.login1.Manager",
-@@ -373,8 +677,8 @@ activate_session_id (GDBusConnection *connection,
+ gboolean
+ gdm_activate_session_by_id (GDBusConnection *connection,
+                             const char      *seat_id,
+@@ -382,7 +686,7 @@
  }
  
- static gboolean
--get_login_window_session_id (const char  *seat_id,
--                             char       **session_id)
-+get_login_window_session_id_for_systemd (const char  *seat_id,
-+                                         char       **session_id)
+ gboolean
+-gdm_get_login_window_session_id (const char  *seat_id,
++gdm_get_login_window_session_id_for_systemd (const char  *seat_id,
+                                  char       **session_id)
  {
          gboolean   ret;
-         int        res, i;
-@@ -442,8 +746,8 @@ out:
+@@ -476,8 +780,8 @@
  }
  
  static gboolean
@@ -372,19 +359,16 @@ Subject: drop consolekit support
  {
          gboolean        ret;
          int             res;
-@@ -497,9 +801,9 @@ goto_login_session (GDBusConnection  *connection,
+@@ -531,7 +835,7 @@
                  return FALSE;
          }
  
--        res = get_login_window_session_id (seat_id, &session_id);
-+        res = get_login_window_session_id_for_systemd (seat_id, &session_id);
+-        res = gdm_get_login_window_session_id (seat_id, &session_id);
++        res = gdm_get_login_window_session_id_for_systemd (seat_id, &session_id);
          if (res && session_id != NULL) {
--                res = activate_session_id (connection, seat_id, session_id);
-+                res = activate_session_id_for_systemd (connection, seat_id, session_id);
+                 res = gdm_activate_session_by_id (connection, seat_id, session_id);
  
-                 if (res) {
-                         ret = TRUE;
-@@ -518,6 +822,7 @@ goto_login_session (GDBusConnection  *connection,
+@@ -552,6 +856,7 @@
  
          return ret;
  }
@@ -392,7 +376,7 @@ Subject: drop consolekit support
  
  gboolean
  gdm_goto_login_session (GError **error)
-@@ -533,7 +838,17 @@ gdm_goto_login_session (GError **error)
+@@ -567,7 +872,17 @@
                  return FALSE;
          }
  

@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-settings-daemon
-PORTVERSION=	3.28.1
+PORTVERSION=	3.31.1
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME 3 settings daemon
@@ -34,11 +34,12 @@ USES=		gettext gnome localbase:ldflags meson perl5 \
 		pkgconfig python:3.6+,build tar:xz
 USE_PERL5=	build
 INSTALLS_ICONS=	yes
-#		-Dnssdb_dir=${LOCALBASE}/share/certs/ca-root-nss.crt
 MESON_ARGS=	-Dnssdb_dir=${LOCALBASE}/share/certs/ \
 		-Dalsa=false \
 		-Drfkill=false \
 		-Dnetwork_manager=false
+# disable gudev for now, the build failes
+MESON_ARGS+=	-Dgudev=false
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
 OPTIONS_SUB=	yes

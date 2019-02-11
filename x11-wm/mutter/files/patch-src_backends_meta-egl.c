@@ -7,7 +7,7 @@ Date: Tue, 11 Jul 2017 16:03:26 +0100
 Subject: [PATCH] wayland: Add zwp_linux_dmabuf_v1 support
 
 Index: src/backends/meta-egl.c
---- src/backends/meta-egl.c.orig
+--- src/backends/meta-egl.c.orig	2019-02-07 00:26:02 UTC
 +++ src/backends/meta-egl.c
 @@ -67,8 +67,6 @@ struct _MetaEgl
    PFNEGLSTREAMCONSUMERACQUIREKHRPROC eglStreamConsumerAcquireKHR;

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mutter
-PORTVERSION=	3.31.2
+PORTVERSION=	3.31.90
 CATEGORIES=	x11-wm gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -34,7 +34,7 @@ RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas \
 		gnome-settings-daemon>=3.28:sysutils/gnome-settings-daemon
 
-TEST_DEPENDS=	bash:shell/bash
+TEST_DEPENDS=	bash:shells/bash
 
 PORTSCOUT=	limitw:1,even
 
@@ -45,14 +45,12 @@ USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 introspection
 USE_XORG=	ice sm x11 xcb xcomposite xcursor xdamage xext xfixes \
 		xi xinerama xrandr xrender xtst
 USE_LDCONFIG=	yes
-#CFLAGS+=	-Wno-unknown-warning-option \
-#		-Wno-format-nonliteral
-#CPPFLAGS+=	-fno-omit-frame-pointer
 #CONFIGURE_ARGS=	--without-libwacom \
 #		--disable-wayland
 
-# udev support when using the X11 backend
-MESON_ARGS+=	-Dudev=false
+# udev support when using the X11 backend (only x11 backend?)
+#MESON_ARGS+=	-Dudev=false
+LIB_DEPENDS+=	libgudev-1.0.so:devel/libgudev
 
 # tests break in poudrere (probably needs xorg-server)
 MESON_ARGS+=	-Dcogl_tests=false \
@@ -74,16 +72,6 @@ MESON_ARGS+=	-Dwayland=false \
 # make option?
 LIB_DEPENDS+=	libwacom.so:x11/libwacom
 
-# Required by embedded cogl/clutter forks.
-#CONFIGURE_ARGS+=	--with-x \
-#		--with-gl-libname=libGL.so \
-#		--with-gles1-libname=libGLESv1_CM \
-#		--with-gles2-libname=libGLESv2 \
-#		--enable-kms-egl-platform=yes \
-#		--enable-xlib-egl-platform=yes \
-#		--disable-wayland-egl-server \
-#		--enable-compile-warnings=yes
-
 GLIB_SCHEMAS=	org.gnome.mutter.gschema.xml \
 		org.gnome.mutter.wayland.gschema.xml
 
@@ -91,5 +79,10 @@ SHEBANG_FILES=	clutter/tests/interactive/meson/gen-test-unit-names.sh \
 		cogl/tests/conform/meson/find-conform-unit-tests.sh \
 		cogl/tests/unit/meson/find-unit-tests.sh \
 		src/backends/native/gen-default-modes.py
+
+post-patch:
+	${REINPLACE_CMD} -e 's|>= 228|>=199|g' \
+		-e 's|>= 232|>=230|g' \
+		${WRKSRC}/meson.build
 
 .include <bsd.port.mk>

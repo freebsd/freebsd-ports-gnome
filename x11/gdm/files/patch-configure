@@ -1,6 +1,6 @@
---- configure.orig	2018-01-14 13:01:10.629609000 +0100
-+++ configure	2018-01-14 13:02:06.272152000 +0100
-@@ -677,6 +677,7 @@ HAVE_ADT_TRUE
+--- configure.orig	2018-11-06 22:32:56.000000000 +0100
++++ configure	2019-01-04 10:52:48.010224000 +0100
+@@ -675,6 +675,7 @@
  XEVIE_OPTION
  CHECK_ACCELERATED_DIR
  GNOME_SETTINGS_DAEMON_DIR
@@ -8,7 +8,7 @@
  GDM_OLD_CONF
  GDM_CUSTOM_CONF
  GDM_DEFAULTS_CONF
-@@ -697,6 +698,9 @@ JOURNALD_LIBS
+@@ -698,6 +699,9 @@
  JOURNALD_CFLAGS
  SYSTEMD_LIBS
  SYSTEMD_CFLAGS
@@ -18,16 +18,16 @@
  XINERAMA_LIBS
  LIBWRAP_LIBS
  OS_SOLARIS_FALSE
-@@ -983,6 +987,8 @@ enable_authentication_scheme
+@@ -971,6 +975,8 @@
  with_xinerama
  with_xdmcp
  with_tcp_wrappers
 +with_console_kit
 +with_systemd
+ with_udevdir
  with_systemdsystemunitdir
  enable_systemd_journal
- enable_wayland_support
-@@ -1002,6 +1008,7 @@ with_log_dir
+@@ -991,6 +997,7 @@
  with_at_bindir
  with_defaults_conf
  with_custom_conf
@@ -35,16 +35,16 @@
  with_gnome_settings_daemon_directory
  with_check_accelerated_directory
  with_xevie
-@@ -1748,6 +1755,8 @@ Optional Packages:
+@@ -1744,6 +1751,8 @@
    --with-xinerama         Add Xinerama support [default=auto]
    --with-xdmcp            Add XDMCP (remote login) support [default=auto]
    --with-tcp-wrappers     Use TCP Wrappers [default=auto]
 +  --with-console-kit      Add ConsoleKit support [default=auto]
 +  --with-systemd          Add systemd support [default=auto]
+   --with-udevdir=DIR      Directory for udev files
    --with-systemdsystemunitdir=DIR
                            Directory for systemd service files
-   --with-plymouth         Add plymouth support [default=yes]
-@@ -1776,6 +1785,9 @@ Optional Packages:
+@@ -1773,6 +1782,9 @@
    --with-custom-conf=<FILENAME>
                            FILENAME to give to custom configuration file
                            [default=GDMCONFDIR/custom.conf]
@@ -54,7 +54,7 @@
    --with-gnome-settings-daemon-directory
                            Specify the directory of gnome-settings-daemon used
                            by the chooser [default=libexecdir]
-@@ -20860,24 +20872,6 @@ else
+@@ -22684,24 +22696,6 @@
  fi
  
  
@@ -79,9 +79,9 @@
  # Check whether --enable-console-helper was given.
  if test "${enable_console_helper+set}" = set; then :
    enableval=$enable_console_helper;
-@@ -20922,7 +20916,23 @@ fi
- 
- 
+@@ -22753,7 +22747,23 @@
+   with_udevdir=$($PKG_CONFIG --variable=udevdir udev)
+ fi
  
 +# Check whether --with-console-kit was given.
 +if test "${with_console_kit+set}" = set; then :
@@ -103,7 +103,7 @@
  # Check whether --with-systemdsystemunitdir was given.
  if test "${with_systemdsystemunitdir+set}" = set; then :
    withval=$with_systemdsystemunitdir; with_systemdsystemunitdir=$withval
-@@ -21764,8 +21774,17 @@ fi
+@@ -23561,8 +23571,17 @@
  
  $as_echo "#define SUPPORTS_PAM_EXTENSIONS 1" >>confdefs.h
  
@@ -121,7 +121,7 @@
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for keyctl_read in -lkeyutils" >&5
  $as_echo_n "checking for keyctl_read in -lkeyutils... " >&6; }
  if ${ac_cv_lib_keyutils_keyctl_read+:} false; then :
-@@ -22008,7 +22027,7 @@ fi
+@@ -23754,7 +23773,7 @@
  
  
  
@@ -130,7 +130,7 @@
  do :
    as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
  ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
-@@ -22021,7 +22040,7 @@ fi
+@@ -23767,7 +23786,7 @@
  
  done
  
@@ -139,7 +139,7 @@
  do :
    as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
  ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
-@@ -22033,94 +22052,6 @@ _ACEOF
+@@ -23779,94 +23798,6 @@
  fi
  done
  
@@ -234,7 +234,7 @@
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for logwtmp in -lutil" >&5
  $as_echo_n "checking for logwtmp in -lutil... " >&6; }
  if ${ac_cv_lib_util_logwtmp+:} false; then :
-@@ -23207,7 +23138,25 @@ fi
+@@ -24851,7 +24782,25 @@
  CPPFLAGS="$xinerama_save_cppflags"
  
  
@@ -260,7 +260,7 @@
  pkg_failed=no
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for SYSTEMD" >&5
  $as_echo_n "checking for SYSTEMD... " >&6; }
-@@ -23216,12 +23165,12 @@ if test -n "$SYSTEMD_CFLAGS"; then
+@@ -24860,12 +24809,12 @@
      pkg_cv_SYSTEMD_CFLAGS="$SYSTEMD_CFLAGS"
   elif test -n "$PKG_CONFIG"; then
      if test -n "$PKG_CONFIG" && \
@@ -276,7 +276,7 @@
  		      test "x$?" != "x0" && pkg_failed=yes
  else
    pkg_failed=yes
-@@ -23233,12 +23182,12 @@ if test -n "$SYSTEMD_LIBS"; then
+@@ -24877,12 +24826,12 @@
      pkg_cv_SYSTEMD_LIBS="$SYSTEMD_LIBS"
   elif test -n "$PKG_CONFIG"; then
      if test -n "$PKG_CONFIG" && \
@@ -292,7 +292,7 @@
  		      test "x$?" != "x0" && pkg_failed=yes
  else
    pkg_failed=yes
-@@ -23259,50 +23208,49 @@ else
+@@ -24903,50 +24852,49 @@
          _pkg_short_errors_supported=no
  fi
          if test $_pkg_short_errors_supported = yes; then
@@ -366,7 +366,7 @@
  pkg_failed=no
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for JOURNALD" >&5
  $as_echo_n "checking for JOURNALD... " >&6; }
-@@ -23727,6 +23675,18 @@ GDM_OLD_CONF='${gdmconfdir}/gdm.conf'
+@@ -25370,6 +25318,18 @@
  
  
  
@@ -385,7 +385,7 @@
  # Check whether --with-gnome-settings-daemon-directory was given.
  if test "${with_gnome_settings_daemon_directory+set}" = set; then :
    withval=$with_gnome_settings_daemon_directory;
-@@ -24829,6 +24789,10 @@ if test -z "${SUPPORTS_PAM_EXTENSIONS_TRUE}" && test -
+@@ -26391,6 +26351,10 @@
    as_fn_error $? "conditional \"SUPPORTS_PAM_EXTENSIONS\" was never defined.
  Usually this means the macro was only invoked conditionally." "$LINENO" 5
  fi
@@ -396,8 +396,8 @@
  if test -z "${XDMCP_SUPPORT_TRUE}" && test -z "${XDMCP_SUPPORT_FALSE}"; then
    as_fn_error $? "conditional \"XDMCP_SUPPORT\" was never defined.
  Usually this means the macro was only invoked conditionally." "$LINENO" 5
-@@ -24841,6 +24805,10 @@ if test -z "${OS_SOLARIS_TRUE}" && test -z "${OS_SOLAR
-   as_fn_error $? "conditional \"OS_SOLARIS\" was never defined.
+@@ -26407,6 +26371,10 @@
+   as_fn_error $? "conditional \"INSTALL_UDEV_RULES\" was never defined.
  Usually this means the macro was only invoked conditionally." "$LINENO" 5
  fi
 +if test -z "${WITH_CONSOLE_KIT_TRUE}" && test -z "${WITH_CONSOLE_KIT_FALSE}"; then
@@ -407,7 +407,7 @@
  if test -z "${INSTALL_SYSTEMD_UNITS_TRUE}" && test -z "${INSTALL_SYSTEMD_UNITS_FALSE}"; then
    as_fn_error $? "conditional \"INSTALL_SYSTEMD_UNITS\" was never defined.
  Usually this means the macro was only invoked conditionally." "$LINENO" 5
-@@ -27325,6 +27293,7 @@ echo "
+@@ -28992,6 +28960,7 @@
          dmconfdir:                ${dmconfdir}
          localstatedir:            ${localstatedir}
          datadir:                  ${datadir}
@@ -415,16 +415,16 @@
  	gnome-settings-daemon location: ${with_gnome_settings_daemon_directory}
  	gnome-session-check-accel location: ${with_check_accelerated_directory}
  	source code location:	  ${srcdir}
-@@ -27354,6 +27323,8 @@ echo \
+@@ -29021,6 +28990,8 @@
  "        Xinerama support:         ${XINERAMA_SUPPORT}
          XDMCP support:            ${XDMCP_SUPPORT}
          SELinux support:          ${use_selinux}
 +        ConsoleKit support:       ${use_console_kit}
 +        systemd support:          ${use_systemd}
          systemd unit dir:         ${with_systemdsystemunitdir}
+         udev dir:                 ${with_udevdir}
          plymouth support:         ${use_plymouth}
-         wayland support:          ${enable_wayland_support}
-@@ -27362,3 +27333,4 @@ echo \
+@@ -29030,3 +29001,4 @@
          Enable documentation:     ${enable_documentation}
          Install GDM's Xsession:   ${enable_gdm_xsession}
  "

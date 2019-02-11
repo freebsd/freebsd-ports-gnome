@@ -25,8 +25,8 @@ Date: Fri, 12 Jun 2015 13:48:52 -0400
 Subject: require logind support
 
 
---- daemon/gdm-manager.c.orig	2017-10-24 21:33:58.000000000 +0200
-+++ daemon/gdm-manager.c	2018-01-14 13:33:21.588929000 +0100
+--- daemon/gdm-manager.c.orig	2018-11-06 22:26:11.000000000 +0100
++++ daemon/gdm-manager.c	2019-01-04 11:15:49.568538000 +0100
 @@ -36,7 +36,9 @@
  
  #include <act/act-user-manager.h>
@@ -37,9 +37,9 @@ Subject: require logind support
  
  #include "gdm-common.h"
  
-@@ -63,6 +65,15 @@
- 
+@@ -64,6 +66,15 @@
  #define INITIAL_SETUP_USERNAME "gnome-initial-setup"
+ #define ALREADY_RAN_INITIAL_SETUP_ON_THIS_BOOT GDM_RUN_DIR "/gdm.ran-initial-setup"
  
 +#define CK_NAME      "org.freedesktop.ConsoleKit"
 +#define CK_PATH      "/org/freedesktop/ConsoleKit"
@@ -53,7 +53,7 @@ Subject: require logind support
  typedef struct
  {
          GdmManager *manager;
-@@ -206,9 +217,10 @@ plymouth_quit_without_transition (void)
+@@ -204,9 +215,10 @@
  }
  #endif
  
@@ -66,7 +66,7 @@ Subject: require logind support
  {
          char *session, *gsession;
          int ret;
-@@ -233,11 +245,61 @@ get_session_id_for_pid (pid_t    pid,
+@@ -231,11 +243,61 @@
                  return NULL;
          }
  }
@@ -131,7 +131,7 @@ Subject: require logind support
  {
          int ret;
  
-@@ -254,8 +316,62 @@ get_uid_for_session_id (const char  *session_id,
+@@ -252,8 +314,62 @@
  
          return TRUE;
  }
@@ -194,7 +194,7 @@ Subject: require logind support
  lookup_by_session_id (const char *id,
                        GdmDisplay *display,
                        gpointer    user_data)
-@@ -267,11 +383,51 @@ lookup_by_session_id (const char *id,
+@@ -265,11 +381,51 @@
          return g_strcmp0 (current, looking_for) == 0;
  }
  
@@ -249,45 +249,8 @@ Subject: require logind support
          char *session_class = NULL;
          int ret;
  
-@@ -295,12 +451,33 @@ is_login_session (GdmManager  *self,
+@@ -293,16 +449,75 @@
          g_free (session_class);
-         return TRUE;
- }
-+#endif
- 
- static gboolean
--activate_session_id (GdmManager *manager,
--                     const char *seat_id,
--                     const char *session_id)
-+is_login_session (GdmManager       *self,
-+                  GDBusConnection  *connection,
-+                  const char       *session_id,
-+                  GError          **error)
- {
-+#ifdef WITH_SYSTEMD
-+        if (LOGIND_RUNNING()) {
-+                return is_systemd_login_session (self, session_id, error);
-+        }
-+#endif
-+
-+#ifdef WITH_CONSOLE_KIT
-+        return is_consolekit_login_session (self, connection, session_id, error);
-+#endif
-+
-+        return FALSE;
-+}
-+
-+#ifdef WITH_SYSTEMD
-+static gboolean
-+activate_session_id_for_systemd (GdmManager   *manager,
-+                                 const char *seat_id,
-+                                 const char *session_id)
-+{
-         GError *error = NULL;
-         GVariant *reply;
- 
-@@ -326,16 +503,75 @@ activate_session_id (GdmManager *manager,
- 
          return TRUE;
  }
 +#endif
@@ -336,22 +299,22 @@ Subject: require logind support
 +#endif
 +
 +static gboolean
-+activate_session_id (GdmManager *manager,
-+                     const char *seat_id,
-+                     const char *session_id)
++is_login_session (GdmManager *self,
++                  GDBusConnection  *connection,
++                  const char       *session_id,
++                  GError          **error)
 +{
-+
 +#ifdef WITH_SYSTEMD
 +        if (LOGIND_RUNNING()) {
-+                return activate_session_id_for_systemd (manager, seat_id, session_id);
++                return is_systemd_login_session (self, session_id, error);
 +        }
 +#endif
 +
 +#ifdef WITH_CONSOLE_KIT
-+        return activate_session_id_for_ck (manager, seat_id, session_id);
-+#else
-+        return FALSE;
++        return is_consolekit_login_session (self, connection, session_id, error);
 +#endif
++
++        return FALSE;
 +}
 +
 +#ifdef WITH_SYSTEMD
@@ -365,7 +328,7 @@ Subject: require logind support
          reply = g_dbus_connection_call_sync (manager->priv->connection,
                                               "org.freedesktop.login1",
                                               "/org/freedesktop/login1",
-@@ -358,7 +594,60 @@ session_unlock (GdmManager *manager,
+@@ -325,7 +540,60 @@
  
          return TRUE;
  }
@@ -426,7 +389,7 @@ Subject: require logind support
  static GdmSession *
  find_session_for_user_on_seat (GdmManager *manager,
                                 const char *username,
-@@ -389,11 +678,44 @@ find_session_for_user_on_seat (GdmManager *manager,
+@@ -356,11 +624,44 @@
          return NULL;
  }
  
@@ -474,7 +437,7 @@ Subject: require logind support
          char *seat;
          int ret;
          gboolean is_remote;
-@@ -418,10 +740,31 @@ is_remote_session (GdmManager  *self,
+@@ -385,10 +686,31 @@
  
          return is_remote;
  }
@@ -508,7 +471,7 @@ Subject: require logind support
  {
          int ret;
          char *seat, *out_seat;
-@@ -446,11 +789,62 @@ get_seat_id_for_session_id (const char  *session_id,
+@@ -413,11 +735,62 @@
  
          return out_seat;
  }
@@ -573,7 +536,7 @@ Subject: require logind support
          int ret;
          char *tty, *out_tty;
  
-@@ -473,7 +867,21 @@ get_tty_for_session_id (const char  *session_id,
+@@ -440,7 +813,21 @@
  
          return out_tty;
  }
@@ -595,7 +558,7 @@ Subject: require logind support
  static void
  get_display_and_details_for_bus_sender (GdmManager       *self,
                                          GDBusConnection  *connection,
-@@ -516,7 +924,7 @@ get_display_and_details_for_bus_sender (GdmManager    
+@@ -483,7 +870,7 @@
                  goto out;
          }
  
@@ -604,7 +567,7 @@ Subject: require logind support
  
          if (session_id == NULL) {
                  g_debug ("GdmManager: Error while retrieving session id for sender: %s",
-@@ -530,7 +938,7 @@ get_display_and_details_for_bus_sender (GdmManager    
+@@ -497,7 +884,7 @@
          }
  
          if (out_is_login_screen != NULL) {
@@ -613,7 +576,7 @@ Subject: require logind support
  
                  if (error != NULL) {
                          g_debug ("GdmManager: Error while checking if sender is login screen: %s",
-@@ -540,7 +948,7 @@ get_display_and_details_for_bus_sender (GdmManager    
+@@ -507,7 +894,7 @@
                  }
          }
  
@@ -622,7 +585,7 @@ Subject: require logind support
                  g_debug ("GdmManager: Error while retrieving uid for session: %s",
                           error->message);
                  g_error_free (error);
-@@ -557,7 +965,7 @@ get_display_and_details_for_bus_sender (GdmManager    
+@@ -524,7 +911,7 @@
          }
  
          if (out_seat_id != NULL) {
@@ -631,7 +594,7 @@ Subject: require logind support
  
                  if (error != NULL) {
                          g_debug ("GdmManager: Error while retrieving seat id for session: %s",
-@@ -567,7 +975,7 @@ get_display_and_details_for_bus_sender (GdmManager    
+@@ -534,7 +921,7 @@
          }
  
          if (out_is_remote != NULL) {
@@ -640,7 +603,7 @@ Subject: require logind support
  
                  if (error != NULL) {
                          g_debug ("GdmManager: Error while retrieving remoteness for session: %s",
-@@ -725,29 +1133,6 @@ out:
+@@ -692,29 +1079,6 @@
          return recorded;
  }
  
@@ -670,7 +633,7 @@ Subject: require logind support
  static gboolean
  gdm_manager_handle_register_display (GdmDBusManager        *manager,
                                       GDBusMethodInvocation *invocation,
-@@ -787,7 +1172,7 @@ gdm_manager_handle_register_display (GdmDBusManager   
+@@ -754,7 +1118,7 @@
                  }
          }
  
@@ -679,7 +642,7 @@ Subject: require logind support
  
          if (session != NULL) {
                  GPid pid;
-@@ -961,7 +1346,8 @@ on_reauthentication_client_rejected (GdmSession       
+@@ -928,7 +1292,8 @@
                   * same audit session, ignore it since it doesn't "own" the
                   * reauthentication session
                   */
@@ -689,7 +652,7 @@ Subject: require logind support
                                                              NULL);
                  session_id = g_object_get_data (G_OBJECT (session), "caller-session-id");
  
-@@ -1173,16 +1559,20 @@ static gboolean
+@@ -1140,16 +1505,20 @@
  display_is_on_seat0 (GdmDisplay *display)
  {
          gboolean is_on_seat0 = TRUE;
@@ -716,149 +679,7 @@ Subject: require logind support
          return is_on_seat0;
  }
  
-@@ -1320,133 +1710,6 @@ maybe_start_pending_initial_login (GdmManager *manager
-         g_free (user_session_seat_id);
- }
- 
--static gboolean
--get_login_window_session_id (const char  *seat_id,
--                             char       **session_id)
--{
--        gboolean   ret;
--        int        res, i;
--        char     **sessions;
--        char      *service_id;
--        char      *service_class;
--        char      *state;
--
--        res = sd_seat_get_sessions (seat_id, &sessions, NULL, NULL);
--        if (res < 0) {
--                g_debug ("Failed to determine sessions: %s", strerror (-res));
--                return FALSE;
--        }
--
--        if (sessions == NULL || sessions[0] == NULL) {
--                *session_id = NULL;
--                ret = TRUE;
--                goto out;
--        }
--
--        for (i = 0; sessions[i]; i ++) {
--
--                res = sd_session_get_class (sessions[i], &service_class);
--                if (res < 0) {
--                        g_debug ("failed to determine class of session %s: %s", sessions[i], strerror (-res));
--                        ret = FALSE;
--                        goto out;
--                }
--
--                if (strcmp (service_class, "greeter") != 0) {
--                        free (service_class);
--                        continue;
--                }
--
--                free (service_class);
--
--                ret = sd_session_get_state (sessions[i], &state);
--                if (ret < 0) {
--                        g_debug ("failed to determine state of session %s: %s", sessions[i], strerror (-res));
--                        ret = FALSE;
--                        goto out;
--                }
--
--                if (g_strcmp0 (state, "closing") == 0) {
--                        free (state);
--                        continue;
--                }
--                free (state);
--
--                res = sd_session_get_service (sessions[i], &service_id);
--                if (res < 0) {
--                        g_debug ("failed to determine service of session %s: %s", sessions[i], strerror (-res));
--                        ret = FALSE;
--                        goto out;
--                }
--
--                if (strcmp (service_id, "gdm-launch-environment") == 0) {
--                        *session_id = g_strdup (sessions[i]);
--                        ret = TRUE;
--
--                        free (service_id);
--                        goto out;
--                }
--
--                free (service_id);
--        }
--
--        *session_id = NULL;
--        ret = TRUE;
--
--out:
--        if (sessions) {
--                for (i = 0; sessions[i]; i ++) {
--                        free (sessions[i]);
--                }
--
--                free (sessions);
--        }
--
--        return ret;
--}
--
--static void
--activate_login_window_session_on_seat (GdmManager *self,
--                                       const char *seat_id)
--{
--        char *session_id;
--
--        if (!get_login_window_session_id (seat_id, &session_id)) {
--                return;
--        }
--
--        activate_session_id (self, seat_id, session_id);
--}
--
--static void
--maybe_activate_other_session (GdmManager *self,
--                              GdmDisplay *old_display)
--{
--        char *seat_id = NULL;
--        char *session_id;
--        int ret;
--
--        g_object_get (G_OBJECT (old_display),
--                      "seat-id", &seat_id,
--                      NULL);
--
--        ret = sd_seat_get_active (seat_id, &session_id, NULL);
--
--        if (ret == 0) {
--                GdmDisplay *display;
--
--                display = gdm_display_store_find (self->priv->display_store,
--                                                  lookup_by_session_id,
--                                                  (gpointer) session_id);
--
--                if (display == NULL) {
--                        activate_login_window_session_on_seat (self, seat_id);
--                }
--        }
--
--        g_free (seat_id);
--}
--
- static const char *
- get_username_for_greeter_display (GdmManager *manager,
-                                   GdmDisplay *display)
-@@ -1692,7 +1955,6 @@ on_display_status_changed (GdmDisplay *display,
-                                 manager->priv->ran_once = TRUE;
-                         }
-                         maybe_start_pending_initial_login (manager, display);
--                        maybe_activate_other_session (manager, display);
-                         break;
-                 default:
-                         break;
-@@ -2027,11 +2289,57 @@ on_user_session_died (GdmSession *session,
+@@ -1970,11 +2339,57 @@
  }
  
  static char *
@@ -918,7 +739,7 @@ Subject: require logind support
  }
  
  static void
-@@ -2040,25 +2348,6 @@ on_session_reauthenticated (GdmSession *session,
+@@ -1983,25 +2398,6 @@
                              GdmManager *manager)
  {
          gboolean fail_if_already_switched = FALSE;
@@ -928,7 +749,7 @@ Subject: require logind support
 -                char *session_id;
 -
 -                seat_id = gdm_session_get_display_seat_id (session);
--                if (get_login_window_session_id (seat_id, &session_id)) {
+-                if (gdm_get_login_window_session_id (seat_id, &session_id)) {
 -                        GdmDisplay *display = gdm_display_store_find (manager->priv->display_store,
 -                                                                      lookup_by_session_id,
 -                                                                      (gpointer) session_id);
