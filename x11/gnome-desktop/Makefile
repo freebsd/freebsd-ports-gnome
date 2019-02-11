@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-desktop
-PORTVERSION=	3.28.2
+PORTVERSION=	3.31.90
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Additional UI API for GNOME 3
@@ -26,20 +26,22 @@ RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		cantarell-fonts>=0:x11-fonts/cantarell-fonts \
 		xkeyboard-config>=0:x11/xkeyboard-config
 
-USES=		bison gettext gmake gnome libtool localbase pathfix \
+USES=		bison gettext gnome localbase meson \
 		pkgconfig python:3.4+ tar:xz
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection:build
 USE_XORG=	x11
 USE_LDCONFIG=	yes
-GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-gnome-distributor="FreeBSD GNOME Project" \
-		--disable-udev
-INSTALL_TARGET=	install-strip
+MESON_ARGS=	-Dgnome_distributor="FreeBSD GNOME Project" \
+		-Dudev=disabled
+#GNU_CONFIGURE=	yes
+#CONFIGURE_ARGS=	--with-gnome-distributor="FreeBSD GNOME Project" \
+#		--disable-udev
+#INSTALL_TARGET=	install-strip
 
-post-patch:
-	@${REINPLACE_CMD} -e 's|xsltproc -o| xsltproc --nonet -o|g' \
-		${WRKSRC}/desktop-docs/fdl/Makefile.in \
-		${WRKSRC}/desktop-docs/gpl/Makefile.in \
-		${WRKSRC}/desktop-docs/lgpl/Makefile.in
+#post-patch:
+#	@${REINPLACE_CMD} -e 's|xsltproc -o| xsltproc --nonet -o|g' \
+#		${WRKSRC}/desktop-docs/fdl/Makefile.in \
+#		${WRKSRC}/desktop-docs/gpl/Makefile.in \
+#		${WRKSRC}/desktop-docs/lgpl/Makefile.in
 
 .include <bsd.port.mk>
