@@ -31,7 +31,7 @@ LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libnettle.so:security/nettle \
 		libsecret-1.so:security/libsecret \
 		libdazzle-1.0.so:x11-toolkits/libdazzle \
-		x11-toolkits/libhandy \
+		libhandy-0.0.so:x11-toolkits/libhandy \
 		libp11-kit.so:security/p11-kit
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
