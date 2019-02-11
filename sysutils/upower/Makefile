@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	upower
-PORTVERSION=	0.99.7
-PORTREVISION=	1
+PORTVERSION=	0.99.9
 CATEGORIES=	sysutils
-MASTER_SITES=	http://upower.freedesktop.org/releases/
+MASTER_SITES=	https://gitlab.freedesktop.org/upower/upower/uploads/2282c7c0e53fb31816b824c9d1f547e8/
+GITLAB_HASH=	2282c7c0e53fb31816b824c9d1f547e8
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	D-Bus daemon for simplifying power management tasks
