@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-shell-extensions
-PORTVERSION=	3.31.2
+PORTVERSION=	3.31.90
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	sassc:textproc/sassc
 LIB_DEPENDS=	libgjs.so:lang/gjs
-RUN_DEPENDS=	gnome-shell>=3.28.0:x11/gnome-shell
+RUN_DEPENDS=	gnome-shell>=3.31.90:x11/gnome-shell
 
 PORTSCOUT=	limitw:1,even
 
