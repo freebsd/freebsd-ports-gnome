@@ -1,5 +1,4 @@
 bin/evolution
-etc/xdg/autostart/org.gnome.Evolution-alarm-notify.desktop
 include/evolution/addressbook/gui/widgets/eab-config.h
 include/evolution/calendar/gui/calendar-config-keys.h
 include/evolution/calendar/gui/calendar-config.h
@@ -467,6 +466,8 @@ include/evolution/mail/e-mail-request.h
 include/evolution/mail/e-mail-send-account-override.h
 include/evolution/mail/e-mail-sidebar.h
 include/evolution/mail/e-mail-tag-editor.h
+include/evolution/mail/e-mail-templates-store.h
+include/evolution/mail/e-mail-templates.h
 include/evolution/mail/e-mail-ui-session.h
 include/evolution/mail/e-mail-view.h
 include/evolution/mail/e-mail.h
@@ -507,6 +508,7 @@ include/evolution/shell/e-shell-view.h
 include/evolution/shell/e-shell-window-actions.h
 include/evolution/shell/e-shell-window.h
 include/evolution/shell/e-shell.h
+lib/evolution-data-server/ui-modules/module-evolution-alarm-notify.so
 lib/evolution/libeabutil.so
 lib/evolution/libeabwidgets.so
 lib/evolution/libecontacteditor.so
@@ -530,10 +532,10 @@ lib/evolution/modules/module-accounts-window.so
 lib/evolution/modules/module-addressbook.so
 lib/evolution/modules/module-backup-restore.so
 %%BOGOFILTER%%lib/evolution/modules/module-bogofilter.so
+lib/evolution/modules/module-book-config-carddav.so
 lib/evolution/modules/module-book-config-google.so
 %%LDAP%%lib/evolution/modules/module-book-config-ldap.so
 lib/evolution/modules/module-book-config-local.so
-lib/evolution/modules/module-book-config-webdav.so
 lib/evolution/modules/module-cal-config-caldav.so
 lib/evolution/modules/module-cal-config-contacts.so
 lib/evolution/modules/module-cal-config-google.so
@@ -598,9 +600,9 @@ libdata/pkgconfig/evolution-calendar-3.0.pc
 libdata/pkgconfig/evolution-mail-3.0.pc
 libdata/pkgconfig/evolution-shell-3.0.pc
 libdata/pkgconfig/libemail-engine.pc
-libexec/evolution/evolution-alarm-notify
 libexec/evolution/evolution-backup
 libexec/evolution/killev
+man/man1/evolution.1.gz
 share/GConf/gsettings/evolution.convert
 share/applications/org.gnome.Evolution.desktop
 %%DATADIR%%/address_formats.dat
@@ -655,19 +657,7 @@ share/applications/org.gnome.Evolution.desktop
 %%DATADIR%%/etspec/e-task-table.etspec
 %%DATADIR%%/etspec/message-list.etspec
 %%DATADIR%%/filtertypes.xml
-%%DATADIR%%/help/quickref/C/quickref.pdf
-%%DATADIR%%/help/quickref/ca/quickref.pdf
-%%DATADIR%%/help/quickref/cs/quickref.pdf
-%%DATADIR%%/help/quickref/de/quickref.pdf
-%%DATADIR%%/help/quickref/es/quickref.pdf
-%%DATADIR%%/help/quickref/fr/quickref.pdf
-%%DATADIR%%/help/quickref/hu/quickref.pdf
-%%DATADIR%%/help/quickref/it/quickref.pdf
-%%DATADIR%%/help/quickref/oc/quickref.pdf
-%%DATADIR%%/help/quickref/pl/quickref.pdf
-%%DATADIR%%/help/quickref/pt/quickref.pdf
-%%DATADIR%%/help/quickref/sq/quickref.pdf
-%%DATADIR%%/help/quickref/sv/quickref.pdf
+%%DATADIR%%/icons/hicolor/128x128/apps/contact-editor.png
 %%DATADIR%%/icons/hicolor/16x16/actions/folder-copy.png
 %%DATADIR%%/icons/hicolor/16x16/actions/folder-move.png
 %%DATADIR%%/icons/hicolor/16x16/actions/go-today.png
@@ -844,7 +834,6 @@ share/applications/org.gnome.Evolution.desktop
 %%DATADIR%%/tasktypes.xml
 %%DATADIR%%/theme/webview-print.css
 %%DATADIR%%/theme/webview.css
-%%DATADIR%%/ui/alarm-notify.ui
 %%DATADIR%%/ui/contact-editor.ui
 %%DATADIR%%/ui/contact-list-editor.ui
 %%DATADIR%%/ui/e-calendar-preferences.ui

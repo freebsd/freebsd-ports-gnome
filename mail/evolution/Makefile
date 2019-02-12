@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	evolution
-PORTVERSION=	3.28.5
-PORTREVISION=	1
+PORTVERSION=	3.31.90
 CATEGORIES=	mail gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Integrated mail, calendar and address book distributed suite
@@ -43,7 +42,7 @@ RUN_DEPENDS=	highlight:textproc/highlight \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c11 desktop-file-utils cmake gettext gnome \
+USES=		compiler:c11 desktop-file-utils cmake gettext gl gnome \
 		iconv:wchar_t sqlite libarchive localbase pathfix pkgconfig \
 		tar:xz
 USE_GNOME=	cairo evolutiondataserver3 gnomedesktop3 intltool
