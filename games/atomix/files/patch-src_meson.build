@@ -1,0 +1,10 @@
+--- src/meson.build.orig	2019-02-12 18:14:55 UTC
++++ src/meson.build
+@@ -27,6 +27,7 @@ library_sources = [
+ ]
+ 
+ app_dependencies = [
++    cc.find_library('m', required: true),
+     gtk_dep,
+     glib_dep,
+     gdk_pixbuf_dep,
