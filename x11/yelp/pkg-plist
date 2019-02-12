@@ -45,6 +45,8 @@ share/gtk-doc/html/libyelp/right.png
 share/gtk-doc/html/libyelp/style.css
 share/gtk-doc/html/libyelp/up-insensitive.png
 share/gtk-doc/html/libyelp/up.png
+share/icons/hicolor/scalable/apps/org.gnome.Yelp.svg
+share/icons/hicolor/symbolic/apps/org.gnome.Yelp-symbolic.svg
 share/locale/af/LC_MESSAGES/yelp.mo
 share/locale/am/LC_MESSAGES/yelp.mo
 share/locale/an/LC_MESSAGES/yelp.mo

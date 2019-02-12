@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	yelp
-PORTVERSION=	3.28.1
-PORTREVISION=	1
+PORTVERSION=	3.31.90
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Help browser for the GNOME 3 desktop
@@ -27,7 +26,7 @@ PORTSCOUT=	limitw:1,even
 USES=		compiler:c11 desktop-file-utils gettext gmake gnome \
 		libtool pathfix pkgconfig sqlite tar:xz
 USE_XORG=	x11 ice
-USE_GNOME=	cairo gtk30 intlhack libxml2 libxslt
+USE_GNOME=	cairo gtk30 libxml2 libxslt
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
