@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-klotski
-PORTVERSION=	3.22.3
+PORTVERSION=	3.31.90
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -20,12 +20,10 @@ LIB_DEPENDS=	libgnome-games-support-1.so:games/libgnome-games-support \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix \
-		pkgconfig tar:xz
+USES=		gettext gnome localbase meson pkgconfig tar:xz
 USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
 INSTALLS_ICONS=	yes
-GNU_CONFIGURE=	yes
 
-GLIB_SCHEMAS=	org.gnome.klotski.gschema.xml
+GLIB_SCHEMAS=	org.gnome.Klotski.gschema.xml
 
 .include <bsd.port.mk>
