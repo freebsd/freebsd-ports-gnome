@@ -1,3 +1,3 @@
-TIMESTAMP = 1546554938
-SHA256 (gnome/gnome-settings-daemon-3.31.1.tar.xz) = e4c2aa5263b51cd841f5459e4e8fc75cb10e8402d917deed5346e555a232c635
-SIZE (gnome/gnome-settings-daemon-3.31.1.tar.xz) = 1365008
+TIMESTAMP = 1549923166
+SHA256 (gnome/gnome-settings-daemon-3.31.90.tar.xz) = c74a8b39c98c4ee17b9be76d7ec03cbf4aa8454fa1358ecd832143b4e2d94730
+SIZE (gnome/gnome-settings-daemon-3.31.90.tar.xz) = 1370560

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-settings-daemon
-PORTVERSION=	3.31.1
+PORTVERSION=	3.31.90
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -28,7 +28,7 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 
 PORTSCOUT=	limitw:1,even
 
-USE_XORG=	x11 xext xi xtst
+USE_XORG=	x11 xext xi
 USE_GNOME=	cairo gnomedesktop3 gtk30
 USES=		gettext gnome localbase:ldflags meson perl5 \
 		pkgconfig python:3.6+,build tar:xz
@@ -39,6 +39,8 @@ MESON_ARGS=	-Dnssdb_dir=${LOCALBASE}/share/certs/ \
 		-Drfkill=false \
 		-Dnetwork_manager=false
 # disable gudev for now, the build failes
+# but we still need it, somehow?
+#LIB_DEPENDS+=	libgudev-1.0.so:devel/libgudev
 MESON_ARGS+=	-Dgudev=false
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 

@@ -35,7 +35,6 @@ libexec/gsd-screensaver-proxy
 libexec/gsd-sharing
 %%SMARTCARD%%libexec/gsd-smartcard
 libexec/gsd-sound
-libexec/gsd-test-input-helper
 libexec/gsd-xsettings
 share/GConf/gsettings/gnome-settings-daemon.convert
 %%DATADIR%%/datetime/backward
