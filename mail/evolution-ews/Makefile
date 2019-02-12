@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	evolution-ews
-PORTVERSION=	3.28.5
+PORTVERSION=	3.31.90
 CATEGORIES=	mail gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Evolution Microsoft Exchange plugin through Exchange Web Services
