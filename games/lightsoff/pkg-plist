@@ -1,5 +1,5 @@
 bin/lightsoff
-share/applications/lightsoff.desktop
+share/applications/org.gnome.LightsOff.desktop
 share/help/C/lightsoff/basic.page
 share/help/C/lightsoff/bug-filing.page
 share/help/C/lightsoff/develop.page
@@ -252,8 +252,8 @@ share/help/zh_CN/lightsoff/license.page
 share/help/zh_CN/lightsoff/rules.page
 share/help/zh_CN/lightsoff/strategy.page
 share/help/zh_CN/lightsoff/translate.page
-share/icons/hicolor/scalable/apps/lightsoff-symbolic.svg
-share/icons/hicolor/scalable/apps/lightsoff.svg
+share/icons/hicolor/scalable/apps/org.gnome.LightsOff.svg
+share/icons/hicolor/symbolic/apps/org.gnome.LightsOff-symbolic.svg
 %%DATADIR%%/highlight.svg
 %%DATADIR%%/off.svg
 %%DATADIR%%/on.svg
@@ -347,4 +347,4 @@ share/locale/xh/LC_MESSAGES/lightsoff.mo
 share/locale/zh_CN/LC_MESSAGES/lightsoff.mo
 share/locale/zh_HK/LC_MESSAGES/lightsoff.mo
 share/locale/zh_TW/LC_MESSAGES/lightsoff.mo
-share/metainfo/lightsoff.appdata.xml
+share/metainfo/org.gnome.LightsOff.appdata.xml

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lightsoff
-PORTVERSION=	3.28.0
+PORTVERSION=	3.31.90
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -22,14 +22,15 @@ LIB_DEPENDS=	libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix pkgconfig \
-		sqlite tar:xz
+USES=		gettext gl gnome localbase meson pkgconfig \
+		python:3.5+,build sqlite tar:xz
 USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
 INSTALLS_ICONS=	yes
 USE_XORG=	x11 xcomposite xdamage xext xfixes xi xrandr
 USE_GL=		egl gl
-GNU_CONFIGURE=	yes
 
-GLIB_SCHEMAS=	org.gnome.lightsoff.gschema.xml
+BINARY_ALIAS=	python3=${PYTHON_VERSION}
+
+GLIB_SCHEMAS=	org.gnome.LightsOff.gschema.xml
 
 .include <bsd.port.mk>
