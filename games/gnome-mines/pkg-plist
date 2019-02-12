@@ -1,6 +1,6 @@
 bin/gnome-mines
 man/man6/gnome-mines.6.gz
-share/applications/gnome-mines.desktop
+share/applications/org.gnome.Mines.desktop
 %%DATADIR%%/themes/bgcolors/1mines.svg
 %%DATADIR%%/themes/bgcolors/2mines.svg
 %%DATADIR%%/themes/bgcolors/3mines.svg
@@ -62,7 +62,6 @@ share/help/C/gnome-mines/index.page
 share/help/C/gnome-mines/license.page
 share/help/C/gnome-mines/new-game.page
 share/help/C/gnome-mines/rules.page
-share/help/C/gnome-mines/shortcuts.page
 share/help/C/gnome-mines/translate.page
 share/help/ca/gnome-mines/board-size.page
 share/help/ca/gnome-mines/bug-filing.page
@@ -80,7 +79,6 @@ share/help/ca/gnome-mines/index.page
 share/help/ca/gnome-mines/license.page
 share/help/ca/gnome-mines/new-game.page
 share/help/ca/gnome-mines/rules.page
-share/help/ca/gnome-mines/shortcuts.page
 share/help/ca/gnome-mines/translate.page
 share/help/cs/gnome-mines/board-size.page
 share/help/cs/gnome-mines/bug-filing.page
@@ -98,7 +96,6 @@ share/help/cs/gnome-mines/index.page
 share/help/cs/gnome-mines/license.page
 share/help/cs/gnome-mines/new-game.page
 share/help/cs/gnome-mines/rules.page
-share/help/cs/gnome-mines/shortcuts.page
 share/help/cs/gnome-mines/translate.page
 share/help/da/gnome-mines/board-size.page
 share/help/da/gnome-mines/bug-filing.page
@@ -116,7 +113,6 @@ share/help/da/gnome-mines/index.page
 share/help/da/gnome-mines/license.page
 share/help/da/gnome-mines/new-game.page
 share/help/da/gnome-mines/rules.page
-share/help/da/gnome-mines/shortcuts.page
 share/help/da/gnome-mines/translate.page
 share/help/de/gnome-mines/board-size.page
 share/help/de/gnome-mines/bug-filing.page
@@ -134,7 +130,6 @@ share/help/de/gnome-mines/index.page
 share/help/de/gnome-mines/license.page
 share/help/de/gnome-mines/new-game.page
 share/help/de/gnome-mines/rules.page
-share/help/de/gnome-mines/shortcuts.page
 share/help/de/gnome-mines/translate.page
 share/help/el/gnome-mines/board-size.page
 share/help/el/gnome-mines/bug-filing.page
@@ -152,7 +147,6 @@ share/help/el/gnome-mines/index.page
 share/help/el/gnome-mines/license.page
 share/help/el/gnome-mines/new-game.page
 share/help/el/gnome-mines/rules.page
-share/help/el/gnome-mines/shortcuts.page
 share/help/el/gnome-mines/translate.page
 share/help/en_GB/gnome-mines/board-size.page
 share/help/en_GB/gnome-mines/bug-filing.page
@@ -170,7 +164,6 @@ share/help/en_GB/gnome-mines/index.page
 share/help/en_GB/gnome-mines/license.page
 share/help/en_GB/gnome-mines/new-game.page
 share/help/en_GB/gnome-mines/rules.page
-share/help/en_GB/gnome-mines/shortcuts.page
 share/help/en_GB/gnome-mines/translate.page
 share/help/es/gnome-mines/board-size.page
 share/help/es/gnome-mines/bug-filing.page
@@ -188,8 +181,24 @@ share/help/es/gnome-mines/index.page
 share/help/es/gnome-mines/license.page
 share/help/es/gnome-mines/new-game.page
 share/help/es/gnome-mines/rules.page
-share/help/es/gnome-mines/shortcuts.page
 share/help/es/gnome-mines/translate.page
+share/help/eu/gnome-mines/board-size.page
+share/help/eu/gnome-mines/bug-filing.page
+share/help/eu/gnome-mines/develop.page
+share/help/eu/gnome-mines/documentation.page
+share/help/eu/gnome-mines/figures/flag-question.svg
+share/help/eu/gnome-mines/figures/flag.svg
+share/help/eu/gnome-mines/figures/flags.png
+share/help/eu/gnome-mines/figures/logo.png
+share/help/eu/gnome-mines/figures/logo32.png
+share/help/eu/gnome-mines/flags.page
+share/help/eu/gnome-mines/get-help.page
+share/help/eu/gnome-mines/high-scores.page
+share/help/eu/gnome-mines/index.page
+share/help/eu/gnome-mines/license.page
+share/help/eu/gnome-mines/new-game.page
+share/help/eu/gnome-mines/rules.page
+share/help/eu/gnome-mines/translate.page
 share/help/fr/gnome-mines/board-size.page
 share/help/fr/gnome-mines/bug-filing.page
 share/help/fr/gnome-mines/develop.page
@@ -206,7 +215,6 @@ share/help/fr/gnome-mines/index.page
 share/help/fr/gnome-mines/license.page
 share/help/fr/gnome-mines/new-game.page
 share/help/fr/gnome-mines/rules.page
-share/help/fr/gnome-mines/shortcuts.page
 share/help/fr/gnome-mines/translate.page
 share/help/gl/gnome-mines/board-size.page
 share/help/gl/gnome-mines/bug-filing.page
@@ -224,7 +232,6 @@ share/help/gl/gnome-mines/index.page
 share/help/gl/gnome-mines/license.page
 share/help/gl/gnome-mines/new-game.page
 share/help/gl/gnome-mines/rules.page
-share/help/gl/gnome-mines/shortcuts.page
 share/help/gl/gnome-mines/translate.page
 share/help/hu/gnome-mines/board-size.page
 share/help/hu/gnome-mines/bug-filing.page
@@ -242,7 +249,6 @@ share/help/hu/gnome-mines/index.page
 share/help/hu/gnome-mines/license.page
 share/help/hu/gnome-mines/new-game.page
 share/help/hu/gnome-mines/rules.page
-share/help/hu/gnome-mines/shortcuts.page
 share/help/hu/gnome-mines/translate.page
 share/help/it/gnome-mines/board-size.page
 share/help/it/gnome-mines/bug-filing.page
@@ -260,7 +266,6 @@ share/help/it/gnome-mines/index.page
 share/help/it/gnome-mines/license.page
 share/help/it/gnome-mines/new-game.page
 share/help/it/gnome-mines/rules.page
-share/help/it/gnome-mines/shortcuts.page
 share/help/it/gnome-mines/translate.page
 share/help/ja/gnome-mines/board-size.page
 share/help/ja/gnome-mines/bug-filing.page
@@ -278,8 +283,24 @@ share/help/ja/gnome-mines/index.page
 share/help/ja/gnome-mines/license.page
 share/help/ja/gnome-mines/new-game.page
 share/help/ja/gnome-mines/rules.page
-share/help/ja/gnome-mines/shortcuts.page
 share/help/ja/gnome-mines/translate.page
+share/help/ko/gnome-mines/board-size.page
+share/help/ko/gnome-mines/bug-filing.page
+share/help/ko/gnome-mines/develop.page
+share/help/ko/gnome-mines/documentation.page
+share/help/ko/gnome-mines/figures/flag-question.svg
+share/help/ko/gnome-mines/figures/flag.svg
+share/help/ko/gnome-mines/figures/flags.png
+share/help/ko/gnome-mines/figures/logo.png
+share/help/ko/gnome-mines/figures/logo32.png
+share/help/ko/gnome-mines/flags.page
+share/help/ko/gnome-mines/get-help.page
+share/help/ko/gnome-mines/high-scores.page
+share/help/ko/gnome-mines/index.page
+share/help/ko/gnome-mines/license.page
+share/help/ko/gnome-mines/new-game.page
+share/help/ko/gnome-mines/rules.page
+share/help/ko/gnome-mines/translate.page
 share/help/oc/gnome-mines/board-size.page
 share/help/oc/gnome-mines/bug-filing.page
 share/help/oc/gnome-mines/develop.page
@@ -296,7 +317,6 @@ share/help/oc/gnome-mines/index.page
 share/help/oc/gnome-mines/license.page
 share/help/oc/gnome-mines/new-game.page
 share/help/oc/gnome-mines/rules.page
-share/help/oc/gnome-mines/shortcuts.page
 share/help/oc/gnome-mines/translate.page
 share/help/pl/gnome-mines/board-size.page
 share/help/pl/gnome-mines/bug-filing.page
@@ -314,7 +334,6 @@ share/help/pl/gnome-mines/index.page
 share/help/pl/gnome-mines/license.page
 share/help/pl/gnome-mines/new-game.page
 share/help/pl/gnome-mines/rules.page
-share/help/pl/gnome-mines/shortcuts.page
 share/help/pl/gnome-mines/translate.page
 share/help/pt_BR/gnome-mines/board-size.page
 share/help/pt_BR/gnome-mines/bug-filing.page
@@ -332,7 +351,6 @@ share/help/pt_BR/gnome-mines/index.page
 share/help/pt_BR/gnome-mines/license.page
 share/help/pt_BR/gnome-mines/new-game.page
 share/help/pt_BR/gnome-mines/rules.page
-share/help/pt_BR/gnome-mines/shortcuts.page
 share/help/pt_BR/gnome-mines/translate.page
 share/help/sl/gnome-mines/board-size.page
 share/help/sl/gnome-mines/bug-filing.page
@@ -350,7 +368,6 @@ share/help/sl/gnome-mines/index.page
 share/help/sl/gnome-mines/license.page
 share/help/sl/gnome-mines/new-game.page
 share/help/sl/gnome-mines/rules.page
-share/help/sl/gnome-mines/shortcuts.page
 share/help/sl/gnome-mines/translate.page
 share/help/sr/gnome-mines/board-size.page
 share/help/sr/gnome-mines/bug-filing.page
@@ -368,7 +385,6 @@ share/help/sr/gnome-mines/index.page
 share/help/sr/gnome-mines/license.page
 share/help/sr/gnome-mines/new-game.page
 share/help/sr/gnome-mines/rules.page
-share/help/sr/gnome-mines/shortcuts.page
 share/help/sr/gnome-mines/translate.page
 share/help/sr@latin/gnome-mines/board-size.page
 share/help/sr@latin/gnome-mines/bug-filing.page
@@ -386,7 +402,6 @@ share/help/sr@latin/gnome-mines/index.page
 share/help/sr@latin/gnome-mines/license.page
 share/help/sr@latin/gnome-mines/new-game.page
 share/help/sr@latin/gnome-mines/rules.page
-share/help/sr@latin/gnome-mines/shortcuts.page
 share/help/sr@latin/gnome-mines/translate.page
 share/help/sv/gnome-mines/board-size.page
 share/help/sv/gnome-mines/bug-filing.page
@@ -404,7 +419,6 @@ share/help/sv/gnome-mines/index.page
 share/help/sv/gnome-mines/license.page
 share/help/sv/gnome-mines/new-game.page
 share/help/sv/gnome-mines/rules.page
-share/help/sv/gnome-mines/shortcuts.page
 share/help/sv/gnome-mines/translate.page
 share/help/zh_CN/gnome-mines/board-size.page
 share/help/zh_CN/gnome-mines/bug-filing.page
@@ -422,15 +436,9 @@ share/help/zh_CN/gnome-mines/index.page
 share/help/zh_CN/gnome-mines/license.page
 share/help/zh_CN/gnome-mines/new-game.page
 share/help/zh_CN/gnome-mines/rules.page
-share/help/zh_CN/gnome-mines/shortcuts.page
 share/help/zh_CN/gnome-mines/translate.page
-share/icons/hicolor/16x16/actions/flag-symbolic.svg
-share/icons/hicolor/16x16/apps/gnome-mines.png
-share/icons/hicolor/22x22/apps/gnome-mines.png
-share/icons/hicolor/24x24/apps/gnome-mines.png
-share/icons/hicolor/32x32/apps/gnome-mines.png
-share/icons/hicolor/48x48/apps/gnome-mines.png
-share/icons/hicolor/scalable/apps/gnome-mines-symbolic.svg
+share/icons/hicolor/scalable/apps/org.gnome.Mines.svg
+share/icons/hicolor/symbolic/apps/org.gnome.Mines-symbolic.svg
 share/locale/af/LC_MESSAGES/gnome-mines.mo
 share/locale/am/LC_MESSAGES/gnome-mines.mo
 share/locale/an/LC_MESSAGES/gnome-mines.mo
@@ -521,4 +529,4 @@ share/locale/xh/LC_MESSAGES/gnome-mines.mo
 share/locale/zh_CN/LC_MESSAGES/gnome-mines.mo
 share/locale/zh_HK/LC_MESSAGES/gnome-mines.mo
 share/locale/zh_TW/LC_MESSAGES/gnome-mines.mo
-share/metainfo/gnome-mines.appdata.xml
+share/metainfo/org.gnome.Mines.appdata.xml
