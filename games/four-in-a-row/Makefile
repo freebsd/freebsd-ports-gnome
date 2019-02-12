@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	four-in-a-row
-PORTVERSION=	3.28.0
+PORTVERSION=	3.31.90
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -21,12 +21,11 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix pkgconfig tar:xz
+USES=		gettext gnome localbase meson pkgconfig tar:xz
 INSTALLS_ICONS=	yes
 USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
 USE_XORG=	x11
-GNU_CONFIGURE=	yes
 
-GLIB_SCHEMAS=	org.gnome.four-in-a-row.gschema.xml
+GLIB_SCHEMAS=	org.gnome.Four-in-a-row.gschema.xml
 
 .include <bsd.port.mk>
