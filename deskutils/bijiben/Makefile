@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	bijiben
-PORTVERSION=	3.28.3
-PORTREVISION=	1
+PORTVERSION=	3.31.90
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -33,7 +32,7 @@ INSTALLS_ICONS=	yes
 MESON_ARGS=	-Dzeitgeist=true
 SHEBANG_FILES=	${WRKSRC}/build-aux/meson_post_install.py
 
-GLIB_SCHEMAS=	org.gnome.bijiben.gschema.xml \
+GLIB_SCHEMAS=	org.gnome.Notes.gschema.xml \
 		org.gnome.bijiben.enums.xml
 
 .include <bsd.port.mk>
