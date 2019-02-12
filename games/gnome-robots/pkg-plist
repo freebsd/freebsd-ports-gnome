@@ -1,6 +1,6 @@
 bin/gnome-robots
 man/man6/gnome-robots.6.gz
-share/applications/gnome-robots.desktop
+share/applications/org.gnome.Robots.desktop
 @unexec [ -s %D/share/games/gnobots2.classic_robots-safe.scores ] || rm -f %D/share/games/gnobots2.classic_robots-safe.scores
 @unexec [ -s %D/share/games/gnobots2.classic_robots-super-safe.scores ] || rm -f %D/share/games/gnobots2.classic_robots-super-safe.scores
 @unexec [ -s %D/share/games/gnobots2.classic_robots.scores ] || rm -f %D/share/games/gnobots2.classic_robots.scores
@@ -648,15 +648,15 @@ share/help/zh_CN/gnome-robots/index.page
 share/help/zh_CN/gnome-robots/legal.xml
 share/help/zh_CN/gnome-robots/moves.page
 share/help/zh_CN/gnome-robots/scores.page
-share/icons/hicolor/16x16/apps/gnome-robots.png
-share/icons/hicolor/22x22/apps/gnome-robots.png
+share/icons/hicolor/16x16/apps/org.gnome.Robots.png
+share/icons/hicolor/22x22/apps/org.gnome.Robots.png
 share/icons/hicolor/24x24/actions/teleport-random.png
 share/icons/hicolor/24x24/actions/teleport.png
-share/icons/hicolor/24x24/apps/gnome-robots.png
-share/icons/hicolor/32x32/apps/gnome-robots.png
-share/icons/hicolor/48x48/apps/gnome-robots.png
-share/icons/hicolor/scalable/apps/gnome-robots-symbolic.svg
-share/icons/hicolor/scalable/apps/gnome-robots.svg
+share/icons/hicolor/24x24/apps/org.gnome.Robots.png
+share/icons/hicolor/32x32/apps/org.gnome.Robots.png
+share/icons/hicolor/48x48/apps/org.gnome.Robots.png
+share/icons/hicolor/scalable/apps/org.gnome.Robots.svg
+share/icons/hicolor/symbolic/apps/org.gnome.Robots-symbolic.svg
 share/locale/af/LC_MESSAGES/gnome-robots.mo
 share/locale/am/LC_MESSAGES/gnome-robots.mo
 share/locale/ar/LC_MESSAGES/gnome-robots.mo
@@ -746,5 +746,5 @@ share/locale/xh/LC_MESSAGES/gnome-robots.mo
 share/locale/zh_CN/LC_MESSAGES/gnome-robots.mo
 share/locale/zh_HK/LC_MESSAGES/gnome-robots.mo
 share/locale/zh_TW/LC_MESSAGES/gnome-robots.mo
-share/metainfo/gnome-robots.appdata.xml
+share/metainfo/org.gnome.Robots.appdata.xml
 @dir share/games
