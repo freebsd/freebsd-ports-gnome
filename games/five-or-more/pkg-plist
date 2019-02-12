@@ -1,23 +1,19 @@
 bin/five-or-more
 man/man6/five-or-more.6.gz
-share/appdata/five-or-more.appdata.xml
-share/applications/five-or-more.desktop
-%%DATADIR%%/five-or-more-preferences.ui
-%%DATADIR%%/five-or-more.ui
-%%DATADIR%%/menu.ui
-%%DATADIR%%/themes/balls.svg
-%%DATADIR%%/themes/dots.png
-%%DATADIR%%/themes/gumball.png
-%%DATADIR%%/themes/shapes.svg
+share/applications/org.gnome.five-or-more.desktop
 @unexec [ -s %D/share/games/glines.Large.scores ] || rm -f %D/share/games/glines.Large.scores
 @unexec [ -s %D/share/games/glines.Medium.scores ] || rm -f %D/share/games/glines.Medium.scores
 @unexec [ -s %D/share/games/glines.Small.scores ] || rm -f %D/share/games/glines.Small.scores
+%%DATADIR%%/five-or-more-preferences.ui
+%%DATADIR%%/five-or-more.ui
+%%DATADIR%%/themes/balls.svg
+%%DATADIR%%/themes/shapes.svg
+%%DATADIR%%/themes/tango.svg
 share/help/C/five-or-more/bug-filing.page
 share/help/C/five-or-more/change-board-size.page
 share/help/C/five-or-more/change-theme.page
 share/help/C/five-or-more/develop.page
 share/help/C/five-or-more/documentation.page
-share/help/C/five-or-more/fast-moves.page
 share/help/C/five-or-more/figures/color-balls.png
 share/help/C/five-or-more/figures/color-shapes.png
 share/help/C/five-or-more/figures/diagonal.png
@@ -28,7 +24,6 @@ share/help/C/five-or-more/figures/large.png
 share/help/C/five-or-more/figures/logo.png
 share/help/C/five-or-more/figures/logo32.png
 share/help/C/five-or-more/figures/medium.png
-share/help/C/five-or-more/figures/pickcolor.png
 share/help/C/five-or-more/figures/small.png
 share/help/C/five-or-more/figures/vertical.png
 share/help/C/five-or-more/index.page
@@ -45,7 +40,6 @@ share/help/ca/five-or-more/change-board-size.page
 share/help/ca/five-or-more/change-theme.page
 share/help/ca/five-or-more/develop.page
 share/help/ca/five-or-more/documentation.page
-share/help/ca/five-or-more/fast-moves.page
 share/help/ca/five-or-more/figures/color-balls.png
 share/help/ca/five-or-more/figures/color-shapes.png
 share/help/ca/five-or-more/figures/diagonal.png
@@ -56,7 +50,6 @@ share/help/ca/five-or-more/figures/large.png
 share/help/ca/five-or-more/figures/logo.png
 share/help/ca/five-or-more/figures/logo32.png
 share/help/ca/five-or-more/figures/medium.png
-share/help/ca/five-or-more/figures/pickcolor.png
 share/help/ca/five-or-more/figures/small.png
 share/help/ca/five-or-more/figures/vertical.png
 share/help/ca/five-or-more/index.page
@@ -73,7 +66,6 @@ share/help/cs/five-or-more/change-board-size.page
 share/help/cs/five-or-more/change-theme.page
 share/help/cs/five-or-more/develop.page
 share/help/cs/five-or-more/documentation.page
-share/help/cs/five-or-more/fast-moves.page
 share/help/cs/five-or-more/figures/color-balls.png
 share/help/cs/five-or-more/figures/color-shapes.png
 share/help/cs/five-or-more/figures/diagonal.png
@@ -84,7 +76,6 @@ share/help/cs/five-or-more/figures/large.png
 share/help/cs/five-or-more/figures/logo.png
 share/help/cs/five-or-more/figures/logo32.png
 share/help/cs/five-or-more/figures/medium.png
-share/help/cs/five-or-more/figures/pickcolor.png
 share/help/cs/five-or-more/figures/small.png
 share/help/cs/five-or-more/figures/vertical.png
 share/help/cs/five-or-more/index.page
@@ -101,7 +92,6 @@ share/help/de/five-or-more/change-board-size.page
 share/help/de/five-or-more/change-theme.page
 share/help/de/five-or-more/develop.page
 share/help/de/five-or-more/documentation.page
-share/help/de/five-or-more/fast-moves.page
 share/help/de/five-or-more/figures/color-balls.png
 share/help/de/five-or-more/figures/color-shapes.png
 share/help/de/five-or-more/figures/diagonal.png
@@ -112,7 +102,6 @@ share/help/de/five-or-more/figures/large.png
 share/help/de/five-or-more/figures/logo.png
 share/help/de/five-or-more/figures/logo32.png
 share/help/de/five-or-more/figures/medium.png
-share/help/de/five-or-more/figures/pickcolor.png
 share/help/de/five-or-more/figures/small.png
 share/help/de/five-or-more/figures/vertical.png
 share/help/de/five-or-more/index.page
@@ -129,7 +118,6 @@ share/help/el/five-or-more/change-board-size.page
 share/help/el/five-or-more/change-theme.page
 share/help/el/five-or-more/develop.page
 share/help/el/five-or-more/documentation.page
-share/help/el/five-or-more/fast-moves.page
 share/help/el/five-or-more/figures/color-balls.png
 share/help/el/five-or-more/figures/color-shapes.png
 share/help/el/five-or-more/figures/diagonal.png
@@ -140,7 +128,6 @@ share/help/el/five-or-more/figures/large.png
 share/help/el/five-or-more/figures/logo.png
 share/help/el/five-or-more/figures/logo32.png
 share/help/el/five-or-more/figures/medium.png
-share/help/el/five-or-more/figures/pickcolor.png
 share/help/el/five-or-more/figures/small.png
 share/help/el/five-or-more/figures/vertical.png
 share/help/el/five-or-more/index.page
@@ -157,7 +144,6 @@ share/help/en_GB/five-or-more/change-board-size.page
 share/help/en_GB/five-or-more/change-theme.page
 share/help/en_GB/five-or-more/develop.page
 share/help/en_GB/five-or-more/documentation.page
-share/help/en_GB/five-or-more/fast-moves.page
 share/help/en_GB/five-or-more/figures/color-balls.png
 share/help/en_GB/five-or-more/figures/color-shapes.png
 share/help/en_GB/five-or-more/figures/diagonal.png
@@ -168,7 +154,6 @@ share/help/en_GB/five-or-more/figures/large.png
 share/help/en_GB/five-or-more/figures/logo.png
 share/help/en_GB/five-or-more/figures/logo32.png
 share/help/en_GB/five-or-more/figures/medium.png
-share/help/en_GB/five-or-more/figures/pickcolor.png
 share/help/en_GB/five-or-more/figures/small.png
 share/help/en_GB/five-or-more/figures/vertical.png
 share/help/en_GB/five-or-more/index.page
@@ -185,7 +170,6 @@ share/help/es/five-or-more/change-board-size.page
 share/help/es/five-or-more/change-theme.page
 share/help/es/five-or-more/develop.page
 share/help/es/five-or-more/documentation.page
-share/help/es/five-or-more/fast-moves.page
 share/help/es/five-or-more/figures/color-balls.png
 share/help/es/five-or-more/figures/color-shapes.png
 share/help/es/five-or-more/figures/diagonal.png
@@ -196,7 +180,6 @@ share/help/es/five-or-more/figures/large.png
 share/help/es/five-or-more/figures/logo.png
 share/help/es/five-or-more/figures/logo32.png
 share/help/es/five-or-more/figures/medium.png
-share/help/es/five-or-more/figures/pickcolor.png
 share/help/es/five-or-more/figures/small.png
 share/help/es/five-or-more/figures/vertical.png
 share/help/es/five-or-more/index.page
@@ -213,7 +196,6 @@ share/help/eu/five-or-more/change-board-size.page
 share/help/eu/five-or-more/change-theme.page
 share/help/eu/five-or-more/develop.page
 share/help/eu/five-or-more/documentation.page
-share/help/eu/five-or-more/fast-moves.page
 share/help/eu/five-or-more/figures/color-balls.png
 share/help/eu/five-or-more/figures/color-shapes.png
 share/help/eu/five-or-more/figures/diagonal.png
@@ -224,7 +206,6 @@ share/help/eu/five-or-more/figures/large.png
 share/help/eu/five-or-more/figures/logo.png
 share/help/eu/five-or-more/figures/logo32.png
 share/help/eu/five-or-more/figures/medium.png
-share/help/eu/five-or-more/figures/pickcolor.png
 share/help/eu/five-or-more/figures/small.png
 share/help/eu/five-or-more/figures/vertical.png
 share/help/eu/five-or-more/index.page
@@ -241,7 +222,6 @@ share/help/fr/five-or-more/change-board-size.page
 share/help/fr/five-or-more/change-theme.page
 share/help/fr/five-or-more/develop.page
 share/help/fr/five-or-more/documentation.page
-share/help/fr/five-or-more/fast-moves.page
 share/help/fr/five-or-more/figures/color-balls.png
 share/help/fr/five-or-more/figures/color-shapes.png
 share/help/fr/five-or-more/figures/diagonal.png
@@ -252,7 +232,6 @@ share/help/fr/five-or-more/figures/large.png
 share/help/fr/five-or-more/figures/logo.png
 share/help/fr/five-or-more/figures/logo32.png
 share/help/fr/five-or-more/figures/medium.png
-share/help/fr/five-or-more/figures/pickcolor.png
 share/help/fr/five-or-more/figures/small.png
 share/help/fr/five-or-more/figures/vertical.png
 share/help/fr/five-or-more/index.page
@@ -269,7 +248,6 @@ share/help/gl/five-or-more/change-board-size.page
 share/help/gl/five-or-more/change-theme.page
 share/help/gl/five-or-more/develop.page
 share/help/gl/five-or-more/documentation.page
-share/help/gl/five-or-more/fast-moves.page
 share/help/gl/five-or-more/figures/color-balls.png
 share/help/gl/five-or-more/figures/color-shapes.png
 share/help/gl/five-or-more/figures/diagonal.png
@@ -280,7 +258,6 @@ share/help/gl/five-or-more/figures/large.png
 share/help/gl/five-or-more/figures/logo.png
 share/help/gl/five-or-more/figures/logo32.png
 share/help/gl/five-or-more/figures/medium.png
-share/help/gl/five-or-more/figures/pickcolor.png
 share/help/gl/five-or-more/figures/small.png
 share/help/gl/five-or-more/figures/vertical.png
 share/help/gl/five-or-more/index.page
@@ -297,7 +274,6 @@ share/help/hu/five-or-more/change-board-size.page
 share/help/hu/five-or-more/change-theme.page
 share/help/hu/five-or-more/develop.page
 share/help/hu/five-or-more/documentation.page
-share/help/hu/five-or-more/fast-moves.page
 share/help/hu/five-or-more/figures/color-balls.png
 share/help/hu/five-or-more/figures/color-shapes.png
 share/help/hu/five-or-more/figures/diagonal.png
@@ -308,7 +284,6 @@ share/help/hu/five-or-more/figures/large.png
 share/help/hu/five-or-more/figures/logo.png
 share/help/hu/five-or-more/figures/logo32.png
 share/help/hu/five-or-more/figures/medium.png
-share/help/hu/five-or-more/figures/pickcolor.png
 share/help/hu/five-or-more/figures/small.png
 share/help/hu/five-or-more/figures/vertical.png
 share/help/hu/five-or-more/index.page
@@ -325,7 +300,6 @@ share/help/it/five-or-more/change-board-size.page
 share/help/it/five-or-more/change-theme.page
 share/help/it/five-or-more/develop.page
 share/help/it/five-or-more/documentation.page
-share/help/it/five-or-more/fast-moves.page
 share/help/it/five-or-more/figures/color-balls.png
 share/help/it/five-or-more/figures/color-shapes.png
 share/help/it/five-or-more/figures/diagonal.png
@@ -336,7 +310,6 @@ share/help/it/five-or-more/figures/large.png
 share/help/it/five-or-more/figures/logo.png
 share/help/it/five-or-more/figures/logo32.png
 share/help/it/five-or-more/figures/medium.png
-share/help/it/five-or-more/figures/pickcolor.png
 share/help/it/five-or-more/figures/small.png
 share/help/it/five-or-more/figures/vertical.png
 share/help/it/five-or-more/index.page
@@ -353,7 +326,6 @@ share/help/ja/five-or-more/change-board-size.page
 share/help/ja/five-or-more/change-theme.page
 share/help/ja/five-or-more/develop.page
 share/help/ja/five-or-more/documentation.page
-share/help/ja/five-or-more/fast-moves.page
 share/help/ja/five-or-more/figures/color-balls.png
 share/help/ja/five-or-more/figures/color-shapes.png
 share/help/ja/five-or-more/figures/diagonal.png
@@ -364,7 +336,6 @@ share/help/ja/five-or-more/figures/large.png
 share/help/ja/five-or-more/figures/logo.png
 share/help/ja/five-or-more/figures/logo32.png
 share/help/ja/five-or-more/figures/medium.png
-share/help/ja/five-or-more/figures/pickcolor.png
 share/help/ja/five-or-more/figures/small.png
 share/help/ja/five-or-more/figures/vertical.png
 share/help/ja/five-or-more/index.page
@@ -381,7 +352,6 @@ share/help/oc/five-or-more/change-board-size.page
 share/help/oc/five-or-more/change-theme.page
 share/help/oc/five-or-more/develop.page
 share/help/oc/five-or-more/documentation.page
-share/help/oc/five-or-more/fast-moves.page
 share/help/oc/five-or-more/figures/color-balls.png
 share/help/oc/five-or-more/figures/color-shapes.png
 share/help/oc/five-or-more/figures/diagonal.png
@@ -392,7 +362,6 @@ share/help/oc/five-or-more/figures/large.png
 share/help/oc/five-or-more/figures/logo.png
 share/help/oc/five-or-more/figures/logo32.png
 share/help/oc/five-or-more/figures/medium.png
-share/help/oc/five-or-more/figures/pickcolor.png
 share/help/oc/five-or-more/figures/small.png
 share/help/oc/five-or-more/figures/vertical.png
 share/help/oc/five-or-more/index.page
@@ -409,7 +378,6 @@ share/help/pl/five-or-more/change-board-size.page
 share/help/pl/five-or-more/change-theme.page
 share/help/pl/five-or-more/develop.page
 share/help/pl/five-or-more/documentation.page
-share/help/pl/five-or-more/fast-moves.page
 share/help/pl/five-or-more/figures/color-balls.png
 share/help/pl/five-or-more/figures/color-shapes.png
 share/help/pl/five-or-more/figures/diagonal.png
@@ -420,7 +388,6 @@ share/help/pl/five-or-more/figures/large.png
 share/help/pl/five-or-more/figures/logo.png
 share/help/pl/five-or-more/figures/logo32.png
 share/help/pl/five-or-more/figures/medium.png
-share/help/pl/five-or-more/figures/pickcolor.png
 share/help/pl/five-or-more/figures/small.png
 share/help/pl/five-or-more/figures/vertical.png
 share/help/pl/five-or-more/index.page
@@ -437,7 +404,6 @@ share/help/pt_BR/five-or-more/change-board-size.page
 share/help/pt_BR/five-or-more/change-theme.page
 share/help/pt_BR/five-or-more/develop.page
 share/help/pt_BR/five-or-more/documentation.page
-share/help/pt_BR/five-or-more/fast-moves.page
 share/help/pt_BR/five-or-more/figures/color-balls.png
 share/help/pt_BR/five-or-more/figures/color-shapes.png
 share/help/pt_BR/five-or-more/figures/diagonal.png
@@ -448,7 +414,6 @@ share/help/pt_BR/five-or-more/figures/large.png
 share/help/pt_BR/five-or-more/figures/logo.png
 share/help/pt_BR/five-or-more/figures/logo32.png
 share/help/pt_BR/five-or-more/figures/medium.png
-share/help/pt_BR/five-or-more/figures/pickcolor.png
 share/help/pt_BR/five-or-more/figures/small.png
 share/help/pt_BR/five-or-more/figures/vertical.png
 share/help/pt_BR/five-or-more/index.page
@@ -465,7 +430,6 @@ share/help/ru/five-or-more/change-board-size.page
 share/help/ru/five-or-more/change-theme.page
 share/help/ru/five-or-more/develop.page
 share/help/ru/five-or-more/documentation.page
-share/help/ru/five-or-more/fast-moves.page
 share/help/ru/five-or-more/figures/color-balls.png
 share/help/ru/five-or-more/figures/color-shapes.png
 share/help/ru/five-or-more/figures/diagonal.png
@@ -476,7 +440,6 @@ share/help/ru/five-or-more/figures/large.png
 share/help/ru/five-or-more/figures/logo.png
 share/help/ru/five-or-more/figures/logo32.png
 share/help/ru/five-or-more/figures/medium.png
-share/help/ru/five-or-more/figures/pickcolor.png
 share/help/ru/five-or-more/figures/small.png
 share/help/ru/five-or-more/figures/vertical.png
 share/help/ru/five-or-more/index.page
@@ -493,7 +456,6 @@ share/help/sl/five-or-more/change-board-size.page
 share/help/sl/five-or-more/change-theme.page
 share/help/sl/five-or-more/develop.page
 share/help/sl/five-or-more/documentation.page
-share/help/sl/five-or-more/fast-moves.page
 share/help/sl/five-or-more/figures/color-balls.png
 share/help/sl/five-or-more/figures/color-shapes.png
 share/help/sl/five-or-more/figures/diagonal.png
@@ -504,7 +466,6 @@ share/help/sl/five-or-more/figures/large.png
 share/help/sl/five-or-more/figures/logo.png
 share/help/sl/five-or-more/figures/logo32.png
 share/help/sl/five-or-more/figures/medium.png
-share/help/sl/five-or-more/figures/pickcolor.png
 share/help/sl/five-or-more/figures/small.png
 share/help/sl/five-or-more/figures/vertical.png
 share/help/sl/five-or-more/index.page
@@ -521,7 +482,6 @@ share/help/sr/five-or-more/change-board-size.page
 share/help/sr/five-or-more/change-theme.page
 share/help/sr/five-or-more/develop.page
 share/help/sr/five-or-more/documentation.page
-share/help/sr/five-or-more/fast-moves.page
 share/help/sr/five-or-more/figures/color-balls.png
 share/help/sr/five-or-more/figures/color-shapes.png
 share/help/sr/five-or-more/figures/diagonal.png
@@ -532,7 +492,6 @@ share/help/sr/five-or-more/figures/large.png
 share/help/sr/five-or-more/figures/logo.png
 share/help/sr/five-or-more/figures/logo32.png
 share/help/sr/five-or-more/figures/medium.png
-share/help/sr/five-or-more/figures/pickcolor.png
 share/help/sr/five-or-more/figures/small.png
 share/help/sr/five-or-more/figures/vertical.png
 share/help/sr/five-or-more/index.page
@@ -549,7 +508,6 @@ share/help/sr@latin/five-or-more/change-board-size.page
 share/help/sr@latin/five-or-more/change-theme.page
 share/help/sr@latin/five-or-more/develop.page
 share/help/sr@latin/five-or-more/documentation.page
-share/help/sr@latin/five-or-more/fast-moves.page
 share/help/sr@latin/five-or-more/figures/color-balls.png
 share/help/sr@latin/five-or-more/figures/color-shapes.png
 share/help/sr@latin/five-or-more/figures/diagonal.png
@@ -560,7 +518,6 @@ share/help/sr@latin/five-or-more/figures/large.png
 share/help/sr@latin/five-or-more/figures/logo.png
 share/help/sr@latin/five-or-more/figures/logo32.png
 share/help/sr@latin/five-or-more/figures/medium.png
-share/help/sr@latin/five-or-more/figures/pickcolor.png
 share/help/sr@latin/five-or-more/figures/small.png
 share/help/sr@latin/five-or-more/figures/vertical.png
 share/help/sr@latin/five-or-more/index.page
@@ -577,7 +534,6 @@ share/help/sv/five-or-more/change-board-size.page
 share/help/sv/five-or-more/change-theme.page
 share/help/sv/five-or-more/develop.page
 share/help/sv/five-or-more/documentation.page
-share/help/sv/five-or-more/fast-moves.page
 share/help/sv/five-or-more/figures/color-balls.png
 share/help/sv/five-or-more/figures/color-shapes.png
 share/help/sv/five-or-more/figures/diagonal.png
@@ -588,7 +544,6 @@ share/help/sv/five-or-more/figures/large.png
 share/help/sv/five-or-more/figures/logo.png
 share/help/sv/five-or-more/figures/logo32.png
 share/help/sv/five-or-more/figures/medium.png
-share/help/sv/five-or-more/figures/pickcolor.png
 share/help/sv/five-or-more/figures/small.png
 share/help/sv/five-or-more/figures/vertical.png
 share/help/sv/five-or-more/index.page
@@ -605,7 +560,6 @@ share/help/tr/five-or-more/change-board-size.page
 share/help/tr/five-or-more/change-theme.page
 share/help/tr/five-or-more/develop.page
 share/help/tr/five-or-more/documentation.page
-share/help/tr/five-or-more/fast-moves.page
 share/help/tr/five-or-more/figures/color-balls.png
 share/help/tr/five-or-more/figures/color-shapes.png
 share/help/tr/five-or-more/figures/diagonal.png
@@ -616,7 +570,6 @@ share/help/tr/five-or-more/figures/large.png
 share/help/tr/five-or-more/figures/logo.png
 share/help/tr/five-or-more/figures/logo32.png
 share/help/tr/five-or-more/figures/medium.png
-share/help/tr/five-or-more/figures/pickcolor.png
 share/help/tr/five-or-more/figures/small.png
 share/help/tr/five-or-more/figures/vertical.png
 share/help/tr/five-or-more/index.page
@@ -633,7 +586,6 @@ share/help/zh_CN/five-or-more/change-board-size.page
 share/help/zh_CN/five-or-more/change-theme.page
 share/help/zh_CN/five-or-more/develop.page
 share/help/zh_CN/five-or-more/documentation.page
-share/help/zh_CN/five-or-more/fast-moves.page
 share/help/zh_CN/five-or-more/figures/color-balls.png
 share/help/zh_CN/five-or-more/figures/color-shapes.png
 share/help/zh_CN/five-or-more/figures/diagonal.png
@@ -644,7 +596,6 @@ share/help/zh_CN/five-or-more/figures/large.png
 share/help/zh_CN/five-or-more/figures/logo.png
 share/help/zh_CN/five-or-more/figures/logo32.png
 share/help/zh_CN/five-or-more/figures/medium.png
-share/help/zh_CN/five-or-more/figures/pickcolor.png
 share/help/zh_CN/five-or-more/figures/small.png
 share/help/zh_CN/five-or-more/figures/vertical.png
 share/help/zh_CN/five-or-more/index.page
@@ -656,14 +607,14 @@ share/help/zh_CN/five-or-more/scores.page
 share/help/zh_CN/five-or-more/shortcuts.page
 share/help/zh_CN/five-or-more/strategy.page
 share/help/zh_CN/five-or-more/translate.page
-share/icons/hicolor/16x16/apps/five-or-more.png
-share/icons/hicolor/22x22/apps/five-or-more.png
-share/icons/hicolor/24x24/apps/five-or-more.png
-share/icons/hicolor/256x256/apps/five-or-more.png
-share/icons/hicolor/32x32/apps/five-or-more.png
-share/icons/hicolor/48x48/apps/five-or-more.png
-share/icons/hicolor/512x512/apps/five-or-more.png
-share/icons/hicolor/symbolic/apps/five-or-more-symbolic.svg
+share/icons/hicolor/16x16/apps/org.gnome.five-or-more.png
+share/icons/hicolor/22x22/apps/org.gnome.five-or-more.png
+share/icons/hicolor/24x24/apps/org.gnome.five-or-more.png
+share/icons/hicolor/256x256/apps/org.gnome.five-or-more.png
+share/icons/hicolor/32x32/apps/org.gnome.five-or-more.png
+share/icons/hicolor/48x48/apps/org.gnome.five-or-more.png
+share/icons/hicolor/512x512/apps/org.gnome.five-or-more.png
+share/icons/hicolor/symbolic/apps/org.gnome.five-or-more-symbolic.svg
 share/locale/af/LC_MESSAGES/five-or-more.mo
 share/locale/am/LC_MESSAGES/five-or-more.mo
 share/locale/ar/LC_MESSAGES/five-or-more.mo
@@ -753,4 +704,5 @@ share/locale/xh/LC_MESSAGES/five-or-more.mo
 share/locale/zh_CN/LC_MESSAGES/five-or-more.mo
 share/locale/zh_HK/LC_MESSAGES/five-or-more.mo
 share/locale/zh_TW/LC_MESSAGES/five-or-more.mo
+share/metainfo/org.gnome.five-or-more.appdata.xml
 @dir share/games
