@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	cheese
-PORTVERSION=	3.28.0
+PORTVERSION=	3.31.90
 CATEGORIES=	multimedia gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Photobooth-inspired app for taking pictures and videos from webcam
@@ -29,7 +29,7 @@ RUN_DEPENDS=	gnome-video-effects>=0:graphics/gnome-video-effects
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome libtool localbase pathfix \
+USES=		gettext gl gmake gnome libtool localbase pathfix \
 		pkgconfig tar:xz
 USE_GNOME=	cairo intlhack evolutiondataserver3 librsvg2 \
 		gnomedesktop3 libxml2:build introspection:build
