@@ -1,6 +1,6 @@
 bin/iagno
 man/man6/iagno.6.gz
-share/applications/iagno.desktop
+share/applications/org.gnome.Reversi.desktop
 share/help/C/iagno/2player.page
 share/help/C/iagno/ai-game.page
 share/help/C/iagno/bug-filing.page
@@ -430,13 +430,13 @@ share/help/zh_CN/iagno/translate.page
 %%DATADIR%%/themes/svg/black_and_white.svg
 %%DATADIR%%/themes/svg/high_contrast.svg
 %%DATADIR%%/themes/svg/sun_and_star.svg
-share/icons/hicolor/16x16/apps/iagno.png
-share/icons/hicolor/22x22/apps/iagno.png
-share/icons/hicolor/24x24/apps/iagno.png
-share/icons/hicolor/256x256/apps/iagno.png
-share/icons/hicolor/32x32/apps/iagno.png
-share/icons/hicolor/48x48/apps/iagno.png
-share/icons/hicolor/scalable/apps/iagno-symbolic.svg
+share/icons/hicolor/16x16/apps/org.gnome.Reversi.png
+share/icons/hicolor/22x22/apps/org.gnome.Reversi.png
+share/icons/hicolor/24x24/apps/org.gnome.Reversi.png
+share/icons/hicolor/256x256/apps/org.gnome.Reversi.png
+share/icons/hicolor/32x32/apps/org.gnome.Reversi.png
+share/icons/hicolor/48x48/apps/org.gnome.Reversi.png
+share/icons/hicolor/symbolic/apps/org.gnome.Reversi-symbolic.svg
 share/locale/af/LC_MESSAGES/iagno.mo
 share/locale/am/LC_MESSAGES/iagno.mo
 share/locale/an/LC_MESSAGES/iagno.mo
@@ -528,4 +528,4 @@ share/locale/xh/LC_MESSAGES/iagno.mo
 share/locale/zh_CN/LC_MESSAGES/iagno.mo
 share/locale/zh_HK/LC_MESSAGES/iagno.mo
 share/locale/zh_TW/LC_MESSAGES/iagno.mo
-share/metainfo/iagno.appdata.xml
+share/metainfo/org.gnome.Reversi.appdata.xml
