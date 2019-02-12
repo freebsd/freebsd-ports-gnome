@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	evolution-data-server
-PORTVERSION=	3.28.5
-PORTREVISION=	1
+PORTVERSION=	3.31.90
 CATEGORIES=	databases gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Data backends for the Evolution integrated mail/PIM suite
@@ -18,6 +17,8 @@ BUILD_DEPENDS=	vapigen:lang/vala
 LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		libfribidi.so:converters/fribidi \
 		libgcr-base-3.so:security/gcr \
+		libcanberra.so:audio/libcanberra \
+		libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 		libgoa-1.0.so:net/gnome-online-accounts \
 		libgdata.so:devel/libgdata \
 		libical.so:devel/libical \
@@ -36,6 +37,7 @@ USES=		bdb:5 cmake compiler:c++11-lib gettext gnome gperf \
 		sqlite tar:xz
 USE_CXXSTD=	gnu++11
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection:build libxml2
+USE_XORG=	x11
 USE_LDCONFIG=	yes
 
 CMAKE_ARGS=	-DENABLE_VALA_BINDINGS=ON \
