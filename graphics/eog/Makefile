@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	eog
-PORTVERSION=	3.28.4
-PORTREVISION=	1
+PORTVERSION=	3.31.90
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Eye Of Gnome image viewer
@@ -35,23 +34,11 @@ GLIB_SCHEMAS=	org.gnome.eog.enums.xml \
 PLIST_SUB+=	VERSION=3.0
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	EXIF EXEMPI
-OPTIONS_DEFAULT=EXIF EXEMPI
+OPTIONS_DEFINE=	EXIF
+OPTIONS_DEFAULT=EXIF
 
 EXIF_DESC=	Digital camera file meta-data support
 EXIF_MESON_TRUE=	libexif
 EXIF_LIB_DEPENDS=	libexif.so:graphics/libexif
-
-EXEMPI_DESC=	XMP support
-EXEMPI_MESON_TRUE=	xmp
-EXEMPI_LIB_DEPENDS=	libexempi.so:textproc/exempi
-
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MEXIF} != "" || ${PORT_OPTIONS:MEXEMPI} != ""
-PLIST_SUB+=	EXIFEXEMPI=""
-.else
-PLIST_SUB+=	EXIFEXEMPI="@comment "
-.endif
 
 .include <bsd.port.mk>
