@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	eog-plugins
-PORTVERSION=	3.26.2
+PORTVERSION=	3.26.3
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Plug-ins for the Eye of GNOME image viewer application
@@ -29,7 +29,7 @@ RUN_DEPENDS=	eog:graphics/eog
 PORTSCOUT=	limitw:1,even
 
 USE_GNOME=	cairo gdkpixbuf2 gtk30 introspection libxml2
-USES=		gettext gmake gnome libtool localbase pathfix pkgconfig tar:xz
+USES=		gettext gl gmake gnome libtool localbase pathfix pkgconfig tar:xz
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 
