@@ -34,11 +34,15 @@ GLIB_SCHEMAS=	org.gnome.eog.enums.xml \
 PLIST_SUB+=	VERSION=3.0
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	EXIF
-OPTIONS_DEFAULT=EXIF
+OPTIONS_DEFINE=	EXIF EXEMPI
+OPTIONS_DEFAULT=EXIF EXEMPI
 
 EXIF_DESC=	Digital camera file meta-data support
 EXIF_MESON_TRUE=	libexif
 EXIF_LIB_DEPENDS=	libexif.so:graphics/libexif
+
+EXEMPI_DESC=	XMP support
+EXEMPI_MESON_TRUE=	xmp
+EXEMPI_LIB_DEPENDS=	libexempi.so:textproc/exempi
 
 .include <bsd.port.mk>
