@@ -11,10 +11,12 @@ COMMENT=	...
 
 LICENSE=	LGPL21
 
+BUILD_DEPENDS=	valac:lang/vala \
+		evdev-proto>=0:devel/evdev-proto
 LIB_DEPENDS=	libgudev-1.0.so:devel/libgudev \
 		libevdev.so:devel/libevdev
 
-USES=		gnome meson tar:xz
+USES=		gnome meson pkgconfig tar:xz
 USE_GNOME=	glib20 introspection:build
 
 .include <bsd.port.mk>
