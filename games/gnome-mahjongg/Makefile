@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-mahjongg
-PORTVERSION=	3.22.0
+PORTVERSION=	3.31.90
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gnome mahjongg
@@ -18,11 +18,12 @@ BUILD_DEPENDS=	vala:lang/vala \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix pkgconfig tar:xz
+USES=		gettext gnome localbase meson pkgconfig python:3.5+,build tar:xz
 INSTALLS_ICONS=	yes
-USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
-GNU_CONFIGURE=	yes
+USE_GNOME=	cairo gtk30 librsvg2 libxml2:build
 
-GLIB_SCHEMAS=	org.gnome.mahjongg.gschema.xml
+BINARY_ALIAS=	python3=${PYTHON_VERSION}
+
+GLIB_SCHEMAS=	org.gnome.Mahjongg.gschema.xml
 
 .include <bsd.port.mk>
