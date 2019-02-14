@@ -1,14 +1,12 @@
 bin/gnome-tetravex
 man/man6/gnome-tetravex.6.gz
-share/appdata/gnome-tetravex.appdata.xml
-share/applications/gnome-tetravex.desktop
+share/applications/org.gnome.Tetravex.desktop
 share/help/C/gnome-tetravex/figures/gnome-tetravex-logo.png
 share/help/C/gnome-tetravex/figures/gnome-tetravex-video.ogv
 share/help/C/gnome-tetravex/hint.page
 share/help/C/gnome-tetravex/index.page
 share/help/C/gnome-tetravex/license.page
 share/help/C/gnome-tetravex/move.page
-share/help/C/gnome-tetravex/shortcut.page
 share/help/C/gnome-tetravex/size.page
 share/help/C/gnome-tetravex/usage.page
 share/help/C/gnome-tetravex/winning.page
@@ -18,7 +16,6 @@ share/help/ca/gnome-tetravex/hint.page
 share/help/ca/gnome-tetravex/index.page
 share/help/ca/gnome-tetravex/license.page
 share/help/ca/gnome-tetravex/move.page
-share/help/ca/gnome-tetravex/shortcut.page
 share/help/ca/gnome-tetravex/size.page
 share/help/ca/gnome-tetravex/usage.page
 share/help/ca/gnome-tetravex/winning.page
@@ -28,7 +25,6 @@ share/help/cs/gnome-tetravex/hint.page
 share/help/cs/gnome-tetravex/index.page
 share/help/cs/gnome-tetravex/license.page
 share/help/cs/gnome-tetravex/move.page
-share/help/cs/gnome-tetravex/shortcut.page
 share/help/cs/gnome-tetravex/size.page
 share/help/cs/gnome-tetravex/usage.page
 share/help/cs/gnome-tetravex/winning.page
@@ -38,7 +34,6 @@ share/help/da/gnome-tetravex/hint.page
 share/help/da/gnome-tetravex/index.page
 share/help/da/gnome-tetravex/license.page
 share/help/da/gnome-tetravex/move.page
-share/help/da/gnome-tetravex/shortcut.page
 share/help/da/gnome-tetravex/size.page
 share/help/da/gnome-tetravex/usage.page
 share/help/da/gnome-tetravex/winning.page
@@ -48,7 +43,6 @@ share/help/de/gnome-tetravex/hint.page
 share/help/de/gnome-tetravex/index.page
 share/help/de/gnome-tetravex/license.page
 share/help/de/gnome-tetravex/move.page
-share/help/de/gnome-tetravex/shortcut.page
 share/help/de/gnome-tetravex/size.page
 share/help/de/gnome-tetravex/usage.page
 share/help/de/gnome-tetravex/winning.page
@@ -58,7 +52,6 @@ share/help/el/gnome-tetravex/hint.page
 share/help/el/gnome-tetravex/index.page
 share/help/el/gnome-tetravex/license.page
 share/help/el/gnome-tetravex/move.page
-share/help/el/gnome-tetravex/shortcut.page
 share/help/el/gnome-tetravex/size.page
 share/help/el/gnome-tetravex/usage.page
 share/help/el/gnome-tetravex/winning.page
@@ -68,7 +61,6 @@ share/help/en_GB/gnome-tetravex/hint.page
 share/help/en_GB/gnome-tetravex/index.page
 share/help/en_GB/gnome-tetravex/license.page
 share/help/en_GB/gnome-tetravex/move.page
-share/help/en_GB/gnome-tetravex/shortcut.page
 share/help/en_GB/gnome-tetravex/size.page
 share/help/en_GB/gnome-tetravex/usage.page
 share/help/en_GB/gnome-tetravex/winning.page
@@ -78,7 +70,6 @@ share/help/es/gnome-tetravex/hint.page
 share/help/es/gnome-tetravex/index.page
 share/help/es/gnome-tetravex/license.page
 share/help/es/gnome-tetravex/move.page
-share/help/es/gnome-tetravex/shortcut.page
 share/help/es/gnome-tetravex/size.page
 share/help/es/gnome-tetravex/usage.page
 share/help/es/gnome-tetravex/winning.page
@@ -88,7 +79,6 @@ share/help/eu/gnome-tetravex/hint.page
 share/help/eu/gnome-tetravex/index.page
 share/help/eu/gnome-tetravex/license.page
 share/help/eu/gnome-tetravex/move.page
-share/help/eu/gnome-tetravex/shortcut.page
 share/help/eu/gnome-tetravex/size.page
 share/help/eu/gnome-tetravex/usage.page
 share/help/eu/gnome-tetravex/winning.page
@@ -98,7 +88,6 @@ share/help/fr/gnome-tetravex/hint.page
 share/help/fr/gnome-tetravex/index.page
 share/help/fr/gnome-tetravex/license.page
 share/help/fr/gnome-tetravex/move.page
-share/help/fr/gnome-tetravex/shortcut.page
 share/help/fr/gnome-tetravex/size.page
 share/help/fr/gnome-tetravex/usage.page
 share/help/fr/gnome-tetravex/winning.page
@@ -108,7 +97,6 @@ share/help/gl/gnome-tetravex/hint.page
 share/help/gl/gnome-tetravex/index.page
 share/help/gl/gnome-tetravex/license.page
 share/help/gl/gnome-tetravex/move.page
-share/help/gl/gnome-tetravex/shortcut.page
 share/help/gl/gnome-tetravex/size.page
 share/help/gl/gnome-tetravex/usage.page
 share/help/gl/gnome-tetravex/winning.page
@@ -118,7 +106,6 @@ share/help/hu/gnome-tetravex/hint.page
 share/help/hu/gnome-tetravex/index.page
 share/help/hu/gnome-tetravex/license.page
 share/help/hu/gnome-tetravex/move.page
-share/help/hu/gnome-tetravex/shortcut.page
 share/help/hu/gnome-tetravex/size.page
 share/help/hu/gnome-tetravex/usage.page
 share/help/hu/gnome-tetravex/winning.page
@@ -128,7 +115,6 @@ share/help/it/gnome-tetravex/hint.page
 share/help/it/gnome-tetravex/index.page
 share/help/it/gnome-tetravex/license.page
 share/help/it/gnome-tetravex/move.page
-share/help/it/gnome-tetravex/shortcut.page
 share/help/it/gnome-tetravex/size.page
 share/help/it/gnome-tetravex/usage.page
 share/help/it/gnome-tetravex/winning.page
@@ -138,17 +124,33 @@ share/help/oc/gnome-tetravex/hint.page
 share/help/oc/gnome-tetravex/index.page
 share/help/oc/gnome-tetravex/license.page
 share/help/oc/gnome-tetravex/move.page
-share/help/oc/gnome-tetravex/shortcut.page
 share/help/oc/gnome-tetravex/size.page
 share/help/oc/gnome-tetravex/usage.page
 share/help/oc/gnome-tetravex/winning.page
+share/help/pl/gnome-tetravex/figures/gnome-tetravex-logo.png
+share/help/pl/gnome-tetravex/figures/gnome-tetravex-video.ogv
+share/help/pl/gnome-tetravex/hint.page
+share/help/pl/gnome-tetravex/index.page
+share/help/pl/gnome-tetravex/license.page
+share/help/pl/gnome-tetravex/move.page
+share/help/pl/gnome-tetravex/size.page
+share/help/pl/gnome-tetravex/usage.page
+share/help/pl/gnome-tetravex/winning.page
+share/help/pt_BR/gnome-tetravex/figures/gnome-tetravex-logo.png
+share/help/pt_BR/gnome-tetravex/figures/gnome-tetravex-video.ogv
+share/help/pt_BR/gnome-tetravex/hint.page
+share/help/pt_BR/gnome-tetravex/index.page
+share/help/pt_BR/gnome-tetravex/license.page
+share/help/pt_BR/gnome-tetravex/move.page
+share/help/pt_BR/gnome-tetravex/size.page
+share/help/pt_BR/gnome-tetravex/usage.page
+share/help/pt_BR/gnome-tetravex/winning.page
 share/help/ro/gnome-tetravex/figures/gnome-tetravex-logo.png
 share/help/ro/gnome-tetravex/figures/gnome-tetravex-video.ogv
 share/help/ro/gnome-tetravex/hint.page
 share/help/ro/gnome-tetravex/index.page
 share/help/ro/gnome-tetravex/license.page
 share/help/ro/gnome-tetravex/move.page
-share/help/ro/gnome-tetravex/shortcut.page
 share/help/ro/gnome-tetravex/size.page
 share/help/ro/gnome-tetravex/usage.page
 share/help/ro/gnome-tetravex/winning.page
@@ -158,7 +160,6 @@ share/help/ru/gnome-tetravex/hint.page
 share/help/ru/gnome-tetravex/index.page
 share/help/ru/gnome-tetravex/license.page
 share/help/ru/gnome-tetravex/move.page
-share/help/ru/gnome-tetravex/shortcut.page
 share/help/ru/gnome-tetravex/size.page
 share/help/ru/gnome-tetravex/usage.page
 share/help/ru/gnome-tetravex/winning.page
@@ -168,7 +169,6 @@ share/help/sl/gnome-tetravex/hint.page
 share/help/sl/gnome-tetravex/index.page
 share/help/sl/gnome-tetravex/license.page
 share/help/sl/gnome-tetravex/move.page
-share/help/sl/gnome-tetravex/shortcut.page
 share/help/sl/gnome-tetravex/size.page
 share/help/sl/gnome-tetravex/usage.page
 share/help/sl/gnome-tetravex/winning.page
@@ -178,7 +178,6 @@ share/help/sr/gnome-tetravex/hint.page
 share/help/sr/gnome-tetravex/index.page
 share/help/sr/gnome-tetravex/license.page
 share/help/sr/gnome-tetravex/move.page
-share/help/sr/gnome-tetravex/shortcut.page
 share/help/sr/gnome-tetravex/size.page
 share/help/sr/gnome-tetravex/usage.page
 share/help/sr/gnome-tetravex/winning.page
@@ -188,7 +187,6 @@ share/help/sr@latin/gnome-tetravex/hint.page
 share/help/sr@latin/gnome-tetravex/index.page
 share/help/sr@latin/gnome-tetravex/license.page
 share/help/sr@latin/gnome-tetravex/move.page
-share/help/sr@latin/gnome-tetravex/shortcut.page
 share/help/sr@latin/gnome-tetravex/size.page
 share/help/sr@latin/gnome-tetravex/usage.page
 share/help/sr@latin/gnome-tetravex/winning.page
@@ -198,7 +196,6 @@ share/help/sv/gnome-tetravex/hint.page
 share/help/sv/gnome-tetravex/index.page
 share/help/sv/gnome-tetravex/license.page
 share/help/sv/gnome-tetravex/move.page
-share/help/sv/gnome-tetravex/shortcut.page
 share/help/sv/gnome-tetravex/size.page
 share/help/sv/gnome-tetravex/usage.page
 share/help/sv/gnome-tetravex/winning.page
@@ -208,17 +205,16 @@ share/help/zh_CN/gnome-tetravex/hint.page
 share/help/zh_CN/gnome-tetravex/index.page
 share/help/zh_CN/gnome-tetravex/license.page
 share/help/zh_CN/gnome-tetravex/move.page
-share/help/zh_CN/gnome-tetravex/shortcut.page
 share/help/zh_CN/gnome-tetravex/size.page
 share/help/zh_CN/gnome-tetravex/usage.page
 share/help/zh_CN/gnome-tetravex/winning.page
-share/icons/hicolor/16x16/apps/gnome-tetravex.png
-share/icons/hicolor/22x22/apps/gnome-tetravex.png
-share/icons/hicolor/24x24/apps/gnome-tetravex.png
-share/icons/hicolor/32x32/apps/gnome-tetravex.png
-share/icons/hicolor/48x48/apps/gnome-tetravex.png
-share/icons/hicolor/scalable/apps/gnome-tetravex-symbolic.svg
-share/icons/hicolor/scalable/apps/gnome-tetravex.svg
+share/icons/hicolor/16x16/apps/org.gnome.Tetravex.png
+share/icons/hicolor/22x22/apps/org.gnome.Tetravex.png
+share/icons/hicolor/24x24/apps/org.gnome.Tetravex.png
+share/icons/hicolor/32x32/apps/org.gnome.Tetravex.png
+share/icons/hicolor/48x48/apps/org.gnome.Tetravex.png
+share/icons/hicolor/scalable/apps/org.gnome.Tetravex-symbolic.svg
+share/icons/hicolor/scalable/apps/org.gnome.Tetravex.svg
 share/locale/af/LC_MESSAGES/gnome-tetravex.mo
 share/locale/am/LC_MESSAGES/gnome-tetravex.mo
 share/locale/an/LC_MESSAGES/gnome-tetravex.mo
@@ -309,3 +305,4 @@ share/locale/xh/LC_MESSAGES/gnome-tetravex.mo
 share/locale/zh_CN/LC_MESSAGES/gnome-tetravex.mo
 share/locale/zh_HK/LC_MESSAGES/gnome-tetravex.mo
 share/locale/zh_TW/LC_MESSAGES/gnome-tetravex.mo
+share/metainfo/org.gnome.Tetravex.appdata.xml
