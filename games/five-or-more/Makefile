@@ -13,7 +13,8 @@ COMMENT=	Form a line of 5 or more colored balls
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	itstool:textproc/itstool
+BUILD_DEPENDS=	itstool:textproc/itstool \
+		valac:lang/vala
 LIB_DEPENDS=	libgee-0.8.so:devel/libgee \
 		libgnome-games-support-1.so:games/libgnome-games-support
 
