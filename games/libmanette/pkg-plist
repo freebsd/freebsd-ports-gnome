@@ -1,0 +1,14 @@
+bin/manette-test
+include/libmanette/libmanette.h
+include/libmanette/manette-device.h
+include/libmanette/manette-event.h
+include/libmanette/manette-monitor-iter.h
+include/libmanette/manette-monitor.h
+include/libmanette/manette-version.h
+lib/girepository-1.0/Manette-0.2.typelib
+lib/libmanette-0.2.so
+lib/libmanette-0.2.so.0
+libdata/pkgconfig/manette-0.2.pc
+share/gir-1.0/Manette-0.2.gir
+share/vala/vapi/manette-0.2.deps
+share/vala/vapi/manette-0.2.vapi
