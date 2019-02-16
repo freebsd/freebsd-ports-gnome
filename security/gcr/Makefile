@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gcr
-PORTVERSION=	3.28.0
+PORTVERSION=	3.28.1
 CATEGORIES=	security gnome
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Library for bits of crypto UI and parsing
