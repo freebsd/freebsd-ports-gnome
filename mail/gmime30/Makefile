@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gmime
-PORTVERSION=	3.2.0
+PORTVERSION=	3.2.3
 CATEGORIES=	mail
 MASTER_SITES=	GNOME
 PKGNAMESUFFIX=	30
@@ -15,15 +15,16 @@ LICENSE=	LGPL21
 BUILD_DEPENDS=	valac:lang/vala
 LIB_DEPENDS=	libgpgme.so:security/gpgme \
 		libassuan.so:security/libassuan \
-		libidn.so:dns/libidn \
+		libidn2.so:dns/libidn2 \
 		libgpg-error.so:security/libgpg-error
 
-DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}30
-USES=		gettext-runtime gmake iconv libtool localbase pathfix pkgconfig tar:xz
+USES=		gettext-runtime gmake gnome iconv libtool localbase pathfix pkgconfig tar:xz
 USE_GNOME=	glib20 introspection:build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
+
+DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}30
 
 # www.freebsd.org/cgi/query-pr.cgi?pr=118092
 # Rename uudecode and uuencode to gmime-* to not conflict with userland
