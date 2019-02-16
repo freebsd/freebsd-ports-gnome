@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	libgda
-PORTVERSION?=	5.2.5
+PORTVERSION?=	5.2.8
 PORTREVISION?=	0
 CATEGORIES=	databases gnome
 MASTER_SITES=	GNOME
 PKGNAMESUFFIX?=	5
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER?=	gnome@FreeBSD.org
 COMMENT?=	Provides uniform access to different kinds of data sources
