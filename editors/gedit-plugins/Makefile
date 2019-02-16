@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gedit-plugins
-PORTVERSION=	3.28.1
-PORTREVISION=	1
+PORTVERSION=	3.31.90
 CATEGORIES=	editors gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Plugins for GEdit 3
@@ -26,7 +25,7 @@ PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c11 gettext gmake gnome libtool localbase pathfix pkgconfig \
 		python:3.4+ tar:xz
-USE_GNOME=	cairo gdkpixbuf2 gtk30 gtksourceview3 intlhack introspection
+USE_GNOME=	cairo gdkpixbuf2 gtk30 gtksourceview4 introspection
 USE_CSTD=	c11
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
@@ -49,4 +48,19 @@ post-patch:
 	@${REINPLACE_CMD} -e 's| \\t\\r\\n\\f|[:space:]|g' \
 		${WRKSRC}/configure
 
-.include <bsd.port.mk>
+PLUGINDIRS=	${PREFIX}/lib/gedit/plugins ${PREFIX}/share/gedit/plugins
+
+.include <bsd.port.pre.mk>
+
+post-install:
+# generates .py[co] files for installed modules
+	@${FIND} ${STAGEDIR}${PREFIX} -name \*.pyc -delete
+.for dir in ${PLUGINDIRS}
+	(cd ${STAGEDIR}${PREFIX} && \
+	${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py \
+		-d ${dir} -f ${dir:S;${PREFIX}/;;} && \
+	${PYTHON_CMD} -O ${PYTHON_LIBDIR}/compileall.py \
+		-d ${dir} -f ${dir:S;${PREFIX}/;;})
+.endfor
+
+.include <bsd.port.post.mk>
