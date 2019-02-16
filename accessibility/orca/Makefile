@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	orca
-PORTVERSION=	3.28.2
+PORTVERSION=	3.31.4
 CATEGORIES=	accessibility gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Scriptable screen reader
@@ -24,17 +24,17 @@ RUN_DEPENDS=	py3?-dbus>=0:devel/py-dbus@${PY_FLAVOR} \
 		py3?-xdg>=0:devel/py-xdg@${PY_FLAVOR} \
 		py3?-cairo>=0:graphics/py-cairo@${PY_FLAVOR}
 
-# conflict with py*-json-py because orca uses the json from python itself
-# and py*-json-py shadows this.
-CONFLICTS=	py*-json-py-[0-9]*
-PORTSCOUT=	limitw:1,even
-
-NO_ARCH=	yes
 USES=		gettext gmake gnome localbase pathfix pkgconfig \
 		python:3.4+ tar:xz
 USE_GNOME=	gtk30 pygobject3 intlhack
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
+
+# conflict with py*-json-py because orca uses the json from python itself
+# and py*-json-py shadows this.
+CONFLICTS=	py*-json-py-[0-9]*
+PORTSCOUT=	limitw:1,even
+NO_ARCH=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|g' \
