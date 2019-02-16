@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome3
-PORTVERSION=	3.28
+PORTVERSION=	3.31
 PORTREVISION=1
 CATEGORIES?=	x11 gnome
 
@@ -70,8 +70,7 @@ RUN_DEPENDS+=	epiphany>=3.0.0:www/epiphany \
 		gdm>=3.0.0:x11/gdm \
 		gnome-color-manager>=0:graphics/gnome-color-manager \
 		evolution>=3.0.0:mail/evolution \
-		cheese>=3.0.0:multimedia/cheese \
-		ekiga:net-im/ekiga
+		cheese>=3.0.0:multimedia/cheese
 
 .endif # !gnome3-lite section
 
