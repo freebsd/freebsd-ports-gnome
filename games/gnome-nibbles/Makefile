@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-nibbles
-PORTVERSION=	3.24.0
-PORTREVISION=	1
+PORTVERSION=	3.31.3
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gnome nibbles
@@ -28,7 +27,7 @@ LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome localbase pathfix \
+USES=		gettext gl gmake gnome localbase pathfix \
 		pkgconfig tar:xz
 USE_GNOME=	cairo gtk30 intlhack librsvg2 libxml2:build
 INSTALLS_ICONS=	yes
