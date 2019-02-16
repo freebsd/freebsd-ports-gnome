@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	webkit
-PORTVERSION=	2.23.3
+PORTVERSION=	2.23.90
 CATEGORIES=	www
 MASTER_SITES=	https://webkitgtk.org/releases/
 PKGNAMESUFFIX=	2-gtk3
@@ -24,6 +24,7 @@ LIB_DEPENDS=	libenchant-2.so:textproc/enchant2 \
 		libnotify.so:devel/libnotify \
 		libhyphen.so:textproc/hyphen \
 		libicutu.so:devel/icu \
+		libopenjp2.so:graphics/openjpeg \
 		libharfbuzz.so:print/harfbuzz \
 		libharfbuzz-icu.so:print/harfbuzz-icu \
 		libsoup-2.4.so:devel/libsoup \
