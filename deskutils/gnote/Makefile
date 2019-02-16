@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnote
-PORTVERSION=	3.28.0
-PORTREVISION=	1
+PORTVERSION=	3.31.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	C++ version of Tomboy, note taking application
@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	itstool:textproc/itstool
 LIB_DEPENDS=	libgtkspell3-3.so:textproc/gtkspell3 \
-		libenchant.so:textproc/enchant \
+		libenchant-2.so:textproc/enchant2 \
 		libsecret-1.so:security/libsecret \
 		libuuid.so:misc/e2fsprogs-libuuid
 
