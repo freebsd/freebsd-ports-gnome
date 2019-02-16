@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	meld
-PORTVERSION=	3.18.2
+PORTVERSION=	3.20.0
 CATEGORIES=	textproc devel python
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME visual diff and merge tool
@@ -15,7 +16,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	itstool:textproc/itstool
 RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
-USES=		desktop-file-utils gettext python:3.4+ shared-mime-info \
+USES=		desktop-file-utils gettext gnome python:3.4+ shared-mime-info \
 		shebangfix tar:xz
 SHEBANG_FILES=	bin/meld
 USE_PYTHON=	distutils noflavors
