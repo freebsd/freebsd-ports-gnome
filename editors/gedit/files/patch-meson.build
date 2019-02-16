@@ -1,0 +1,14 @@
+--- meson.build.orig	2019-02-16 15:58:45 UTC
++++ meson.build
+@@ -46,11 +46,6 @@ gtkdocdir = join_paths(datadir, 'gtk-doc')
+ localdir = join_paths(datadir, 'local')
+ vapidir = join_paths(datadir, 'vala', 'vapi')
+ 
+-# Subprojects
+-if not get_option('buildtype').contains('plain')
+-  run_command('git', '-C', meson.source_root(), 'submodule', 'update', '--init', '--recursive')
+-endif
+-
+ libgd_sp = subproject(
+   'libgd',
+   default_options: [
