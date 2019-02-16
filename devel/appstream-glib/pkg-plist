@@ -38,6 +38,7 @@ lib/asb-plugins-5/libasb_plugin_desktop.so
 lib/asb-plugins-5/libasb_plugin_font.so
 lib/asb-plugins-5/libasb_plugin_gettext.so
 lib/asb-plugins-5/libasb_plugin_hardcoded.so
+lib/asb-plugins-5/libasb_plugin_icon.so
 lib/asb-plugins-5/libasb_plugin_shell_extension.so
 lib/girepository-1.0/AppStreamBuilder-1.0.typelib
 lib/girepository-1.0/AppStreamGlib-1.0.typelib
