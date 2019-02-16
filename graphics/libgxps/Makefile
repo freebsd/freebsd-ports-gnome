@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	libgxps
-PORTVERSION=	0.3.0
+PORTVERSION=	0.3.1
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GObject based library for rendering XPS documents
@@ -15,7 +15,7 @@ LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libpng.so:graphics/png \
 		liblcms2.so:graphics/lcms2
 
-USES=		gettext jpeg libarchive localbase meson pkgconfig tar:xz
+USES=		gettext gnome jpeg libarchive localbase meson pkgconfig tar:xz
 USE_LDCONFIG=	yes
 USE_GNOME=	cairo glib20 introspection:build
 
