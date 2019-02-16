@@ -1,3 +1,3 @@
-TIMESTAMP = 1522693181
-SHA256 (libsecret-0.18.6.tar.xz) = 5efbc890ba41a323ffe0599cd260fd12bd8eb62a04aa1bd1b2762575d253d66f
-SIZE (libsecret-0.18.6.tar.xz) = 487836
+TIMESTAMP = 1550330359
+SHA256 (gnome/libsecret-0.18.7.tar.xz) = 0d66fe1fc4561b3e046ee281d7c5a703a9baac88a8c4fb42ebc739d31dabd487
+SIZE (gnome/libsecret-0.18.7.tar.xz) = 508392
