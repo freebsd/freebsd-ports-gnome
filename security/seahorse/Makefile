@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	seahorse
-PORTVERSION=	3.20.0
+PORTVERSION=	3.31.1
 CATEGORIES=	security gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME application for managing encryption keys (PGP, SSH)
@@ -19,15 +19,16 @@ LIB_DEPENDS=	libgpgme.so:security/gpgme \
 		libsoup-2.4.so:devel/libsoup
 RUN_DEPENDS=	gnupg>=2.1.4:security/gnupg
 
-PORTSCOUT=	limitw:1,even
 
-USE_XORG=	sm
-USE_LDCONFIG=	yes
-USES=		gettext gmake gnome libtool localbase pathfix \
+USES=		gettext gnome localbase:ldflags meson \
 		pkgconfig tar:xz
-USE_GNOME=	intlhack gnomeprefix gtk30
-GNU_CONFIGURE=	yes
+USE_GNOME=	gtk30
+USE_LDCONFIG=	yes
+USE_XORG=	sm
+
 INSTALLS_ICONS=	yes
+
+PORTSCOUT=	limitw:1,even
 
 GLIB_SCHEMAS=	org.gnome.seahorse.gschema.xml \
 		org.gnome.seahorse.manager.gschema.xml \
@@ -36,11 +37,13 @@ GLIB_SCHEMAS=	org.gnome.seahorse.gschema.xml \
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	LDAP AVAHI
 OPTIONS_DEFAULT=LDAP AVAHI
-LDAP_CONFIGURE_ENABLE=	ldap
+
+LDAP_MESON_TRUE=	ldap-support
 LDAP_USE=	OPENLDAP=yes
-LDAP_DESC=	LDAP keyserver support (for gpg)
-AVAHI_DESC=	DNS-SD key sharing
-AVAHI_CONFIGURE_ENABLE=	sharing
+LDAP_DESC=	Support for keyservers using LDAP
+
+AVAHI_DESC=	Support for DNS-SD key sharing
+AVAHI_MESON_TRUE=	key-sharing
 AVAHI_LIB_DEPENDS=	libavahi-client.so:net/avahi-app
 
 .include <bsd.port.mk>
