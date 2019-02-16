@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	json-glib
-PORTVERSION=	1.4.2
+PORTVERSION=	1.4.4
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	JSON (RFC 4627) interface for Glib
@@ -12,7 +13,7 @@ COMMENT=	JSON (RFC 4627) interface for Glib
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		gettext localbase meson pkgconfig tar:xz
+USES=		gettext gnome localbase meson pkgconfig tar:xz
 USE_GNOME=	glib20
 USE_LDCONFIG=	yes
 
