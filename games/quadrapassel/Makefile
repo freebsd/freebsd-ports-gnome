@@ -14,6 +14,7 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	vala:lang/vala \
+		evdev-proto>=0:devel/evdev-proto \
 		itstool:textproc/itstool \
 		appstream-util:devel/appstream-glib
 LIB_DEPENDS=	libclutter-1.0.so:graphics/clutter \
