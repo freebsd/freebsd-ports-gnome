@@ -2,7 +2,7 @@ bin/sushi
 lib/sushi/girepository-1.0/Sushi-1.0.typelib
 lib/sushi/libsushi-1.0.so
 libexec/sushi-start
-share/dbus-1/services/org.gnome.Sushi.service
+share/dbus-1/services/org.gnome.NautilusPreviewer.service
 share/locale/af/LC_MESSAGES/sushi.mo
 share/locale/an/LC_MESSAGES/sushi.mo
 share/locale/ar/LC_MESSAGES/sushi.mo
