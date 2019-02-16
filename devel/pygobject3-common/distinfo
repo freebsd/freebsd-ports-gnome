@@ -1,3 +1,3 @@
-TIMESTAMP = 1545476792
-SHA256 (gnome/pygobject-3.31.2.tar.xz) = e75c9bc1f220863cea8386c121a6313fbc80bfe17e825538063252ffb28861c6
-SIZE (gnome/pygobject-3.31.2.tar.xz) = 549380
+TIMESTAMP = 1550324563
+SHA256 (gnome/pygobject-3.31.3.tar.xz) = 6dae4a8158583b391c854f02b55e9ab7a42f29302ec65f4a2e5846d26f06a5ca
+SIZE (gnome/pygobject-3.31.3.tar.xz) = 550300
