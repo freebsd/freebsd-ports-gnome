@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	tracker-miners
-PORTVERSION=	2.0.5
-PORTREVISION=	1
+PORTVERSION=	2.1.5
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Miners for tracker2
@@ -40,10 +40,12 @@ USES=		gettext gnome jpeg localbase:ldflags meson \
 USE_GNOME=	cairo intltool libgsf libxml2
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
+
 GLIB_SCHEMAS=	org.freedesktop.Tracker.Extract.gschema.xml \
 		org.freedesktop.Tracker.Miner.Files.gschema.xml \
 		org.freedesktop.Tracker.Writeback.gschema.xml \
 		org.freedesktop.TrackerMiners.enums.xml
+
 SHEBANG_FILES=	tests/tracker-writeback/01-writeback.py
 
 MESON_ARGS=	-Dsystemd_user_services=no \

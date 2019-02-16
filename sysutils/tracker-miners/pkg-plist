@@ -67,8 +67,8 @@ share/locale/fr/LC_MESSAGES/tracker-miners.mo
 share/locale/fur/LC_MESSAGES/tracker-miners.mo
 share/locale/gl/LC_MESSAGES/tracker-miners.mo
 share/locale/he/LC_MESSAGES/tracker-miners.mo
-share/locale/hu/LC_MESSAGES/tracker-miners.mo
 share/locale/hr/LC_MESSAGES/tracker-miners.mo
+share/locale/hu/LC_MESSAGES/tracker-miners.mo
 share/locale/id/LC_MESSAGES/tracker-miners.mo
 share/locale/it/LC_MESSAGES/tracker-miners.mo
 share/locale/ja/LC_MESSAGES/tracker-miners.mo
@@ -134,7 +134,4 @@ share/locale/zh_TW/LC_MESSAGES/tracker-miners.mo
 %%GSTREAMER%%%%DATADIR%%/extract-rules/90-gstreamer-image-generic.rule
 %%GSTREAMER%%%%DATADIR%%/extract-rules/90-gstreamer-video-generic.rule
 %%DATADIR%%/extract-rules/90-text-generic.rule
-share/tracker/miners/org.freedesktop.Tracker1.Miner.Applications.service
 share/tracker/miners/org.freedesktop.Tracker1.Miner.Extract.service
-share/tracker/miners/org.freedesktop.Tracker1.Miner.Files.service
-%%RSS%%share/tracker/miners/org.freedesktop.Tracker1.Miner.RSS.service
