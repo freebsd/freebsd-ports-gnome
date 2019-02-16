@@ -1,3 +1,3 @@
-TIMESTAMP = 1530382221
-SHA256 (tracker-2.0.4.tar.xz) = ce2f0db52666592d313a04ce14663110eafa8ab08dc213b53e790281362dccd5
-SIZE (tracker-2.0.4.tar.xz) = 2607728
+TIMESTAMP = 1550347174
+SHA256 (gnome/tracker-2.1.7.tar.xz) = fb4e7b71929dbc56045bc5920bd0e47b6081a094c131e991e5a411e44b24a24a
+SIZE (gnome/tracker-2.1.7.tar.xz) = 2572740
