@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-music
-PORTVERSION=	3.28.2.1
+PORTVERSION=	3.31.1
 CATEGORIES=	audio gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME music playing application
