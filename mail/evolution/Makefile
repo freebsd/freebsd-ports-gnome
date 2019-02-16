@@ -42,7 +42,7 @@ RUN_DEPENDS=	highlight:textproc/highlight \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c11 desktop-file-utils cmake gettext gl gnome \
+USES=		compiler:c11 desktop-file-utils cmake gettext gnome \
 		iconv:wchar_t sqlite libarchive localbase pathfix pkgconfig \
 		tar:xz
 USE_GNOME=	cairo evolutiondataserver3 gnomedesktop3 intltool
@@ -129,6 +129,7 @@ MAPS_LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 			libclutter-1.0.so:graphics/clutter \
 			libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
 			libchamplain-0.12.so:graphics/libchamplain
+MAPS_USES=		gl
 MAPS_USE=		xorg=xcomposite,xdamage,xext,xfixes,xi,xrandr gl=egl
 
 .include <bsd.port.mk>
