@@ -26,6 +26,7 @@ USE_GNOME=	gtk30
 USE_LDCONFIG=	yes
 USE_XORG=	sm
 
+MESON_ARGS=	-Dcheck-compatible-gpg=false
 INSTALLS_ICONS=	yes
 
 PORTSCOUT=	limitw:1,even

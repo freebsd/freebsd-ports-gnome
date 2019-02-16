@@ -1,0 +1,11 @@
+--- meson.build.orig	2019-02-16 16:02:49 UTC
++++ meson.build
+@@ -152,7 +152,7 @@ conf.set('WITH_KEYSERVER', with_keyservers)
+ conf.set('WITH_SHARING', with_key_sharing)
+ conf.set_quoted('SSH_KEYGEN_PATH', ssh_keygen.path())
+ conf.set_quoted('SSH_PATH', ssh_bin.path())
+-if with_pgp
++if with_pgp and check_compatible_gpg
+   conf.set_quoted('GNUPG', gpg_bin.path())
+   gpg_version_split = gpg_version.split('.')
+   conf.set('GPG_MAJOR', gpg_version_split[0])
