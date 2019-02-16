@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gcab
-PORTVERSION=	1.0
+PORTVERSION=	1.2
 CATEGORIES=	archivers gnome
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GObject library to create cabinet files
@@ -12,7 +13,7 @@ COMMENT=	GObject library to create cabinet files
 BUILD_DEPENDS=	vala:lang/vala \
 		gtkdoc-scan:textproc/gtk-doc
 
-USES=		cpe gettext meson pkgconfig tar:xz
+USES=		cpe gettext gnome meson pkgconfig tar:xz
 USE_GNOME=	glib20 introspection:build
 CPE_VENDOR=	gnome
 
