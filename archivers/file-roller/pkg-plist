@@ -1,5 +1,5 @@
 bin/file-roller
-lib/nautilus/extensions-3.0/libnautilus-fileroller.so
+%%NAUTILUS%%lib/nautilus/extensions-3.0/libnautilus-fileroller.so
 libexec/file-roller/isoinfo.sh
 libexec/file-roller/rpm2cpio
 share/applications/org.gnome.FileRoller.desktop
