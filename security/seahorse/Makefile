@@ -10,18 +10,17 @@ DIST_SUBDIR=	gnome
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME application for managing encryption keys (PGP, SSH)
 
-BUILD_DEPENDS=	gnupg>=2.1.4:security/gnupg \
+BUILD_DEPENDS=	gnupg>=2.2.0:security/gnupg \
 		valac:lang/vala \
 		itstool:textproc/itstool
 LIB_DEPENDS=	libgpgme.so:security/gpgme \
 		libgcr-3.so:security/gcr \
 		libsecret-1.so:security/libsecret \
 		libsoup-2.4.so:devel/libsoup
-RUN_DEPENDS=	gnupg>=2.1.4:security/gnupg
-
+RUN_DEPENDS=	gnupg>=2.2.0:security/gnupg
 
 USES=		gettext gnome localbase:ldflags meson \
-		pkgconfig tar:xz
+		pkgconfig python:3.5+,build tar:xz
 USE_GNOME=	gtk30
 USE_LDCONFIG=	yes
 USE_XORG=	sm
@@ -30,6 +29,7 @@ MESON_ARGS=	-Dcheck-compatible-gpg=false
 INSTALLS_ICONS=	yes
 
 PORTSCOUT=	limitw:1,even
+BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
 GLIB_SCHEMAS=	org.gnome.seahorse.gschema.xml \
 		org.gnome.seahorse.manager.gschema.xml \
