@@ -3,7 +3,7 @@
 
 PORTNAME=	spidermonkey
 DISTVERSION=	60.1.1pre3
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	lang
 MASTER_SITES=	http://ftp.mozilla.org/pub/spidermonkey/prereleases/60/pre3/
 DISTNAME=	mozjs-${DISTVERSION}
