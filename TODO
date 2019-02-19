@@ -1,3 +1,6 @@
+CHANGES:
+gnome-shell switched ES6 classes, this breaks _all_ plugins
+
 spidermonkey60 needs more work + i386 fixes
 pango: make patches for xft split and upstream
 gsd: fix build with gudev (includes not passed around)
@@ -7,12 +10,31 @@ shell: what to do with the browser plugin..
 gdm: update to 3.30, hello patch hell
 pygobject3*: switch to default python3.
 gnome-photos: git workaround and mesonbuild type?
+file-roller: with password protected zips
 
 
 find out where gnome-icon-theme (3.12) is used and axe it
 find out where nome-icon-theme-extras (3.12) is used and axe it
 find out where gconf2 is used in GNOME 3 and see if it axeable
 
-figure out what to do with vinagre and vino (former still works?, latter drop from meta)
+figure out what to do with vinagre and vino (former still works?, latter drop from meta) drop ekiga if it isn't already
 
 Update gnome-shell extensions
+
+- gnome-builder patches upstream
+- epiphany
+
+files from evolution moved to eds
+
+
+# rework the following ports: (patches upstream)
+mutter
+shell..??
+settings-daemon
+atomix, gnome-tetravex
+seahorse
+gedit
+
+gnome-control-center details pagina fixen
+
+rework libgda5 ports (prework for libgda6)
