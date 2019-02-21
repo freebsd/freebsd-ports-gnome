@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	fontconfig
-PORTVERSION=	2.12.6
+PORTVERSION=	2.13.1
 PORTREVISION?=	0
 PORTEPOCH?=	1
 CATEGORIES=	x11-fonts
@@ -16,9 +16,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 USES=		gperf tar:bzip2
 
-.if !defined(REFERENCE_PORT)
-
 LIB_DEPENDS=	libfreetype.so:print/freetype2 \
+		libuuid.so:misc/e2fsprogs-libuuid \
 		libexpat.so:textproc/expat2
 
 USES+=		cpe gmake libtool pathfix pkgconfig
@@ -49,7 +48,7 @@ INSTALL_TARGET=install-strip
 PLIST_SUB=	PREFERRED_HINTING=${PREFERRED_HINTING}
 PORTDOCS=	fontconfig-user.html fontconfig-user.pdf fontconfig-user.txt
 
-OPTIONS_DEFINE=	DOCS NO_BITMAPS
+OPTIONS_DEFINE=	DOCS NO_BITMAPS NLS
 OPTIONS_DEFAULT=HINTING_SLIGHT
 OPTIONS_SUB=	yes
 
@@ -62,6 +61,9 @@ OPTIONS_SINGLE_HINTING+=	HINTING_${opt}
 HINTING_${opt}_DESC=	${opt:tl}
 HINTING_${opt}_VARS=	PREFERRED_HINTING=${opt:tl}
 .endfor
+
+NLS_USES=		gettext
+NLS_CONFIGURE_ENABLE=	nls
 
 post-patch-NO_BITMAPS-on:
 	@${REINPLACE_CMD} -i '.bitmaps.bak' -e \
@@ -84,5 +86,3 @@ post-install-DOCS-on:
 	${INSTALL_DATA} ${PORTDOCS:S|^|${WRKSRC}/doc/|} ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>
-
-.endif
