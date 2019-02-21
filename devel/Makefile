@@ -357,6 +357,7 @@
     SUBDIR += cons-test
     SUBDIR += containers
     SUBDIR += cook
+    SUBDIR += corrade
     SUBDIR += courier-unicode
     SUBDIR += coursier
     SUBDIR += covtool
@@ -478,6 +479,7 @@
     SUBDIR += doctorj
     SUBDIR += dolphin-plugins
     SUBDIR += dotconf
+    SUBDIR += double-conversion
     SUBDIR += doxygen
     SUBDIR += dparser
     SUBDIR += dprog
@@ -759,7 +761,6 @@
     SUBDIR += generatorrunner
     SUBDIR += gengetopt
     SUBDIR += genproto
-    SUBDIR += geoip-java
     SUBDIR += gettext
     SUBDIR += gettext-lint
     SUBDIR += gettext-msghack
@@ -815,6 +816,7 @@
     SUBDIR += glslang
     SUBDIR += glui
     SUBDIR += gmake
+    SUBDIR += gn
     SUBDIR += gnatcoll
     SUBDIR += gnatpython
     SUBDIR += gnome-builder
@@ -851,7 +853,6 @@
     SUBDIR += go-raw
     SUBDIR += go-runewidth
     SUBDIR += go-slices
-    SUBDIR += go-sql-driver
     SUBDIR += go-tools
     SUBDIR += go-uuid
     SUBDIR += go-yaml
@@ -1415,7 +1416,6 @@
     SUBDIR += libdlna
     SUBDIR += libdnsres
     SUBDIR += libdombey
-    SUBDIR += libdouble-conversion
     SUBDIR += libdparse
     SUBDIR += libds
     SUBDIR += libdsp
@@ -1888,9 +1888,7 @@
     SUBDIR += ois
     SUBDIR += okteta
     SUBDIR += omake
-    SUBDIR += omniNotify
     SUBDIR += omniORB
-    SUBDIR += omniORB-4.1
     SUBDIR += omnisharp-server
     SUBDIR += oniguruma
     SUBDIR += oozie
@@ -3481,6 +3479,8 @@
     SUBDIR += p5-Term-ANSIScreen
     SUBDIR += p5-Term-Animation
     SUBDIR += p5-Term-CallEditor
+    SUBDIR += p5-Term-Choose
+    SUBDIR += p5-Term-Choose-Util
     SUBDIR += p5-Term-Clui
     SUBDIR += p5-Term-EditLine
     SUBDIR += p5-Term-Encoding
@@ -3506,6 +3506,7 @@
     SUBDIR += p5-Term-Size-Perl
     SUBDIR += p5-Term-Sk
     SUBDIR += p5-Term-Table
+    SUBDIR += p5-Term-TablePrint
     SUBDIR += p5-Term-Title
     SUBDIR += p5-Term-UI
     SUBDIR += p5-Term-VT102
@@ -4295,6 +4296,7 @@
     SUBDIR += py-ZopeUndo
     SUBDIR += py-adb
     SUBDIR += py-aenum
+    SUBDIR += py-aiofiles
     SUBDIR += py-aioice
     SUBDIR += py-aiorpcX
     SUBDIR += py-aiortc
@@ -4323,6 +4325,7 @@
     SUBDIR += py-args
     SUBDIR += py-arpeggio
     SUBDIR += py-arrow
+    SUBDIR += py-asciimatics
     SUBDIR += py-asn1crypto
     SUBDIR += py-aspects
     SUBDIR += py-aspyct
@@ -4393,6 +4396,7 @@
     SUBDIR += py-azure-mgmt-servicefabric
     SUBDIR += py-azure-mgmt-signalr
     SUBDIR += py-azure-mgmt-sql
+    SUBDIR += py-azure-mgmt-sqlvirtualmachine
     SUBDIR += py-azure-mgmt-storage
     SUBDIR += py-azure-mgmt-trafficmanager
     SUBDIR += py-azure-mgmt-web
@@ -4644,6 +4648,9 @@
     SUBDIR += py-google-apputils
     SUBDIR += py-googleapis-common-protos
     SUBDIR += py-grab
+    SUBDIR += py-graphene
+    SUBDIR += py-graphql-core
+    SUBDIR += py-graphql-relay
     SUBDIR += py-greenlet
     SUBDIR += py-grizzled
     SUBDIR += py-grouch
@@ -4709,11 +4716,13 @@
     SUBDIR += py-json-py
     SUBDIR += py-json-sempai
     SUBDIR += py-json_tricks
+    SUBDIR += py-jsondiff
     SUBDIR += py-jsonform
     SUBDIR += py-jsonlib
     SUBDIR += py-jsonlib2
     SUBDIR += py-jsonlines
     SUBDIR += py-jsonpatch
+    SUBDIR += py-jsonpath-rw
     SUBDIR += py-jsonpickle
     SUBDIR += py-jsonpointer
     SUBDIR += py-jsonref
@@ -4806,6 +4815,7 @@
     SUBDIR += py-mypy_extensions
     SUBDIR += py-nagioscheck
     SUBDIR += py-naiveBayesClassifier
+    SUBDIR += py-nanotime
     SUBDIR += py-natsort
     SUBDIR += py-natural
     SUBDIR += py-nbconvert
@@ -4917,6 +4927,8 @@
     SUBDIR += py-pretend
     SUBDIR += py-prettytable
     SUBDIR += py-prioritized_methods
+    SUBDIR += py-proglog
+    SUBDIR += py-promise
     SUBDIR += py-prompt_toolkit
     SUBDIR += py-prompt_toolkit2
     SUBDIR += py-protobuf
@@ -5112,6 +5124,7 @@
     SUBDIR += py-ruamel.yaml
     SUBDIR += py-rubymarshal
     SUBDIR += py-rwt
+    SUBDIR += py-rx
     SUBDIR += py-sanetime
     SUBDIR += py-sarge
     SUBDIR += py-schema
@@ -5494,6 +5507,7 @@
     SUBDIR += regexxer
     SUBDIR += relx
     SUBDIR += remake
+    SUBDIR += remotery
     SUBDIR += replay
     SUBDIR += replxx
     SUBDIR += resolv_wrapper

@@ -1,4 +1,4 @@
-bin/example-libhandy
+bin/handy-demo
 include/libhandy-0.0/handy.h
 include/libhandy-0.0/hdy-action-row.h
 include/libhandy-0.0/hdy-arrows.h
@@ -19,6 +19,7 @@ include/libhandy-0.0/hdy-main.h
 include/libhandy-0.0/hdy-search-bar.h
 include/libhandy-0.0/hdy-string-utf8.h
 include/libhandy-0.0/hdy-title-bar.h
+include/libhandy-0.0/hdy-value-object.h
 include/libhandy-0.0/hdy-version.h
 lib/girepository-1.0/Handy-0.0.typelib
 lib/glade/modules/libglade-handy.so

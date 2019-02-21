@@ -8,7 +8,6 @@
     SUBDIR += Xmt
     SUBDIR += amtk
     SUBDIR += attica
-    SUBDIR += bakery
     SUBDIR += blt
     SUBDIR += bwidget
     SUBDIR += c++-gtk-utils

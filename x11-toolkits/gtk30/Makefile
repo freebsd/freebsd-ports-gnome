@@ -33,7 +33,6 @@ USE_PERL5=	build
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 USE_GNOME=	atk cairo gdkpixbuf2 introspection:build pango
-#gtk-update-icon-cache
 USES=		compiler:c11 gettext gmake gnome libtool localbase \
 		pathfix perl5 pkgconfig tar:xz
 USE_XORG=	xext xrender x11 xinerama xi xrandr xcursor xfixes xdamage \
