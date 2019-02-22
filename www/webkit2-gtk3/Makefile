@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	webkit
-PORTVERSION=	2.23.90
+PORTVERSION=	2.23.91
 CATEGORIES=	www
 MASTER_SITES=	https://webkitgtk.org/releases/
 PKGNAMESUFFIX=	2-gtk3
 DISTNAME=	${PORTNAME}gtk-${PORTVERSION}
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Opensource browser engine using the GTK+ 3 toolkit

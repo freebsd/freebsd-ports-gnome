@@ -74,6 +74,7 @@ include/webkitgtk-4.0/webkit2/WebKitURIResponse.h
 include/webkitgtk-4.0/webkit2/WebKitURISchemeRequest.h
 include/webkitgtk-4.0/webkit2/WebKitURIUtilities.h
 include/webkitgtk-4.0/webkit2/WebKitUserContent.h
+include/webkitgtk-4.0/webkit2/WebKitUserContentFilterStore.h
 include/webkitgtk-4.0/webkit2/WebKitUserContentManager.h
 include/webkitgtk-4.0/webkit2/WebKitUserMediaPermissionRequest.h
 include/webkitgtk-4.0/webkit2/WebKitVersion.h
@@ -212,10 +213,10 @@ lib/girepository-1.0/WebKit2-4.0.typelib
 lib/girepository-1.0/WebKit2WebExtension-4.0.typelib
 lib/libjavascriptcoregtk-4.0.so
 lib/libjavascriptcoregtk-4.0.so.18
-lib/libjavascriptcoregtk-4.0.so.18.13.0
+lib/libjavascriptcoregtk-4.0.so.18.13.1
 lib/libwebkit2gtk-4.0.so
 lib/libwebkit2gtk-4.0.so.37
-lib/libwebkit2gtk-4.0.so.37.36.0
+lib/libwebkit2gtk-4.0.so.37.37.0
 lib/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
 libdata/pkgconfig/javascriptcoregtk-4.0.pc
 libdata/pkgconfig/webkit2gtk-4.0.pc
