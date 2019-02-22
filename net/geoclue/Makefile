@@ -16,7 +16,7 @@ BUILD_DEPENDS=	valac:lang/vala
 LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 		libsoup-2.4.so:devel/libsoup
 
-USES=		gnome localbase meson pkgconfig python:3.5+,build tar:xz
+USES=		gettext gnome localbase meson pkgconfig python:3.5+,build tar:xz
 USE_GNOME=	glib20 introspection:build
 USE_LDCONFIG=	yes
 MESON_ARGS=	-D3g-source=false \
