@@ -104,7 +104,6 @@ include/mutter-4/clutter/clutter/deprecated/clutter-alpha.h
 include/mutter-4/clutter/clutter/deprecated/clutter-animatable.h
 include/mutter-4/clutter/clutter/deprecated/clutter-animation.h
 include/mutter-4/clutter/clutter/deprecated/clutter-animator.h
-include/mutter-4/clutter/clutter/deprecated/clutter-backend.h
 include/mutter-4/clutter/clutter/deprecated/clutter-behaviour-depth.h
 include/mutter-4/clutter/clutter/deprecated/clutter-behaviour-ellipse.h
 include/mutter-4/clutter/clutter/deprecated/clutter-behaviour-opacity.h
@@ -116,7 +115,6 @@ include/mutter-4/clutter/clutter/deprecated/clutter-bin-layout.h
 include/mutter-4/clutter/clutter/deprecated/clutter-box.h
 include/mutter-4/clutter/clutter/deprecated/clutter-cairo-texture.h
 include/mutter-4/clutter/clutter/deprecated/clutter-container.h
-include/mutter-4/clutter/clutter/deprecated/clutter-frame-source.h
 include/mutter-4/clutter/clutter/deprecated/clutter-group.h
 include/mutter-4/clutter/clutter/deprecated/clutter-input-device.h
 include/mutter-4/clutter/clutter/deprecated/clutter-keysyms.h
@@ -132,8 +130,6 @@ include/mutter-4/clutter/clutter/deprecated/clutter-state.h
 include/mutter-4/clutter/clutter/deprecated/clutter-table-layout.h
 include/mutter-4/clutter/clutter/deprecated/clutter-texture.h
 include/mutter-4/clutter/clutter/deprecated/clutter-timeline.h
-include/mutter-4/clutter/clutter/deprecated/clutter-timeout-pool.h
-include/mutter-4/clutter/clutter/deprecated/clutter-util.h
 include/mutter-4/clutter/clutter/x11/clutter-x11-texture-pixmap.h
 include/mutter-4/clutter/clutter/x11/clutter-x11.h
 include/mutter-4/cogl/cogl-gles2/GLES2/gl2.h

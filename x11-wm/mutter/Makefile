@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mutter
-PORTVERSION=	3.31.90
+PORTVERSION=	3.31.91
 CATEGORIES=	x11-wm gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -33,13 +33,11 @@ RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		xkeyboard-config>=0:x11/xkeyboard-config \
 		gsettings-desktop-schemas>=3.4.0:devel/gsettings-desktop-schemas \
 		gnome-settings-daemon>=3.28:sysutils/gnome-settings-daemon
-
 TEST_DEPENDS=	bash:shells/bash
-
-PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c++0x gettext gl gnome localbase meson \
 		pkgconfig python:3.5+,build shebangfix tar:xz
+
 USE_GL=		egl
 USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 introspection
 USE_XORG=	ice sm x11 xcb xcomposite xcursor xdamage xext xfixes \
@@ -47,6 +45,8 @@ USE_XORG=	ice sm x11 xcb xcomposite xcursor xdamage xext xfixes \
 USE_LDCONFIG=	yes
 #CONFIGURE_ARGS=	--without-libwacom \
 #		--disable-wayland
+
+PORTSCOUT=	limitw:1,even
 
 # udev support when using the X11 backend (only x11 backend?)
 #MESON_ARGS+=	-Dudev=false
