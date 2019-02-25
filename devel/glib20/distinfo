@@ -1,3 +1,3 @@
-TIMESTAMP = 1549833866
-SHA256 (gnome/glib-2.59.2.tar.xz) = 29fb5873ed830009c520a965d3848621f08450bdd81715b957d1e1a0417c8ea7
-SIZE (gnome/glib-2.59.2.tar.xz) = 4572012
+TIMESTAMP = 1551131791
+SHA256 (gnome/glib-2.59.3.tar.xz) = dfefafbc37bbcfb8101f3f181f880e8b7a8bee48620c92869ec4ef1d3d648e5e
+SIZE (gnome/glib-2.59.3.tar.xz) = 4576480
