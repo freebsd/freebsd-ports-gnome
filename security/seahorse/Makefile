@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	seahorse
-PORTVERSION=	3.31.1
+PORTVERSION=	3.31.91
 CATEGORIES=	security gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -15,6 +15,7 @@ BUILD_DEPENDS=	gnupg>=2.2.0:security/gnupg \
 		itstool:textproc/itstool
 LIB_DEPENDS=	libgpgme.so:security/gpgme \
 		libgcr-3.so:security/gcr \
+		libpwquality.so:security/libpwquality \
 		libsecret-1.so:security/libsecret \
 		libsoup-2.4.so:devel/libsoup
 RUN_DEPENDS=	gnupg>=2.2.0:security/gnupg
@@ -22,7 +23,6 @@ RUN_DEPENDS=	gnupg>=2.2.0:security/gnupg
 USES=		gettext gnome localbase:ldflags meson \
 		pkgconfig python:3.5+,build tar:xz
 USE_GNOME=	gtk30
-USE_LDCONFIG=	yes
 USE_XORG=	sm
 
 MESON_ARGS=	-Dcheck-compatible-gpg=false
