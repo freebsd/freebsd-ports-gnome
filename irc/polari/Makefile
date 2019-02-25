@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	polari
-PORTVERSION=	3.31.90
+PORTVERSION=	3.31.91
 CATEGORIES=	irc gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -21,13 +21,13 @@ LIB_DEPENDS=	libtelepathy-glib.so:net-im/telepathy-glib \
 		libtelepathy-logger.so:net-im/telepathy-logger
 RUN_DEPENDS=	gjs-console:lang/gjs
 
-PORTSCOUT=	limitw:1,even
-
 USES=		desktop-file-utils gettext gnome localbase \
 		meson pkgconfig tar:xz
 USE_GNOME=	cairo gtk30 introspection
+
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
+PORTSCOUT=	limitw:1,even
 
 GLIB_SCHEMAS=	org.gnome.Polari.gschema.xml
 
