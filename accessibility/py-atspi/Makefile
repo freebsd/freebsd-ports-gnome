@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	atspi
-PORTVERSION=	2.31.1
+PORTVERSION=	2.31.2
 CATEGORIES=	accessibility x11-toolkits python
 MASTER_SITES=	GNOME/sources/pyatspi/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
