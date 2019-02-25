@@ -134,4 +134,7 @@ share/locale/zh_TW/LC_MESSAGES/tracker-miners.mo
 %%GSTREAMER%%%%DATADIR%%/extract-rules/90-gstreamer-image-generic.rule
 %%GSTREAMER%%%%DATADIR%%/extract-rules/90-gstreamer-video-generic.rule
 %%DATADIR%%/extract-rules/90-text-generic.rule
+share/tracker/miners/org.freedesktop.Tracker1.Miner.Applications.service
 share/tracker/miners/org.freedesktop.Tracker1.Miner.Extract.service
+share/tracker/miners/org.freedesktop.Tracker1.Miner.Files.service
+%%RSS%%share/tracker/miners/org.freedesktop.Tracker1.Miner.RSS.service
