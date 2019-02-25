@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-photos
-PORTVERSION=	3.31.3
+PORTVERSION=	3.31.91
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -35,12 +35,12 @@ LIB_DEPENDS=	libexempi.so:textproc/exempi \
 		libgdata.so:devel/libgdata
 RUN_DEPENDS=	geoclue>=0:net/geoclue
 
-PORTSCOUT=	limitw:1,even
-
 USES=		compiler:c11 gettext gnome jpeg \
 		localbase meson pkgconfig python:3.4+,build tar:xz
+
 USE_GNOME=	cairo gnomedesktop3 gtk30 libxml2
 USE_LDCONFIG=	yes
+PORTSCOUT=	limitw:1,even
 INSTALLS_ICONS=	yes
 
 # wut, otherwise git is needed ..., maybe this is fixed for stable releases
