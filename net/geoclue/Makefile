@@ -12,7 +12,8 @@ COMMENT=	D-Bus service that provides location information
 LICENSE=	GPLv2 LGPL21
 LICENSE_COMB=	multi
 
-BUILD_DEPENDS=	valac:lang/vala
+BUILD_DEPENDS=	valac:lang/vala \
+		gtkdoc-scan:textproc/gtk-doc
 LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 		libsoup-2.4.so:devel/libsoup
 
