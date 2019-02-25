@@ -1,4 +1,4 @@
-$OpenBSD: patch-daemon_gdm-manager_c,v 1.14 2017/05/10 10:18:15 ajacoutot Exp $
+$OpenBSD: patch-daemon_gdm-manager_c,v 1.21 2019/01/18 05:51:51 ajacoutot Exp $
 
 REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
 From 21905303afbd508f3bf599ad219c9209413c53a2 Mon Sep 17 00:00:00 2001
@@ -24,9 +24,8 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 13:48:52 -0400
 Subject: require logind support
 
-
---- daemon/gdm-manager.c.orig	2018-11-06 22:26:11.000000000 +0100
-+++ daemon/gdm-manager.c	2019-01-04 11:15:49.568538000 +0100
+--- daemon/gdm-manager.c.orig	2019-02-25 20:58:53.013003000 +0100
++++ daemon/gdm-manager.c	2019-02-25 21:16:36.007381000 +0100
 @@ -36,7 +36,9 @@
  
  #include <act/act-user-manager.h>
@@ -92,7 +91,7 @@ Subject: require logind support
 +                                             -1,
 +                                             NULL, error);
 +        if (reply == NULL) {
-+                return NULL;
++               return NULL;
 +        }
 +
 +        g_variant_get (reply, "(o)", &retval);
@@ -104,7 +103,7 @@ Subject: require logind support
 +
 +static char *
 +get_session_id_for_pid (GDBusConnection  *connection,
-+                        pid_t             pid,
++                       pid_t             pid,
 +                        GError          **error)
 +{
 +#ifdef WITH_SYSTEMD
@@ -165,7 +164,7 @@ Subject: require logind support
 +        g_variant_get (reply, "(u)", &uid);
 +        g_variant_unref (reply);
 +
-+        *out_uid = (uid_t) uid;
++       *out_uid = (uid_t) uid;
 +
 +        return TRUE;
 +}
@@ -194,23 +193,20 @@ Subject: require logind support
  lookup_by_session_id (const char *id,
                        GdmDisplay *display,
                        gpointer    user_data)
-@@ -265,11 +381,51 @@
+@@ -264,11 +380,50 @@
+         current = gdm_display_get_session_id (display);
          return g_strcmp0 (current, looking_for) == 0;
  }
- 
 +#ifdef WITH_CONSOLE_KIT
- static gboolean
--is_login_session (GdmManager  *self,
--                  const char  *session_id,
--                  GError     **error)
++static gboolean
 +is_consolekit_login_session (GdmManager       *self,
 +                             GDBusConnection  *connection,
 +                             const char       *session_id,
 +                             GError          **error)
- {
++{
 +        GVariant *reply;
 +        char *session_type = NULL;
-+
+ 
 +        reply = g_dbus_connection_call_sync (connection,
 +                                             "org.freedesktop.ConsoleKit",
 +                                             session_id,
@@ -241,32 +237,88 @@ Subject: require logind support
 +#endif
 +
 +#ifdef WITH_SYSTEMD
-+static gboolean
+ static gboolean
+-is_login_session (GdmManager  *self,
+-                  const char  *session_id,
+-                  GError     **error)
 +is_systemd_login_session (GdmManager  *self,
 +                          const char  *session_id,
 +                          GError     **error)
-+{
+ {
          char *session_class = NULL;
          int ret;
- 
-@@ -293,16 +449,75 @@
+@@ -293,29 +448,49 @@
          g_free (session_class);
          return TRUE;
  }
 +#endif
  
-+#ifdef WITH_CONSOLE_KIT
  static gboolean
 -session_unlock (GdmManager *manager,
 -                const char *ssid)
-+activate_session_id_for_ck (GdmManager *manager,
-+                            const char *seat_id,
-+                            const char *session_id)
++is_login_session (GdmManager       *self,
++                  GDBusConnection  *connection,
++                  const char       *session_id,
++                  GError          **error)
  {
++#ifdef WITH_SYSTEMD
++        if (LOGIND_RUNNING()) {
++                return is_systemd_login_session (self, session_id, error);
++        }
++#endif
++
++#ifdef WITH_CONSOLE_KIT
++        return is_consolekit_login_session (self, connection, session_id, error);
++#endif
++
++        return FALSE;
++}
++
++#ifdef WITH_SYSTEMD
++static gboolean
++activate_session_id_for_systemd (GdmManager   *manager,
++                                 const char *seat_id,
++                                 const char *session_id)
++{
          GError *error = NULL;
          GVariant *reply;
  
 -        g_debug ("Unlocking session %s", ssid);
+-
+         reply = g_dbus_connection_call_sync (manager->priv->connection,
+                                              "org.freedesktop.login1",
+                                              "/org/freedesktop/login1",
+                                              "org.freedesktop.login1.Manager",
+-                                             "UnlockSession",
+-                                             g_variant_new ("(s)", ssid),
++                                             "ActivateSessionOnSeat",
++                                             g_variant_new ("(ss)", session_id, seat_id),
+                                              NULL, /* expected reply */
+                                              G_DBUS_CALL_FLAGS_NONE,
+                                              -1,
+                                              NULL,
+                                              &error);
+         if (reply == NULL) {
+-                g_debug ("GdmManager: logind 'UnlockSession' %s raised:\n %s\n\n",
++                g_debug ("GdmManager: logind 'ActivateSessionOnSeat' %s raised:\n %s\n\n",
+                          g_dbus_error_get_remote_error (error), error->message);
+                 g_error_free (error);
+                 return FALSE;
+@@ -325,7 +500,119 @@
+ 
+         return TRUE;
+ }
++#endif
++ 
++#ifdef WITH_CONSOLE_KIT
++static gboolean
++activate_session_id_for_ck (GdmManager *manager,
++                            const char *seat_id,
++                            const char *session_id)
++{
++        GError *error = NULL;
++        GVariant *reply;
+ 
 +        reply = g_dbus_connection_call_sync (manager->priv->connection,
 +                                             CK_NAME,
 +                                             seat_id,
@@ -282,7 +334,7 @@ Subject: require logind support
 +                g_debug ("GdmManager: ConsoleKit %s raised:\n %s\n\n",
 +                         g_dbus_error_get_remote_error (error), error->message);
 +                g_error_free (error);
- 
++
 +                /* It is very likely that the "error" just reported is
 +                 * that the session is already active.  Unfortunately,
 +                 * ConsoleKit doesn't use proper error codes and it
@@ -299,41 +351,24 @@ Subject: require logind support
 +#endif
 +
 +static gboolean
-+is_login_session (GdmManager *self,
-+                  GDBusConnection  *connection,
-+                  const char       *session_id,
-+                  GError          **error)
++activate_session_id (GdmManager *manager,
++                     const char *seat_id,
++                     const char *session_id)
 +{
++
 +#ifdef WITH_SYSTEMD
 +        if (LOGIND_RUNNING()) {
-+                return is_systemd_login_session (self, session_id, error);
++                return activate_session_id_for_systemd (manager, seat_id, session_id);
 +        }
 +#endif
 +
 +#ifdef WITH_CONSOLE_KIT
-+        return is_consolekit_login_session (self, connection, session_id, error);
++        return activate_session_id_for_ck (manager, seat_id, session_id);
++#else
++       return FALSE;
 +#endif
-+
-+        return FALSE;
 +}
 +
-+#ifdef WITH_SYSTEMD
-+static gboolean
-+session_unlock_for_systemd (GdmManager *manager,
-+                            const char *ssid)
-+{
-+        GError *error = NULL;
-+        GVariant *reply;
-+
-         reply = g_dbus_connection_call_sync (manager->priv->connection,
-                                              "org.freedesktop.login1",
-                                              "/org/freedesktop/login1",
-@@ -325,7 +540,60 @@
- 
-         return TRUE;
- }
-+#endif
- 
 +#ifdef WITH_CONSOLE_KIT
 +static gboolean
 +session_unlock_for_ck (GdmManager *manager,
@@ -389,7 +424,7 @@ Subject: require logind support
  static GdmSession *
  find_session_for_user_on_seat (GdmManager *manager,
                                 const char *username,
-@@ -356,11 +624,44 @@
+@@ -356,11 +643,44 @@
          return NULL;
  }
  
@@ -437,9 +472,24 @@ Subject: require logind support
          char *seat;
          int ret;
          gboolean is_remote;
-@@ -385,10 +686,31 @@
+@@ -385,10 +705,12 @@
  
          return is_remote;
+ }
++#endif
+ 
++#ifdef WITH_SYSTEMD
+ static char *
+-get_seat_id_for_session_id (const char  *session_id,
+-                            GError     **error)
++get_seat_id_for_systemd_session_id (const char  *session_id,
++                                    GError     **error)
+ {
+         int ret;
+         char *seat, *out_seat;
+@@ -413,11 +735,81 @@
+ 
+         return out_seat;
  }
 +#endif
  
@@ -462,21 +512,6 @@ Subject: require logind support
 +        return FALSE;
 +}
 +
-+#ifdef WITH_SYSTEMD
- static char *
--get_seat_id_for_session_id (const char  *session_id,
--                            GError     **error)
-+get_seat_id_for_systemd_session_id (const char  *session_id,
-+                                    GError     **error)
- {
-         int ret;
-         char *seat, *out_seat;
-@@ -413,11 +735,62 @@
- 
-         return out_seat;
- }
-+#endif
- 
 +#ifdef WITH_CONSOLE_KIT
  static char *
 -get_tty_for_session_id (const char  *session_id,
@@ -536,7 +571,7 @@ Subject: require logind support
          int ret;
          char *tty, *out_tty;
  
-@@ -440,7 +813,21 @@
+@@ -440,7 +832,21 @@
  
          return out_tty;
  }
@@ -558,7 +593,7 @@ Subject: require logind support
  static void
  get_display_and_details_for_bus_sender (GdmManager       *self,
                                          GDBusConnection  *connection,
-@@ -483,7 +870,7 @@
+@@ -483,7 +889,7 @@
                  goto out;
          }
  
@@ -567,7 +602,7 @@ Subject: require logind support
  
          if (session_id == NULL) {
                  g_debug ("GdmManager: Error while retrieving session id for sender: %s",
-@@ -497,7 +884,7 @@
+@@ -497,7 +903,7 @@
          }
  
          if (out_is_login_screen != NULL) {
@@ -576,7 +611,7 @@ Subject: require logind support
  
                  if (error != NULL) {
                          g_debug ("GdmManager: Error while checking if sender is login screen: %s",
-@@ -507,7 +894,7 @@
+@@ -507,7 +913,7 @@
                  }
          }
  
@@ -585,7 +620,7 @@ Subject: require logind support
                  g_debug ("GdmManager: Error while retrieving uid for session: %s",
                           error->message);
                  g_error_free (error);
-@@ -524,7 +911,7 @@
+@@ -524,7 +930,7 @@
          }
  
          if (out_seat_id != NULL) {
@@ -594,7 +629,7 @@ Subject: require logind support
  
                  if (error != NULL) {
                          g_debug ("GdmManager: Error while retrieving seat id for session: %s",
-@@ -534,7 +921,7 @@
+@@ -534,7 +940,7 @@
          }
  
          if (out_is_remote != NULL) {
@@ -603,7 +638,16 @@ Subject: require logind support
  
                  if (error != NULL) {
                          g_debug ("GdmManager: Error while retrieving remoteness for session: %s",
-@@ -692,29 +1079,6 @@
+@@ -590,7 +996,7 @@
+         if (existing_session != NULL) {
+                 ssid_to_activate = gdm_session_get_session_id (existing_session);
+                 if (seat_id != NULL) {
+-                        res = gdm_activate_session_by_id (manager->priv->connection, seat_id, ssid_to_activate);
++                        res = activate_session_id (manager, seat_id, ssid_to_activate);
+                         if (! res) {
+                                 g_debug ("GdmManager: unable to activate session: %s", ssid_to_activate);
+                                 goto out;
+@@ -692,29 +1098,6 @@
          return recorded;
  }
  
@@ -633,7 +677,7 @@ Subject: require logind support
  static gboolean
  gdm_manager_handle_register_display (GdmDBusManager        *manager,
                                       GDBusMethodInvocation *invocation,
-@@ -754,7 +1118,7 @@
+@@ -754,7 +1137,7 @@
                  }
          }
  
@@ -642,7 +686,7 @@ Subject: require logind support
  
          if (session != NULL) {
                  GPid pid;
-@@ -928,7 +1292,8 @@
+@@ -928,7 +1311,8 @@
                   * same audit session, ignore it since it doesn't "own" the
                   * reauthentication session
                   */
@@ -652,34 +696,36 @@ Subject: require logind support
                                                              NULL);
                  session_id = g_object_get_data (G_OBJECT (session), "caller-session-id");
  
-@@ -1140,16 +1505,20 @@
+@@ -1139,17 +1523,20 @@
+ static gboolean
  display_is_on_seat0 (GdmDisplay *display)
  {
-         gboolean is_on_seat0 = TRUE;
+-        gboolean is_on_seat0 = TRUE;
 -        char *seat_id = NULL;
++         gboolean is_on_seat0 = TRUE;
  
 -        g_object_get (G_OBJECT (display), "seat-id", &seat_id, NULL);
 +#ifdef WITH_SYSTEMD
 +        if (LOGIND_RUNNING()) {
 +                char *seat_id = NULL;
++                g_object_get (G_OBJECT (display), "seat-id", &seat_id, NULL);
  
 -        if (g_strcmp0 (seat_id, "seat0") != 0) {
 -            is_on_seat0 = FALSE;
 -        }
-+                g_object_get (G_OBJECT (display), "seat-id", &seat_id, NULL);
- 
--        g_free (seat_id);
 +                if (g_strcmp0 (seat_id, "seat0") != 0) {
 +                        is_on_seat0 = FALSE;
 +                }
  
+-        g_free (seat_id);
+-
 +                g_free (seat_id);
 +        }
 +#endif
          return is_on_seat0;
  }
  
-@@ -1970,11 +2339,57 @@
+@@ -1970,11 +2357,57 @@
  }
  
  static char *
@@ -739,7 +785,7 @@ Subject: require logind support
  }
  
  static void
-@@ -1983,25 +2398,6 @@
+@@ -1983,25 +2416,6 @@
                              GdmManager *manager)
  {
          gboolean fail_if_already_switched = FALSE;
