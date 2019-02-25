@@ -371,11 +371,13 @@
     SUBDIR += py-YABT
     SUBDIR += py-cinder
     SUBDIR += py-colorbrewer
+    SUBDIR += py-colored
     SUBDIR += py-crudini
     SUBDIR += py-emoji
     SUBDIR += py-fast-histogram
     SUBDIR += py-fuzzy
     SUBDIR += py-glance
+    SUBDIR += py-huepy
     SUBDIR += py-kartograph
     SUBDIR += py-molequeue
     SUBDIR += py-orange3-associate

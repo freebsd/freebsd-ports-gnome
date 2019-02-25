@@ -1140,6 +1140,7 @@
     SUBDIR += xpyraminx
     SUBDIR += xqf
     SUBDIR += xrally
+    SUBDIR += xray_re-tools
     SUBDIR += xrick
     SUBDIR += xrisk
     SUBDIR += xroach

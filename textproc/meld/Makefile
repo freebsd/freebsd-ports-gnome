@@ -18,9 +18,10 @@ RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
 USES=		desktop-file-utils gettext gnome python:3.4+ shared-mime-info \
 		shebangfix tar:xz
-SHEBANG_FILES=	bin/meld
 USE_PYTHON=	distutils noflavors
 USE_GNOME=	gtksourceview3 intltool libxml2:build pygobject3
+
+SHEBANG_FILES=	bin/meld
 GLIB_SCHEMAS=	org.gnome.meld.gschema.xml
 PYDISTUTILS_INSTALL_TARGET=	--no-update-icon-cache --no-compile-schemas install
 INSTALLS_ICONS=	yes

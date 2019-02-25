@@ -150,7 +150,6 @@
     SUBDIR += erlang-mochiweb
     SUBDIR += erlang-mochiweb-basho
     SUBDIR += erlang-webmachine
-    SUBDIR += erwn
     SUBDIR += fabio
     SUBDIR += falkon
     SUBDIR += fancybox
@@ -1028,6 +1027,7 @@
     SUBDIR += p5-Jifty
     SUBDIR += p5-LWP-Authen-Negotiate
     SUBDIR += p5-LWP-Authen-OAuth
+    SUBDIR += p5-LWP-Authen-OAuth2
     SUBDIR += p5-LWP-Authen-Wsse
     SUBDIR += p5-LWP-ConnCache-MaxKeepAliveRequests
     SUBDIR += p5-LWP-MediaTypes
@@ -1863,6 +1863,7 @@
     SUBDIR += py-splinter
     SUBDIR += py-spyne
     SUBDIR += py-sseclient
+    SUBDIR += py-starlette
     SUBDIR += py-surl
     SUBDIR += py-swapper
     SUBDIR += py-textile

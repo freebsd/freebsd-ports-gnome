@@ -5,6 +5,19 @@ they are unavoidable.
 You should get into the habit of checking this file for changes each time
 you update your ports collection, before attempting any port upgrades.
 
+20190224:
+  AFFECTS: users of security/gnutls
+  AUTHOR: tijl@FreeBSD.org
+
+  GnuTLS now looks for its configuration files in PREFIX/etc (/usr/local/etc)
+  instead of /etc.  If the following files exist they have to be moved.  On a
+  default installation these files do not exist.
+
+  /etc/gnutls/default-priorities
+  /etc/gnutls/pkcs11.conf
+  /etc/tpasswd
+  /etc/tpasswd.conf
+
 20190215:
   AFFECTS: users of net-im/ejabberd
   AUTHOR: ashish@FreeBSD.org
@@ -18,6 +31,17 @@ you update your ports collection, before attempting any port upgrades.
   affected users, you'll need to wipe off the MAM cache for the affected users:
 
       sudo -u ejabberd -H ejabberdctl remove_mam_for_user <user> <server>
+
+20190207:
+  AFFECTS: users of net-mgmt/mk-livestatus
+  AUTHOR: egypcio@FreeBSD.org
+
+  The default Nagios version supported by net-mgmt/mk-livestatus changed
+  from Nagios 3 to Nagios 4 - the respective Nagios package was added to
+  net-mgmt/mk-livestatus' runtime dependencies.
+
+  If you still need support for Nagios 3 you just need to change the
+  options for net-mgmt/mk-livestatus and compile the port yourself.
 
 20190202:
   AFFECTS: users of archivers/urbackup-server

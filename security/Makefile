@@ -215,6 +215,7 @@
     SUBDIR += hitch
     SUBDIR += hlfl
     SUBDIR += hmap
+    SUBDIR += hockeypuck
     SUBDIR += honeybadger
     SUBDIR += honggfuzz
     SUBDIR += hotssh
@@ -1257,6 +1258,7 @@
     SUBDIR += snuffleupagus
     SUBDIR += softether
     SUBDIR += softether-devel
+    SUBDIR += softether5
     SUBDIR += softhsm
     SUBDIR += softhsm2
     SUBDIR += sops
@@ -1274,6 +1276,7 @@
     SUBDIR += sshguard
     SUBDIR += sshpass
     SUBDIR += ssl-admin
+    SUBDIR += ssllabs-scan
     SUBDIR += sslscan
     SUBDIR += sslsniffer
     SUBDIR += sslsplit

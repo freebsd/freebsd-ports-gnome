@@ -190,7 +190,6 @@ bin/meld
 %%PYTHON_SITELIBDIR%%/meld/windowstate.py
 man/man1/meld.1.gz
 share/applications/org.gnome.meld.desktop
-%%PORTDOCS%%%%DOCSDIR%%/NEWS
 share/help/C/meld/command-line.page
 share/help/C/meld/file-changes.page
 share/help/C/meld/file-filters.page
