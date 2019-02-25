@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	file-roller
-PORTVERSION=	3.31.90
+PORTVERSION=	3.31.91
 PORTEPOCH=	1
 CATEGORIES=	archivers gnome
 MASTER_SITES=	GNOME
@@ -19,14 +19,14 @@ LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \
 		libnotify.so:devel/libnotify
 RUN_DEPENDS=	gtar:archivers/gtar
 
-PORTSCOUT=	limitw:1,even
-
 USES=		desktop-file-utils gettext gnome libarchive localbase \
 		meson pkgconfig python:3.5+,build tar:xz
+
 USE_GNOME=	cairo gtk30
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 MESON_ARGS=	-Dpackagekit=false
+PORTSCOUT=	limitw:1,even
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
 GLIB_SCHEMAS=	org.gnome.FileRoller.gschema.xml
