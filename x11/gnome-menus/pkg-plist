@@ -18,6 +18,7 @@ share/desktop-directories/Utility-Accessibility.directory
 share/desktop-directories/Utility.directory
 share/desktop-directories/X-GNOME-Menu-Applications.directory
 share/desktop-directories/X-GNOME-Other.directory
+share/desktop-directories/X-GNOME-Sundry.directory
 share/desktop-directories/X-GNOME-SystemSettings.directory
 share/desktop-directories/X-GNOME-Utilities.directory
 share/desktop-directories/X-GNOME-WebApplications.directory
