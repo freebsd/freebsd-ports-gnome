@@ -1,11 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-builder
-PORTVERSION=	3.28.4
-PORTREVISION=	1
+PORTVERSION=	3.31.91
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	IDE for writing software for GNOME
@@ -19,32 +18,37 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libjsonrpc-glib-1.0.so:devel/jsonrpc-glib \
 		libtemplate_glib-1.0.so:devel/template-glib \
 		libdazzle-1.0.so:x11-toolkits/libdazzle \
+		libgladeui-2.so:devel/glade \
 		libenchant-2.so:textproc/enchant2 \
 		libgspell-1.so:textproc/gspell \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libdevhelp-3.so:devel/devhelp \
 		libgit2-glib-1.0.so:devel/libgit2-glib \
 		libpcre.so:devel/pcre \
-		libvala-0.40.so:lang/vala
+		libvala-0.44.so:lang/vala
 
 PORTSCOUT=	limitw:1,even
 PORTDOCS=	*
 
 CONFLICTS_BUILD=	gnome-builder-3.16.*
 
-USES=		compiler:c++11-lang cpe desktop-file-utils gettext gnome meson pkgconfig python:3.6+,build tar:xz
-USE_GNOME=	cairo gtksourceview3 introspection libxml2 vte3
+USES=		compiler:c++11-lang cpe desktop-file-utils gettext gnome meson pkgconfig python:3.6+,build shebangfix tar:xz
+USE_GNOME=	cairo gtksourceview4 introspection libxml2 vte3
 USE_LDCONFIG=	yes
+
 INSTALLS_ICONS=	yes
 CPE_VENDOR=	gnome
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
-MESON_ARGS=	-Dwith_flatpak=false \
-		-Dwith_sysprof=false \
-		-Dwith_qemu=false \
-		-Dwith_jhbuild=false
+SHEBANG_FILES=	src/plugins/gradle/gradle_plugin.py \
+		src/plugins/maven/maven_plugin.py
 
-PLIST_SUB+=	PORTVER=${PORTVERSION}
+MESON_ARGS=	-Dplugin_flatpak=false \
+		-Dplugin_sysprof=false \
+		-Dplugin_qemu=false \
+		-Dplugin_jhbuild=false
+
+PLIST_SUB+=	PORTVER=${PORTVERSION:R}
 
 GLIB_SCHEMAS=	org.gnome.builder.build.gschema.xml \
 		org.gnome.builder.code-insight.gschema.xml \
@@ -66,14 +70,15 @@ OPTIONS_DEFINE=	CLANG DOCS
 OPTIONS_DEFAULT=	CLANG
 
 # track the latest llvm/clang version, the config script picks the newest available
-LLVM_VER=	60
+LLVM_VER=	70
 CLANG_DESC=	Build the clang plugin
-CLANG_MESON_TRUE=	with_clang
+CLANG_MESON_TRUE=	plugin_clang
 CLANG_BUILD_DEPENDS=	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
 CLANG_RUN_DEPENDS=	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
+CLANG_VARS=		GLIB_SCHEMAS+=org.gnome.builder.clang.gschema.xml
 
 # jedi plugin with dependancies doesn't work
-MESON_ARGS+=	-Dwith_jedi=false
+MESON_ARGS+=	-Dplugin_jedi=false
 #RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
 #		${PYTHON_PKGNAMEPREFIX}lxml>0:devel/py-lxml@${PY_FLAVOR} \
 #		${PYTHON_PKGNAMEPREFIX}jedi>0:devel/py-jedi@${PY_FLAVOR}

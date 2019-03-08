@@ -1,0 +1,11 @@
+--- src/libide/gui/meson.build.orig	2019-03-04 22:00:22 UTC
++++ src/libide/gui/meson.build
+@@ -186,6 +186,8 @@ libide_gui_deps = [
+   libide_projects_dep,
+   libide_search_dep,
+   libide_themes_dep,
++
++  cc.find_library('m', required: true),
+ ]
+ 
+ #
