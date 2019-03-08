@@ -38,7 +38,7 @@ post-patch:
 		-e '/NASM_FLAGS_DEBUG/d' \
 		${WRKSRC}/CMakeLists.txt
 # Avoid devel/yasm dependency
-	@${REINPLACE_CMD} -i .typo 's/MAKE_ASM_NASM_COMPILER/s&/' \
+	@${REINPLACE_CMD} -i .typo 's/[[:<:]]MAKE_ASM_NASM_COMPILER/C&/' \
 		${WRKSRC}/CMakeLists.txt
 # Avoid lang/gcc* dependency
 	@${REINPLACE_CMD} -i .gcc -e 's/gcc-//' \
@@ -52,7 +52,7 @@ post-patch:
 	@${REINPLACE_CMD} -i .opsys 's/Linux/${OPSYS}/' \
 		${WRKSRC}/CMakeLists.txt \
 		${WRKSRC}/Source/Lib/*/CMakeLists.txt
-	@${GREP} -Flr '__linux' ${WRKSRC} | ${XARGS} \
+	@${GREP} --exclude='*/third_party/*' -Flr '__linux' ${WRKSRC} | ${XARGS} \
 		${REINPLACE_CMD} -i .opsys -E 's/__linux(__)?/__${OPSYS}__/'
 
 .include <bsd.port.mk>

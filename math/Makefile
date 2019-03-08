@@ -383,7 +383,6 @@
     SUBDIR += multichoose
     SUBDIR += mumps
     SUBDIR += mumps-edf
-    SUBDIR += mumps-mpich
     SUBDIR += muparser
     SUBDIR += nanoflann
     SUBDIR += naturalmath
@@ -690,6 +689,7 @@
     SUBDIR += py-algopy
     SUBDIR += py-altgraph
     SUBDIR += py-apgl
+    SUBDIR += py-autograd
     SUBDIR += py-basemap
     SUBDIR += py-basemap-data
     SUBDIR += py-bayesian-optimization
@@ -769,6 +769,7 @@
     SUBDIR += py-pysym
     SUBDIR += py-python-louvain
     SUBDIR += py-pyvtk
+    SUBDIR += py-quadprog
     SUBDIR += py-random2
     SUBDIR += py-rapi
     SUBDIR += py-roman
@@ -835,7 +836,6 @@
     SUBDIR += scilab-toolbox-swt
     SUBDIR += scs
     SUBDIR += sdpa
-    SUBDIR += sdpara
     SUBDIR += secp256k1
     SUBDIR += sfft
     SUBDIR += sfst

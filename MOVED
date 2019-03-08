@@ -4048,7 +4048,6 @@ sysutils/sarah||2013-03-03|Has expired: No more upstream, no more public distfil
 www/igal||2013-03-03|Has expired: No more upstream, no more public distfiles, consider using www/llgal
 finance/tinyerp-server||2013-03-03|Has expired: No more upstream, no more public distfiles, consider using finance/openerp-server
 ports-mgmt/portcheck||2013-03-03|Has expired: No more upstream, no more public distfiles
-security/sslproxy||2013-03-03|Has expired: Abandoned upstream
 x11-themes/e17-theme-darkness||2013-03-03|Has expired: No more public distfiles
 x11-themes/e17-theme-cthulhain||2013-03-03|Has expired: Dead upstream since 2008
 x11-servers/driglide||2013-03-03|Has expired: 3dfx is dead, fails to compile on recent versions of FreeBSD
@@ -5274,7 +5273,6 @@ devel/qt4-declarative|x11-toolkits/qt4-declarative|2014-01-06|Moved to unify wit
 devel/qt4-qtestlib|devel/qt4-testlib|2014-01-06|Renamed to unify with Qt 5
 x11/qt4-opengl|graphics/qt4-opengl|2014-01-06|Moved to unify with Qt 5
 graphics/wings-devel|graphics/wings|2014-01-07|Obsoleted by the main port
-devel/llvm|devel/llvm32|2014-01-08|Has expired: Migrate to devel/llvm32 or newer
 devel/reflex|textproc/reflex|2014-01-08|Duplicate
 devel/hs-hat||2014-01-09|Upstream has vanished
 devel/hs-hdoc||2014-01-09|Removed
@@ -8465,7 +8463,6 @@ audio/mangler||2016-07-04|Has expired: Broken for more than 6 months
 audio/hawkvoice||2016-07-04|Has expired: Broken for more than 6 months
 x11-wm/e-module-mpdule||2016-07-04|Has expired: Broken for more than 6 months
 x11-wm/e-module-tclock||2016-07-04|Has expired: Broken for more than 6 months
-x11-wm/musca||2016-07-04|Has expired: Broken for more than 6 months
 x11-wm/e-module-places||2016-07-04|Has expired: Broken for more than 6 months
 x11-wm/e-module-forecasts||2016-07-04|Has expired: Broken for more than 6 months
 x11-wm/e-module-net||2016-07-04|Has expired: Broken for more than 6 months
@@ -10323,8 +10320,6 @@ vietnamese/kde4-l10||2018-07-17|Has expired: broken for more than three years
 graphics/projectm-libvisual|graphics/libprojectm|2018-07-17|Code of projectm-libvisual was merged into graphics/libprojectm
 graphics/yafray|graphics/yafaray|2018-07-20|Project renamed
 lang/spec.alpha||2018-07-21|Unused in the ports tree
-sysutils/xen-tools|sysutils/xen-tools47|2018-07-23|Renamed to support multiple versions
-emulators/xen-kernel|emulators/xen-kernel47|2018-07-23|Renamed to support multiple versions
 emulators/xen||2018-07-23|Removed to support multiple versions
 devel/py-levenshtein|devel/py-python-Levenshtein|2018-07-28|Remove the duplicate
 comms/xwota||2018-07-28|Has expired: No server message and no upstream releases
@@ -11599,7 +11594,6 @@ ftp/proftpd-mod_geoip||2019-02-16|Has expired: Uses legacy GeoIP 1 format which 
 net/go-geoip||2019-02-16|Has expired: Uses legacy GeoIP 1 format which no longer works; switch to GeoIP 2 where possible
 net/py-GeoIP|net/py-GeoIP2|2019-02-16|Has expired: Uses legacy GeoIP 1 format which no longer works; switch to GeoIP 2 where possible
 net/pecl-geoip||2019-02-16|Has expired: Uses legacy GeoIP 1 format which no longer works; switch to GeoIP 2 where possible
-net/pen||2019-02-16|Has expired: Uses legacy GeoIP 1 format which no longer works; switch to GeoIP 2 where possible
 net/subnetcalc||2019-02-16|Has expired: Uses legacy GeoIP 1 format which no longer works; switch to GeoIP 2 where possible
 net/p5-Geo-IP||2019-02-16|Has expired: Uses legacy GeoIP 1 format which no longer works; switch to GeoIP 2 where possible
 net/rubygem-geoip||2019-02-16|Has expired: Uses legacy GeoIP 1 format which no longer works; switch to GeoIP 2 where possible
@@ -11639,3 +11633,48 @@ net-im/libyahoo2||2019-02-23|Yahoo messenger has been discontinued in July 17, 2
 net-im/py-xmpppy-yahoo||2019-02-23|Yahoo messenger has been discontinued in July 17, 2018
 graphics/glitz||2019-02-23|Development stopped in 2008, not depended on
 x11/xfree86_xkb_xml||2019-02-24|The project is discontinued
+devel/rtichoke|devel/radian|2019-02-26|Project is renamed
+sysutils/xen-tools411|sysutils/xen-tools|2019-02-27|Rename in preparation for having a single Xen port
+emulators/xen-kernel411|emulators/xen-kernel|2019-02-27|Rename in preparation for having a single Xen port
+net/ceph|net/ceph12|2019-02-27|Make room for other ceph versions
+devel/rubygem-grape0|devel/rubygem-grape|2019-02-28|Has expired: Use devel/rubygem-grape instead
+www/rubygem-jwt1|www/rubygem-jwt|2019-02-28|Has expired: Use www/rubygem-jwt instead
+www/rubygem-rack-cors0|www/rubygem-rack-cors|2019-02-28|Has expired: Use www/rubygem-rack-cors instead
+databases/py-sqlparse01|databases/py-sqlparse020|2019-02-28|Removed: Use databases/py-sqlparse020, if you need sqlparse for py-twext
+devel/uboot-mkimage|sysutils/u-boot-tools|2019-03-03|Has expired: Use sysutils/u-boot-tools
+graphics/clutter-gtk|graphics/clutter-gtk3|2019-03-03|Has expired: 0.10.x is unmaintained upstream and unused in the ports tree
+databases/puppetdb4|databases/puppetdb5|2019-03-03|Has expired: Puppet 4 has reached EOL
+sysutils/puppet4|sysutils/puppet5|2019-03-03|Has expired: Puppet 4 has reached EOL
+sysutils/puppetserver|sysutils/puppetserver5|2019-03-03|Has expired: Puppet 4 has reached EOL
+www/qupzilla-qt5|www/falkon|2019-03-03|Has expired: Project continues as www/falkon
+databases/puppetdb-terminus4|databases/puppetdb-terminus5|2019-03-03|Has expired: Puppet 4 has reached EOL
+sysutils/bacula-client|sysutils/bacula9-client|2019-03-03|Has expired: Unsupported. Please migrate to bacula9-server
+net-mgmt/nagios-check_bacula|net-mgmt/nagios-check_bacula9|2019-03-03|Has expired: Unsupported. Please migrate to bacula9-server
+security/kc|security/kc24|2019-03-03|Has expired: Versions 2.4.x use incompatible database format
+sysutils/bacula-server|sysutils/bacula9-server|2019-03-03|Has expired: Unsupported. Please migrate to bacula9-server
+sysutils/bacula-docs|sysutils/bacula9-docs|2019-03-03|Has expired: Unsupported. Please migrate to bacula9-docs
+sysutils/bacula-client-static|sysutils/bacula9-client-static|2019-03-03|Has expired: Unsupported. Please migrate to bacula9-server
+sysutils/bacula-bat|sysutils/bacula9-bat|2019-03-03|Has expired: Unsupported. Please migrate to bacula9-server
+x11-fonts/noto-lite|x11-fonts/noto-basic|2019-03-03|Rename for reorganizing noto* ports
+devel/rubygem-rufus-scheduler342|devel/rubygem-rufus-scheduler|2019-03-04|Has expired: Use devel/rubygem-rufus-scheduler instead
+devel/cpuflags||2019-03-04|Has expired: does not recognize modern CPUs; use -march=native instead
+www/moodle31|www/moodle35|2019-03-04|Has expired: Upstream no longer maintained
+www/moodle34|www/moodle35|2019-03-04|Has expired: Upstream no longer maintained
+net/wireshark-qt5|net/wireshark|2019-03-05|Only GUI for wireshark is Qt5
+devel/elixir-lager_logger||2019-03-06|Has expired: Broken for more than 6 months
+devel/gpsim||2019-03-06|Has expired: Broken for more than 6 months
+devel/hgview||2019-03-06|Has expired: Broken for more than 6 months
+games/mudmagic||2019-03-06|Has expired: Broken for more than 6 months
+math/mumps-mpich||2019-03-06|Has expired: Broken for more than 6 months
+math/sdpara||2019-03-06|Has expired: Broken for more than 6 months
+net/tn5250j||2019-03-06|Has expired: Broken for more than 6 months
+net-im/pidgin-skype||2019-03-06|Has expired: Broken for more than 6 months
+net-im/skype||2019-03-06|Has expired: Broken for more than 6 months
+net-im/skype-devel||2019-03-06|Has expired: Broken for more than 6 months
+science/dft_tools||2019-03-06|Has expired: Broken for more than 6 months
+science/triqs||2019-03-06|Has expired: Broken for more than 6 months
+security/hamachi||2019-03-06|Has expired: Broken for more than 6 months
+textproc/elixir-ex_doc||2019-03-06|Has expired: Broken for more than 6 months
+x11/altyo||2019-03-06|Has expired: Broken for more than 6 months
+x11/pantheon-terminal||2019-03-06|Has expired: Broken for more than 6 months
+x11-wm/e-module-everything-websearch||2019-03-06|Has expired: Broken for more than 6 months

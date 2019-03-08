@@ -2,8 +2,8 @@
 
 PORTNAME=	rpcs3
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.0.6-7807 # git rev-list --count HEAD
-DISTVERSIONSUFFIX=	-g4c72f7c1d
+DISTVERSION=	0.0.6-7830 # git rev-list --count HEAD
+DISTVERSIONSUFFIX=	-g4ea76def7
 CATEGORIES=	emulators
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
@@ -74,6 +74,7 @@ VULKAN_CMAKE_BOOL=	USE_VULKAN
 
 post-patch:
 	@${REINPLACE_CMD} -e '/GIT_BRANCH/s/unknown/master/' \
+		-e '/GIT_TAG/s/unknown/${GH_TAGNAME:C/-.*//}/' \
 		-e '/GIT_VERSION/s/unknown/${GH_TAGNAME:C/[^-]*-//}/' \
 		${WRKSRC}/${PORTNAME}/git-version.cmake
 

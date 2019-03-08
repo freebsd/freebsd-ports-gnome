@@ -10,7 +10,6 @@
     SUBDIR += alacritty
     SUBDIR += alltray
     SUBDIR += alttab
-    SUBDIR += altyo
     SUBDIR += aminal
     SUBDIR += antimicro
     SUBDIR += appres
@@ -22,6 +21,7 @@
     SUBDIR += bbdock
     SUBDIR += bbrun
     SUBDIR += beforelight
+    SUBDIR += bemenu
     SUBDIR += bgrot
     SUBDIR += bgs
     SUBDIR += bitmap
@@ -63,6 +63,7 @@
     SUBDIR += evilvte
     SUBDIR += fbdesk
     SUBDIR += fbpanel
+    SUBDIR += find-cursor
     SUBDIR += fireflies
     SUBDIR += florence
     SUBDIR += flruler
@@ -110,6 +111,7 @@
     SUBDIR += imwheel
     SUBDIR += innerspace
     SUBDIR += ipager
+    SUBDIR += j4-dmenu-desktop
     SUBDIR += kb2mb2
     SUBDIR += kde-baseapps
     SUBDIR += kde5
@@ -247,7 +249,6 @@
     SUBDIR += p5-X11-XCB
     SUBDIR += p5-X11-Xlib
     SUBDIR += p5-XTerm-Conf
-    SUBDIR += pantheon-terminal
     SUBDIR += pcdm
     SUBDIR += perwindowlayoutd
     SUBDIR += pipeglade
@@ -282,6 +283,7 @@
     SUBDIR += rendercheck
     SUBDIR += rgb
     SUBDIR += rofi
+    SUBDIR += rofi-pass
     SUBDIR += rox-wallpaper
     SUBDIR += roxbg
     SUBDIR += roxterm
