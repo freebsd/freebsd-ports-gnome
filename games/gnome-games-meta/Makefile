@@ -3,7 +3,7 @@
 
 PORTNAME=	gnome-games-meta
 PORTVERSION=	3.32
-CATEGORIES=	Meta port for GNOME games
+CATEGORIES=	games gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gnome games meta port
