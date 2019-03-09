@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	tracker-miners
-PORTVERSION=	2.1.6
+PORTVERSION=	2.2.1
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome

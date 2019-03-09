@@ -1,10 +1,10 @@
 etc/xdg/autostart/tracker-extract.desktop
-etc/xdg/autostart/tracker-miner-apps.desktop
 etc/xdg/autostart/tracker-miner-fs.desktop
 %%RSS%%etc/xdg/autostart/tracker-miner-rss.desktop
 lib/tracker-miners-2.0/extract-modules/libextract-abw.so
 lib/tracker-miners-2.0/extract-modules/libextract-bmp.so
 lib/tracker-miners-2.0/extract-modules/libextract-dummy.so
+lib/tracker-miners-2.0/extract-modules/libextract-desktop.so
 lib/tracker-miners-2.0/extract-modules/libextract-dvi.so
 lib/tracker-miners-2.0/extract-modules/libextract-epub.so
 lib/tracker-miners-2.0/extract-modules/libextract-flac.so
@@ -32,7 +32,6 @@ lib/tracker-miners-2.0/libtracker-miners-common.so
 lib/tracker-miners-2.0/writeback-modules/libwriteback-taglib.so
 lib/tracker-miners-2.0/writeback-modules/libwriteback-xmp.so
 libexec/tracker-extract
-libexec/tracker-miner-apps
 libexec/tracker-miner-fs
 %%RSS%%libexec/tracker-miner-rss
 libexec/tracker-writeback
@@ -40,7 +39,6 @@ man/man1/tracker-extract.1.gz
 man/man1/tracker-miner-fs.1.gz
 %%RSS%%man/man1/tracker-miner-rss.1.gz
 man/man1/tracker-writeback.1.gz
-share/dbus-1/services/org.freedesktop.Tracker1.Miner.Applications.service
 share/dbus-1/services/org.freedesktop.Tracker1.Miner.Extract.service
 share/dbus-1/services/org.freedesktop.Tracker1.Miner.Files.service
 %%RSS%%share/dbus-1/services/org.freedesktop.Tracker1.Miner.RSS.service
@@ -106,6 +104,7 @@ share/locale/zh_TW/LC_MESSAGES/tracker-miners.mo
 %%DATADIR%%/extract-rules/10-abw.rule
 %%DATADIR%%/extract-rules/10-bmp.rule
 %%DATADIR%%/extract-rules/10-comics.rule
+%%DATADIR%%/extract-rules/10-desktop.rule
 %%DATADIR%%/extract-rules/10-dvi.rule
 %%DATADIR%%/extract-rules/10-ebooks.rule
 %%DATADIR%%/extract-rules/10-epub.rule
@@ -134,7 +133,6 @@ share/locale/zh_TW/LC_MESSAGES/tracker-miners.mo
 %%GSTREAMER%%%%DATADIR%%/extract-rules/90-gstreamer-image-generic.rule
 %%GSTREAMER%%%%DATADIR%%/extract-rules/90-gstreamer-video-generic.rule
 %%DATADIR%%/extract-rules/90-text-generic.rule
-share/tracker/miners/org.freedesktop.Tracker1.Miner.Applications.service
 share/tracker/miners/org.freedesktop.Tracker1.Miner.Extract.service
 share/tracker/miners/org.freedesktop.Tracker1.Miner.Files.service
 %%RSS%%share/tracker/miners/org.freedesktop.Tracker1.Miner.RSS.service
