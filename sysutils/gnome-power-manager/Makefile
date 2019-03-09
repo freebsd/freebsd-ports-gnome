@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-power-manager
-PORTVERSION=	3.26.0
+PORTVERSION=	3.32.0
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Power management system for the GNOME Desktop
@@ -16,12 +16,12 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	appstream-builder:devel/appstream-glib
 LIB_DEPENDS=	libupower-glib.so:sysutils/upower
 
-PORTSCOUT=	limitw:1,even
-
 USES=		gettext gnome localbase:ldflags meson pathfix pkgconfig tar:xz
-INSTALLS_ICONS=	yes
 USE_GNOME=	cairo gtk30 intlhack
+
+INSTALLS_ICONS=	yes
 MESON_ARGS=	-Denable-tests=false
+PORTSCOUT=	limitw:1,even
 
 GLIB_SCHEMAS=	org.gnome.power-manager.gschema.xml
 
