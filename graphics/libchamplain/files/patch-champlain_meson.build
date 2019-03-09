@@ -1,0 +1,10 @@
+--- champlain/meson.build.orig	2019-03-09 07:47:37.000924000 +0100
++++ champlain/meson.build	2019-03-09 07:48:13.309443000 +0100
+@@ -90,6 +90,7 @@
+   gobject_dep,
+   cairo_dep,
+   clutter_dep,
++  gtk_dep,
+ ]
+ 
+ libchamplain_deps = libchamplain_requires + [
