@@ -353,7 +353,7 @@
     SUBDIR += gnarr
     SUBDIR += gnome-2048
     SUBDIR += gnome-chess
-    SUBDIR += gnome-games
+    SUBDIR += gnome-games-meta
     SUBDIR += gnome-klotski
     SUBDIR += gnome-mahjongg
     SUBDIR += gnome-mines

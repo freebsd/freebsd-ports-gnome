@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome3
-PORTVERSION=	3.31
-PORTREVISION=1
+PORTVERSION=	3.32
 CATEGORIES?=	x11 gnome
 
 MAINTAINER=	gnome@FreeBSD.org
@@ -64,7 +63,7 @@ RUN_DEPENDS+=	epiphany>=3.0.0:www/epiphany \
 		evince>=3.0.0:graphics/evince \
 		vino>=3.0.0:net/vino \
 		vinagre>=3.0.0:net/vinagre \
-		gnome-games>=3.0.0:games/gnome-games \
+		gnome-games-meta>=3.0.0:games/gnome-games-meta \
 		totem>=3.0.0:multimedia/totem \
 		gconf-editor>=3.0.0:sysutils/gconf-editor \
 		gdm>=3.0.0:x11/gdm \

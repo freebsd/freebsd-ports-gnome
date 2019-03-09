@@ -1,5 +1,6 @@
 CHANGES:
 gnome-shell switched ES6 classes, this breaks _all_ plugins
+rename gnome-games -> meta
 
 spidermonkey60 needs more work + i386 fixes
 pango: make patches for xft split and upstream

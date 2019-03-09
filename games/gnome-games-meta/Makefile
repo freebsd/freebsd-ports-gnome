@@ -1,9 +1,9 @@
 # Created by: Joe Marcus Clarke <marcus@FreeBSD.org>
 # $FreeBSD$
 
-PORTNAME=	gnome-games
-PORTVERSION=	3.24.0
-CATEGORIES=	games gnome
+PORTNAME=	gnome-games-meta
+PORTVERSION=	3.32
+CATEGORIES=	Meta port for GNOME games
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gnome games meta port
