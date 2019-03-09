@@ -12,6 +12,7 @@ COMMENT=	C library aimed to provide a Gtk+ widget to display rasterized maps and
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	valac:lang/vala
 LIB_DEPENDS=	libcogl.so:graphics/cogl \
 		libclutter-1.0.so:graphics/clutter \
 		libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
