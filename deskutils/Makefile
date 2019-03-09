@@ -60,6 +60,7 @@
     SUBDIR += genius
     SUBDIR += gkrellm-reminder2
     SUBDIR += glabels
+    SUBDIR += gnome-books
     SUBDIR += gnome-calendar
     SUBDIR += gnome-characters
     SUBDIR += gnome-clocks
