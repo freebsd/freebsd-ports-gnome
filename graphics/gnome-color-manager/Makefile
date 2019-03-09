@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-color-manager
-PORTVERSION=	3.28.0
-PORTREVISION=	1
+PORTVERSION=	3.32.0
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
