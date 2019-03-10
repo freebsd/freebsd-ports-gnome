@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	devhelp
-PORTVERSION=	3.30.1
+PORTVERSION=	3.32.0
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -26,7 +26,8 @@ PORTSCOUT=	limitw:1,even
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 
-GLIB_SCHEMAS=	org.gnome.devhelp.gschema.xml
+GLIB_SCHEMAS=	org.gnome.devhelp.gschema.xml \
+		org.gnome.libdevhelp-3.gschema.xml
 
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
