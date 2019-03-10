@@ -1,0 +1,13 @@
+--- meson.build.orig	2019-03-10 14:18:07.560039000 +0100
++++ meson.build	2019-03-10 14:19:04.982269000 +0100
+@@ -25,10 +25,6 @@
+ 
+ books_schemadir = join_paths(books_datadir, 'glib-2.0', 'schemas')
+ 
+-if not get_option('buildtype').contains('plain')
+-  run_command('git', '-C', meson.source_root(), 'submodule', 'update', '--init', '--recursive')
+-endif
+-
+ cc = meson.get_compiler('c')
+ 
+ config_h = configuration_data()

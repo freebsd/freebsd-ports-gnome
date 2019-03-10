@@ -18,8 +18,10 @@ LIB_DEPENDS=	libgjs.so:lang/gjs \
                 libtracker-sparql-2.0.so:sysutils/tracker \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3
 
-USES=		gnome meson tar:xz
+USES=		gnome meson pkgconfig python:3.5+,build tar:xz
 USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 gtk30 introspection
+
+BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
 GLIB_SCHEMAS=	org.gnome.Books.enums.xml \
 		org.gnome.books.gschema.xml
