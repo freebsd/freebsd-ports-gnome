@@ -11,7 +11,7 @@ COMMENT=	Gtk+ GtkUIManager replacement based on GAction
 
 LICENSE=	LGPL21
 
-USES=		gmake gnome libtool tar:xz
+USES=		gmake gnome libtool pkgconfig tar:xz
 USE_GNOME=	cairo gdkpixbuf2 gtk30
 
 GNU_CONFIGURE=	yes
