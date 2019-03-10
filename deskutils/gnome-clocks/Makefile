@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-clocks
-PORTVERSION=	3.28.0
+PORTVERSION=	3.32.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
