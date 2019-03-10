@@ -1,4 +1,4 @@
-$OpenBSD: patch-common_gdm-common_h,v 1.2 2016/04/15 14:11:09 ajacoutot Exp $
+$OpenBSD: patch-common_gdm-common_h,v 1.3 2019/01/18 05:51:51 ajacoutot Exp $
 
 REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
 From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
@@ -17,4 +17,15 @@ Subject: require logind support
 +
  GQuark gdm_common_error_quark (void);
  #define GDM_COMMON_ERROR gdm_common_error_quark()
+ 
+@@ -72,10 +75,6 @@ gboolean      gdm_shell_var_is_valid_char (char c,
+ char *        gdm_shell_expand            (const char *str,
+                                            GdmExpandVarFunc expand_func,
+                                            gpointer user_data);
+-
+-gboolean      gdm_activate_session_by_id (GDBusConnection *connection,
+-                                          const char      *seat_id,
+-                                          const char      *session_id);
+ 
+ G_END_DECLS
  

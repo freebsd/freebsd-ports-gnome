@@ -1,4 +1,4 @@
-$OpenBSD: patch-common_gdm-log_c,v 1.1 2015/10/18 13:25:54 ajacoutot Exp $
+$OpenBSD: patch-common_gdm-log_c,v 1.2 2018/04/24 08:37:00 ajacoutot Exp $
 
 REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
 From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
@@ -24,7 +24,7 @@ Subject: require logind support
  {
 +        const char *prg_name;
 +        int         options;
-+ 
++
          if (initialized)
                  return;
  

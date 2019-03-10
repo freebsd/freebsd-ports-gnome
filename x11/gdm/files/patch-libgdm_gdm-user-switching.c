@@ -1,3 +1,17 @@
+$OpenBSD: patch-libgdm_gdm-user-switching_c,v 1.2 2019/01/18 05:51:51 ajacoutot Exp $
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 1ac67f522f5690c27023d98096ca817f12f7eb88 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:28:01 -0400
+Subject: drop consolekit support
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:48:52 -0400
+Subject: require logind support
+
 --- libgdm/gdm-user-switching.c.orig	2019-02-21 19:44:14 UTC
 +++ libgdm/gdm-user-switching.c
 @@ -31,12 +31,25 @@

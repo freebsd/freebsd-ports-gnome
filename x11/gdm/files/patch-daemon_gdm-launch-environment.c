@@ -1,4 +1,4 @@
-$OpenBSD: patch-daemon_gdm-launch-environment_c,v 1.8 2017/04/17 13:17:07 ajacoutot Exp $
+$OpenBSD: patch-daemon_gdm-launch-environment_c,v 1.9 2019/01/18 05:51:51 ajacoutot Exp $
 
 XXX fix+push upstream
 

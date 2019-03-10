@@ -1,3 +1,4 @@
+$OpenBSD: patch-common_gdm-address_c,v 1.1 2011/09/12 07:39:21 ajacoutot Exp $
 --- common/gdm-address.c.orig	2019-02-21 19:44:14 UTC
 +++ common/gdm-address.c
 @@ -29,6 +29,8 @@

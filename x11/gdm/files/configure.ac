@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure_ac,v 1.12 2017/04/17 13:17:07 ajacoutot Exp $
+$OpenBSD: patch-configure_ac,v 1.16 2019/01/18 05:51:51 ajacoutot Exp $
 
 REVERT - Linux-PAM
 From 714b6af29b916ac7da0cdab6f83460574ed49cf2 Mon Sep 17 00:00:00 2001
