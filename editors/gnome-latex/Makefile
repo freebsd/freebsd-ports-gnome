@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-latex
-PORTVERSION=	3.28.1
-PORTREVISION=	1
+PORTVERSION=	3.32.0
 CATEGORIES=	editors
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -25,7 +24,7 @@ LIB_DEPENDS=	libgee-0.8.so:devel/libgee \
 USES=		compiler:c11 desktop-file-utils gettext gmake gnome \
 		pkgconfig tar:xz
 GNU_CONFIGURE=	yes
-USE_GNOME=	cairo dconf intltool gtksourceview4
+USE_GNOME=	amtk cairo dconf intltool gtksourceview4
 USE_TEX=	latex dvipsk
 INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
