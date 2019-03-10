@@ -6,9 +6,9 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 13:48:52 -0400
 Subject: require logind support
 
---- common/gdm-common.h.orig	Thu Apr 14 07:27:26 2016
-+++ common/gdm-common.h	Fri Apr 15 15:05:26 2016
-@@ -31,6 +31,9 @@
+--- common/gdm-common.h.orig	2019-02-21 19:44:14 UTC
++++ common/gdm-common.h
+@@ -33,6 +33,9 @@
                  expr;                \
          } while G_UNLIKELY (errno == EINTR);
  

@@ -13,8 +13,8 @@ Date: Fri, 12 Jun 2015 13:28:01 -0400
 Subject: drop consolekit support
 
 
---- common/gdm-common.c.orig	2018-11-06 22:26:11.000000000 +0100
-+++ common/gdm-common.c	2019-02-25 20:44:39.207525000 +0100
+--- common/gdm-common.c.orig	2019-02-21 19:44:14 UTC
++++ common/gdm-common.c
 @@ -36,12 +36,25 @@
  
  #include "gdm-common.h"
@@ -41,7 +41,7 @@ Subject: drop consolekit support
  G_DEFINE_QUARK (gdm-common-error, gdm_common_error);
  
  gboolean
-@@ -352,8 +365,87 @@
+@@ -352,8 +365,87 @@ create_transient_display (GDBusConnection *connection,
          return TRUE;
  }
  
@@ -130,7 +130,7 @@ Subject: drop consolekit support
                              const char      *seat_id,
                              const char      *session_id)
  {
-@@ -361,6 +453,217 @@
+@@ -361,6 +453,217 @@ gdm_activate_session_by_id (GDBusConnection *connectio
          GVariant *reply;
  
          reply = g_dbus_connection_call_sync (connection,
@@ -348,7 +348,7 @@ Subject: drop consolekit support
                                               "org.freedesktop.login1",
                                               "/org/freedesktop/login1",
                                               "org.freedesktop.login1.Manager",
-@@ -382,8 +685,8 @@
+@@ -382,8 +685,8 @@ gdm_activate_session_by_id (GDBusConnection *connectio
  }
  
  gboolean
@@ -359,7 +359,7 @@ Subject: drop consolekit support
  {
          gboolean   ret;
          int        res, i;
-@@ -476,8 +779,8 @@
+@@ -476,8 +779,8 @@ out:
  }
  
  static gboolean
@@ -370,7 +370,7 @@ Subject: drop consolekit support
  {
          gboolean        ret;
          int             res;
-@@ -531,9 +834,9 @@
+@@ -531,9 +834,9 @@ goto_login_session (GDBusConnection  *connection,
                  return FALSE;
          }
  
@@ -382,7 +382,7 @@ Subject: drop consolekit support
  
                  if (res) {
                          ret = TRUE;
-@@ -552,6 +855,7 @@
+@@ -552,6 +855,7 @@ goto_login_session (GDBusConnection  *connection,
  
          return ret;
  }
@@ -390,7 +390,7 @@ Subject: drop consolekit support
  
  gboolean
  gdm_goto_login_session (GError **error)
-@@ -567,7 +871,17 @@
+@@ -567,7 +871,17 @@ gdm_goto_login_session (GError **error)
                  return FALSE;
          }
  

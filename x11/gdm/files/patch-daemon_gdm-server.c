@@ -1,5 +1,25 @@
---- daemon/gdm-server.c.orig	2017-05-05 16:40:44.000000000 +0200
-+++ daemon/gdm-server.c	2017-06-08 10:39:30.725180000 +0200
+$OpenBSD: patch-daemon_gdm-server_c,v 1.10 2017/11/05 02:17:07 ajacoutot Exp $
+
+REVERT - OpenBSD lacks sigwaitinfo(2)
+From 956d7d1c7a0cfbf2beacdb9e88e645e15ad32047 Mon Sep 17 00:00:00 2001
+From: Jasper St. Pierre <jstpierre@mecheye.net>
+Date: Fri, 14 Feb 2014 19:32:50 +0000
+Subject: server: Process SIGUSR1 more carefully
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 1ac67f522f5690c27023d98096ca817f12f7eb88 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:28:01 -0400
+Subject: drop consolekit support
+
+REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
+From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
+From: Ray Strode <rstrode@redhat.com>
+Date: Fri, 12 Jun 2015 13:48:52 -0400
+Subject: require logind support
+
+--- daemon/gdm-server.c.orig	2019-02-21 19:44:14 UTC
++++ daemon/gdm-server.c
 @@ -43,7 +43,9 @@
  #include <linux/vt.h>
  #endif
@@ -10,7 +30,7 @@
  
  #ifdef ENABLE_SYSTEMD_JOURNAL
  #include <systemd/sd-journal.h>
-@@ -122,23 +124,65 @@
+@@ -114,11 +116,58 @@ static void     gdm_server_finalize     (GObject      
  
  G_DEFINE_TYPE (GdmServer, gdm_server, G_TYPE_OBJECT)
  
@@ -27,8 +47,8 @@
 +
 +        error = NULL;
 +        command = g_strdup_printf (CONSOLEKIT_DIR "/ck-get-x11-display-device --display %s",
-+                                   server->priv->display_name);
-+
++                                   server->display_name);
++ 
 +        g_debug ("GdmServer: Running helper %s", command);
 +        out = NULL;
 +        res = g_spawn_command_line_sync (command,
@@ -43,7 +63,7 @@
 +                out = g_strstrip (out);
 +                g_debug ("GdmServer: Got tty: '%s'", out);
 +        }
-+
++ 
 +        g_free (command);
 +
 +        return out;
@@ -61,30 +81,17 @@
 +        }
 +#endif
 +
-+        if (server->priv->display_device == NULL) {
-+                server->priv->display_device =
-+                    _gdm_server_query_ck_for_display_device (server);
-+
++        if (server->display_device == NULL) {
++                server->display_device =
++                        _gdm_server_query_ck_for_display_device (server);
 +                g_object_notify (G_OBJECT (server), "display-device");
 +        }
 +
-+        return g_strdup (server->priv->display_device);
++        return g_strdup (server->display_device);
  }
  
  static void
- gdm_server_ready (GdmServer *server)
- {
-         g_debug ("GdmServer: Got USR1 from X server - emitting READY");
--
--        gdm_run_script (GDMCONFDIR "/Init", GDM_USERNAME,
--                        server->priv->display_name,
--                        NULL, /* hostname */
--                        server->priv->auth_file);
--
-         g_signal_emit (server, signals[READY], 0);
- }
- 
-@@ -226,8 +270,10 @@
+@@ -218,8 +267,10 @@ gdm_server_init_command (GdmServer *server)
                  debug_options = "";
          }
  
@@ -96,7 +103,7 @@
          /* This is a temporary hack to work around the fact that XOrg
           * currently lacks support for multi-seat hotplugging for
           * display devices. This bit should be removed as soon as XOrg
-@@ -242,6 +288,10 @@
+@@ -234,6 +285,10 @@ gdm_server_init_command (GdmServer *server)
           * wasn't booted using systemd, or b) the wrapper tool is
           * missing, or c) we are running for the main seat 'seat0'. */
  
@@ -107,61 +114,25 @@
  #ifdef ENABLE_SYSTEMD_JOURNAL
          /* For systemd, we don't have a log file but instead log to stdout,
             so set it to the xserver's built-in default verbosity */
-@@ -264,8 +314,9 @@
+@@ -256,6 +311,7 @@ gdm_server_init_command (GdmServer *server)
          return;
  
  fallback:
--        server->priv->command = g_strdup_printf (X_SERVER X_SERVER_ARG_FORMAT, verbosity, debug_options);
 +#endif
+         server->command = g_strdup_printf (X_SERVER X_SERVER_ARG_FORMAT, verbosity, debug_options);
  
-+        server->priv->command = g_strdup_printf (X_SERVER X_SERVER_ARG_FORMAT, verbosity, debug_options);
  }
- 
- static gboolean
-@@ -315,10 +366,12 @@
-                 argv[len++] = g_strdup (server->priv->auth_file);
+@@ -307,10 +363,12 @@ gdm_server_resolve_command_line (GdmServer  *server,
+                 argv[len++] = g_strdup (server->auth_file);
          }
  
--        if (server->priv->display_seat_id != NULL) {
+-        if (server->display_seat_id != NULL) {
 +#ifdef WITH_SYSTEMD
-+        if (LOGIND_RUNNING() && server->priv->display_seat_id != NULL) {
++        if (LOGIND_RUNNING() && server->display_seat_id != NULL) {
                  argv[len++] = g_strdup ("-seat");
-                 argv[len++] = g_strdup (server->priv->display_seat_id);
+                 argv[len++] = g_strdup (server->display_seat_id);
          }
 +#endif
  
          /* If we were compiled with Xserver >= 1.17 we need to specify
           * '-listen tcp' as the X server dosen't listen on tcp sockets
-@@ -657,18 +710,14 @@
-                 g_signal_emit (server, signals [DIED], 0, num);
-         }
- 
-+        active_servers = g_slist_remove (active_servers, server);
-+
-         g_spawn_close_pid (server->priv->pid);
-         server->priv->pid = -1;
- 
-         g_object_unref (server);
- }
- 
--static void
--prune_active_servers_list (GdmServer *server)
--{
--        active_servers = g_slist_remove (active_servers, server);
--}
--
- static gboolean
- gdm_server_spawn (GdmServer    *server,
-                   const char   *vtarg,
-@@ -707,11 +756,6 @@
-         g_free (freeme);
- 
-         active_servers = g_slist_append (active_servers, server);
--
--        g_object_weak_ref (G_OBJECT (server),
--                           (GWeakNotify)
--                           prune_active_servers_list,
--                           server);
- 
-         gdm_server_launch_sigusr1_thread_if_needed ();
- 

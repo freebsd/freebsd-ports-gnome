@@ -6,8 +6,8 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 13:48:52 -0400
 Subject: require logind support
 
---- common/gdm-log.c.orig	2018-02-19 19:16:32.000000000 +0100
-+++ common/gdm-log.c	2018-04-05 21:59:25.290775000 +0200
+--- common/gdm-log.c.orig	2019-02-21 19:44:14 UTC
++++ common/gdm-log.c
 @@ -30,7 +30,9 @@
  #include <unistd.h>
  

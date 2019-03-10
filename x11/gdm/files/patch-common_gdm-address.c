@@ -1,5 +1,5 @@
---- common/gdm-address.c.orig	2010-01-13 17:32:59.000000000 +0000
-+++ common/gdm-address.c	2010-01-17 12:55:48.000000000 +0000
+--- common/gdm-address.c.orig	2019-02-21 19:44:14 UTC
++++ common/gdm-address.c
 @@ -29,6 +29,8 @@
  #include <stropts.h>
  #endif

@@ -6,9 +6,9 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 14:33:40 -0400
 Subject: session: drop session-type property
 
---- daemon/gdm-session.h.orig	Tue Apr 19 07:00:04 2016
-+++ daemon/gdm-session.h	Tue Apr 26 10:02:48 2016
-@@ -180,6 +180,8 @@ void              gdm_session_answer_query            
+--- daemon/gdm-session.h.orig	2019-02-21 19:44:14 UTC
++++ daemon/gdm-session.h
+@@ -121,6 +121,8 @@ void              gdm_session_answer_query            
                                                             const char *text);
  void              gdm_session_select_program              (GdmSession *session,
                                                             const char *command_line);

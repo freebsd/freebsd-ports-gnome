@@ -1,6 +1,6 @@
---- configure.orig	2018-11-06 22:32:56.000000000 +0100
-+++ configure	2019-01-04 10:52:48.010224000 +0100
-@@ -675,6 +675,7 @@
+--- configure.orig	2019-02-26 20:48:55 UTC
++++ configure
+@@ -675,6 +675,7 @@ HAVE_ADT_TRUE
  XEVIE_OPTION
  CHECK_ACCELERATED_DIR
  GNOME_SETTINGS_DAEMON_DIR
@@ -8,7 +8,7 @@
  GDM_OLD_CONF
  GDM_CUSTOM_CONF
  GDM_DEFAULTS_CONF
-@@ -698,6 +699,9 @@
+@@ -698,6 +699,9 @@ JOURNALD_LIBS
  JOURNALD_CFLAGS
  SYSTEMD_LIBS
  SYSTEMD_CFLAGS
@@ -18,7 +18,7 @@
  XINERAMA_LIBS
  LIBWRAP_LIBS
  OS_SOLARIS_FALSE
-@@ -971,6 +975,8 @@
+@@ -971,6 +975,8 @@ enable_authentication_scheme
  with_xinerama
  with_xdmcp
  with_tcp_wrappers
@@ -27,7 +27,7 @@
  with_udevdir
  with_systemdsystemunitdir
  enable_systemd_journal
-@@ -991,6 +997,7 @@
+@@ -991,6 +997,7 @@ with_log_dir
  with_at_bindir
  with_defaults_conf
  with_custom_conf
@@ -35,7 +35,7 @@
  with_gnome_settings_daemon_directory
  with_check_accelerated_directory
  with_xevie
-@@ -1744,6 +1751,8 @@
+@@ -1745,6 +1752,8 @@ Optional Packages:
    --with-xinerama         Add Xinerama support [default=auto]
    --with-xdmcp            Add XDMCP (remote login) support [default=auto]
    --with-tcp-wrappers     Use TCP Wrappers [default=auto]
@@ -44,7 +44,7 @@
    --with-udevdir=DIR      Directory for udev files
    --with-systemdsystemunitdir=DIR
                            Directory for systemd service files
-@@ -1773,6 +1782,9 @@
+@@ -1774,6 +1783,9 @@ Optional Packages:
    --with-custom-conf=<FILENAME>
                            FILENAME to give to custom configuration file
                            [default=GDMCONFDIR/custom.conf]
@@ -79,7 +79,7 @@
  # Check whether --enable-console-helper was given.
  if test "${enable_console_helper+set}" = set; then :
    enableval=$enable_console_helper;
-@@ -22753,7 +22747,23 @@
+@@ -22780,7 +22774,23 @@ else
    with_udevdir=$($PKG_CONFIG --variable=udevdir udev)
  fi
  
@@ -103,7 +103,7 @@
  # Check whether --with-systemdsystemunitdir was given.
  if test "${with_systemdsystemunitdir+set}" = set; then :
    withval=$with_systemdsystemunitdir; with_systemdsystemunitdir=$withval
-@@ -23561,8 +23571,17 @@
+@@ -23588,8 +23598,17 @@ fi
  
  $as_echo "#define SUPPORTS_PAM_EXTENSIONS 1" >>confdefs.h
  
@@ -121,7 +121,7 @@
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for keyctl_read in -lkeyutils" >&5
  $as_echo_n "checking for keyctl_read in -lkeyutils... " >&6; }
  if ${ac_cv_lib_keyutils_keyctl_read+:} false; then :
-@@ -23754,7 +23773,7 @@
+@@ -23781,7 +23800,7 @@ fi
  
  
  
@@ -130,7 +130,7 @@
  do :
    as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
  ac_fn_c_check_header_mongrel "$LINENO" "$ac_header" "$as_ac_Header" "$ac_includes_default"
-@@ -23767,7 +23786,7 @@
+@@ -23794,7 +23813,7 @@ fi
  
  done
  
@@ -139,7 +139,7 @@
  do :
    as_ac_var=`$as_echo "ac_cv_func_$ac_func" | $as_tr_sh`
  ac_fn_c_check_func "$LINENO" "$ac_func" "$as_ac_var"
-@@ -23779,94 +23798,6 @@
+@@ -23806,94 +23825,6 @@ _ACEOF
  fi
  done
  
@@ -234,7 +234,7 @@
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for logwtmp in -lutil" >&5
  $as_echo_n "checking for logwtmp in -lutil... " >&6; }
  if ${ac_cv_lib_util_logwtmp+:} false; then :
-@@ -24851,7 +24782,25 @@
+@@ -24878,7 +24809,25 @@ fi
  CPPFLAGS="$xinerama_save_cppflags"
  
  
@@ -260,7 +260,7 @@
  pkg_failed=no
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for SYSTEMD" >&5
  $as_echo_n "checking for SYSTEMD... " >&6; }
-@@ -24860,12 +24809,12 @@
+@@ -24887,12 +24836,12 @@ if test -n "$SYSTEMD_CFLAGS"; then
      pkg_cv_SYSTEMD_CFLAGS="$SYSTEMD_CFLAGS"
   elif test -n "$PKG_CONFIG"; then
      if test -n "$PKG_CONFIG" && \
@@ -276,7 +276,7 @@
  		      test "x$?" != "x0" && pkg_failed=yes
  else
    pkg_failed=yes
-@@ -24877,12 +24826,12 @@
+@@ -24904,12 +24853,12 @@ if test -n "$SYSTEMD_LIBS"; then
      pkg_cv_SYSTEMD_LIBS="$SYSTEMD_LIBS"
   elif test -n "$PKG_CONFIG"; then
      if test -n "$PKG_CONFIG" && \
@@ -292,7 +292,7 @@
  		      test "x$?" != "x0" && pkg_failed=yes
  else
    pkg_failed=yes
-@@ -24903,50 +24852,49 @@
+@@ -24930,50 +24879,49 @@ else
          _pkg_short_errors_supported=no
  fi
          if test $_pkg_short_errors_supported = yes; then
@@ -366,7 +366,7 @@
  pkg_failed=no
  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for JOURNALD" >&5
  $as_echo_n "checking for JOURNALD... " >&6; }
-@@ -25370,6 +25318,18 @@
+@@ -25397,6 +25345,18 @@ GDM_OLD_CONF='${gdmconfdir}/gdm.conf'
  
  
  

@@ -1,4 +1,4 @@
---- libgdm/gdm-user-switching.c.orig	2015-07-20 13:13:45 UTC
+--- libgdm/gdm-user-switching.c.orig	2019-02-21 19:44:14 UTC
 +++ libgdm/gdm-user-switching.c
 @@ -31,12 +31,25 @@
  #include <glib-object.h>
@@ -26,7 +26,7 @@
  static gboolean
  create_transient_display (GDBusConnection *connection,
                            GCancellable    *cancellable,
-@@ -67,12 +80,304 @@ create_transient_display (GDBusConnectio
+@@ -67,16 +80,308 @@ create_transient_display (GDBusConnection *connection,
          return TRUE;
  }
  
@@ -40,11 +40,11 @@
 -                     GError          **error)
 +get_current_session_id (GDBusConnection  *connection,
 +                        char            **session_id)
-+{
+ {
 +        GError *local_error = NULL;
-+        GVariant *reply;
-+
-+        reply = g_dbus_connection_call_sync (connection,
+         GVariant *reply;
+ 
+         reply = g_dbus_connection_call_sync (connection,
 +                                             CK_NAME,
 +                                             CK_MANAGER_PATH,
 +                                             CK_MANAGER_INTERFACE,
@@ -333,10 +333,14 @@
 +                                 const char       *seat_id,
 +                                 const char       *session_id,
 +                                 GError          **error)
- {
-         GVariant *reply;
- 
-@@ -97,8 +402,8 @@ activate_session_id (GDBusConnection  *c
++{
++        GVariant *reply;
++
++        reply = g_dbus_connection_call_sync (connection,
+                                              "org.freedesktop.login1",
+                                              "/org/freedesktop/login1",
+                                              "org.freedesktop.login1.Manager",
+@@ -97,8 +402,8 @@ activate_session_id (GDBusConnection  *connection,
  }
  
  static gboolean
@@ -360,7 +364,7 @@
  {
          gboolean        ret;
          int             res;
-@@ -238,9 +543,9 @@ goto_login_session (GDBusConnection  *co
+@@ -238,9 +543,9 @@ goto_login_session (GDBusConnection  *connection,
                  return FALSE;
          }
  
@@ -372,7 +376,7 @@
  
                  if (res) {
                          ret = TRUE;
-@@ -259,10 +564,11 @@ goto_login_session (GDBusConnection  *co
+@@ -259,10 +564,11 @@ goto_login_session (GDBusConnection  *connection,
  
          return ret;
  }
@@ -385,7 +389,7 @@
  {
          GDBusConnection *connection;
          gboolean retval;
-@@ -271,8 +577,23 @@ gdm_goto_login_session_sync (GCancellabl
+@@ -271,8 +577,23 @@ gdm_goto_login_session_sync (GCancellable  *cancellabl
          if (!connection)
                  return FALSE;
  
@@ -395,7 +399,7 @@
 +                retval = goto_login_session_for_systemd (connection,
 +                                                         cancellable,
 +                                                         error);
-+
+ 
 +                g_object_unref (connection);
 +                return retval;
 +        }
@@ -403,7 +407,7 @@
 +
 +#ifdef WITH_CONSOLE_KIT
 +        retval = goto_login_session_for_ck (connection, cancellable, error);
- 
++
          g_object_unref (connection);
          return retval;
 +#else
