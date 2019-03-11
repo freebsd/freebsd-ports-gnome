@@ -2,13 +2,15 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-2048
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Move the tiles until you obtain the 2048 tile
+
+LICENSE=	GPLv3
 
 BUILD_DEPENDS=	vala:lang/vala \
 		itstool:textproc/itstool \
