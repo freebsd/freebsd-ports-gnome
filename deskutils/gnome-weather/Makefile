@@ -2,16 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-weather
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Weather application for GNOME 3
+COMMENT=	Weather application for GNOME
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/COPYING
+LICENSE_FILE=	${WRKSRC}/COPYING.md
 
 LIB_DEPENDS=	libgweather-3.so:net/libgweather \
 		libgeoclue-2.so:net/geoclue \
