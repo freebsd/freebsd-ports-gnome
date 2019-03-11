@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-system-monitor
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	GNOME 3 system monitor program
+COMMENT=	GNOME system monitor program
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
