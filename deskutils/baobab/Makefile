@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	baobab
-PORTVERSION=	3.31.1
+PORTVERSION=	3.32.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	GNOME 3 graphical directory tree analyzer
+COMMENT=	GNOME graphical directory tree analyzer
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
