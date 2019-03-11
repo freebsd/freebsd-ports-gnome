@@ -58,7 +58,6 @@ share/help/C/eog/figures/multiple-convert.png
 share/help/C/eog/figures/multiple-rename-count.png
 share/help/C/eog/figures/org.gnome.eog-symbolic.svg
 share/help/C/eog/figures/org.gnome.eog.svg
-share/help/C/eog/figures/plugin-send-by-mail.png
 share/help/C/eog/figures/plugins-all.png
 share/help/C/eog/figures/prefs-plugins-date.png
 share/help/C/eog/figures/prefs-plugins-fullscreen.png
@@ -103,7 +102,6 @@ share/help/ar/eog/figures/multiple-convert.png
 share/help/ar/eog/figures/multiple-rename-count.png
 share/help/ar/eog/figures/org.gnome.eog-symbolic.svg
 share/help/ar/eog/figures/org.gnome.eog.svg
-share/help/ar/eog/figures/plugin-send-by-mail.png
 share/help/ar/eog/figures/plugins-all.png
 share/help/ar/eog/figures/prefs-plugins-date.png
 share/help/ar/eog/figures/prefs-plugins-fullscreen.png
@@ -148,7 +146,6 @@ share/help/ca/eog/figures/multiple-convert.png
 share/help/ca/eog/figures/multiple-rename-count.png
 share/help/ca/eog/figures/org.gnome.eog-symbolic.svg
 share/help/ca/eog/figures/org.gnome.eog.svg
-share/help/ca/eog/figures/plugin-send-by-mail.png
 share/help/ca/eog/figures/plugins-all.png
 share/help/ca/eog/figures/prefs-plugins-date.png
 share/help/ca/eog/figures/prefs-plugins-fullscreen.png
@@ -193,7 +190,6 @@ share/help/cs/eog/figures/multiple-convert.png
 share/help/cs/eog/figures/multiple-rename-count.png
 share/help/cs/eog/figures/org.gnome.eog-symbolic.svg
 share/help/cs/eog/figures/org.gnome.eog.svg
-share/help/cs/eog/figures/plugin-send-by-mail.png
 share/help/cs/eog/figures/plugins-all.png
 share/help/cs/eog/figures/prefs-plugins-date.png
 share/help/cs/eog/figures/prefs-plugins-fullscreen.png
@@ -238,7 +234,6 @@ share/help/da/eog/figures/multiple-convert.png
 share/help/da/eog/figures/multiple-rename-count.png
 share/help/da/eog/figures/org.gnome.eog-symbolic.svg
 share/help/da/eog/figures/org.gnome.eog.svg
-share/help/da/eog/figures/plugin-send-by-mail.png
 share/help/da/eog/figures/plugins-all.png
 share/help/da/eog/figures/prefs-plugins-date.png
 share/help/da/eog/figures/prefs-plugins-fullscreen.png
@@ -283,7 +278,6 @@ share/help/de/eog/figures/multiple-convert.png
 share/help/de/eog/figures/multiple-rename-count.png
 share/help/de/eog/figures/org.gnome.eog-symbolic.svg
 share/help/de/eog/figures/org.gnome.eog.svg
-share/help/de/eog/figures/plugin-send-by-mail.png
 share/help/de/eog/figures/plugins-all.png
 share/help/de/eog/figures/prefs-plugins-date.png
 share/help/de/eog/figures/prefs-plugins-fullscreen.png
@@ -328,7 +322,6 @@ share/help/el/eog/figures/multiple-convert.png
 share/help/el/eog/figures/multiple-rename-count.png
 share/help/el/eog/figures/org.gnome.eog-symbolic.svg
 share/help/el/eog/figures/org.gnome.eog.svg
-share/help/el/eog/figures/plugin-send-by-mail.png
 share/help/el/eog/figures/plugins-all.png
 share/help/el/eog/figures/prefs-plugins-date.png
 share/help/el/eog/figures/prefs-plugins-fullscreen.png
@@ -373,7 +366,6 @@ share/help/en_GB/eog/figures/multiple-convert.png
 share/help/en_GB/eog/figures/multiple-rename-count.png
 share/help/en_GB/eog/figures/org.gnome.eog-symbolic.svg
 share/help/en_GB/eog/figures/org.gnome.eog.svg
-share/help/en_GB/eog/figures/plugin-send-by-mail.png
 share/help/en_GB/eog/figures/plugins-all.png
 share/help/en_GB/eog/figures/prefs-plugins-date.png
 share/help/en_GB/eog/figures/prefs-plugins-fullscreen.png
@@ -418,7 +410,6 @@ share/help/es/eog/figures/multiple-convert.png
 share/help/es/eog/figures/multiple-rename-count.png
 share/help/es/eog/figures/org.gnome.eog-symbolic.svg
 share/help/es/eog/figures/org.gnome.eog.svg
-share/help/es/eog/figures/plugin-send-by-mail.png
 share/help/es/eog/figures/plugins-all.png
 share/help/es/eog/figures/prefs-plugins-date.png
 share/help/es/eog/figures/prefs-plugins-fullscreen.png
@@ -463,7 +454,6 @@ share/help/eu/eog/figures/multiple-convert.png
 share/help/eu/eog/figures/multiple-rename-count.png
 share/help/eu/eog/figures/org.gnome.eog-symbolic.svg
 share/help/eu/eog/figures/org.gnome.eog.svg
-share/help/eu/eog/figures/plugin-send-by-mail.png
 share/help/eu/eog/figures/plugins-all.png
 share/help/eu/eog/figures/prefs-plugins-date.png
 share/help/eu/eog/figures/prefs-plugins-fullscreen.png
@@ -508,7 +498,6 @@ share/help/fi/eog/figures/multiple-convert.png
 share/help/fi/eog/figures/multiple-rename-count.png
 share/help/fi/eog/figures/org.gnome.eog-symbolic.svg
 share/help/fi/eog/figures/org.gnome.eog.svg
-share/help/fi/eog/figures/plugin-send-by-mail.png
 share/help/fi/eog/figures/plugins-all.png
 share/help/fi/eog/figures/prefs-plugins-date.png
 share/help/fi/eog/figures/prefs-plugins-fullscreen.png
@@ -553,7 +542,6 @@ share/help/fr/eog/figures/multiple-convert.png
 share/help/fr/eog/figures/multiple-rename-count.png
 share/help/fr/eog/figures/org.gnome.eog-symbolic.svg
 share/help/fr/eog/figures/org.gnome.eog.svg
-share/help/fr/eog/figures/plugin-send-by-mail.png
 share/help/fr/eog/figures/plugins-all.png
 share/help/fr/eog/figures/prefs-plugins-date.png
 share/help/fr/eog/figures/prefs-plugins-fullscreen.png
@@ -598,7 +586,6 @@ share/help/gl/eog/figures/multiple-convert.png
 share/help/gl/eog/figures/multiple-rename-count.png
 share/help/gl/eog/figures/org.gnome.eog-symbolic.svg
 share/help/gl/eog/figures/org.gnome.eog.svg
-share/help/gl/eog/figures/plugin-send-by-mail.png
 share/help/gl/eog/figures/plugins-all.png
 share/help/gl/eog/figures/prefs-plugins-date.png
 share/help/gl/eog/figures/prefs-plugins-fullscreen.png
@@ -643,7 +630,6 @@ share/help/hu/eog/figures/multiple-convert.png
 share/help/hu/eog/figures/multiple-rename-count.png
 share/help/hu/eog/figures/org.gnome.eog-symbolic.svg
 share/help/hu/eog/figures/org.gnome.eog.svg
-share/help/hu/eog/figures/plugin-send-by-mail.png
 share/help/hu/eog/figures/plugins-all.png
 share/help/hu/eog/figures/prefs-plugins-date.png
 share/help/hu/eog/figures/prefs-plugins-fullscreen.png
@@ -688,7 +674,6 @@ share/help/it/eog/figures/multiple-convert.png
 share/help/it/eog/figures/multiple-rename-count.png
 share/help/it/eog/figures/org.gnome.eog-symbolic.svg
 share/help/it/eog/figures/org.gnome.eog.svg
-share/help/it/eog/figures/plugin-send-by-mail.png
 share/help/it/eog/figures/plugins-all.png
 share/help/it/eog/figures/prefs-plugins-date.png
 share/help/it/eog/figures/prefs-plugins-fullscreen.png
@@ -733,7 +718,6 @@ share/help/ja/eog/figures/multiple-convert.png
 share/help/ja/eog/figures/multiple-rename-count.png
 share/help/ja/eog/figures/org.gnome.eog-symbolic.svg
 share/help/ja/eog/figures/org.gnome.eog.svg
-share/help/ja/eog/figures/plugin-send-by-mail.png
 share/help/ja/eog/figures/plugins-all.png
 share/help/ja/eog/figures/prefs-plugins-date.png
 share/help/ja/eog/figures/prefs-plugins-fullscreen.png
@@ -778,7 +762,6 @@ share/help/ko/eog/figures/multiple-convert.png
 share/help/ko/eog/figures/multiple-rename-count.png
 share/help/ko/eog/figures/org.gnome.eog-symbolic.svg
 share/help/ko/eog/figures/org.gnome.eog.svg
-share/help/ko/eog/figures/plugin-send-by-mail.png
 share/help/ko/eog/figures/plugins-all.png
 share/help/ko/eog/figures/prefs-plugins-date.png
 share/help/ko/eog/figures/prefs-plugins-fullscreen.png
@@ -823,7 +806,6 @@ share/help/lv/eog/figures/multiple-convert.png
 share/help/lv/eog/figures/multiple-rename-count.png
 share/help/lv/eog/figures/org.gnome.eog-symbolic.svg
 share/help/lv/eog/figures/org.gnome.eog.svg
-share/help/lv/eog/figures/plugin-send-by-mail.png
 share/help/lv/eog/figures/plugins-all.png
 share/help/lv/eog/figures/prefs-plugins-date.png
 share/help/lv/eog/figures/prefs-plugins-fullscreen.png
@@ -868,7 +850,6 @@ share/help/oc/eog/figures/multiple-convert.png
 share/help/oc/eog/figures/multiple-rename-count.png
 share/help/oc/eog/figures/org.gnome.eog-symbolic.svg
 share/help/oc/eog/figures/org.gnome.eog.svg
-share/help/oc/eog/figures/plugin-send-by-mail.png
 share/help/oc/eog/figures/plugins-all.png
 share/help/oc/eog/figures/prefs-plugins-date.png
 share/help/oc/eog/figures/prefs-plugins-fullscreen.png
@@ -913,7 +894,6 @@ share/help/pa/eog/figures/multiple-convert.png
 share/help/pa/eog/figures/multiple-rename-count.png
 share/help/pa/eog/figures/org.gnome.eog-symbolic.svg
 share/help/pa/eog/figures/org.gnome.eog.svg
-share/help/pa/eog/figures/plugin-send-by-mail.png
 share/help/pa/eog/figures/plugins-all.png
 share/help/pa/eog/figures/prefs-plugins-date.png
 share/help/pa/eog/figures/prefs-plugins-fullscreen.png
@@ -958,7 +938,6 @@ share/help/pl/eog/figures/multiple-convert.png
 share/help/pl/eog/figures/multiple-rename-count.png
 share/help/pl/eog/figures/org.gnome.eog-symbolic.svg
 share/help/pl/eog/figures/org.gnome.eog.svg
-share/help/pl/eog/figures/plugin-send-by-mail.png
 share/help/pl/eog/figures/plugins-all.png
 share/help/pl/eog/figures/prefs-plugins-date.png
 share/help/pl/eog/figures/prefs-plugins-fullscreen.png
@@ -1003,7 +982,6 @@ share/help/pt_BR/eog/figures/multiple-convert.png
 share/help/pt_BR/eog/figures/multiple-rename-count.png
 share/help/pt_BR/eog/figures/org.gnome.eog-symbolic.svg
 share/help/pt_BR/eog/figures/org.gnome.eog.svg
-share/help/pt_BR/eog/figures/plugin-send-by-mail.png
 share/help/pt_BR/eog/figures/plugins-all.png
 share/help/pt_BR/eog/figures/prefs-plugins-date.png
 share/help/pt_BR/eog/figures/prefs-plugins-fullscreen.png
@@ -1048,7 +1026,6 @@ share/help/ro/eog/figures/multiple-convert.png
 share/help/ro/eog/figures/multiple-rename-count.png
 share/help/ro/eog/figures/org.gnome.eog-symbolic.svg
 share/help/ro/eog/figures/org.gnome.eog.svg
-share/help/ro/eog/figures/plugin-send-by-mail.png
 share/help/ro/eog/figures/plugins-all.png
 share/help/ro/eog/figures/prefs-plugins-date.png
 share/help/ro/eog/figures/prefs-plugins-fullscreen.png
@@ -1093,7 +1070,6 @@ share/help/ru/eog/figures/multiple-convert.png
 share/help/ru/eog/figures/multiple-rename-count.png
 share/help/ru/eog/figures/org.gnome.eog-symbolic.svg
 share/help/ru/eog/figures/org.gnome.eog.svg
-share/help/ru/eog/figures/plugin-send-by-mail.png
 share/help/ru/eog/figures/plugins-all.png
 share/help/ru/eog/figures/prefs-plugins-date.png
 share/help/ru/eog/figures/prefs-plugins-fullscreen.png
@@ -1138,7 +1114,6 @@ share/help/sl/eog/figures/multiple-convert.png
 share/help/sl/eog/figures/multiple-rename-count.png
 share/help/sl/eog/figures/org.gnome.eog-symbolic.svg
 share/help/sl/eog/figures/org.gnome.eog.svg
-share/help/sl/eog/figures/plugin-send-by-mail.png
 share/help/sl/eog/figures/plugins-all.png
 share/help/sl/eog/figures/prefs-plugins-date.png
 share/help/sl/eog/figures/prefs-plugins-fullscreen.png
@@ -1183,7 +1158,6 @@ share/help/sv/eog/figures/multiple-convert.png
 share/help/sv/eog/figures/multiple-rename-count.png
 share/help/sv/eog/figures/org.gnome.eog-symbolic.svg
 share/help/sv/eog/figures/org.gnome.eog.svg
-share/help/sv/eog/figures/plugin-send-by-mail.png
 share/help/sv/eog/figures/plugins-all.png
 share/help/sv/eog/figures/prefs-plugins-date.png
 share/help/sv/eog/figures/prefs-plugins-fullscreen.png
@@ -1228,7 +1202,6 @@ share/help/te/eog/figures/multiple-convert.png
 share/help/te/eog/figures/multiple-rename-count.png
 share/help/te/eog/figures/org.gnome.eog-symbolic.svg
 share/help/te/eog/figures/org.gnome.eog.svg
-share/help/te/eog/figures/plugin-send-by-mail.png
 share/help/te/eog/figures/plugins-all.png
 share/help/te/eog/figures/prefs-plugins-date.png
 share/help/te/eog/figures/prefs-plugins-fullscreen.png
@@ -1273,7 +1246,6 @@ share/help/th/eog/figures/multiple-convert.png
 share/help/th/eog/figures/multiple-rename-count.png
 share/help/th/eog/figures/org.gnome.eog-symbolic.svg
 share/help/th/eog/figures/org.gnome.eog.svg
-share/help/th/eog/figures/plugin-send-by-mail.png
 share/help/th/eog/figures/plugins-all.png
 share/help/th/eog/figures/prefs-plugins-date.png
 share/help/th/eog/figures/prefs-plugins-fullscreen.png
@@ -1318,7 +1290,6 @@ share/help/uk/eog/figures/multiple-convert.png
 share/help/uk/eog/figures/multiple-rename-count.png
 share/help/uk/eog/figures/org.gnome.eog-symbolic.svg
 share/help/uk/eog/figures/org.gnome.eog.svg
-share/help/uk/eog/figures/plugin-send-by-mail.png
 share/help/uk/eog/figures/plugins-all.png
 share/help/uk/eog/figures/prefs-plugins-date.png
 share/help/uk/eog/figures/prefs-plugins-fullscreen.png
@@ -1363,7 +1334,6 @@ share/help/zh_CN/eog/figures/multiple-convert.png
 share/help/zh_CN/eog/figures/multiple-rename-count.png
 share/help/zh_CN/eog/figures/org.gnome.eog-symbolic.svg
 share/help/zh_CN/eog/figures/org.gnome.eog.svg
-share/help/zh_CN/eog/figures/plugin-send-by-mail.png
 share/help/zh_CN/eog/figures/plugins-all.png
 share/help/zh_CN/eog/figures/prefs-plugins-date.png
 share/help/zh_CN/eog/figures/prefs-plugins-fullscreen.png
@@ -1408,7 +1378,6 @@ share/help/zh_TW/eog/figures/multiple-convert.png
 share/help/zh_TW/eog/figures/multiple-rename-count.png
 share/help/zh_TW/eog/figures/org.gnome.eog-symbolic.svg
 share/help/zh_TW/eog/figures/org.gnome.eog.svg
-share/help/zh_TW/eog/figures/plugin-send-by-mail.png
 share/help/zh_TW/eog/figures/plugins-all.png
 share/help/zh_TW/eog/figures/prefs-plugins-date.png
 share/help/zh_TW/eog/figures/prefs-plugins-fullscreen.png
