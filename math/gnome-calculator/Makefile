@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-calculator
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	math gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	GNOME 3 calculator tool
+COMMENT=	GNOME calculator tool
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
