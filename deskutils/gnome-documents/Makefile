@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-documents
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Document manager application designed to work with GNOME 3
+COMMENT=	Document manager application designed to work with GNOME
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
