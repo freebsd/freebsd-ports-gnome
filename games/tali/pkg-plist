@@ -55,10 +55,10 @@ share/help/it/tali/figures/mainwindow.png
 share/help/it/tali/figures/preferences.png
 share/help/it/tali/index.docbook
 share/help/it/tali/legal.xml
-share/help/oc/tali/figures/mainwindow.png
-share/help/oc/tali/figures/preferences.png
-share/help/oc/tali/index.docbook
-share/help/oc/tali/legal.xml
+share/help/ko/tali/figures/mainwindow.png
+share/help/ko/tali/figures/preferences.png
+share/help/ko/tali/index.docbook
+share/help/ko/tali/legal.xml
 share/help/pl/tali/figures/mainwindow.png
 share/help/pl/tali/figures/preferences.png
 share/help/pl/tali/index.docbook
@@ -71,10 +71,6 @@ share/help/ru/tali/figures/mainwindow.png
 share/help/ru/tali/figures/preferences.png
 share/help/ru/tali/index.docbook
 share/help/ru/tali/legal.xml
-share/help/sl/tali/figures/mainwindow.png
-share/help/sl/tali/figures/preferences.png
-share/help/sl/tali/index.docbook
-share/help/sl/tali/legal.xml
 share/help/sr/tali/figures/mainwindow.png
 share/help/sr/tali/figures/preferences.png
 share/help/sr/tali/index.docbook
