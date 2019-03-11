@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	glib-networking
-PORTVERSION=	2.59.92
+PORTVERSION=	2.60.0
 CATEGORIES=	net
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Network-related giomodules for glib
+COMMENT=	Network-related security giomodules for glib
 
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
