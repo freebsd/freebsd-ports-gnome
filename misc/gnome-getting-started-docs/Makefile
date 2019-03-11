@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-getting-started-docs
-PORTVERSION=	3.31.91
+PORTVERSION=	3.32.0
 CATEGORIES=	misc gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
