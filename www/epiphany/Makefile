@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	epiphany
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	www gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Extremely lightweight and simple web browser for GNOME 3
+COMMENT=	Extremely lightweight and simple web browser for GNOME
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
@@ -49,7 +49,7 @@ USE_XORG=	x11
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 MESON_ARGS=	-Db_lundef=false \
-		-Dunit_tests=false
+		-Dunit_tests=disabled
 GLIB_SCHEMAS=	org.gnome.Epiphany.enums.xml \
 		org.gnome.epiphany.gschema.xml
 SHEBANG_FILES=	post_install.py
