@@ -1,0 +1,40 @@
+REVERT
+
+From 2520aea647c8e0ce39b750b0758db8b770eafdcb Mon Sep 17 00:00:00 2001
+From: Georges Basile Stavracas Neto <georges.stavracas@gmail.com>
+Date: Thu, 23 Nov 2017 10:15:29 -0200
+Subject: [PATCH] info: use UDisks to retrieve disk size
+
+The current code relies on GLib API and uses the
+available mounts to calculate the available partition
+size. This is because this code assumes that more
+than one OS can be installed in the same drive, and
+wouldn't make sense to show the whole disk size in
+this situation.
+
+That, however, clashes with the general purpose of
+the panel, for it is meant to show general information
+about the user's computer, and it is not reporting
+the full disk size.
+
+Fix that by using the UDisks API to get the real size
+of the full disks.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=639376
+
+Slighly modified by Iain Lane <iainl@gnome.org> to
+port to meson and add udisks2 to CI deps.
+
+Fixes #285.
+Fixes #302.
+
+--- panels/info/meson.build.orig	2019-03-11 14:44:24 UTC
++++ panels/info/meson.build
+@@ -61,7 +61,6 @@ sources += gnome.compile_resources(
+ 
+ deps = common_deps + [
+   polkit_gobject_dep,
+-  dependency('udisks2', version: '>= 2.1.8'),
+   dependency('libgtop-2.0')
+ ]
+ 

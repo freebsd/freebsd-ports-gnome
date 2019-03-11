@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-control-center
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Control center for GNOME 3 project
+COMMENT=	Control center for GNOME project
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
