@@ -18,8 +18,10 @@ SHEBANG_FILES=	libgda-report/RML/*/*.py
 
 .if !defined(REFERENCE_PORT)
 
-BUILD_DEPENDS=	itstool:textproc/itstool
+BUILD_DEPENDS=	itstool:textproc/itstool \
+		valac:lang/vala
 LIB_DEPENDS=	libsecret-1.so:security/libsecret \
+		libgee-0.8.so:devel/libgee \
 		libsoup-2.4.so:devel/libsoup \
 
 USES+=		gettext gmake gnome libtool localbase pathfix pkgconfig
