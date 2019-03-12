@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	aisleriot
-PORTVERSION=	3.22.5
+PORTVERSION=	3.22.8
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Collection of patience games written in guile scheme
