@@ -2,13 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	seahorse
-PORTVERSION=	3.31.91
+PORTVERSION=	3.32
 CATEGORIES=	security gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME application for managing encryption keys (PGP, SSH)
+
+LICENSE=	GPLv2 LGPL21
+LICENSE_COMB=	multi
 
 BUILD_DEPENDS=	gnupg>=2.2.0:security/gnupg \
 		valac:lang/vala \

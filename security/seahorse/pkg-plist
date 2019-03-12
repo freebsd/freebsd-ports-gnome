@@ -572,14 +572,12 @@ share/metainfo/org.gnome.seahorse.Application.appdata.xml
 %%DATADIR%%/icons/hicolor/22x22/apps/seahorse-key-personal.png
 %%DATADIR%%/icons/hicolor/22x22/apps/seahorse-key-ssh.png
 %%DATADIR%%/icons/hicolor/22x22/apps/seahorse-key.png
-%%DATADIR%%/icons/hicolor/22x22/apps/seahorse-person.png
 %%DATADIR%%/icons/hicolor/22x22/status/seahorse-sign-bad.png
 %%DATADIR%%/icons/hicolor/22x22/status/seahorse-sign-ok.png
 %%DATADIR%%/icons/hicolor/22x22/status/seahorse-sign.png
 %%DATADIR%%/icons/hicolor/48x48/apps/seahorse-key-personal.png
 %%DATADIR%%/icons/hicolor/48x48/apps/seahorse-key-ssh.png
 %%DATADIR%%/icons/hicolor/48x48/apps/seahorse-key.png
-%%DATADIR%%/icons/hicolor/48x48/apps/seahorse-person.png
 %%DATADIR%%/icons/hicolor/48x48/status/seahorse-sign-bad.png
 %%DATADIR%%/icons/hicolor/48x48/status/seahorse-sign-ok.png
 %%DATADIR%%/icons/hicolor/48x48/status/seahorse-sign-unknown.png
