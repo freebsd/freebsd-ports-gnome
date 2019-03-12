@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-desktop
-PORTVERSION=	3.31.91
+PORTVERSION=	3.32.0
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -14,8 +14,6 @@ LICENSE=	GPLv2+ LGPL20+
 LICENSE_COMB=	multi
 LICENSE_FILE_GPLv2+ =	${WRKSRC}/COPYING
 LICENSE_FILE_LGPL20+ =	${WRKSRC}/COPYING.LIB
-
-PORTSCOUT=	limitw:1,even
 
 BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
@@ -31,17 +29,9 @@ USES=		bison gettext gnome localbase meson \
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection:build
 USE_XORG=	x11
 USE_LDCONFIG=	yes
+
+PORTSCOUT=	limitw:1,even
 MESON_ARGS=	-Dgnome_distributor="FreeBSD GNOME Project" \
 		-Dudev=disabled
-#GNU_CONFIGURE=	yes
-#CONFIGURE_ARGS=	--with-gnome-distributor="FreeBSD GNOME Project" \
-#		--disable-udev
-#INSTALL_TARGET=	install-strip
-
-#post-patch:
-#	@${REINPLACE_CMD} -e 's|xsltproc -o| xsltproc --nonet -o|g' \
-#		${WRKSRC}/desktop-docs/fdl/Makefile.in \
-#		${WRKSRC}/desktop-docs/gpl/Makefile.in \
-#		${WRKSRC}/desktop-docs/lgpl/Makefile.in
 
 .include <bsd.port.mk>
