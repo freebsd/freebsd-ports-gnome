@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	polari
-PORTVERSION=	3.31.91
+PORTVERSION=	3.32.0
 CATEGORIES=	irc gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Internet Relay Chat (IRC) client designed for GNOME 3
+COMMENT=	Internet Relay Chat (IRC) client designed for GNOME
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
