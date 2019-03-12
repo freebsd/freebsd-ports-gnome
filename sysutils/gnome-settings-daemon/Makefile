@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-settings-daemon
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	GNOME 3 settings daemon
+COMMENT=	GNOME settings daemon
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
