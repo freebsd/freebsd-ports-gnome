@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gsettings-desktop-schemas
-PORTVERSION=	3.31.92
+PORTVERSION=	3.32.0
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
