@@ -9,6 +9,7 @@
     SUBDIR += bluej
     SUBDIR += bootstrap-openjdk6
     SUBDIR += bootstrap-openjdk8
+    SUBDIR += bootstrap-openjdk11
     SUBDIR += bouncycastle
     SUBDIR += bouncycastle15
     SUBDIR += castor
@@ -109,6 +110,7 @@
     SUBDIR += openjdk7-jre
     SUBDIR += openjdk8
     SUBDIR += openjdk8-jre
+    SUBDIR += openjdk11
     SUBDIR += openjfx8-devel
     SUBDIR += openjfx8-scenebuilder
     SUBDIR += phpeclipse
@@ -129,6 +131,7 @@
     SUBDIR += wildfly13
     SUBDIR += wildfly14
     SUBDIR += wildfly15
+    SUBDIR += wildfly16
     SUBDIR += wildfly90
     SUBDIR += xdoclet
 
