@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	gdm
-PORTVERSION=	3.31.91
+PORTVERSION=	3.32.0
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	GNOME 3 display manager
+COMMENT=	GNOME display manager
 
 LICENSE=	GPLv2
 
