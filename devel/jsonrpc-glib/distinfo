@@ -1,3 +1,3 @@
-TIMESTAMP = 1549838410
-SHA256 (gnome/jsonrpc-glib-3.30.1.tar.xz) = b675ce6f414fb8fc9eeed1ad340dc6d08fc329ed67af927bb0fa6a5d7d731dc7
-SIZE (gnome/jsonrpc-glib-3.30.1.tar.xz) = 41516
+TIMESTAMP = 1552506180
+SHA256 (gnome/jsonrpc-glib-3.32.0.tar.xz) = bc60aa36c8bdc9c701ad490508445633a9f3973ae0bd5bdd0633d5f6ffeea6eb
+SIZE (gnome/jsonrpc-glib-3.32.0.tar.xz) = 41552
