@@ -330,6 +330,8 @@ lib/gnome-builder/plugins/vala-pack.plugin
 lib/gnome-builder/plugins/valgrind.plugin
 lib/gnome-builder/plugins/valgrind_plugin.gresource
 lib/gnome-builder/plugins/valgrind_plugin.py
+lib/gnome-builder/plugins/waf.plugin
+lib/gnome-builder/plugins/waf_plugin.py
 %%PYTHON_SITELIBDIR%%/gi/overrides/Ide.py
 %%CLANG%%libexec/gnome-builder-clang
 share/applications/org.gnome.Builder.desktop
@@ -790,6 +792,7 @@ share/locale/el/LC_MESSAGES/gnome-builder.mo
 share/locale/en_GB/LC_MESSAGES/gnome-builder.mo
 share/locale/eo/LC_MESSAGES/gnome-builder.mo
 share/locale/es/LC_MESSAGES/gnome-builder.mo
+share/locale/eu/LC_MESSAGES/gnome-builder.mo
 share/locale/fi/LC_MESSAGES/gnome-builder.mo
 share/locale/fr/LC_MESSAGES/gnome-builder.mo
 share/locale/fur/LC_MESSAGES/gnome-builder.mo
