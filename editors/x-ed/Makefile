@@ -3,7 +3,7 @@
 PORTNAME=	xed
 DISTVERSION=	2.0.2
 CATEGORIES=	editors gnome
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Small but powerful text editor for GTK+3
