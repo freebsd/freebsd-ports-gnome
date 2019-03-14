@@ -3,7 +3,7 @@
 PORTNAME=	xapps
 DISTVERSION=	1.4.5
 CATEGORIES=	x11 gnome
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@freebsd.org
 COMMENT=	Common library for X-Apps project
