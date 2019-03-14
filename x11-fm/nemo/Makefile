@@ -20,7 +20,8 @@ LIB_DEPENDS=	libcinnamon-desktop.so:x11/cinnamon-desktop \
 		libnotify.so:devel/libnotify \
 		libxapp.so:x11/xapps
 RUN_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme \
-		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
+		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
+		gvfs>0:devel/gvfs
 
 USES=		desktop-file-utils gettext gmake gnome meson pkgconfig python:3.5+ \
 		shared-mime-info shebangfix
