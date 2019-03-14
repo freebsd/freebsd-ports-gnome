@@ -31,11 +31,14 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		ca_root_nss>0:security/ca_root_nss \
 		gnome-themes-extra>3.0.0:x11-themes/gnome-themes-extra \
+		caribou>0:accessibility/caribou \
 		cinnamon-control-center:sysutils/cinnamon-control-center \
 		cinnamon-screensaver:x11/cinnamon-screensaver \
 		nemo:x11-fm/nemo \
 		${PYTHON_PKGNAMEPREFIX}pillow>0:graphics/py-pillow@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}lxml>0:devel/py-lxml@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pyinotify>0:devel/py-pyinotify@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pexpect>0:misc/py-pexpect@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}python-pam>0:security/py-python-pam@${PY_FLAVOR}
 
 USES=		autoreconf:build compiler:c11 gettext gl gmake gnome libtool pathfix \
