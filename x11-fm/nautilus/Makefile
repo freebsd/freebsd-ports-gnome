@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nautilus
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	x11-fm gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -24,6 +24,7 @@ USES=		compiler:c11 desktop-file-utils gettext gnome \
 USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
+USE_GSTREAMER1=	yes
 USE_XORG=	x11
 MESON_ARGS=	-Denable-packagekit=false \
 		-Denable-selinux=false
