@@ -13,9 +13,9 @@ Date: Thu, 24 Apr 2014 17:55:56 +0200
 Subject: loginManager: Kill ConsoleKit support
 
 
---- js/misc/loginManager.js.orig	2019-02-07 01:45:13 UTC
+--- js/misc/loginManager.js.orig	2019-03-11 23:04:59 UTC
 +++ js/misc/loginManager.js
-@@ -16,6 +16,34 @@ const SystemdLoginManager = Gio.DBusProxy.makeProxyWra
+@@ -13,6 +13,34 @@ const SystemdLoginManager = Gio.DBusProxy.makeProxyWra
  const SystemdLoginSession = Gio.DBusProxy.makeProxyWrapper(SystemdLoginSessionIface);
  const SystemdLoginUser = Gio.DBusProxy.makeProxyWrapper(SystemdLoginUserIface);
  
@@ -50,7 +50,7 @@ Subject: loginManager: Kill ConsoleKit support
  function haveSystemd() {
      return GLib.access("/run/systemd/seats", 0) >= 0;
  }
-@@ -45,7 +73,7 @@ function canLock() {
+@@ -42,7 +70,7 @@ function canLock() {
                                                 -1, null);
  
          let version = result.deep_unpack()[0].deep_unpack();
@@ -59,7 +59,7 @@ Subject: loginManager: Kill ConsoleKit support
      } catch(e) {
          return false;
      }
-@@ -63,7 +91,7 @@ function getLoginManager() {
+@@ -60,7 +88,7 @@ function getLoginManager() {
          if (haveSystemd())
              _loginManager = new LoginManagerSystemd();
          else
@@ -68,7 +68,7 @@ Subject: loginManager: Kill ConsoleKit support
      }
  
      return _loginManager;
-@@ -81,6 +109,9 @@ var LoginManagerSystemd = class {
+@@ -78,6 +106,9 @@ var LoginManagerSystemd = class {
                                    this._prepareForSleep.bind(this));
      }
  
@@ -78,7 +78,7 @@ Subject: loginManager: Kill ConsoleKit support
      getCurrentSessionProxy(callback) {
          if (this._currentSession) {
              callback (this._currentSession);
-@@ -179,11 +210,33 @@ var LoginManagerSystemd = class {
+@@ -176,11 +207,38 @@ var LoginManagerSystemd = class {
  };
  Signals.addSignalMethods(LoginManagerSystemd.prototype);
  
@@ -102,8 +102,13 @@ Subject: loginManager: Kill ConsoleKit support
 +            return;
 +        }
 +
-+        this._proxy.GetCurrentSessionRemote(Lang.bind(this,
-+            function(result, error) {
++        let sessionId = GLib.getenv('XDG_SESSION_ID')
++        if (!sessionId) {
++            log('Unset XDG_SESSION_ID, getCurrentSessionProxy() called outside a user session.');
++            return;
++        }
++
++        this._proxy.GetSessionRemote(sessionId, (result, error) => {
 +                if (error) {
 +                    logError(error, 'Could not get a proxy for the current session');
 +                } else {
@@ -116,7 +121,7 @@ Subject: loginManager: Kill ConsoleKit support
      }
  
      canSuspend(asyncCallback) {
-@@ -203,4 +256,4 @@ var LoginManagerDummy = class {
+@@ -200,4 +258,4 @@ var LoginManagerDummy = class {
          callback(null);
      }
  };
