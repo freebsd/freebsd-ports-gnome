@@ -16,9 +16,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libxapp.so:x11/xapps \
 		libcanberra.so:audio/libcanberra
 
-#?
-#RUN_DEPENDS=	console-kit-daemon:sysutils/consolekit2 \
-
+RUN_DEPENDS=	console-kit-daemon:sysutils/consolekit2
 
 USES=		gl gnome meson pkgconfig
 
