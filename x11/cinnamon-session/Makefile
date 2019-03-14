@@ -3,6 +3,7 @@
 
 PORTNAME=	cinnamon-session
 PORTVERSION=	4.0.0
+PORTREVISION=	1
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -22,6 +23,7 @@ USES=		gl gnome meson pkgconfig
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
+GH_TAGNAME=	3b5759e
 
 USE_GNOME=	cairo gdkpixbuf2 gtk30
 USE_XORG=	ice sm x11 xau xcomposite xext xrender xtrans xtst
