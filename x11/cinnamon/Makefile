@@ -50,7 +50,6 @@ USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 intltool introspection libxml2 pygobjec
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_PROJECT=	Cinnamon
 
 SHEBANG_GLOB=	*.py
 SHEBANG_FILES=	files/*
