@@ -17,7 +17,6 @@ RUN_DEPENDS=	baobab>=3.0:deskutils/baobab \
 		gnome-contacts>=3.0:deskutils/gnome-contacts \
 		gnome-search-tool>=3.0:deskutils/gnome-search-tool \
 		gnome-dictionary>=3.0:deskutils/gnome-dictionary \
-		gnome-system-log>=3.0:deskutils/gnome-system-log \
 		gnome-font-viewer>=3.0:deskutils/gnome-font-viewer \
 		gnome-system-monitor>=3.0:sysutils/gnome-system-monitor \
 		gnome-calendar>=3.0:deskutils/gnome-calendar \
