@@ -1159,6 +1159,7 @@
     SUBDIR += xpdf4
     SUBDIR += xpeps
     SUBDIR += xpx
+    SUBDIR += xreader
     SUBDIR += xsane
     SUBDIR += xsvg
     SUBDIR += xtexcad
