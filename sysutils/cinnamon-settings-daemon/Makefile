@@ -3,6 +3,7 @@
 
 PORTNAME=	cinnamon-settings-daemon
 PORTVERSION=	4.0.3
+PORTREVISION=	1
 CATEGORIES=	sysutils gnome
 DIST_SUBDIR=	gnome
 
@@ -42,6 +43,7 @@ USE_XORG=	x11 xext xfixes xi xtst
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
+GH_TAGNAME=	cb07d46
 
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
