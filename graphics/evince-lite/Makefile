@@ -3,7 +3,7 @@
 
 PKGNAMESUFFIX=	-lite
 
-COMMENT=	GNOME 3 multi-format document viewer without the GNOME dependencies
+COMMENT=	GNOME multi-format document viewer without the GNOME dependencies
 
 OPTIONS_EXCLUDE=	NAUTILUS DBUS
 

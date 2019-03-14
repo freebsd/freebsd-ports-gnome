@@ -6,7 +6,7 @@ gnome-system-log got retired, upstream had hard dependancy on systemd
 gnome-control-center now has device name and OS name fields filled in.
 There is still a issue with the hashtable....
 
-Vino and vinagre where dropped from the gnome 3meta port, they aren't really maintained upstream atm.
+Vino, vinagre and ekiga where dropped from the gnome3 meta port, they aren't really maintained upstream atm.
 
 Drop obsolete usage of gnome-icon-theme and -symbolic.
 
@@ -22,11 +22,6 @@ pygobject3*: switch to default python3.
 gnome-photos: git workaround and mesonbuild type?
 + somewhere ....
 file-roller: with password protected zips
-
-
-find out where gconf2 is used in GNOME 3 and see if it axeable
-
-figure out what to do with vinagre and vino (former still works?, latter drop from meta) drop ekiga if it isn't already
 
 Update gnome-shell extensions
 
@@ -47,3 +42,9 @@ gedit
 rework libgda5 ports (prework for libgda6)
 
 is brasero still needed?
+
+/// FUTURE
+
+Can't remove gconf2 from the meta port just yet.
+
+
