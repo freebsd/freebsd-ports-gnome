@@ -61,8 +61,6 @@ RUN_DEPENDS+=	epiphany>=3.0.0:www/epiphany \
 		gnome-utils>=3.6.0:deskutils/gnome-utils \
 		file-roller>=3.0.0:archivers/file-roller \
 		evince>=3.0.0:graphics/evince \
-		vino>=3.0.0:net/vino \
-		vinagre>=3.0.0:net/vinagre \
 		gnome-games-meta>=3.0.0:games/gnome-games-meta \
 		totem>=3.0.0:multimedia/totem \
 		gconf-editor>=3.0.0:sysutils/gconf-editor \

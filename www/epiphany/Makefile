@@ -34,9 +34,7 @@ LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libhandy-0.0.so:x11-toolkits/libhandy \
 		libp11-kit.so:security/p11-kit
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
-		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
-		gnome-icon-theme-symbolic>=0:x11-themes/gnome-icon-theme-symbolic \
-		gnome-icon-theme>=0:misc/gnome-icon-theme
+		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 
 PORTSCOUT=	limitw:1,even
 
