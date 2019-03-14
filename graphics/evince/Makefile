@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	evince
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	graphics print gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT?=	GNOME 3 multi-format document viewer
+COMMENT?=	GNOME multi-format document viewer
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
