@@ -3,6 +3,11 @@ gnome-shell switched ES6 classes, this breaks _all_ plugins
 rename gnome-games -> meta
 gnome-system-log got retired, upstream had hard dependancy on systemd
 
+gnome-control-center now has device name and OS name fields filled in.
+There is still a issue with the hashtable....
+
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 spidermonkey60 needs more work + i386 fixes
 pango: make patches for xft split and upstream
@@ -37,8 +42,6 @@ settings-daemon
 atomix, gnome-tetravex
 seahorse
 gedit
-
-gnome-control-center details pagina fixen
 
 rework libgda5 ports (prework for libgda6)
 

@@ -3,6 +3,7 @@
 
 PORTNAME=	gnome-control-center
 PORTVERSION=	3.32.0.1
+PORTREVISION=	1
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome

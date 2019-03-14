@@ -1,3 +1,7 @@
+Add code to grap OS name on FreebSD via sysctl.
+
+and
+
 REVERT
 
 From 2520aea647c8e0ce39b750b0758db8b770eafdcb Mon Sep 17 00:00:00 2001
@@ -28,9 +32,18 @@ port to meson and add udisks2 to CI deps.
 Fixes #285.
 Fixes #302.
 
---- panels/info/cc-info-overview-panel.c.orig	2019-03-11 14:44:24 UTC
+--- panels/info/cc-info-overview-panel.c.orig	2019-03-11 19:06:23 UTC
 +++ panels/info/cc-info-overview-panel.c
-@@ -36,7 +36,6 @@
+@@ -32,11 +32,15 @@
+ #include <gio/gunixmounts.h>
+ #include <gio/gdesktopappinfo.h>
+ 
++#if defined(__FreeBSD__)
++#include <sys/types.h>
++#include <sys/sysctl.h>
++#endif
++
+ #include <glibtop/fsusage.h>
  #include <glibtop/mountlist.h>
  #include <glibtop/mem.h>
  #include <glibtop/sysinfo.h>
@@ -38,7 +51,7 @@ Fixes #302.
  
  #include <gdk/gdk.h>
  
-@@ -82,7 +81,9 @@ typedef struct
+@@ -82,7 +86,9 @@ typedef struct
  
    GCancellable   *cancellable;
  
@@ -49,7 +62,7 @@ Fixes #302.
  
    GraphicsData   *graphics_data;
  } CcInfoOverviewPanelPrivate;
-@@ -95,6 +96,8 @@ struct _CcInfoOverviewPanel
+@@ -95,6 +101,8 @@ struct _CcInfoOverviewPanel
   CcInfoOverviewPanelPrivate *priv;
  };
  
@@ -58,7 +71,44 @@ Fixes #302.
  typedef struct
  {
    char *major;
-@@ -483,51 +486,111 @@ get_os_type (void)
+@@ -425,6 +433,26 @@ get_os_info (void)
+         }
+     }
+ 
++#if defined(__FreeBSD__)
++  size_t value_len;
++  gchar *str = NULL, *value;
++
++  /* Initialize the hash table if needed */
++  if (!hashtable)
++    hashtable = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, g_free);
++
++  if (sysctlbyname("kern.version", NULL, &value_len, NULL, 0) == 0)
++    {
++      str = g_new(char, value_len + 1);
++      if (sysctlbyname("kern.version", str, &value_len, NULL, 0) == 0)
++        {
++          // get rid of those pesky new lines
++          value = g_strndup(str, strlen(str) - 1);
++          g_hash_table_insert (hashtable, "PRETTY_NAME", value);
++        }
++    }
++#endif
++
+   return hashtable;
+ }
+ 
+@@ -466,7 +494,8 @@ get_os_name (void)
+       result = g_strdup (name_version);
+     }
+ 
+-  g_clear_pointer (&os_info, g_hash_table_destroy);
++// XXX This is a memory leak but is currently segfaulting, need to readup on hashtable magic...
++//  g_clear_pointer (&os_info, g_hash_table_destroy);
+ 
+   return result;
+ }
+@@ -483,51 +512,111 @@ get_os_type (void)
  }
  
  static void
@@ -198,7 +248,7 @@ Fixes #302.
  }
  
  static char *
-@@ -789,7 +852,8 @@ cc_info_overview_panel_finalize (GObject *object)
+@@ -789,7 +878,8 @@ cc_info_overview_panel_finalize (GObject *object)
        g_clear_object (&priv->cancellable);
      }
  
@@ -208,7 +258,7 @@ Fixes #302.
  
    g_free (priv->gnome_version);
    g_free (priv->gnome_date);
-@@ -831,7 +895,6 @@ static void
+@@ -831,7 +921,6 @@ static void
  cc_info_overview_panel_init (CcInfoOverviewPanel *self)
  {
    CcInfoOverviewPanelPrivate *priv = cc_info_overview_panel_get_instance_private (self);
@@ -216,7 +266,7 @@ Fixes #302.
  
    gtk_widget_init_template (GTK_WIDGET (self));
  
-@@ -843,12 +906,6 @@ cc_info_overview_panel_init (CcInfoOverviewPanel *self
+@@ -843,12 +932,6 @@ cc_info_overview_panel_init (CcInfoOverviewPanel *self
      g_signal_connect (priv->updates_button, "clicked", G_CALLBACK (on_updates_button_clicked), self);
    else
      gtk_widget_destroy (priv->updates_button);
