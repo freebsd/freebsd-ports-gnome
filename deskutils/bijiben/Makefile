@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	bijiben
-PORTVERSION=	3.31.90
+PORTVERSION=	3.32.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Note editor designed to remain simple to use
+COMMENT=	GNOME Note editor designed to remain simple to use
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
