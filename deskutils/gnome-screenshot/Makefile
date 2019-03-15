@@ -13,6 +13,7 @@ COMMENT=	GNOME utility for making picutures of your screen
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	appstream-builder:devel/appstream-glib
 LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3
 
