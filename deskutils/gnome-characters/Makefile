@@ -2,18 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-characters
-PORTVERSION=	3.28.2
+PORTVERSION=	3.32.0
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	find and insert unusual characters for GNOME 3
+COMMENT=	Find and insert unusual characters for GNOME
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-PORTSCOUT=	limitw:1,even
 
 LIB_DEPENDS=	libgjs.so:lang/gjs \
 		libunistring.so:devel/libunistring \
@@ -26,6 +24,7 @@ USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
+PORTSCOUT=	limitw:1,even
 GLIB_SCHEMAS=	org.gnome.Characters.gschema.xml
 
 .include <bsd.port.mk>
