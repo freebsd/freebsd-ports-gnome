@@ -3,6 +3,8 @@ man/man1/gnome-screenshot.1.gz
 share/GConf/gsettings/gnome-screenshot.convert
 share/applications/org.gnome.Screenshot.desktop
 share/dbus-1/services/org.gnome.Screenshot.service
+share/icons/hicolor/scalable/apps/org.gnome.Screenshot.svg
+share/icons/hicolor/symbolic/apps/org.gnome.Screenshot-symbolic.svg
 share/locale/af/LC_MESSAGES/gnome-screenshot.mo
 share/locale/am/LC_MESSAGES/gnome-screenshot.mo
 share/locale/an/LC_MESSAGES/gnome-screenshot.mo
