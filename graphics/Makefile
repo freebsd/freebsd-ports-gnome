@@ -624,6 +624,7 @@
     SUBDIR += osg
     SUBDIR += osg-devel
     SUBDIR += osgearth
+    SUBDIR += ossim
     SUBDIR += oyranos
     SUBDIR += p5-Acme-Steganography-Image-Png
     SUBDIR += p5-Algorithm-Line-Bresenham
@@ -905,6 +906,7 @@
     SUBDIR += pysvg
     SUBDIR += qcomicbook
     SUBDIR += qgis
+    SUBDIR += qgis-ltr
     SUBDIR += qiv
     SUBDIR += qslim
     SUBDIR += qt4-iconengines
