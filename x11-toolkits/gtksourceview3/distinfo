@@ -1,3 +1,3 @@
-TIMESTAMP = 1529611642
-SHA256 (gnome3/gtksourceview-3.24.8.tar.xz) = 1e9bb8ff190db705deb916dd23ff681f0e8803aec407bf0fd64c7e615ac436fe
-SIZE (gnome3/gtksourceview-3.24.8.tar.xz) = 1408964
+TIMESTAMP = 1552824719
+SHA256 (gnome/gtksourceview-3.24.10.tar.xz) = ab5406cdd0bdcf66afcd52b1e048a2f43c0f3ab391644ee30d9ac419b93cd59b
+SIZE (gnome/gtksourceview-3.24.10.tar.xz) = 1422888
