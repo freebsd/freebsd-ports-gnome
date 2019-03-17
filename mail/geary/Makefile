@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	geary
-PORTVERSION=	0.13.3
+PORTVERSION=	3.32.0
 CATEGORIES=	mail gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Mail client for GNOME 3
+COMMENT=	Mail client for GNOME
 
 LICENSE=	BSD2CLAUSE CC-BY-3.0 LGPL21+
 LICENSE_COMB=	multi
@@ -18,6 +18,7 @@ BUILD_DEPENDS=	vapigen:lang/vala \
 LIB_DEPENDS=	libgmime-2.6.so:mail/gmime26 \
 		libsoup-2.4.so:devel/libsoup \
 		libunwind.so:devel/libunwind \
+		libfolks.so:net-im/folks \
 		libjson-glib-1.0.so:devel/json-glib \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libgoa-1.0.so:net/gnome-online-accounts \
