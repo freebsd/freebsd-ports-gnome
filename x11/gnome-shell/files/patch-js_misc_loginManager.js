@@ -117,7 +117,7 @@ Subject: loginManager: Kill ConsoleKit support
 +                                                                 result[0]);
 +                    callback(this._currentSession);
 +                }
-+            }));
++            });
      }
  
      canSuspend(asyncCallback) {
