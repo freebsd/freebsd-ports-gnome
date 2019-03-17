@@ -15,10 +15,9 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 PORTSCOUT=	limit:^3\.
 
-# this port wants c++17 from 12.99.11 and onwards but our framework doesn't support that yet.
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
-USES=		compiler:c++14-lang gmake libtool pathfix perl5 tar:xz
+USES=		compiler:c++17-lang gmake libtool pathfix perl5 tar:xz
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 
