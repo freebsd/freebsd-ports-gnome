@@ -553,6 +553,7 @@
     SUBDIR += metacam
     SUBDIR += metapixel
     SUBDIR += mhgui
+    SUBDIR += milton
     SUBDIR += minder
     SUBDIR += ming
     SUBDIR += mirage
@@ -611,6 +612,7 @@
     SUBDIR += osg-devel
     SUBDIR += osgearth
     SUBDIR += ossim
+    SUBDIR += oyranos
     SUBDIR += p5-Acme-Steganography-Image-Png
     SUBDIR += p5-Algorithm-Line-Bresenham
     SUBDIR += p5-Alien-Gimp
@@ -731,6 +733,7 @@
     SUBDIR += pear-Image_GraphViz
     SUBDIR += pear-Image_Transform
     SUBDIR += pecl-imagick
+    SUBDIR += pecl-imagick-im7
     SUBDIR += pecl-qrencode
     SUBDIR += pecomato
     SUBDIR += pencil2d

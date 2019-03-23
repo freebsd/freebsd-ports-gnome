@@ -1295,6 +1295,7 @@
     SUBDIR += kdev-python
     SUBDIR += kdevelop
     SUBDIR += kdevelop-pg-qt
+    SUBDIR += kerl
     SUBDIR += kf5-extra-cmake-modules
     SUBDIR += kf5-kapidox
     SUBDIR += kf5-kauth
@@ -1588,6 +1589,7 @@
     SUBDIR += libstatgrab0
     SUBDIR += libstrfunc
     SUBDIR += libstroke
+    SUBDIR += libsysctlmibinfo
     SUBDIR += libsysinfo
     SUBDIR += libtai
     SUBDIR += libtap
@@ -2961,6 +2963,7 @@
     SUBDIR += p5-Module-Load
     SUBDIR += p5-Module-Load-Conditional
     SUBDIR += p5-Module-Loaded
+    SUBDIR += p5-Module-Loader
     SUBDIR += p5-Module-Manifest
     SUBDIR += p5-Module-Math-Depends
     SUBDIR += p5-Module-Metadata
@@ -5279,6 +5282,7 @@
     SUBDIR += py-wsgiutils
     SUBDIR += py-wsme
     SUBDIR += py-xarray
+    SUBDIR += py-xarray011
     SUBDIR += py-xattr
     SUBDIR += py-xcaplib
     SUBDIR += py-xdg
@@ -5610,6 +5614,7 @@
     SUBDIR += rubygem-cucumber
     SUBDIR += rubygem-cucumber-core
     SUBDIR += rubygem-cucumber-expressions
+    SUBDIR += rubygem-cucumber-expressions6
     SUBDIR += rubygem-cucumber-formatter-dots
     SUBDIR += rubygem-cucumber-messages
     SUBDIR += rubygem-cucumber-tag_expressions
@@ -5687,6 +5692,7 @@
     SUBDIR += rubygem-fog
     SUBDIR += rubygem-fog-core
     SUBDIR += rubygem-fog-core1
+    SUBDIR += rubygem-fog-core210
     SUBDIR += rubygem-fog-json
     SUBDIR += rubygem-fog-json102
     SUBDIR += rubygem-font-awesome-rails

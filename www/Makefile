@@ -346,7 +346,6 @@
     SUBDIR += libmicrohttpd
     SUBDIR += libnghttp2
     SUBDIR += libresonic-standalone
-    SUBDIR += libsocialweb
     SUBDIR += libwww
     SUBDIR += lightsquid
     SUBDIR += lighttpd
@@ -955,6 +954,7 @@
     SUBDIR += p5-HTML-WikiConverter-WakkaWiki
     SUBDIR += p5-HTML-WikiConverter-WikkaWiki
     SUBDIR += p5-HTML5-DOM
+    SUBDIR += p5-HTTP-AnyUA
     SUBDIR += p5-HTTP-Async
     SUBDIR += p5-HTTP-Body
     SUBDIR += p5-HTTP-BrowserDetect
@@ -1548,6 +1548,7 @@
     SUBDIR += py-django-cors-headers
     SUBDIR += py-django-countries
     SUBDIR += py-django-crispy-forms
+    SUBDIR += py-django-cron
     SUBDIR += py-django-datetime-widget
     SUBDIR += py-django-debug-toolbar
     SUBDIR += py-django-dpaste
@@ -1702,8 +1703,8 @@
     SUBDIR += py-hyperframe
     SUBDIR += py-hyperlink
     SUBDIR += py-imdbpy
-    SUBDIR += py-internetarchive
     SUBDIR += py-instabot
+    SUBDIR += py-internetarchive
     SUBDIR += py-jonpy
     SUBDIR += py-jsonfield
     SUBDIR += py-jswebkit
@@ -1869,6 +1870,7 @@
     SUBDIR += py-tmdb3
     SUBDIR += py-tornado
     SUBDIR += py-tornado4
+    SUBDIR += py-tornado6
     SUBDIR += py-trello
     SUBDIR += py-treq
     SUBDIR += py-turbogears2

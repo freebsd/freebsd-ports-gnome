@@ -545,6 +545,7 @@
     SUBDIR += ocserv
     SUBDIR += olsrd
     SUBDIR += omnitty
+    SUBDIR += onedrive
     SUBDIR += onenetd
     SUBDIR += onioncat
     SUBDIR += opal
@@ -1232,6 +1233,7 @@
     SUBDIR += rubygem-fog-dynect
     SUBDIR += rubygem-fog-ecloud
     SUBDIR += rubygem-fog-google
+    SUBDIR += rubygem-fog-google17
     SUBDIR += rubygem-fog-internet-archive
     SUBDIR += rubygem-fog-joyent
     SUBDIR += rubygem-fog-local

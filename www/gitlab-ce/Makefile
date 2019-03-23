@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gitlab-ce
-PORTVERSION=	11.8.1
+PORTVERSION=	11.8.3
 CATEGORIES=	www devel
 
 MAINTAINER=	mfechner@FreeBSD.org
@@ -75,7 +75,7 @@ MY_DEPENDS=	git>=2.16.2:devel/git \
 	rubygem-mini_magick>=0:graphics/rubygem-mini_magick \
 	rubygem-fog-aws2>=2.0.1:net/rubygem-fog-aws2 \
 	rubygem-fog-core1>=1.44:devel/rubygem-fog-core1 \
-	rubygem-fog-google>=1.7.1:net/rubygem-fog-google \
+	rubygem-fog-google17>=1.7.1:net/rubygem-fog-google17 \
 	rubygem-fog-local>=0.3:net/rubygem-fog-local \
 	rubygem-fog-openstack02>=0.1:net/rubygem-fog-openstack02 \
 	rubygem-fog-rackspace>=0.1.1:net/rubygem-fog-rackspace \
@@ -221,7 +221,7 @@ USE_RC_SUBR=	gitlab
 USE_GITLAB=	yes
 GL_ACCOUNT=	gitlab-org
 # Find the here: https://gitlab.com/gitlab-org/gitlab-ce/tags
-GL_COMMIT=	657d5085256165ceaeb443891f8e14eeba82aaba
+GL_COMMIT=	3f8131133bf6310a7fc05d7a332b4560edb456ef
 
 USERS=	git
 GROUPS=	git
