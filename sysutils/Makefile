@@ -433,6 +433,7 @@
     SUBDIR += gnome-schedule
     SUBDIR += gnome-settings-daemon
     SUBDIR += gnome-system-monitor
+    SUBDIR += gnome-usage
     SUBDIR += gnome_subr
     SUBDIR += goaccess
     SUBDIR += goawk
