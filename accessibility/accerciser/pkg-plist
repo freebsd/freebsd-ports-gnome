@@ -145,7 +145,6 @@ man/man1/accerciser.1.gz
 %%DATADIR%%/plugins/quick_select.py
 %%DATADIR%%/plugins/validate.py
 %%DATADIR%%/plugins/validate.ui
-share/appdata/accerciser.appdata.xml
 share/applications/accerciser.desktop
 share/help/C/accerciser/api_browser_plugin.page
 share/help/C/accerciser/desktop_tree_view.page
@@ -685,3 +684,4 @@ share/locale/vi/LC_MESSAGES/accerciser.mo
 share/locale/zh_CN/LC_MESSAGES/accerciser.mo
 share/locale/zh_HK/LC_MESSAGES/accerciser.mo
 share/locale/zh_TW/LC_MESSAGES/accerciser.mo
+share/metainfo/accerciser.appdata.xml

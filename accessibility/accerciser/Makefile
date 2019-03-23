@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	accerciser
-PORTVERSION=	3.31.4
+PORTVERSION=	3.32.0
 CATEGORIES=	accessibility gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -19,8 +19,10 @@ BUILD_DEPENDS=	gsettings-desktop-schemas>=3.2.0:devel/gsettings-desktop-schemas 
 RUN_DEPENDS=	gsettings-desktop-schemas>=3.2.0:devel/gsettings-desktop-schemas \
 		at-spi2-core>=2.1.5:accessibility/at-spi2-core
 
-USES=		gettext gmake localbase:ldflags pkgconfig python:3.4+ shebangfix tar:xz
-USE_GNOME=	gtk30 intlhack pygobject3
+USES=		gettext gmake gnome localbase:ldflags pkgconfig \
+		python:3.4+ shebangfix tar:xz
+USE_GNOME=	gtk30 pygobject3
+
 INSTALLS_ICONS=	yes
 GNU_CONFIGURE=	yes
 SHEBANG_FILES=	plugins/ipython_view.py
