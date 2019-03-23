@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-backgrounds
-PORTVERSION=	3.31.91
+PORTVERSION=	3.32.0
 CATEGORIES=	x11-themes graphics gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
