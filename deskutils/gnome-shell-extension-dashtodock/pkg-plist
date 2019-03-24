@@ -5,7 +5,6 @@ share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/README.md
 share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/Settings.ui
 share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/appIconIndicators.js
 share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/appIcons.js
-share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/convenience.js
 share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/dash.js
 share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/docking.js
 share/gnome-shell/extensions/dash-to-dock@micxgx.gmail.com/extension.js

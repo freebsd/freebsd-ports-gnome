@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-shell-extension-mediaplayer
-PORTVERSION=	0.0.0.20180316
+PORTVERSION=	0.0.0.20190324
 CATEGORIES=	deskutils gnome
 DIST_SUBDIR=	gnome3
 
@@ -10,7 +10,7 @@ MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	MPRIS2 extension for the GNOME3 shell
 
 BUILD_DEPENDS=	gsettings-desktop-schemas>=3.12.0:devel/gsettings-desktop-schemas
-RUN_DEPENDS=	gnome-shell>=0:x11/gnome-shell \
+RUN_DEPENDS=	gnome-shell>=3.32:x11/gnome-shell \
 		gsettings-desktop-schemas>=3.12.0:devel/gsettings-desktop-schemas
 
 USES=		gettext gnome meson pkgconfig python:3.4+,build
@@ -24,7 +24,7 @@ GLIB_SCHEMAS=	org.gnome.shell.extensions.mediaplayer.gschema.xml
 USE_GITHUB=	yes
 GH_ACCOUNT=	JasonLG1979
 GH_PROJECT=	gnome-shell-extensions-mediaplayer
-GH_TAGNAME=	9653b7d
+GH_TAGNAME=	b382c98
 
 PKGMESSAGE=	../gnome-shell-extra-extensions/pkg-message.slaves
 

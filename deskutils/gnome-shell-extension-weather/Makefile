@@ -9,6 +9,8 @@ DIST_SUBDIR=	gnome3
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Weather extension for the GNOME3 shell
 
+BROKEN=		doesn't support gnome-shell 3.32
+
 RUN_DEPENDS=	gnome-shell>=0:x11/gnome-shell
 
 USES=		autoreconf gettext gmake gnome libtool pkgconfig
