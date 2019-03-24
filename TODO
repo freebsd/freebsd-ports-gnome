@@ -10,7 +10,13 @@ Vino, vinagre and ekiga where dropped from the gnome3 meta port, they aren't rea
 
 Drop obsolete usage of gnome-icon-theme and -symbolic.
 
+gnome-books was split off from gnome-documents
+
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+=-=- GNOME 3.32 support -=-=
+gnome-shell-extension-dash-to-dock
+=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 spidermonkey60 needs more work + i386 fixes
 pango: make patches for xft split and upstream
@@ -23,7 +29,13 @@ gnome-photos: git workaround and mesonbuild type?
 + somewhere ....
 file-roller: with password protected zips
 
-Update gnome-shell extensions
+find out where gnome-icon-theme (3.12) is used and axe it
+find out where nome-icon-theme-extras (3.12) is used and axe it
+find out where gconf2 is used in GNOME 3 and see if it axeable
+
+figure out what to do with vinagre and vino (former still works?, latter drop from meta) drop ekiga if it isn't already
+
+Update gnome-shell extensions + bump gnome-shell requirements
 
 - gnome-builder patches upstream
 - epiphany
@@ -47,4 +59,7 @@ is brasero still needed?
 
 Can't remove gconf2 from the meta port just yet.
 
+gnome-usage disk uage is broken
 
+add amtk to stage-qa script (USE_GNOME)
+libdazzle etc too?
