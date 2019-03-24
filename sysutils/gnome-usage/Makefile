@@ -11,6 +11,7 @@ COMMENT=	Information about use of system resources for GNOME
 
 LICENSE=	GPLv3
 
+BUILD_DEPENDS=	valac:lang/vala
 LIB_DEPENDS=	libgtop-2.0.so:devel/libgtop \
 		libdazzle-1.0.so:x11-toolkits/libdazzle
 
