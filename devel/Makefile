@@ -5696,7 +5696,6 @@
     SUBDIR += rubygem-fog-core1
     SUBDIR += rubygem-fog-core210
     SUBDIR += rubygem-fog-json
-    SUBDIR += rubygem-fog-json102
     SUBDIR += rubygem-font-awesome-rails
     SUBDIR += rubygem-font-awesome-rails-rails5
     SUBDIR += rubygem-font-awesome-rails-rails50
