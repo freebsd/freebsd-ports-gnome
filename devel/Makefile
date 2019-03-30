@@ -1488,7 +1488,6 @@
     SUBDIR += liblouis
     SUBDIR += libltdl
     SUBDIR += liblxqt
-    SUBDIR += liblxqt-l10n
     SUBDIR += libmaa
     SUBDIR += libmatheval
     SUBDIR += libmba
@@ -5193,6 +5192,7 @@
     SUBDIR += py-termcolor
     SUBDIR += py-terminable_thread
     SUBDIR += py-termstyle
+    SUBDIR += py-testfixtures
     SUBDIR += py-testgears
     SUBDIR += py-testinfra
     SUBDIR += py-testoob
