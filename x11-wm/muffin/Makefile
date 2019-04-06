@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	muffin
-PORTVERSION=	4.0.5
+PORTVERSION=	4.0.7
 CATEGORIES=	x11-wm gnome
 DIST_SUBDIR=	gnome
 
