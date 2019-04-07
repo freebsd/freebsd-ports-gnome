@@ -3,4 +3,3 @@ Don't forget to report in which feature branch the problem exists.
 
 ## Bug report
 
-Which is the branch where the bug happens:
