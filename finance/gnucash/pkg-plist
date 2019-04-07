@@ -256,7 +256,6 @@ lib/gnucash/scm/ccache/2.0/business-prefs.go
 lib/gnucash/scm/ccache/2.0/c-interface.go
 lib/gnucash/scm/ccache/2.0/commodity-table.go
 lib/gnucash/scm/ccache/2.0/commodity-utilities.go
-lib/gnucash/scm/ccache/2.0/config-var.go
 lib/gnucash/scm/ccache/2.0/date-utilities.go
 lib/gnucash/scm/ccache/2.0/engine-interface.go
 lib/gnucash/scm/ccache/2.0/engine-utilities.go
@@ -304,7 +303,6 @@ lib/gnucash/scm/ccache/2.0/gnucash/report/report-gnome.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/report-system.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/report-system/collectors.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/report-system/report-collectors.go
-%%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/report-system/test/test-collectors.go
 %%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/report-system/test/test-extras.go
 %%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/report-system/test/test-load-report-system-module.go
 %%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/report-system/test/test-test-extras.go
@@ -313,6 +311,7 @@ lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/account-piecharts.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/account-summary.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/advanced-portfolio.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/average-balance.go
+lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/balance-forecast.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/balance-sheet.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/budget-balance-sheet.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/budget-barchart.go
@@ -334,10 +333,6 @@ lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/price-scatter.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/register.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/sx-summary.go
 %%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/test/test-cash-flow.go
-%%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/test/test-cashflow-barchart.go
-%%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/test/test-standard-category-report.go
-%%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/test/test-standard-net-barchart.go
-%%TEST%%lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/test/test-standard-net-linechart.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/transaction.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/standard-reports/trial-balance.go
 lib/gnucash/scm/ccache/2.0/gnucash/report/stylesheet-easy.go
@@ -398,7 +393,6 @@ lib/gnucash/scm/ccache/2.0/simple-obj.go
 %%TEST%%lib/gnucash/scm/ccache/2.0/test-c-interface.go
 %%TEST%%lib/gnucash/scm/ccache/2.0/test-create-account.go
 %%TEST%%lib/gnucash/scm/ccache/2.0/test-split.go
-%%TEST%%lib/gnucash/scm/ccache/2.0/test-test-extras.go
 lib/gnucash/scm/ccache/2.0/txf-de_DE.go
 lib/gnucash/scm/ccache/2.0/txf-help-de_DE.go
 lib/gnucash/scm/ccache/2.0/txf-help.go
@@ -430,8 +424,8 @@ lib/libgnc-module.so
 man/man1/gnc-fq-dump.1.gz
 man/man1/gnc-fq-helper.1.gz
 man/man1/gnucash.1.gz
-share/appdata/gnucash.appdata.xml
 share/applications/gnucash.desktop
+share/metainfo/gnucash.appdata.xml
 %%PORTDOCS%%%%DOCSDIR%%/AUTHORS
 %%PORTDOCS%%%%DOCSDIR%%/ChangeLog
 %%PORTDOCS%%%%DOCSDIR%%/ChangeLog.1999
@@ -453,6 +447,7 @@ share/applications/gnucash.desktop
 %%PORTDOCS%%%%DOCSDIR%%/ChangeLog.2015
 %%PORTDOCS%%%%DOCSDIR%%/ChangeLog.2016
 %%PORTDOCS%%%%DOCSDIR%%/ChangeLog.2017
+%%PORTDOCS%%%%DOCSDIR%%/ChangeLog.2018
 %%PORTDOCS%%%%DOCSDIR%%/DOCUMENTERS
 %%PORTDOCS%%%%DOCSDIR%%/HACKING
 %%PORTDOCS%%%%DOCSDIR%%/LICENSE
@@ -465,6 +460,7 @@ share/applications/gnucash.desktop
 %%PORTDOCS%%%%DOCSDIR%%/README-ca.win32-bin.txt
 %%PORTDOCS%%%%DOCSDIR%%/README-de.win32-bin.txt
 %%PORTDOCS%%%%DOCSDIR%%/README-fr.win32-bin.txt
+%%PORTDOCS%%%%DOCSDIR%%/README-hr.win32-bin.txt
 %%PORTDOCS%%%%DOCSDIR%%/README-it.win32-bin.txt
 %%PORTDOCS%%%%DOCSDIR%%/README-lv.win32-bin.txt
 %%PORTDOCS%%%%DOCSDIR%%/README-nl.win32-bin.txt
@@ -545,6 +541,7 @@ share/applications/gnucash.desktop
 %%DATADIR%%/accounts/de_AT/acctchrt_brokerage.gnucash-xea
 %%DATADIR%%/accounts/de_AT/acctchrt_business.gnucash-xea
 %%DATADIR%%/accounts/de_AT/acctchrt_common.gnucash-xea
+%%DATADIR%%/accounts/de_AT/acctchrt_ekr2017.gnucash-xea
 %%DATADIR%%/accounts/de_AT/acctchrt_houseown.gnucash-xea
 %%DATADIR%%/accounts/de_AT/acctchrt_investment.gnucash-xea
 %%DATADIR%%/accounts/de_AT/acctchrt_kids.gnucash-xea
@@ -622,6 +619,22 @@ share/applications/gnucash.desktop
 %%DATADIR%%/accounts/fi_FI/acctchrt_common.gnucash-xea
 %%DATADIR%%/accounts/fi_FI/acctchrt_ry.gnucash-xea
 %%DATADIR%%/accounts/fi_FI/acctchrt_sbr-xbrl.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_brokerage.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_business.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_carloan.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_cdmoneymkt.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_childcare.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_common.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_currency.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_eduloan.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_fixedassets.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_homeloan.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_homeown.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_otherloan.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_renter.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_retiremt.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_spouseinc.gnucash-xea
+%%DATADIR%%/accounts/fr_BE/acctchrt_spouseretire.gnucash-xea
 %%DATADIR%%/accounts/fr_CA/acctchrt_actifsfixes.gnucash-xea
 %%DATADIR%%/accounts/fr_CA/acctchrt_automobile.gnucash-xea
 %%DATADIR%%/accounts/fr_CA/acctchrt_basecommune.gnucash-xea
@@ -668,6 +681,14 @@ share/applications/gnucash.desktop
 %%DATADIR%%/accounts/fr_FR/acctchrt_retiremt.gnucash-xea
 %%DATADIR%%/accounts/fr_FR/acctchrt_spouseinc.gnucash-xea
 %%DATADIR%%/accounts/fr_FR/acctchrt_spouseretire.gnucash-xea
+%%DATADIR%%/accounts/hr/acctchrt_car.gnucash-xea
+%%DATADIR%%/accounts/hr/acctchrt_cdmoneymkt.gnucash-xea
+%%DATADIR%%/accounts/hr/acctchrt_checkbook.gnucash-xea
+%%DATADIR%%/accounts/hr/acctchrt_common.gnucash-xea
+%%DATADIR%%/accounts/hr/acctchrt_homeloan.gnucash-xea
+%%DATADIR%%/accounts/hr/acctchrt_homeown.gnucash-xea
+%%DATADIR%%/accounts/hr/acctchrt_otherloan.gnucash-xea
+%%DATADIR%%/accounts/hr/acctchrt_renter.gnucash-xea
 %%DATADIR%%/accounts/hu_HU/acctchrt_brokerage.gnucash-xea
 %%DATADIR%%/accounts/hu_HU/acctchrt_business.gnucash-xea
 %%DATADIR%%/accounts/hu_HU/acctchrt_carloan.gnucash-xea
@@ -1024,7 +1045,6 @@ share/applications/gnucash.desktop
 %%DATADIR%%/scm/c-interface.scm
 %%DATADIR%%/scm/commodity-table.scm
 %%DATADIR%%/scm/commodity-utilities.scm
-%%DATADIR%%/scm/config-var.scm
 %%DATADIR%%/scm/date-utilities.scm
 %%DATADIR%%/scm/engine-interface.scm
 %%DATADIR%%/scm/engine-utilities.scm
@@ -1076,7 +1096,6 @@ share/applications/gnucash.desktop
 %%DATADIR%%/scm/gnucash/report/report-system.scm
 %%DATADIR%%/scm/gnucash/report/report-system/collectors.scm
 %%DATADIR%%/scm/gnucash/report/report-system/report-collectors.scm
-%%TEST%%%%DATADIR%%/scm/gnucash/report/report-system/test/test-collectors.scm
 %%TEST%%%%DATADIR%%/scm/gnucash/report/report-system/test/test-extras.scm
 %%TEST%%%%DATADIR%%/scm/gnucash/report/report-system/test/test-load-report-system-module.scm
 %%TEST%%%%DATADIR%%/scm/gnucash/report/report-system/test/test-test-extras.scm
@@ -1085,6 +1104,7 @@ share/applications/gnucash.desktop
 %%DATADIR%%/scm/gnucash/report/standard-reports/account-summary.scm
 %%DATADIR%%/scm/gnucash/report/standard-reports/advanced-portfolio.scm
 %%DATADIR%%/scm/gnucash/report/standard-reports/average-balance.scm
+%%DATADIR%%/scm/gnucash/report/standard-reports/balance-forecast.scm
 %%DATADIR%%/scm/gnucash/report/standard-reports/balance-sheet.scm
 %%DATADIR%%/scm/gnucash/report/standard-reports/budget-balance-sheet.scm
 %%DATADIR%%/scm/gnucash/report/standard-reports/budget-barchart.scm
@@ -1106,10 +1126,6 @@ share/applications/gnucash.desktop
 %%DATADIR%%/scm/gnucash/report/standard-reports/register.scm
 %%DATADIR%%/scm/gnucash/report/standard-reports/sx-summary.scm
 %%TEST%%%%DATADIR%%/scm/gnucash/report/standard-reports/test/test-cash-flow.scm
-%%TEST%%%%DATADIR%%/scm/gnucash/report/standard-reports/test/test-cashflow-barchart.scm
-%%TEST%%%%DATADIR%%/scm/gnucash/report/standard-reports/test/test-standard-category-report.scm
-%%TEST%%%%DATADIR%%/scm/gnucash/report/standard-reports/test/test-standard-net-barchart.scm
-%%TEST%%%%DATADIR%%/scm/gnucash/report/standard-reports/test/test-standard-net-linechart.scm
 %%DATADIR%%/scm/gnucash/report/standard-reports/transaction.scm
 %%DATADIR%%/scm/gnucash/report/standard-reports/trial-balance.scm
 %%DATADIR%%/scm/gnucash/report/stylesheet-easy.scm
@@ -1172,7 +1188,6 @@ share/applications/gnucash.desktop
 %%TEST%%%%DATADIR%%/scm/test-c-interface.scm
 %%TEST%%%%DATADIR%%/scm/test-create-account.scm
 %%TEST%%%%DATADIR%%/scm/test-split.scm
-%%TEST%%%%DATADIR%%/scm/test-test-extras.scm
 %%DATADIR%%/scm/txf-de_DE.scm
 %%DATADIR%%/scm/txf-help-de_DE.scm
 %%DATADIR%%/scm/txf-help.scm
@@ -1245,6 +1260,7 @@ share/icons/hicolor/scalable/apps/gnucash-icon.svg
 %%NLS%%share/locale/gu/LC_MESSAGES/gnucash.mo
 %%NLS%%share/locale/he/LC_MESSAGES/gnucash.mo
 %%NLS%%share/locale/hi/LC_MESSAGES/gnucash.mo
+%%NLS%%share/locale/hr/LC_MESSAGES/gnucash.mo
 %%NLS%%share/locale/hu/LC_MESSAGES/gnucash.mo
 %%NLS%%share/locale/it/LC_MESSAGES/gnucash.mo
 %%NLS%%share/locale/ja/LC_MESSAGES/gnucash.mo

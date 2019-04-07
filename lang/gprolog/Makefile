@@ -14,7 +14,9 @@ LICENSE=	GPLv2
 
 BROKEN=		fails to build
 DEPRECATED=		Abandonware upstream (more than five years), fails in various ways with remotely recent compilers
-EXPIRATION_DATE=	2018-12-18
+# Bumped EXPIRATION date due to new release
+# and efforts to get it in: https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=231393
+EXPIRATION_DATE=	2019-08-31
 
 ONLY_FOR_ARCHS=	i386 amd64
 

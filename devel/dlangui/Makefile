@@ -3,7 +3,7 @@
 
 PORTNAME=	dlangui
 PORTVERSION=	0.9.178
-PORTREVISION=	1
+PORTREVISION=	2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	devel
 
@@ -13,6 +13,8 @@ COMMENT=	Cross Platform GUI for D programming language
 LICENSE=	BSL
 
 BROKEN=		does not compile with latest version of ldc
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2019-05-08
 
 BUILD_DEPENDS=	ldmd2:lang/ldc \
 		dub:devel/dub \

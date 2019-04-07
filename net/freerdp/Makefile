@@ -3,10 +3,11 @@
 
 PORTNAME=	freerdp
 DISTVERSION=	2.0.0-rc4
+PORTREVISION=	1
 CATEGORIES=	net comms ipv6
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES=	649f49f.patch:-p1 effa8b8.patch:-p1
+PATCHFILES=	649f49f.patch:-p1 effa8b8.patch:-p1 0c83efa.patch:-p1
 
 MAINTAINER=	kevans@FreeBSD.org
 COMMENT=	Free implementation of Remote Desktop Protocol

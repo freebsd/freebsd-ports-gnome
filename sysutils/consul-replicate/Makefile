@@ -31,7 +31,7 @@ post-extract:
 
 do-build:
 	@cd ${WRKSRC}/src/github.com/${GH_ACCOUNT}/${PORTNAME}; \
-		${SETENV} CGO_ENABLED=0 ${BUILD_ENV} GOCACHE=off GOPATH=${WRKSRC} \
+		${SETENV} CGO_ENABLED=0 ${BUILD_ENV} ${MAKE_ENV} GOPATH=${WRKSRC} \
 		go build -v -x -ldflags "\
 		-X github.com/${GH_ACCOUNT}/${PORTNAME}/version.Version=${PORTVERSION}  \
 		-X github.com/${GH_ACCOUNT}/${PORTNAME}/version.GitCommit=675a2c2  \

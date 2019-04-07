@@ -13,8 +13,6 @@ COMMENT=	Typo3 content management system
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-IGNORE_WITH_PHP=	56
-
 PORTSCOUT=	limit:^${PORT_V_MAJOR}\.${PORT_V_MINOR}\.
 
 USES=		cpe php:web,flavors shebangfix
@@ -26,7 +24,7 @@ WRKSRC=		${WRKDIR}/${TYPO3SRC}
 
 PORT_V_MAJOR=	8
 PORT_V_MINOR=	7
-PORT_V_PATCH=	22
+PORT_V_PATCH=	24
 
 TYPO3WWW=	www
 TYPO3SRC=	${PORTNAME}_src-${PORTVERSION}

@@ -39,6 +39,7 @@ share/doc/HTML/sv/kinfocenter/index.cache.bz2
 share/doc/HTML/sv/kinfocenter/index.docbook
 share/doc/HTML/uk/kinfocenter/index.cache.bz2
 share/doc/HTML/uk/kinfocenter/index.docbook
+share/doc/HTML/uk/kinfocenter/kinfocenter.png
 share/kcmusb/usb.ids
 %%DATADIR%%/images/freebsd_logo.svg
 share/kservices5/about-distro.desktop
@@ -78,19 +79,6 @@ share/locale/ar/LC_MESSAGES/kcmsamba.mo
 share/locale/ar/LC_MESSAGES/kcmusb.mo
 share/locale/ar/LC_MESSAGES/kcmview1394.mo
 share/locale/ar/LC_MESSAGES/kinfocenter.mo
-share/locale/ast/LC_MESSAGES/kcm-about-distro.mo
-share/locale/ast/LC_MESSAGES/kcm_energyinfo.mo
-share/locale/ast/LC_MESSAGES/kcm_fileindexermonitor.mo
-share/locale/ast/LC_MESSAGES/kcm_memory.mo
-share/locale/ast/LC_MESSAGES/kcm_pci.mo
-share/locale/ast/LC_MESSAGES/kcmdevinfo.mo
-share/locale/ast/LC_MESSAGES/kcminfo.mo
-share/locale/ast/LC_MESSAGES/kcmnic.mo
-share/locale/ast/LC_MESSAGES/kcmopengl.mo
-share/locale/ast/LC_MESSAGES/kcmsamba.mo
-share/locale/ast/LC_MESSAGES/kcmusb.mo
-share/locale/ast/LC_MESSAGES/kcmview1394.mo
-share/locale/ast/LC_MESSAGES/kinfocenter.mo
 share/locale/be/LC_MESSAGES/kcminfo.mo
 share/locale/be/LC_MESSAGES/kcmopengl.mo
 share/locale/be/LC_MESSAGES/kcmsamba.mo

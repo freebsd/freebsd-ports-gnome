@@ -12,22 +12,20 @@ MAINTAINER=	cy@FreeBSD.org
 #		skreuzer@FreeBSD.org is also committer for this port
 COMMENT=	Systems administration tool for networks
 
-DEPRECATED=		OpenSSL 1.1.X is not supported.
-EXPIRATION_DATE=	2021-09-30
+DEPRECATED=		No longer supported upstream
+EXPIRATION_DATE=	2019-06-30
 
 LICENSE=	GPLv3
 
 CPE_VENDOR=	gnu
 
-CONFLICTS=	cfengine-2* cfengine3[0-79]-* cfengine31[0-9]-*
+CONFLICTS=	cfengine3[0-79]-* cfengine31[0-9]-*
 .if !defined(MASTERDIR)
 PKGNAMESUFFIX=	38
 CONFLICTS+=	cfengine-3.*
 .endif
 
 FETCH_BEFORE_ARGS=	-o ${DISTDIR}/${DISTFILES}
-
-CONFLICTS=	cfengine-[12-79]*
 
 USE_RC_SUBR=	cf-execd cf-serverd cf-monitord
 

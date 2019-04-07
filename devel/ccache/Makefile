@@ -3,7 +3,7 @@
 
 PORTNAME=	ccache
 #PORTVERSION must be set later due to depending on PORT_OPTIONS.
-PORTREVISION=	0
+PORTREVISION=	1
 CATEGORIES=	devel
 MASTER_SITES=	https://www.samba.org/ftp/ccache/ \
 		LOCAL/bdrewery
@@ -62,11 +62,13 @@ NO_CCACHE_DEPEND=	yes
 
 OPTIONS_SUB=	yes
 
-STATIC_LDFLAGS=	-static
+STATIC_LDFLAGS+=	-static
 
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MMEMCACHED}
+# Hack for libsasl2.a requiring HMAC_CTX_reset from hidden libntlm.a.
+STATIC_LDFLAGS+= -L${LOCALBASE}/lib/sasl2
 PORTVERSION=	3.5.dev.20180926
 USE_GITHUB=	yes
 GH_TAGNAME=	f7712082106bef085515f86ae47e7dbbd2a48b57
@@ -97,11 +99,11 @@ PLIST_SUB+=	CCLINKDIR="${CCLINKDIR}"
 CCACHE_COMPILERS+=	icc icpc
 .endif
 
-GNU_COMPILERS+=		34 42 43 44 45 46 47 48 49 5 6 7 8
+GNU_COMPILERS+=		34 42 43 44 45 46 47 48 49 5 6 7 8 9
 CCACHE_COMPILERS+=	cc c++ CC gcc g++ ${GNU_COMPILERS:S|^|gcc|} ${GNU_COMPILERS:S|^|g++|}
 
 .if ${PORT_OPTIONS:MCLANGLINK}
-CLANG_COMPILERS+=	33 34 35 36 37 38 39 40 50 60 70 -devel
+CLANG_COMPILERS+=	33 34 35 36 37 38 39 40 50 60 70 80 -devel
 CCACHE_COMPILERS+=	clang clang++ ${CLANG_COMPILERS:S|^|clang|} ${CLANG_COMPILERS:S|^|clang++|}
 .endif
 

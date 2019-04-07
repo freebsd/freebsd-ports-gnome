@@ -50,7 +50,6 @@
     SUBDIR += claws-mail-bogofilter
     SUBDIR += claws-mail-bsfilter
     SUBDIR += claws-mail-clamd
-    SUBDIR += claws-mail-fancy
     SUBDIR += claws-mail-fetchinfo
     SUBDIR += claws-mail-gdata
     SUBDIR += claws-mail-libravatar
@@ -86,7 +85,6 @@
     SUBDIR += cyrus2dovecot
     SUBDIR += davmail
     SUBDIR += dbmail
-    SUBDIR += dbmail22
     SUBDIR += dcc-dccd
     SUBDIR += deforaos-mailer
     SUBDIR += delatt
@@ -97,10 +95,6 @@
     SUBDIR += dot-forward
     SUBDIR += dovecot
     SUBDIR += dovecot-pigeonhole
-    SUBDIR += dovecot-pigeonhole04
-    SUBDIR += dovecot22
-    SUBDIR += drac
-    SUBDIR += dracmail
     SUBDIR += dspam
     SUBDIR += ecartis
     SUBDIR += elm
@@ -133,6 +127,7 @@
     SUBDIR += fastforward
     SUBDIR += fdm
     SUBDIR += fetchmail
+    SUBDIR += fetchmailconf
     SUBDIR += filtermail
     SUBDIR += findmaildirs
     SUBDIR += geary
@@ -181,8 +176,6 @@
     SUBDIR += jmba
     SUBDIR += junkfilter
     SUBDIR += jwsmtp
-    SUBDIR += kbiff
-    SUBDIR += kshowmail
     SUBDIR += lbdb
     SUBDIR += lens
     SUBDIR += libcmime
@@ -319,6 +312,7 @@
     SUBDIR += p5-Email-Address
     SUBDIR += p5-Email-Address-List
     SUBDIR += p5-Email-Address-Loose
+    SUBDIR += p5-Email-Address-UseXS
     SUBDIR += p5-Email-Address-XS
     SUBDIR += p5-Email-AddressParser
     SUBDIR += p5-Email-Date
@@ -481,12 +475,9 @@
     SUBDIR += pear-Net_IMAP
     SUBDIR += pear-Net_LMTP
     SUBDIR += pecl-mailparse
-    SUBDIR += pecl-mailparse2
-    SUBDIR += pecl-pop3
     SUBDIR += perdition
     SUBDIR += pflogsumm
     SUBDIR += pfqueue
-    SUBDIR += php56-imap
     SUBDIR += php71-imap
     SUBDIR += php72-imap
     SUBDIR += php73-imap
@@ -539,6 +530,7 @@
     SUBDIR += py-flufl.bounce
     SUBDIR += py-fuglu
     SUBDIR += py-libgmail
+    SUBDIR += py-mail-parser
     SUBDIR += py-managesieve3
     SUBDIR += py-milter
     SUBDIR += py-notmuch
@@ -554,7 +546,6 @@
     SUBDIR += pysieved
     SUBDIR += pyzor
     SUBDIR += qconfirm
-    SUBDIR += qgmailnotifier
     SUBDIR += qmail
     SUBDIR += qmail-activedir
     SUBDIR += qmail-auditor
@@ -642,6 +633,7 @@
     SUBDIR += sa-utils
     SUBDIR += scam-backscatter
     SUBDIR += sendmail
+    SUBDIR += sendmail-devel
     SUBDIR += sendok
     SUBDIR += sentinel
     SUBDIR += serialmail
@@ -659,6 +651,7 @@
     SUBDIR += smtpfeed
     SUBDIR += smtpmail
     SUBDIR += smtprc
+    SUBDIR += smtprelay
     SUBDIR += smtptrapd
     SUBDIR += sortmail
     SUBDIR += spamass-ixhash
@@ -727,7 +720,6 @@
     SUBDIR += textmail
     SUBDIR += thunderbird
     SUBDIR += thunderbird-dictionaries
-    SUBDIR += thunderbird-i18n
     SUBDIR += tlb
     SUBDIR += tmda
     SUBDIR += tpop3d
@@ -757,7 +749,5 @@
     SUBDIR += xmailbox
     SUBDIR += xmailwatcher
     SUBDIR += xpbiff
-    SUBDIR += xpi-displayquota
-    SUBDIR += xpi-dispmua
 
 .include <bsd.port.subdir.mk>

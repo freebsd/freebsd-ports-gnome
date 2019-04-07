@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	suricata
-DISTVERSION=	4.1.1
+DISTVERSION=	4.1.3
 CATEGORIES=	security
 MASTER_SITES=	https://www.openinfosecfoundation.org/download/
 
@@ -23,6 +23,7 @@ CONFLICTS_INSTALL=libhtp
 
 USE_LDCONFIG=	yes
 USE_RC_SUBR=	${PORTNAME}
+PLIST_SUB=	PORTVERSION=${PORTVERSION}
 
 GNU_CONFIGURE=	yes
 
@@ -31,7 +32,7 @@ CPE_VENDOR=	openinfosecfoundation
 INSTALL_TARGET=		install-strip
 TEST_TARGET=		check
 
-OPTIONS_DEFINE=		GEOIP IPFW JSON NETMAP NSS PORTS_PCAP PRELUDE \
+OPTIONS_DEFINE=		IPFW JSON NETMAP NSS PORTS_PCAP PRELUDE \
 			PYTHON REDIS RUST TESTS
 OPTIONS_DEFINE_amd64=	HYPERSCAN
 OPTIONS_DEFAULT=	IPFW JSON NETMAP PYTHON RUST
@@ -42,7 +43,6 @@ OPTIONS_RADIO_SCRIPTS=	LUA LUAJIT
 
 SCRIPTS_DESC=		Scripting
 
-GEOIP_DESC=		GeoIP support
 HYPERSCAN_DESC=		Hyperscan support
 IPFW_DESC=		IPFW and IP Divert support for inline IDP
 JSON_DESC=		JSON output support
@@ -56,9 +56,6 @@ PYTHON_DESC=		Python-based update and control utilities
 REDIS_DESC=		Redis output support
 RUST_DESC=		Rust parser support
 TESTS_DESC=		Unit tests in suricata binary
-
-GEOIP_LIB_DEPENDS=		libGeoIP.so:net/GeoIP
-GEOIP_CONFIGURE_ON=		--enable-geoip
 
 HYPERSCAN_LIB_DEPENDS=		libhs.so:devel/hyperscan
 HYPERSCAN_CONFIGURE_ON=		--with-libhs-includes=${LOCALBASE}/include \
@@ -102,7 +99,8 @@ PRELUDE_LIB_DEPENDS=		libprelude.so:security/libprelude \
 PRELUDE_CONFIGURE_ENABLE=	prelude
 PRELUDE_CONFIGURE_ON=		--with-libprelude-prefix=${LOCALBASE}
 
-PYTHON_USES=			python:2.7
+PYTHON_USES=			python
+PYTHON_USE=			PYTHON=py3kplist
 PYTHON_CONFIGURE_ENABLE=	python
 PYTHON_RUN_DEPENDS=		${PYTHON_PKGNAMEPREFIX}yaml>0:devel/py-yaml@${PY_FLAVOR}
 PYTHON_BUILD_DEPENDS=		${PYTHON_RUN_DEPENDS}
@@ -112,7 +110,7 @@ REDIS_CONFIGURE_ON=		--enable-hiredis \
 				--with-libhiredis-includes=${LOCALBASE}/include \
 				--with-libhiredis-libraries=${LOCALBASE}/lib
 
-RUST_BUILD_DEPENDS=		rustc:lang/rust
+RUST_BUILD_DEPENDS=		rustc:lang/${RUST_DEFAULT}
 RUST_CONFIGURE_ENABLE=		rust
 
 TESTS_CONFIGURE_ENABLE=		unittests
@@ -137,6 +135,10 @@ LOGS_DIR?=	/var/log/${PORTNAME}
 
 pre-patch:
 	@${CP} ${FILESDIR}/ax_check_compile_flag.m4 ${WRKSRC}/m4
+
+post-patch-PYTHON-on:
+	@${REINPLACE_CMD} -e "/AC_PATH_PROGS.*HAVE_PYTHON/ s/python[^,]*,/${PYTHON_VERSION},/g" \
+		${WRKSRC}/configure.ac
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${CONFIG_DIR}

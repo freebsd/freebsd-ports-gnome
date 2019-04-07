@@ -62,8 +62,6 @@
     SUBDIR += pear-Net_FTP
     SUBDIR += pftpd
     SUBDIR += php-fastdfs
-    SUBDIR += php56-curl
-    SUBDIR += php56-ftp
     SUBDIR += php71-curl
     SUBDIR += php71-ftp
     SUBDIR += php72-curl
@@ -71,13 +69,13 @@
     SUBDIR += php73-curl
     SUBDIR += php73-ftp
     SUBDIR += phpwebftp
-    SUBDIR += plasma-applet-ftpmonitor
     SUBDIR += proftpd
-    SUBDIR += proftpd-mod_geoip
+    SUBDIR += proftpd-mod_vroot
     SUBDIR += profxp
     SUBDIR += puf
     SUBDIR += pure-ftpd
     SUBDIR += pureadmin
+    SUBDIR += py-aioftp
     SUBDIR += py-ftputil
     SUBDIR += py-pycurl
     SUBDIR += py-pyftpdlib
@@ -87,7 +85,6 @@
     SUBDIR += quftp
     SUBDIR += rexx-curl
     SUBDIR += rubygem-curb
-    SUBDIR += scythia
     SUBDIR += smbftpd
     SUBDIR += spegla
     SUBDIR += tftp-hpa

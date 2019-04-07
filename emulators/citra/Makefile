@@ -1,27 +1,29 @@
 # $FreeBSD$
 
 PORTNAME=	citra
-PORTVERSION=	s20181227
+PORTVERSION=	s20190406
 PORTREVISION?=	0
 CATEGORIES=	emulators
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Nintendo 3DS emulator/debugger
 
-LICENSE=	BSD2CLAUSE BSD3CLAUSE BSL GPLv2+ LGPL21+ MIT UNLICENSE
+LICENSE=	BSD2CLAUSE BSD3CLAUSE BSL GPLv2+ ISCL LGPL21+ MIT OpenSSL UNLICENSE
 LICENSE_COMB=	multi
 LICENSE_FILE_BSD2CLAUSE=${WRKSRC}/externals/fmt/LICENSE.rst
 LICENSE_FILE_BSD3CLAUSE=${WRKSRC}/externals/inih/inih/LICENSE.txt
 LICENSE_FILE_BSL=	${WRKSRC}/externals/catch/LICENSE.txt
 LICENSE_FILE_GPLv2+ =	${WRKSRC}/license.txt
-LICENSE_FILE_MIT=	${WRKSRC}/externals/enet/LICENSE
+LICENSE_FILE_ISCL=	${WRKSRC}/externals/cubeb/LICENSE
 LICENSE_FILE_LGPL21+ =	${_LICENSE_STORE}/LGPL21 # soundtouch
+LICENSE_FILE_MIT=	${WRKSRC}/externals/enet/LICENSE
+LICENSE_FILE_OpenSSL=	${WRKSRC}/externals/libressl/COPYING
 
 BUILD_DEPENDS=	boost-libs>=1.66:devel/boost-libs
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	citra-emu
-GH_TAGNAME=	3989c17cb
+GH_TAGNAME=	d5bcb45b2
 GH_TUPLE=	citra-emu:ext-libressl-portable:7d01cb0:libressl/externals/libressl \
 		citra-emu:ext-soundtouch:060181e:soundtouch/externals/soundtouch \
 		MerryMage:dynarmic:r1-992-g4e6848d1:dynarmic/externals/dynarmic \
@@ -29,22 +31,21 @@ GH_TUPLE=	citra-emu:ext-libressl-portable:7d01cb0:libressl/externals/libressl \
 		arun11299:cpp-jwt:v1.1.1:cpp_jwt/externals/cpp-jwt \
 		benhoyt:inih:r42-6-g2023872:inih/externals/inih/inih \
 		catchorg:Catch2:v2.3.0:catch/externals/catch \
-		fmtlib:fmt:5.2.1:fmt/externals/fmt \
+		fmtlib:fmt:5.3.0:fmt/externals/fmt \
 		herumi:xbyak:v5.71:xbyak/externals/xbyak \
 		kinetiknz:cubeb:cubeb-0.2-1039-g44341a1:cubeb/externals/cubeb \
 		lsalzman:enet:39a72ab:enet/externals/enet \
 		neobrain:nihstro:fd69de1:nihstro/externals/nihstro \
 		weidai11:cryptopp:CRYPTOPP_7_0_0-23-gf320e7d9:cryptopp/externals/cryptopp/cryptopp \
-		zeromq:cppzmq:v4.2.3:cppzmq/externals/cppzmq \
-		zeromq:libzmq:v4.2.5:libzmq/externals/libzmq
+		wwylele:teakra:e6ea0ea:teakra/externals/teakra
 
 USES=		cmake compiler:c++17-lang iconv localbase:ldflags
 USE_SDL=	sdl2
 LDFLAGS+=	-Wl,--as-needed # Qt5Network
 TEST_TARGET=	test
 
-OPTIONS_DEFINE=	ALSA PULSEAUDIO JACK SNDIO
-OPTIONS_DEFAULT=ALSA PULSEAUDIO JACK
+OPTIONS_DEFINE=	ALSA FFMPEG PULSEAUDIO JACK SNDIO
+OPTIONS_DEFAULT=ALSA FFMPEG PULSEAUDIO JACK
 OPTIONS_MULTI=	GUI
 OPTIONS_MULTI_GUI=	QT5 SDL
 OPTIONS_SLAVE?=	SDL
@@ -53,6 +54,9 @@ OPTIONS_EXCLUDE:=	${OPTIONS_MULTI_GUI}
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 ALSA_RUN_DEPENDS=	${LOCALBASE}/lib/alsa-lib/libasound_module_pcm_oss.so:audio/alsa-plugins
 ALSA_CMAKE_BOOL=	USE_ALSA
+
+FFMPEG_LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg
+FFMPEG_CMAKE_BOOL=	ENABLE_FFMPEG
 
 JACK_BUILD_DEPENDS=	jackit>0:audio/jack
 JACK_CMAKE_BOOL=	USE_JACK

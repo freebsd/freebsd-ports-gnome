@@ -4,11 +4,14 @@
 PORTNAME=	palemoon
 DISTVERSION=	27.9.4
 DISTVERSIONSUFFIX=_Release
-PORTREVISION=	2
+PORTREVISION=	5
 CATEGORIES=	www ipv6
 
 MAINTAINER=	lichray@gmail.com
 COMMENT=	Open Source Goanna-based web browser
+
+DEPRECATED=	Multiple vulnerabilities and crashes if built by Clang 8
+EXPIRATION_DATE=2019-08-31
 
 BUILD_DEPENDS=	nspr>=4.15:devel/nspr \
 		nss>=3.31.1:security/nss \
@@ -29,7 +32,7 @@ GH_PROJECT=	Pale-Moon
 
 USE_GECKO=	gecko
 MOZ_PKGCONFIG_FILES=	# empty
-USE_MOZILLA=	# empty
+USE_MOZILLA=	-webp
 
 PM_ICON=	${PORTNAME}.png
 PM_ICON_SRC=	${PREFIX}/lib/${PORTNAME}/browser/icons/mozicon128.png
@@ -40,7 +43,7 @@ MOZ_OPTIONS=	--enable-application=browser \
 		--enable-jemalloc-lib
 
 OPTIONS_DEFAULT=	GTK2
-OPTIONS_EXCLUDE=	DTRACE JACK TEST WAYLAND
+OPTIONS_EXCLUDE=	JACK TEST WAYLAND
 
 .include "${.CURDIR}/../../www/firefox/Makefile.options"
 

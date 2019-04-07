@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	cassandra-cpp-driver
-PORTVERSION=	2.10.0
-PORTREVISION=	1
+PORTVERSION=	2.11.0
+PORTREVISION=	0
 CATEGORIES=	databases
 
 MAINTAINER=	gahr@FreeBSD.org
@@ -19,7 +19,6 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	datastax
 GH_PROJECT=	cpp-driver
 
-USES=		cmake pkgconfig pathfix ssl
 CMAKE_ARGS=	-DCMAKE_INSTALL_LIBDIR:STRING=lib \
 		-DCASS_BUILD_STATIC:BOOL=ON
 

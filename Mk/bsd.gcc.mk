@@ -35,13 +35,12 @@ GCC_Include_MAINTAINER=		gerald@FreeBSD.org
 # ascending order and in sync with the table below. 
 # When adding a version, please keep the comment in
 # Mk/bsd.default-versions.mk in sync.
-GCCVERSIONS=	040200 040800 040900 050000 060000 070000 080000
+GCCVERSIONS=	040200 040800 050000 060000 070000 080000
 
 # The first field is the OSVERSION in which it disappeared from the base.
 # The second field is the version as USE_GCC would use.
 GCCVERSION_040200=	9999999 4.2
 GCCVERSION_040800=	      0 4.8
-GCCVERSION_040900=	      0 4.9
 GCCVERSION_050000=	      0 5
 GCCVERSION_060000=	      0 6
 GCCVERSION_070000=	      0 7
@@ -150,9 +149,16 @@ CC:=			gcc${V}
 CXX:=			g++${V}
 CPP:=			cpp${V}
 _GCC_RUNTIME:=		${LOCALBASE}/lib/gcc${V}
+.   if ${PORTNAME} == gcc
+# We don't want the rpath stuff while building GCC itself
+# so we do not set the FLAGS as done in the else part.
+# When building a GCC, we want the target libraries to be used and not the
+# host GCC libraries.
+.   else
 CFLAGS+=		-Wl,-rpath=${_GCC_RUNTIME}
 CXXFLAGS+=		-Wl,-rpath=${_GCC_RUNTIME}
 LDFLAGS+=		-Wl,-rpath=${_GCC_RUNTIME} -L${_GCC_RUNTIME}
+.   endif
 .  else # Use GCC in base.
 CC:=			gcc
 CXX:=			g++

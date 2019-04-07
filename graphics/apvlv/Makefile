@@ -14,6 +14,8 @@ COMMENT=	PDF/DJVU Viewer that behaves like Vim
 LICENSE=	GPLv2
 
 BROKEN=		fails to build
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2019-05-08
 
 LIB_DEPENDS=	libpoppler-glib.so:graphics/poppler-glib
 
@@ -25,21 +27,18 @@ CMAKE_ARGS+=	-DSYSCONFDIR=${PREFIX}/etc \
 		-DMANDIR=${MANPREFIX}/man \
 		-DDOCDIR=${DOCSDIR} \
 		-DAPVLV_WITH_UMD=OFF \
+		-DAPVLV_WITH_HTML=OFF \
 		-DAPVLV_WITH_TXT=ON
 CFLAGS+=	-pthread
 LDFLAGS+=	-pthread
 WRKSRC=		${WRKDIR}/${DISTNAME}
 
-OPTIONS_DEFINE=	DJVU WEBKIT
+OPTIONS_DEFINE=	DJVU
 
 DJVU_DESC=	DjVu document support
 
 DJVU_CMAKE_ON=	-DAPVLV_WITH_DJVU=ON
 DJVU_CMAKE_OFF=	-DAPVLV_WITH_DJVU=OFF
 DJVU_LIB_DEPENDS=	libdjvulibre.so:graphics/djvulibre
-
-WEBKIT_CMAKE_ON=	-DAPVLV_WITH_HTML=ON
-WEBKIT_CMAKE_OFF=	-DAPVLV_WITH_HTML=OFF
-WEBKIT_LIB_DEPENDS=	libwebkitgtk-1.0.so:www/webkit-gtk2
 
 .include <bsd.port.mk>
