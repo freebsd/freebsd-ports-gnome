@@ -2,8 +2,7 @@
 
 PORTNAME=	telegram-desktop
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.4.2
-PORTREVISION=	3
+DISTVERSION=	1.5.11
 CATEGORIES=	net-im
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -11,6 +10,9 @@ COMMENT=	Telegram Desktop messaging app
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+NOT_FOR_ARCHS=		powerpc powerpc64 powerpcspe
+NOT_FOR_ARCHS_REASON=	Please add support for your architecture in base/build_config.h
 
 BUILD_DEPENDS=	dee>0:devel/dee \
 		gyp:devel/py-gyp@${PY_FLAVOR} \
@@ -31,8 +33,8 @@ GH_PROJECT=	tdesktop
 GH_TUPLE=	catchorg:Catch2:5ca44b68:catch/Telegram/ThirdParty/Catch \
 		mapbox:variant:550ac2f:variant/Telegram/ThirdParty/variant \
 		Microsoft:GSL:d846fe5:gsl/Telegram/ThirdParty/GSL \
-		telegramdesktop:libtgvoip:9b292fd:libtgvoip/Telegram/ThirdParty/libtgvoip \
-		telegramdesktop:crl:4291015:crl/Telegram/ThirdParty/crl \
+		telegramdesktop:libtgvoip:59a975b:libtgvoip/Telegram/ThirdParty/libtgvoip \
+		telegramdesktop:crl:9b7c6b5:crl/Telegram/ThirdParty/crl \
 		Cyan4973:xxHash:7cc9639:xxhash/Telegram/ThirdParty/xxHash
 USE_GNOME=	glib20
 USE_QT=		core gui imageformats network widgets buildtools_build qmake_build dbus
@@ -40,6 +42,11 @@ USE_XORG=	x11 xcb
 
 CMAKE_SOURCE_PATH=	${WRKSRC}/out/Release
 
+# Telegram asks each custom build to have its own API ID and hash.
+# Use the default ones for now. We may need to switch to the official ones,
+# or create our own.
+TELEGRAM_API_ID=	17349
+TELEGRAM_API_HASH=	344583e45741c457fe1862106095a5eb
 GYP_DEFINES=	TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME
 
 # Telegram uses OpenAL for its audio, but libtgvoip (for voice calls) can use PulseAudio or ALSA.
@@ -86,6 +93,8 @@ post-patch:
 
 pre-configure:
 	@cd ${WRKSRC} && gyp \
+	    -Dapi_id=${TELEGRAM_API_ID} \
+	    -Dapi_hash=${TELEGRAM_API_HASH} \
 	    -Dbuild_defines=${GYP_DEFINES} \
 	    -Gconfig=Release \
 	    --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake

@@ -19,10 +19,12 @@ BROKEN=		does not build
 BROKEN_aarch64=		fails to build: Could not find JNI (missing: JAVA_AWT_LIBRARY JAVA_JVM_LIBRARY)
 BROKEN_armv6=		fails to build: Could not find JNI (missing: JAVA_AWT_LIBRARY JAVA_JVM_LIBRARY)
 BROKEN_armv7=		fails to build: Could not find JNI (missing: JAVA_AWT_LIBRARY JAVA_JVM_LIBRARY)
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2019-05-08
 
 USES=		cmake compiler:c++11-lang zip:infozip
 
-OPTIONS_DEFINE=	PCI USB JAVA COMPAT TOOL GUI DOCS EXAMPLES
+OPTIONS_DEFINE=	PCI USB JAVA COMPAT TOOL DOCS EXAMPLES
 OPTIONS_DEFAULT=PCI USB JAVA TOOL
 NO_OPTIONS_SORT=yes
 
@@ -31,7 +33,6 @@ USB_DESC=	Enable Quantis USB support
 JAVA_DESC=	Enable Java support
 COMPAT_DESC=	Build API v1 compatibility libraries
 TOOL_DESC=	Build EasyQuantis application
-GUI_DESC=	Build QT4 GUI for EasyQuantis application
 
 EXTRACT_BEFORE_ARGS=	-aqo
 USE_LDCONFIG=	yes
@@ -77,15 +78,7 @@ PLIST_SUB+=	COMPAT="@comment "
 BUILD_DEPENDS+=	${LOCALBASE}/lib/libboost_date_time.a:devel/boost-libs
 CXXFLAGS+=	-I${LOCALBASE}/include
 
-. if ${PORT_OPTIONS:MGUI}
-DEPRECATED=		Qt4 has been EOL since december 2015
-EXPIRATION_DATE=	2019-03-15
-
-USES+=		qt:4
-USE_QT+=	corelib gui moc_build uic_build rcc_build qmake_build
-. else
 CMAKE_ARGS+=	-DDISABLE_EASYQUANTIS_GUI=1
-. endif
 
 PLIST_SUB+=	TOOL=""
 .else

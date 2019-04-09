@@ -2,11 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	ocserv
-PORTVERSION=	0.12.1
-PORTREVISION=	1
+PORTVERSION=	0.12.3
 CATEGORIES=	net security
-MASTER_SITES=	ftp://ftp.infradead.org/pub/ocserv/ \
-		LOCAL/cpm
+MASTER_SITES=	ftp://ftp.infradead.org/pub/ocserv/
 
 MAINTAINER=	cpm@FreeBSD.org
 COMMENT=	Server implementing the AnyConnect SSL VPN protocol
@@ -29,9 +27,9 @@ LIB_DEPENDS=	liblz4.so:archivers/liblz4 \
 
 USES=		autoreconf cpe gperf libtool localbase ncurses \
 		pathfix pkgconfig readline tar:xz
+
 CPE_VENDOR=	infradead
 GNU_CONFIGURE=	yes
-
 CONFIGURE_ARGS=	--without-geoip \
 		--without-http-parser
 

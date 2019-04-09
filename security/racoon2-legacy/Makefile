@@ -12,23 +12,24 @@ MAINTAINER=	cy@FreeBSD.org
 COMMENT=	Racoon2 IPsec daemon
 
 CONFLICTS=	racoon2-[0-9]*
+BROKEN_FreeBSD_12=	Will not build with openssl111
+BROKEN_FreeBSD_13=	Will not build with openssl111
+
+DEPRECATED=	No longer supported upstream, use security/racoon2
+EXPIRATION_DATE=	2019-05-31
 
 USES=		perl5 tar:tgz ssl
 CONFIGURE_ARGS+=	--disable-kinkd
 PLIST_SUB+=	KINK="@comment "
-
-DEPRECATED=	To retire when FreeBSD 11 is EOL
-EXPIRATION_DATE=	2021-09-30
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	YACC=/usr/bin/yacc perl_bindir=${LOCALBASE}/bin/perl5
 
 OPTIONS_DEFINE=	DOCS
 OPTIONS_RADIO=	KERBEROS
-OPTIONS_RADIO_KERBEROS=	KRB5 KRB5_114 \
+OPTIONS_RADIO_KERBEROS=	KRB5 \
 		HEIMDAL_PORTS HEIMDAL_BASE
 KRB5_DESC=	Build with Kerberos (security/krb5)
-KRB5_114_DESC=	Build with Kerberos (security/krb5-114)
 HEIM_AL_PORTS_DESC=	Build with Heimdal in ports (security/heimdal)
 HEIMDAL_BASE_DESC=	Build with Heimdal in base
 
@@ -39,14 +40,6 @@ KRB5_PLIST_SUB=		KINK=""
 KRB5_LIB_DEPENDS=	libkrb5support.so:security/krb5
 KRB5_RUN_DEPENDS=	kinit:security/krb5
 KRB5_VARS=		KINK=yes
-
-KRB5_114_USES=		gssapi:mit
-KRB5_114_CONFIGURE_ON=	--enable-kinkd
-KRB5_114_MAKE_ENV=	WITH_KINK=yes
-KRB5_114_PLIST_SUB=	KINK=""
-KRB5_114_LIB_DEPENDS=	libkrb5support.so:security/krb5-114
-KRB5_114_RUN_DEPENDS=	kinit:security/krb5-114
-KRB5_114_VARS=		KINK=yes
 
 HEIMDAL_PORT_USES=	gssapi:heimdal
 HEIMDAL_PORTS_CONFIGURE_ON=	--enable-kinkd

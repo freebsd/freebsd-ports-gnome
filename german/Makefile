@@ -17,13 +17,11 @@
     SUBDIR += hyphen
     SUBDIR += jdictionary-eng-ger
     SUBDIR += jdictionary-ger-hun
-    SUBDIR += kde4-l10n
     SUBDIR += libreoffice
     SUBDIR += mediathekview
     SUBDIR += mythes
     SUBDIR += phone
     SUBDIR += schwobifyer
-    SUBDIR += tipp10
     SUBDIR += trytond28_account_de_skr03
     SUBDIR += unix-connect
     SUBDIR += webalizer2

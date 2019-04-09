@@ -3,6 +3,7 @@
 
 PORTNAME=	cutemaze
 PORTVERSION=	1.2.4
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	http://gottcode.org/${PORTNAME}/
 DISTNAME=	${PORTNAME}-${DISTVERSION}-src
@@ -13,7 +14,7 @@ COMMENT=	Simple, top-down game in which mazes are randomly generated
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		qmake qt:5 tar:bzip2
+USES=		compiler:c++11-lang qmake qt:5 tar:bzip2
 USE_GL=		gl
 USE_QT=		core gui svg imageformats_run widgets \
 		linguisttools_build buildtools_build

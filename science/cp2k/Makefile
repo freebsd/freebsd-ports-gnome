@@ -1,10 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	cp2k
-DISTVERSION=	6.1
-PORTREVISION=	3
+DISTVERSIONPREFIX=	v
+DISTVERSION=	6.1.0
+PORTREVISION=	5
 CATEGORIES=	science
-MASTER_SITES=	SF/${PORTNAME}/
 
 PATCH_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/commit/
 PATCHFILES=	f03e6277feea9a65d543ca6c1184f58d3e83bc2a.patch:-p2 \
@@ -18,11 +18,14 @@ LICENSE=	GPLv2+
 LIB_DEPENDS=	libblas.so:math/blas \
 		libfftw3.so:math/fftw3 \
 		liblapack.so:math/lapack
+RUN_DEPENDS=	cp2k-data>0:science/cp2k-data
 
 USES=		fortran gmake localbase:ldflags python:build tar:bz2
+USE_GITHUB=	yes
 
 MAKEFILE=	${WRKSRC}/makefiles/Makefile
-MAKE_ARGS=	XARCH=FreeBSD-${NOLIBINT}libint-gfortran VERSION=${VERSION} FC=gfortran${GCC_DEFAULT} CC=${CC} LD=gfortran${GCC_DEFAULT}
+MAKE_ARGS=	XARCH=FreeBSD-${NOLIBINT}libint-gfortran VERSION=${VERSION} FC=gfortran${GCC_DEFAULT} CC=${CC} LD=gfortran${GCC_DEFAULT} \
+		DATA_DIR=${DATADIR}
 
 BUILD_WRKSRC=	${WRKSRC}/.build
 INSTALL_WRKSRC=	${BUILD_WRKSRC}
@@ -54,7 +57,9 @@ OPENMP_MPI_VARS=	VERSION=psmp
 OPENMP_MPI_LIB_DEPENDS=	${MPI_LIB_DEPENDS}
 OPENMP_MPI_LDFLAGS=	${MPI_LDFLAGS}
 
-PLIST_FILES=		bin/${PORTNAME}
+EXECUTABLES=		cp2k graph cp2k_shell dbcsr_performance_driver
+
+PLIST_FILES=		${EXECUTABLES:C/(.*)/bin\/\1.${VERSION}/}
 
 .include <bsd.port.options.mk>
 
@@ -74,6 +79,8 @@ pre-build:
 	@${MKDIR} ${BUILD_WRKSRC}
 
 do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/exe/*/${PORTNAME}.* ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
+.for e in ${EXECUTABLES}
+	${INSTALL_PROGRAM} ${WRKSRC}/exe/*/${e}.${VERSION} ${STAGEDIR}${PREFIX}/bin
+.endfor
 
 .include <bsd.port.mk>

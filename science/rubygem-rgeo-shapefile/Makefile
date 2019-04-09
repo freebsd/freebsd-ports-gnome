@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rgeo-shapefile
-PORTVERSION=	1.1.0
+PORTVERSION=	2.0.1
 CATEGORIES=	science rubygems
 MASTER_SITES=	RG
 

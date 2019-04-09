@@ -2,6 +2,7 @@
 
 PORTNAME=	flashplayer
 PORTVERSION=	32.0
+PORTREVISION=	3
 CATEGORIES=	www multimedia
 DISTFILES=
 

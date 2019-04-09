@@ -29,7 +29,6 @@
     SUBDIR += bwm-ng
     SUBDIR += cacti
     SUBDIR += cacti-spine
-    SUBDIR += cacti88
     SUBDIR += cacti88-spine
     SUBDIR += carbon-relay-ng
     SUBDIR += carbonzipper
@@ -41,6 +40,7 @@
     SUBDIR += centreon-clib
     SUBDIR += check_ipmi_sensor
     SUBDIR += check_logfiles
+    SUBDIR += check_mk_agent
     SUBDIR += check_multi
     SUBDIR += check_mysql_health
     SUBDIR += check_ssl_cert
@@ -50,6 +50,7 @@
     SUBDIR += ciscoconf
     SUBDIR += clog
     SUBDIR += cnagios
+    SUBDIR += cnagios4
     SUBDIR += collectd5
     SUBDIR += confregdecode
     SUBDIR += coovachilli
@@ -83,10 +84,6 @@
     SUBDIR += gsnmp
     SUBDIR += guifi-snpservices
     SUBDIR += hastmon
-    SUBDIR += hawk
-    SUBDIR += icinga
-    SUBDIR += icinga-classicweb
-    SUBDIR += icinga-core
     SUBDIR += icinga2
     SUBDIR += icingaweb2
     SUBDIR += icingaweb2-module-businessprocess
@@ -97,9 +94,9 @@
     SUBDIR += icingaweb2-module-generictts
     SUBDIR += icingaweb2-module-grafana
     SUBDIR += icingaweb2-module-graphite
+    SUBDIR += icingaweb2-module-ipl
     SUBDIR += icingaweb2-module-map
     SUBDIR += icingaweb2-module-vsphere
-    SUBDIR += icli
     SUBDIR += icmpmonitor
     SUBDIR += icmpquery
     SUBDIR += iftop
@@ -109,7 +106,6 @@
     SUBDIR += ipaudit
     SUBDIR += ipcad
     SUBDIR += ipcalc
-    SUBDIR += ipplan
     SUBDIR += iprange
     SUBDIR += ipv6calc
     SUBDIR += ipv6gen
@@ -129,6 +125,7 @@
     SUBDIR += mbrowse
     SUBDIR += mdata-client
     SUBDIR += metronome
+    SUBDIR += midpoint
     SUBDIR += mk-livestatus
     SUBDIR += monitoring-plugins
     SUBDIR += mrtg
@@ -138,7 +135,6 @@
     SUBDIR += nagcon
     SUBDIR += nagios
     SUBDIR += nagios-certexp-plugin
-    SUBDIR += nagios-check_bacula
     SUBDIR += nagios-check_bacula9
     SUBDIR += nagios-check_clamav
     SUBDIR += nagios-check_cpu_usage
@@ -164,7 +160,6 @@
     SUBDIR += nagios-snmp-plugins-extras
     SUBDIR += nagios-spamd-plugin
     SUBDIR += nagios4
-    SUBDIR += nagiosagent
     SUBDIR += nagiosgraph
     SUBDIR += nagiosql
     SUBDIR += nagircbot
@@ -175,7 +170,6 @@
     SUBDIR += nbtscan
     SUBDIR += ndoutils
     SUBDIR += ndpmon
-    SUBDIR += nedi
     SUBDIR += nefu
     SUBDIR += net-snmp
     SUBDIR += netbox
@@ -210,7 +204,9 @@
     SUBDIR += nsca27
     SUBDIR += nsca27-client
     SUBDIR += nstat
+    SUBDIR += nsd_exporter
     SUBDIR += nstreams
+    SUBDIR += nvidia_gpu_prometheus_exporter
     SUBDIR += observium
     SUBDIR += ocsinventory-agent
     SUBDIR += ocsinventory-ocsreports
@@ -233,6 +229,7 @@
     SUBDIR += p5-GRNOC-TL1
     SUBDIR += p5-MRTG-Parse
     SUBDIR += p5-Mon
+    SUBDIR += p5-Monitoring-Livestatus
     SUBDIR += p5-Monitoring-Plugin
     SUBDIR += p5-NSNMP
     SUBDIR += p5-Nagios-Object
@@ -287,18 +284,15 @@
     SUBDIR += pdagent-integrations
     SUBDIR += percona-monitoring-plugins
     SUBDIR += pftabled
-    SUBDIR += php56-snmp
     SUBDIR += php71-snmp
     SUBDIR += php72-snmp
     SUBDIR += php73-snmp
-    SUBDIR += phpip
     SUBDIR += phpipam
     SUBDIR += phpweathermap
     SUBDIR += pixilate
     SUBDIR += pktstat
     SUBDIR += pmacct
     SUBDIR += pnp
-    SUBDIR += pnp-icinga
     SUBDIR += pnp-icinga2
     SUBDIR += portmon
     SUBDIR += prometheus-collectd-exporter
@@ -316,6 +310,7 @@
     SUBDIR += py-napalm
     SUBDIR += py-napalm-logs
     SUBDIR += py-ncclient
+    SUBDIR += py-nxapi-plumbing
     SUBDIR += py-pdagent
     SUBDIR += py-prometheus-client
     SUBDIR += py-pyIOSXR
@@ -324,13 +319,12 @@
     SUBDIR += py-pynsca
     SUBDIR += py-pynxos
     SUBDIR += py-pysmi
+    SUBDIR += py-pysnmp
+    SUBDIR += py-pysnmp-mibs
     SUBDIR += py-pyzabbix
-    SUBDIR += py-snmp4
-    SUBDIR += py-snmp4-apps
-    SUBDIR += py-snmp4-mibs
     SUBDIR += py-snmp_passpersist
+    SUBDIR += py-snmpclitools
     SUBDIR += py-yapsnmp
-    SUBDIR += qkismet
     SUBDIR += rackmonkey
     SUBDIR += rancid3
     SUBDIR += rate

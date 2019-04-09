@@ -3,8 +3,7 @@
 
 PORTNAME=	libvpx
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.7.0
-PORTREVISION=	3
+DISTVERSION=	1.8.0
 CATEGORIES=	multimedia
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -24,7 +23,6 @@ HAS_CONFIGURE=	yes
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 SHEBANG_FILES=	build/make/ads2gas.pl
-CONFIGURE_ENV=	ASFLAGS="${ASFLAGS}"
 CONFIGURE_ARGS=	--prefix=${PREFIX} \
 		--disable-install-docs \
 		--disable-install-srcs \
@@ -32,8 +30,6 @@ CONFIGURE_ARGS=	--prefix=${PREFIX} \
 		--enable-vp8 \
 		--enable-vp9
 MAKE_ARGS+=	verbose=yes
-ASFLAGS+=	${ASFLAGS_${MACHINE}}
-ASFLAGS_arm=	-meabi=5
 ALL_TARGET=	# empty
 
 OPTIONS_DEFINE=	DEBUG MULTIRES POSTPROC RTCPU SHARED SIZE_LIMIT TEST THREADS
@@ -67,6 +63,9 @@ THREADS_CONFIGURE_OFF=	--disable-multithread
 post-patch:
 	@${REINPLACE_CMD} -E '/gcctarget|link_with_cc/s/gcc[[:>:]]/$${CC}/' \
 		${WRKSRC}/build/make/configure.sh
+# Extract (snapshot) version from the port instead of CHANGELOG
+	@${REINPLACE_CMD} '/^git_version_id/s/""/"${DISTVERSIONFULL}"/' \
+		${WRKSRC}/build/make/version.sh
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/vpx*

@@ -2,7 +2,7 @@
 
 PORTNAME=	marble
 DISTVERSION=	${KDE_APPLICATIONS_VERSION}
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	astro kde kde-applications
 
 MAINTAINER=	kde@FreeBSD.org
@@ -11,7 +11,7 @@ COMMENT=	Virtual globe and world atlas for KDE
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-LIB_DEPENDS=	libquazip5.so:archivers/quazip@qt5
+LIB_DEPENDS=	libquazip5.so:archivers/quazip
 
 USES=		cmake compiler:c++11-lang desktop-file-utils gettext \
 		kde:5 qt:5 tar:xz
@@ -20,7 +20,7 @@ USE_KDE=	attica auth codecs completion config configwidgets coreaddons \
 		plasma-framework runner service sonnet textwidgets wallet \
 		widgetsaddons xmlgui
 USE_QT=		concurrent core dbus declarative designer gui location network opengl \
-		phonon4 printsupport script sql svg webchannel webengine widgets xml \
+		phonon4 printsupport script sql svg webchannel widgets xml \
 		buildtools_build qmake_build
 
 USE_LDCONFIG=	yes
@@ -29,12 +29,18 @@ MAKE_ENV=	XDG_CONFIG_HOME=/dev/null
 CMAKE_ARGS=	-DMOBILE:BOOL=FALSE \
 		-DQT_IMPORTS_DIR:PATH=${QT_IMPORTDIR}
 
-OPTIONS_DEFINE=	GPS DOCS
+OPTIONS_DEFINE=	GPS DOCS WEBENGINE
 OPTIONS_DEFAULT=GPS
+OPTIONS_DEFAULT_amd64=	WEBENGINE
+OPTIONS_DEFAULT_i386=	WEBENGINE
 OPTIONS_SUB=	yes
 
 GPS_DESC=		Support for GPS position provider
 GPS_LIB_DEPENDS=	libgps.so:astro/gpsd
-GPS_CMAKE_OFF=		-DWITH_libgps:BOOL=FALSE
+GPS_CMAKE_BOOL_ON=		WITH_libgps
+
+WEBENGINE_DESC=		Add dependency on qt5-webengine
+WEBENGINE_USE=		QT=webengine
+WEBENGINE_CMAKE_BOOL_OFF=	CMAKE_DISABLE_FIND_PACKAGE_Qt5WebEngineWidgets
 
 .include <bsd.port.mk>

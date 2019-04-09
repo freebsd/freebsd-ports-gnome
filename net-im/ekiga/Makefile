@@ -4,7 +4,7 @@
 
 PORTNAME=	ekiga
 PORTVERSION=	4.0.1
-PORTREVISION=	24
+PORTREVISION=	25
 CATEGORIES=	net-im
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -24,7 +24,7 @@ RUN_DEPENDS=	gnome-icon-theme>=3.0.0:misc/gnome-icon-theme
 
 GNU_CONFIGURE=	yes
 USES=		compiler:c++11-lang cpe gettext gmake libtool localbase \
-		pathfix perl5 pkgconfig tar:xz
+		pathfix pkgconfig tar:xz
 USE_XORG=	xv
 USE_GNOME=	gtk20 intlhack libxml2
 INSTALLS_ICONS=	yes
@@ -39,15 +39,11 @@ EVOLUTION_DESC=	Evolution data server support
 GNOMEHELP_DESC=	Build Ekiga help files
 
 #OPTIONS_GROUP=	EXP
-#OPTIONS_GROUP_EXP=	KDE KAB GSTREAMER XCAP LOUDMOUTH
+#OPTIONS_GROUP_EXP=	GSTREAMER XCAP LOUDMOUTH
 EXP_DESC=	Experimental features
-KDE_DESC=	KDE 4 support
-KAB_DESC=	KAddressBook support
 GSTREAMER_DESC=	Gstreamer support
 XCAP_DESC=	Remote contact storage via HTTP in xml format
 LOUDMOUTH_DESC=	XMPP (jabber) support
-
-KAB_IMPLIES=	KDE
 
 # Note that h.323 support is enabled when opal is build with it.
 
@@ -55,27 +51,7 @@ KAB_IMPLIES=	KDE
 
 PLIST_SUB+=	VERSION=${PORTVERSION}
 
-.if ${PORT_OPTIONS:MKDE} || ${PORT_OPTIONS:MKAB}
-DEPRECATED=	KDE4 is end-of-life
-EXPIRATION_DATE=2018-12-31
-USES+=		kde:4 qt:4
-USE_KDE=	kdelibs
-USE_QT=		corelib
-CONFIGURE_ARGS+=--enable-kde
-#CONFIGURE_ENV+=KDE_CFLAGS="-I${KDE_PREFIX}/include -I${QT_INCDIR} \
-#	-I${LOCALBASE}/include" KDE_LIBS="-L${KDE_PREFIX}/lib"
-CPPFLAGS+=	-I${KDE_PREFIX}/include
-LDFLAGS+=	-L${KDE_PREFIX}/lib
-.else
-CONFIGURE_ARGS+=--disable-kde
-.endif
-
-.if ${PORT_OPTIONS:MKAB}
-CONFIGURE_ARGS+=--enable-kab
-USE_KDE+=	pimlibs
-.else
-CONFIGURE_ARGS+=--disable-kab
-.endif
+CONFIGURE_ARGS+=--disable-kde --disable-kab
 
 .if ${PORT_OPTIONS:MGSTREAMER}
 CONFIGURE_ARGS+=--enable-gstreamer

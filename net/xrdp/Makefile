@@ -2,6 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	xrdp
+PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.9.9
 PORTEPOCH=	1
@@ -9,6 +10,7 @@ CATEGORIES=	net
 DIST_SUBDIR?=	${PORTNAME}
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${PORTNAME}/commit/
+PATCHFILES=	81703c4.patch:-p1 46b4a9b.patch:-p1 0ed82f71.patch:-p1
 
 MAINTAINER=	meta@FreeBSD.org
 COMMENT=	Open source Remote Desktop Protocol (RDP) server
@@ -17,7 +19,8 @@ LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	${LOCALBASE}/bin/nasm:devel/nasm
-RUN_DEPENDS=	${LOCALBASE}/lib/xorg/modules/libxorgxrdp.so:x11-drivers/xorgxrdp \
+RUN_DEPENDS=	xterm:x11/xterm \
+		${LOCALBASE}/lib/xorg/modules/libxorgxrdp.so:x11-drivers/xorgxrdp \
 		${LOCALBASE}/lib/pulse-12.2/modules/module-xrdp-sink.so:audio/pulseaudio-module-xrdp
 
 USES=		autoreconf:build jpeg localbase libtool pkgconfig ssl
@@ -59,6 +62,16 @@ MP3LAME_LIB_DEPENDS=	libmp3lame.so:audio/lame
 OPUS_CONFIGURE_ENABLE=	opus
 OPUS_LIB_DEPENDS=	libopus.so:audio/opus
 
+.include <bsd.port.pre.mk>
+
+.if ${SSL_DEFAULT} == base
+# As base OpenSSL doesn't install a .pc file, some flags such as -lcrypto
+# cannot be obtained automatically via pkgconfig. When compiled with base
+# OpenSSL, it needs to be specified explicitly.
+CONFIGURE_ENV+=	OPENSSL_CFLAGS="-I${OPENSSLINC}" \
+		OPENSSL_LIBS="-L${OPENSSLLIB} -lcrypto -lssl"
+.endif
+
 post-extract:
 	# librfxcodec is provided as git submodule
 	@${CP} -r ${WRKSRC_librfxcodec}/ ${WRKSRC}/librfxcodec/
@@ -66,6 +79,9 @@ post-extract:
 
 pre-configure:
 	@cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ./bootstrap
+
+post-install:
+	${INSTALL_SCRIPT} ${FILESDIR}/startwm.sh ${STAGEDIR}${ETCDIR}
 
 post-stage:
 	@${RM} ${STAGEDIR}${PREFIX}/etc/xrdp/rsakeys.ini
@@ -75,4 +91,4 @@ post-stage:
 	@${MV} ${STAGEDIR}${PREFIX}/etc/xrdp/$f ${STAGEDIR}${PREFIX}/etc/xrdp/$f.sample
 .endfor
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

@@ -14,6 +14,8 @@ LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BROKEN=		fails to build
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2019-05-08
 
 LIB_DEPENDS=	liballeg.so:devel/allegro \
 		libpng.so:graphics/png \
@@ -22,7 +24,7 @@ LIB_DEPENDS=	liballeg.so:devel/allegro \
 BROKEN_aarch64=	Fails to link: missing sbrk
 
 USES=		dos2unix scons tar:bzip2
-USE_SDL=	yes
+USE_SDL=	sdl
 INSTALLS_ICONS=	yes
 DOS2UNIX_REGEX=	.*\.(c|cpp|h)
 

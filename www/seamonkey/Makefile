@@ -3,7 +3,7 @@
 
 PORTNAME=	seamonkey
 DISTVERSION=	2.49.4
-PORTREVISION=	19
+PORTREVISION=	25
 MOZILLA_VER=	52 # above + 3
 CATEGORIES?=	www mail news editors irc ipv6
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \
@@ -12,6 +12,9 @@ DISTFILES=	${DISTNAME}.source${EXTRACT_SUFX}
 
 MAINTAINER=	gecko@FreeBSD.org
 COMMENT=	The open source, standards compliant web browser
+
+DEPRECATED=	Multiple vulnerabilities and crashes if built by Clang 8
+EXPIRATION_DATE=2019-08-31
 
 BUILD_DEPENDS=	nspr>=4.13.1:devel/nspr \
 		nss>=3.28.6:security/nss \
@@ -37,7 +40,7 @@ MOZ_PIS_SCRIPTS=	moz_pis_S50cleanhome
 
 MOZ_OPTIONS+=	--enable-application=suite
 
-USE_MOZILLA=	# empty
+USE_MOZILLA=	-webp
 MOZ_PKGCONFIG_FILES=
 
 OPTIONS_DEFINE=	LDAP LIGHTNING RUST
