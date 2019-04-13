@@ -1313,6 +1313,7 @@
     SUBDIR += ksql
     SUBDIR += kyra
     SUBDIR += kyua
+    SUBDIR += lab
     SUBDIR += lasi
     SUBDIR += lattice-ice40-examples-hx1k
     SUBDIR += lattice-ice40-examples-hx8k
@@ -4059,8 +4060,6 @@
     SUBDIR += pecl-vld
     SUBDIR += pecl-weakref2
     SUBDIR += pecl-xdebug
-    SUBDIR += pecl-xdebug-devel
-    SUBDIR += pecl-xdebug25
     SUBDIR += pecl-yac
     SUBDIR += pecl-yaconf
     SUBDIR += pecl-zookeeper
@@ -4682,6 +4681,7 @@
     SUBDIR += py-jaraco.logging
     SUBDIR += py-jaraco.timing
     SUBDIR += py-jaraco.util
+    SUBDIR += py-javaproperties
     SUBDIR += py-jcc
     SUBDIR += py-jdcal
     SUBDIR += py-jedi
@@ -5101,6 +5101,7 @@
     SUBDIR += py-rwt
     SUBDIR += py-rx
     SUBDIR += py-sanetime
+    SUBDIR += py-saneyaml
     SUBDIR += py-sarge
     SUBDIR += py-schedule
     SUBDIR += py-schema

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	CSS-Sass
-PORTVERSION=	3.4.10
+PORTVERSION=	3.4.12
 CATEGORIES=	textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -24,6 +24,8 @@ TEST_DEPENDS=	p5-File-chdir>=0.01:devel/p5-File-chdir \
 
 USES=		compiler:c++11-lang gmake perl5
 USE_PERL5=	configure
+
+MAKE_JOBS_UNSAFE=	yes
 
 .include <bsd.port.pre.mk>
 

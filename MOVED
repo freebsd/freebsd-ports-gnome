@@ -9522,7 +9522,6 @@ databases/elixir-ecto_migrate||2017-11-11|Has expired: Broken for more than 6 mo
 audio/gspeakers||2017-11-11|Has expired: Broken for more than 6 months
 net/p5-Filesys-SmbClient||2017-11-11|Has expired: Broken for more than 6 months
 audio/tclmidi||2017-11-11|Has expired: Broken for more than 6 months
-security/py-xmlsec||2017-11-11|Has expired: Broken for more than 6 months
 security/samba-virusfilter||2017-11-11|Has expired: Broken for more than 6 months
 textproc/ocaml-pxp||2017-11-11|Has expired: Broken for more than 6 months
 audio/sooperlooper||2017-11-11|Has expired: Broken for more than 6 months
@@ -10776,7 +10775,6 @@ editors/manedit||2018-12-21|Has expired: Uses obsolete glib12
 misc/gtkfind||2018-12-21|Has expired: Uses obsolete glib12
 games/mindguard||2018-12-21|Has expired: Uses obsolete glib12
 games/xbattle||2018-12-21|Has expired: Uses obsolete glib12
-games/xbill||2018-12-21|Has expired: Uses obsolete glib12
 games/corewars||2018-12-21|Has expired: Uses obsolete glib12
 games/dopewars||2018-12-21|Has expired: Uses obsolete glib12
 games/garith||2018-12-21|Has expired: Uses obsolete glib12
@@ -11941,7 +11939,6 @@ www/qt4-webkit||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 www/qupzilla-qt4||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/leechcraft||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/py-qt4-opengl||2019-03-16|Has expired: Qt4 has been EOL since december 2015
-x11/qimageblitz||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/qt4-graphicssystems-opengl||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/qt4-inputmethods||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/qxkb||2019-03-16|Has expired: Qt4 has been EOL since december 2015
@@ -12175,3 +12172,5 @@ x11/xbelld||2019-04-04|Has expired: Depends on audio/esound
 devel/mkcmd||2019-04-04|Removed, depends on expired devel/msrc0
 devel/msrc0||2019-04-04|Has expired: No longer required as comms/conserver is being retired.
 sysutils/curly||2019-04-04|Removed, depends on expired devel/msrc0
+devel/pecl-xdebug25|devel/pecl-xdebug|2019-04-09|Has expired: Please use pecl/xdebug which uses latest version
+devel/pecl-xdebug-devel|devel/pecl-xdebug|2019-04-09|Development version no longer necessary

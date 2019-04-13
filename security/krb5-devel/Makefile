@@ -3,12 +3,13 @@
 
 PORTNAME=		krb5
 PORTVERSION=		1.18.${MIT_COMMIT_DATE}
+PORTREVISION=		1
 CATEGORIES=		security
 .if !defined(MASTERDIR)
 PKGNAMESUFFIX=		-devel
 .endif
-HASH=			33e103a
-MIT_COMMIT_DATE=	2019.04.04
+HASH=			d3b39a8
+MIT_COMMIT_DATE=	2019.04.10
 
 PATCH_SITES=		http://web.mit.edu/kerberos/advisories/
 PATCH_DIST_STRIP=	-p2

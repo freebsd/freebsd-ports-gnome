@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	rav1e
-PORTVERSION=	s20190404
+PORTVERSION=	s20190412
 CATEGORIES=	multimedia
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -10,15 +10,13 @@ COMMENT=	Fast and safe AV1 encoder
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BROKEN_i386=	https://github.com/xiph/rav1e/issues/1179
-
 BUILD_DEPENDS=	${BUILD_DEPENDS_${ARCH}}
 BUILD_DEPENDS_amd64=	nasm:devel/nasm
 
 USES=		cargo
 USE_GITHUB=	yes
 GH_ACCOUNT=	xiph
-GH_TAGNAME=	e4363d0
+GH_TAGNAME=	bda810b
 PLIST_FILES=	bin/${PORTNAME}
 
 CARGO_CRATES=	aho-corasick-0.6.10 \
@@ -38,14 +36,14 @@ CARGO_CRATES=	aho-corasick-0.6.10 \
 		bitstream-io-0.8.2 \
 		byteorder-1.3.1 \
 		cast-0.2.2 \
-		cc-1.0.34 \
+		cc-1.0.35 \
 		cexpr-0.3.5 \
 		cfg-if-0.1.7 \
 		clang-sys-0.26.4 \
-		clap-2.32.0 \
+		clap-2.33.0 \
 		cloudabi-0.0.3 \
-		criterion-0.2.10 \
-		criterion-plot-0.3.0 \
+		criterion-0.2.11 \
+		criterion-plot-0.3.1 \
 		crossbeam-deque-0.2.0 \
 		crossbeam-epoch-0.3.1 \
 		crossbeam-utils-0.2.2 \
@@ -84,7 +82,7 @@ CARGO_CRATES=	aho-corasick-0.6.10 \
 		proc-macro-hack-0.5.4 \
 		proc-macro2-0.4.27 \
 		quick-error-1.2.2 \
-		quote-0.6.11 \
+		quote-0.6.12 \
 		rand-0.5.6 \
 		rand_core-0.3.1 \
 		rand_core-0.4.0 \
@@ -93,13 +91,13 @@ CARGO_CRATES=	aho-corasick-0.6.10 \
 		rayon-1.0.3 \
 		rayon-core-1.4.1 \
 		rdrand-0.4.0 \
-		redox_syscall-0.1.52 \
+		redox_syscall-0.1.54 \
 		redox_termios-0.1.1 \
 		regex-0.2.11 \
 		regex-1.1.5 \
 		regex-syntax-0.5.6 \
 		regex-syntax-0.6.6 \
-		rustc-demangle-0.1.13 \
+		rustc-demangle-0.1.14 \
 		ryu-0.2.7 \
 		same-file-1.0.4 \
 		scan_fmt-0.1.3 \
@@ -107,11 +105,11 @@ CARGO_CRATES=	aho-corasick-0.6.10 \
 		serde-1.0.90 \
 		serde_derive-1.0.90 \
 		serde_json-1.0.39 \
-		strsim-0.7.0 \
+		strsim-0.8.0 \
 		syn-0.15.30 \
 		termcolor-1.0.4 \
 		termion-1.5.1 \
-		textwrap-0.10.0 \
+		textwrap-0.11.0 \
 		thread_local-0.3.6 \
 		tinytemplate-1.0.1 \
 		toml-0.2.1 \

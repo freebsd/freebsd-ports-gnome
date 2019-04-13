@@ -1047,6 +1047,7 @@
     SUBDIR += xasteroids
     SUBDIR += xataxx
     SUBDIR += xbat
+    SUBDIR += xbill
     SUBDIR += xbl
     SUBDIR += xblackjack
     SUBDIR += xblast

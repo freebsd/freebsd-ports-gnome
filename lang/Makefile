@@ -65,6 +65,7 @@
     SUBDIR += erlang
     SUBDIR += erlang-doc
     SUBDIR += erlang-java
+    SUBDIR += erlang-man
     SUBDIR += erlang-riak
     SUBDIR += erlang-runtime15
     SUBDIR += erlang-runtime16
@@ -73,6 +74,7 @@
     SUBDIR += erlang-runtime19
     SUBDIR += erlang-runtime20
     SUBDIR += erlang-runtime21
+    SUBDIR += erlang-runtime22
     SUBDIR += erlang-wx
     SUBDIR += execline
     SUBDIR += expect
