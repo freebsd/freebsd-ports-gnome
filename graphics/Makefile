@@ -394,6 +394,7 @@
     SUBDIR += jpgtn
     SUBDIR += jslice
     SUBDIR += kamera
+    SUBDIR += kamerka
     SUBDIR += kcolorchooser
     SUBDIR += kdegraphics
     SUBDIR += kdegraphics-mobipocket
@@ -578,6 +579,7 @@
     SUBDIR += ocrad
     SUBDIR += ocre
     SUBDIR += ogre3d
+    SUBDIR += ogre3d19
     SUBDIR += oidn
     SUBDIR += okular
     SUBDIR += open3d
@@ -741,6 +743,7 @@
     SUBDIR += pgplot
     SUBDIR += pho
     SUBDIR += photivo
+    SUBDIR += photoflare
     SUBDIR += photopc
     SUBDIR += photoqt
     SUBDIR += phototonic

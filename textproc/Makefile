@@ -862,6 +862,9 @@
     SUBDIR += p5-Term-QRCode
     SUBDIR += p5-Test-Groonga
     SUBDIR += p5-Test-Perl-Critic
+    SUBDIR += p5-Text-ANSI-Util
+    SUBDIR += p5-Text-ANSI-WideUtil
+    SUBDIR += p5-Text-ANSITable
     SUBDIR += p5-Text-ASCIIMathML
     SUBDIR += p5-Text-ASCIITable
     SUBDIR += p5-Text-Affixes
@@ -926,6 +929,7 @@
     SUBDIR += p5-Text-Language-Guess
     SUBDIR += p5-Text-Lorem
     SUBDIR += p5-Text-Markdown
+    SUBDIR += p5-Text-MarkdownTable
     SUBDIR += p5-Text-Match-FastAlternatives
     SUBDIR += p5-Text-Metaphone
     SUBDIR += p5-Text-MicroMason
@@ -966,8 +970,18 @@
     SUBDIR += p5-Text-Table
     SUBDIR += p5-Text-Table-ASV
     SUBDIR += p5-Text-Table-Any
+    SUBDIR += p5-Text-Table-CSV
+    SUBDIR += p5-Text-Table-HTML
+    SUBDIR += p5-Text-Table-HTML-DataTables
+    SUBDIR += p5-Text-Table-LTSV
     SUBDIR += p5-Text-Table-Manifold
+    SUBDIR += p5-Text-Table-Org
+    SUBDIR += p5-Text-Table-Paragraph
+    SUBDIR += p5-Text-Table-TSV
     SUBDIR += p5-Text-Table-Tiny
+    SUBDIR += p5-Text-Table-TinyColor
+    SUBDIR += p5-Text-Table-TinyColorWide
+    SUBDIR += p5-Text-Table-TinyWide
     SUBDIR += p5-Text-Table-XLSX
     SUBDIR += p5-Text-Tabs+Wrap
     SUBDIR += p5-Text-TabularDisplay
@@ -985,6 +999,7 @@
     SUBDIR += p5-Text-Unaccent-PurePerl
     SUBDIR += p5-Text-VimColor
     SUBDIR += p5-Text-VisualWidth
+    SUBDIR += p5-Text-WideChar-Util
     SUBDIR += p5-Text-WikiCreole
     SUBDIR += p5-Text-WikiFormat
     SUBDIR += p5-Text-WordDiff
@@ -1277,6 +1292,7 @@
     SUBDIR += py-awesome-slugify
     SUBDIR += py-bibtexparser
     SUBDIR += py-bugzillatools
+    SUBDIR += py-cchardet
     SUBDIR += py-chardet
     SUBDIR += py-citeproc-py
     SUBDIR += py-citeproc-py-styles
@@ -1345,6 +1361,7 @@
     SUBDIR += py-normality
     SUBDIR += py-numpydoc
     SUBDIR += py-openpyxl
+    SUBDIR += py-openpyxl24
     SUBDIR += py-openstackdocstheme
     SUBDIR += py-orange3-text
     SUBDIR += py-os-api-ref
@@ -1548,6 +1565,9 @@
     SUBDIR += rubygem-elasticsearch
     SUBDIR += rubygem-elasticsearch-api
     SUBDIR += rubygem-elasticsearch-dsl
+    SUBDIR += rubygem-elasticsearch-model
+    SUBDIR += rubygem-elasticsearch-persistence
+    SUBDIR += rubygem-elasticsearch-rails
     SUBDIR += rubygem-elasticsearch-transport
     SUBDIR += rubygem-elasticsearch-xpack
     SUBDIR += rubygem-emot

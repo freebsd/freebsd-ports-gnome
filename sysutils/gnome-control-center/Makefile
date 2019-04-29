@@ -3,7 +3,7 @@
 
 PORTNAME=	gnome-control-center
 PORTVERSION=	3.32.0.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -39,6 +39,7 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 RUN_DEPENDS=	gnome-settings-daemon>=3.4.0:sysutils/gnome-settings-daemon \
 		gsettings-desktop-schemas>=3.2.2:devel/gsettings-desktop-schemas \
 		cantarell-fonts>=0:x11-fonts/cantarell-fonts \
+		etc_os-release>0:sysutils/etc_os-release \
 		gcm-calibrate:graphics/gnome-color-manager
 
 PORTSCOUT=	limitw:1,even
@@ -69,5 +70,10 @@ WAYLAND_LIB_DEPENDS=	libgudev-1.0.so:devel/libgudev
 
 pre-build:
 	@cd ${WRKSRC}/_build && ninja shell/resources.h
+
+post-patch:
+	@${REINPLACE_CMD}  -e 's|/etc/os-release|${LOCALBASE}/etc/os-release|g' \
+		${WRKSRC}/panels/privacy/cc-privacy-panel.c \
+		${WRKSRC}/panels/info/cc-info-overview-panel.c
 
 .include <bsd.port.mk>
