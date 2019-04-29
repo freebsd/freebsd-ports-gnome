@@ -566,6 +566,7 @@
     SUBDIR += noise-repellent-lv2
     SUBDIR += normalize
     SUBDIR += nosefart
+    SUBDIR += noson-app
     SUBDIR += nspmod
     SUBDIR += nuvolaplayer
     SUBDIR += oaml
@@ -635,6 +636,7 @@
     SUBDIR += pear-Text_Spell_Audio
     SUBDIR += penguinsap
     SUBDIR += pianobar
+    SUBDIR += pianod2
     SUBDIR += picard
     SUBDIR += picard-plugins
     SUBDIR += pithos

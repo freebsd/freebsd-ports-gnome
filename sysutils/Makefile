@@ -301,6 +301,7 @@
     SUBDIR += env4801
     SUBDIR += envconsul
     SUBDIR += epazote
+    SUBDIR += etc_os-release
     SUBDIR += etcmerge
     SUBDIR += etcupdate
     SUBDIR += eventlog
@@ -1378,6 +1379,8 @@
     SUBDIR += u-boot-nanopi-neo-air
     SUBDIR += u-boot-olimex-a20-som-evb
     SUBDIR += u-boot-olinuxino-lime
+    SUBDIR += u-boot-olinuxino-lime2
+    SUBDIR += u-boot-olinuxino-lime2-emmc
     SUBDIR += u-boot-orangepi-one
     SUBDIR += u-boot-orangepi-pc
     SUBDIR += u-boot-orangepi-pc-plus
@@ -1411,6 +1414,7 @@
     SUBDIR += udfclient
     SUBDIR += uefi-edk2-bhyve
     SUBDIR += uefi-edk2-bhyve-csm
+    SUBDIR += uefi-edk2-bhyve-devel
     SUBDIR += ufs_copy
     SUBDIR += uhidd
     SUBDIR += uif2iso

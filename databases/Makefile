@@ -951,6 +951,7 @@
     SUBDIR += rubygem-globalid-rails50
     SUBDIR += rubygem-her
     SUBDIR += rubygem-hiredis
+    SUBDIR += rubygem-influxdb
     SUBDIR += rubygem-jdbc-mysql
     SUBDIR += rubygem-leo_manager_client
     SUBDIR += rubygem-mario-redis-lock
@@ -1048,8 +1049,6 @@
     SUBDIR += xtrabackup
     SUBDIR += zabbix22-libzbxpgsql
     SUBDIR += zabbix3-libzbxpgsql
-    SUBDIR += zabbix32-libzbxpgsql
-    SUBDIR += zabbix34-libzbxpgsql
     SUBDIR += zodb3
 
 .include <bsd.port.subdir.mk>

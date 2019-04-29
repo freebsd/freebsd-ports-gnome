@@ -1,12 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	alacritty
-PORTVERSION=	0.3.0
+PORTVERSION=	0.3.2
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
 CATEGORIES=	x11
 
-MAINTAINER=	zeising@FreeBSD.org
+MAINTAINER=	tobik@FreeBSD.org
 COMMENT=	GPU-accelerated terminal emulator
 
 LICENSE=	APACHE20
@@ -40,9 +39,8 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		android_glue-0.2.3 \
 		ansi_term-0.11.0 \
 		approx-0.3.2 \
-		arc-swap-0.3.9 \
+		arc-swap-0.3.11 \
 		argon2rs-0.2.5 \
-		arraydeque-0.4.5 \
 		arrayvec-0.4.10 \
 		atty-0.2.11 \
 		autocfg-0.1.2 \
@@ -59,7 +57,7 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		bytes-0.4.12 \
 		bzip2-0.3.3 \
 		bzip2-sys-0.1.7 \
-		cc-1.0.34 \
+		cc-1.0.35 \
 		cexpr-0.2.3 \
 		cfg-if-0.1.7 \
 		cgl-0.2.3 \
@@ -72,6 +70,8 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		cocoa-0.18.4 \
 		color_quant-1.0.1 \
 		constant_time_eq-0.1.3 \
+		cookie-0.11.0 \
+		cookie_store-0.5.1 \
 		core-foundation-0.5.1 \
 		core-foundation-0.6.4 \
 		core-foundation-sys-0.5.1 \
@@ -94,7 +94,7 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		derivative-1.0.2 \
 		dirs-1.0.5 \
 		dlib-0.4.1 \
-		downcast-rs-1.0.3 \
+		downcast-rs-1.0.4 \
 		dtoa-0.4.3 \
 		dunce-1.0.0 \
 		either-1.5.2 \
@@ -104,7 +104,8 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		env_logger-0.6.1 \
 		errno-0.2.4 \
 		errno-dragonfly-0.1.1 \
-		euclid-0.19.7 \
+		error-chain-0.12.0 \
+		euclid-0.19.8 \
 		euclid_macros-0.1.0 \
 		expat-sys-2.1.6 \
 		failure-0.1.5 \
@@ -129,24 +130,23 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		futures-cpupool-0.1.8 \
 		gcc-0.3.55 \
 		gif-0.10.1 \
-		gl_generator-0.10.0 \
 		gl_generator-0.11.0 \
 		gleam-0.6.16 \
 		glob-0.2.11 \
-		glutin-0.21.0-rc1 \
-		glutin_egl_sys-0.1.2 \
+		glutin-0.21.0 \
+		glutin_egl_sys-0.1.3 \
 		glutin_emscripten_sys-0.1.0 \
-		glutin_gles2_sys-0.1.2 \
-		glutin_glx_sys-0.1.3 \
-		glutin_wgl_sys-0.1.2 \
-		h2-0.1.17 \
+		glutin_gles2_sys-0.1.3 \
+		glutin_glx_sys-0.1.5 \
+		glutin_wgl_sys-0.1.3 \
+		h2-0.1.18 \
 		http-0.1.17 \
 		httparse-1.3.3 \
 		humantime-1.2.0 \
-		hyper-0.12.25 \
+		hyper-0.12.27 \
 		hyper-tls-0.3.2 \
 		idna-0.1.5 \
-		image-0.21.0 \
+		image-0.21.1 \
 		indexmap-1.0.2 \
 		inflate-0.4.5 \
 		inotify-0.6.1 \
@@ -159,7 +159,7 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		lazy_static-1.3.0 \
 		lazycell-1.2.1 \
 		libc-0.2.51 \
-		libflate-0.1.21 \
+		libflate-0.1.22 \
 		libloading-0.5.0 \
 		libz-sys-1.0.25 \
 		line_drawing-0.7.0 \
@@ -198,6 +198,7 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		num-rational-0.2.1 \
 		num-traits-0.2.6 \
 		num_cpus-1.10.0 \
+		numtoa-0.1.0 \
 		objc-0.2.6 \
 		objc-foundation-0.1.1 \
 		objc_id-0.1.1 \
@@ -219,9 +220,10 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		png-0.14.0 \
 		podio-0.1.6 \
 		proc-macro2-0.4.27 \
+		publicsuffix-1.5.2 \
 		quick-error-1.2.2 \
 		quote-0.3.15 \
-		quote-0.6.11 \
+		quote-0.6.12 \
 		rand-0.6.5 \
 		rand_chacha-0.1.1 \
 		rand_core-0.3.1 \
@@ -235,18 +237,18 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		rayon-1.0.3 \
 		rayon-core-1.4.1 \
 		rdrand-0.4.0 \
-		redox_syscall-0.1.53 \
+		redox_syscall-0.1.54 \
 		redox_termios-0.1.1 \
 		redox_users-0.3.0 \
 		regex-0.2.11 \
-		regex-1.1.5 \
+		regex-1.1.6 \
 		regex-syntax-0.5.6 \
 		regex-syntax-0.6.6 \
 		remove_dir_all-0.5.1 \
-		reqwest-0.9.13 \
-		rustc-demangle-0.1.13 \
+		reqwest-0.9.15 \
+		rustc-demangle-0.1.14 \
 		rustc_version-0.2.3 \
-		rusttype-0.7.5 \
+		rusttype-0.7.6 \
 		ryu-0.2.7 \
 		safe-transmute-0.10.1 \
 		same-file-1.0.4 \
@@ -260,7 +262,7 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		serde-1.0.90 \
 		serde_derive-1.0.90 \
 		serde_json-1.0.39 \
-		serde_urlencoded-0.5.4 \
+		serde_urlencoded-0.5.5 \
 		serde_yaml-0.8.8 \
 		servo-fontconfig-0.4.0 \
 		servo-fontconfig-sys-4.0.7 \
@@ -277,12 +279,12 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		stb_truetype-0.2.6 \
 		string-0.1.3 \
 		strsim-0.8.0 \
-		syn-0.15.30 \
+		syn-0.15.32 \
 		synstructure-0.10.1 \
 		tempfile-3.0.7 \
 		termcolor-1.0.4 \
 		terminfo-0.6.1 \
-		termion-1.5.1 \
+		termion-1.5.2 \
 		textwrap-0.11.0 \
 		thread_local-0.3.6 \
 		tiff-0.2.2 \
@@ -298,6 +300,7 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		tokio-timer-0.2.10 \
 		tokio-trace-core-0.1.0 \
 		try-lock-0.2.2 \
+		try_from-0.3.2 \
 		ucd-util-0.1.3 \
 		unicase-1.4.2 \
 		unicase-2.3.0 \

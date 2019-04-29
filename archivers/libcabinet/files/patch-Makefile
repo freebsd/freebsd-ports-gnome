@@ -3,7 +3,6 @@
 @@ -0,0 +1,17 @@
 +NO_PROFILE=	true
 +CXXFLAGS+=	-Wno-deprecated
-+CXXSTD=		gnu++98
 +LIB=		cabinet
 +LIBDIR=		${PREFIX}/lib
 +INCSDIR=	${PREFIX}/include/cabinet
