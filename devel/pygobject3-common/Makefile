@@ -19,8 +19,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 SLAVE_PORT?=	no
 
-BUILD_DEPENDS=	python3:lang/python3
-
 USES=		meson pkgconfig tar:xz
 
 # this port doesn't work with py-gobject < 2.28.6_2, clungle below
@@ -38,7 +36,7 @@ PLIST_SUB=	ARCH=${ARCH} UNAME_R=${UNAME_R} VERSION=${PORTVERSION} \
 PORTSCOUT?=	limitw:1,even
 
 BUILD_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}cairo>=0:graphics/py-cairo@${PY_FLAVOR}
-USES+=		gnome python:3.4+,build
+USES+=		gnome python:build
 USE_GNOME=	glib20:build introspection:build
 NO_BUILD=	yes
 
