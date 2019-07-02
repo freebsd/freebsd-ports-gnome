@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	glib
-PORTVERSION=	2.60.0
+PORTVERSION=	2.60.4
 PORTEPOCH=	1
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
@@ -35,7 +35,7 @@ MESON_ARGS=	-Db_lundef=false \
 		-Dxattr=false
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
-LIBVERSION=	0.6000.0
+LIBVERSION=	0.6000.4
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 glib_MAN=	gtester.1 gtester-report.1 glib-gettextize.1
