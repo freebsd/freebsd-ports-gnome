@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mutter
-PORTVERSION=	3.32.0
+PORTVERSION=	3.32.2
 CATEGORIES=	x11-wm gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -49,8 +49,8 @@ USE_LDCONFIG=	yes
 PORTSCOUT=	limitw:1,even
 
 # udev support when using the X11 backend (only x11 backend?)
-#MESON_ARGS+=	-Dudev=false
-LIB_DEPENDS+=	libgudev-1.0.so:devel/libgudev
+MESON_ARGS+=	-Dudev=false
+#LIB_DEPENDS+=	libgudev-1.0.so:devel/libgudev
 
 # tests break in poudrere (probably needs xorg-server)
 MESON_ARGS+=	-Dcogl_tests=false \
@@ -80,9 +80,9 @@ SHEBANG_FILES=	clutter/tests/interactive/meson/gen-test-unit-names.sh \
 		cogl/tests/unit/meson/find-unit-tests.sh \
 		src/backends/native/gen-default-modes.py
 
-post-patch:
-	${REINPLACE_CMD} -e 's|>= 228|>=199|g' \
-		-e 's|>= 232|>=230|g' \
-		${WRKSRC}/meson.build
+#post-patch:
+#	${REINPLACE_CMD} -e 's|>= 228|>=199|g' \
+#		-e 's|>= 232|>=230|g' \
+#		${WRKSRC}/meson.build
 
 .include <bsd.port.mk>
