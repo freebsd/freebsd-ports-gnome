@@ -45,7 +45,7 @@ lib/girepository-1.0/xrandr-1.3.typelib
 lib/gobject-introspection/giscanner/__init__.py
 lib/gobject-introspection/giscanner/__pycache__/__init__.cpython-%%PYTHON_SUFFIX%%.opt-1.pyc
 lib/gobject-introspection/giscanner/__pycache__/__init__.cpython-%%PYTHON_SUFFIX%%.pyc
-lib/gobject-introspection/giscanner/__pycache__/_version.cpython-%%PYTHON_SUFFIX%%.%%PYTHON_PYOEXTENSION%%
+lib/gobject-introspection/giscanner/__pycache__/_version.cpython-%%PYTHON_SUFFIX%%.opt-1.pyc
 lib/gobject-introspection/giscanner/__pycache__/_version.cpython-%%PYTHON_SUFFIX%%.pyc
 lib/gobject-introspection/giscanner/__pycache__/annotationmain.cpython-%%PYTHON_SUFFIX%%.opt-1.pyc
 lib/gobject-introspection/giscanner/__pycache__/annotationmain.cpython-%%PYTHON_SUFFIX%%.pyc
