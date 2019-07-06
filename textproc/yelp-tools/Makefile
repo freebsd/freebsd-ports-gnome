@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	yelp-tools
-PORTVERSION=	3.32.0
+PORTVERSION=	3.32.2
 CATEGORIES=	textproc gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
