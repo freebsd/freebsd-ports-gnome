@@ -1,3 +1,9 @@
+include/cogl/cogl-pango/cogl-pango.h
+include/cogl/cogl-path/cogl-path-enum-types.h
+include/cogl/cogl-path/cogl-path-types.h
+include/cogl/cogl-path/cogl-path.h
+include/cogl/cogl-path/cogl1-path-functions.h
+include/cogl/cogl-path/cogl2-path-functions.h
 include/cogl/cogl/cogl-atlas-texture.h
 include/cogl/cogl/cogl-attribute-buffer.h
 include/cogl/cogl/cogl-attribute.h
@@ -88,12 +94,6 @@ include/cogl/cogl/gl-prototypes/cogl-gles2-functions.h
 include/cogl/cogl/gl-prototypes/cogl-glsl-functions.h
 include/cogl/cogl/gl-prototypes/cogl-in-gles-core-functions.h
 include/cogl/cogl/gl-prototypes/cogl-in-gles2-core-functions.h
-include/cogl/cogl-pango/cogl-pango.h
-include/cogl/cogl-path/cogl-path-enum-types.h
-include/cogl/cogl-path/cogl-path-types.h
-include/cogl/cogl-path/cogl-path.h
-include/cogl/cogl-path/cogl1-path-functions.h
-include/cogl/cogl-path/cogl2-path-functions.h
 lib/girepository-1.0/Cogl-1.0.typelib
 lib/girepository-1.0/Cogl-2.0.typelib
 lib/girepository-1.0/CoglPango-1.0.typelib
@@ -108,13 +108,13 @@ lib/libcogl.so
 lib/libcogl.so.%%LIBVER%%
 lib/libcogl.so.%%LIBVERSION%%
 libdata/pkgconfig/cogl-1.0.pc
-libdata/pkgconfig/cogl-path-1.0.pc
 libdata/pkgconfig/cogl-2.0-experimental.pc
-libdata/pkgconfig/cogl-path-2.0-experimental.pc
 libdata/pkgconfig/cogl-gl-1.0.pc
 libdata/pkgconfig/cogl-pango-1.0.pc
 libdata/pkgconfig/cogl-pango-2.0-experimental.pc
-share/cogl/examples-data/crate.jpg
+libdata/pkgconfig/cogl-path-1.0.pc
+libdata/pkgconfig/cogl-path-2.0-experimental.pc
+%%DATADIR%%/examples-data/crate.jpg
 share/gir-1.0/Cogl-1.0.gir
 share/gir-1.0/Cogl-2.0.gir
 share/gir-1.0/CoglPango-1.0.gir
@@ -139,9 +139,11 @@ share/locale/es/LC_MESSAGES/cogl.mo
 share/locale/eu/LC_MESSAGES/cogl.mo
 share/locale/fa/LC_MESSAGES/cogl.mo
 share/locale/fr/LC_MESSAGES/cogl.mo
+share/locale/fur/LC_MESSAGES/cogl.mo
 share/locale/gl/LC_MESSAGES/cogl.mo
 share/locale/he/LC_MESSAGES/cogl.mo
 share/locale/hi/LC_MESSAGES/cogl.mo
+share/locale/hr/LC_MESSAGES/cogl.mo
 share/locale/hu/LC_MESSAGES/cogl.mo
 share/locale/id/LC_MESSAGES/cogl.mo
 share/locale/it/LC_MESSAGES/cogl.mo
@@ -153,6 +155,7 @@ share/locale/lt/LC_MESSAGES/cogl.mo
 share/locale/lv/LC_MESSAGES/cogl.mo
 share/locale/ml/LC_MESSAGES/cogl.mo
 share/locale/nb/LC_MESSAGES/cogl.mo
+share/locale/ne/LC_MESSAGES/cogl.mo
 share/locale/nl/LC_MESSAGES/cogl.mo
 share/locale/oc/LC_MESSAGES/cogl.mo
 share/locale/or/LC_MESSAGES/cogl.mo
@@ -160,6 +163,7 @@ share/locale/pa/LC_MESSAGES/cogl.mo
 share/locale/pl/LC_MESSAGES/cogl.mo
 share/locale/pt/LC_MESSAGES/cogl.mo
 share/locale/pt_BR/LC_MESSAGES/cogl.mo
+share/locale/ro/LC_MESSAGES/cogl.mo
 share/locale/ru/LC_MESSAGES/cogl.mo
 share/locale/sk/LC_MESSAGES/cogl.mo
 share/locale/sl/LC_MESSAGES/cogl.mo
