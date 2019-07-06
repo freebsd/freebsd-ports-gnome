@@ -4,7 +4,6 @@ include/libnotify/notify-enum-types.h
 include/libnotify/notify-features.h
 include/libnotify/notify.h
 lib/girepository-1.0/Notify-0.7.typelib
-lib/libnotify.a
 lib/libnotify.so
 lib/libnotify.so.4
 lib/libnotify.so.4.0.0
