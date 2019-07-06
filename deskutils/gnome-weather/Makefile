@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-weather
-PORTVERSION=	3.32.0
+PORTVERSION=	3.32.2
 CATEGORIES=	deskutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
