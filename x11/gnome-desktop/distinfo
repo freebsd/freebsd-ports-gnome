@@ -1,3 +1,3 @@
-TIMESTAMP = 1552371866
-SHA256 (gnome/gnome-desktop-3.32.0.tar.xz) = a6393dc5fc29fc0652ac84c73b3da205d0b0168128c4cf6d27797a08f3d07b54
-SIZE (gnome/gnome-desktop-3.32.0.tar.xz) = 709800
+TIMESTAMP = 1562402913
+SHA256 (gnome/gnome-desktop-3.32.2.tar.xz) = 099f71b29310c999c28f2bf272c846bbd7efc8c6c438b37d15f374230ce92d2e
+SIZE (gnome/gnome-desktop-3.32.2.tar.xz) = 709128
