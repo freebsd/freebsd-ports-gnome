@@ -51,7 +51,7 @@ lib/org.gnome.Music/libgd.so
 %%PYTHON_SITELIBDIR%%/gnomemusic/window.py
 %%PYTHON_SITELIBDIR%%/gnomemusic/windowplacement.py
 share/applications/org.gnome.Music.desktop
-share/help/C/gnome-music/figures/gnome-music-3.12.png
+share/help/C/gnome-music/figures/gnome-music-3.32.png
 share/help/C/gnome-music/index.page
 share/help/C/gnome-music/introduction.page
 share/help/C/gnome-music/legal.xml
@@ -64,7 +64,7 @@ share/help/C/gnome-music/playlist-remove-songs.page
 share/help/C/gnome-music/playlist-repeat.page
 share/help/C/gnome-music/playlist-shuffle.page
 share/help/C/gnome-music/search.page
-share/help/ca/gnome-music/figures/gnome-music-3.12.png
+share/help/ca/gnome-music/figures/gnome-music-3.32.png
 share/help/ca/gnome-music/index.page
 share/help/ca/gnome-music/introduction.page
 share/help/ca/gnome-music/legal.xml
@@ -77,7 +77,7 @@ share/help/ca/gnome-music/playlist-remove-songs.page
 share/help/ca/gnome-music/playlist-repeat.page
 share/help/ca/gnome-music/playlist-shuffle.page
 share/help/ca/gnome-music/search.page
-share/help/cs/gnome-music/figures/gnome-music-3.12.png
+share/help/cs/gnome-music/figures/gnome-music-3.32.png
 share/help/cs/gnome-music/index.page
 share/help/cs/gnome-music/introduction.page
 share/help/cs/gnome-music/legal.xml
@@ -90,7 +90,7 @@ share/help/cs/gnome-music/playlist-remove-songs.page
 share/help/cs/gnome-music/playlist-repeat.page
 share/help/cs/gnome-music/playlist-shuffle.page
 share/help/cs/gnome-music/search.page
-share/help/da/gnome-music/figures/gnome-music-3.12.png
+share/help/da/gnome-music/figures/gnome-music-3.32.png
 share/help/da/gnome-music/index.page
 share/help/da/gnome-music/introduction.page
 share/help/da/gnome-music/legal.xml
@@ -103,7 +103,7 @@ share/help/da/gnome-music/playlist-remove-songs.page
 share/help/da/gnome-music/playlist-repeat.page
 share/help/da/gnome-music/playlist-shuffle.page
 share/help/da/gnome-music/search.page
-share/help/de/gnome-music/figures/gnome-music-3.12.png
+share/help/de/gnome-music/figures/gnome-music-3.32.png
 share/help/de/gnome-music/index.page
 share/help/de/gnome-music/introduction.page
 share/help/de/gnome-music/legal.xml
@@ -116,7 +116,7 @@ share/help/de/gnome-music/playlist-remove-songs.page
 share/help/de/gnome-music/playlist-repeat.page
 share/help/de/gnome-music/playlist-shuffle.page
 share/help/de/gnome-music/search.page
-share/help/el/gnome-music/figures/gnome-music-3.12.png
+share/help/el/gnome-music/figures/gnome-music-3.32.png
 share/help/el/gnome-music/index.page
 share/help/el/gnome-music/introduction.page
 share/help/el/gnome-music/legal.xml
@@ -129,7 +129,7 @@ share/help/el/gnome-music/playlist-remove-songs.page
 share/help/el/gnome-music/playlist-repeat.page
 share/help/el/gnome-music/playlist-shuffle.page
 share/help/el/gnome-music/search.page
-share/help/es/gnome-music/figures/gnome-music-3.12.png
+share/help/es/gnome-music/figures/gnome-music-3.32.png
 share/help/es/gnome-music/index.page
 share/help/es/gnome-music/introduction.page
 share/help/es/gnome-music/legal.xml
@@ -142,7 +142,7 @@ share/help/es/gnome-music/playlist-remove-songs.page
 share/help/es/gnome-music/playlist-repeat.page
 share/help/es/gnome-music/playlist-shuffle.page
 share/help/es/gnome-music/search.page
-share/help/fr/gnome-music/figures/gnome-music-3.12.png
+share/help/fr/gnome-music/figures/gnome-music-3.32.png
 share/help/fr/gnome-music/index.page
 share/help/fr/gnome-music/introduction.page
 share/help/fr/gnome-music/legal.xml
@@ -155,7 +155,7 @@ share/help/fr/gnome-music/playlist-remove-songs.page
 share/help/fr/gnome-music/playlist-repeat.page
 share/help/fr/gnome-music/playlist-shuffle.page
 share/help/fr/gnome-music/search.page
-share/help/gl/gnome-music/figures/gnome-music-3.12.png
+share/help/gl/gnome-music/figures/gnome-music-3.32.png
 share/help/gl/gnome-music/index.page
 share/help/gl/gnome-music/introduction.page
 share/help/gl/gnome-music/legal.xml
@@ -168,7 +168,7 @@ share/help/gl/gnome-music/playlist-remove-songs.page
 share/help/gl/gnome-music/playlist-repeat.page
 share/help/gl/gnome-music/playlist-shuffle.page
 share/help/gl/gnome-music/search.page
-share/help/hr/gnome-music/figures/gnome-music-3.12.png
+share/help/hr/gnome-music/figures/gnome-music-3.32.png
 share/help/hr/gnome-music/index.page
 share/help/hr/gnome-music/introduction.page
 share/help/hr/gnome-music/legal.xml
@@ -181,7 +181,7 @@ share/help/hr/gnome-music/playlist-remove-songs.page
 share/help/hr/gnome-music/playlist-repeat.page
 share/help/hr/gnome-music/playlist-shuffle.page
 share/help/hr/gnome-music/search.page
-share/help/hu/gnome-music/figures/gnome-music-3.12.png
+share/help/hu/gnome-music/figures/gnome-music-3.32.png
 share/help/hu/gnome-music/index.page
 share/help/hu/gnome-music/introduction.page
 share/help/hu/gnome-music/legal.xml
@@ -194,7 +194,7 @@ share/help/hu/gnome-music/playlist-remove-songs.page
 share/help/hu/gnome-music/playlist-repeat.page
 share/help/hu/gnome-music/playlist-shuffle.page
 share/help/hu/gnome-music/search.page
-share/help/it/gnome-music/figures/gnome-music-3.12.png
+share/help/it/gnome-music/figures/gnome-music-3.32.png
 share/help/it/gnome-music/index.page
 share/help/it/gnome-music/introduction.page
 share/help/it/gnome-music/legal.xml
@@ -207,7 +207,7 @@ share/help/it/gnome-music/playlist-remove-songs.page
 share/help/it/gnome-music/playlist-repeat.page
 share/help/it/gnome-music/playlist-shuffle.page
 share/help/it/gnome-music/search.page
-share/help/ko/gnome-music/figures/gnome-music-3.12.png
+share/help/ko/gnome-music/figures/gnome-music-3.32.png
 share/help/ko/gnome-music/index.page
 share/help/ko/gnome-music/introduction.page
 share/help/ko/gnome-music/legal.xml
@@ -220,7 +220,7 @@ share/help/ko/gnome-music/playlist-remove-songs.page
 share/help/ko/gnome-music/playlist-repeat.page
 share/help/ko/gnome-music/playlist-shuffle.page
 share/help/ko/gnome-music/search.page
-share/help/nl/gnome-music/figures/gnome-music-3.12.png
+share/help/nl/gnome-music/figures/gnome-music-3.32.png
 share/help/nl/gnome-music/index.page
 share/help/nl/gnome-music/introduction.page
 share/help/nl/gnome-music/legal.xml
@@ -233,7 +233,7 @@ share/help/nl/gnome-music/playlist-remove-songs.page
 share/help/nl/gnome-music/playlist-repeat.page
 share/help/nl/gnome-music/playlist-shuffle.page
 share/help/nl/gnome-music/search.page
-share/help/pl/gnome-music/figures/gnome-music-3.12.png
+share/help/pl/gnome-music/figures/gnome-music-3.32.png
 share/help/pl/gnome-music/index.page
 share/help/pl/gnome-music/introduction.page
 share/help/pl/gnome-music/legal.xml
@@ -246,7 +246,7 @@ share/help/pl/gnome-music/playlist-remove-songs.page
 share/help/pl/gnome-music/playlist-repeat.page
 share/help/pl/gnome-music/playlist-shuffle.page
 share/help/pl/gnome-music/search.page
-share/help/pt_BR/gnome-music/figures/gnome-music-3.12.png
+share/help/pt_BR/gnome-music/figures/gnome-music-3.32.png
 share/help/pt_BR/gnome-music/index.page
 share/help/pt_BR/gnome-music/introduction.page
 share/help/pt_BR/gnome-music/legal.xml
@@ -259,7 +259,7 @@ share/help/pt_BR/gnome-music/playlist-remove-songs.page
 share/help/pt_BR/gnome-music/playlist-repeat.page
 share/help/pt_BR/gnome-music/playlist-shuffle.page
 share/help/pt_BR/gnome-music/search.page
-share/help/ro/gnome-music/figures/gnome-music-3.12.png
+share/help/ro/gnome-music/figures/gnome-music-3.32.png
 share/help/ro/gnome-music/index.page
 share/help/ro/gnome-music/introduction.page
 share/help/ro/gnome-music/legal.xml
@@ -272,7 +272,7 @@ share/help/ro/gnome-music/playlist-remove-songs.page
 share/help/ro/gnome-music/playlist-repeat.page
 share/help/ro/gnome-music/playlist-shuffle.page
 share/help/ro/gnome-music/search.page
-share/help/sv/gnome-music/figures/gnome-music-3.12.png
+share/help/sv/gnome-music/figures/gnome-music-3.32.png
 share/help/sv/gnome-music/index.page
 share/help/sv/gnome-music/introduction.page
 share/help/sv/gnome-music/legal.xml
