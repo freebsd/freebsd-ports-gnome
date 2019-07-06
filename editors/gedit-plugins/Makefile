@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	gedit-plugins
-PORTVERSION=	3.32.0
+PORTVERSION=	3.32.2
 CATEGORIES=	editors gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Plugins for GEdit 3
+COMMENT=	Plugins for GEdit
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
