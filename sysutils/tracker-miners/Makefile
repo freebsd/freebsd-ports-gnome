@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	tracker-miners
-PORTVERSION=	2.2.1
+PORTVERSION=	2.2.2
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	Miners for tracker2
+COMMENT=	Miners for tracker
 
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING.LGPL
