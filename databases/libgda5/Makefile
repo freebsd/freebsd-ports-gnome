@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libgda
-PORTVERSION?=	5.2.8
+PORTVERSION?=	5.2.9
 PORTREVISION?=	0
 CATEGORIES=	databases gnome
 MASTER_SITES=	GNOME
@@ -24,7 +24,7 @@ LIB_DEPENDS=	libsecret-1.so:security/libsecret \
 		libgee-0.8.so:devel/libgee \
 		libsoup-2.4.so:devel/libsoup \
 
-USES+=		gettext gmake gnome libtool localbase pathfix pkgconfig
+USES+=		gettext gmake gnome libtool localbase pathfix pkgconfig sqlite
 USE_GNOME=	glib20 libxslt intlhack introspection:build referencehack
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
