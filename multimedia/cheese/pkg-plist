@@ -12,10 +12,10 @@ include/cheese/cheese.h
 lib/girepository-1.0/Cheese-3.0.typelib
 lib/libcheese-gtk.so
 lib/libcheese-gtk.so.25
-lib/libcheese-gtk.so.25.1.2
+lib/libcheese-gtk.so.25.1.3
 lib/libcheese.so
 lib/libcheese.so.8
-lib/libcheese.so.8.0.12
+lib/libcheese.so.8.0.13
 libdata/pkgconfig/cheese-gtk.pc
 libdata/pkgconfig/cheese.pc
 %%MANPAGES%%man/man1/cheese.1.gz
@@ -400,12 +400,7 @@ share/help/zh_CN/cheese/pref-fullscreen.page
 share/help/zh_CN/cheese/pref-image-properties.page
 share/help/zh_CN/cheese/pref-resolution.page
 share/help/zh_CN/cheese/video-record.page
-share/icons/hicolor/16x16/apps/org.gnome.Cheese.png
-share/icons/hicolor/22x22/apps/org.gnome.Cheese.png
-share/icons/hicolor/24x24/apps/org.gnome.Cheese.png
-share/icons/hicolor/256x256/apps/org.gnome.Cheese.png
-share/icons/hicolor/32x32/apps/org.gnome.Cheese.png
-share/icons/hicolor/48x48/apps/org.gnome.Cheese.png
+share/icons/hicolor/scalable/apps/org.gnome.Cheese.svg
 share/icons/hicolor/symbolic/apps/org.gnome.Cheese-symbolic.svg
 share/locale/af/LC_MESSAGES/cheese.mo
 share/locale/an/LC_MESSAGES/cheese.mo
