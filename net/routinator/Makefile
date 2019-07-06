@@ -1,8 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	routinator
-PORTVERSION=	0.3.1
+PORTVERSION=	0.3.3
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	jaap@NLnetLabs.nl
@@ -18,7 +19,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	NLnetLabs
 
 CARGO_CRATES=	ansi_term-0.11.0 \
-		arc-swap-0.3.7 \
+		arc-swap-0.3.8 \
 		argon2rs-0.2.5 \
 		arrayvec-0.4.10 \
 		atty-0.2.11 \
@@ -30,8 +31,8 @@ CARGO_CRATES=	ansi_term-0.11.0 \
 		bitflags-1.0.4 \
 		blake2-rfc-0.2.18 \
 		byteorder-1.3.1 \
-		bytes-0.4.11 \
-		cc-1.0.30 \
+		bytes-0.4.12 \
+		cc-1.0.32 \
 		cfg-if-0.1.7 \
 		chrono-0.4.6 \
 		clap-2.32.0 \
@@ -47,7 +48,7 @@ CARGO_CRATES=	ansi_term-0.11.0 \
 		error-chain-0.11.0 \
 		failure-0.1.5 \
 		failure_derive-0.1.5 \
-		fern-0.5.7 \
+		fern-0.5.8 \
 		fnv-1.0.6 \
 		fuchsia-cprng-0.1.1 \
 		fuchsia-zircon-0.3.3 \
@@ -61,7 +62,7 @@ CARGO_CRATES=	ansi_term-0.11.0 \
 		kernel32-sys-0.2.2 \
 		lazy_static-1.3.0 \
 		lazycell-1.2.1 \
-		libc-0.2.50 \
+		libc-0.2.51 \
 		lock_api-0.1.5 \
 		log-0.4.6 \
 		memoffset-0.2.1 \
@@ -91,12 +92,12 @@ CARGO_CRATES=	ansi_term-0.11.0 \
 		rand_pcg-0.1.2 \
 		rand_xorshift-0.1.1 \
 		rdrand-0.4.0 \
-		redox_syscall-0.1.51 \
+		redox_syscall-0.1.52 \
 		redox_termios-0.1.1 \
 		redox_users-0.3.0 \
 		remove_dir_all-0.5.1 \
 		ring-0.13.5 \
-		rpki-0.3.1 \
+		rpki-0.3.3 \
 		rustc-demangle-0.1.13 \
 		rustc_version-0.2.3 \
 		safemem-0.3.0 \
@@ -111,26 +112,27 @@ CARGO_CRATES=	ansi_term-0.11.0 \
 		socket2-0.3.8 \
 		stable_deref_trait-1.1.1 \
 		strsim-0.7.0 \
-		syn-0.15.27 \
+		syn-0.15.29 \
 		synstructure-0.10.1 \
 		syslog-4.0.1 \
 		tempfile-3.0.7 \
 		termion-1.5.1 \
 		textwrap-0.10.0 \
 		time-0.1.42 \
-		tokio-0.1.16 \
+		tokio-0.1.18 \
 		tokio-codec-0.1.1 \
-		tokio-current-thread-0.1.5 \
-		tokio-executor-0.1.6 \
+		tokio-current-thread-0.1.6 \
+		tokio-executor-0.1.7 \
 		tokio-fs-0.1.6 \
 		tokio-io-0.1.12 \
 		tokio-process-0.2.3 \
 		tokio-reactor-0.1.9 \
 		tokio-signal-0.2.7 \
-		tokio-sync-0.1.3 \
+		tokio-sync-0.1.4 \
 		tokio-tcp-0.1.3 \
-		tokio-threadpool-0.1.12 \
+		tokio-threadpool-0.1.13 \
 		tokio-timer-0.2.10 \
+		tokio-trace-core-0.1.0 \
 		tokio-udp-0.1.3 \
 		tokio-uds-0.2.5 \
 		toml-0.4.10 \

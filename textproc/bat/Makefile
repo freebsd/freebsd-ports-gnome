@@ -3,13 +3,16 @@
 PORTNAME=	bat
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.10.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	textproc
 
 MAINTAINER=	pizzamig@FreeBSD.org
 COMMENT=	Clone of cat with syntax highlighting
 
 LICENSE=	APACHE20
+
+LIB_DEPENDS=	libgit2.so:devel/libgit2 \
+		libonig.so:devel/oniguruma
 
 USES=		cargo
 USE_GITHUB=	yes

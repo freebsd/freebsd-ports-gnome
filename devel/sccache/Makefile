@@ -2,7 +2,7 @@
 
 PORTNAME=	sccache
 DISTVERSION=	2.8.0.alpha0
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	devel
 
 MAINTAINER=	pizzamig@FreeBSD.org
@@ -11,7 +11,7 @@ COMMENT=	Like ccache with cloud storage support
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=	cargo
+USES=		cargo ssl
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	mozilla

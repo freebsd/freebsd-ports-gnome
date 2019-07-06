@@ -30,7 +30,6 @@ include/wine/itss.idl
 include/wine/library.h
 include/wine/svcctl.h
 include/wine/svcctl.idl
-include/wine/unicode.h
 include/wine/msvcrt/assert.h
 include/wine/msvcrt/conio.h
 include/wine/msvcrt/crtdbg.h
@@ -58,6 +57,7 @@ include/wine/msvcrt/setjmp.h
 include/wine/msvcrt/share.h
 include/wine/msvcrt/signal.h
 include/wine/msvcrt/stddef.h
+include/wine/msvcrt/stdint.h
 include/wine/msvcrt/stdio.h
 include/wine/msvcrt/stdlib.h
 include/wine/msvcrt/string.h
@@ -262,6 +262,7 @@ include/wine/windows/davclnt.h
 include/wine/windows/dbccmd.idl
 include/wine/windows/dbcses.idl
 include/wine/windows/dbdsad.idl
+include/wine/windows/dbgeng.h
 include/wine/windows/dbghelp.h
 include/wine/windows/dbinit.idl
 include/wine/windows/dbprop.idl
@@ -512,6 +513,8 @@ include/wine/windows/mfidl.h
 include/wine/windows/mfidl.idl
 include/wine/windows/mfobjects.h
 include/wine/windows/mfobjects.idl
+include/wine/windows/mfplay.h
+include/wine/windows/mfplay.idl
 include/wine/windows/mfreadwrite.h
 include/wine/windows/mfreadwrite.idl
 include/wine/windows/mftransform.h
@@ -1942,6 +1945,7 @@ lib/wine/fakedlls/kernel32.dll
 lib/wine/fakedlls/kernelbase.dll
 %%WINE32%%lib/wine/fakedlls/keyboard.drv16
 %%WINE32%%lib/wine/fakedlls/krnl386.exe16
+lib/wine/fakedlls/ksecdd.sys
 lib/wine/fakedlls/ksuser.dll
 lib/wine/fakedlls/ktmw32.dll
 %%MPG123%%lib/wine/fakedlls/l3codeca.acm
@@ -2216,7 +2220,7 @@ lib/wine/fakedlls/twain_32.dll
 %%WINE32%%lib/wine/fakedlls/typelib.dll16
 lib/wine/fakedlls/tzres.dll
 lib/wine/fakedlls/ucrtbase.dll
-%%STAGING%%lib/wine/fakedlls/uianimation.dll
+lib/wine/fakedlls/uianimation.dll
 lib/wine/fakedlls/uiautomationcore.dll
 lib/wine/fakedlls/uiribbon.dll
 lib/wine/fakedlls/unicows.dll
@@ -2433,6 +2437,7 @@ lib/wine/kernel32.dll.so
 lib/wine/kernelbase.dll.so
 %%WINE32%%lib/wine/keyboard.drv16.so
 %%WINE32%%lib/wine/krnl386.exe16.so
+lib/wine/ksecdd.sys.so
 lib/wine/ksuser.dll.so
 lib/wine/ktmw32.dll.so
 %%MPG123%%lib/wine/l3codeca.acm.so
@@ -2564,6 +2569,7 @@ lib/wine/libpowrprof.def
 lib/wine/libpropsys.def
 lib/wine/libpsapi.def
 lib/wine/libquartz.def
+lib/wine/libqwave.def
 lib/wine/librasapi32.def
 lib/wine/librasdlg.def
 lib/wine/libresutils.def
@@ -2902,7 +2908,7 @@ lib/wine/twain_32.dll.so
 %%WINE32%%lib/wine/typelib.dll16.so
 lib/wine/tzres.dll.so
 lib/wine/ucrtbase.dll.so
-%%STAGING%%lib/wine/uianimation.dll.so
+lib/wine/uianimation.dll.so
 lib/wine/uiautomationcore.dll.so
 lib/wine/uiribbon.dll.so
 lib/wine/unicows.dll.so

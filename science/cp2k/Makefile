@@ -3,7 +3,7 @@
 PORTNAME=	cp2k
 DISTVERSIONPREFIX=	v
 DISTVERSION=	6.1.0
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	science
 
 PATCH_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/commit/
@@ -73,7 +73,7 @@ pre-configure:
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} 's|LIBS.*=.*|& ${LDFLAGS}|; s|^FCFLAGS.*=.*|& -I${LOCALBASE}/include|' ${WRKSRC}/arch/FreeBSD-*
+	@${REINPLACE_CMD} 's|LIBS.*=.*|& ${LDFLAGS}|; s|^FCFLAGS.*=.*|& -I${LOCALBASE}/include|; s| -march=native||' ${WRKSRC}/arch/FreeBSD-*
 
 pre-build:
 	@${MKDIR} ${BUILD_WRKSRC}

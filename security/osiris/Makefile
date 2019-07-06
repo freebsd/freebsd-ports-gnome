@@ -2,13 +2,16 @@
 
 PORTNAME=	osiris
 PORTVERSION=	4.2.3
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	security
 MASTER_SITES=	http://osiris.shmoo.com/data/ \
 		http://redundancy.redundancy.org/mirror/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Shmoo client/server host integrity checker
+
+BROKEN_FreeBSD_12=	undefined symbol: SHA_Init
+BROKEN_FreeBSD_13=	undefined symbol: SHA_Init
 
 GNU_CONFIGURE=	yes
 USES=		readline ssl

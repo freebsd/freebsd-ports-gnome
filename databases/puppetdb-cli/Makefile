@@ -2,7 +2,7 @@
 
 PORTNAME=	puppetdb-cli
 PORTVERSION=	1.2.5
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	databases
 
 MAINTAINER=	puppet@FreeBSD.org
@@ -16,7 +16,7 @@ BROKEN_SSL_REASON_libressl=		Needs an old version of OpenSSL (older than 1.1)
 BROKEN_SSL_REASON_libressl-devel=	Needs an old version of OpenSSL (older than 1.1)
 BROKEN_SSL_REASON_openssl111=		Needs an older version of OpenSSL (older than 1.1)
 
-USES=		cargo perl5
+USES=		cargo perl5 ssl
 USE_GITHUB=	yes
 USE_PERL5=	build
 

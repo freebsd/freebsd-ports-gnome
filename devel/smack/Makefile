@@ -3,13 +3,17 @@
 
 PORTNAME=	smack
 PORTVERSION=	0.5.0
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	devel
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Low-level I/O storage library which packs data
 
 LICENSE=	GPLv2
+
+BROKEN=		unfetchable
+DEPRECATED=	Unmaintained, upstream disappeared, underlinks
+EXPIRATION_DATE=	2019-05-28
 
 LIB_DEPENDS=	libboost_iostreams.so:devel/boost-libs \
 		libsnappy.so:archivers/snappy

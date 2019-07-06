@@ -360,6 +360,7 @@
 %%WWWDIR%%/go/modules/community/apikeys/language/cs.php
 %%WWWDIR%%/go/modules/community/apikeys/language/de.php
 %%WWWDIR%%/go/modules/community/apikeys/language/en.php
+%%WWWDIR%%/go/modules/community/apikeys/language/fr.php
 %%WWWDIR%%/go/modules/community/apikeys/language/hu.php
 %%WWWDIR%%/go/modules/community/apikeys/language/id.php
 %%WWWDIR%%/go/modules/community/apikeys/language/pt_br.php
@@ -384,6 +385,7 @@
 %%WWWDIR%%/go/modules/community/googleauthenticator/language/cs.php
 %%WWWDIR%%/go/modules/community/googleauthenticator/language/de.php
 %%WWWDIR%%/go/modules/community/googleauthenticator/language/en.php
+%%WWWDIR%%/go/modules/community/googleauthenticator/language/fr.php
 %%WWWDIR%%/go/modules/community/googleauthenticator/language/hu.php
 %%WWWDIR%%/go/modules/community/googleauthenticator/language/id.php
 %%WWWDIR%%/go/modules/community/googleauthenticator/language/nl.php
@@ -405,6 +407,7 @@
 %%WWWDIR%%/go/modules/community/imapauthenticator/language/cs.php
 %%WWWDIR%%/go/modules/community/imapauthenticator/language/de.php
 %%WWWDIR%%/go/modules/community/imapauthenticator/language/en.php
+%%WWWDIR%%/go/modules/community/imapauthenticator/language/fr.php
 %%WWWDIR%%/go/modules/community/imapauthenticator/language/hu.php
 %%WWWDIR%%/go/modules/community/imapauthenticator/language/id.php
 %%WWWDIR%%/go/modules/community/imapauthenticator/language/pt_br.php
@@ -428,6 +431,7 @@
 %%WWWDIR%%/go/modules/community/ldapauthenticator/install/updates.php
 %%WWWDIR%%/go/modules/community/ldapauthenticator/language/cs.php
 %%WWWDIR%%/go/modules/community/ldapauthenticator/language/de.php
+%%WWWDIR%%/go/modules/community/ldapauthenticator/language/fr.php
 %%WWWDIR%%/go/modules/community/ldapauthenticator/language/en.php
 %%WWWDIR%%/go/modules/community/ldapauthenticator/language/hu.php
 %%WWWDIR%%/go/modules/community/ldapauthenticator/language/id.php
@@ -457,8 +461,10 @@
 %%WWWDIR%%/go/modules/community/multi_instance/language/cs.php
 %%WWWDIR%%/go/modules/community/multi_instance/language/de.php
 %%WWWDIR%%/go/modules/community/multi_instance/language/en.php
+%%WWWDIR%%/go/modules/community/multi_instance/language/fr.php
 %%WWWDIR%%/go/modules/community/multi_instance/language/hu.php
 %%WWWDIR%%/go/modules/community/multi_instance/language/id.php
+%%WWWDIR%%/go/modules/community/multi_instance/language/it.php
 %%WWWDIR%%/go/modules/community/multi_instance/language/pt_br.php
 %%WWWDIR%%/go/modules/community/multi_instance/model/Instance.php
 %%WWWDIR%%/go/modules/community/multi_instance/oninstall.php
@@ -528,6 +534,7 @@
 %%WWWDIR%%/go/modules/community/serverclient/language/el.php
 %%WWWDIR%%/go/modules/community/serverclient/language/en.php
 %%WWWDIR%%/go/modules/community/serverclient/language/fr.php
+%%WWWDIR%%/go/modules/community/serverclient/language/it.php
 %%WWWDIR%%/go/modules/community/serverclient/language/ko.php
 %%WWWDIR%%/go/modules/community/serverclient/language/nb.php
 %%WWWDIR%%/go/modules/community/serverclient/language/nl.php
@@ -686,6 +693,7 @@
 %%WWWDIR%%/go/modules/core/links/Module.php
 %%WWWDIR%%/go/modules/core/links/controller/Link.php
 %%WWWDIR%%/go/modules/core/links/language/en.php
+%%WWWDIR%%/go/modules/core/links/language/fr.php
 %%WWWDIR%%/go/modules/core/links/language/nl.php
 %%WWWDIR%%/go/modules/core/links/model/Link.php
 %%WWWDIR%%/go/modules/core/links/views/extjs3/CreateLinkButton.js
@@ -726,6 +734,8 @@
 %%WWWDIR%%/go/modules/core/search/controller/Search.php
 %%WWWDIR%%/go/modules/core/search/language/cs.php
 %%WWWDIR%%/go/modules/core/search/language/en.php
+%%WWWDIR%%/go/modules/core/search/language/fr.php
+%%WWWDIR%%/go/modules/core/search/language/it.php
 %%WWWDIR%%/go/modules/core/search/language/pt_br.php
 %%WWWDIR%%/go/modules/core/search/model/Search.php
 %%WWWDIR%%/go/modules/core/search/views/extjs3/Module.js
@@ -1008,8 +1018,10 @@
 %%WWWDIR%%/modules/assistant/install/instal.sql
 %%WWWDIR%%/modules/assistant/language/de.php
 %%WWWDIR%%/modules/assistant/language/en.php
+%%WWWDIR%%/modules/assistant/language/fr.php
 %%WWWDIR%%/modules/assistant/language/hu.php
 %%WWWDIR%%/modules/assistant/language/id.php
+%%WWWDIR%%/modules/assistant/language/it.php
 %%WWWDIR%%/modules/assistant/language/pt_br.php
 %%WWWDIR%%/modules/assistant/scripts.txt
 %%WWWDIR%%/modules/assistant/themes/Default/images/assistant.png
@@ -1621,6 +1633,7 @@
 %%WWWDIR%%/modules/customcss/language/fr.php
 %%WWWDIR%%/modules/customcss/language/hu.php
 %%WWWDIR%%/modules/customcss/language/id.php
+%%WWWDIR%%/modules/customcss/language/it.php
 %%WWWDIR%%/modules/customcss/language/ko.php
 %%WWWDIR%%/modules/customcss/language/nb.php
 %%WWWDIR%%/modules/customcss/language/pl.php
@@ -1761,6 +1774,7 @@
 %%WWWDIR%%/modules/documenttemplates/language/fr.php
 %%WWWDIR%%/modules/documenttemplates/language/hu.php
 %%WWWDIR%%/modules/documenttemplates/language/id.php
+%%WWWDIR%%/modules/documenttemplates/language/it.php
 %%WWWDIR%%/modules/documenttemplates/language/ko.php
 %%WWWDIR%%/modules/documenttemplates/language/nb.php
 %%WWWDIR%%/modules/documenttemplates/language/nl.php
@@ -1910,6 +1924,7 @@
 %%WWWDIR%%/modules/exactonline/language/fr.php
 %%WWWDIR%%/modules/exactonline/language/hu.php
 %%WWWDIR%%/modules/exactonline/language/id.php
+%%WWWDIR%%/modules/exactonline/language/it.php
 %%WWWDIR%%/modules/exactonline/language/nl.php
 %%WWWDIR%%/modules/exactonline/language/pt_br.php
 %%WWWDIR%%/modules/exactonline/model/AddressbookAddressbookExtension.php
@@ -2137,6 +2152,7 @@
 %%WWWDIR%%/modules/favorites/language/fr.php
 %%WWWDIR%%/modules/favorites/language/hu.php
 %%WWWDIR%%/modules/favorites/language/id.php
+%%WWWDIR%%/modules/favorites/language/it.php
 %%WWWDIR%%/modules/favorites/language/pt_br.php
 %%WWWDIR%%/modules/favorites/model/Addressbook.php
 %%WWWDIR%%/modules/favorites/model/Calendar.php
@@ -2315,6 +2331,7 @@
 %%WWWDIR%%/modules/filesearch/language/fr.php
 %%WWWDIR%%/modules/filesearch/language/hu.php
 %%WWWDIR%%/modules/filesearch/language/id.php
+%%WWWDIR%%/modules/filesearch/language/it.php
 %%WWWDIR%%/modules/filesearch/language/nb.php
 %%WWWDIR%%/modules/filesearch/language/nl.php
 %%WWWDIR%%/modules/filesearch/language/pt_br.php
@@ -2462,8 +2479,10 @@
 %%WWWDIR%%/modules/groups/language/cs.php
 %%WWWDIR%%/modules/groups/language/de.php
 %%WWWDIR%%/modules/groups/language/en.php
+%%WWWDIR%%/modules/groups/language/fr.php
 %%WWWDIR%%/modules/groups/language/hu.php
 %%WWWDIR%%/modules/groups/language/id.php
+%%WWWDIR%%/modules/groups/language/it.php
 %%WWWDIR%%/modules/groups/language/pt_br.php
 %%WWWDIR%%/modules/groups/scripts.txt
 %%WWWDIR%%/modules/groups/themes/Default/images/groups.png
@@ -2480,6 +2499,7 @@
 %%WWWDIR%%/modules/hoursapproval2/language/hr.php
 %%WWWDIR%%/modules/hoursapproval2/language/hu.php
 %%WWWDIR%%/modules/hoursapproval2/language/id.php
+%%WWWDIR%%/modules/hoursapproval2/language/it.php
 %%WWWDIR%%/modules/hoursapproval2/language/nb.php
 %%WWWDIR%%/modules/hoursapproval2/language/nl.php
 %%WWWDIR%%/modules/hoursapproval2/language/pl.php
@@ -2511,6 +2531,7 @@
 %%WWWDIR%%/modules/leavedays/language/fr.php
 %%WWWDIR%%/modules/leavedays/language/hu.php
 %%WWWDIR%%/modules/leavedays/language/id.php
+%%WWWDIR%%/modules/leavedays/language/it.php
 %%WWWDIR%%/modules/leavedays/language/nl.php
 %%WWWDIR%%/modules/leavedays/language/pt_br.php
 %%WWWDIR%%/modules/leavedays/model/Credit.php
@@ -2783,6 +2804,7 @@
 %%WWWDIR%%/modules/pr2analyzer/language/fr.php
 %%WWWDIR%%/modules/pr2analyzer/language/hu.php
 %%WWWDIR%%/modules/pr2analyzer/language/id.php
+%%WWWDIR%%/modules/pr2analyzer/language/it.php
 %%WWWDIR%%/modules/pr2analyzer/language/nl.php
 %%WWWDIR%%/modules/pr2analyzer/language/pt_br.php
 %%WWWDIR%%/modules/pr2analyzer/themes/Default/images/pr2analizer.png
@@ -2851,6 +2873,7 @@
 %%WWWDIR%%/modules/projects2/controller/TypeController.php
 %%WWWDIR%%/modules/projects2/controller/WeekController.php
 %%WWWDIR%%/modules/projects2/cron/IncomeNotification.php
+%%WWWDIR%%/modules/projects2/cron/ScanEmailForLinks.php
 %%WWWDIR%%/modules/projects2/customfields/model/Project.php
 %%WWWDIR%%/modules/projects2/customfields/model/TimeEntry.php
 %%WWWDIR%%/modules/projects2/export/CurrentGrid.php
@@ -2873,7 +2896,6 @@
 %%WWWDIR%%/modules/projects2/language/de.php
 %%WWWDIR%%/modules/projects2/language/en.php
 %%WWWDIR%%/modules/projects2/language/es.php
-%%WWWDIR%%/modules/projects2/language/fr.php
 %%WWWDIR%%/modules/projects2/language/hr.php
 %%WWWDIR%%/modules/projects2/language/hu.php
 %%WWWDIR%%/modules/projects2/language/id.php
@@ -3012,6 +3034,7 @@
 %%WWWDIR%%/modules/savemailas/language/fr.php
 %%WWWDIR%%/modules/savemailas/language/hu.php
 %%WWWDIR%%/modules/savemailas/language/id.php
+%%WWWDIR%%/modules/savemailas/language/it.php
 %%WWWDIR%%/modules/savemailas/language/ko.php
 %%WWWDIR%%/modules/savemailas/language/nb.php
 %%WWWDIR%%/modules/savemailas/language/nl.php
@@ -3030,6 +3053,7 @@
 %%WWWDIR%%/modules/scanbox/language/fr.php
 %%WWWDIR%%/modules/scanbox/language/hu.php
 %%WWWDIR%%/modules/scanbox/language/id.php
+%%WWWDIR%%/modules/scanbox/language/it.php
 %%WWWDIR%%/modules/scanbox/language/nb.php
 %%WWWDIR%%/modules/scanbox/language/nl.php
 %%WWWDIR%%/modules/scanbox/language/pt_br.php
@@ -3136,6 +3160,7 @@
 %%WWWDIR%%/modules/site/language/fr.php
 %%WWWDIR%%/modules/site/language/hu.php
 %%WWWDIR%%/modules/site/language/id.php
+%%WWWDIR%%/modules/site/language/it.php
 %%WWWDIR%%/modules/site/language/nl.php
 %%WWWDIR%%/modules/site/language/pt_br.php
 %%WWWDIR%%/modules/site/model/Content.php
@@ -3288,6 +3313,7 @@
 %%WWWDIR%%/modules/smime/language/fr.php
 %%WWWDIR%%/modules/smime/language/hu.php
 %%WWWDIR%%/modules/smime/language/id.php
+%%WWWDIR%%/modules/smime/language/it.php
 %%WWWDIR%%/modules/smime/language/ko.php
 %%WWWDIR%%/modules/smime/language/nb.php
 %%WWWDIR%%/modules/smime/language/nl.php
@@ -3530,6 +3556,7 @@
 %%WWWDIR%%/modules/tickets/language/fr.php
 %%WWWDIR%%/modules/tickets/language/hu.php
 %%WWWDIR%%/modules/tickets/language/id.php
+%%WWWDIR%%/modules/tickets/language/it.php
 %%WWWDIR%%/modules/tickets/language/ko.php
 %%WWWDIR%%/modules/tickets/language/nb.php
 %%WWWDIR%%/modules/tickets/language/nl.php
@@ -3584,6 +3611,7 @@
 %%WWWDIR%%/modules/timeregistration2/language/hr.php
 %%WWWDIR%%/modules/timeregistration2/language/hu.php
 %%WWWDIR%%/modules/timeregistration2/language/id.php
+%%WWWDIR%%/modules/timeregistration2/language/it.php
 %%WWWDIR%%/modules/timeregistration2/language/nb.php
 %%WWWDIR%%/modules/timeregistration2/language/nl.php
 %%WWWDIR%%/modules/timeregistration2/language/pl.php
@@ -4015,6 +4043,7 @@
 %%WWWDIR%%/modules/zpushadmin/language/fr.php
 %%WWWDIR%%/modules/zpushadmin/language/hu.php
 %%WWWDIR%%/modules/zpushadmin/language/id.php
+%%WWWDIR%%/modules/zpushadmin/language/it.php
 %%WWWDIR%%/modules/zpushadmin/language/nb.php
 %%WWWDIR%%/modules/zpushadmin/language/nl.php
 %%WWWDIR%%/modules/zpushadmin/language/sv.php

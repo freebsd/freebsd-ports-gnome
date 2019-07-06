@@ -2,7 +2,7 @@
 
 PORTNAME=	php73
 DISTVERSION=	7.3.4
-PORTREVISION?=	0
+PORTREVISION?=	2
 CATEGORIES?=	lang devel www
 MASTER_SITES=   PHP/distributions
 DISTNAME=	php-${DISTVERSION}
@@ -11,6 +11,7 @@ MAINTAINER=	tz@FreeBSD.org
 COMMENT=	PHP Scripting Language
 
 LICENSE=	PHP301
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES+=		tar:xz cpe gnome
 CPE_PRODUCT=	php

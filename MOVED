@@ -9522,7 +9522,6 @@ databases/elixir-ecto_migrate||2017-11-11|Has expired: Broken for more than 6 mo
 audio/gspeakers||2017-11-11|Has expired: Broken for more than 6 months
 net/p5-Filesys-SmbClient||2017-11-11|Has expired: Broken for more than 6 months
 audio/tclmidi||2017-11-11|Has expired: Broken for more than 6 months
-security/py-xmlsec||2017-11-11|Has expired: Broken for more than 6 months
 security/samba-virusfilter||2017-11-11|Has expired: Broken for more than 6 months
 textproc/ocaml-pxp||2017-11-11|Has expired: Broken for more than 6 months
 audio/sooperlooper||2017-11-11|Has expired: Broken for more than 6 months
@@ -10776,7 +10775,6 @@ editors/manedit||2018-12-21|Has expired: Uses obsolete glib12
 misc/gtkfind||2018-12-21|Has expired: Uses obsolete glib12
 games/mindguard||2018-12-21|Has expired: Uses obsolete glib12
 games/xbattle||2018-12-21|Has expired: Uses obsolete glib12
-games/xbill||2018-12-21|Has expired: Uses obsolete glib12
 games/corewars||2018-12-21|Has expired: Uses obsolete glib12
 games/dopewars||2018-12-21|Has expired: Uses obsolete glib12
 games/garith||2018-12-21|Has expired: Uses obsolete glib12
@@ -11941,7 +11939,6 @@ www/qt4-webkit||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 www/qupzilla-qt4||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/leechcraft||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/py-qt4-opengl||2019-03-16|Has expired: Qt4 has been EOL since december 2015
-x11/qimageblitz||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/qt4-graphicssystems-opengl||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/qt4-inputmethods||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11/qxkb||2019-03-16|Has expired: Qt4 has been EOL since december 2015
@@ -12175,3 +12172,33 @@ x11/xbelld||2019-04-04|Has expired: Depends on audio/esound
 devel/mkcmd||2019-04-04|Removed, depends on expired devel/msrc0
 devel/msrc0||2019-04-04|Has expired: No longer required as comms/conserver is being retired.
 sysutils/curly||2019-04-04|Removed, depends on expired devel/msrc0
+devel/pecl-xdebug25|devel/pecl-xdebug|2019-04-09|Has expired: Please use pecl/xdebug which uses latest version
+devel/pecl-xdebug-devel|devel/pecl-xdebug|2019-04-09|Development version no longer necessary
+net/rubygem-fog-aliyun02|net/rubygem-fog-aliyun|2019-04-14|Has expired: Use net/rubygem-fog-aliyun instead
+net/rubygem-fog-aws2|net/rubygem-fog-aws|2019-04-14|Has expired: Use net/rubygem-fog-aws instead
+www/mediawiki127|www/mediawiki131|2019-04-15|Has expired: Upstream no longer maintained
+www/mediawiki130|www/mediawiki131|2019-04-15|Has expired: Upstream no longer maintained
+net/frr3|net/frr7|2019-04-16|Has expired: Upstream no longer maintained
+net/frr4|net/frr7|2019-04-16|Has expired: Upstream no longer maintained
+mail/pop3proxy||2019-04-17|Has expired: no upstream and does not properly initiate SSL/TLS connections
+devel/go-gocode||2019-04-17|Has expired: Unmaintained upstream and has issues with Go >= 1.10
+audio/raop_play|audio/pulseaudio|2019-04-17|Has expired: Abandonware. Use module-raop-sink from audio/pulseaudio instead.
+www/squid-devel||2019-04-18|Removed: devel version no longer necessary
+devel/py-sdl2|devel/py-pysdl2|2019-04-20|Rename to match upstream naming
+www/rubygem-select2-rails3|www/rubygem-select2-rails|2019-04-23|Has expired: Use www/rubygem-select2-rails instead
+www/rubygem-jquery-atwho-rails13|www/rubygem-jquery-atwho-rails|2019-04-23|Has expired: Use www/rubygem-jquery-atwho-rails instead
+devel/rubygem-recaptcha3|devel/rubygem-recaptcha|2019-04-23|Has expired: Use devel/rubygem-recaptcha instead
+security/rubygem-rack-oauth212|security/rubygem-rack-oauth2|2019-04-23|Has expired: Use security/rubygem-rack-oauth2 instead
+lang/gcc49|lang/gcc7|2019-04-27|Has expired: Unsupported by upstream. Use GCC 7 or newer instead.
+net-mgmt/zabbix32-agent|net-mgmt/zabbix4-agent|2019-04-28|Has expired: End of Life was November, 2017
+net-mgmt/zabbix32-frontend|net-mgmt/zabbix4-frontend|2019-04-28|Has expired: End of Life was November, 2017
+net-mgmt/zabbix32-java|net-mgmt/zabbix4-java|2019-04-28|Has expired: End of Life was November, 2017
+net-mgmt/zabbix32-proxy|net-mgmt/zabbix4-proxy|2019-04-28|Has expired: End of Life was November, 2017
+net-mgmt/zabbix32-server|net-mgmt/zabbix4-server|2019-04-28|Has expired: End of Life was November, 2017
+net-mgmt/zabbix34-agent|net-mgmt/zabbix4-agent|2019-04-28|Has expired: End of Life was October, 2018
+net-mgmt/zabbix34-frontend|net-mgmt/zabbix4-frontend|2019-04-28|Has expired: End of Life was October, 2018
+net-mgmt/zabbix34-java|net-mgmt/zabbix4-java|2019-04-28|Has expired: End of Life was October, 2018
+net-mgmt/zabbix34-proxy|net-mgmt/zabbix4-proxy|2019-04-28|Has expired: End of Life was October, 2018
+net-mgmt/zabbix34-server|net-mgmt/zabbix4-server|2019-04-28|Has expired: End of Life was October, 2018
+databases/zabbix32-libzbxpgsql||2019-04-28|Removed, depends on expired net-mgmt/zabbix32-agent
+databases/zabbix34-libzbxpgsql||2019-04-28|Removed, depends on expired net-mgmt/zabbix34-agent

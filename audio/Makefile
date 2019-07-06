@@ -566,6 +566,7 @@
     SUBDIR += noise-repellent-lv2
     SUBDIR += normalize
     SUBDIR += nosefart
+    SUBDIR += noson-app
     SUBDIR += nspmod
     SUBDIR += nuvolaplayer
     SUBDIR += oaml
@@ -635,6 +636,7 @@
     SUBDIR += pear-Text_Spell_Audio
     SUBDIR += penguinsap
     SUBDIR += pianobar
+    SUBDIR += pianod2
     SUBDIR += picard
     SUBDIR += picard-plugins
     SUBDIR += pithos
@@ -703,7 +705,6 @@
     SUBDIR += qsampler
     SUBDIR += qsynth
     SUBDIR += quimup
-    SUBDIR += raop_play
     SUBDIR += raul
     SUBDIR += rawrec
     SUBDIR += re
@@ -839,6 +840,7 @@
     SUBDIR += vagalume
     SUBDIR += vamp-plugin-sdk
     SUBDIR += vgmplay
+    SUBDIR += vimpc
     SUBDIR += virtual_oss
     SUBDIR += virtual_oss_ctl
     SUBDIR += vitunes
