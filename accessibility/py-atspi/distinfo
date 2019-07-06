@@ -1,3 +1,3 @@
-TIMESTAMP = 1552371695
-SHA256 (gnome/pyatspi-2.32.0.tar.xz) = 0aadf545d08737e305d0c0d92d5ad19491df5f398a6e18cb00cb69824ca9d549
-SIZE (gnome/pyatspi-2.32.0.tar.xz) = 310760
+TIMESTAMP = 1562402124
+SHA256 (gnome/pyatspi-2.32.1.tar.xz) = 84954a5bbeacc83643f05778d8beafcab8208e11b39b24637b4c4dd1f8620389
+SIZE (gnome/pyatspi-2.32.1.tar.xz) = 310896
