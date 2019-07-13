@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	ansible
-PORTVERSION?=	2.7.10
+PORTVERSION?=	2.8.2
 PORTREVISION?=	0
 CATEGORIES=	sysutils python
 MASTER_SITES=	http://releases.ansible.com/ansible/
@@ -32,9 +32,11 @@ CONFLICTS?=	ansible1-* \
 		ansible23-* \
 		ansible24-* \
 		ansible25-* \
-		ansible26-*
+		ansible27-* \
+		ansible26-* \
+		ansible27-*
 
-EXTRA_PATCHES?=	${FILESDIR}/extra-patch-sesu
+EXTRA_PATCHES?=
 
 NO_ARCH=	yes
 USES?=		cpe python
@@ -62,6 +64,7 @@ post-patch:
 	${FIND} ${WRKSRC} -type f -print0 | ${XARGS} -0 ${REINPLACE_CMD} \
 		-e 's|/etc/ansible|${ETCDIR:S/${PY_FLAVOR}-//}|g' \
 		-e 's|/usr/share/ansible|${DATADIR}|g'
+	${FIND} ${WRKSRC} -type f -name "*.bak" -delete
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${MAN1PREFIX}/man/man1

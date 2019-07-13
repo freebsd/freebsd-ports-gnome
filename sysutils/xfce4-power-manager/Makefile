@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	xfce4-power-manager
-PORTVERSION=	1.6.1
+PORTVERSION=	1.6.3
 CATEGORIES=	sysutils xfce
-MASTER_SITES=	XFCE/src/xfce/${PORTNAME}/${PORTVERSION:R}/
+MASTER_SITES=	XFCE
 DIST_SUBDIR=	xfce4
 
 MAINTAINER=	xfce@FreeBSD.org
@@ -36,4 +36,10 @@ OPTIONS_SUB=		yes
 NLS_CONFIGURE_ENABLE=	nls
 NLS_USES=		gettext-runtime
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if defined(WITH_DEBUG)
+CONFIGURE_ARGS+=	--enable-debug
+.endif
+
+.include <bsd.port.post.mk>

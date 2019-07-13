@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	firefox
-DISTVERSION=	60.6.1
+DISTVERSION=	60.8.0
 PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	www ipv6
@@ -21,7 +21,6 @@ BUILD_DEPENDS=	nspr>=4.19:devel/nspr \
 		harfbuzz>=1.7.6:print/harfbuzz \
 		graphite2>=1.3.11:graphics/graphite2 \
 		png>=1.6.34:graphics/png \
-		libvorbis>=1.3.6,3:audio/libvorbis \
 		libvpx>=1.5.0:multimedia/libvpx \
 		sqlite3>=3.22.0:databases/sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
@@ -33,7 +32,6 @@ BUILD_DEPENDS=	nspr>=4.19:devel/nspr \
 USE_GECKO=	gecko
 CPE_PRODUCT=	${PORTNAME}_esr
 CONFLICTS_INSTALL=	firefox
-MOZ_PKGCONFIG_FILES=	# empty
 USE_MOZILLA=	-webp -vpx
 
 USES=		tar:xz

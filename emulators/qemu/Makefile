@@ -3,6 +3,7 @@
 
 PORTNAME=	qemu
 PORTVERSION=	3.0.1
+PORTREVISION=	1
 CATEGORIES=	emulators
 MASTER_SITES=	https://download.qemu.org/
 DIST_SUBDIR=	qemu/${PORTVERSION}
@@ -86,7 +87,9 @@ VDE_LIB_DEPENDS=	libvdeplug.so:net/vde2
 X11_CONFIGURE_ENABLE=	sdl
 X11_USE=	SDL=sdl2 XORG=x11,xext
 X11_USES=	sdl
+.if !defined(PKGNAMESUFFIX) || ${PKGNAMESUFFIX} != "-utils"
 X86_TARGETS_USE_OFF=	GNOME=cairo,gdkpixbuf2
+.endif
 
 PORTDOCS?=	docs qemu-doc.html qemu-doc.txt qemu-ga-ref.html qemu-ga-ref.txt \
 	       	qemu-qmp-ref.html qemu-qmp-ref.txt

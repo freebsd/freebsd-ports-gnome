@@ -2,9 +2,9 @@
 
 PORTNAME=	ikos
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.1-129
-DISTVERSIONSUFFIX=	-gf431373
-PORTREVISION=	1
+DISTVERSION=	2.1-152
+DISTVERSIONSUFFIX=	-gbf4ac4a
+PORTREVISION=	2
 CATEGORIES=	devel
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -19,6 +19,7 @@ LIB_DEPENDS=	libapron.so:math/apron \
 		libmpfr.so:math/mpfr \
 		libgmp.so:math/gmp \
 		libppl.so:devel/ppl
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
 
 USES=		cmake ncurses python sqlite
 USE_PYTHON=	py3kplist

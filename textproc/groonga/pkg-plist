@@ -154,11 +154,14 @@ lib/groonga/plugins/sharding/keys_parsable.rb
 %%RUBY%%lib/groonga/scripts/ruby/initialize/pre.rb
 %%RUBY%%lib/groonga/scripts/ruby/labeled_arguments.rb
 %%RUBY%%lib/groonga/scripts/ruby/locale_output.rb
+%%RUBY%%lib/groonga/scripts/ruby/loggable.rb
 %%RUBY%%lib/groonga/scripts/ruby/logger.rb
+%%RUBY%%lib/groonga/scripts/ruby/logger/flags.rb
 %%RUBY%%lib/groonga/scripts/ruby/logger/level.rb
 %%RUBY%%lib/groonga/scripts/ruby/object.rb
 %%RUBY%%lib/groonga/scripts/ruby/operator.rb
 %%RUBY%%lib/groonga/scripts/ruby/plugin_loader.rb
+%%RUBY%%lib/groonga/scripts/ruby/query_loggable.rb
 %%RUBY%%lib/groonga/scripts/ruby/query_logger.rb
 %%RUBY%%lib/groonga/scripts/ruby/query_logger/flag.rb
 %%RUBY%%lib/groonga/scripts/ruby/record.rb
@@ -170,6 +173,7 @@ lib/groonga/plugins/sharding/keys_parsable.rb
 %%RUBY%%lib/groonga/scripts/ruby/scan_info_search_index.rb
 %%RUBY%%lib/groonga/scripts/ruby/table.rb
 %%RUBY%%lib/groonga/scripts/ruby/table_cursor.rb
+%%RUBY%%lib/groonga/scripts/ruby/time.rb
 %%RUBY%%lib/groonga/scripts/ruby/variable_size_column.rb
 %%RUBY%%lib/groonga/scripts/ruby/writer.rb
 lib/groonga/plugins/suggest/suggest.a

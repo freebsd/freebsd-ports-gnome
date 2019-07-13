@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	concourse
-PORTVERSION=	5.1.0
+PORTVERSION=	5.2.0
 CATEGORIES=	net sysutils
 MASTER_SITES=	LOCAL/dumbbell/concourse/
 PKGNAMESUFFIX=	-fly
@@ -13,7 +13,7 @@ LICENSE=	APACHE20
 
 GO_PKGNAME=	github.com/concourse/fly
 GO_BUILDFLAGS+=	-mod=vendor \
-		-ldflags="-X github.com/concourse/fly/version.Version=${PORTVERSION}"
+		-ldflags="-X github.com/concourse/concourse.Version=${PORTVERSION}"
 
 USES=		go tar:xz
 

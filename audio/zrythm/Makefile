@@ -2,7 +2,7 @@
 
 PORTNAME=	zrythm
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.3.029
+DISTVERSION=	0.5.097
 CATEGORIES=	audio
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -13,8 +13,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	kf5-breeze-icons>0:x11-themes/kf5-breeze-icons
 LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg \
-		libcyaml.so:textproc/libcyaml \
-		libdazzle-1.0.so:x11-toolkits/libdazzle \
+		libgtop-2.0.so:devel/libgtop \
 		libjack.so:audio/jack \
 		liblilv-0.so:audio/lilv \
 		libportaudio.so:audio/portaudio \
@@ -30,18 +29,17 @@ LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg \
 RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
 		kf5-breeze-icons>0:x11-themes/kf5-breeze-icons
 
-USES=		autoreconf gettext-tools gmake python:3.5+,build gettext-runtime gnome libtool pkgconfig
+USES=		gettext-tools meson python:3.5+,build gettext-runtime gnome libtool pkgconfig shebangfix
 USE_GITLAB=	yes
 GL_SITE=	https://git.zrythm.org
-GL_COMMIT=	07e862579c31120b093ad8618e06a218e9161efd
-GNU_CONFIGURE=	yes
+GL_COMMIT=	5b1f4efa53ca33090ef7795204dfc387072f58f5
+SHEBANG_FILES=	resources/gen-gtk-gresources-xml.py scripts/collect_translatables.sh scripts/meson_post_install.py
 USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 libxml2 pango
 USE_XORG=	x11
 GLIB_SCHEMAS=	org.zrythm.gschema.xml
 INSTALLS_ICONS=	yes
 
-LDFLAGS+=	-lexecinfo
-
-BINARY_ALIAS=	python3=${PYTHON_CMD} make=${GMAKE}
+post-patch: # https://git.zrythm.org/zrythm/zrythm/issues/299
+	@${REINPLACE_CMD} 's|<malloc.h>|<stdlib.h>|' ${WRKSRC}/ext/midilib/src/*.c
 
 .include <bsd.port.mk>

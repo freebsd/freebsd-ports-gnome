@@ -6,7 +6,6 @@ bin/mdig
 bin/named-rrchecker
 bin/nslookup
 bin/nsupdate
-@comment lib/named/filter-aaaa.so
 man/man1/arpaname.1.gz
 man/man1/delv.1.gz
 man/man1/dig.1.gz

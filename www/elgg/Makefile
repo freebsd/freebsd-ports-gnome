@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	elgg
-PORTVERSION=	3.0.2
+PORTVERSION=	3.0.4
 CATEGORIES=	www
 MASTER_SITES=	http://elgg.org/download/
 

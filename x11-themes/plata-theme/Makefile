@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	plata-theme
-PORTVERSION=	0.7.8
+PORTVERSION=	0.8.7
 CATEGORIES=	x11-themes
 
 MAINTAINER=	tagattie@yandex.com
@@ -19,24 +19,29 @@ RUN_DEPENDS=	gtk-murrine-engine>0:x11-themes/gtk-murrine-engine \
 		roboto-fonts-ttf>0:x11-fonts/roboto-fonts-ttf
 
 USES=		autoreconf gmake gnome pkgconfig shebangfix
+USE_GNOME=	gdkpixbuf2 gtk30 libxml2
 
 USE_GITLAB=	yes
 GL_SITE=	https://gitlab.com
 GL_ACCOUNT=	tista500
-GL_COMMIT=	349880a33caf4f271c8a85d906acbc305ee65fc9
+GL_COMMIT=	f97472e9cd3dada19d50fa2ab0e4c24b4ac2e710
 
 NO_ARCH=	yes
 
 SHEBANG_REGEX=	./src/.*\.sh$$
 
 GNU_CONFIGURE=	yes
+# FIXME: Mate support has been re-added in 0.8.6 but it requires marco 1.22.2,
+# which is not yet supported in Ports. So disabling Mate support for now.
+# Will revisit when marco is updated.
 CONFIGURE_ARGS=	--disable-gtk_next \
 		--disable-flashback \
 		--disable-telegram \
 		--disable-tweetdeck \
-		--disable-airforsteam
+		--disable-airforsteam \
+		--disable-mate
 
-USE_GNOME=	gdkpixbuf2 gtk30 libxml2
+PORTDOCS=	README.md README.window-list
 
 OPTIONS_DEFINE=	CINNAMON DOCS GNOME METACITY OPENBOX PARALLEL PLANK XFCE
 OPTIONS_DEFAULT=	CINNAMON GNOME METACITY OPENBOX PARALLEL PLANK XFCE
@@ -57,8 +62,6 @@ PLANK_DESC=	Enale Plank support
 PLANK_CONFIGURE_ENABLE=	plank
 XFCE_DESC=	Enable Xfce support
 XFCE_CONFIGURE_ENABLE=	xfce
-
-PORTDOCS=	README.md README.window-list
 
 post-extract:
 	${CP} ${WRKSRC}/src/shell/sass/gnome-shell/README.window-list ${WRKSRC}

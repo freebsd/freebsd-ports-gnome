@@ -43,7 +43,7 @@ DISTFILES+=	${CARGO_DIST_SUBDIR}/${_crate}.tar.gz:cargo_${_crate:S/-//g:S/.//g}
 
 CARGO_BUILDDEP?=	yes
 .if ${CARGO_BUILDDEP:tl} == "yes"
-BUILD_DEPENDS+=	${RUST_DEFAULT}>=1.34.0:lang/${RUST_DEFAULT}
+BUILD_DEPENDS+=	${RUST_DEFAULT}>=1.36.0:lang/${RUST_DEFAULT}
 .endif
 
 # Location of cargo binary (default to lang/rust's Cargo binary)
@@ -86,6 +86,7 @@ CARGO_CARGO_RUN= \
 # User arguments for cargo targets.
 CARGO_BUILD_ARGS?=
 CARGO_INSTALL_ARGS?=
+CARGO_INSTALL_PATH?=	.
 CARGO_TEST_ARGS?=
 CARGO_UPDATE_ARGS?=
 
@@ -198,6 +199,10 @@ cargo-extract:
 	@${PRINTF} '{"package":"%s","files":{}}' \
 		$$(${SHA256} -q ${DISTDIR}/${CARGO_DIST_SUBDIR}/${_crate}.tar.gz) \
 		> ${CARGO_VENDOR_DIR}/${_crate}/.cargo-checksum.json
+	@if [ -r ${CARGO_VENDOR_DIR}/${_crate}/Cargo.toml.orig ]; then \
+		${MV} ${CARGO_VENDOR_DIR}/${_crate}/Cargo.toml.orig \
+			${CARGO_VENDOR_DIR}/${_crate}/Cargo.toml.orig-cargo; \
+	fi
 .endfor
 
 _CARGO_GIT_PATCH_CARGOTOML=
@@ -253,12 +258,14 @@ do-build:
 
 .if !target(do-install) && ${CARGO_INSTALL:tl} == "yes"
 do-install:
+.  for path in ${CARGO_INSTALL_PATH}
 	@${CARGO_CARGO_RUN} install \
-		--path . \
+		--path "${path}" \
 		--root "${STAGEDIR}${PREFIX}" \
 		--verbose \
 		${CARGO_INSTALL_ARGS}
 	@${RM} -- "${STAGEDIR}${PREFIX}/.crates.toml"
+.  endfor
 .endif
 
 .if !target(do-test) && ${CARGO_TEST:tl} == "yes"

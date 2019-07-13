@@ -25,12 +25,12 @@ LIB_DEPENDS=	libccp4c.so:science/libccp4 \
 		libgtkglext-x11-1.0.so:x11-toolkits/gtkglext \
 		libgsl.so:math/gsl \
 		libmmdb2.so:science/mmdb2 \
-		libpng16.so:graphics/png \
+		libpng.so:graphics/png \
 		libsfftw.so:math/fftw-float \
 		libssm.so:science/libssm
 RUN_DEPENDS=	bash:shells/bash
 
-USES=		desktop-file-utils fortran gettext-runtime gl gmake gnome libtool localbase:ldflags pkgconfig python:2.7 shebangfix sqlite
+USES=		compiler:c++11-lang desktop-file-utils fortran gettext-runtime gl gmake gnome libtool localbase:ldflags pkgconfig python:2.7 shebangfix sqlite
 SHEBANG_FILES=	src/coot.in
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-shared --disable-static --with-goocanvas-prefix=${LOCALBASE}
@@ -42,7 +42,7 @@ USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 
 MAKE_ENV=	PYTHON=${PYTHON_CMD}
-CXXFLAGS+=	-I${PYTHON_INCLUDEDIR}
+CXXFLAGS+=	-I${PYTHON_INCLUDEDIR} -DANALYSE_REFINEMENT_TIMING
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}/lib/data
