@@ -43,7 +43,6 @@
     SUBDIR += antiword
     SUBDIR += apache-poi
     SUBDIR += apache-solr
-    SUBDIR += apache-solr3
     SUBDIR += apertium
     SUBDIR += archmage
     SUBDIR += artha
@@ -222,6 +221,7 @@
     SUBDIR += gmetadom
     SUBDIR += gnome-doc-utils
     SUBDIR += gnugrep
+    SUBDIR += goldendict
     SUBDIR += google-ctemplate
     SUBDIR += google-translate-cli
     SUBDIR += gpp
@@ -731,6 +731,7 @@
     SUBDIR += p5-Search-Elasticsearch-Client-0_90
     SUBDIR += p5-Search-Elasticsearch-Client-1_0
     SUBDIR += p5-Search-Elasticsearch-Client-2_0
+    SUBDIR += p5-Search-Elasticsearch-Client-5_0
     SUBDIR += p5-Search-Estraier
     SUBDIR += p5-Search-Odeum
     SUBDIR += p5-Search-QueryParser
@@ -1302,6 +1303,7 @@
     SUBDIR += py-nltk
     SUBDIR += py-normality
     SUBDIR += py-numpydoc
+    SUBDIR += py-ocrmypdf
     SUBDIR += py-openpyxl
     SUBDIR += py-openpyxl24
     SUBDIR += py-openstackdocstheme
@@ -1320,6 +1322,7 @@
     SUBDIR += py-pdfminer3k
     SUBDIR += py-pdfrw
     SUBDIR += py-pdftotext
+    SUBDIR += py-pikepdf
     SUBDIR += py-precis_i18n
     SUBDIR += py-pss
     SUBDIR += py-pyPEG2
@@ -1348,6 +1351,7 @@
     SUBDIR += py-python-docx
     SUBDIR += py-python-gettext
     SUBDIR += py-python-slugify
+    SUBDIR += py-python-xmp-toolkit
     SUBDIR += py-pytidylib
     SUBDIR += py-pyx12
     SUBDIR += py-qrcode

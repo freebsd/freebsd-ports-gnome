@@ -28,6 +28,7 @@
     SUBDIR += R-cran-chron
     SUBDIR += R-cran-classInt
     SUBDIR += R-cran-cli
+    SUBDIR += R-cran-clipr
     SUBDIR += R-cran-covr
     SUBDIR += R-cran-crayon
     SUBDIR += R-cran-data.table
@@ -248,6 +249,7 @@
     SUBDIR += bsdbuild
     SUBDIR += bsdcflow
     SUBDIR += bsdowl
+    SUBDIR += buildstream
     SUBDIR += bugzilla44
     SUBDIR += bugzilla50
     SUBDIR += build
@@ -391,6 +393,7 @@
     SUBDIR += cpu_features
     SUBDIR += cquery
     SUBDIR += cram
+    SUBDIR += crc32c
     SUBDIR += creduce
     SUBDIR += critcl
     SUBDIR += cscope
@@ -572,6 +575,7 @@
     SUBDIR += elixir-trailing_format_plug
     SUBDIR += elixir-tzdata
     SUBDIR += elixir-unsafe
+    SUBDIR += elm-format
     SUBDIR += embb
     SUBDIR += emscripten
     SUBDIR += entt
@@ -865,6 +869,7 @@
     SUBDIR += gogland-eap
     SUBDIR += gogs
     SUBDIR += golint
+    SUBDIR += google-cloud-cpp
     SUBDIR += google-gdata
     SUBDIR += google-perftools
     SUBDIR += google-styleguide
@@ -945,6 +950,7 @@
     SUBDIR += hs-dlist
     SUBDIR += hs-extensible-exceptions
     SUBDIR += hs-ghc-events
+    SUBDIR += hs-ghcprofview
     SUBDIR += hs-git-annex
     SUBDIR += hs-haddock
     SUBDIR += hs-happy
@@ -952,6 +958,7 @@
     SUBDIR += hs-hasktags
     SUBDIR += hs-hlint
     SUBDIR += hs-hoogle
+    SUBDIR += hs-hpack
     SUBDIR += hs-hspec-discover
     SUBDIR += hs-mtl
     SUBDIR += hs-mueval
@@ -1025,6 +1032,7 @@
     SUBDIR += jetbrains-clion
     SUBDIR += jetbrains-goland
     SUBDIR += jetbrains-phpstorm
+    SUBDIR += jetbrains-webstorm
     SUBDIR += jfrog-cli
     SUBDIR += jiic
     SUBDIR += jiri
@@ -1188,7 +1196,6 @@
     SUBDIR += libev
     SUBDIR += libevdev
     SUBDIR += libevent
-    SUBDIR += libevent-hiphop
     SUBDIR += libevt
     SUBDIR += libevtx
     SUBDIR += libewf
@@ -1603,6 +1610,7 @@
     SUBDIR += nsgenbind
     SUBDIR += nspr
     SUBDIR += nss_wrapper
+    SUBDIR += nsync
     SUBDIR += nuitka
     SUBDIR += obby
     SUBDIR += objecthash
@@ -2683,6 +2691,7 @@
     SUBDIR += p5-Luka
     SUBDIR += p5-Lvalue
     SUBDIR += p5-MCE
+    SUBDIR += p5-MCE-Shared
     SUBDIR += p5-MRO-Compat
     SUBDIR += p5-MRO-Define
     SUBDIR += p5-Mac-FileSpec-Unixish
@@ -3845,6 +3854,7 @@
     SUBDIR += pear-phing
     SUBDIR += pecl-APCu
     SUBDIR += pecl-dio
+    SUBDIR += pecl-ds
     SUBDIR += pecl-eio
     SUBDIR += pecl-ev
     SUBDIR += pecl-event
@@ -3987,6 +3997,7 @@
     SUBDIR += py-ExtensionClass
     SUBDIR += py-Faker
     SUBDIR += py-IBMQuantumExperience
+    SUBDIR += py-inifile
     SUBDIR += py-Jinja2
     SUBDIR += py-Jinja2-doc
     SUBDIR += py-Js2Py
@@ -4076,6 +4087,7 @@
     SUBDIR += py-XStatic-term.js
     SUBDIR += py-XStatic-tv4
     SUBDIR += py-ZopeUndo
+    SUBDIR += py-absl
     SUBDIR += py-adb
     SUBDIR += py-addict
     SUBDIR += py-aenum
@@ -4428,6 +4440,7 @@
     SUBDIR += py-game
     SUBDIR += py-game_sdl2
     SUBDIR += py-gamin
+    SUBDIR += py-gast
     SUBDIR += py-gdata
     SUBDIR += py-gdbgui
     SUBDIR += py-gearman
@@ -4743,6 +4756,7 @@
     SUBDIR += py-poyo
     SUBDIR += py-pp
     SUBDIR += py-pqueue
+    SUBDIR += py-prance
     SUBDIR += py-pre-commit
     SUBDIR += py-preshed
     SUBDIR += py-pretend
@@ -5541,6 +5555,7 @@
     SUBDIR += rubygem-formatador
     SUBDIR += rubygem-forwardable-extended
     SUBDIR += rubygem-fugit
+    SUBDIR += rubygem-fugit12
     SUBDIR += rubygem-gdata
     SUBDIR += rubygem-gem-compare
     SUBDIR += rubygem-gem_plugin
@@ -5897,6 +5912,7 @@
     SUBDIR += rubygem-simple_form-rails5
     SUBDIR += rubygem-simple_form-rails50
     SUBDIR += rubygem-simplecov
+    SUBDIR += rubygem-skiptrace
     SUBDIR += rubygem-slack-notifier
     SUBDIR += rubygem-slack-notifier1
     SUBDIR += rubygem-slim
@@ -6131,6 +6147,7 @@
     SUBDIR += synfig
     SUBDIR += sysconftool
     SUBDIR += sysfsutils
+    SUBDIR += systemc
     SUBDIR += t1lib
     SUBDIR += ta-lib
     SUBDIR += tablist

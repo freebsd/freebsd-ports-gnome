@@ -110,6 +110,7 @@
     SUBDIR += jmol
     SUBDIR += jstrack
     SUBDIR += kalzium
+    SUBDIR += kim-api
     SUBDIR += kst2
     SUBDIR += lammps
     SUBDIR += lamprop
@@ -162,6 +163,7 @@
     SUBDIR += msms
     SUBDIR += multiwfn
     SUBDIR += namd
+    SUBDIR += ncnn
     SUBDIR += nest
     SUBDIR += netcdf
     SUBDIR += netcdf-cxx
@@ -268,6 +270,7 @@
     SUBDIR += py-quantities
     SUBDIR += py-rmf
     SUBDIR += py-rmsd
+    SUBDIR += py-ruffus
     SUBDIR += py-scikit-fuzzy
     SUBDIR += py-scikit-learn
     SUBDIR += py-scikit-sparse
@@ -324,6 +327,7 @@
     SUBDIR += voro++
     SUBDIR += wannier90
     SUBDIR += wxmacmolplt
+    SUBDIR += wwplot
     SUBDIR += xcrysden
     SUBDIR += xdrawchem
     SUBDIR += xfce4-equake-plugin

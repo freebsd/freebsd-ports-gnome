@@ -27,6 +27,7 @@
     SUBDIR += arp-sk
     SUBDIR += arpdig
     SUBDIR += arping
+    SUBDIR += arpoison
     SUBDIR += arprelease
     SUBDIR += asio
     SUBDIR += aslookup
@@ -944,6 +945,7 @@
     SUBDIR += pear-XML_RPC
     SUBDIR += pear-XML_RPC2
     SUBDIR += pecl-amqp
+    SUBDIR += pecl-mosquitto
     SUBDIR += pecl-oauth2
     SUBDIR += pecl-radius
     SUBDIR += pecl-rdkafka
@@ -1225,6 +1227,7 @@
     SUBDIR += rubygem-fog-dynect
     SUBDIR += rubygem-fog-ecloud
     SUBDIR += rubygem-fog-google
+    SUBDIR += rubygem-fog-gridscale
     SUBDIR += rubygem-fog-internet-archive
     SUBDIR += rubygem-fog-joyent
     SUBDIR += rubygem-fog-local

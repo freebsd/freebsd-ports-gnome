@@ -63,6 +63,7 @@
     SUBDIR += boodler
     SUBDIR += bristol
     SUBDIR += bs2b-lv2
+    SUBDIR += bsequencer-lv2
     SUBDIR += cadence
     SUBDIR += calf-lv2
     SUBDIR += cam
@@ -699,6 +700,7 @@
     SUBDIR += py-webrtcvad
     SUBDIR += py-xmms2
     SUBDIR += pytone
+    SUBDIR += qaudiosonar
     SUBDIR += qjackctl
     SUBDIR += qmidiarp
     SUBDIR += qmidictl
@@ -792,6 +794,7 @@
     SUBDIR += stk
     SUBDIR += streamripper
     SUBDIR += streamtranscoder
+    SUBDIR += string-machine-lv2
     SUBDIR += stymulator
     SUBDIR += suil
     SUBDIR += supercollider

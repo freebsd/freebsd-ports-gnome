@@ -107,6 +107,7 @@
     SUBDIR += biosfont
     SUBDIR += bkpupsd
     SUBDIR += bksh
+    SUBDIR += boot-extract
     SUBDIR += boxbackup-devel
     SUBDIR += brasero
     SUBDIR += bsd-splash-changer
@@ -479,6 +480,7 @@
     SUBDIR += hpacucli
     SUBDIR += hploscripts
     SUBDIR += hptcli
+    SUBDIR += hs-cputype
     SUBDIR += hstr
     SUBDIR += htop
     SUBDIR += httplog
@@ -709,6 +711,7 @@
     SUBDIR += mptd
     SUBDIR += msiklm
     SUBDIR += msktutil
+    SUBDIR += mstflint
     SUBDIR += msyslog
     SUBDIR += mtm
     SUBDIR += mtpfs
@@ -1096,6 +1099,7 @@
     SUBDIR += reoback
     SUBDIR += reptyr
     SUBDIR += respond
+    SUBDIR += rest-server
     SUBDIR += restic
     SUBDIR += retail
     SUBDIR += rex

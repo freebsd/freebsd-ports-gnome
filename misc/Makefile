@@ -27,7 +27,6 @@
     SUBDIR += binclock
     SUBDIR += biosfont-demos
     SUBDIR += birthday
-    SUBDIR += bitwise
     SUBDIR += bogosort
     SUBDIR += bottlerocket
     SUBDIR += box2d
@@ -77,6 +76,7 @@
     SUBDIR += diction
     SUBDIR += digitemp
     SUBDIR += display
+    SUBDIR += dive
     SUBDIR += dnetc
     SUBDIR += dphys-config
     SUBDIR += dtach
@@ -473,7 +473,6 @@
     SUBDIR += sword
     SUBDIR += table.el
     SUBDIR += talkfilters
-    SUBDIR += tcb
     SUBDIR += tdfiglet
     SUBDIR += team
     SUBDIR += telbook

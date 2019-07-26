@@ -3,7 +3,7 @@
 
 PORTNAME=	gitlab-ce
 PORTVERSION=	12.0.3
-PORTREVISION=	0
+PORTREVISION=	2
 CATEGORIES=	www devel
 
 MAINTAINER=	mfechner@FreeBSD.org
@@ -120,7 +120,7 @@ MY_DEPENDS=	git>=2.21.0:devel/git \
 	rubygem-sidekiq-cron>=1.0.0:devel/rubygem-sidekiq-cron \
 	rubygem-redis-namespace>=1.6.0:databases/rubygem-redis-namespace \
 	rubygem-gitlab-sidekiq-fetcher>=0.4.0:devel/rubygem-gitlab-sidekiq-fetcher \
-	rubygem-fugit>=1.2.1:devel/rubygem-fugit \
+	rubygem-fugit12>=1.2.1:devel/rubygem-fugit12 \
 	rubygem-httparty>=0.16.4:www/rubygem-httparty \
 	rubygem-rainbow>=3.0:devel/rubygem-rainbow \
 	rubygem-ruby-progressbar>=0:devel/rubygem-ruby-progressbar \
@@ -156,7 +156,7 @@ MY_DEPENDS=	git>=2.21.0:devel/git \
 	rubygem-rack-proxy>=0.6.0:www/rubygem-rack-proxy \
 	rubygem-sassc-rails>=2.1.0:textproc/rubygem-sassc-rails \
 	rubygem-uglifier27>=2.7.2:www/rubygem-uglifier27 \
-	rubygem-addressable>=2.5.2:www/rubygem-addressable \
+	rubygem-addressable25>=2.5.2:www/rubygem-addressable25 \
 	rubygem-font-awesome-rails-rails5>=4.7:devel/rubygem-font-awesome-rails-rails5 \
 	rubygem-gemojione>=3.3:graphics/rubygem-gemojione \
 	rubygem-gon-rails5>=6.2.0:www/rubygem-gon-rails5 \

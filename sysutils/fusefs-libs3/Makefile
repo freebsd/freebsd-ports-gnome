@@ -3,7 +3,7 @@
 
 PORTNAME=	fusefs-libs3
 DISTVERSIONPREFIX=	fuse-
-DISTVERSION=	3.6.1
+DISTVERSION=	3.6.2
 CATEGORIES=	sysutils
 
 MAINTAINER=	se@FreeBSD.org
@@ -13,7 +13,7 @@ LICENSE=	GPLv2 LGPL21
 LICENSE_COMB=	multi
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		meson
+USES=		compiler meson
 USE_LDCONFIG=	yes
 PLIST_SUB=	VERSION=${PORTVERSION}
 
@@ -27,8 +27,8 @@ GH_PROJECT=	libfuse
 IGNORE=	fusefs has not been implemented on DragonFly
 .endif
 
+.if ${CHOSEN_COMPILER_TYPE} == gcc
 post-patch:
-.if ${ARCH:Mmips*} || ${ARCH:Mpowerpc*} || ${ARCH} == sparc64
 	${REINPLACE_CMD} -e '/-Wno-unused-result/d' ${WRKSRC}/meson.build
 .endif
 

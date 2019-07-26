@@ -33,7 +33,6 @@
     SUBDIR += archiva
     SUBDIR += aria2
     SUBDIR += asql
-    SUBDIR += august
     SUBDIR += awffull
     SUBDIR += aws
     SUBDIR += aws-demos
@@ -53,6 +52,7 @@
     SUBDIR += boa
     SUBDIR += bolt
     SUBDIR += bozohttpd
+    SUBDIR += bugzilla2atom
     SUBDIR += buku
     SUBDIR += butterfly
     SUBDIR += c-icap
@@ -78,6 +78,7 @@
     SUBDIR += cherokee
     SUBDIR += choqok
     SUBDIR += chpasswd
+    SUBDIR += chrome-gnome-shell
     SUBDIR += chromium
     SUBDIR += ckeditor
     SUBDIR += cl-lml
@@ -141,6 +142,7 @@
     SUBDIR += elixir-webassembly
     SUBDIR += emacs-w3m
     SUBDIR += encode-explorer
+    SUBDIR += envoy
     SUBDIR += ephemera
     SUBDIR += epiphany
     SUBDIR += erlang-cowboy
@@ -1470,6 +1472,7 @@
     SUBDIR += py-collective.templateengines
     SUBDIR += py-cookies
     SUBDIR += py-css-parser
+    SUBDIR += py-csscompressor
     SUBDIR += py-cssmin
     SUBDIR += py-cssselect
     SUBDIR += py-cssutils
@@ -1516,6 +1519,7 @@
     SUBDIR += py-django-bitfield
     SUBDIR += py-django-bootstrap-form
     SUBDIR += py-django-bootstrap3
+    SUBDIR += py-django-bootstrap4
     SUBDIR += py-django-braces
     SUBDIR += py-django-bulk-update
     SUBDIR += py-django-cacheops
@@ -1692,6 +1696,7 @@
     SUBDIR += py-jonpy
     SUBDIR += py-jsonfield
     SUBDIR += py-kallithea
+    SUBDIR += py-lektor
     SUBDIR += py-lesscpy
     SUBDIR += py-libsass
     SUBDIR += py-livereload
@@ -1948,12 +1953,14 @@
     SUBDIR += rubygem-acts_as_taggable
     SUBDIR += rubygem-addressable
     SUBDIR += rubygem-addressable23
+    SUBDIR += rubygem-addressable25
     SUBDIR += rubygem-adsf
     SUBDIR += rubygem-akami
     SUBDIR += rubygem-amazon-ecs
     SUBDIR += rubygem-anemone
     SUBDIR += rubygem-asana
     SUBDIR += rubygem-async_sinatra
+    SUBDIR += rubygem-atlassian-jwt
     SUBDIR += rubygem-best_in_place
     SUBDIR += rubygem-best_in_place-rails5
     SUBDIR += rubygem-bluecloth
@@ -2026,6 +2033,7 @@
     SUBDIR += rubygem-http-cookie
     SUBDIR += rubygem-http-form_data
     SUBDIR += rubygem-http_router
+    SUBDIR += rubygem-http3
     SUBDIR += rubygem-httparty
     SUBDIR += rubygem-httpclient
     SUBDIR += rubygem-httpi
@@ -2217,6 +2225,7 @@
     SUBDIR += sitecopy
     SUBDIR += skytemplate
     SUBDIR += slowcgi
+    SUBDIR += slowhttptest
     SUBDIR += smarty2
     SUBDIR += smarty3
     SUBDIR += smb_auth
@@ -2414,7 +2423,6 @@
     SUBDIR += webhook
     SUBDIR += webinject
     SUBDIR += webkit2-gtk3
-    SUBDIR += weblint
     SUBDIR += weblint++
     SUBDIR += webpy
     SUBDIR += webreport
@@ -2459,6 +2467,7 @@
     SUBDIR += zend-framework1
     SUBDIR += zenphoto
     SUBDIR += zerowait-httpd
+    SUBDIR += zola
     SUBDIR += zope213
 
 .include <bsd.port.subdir.mk>
