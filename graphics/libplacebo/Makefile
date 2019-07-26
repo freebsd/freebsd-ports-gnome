@@ -2,12 +2,9 @@
 
 PORTNAME=	libplacebo
 DISTVERSIONPREFIX=	v
-DISTVERSION=	1.7.0
+DISTVERSION=	1.18.0
 PORTREVISION=	1
 CATEGORIES=	graphics
-
-PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
-PATCHFILES+=	95814b653b71.patch:-p1 # don't check shaderc twice
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Reusable library for GPU-accelerated video/image rendering

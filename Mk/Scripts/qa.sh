@@ -363,7 +363,6 @@ proxydeps_suggest_uses() {
 		${pkg} = "graphics/cairo" -o \
 		${pkg} = "graphics/cairomm" -o \
 		${pkg} = "devel/dconf" -o \
-		${pkg} = "audio/esound" -o \
 		${pkg} = "devel/gconf2" -o \
 		${pkg} = "devel/gconfmm26" -o \
 		${pkg} = "devel/glib20" -o \
@@ -974,6 +973,9 @@ depends_blacklist()
 				;;
 			lang/gcc)
 				instead="USE_GCC"
+				;;
+			lang/julia)
+				instead="a dependency on lang/julia\${JULIA_DEFAULT:S/.//}"
 				;;
 			devel/llvm)
 				instead="a dependency on devel/llvm\${LLVM_DEFAULT}"

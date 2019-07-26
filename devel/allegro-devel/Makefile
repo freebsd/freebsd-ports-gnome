@@ -11,7 +11,7 @@ DISTFILES=	${PORTNAME}-${DISTVERSION}${EXTRACT_SUFX}
 DIST_SUBDIR=	${PORTNAME}
 EXTRACT_ONLY=	${PORTNAME}-${DISTVERSION}${EXTRACT_SUFX}
 
-MAINTAINER=	koalative@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Cross-platform library for games and multimedia programming
 
 LICENSE=	ZLIB BSD3CLAUSE
@@ -23,7 +23,7 @@ LIB_DEPENDS+=	libjack.so:audio/jack \
 		libFLAC.so:audio/flac \
 		libphysfs.so:devel/physfs
 
-USES=		cmake:insource jpeg openal:soft pkgconfig
+USES=		cmake:insource compiler:c++11-lang jpeg openal:soft pkgconfig
 USE_XORG=	x11 xpm xext xcursor xxf86vm xxf86dga
 USE_GL=		glu
 USE_GNOME=	gtk20
@@ -93,7 +93,7 @@ post-patch:
 		${WRKSRC}/addons/audio/pulseaudio.c
 
 post-install:
-	@${INSTALL_MAN} ${WRKSRC}/docs/man/* ${STAGEDIR}${MAN3PREFIX}/man/man3/
+	${INSTALL_MAN} ${WRKSRC}/docs/man/* ${STAGEDIR}${MAN3PREFIX}/man/man3/
 
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOC_FILES1:S|^|${DOCSRCDIR1}/|} ${STAGEDIR}${DOCSDIR}

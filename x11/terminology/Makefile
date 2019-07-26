@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	terminology
-DISTVERSION=	1.4.0
+DISTVERSION=	1.4.1
 CATEGORIES=	x11 enlightenment
 MASTER_SITES=	http://download.enlightenment.org/rel/apps/${PORTNAME}/
 DIST_SUBDIR=	enlightenment
@@ -22,6 +22,6 @@ OPTIONS_SUB=		yes
 
 NLS_USES=		gettext
 NLS_MESON_TRUE=		nls
-NLS_LDFLAGS=		-lintl
+NLS_LDFLAGS=		-L${LOCALBASE}/lib -lintl
 
 .include <bsd.port.mk>

@@ -13,12 +13,12 @@
     SUBDIR += atlc
     SUBDIR += basicdsp
     SUBDIR += brickutils
-    SUBDIR += brlcad
     SUBDIR += calculix
     SUBDIR += calculix-ccx
     SUBDIR += cascade
     SUBDIR += chipvault
     SUBDIR += cura-engine
+    SUBDIR += digital
     SUBDIR += dinotrace
     SUBDIR += dxf2fig
     SUBDIR += electric
@@ -46,6 +46,7 @@
     SUBDIR += k40-whisperer
     SUBDIR += kicad
     SUBDIR += kicad-devel
+    SUBDIR += kicad-doc
     SUBDIR += kicad-library-footprints
     SUBDIR += kicad-library-footprints-devel
     SUBDIR += kicad-library-packages3d
@@ -56,6 +57,7 @@
     SUBDIR += kicad-library-templates-devel
     SUBDIR += klayout
     SUBDIR += ldraw
+    SUBDIR += leocad
     SUBDIR += lepton-eda
     SUBDIR += libopencad
     SUBDIR += librecad

@@ -27,7 +27,7 @@ BUILD_DEPENDS=
 USES=		cmake compiler:c++11-lib libedit perl5 \
 		shebangfix
 USE_LDCONFIG=	${LLVM_PREFIX}/lib
-_USES_PYTHON?=	python:build:2.7
+_USES_PYTHON?=	python:build,3.6
 USES+=		${_USES_PYTHON}
 SHEBANG_FILES=	utils/lit/lit.py utils/llvm-lit/llvm-lit.in \
 		tools/clang/utils/hmaptool/hmaptool \
@@ -47,6 +47,7 @@ SUB_LIST=	LLVM_PREFIX="${LLVM_PREFIX}" LLVM_SUFFIX="${LLVM_SUFFIX}"
 
 CMAKE_INSTALL_PREFIX=	${LLVM_PREFIX}
 CMAKE_ARGS=	-DLLVM_BUILD_LLVM_DYLIB=ON
+CMAKE_ARGS+=	-DLLVM_LINK_LLVM_DYLIB=ON
 CMAKE_ARGS+=	-DCMAKE_BUILD_WITH_INSTALL_RPATH=ON
 CMAKE_ARGS+=	-DLLVM_ENABLE_RTTI=ON
 CMAKE_ARGS+=	-DLLVM_DEFAULT_TARGET_TRIPLE=${CONFIGURE_TARGET}
@@ -76,6 +77,8 @@ OPTIONS_DEFAULT_amd64=	COMPILER_RT GOLD OPENMP
 OPTIONS_DEFAULT_i386=	COMPILER_RT OPENMP
 OPTIONS_SUB=	yes
 
+# Pre-declared for options framework
+LIB_DEPENDS=
 PLIST_FILES=
 
 CLANG_DESC=	Build clang
@@ -84,7 +87,8 @@ CLANG_CONFLICTS_INSTALL=	clang-devel-3.[1234567]*
 CLANG_GH_PROJECT=	clang:clang
 CLANG_GH_SUBDIR=	tools/clang:clang
 CLANG_GH_TAGNAME=	${CLANG_COMMIT}:clang
-CLANG_CMAKE_ON=		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp
+CLANG_CMAKE_ON=		-DCLANG_DEFAULT_OPENMP_RUNTIME=libomp \
+			-DCLANG_LINK_LLVM_DYLIB=ON
 CLANG_PORTDOCS=		clang
 CLANG_USE=		GNOME=libxml2
 COMPILER_RT_DESC=	Sanitizer libraries
@@ -107,18 +111,20 @@ EXTRAS_GH_PROJECT=	clang-tools-extra:extras
 EXTRAS_GH_SUBDIR=	tools/clang/tools/extra:extras
 EXTRAS_GH_TAGNAME=	${EXTRAS_COMMIT}:extras
 LIT_DESC=		Install lit and FileCheck test tools
+LIT_LIB_DEPENDS=	libz3.so:math/z3
 LLD_DESC=		Install lld, the LLVM linker
 LLD_GH_PROJECT=		lld:lld
 LLD_GH_SUBDIR=		tools/lld:lld
 LLD_GH_TAGNAME=		${LLD_COMMIT}:lld
 LLDB_BUILD_DEPENDS=	swig3.0:devel/swig30
+LLDB_EXTRA_PATCHES=	${PATCHDIR}/lldb
 LLDB_DESC=		Install lldb, the LLVM debugger
 LLDB_GH_PROJECT=	lldb:lldb
 LLDB_GH_SUBDIR=		tools/lldb:lldb
 LLDB_GH_TAGNAME=	${LLDB_COMMIT}:lldb
 LLDB_IMPLIES=		CLANG
 LLDB_PORTDOCS=		lldb
-LLDB_VARS=		_USES_PYTHON=python:2.7
+LLDB_VARS=		_USES_PYTHON=python:3.6
 OPENMP_DESC=		Install libomp, the LLVM OpenMP runtime library
 OPENMP_CONFLICTS_INSTALL=	libiomp5-devel-*
 OPENMP_GH_PROJECT=	openmp:openmp
@@ -139,12 +145,14 @@ MAN1SRCS+=	bugpoint.1 \
 		dsymutil.1 \
 		llc.1 \
 		lli.1 \
+		llvm-addr2line.1 \
 		llvm-ar.1 \
 		llvm-as.1 \
 		llvm-bcanalyzer.1 \
 		llvm-build.1 \
 		llvm-config.1 \
 		llvm-cov.1 \
+		llvm-cxxfilt.1 \
 		llvm-cxxmap.1 \
 		llvm-diff.1 \
 		llvm-dis.1 \
@@ -152,14 +160,21 @@ MAN1SRCS+=	bugpoint.1 \
 		llvm-exegesis.1 \
 		llvm-extract.1 \
 		llvm-lib.1 \
+		llvm-lipo.1 \
 		llvm-link.1 \
 		llvm-mca.1 \
 		llvm-nm.1 \
+		llvm-objcopy.1 \
 		llvm-objdump.1 \
 		llvm-pdbutil.1 \
 		llvm-profdata.1 \
+		llvm-ranlib.1 \
+		llvm-readelf.1 \
 		llvm-readobj.1 \
+		llvm-size.1 \
 		llvm-stress.1 \
+		llvm-strings.1 \
+		llvm-strip.1 \
 		llvm-symbolizer.1 \
 		opt.1 \
 		tblgen.1
@@ -264,7 +279,6 @@ _COMPILER_RT_LIBS= \
 	libclang_rt.dyndd-x86_64.so \
 	libclang_rt.fuzzer-x86_64.a \
 	libclang_rt.fuzzer_no_main-x86_64.a \
-	libclang_rt.lsan-x86_64.a \
 	libclang_rt.msan-x86_64.a \
 	libclang_rt.msan-x86_64.a.syms \
 	libclang_rt.msan_cxx-x86_64.a \
@@ -300,7 +314,6 @@ _COMPILER_RT_LIBS+= \
 	libclang_rt.builtins-i386.a \
 	libclang_rt.cfi-i386.a \
 	libclang_rt.cfi_diag-i386.a \
-	libclang_rt.lsan-i386.a \
 	libclang_rt.profile-i386.a \
 	libclang_rt.safestack-i386.a \
 	libclang_rt.stats-i386.a \
@@ -363,6 +376,7 @@ post-install:
 .endfor
 
 post-install-DOCS-on:
+	${RM} -r ${STAGEDIR}${DOCSDIR}
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${MV} ${STAGEDIR}${LLVM_PREFIX}/share/doc/* ${STAGEDIR}${DOCSDIR}
 	${RMDIR} ${STAGEDIR}${LLVM_PREFIX}/share/doc

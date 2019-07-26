@@ -5,7 +5,7 @@ PORTNAME=	db5
 PORTVERSION=	5.3.28
 PORTREVISION=	7
 CATEGORIES=	databases java
-MASTER_SITES=	http://download.oracle.com/berkeley-db/
+MASTER_SITES=	https://download.oracle.com/berkeley-db/
 PKGNAMEPREFIX?=
 #
 # the distfiles aren't named db5-* but db-*:
@@ -63,7 +63,7 @@ JAVA_CONFIGURE_ENABLE=	java
 JAVA_CPPFLAGS=		-I"${JAVA_HOME}/include"
 JAVA_CONFIGURE_ENV=	JAVAC="${JAVAC}" JAR="${JAR}" JAVA="${JAVA}" JAVACFLAGS="-Xlint:unchecked"
 TCL_CONFIGURE_ENABLE=	tcl
-TCL_USES=		tcl:85+
+TCL_USES=		tcl
 TCL_CONFIGURE_WITH=	tcl=${TCL_LIBDIR}
 TCL_VARS=		DBLIBS+=libdb_tcl
 DOCS_INSTALL_TARGET=	install_docs

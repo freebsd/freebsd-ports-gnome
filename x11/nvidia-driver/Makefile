@@ -12,7 +12,7 @@
 PORTNAME=	nvidia-driver
 DISTVERSION?=	390.87
 # Always try to set PORTREVISION as it can be overridden by the slave ports
-PORTREVISION?=	2
+PORTREVISION?=	3
 CATEGORIES=	x11
 MASTER_SITES=	NVIDIA/XFree86/FreeBSD-${ARCH_SUFX}/${DISTVERSION}
 DISTNAME=	NVIDIA-FreeBSD-${ARCH_SUFX}-${DISTVERSION}
@@ -101,14 +101,13 @@ OPTIONS_DEFINE+=	FREEBSD_AGP
 FREEBSD_AGP_DESC=	Use FreeBSD AGP GART driver
 .endif
 
-LINUX_MASTER_SITES=NVIDIA/XFree86/Linux-${LINUX_ARCH_SUFX}/${DISTVERSION}/:linux
-LINUX_DISTFILES=NVIDIA-Linux-${LINUX_ARCH_SUFX}-${DISTVERSION}.run:linux
+LINUX_MASTER_SITES=NVIDIA/XFree86/Linux-${ARCH_SUFX}/${DISTVERSION}/:linux
+LINUX_DISTFILES=NVIDIA-Linux-${ARCH_SUFX}-${DISTVERSION}.run:linux
 LINUX_USES=	linux
 LINUX_USE=	LINUX=xorglibs
 
-LINUX_ARCH_SUFX=${LINUX_ARCH:S/i386/x86/}
-LINUX_LIBDIR=	/usr/lib${LINUX_ARCH:S/i386//:S/x86_64/64/}
-LINUX_WRKSRC=	${WRKDIR}/NVIDIA-Linux-${LINUX_ARCH_SUFX}-${DISTVERSION}
+LINUX_LIBDIR=	/usr/lib${ARCH:S/i386//:S/amd//}
+LINUX_WRKSRC=	${WRKDIR}/NVIDIA-Linux-${ARCH_SUFX}-${DISTVERSION}
 
 LINUX_LIBS=	libcuda.so.${PORTVERSION} \
 		libnvcuvid.so.${PORTVERSION} \
@@ -157,25 +156,6 @@ LINUX_DATA+=	10_nvidia_wayland.json /usr/share/egl/egl_external_platform.d
 .else
 PLIST_RE+=	'\,${LINUXBASE}/usr/share/egl,d'
 .endif
-.if ${NVVERSION} >= 390.042
-LINUX_LIBS+=	libEGL.so.1.1.0
-LINUX_LINKS+=	libEGL.so.1.1.0 libEGL.so.1
-LINUX32_LIBS+=	libEGL.so.1.1.0
-LINUX32_LINKS+=	libEGL.so.1.1.0 libEGL.so.1
-PLIST_RE+=	'\,${LINUXBASE},s/(libEGL\.so)\.X/\1.1.1.0/'
-.elif ${NVVERSION} >= 355.006
-LINUX_LIBS+=	libEGL.so.1
-LINUX32_LIBS+=	libEGL.so.1
-PLIST_RE+=	'\,${LINUXBASE}.*libEGL\.so\.X,d'
-.elif ${NVVERSION} >= 331.013
-LINUX_LIBS+=	libEGL.so.${PORTVERSION}
-LINUX_LINKS+=	libEGL.so.${PORTVERSION} libEGL.so.1
-LINUX32_LIBS+=	libEGL.so.${PORTVERSION}
-LINUX32_LINKS+=	libEGL.so.${PORTVERSION} libEGL.so.1
-PLIST_RE+=	'\,${LINUXBASE},s/(libEGL\.so)\.X/\1.${PORTVERSION}/'
-.else
-PLIST_RE+=	'\,${LINUXBASE}.*libEGL\.so,d'
-.endif
 .if ${NVVERSION} >= 361.016
 LINUX_LIBS+=	libEGL_nvidia.so.${PORTVERSION}
 LINUX_LINKS+=	libEGL_nvidia.so.${PORTVERSION} libEGL_nvidia.so.0
@@ -187,102 +167,34 @@ PLIST_RE+=	'\,${LINUXBASE}.*libEGL_nvidia\.so\.${PORTVERSION},d'
 .else
 PLIST_RE+=	'\,${LINUXBASE}.*libEGL_nvidia\.so,d'
 .endif
-.if ${NVVERSION} >= 390.042
-LINUX_LIBS+=	libGL.so.1.7.0
-LINUX_LINKS+=	libGL.so.1.7.0 libGL.so.1
-LINUX32_LIBS+=	libGL.so.1.7.0
-LINUX32_LINKS+=	libGL.so.1.7.0 libGL.so.1
-PLIST_RE+=	'\,${LINUXBASE},s/(libGL\.so)\.X/\1.1.7.0/'
-.elif ${NVVERSION} >= 361.028
-LINUX_LIBS+=	libGL.so.1.0.0
-LINUX_LINKS+=	libGL.so.1.0.0 libGL.so.1
-LINUX32_LIBS+=	libGL.so.1.0.0
-LINUX32_LINKS+=	libGL.so.1.0.0 libGL.so.1
-PLIST_RE+=	'\,${LINUXBASE},s/(libGL\.so)\.X/\1.1.0.0/'
-.elif ${NVVERSION} >= 361.016
-LINUX_LIBS+=	libGL.so.1
-LINUX32_LIBS+=	libGL.so.1
-PLIST_RE+=	'\,${LINUXBASE}.*libGL\.so\.X,d'
-.else
-LINUX_LIBS+=	libGL.so.${PORTVERSION}
-LINUX_LINKS+=	libGL.so.${PORTVERSION} libGL.so.1
-LINUX32_LIBS+=	libGL.so.${PORTVERSION}
-LINUX32_LINKS+=	libGL.so.${PORTVERSION} libGL.so.1
-PLIST_RE+=	'\,${LINUXBASE},s/(libGL\.so)\.X/\1.${PORTVERSION}/'
-.endif
-.if ${NVVERSION} >= 390.042
-LINUX_LIBS+=	libGLESv1_CM.so.1.2.0 \
-		libGLESv2.so.2.1.0
-LINUX_LINKS+=	libGLESv1_CM.so.1.2.0 libGLESv1_CM.so.1 \
-		libGLESv2.so.2.1.0 libGLESv2.so.2
-LINUX32_LIBS+=	libGLESv1_CM.so.1.2.0 \
-		libGLESv2.so.2.1.0
-LINUX32_LINKS+=	libGLESv1_CM.so.1.2.0 libGLESv1_CM.so.1 \
-		libGLESv2.so.2.1.0 libGLESv2.so.2
-PLIST_RE+=	'\,${LINUXBASE},s/(libGLESv1_CM\.so)\.X/\1.1.2.0/' \
-		'\,${LINUXBASE},s/(libGLESv2\.so)\.X/\1.2.1.0/'
-.elif ${NVVERSION} >= 361.016
-LINUX_LIBS+=	libGLESv1_CM.so.1 \
-		libGLESv2.so.2
-LINUX32_LIBS+=	libGLESv1_CM.so.1 \
-		libGLESv2.so.2
-PLIST_RE+=	'\,${LINUXBASE}.*GLESv(1_CM|2)\.so\.X,d'
-.elif ${NVVERSION} >= 331.013
-LINUX_LIBS+=	libGLESv1_CM.so.${PORTVERSION} \
-		libGLESv2.so.${PORTVERSION}
-LINUX_LINKS+=	libGLESv1_CM.so.${PORTVERSION} libGLESv1_CM.so.1 \
-		libGLESv2.so.${PORTVERSION} libGLESv2.so.2
-LINUX32_LIBS+=	libGLESv1_CM.so.${PORTVERSION} \
-		libGLESv2.so.${PORTVERSION}
-LINUX32_LINKS+=	libGLESv1_CM.so.${PORTVERSION} libGLESv1_CM.so.1 \
-		libGLESv2.so.${PORTVERSION} libGLESv2.so.2
-PLIST_RE+=	'\,${LINUXBASE},s/(libGLESv(1_CM|2)\.so)\.X/\1.${PORTVERSION}/'
-.else
-PLIST_RE+=	'\,${LINUXBASE}.*libGLESv(1_CM|2)\.so,d'
-.endif
 .if ${NVVERSION} >= 361.016
 LINUX_LIBS+=	libGLESv1_CM_nvidia.so.${PORTVERSION} \
 		libGLESv2_nvidia.so.${PORTVERSION} \
-		libGLX.so.0 \
 		libGLX_nvidia.so.${PORTVERSION} \
 		libnvidia-fatbinaryloader.so.${PORTVERSION} \
 		libnvidia-ptxjitcompiler.so.${PORTVERSION}
 LINUX_LINKS+=	libGLESv1_CM_nvidia.so.${PORTVERSION} libGLESv1_CM_nvidia.so.1 \
 		libGLESv2_nvidia.so.${PORTVERSION} libGLESv2_nvidia.so.2 \
-		libGLX.so.0 libGLX.so \
 		libGLX_nvidia.so.${PORTVERSION} libGLX_nvidia.so.0 \
 		libGLX_nvidia.so.${PORTVERSION} libGLX_indirect.so.0 \
 		libnvidia-ptxjitcompiler.so.${PORTVERSION} libnvidia-ptxjitcompiler.so.1 \
 		libnvidia-ptxjitcompiler.so.${PORTVERSION} libnvidia-ptxjitcompiler.so
 LINUX32_LIBS+=	libGLESv1_CM_nvidia.so.${PORTVERSION} \
 		libGLESv2_nvidia.so.${PORTVERSION} \
-		libGLX.so.0 \
 		libGLX_nvidia.so.${PORTVERSION} \
 		libnvidia-fatbinaryloader.so.${PORTVERSION} \
 		libnvidia-ptxjitcompiler.so.${PORTVERSION}
 LINUX32_LINKS+=	libGLESv1_CM_nvidia.so.${PORTVERSION} libGLESv1_CM_nvidia.so.1 \
 		libGLESv2_nvidia.so.${PORTVERSION} libGLESv2_nvidia.so.2 \
-		libGLX.so.0 libGLX.so \
 		libGLX_nvidia.so.${PORTVERSION} libGLX_nvidia.so.0 \
 		libGLX_nvidia.so.${PORTVERSION} libGLX_indirect.so.0 \
 		libnvidia-ptxjitcompiler.so.${PORTVERSION} libnvidia-ptxjitcompiler.so.1 \
 		libnvidia-ptxjitcompiler.so.${PORTVERSION} libnvidia-ptxjitcompiler.so
 .else
 PLIST_RE+=	'\,${LINUXBASE}.*libGLESv(1_CM|2)_nvidia\.so,d' \
-		'\,${LINUXBASE}.*libGLX(_nvidia|_indirect)?\.so,d' \
+		'\,${LINUXBASE}.*libGLX_(nvidia|indirect)\.so,d' \
 		'\,${LINUXBASE}.*libnvidia-fatbinaryloader\.so,d' \
 		'\,${LINUXBASE}.*libnvidia-ptxjitcompiler\.so,d'
-.endif
-.if ${NVVERSION} >= 355.006
-LINUX_LIBS+=	libGLdispatch.so.0 \
-		libOpenGL.so.0
-LINUX_LINKS+=	libOpenGL.so.0 libOpenGL.so
-LINUX32_LIBS+=	libGLdispatch.so.0 \
-		libOpenGL.so.0
-LINUX32_LINKS+=	libOpenGL.so.0 libOpenGL.so
-.else
-PLIST_RE+=	'\,${LINUXBASE}.*libGLdispatch\.so,d' \
-		'\,${LINUXBASE}.*libOpenGL\.so,d'
 .endif
 .if ${NVVERSION} >= 387.012
 LINUX_LIBS+=	libnvidia-egl-wayland.so.1.0.2
@@ -381,25 +293,130 @@ PLIST_SUB+=	LINUXBASE=${LINUXBASE} \
 		SHLIB_VERSION=${PORTVERSION} \
 		MODULESDIR=${MODULESDIR}
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
+.if ${PORT_OPTIONS:MLINUX}
+.if ${NVVERSION} >= 390.042 && ${LINUX_DEFAULT} != c6
+USE_LINUX+=	libglvnd
+PLIST_RE+=	'\,${LINUXBASE}.*libEGL\.so,d' \
+		'\,${LINUXBASE}.*libGL\.so,d' \
+		'\,${LINUXBASE}.*libGLESv(1_CM|2)\.so,d' \
+		'\,${LINUXBASE}.*libGLX\.so,d' \
+		'\,${LINUXBASE}.*libGLdispatch\.so,d' \
+		'\,${LINUXBASE}.*libOpenGL\.so,d'
+.else
+.if ${NVVERSION} >= 390.042
+LINUX_LIBS+=	libEGL.so.1.1.0
+LINUX_LINKS+=	libEGL.so.1.1.0 libEGL.so.1
+LINUX32_LIBS+=	libEGL.so.1.1.0
+LINUX32_LINKS+=	libEGL.so.1.1.0 libEGL.so.1
+PLIST_RE+=	'\,${LINUXBASE},s/(libEGL\.so)\.X/\1.1.1.0/'
+.elif ${NVVERSION} >= 355.006
+LINUX_LIBS+=	libEGL.so.1
+LINUX32_LIBS+=	libEGL.so.1
+PLIST_RE+=	'\,${LINUXBASE}.*libEGL\.so\.X,d'
+.elif ${NVVERSION} >= 331.013
+LINUX_LIBS+=	libEGL.so.${PORTVERSION}
+LINUX_LINKS+=	libEGL.so.${PORTVERSION} libEGL.so.1
+LINUX32_LIBS+=	libEGL.so.${PORTVERSION}
+LINUX32_LINKS+=	libEGL.so.${PORTVERSION} libEGL.so.1
+PLIST_RE+=	'\,${LINUXBASE},s/(libEGL\.so)\.X/\1.${PORTVERSION}/'
+.else
+PLIST_RE+=	'\,${LINUXBASE}.*libEGL\.so,d'
+.endif
+.if ${NVVERSION} >= 390.042
+LINUX_LIBS+=	libGL.so.1.7.0
+LINUX_LINKS+=	libGL.so.1.7.0 libGL.so.1
+LINUX32_LIBS+=	libGL.so.1.7.0
+LINUX32_LINKS+=	libGL.so.1.7.0 libGL.so.1
+PLIST_RE+=	'\,${LINUXBASE},s/(libGL\.so)\.X/\1.1.7.0/'
+.elif ${NVVERSION} >= 361.028
+LINUX_LIBS+=	libGL.so.1.0.0
+LINUX_LINKS+=	libGL.so.1.0.0 libGL.so.1
+LINUX32_LIBS+=	libGL.so.1.0.0
+LINUX32_LINKS+=	libGL.so.1.0.0 libGL.so.1
+PLIST_RE+=	'\,${LINUXBASE},s/(libGL\.so)\.X/\1.1.0.0/'
+.elif ${NVVERSION} >= 361.016
+LINUX_LIBS+=	libGL.so.1
+LINUX32_LIBS+=	libGL.so.1
+PLIST_RE+=	'\,${LINUXBASE}.*libGL\.so\.X,d'
+.else
+LINUX_LIBS+=	libGL.so.${PORTVERSION}
+LINUX_LINKS+=	libGL.so.${PORTVERSION} libGL.so.1
+LINUX32_LIBS+=	libGL.so.${PORTVERSION}
+LINUX32_LINKS+=	libGL.so.${PORTVERSION} libGL.so.1
+PLIST_RE+=	'\,${LINUXBASE},s/(libGL\.so)\.X/\1.${PORTVERSION}/'
+.endif
+.if ${NVVERSION} >= 390.042
+LINUX_LIBS+=	libGLESv1_CM.so.1.2.0 \
+		libGLESv2.so.2.1.0
+LINUX_LINKS+=	libGLESv1_CM.so.1.2.0 libGLESv1_CM.so.1 \
+		libGLESv2.so.2.1.0 libGLESv2.so.2
+LINUX32_LIBS+=	libGLESv1_CM.so.1.2.0 \
+		libGLESv2.so.2.1.0
+LINUX32_LINKS+=	libGLESv1_CM.so.1.2.0 libGLESv1_CM.so.1 \
+		libGLESv2.so.2.1.0 libGLESv2.so.2
+PLIST_RE+=	'\,${LINUXBASE},s/(libGLESv1_CM\.so)\.X/\1.1.2.0/' \
+		'\,${LINUXBASE},s/(libGLESv2\.so)\.X/\1.2.1.0/'
+.elif ${NVVERSION} >= 361.016
+LINUX_LIBS+=	libGLESv1_CM.so.1 \
+		libGLESv2.so.2
+LINUX32_LIBS+=	libGLESv1_CM.so.1 \
+		libGLESv2.so.2
+PLIST_RE+=	'\,${LINUXBASE}.*GLESv(1_CM|2)\.so\.X,d'
+.elif ${NVVERSION} >= 331.013
+LINUX_LIBS+=	libGLESv1_CM.so.${PORTVERSION} \
+		libGLESv2.so.${PORTVERSION}
+LINUX_LINKS+=	libGLESv1_CM.so.${PORTVERSION} libGLESv1_CM.so.1 \
+		libGLESv2.so.${PORTVERSION} libGLESv2.so.2
+LINUX32_LIBS+=	libGLESv1_CM.so.${PORTVERSION} \
+		libGLESv2.so.${PORTVERSION}
+LINUX32_LINKS+=	libGLESv1_CM.so.${PORTVERSION} libGLESv1_CM.so.1 \
+		libGLESv2.so.${PORTVERSION} libGLESv2.so.2
+PLIST_RE+=	'\,${LINUXBASE},s/(libGLESv(1_CM|2)\.so)\.X/\1.${PORTVERSION}/'
+.else
+PLIST_RE+=	'\,${LINUXBASE}.*libGLESv(1_CM|2)\.so,d'
+.endif
+.if ${NVVERSION} >= 361.016
+LINUX_LIBS+=	libGLX.so.0
+LINUX32_LIBS+=	libGLX.so.0
+.else
+PLIST_RE+=	'\,${LINUXBASE}.*libGLX\.so,d'
+.endif
+.if ${NVVERSION} >= 355.006
+LINUX_LIBS+=	libGLdispatch.so.0 \
+		libOpenGL.so.0
+LINUX32_LIBS+=	libGLdispatch.so.0 \
+		libOpenGL.so.0
+.else
+PLIST_RE+=	'\,${LINUXBASE}.*libGLdispatch\.so,d' \
+		'\,${LINUXBASE}.*libOpenGL\.so,d'
+.endif
+.endif	# ${NVVERSION} >= 390.042 && ${LINUX_DEFAULT} != c6
+
+.if ${ARCH} == amd64
 .if ${NVVERSION} >= 310.014
 LINUX32_LIBS+=	libnvcuvid.so.${PORTVERSION}
 LINUX32_LINKS+=	libnvcuvid.so.${PORTVERSION} libnvcuvid.so.1 \
 		libnvcuvid.so.${PORTVERSION} libnvcuvid.so
-.elif "${LINUX_ARCH}" == "x86_64"
+.else
 PLIST_RE+=	'\,${LINUXBASE}/usr/lib/libnvcuvid\.so,d'
 .endif
+.endif
+.endif	# ${PORT_OPTIONS:MLINUX}
 
-.if "${LINUX_ARCH}" == "x86_64"
+.if ${PORT_OPTIONS:MLINUX} && ${ARCH} == amd64
 PLIST_SUB+=	LINUX32=""
 .else
 PLIST_SUB+=	LINUX32="@comment "
 .endif
 
+# XXX Only needed to obtain PORTVERSION.
+.include <bsd.port.pre.mk>
+
 post-extract-LINUX-on:
 	@(cd ${WRKDIR} && ${SH} \
-		${DISTDIR}/NVIDIA-Linux-${LINUX_ARCH_SUFX}-${DISTVERSION}.run \
+		${DISTDIR}/NVIDIA-Linux-${ARCH_SUFX}-${DISTVERSION}.run \
 		--extract-only > /dev/null)
 
 pre-patch:
@@ -433,6 +450,11 @@ post-patch: .SILENT
 	    -e 's/kmem_alloc_contig(kmem_arena, /kmem_alloc_contig(/' \
 	    -e 's/kmem_free(kmem_arena, /kmem_free(/' \
 		${WRKSRC}/src/${NVSRC}/nvidia_subr.c
+.endif
+# Pull the right header after FreeBSD src r347984
+.if ${OSVERSION} >= 1300029 && ${NVVERSION} >= 358.009
+	${REINPLACE_CMD} -e '/^#include/s:lock\.h:mutex.h:' \
+		${WRKSRC}/src/nvidia-modeset/nvidia-modeset-freebsd.c
 .endif
 # Disable installation of Linux libraries
 	${REINPLACE_CMD} -e 's/exists(\/.*/& \&\& 0/' \
@@ -595,7 +617,7 @@ post-install-LINUX-on:
 	${RLN} ${STAGEDIR}${LINUXBASE}${LINUX_LIBDIR}/${s} \
 		${STAGEDIR}${LINUXBASE}${LINUX_LIBDIR}/${t}
 .endfor
-.if "${LINUX_ARCH}" == "x86_64"
+.if ${ARCH} == amd64
 	${MKDIR} ${STAGEDIR}${LINUXBASE}/usr/lib/tls
 	${MKDIR} ${STAGEDIR}${LINUXBASE}/usr/lib/vdpau
 .for l in ${LINUX32_LIBS}

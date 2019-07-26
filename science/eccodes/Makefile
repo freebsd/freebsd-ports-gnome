@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	eccodes
-PORTVERSION=	2.12.0
+PORTVERSION=	2.13.0
 DISTVERSIONSUFFIX=	-Source
-PORTREVISION=	1
 CATEGORIES=	science
 MASTER_SITES=	https://confluence.ecmwf.int/download/attachments/45757960/ \
 		LOCAL/sunpoet
@@ -26,7 +25,7 @@ AEC_DESC=	Adaptive Entropy Coding support
 
 PORTSCOUT=	site:https://confluence.ecmwf.int/display/ECC/Releases
 
-USES=		cmake shebangfix
+USES=		cmake perl5 shebangfix
 
 CMAKE_ARGS=	-DBUILD_SHARED_LIBS=BOTH
 CMAKE_OFF=	ENABLE_ALIGN_MEMORY \

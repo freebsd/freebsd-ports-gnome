@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	netpbm
-DISTVERSION=	10.86.02
+DISTVERSION=	10.87.00
 CATEGORIES=	graphics
 MASTER_SITES=	https://github.com/t6/netpbm/releases/download/v${DISTVERSION}/ \
-		https://gitlab.com/tobiask/netpbm/uploads/1e1e21d485ff76f00e91c598881963a6/ \
+		https://gitlab.com/tobiask/netpbm/uploads/125945b95a7de7dfaf6a3906315e8908/ \
 		LOCAL/tobik
 
 MAINTAINER=	tobik@FreeBSD.org
@@ -51,9 +51,8 @@ TEST_TARGET=	check
 # tiff-flate-lzw-roundtrip's checksums are different on FreeBSD so the
 # test fails.  The resulting and intermediary images look fine in
 # spite of this.
-DISABLED_TESTS=	all-in-place tiff-flate-lzw-roundtrip ppmgauss \
-		palm-roundtrip pamtopdbimg ps-alt-roundtrip \
-		pammixmulti-identity
+DISABLED_TESTS=	all-in-place palm-roundtrip pamhue pammixmulti-identity \
+		pamtopdbimg ppmgauss ps-alt-roundtrip tiff-flate-lzw-roundtrip
 
 OPTIONS_DEFAULT=	MANPAGES PERL
 OPTIONS_DEFINE=	MANPAGES PERL STATIC SVGTOPAM X11

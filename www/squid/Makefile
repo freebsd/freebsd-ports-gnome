@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	squid
-PORTVERSION=	4.6
-PORTREVISION=	1
+PORTVERSION=	4.8
 CATEGORIES=	www ipv6
 MASTER_SITES=	http://www.squid-cache.org/Versions/v4/ \
 		http://www2.us.squid-cache.org/Versions/v4/ \
@@ -24,8 +23,6 @@ COMMENT=	HTTP Caching Proxy
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-BROKEN_powerpc64=	fails to link: ext_time_quota_acl.cc: undefined reference to std::ctype
 
 USES=		compiler:c++11-lib cpe perl5 shebangfix tar:xz
 
@@ -190,6 +187,9 @@ TP_PF_DESC=		Transparent proxying with PF
 VIA_DB_DESC=		Forward/Via database
 WCCPV2_DESC=		Web Cache Coordination Protocol v2
 WCCP_DESC=		Web Cache Coordination Protocol
+
+CFLAGS+=	${CFLAGS_${CHOSEN_COMPILER_TYPE}}
+CFLAGS_gcc=	-Wno-error=stringop-truncation
 
 change_files=	ChangeLog \
 		contrib/nextstep/makepkg \

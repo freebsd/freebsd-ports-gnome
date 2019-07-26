@@ -2,7 +2,8 @@
 
 PORTNAME=	nomad
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.9.0
+DISTVERSION=	0.9.3
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	jhixson@FreeBSD.org
@@ -14,9 +15,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 ONLY_FOR_ARCHS=	amd64
 ONLY_FOR_ARCHS_REASON=	On i386: go compiler crashes: https://github.com/golang/go/issues/23763
 
-BUILD_DEPENDS=	go:lang/go
-
-USES=		compiler
+USES=		compiler go
 USE_GITHUB=	yes
 GH_ACCOUNT=	hashicorp
 GH_SUBDIR=	src/github.com/hashicorp/nomad

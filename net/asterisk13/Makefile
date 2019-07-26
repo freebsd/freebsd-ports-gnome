@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	asterisk
-PORTVERSION=	13.26.0
+PORTVERSION=	13.28.0
 CATEGORIES=	net
 MASTER_SITES=	https://downloads.asterisk.org/pub/telephony/%SUBDIR%/:DEFAULT,g729
 MASTER_SITE_SUBDIR=	asterisk/ \
@@ -43,7 +43,7 @@ CPE_VENDOR=	digium
 SHEBANG_FILES=	agi/agi-test.agi \
 		agi/jukebox.agi \
 		contrib/scripts/astversion
-LDFLAGS=	-L.
+LDFLAGS+=	-L.
 MAKE_ENV=	PTHREAD_LIBS="-lpthread" \
 		MKDIR="${MKDIR}" \
 		PWLIBDIR=${LOCALBASE}/share/pwlib \

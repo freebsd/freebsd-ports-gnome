@@ -13,9 +13,11 @@ COMMENT=	Interpolation library for meteorological software
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BROKEN=		fails to link
+
 LIB_DEPENDS=	libeccodes.so:science/eccodes \
 		libfftw3.so:math/fftw3 \
-		libpng16.so:graphics/png
+		libpng.so:graphics/png
 
 USES=		cmake:noninja fortran
 

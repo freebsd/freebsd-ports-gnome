@@ -32,32 +32,21 @@ linux_ARGS=		c6
 .elif exists(${LINUXBASE}/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7)
 linux_ARGS=		c7
 .else
-linux_ARGS=		${LINUX_DEFAULT:S/_64//}
+linux_ARGS=		${LINUX_DEFAULT}
 .endif
 .endif
 
 .if ${linux_ARGS} == c6
 LINUX_DIST_VER?=	6.10
-.if ${ARCH} == amd64 && ${LINUX_DEFAULT} != c6
-LINUX_ARCH=		x86_64
-.elif ${ARCH} == amd64 || ${ARCH} == i386
-LINUX_ARCH=		i386
-.else
-LINUX_ARCH=		${ARCH}
-IGNORE=			Linux CentOS ${LINUX_DIST_VER} is unsupported on ${ARCH}
-.endif
 .elif ${linux_ARGS} == c7
-LINUX_DIST_VER?=	7.4.1708
-.if ${ARCH} == amd64
-LINUX_ARCH=		x86_64
-.elif ${ARCH} == i386
-LINUX_ARCH=		i386
-.else
-LINUX_ARCH=		${ARCH}
-IGNORE=			Linux CentOS ${LINUX_DIST_VER} is unsupported on ${ARCH}
-.endif
+LINUX_DIST_VER?=	7.6.1810
 .else
 IGNORE=			Invalid Linux distribution: ${linux_ARGS}
+.endif
+
+.ifndef ONLY_FOR_ARCHS
+ONLY_FOR_ARCHS=		amd64 i386
+ONLY_FOR_ARCHS_REASON=	Linux compatibility is only available on amd64 and i386
 .endif
 
 linux_allegro_DEP=		linux-${linux_ARGS}-allegro>0:devel/linux-${linux_ARGS}-allegro
@@ -82,6 +71,8 @@ linux_flac_DEP=			linux-${linux_ARGS}-flac>0:audio/linux-${linux_ARGS}-flac
 linux_flac_DEP=			linux-${linux_ARGS}-flac-libs>0:audio/linux-${linux_ARGS}-flac
 .endif
 linux_fontconfig_DEP=		linux-${linux_ARGS}-fontconfig>0:x11-fonts/linux-${linux_ARGS}-fontconfig
+linux_freetype_DEP=		linux-${linux_ARGS}-freetype>0:print/linux-${linux_ARGS}-freetype
+linux_fribidi_DEP=		linux-${linux_ARGS}-fribidi>0:converters/linux-${linux_ARGS}-fribidi
 linux_gdkpixbuf2_DEP=		linux-${linux_ARGS}-gdk-pixbuf2>0:graphics/linux-${linux_ARGS}-gdk-pixbuf2
 linux_gnutls_DEP=		linux-${linux_ARGS}-gnutls>0:security/linux-${linux_ARGS}-gnutls
 linux_graphite2_DEP=		linux-${linux_ARGS}-graphite2>0:graphics/linux-${linux_ARGS}-graphite2
@@ -100,6 +91,7 @@ linux_libaudiofile_DEP=		linux-${linux_ARGS}-audiofile>0:audio/linux-${linux_ARG
 linux_libelf_DEP=		linux-${linux_ARGS}-elfutils-libelf>0:devel/linux-${linux_ARGS}-libelf
 linux_libgcrypt_DEP=		linux-${linux_ARGS}-libgcrypt>0:security/linux-${linux_ARGS}-libgcrypt
 linux_libgfortran_DEP=		linux-${linux_ARGS}-libgfortran>0:devel/linux-${linux_ARGS}-libgfortran
+linux_libglvnd_DEP=		linux-${linux_ARGS}-libglvnd>0:graphics/linux-${linux_ARGS}-libglvnd
 linux_libgpg-error_DEP=		linux-${linux_ARGS}-libgpg-error>0:security/linux-${linux_ARGS}-libgpg-error
 linux_libmng_DEP=		linux-${linux_ARGS}-libmng>0:graphics/linux-${linux_ARGS}-libmng
 linux_libogg_DEP=		linux-${linux_ARGS}-libogg>0:audio/linux-${linux_ARGS}-libogg
@@ -159,6 +151,7 @@ linux_tk85_DEP=			linux-${linux_ARGS}-tk85>0:x11-toolkits/linux-${linux_ARGS}-tk
 linux_trousers_DEP=		linux-${linux_ARGS}-trousers>0:security/linux-${linux_ARGS}-trousers
 linux_ucl_DEP=			linux-${linux_ARGS}-ucl>0:archivers/linux-${linux_ARGS}-ucl
 linux_userspace-rcu_DEP=	linux-${linux_ARGS}-userspace-rcu>0:sysutils/linux-${linux_ARGS}-userspace-rcu
+linux_wayland_DEP=		linux-${linux_ARGS}-wayland>0:graphics/linux-${linux_ARGS}-wayland
 linux_xorglibs_DEP=		linux-${linux_ARGS}-xorg-libs>0:x11/linux-${linux_ARGS}-xorg-libs
 
 USE_LINUX?=		base
@@ -179,8 +172,6 @@ DEV_ERROR+=		"USE_LINUX=${i}: package does not exist"
 .endfor
 
 .ifdef USE_LINUX_RPM
-
-DISTVERSIONSUFFIX?=	-${RPMVERSION}
 
 .if ${linux_ARGS} == c6
 .ifndef MASTER_SITES
@@ -264,7 +255,7 @@ EXTRACT_AFTER_ARGS=	| ${TAR} xf - --no-same-owner --no-same-permissions
 .endif
 
 .if ${USE_LINUX_RPM} != noarch
-PLIST?=			${PKGDIR}/pkg-plist.${LINUX_ARCH:S/x86_64/amd64/}
+PLIST?=			${PKGDIR}/pkg-plist.${ARCH}
 .endif
 
 .if !target(do-install)
@@ -297,21 +288,13 @@ DISTFILES_i386?=	${DISTNAME_i386}${EXTRACT_SUFX}
 _ALL_DISTFILES=		${DISTFILES_amd64} ${DISTFILES_i386}
 DISTFILES=		${_ALL_DISTFILES:O:u}
 .else
-DISTFILES=		${DISTFILES_${LINUX_ARCH:S/x86_64/amd64/}}
+DISTFILES=		${DISTFILES_${ARCH}}
 .endif
-EXTRACT_ONLY?=		${DISTFILES_${LINUX_ARCH:S/x86_64/amd64/}:C/:[^:]+$//}
+EXTRACT_ONLY?=		${DISTFILES_${ARCH}:C/:[^:]+$//}
 .endif
 .endif
 .if !empty(SRC_DISTFILES) && (make(makesum) || defined(PACKAGE_BUILDING))
 DISTFILES+=		${SRC_DISTFILES}
-.endif
-
-# This triggers on amd64 with DEFAULT_VERSIONS+=linux=c6 (i386 Linux) and
-# ports with ONLY_FOR_ARCHS=amd64 or NOT_FOR_ARCHS=i386.  It may be removed
-# when c6 becomes an alias for c6_64 on amd64 (after FreeBSD 10.3 EoL).
-.if (defined(ONLY_FOR_ARCHS) && empty(ONLY_FOR_ARCHS:M${LINUX_ARCH:S/x86_64/amd64/})) \
- || !empty(NOT_FOR_ARCHS:M${LINUX_ARCH:S/x86_64/amd64/})
-IGNORE=			does not run on Linux/${LINUX_ARCH}
 .endif
 
 .endif # _POSTMKINCLUDED && ! _INCLUDE_USES_LINUX_POST_MK

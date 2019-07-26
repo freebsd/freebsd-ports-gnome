@@ -1,9 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=		QtAV
-PORTVERSION=		1.12.0
 DISTVERSIONPREFIX=	v
-PORTREVISION=	7
+DISTVERSION=		1.13.0
 CATEGORIES=		multimedia
 DIST_SUBDIR=		KDE
 
@@ -11,7 +10,7 @@ MAINTAINER=		kde@FreeBSD.org
 COMMENT=		Cross-platform multimedia framwork based on Qt and ffmpeg
 
 LICENSE=		LGPL21+
-LICENSE_FIKE=		${WRKSRC}/lgpl-2.1.txt
+LICENSE_FILE=		${WRKSRC}/lgpl-2.1.txt
 
 LIB_DEPENDS=		libass.so:multimedia/libass \
 			libavcodec.so:multimedia/ffmpeg

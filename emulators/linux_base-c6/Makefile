@@ -6,6 +6,14 @@ PORTVERSION=	${LINUX_DIST_VER}
 PORTREVISION=	1
 CATEGORIES=	emulators linux
 PKGNAMEPREFIX=	linux_base-
+
+MAINTAINER=	emulation@FreeBSD.org
+COMMENT=	Base set of packages needed in Linux mode (Linux CentOS ${LINUX_DIST_VER})
+
+USES=		linux:c6
+USE_LINUX=	# empty
+USE_LINUX_RPM=	yes
+
 BIN_DISTNAMES=	bash-4.1.2-48.el6 \
 		bzip2-1.0.5-7.el6_0 \
 		centos-release-6-10.el6.centos.12.3 \
@@ -104,13 +112,7 @@ SRC_DISTFILES=	acl-2.2.49-7.el6_9.1${SRC_SUFX}:SOURCE \
 		which-2.19-6.el6${SRC_SUFX}:SOURCE \
 		zlib-1.2.3-29.el6${SRC_SUFX}:SOURCE
 
-MAINTAINER=	emulation@FreeBSD.org
-COMMENT=	Base set of packages needed in Linux mode (Linux CentOS ${LINUX_DIST_VER})
-
 PLIST_SUB=	LINUXBASE=${LINUXBASE} SYSCTLMIB=${SYSCTLMIB}
-USES=		linux:c6
-USE_LINUX=	# empty
-USE_LINUX_RPM=	yes
 
 OPTIONS_DEFINE=	DOCS NLS
 OPTIONS_SUB=	yes
@@ -119,9 +121,9 @@ REMOVE_DIRS=	boot home media mnt proc root sys tmp var/log var/run var/tmp
 REMOVE_FILES=	bin/df bin/su etc/exports etc/group etc/gshadow etc/motd \
 		etc/passwd etc/printcap etc/protocols etc/services etc/shadow
 
-.include <bsd.port.pre.mk>
+.include <bsd.port.options.mk>
 
-.if ${LINUX_ARCH} == x86_64
+.if ${ARCH} == amd64
 SYSCTLMIB=	kern.features.linux64
 .else
 SYSCTLMIB=	compat.linux.osrelease
@@ -133,7 +135,7 @@ post-patch:
 	@${FIND} ${WRKSRC}/lib -type d -empty -delete
 	@${FIND} ${WRKSRC}/usr -type d -empty -delete
 	@${BRANDELF} -t Linux ${WRKSRC}/lib/ld-2.12.so
-.if ${LINUX_ARCH} == x86_64
+.if ${ARCH} == amd64
 	@${FIND} ${WRKSRC}/lib64 -type d -empty -delete
 	@${BRANDELF} -t Linux ${WRKSRC}/lib64/ld-2.12.so
 .endif
@@ -153,8 +155,8 @@ post-install:
 	${LN} -sf usr/bin ${STAGEDIR}${PREFIX}
 	${LN} -sf usr/lib ${STAGEDIR}${PREFIX}
 	${LN} -sf usr/sbin ${STAGEDIR}${PREFIX}
-.if ${LINUX_ARCH} == x86_64
+.if ${ARCH} == amd64
 	${LN} -sf usr/lib64 ${STAGEDIR}${PREFIX}
 .endif
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

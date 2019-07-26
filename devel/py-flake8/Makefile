@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	flake8
-PORTVERSION=	3.7.7
-PORTREVISION=	1
+PORTVERSION=	3.7.8
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -28,7 +27,12 @@ NO_ARCH=	yes
 .include <bsd.port.pre.mk>
 
 .if ${PYTHON_REL} < 3200
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}configparser>0:devel/py-configparser@${PY_FLAVOR}
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}configparser>0:devel/py-configparser@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}functools32>0:devel/py-functools32@${PY_FLAVOR}
+.endif
+
+.if ${PYTHON_REL} < 3400
+RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}typing>0:devel/py-typing@${PY_FLAVOR}
 .endif
 
 .include <bsd.port.post.mk>

@@ -12,14 +12,17 @@ COMMENT=	Network Performance Meter
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BROKEN_powerpc64=	fails to compile: unrecognized command line option "-Wno-array-bounds"
-
-USES=		cmake shebangfix
+USES=		cmake compiler shebangfix
 CMAKE_ON=	BUILD_PLOT_PROGRAMS
 CMAKE_OFF=	BUILD_TEST_PROGRAMS WITH_NEAT
 SHEBANG_FILES=	src/pdfembedfonts src/pdfmetadata src/plot-netperfmeter-results
 
+.include <bsd.port.pre.mk>
+
 post-patch:
+.if ${CHOSEN_COMPILER_TYPE} == gcc
+	@${REINPLACE_CMD} 's, -Wno-array-bounds,,g' ${WRKSRC}/CMakeLists.txt
+.endif
 	@${REINPLACE_CMD} 's,share/man,man,' ${WRKSRC}/CMakeLists.txt
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

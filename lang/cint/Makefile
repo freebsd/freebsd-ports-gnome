@@ -10,6 +10,9 @@ MASTER_SITES=	http://root.cern.ch/drupal/sites/default/files/
 MAINTAINER=	fjoe@FreeBSD.org
 COMMENT=	C/C++ interpreter
 
+DEPRECATED=	Abandonware; superseded by lang/cling
+EXPIRATION_DATE=	2019-07-31
+
 BROKEN_powerpc64=	does not build: cint/include/iosenum.h: segmentation fault (core dumped)
 
 BUILD_DEPENDS=	bash:shells/bash
@@ -35,7 +38,8 @@ OPTIONS_DEFINE=	DOCS
 
 post-patch:
 	${REINPLACE_CMD} 's,#!/bin/bash,#!${LOCALBASE}/bin/bash,' ${WRKSRC}/cint/lib/dll_stl/setup
-	${REINPLACE_CMD} 's,make ,${GMAKE} ,' ${WRKSRC}/cint/lib/*/setup
+	${REINPLACE_CMD} -e 's,make ,${GMAKE} ,' -e '/${GMAKE}/ s,$$, || exit 1,' \
+		${WRKSRC}/cint/lib/*/setup
 
 do-configure:
 	cd ${WRKSRC} && ${SETENV} ${CONFIGURE_ENV} ${LOCALBASE}/bin/bash configure __have_the_proper_shell@

@@ -3,7 +3,7 @@
 PORTNAME=	cinelerra-gg
 DISTVERSION=	5.1-20180714
 DISTVERSIONSUFFIX=	-${REV:C/(.......).*/\1/}
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	multimedia
 MASTER_SITES=	https://git.cinelerra-cv.org/gitweb?p=goodguy/cinelerra.git;a=snapshot;h=${REV};sf=tgz;dummy=/ # tarballs are @ https://cinelerra-cv.org/five/pkgs/src/
 
@@ -33,7 +33,7 @@ LIB_DEPENDS=	libFLAC.so:audio/flac \
 		libogg.so:audio/libogg \
 		libopenjp2.so:graphics/openjpeg \
 		libopus.so:audio/opus \
-		libpng16.so:graphics/png \
+		libpng.so:graphics/png \
 		libsndfile.so:audio/libsndfile \
 		libtheoraenc.so:multimedia/libtheora \
 		libtiff.so:graphics/tiff \

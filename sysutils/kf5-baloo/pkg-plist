@@ -4,7 +4,6 @@ bin/balooctl
 bin/baloosearch
 bin/balooshow
 etc/xdg/autostart/baloo_file.desktop
-etc/xdg/baloo.categories
 include/KF5/Baloo/Baloo/File
 include/KF5/Baloo/Baloo/FileMonitor
 include/KF5/Baloo/Baloo/IndexerConfig
@@ -275,6 +274,7 @@ share/locale/ja/LC_MESSAGES/kio5_baloosearch.mo
 share/locale/ja/LC_MESSAGES/kio5_tags.mo
 share/locale/ja/LC_MESSAGES/kio5_timeline.mo
 share/locale/ko/LC_MESSAGES/baloo_file5.mo
+share/locale/ko/LC_MESSAGES/baloo_file_extractor5.mo
 share/locale/ko/LC_MESSAGES/balooctl5.mo
 share/locale/ko/LC_MESSAGES/baloodb5.mo
 share/locale/ko/LC_MESSAGES/balooengine5.mo
@@ -287,6 +287,9 @@ share/locale/ko/LC_MESSAGES/kio5_timeline.mo
 share/locale/lt/LC_MESSAGES/baloo_file5.mo
 share/locale/lt/LC_MESSAGES/baloo_file_extractor5.mo
 share/locale/lt/LC_MESSAGES/balooctl5.mo
+share/locale/lt/LC_MESSAGES/baloodb5.mo
+share/locale/lt/LC_MESSAGES/balooengine5.mo
+share/locale/lt/LC_MESSAGES/baloomonitorplugin.mo
 share/locale/lt/LC_MESSAGES/baloosearch5.mo
 share/locale/lt/LC_MESSAGES/balooshow5.mo
 share/locale/lt/LC_MESSAGES/kio5_baloosearch.mo
@@ -496,3 +499,4 @@ share/locale/zh_TW/LC_MESSAGES/balooshow5.mo
 share/locale/zh_TW/LC_MESSAGES/kio5_baloosearch.mo
 share/locale/zh_TW/LC_MESSAGES/kio5_tags.mo
 share/locale/zh_TW/LC_MESSAGES/kio5_timeline.mo
+share/qlogging-categories5/baloo.categories

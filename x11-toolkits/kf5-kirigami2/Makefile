@@ -10,7 +10,7 @@ COMMENT=	QtQuick based components set
 
 USES=		cmake compiler:c++11-lib gettext kde:5 qt:5 tar:xz
 USE_KDE=	ecm kdeclarative
-USE_QT=		core dbus declarative gui linguisttools network \
+USE_QT=		core dbus declarative graphicaleffects gui linguisttools network \
 		quickcontrols2 svg testlib widgets \
 		buildtools_build qmake_build
 

@@ -7,6 +7,7 @@
     SUBDIR += adcomplain
     SUBDIR += addresses
     SUBDIR += addresses-goodies
+    SUBDIR += aerc
     SUBDIR += akpop3d
     SUBDIR += alpine
     SUBDIR += altermime
@@ -156,10 +157,6 @@
     SUBDIR += horde-ingo
     SUBDIR += horde-turba
     SUBDIR += horde-webmail
-    SUBDIR += hs-email-validate
-    SUBDIR += hs-mime
-    SUBDIR += hs-mime-mail
-    SUBDIR += hs-mime-types
     SUBDIR += ifile
     SUBDIR += im
     SUBDIR += imap-uw
@@ -621,7 +618,7 @@
     SUBDIR += rubygem-premailer
     SUBDIR += rubygem-premailer-rails
     SUBDIR += rubygem-premailer-rails-rails5
-    SUBDIR += rubygem-premailer-rails19-rails50
+    SUBDIR += rubygem-premailer-rails19-rails5
     SUBDIR += rubygem-rmail
     SUBDIR += rubygem-roadie
     SUBDIR += rubygem-roadie-rails
@@ -658,6 +655,7 @@
     SUBDIR += spamass-milter
     SUBDIR += spamass-rules
     SUBDIR += spamassassin
+    SUBDIR += spamassassin-dqs
     SUBDIR += spambnc
     SUBDIR += spamcup
     SUBDIR += spamd

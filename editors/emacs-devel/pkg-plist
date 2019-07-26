@@ -7,7 +7,6 @@ bin/etags
 libexec/emacs/%%EMACS_VER%%/%%GNU_HOST%%/emacs.pdmp
 libexec/emacs/%%EMACS_VER%%/%%GNU_HOST%%/hexl
 libexec/emacs/%%EMACS_VER%%/%%GNU_HOST%%/movemail
-libexec/emacs/%%EMACS_VER%%/%%GNU_HOST%%/profile
 libexec/emacs/%%EMACS_VER%%/%%GNU_HOST%%/rcs2log
 man/man1/ctags.1.gz
 man/man1/ebrowse.1.gz
@@ -1443,6 +1442,8 @@ share/metainfo/emacs.appdata.xml
 %%DATADIR%%/%%EMACS_VER%%/lisp/dirtrack.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/disp-table.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/disp-table.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/display-fill-column-indicator.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/display-fill-column-indicator.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/display-line-numbers.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/display-line-numbers.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/dnd.el.gz
@@ -2879,6 +2880,8 @@ share/metainfo/emacs.appdata.xml
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/gulp.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/html2text.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/html2text.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/info-edit.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/info-edit.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/iswitchb.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/iswitchb.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/landmark.el.gz
@@ -2897,6 +2900,8 @@ share/metainfo/emacs.appdata.xml
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/lucid.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/mailpost.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/mailpost.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/mantemp.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/mantemp.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/meese.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/meese.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/messcompat.el
@@ -2954,8 +2959,6 @@ share/metainfo/emacs.appdata.xml
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/vip.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/ws-mode.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/ws-mode.elc
-%%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/xesam.el.gz
-%%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/xesam.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/yow.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/obsolete/yow.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/org/ob-C.el.gz
@@ -3401,8 +3404,6 @@ share/metainfo/emacs.appdata.xml
 %%DATADIR%%/%%EMACS_VER%%/lisp/progmodes/m4-mode.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/progmodes/make-mode.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/progmodes/make-mode.elc
-%%DATADIR%%/%%EMACS_VER%%/lisp/progmodes/mantemp.el.gz
-%%DATADIR%%/%%EMACS_VER%%/lisp/progmodes/mantemp.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/progmodes/meta-mode.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/progmodes/meta-mode.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/progmodes/mixal-mode.el.gz
@@ -3514,6 +3515,8 @@ share/metainfo/emacs.appdata.xml
 %%DATADIR%%/%%EMACS_VER%%/lisp/simple.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/skeleton.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/skeleton.elc
+%%DATADIR%%/%%EMACS_VER%%/lisp/so-long.el.gz
+%%DATADIR%%/%%EMACS_VER%%/lisp/so-long.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/sort.el.gz
 %%DATADIR%%/%%EMACS_VER%%/lisp/sort.elc
 %%DATADIR%%/%%EMACS_VER%%/lisp/soundex.el.gz
@@ -3988,6 +3991,7 @@ share/metainfo/emacs.appdata.xml
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/gnutls.h
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/gtkutil.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/gtkutil.h
+%%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/hbfont.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/image.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/indent.c
 %%SOURCES%%%%DATADIR%%/%%EMACS_VER%%/src/indent.h

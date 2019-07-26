@@ -27,11 +27,9 @@ USES=		cmake compiler:c++11-lib desktop-file-utils dos2unix \
 USE_GNOME=	glib20
 USE_QT=		qmake_build buildtools_build core gui network widgets
 DOS2UNIX_FILES=	Sources/ptImage.cpp Sources/ptCheck.cpp Sources/filemgmt/ptFileMgrWindow.h \
-		Sources/ptImageHelper.h Sources/ptMainWindow.h
+		Sources/ptImageHelper.h Sources/ptMainWindow.h Sources/ptImageHelper.cpp
 
 WRKSRC=		${WRKDIR}/${PORTNAME}
-
-CONFLICTS_INSTALL=	${PORTNAME}-qt4
 
 post-patch:
 	@${REINPLACE_CMD} -e 's,#define cimg_use_openmp 1,//&,' \

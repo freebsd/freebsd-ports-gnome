@@ -29,4 +29,8 @@ FAM_DESC=		Filesystem alteration notifications using fam (broken: hangs on NFS)
 FAM_USES=		fam
 FAM_CMAKE_BOOL_OFF=	CMAKE_DISABLE_FIND_PACKAGE_FAM
 
+post-patch:
+	${REINPLACE_CMD}  -e '/QStringLiteral/s|/etc/os-release|${LOCALBASE}/etc/os-release|g' \
+		${WRKSRC}/src/lib/util/kosrelease.cpp
+
 .include <bsd.port.mk>

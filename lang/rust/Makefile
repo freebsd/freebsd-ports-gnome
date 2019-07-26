@@ -2,23 +2,19 @@
 # $FreeBSD$
 
 PORTNAME=	rust
-PORTVERSION?=	1.34.1
+PORTVERSION?=	1.36.0
 PORTREVISION?=	0
 CATEGORIES=	lang
-MASTER_SITES=	http://static.rust-lang.org/dist/:src \
-		LOCAL/dumbbell/rust:rust_bootstrap \
-		LOCAL/tobik/rust:rust_bootstrap \
+MASTER_SITES=	https://static.rust-lang.org/dist/:src \
 		https://static.rust-lang.org/dist/:rust_bootstrap \
-		LOCAL/dumbbell/rust:cargo_bootstrap \
-		LOCAL/tobik/rust:cargo_bootstrap \
+		LOCAL/tobik/rust:rust_bootstrap \
 		https://static.rust-lang.org/dist/:cargo_bootstrap \
-		https://s3.amazonaws.com/rust-lang-ci/cargo-builds/:cargo_bootstrap \
-		LOCAL/marino:bootstrap
+		LOCAL/tobik/rust:cargo_bootstrap
 DISTNAME?=	${PORTNAME}c-${PORTVERSION}-src
 DISTFILES?=	${NIGHTLY_SUBDIR}${DISTNAME}${EXTRACT_SUFX}:src \
-		${RUSTC_BOOTSTRAP}:rust_bootstrap \
-		${RUST_STD_BOOTSTRAP}:rust_bootstrap \
-		${CARGO_BOOTSTRAP}:cargo_bootstrap
+		${RUSTC_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz:rust_bootstrap \
+		${RUST_STD_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz:rust_bootstrap \
+		${CARGO_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz:cargo_bootstrap
 DIST_SUBDIR?=	rust
 EXTRACT_ONLY?=	${DISTFILES:N*\:*bootstrap:C/:.*//}
 
@@ -42,18 +38,18 @@ ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap compiler
 CONFLICTS_INSTALL?=	rust-nightly
 
 # See WRKSRC/src/stage0.txt for this date and version values.
-BOOTSTRAPS_DATE?=		2019-02-28
+BOOTSTRAPS_DATE?=		2019-05-23
+BOOTSTRAPS_SUFFIX?=		${BOOTSTRAPS_SUFFIX_${ARCH}}
+BOOTSTRAPS_SUFFIX_powerpc64?=	-elfv1
 
-RUST_BOOTSTRAP_VERSION?=	1.33.0
-RUSTC_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}.tar.gz
-RUST_STD_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}.tar.gz
+RUST_BOOTSTRAP_VERSION?=	1.35.0
+RUSTC_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}
+RUST_STD_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}
 
-CARGO_BOOTSTRAP_VERSION?=	0.34.0
-CARGO_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/cargo-${CARGO_BOOTSTRAP_VERSION_${ARCH}:U${CARGO_BOOTSTRAP_VERSION}}-${RUST_TARGET}.tar.gz
+CARGO_BOOTSTRAP_VERSION?=	0.36.0
+CARGO_BOOTSTRAP=		${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}/cargo-${CARGO_BOOTSTRAP_VERSION_${ARCH}:U${CARGO_BOOTSTRAP_VERSION}}-${RUST_TARGET}
 
 CARGO_VENDOR_DIR?=		${WRKSRC}/vendor
-
-RUST_CHANNEL=	${PKGNAMESUFFIX:Ustable:S/^-//}
 
 # Rust's target arch string is different from *BSD arch strings
 RUST_ARCH_aarch64=	aarch64
@@ -69,19 +65,12 @@ PLIST_SUB+=		RUST_TARGET=${RUST_TARGET}
 
 USES=		compiler gmake libedit pkgconfig python:2.7,build ssl tar:xz
 
-OPTIONS_DEFINE=		DOCS GDB LLNEXTGEN SOURCES
+OPTIONS_DEFINE=		DOCS GDB SOURCES
 GDB_DESC=		Install ports gdb (necessary for debugging rust programs)
-LLNEXTGEN_DESC=		Build with grammar verification
 SOURCES_DESC=		Install source files
 
 GDB_RUN_DEPENDS=		${LOCALBASE}/bin/gdb:devel/gdb
-LLNEXTGEN_BUILD_DEPENDS=	LLnextgen:devel/llnextgen
 
-# Rust manifests list all files and directories installed by rust-installer.
-# We use them in:
-#     - pre-install to cleanup the ${STAGEDIR}
-#     - post-install to populate the ${TMPPLIST}
-RUST_MANIFESTS=		lib/rustlib/manifest-*
 PLIST_FILES=		lib/rustlib/components \
 			lib/rustlib/rust-installer-version
 
@@ -110,37 +99,30 @@ X_PY_ENV=	HOME="${WRKDIR}" \
 		OPENSSL_DIR="${OPENSSLBASE}"
 X_PY_CMD=	${PYTHON_CMD} ${WRKSRC}/x.py
 
-RUST_STD_DIR=	${RUST_STD_BOOTSTRAP:T:R:R}
-
 post-extract:
-	@${MKDIR} \
-		${WRKSRC}/build/cache/${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}} \
-		${WRKSRC}/build/cache/${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}
-	${LN} -sf ${DISTDIR}/${DIST_SUBDIR}/${RUSTC_BOOTSTRAP} \
-		${WRKSRC}/build/cache/${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}
-	${LN} -sf ${DISTDIR}/${DIST_SUBDIR}/${RUST_STD_BOOTSTRAP} \
-		${WRKSRC}/build/cache/${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}
-	${LN} -sf ${DISTDIR}/${DIST_SUBDIR}/${CARGO_BOOTSTRAP} \
-		${WRKSRC}/build/cache/${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}
+	@${MKDIR} ${WRKSRC}/build/cache/${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}
+	${LN} -sf ${DISTDIR}/${DIST_SUBDIR}/${RUSTC_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz \
+		${WRKSRC}/build/cache/${RUSTC_BOOTSTRAP}.tar.gz
+	${LN} -sf ${DISTDIR}/${DIST_SUBDIR}/${RUST_STD_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz \
+		${WRKSRC}/build/cache/${RUST_STD_BOOTSTRAP}.tar.gz
+	${LN} -sf ${DISTDIR}/${DIST_SUBDIR}/${CARGO_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz \
+		${WRKSRC}/build/cache/${CARGO_BOOTSTRAP}.tar.gz
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|gdb|${LOCALBASE}/bin/gdb|' \
-		${WRKSRC}/src/etc/rust-gdb
+	@${REINPLACE_CMD} 's,gdb,${LOCALBASE}/bin/gdb,' ${WRKSRC}/src/etc/rust-gdb
+	@${ECHO_MSG} "Canonical bootstrap date and version before patching:"
+	@${GREP} -E '^(date|rustc|cargo)' ${WRKSRC}/src/stage0.txt
 # If we override the versions and date of the bootstraps (for instance
 # on aarch64 where we provide our own bootstraps), we need to update
 # places where they are recorded.
-	@${REINPLACE_CMD} -e \
-		's|^date:.*|date: ${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}}|' \
+	@${REINPLACE_CMD} -e 's,^date:.*,date: ${BOOTSTRAPS_DATE_${ARCH}:U${BOOTSTRAPS_DATE}},' \
+		-e 's,^rustc:.*,rustc: ${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}},' \
+		-e 's,^cargo:.*,cargo: ${CARGO_BOOTSTRAP_VERSION_${ARCH}:U${CARGO_BOOTSTRAP_VERSION}},' \
 		${WRKSRC}/src/stage0.txt
-	@${REINPLACE_CMD} -e \
-		's|^rustc:.*|rustc: ${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}|' \
-		${WRKSRC}/src/stage0.txt
-	@${REINPLACE_CMD} -e \
-		's|^cargo:.*|cargo: ${CARGO_BOOTSTRAP_VERSION_${ARCH}:U${CARGO_BOOTSTRAP_VERSION}}|' \
-		${WRKSRC}/src/stage0.txt
+	@${ECHO_MSG} "Bootstrap date and version after patching:"
+	@${GREP} -E '^(date|rustc|cargo)' ${WRKSRC}/src/stage0.txt
 # Disable vendor checksums
-	@${REINPLACE_CMD} -e \
-		's/"files":{[^}]*}/"files":{}/' \
+	@${REINPLACE_CMD} 's,"files":{[^}]*},"files":{},' \
 		${CARGO_VENDOR_DIR}/*/.cargo-checksum.json
 
 post-patch-SOURCES-off:
@@ -154,20 +136,13 @@ CCACHE_VALUE=	"${CCACHE_WRAPPER_PATH:C,/libexec/ccache$,,}/bin/ccache"
 CCACHE_VALUE=	false
 .endif
 
-pre-configure:
-	@for file in \
-		${CARGO_VENDOR_DIR}/backtrace-sys/src/libbacktrace/configure \
-		${CARGO_VENDOR_DIR}/backtrace-sys/src/libbacktrace/config/libtool.m4; do \
-		mv "$$file" "$$file.dont-fix"; \
-	done
-
 do-configure:
 	${SED} -E \
 		-e 's,%PREFIX%,${PREFIX},' \
 		-e 's,%SYSCONFDIR%,${PREFIX}/etc,' \
 		-e 's,%MANDIR%,${MANPREFIX}/man,' \
 		-e 's,%PYTHON_CMD%,${PYTHON_CMD},' \
-		-e 's,%CHANNEL%,${RUST_CHANNEL},' \
+		-e 's,%CHANNEL%,${PKGNAMESUFFIX:Ustable:S/^-//},' \
 		-e 's,%TARGET%,${RUST_TARGET},' \
 		-e 's,%CCACHE%,${CCACHE_VALUE},' \
 		-e 's,%CC%,${CC},' \
@@ -184,13 +159,6 @@ do-configure:
 		${WRKSRC}/src/librustc_llvm/build.rs \
 		${WRKSRC}/src/bootstrap/native.rs
 
-post-configure:
-	@for file in \
-		${CARGO_VENDOR_DIR}/backtrace-sys/src/libbacktrace/configure \
-		${CARGO_VENDOR_DIR}/backtrace-sys/src/libbacktrace/config/libtool.m4; do \
-		mv "$$file.dont-fix" "$$file"; \
-	done
-
 post-configure-DOCS-on:
 	${REINPLACE_CMD} -e 's,%DOCS%,true,' ${WRKSRC}/config.toml
 
@@ -204,23 +172,6 @@ do-build:
 		--verbose \
 		--config ./config.toml \
 		--jobs ${MAKE_JOBS_NUMBER}
-
-# In case the previous "make stage" failed, this ensures rust's
-# install.sh won't backup previously staged files before reinstalling
-# new ones. Otherwise, the staging directory is polluted with unneeded
-# files.
-pre-install:
-	@for f in ${RUST_MANIFESTS:S,^,${STAGEDIR}${PREFIX}/,}; do \
-	    if test -f "$$f"; then \
-	        ${SED} -E -e 's,^(file|dir):,${STAGEDIR},' \
-	            < "$$f" \
-	            | ${XARGS} ${RM} -r; \
-	        ${RM} "$$f"; \
-	    fi; \
-	done
-	@for f in ${PLIST_FILES:S,^,${STAGEDIR}${PREFIX}/,}; do \
-	    ${RM} "$$f"; \
-	done
 
 do-install:
 	cd ${WRKSRC} && \
@@ -246,7 +197,7 @@ do-install:
 # We fix manpage entries in the generated manifests because Rust
 # installs them uncompressed but the Ports framework compresses them.
 post-install:
-	for f in ${RUST_MANIFESTS:S,^,${STAGEDIR}${PREFIX}/,}; do \
+	for f in ${STAGEDIR}${PREFIX}/lib/rustlib/manifest-*; do \
 	    ${REINPLACE_CMD} -i '' -E \
 	        -e 's|:${STAGEDIR}|:|' \
 	        -e 's|(man/man[1-9]/.*\.[0-9])|\1.gz|' \
@@ -286,13 +237,18 @@ do-test:
 		--config ./config.toml \
 		--jobs ${MAKE_JOBS_NUMBER}
 
-makesum-all-archs:
-	${MAKE} makesum ARCH=${ONLY_FOR_ARCHS:O:[1]}
+.if !defined(_RUST_MAKESUM_GUARD)
+makesum:
+	${MAKE} -D_RUST_MAKESUM_GUARD makesum ARCH=${ONLY_FOR_ARCHS:O:[1]}
 .for arch in ${ONLY_FOR_ARCHS:O:[2..-1]}
-	${MAKE} makesum ARCH=${arch} DISTINFO_FILE=${DISTINFO_FILE}.${arch}
+	${MAKE} -D_RUST_MAKESUM_GUARD makesum ARCH=${arch} DISTINFO_FILE=${DISTINFO_FILE}.${arch}
 	${GREP} ${RUST_ARCH_${arch}} ${DISTINFO_FILE}.${arch} >> ${DISTINFO_FILE}
 	${RM} ${DISTINFO_FILE}.${arch}
 .endfor
+	${MAKE} -D_RUST_MAKESUM_GUARD makesum ARCH=powerpc64 BOOTSTRAPS_SUFFIX="" DISTINFO_FILE=${DISTINFO_FILE}.powerpc64-elfv2
+	${GREP} ${RUST_ARCH_powerpc64} ${DISTINFO_FILE}.powerpc64-elfv2 >> ${DISTINFO_FILE}
+	${RM} ${DISTINFO_FILE}.powerpc64-elfv2
+.endif
 
 BOOTSTRAPS_SOURCE_PKG_FBSDVER=		10
 BOOTSTRAPS_SOURCE_PKG_FBSDVER_aarch64=	11
@@ -318,7 +274,7 @@ package-to-bootstraps: ${BOOTSTRAPS_SOURCE_PKG}
 		${MV} ${WRKDIR}/bootstraps/bin/rust* rustc/bin && \
 		${MV} ${WRKDIR}/bootstraps/lib/*.so rustc/lib
 	${TAR} -cz --format=ustar -C ${WRKDIR}/bootstraps \
-		-f ${_DISTDIR}/${RUSTC_BOOTSTRAP} \
+		-f ${_DISTDIR}/${RUSTC_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz \
 		rustc-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}
 # `rust-std` bootstrap.
 	${RM} -r ${WRKDIR}/bootstraps/rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}
@@ -327,7 +283,7 @@ package-to-bootstraps: ${BOOTSTRAPS_SOURCE_PKG}
 		${MKDIR} rust-std-${RUST_TARGET}/lib/rustlib/${RUST_TARGET} && \
 		${MV} ${WRKDIR}/bootstraps/lib/rustlib/${RUST_TARGET}/lib rust-std-${RUST_TARGET}/lib/rustlib/${RUST_TARGET}
 	${TAR} -cz --format=ustar -C ${WRKDIR}/bootstraps \
-		-f ${_DISTDIR}/${RUST_STD_BOOTSTRAP} \
+		-f ${_DISTDIR}/${RUST_STD_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}.tar.gz \
 		rust-std-${RUST_BOOTSTRAP_VERSION_${ARCH}:U${RUST_BOOTSTRAP_VERSION}}-${RUST_TARGET}
 
 ${BOOTSTRAPS_SOURCE_PKG}:
