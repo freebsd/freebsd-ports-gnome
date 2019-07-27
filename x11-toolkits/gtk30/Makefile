@@ -5,6 +5,7 @@
 
 PORTNAME=	gtk
 PORTVERSION=	3.24.10
+PORTREVISION=	1
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMESUFFIX=	3
@@ -25,7 +26,6 @@ LIB_DEPENDS=	libepoxy.so:graphics/libepoxy \
 		libfreetype.so:print/freetype2 \
 		libharfbuzz.so:print/harfbuzz
 RUN_DEPENDS+=	hicolor-icon-theme>=0:misc/hicolor-icon-theme \
-		gtk-common>=0:misc/gtk-common \
 		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
 		at-spi2-atk>=0:accessibility/at-spi2-atk \
 		librsvg2>=0:graphics/librsvg2
@@ -47,7 +47,11 @@ INSTALL_TARGET=	install-strip
 LIBVERSION=	0.2404.6
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
-GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml
+GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
+		org.gtk.Settings.ColorChooser.gschema.xml \
+		org.gtk.Settings.Debug.gschema.xml \
+		org.gtk.Settings.EmojiChooser.gschema.xml \
+		org.gtk.Settings.FileChooser.gschema.xml
 
 OPTIONS_DEFINE=	CUPS CLOUDPRINT COLORD DEBUG BROADWAY WAYLAND
 OPTIONS_DEFAULT=CUPS COLORD BROADWAY WAYLAND
