@@ -7,12 +7,11 @@
 # when gnome is ported to gtk4
 
 PORTNAME=	gtk
-PORTVERSION=	3.94.0
+PORTVERSION=	3.96.0
 PORTREVISION?=	0
 CATEGORIES=	x11-toolkits
-MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
+MASTER_SITES=	GNOME
 PKGNAMESUFFIX=	4
-DISTNAME=	gtk+-${PORTVERSION}
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
@@ -26,6 +25,7 @@ PORTSCOUT=	limit:1,even
 BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes
 LIB_DEPENDS=	libepoxy.so:graphics/libepoxy \
 		libgraphene-1.0.so:graphics/graphene \
+		libfribidi.so:converters/fribidi \
 		libatk-bridge-2.0.so:accessibility/at-spi2-atk \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2 \
@@ -45,8 +45,13 @@ MESON_ARGS=	-Dwin32-backend=false \
 		-Db_lundef=false
 USE_LDCONFIG=	yes
 
-LIBVERSION=	0.9400.0
+LIBVERSION=	0.9600.0
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
+
+GLIB_SCHEMAS=	org.gtk.gtk4.Settings.ColorChooser.gschema.xml \
+		org.gtk.gtk4.Settings.Debug.gschema.xml \
+		org.gtk.gtk4.Settings.EmojiChooser.gschema.xml \
+		org.gtk.gtk4.Settings.FileChooser.gschema.xml
 
 BINARY_ALIAS=	python3=${PYTHON_VERSION}
 
@@ -111,7 +116,8 @@ OPTIONS_GROUP_DEBUG=	DEMOS BUILDTEST
 
 DEMOS_DESC=		Build demos and example programs
 DEMOS_MESON_TRUE=	demos
-DEMOS_VARS=		INSTALLS_ICONS=yes
+DEMOS_VARS=		INSTALLS_ICONS=yes \
+			GLIB_SCHEMAS+=org.gtk4.Demo.gschema.xml
 
 BUILDTEST_DESC=		Build tests
 BUILDTEST_MESON_TRUE=	build-tests
