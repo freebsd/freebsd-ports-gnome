@@ -1,8 +1,4 @@
 bin/meld
-%%PYTHON_SITELIBDIR%%/meld-%%PORTVER%%-py%%PYTHON_VER%%.egg-info/PKG-INFO
-%%PYTHON_SITELIBDIR%%/meld-%%PORTVER%%-py%%PYTHON_VER%%.egg-info/SOURCES.txt
-%%PYTHON_SITELIBDIR%%/meld-%%PORTVER%%-py%%PYTHON_VER%%.egg-info/dependency_links.txt
-%%PYTHON_SITELIBDIR%%/meld-%%PORTVER%%-py%%PYTHON_VER%%.egg-info/top_level.txt
 %%PYTHON_SITELIBDIR%%/meld/__init__.py
 %%PYTHON_SITELIBDIR%%/meld/__pycache__/__init__.cpython-%%PYTHON_SUFFIX%%.opt-1.pyc
 %%PYTHON_SITELIBDIR%%/meld/__pycache__/__init__.cpython-%%PYTHON_SUFFIX%%.pyc
