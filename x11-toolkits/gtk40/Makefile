@@ -32,7 +32,6 @@ LIB_DEPENDS=	libepoxy.so:graphics/libepoxy \
 		libharfbuzz.so:print/harfbuzz
 #RUN_DEPENDS+=	hicolor-icon-theme>=0:misc/hicolor-icon-theme \
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
-		gtk-common>=${PORTVERSION}:misc/gtk-common
 #		adwaita-icon-theme>=0:x11-themes/adwaita-icon-theme \
 
 USES=		compiler:c11 gettext gnome localbase:ldflags meson \

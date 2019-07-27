@@ -176,7 +176,6 @@
     SUBDIR += gplink
     SUBDIR += granulate
     SUBDIR += grc
-    SUBDIR += gtk-common
     SUBDIR += gwhich
     SUBDIR += hashdb
     SUBDIR += hb

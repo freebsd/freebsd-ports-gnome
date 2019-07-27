@@ -329,6 +329,7 @@
     SUBDIR += gstreamer1-plugins-zbar
     SUBDIR += gthumb
     SUBDIR += gtimelapse
+    SUBDIR += gtk-update-icon-cache
     SUBDIR += gtkam
     SUBDIR += gts
     SUBDIR += guetzli
