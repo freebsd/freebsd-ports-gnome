@@ -1,13 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	libmanette
-PORTVERSION=	0.2.1
+PORTVERSION=	0.2.2
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT=	...
+COMMENT=	Simple GObject game controller library.
 
 LICENSE=	LGPL21
 

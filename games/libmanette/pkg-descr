@@ -1,0 +1,6 @@
+libmanette is a small GObject library giving you simple access to game
+controllers. This library is intended for software needing a painless
+access to game controllers from any programming language and with little
+dependencies.
+
+WWW: https://gitlab.gnome.org/aplazas/libmanette
