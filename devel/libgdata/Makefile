@@ -12,7 +12,8 @@ COMMENT=	GLib based implimentation of the GData protocol
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	valac:lang/vala
+BUILD_DEPENDS=	valac:lang/vala \
+		gtkdoc-scan:textproc/gtk-doc
 LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		libuhttpmock-0.0.so:net/uhttpmock \
 		libjson-glib-1.0.so:devel/json-glib \
