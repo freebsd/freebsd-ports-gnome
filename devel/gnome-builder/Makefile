@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-builder
-PORTVERSION=	3.32.0
+PORTVERSION=	3.32.4
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -69,12 +69,10 @@ OPTIONS_SUB=	YES
 OPTIONS_DEFINE=	CLANG DOCS
 OPTIONS_DEFAULT=	CLANG
 
-# track the latest llvm/clang version, the config script picks the newest available
-LLVM_VER=	70
 CLANG_DESC=	Build the clang plugin
 CLANG_MESON_TRUE=	plugin_clang
-CLANG_BUILD_DEPENDS=	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
-CLANG_RUN_DEPENDS=	llvm-config${LLVM_VER}:devel/llvm${LLVM_VER}
+CLANG_BUILD_DEPENDS=	llvm-config${LLVM_DEFAULT}:devel/llvm${LLVM_DEFAULT}
+CLANG_RUN_DEPENDS=	llvm-config${LLVM_DEFAULT}:devel/llvm${LLVM_DEFAULT}
 CLANG_VARS=		GLIB_SCHEMAS+=org.gnome.builder.clang.gschema.xml
 
 # jedi plugin with dependancies doesn't work
