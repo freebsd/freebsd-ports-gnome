@@ -3,10 +3,10 @@
 #   $MCom: ports/trunk/devel/libsigc++20/Makefile 19952 2014-10-15 08:11:00Z gusi $
 
 PORTNAME=	libsigc++
-PORTVERSION=	2.10.0
-PORTREVISION=	3
+PORTVERSION=	2.10.2
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Callback Framework for C++
