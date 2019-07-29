@@ -22,8 +22,8 @@ Subject: require logind support
  void
  gdm_log_init (void)
  {
-+        const char *prg_name;
-+        int         options;
++	const char *prg_name;
++	int         options;
 +
          if (initialized)
                  return;

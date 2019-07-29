@@ -1,4 +1,4 @@
-$OpenBSD: patch-daemon_gdm-server_c,v 1.10 2017/11/05 02:17:07 ajacoutot Exp $
+$OpenBSD: patch-daemon_gdm-server_c,v 1.12 2019/05/08 21:58:04 ajacoutot Exp $
 
 REVERT - OpenBSD lacks sigwaitinfo(2)
 From 956d7d1c7a0cfbf2beacdb9e88e645e15ad32047 Mon Sep 17 00:00:00 2001
@@ -30,25 +30,67 @@ Subject: require logind support
  
  #ifdef ENABLE_SYSTEMD_JOURNAL
  #include <systemd/sd-journal.h>
-@@ -114,11 +116,58 @@ static void     gdm_server_finalize     (GObject      
+@@ -84,6 +86,7 @@ struct _GdmServer
+         char    *auth_file;
+ 
+         guint    child_watch_id;
++        guint    sigusr1_id;
+ 
+         gboolean is_initial;
+ };
+@@ -114,90 +117,74 @@ static void     gdm_server_finalize     (GObject      
  
  G_DEFINE_TYPE (GdmServer, gdm_server, G_TYPE_OBJECT)
  
+-char *
+-gdm_server_get_display_device (GdmServer *server)
 +static char *
 +_gdm_server_query_ck_for_display_device (GdmServer *server)
-+{
+ {
+-        /* systemd finds the display device out on its own based on the display */
+-        return NULL;
+-}
 +        char    *out;
 +        char    *command;
 +        int      status;
 +        gboolean res;
 +        GError  *error;
-+
+ 
+-static void
+-gdm_server_ready (GdmServer *server)
+-{
+-        g_debug ("GdmServer: Got USR1 from X server - emitting READY");
 +        g_return_val_if_fail (GDM_IS_SERVER (server), NULL);
-+
+ 
+-        gdm_run_script (GDMCONFDIR "/Init", GDM_USERNAME,
+-                        server->display_name,
+-                        NULL, /* hostname */
+-                        server->auth_file);
 +        error = NULL;
 +        command = g_strdup_printf (CONSOLEKIT_DIR "/ck-get-x11-display-device --display %s",
 +                                   server->display_name);
-+ 
+ 
+-        g_signal_emit (server, signals[READY], 0);
+-}
+-
+-static GSList *active_servers;
+-static gboolean sigusr1_thread_running;
+-static GCond sigusr1_thread_cond;
+-static GMutex sigusr1_thread_mutex;
+-
+-static gboolean
+-got_sigusr1 (gpointer user_data)
+-{
+-        GPid pid = GPOINTER_TO_UINT (user_data);
+-        GSList *l;
+-
+-        g_debug ("GdmServer: got SIGUSR1 from PID %d", pid);
+-
+-        for (l = active_servers; l; l = l->next) {
+-                GdmServer *server = l->data;
+-
+-                if (server->pid == pid)
+-                        gdm_server_ready (server);
 +        g_debug ("GdmServer: Running helper %s", command);
 +        out = NULL;
 +        res = g_spawn_command_line_sync (command,
@@ -62,36 +104,83 @@ Subject: require logind support
 +        } else {
 +                out = g_strstrip (out);
 +                g_debug ("GdmServer: Got tty: '%s'", out);
-+        }
-+ 
+         }
+ 
+-        return G_SOURCE_REMOVE;
 +        g_free (command);
 +
 +        return out;
-+}
-+
- char *
- gdm_server_get_display_device (GdmServer *server)
+ }
+ 
+-static gpointer
+-sigusr1_thread_main (gpointer user_data)
++char *
++gdm_server_get_display_device (GdmServer *server)
  {
--        /* systemd finds the display device out on its own based on the display */
--        return NULL;
+-        sigset_t sigusr1_mask;
 +#ifdef WITH_SYSTEMD
 +        if (LOGIND_RUNNING()) {
 +                /* systemd finds the display device out on its own based on the display */
 +                return NULL;
 +        }
 +#endif
-+
+ 
+-        /* Handle only SIGUSR1 */
+-        sigemptyset (&sigusr1_mask);
+-        sigaddset (&sigusr1_mask, SIGUSR1);
+-        sigprocmask (SIG_SETMASK, &sigusr1_mask, NULL);
+-
+-        g_mutex_lock (&sigusr1_thread_mutex);
+-        sigusr1_thread_running = TRUE;
+-        g_cond_signal (&sigusr1_thread_cond);
+-        g_mutex_unlock (&sigusr1_thread_mutex);
+-
+-        /* Spin waiting for a SIGUSR1 */
+-        while (TRUE) {
+-                siginfo_t info;
+-
+-                if (sigwaitinfo (&sigusr1_mask, &info) == -1)
+-                        continue;
+-
+-                g_idle_add (got_sigusr1, GUINT_TO_POINTER (info.si_pid));
 +        if (server->display_device == NULL) {
 +                server->display_device =
-+                        _gdm_server_query_ck_for_display_device (server);
++                    _gdm_server_query_ck_for_display_device (server);
 +                g_object_notify (G_OBJECT (server), "display-device");
-+        }
-+
+         }
+ 
+-        return NULL;
 +        return g_strdup (server->display_device);
  }
  
+-static void
+-gdm_server_launch_sigusr1_thread_if_needed (void)
++static gboolean
++on_sigusr1 (gpointer user_data)
+ {
+-        static GThread *sigusr1_thread;
++        GdmServer *server = user_data;
+ 
+-        if (sigusr1_thread == NULL) {
+-                sigusr1_thread = g_thread_new ("gdm SIGUSR1 catcher", sigusr1_thread_main, NULL);
++        g_debug ("GdmServer: Got USR1 from X server - emitting READY");
+ 
+-                g_mutex_lock (&sigusr1_thread_mutex);
+-                while (!sigusr1_thread_running)
+-                        g_cond_wait (&sigusr1_thread_cond, &sigusr1_thread_mutex);
+-                g_mutex_unlock (&sigusr1_thread_mutex);
+-        }
++        gdm_run_script (GDMCONFDIR "/Init", GDM_USERNAME,
++                        server->display_name,
++                        NULL, /* hostname */
++                        server->auth_file);
++
++        g_signal_emit (server, signals[READY], 0);
++        return FALSE;
+ }
+ 
  static void
-@@ -218,8 +267,10 @@ gdm_server_init_command (GdmServer *server)
+@@ -218,8 +205,10 @@ gdm_server_init_command (GdmServer *server)
                  debug_options = "";
          }
  
@@ -103,7 +192,7 @@ Subject: require logind support
          /* This is a temporary hack to work around the fact that XOrg
           * currently lacks support for multi-seat hotplugging for
           * display devices. This bit should be removed as soon as XOrg
-@@ -234,6 +285,10 @@ gdm_server_init_command (GdmServer *server)
+@@ -234,6 +223,10 @@ gdm_server_init_command (GdmServer *server)
           * wasn't booted using systemd, or b) the wrapper tool is
           * missing, or c) we are running for the main seat 'seat0'. */
  
@@ -114,21 +203,23 @@ Subject: require logind support
  #ifdef ENABLE_SYSTEMD_JOURNAL
          /* For systemd, we don't have a log file but instead log to stdout,
             so set it to the xserver's built-in default verbosity */
-@@ -256,6 +311,7 @@ gdm_server_init_command (GdmServer *server)
+@@ -256,8 +249,8 @@ gdm_server_init_command (GdmServer *server)
          return;
  
  fallback:
 +#endif
          server->command = g_strdup_printf (X_SERVER X_SERVER_ARG_FORMAT, verbosity, debug_options);
- 
+-
  }
-@@ -307,10 +363,12 @@ gdm_server_resolve_command_line (GdmServer  *server,
+ 
+ static gboolean
+@@ -307,10 +300,12 @@ gdm_server_resolve_command_line (GdmServer  *server,
                  argv[len++] = g_strdup (server->auth_file);
          }
  
 -        if (server->display_seat_id != NULL) {
 +#ifdef WITH_SYSTEMD
-+        if (LOGIND_RUNNING() && server->display_seat_id != NULL) {
++        if (LOGIND_RUNNING() && server->priv->display_seat_id != NULL) {
                  argv[len++] = g_strdup ("-seat");
                  argv[len++] = g_strdup (server->display_seat_id);
          }
@@ -136,3 +227,53 @@ Subject: require logind support
  
          /* If we were compiled with Xserver >= 1.17 we need to specify
           * '-listen tcp' as the X server dosen't listen on tcp sockets
+@@ -655,12 +650,6 @@ server_child_watch (GPid       pid,
+         g_object_unref (server);
+ }
+ 
+-static void
+-prune_active_servers_list (GdmServer *server)
+-{
+-        active_servers = g_slist_remove (active_servers, server);
+-}
+-
+ static gboolean
+ gdm_server_spawn (GdmServer    *server,
+                   const char   *vtarg,
+@@ -698,15 +687,6 @@ gdm_server_spawn (GdmServer    *server,
+         g_debug ("GdmServer: Starting X server process: %s", freeme);
+         g_free (freeme);
+ 
+-        active_servers = g_slist_append (active_servers, server);
+-
+-        g_object_weak_ref (G_OBJECT (server),
+-                           (GWeakNotify)
+-                           prune_active_servers_list,
+-                           server);
+-
+-        gdm_server_launch_sigusr1_thread_if_needed ();
+-
+         if (!g_spawn_async_with_pipes (NULL,
+                                        argv,
+                                        (char **)env->pdata,
+@@ -1043,6 +1023,10 @@ gdm_server_init (GdmServer *server)
+         server->pid = -1;
+ 
+         server->log_dir = g_strdup (LOGDIR);
++
++        server->sigusr1_id = g_unix_signal_add (SIGUSR1,
++                                                      on_sigusr1,
++                                                      server);
+ }
+ 
+ static void
+@@ -1054,6 +1038,9 @@ gdm_server_finalize (GObject *object)
+         g_return_if_fail (GDM_IS_SERVER (object));
+ 
+         server = GDM_SERVER (object);
++
++        if (server->sigusr1_id > 0)
++                g_source_remove (server->sigusr1_id);
+ 
+         gdm_server_stop (server);
+ 

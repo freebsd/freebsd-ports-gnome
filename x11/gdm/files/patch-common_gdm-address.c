@@ -1,6 +1,7 @@
-$OpenBSD: patch-common_gdm-address_c,v 1.1 2011/09/12 07:39:21 ajacoutot Exp $
---- common/gdm-address.c.orig	2019-02-21 19:44:14 UTC
-+++ common/gdm-address.c
+$OpenBSD: patch-common_gdm-address_c,v 1.2 2019/05/12 21:28:50 ajacoutot Exp $
+
+--- common/gdm-address.c.orig	Thu Jun 16 15:24:47 2011
++++ common/gdm-address.c	Thu Jun 16 15:25:19 2011
 @@ -29,6 +29,8 @@
  #include <stropts.h>
  #endif

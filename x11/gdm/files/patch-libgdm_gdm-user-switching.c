@@ -129,7 +129,7 @@ Subject: require logind support
 +        return seat_id;
 +}
 +
-+static gboolean
++gboolean
 +activate_session_id_for_ck (GDBusConnection *connection,
 +                            GCancellable    *cancellable,
 +                            const char      *seat_id,
@@ -341,7 +341,7 @@ Subject: require logind support
 +
 +#ifdef WITH_SYSTEMD
 +
-+static gboolean
++gboolean
 +activate_session_id_for_systemd (GDBusConnection  *connection,
 +                                 GCancellable     *cancellable,
 +                                 const char       *seat_id,

@@ -1,4 +1,4 @@
-$OpenBSD: patch-daemon_gdm-session-worker_c,v 1.15 2017/03/12 12:58:03 nigel Exp $
+$OpenBSD: patch-daemon_gdm-session-worker_c,v 1.19 2019/01/18 05:51:51 ajacoutot Exp $
 
 REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
 From 1ac67f522f5690c27023d98096ca817f12f7eb88 Mon Sep 17 00:00:00 2001
@@ -329,15 +329,6 @@ Subject: gdm-session: set PAM_TTY when initialising pam
  static gboolean
  ensure_login_vt (GdmSessionWorker *worker)
  {
-@@ -1116,7 +1330,7 @@ ensure_login_vt (GdmSessionWorker *worker)
- 
-         if (fd < 0) {
-                 g_debug ("GdmSessionWorker: couldn't open VT master: %m");
--                return FALSE;
-+               return FALSE;
-         }
- 
-         if (ioctl (fd, VT_GETSTATE, &vt_state) < 0) {
 @@ -1130,6 +1344,7 @@ out:
          close (fd);
          return got_login_vt;
@@ -519,22 +510,22 @@ Subject: gdm-session: set PAM_TTY when initialising pam
  
          return TRUE;
  out:
-@@ -2390,6 +2646,7 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
-                         return FALSE;
-                 }
+@@ -2392,6 +2648,7 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
                  break;
-+#ifdef WITH_SYSTEMD
          case GDM_SESSION_DISPLAY_MODE_NEW_VT:
          case GDM_SESSION_DISPLAY_MODE_LOGIND_MANAGED:
++#ifdef WITH_SYSTEMD
                  if (!set_up_for_new_vt (worker)) {
-@@ -2400,6 +2657,7 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
+                         g_set_error (error,
+                                      GDM_SESSION_WORKER_ERROR,
+@@ -2399,6 +2656,7 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
+                                      "Unable to open VT");
                          return FALSE;
                  }
-                 break;
 +#endif
+                 break;
          }
  
-         flags = 0;
 @@ -2421,8 +2679,18 @@ gdm_session_worker_open_session (GdmSessionWorker  *wo
          g_debug ("GdmSessionWorker: state SESSION_OPENED");
          worker->priv->state = GDM_SESSION_WORKER_STATE_SESSION_OPENED;

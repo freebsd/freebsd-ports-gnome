@@ -1,4 +1,4 @@
-$OpenBSD: patch-daemon_gdm-local-display-factory_c,v 1.10 2019/01/18 05:51:51 ajacoutot Exp $
+$OpenBSD: patch-daemon_gdm-local-display-factory_c,v 1.12 2019/05/08 21:58:04 ajacoutot Exp $
 
 REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
 From 1ac67f522f5690c27023d98096ca817f12f7eb88 Mon Sep 17 00:00:00 2001
@@ -68,7 +68,7 @@ Subject: require logind support
          g_debug ("GdmLocalDisplayFactory: Creating transient display");
  
 -#ifdef ENABLE_USER_DISPLAY_SERVER
-+#if defined(ENABLE_USER_DISPLAY_SERVER) && defined(WITH_SYSTEMD)
++#if defined ENABLE_USER_DISPLAY_SERVER && defined WITH_SYSTEMD
          display = gdm_local_display_new ();
          if (gdm_local_display_factory_use_wayland ())
                  g_object_set (G_OBJECT (display), "session-type", "wayland", NULL);
@@ -123,7 +123,7 @@ Subject: require logind support
          g_debug ("GdmLocalDisplayFactory: Adding display on seat %s", seat_id);
  
 -#ifdef ENABLE_USER_DISPLAY_SERVER
-+#if defined(ENABLE_USER_DISPLAY_SERVER) && defined(WITH_SYSTEMD)
++#if defined ENABLE_USER_DISPLAY_SERVER && defined WITH_SYSTEMD
          if (g_strcmp0 (seat_id, "seat0") == 0) {
                  display = gdm_local_display_new ();
                  if (session_type != NULL) {
