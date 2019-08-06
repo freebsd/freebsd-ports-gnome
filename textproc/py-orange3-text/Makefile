@@ -2,7 +2,7 @@
 
 PORTNAME=	orange3-text
 DISTVERSION=	0.5.1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	textproc python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -12,6 +12,8 @@ COMMENT=	Text Mining add-on for Orange3
 LICENSE=	AGPLv3
 
 BROKEN=		installs in examples namespace
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2019-09-04
 
 RUN_DEPENDS=	orange3>0:misc/orange3 \
 		${PYNUMPY} \

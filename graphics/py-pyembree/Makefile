@@ -3,7 +3,7 @@
 
 PORTNAME=	pyembree
 DISTVERSION=	0.1.4
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	graphics python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -12,6 +12,9 @@ COMMENT=	Python wrapper for Embree
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+DEPRECATED=	Depends on expiring graphics/embree
+EXPIRATION_DATE=	2019-09-04
 
 BUILD_DEPENDS=	${PYNUMPY}
 LIB_DEPENDS=	libembree.so:graphics/embree

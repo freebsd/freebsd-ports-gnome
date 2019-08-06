@@ -3,6 +3,7 @@
 
 PORTNAME=	xtide
 PORTVERSION=	2.15.2
+PORTREVISION=	1
 CATEGORIES=	astro geography
 MASTER_SITES=	https://flaterco.com/files/xtide/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
@@ -16,6 +17,8 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libpng.so:graphics/png
+
+BROKEN=		unfetchable
 
 USES=		compiler:c++0x gmake libtool localbase tar:bzip2
 USE_LDCONFIG=	yes

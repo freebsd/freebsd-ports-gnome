@@ -3,7 +3,7 @@
 
 PORTNAME=	spin
 PORTVERSION=	6.4.8
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel
 MASTER_SITES=	http://spinroot.com/spin/Src/
 DISTNAME=	spin${PORTVERSION:S/.//g}
@@ -16,6 +16,8 @@ LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BROKEN=		depends on the gcc meta port
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2019-09-04
 
 RUN_DEPENDS=	gcc:lang/gcc
 

@@ -105,7 +105,6 @@
     SUBDIR += pcem
     SUBDIR += pcemu
     SUBDIR += pcsxr
-    SUBDIR += pearpc
     SUBDIR += pipelight
     SUBDIR += playonbsd
     SUBDIR += ppsspp
@@ -120,6 +119,7 @@
     SUBDIR += qemu-user-static
     SUBDIR += qemu-utils
     SUBDIR += qemu2
+    SUBDIR += qemu30
     SUBDIR += qmc2
     SUBDIR += quasi88
     SUBDIR += riscv-fesvr
