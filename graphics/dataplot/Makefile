@@ -3,7 +3,7 @@
 
 PORTNAME=	dataplot
 PORTVERSION=	20132012
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	graphics
 MASTER_SITES=	ftp://ftp.nist.gov/pub/dataplot/unix/:source \
 		LOCAL/beech:source \
@@ -15,6 +15,8 @@ EXTRACT_ONLY=	dpsrc${EXTRACT_SUFX}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Free software system for statistical visualization
+
+BROKEN=		unfetchable
 
 LIB_DEPENDS=	libgd.so:graphics/gd \
 		libpng.so:graphics/png

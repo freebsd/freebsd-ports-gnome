@@ -3,7 +3,7 @@
 
 PORTNAME=	asc
 PORTVERSION=	2.6.1.0
-PORTREVISION=	15
+PORTREVISION=	16
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}-hq/ASC%20Source/${PORTVERSION:R} \
 		http://www.asc-hq.org/music/:music
@@ -18,6 +18,8 @@ LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BROKEN=		fails to build
+DEPRECATED=	Broken for more than 6 months
+EXPIRATION_DATE=	2019-09-04
 
 BUILD_DEPENDS=	zip:archivers/zip
 RUN_DEPENDS:=	${BUILD_DEPENDS}

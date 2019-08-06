@@ -3,6 +3,7 @@
 
 PORTNAME=	instead
 PORTVERSION=	3.3.0
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	SF
 DISTNAME=	${PORTNAME}_${PORTVERSION}
@@ -12,6 +13,8 @@ COMMENT=	Simple Text Adventure, The Interpreter
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+BROKEN=		close_code.h included without matching begin_code.h
 
 USES=		cmake compiler:c++11-lang iconv lua:51 pkgconfig sdl
 CMAKE_ARGS=	-DMANDIR=man

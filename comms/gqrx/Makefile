@@ -4,7 +4,7 @@
 PORTNAME=	gqrx
 PORTVERSION=	2.11.5
 DISTVERSIONPREFIX=	v
-PORTREVISION=	8
+PORTREVISION=	9
 PORTEPOCH=	1
 CATEGORIES=	comms hamradio
 
@@ -13,6 +13,9 @@ COMMENT=	Software defined radio receiver powered by GNU Radio and Qt
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+DEPRECATED=	Depends on expiring comms/gr-osmosdr
+EXPIRATION_DATE=	2019-09-04
 
 LIB_DEPENDS=	libgnuradio-runtime.so:comms/gnuradio \
 		libgnuradio-analog.so:comms/gnuradio \
