@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	screenFetch
-PORTVERSION=	3.8.0
 DISTVERSIONPREFIX=	v
+DISTVERSION=	3.8.0-209
+DISTVERSIONSUFFIX=	-gb51393e
 CATEGORIES=	sysutils
-MASTER_SITES=	LOCAL/jgh/sysutils/${PORTNAME:tl}/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	jgh@FreeBSD.org
 COMMENT=	Bash Screenshot Information Tool
 
 LICENSE=	GPLv3+

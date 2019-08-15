@@ -53,7 +53,6 @@
     SUBDIR += dlang-tools
     SUBDIR += dlv
     SUBDIR += dmd1
-    SUBDIR += dmd2
     SUBDIR += duktape
     SUBDIR += duktape-lib
     SUBDIR += ecl
@@ -167,6 +166,7 @@
     SUBDIR += jython
     SUBDIR += kawa
     SUBDIR += kf5-kross
+    SUBDIR += kotlin
     SUBDIR += kross-interpreters
     SUBDIR += kturtle
     SUBDIR += lafontaine

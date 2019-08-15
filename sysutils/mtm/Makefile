@@ -5,7 +5,7 @@ DISTVERSION=	1.0.1
 CATEGORIES=	sysutils
 
 MAINTAINER=	0mp@FreeBSD.org
-COMMENT=	Terminal multiplexer focued on simplicity, compatibility and stability
+COMMENT=	Terminal multiplexer focused on simplicity, compatibility and stability
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/README.rst
@@ -20,7 +20,7 @@ PLIST_FILES=	bin/mtm \
 		man/man1/mtm.1.gz
 
 CFLAGS+=	-I${NCURSESINC}
-LDFLAGS+=	-L${NCURSESLIB}
+LDFLAGS+=	-L${NCURSESLIB} -ltinfow
 
 PORTDATA=	mtm.ti
 

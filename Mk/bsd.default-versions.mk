@@ -68,7 +68,7 @@ MYSQL_DEFAULT?=		5.7
 # Possible values: 5.26, 5.28, 5.30, devel
 .if !exists(${LOCALBASE}/bin/perl) || (!defined(_PORTS_ENV_CHECK) && \
     defined(PACKAGE_BUILDING))
-PERL5_DEFAULT?=		5.28
+PERL5_DEFAULT?=		5.30
 .elif !defined(PERL5_DEFAULT)
 # There's no need to replace development versions, like "5.23" with "devel"
 # because 1) nobody is supposed to use it outside of poudriere, and 2) it must
@@ -80,7 +80,7 @@ _PERL5_FROM_BIN!=	${LOCALBASE}/bin/perl -e 'printf "%vd\n", $$^V;'
 _EXPORTED_VARS+=	_PERL5_FROM_BIN
 PERL5_DEFAULT:=		${_PERL5_FROM_BIN:R}
 .endif
-# Possible values: 9.4, 9.5, 9.6, 10, 11
+# Possible values: 9.4, 9.5, 9.6, 10, 11, 12
 PGSQL_DEFAULT?=		9.5
 # Possible values: 7.1, 7.2, 7.3
 PHP_DEFAULT?=		7.2
