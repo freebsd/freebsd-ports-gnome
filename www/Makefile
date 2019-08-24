@@ -1561,6 +1561,7 @@
     SUBDIR += py-django-mezzanine-grappelli
     SUBDIR += py-django-model-utils
     SUBDIR += py-django-modelcluster
+    SUBDIR += py-django-modelcluster4
     SUBDIR += py-django-modern-rpc
     SUBDIR += py-django-mptt
     SUBDIR += py-django-netfields
@@ -1960,6 +1961,8 @@
     SUBDIR += rubygem-amazon-ecs
     SUBDIR += rubygem-anemone
     SUBDIR += rubygem-asana
+    SUBDIR += rubygem-async-http
+    SUBDIR += rubygem-async-rest
     SUBDIR += rubygem-async_sinatra
     SUBDIR += rubygem-atlassian-jwt
     SUBDIR += rubygem-best_in_place
@@ -1972,6 +1975,7 @@
     SUBDIR += rubygem-carrierwave
     SUBDIR += rubygem-cgi_multipart_eof_fix
     SUBDIR += rubygem-chosen-rails
+    SUBDIR += rubygem-chromedriver-helper
     SUBDIR += rubygem-cookiejar
     SUBDIR += rubygem-crass
     SUBDIR += rubygem-cuba
@@ -2098,6 +2102,10 @@
     SUBDIR += rubygem-pagerduty
     SUBDIR += rubygem-passenger
     SUBDIR += rubygem-platform-api
+    SUBDIR += rubygem-protocol-hpack
+    SUBDIR += rubygem-protocol-http
+    SUBDIR += rubygem-protocol-http1
+    SUBDIR += rubygem-protocol-http2
     SUBDIR += rubygem-puma
     SUBDIR += rubygem-puma_worker_killer
     SUBDIR += rubygem-pusher-client
@@ -2186,8 +2194,6 @@
     SUBDIR += rubygem-totoridipjp
     SUBDIR += rubygem-tumblr_client
     SUBDIR += rubygem-turbolinks
-    SUBDIR += rubygem-turbolinks-rails5
-    SUBDIR += rubygem-turbolinks-rails50
     SUBDIR += rubygem-turbolinks-source
     SUBDIR += rubygem-typhoeus
     SUBDIR += rubygem-uglifier
@@ -2199,6 +2205,7 @@
     SUBDIR += rubygem-url_mount
     SUBDIR += rubygem-vegas
     SUBDIR += rubygem-wasabi
+    SUBDIR += rubygem-webdrivers
     SUBDIR += rubygem-webmock
     SUBDIR += rubygem-webpack-rails-rails5
     SUBDIR += rubygem-webrobots
@@ -2395,6 +2402,7 @@
     SUBDIR += validator
     SUBDIR += varnish-libvmod-awsrest
     SUBDIR += varnish-libvmod-digest
+    SUBDIR += varnish-libvmod-dynamic
     SUBDIR += varnish-libvmod-maxminddb
     SUBDIR += varnish-modules
     SUBDIR += varnish-nagios
@@ -2442,6 +2450,7 @@
     SUBDIR += wsdlpull
     SUBDIR += wsmake
     SUBDIR += wt
+    SUBDIR += wt3
     SUBDIR += wuzz
     SUBDIR += www6to4
     SUBDIR += wwwoffle

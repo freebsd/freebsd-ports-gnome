@@ -104,6 +104,7 @@
     SUBDIR += bfs
     SUBDIR += bhyve-firmware
     SUBDIR += bhyve-rc
+    SUBDIR += bibelot
     SUBDIR += biosfont
     SUBDIR += bkpupsd
     SUBDIR += bksh
@@ -348,6 +349,7 @@
     SUBDIR += fpc-users
     SUBDIR += fpc-utmp
     SUBDIR += fpc-uuid
+    SUBDIR += frand
     SUBDIR += freebsd-snapshot
     SUBDIR += freecolor
     SUBDIR += freedt
@@ -445,7 +447,6 @@
     SUBDIR += graid5
     SUBDIR += graveman
     SUBDIR += graylog
-    SUBDIR += grub2
     SUBDIR += grub2-bhyve
     SUBDIR += gsh
     SUBDIR += gsmartcontrol
@@ -631,6 +632,7 @@
     SUBDIR += mac_nonet
     SUBDIR += mac_rtprio
     SUBDIR += magicrescue
+    SUBDIR += makeztxt
     SUBDIR += manck
     SUBDIR += mapchan
     SUBDIR += mapdir
@@ -758,7 +760,6 @@
     SUBDIR += ohmu
     SUBDIR += omnibackup
     SUBDIR += open
-    SUBDIR += openhpi
     SUBDIR += openipmi
     SUBDIR += openupsd
     SUBDIR += openzfs
@@ -1232,12 +1233,14 @@
     SUBDIR += schedutils
     SUBDIR += screen
     SUBDIR += screenfetch
+    SUBDIR += screenfetch-nox11
     SUBDIR += screenie
     SUBDIR += scterc
     SUBDIR += sd-agent
     SUBDIR += sdparm
     SUBDIR += seatools
     SUBDIR += sec
+    SUBDIR += sensu-go
     SUBDIR += serf
     SUBDIR += setcdboot
     SUBDIR += setquota
@@ -1333,6 +1336,7 @@
     SUBDIR += tenshi
     SUBDIR += tentakel
     SUBDIR += terraform
+    SUBDIR += terraform-provider-vultr
     SUBDIR += testdisk
     SUBDIR += thefish
     SUBDIR += timelimit

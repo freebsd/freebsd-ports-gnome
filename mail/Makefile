@@ -23,6 +23,7 @@
     SUBDIR += ask
     SUBDIR += asmail
     SUBDIR += assp
+    SUBDIR += astroid
     SUBDIR += automx
     SUBDIR += autorespond
     SUBDIR += autosig
@@ -128,6 +129,7 @@
     SUBDIR += fastforward
     SUBDIR += fdm
     SUBDIR += fetchmail
+    SUBDIR += fetchmail64
     SUBDIR += fetchmailconf
     SUBDIR += filtermail
     SUBDIR += findmaildirs

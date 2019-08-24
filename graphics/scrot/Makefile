@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	scrot
-DISTVERSION=	1.1.1
+DISTVERSION=	1.2
 CATEGORIES=	graphics
 
 MAINTAINER=	amdmi3@FreeBSD.org
@@ -19,6 +19,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	resurrecting-open-source-projects
 
 USES=		autoreconf
+USE_CSTD=	c99
 GNU_CONFIGURE=	yes
 USE_XORG=	x11 xfixes xcursor
 

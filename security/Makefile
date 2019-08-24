@@ -12,6 +12,7 @@
     SUBDIR += R-cran-digest
     SUBDIR += R-cran-openssl
     SUBDIR += acme.sh
+    SUBDIR += acmed
     SUBDIR += acmetool
     SUBDIR += aescrypt
     SUBDIR += aespipe
@@ -39,6 +40,7 @@
     SUBDIR += barnyard2-sguil
     SUBDIR += base
     SUBDIR += base-audit
+    SUBDIR += bastillion
     SUBDIR += bcrypt
     SUBDIR += bcwipe
     SUBDIR += bdes
@@ -133,6 +135,7 @@
     SUBDIR += dotdotpwn
     SUBDIR += dropbear
     SUBDIR += dsniff
+    SUBDIR += dsvpn
     SUBDIR += duo
     SUBDIR += easy-rsa
     SUBDIR += elixir-comeonin
@@ -1084,6 +1087,7 @@
     SUBDIR += rubygem-bcrypt_pbkdf
     SUBDIR += rubygem-devise-two-factor
     SUBDIR += rubygem-devise-two-factor-rails5
+    SUBDIR += rubygem-devise-two-factor30-rails5
     SUBDIR += rubygem-devise_pam_authenticatable2
     SUBDIR += rubygem-digest-crc
     SUBDIR += rubygem-doorkeeper

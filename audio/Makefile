@@ -192,6 +192,7 @@
     SUBDIR += fomp-lv2
     SUBDIR += foo-yc20
     SUBDIR += forked-daapd
+    SUBDIR += fossmixer
     SUBDIR += fpc-a52
     SUBDIR += fpc-mad
     SUBDIR += fpc-modplug
@@ -204,6 +205,7 @@
     SUBDIR += funktrackergold
     SUBDIR += gbemol
     SUBDIR += gbsplay
+    SUBDIR += geonkick-lv2
     SUBDIR += gervill
     SUBDIR += ghostess
     SUBDIR += giada
@@ -509,6 +511,7 @@
     SUBDIR += mixmos
     SUBDIR += mixxx
     SUBDIR += mixxx21
+    SUBDIR += mkcue
     SUBDIR += mma
     SUBDIR += moc
     SUBDIR += modplugplay

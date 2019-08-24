@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	flrig
-PORTVERSION=	1.3.47
+PORTVERSION=	1.3.48
 CATEGORIES=	comms hamradio
 MASTER_SITES=	SF/fldigi/${PORTNAME}
 
@@ -11,7 +11,7 @@ COMMENT=	Ham Radio rig control program, cooperates with fldigi
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libpng16.so:graphics/png \
+LIB_DEPENDS=	libpng.so:graphics/png \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfltk.so:x11-toolkits/fltk
 
