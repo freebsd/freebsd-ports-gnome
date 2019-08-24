@@ -53,8 +53,8 @@ GCC_DEFAULT?=		9
 GHOSTSCRIPT_DEFAULT?=	agpl
 # Possible values: 0.6, 0.7, 1.0, 1.1
 JULIA_DEFAULT?=		1.0
-# Possible values: 2.0.0
-LAZARUS_DEFAULT?=	2.0.0
+# Possible values: 2.0.4
+LAZARUS_DEFAULT?=	2.0.4
 # Possible values: c6, c7
 LINUX_DEFAULT?=		c7
 # Possible values: 60, 70, 80, -devel (to be used when non-base compiler is required)
@@ -94,7 +94,7 @@ PYTHON3_DEFAULT?=	3.6
 RUBY_DEFAULT?=		2.5
 # Possible values: rust, rust-nightly
 RUST_DEFAULT?=		rust
-# Possible values: 4.6, 4.7, 4.8, 4.10
+# Possible values: 4.8, 4.10
 SAMBA_DEFAULT?=		4.8
 # Possible values: base, openssl, openssl111, libressl, libressl-devel
 .if !defined(SSL_DEFAULT)

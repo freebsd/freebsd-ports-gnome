@@ -12,6 +12,7 @@
     SUBDIR += R-cran-digest
     SUBDIR += R-cran-openssl
     SUBDIR += acme.sh
+    SUBDIR += acmed
     SUBDIR += acmetool
     SUBDIR += aescrypt
     SUBDIR += aespipe
@@ -134,6 +135,7 @@
     SUBDIR += dotdotpwn
     SUBDIR += dropbear
     SUBDIR += dsniff
+    SUBDIR += dsvpn
     SUBDIR += duo
     SUBDIR += easy-rsa
     SUBDIR += elixir-comeonin
