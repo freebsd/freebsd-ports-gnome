@@ -13,6 +13,8 @@ COMMENT=	Library for desktop notifications
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+BUILD_DEPENDS=	gtkdoc-scan:textproc/gtk-doc
+
 USES=		gnome meson pkgconfig tar:xz
 USE_GNOME=	glib20 gdkpixbuf2 introspection:build
 USE_LDCONFIG=	yes
