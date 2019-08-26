@@ -12,7 +12,8 @@ COMMENT=	Framework focused on making media discovery and browsing
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	vapigen:lang/vala
+BUILD_DEPENDS=	vapigen:lang/vala \
+		gtkdoc-scan:textproc/gtk-doc
 LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup \
 		liboauth.so:net/liboauth \
 		libtotem-plparser.so:multimedia/totem-pl-parser
