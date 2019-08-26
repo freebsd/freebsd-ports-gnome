@@ -38,6 +38,8 @@ include/pango-1.0/pango/pangoxft.h
 lib/girepository-1.0/Pango-1.0.typelib
 lib/girepository-1.0/PangoCairo-1.0.typelib
 lib/girepository-1.0/PangoFT2-1.0.typelib
+lib/girepository-1.0/PangoFc-1.0.typelib
+lib/girepository-1.0/PangoOT-1.0.typelib
 lib/girepository-1.0/PangoXft-1.0.typelib
 lib/libpango-1.0.so
 lib/libpango-1.0.so.0
@@ -59,4 +61,6 @@ man/man1/pango-view.1.gz
 share/gir-1.0/Pango-1.0.gir
 share/gir-1.0/PangoCairo-1.0.gir
 share/gir-1.0/PangoFT2-1.0.gir
+share/gir-1.0/PangoFc-1.0.gir
+share/gir-1.0/PangoOT-1.0.gir
 share/gir-1.0/PangoXft-1.0.gir
