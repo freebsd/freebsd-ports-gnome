@@ -87,7 +87,6 @@ include/libdazzle-1.0/shortcuts/dzl-shortcuts-shortcut.h
 include/libdazzle-1.0/shortcuts/dzl-shortcuts-window.h
 include/libdazzle-1.0/statemachine/dzl-state-machine-buildable.h
 include/libdazzle-1.0/statemachine/dzl-state-machine.h
-include/libdazzle-1.0/suggestions/dzl-suggestion-button.h
 include/libdazzle-1.0/suggestions/dzl-suggestion-entry-buffer.h
 include/libdazzle-1.0/suggestions/dzl-suggestion-entry.h
 include/libdazzle-1.0/suggestions/dzl-suggestion-popover.h
