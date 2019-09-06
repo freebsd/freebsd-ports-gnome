@@ -54,7 +54,7 @@ _KDE_RELNAME=		KDE${_KDE_VERSION}
 
 # === VERSIONS OF THE DIFFERENT COMPONENTS =====================================
 # Current KDE desktop.
-KDE_PLASMA_VERSION?=		5.16.4
+KDE_PLASMA_VERSION?=		5.16.5
 KDE_PLASMA_BRANCH?=		stable
 
 # Current KDE frameworks.
@@ -62,8 +62,8 @@ KDE_FRAMEWORKS_VERSION?=	5.61.0
 KDE_FRAMEWORKS_BRANCH?= 	stable
 
 # Current KDE applications.
-KDE_APPLICATIONS_VERSION?=	19.08.0
-KDE_APPLICATIONS_SHLIB_VER?=	5.12.0
+KDE_APPLICATIONS_VERSION?=	19.08.1
+KDE_APPLICATIONS_SHLIB_VER?=	5.12.1
 KDE_APPLICATIONS_BRANCH?=	stable
 # Upstream moves old software to Attic/. Specify the newest applications release there.
 # Only the major version is used for the comparison.
@@ -533,7 +533,7 @@ kde-ksysguard_PORT=		sysutils/plasma5-ksysguard
 kde-ksysguard_PATH=		${KDE_PREFIX}/bin/ksysguard
 
 kde-kwallet-pam_PORT=		security/plasma5-kwallet-pam
-kde-kwallet-pam_PATH=		${KDE_PREFIX}/lib/security/pam_kwallet5.so
+kde-kwallet-pam_PATH=		${KDE_PREFIX}/lib/pam_kwallet5.so
 
 kde-kwayland-integration_PORT=	x11/plasma5-kwayland-integration
 kde-kwayland-integration_PATH=	${QT_PLUGINDIR}/kf5/org.kde.kidletime.platforms/KF5IdleTimeKWaylandPlugin.so
