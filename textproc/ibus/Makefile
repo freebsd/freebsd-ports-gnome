@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD$
+# $FreeBSD: head/textproc/ibus/Makefile 509067 2019-08-16 08:31:55Z delphij $
 
 PORTNAME=	ibus
 PORTVERSION=	1.5.20
@@ -16,11 +16,11 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0.83.0:devel/py-dbus@${PY_FLAVOR} \
 		${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
 		gtkdocize:textproc/gtk-doc
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0.83.0:devel/py-dbus@${PY_FLAVOR} \
-		${PYTHON_SITELIBDIR}/gtk-2.0/pynotify/__init__.py:devel/py-notify@${PY_FLAVOR} \
 		${LOCALBASE}/share/xml/iso-codes/iso_639.xml:misc/iso-codes \
 		setxkbmap:x11/setxkbmap
+#		${PYTHON_SITELIBDIR}/gtk-2.0/pynotify/__init__.py:devel/py-notify@${PY_FLAVOR} \
 
-USES=		autoreconf compiler cpe gmake gnome libtool localbase pathfix pkgconfig python:2.7 shebangfix
+USES=		autoreconf compiler cpe gmake gnome libtool localbase pathfix pkgconfig python:3.5+ shebangfix
 USE_GNOME=	glib20 intltool librsvg2 pygobject3
 USE_LDCONFIG=	yes
 
@@ -35,17 +35,14 @@ INSTALL_TARGET=	install-strip
 CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc	\
 		--with-ucd-dir=${LOCALBASE}/share/unicode/ucd
 
-OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE EMOJI
-OPTIONS_RADIO=	CONFIG
-OPTIONS_RADIO_CONFIG=	GCONF DCONF
-OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO PYTHON_LIB DCONF XIM ENGINE EMOJI
+OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE EMOJI DCONF
+OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO PYTHON_LIB DCONF XIM ENGINE EMOJI DCONF
 
 GTK2_DESC=	Install GTK2 client
 GTK3_DESC=	Install GTK3 client and panel
 VALA_DESC=	Install vala binding
 GINTRO_DESC=	Install GObject Introspection data
 PYTHON_LIB_DESC=	Install ibus Python libraries
-GCONF_DESC=	Use GConf for configuration
 DCONF_DESC=	Use dconf for configuration
 XIM_DESC=	Install XIM server
 ENGINE_DESC=	Install ibus simple engine
@@ -59,14 +56,18 @@ NLS_CONFIGURE_ENABLE=	nls
 GTK2_USE=		GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=	gtk2
 GTK2_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+			libharfbuzz.so:print/harfbuzz \
 			libfontconfig.so:x11-fonts/fontconfig \
 			libfreetype.so:print/freetype2
 
+# notify global?
+
 GTK3_USE=		GNOME=cairo,gtk30 XORG=x11,xi
-GTK3_CONFIGURE_ENABLE=	gtk3 libnotify
+GTK3_CONFIGURE_ENABLE=	gtk3
 GTK3_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 			libnotify.so:devel/libnotify
 GTK3_LIBS=		-lX11
+# VALA
 
 VALA_BUILD_DEPENDS=	vala>=0.20:lang/vala
 VALA_CONFIGURE_ENABLE=	vala
@@ -76,14 +77,11 @@ GINTRO_BUILD_DEPENDS=	gobject-introspection>=0.6.8:devel/gobject-introspection
 GINTRO_RUN_DEPENDS=	gobject-introspection>=0.6.8:devel/gobject-introspection
 GINTRO_CONFIGURE_ENABLE=	introspection
 
-PYTHON_LIB_USE=			GNOME=pygtk2
+#PYTHON_LIB_USE=			GNOME=pygtk2
 PYTHON_LIB_CONFIGURE_ENABLE=	python-library
+PYTHON_LIB_CONFIGURE_ON=	--disable-python2
 
-GCONF_USE=		GNOME=gconf2
-GCONF_CONFIGURE_ENABLE=	gconf
-GCONF_VARS=		GCONF_SCHEMAS=ibus.schemas
-
-DCONF_USE=		GNOME=dconf,gconf2
+DCONF_USE=		GNOME=dconf
 DCONF_CONFIGURE_ENABLE=	dconf
 DCONF_VARS=		GLIB_SCHEMAS=org.freedesktop.ibus.gschema.xml
 
@@ -92,6 +90,7 @@ DOCS_CONFIGURE_ENABLE=	gtk-doc-html
 XIM_CONFIGURE_ENABLE=	xim
 
 ENGINE_CONFIGURE_ENABLE=	engine
+#VALA
 
 EMOJIONE_TAG=		ba845a7e24aac26cf3cf22abc19bea215d94fbf3 # 2.2.7
 EMOJI_CONFIGURE_ON=	--with-unicode-emoji-dir=${LOCALBASE}/share/unicode/emoji \
@@ -107,7 +106,7 @@ EMOJI_BUILD_DEPENDS=	json-glib>=0:devel/json-glib \
 USE_GCC=	yes
 .endif
 
-.if ${PORT_OPTIONS:MENGINE} || ${PORT_OPTIONS:MGTK3} || ${PORT_OPTIONS:MGCONF} || ${PORT_OPTIONS:MDCONF}
+.if ${PORT_OPTIONS:MENGINE} || ${PORT_OPTIONS:MGTK3} || ${PORT_OPTIONS:MDCONF}
 PLIST_SUB+=	COMPDIR=""
 .else
 PLIST_SUB+=	COMPDIR="@comment "
