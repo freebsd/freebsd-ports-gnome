@@ -170,7 +170,6 @@
     SUBDIR += gnome-user-docs
     SUBDIR += gnu-watch
     SUBDIR += gnuls
-    SUBDIR += gnustep-examples
     SUBDIR += gobuster
     SUBDIR += gone
     SUBDIR += gonvert
@@ -188,6 +187,7 @@
     SUBDIR += hotkeys
     SUBDIR += hulgalugha
     SUBDIR += ignition-fuel-tools
+    SUBDIR += iio-oscilloscope
     SUBDIR += imerge
     SUBDIR += img2xterm
     SUBDIR += ini_file_manager
@@ -220,6 +220,7 @@
     SUBDIR += lc
     SUBDIR += lesspipe
     SUBDIR += lf
+    SUBDIR += libad9361-iio
     SUBDIR += libeatmydata
     SUBDIR += libemos
     SUBDIR += libiio

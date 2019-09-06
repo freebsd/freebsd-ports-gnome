@@ -4512,7 +4512,6 @@ graphics/imgseek||2013-07-26|Has expired: Depends on Qt 3.x
 graphics/kalbum||2013-07-26|Has expired: Depends on Qt 3.x
 graphics/kbarcode||2013-07-26|Has expired: Depends on Qt 3.x
 graphics/kdegraphics3||2013-07-26|Has expired: Depends on Qt 3.x
-graphics/kipi-plugins||2013-07-26|Has expired: Depends on Qt 3.x
 graphics/kisomandel||2013-07-26|Has expired: Depends on Qt 3.x
 graphics/kradview||2013-07-26|Has expired: Depends on Qt 3.x
 graphics/kuickshow||2013-07-26|Has expired: Depends on Qt 3.x
@@ -12879,3 +12878,76 @@ palm/makeztxt|sysutils/makeztxt|2019-08-20|Move to more applicable category
 palm/mdbconv|databases/mdbconv|2019-08-20|Move to more applicable category
 palm/palm-db-tools|databases/palm-db-tools|2019-08-20|Move to more applicable category
 palm/jpilot-picsnvideos|comms/jpilot-picsnvideos|2019-08-20|Move to more applicable category
+devel/linux-c6-libelf|devel/linux-c6-elfutils-libelf|2019-08-25|Moved to match package name
+devel/linux-c7-libelf|devel/linux-c7-elfutils-libelf|2019-08-25|Moved to match package name
+security/linux-c7-openssl||2019-08-25|Merged into linux_base-c7
+science/py-onnx|math/py-onnx|2019-08-26|Move to a more appropriate category
+security/kr||2019-08-27|Has expired: Broken for more than 6 months
+lang/swift||2019-08-27|Has expired: Broken for more than 6 months
+security/rubygem-devise-two-factor30-rails5|security/rubygem-devise-two-factor-rails5|2019-08-30|No longer needed after gitlab-ce 12.1 update (r510253)
+textproc/rubygem-asciidoctor-plantuml008|textproc/rubygem-asciidoctor-plantuml|2019-08-30|No longer needed after gitlab-ce 12.1 update (r510253)
+www/rubygem-responders2-rails5|www/rubygem-responders-rails5|2019-08-30|No longer needed after gitlab-ce 12.1 update (r510253)
+graphics/kipiplugins|graphics/kipi-plugins|2019-08-30|Renamed upstream
+devel/rubygem-rails-i18n|devel/rubygem-rails-i18n-rails5|2019-08-31|Has expired: Use devel/rubygem-rails-i18n-rails5 instead
+textproc/rubygem-gitlab-linguist|textproc/rubygem-github-linguist|2019-08-31|Has expired: Use textproc/rubygem-github-linguist instead
+textproc/rubygem-html-pipeline1|textproc/rubygem-html-pipeline|2019-08-31|Has expired: Use textproc/rubygem-html-pipeline instead
+devel/pure-stldict||2019-09-01|Has expired: Depends on expiring devel/llvm35
+lang/dmd1||2019-09-01|Has expired: No longer supported upstream
+lang/gprolog||2019-09-01|Has expired: Abandonware upstream (more than five years), fails in various ways with remotely recent compilers
+math/pure-mpfr||2019-09-01|Has expired: Depends on expiring devel/llvm35
+math/pure-rational||2019-09-01|Has expired: Depends on expiring devel/llvm35
+net/pure-sockets||2019-09-01|Has expired: Depends on expiring devel/llvm35
+textproc/pure-csv||2019-09-01|Has expired: Depends on expiring devel/llvm35
+textproc/pure-xml||2019-09-01|Has expired: Depends on expiring devel/llvm35
+x11-toolkits/pure-tk||2019-09-01|Has expired: Depends on expiring devel/llvm35
+databases/pure-sql3||2019-09-01|Has expired: Depends on expiring devel/llvm35
+devel/pure-readline||2019-09-01|Has expired: Depends on expiring devel/llvm35
+devel/pure-stllib||2019-09-01|Has expired: Depends on expiring devel/llvm35
+x11-toolkits/pure-gtk||2019-09-01|Has expired: Depends on expiring devel/llvm35
+lang/pure||2019-09-01|Has expired: Depends on expiring devel/llvm35
+devel/pure-ffi||2019-09-01|Has expired: Depends on expiring devel/llvm35
+devel/llvm35||2019-09-01|Has expired: Obsolete and unmaintained
+archivers/py-attic|archivers/py-borg|2019-09-02|Has expired: Unsupported by upstream, please migrate to archivers/py-borg.  See https://borgbackup.readthedocs.io/en/stable/usage/upgrade.html#borg-upgrade
+sysutils/syslog-ng39|sysutils/syslog-ng|2019-09-04|Has expired: No longer supported by Balabit
+sysutils/syslog-ng312|sysutils/syslog-ng|2019-09-04|Has expired: No longer officially supported by Balabit
+sysutils/syslog-ng310|sysutils/syslog-ng|2019-09-04|Has expired: No longer supported by Balabit
+sysutils/syslog-ng313|sysutils/syslog-ng|2019-09-04|Has expired: No longer officially supported by Balabit
+sysutils/syslog-ng314|sysutils/syslog-ng|2019-09-04|Has expired: No longer supported by Balabit
+devel/ace+tao-doc||2019-09-05|Has expired: Broken for more than 6 months
+devel/dfmt||2019-09-05|Has expired: Broken for more than 6 months
+devel/ignition-transport||2019-09-05|Has expired: Broken for more than 6 months
+devel/spin||2019-09-05|Has expired: Broken for more than 6 months
+editors/dexed||2019-09-05|Has expired: Depends on expiring devel/dfmt
+editors/p5-Padre||2019-09-05|Has expired: Depends on expiring x11-toolkits/p5-Wx
+emulators/qemu2||2019-09-05|Has expired: Latest 3.X branch is in ports tree
+games/asc||2019-09-05|Has expired: Broken for more than 6 months
+games/slade||2019-09-05|Has expired: Broken for more than 6 months
+graphics/gimp-wavelet-decompose-plugin||2019-09-05|Has expired: Broken for more than 6 months
+graphics/py-pyembree||2019-09-05|Has expired: Depends on expiring graphics/embree
+irc/irssi-otr||2019-09-05|Has expired: Broken for more than 6 months
+mail/p5-Mail-ClamAV||2019-09-05|Has expired: Broken for more than 6 months
+mail/qmail-ldap||2019-09-05|Has expired: Broken for more than 6 months
+math/fityk||2019-09-05|Has expired: Broken for more than 6 months
+math/octave-forge-econometrics||2019-09-05|Has expired: Broken for more than 6 months
+math/octave-forge-fits||2019-09-05|Has expired: Broken for more than 6 months
+math/octave-forge-linear-algebra||2019-09-05|Has expired: Broken for more than 6 months
+math/octave-forge-mechanics||2019-09-05|Has expired: Broken for more than 6 months
+math/octave-forge-parallel||2019-09-05|Has expired: Broken for more than 6 months
+math/octave-forge-strings||2019-09-05|Has expired: Broken for more than 6 months
+math/octave-forge-tisean||2019-09-05|Has expired: Broken for more than 6 months
+math/octave-forge-video||2019-09-05|Has expired: Broken for more than 6 months
+math/py-yt||2019-09-05|Has expired: Depends on expiring graphics/embree
+misc/gnustep-examples||2019-09-05|Has expired: Broken for more than 6 months
+net/turses||2019-09-05|Has expired: Depends on expiring net/py-tweepy
+security/clamcour||2019-09-05|Has expired: Broken for more than 6 months
+security/honeybadger||2019-09-05|Has expired: Broken for more than 6 months
+sysutils/freefilesync||2019-09-05|Has expired: Broken for more than 6 months
+sysutils/log-courier||2019-09-05|Has expired: Broken for more than 6 months
+textproc/py-orange3-text||2019-09-05|Has expired: Broken for more than 6 months
+www/feedjack||2019-09-05|Has expired: Upstream gone
+www/havp||2019-09-05|Has expired: Broken for more than 6 months
+www/rubygem-webpack-rails-rails5|devel/rubygem-webpacker-rails5|2019-09-05|Has expired: Upstream no longer maintained, use devel/rubygem-webpacker-rails* instead
+x11-toolkits/p5-Wx-GLCanvas||2019-09-05|Has expired: Depends on expiring x11-toolkits/p5-Wx
+x11-toolkits/p5-Wx-Perl-ProcessStream||2019-09-05|Has expired: Depends on expiring x11-toolkits/p5-Wx
+x11-wm/golem||2019-09-05|Has expired: Broken for more than 6 months
+x11-wm/pawm||2019-09-05|Has expired: Broken for more than 6 months

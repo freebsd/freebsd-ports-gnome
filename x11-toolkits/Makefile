@@ -170,16 +170,12 @@
     SUBDIR += p5-Tk-ToolBar
     SUBDIR += p5-Tk-WaitBox
     SUBDIR += p5-Wx
-    SUBDIR += p5-Wx-GLCanvas
-    SUBDIR += p5-Wx-Perl-ProcessStream
     SUBDIR += pango
     SUBDIR += pangomm
     SUBDIR += pangox-compat
     SUBDIR += pangoxsl
     SUBDIR += plasma5-kdeplasma-addons
     SUBDIR += plib
-    SUBDIR += pure-gtk
-    SUBDIR += pure-tk
     SUBDIR += py-AnyQt
     SUBDIR += py-Pmw
     SUBDIR += py-SquareMap

@@ -1218,8 +1218,6 @@
     SUBDIR += print-n-times
     SUBDIR += pugixml
     SUBDIR += pup
-    SUBDIR += pure-csv
-    SUBDIR += pure-xml
     SUBDIR += py-Chameleon
     SUBDIR += py-CommonMark
     SUBDIR += py-MarkupSafe
@@ -1253,6 +1251,7 @@
     SUBDIR += py-docutils
     SUBDIR += py-docx2txt
     SUBDIR += py-dominate
+    SUBDIR += py-dparse
     SUBDIR += py-dsv
     SUBDIR += py-duecredit
     SUBDIR += py-elasticsearch
@@ -1260,6 +1259,7 @@
     SUBDIR += py-elasticsearch-curator
     SUBDIR += py-elasticsearch-dsl
     SUBDIR += py-elasticsearch5
+    SUBDIR += py-elasticsearch6
     SUBDIR += py-elib.intl
     SUBDIR += py-empy
     SUBDIR += py-enchant
@@ -1283,6 +1283,7 @@
     SUBDIR += py-hypua2jamo
     SUBDIR += py-jaxml
     SUBDIR += py-jsonslicer
+    SUBDIR += py-jsx-lexer
     SUBDIR += py-jtextfsm
     SUBDIR += py-junit-xml
     SUBDIR += py-langdetect
@@ -1298,6 +1299,7 @@
     SUBDIR += py-markdown-math
     SUBDIR += py-markdown2
     SUBDIR += py-markups
+    SUBDIR += py-misaka
     SUBDIR += py-mistune
     SUBDIR += py-mkdocs
     SUBDIR += py-mkdocs-nature
@@ -1309,7 +1311,6 @@
     SUBDIR += py-openpyxl
     SUBDIR += py-openpyxl24
     SUBDIR += py-openstackdocstheme
-    SUBDIR += py-orange3-text
     SUBDIR += py-os-api-ref
     SUBDIR += py-packageurl-python
     SUBDIR += py-pager
@@ -1488,7 +1489,6 @@
     SUBDIR += rubygem-asciidoctor-diagram
     SUBDIR += rubygem-asciidoctor-include-ext
     SUBDIR += rubygem-asciidoctor-plantuml
-    SUBDIR += rubygem-asciidoctor-plantuml008
     SUBDIR += rubygem-autoprefixer-rails
     SUBDIR += rubygem-babel-source
     SUBDIR += rubygem-babel-transpiler
@@ -1529,6 +1529,7 @@
     SUBDIR += rubygem-emot
     SUBDIR += rubygem-escape_utils
     SUBDIR += rubygem-escape_utils11
+    SUBDIR += rubygem-extended-markdown-filter
     SUBDIR += rubygem-ezamar
     SUBDIR += rubygem-fast_xs
     SUBDIR += rubygem-ferret
@@ -1539,12 +1540,10 @@
     SUBDIR += rubygem-github-markup
     SUBDIR += rubygem-github-markup17
     SUBDIR += rubygem-gitlab-grit
-    SUBDIR += rubygem-gitlab-linguist
     SUBDIR += rubygem-gitlab-markup
     SUBDIR += rubygem-heredoc_unindent
     SUBDIR += rubygem-hikidoc
     SUBDIR += rubygem-html-pipeline
-    SUBDIR += rubygem-html-pipeline1
     SUBDIR += rubygem-html-pipeline27
     SUBDIR += rubygem-html2text
     SUBDIR += rubygem-htmlentities
@@ -1589,6 +1588,7 @@
     SUBDIR += rubygem-rails-dom-testing
     SUBDIR += rubygem-rails-dom-testing-rails5
     SUBDIR += rubygem-rails-dom-testing-rails50
+    SUBDIR += rubygem-rails-dom-testing-rails52
     SUBDIR += rubygem-rails-dom-testing1
     SUBDIR += rubygem-rails-html-sanitizer
     SUBDIR += rubygem-rak
@@ -1620,6 +1620,7 @@
     SUBDIR += rubygem-sass-rails-rails4
     SUBDIR += rubygem-sass-rails-rails5
     SUBDIR += rubygem-sass-rails-rails50
+    SUBDIR += rubygem-sass-rails-rails52
     SUBDIR += rubygem-sass32
     SUBDIR += rubygem-sass34
     SUBDIR += rubygem-sassc

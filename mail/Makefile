@@ -378,7 +378,6 @@
     SUBDIR += p5-Mail-Box-Parser-C
     SUBDIR += p5-Mail-Bulkmail
     SUBDIR += p5-Mail-CheckUser
-    SUBDIR += p5-Mail-ClamAV
     SUBDIR += p5-Mail-DKIM
     SUBDIR += p5-Mail-DMARC
     SUBDIR += p5-Mail-DeliveryStatus-BounceParser
@@ -552,7 +551,6 @@
     SUBDIR += qmail-conf
     SUBDIR += qmail-contrib
     SUBDIR += qmail-dk
-    SUBDIR += qmail-ldap
     SUBDIR += qmail-mysql
     SUBDIR += qmail-notify
     SUBDIR += qmail-qfilter
@@ -607,6 +605,7 @@
     SUBDIR += rubygem-actionmailer4
     SUBDIR += rubygem-actionmailer5
     SUBDIR += rubygem-actionmailer50
+    SUBDIR += rubygem-actionmailer52
     SUBDIR += rubygem-email_reply_parser
     SUBDIR += rubygem-email_reply_parser-discourse
     SUBDIR += rubygem-email_reply_trimmer
@@ -621,6 +620,7 @@
     SUBDIR += rubygem-premailer-rails
     SUBDIR += rubygem-premailer-rails-rails5
     SUBDIR += rubygem-premailer-rails19-rails5
+    SUBDIR += rubygem-premailer-rails19-rails52
     SUBDIR += rubygem-rmail
     SUBDIR += rubygem-roadie
     SUBDIR += rubygem-roadie-rails
