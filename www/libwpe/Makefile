@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libwpe
-PORTVERSION=	1.2.1
+PORTVERSION=	1.3.91
 CATEGORIES=	www
 MASTER_SITES=	https://wpewebkit.org/releases/
 
