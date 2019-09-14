@@ -103,6 +103,7 @@
     SUBDIR += linux-c6-qt47-x11
     SUBDIR += linux-c6-tk85
     SUBDIR += linux-c7-gtk2
+    SUBDIR += linux-c7-gtk3
     SUBDIR += linux-c7-openmotif
     SUBDIR += linux-c7-pango
     SUBDIR += linux-c7-qt-x11
@@ -169,7 +170,6 @@
     SUBDIR += p5-Tk-TableMatrix
     SUBDIR += p5-Tk-ToolBar
     SUBDIR += p5-Tk-WaitBox
-    SUBDIR += p5-Wx
     SUBDIR += pango
     SUBDIR += pangomm
     SUBDIR += pangox-compat
