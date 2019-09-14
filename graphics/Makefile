@@ -520,6 +520,7 @@
     SUBDIR += linux-c6-sdl_ttf
     SUBDIR += linux-c6-tiff
     SUBDIR += linux-c7-cairo
+    SUBDIR += linux-c7-cairo-gobject
     SUBDIR += linux-c7-dri
     SUBDIR += linux-c7-gdk-pixbuf2
     SUBDIR += linux-c7-glx-utils
@@ -527,6 +528,7 @@
     SUBDIR += linux-c7-jasper
     SUBDIR += linux-c7-jbigkit
     SUBDIR += linux-c7-jpeg
+    SUBDIR += linux-c7-libepoxy
     SUBDIR += linux-c7-libglvnd
     SUBDIR += linux-c7-png
     SUBDIR += linux-c7-sdl_image
@@ -535,8 +537,6 @@
     SUBDIR += linux-c7-wayland
     SUBDIR += lua-gd
     SUBDIR += luminance-qt5
-    SUBDIR += luxrender
-    SUBDIR += luxrender14
     SUBDIR += lximage-qt
     SUBDIR += magnum
     SUBDIR += magnum-examples
@@ -872,6 +872,7 @@
     SUBDIR += py-pycha
     SUBDIR += py-pycollada
     SUBDIR += py-pydot
+    SUBDIR += py-pyembree
     SUBDIR += py-pyepsg
     SUBDIR += py-pygal
     SUBDIR += py-pyganim

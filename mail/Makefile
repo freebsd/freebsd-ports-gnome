@@ -36,6 +36,8 @@
     SUBDIR += bincimap
     SUBDIR += bmf
     SUBDIR += bogofilter
+    SUBDIR += bogofilter-kc
+    SUBDIR += bogofilter-lmdb
     SUBDIR += bogofilter-sqlite
     SUBDIR += bogofilter-tc
     SUBDIR += bsfilter
@@ -96,6 +98,7 @@
     SUBDIR += dma
     SUBDIR += dot-forward
     SUBDIR += dovecot
+    SUBDIR += dovecot-fts-xapian
     SUBDIR += dovecot-pigeonhole
     SUBDIR += dspam
     SUBDIR += ecartis

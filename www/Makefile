@@ -200,6 +200,7 @@
     SUBDIR += gitlab-pages
     SUBDIR += gitlab-workhorse
     SUBDIR += glassfish
+    SUBDIR += glassfish5
     SUBDIR += glpi
     SUBDIR += gnome-user-share
     SUBDIR += go-appengine-sdk
@@ -1444,6 +1445,7 @@
     SUBDIR += py-amf
     SUBDIR += py-apachelog
     SUBDIR += py-arxiv
+    SUBDIR += py-asgiref
     SUBDIR += py-autobahn
     SUBDIR += py-aws-requests-auth
     SUBDIR += py-azure-common
@@ -2061,6 +2063,7 @@
     SUBDIR += rubygem-jekyll
     SUBDIR += rubygem-jekyll-sanity
     SUBDIR += rubygem-jekyll-watch
+    SUBDIR += rubygem-jekyll3
     SUBDIR += rubygem-journey
     SUBDIR += rubygem-jquery-atwho-rails
     SUBDIR += rubygem-jquery-rails
