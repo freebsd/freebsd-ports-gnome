@@ -12,7 +12,7 @@ LICENSE=	BSD2CLAUSE
 
 LIB_DEPENDS=	libxkbcommon.so:x11/libxkbcommon
 
-USES=		cmake localbase:ldflags gl tar:xz
+USES=		cmake pkgconfig localbase:ldflags gl tar:xz
 
 USE_GL=		egl
 USE_LDCONFIG=	yes
