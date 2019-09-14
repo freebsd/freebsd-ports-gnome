@@ -2473,6 +2473,7 @@
     SUBDIR += wikicalc
     SUBDIR += woof
     SUBDIR += wordpress
+    SUBDIR += wpebackend-fdo
     SUBDIR += wsdlpull
     SUBDIR += wsmake
     SUBDIR += wt
