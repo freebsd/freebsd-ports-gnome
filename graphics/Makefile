@@ -528,6 +528,7 @@
     SUBDIR += linux-c7-jasper
     SUBDIR += linux-c7-jbigkit
     SUBDIR += linux-c7-jpeg
+    SUBDIR += linux-c7-libdrm
     SUBDIR += linux-c7-libepoxy
     SUBDIR += linux-c7-libglvnd
     SUBDIR += linux-c7-png
@@ -572,6 +573,7 @@
     SUBDIR += mxp
     SUBDIR += mypaint
     SUBDIR += mypaint-brushes
+    SUBDIR += nanosvg
     SUBDIR += nathive
     SUBDIR += netpbm
     SUBDIR += nip2
@@ -764,6 +766,8 @@
     SUBDIR += php72-gd
     SUBDIR += php73-exif
     SUBDIR += php73-gd
+    SUBDIR += php74-exif
+    SUBDIR += php74-gd
     SUBDIR += phplot
     SUBDIR += picpuz
     SUBDIR += piddle
@@ -822,6 +826,7 @@
     SUBDIR += py-cairocffi
     SUBDIR += py-cartopy
     SUBDIR += py-chart
+    SUBDIR += py-colour
     SUBDIR += py-descartes
     SUBDIR += py-django-easy-thumbnails
     SUBDIR += py-djvulibre
@@ -887,11 +892,13 @@
     SUBDIR += py-pyqtgraph
     SUBDIR += py-python-poppler-qt5
     SUBDIR += py-qt5-svg
+    SUBDIR += py-rawkit
     SUBDIR += py-sane
     SUBDIR += py-scikit-image
     SUBDIR += py-seqdiag
     SUBDIR += py-sorl-thumbnail
     SUBDIR += py-soya3d
+    SUBDIR += py-spectra
     SUBDIR += py-stltools
     SUBDIR += py-svgwrite
     SUBDIR += py-termtosvg
@@ -923,6 +930,7 @@
     SUBDIR += quesoglc
     SUBDIR += radiance
     SUBDIR += radius-engine
+    SUBDIR += rapid-photo-downloader
     SUBDIR += raster3d
     SUBDIR += rawtherapee
     SUBDIR += rayshade
@@ -978,6 +986,7 @@
     SUBDIR += sane-epkowa
     SUBDIR += sane-frontends
     SUBDIR += scale2x
+    SUBDIR += scantailor
     SUBDIR += scr2png
     SUBDIR += scrot
     SUBDIR += scwm-icons
