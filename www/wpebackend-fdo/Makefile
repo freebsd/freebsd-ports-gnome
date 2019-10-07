@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	wpebackend-fdo
-PORTVERSION=	1.3.91
+PORTVERSION=	1.4.0
 CATEGORIES=	www
 MASTER_SITES=	https://wpewebkit.org/releases/
 

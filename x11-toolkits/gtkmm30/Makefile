@@ -13,8 +13,6 @@ COMMENT=	C++ wrapper for Gtk+3
 
 LICENSE=	LGPL21
 
-BUILD_DEPENDS=	gm4:devel/m4
-
 USES=		compiler:c++11-lang gettext gmake gnome libtool \
 		pkgconfig tar:xz
 USE_CXXSTD=	c++11
@@ -24,6 +22,7 @@ GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--disable-documentation
 INSTALL_TARGET=	install-strip
+BINARY_WRAPPERS=	gm4
 
 PORTSCOUT=	limitw:1,even
 PLIST_SUB=	API_VERSION="3.0"

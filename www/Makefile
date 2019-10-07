@@ -1192,6 +1192,7 @@
     SUBDIR += p5-Template-Toolkit-Simple
     SUBDIR += p5-Tenjin
     SUBDIR += p5-Test-HTTP
+    SUBDIR += p5-Test-HTTP-LocalServer
     SUBDIR += p5-Test-HTTP-Server-Simple
     SUBDIR += p5-Test-LWP-UserAgent
     SUBDIR += p5-Test-Nginx
@@ -1728,6 +1729,7 @@
     SUBDIR += py-mwoauth
     SUBDIR += py-nevow
     SUBDIR += py-notebook
+    SUBDIR += py-openbrokerapi
     SUBDIR += py-pafy
     SUBDIR += py-paste
     SUBDIR += py-pastedeploy
@@ -1923,6 +1925,7 @@
     SUBDIR += qooxdoo
     SUBDIR += qt5-webchannel
     SUBDIR += qt5-webengine
+    SUBDIR += qt5-webglplugin
     SUBDIR += qt5-webkit
     SUBDIR += qt5-websockets
     SUBDIR += qt5-websockets-qml
@@ -2387,6 +2390,7 @@
     SUBDIR += trytond28_google_maps
     SUBDIR += tt-rss
     SUBDIR += ttf2eot
+    SUBDIR += tusd
     SUBDIR += twiki
     SUBDIR += twiki-BehaviourContrib
     SUBDIR += twiki-BlogAddOn

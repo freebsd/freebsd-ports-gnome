@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	libwpe
-PORTVERSION=	1.3.91
+PORTVERSION=	1.4.0
 CATEGORIES=	www
 MASTER_SITES=	https://wpewebkit.org/releases/
 
@@ -12,7 +12,8 @@ LICENSE=	BSD2CLAUSE
 
 LIB_DEPENDS=	libxkbcommon.so:x11/libxkbcommon
 
-USES=		cmake pkgconfig localbase:ldflags gl tar:xz
+USES=		cmake compiler:c11 gl localbase:ldflags pkgconfig \
+		tar:xz
 
 USE_GL=		egl
 USE_LDCONFIG=	yes

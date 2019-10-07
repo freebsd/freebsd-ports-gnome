@@ -12,8 +12,6 @@ COMMENT=	C++ wrapper for Pango
 
 LICENSE=	LGPL21
 
-BUILD_DEPENDS=	gm4:devel/m4
-
 USES+=		compiler:c++11-lang gmake gnome libtool localbase \
 		pkgconfig tar:xz
 USE_CXXSTD=	c++11
@@ -24,6 +22,7 @@ USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--disable-documentation \
 		--enable-static=yes
 INSTALL_TARGET=	install-strip
+BINARY_WRAPPERS=	gm4
 
 PORTSCOUT=	limitw:1,even
 PLIST_SUB=	VERSION="2.4" API_VERSION="1.4"

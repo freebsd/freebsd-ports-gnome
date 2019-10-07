@@ -15,6 +15,7 @@
     SUBDIR += adodb
     SUBDIR += adodb5
     SUBDIR += akonadi
+    SUBDIR += apache-commons-dbutils
     SUBDIR += apq
     SUBDIR += apq-mysql
     SUBDIR += apq-odbc
@@ -113,7 +114,6 @@
     SUBDIR += ipa_sdb
     SUBDIR += iplike
     SUBDIR += isql-viewer
-    SUBDIR += jakarta-commons-dbutils
     SUBDIR += jasperreports
     SUBDIR += jdb
     SUBDIR += jdbc-oracle11g
@@ -187,7 +187,6 @@
     SUBDIR += mariadb104-server
     SUBDIR += mariadb55-client
     SUBDIR += mariadb55-server
-    SUBDIR += mdbconv
     SUBDIR += mdbtools
     SUBDIR += mdcached
     SUBDIR += memcached
@@ -523,7 +522,6 @@
     SUBDIR += p5-Xapian
     SUBDIR += p5-mysql-genocide
     SUBDIR += p5-tokyotyrant
-    SUBDIR += palm-db-tools
     SUBDIR += pear-DB
     SUBDIR += pear-DBA
     SUBDIR += pear-DBA_Relational
@@ -845,6 +843,7 @@
     SUBDIR += py-queries
     SUBDIR += py-rb
     SUBDIR += py-redis
+    SUBDIR += py-redis2
     SUBDIR += py-riak
     SUBDIR += py-rrdtool_lgpl
     SUBDIR += py-sispy
