@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	botan
-DISTVERSION=	2.11.0
+DISTVERSION=	2.12.0
 CATEGORIES=	security
 MASTER_SITES=	http://botan.randombit.net/releases/
 PKGNAMESUFFIX=	2
@@ -53,6 +53,8 @@ SSL_CONFIGURE_WITH=	openssl
 
 .if ${ARCH} == aarch64
 CONFIGURE_ARGS+=	--cc-abi="-march=armv8-a+crypto"
+.elif ${ARCH} == powerpc64
+CONFIGURE_ARGS+=	--cpu="ppc64"
 .endif
 
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1200000

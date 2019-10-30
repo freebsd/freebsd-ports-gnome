@@ -19,6 +19,7 @@ BUILD_DEPENDS=	gsettings-desktop-schemas>=3.2.0:devel/gsettings-desktop-schemas 
 RUN_DEPENDS=	gsettings-desktop-schemas>=3.2.0:devel/gsettings-desktop-schemas \
 		at-spi2-core>=2.1.5:accessibility/at-spi2-core
 
+NO_ARCH=	yes
 USES=		gettext gmake gnome localbase:ldflags pkgconfig \
 		python:3.4+ shebangfix tar:xz
 USE_GNOME=	gtk30 pygobject3

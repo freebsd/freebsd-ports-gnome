@@ -44,6 +44,7 @@
     SUBDIR += ansible26
     SUBDIR += ansible27
     SUBDIR += anvil
+    SUBDIR += apache-mesos
     SUBDIR += apachetop
     SUBDIR += apcpwr
     SUBDIR += apcupsd
@@ -195,7 +196,6 @@
     SUBDIR += copytape
     SUBDIR += coreos-ct
     SUBDIR += coreutils
-    SUBDIR += cotty
     SUBDIR += cpdup
     SUBDIR += cpu
     SUBDIR += cpu-x
@@ -267,7 +267,6 @@
     SUBDIR += dsbmd
     SUBDIR += dsbsu
     SUBDIR += dsbwrtsysctl
-    SUBDIR += dt
     SUBDIR += dtc
     SUBDIR += dtpstree
     SUBDIR += du2ps
@@ -419,7 +418,6 @@
     SUBDIR += gigolo
     SUBDIR += gkfreq
     SUBDIR += gkleds2
-    SUBDIR += gkrellfire
     SUBDIR += gkrellflynn
     SUBDIR += gkrellm-trayicons
     SUBDIR += gkrellm2
@@ -582,6 +580,7 @@
     SUBDIR += libretto-config
     SUBDIR += libsunacl
     SUBDIR += libsysstat
+    SUBDIR += libudisks
     SUBDIR += liburcu
     SUBDIR += life-preserver
     SUBDIR += lineak-defaultplugin
@@ -601,7 +600,6 @@
     SUBDIR += lmon
     SUBDIR += lnav
     SUBDIR += lockfile-progs
-    SUBDIR += log_analysis
     SUBDIR += logrotate
     SUBDIR += logstalgia
     SUBDIR += logstash-forwarder
@@ -611,6 +609,7 @@
     SUBDIR += logwatch
     SUBDIR += lookat
     SUBDIR += lr
+    SUBDIR += lsblk
     SUBDIR += lscpu
     SUBDIR += lsof
     SUBDIR += lsop
@@ -680,7 +679,6 @@
     SUBDIR += mkfile
     SUBDIR += mkfwimage
     SUBDIR += mkntpwd
-    SUBDIR += mksunbootcd
     SUBDIR += mmc-utils
     SUBDIR += mmve
     SUBDIR += mnrpes
@@ -759,7 +757,9 @@
     SUBDIR += ohmu
     SUBDIR += omnibackup
     SUBDIR += open
+    SUBDIR += opencorsairlink
     SUBDIR += openipmi
+    SUBDIR += opensbi
     SUBDIR += openupsd
     SUBDIR += openzfs
     SUBDIR += openzfs-kmod
@@ -1062,7 +1062,6 @@
     SUBDIR += restic
     SUBDIR += retail
     SUBDIR += rex
-    SUBDIR += rfstool
     SUBDIR += rhc
     SUBDIR += riak-cs
     SUBDIR += rinse
@@ -1176,6 +1175,8 @@
     SUBDIR += samefile
     SUBDIR += samesame
     SUBDIR += sample
+    SUBDIR += sanoid
+    SUBDIR += sanoid-devel
     SUBDIR += sas2ircu
     SUBDIR += sas3ircu
     SUBDIR += savelogs
@@ -1211,10 +1212,8 @@
     SUBDIR += signon-plugin-oauth2
     SUBDIR += signon-qt5
     SUBDIR += signon-ui
-    SUBDIR += skill
     SUBDIR += slack
     SUBDIR += sleuthkit
-    SUBDIR += sloth
     SUBDIR += slst
     SUBDIR += slurm-wlm
     SUBDIR += smart
@@ -1224,7 +1223,6 @@
     SUBDIR += snap
     SUBDIR += snmp_exporter
     SUBDIR += snooze
-    SUBDIR += snowlog
     SUBDIR += sockaddr
     SUBDIR += socket
     SUBDIR += socklog
@@ -1272,6 +1270,7 @@
     SUBDIR += syslog-ng321
     SUBDIR += syslog-ng322
     SUBDIR += syslog-ng323
+    SUBDIR += syslog-ng324
     SUBDIR += syslogger
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
@@ -1447,7 +1446,6 @@
     SUBDIR += wmcpuload
     SUBDIR += wmcube
     SUBDIR += wmdiskmon
-    SUBDIR += wmfire
     SUBDIR += wmflame
     SUBDIR += wmmemfree
     SUBDIR += wmmemload
@@ -1458,7 +1456,6 @@
     SUBDIR += wuzzah
     SUBDIR += x86info
     SUBDIR += xbatt
-    SUBDIR += xbattbar
     SUBDIR += xcdroast
     SUBDIR += xcpustate
     SUBDIR += xdu

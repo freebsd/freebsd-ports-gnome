@@ -2,7 +2,7 @@
 
 PORTNAME=	erkale
 DISTVERSION=	g20190812
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	science
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -46,7 +46,7 @@ CMAKE_OFF=	USE_OPENMP
 .else # parallel
 CMAKE_ON+=	USE_OPENMP
 SUFFIX=		_omp
-LIB_DEPENDS+=	libomp.so:devel/openmp
+LIB_DEPENDS+=	libomp.so:devel/llvm${LLVM_DEFAULT}
 .endif
 
 OPTIONS_SINGLE=		LINALG

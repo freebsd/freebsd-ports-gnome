@@ -71,6 +71,7 @@ USE_PERL5=	build
 USE_XORG=	x11 xcb xcomposite xdamage xext xfixes xrender xt
 HAS_CONFIGURE=	yes
 CONFIGURE_OUTSOURCE=	yes
+CONFIGURE_WRKSRC=	${WRKSRC}/objdir # bug1579761
 LDFLAGS+=		-Wl,--as-needed
 
 BUNDLE_LIBS=	yes
@@ -90,9 +91,6 @@ MOZ_MK_OPTIONS+=MOZ_OBJDIR="${BUILD_WRKSRC}"
 
 # Require newer Clang than what's in base system unless user opted out
 . if ${CC} == cc && ${CXX} == c++ && exists(/usr/lib/libc++.so)
-.if ${LLVM_DEFAULT:S,-devel,990,} >= 90 && ${ARCH} == i386
-LLVM_DEFAULT=	80
-.endif
 BUILD_DEPENDS+=	${LOCALBASE}/bin/clang${LLVM_DEFAULT}:devel/llvm${LLVM_DEFAULT}
 CPP=			${LOCALBASE}/bin/clang-cpp${LLVM_DEFAULT}
 CC=				${LOCALBASE}/bin/clang${LLVM_DEFAULT}

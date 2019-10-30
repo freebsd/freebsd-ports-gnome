@@ -10,6 +10,9 @@ DIST_SUBDIR=	gnome
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GObject library to create cabinet files
 
+LICENSE=	LGPL21
+LICENSE_FILE=	${WRKSRC}/COPYING
+
 BUILD_DEPENDS=	vala:lang/vala \
 		gtkdoc-scan:textproc/gtk-doc
 
