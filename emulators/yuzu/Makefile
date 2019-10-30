@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	yuzu
-PORTVERSION=	s20191004
-PORTREVISION?=	1
+PORTVERSION=	s20191028
+PORTREVISION?=	0
 CATEGORIES=	emulators
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -28,10 +28,10 @@ BUILD_DEPENDS=	boost-libs>=1.66:devel/boost-libs \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	yuzu-emu
-GH_TAGNAME=	0a662d009
+GH_TAGNAME=	9f93ad08a
 GH_TUPLE=	yuzu-emu:unicorn:1.0.1-153-g73f45735:unicorn/externals/unicorn \
+		DarkLordZach:libzip:rel-1-5-2-26-gda12b71:libzip/externals/libzip \
 		DarkLordZach:mbedtls:a280e60:mbedtls/externals/mbedtls \
-		DarkLordZach:libzip:rel-1-5-2-27-gc230767:libzip/externals/libzip \
 		KhronosGroup:SPIRV-Headers:2c51218:SPIRV_Headers/externals/sirit/externals/SPIRV-Headers \
 		KhronosGroup:Vulkan-Headers:v1.1.117:Vulkan_Headers/externals/Vulkan-Headers \
 		MerryMage:dynarmic:r1-1436-g087a7441:dynarmic/externals/dynarmic \
@@ -45,9 +45,9 @@ GH_TUPLE=	yuzu-emu:unicorn:1.0.1-153-g73f45735:unicorn/externals/unicorn \
 		kinetiknz:cubeb:cubeb-0.2-1151-g9eb4c89:cubeb/externals/cubeb \
 		lz4:lz4:v1.8.0-8-g4db65c1:lz4/externals/lz4 \
 		madler:zlib:v1.2.11:zlib/externals/zlib \
-		ogniK5377:opus:v1.3-rc-20-g562f8ba5:opus/externals/opus \
 		svn2github:inih:603729d:inih/externals/inih/inih \
-		weidai11:cryptopp:CRYPTOPP_7_0_0-23-gf320e7d9:cryptopp/externals/cryptopp/cryptopp
+		weidai11:cryptopp:CRYPTOPP_7_0_0-23-gf320e7d9:cryptopp/externals/cryptopp/cryptopp \
+		xiph:opus:v1.3.1-4-gad8fe90d:opus/externals/opus/opus
 
 USES=		cmake compiler:c++17-lang iconv localbase:ldflags python:2.7,build
 USE_SDL=	sdl2
@@ -93,12 +93,5 @@ post-patch:
 	@${REINPLACE_CMD} -e 's/@GIT_BRANCH@/master/' \
 		-e 's/@GIT_DESC@/${GH_TAGNAME}/' \
 		${WRKSRC}/src/common/scm_rev.cpp.in
-
-# XXX Hangs on beefy2 and beefy6 but cannot be reproduced locally
-.if !defined(MASTERNAME) || (${MASTERNAME} != 120amd64-default && ${MASTERNAME} != 120amd64-quarterly)
-.ifndef QEMU_EMULATING
-pre-install:	do-test
-.endif
-.endif
 
 .include <bsd.port.mk>

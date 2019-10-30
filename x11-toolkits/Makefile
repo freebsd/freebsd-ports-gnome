@@ -19,7 +19,6 @@
     SUBDIR += fpc-gtk2
     SUBDIR += fpc-xforms
     SUBDIR += fxscintilla
-    SUBDIR += gai
     SUBDIR += gdl
     SUBDIR += girara
     SUBDIR += gnocl
@@ -240,7 +239,6 @@
     SUBDIR += slingshot
     SUBDIR += soqt-devel
     SUBDIR += swt
-    SUBDIR += swt-devel
     SUBDIR += tepl
     SUBDIR += termit
     SUBDIR += tile
