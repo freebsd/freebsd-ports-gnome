@@ -42,7 +42,6 @@
     SUBDIR += bareos-webui
     SUBDIR += bareos16-webui
     SUBDIR += bareos17-webui
-    SUBDIR += bigbluebutton
     SUBDIR += bkmrkconv
     SUBDIR += blastbeat
     SUBDIR += bluefish
@@ -456,9 +455,10 @@
     SUBDIR += nginx-naxsi
     SUBDIR += nginx-prometheus-exporter
     SUBDIR += nibbleblog
+    SUBDIR += nift
     SUBDIR += node
     SUBDIR += node10
-    SUBDIR += node6
+    SUBDIR += node12
     SUBDIR += node8
     SUBDIR += nostromo
     SUBDIR += novnc
@@ -467,6 +467,7 @@
     SUBDIR += npc
     SUBDIR += npm
     SUBDIR += npm-node10
+    SUBDIR += npm-node12
     SUBDIR += npm-node8
     SUBDIR += nspluginwrapper
     SUBDIR += obhttpd
@@ -1215,7 +1216,6 @@
     SUBDIR += p5-WWW-Mechanize-FormFiller
     SUBDIR += p5-WWW-Mechanize-GZip
     SUBDIR += p5-WWW-Mechanize-Meta
-    SUBDIR += p5-WWW-Mechanize-PhantomJS
     SUBDIR += p5-WWW-Mechanize-Pluggable
     SUBDIR += p5-WWW-Mechanize-Plugin-phpBB
     SUBDIR += p5-WWW-Mechanize-Shell
@@ -1358,7 +1358,6 @@
     SUBDIR += pear-UDDI
     SUBDIR += pear-XML_GRDDL
     SUBDIR += pear-twig
-    SUBDIR += pebble
     SUBDIR += pecl-http
     SUBDIR += pecl-solr
     SUBDIR += pecl-yaf
@@ -1923,6 +1922,7 @@
     SUBDIR += resin3
     SUBDIR += restbed
     SUBDIR += retawq
+    SUBDIR += riot-web
     SUBDIR += roundup
     SUBDIR += rsskit
     SUBDIR += rssowl
@@ -2290,7 +2290,6 @@
     SUBDIR += tntnet
     SUBDIR += tokyopromenade
     SUBDIR += tomcat-native
-    SUBDIR += tomcat6
     SUBDIR += tomcat7
     SUBDIR += tomcat85
     SUBDIR += tomcat9

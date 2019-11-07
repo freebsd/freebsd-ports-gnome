@@ -174,6 +174,7 @@
     SUBDIR += asmx
     SUBDIR += astah-community
     SUBDIR += astyle
+    SUBDIR += asyncplusplus
     SUBDIR += atf
     SUBDIR += atlas
     SUBDIR += atlas-devel
@@ -214,6 +215,7 @@
     SUBDIR += bats-core
     SUBDIR += bazel
     SUBDIR += bazel-buildtools
+    SUBDIR += bazel029
     SUBDIR += bbfreeze
     SUBDIR += bbfreeze-loader
     SUBDIR += bcc
@@ -3978,6 +3980,7 @@
     SUBDIR += protobuf-c
     SUBDIR += protobuf-java
     SUBDIR += protobuf25
+    SUBDIR += prototool
     SUBDIR += protozero
     SUBDIR += pructl
     SUBDIR += psimd
@@ -4498,6 +4501,8 @@
     SUBDIR += py-googleapis-common-protos
     SUBDIR += py-grab
     SUBDIR += py-graphene
+    SUBDIR += py-graphene-django
+    SUBDIR += py-graphene-sqlalchemy
     SUBDIR += py-graphql-core
     SUBDIR += py-graphql-relay
     SUBDIR += py-greenlet
@@ -4973,6 +4978,7 @@
     SUBDIR += py-rebulk
     SUBDIR += py-rednose
     SUBDIR += py-rekall-efilter
+    SUBDIR += py-remote-pdb
     SUBDIR += py-repoze.lru
     SUBDIR += py-repoze.sphinx.autointerface
     SUBDIR += py-repoze.tm2
@@ -5009,6 +5015,7 @@
     SUBDIR += py-rubymarshal
     SUBDIR += py-rwt
     SUBDIR += py-rx
+    SUBDIR += py-rx1
     SUBDIR += py-sanetime
     SUBDIR += py-saneyaml
     SUBDIR += py-sarge
@@ -5701,7 +5708,6 @@
     SUBDIR += rubygem-chef-provisioning
     SUBDIR += rubygem-cheffish
     SUBDIR += rubygem-childprocess
-    SUBDIR += rubygem-childprocess2
     SUBDIR += rubygem-chronic
     SUBDIR += rubygem-chronic_duration
     SUBDIR += rubygem-clamp
@@ -5819,6 +5825,7 @@
     SUBDIR += rubygem-flipper
     SUBDIR += rubygem-flipper-active_support_cache_store
     SUBDIR += rubygem-flipper-active_support_cache_store013
+    SUBDIR += rubygem-flipper-ui
     SUBDIR += rubygem-flipper013
     SUBDIR += rubygem-fluent-logger
     SUBDIR += rubygem-fog

@@ -3,13 +3,15 @@
 
 PORTNAME=	gcb
 PORTVERSION=	0.2.8
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	x11
 MASTER_SITES=	http://freebsd.flatrate.ru/distfiles/ \
 		http://ccbsd9.csie.nctu.edu.tw/~cp76/gcb/
 
 MAINTAINER=	chip-set@mail.ru
 COMMENT=	GTK+ tool for managing x11 cut-buffers
+
+BROKEN=		unfetchable
 
 HAS_CONFIGURE=	yes
 USES=		pkgconfig tar:bzip2

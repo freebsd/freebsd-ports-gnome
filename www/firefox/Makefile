@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	firefox
-DISTVERSION=	70.0
-PORTREVISION=	3
+DISTVERSION=	70.0.1
+PORTREVISION=	2
 PORTEPOCH=	1
 CATEGORIES=	www
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \
-		MOZILLA/${PORTNAME}/candidates/${DISTVERSION}-candidates/build2/source
+		MOZILLA/${PORTNAME}/candidates/${DISTVERSION}-candidates/build1/source
 DISTFILES=	${DISTNAME}.source${EXTRACT_SUFX}
 
 MAINTAINER=	gecko@FreeBSD.org
@@ -30,7 +30,7 @@ BUILD_DEPENDS=	nspr>=4.21:devel/nspr \
 
 USE_GECKO=	gecko
 CONFLICTS_INSTALL=	firefox-esr
-USE_MOZILLA=	-hunspell -vpx
+USE_MOZILLA=	-vpx
 
 USES=		tar:xz
 

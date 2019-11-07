@@ -37,6 +37,7 @@
     SUBDIR += android-file-transfer
     SUBDIR += android-file-transfer-qt5
     SUBDIR += ansible
+    SUBDIR += ansible-sysrc
     SUBDIR += ansible1
     SUBDIR += ansible23
     SUBDIR += ansible24
@@ -46,6 +47,7 @@
     SUBDIR += anvil
     SUBDIR += apache-mesos
     SUBDIR += apachetop
+    SUBDIR += apcctrl
     SUBDIR += apcpwr
     SUBDIR += apcupsd
     SUBDIR += aptly
@@ -378,6 +380,7 @@
     SUBDIR += fusefs-hfsfuse
     SUBDIR += fusefs-httpfs
     SUBDIR += fusefs-ifuse
+    SUBDIR += fusefs-jmtpfs
     SUBDIR += fusefs-libs
     SUBDIR += fusefs-libs3
     SUBDIR += fusefs-lkl
@@ -462,6 +465,7 @@
     SUBDIR += hare
     SUBDIR += hared
     SUBDIR += hatop
+    SUBDIR += hcloud
     SUBDIR += hdrecover
     SUBDIR += healthd
     SUBDIR += heartbeat
@@ -862,7 +866,6 @@
     SUBDIR += pcbsd-libsh
     SUBDIR += pcbsd-syscache
     SUBDIR += pcbsd-utils
-    SUBDIR += pcbsd-utils-qt5
     SUBDIR += pciutils
     SUBDIR += pcpustat
     SUBDIR += pdixtract
@@ -1069,8 +1072,8 @@
     SUBDIR += roct
     SUBDIR += roottail
     SUBDIR += rovclock
-    SUBDIR += rshim-user-space
     SUBDIR += rpi-firmware
+    SUBDIR += rshim-user-space
     SUBDIR += rsnapshot
     SUBDIR += rsyncbackup
     SUBDIR += rsyncrypto
@@ -1253,8 +1256,6 @@
     SUBDIR += symon
     SUBDIR += synergy
     SUBDIR += synergy-1
-    SUBDIR += sysadm
-    SUBDIR += sysadm-client
     SUBDIR += sysctlinfo-kmod
     SUBDIR += sysgather
     SUBDIR += sysinfo

@@ -10,6 +10,8 @@ MASTER_SITES=	http://nsd.dyndns.org/pwsafe/releases/
 MAINTAINER=	gahr@FreeBSD.org
 COMMENT=	Cmdline program that manages encrypted password databases
 
+BROKEN=		unfetchable
+
 LICENSE=	GPLv2
 
 OPTIONS_DEFINE=	SETUID X11
@@ -25,6 +27,7 @@ PLIST_FILES=	bin/pwsafe man/man1/pwsafe.1.gz
 
 .if ${PORT_OPTIONS:MX11}
 CONFIGURE_ARGS=	--with-x
+USES+=		xorg
 USE_XORG=	ice sm x11 xmu
 .else
 CONFIGURE_ARGS=	ac_cv_have_x="have_x=no" \

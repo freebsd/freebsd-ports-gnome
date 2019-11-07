@@ -7,8 +7,10 @@ PORTREVISION=	1
 CATEGORIES=	x11
 MASTER_SITES=	http://dropmix.xs4all.nl/rick/Xsnow/
 
-MAINTAINER=	johans@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Create a snowy and Santa-y desktop
+
+BROKEN=		unfetchable
 
 USES=		imake
 USE_XORG=	xpm

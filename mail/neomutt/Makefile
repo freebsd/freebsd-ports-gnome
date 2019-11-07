@@ -1,9 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	neomutt
-PORTVERSION=	20180716
-PORTREVISION=	4
-DISTVERSIONPREFIX=	${PORTNAME}-
+PORTVERSION=	20191102
 CATEGORIES=	mail
 
 MAINTAINER=	bapt@FreeBSD.org
@@ -64,7 +62,6 @@ TOKYOCABINET_LIB_DEPENDS=	libtokyocabinet.so:databases/tokyocabinet
 
 NLS_CONFIGURE_ENABLE=	nls
 NLS_USES=		gettext
-NLS_USES_OFF=		gettext-runtime:build gettext-tools:build
 
 IDN_LIB_DEPENDS=	libidn.so:dns/libidn
 IDN_CONFIGURE_ENABLE=	idn

@@ -8,8 +8,10 @@ MASTER_SITES=	ftp://ftp.stack.nl/pub/users/johans/signing-party/ \
 		DEBIAN
 DISTNAME=	${PORTNAME}_${PORTVERSION}.orig
 
-MAINTAINER=	johans@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Various OpenPGP related tools
+
+BROKEN=		unfetchable
 
 RUN_DEPENDS=	gpg:security/gnupg \
 		p5-Net-IDN-Encode>=0:textproc/p5-Net-IDN-Encode \
