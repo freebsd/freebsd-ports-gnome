@@ -13,8 +13,10 @@
     SUBDIR += atlc
     SUBDIR += basicdsp
     SUBDIR += brickutils
+    SUBDIR += brlcad
     SUBDIR += calculix
     SUBDIR += calculix-ccx
+    SUBDIR += caneda
     SUBDIR += cascade
     SUBDIR += chipvault
     SUBDIR += cura-engine
@@ -22,6 +24,7 @@
     SUBDIR += dinotrace
     SUBDIR += electric
     SUBDIR += electric-ng
+    SUBDIR += elmerfem
     SUBDIR += fasm
     SUBDIR += feappv
     SUBDIR += fidocadj

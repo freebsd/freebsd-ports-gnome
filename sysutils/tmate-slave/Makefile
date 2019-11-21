@@ -9,7 +9,7 @@ CATEGORIES=	sysutils
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	Instant terminal sharing server
 
-BROKEN=		unfetchable
+BROKEN=		fails to patch
 
 LIB_DEPENDS=	libevent.so:devel/libevent \
 		libmsgpackc.so:devel/msgpack \

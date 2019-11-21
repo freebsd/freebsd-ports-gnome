@@ -36,6 +36,7 @@
     SUBDIR += buffer
     SUBDIR += cave
     SUBDIR += cdcollect
+    SUBDIR += cheat
     SUBDIR += chef
     SUBDIR += chmlib
     SUBDIR += cinnamon-translations
@@ -265,6 +266,7 @@
     SUBDIR += opencyc
     SUBDIR += openhab2
     SUBDIR += openhab2-addons
+    SUBDIR += openhantek
     SUBDIR += openhmd
     SUBDIR += openmvg
     SUBDIR += openr2

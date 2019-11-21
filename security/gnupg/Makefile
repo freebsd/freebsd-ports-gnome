@@ -2,7 +2,7 @@
 
 PORTNAME=	gnupg
 PORTVERSION=	2.2.17
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	security
 MASTER_SITES=	GNUPG
 
@@ -20,7 +20,8 @@ LIB_DEPENDS=	libassuan.so:security/libassuan \
 		libksba.so:security/libksba \
 		libnpth.so:devel/npth
 BUILD_DEPENDS=	libassuan>=2.5.1:security/libassuan \
-		libgpg-error>=1.16:security/libgpg-error
+		libgpg-error>=1.16:security/libgpg-error \
+		makeinfo:print/texinfo
 RUN_DEPENDS=	pinentry:security/pinentry
 
 USES=		compiler:c11 cpe gmake iconv pkgconfig readline sqlite tar:bzip2
@@ -60,6 +61,11 @@ NLS_USES=		gettext
 SCDAEMON_CONFIGURE_ENABLE=	scdaemon
 
 WKS_SERVER_CONFIGURE_ENABLE=	wks-tools
+
+# Touch the texinfo files to force makeinfo to run.  This fixes Linuxisms in
+# the paths in the man pages.
+pre-build:
+	@${TOUCH} ${WRKSRC}/doc/*.texi
 
 post-install:
 	@${MV} ${STAGEDIR}${DATADIR}/help*.txt ${STAGEDIR}${DOCSDIR}

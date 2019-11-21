@@ -3,7 +3,7 @@
 
 PORTNAME=	ffmpeg
 PORTVERSION=	4.2.1
-PORTREVISION=	12
+PORTREVISION=	16
 PORTEPOCH=	1
 CATEGORIES=	multimedia audio net
 MASTER_SITES=	https://ffmpeg.org/releases/
@@ -40,7 +40,7 @@ OPTIONS_DEFINE=	ALSA AMR_NB AMR_WB AOM ARIBB24 ASS BEIGNET BS2B CACA CDIO CELT C
 		FREETYPE FREI0R FRIBIDI GME GSM ICONV ILBC JACK KLVANC KVAZAAR LADSPA \
 		LAME LENSFUN LIBBLURAY LIBRSVG2 LIBXML2 LV2 MODPLUG MYSOFA OPENAL OPENCL OPENCV OPENGL \
 		OPENH264 OPENJPEG OPENMPT OPTIMIZED_CFLAGS OPUS POCKETSPHINX PULSEAUDIO \
-		RUBBERBAND RTCPU SDL SMB SNAPPY SNDIO SOXR SPEEX SRT SSH TENSORFLOW \
+		RAV1E RUBBERBAND RTCPU SDL SMB SNAPPY SNDIO SOXR SPEEX SRT SSH TENSORFLOW \
 		TESSERACT THEORA TWOLAME V4L VAAPI VAPOURSYNTH VDPAU VIDSTAB VMAF VORBIS \
 		VO_AMRWBENC VPX WAVPACK WEBP X264 X265 XAVS2 XCB XVID \
 		XVIDEO ZIMG ZMQ ZVBI
@@ -117,6 +117,7 @@ NONFREE_DESC=	Allow use of nonfree code
 OPENMPT_DESC=	Decoding tracked files via libopenmpt
 OPENH264_DESC=	H.264 video codec support via OpenH264
 POCKETSPHINX_DESC=	Automatic Speech Recognition via PocketSphinx
+RAV1E_DESC=	AV1 encoding via librav1e
 RUBBERBAND_DESC=Time-stretching and pitch-shifting with librubberband
 RTCPU_DESC=	Detect CPU capabilities at runtime
 RTMP_DESC=	RTMP(T)E protocol support
@@ -391,6 +392,10 @@ POCKETSPHINX_BROKEN=	pocketsphinx < 5prealpha is not supported
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 PULSEAUDIO_CONFIGURE_ENABLE=	libpulse
 
+# rav1e
+RAV1E_LIB_DEPENDS=	librav1e.so:multimedia/librav1e
+RAV1E_CONFIGURE_ENABLE=	librav1e
+
 # rubberband
 RUBBERBAND_LIB_DEPENDS=	librubberband.so:audio/rubberband
 RUBBERBAND_CONFIGURE_ENABLE=	librubberband
@@ -403,6 +408,7 @@ LIBRTMP_LIB_DEPENDS=	librtmp.so:multimedia/librtmp
 LIBRTMP_CONFIGURE_ENABLE=	librtmp
 
 # sdl
+SDL_USES=		sdl
 SDL_USE=		SDL=sdl2
 SDL_CONFIGURE_ENABLE=	sdl2
 
@@ -442,7 +448,7 @@ SRT_CONFIGURE_ENABLE=	libsrt
 # svt-av1
 SVTAV1_LIB_DEPENDS=	libSvtAv1Enc.so:multimedia/svt-av1
 SVTAV1_CONFIGURE_ON=	--enable-libsvtav1
-SVTAV1_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-AV1/raw/v0.7.0/ffmpeg_plugin/:svtav1
+SVTAV1_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-AV1/raw/ebd9c80d/ffmpeg_plugin/:svtav1
 SVTAV1_PATCHFILES=	0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch:-p1:svtav1
 .if make(makesum)
 .MAKEFLAGS:		WITH+=SVTAV1

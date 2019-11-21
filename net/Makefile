@@ -86,6 +86,7 @@
     SUBDIR += clash
     SUBDIR += cloud-init
     SUBDIR += cloud-init-azure
+    SUBDIR += cloudflared
     SUBDIR += clusterit
     SUBDIR += cnd
     SUBDIR += concourse-fly
@@ -974,6 +975,7 @@
     SUBDIR += php74-sockets
     SUBDIR += php74-xmlrpc
     SUBDIR += phpldapadmin
+    SUBDIR += pichi
     SUBDIR += pim6-tools
     SUBDIR += pim6dd
     SUBDIR += pim6sd

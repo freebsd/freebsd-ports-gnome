@@ -286,7 +286,6 @@
     SUBDIR += pocl
     SUBDIR += polyml
     SUBDIR += ponyc
-    SUBDIR += ponyc-static
     SUBDIR += ptoc
     SUBDIR += purescript
     SUBDIR += py-hy
@@ -356,6 +355,7 @@
     SUBDIR += spidermonkey185
     SUBDIR += spidermonkey24
     SUBDIR += spidermonkey52
+    SUBDIR += spidermonkey60
     SUBDIR += spl
     SUBDIR += squeak
     SUBDIR += squirrel
