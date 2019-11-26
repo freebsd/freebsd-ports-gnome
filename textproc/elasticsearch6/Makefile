@@ -2,14 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	elasticsearch
-PORTVERSION=	6.8.3
+PORTVERSION=	6.8.4
 PORTREVISION=	0
 CATEGORIES=	textproc java devel
 MASTER_SITES=	https://artifacts.elastic.co/downloads/${PORTNAME}/ \
 		http://mirrors.rit.edu/zi/
 PKGNAMESUFFIX=	6
 
-MAINTAINER=	feld@FreeBSD.org
+MAINTAINER=	elastic@FreeBSD.org
 COMMENT=	Full-text search engine for Java
 
 LICENSE=	APACHE20

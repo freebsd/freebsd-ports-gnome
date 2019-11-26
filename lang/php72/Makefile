@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	php72
-DISTVERSION=	7.2.24
+DISTVERSION=	7.2.25
 PORTREVISION?=	0
 CATEGORIES?=	lang devel www
 MASTER_SITES=	PHP/distributions
@@ -12,7 +12,7 @@ COMMENT=	PHP Scripting Language
 
 LICENSE=	PHP301
 
-USES+=		tar:xz cpe
+USES+=		cpe gnome tar:xz
 CPE_PRODUCT=	php
 NO_OPTIONS_SORT=yes
 
@@ -29,7 +29,7 @@ CONFIGURE_ARGS+=--with-layout=GNU \
 		--with-pcre-regex=${LOCALBASE} \
 		--with-password-argon2=${LOCALBASE} \
 		--program-prefix=""
-USES+=		autoreconf:build gnome
+USES+=		autoreconf:build
 USE_GNOME=	libxml2
 
 # PR230207 Allow relocations against read-only segments (override lld default)
