@@ -31,7 +31,7 @@ RUN_DEPENDS=	nautilus:x11-fm/nautilus
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c11 gettext gl gnome localbase meson \
-		pkgconfig tar:xz
+		pkgconfig tar:xz xorg
 USE_CSTD=	c11
 INSTALLS_ICONS=	yes
 USE_GNOME=	cairo gtksourceview3 intlhack introspection

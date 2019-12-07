@@ -12,7 +12,7 @@ COMMENT=	C++ wrapper for Pango
 
 LICENSE=	LGPL21
 
-USES+=		compiler:c++11-lang gmake gnome libtool localbase \
+USES=		compiler:c++11-lang gmake gnome libtool localbase \
 		pkgconfig tar:xz
 USE_CXXSTD=	c++11
 USE_GNOME=	cairomm glibmm pango

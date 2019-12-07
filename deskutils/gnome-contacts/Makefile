@@ -36,7 +36,7 @@ LIB_DEPENDS=	libchamplain-0.12.so:graphics/libchamplain \
 PORTSCOUT=	limitw:1,even
 
 USES=		gettext gl gnome localbase meson perl5 pkgconfig \
-		python:3.4+,build shebangfix sqlite tar:xz
+		python:3.4+,build shebangfix sqlite tar:xz xorg
 USE_GL=		egl
 USE_GNOME=	cairo evolutiondataserver3 gdkpixbuf2 gnomedesktop3 gtk30 \
 		intlhack introspection:build

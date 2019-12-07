@@ -208,6 +208,7 @@
     SUBDIR += doom-wolfendoom
     SUBDIR += doomlegacy
     SUBDIR += doomsday
+    SUBDIR += dreamchess
     SUBDIR += drm
     SUBDIR += duckmaze
     SUBDIR += duel
@@ -405,6 +406,7 @@
     SUBDIR += ioquake3
     SUBDIR += ioquake3-server
     SUBDIR += iortcw
+    SUBDIR += iqpuzzle
     SUBDIR += irrlamb
     SUBDIR += ishido
     SUBDIR += ivan
@@ -547,6 +549,7 @@
     SUBDIR += mahjong
     SUBDIR += maitretarot
     SUBDIR += manaplus
+    SUBDIR += mancala
     SUBDIR += mangband
     SUBDIR += mari0
     SUBDIR += marsnomercy
@@ -789,6 +792,7 @@
     SUBDIR += qwdtools
     SUBDIR += r1q2
     SUBDIR += railroad-rampage
+    SUBDIR += rawgl
     SUBDIR += redeclipse
     SUBDIR += redeclipse-data
     SUBDIR += redorblack
@@ -972,6 +976,7 @@
     SUBDIR += vectoroids
     SUBDIR += vegastrike
     SUBDIR += vegastrike-data
+    SUBDIR += veloren
     SUBDIR += violetland
     SUBDIR += viruskiller
     SUBDIR += vitetris
@@ -1073,7 +1078,6 @@
     SUBDIR += xpat2
     SUBDIR += xpenguins
     SUBDIR += xpilot
-    SUBDIR += xpilot-ng-client
     SUBDIR += xpilot-ng-server
     SUBDIR += xpipeman
     SUBDIR += xpired

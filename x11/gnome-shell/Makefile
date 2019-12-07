@@ -37,7 +37,7 @@ LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 RUN_DEPENDS=	gnome-control-center:sysutils/gnome-control-center
 
 USES=		compiler:c11 cpe gettext gl gnome libtool localbase meson \
-		perl5 pkgconfig python:3.4+ shebangfix tar:xz
+		perl5 pkgconfig python:3.4+ shebangfix tar:xz xorg
 #webplugin:native
 USE_GNOME=	cairo evolutiondataserver3 gdkpixbuf2 introspection \
 		libxslt:build libxml2

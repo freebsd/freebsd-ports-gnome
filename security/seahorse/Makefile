@@ -24,7 +24,7 @@ LIB_DEPENDS=	libgpgme.so:security/gpgme \
 RUN_DEPENDS=	gnupg>=2.2.0:security/gnupg
 
 USES=		gettext gnome localbase:ldflags meson \
-		pkgconfig python:3.5+,build tar:xz
+		pkgconfig python:3.5+,build tar:xz xorg
 USE_GNOME=	gtk30
 USE_XORG=	sm
 

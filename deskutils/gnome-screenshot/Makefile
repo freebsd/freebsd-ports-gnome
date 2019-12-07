@@ -17,7 +17,7 @@ BUILD_DEPENDS=	appstream-builder:devel/appstream-glib
 LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3
 
-USES=		gettext gnome meson pkgconfig python:3.4+,build tar:xz
+USES=		gettext gnome meson pkgconfig python:3.4+,build tar:xz xorg
 USE_GNOME=	cairo gdkpixbuf2 gtk30
 USE_XORG=	x11
 

@@ -17,7 +17,7 @@ LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libharfbuzz.so:print/harfbuzz
 
-USES=		compiler:c11 gettext meson pkgconfig tar:xz
+USES=		compiler:c11 gettext gnome meson pkgconfig tar:xz
 USE_GNOME=	cairo gdkpixbuf2 gtk30 gnomedesktop3
 USE_LDCONFIG=	yes
 

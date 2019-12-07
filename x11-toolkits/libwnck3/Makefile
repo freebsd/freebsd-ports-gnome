@@ -14,7 +14,7 @@ COMMENT=	Library used for writing pagers and taskslists
 LICENSE=	LGPL20
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		bison gettext gnome localbase meson pkgconfig tar:xz
+USES=		bison gettext gnome localbase meson pkgconfig tar:xz xorg
 USE_GNOME=	cairo gdkpixbuf2 gtk30 introspection:build
 USE_XORG=	x11 xrender xres
 USE_LDCONFIG=	yes

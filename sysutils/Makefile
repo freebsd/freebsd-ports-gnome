@@ -27,6 +27,7 @@
     SUBDIR += ah-tty
     SUBDIR += aimage
     SUBDIR += aird
+    SUBDIR += alfio
     SUBDIR += am-utils
     SUBDIR += amazon-ssm-agent
     SUBDIR += amdmsrtweaker
@@ -37,6 +38,7 @@
     SUBDIR += android-file-transfer
     SUBDIR += android-file-transfer-qt5
     SUBDIR += ansible
+    SUBDIR += ansible-sysrc
     SUBDIR += ansible1
     SUBDIR += ansible23
     SUBDIR += ansible24
@@ -46,6 +48,7 @@
     SUBDIR += anvil
     SUBDIR += apache-mesos
     SUBDIR += apachetop
+    SUBDIR += apcctrl
     SUBDIR += apcpwr
     SUBDIR += apcupsd
     SUBDIR += aptly
@@ -274,6 +277,7 @@
     SUBDIR += dunst
     SUBDIR += dupd
     SUBDIR += duplicity
+    SUBDIR += duplicity-devel
     SUBDIR += duply
     SUBDIR += dupmerge
     SUBDIR += dvd+rw-tools
@@ -368,7 +372,6 @@
     SUBDIR += fusefs-encfs
     SUBDIR += fusefs-exfat
     SUBDIR += fusefs-ext2
-    SUBDIR += fusefs-ext4fuse
     SUBDIR += fusefs-funionfs
     SUBDIR += fusefs-fusepak
     SUBDIR += fusefs-fusexmp_fh
@@ -376,8 +379,10 @@
     SUBDIR += fusefs-gstfs
     SUBDIR += fusefs-gunzip
     SUBDIR += fusefs-hfsfuse
+    SUBDIR += fusefs-httpdirfs
     SUBDIR += fusefs-httpfs
     SUBDIR += fusefs-ifuse
+    SUBDIR += fusefs-jmtpfs
     SUBDIR += fusefs-libs
     SUBDIR += fusefs-libs3
     SUBDIR += fusefs-lkl
@@ -463,6 +468,7 @@
     SUBDIR += hare
     SUBDIR += hared
     SUBDIR += hatop
+    SUBDIR += hcloud
     SUBDIR += hdrecover
     SUBDIR += healthd
     SUBDIR += heartbeat
@@ -540,6 +546,7 @@
     SUBDIR += jvmtop
     SUBDIR += jx
     SUBDIR += k3b
+    SUBDIR += k4dirstat
     SUBDIR += k8temp
     SUBDIR += kbackup
     SUBDIR += kcron
@@ -547,7 +554,6 @@
     SUBDIR += kdebugsettings
     SUBDIR += kdf
     SUBDIR += kdialog
-    SUBDIR += kdirstat
     SUBDIR += keyboard-daemon
     SUBDIR += kf5-baloo
     SUBDIR += kf5-kwallet
@@ -605,6 +611,7 @@
     SUBDIR += logstash-forwarder
     SUBDIR += logstash5
     SUBDIR += logstash6
+    SUBDIR += logstash7
     SUBDIR += logtool
     SUBDIR += logwatch
     SUBDIR += lookat
@@ -851,6 +858,7 @@
     SUBDIR += parafly
     SUBDIR += parallel
     SUBDIR += pass-otp
+    SUBDIR += pass-update
     SUBDIR += password-store
     SUBDIR += passwordsafe
     SUBDIR += patchelf
@@ -863,7 +871,6 @@
     SUBDIR += pcbsd-libsh
     SUBDIR += pcbsd-syscache
     SUBDIR += pcbsd-utils
-    SUBDIR += pcbsd-utils-qt5
     SUBDIR += pciutils
     SUBDIR += pcpustat
     SUBDIR += pdixtract
@@ -1070,8 +1077,8 @@
     SUBDIR += roct
     SUBDIR += roottail
     SUBDIR += rovclock
-    SUBDIR += rshim-user-space
     SUBDIR += rpi-firmware
+    SUBDIR += rshim-user-space
     SUBDIR += rsnapshot
     SUBDIR += rsyncbackup
     SUBDIR += rsyncrypto
@@ -1254,8 +1261,6 @@
     SUBDIR += symon
     SUBDIR += synergy
     SUBDIR += synergy-1
-    SUBDIR += sysadm
-    SUBDIR += sysadm-client
     SUBDIR += sysctlinfo-kmod
     SUBDIR += sysgather
     SUBDIR += sysinfo
@@ -1306,6 +1311,7 @@
     SUBDIR += topless
     SUBDIR += torque
     SUBDIR += toshctl
+    SUBDIR += toybox
     SUBDIR += tracker
     SUBDIR += tracker-miners
     SUBDIR += tree
@@ -1363,6 +1369,7 @@
     SUBDIR += u-boot-rpi-0-w
     SUBDIR += u-boot-rpi2
     SUBDIR += u-boot-rpi3
+    SUBDIR += u-boot-rpi4
     SUBDIR += u-boot-sinovoip-bpi-m3
     SUBDIR += u-boot-sopine
     SUBDIR += u-boot-tools

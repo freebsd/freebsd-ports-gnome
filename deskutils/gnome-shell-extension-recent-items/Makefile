@@ -14,6 +14,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BROKEN=		Doesn't support gnome-shell 3.32
 
+USES=		gnome
 USE_GNOME=	glib20
 USE_LDCONFIG=	yes
 

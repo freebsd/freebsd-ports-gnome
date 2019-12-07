@@ -32,7 +32,7 @@ RUN_DEPENDS=	geoclue>=0:net/geoclue
 PORTSCOUT=	limitw:1,even
 
 USES=		desktop-file-utils gettext gl gnome localbase meson \
-		pkgconfig python:3.5+,build tar:xz
+		pkgconfig python:3.5+,build tar:xz xorg
 USE_GNOME=	cairo gtk30 intltool libxml2
 USE_GL=		egl
 USE_LDCONFIG=	yes

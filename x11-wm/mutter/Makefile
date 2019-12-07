@@ -36,8 +36,7 @@ RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 TEST_DEPENDS=	bash:shells/bash
 
 USES=		compiler:c++0x gettext gl gnome localbase meson \
-		pkgconfig python:3.5+,build shebangfix tar:xz
-
+		pkgconfig python:3.5+,build shebangfix tar:xz xorg
 USE_GL=		egl
 USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3 introspection
 USE_XORG=	ice sm x11 xcb xcomposite xcursor xdamage xext xfixes \

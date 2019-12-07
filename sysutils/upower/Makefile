@@ -7,7 +7,7 @@ CATEGORIES=	sysutils
 MASTER_SITES=	https://gitlab.freedesktop.org/upower/upower/uploads/2282c7c0e53fb31816b824c9d1f547e8/
 GITLAB_HASH=	2282c7c0e53fb31816b824c9d1f547e8
 
-MAINTAINER=	gnome@FreeBSD.org
+MAINTAINER=	desktop@FreeBSD.org
 COMMENT=	D-Bus daemon for simplifying power management tasks
 
 LICENSE=	GPLv2
