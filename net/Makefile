@@ -116,6 +116,7 @@
     SUBDIR += dgd-lpmud
     SUBDIR += dhcp6
     SUBDIR += dhcpcd
+    SUBDIR += dhcpcd-devel
     SUBDIR += dhcpcd-ui
     SUBDIR += dhcpd
     SUBDIR += dhcpd-pools
@@ -211,6 +212,8 @@
     SUBDIR += grilo
     SUBDIR += grilo-plugins
     SUBDIR += grive2
+    SUBDIR += grpcox
+    SUBDIR += grpcui
     SUBDIR += grpcurl
     SUBDIR += grsync
     SUBDIR += gsk
@@ -465,6 +468,7 @@
     SUBDIR += mping
     SUBDIR += mptsd
     SUBDIR += mrouted
+    SUBDIR += mrtparse
     SUBDIR += msend
     SUBDIR += mtr
     SUBDIR += mtr-nox11
@@ -1437,6 +1441,7 @@
     SUBDIR += tcpmssd
     SUBDIR += tcpproxy
     SUBDIR += tcpreen
+    SUBDIR += tcprtt
     SUBDIR += tcpsg
     SUBDIR += tcpshow
     SUBDIR += tcpslice

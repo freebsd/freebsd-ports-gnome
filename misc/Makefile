@@ -248,6 +248,7 @@
     SUBDIR += metromap
     SUBDIR += mime-support
     SUBDIR += mirmon
+    SUBDIR += mmdnn
     SUBDIR += mmv
     SUBDIR += molequeue
     SUBDIR += morse
@@ -269,6 +270,7 @@
     SUBDIR += openhantek
     SUBDIR += openhmd
     SUBDIR += openmvg
+    SUBDIR += opennn
     SUBDIR += openr2
     SUBDIR += openvdb
     SUBDIR += orange3
@@ -353,6 +355,7 @@
     SUBDIR += pear-Services_Weather
     SUBDIR += pear-Text_Figlet
     SUBDIR += pecl-timezonedb
+    SUBDIR += perkeep
     SUBDIR += pfm
     SUBDIR += php71-calendar
     SUBDIR += php72-calendar

@@ -35,6 +35,7 @@
     SUBDIR += R-cran-SparseM
     SUBDIR += R-cran-VGAM
     SUBDIR += R-cran-Zelig
+    SUBDIR += R-cran-acepack
     SUBDIR += R-cran-assertthat
     SUBDIR += R-cran-backports
     SUBDIR += R-cran-bdsmatrix
@@ -97,6 +98,7 @@
     SUBDIR += R-cran-robustbase
     SUBDIR += R-cran-sandwich
     SUBDIR += R-cran-scatterplot3d
+    SUBDIR += R-cran-sets
     SUBDIR += R-cran-sf
     SUBDIR += R-cran-sm
     SUBDIR += R-cran-sp
@@ -113,6 +115,7 @@
     SUBDIR += SCIP
     SUBDIR += SoPlex
     SUBDIR += aamath
+    SUBDIR += abella
     SUBDIR += abs
     SUBDIR += acalc
     SUBDIR += add
@@ -154,6 +157,7 @@
     SUBDIR += bsdnt
     SUBDIR += btor2tools
     SUBDIR += cadabra2
+    SUBDIR += cadical
     SUBDIR += calc
     SUBDIR += calcoo
     SUBDIR += calctool
@@ -435,6 +439,7 @@
     SUBDIR += octave-forge-lssa
     SUBDIR += octave-forge-ltfat
     SUBDIR += octave-forge-mapping
+    SUBDIR += octave-forge-matgeom
     SUBDIR += octave-forge-miscellaneous
     SUBDIR += octave-forge-missing-functions
     SUBDIR += octave-forge-msh
@@ -684,6 +689,7 @@
     SUBDIR += py-algopy
     SUBDIR += py-altgraph
     SUBDIR += py-apgl
+    SUBDIR += py-arviz
     SUBDIR += py-autograd
     SUBDIR += py-basemap
     SUBDIR += py-basemap-data
@@ -863,6 +869,7 @@
     SUBDIR += taucs
     SUBDIR += tblis
     SUBDIR += tetgen
+    SUBDIR += teyjus
     SUBDIR += timbl
     SUBDIR += tmv
     SUBDIR += tomsfastmath
