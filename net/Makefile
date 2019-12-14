@@ -324,6 +324,7 @@
     SUBDIR += knc
     SUBDIR += knxd
     SUBDIR += kontactinterface
+    SUBDIR += kpeoplevcard
     SUBDIR += kpimtextedit
     SUBDIR += krdc
     SUBDIR += krfb
@@ -1022,6 +1023,7 @@
     SUBDIR += py-cjdns
     SUBDIR += py-cloudflare-scrape
     SUBDIR += py-cloudflare-scrape-js2py
+    SUBDIR += py-cloudscraper
     SUBDIR += py-coherence
     SUBDIR += py-confluent-kafka
     SUBDIR += py-cymruwhois
@@ -1075,6 +1077,7 @@
     SUBDIR += py-pcapy
     SUBDIR += py-port-for
     SUBDIR += py-portend
+    SUBDIR += py-pyenet
     SUBDIR += py-pygeoip
     SUBDIR += py-pyicap
     SUBDIR += py-pynmsg

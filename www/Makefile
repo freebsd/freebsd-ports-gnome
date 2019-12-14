@@ -453,6 +453,7 @@
     SUBDIR += nginx-lite
     SUBDIR += nginx-naxsi
     SUBDIR += nginx-prometheus-exporter
+    SUBDIR += nginx-vts-exporter
     SUBDIR += nibbleblog
     SUBDIR += nift
     SUBDIR += node
@@ -1477,6 +1478,7 @@
     SUBDIR += py-dj22-django-jquery-js
     SUBDIR += py-dj22-django-js-asset
     SUBDIR += py-dj22-django-jsonfield2
+    SUBDIR += py-dj22-django-model-utils
     SUBDIR += py-dj22-django-mptt
     SUBDIR += py-dj22-django-prometheus
     SUBDIR += py-dj22-django-tables2

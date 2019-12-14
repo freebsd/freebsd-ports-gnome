@@ -845,6 +845,7 @@
     SUBDIR += sfst
     SUBDIR += simd-viterbi
     SUBDIR += singular
+    SUBDIR += sisl
     SUBDIR += slatec
     SUBDIR += sleef
     SUBDIR += slepc
@@ -888,6 +889,7 @@
     SUBDIR += vowpal_wabbit
     SUBDIR += vtk6
     SUBDIR += vtk8
+    SUBDIR += wavelib
     SUBDIR += wcalc
     SUBDIR += wfmath
     SUBDIR += why3
