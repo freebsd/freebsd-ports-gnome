@@ -602,7 +602,7 @@
     SUBDIR += optar
     SUBDIR += optipng
     SUBDIR += osg
-    SUBDIR += osg-devel
+    SUBDIR += osg34
     SUBDIR += osgearth
     SUBDIR += ossim
     SUBDIR += oyranos
@@ -804,6 +804,7 @@
     SUBDIR += py-blockdiagcontrib-cisco
     SUBDIR += py-cairo
     SUBDIR += py-cairocffi
+    SUBDIR += py-cairosvg
     SUBDIR += py-cartopy
     SUBDIR += py-chart
     SUBDIR += py-colour

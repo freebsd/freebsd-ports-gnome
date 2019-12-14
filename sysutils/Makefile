@@ -679,6 +679,7 @@
     SUBDIR += mgeupsd
     SUBDIR += minikube
     SUBDIR += minimunin
+    SUBDIR += minipot
     SUBDIR += minipro
     SUBDIR += minirsyslogd
     SUBDIR += mixer
@@ -1261,6 +1262,7 @@
     SUBDIR += symon
     SUBDIR += synergy
     SUBDIR += synergy-1
+    SUBDIR += sysctlbyname-improved-kmod
     SUBDIR += sysctlinfo-kmod
     SUBDIR += sysgather
     SUBDIR += sysinfo
@@ -1276,6 +1278,7 @@
     SUBDIR += syslog-ng322
     SUBDIR += syslog-ng323
     SUBDIR += syslog-ng324
+    SUBDIR += syslog-ng325
     SUBDIR += syslogger
     SUBDIR += sysrc
     SUBDIR += system-tools-backends
@@ -1422,6 +1425,7 @@
     SUBDIR += vii
     SUBDIR += vils
     SUBDIR += vimpager
+    SUBDIR += virt-what
     SUBDIR += virtualmin
     SUBDIR += vm-bhyve
     SUBDIR += vmdktool

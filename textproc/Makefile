@@ -959,6 +959,7 @@
     SUBDIR += p5-Unicode-Escape
     SUBDIR += p5-Unicode-LineBreak
     SUBDIR += p5-Unicode-Normalize
+    SUBDIR += p5-Unicode-Tussle
     SUBDIR += p5-Unicode-Unihan
     SUBDIR += p5-Validator-Custom
     SUBDIR += p5-Version-Next
@@ -1244,6 +1245,7 @@
     SUBDIR += py-cmarkgfm
     SUBDIR += py-colorclass
     SUBDIR += py-creole
+    SUBDIR += py-cssselect2
     SUBDIR += py-csvkit
     SUBDIR += py-custom_inherit
     SUBDIR += py-dbfread
@@ -1400,6 +1402,7 @@
     SUBDIR += py-textfsm
     SUBDIR += py-texttable
     SUBDIR += py-tinycss
+    SUBDIR += py-tinycss2
     SUBDIR += py-toml
     SUBDIR += py-toronado
     SUBDIR += py-towncrier
