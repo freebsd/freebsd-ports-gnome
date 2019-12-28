@@ -100,10 +100,6 @@
     SUBDIR += latex2rtf
     SUBDIR += latexdiff
     SUBDIR += lgrind
-    SUBDIR += libgnomecups
-    SUBDIR += libgnomeprint
-    SUBDIR += libgnomeprint-reference
-    SUBDIR += libgnomeprintmm
     SUBDIR += libharu
     SUBDIR += libijs
     SUBDIR += libmspub01
@@ -227,6 +223,7 @@
     SUBDIR += rubygem-ttfunk
     SUBDIR += scribus-devel
     SUBDIR += sgf2tex
+    SUBDIR += shrinkpdf
     SUBDIR += splix
     SUBDIR += system-config-printer
     SUBDIR += t1utils

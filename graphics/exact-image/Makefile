@@ -3,12 +3,15 @@
 
 PORTNAME=	exact-image
 PORTVERSION=	1.0.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	graphics perl5 python
 MASTER_SITES=	https://dl.exactcode.de/oss/exact-image/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast image processing library
+
+DEPRECATED=	Unmaintained, uses EOLed python27
+EXPIRATION_DATE=	2020-01-27
 
 LICENSE=	GPLv2
 
@@ -21,7 +24,7 @@ LIB_DEPENDS=	libagg.so:graphics/agg \
 		libpng.so:graphics/png \
 		libgif.so:graphics/giflib \
 		libjasper.so:graphics/jasper \
-		libImath-2_3.so:graphics/ilmbase \
+		libImath.so:graphics/ilmbase \
 		libIlmImf.so:graphics/openexr \
 		liblcms.so:graphics/lcms \
 		libfreetype.so:print/freetype2 \

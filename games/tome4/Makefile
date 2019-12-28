@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	tome4
-DISTVERSION?=	1.6.4
+DISTVERSION?=	1.6.5
 PORTREVISION?=	0
 CATEGORIES=	games
 MASTER_SITES=	https://te4.org/dl/t-engine/ \
@@ -27,6 +27,7 @@ USE_CSTD=	gnu89
 SUB_FILES=	tome4
 
 LLD_UNSAFE=	yes
+MAKE_JOBS_UNSAFE=	yes
 
 DESKTOP_ENTRIES="ToME 4" "" "${PORTNAME}" \
 		"${PORTNAME}" "Game;RolePlaying;" ""
