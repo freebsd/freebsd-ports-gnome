@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	totem-pl-parser
-PORTVERSION=	3.26.3
+PORTVERSION=	3.26.4
 CATEGORIES=	multimedia gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
