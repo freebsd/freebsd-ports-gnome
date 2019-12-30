@@ -111,6 +111,7 @@ include/glib-2.0/gio/gmenuexporter.h
 include/glib-2.0/gio/gmenumodel.h
 include/glib-2.0/gio/gmount.h
 include/glib-2.0/gio/gmountoperation.h
+include/glib-2.0/gio/gnativesocketaddress.h
 include/glib-2.0/gio/gnativevolumemonitor.h
 include/glib-2.0/gio/gnetworkaddress.h
 include/glib-2.0/gio/gnetworking.h
