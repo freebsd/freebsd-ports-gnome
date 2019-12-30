@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	evince
-PORTVERSION=	3.32.0
+PORTVERSION=	3.32.1
 CATEGORIES=	graphics print gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
