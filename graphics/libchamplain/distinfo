@@ -1,3 +1,3 @@
-TIMESTAMP = 1552074779
-SHA256 (libchamplain-0.12.19.tar.xz) = 36842e326cdbe3cdbdab818472797eedb661dec842fe0579596a3a8d438b2aa4
-SIZE (libchamplain-0.12.19.tar.xz) = 233084
+TIMESTAMP = 1577746406
+SHA256 (gnome/libchamplain-0.12.20.tar.xz) = 0232b4bfcd130a1c5bda7b6aec266bf2d06e701e8093df1886f1e26bc1ba3066
+SIZE (gnome/libchamplain-0.12.20.tar.xz) = 222168

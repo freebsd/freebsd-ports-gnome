@@ -2,9 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	libchamplain
-PORTVERSION=	0.12.19
+PORTVERSION=	0.12.20
 CATEGORIES=	graphics
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	C library aimed to provide a Gtk+ widget to display rasterized maps and markers
