@@ -31,7 +31,6 @@
     SUBDIR += chaiscript
     SUBDIR += chez-scheme
     SUBDIR += chibi-scheme
-    SUBDIR += chicken
     SUBDIR += chicken5
     SUBDIR += cim
     SUBDIR += cjs
@@ -273,8 +272,6 @@
     SUBDIR += pharo
     SUBDIR += phc
     SUBDIR += php-mode.el
-    SUBDIR += php71
-    SUBDIR += php71-extensions
     SUBDIR += php72
     SUBDIR += php72-extensions
     SUBDIR += php73
@@ -380,6 +377,7 @@
     SUBDIR += v8
     SUBDIR += vala
     SUBDIR += visualworks
+    SUBDIR += voc
     SUBDIR += yabasic
     SUBDIR += yap
     SUBDIR += yap-devel

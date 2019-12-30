@@ -5,12 +5,12 @@ PORTNAME=	geocode-glib
 PORTVERSION=	3.26.1
 CATEGORIES=	net devel gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Convenience library for the geocoding and reverse geocoding
 
 LICENSE=	LGPL20
+LICENSE_FILE=	${WRKSRC}/COPYING.LIB
 
 BUILD_DEPENDS=	gtkdoc-scan:textproc/gtk-doc
 LIB_DEPENDS=	libjson-glib-1.0.so:devel/json-glib \

@@ -197,6 +197,7 @@
     SUBDIR += cppad
     SUBDIR += crlibm
     SUBDIR += cryptominisat
+    SUBDIR += csdp
     SUBDIR += curv
     SUBDIR += cvc3
     SUBDIR += cvc4
@@ -364,7 +365,6 @@
     SUBDIR += mbasecalc
     SUBDIR += mcsim
     SUBDIR += metis
-    SUBDIR += metis-edf
     SUBDIR += metis4
     SUBDIR += mfem
     SUBDIR += mingw32-libgmp
@@ -654,8 +654,6 @@
     SUBDIR += pecl-bitset
     SUBDIR += pecl-stats2
     SUBDIR += petiga
-    SUBDIR += php71-bcmath
-    SUBDIR += php71-gmp
     SUBDIR += php72-bcmath
     SUBDIR += php72-gmp
     SUBDIR += php73-bcmath
@@ -721,6 +719,7 @@
     SUBDIR += py-grandalf
     SUBDIR += py-graphillion
     SUBDIR += py-gym
+    SUBDIR += py-hdbscan
     SUBDIR += py-igakit
     SUBDIR += py-igraph
     SUBDIR += py-intspan
@@ -815,6 +814,7 @@
     SUBDIR += reduce
     SUBDIR += reduce-psl
     SUBDIR += reed-solomon
+    SUBDIR += rehearse
     SUBDIR += rexx-regmath
     SUBDIR += rkward-kde
     SUBDIR += rngstreams

@@ -3,8 +3,12 @@
 
     COMMENT = Java language support
 
+    SUBDIR += apache-bcel
     SUBDIR += apache-commons-cli
+    SUBDIR += apache-commons-codec
     SUBDIR += apache-commons-collections
+    SUBDIR += apache-commons-dbcp
+    SUBDIR += apache-commons-httpclient
     SUBDIR += apache-commons-lang
     SUBDIR += apache-commons-lang3
     SUBDIR += apache-commons-logging
@@ -42,12 +46,8 @@
     SUBDIR += intellij-ultimate
     SUBDIR += jad
     SUBDIR += jai
-    SUBDIR += jakarta-bcel
     SUBDIR += jakarta-commons-beanutils
-    SUBDIR += jakarta-commons-codec
-    SUBDIR += jakarta-commons-dbcp
     SUBDIR += jakarta-commons-discovery
-    SUBDIR += jakarta-commons-httpclient
     SUBDIR += jakarta-oro
     SUBDIR += jakarta-regexp
     SUBDIR += jasmin
@@ -125,6 +125,8 @@
     SUBDIR += wildfly14
     SUBDIR += wildfly15
     SUBDIR += wildfly16
+    SUBDIR += wildfly17
+    SUBDIR += wildfly18
     SUBDIR += wildfly90
     SUBDIR += xdoclet
 

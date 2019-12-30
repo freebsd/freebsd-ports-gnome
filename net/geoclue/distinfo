@@ -1,3 +1,3 @@
-TIMESTAMP = 1550782931
-SHA256 (gnome/geoclue-geoclue-ed2d81fe558b657b52940dd52316bcc1a32d0cff_GL0.tar.gz) = da0b70a93d10d531ea39f39ae9071414803134eb44439fd0422b3b6a38782b27
-SIZE (gnome/geoclue-geoclue-ed2d81fe558b657b52940dd52316bcc1a32d0cff_GL0.tar.gz) = 110389
+TIMESTAMP = 1577366911
+SHA256 (geoclue-geoclue-9519d67c7a9a0e97a75115f9ff99d4fb0bb81b21_GL0.tar.gz) = 3a8f6efad90d203c30c4e6e01a7deb23b2680ecaab9582cfb28e43af38febdb7
+SIZE (geoclue-geoclue-9519d67c7a9a0e97a75115f9ff99d4fb0bb81b21_GL0.tar.gz) = 114264

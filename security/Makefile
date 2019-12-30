@@ -20,6 +20,7 @@
     SUBDIR += afl
     SUBDIR += afl++
     SUBDIR += afterglow
+    SUBDIR += age
     SUBDIR += aide
     SUBDIR += akmos
     SUBDIR += amap
@@ -303,7 +304,7 @@
     SUBDIR += libpwstor
     SUBDIR += libressl
     SUBDIR += libressl-devel
-    SUBDIR += libscep 
+    SUBDIR += libscep
     SUBDIR += libscrypt
     SUBDIR += libsecret
     SUBDIR += libsectok
@@ -448,6 +449,7 @@
     SUBDIR += p11-kit
     SUBDIR += p5-Alt-Crypt-RSA-BigInt
     SUBDIR += p5-Apache-Htpasswd
+    SUBDIR += p5-App-Acmeman
     SUBDIR += p5-App-Genpass
     SUBDIR += p5-App-TLSMe
     SUBDIR += p5-Auth-YubikeyDecrypter
@@ -713,6 +715,7 @@
     SUBDIR += p5-openxpki-i18n
     SUBDIR += p5-plog
     SUBDIR += pad
+    SUBDIR += palisade
     SUBDIR += pam-modules
     SUBDIR += pam-mysql
     SUBDIR += pam-pgsql
@@ -787,10 +790,6 @@
     SUBDIR += pgpdump
     SUBDIR += pgpgpg
     SUBDIR += pgpin
-    SUBDIR += php71-filter
-    SUBDIR += php71-hash
-    SUBDIR += php71-mcrypt
-    SUBDIR += php71-openssl
     SUBDIR += php72-filter
     SUBDIR += php72-hash
     SUBDIR += php72-openssl

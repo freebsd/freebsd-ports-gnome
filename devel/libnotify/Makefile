@@ -5,7 +5,6 @@ PORTNAME=	libnotify
 PORTVERSION=	0.7.8
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Library for desktop notifications
@@ -13,12 +12,10 @@ COMMENT=	Library for desktop notifications
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	gtkdoc-scan:textproc/gtk-doc
-
 USES=		gnome meson pkgconfig tar:xz
 USE_GNOME=	glib20 gdkpixbuf2 introspection:build
 USE_LDCONFIG=	yes
 
-MESON_ARGS=	-Dtests=false
+MESON_ARGS=	-Dtests=false -Ddocbook_docs=disabled -Dgtk_doc=false
 
 .include <bsd.port.mk>

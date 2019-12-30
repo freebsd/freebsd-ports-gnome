@@ -1,3 +1,3 @@
-TIMESTAMP = 1550347828
-SHA256 (gnome/json-glib-1.4.4.tar.xz) = 720c5f4379513dc11fd97dc75336eb0c0d3338c53128044d9fabec4374f4bc47
-SIZE (gnome/json-glib-1.4.4.tar.xz) = 165584
+TIMESTAMP = 1576493903
+SHA256 (json-glib-1.4.4.tar.xz) = 720c5f4379513dc11fd97dc75336eb0c0d3338c53128044d9fabec4374f4bc47
+SIZE (json-glib-1.4.4.tar.xz) = 165584

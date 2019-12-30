@@ -493,6 +493,7 @@
     SUBDIR += p5-SQL-Abstract-Plugin-InsertMulti
     SUBDIR += p5-SQL-Interp
     SUBDIR += p5-SQL-Maker
+    SUBDIR += p5-SQL-NamedPlaceholder
     SUBDIR += p5-SQL-ReservedWords
     SUBDIR += p5-SQL-Statement
     SUBDIR += p5-SQL-Translator
@@ -614,22 +615,8 @@
     SUBDIR += pgtune
     SUBDIR += pguri
     SUBDIR += pgworksheet
-    SUBDIR += php-memcache
     SUBDIR += php-tarantool
     SUBDIR += php-xapian
-    SUBDIR += php71-dba
-    SUBDIR += php71-interbase
-    SUBDIR += php71-mysqli
-    SUBDIR += php71-odbc
-    SUBDIR += php71-pdo
-    SUBDIR += php71-pdo_dblib
-    SUBDIR += php71-pdo_firebird
-    SUBDIR += php71-pdo_mysql
-    SUBDIR += php71-pdo_odbc
-    SUBDIR += php71-pdo_pgsql
-    SUBDIR += php71-pdo_sqlite
-    SUBDIR += php71-pgsql
-    SUBDIR += php71-sqlite3
     SUBDIR += php72-dba
     SUBDIR += php72-interbase
     SUBDIR += php72-mysqli
@@ -671,7 +658,7 @@
     SUBDIR += phpliteadmin
     SUBDIR += phpminiadmin
     SUBDIR += phpmyadmin
-    SUBDIR += phpmyadmin-devel
+    SUBDIR += phpmyadmin5
     SUBDIR += phppgadmin
     SUBDIR += pldebugger
     SUBDIR += plpgsql_check
@@ -812,6 +799,7 @@
     SUBDIR += py-oops
     SUBDIR += py-oursql
     SUBDIR += py-peewee
+    SUBDIR += py-peewee_migrate
     SUBDIR += py-pg8000
     SUBDIR += py-pg8000-112
     SUBDIR += py-pgcli
@@ -822,6 +810,7 @@
     SUBDIR += py-pgxnclient
     SUBDIR += py-pickledb
     SUBDIR += py-pickleshare
+    SUBDIR += py-pony
     SUBDIR += py-postgresql
     SUBDIR += py-psycogreen
     SUBDIR += py-psycopg2
@@ -974,6 +963,7 @@
     SUBDIR += rubygem-influxdb
     SUBDIR += rubygem-jdbc-mysql
     SUBDIR += rubygem-leo_manager_client
+    SUBDIR += rubygem-marginalia
     SUBDIR += rubygem-mario-redis-lock
     SUBDIR += rubygem-memcache
     SUBDIR += rubygem-memcache-client
