@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-nibbles
-PORTVERSION=	3.31.3
+PORTVERSION=	3.32.0
 CATEGORIES=	games gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
