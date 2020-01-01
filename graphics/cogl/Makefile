@@ -5,7 +5,6 @@ PORTNAME=	cogl
 PORTVERSION=	1.22.4
 CATEGORIES=	graphics
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Clutter OpenGL abstraction library

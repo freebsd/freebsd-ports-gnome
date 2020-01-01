@@ -6,7 +6,6 @@ PORTNAME=	libsigc++
 PORTVERSION=	2.10.2
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Callback Framework for C++

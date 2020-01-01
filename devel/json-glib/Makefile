@@ -5,7 +5,6 @@ PORTNAME=	json-glib
 PORTVERSION=	1.4.4
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	JSON (RFC 4627) interface for Glib
