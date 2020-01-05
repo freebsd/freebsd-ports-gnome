@@ -1,0 +1,18 @@
+commit d0cb6be7431d1a3c711bd45bcf05b34601604037
+Author: Tom Schoonjans <tom.schoonjans@diamond.ac.uk>
+Date:   Wed Dec 19 06:54:41 2018 +0000
+
+    pango.pc: Make gobject-2.0 a non-private requirement
+
+diff --git a/pango/meson.build b/pango/meson.build
+index 099aed89..9dd02bdc 100644
+--- pango/meson.build
++++ pango/meson.build
+@@ -159,6 +159,7 @@ pkgconfig.generate(libpango,
+   name: 'Pango',
+   description: 'Internationalized text handling',
+   version: meson.project_version(),
++  requires: ['gobject-2.0'],
+   filebase: 'pango',
+   subdirs: pango_api_name,
+   install_dir: join_paths(pango_libdir, 'pkgconfig'),
