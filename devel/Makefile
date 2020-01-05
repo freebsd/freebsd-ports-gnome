@@ -883,7 +883,6 @@
     SUBDIR += goswagger
     SUBDIR += govendor
     SUBDIR += gperf
-    SUBDIR += gperf31
     SUBDIR += gpm
     SUBDIR += gprbuild
     SUBDIR += gputils
@@ -1412,21 +1411,6 @@
     SUBDIR += libzvbi
     SUBDIR += lightning
     SUBDIR += linenoise-ng
-    SUBDIR += linux-c6-dbus-glib
-    SUBDIR += linux-c6-dbus-libs
-    SUBDIR += linux-c6-devtools
-    SUBDIR += linux-c6-elfutils-libelf
-    SUBDIR += linux-c6-icu
-    SUBDIR += linux-c6-libgfortran
-    SUBDIR += linux-c6-libglade2
-    SUBDIR += linux-c6-libpciaccess
-    SUBDIR += linux-c6-libsigc++20
-    SUBDIR += linux-c6-libsoup
-    SUBDIR += linux-c6-libthai
-    SUBDIR += linux-c6-libunwind
-    SUBDIR += linux-c6-nspr
-    SUBDIR += linux-c6-qt47
-    SUBDIR += linux-c6-sdl12
     SUBDIR += linux-c7-dbus-glib
     SUBDIR += linux-c7-dbus-libs
     SUBDIR += linux-c7-devtools
@@ -4317,6 +4301,7 @@
     SUBDIR += py-colorful
     SUBDIR += py-colorlog
     SUBDIR += py-columnize
+    SUBDIR += py-commandlines
     SUBDIR += py-conditional
     SUBDIR += py-configargparse
     SUBDIR += py-configobj
@@ -4502,9 +4487,11 @@
     SUBDIR += py-graphql-core
     SUBDIR += py-graphql-core2
     SUBDIR += py-graphql-relay
+    SUBDIR += py-graphql-relay2
     SUBDIR += py-greenlet
     SUBDIR += py-grizzled
     SUBDIR += py-grouch
+    SUBDIR += py-grpc-google-iam-v1
     SUBDIR += py-grpcio
     SUBDIR += py-grpcio-gcp
     SUBDIR += py-grpcio-tools
@@ -4617,6 +4604,7 @@
     SUBDIR += py-lazr.uri
     SUBDIR += py-lazy
     SUBDIR += py-lazy-object-proxy
+    SUBDIR += py-libcst
     SUBDIR += py-libioc
     SUBDIR += py-libiocage
     SUBDIR += py-liblarch
@@ -4787,6 +4775,7 @@
     SUBDIR += py-pipdeptree
     SUBDIR += py-pipenv
     SUBDIR += py-pipreqs
+    SUBDIR += py-pipx
     SUBDIR += py-pkgconfig
     SUBDIR += py-plac
     SUBDIR += py-plan
@@ -4926,6 +4915,7 @@
     SUBDIR += py-pytest-xprocess
     SUBDIR += py-python-Levenshtein
     SUBDIR += py-python-bugzilla
+    SUBDIR += py-python-dbusmock
     SUBDIR += py-python-distutils-extra
     SUBDIR += py-python-dtrace
     SUBDIR += py-python-easyconfig
@@ -5140,6 +5130,7 @@
     SUBDIR += py-typed-ast
     SUBDIR += py-typing
     SUBDIR += py-typing-extensions
+    SUBDIR += py-typing-inspect
     SUBDIR += py-tzlocal
     SUBDIR += py-u-msgpack-python
     SUBDIR += py-ua_parser
@@ -5157,6 +5148,7 @@
     SUBDIR += py-urwidtrees
     SUBDIR += py-usb
     SUBDIR += py-user_agents
+    SUBDIR += py-userpath
     SUBDIR += py-utils
     SUBDIR += py-uvloop
     SUBDIR += py-validators
@@ -5515,6 +5507,7 @@
     SUBDIR += rubygem-aws-sdk-codegurureviewer
     SUBDIR += rubygem-aws-sdk-codepipeline
     SUBDIR += rubygem-aws-sdk-codestar
+    SUBDIR += rubygem-aws-sdk-codestarconnections
     SUBDIR += rubygem-aws-sdk-codestarnotifications
     SUBDIR += rubygem-aws-sdk-cognitoidentity
     SUBDIR += rubygem-aws-sdk-cognitoidentityprovider
@@ -5534,6 +5527,7 @@
     SUBDIR += rubygem-aws-sdk-datapipeline
     SUBDIR += rubygem-aws-sdk-datasync
     SUBDIR += rubygem-aws-sdk-dax
+    SUBDIR += rubygem-aws-sdk-detective
     SUBDIR += rubygem-aws-sdk-devicefarm
     SUBDIR += rubygem-aws-sdk-directconnect
     SUBDIR += rubygem-aws-sdk-directoryservice
@@ -5593,6 +5587,7 @@
     SUBDIR += rubygem-aws-sdk-kinesisvideo
     SUBDIR += rubygem-aws-sdk-kinesisvideoarchivedmedia
     SUBDIR += rubygem-aws-sdk-kinesisvideomedia
+    SUBDIR += rubygem-aws-sdk-kinesisvideosignalingchannels
     SUBDIR += rubygem-aws-sdk-kms
     SUBDIR += rubygem-aws-sdk-lakeformation
     SUBDIR += rubygem-aws-sdk-lambda
@@ -6643,7 +6638,6 @@
     SUBDIR += yaml2argdata
     SUBDIR += yasm
     SUBDIR += yasm-devel
-    SUBDIR += yosys
     SUBDIR += youcompleteme
     SUBDIR += z80-asm
     SUBDIR += z80asm
