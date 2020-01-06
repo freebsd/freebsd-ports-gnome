@@ -1,4 +1,4 @@
-$OpenBSD: patch-daemon_gdm-launch-environment_c,v 1.9 2019/01/18 05:51:51 ajacoutot Exp $
+$OpenBSD: patch-daemon_gdm-launch-environment_c,v 1.8 2017/04/17 13:17:07 ajacoutot Exp $
 
 XXX fix+push upstream
 
@@ -14,9 +14,9 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 14:33:40 -0400
 Subject: session: drop session-type property
 
---- daemon/gdm-launch-environment.c.orig	2019-02-21 19:44:14 UTC
-+++ daemon/gdm-launch-environment.c
-@@ -214,6 +214,9 @@ build_launch_environment (GdmLaunchEnvironment *launch
+--- daemon/gdm-launch-environment.c.orig	Wed Apr 12 15:47:09 2017
++++ daemon/gdm-launch-environment.c	Mon Apr 17 14:17:28 2017
+@@ -197,6 +197,9 @@ build_launch_environment (GdmLaunchEnvironment *launch
                  char *seat_id;
  
                  seat_id = launch_environment->priv->x11_display_seat_id;
@@ -26,7 +26,7 @@ Subject: session: drop session-type property
  
                  g_hash_table_insert (hash, g_strdup ("GDM_SEAT_ID"), g_strdup (seat_id));
          }
-@@ -239,6 +242,8 @@ on_session_setup_complete (GdmSession        *session,
+@@ -224,6 +227,8 @@ on_session_setup_complete (GdmSession        *session,
                  gdm_session_set_environment_variable (launch_environment->priv->session, key, value);
          }
          g_hash_table_destroy (hash);

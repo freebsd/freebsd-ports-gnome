@@ -1,8 +1,8 @@
---- data/gdm.conf-custom.in.orig	2019-02-21 19:44:14 UTC
-+++ data/gdm.conf-custom.in
-@@ -4,6 +4,9 @@
- # Uncomment the line below to force the login screen to use Xorg
- #WaylandEnable=false
+--- data/gdm.conf-custom.in.orig	2013-11-20 10:35:05.845253412 +0000
++++ data/gdm.conf-custom.in	2013-11-20 10:35:11.644252821 +0000
+@@ -2,6 +2,9 @@
+ 
+ [daemon]
  
 +HaltCommand=/sbin/shutdown -p now
 +RebootCommand=/sbin/shutdown -r now

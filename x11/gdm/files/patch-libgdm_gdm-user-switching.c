@@ -1,18 +1,4 @@
-$OpenBSD: patch-libgdm_gdm-user-switching_c,v 1.2 2019/01/18 05:51:51 ajacoutot Exp $
-
-REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
-From 1ac67f522f5690c27023d98096ca817f12f7eb88 Mon Sep 17 00:00:00 2001
-From: Ray Strode <rstrode@redhat.com>
-Date: Fri, 12 Jun 2015 13:28:01 -0400
-Subject: drop consolekit support
-
-REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
-From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
-From: Ray Strode <rstrode@redhat.com>
-Date: Fri, 12 Jun 2015 13:48:52 -0400
-Subject: require logind support
-
---- libgdm/gdm-user-switching.c.orig	2019-02-21 19:44:14 UTC
+--- libgdm/gdm-user-switching.c.orig	2015-07-20 13:13:45 UTC
 +++ libgdm/gdm-user-switching.c
 @@ -31,12 +31,25 @@
  #include <glib-object.h>
@@ -40,7 +26,7 @@ Subject: require logind support
  static gboolean
  create_transient_display (GDBusConnection *connection,
                            GCancellable    *cancellable,
-@@ -67,16 +80,308 @@ create_transient_display (GDBusConnection *connection,
+@@ -67,12 +80,304 @@ create_transient_display (GDBusConnectio
          return TRUE;
  }
  
@@ -54,11 +40,11 @@ Subject: require logind support
 -                     GError          **error)
 +get_current_session_id (GDBusConnection  *connection,
 +                        char            **session_id)
- {
++{
 +        GError *local_error = NULL;
-         GVariant *reply;
- 
-         reply = g_dbus_connection_call_sync (connection,
++        GVariant *reply;
++
++        reply = g_dbus_connection_call_sync (connection,
 +                                             CK_NAME,
 +                                             CK_MANAGER_PATH,
 +                                             CK_MANAGER_INTERFACE,
@@ -129,7 +115,7 @@ Subject: require logind support
 +        return seat_id;
 +}
 +
-+gboolean
++static gboolean
 +activate_session_id_for_ck (GDBusConnection *connection,
 +                            GCancellable    *cancellable,
 +                            const char      *seat_id,
@@ -341,20 +327,16 @@ Subject: require logind support
 +
 +#ifdef WITH_SYSTEMD
 +
-+gboolean
++static gboolean
 +activate_session_id_for_systemd (GDBusConnection  *connection,
 +                                 GCancellable     *cancellable,
 +                                 const char       *seat_id,
 +                                 const char       *session_id,
 +                                 GError          **error)
-+{
-+        GVariant *reply;
-+
-+        reply = g_dbus_connection_call_sync (connection,
-                                              "org.freedesktop.login1",
-                                              "/org/freedesktop/login1",
-                                              "org.freedesktop.login1.Manager",
-@@ -97,8 +402,8 @@ activate_session_id (GDBusConnection  *connection,
+ {
+         GVariant *reply;
+ 
+@@ -97,8 +402,8 @@ activate_session_id (GDBusConnection  *c
  }
  
  static gboolean
@@ -378,7 +360,7 @@ Subject: require logind support
  {
          gboolean        ret;
          int             res;
-@@ -238,9 +543,9 @@ goto_login_session (GDBusConnection  *connection,
+@@ -238,9 +543,9 @@ goto_login_session (GDBusConnection  *co
                  return FALSE;
          }
  
@@ -390,7 +372,7 @@ Subject: require logind support
  
                  if (res) {
                          ret = TRUE;
-@@ -259,10 +564,11 @@ goto_login_session (GDBusConnection  *connection,
+@@ -259,10 +564,11 @@ goto_login_session (GDBusConnection  *co
  
          return ret;
  }
@@ -403,7 +385,7 @@ Subject: require logind support
  {
          GDBusConnection *connection;
          gboolean retval;
-@@ -271,8 +577,23 @@ gdm_goto_login_session_sync (GCancellable  *cancellabl
+@@ -271,8 +577,23 @@ gdm_goto_login_session_sync (GCancellabl
          if (!connection)
                  return FALSE;
  
@@ -413,7 +395,7 @@ Subject: require logind support
 +                retval = goto_login_session_for_systemd (connection,
 +                                                         cancellable,
 +                                                         error);
- 
++
 +                g_object_unref (connection);
 +                return retval;
 +        }
@@ -421,7 +403,7 @@ Subject: require logind support
 +
 +#ifdef WITH_CONSOLE_KIT
 +        retval = goto_login_session_for_ck (connection, cancellable, error);
-+
+ 
          g_object_unref (connection);
          return retval;
 +#else

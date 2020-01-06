@@ -11,10 +11,11 @@
  # add ssh-agent if found
  sshagent="`gdmwhich ssh-agent`"
  if [ -n "$sshagent" ] && [ -x "$sshagent" ] && [ -z "$SSH_AUTH_SOCK" ]; then
-     command="$sshagent -- $command"
+@@ -191,6 +195,7 @@
  elif [ -z "$sshagent" ] ; then
      echo "$0: ssh-agent not found!"
-+fi
  fi
++fi
  
  echo "$0: Setup done, will execute: $command"
+ 

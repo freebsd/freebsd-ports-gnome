@@ -1,4 +1,4 @@
-$OpenBSD: patch-common_gdm-log_c,v 1.2 2018/04/24 08:37:00 ajacoutot Exp $
+$OpenBSD: patch-common_gdm-log_c,v 1.1 2015/10/18 13:25:54 ajacoutot Exp $
 
 REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
 From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
@@ -6,8 +6,8 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 13:48:52 -0400
 Subject: require logind support
 
---- common/gdm-log.c.orig	2019-02-21 19:44:14 UTC
-+++ common/gdm-log.c
+--- common/gdm-log.c.orig	2018-02-19 19:16:32.000000000 +0100
++++ common/gdm-log.c	2018-04-05 21:59:25.290775000 +0200
 @@ -30,7 +30,9 @@
  #include <unistd.h>
  
@@ -22,9 +22,9 @@ Subject: require logind support
  void
  gdm_log_init (void)
  {
-+	const char *prg_name;
-+	int         options;
-+
++        const char *prg_name;
++        int         options;
++ 
          if (initialized)
                  return;
  

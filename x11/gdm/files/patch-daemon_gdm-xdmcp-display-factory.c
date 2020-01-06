@@ -1,6 +1,6 @@
---- daemon/gdm-xdmcp-display-factory.c.orig	2019-02-26 19:56:53 UTC
-+++ daemon/gdm-xdmcp-display-factory.c
-@@ -75,7 +75,7 @@ int deny_severity = LOG_WARNING;
+--- daemon/gdm-xdmcp-display-factory.c.orig	2014-03-21 08:21:57.405582553 +0000
++++ daemon/gdm-xdmcp-display-factory.c	2014-03-21 08:22:13.029582593 +0000
+@@ -77,7 +77,7 @@
  #define DEFAULT_USE_MULTICAST         FALSE
  #define DEFAULT_MULTICAST_ADDRESS     "ff02::1"
  #define DEFAULT_HONOR_INDIRECT        TRUE

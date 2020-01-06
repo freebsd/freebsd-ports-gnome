@@ -1,4 +1,4 @@
-$OpenBSD: patch-configure_ac,v 1.16 2019/01/18 05:51:51 ajacoutot Exp $
+$OpenBSD: patch-configure_ac,v 1.12 2017/04/17 13:17:07 ajacoutot Exp $
 
 REVERT - Linux-PAM
 From 714b6af29b916ac7da0cdab6f83460574ed49cf2 Mon Sep 17 00:00:00 2001
@@ -14,10 +14,9 @@ Subject: drop consolekit support
 
 https://bugzilla.gnome.org/show_bug.cgi?id=722482
 
-Index: configure.ac
---- configure.ac.orig
-+++ configure.ac
-@@ -223,12 +223,6 @@ AM_CONDITIONAL(ENABLE_EXHERBO_PAM_CONFIG, test x$with_
+--- configure.ac.orig	2017-10-30 16:21:11.000000000 +0100
++++ configure.ac	2018-01-14 13:01:16.646216000 +0100
+@@ -232,12 +232,6 @@ AM_CONDITIONAL(ENABLE_EXHERBO_PAM_CONFIG, test x$with_
  AM_CONDITIONAL(ENABLE_LFS_PAM_CONFIG, test x$with_default_pam_config = xlfs)
  AM_CONDITIONAL(ENABLE_ARCH_PAM_CONFIG, test x$with_default_pam_config = xarch)
  
@@ -30,25 +29,23 @@ Index: configure.ac
  AC_ARG_ENABLE(console-helper,
  	      AS_HELP_STRING([--enable-console-helper],
                               [Enable PAM console helper @<:@default=auto@:>@]),,
-@@ -258,6 +252,17 @@ AC_ARG_WITH([udevdir],
-             AS_HELP_STRING([--with-udevdir=DIR],
-                            [Directory for udev files]),
-                 [with_udevdir=$withval], [with_udevdir=$($PKG_CONFIG --variable=udevdir udev)])
-+
+@@ -263,7 +257,15 @@ AC_ARG_WITH(tcp-wrappers,
+                            [Use TCP Wrappers @<:@default=auto@:>@]),,
+             with_tcp_wrappers=auto)
+ 
 +AC_ARG_WITH(console-kit,
 +            AS_HELP_STRING([--with-console-kit],
 +                           [Add ConsoleKit support @<:@default=auto@:>@]),,
 +            with_console_kit=no)
-+
+ 
 +AC_ARG_WITH(systemd,
 +            AS_HELP_STRING([--with-systemd],
 +                           [Add systemd support @<:@default=auto@:>@]),
 +            [with_systemd=$withval], [with_systemd=auto])
-+
  AC_ARG_WITH([systemdsystemunitdir],
              AS_HELP_STRING([--with-systemdsystemunitdir=DIR],
                             [Directory for systemd service files]),
-@@ -529,6 +534,8 @@ fi
+@@ -548,6 +550,8 @@ fi
  if test "x$supports_pam_extensions" = "xyes" ; then
  	AM_CONDITIONAL(SUPPORTS_PAM_EXTENSIONS, true)
  	AC_DEFINE(SUPPORTS_PAM_EXTENSIONS, 1, [Define if PAM supports GDMs custom extensions])
@@ -57,7 +54,7 @@ Index: configure.ac
  fi
  
  AC_CHECK_LIB(keyutils, keyctl_read, [
-@@ -612,14 +619,8 @@ dnl --------------------------------------------------
+@@ -655,14 +659,8 @@ dnl --------------------------------------------------
  dnl - Check for utmp stuff
  dnl ---------------------------------------------------------------------------
  
@@ -74,7 +71,7 @@ Index: configure.ac
  AC_CHECK_LIB(util, logwtmp, [
  	  	   AC_DEFINE(HAVE_LOGWTMP, 1, [Define if have logwtmp])
  		       EXTRA_DAEMON_LIBS="$EXTRA_DAEMON_LIBS -lutil" ])
-@@ -828,12 +829,42 @@ AC_SUBST(XINERAMA_LIBS)
+@@ -911,12 +909,42 @@ AC_SUBST(XINERAMA_LIBS)
  CPPFLAGS="$xinerama_save_cppflags"
  
  dnl ---------------------------------------------------------------------------
@@ -118,7 +115,7 @@ Index: configure.ac
  AC_SUBST(SYSTEMD_CFLAGS)
  AC_SUBST(SYSTEMD_LIBS)
  
-@@ -1027,6 +1058,14 @@ fi
+@@ -1111,6 +1139,14 @@ fi
  AC_SUBST(GDM_CUSTOM_CONF)
  AC_SUBST(GDM_OLD_CONF, '${gdmconfdir}/gdm.conf')
  
@@ -133,7 +130,7 @@ Index: configure.ac
  AC_ARG_WITH(gnome-settings-daemon-directory,
                [AC_HELP_STRING([--with-gnome-settings-daemon-directory],
                                [Specify the directory of gnome-settings-daemon used by the chooser @<:@default=libexecdir@:>@])],,
-@@ -1494,6 +1533,7 @@ echo "
+@@ -1601,6 +1637,7 @@ echo "
          dmconfdir:                ${dmconfdir}
          localstatedir:            ${localstatedir}
          datadir:                  ${datadir}
@@ -141,16 +138,16 @@ Index: configure.ac
  	gnome-settings-daemon location: ${with_gnome_settings_daemon_directory}
  	gnome-session-check-accel location: ${with_check_accelerated_directory}
  	source code location:	  ${srcdir}
-@@ -1524,6 +1564,8 @@ echo \
+@@ -1631,6 +1668,8 @@ echo \
  "        Xinerama support:         ${XINERAMA_SUPPORT}
          XDMCP support:            ${XDMCP_SUPPORT}
          SELinux support:          ${use_selinux}
 +        ConsoleKit support:       ${use_console_kit}
 +        systemd support:          ${use_systemd}
          systemd unit dir:         ${with_systemdsystemunitdir}
-         udev dir:                 ${with_udevdir}
          plymouth support:         ${use_plymouth}
-@@ -1533,3 +1575,4 @@ echo \
+         wayland support:          ${enable_wayland_support}
+@@ -1639,3 +1678,4 @@ echo \
          Enable documentation:     ${enable_documentation}
          Install GDM's Xsession:   ${enable_gdm_xsession}
  "

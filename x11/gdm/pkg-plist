@@ -38,6 +38,52 @@ share/dconf/profile/gdm
 %%DATADIR%%/locale.alias
 share/gir-1.0/Gdm-1.0.gir
 share/gnome-session/sessions/gnome-login.session
+share/help/C/gdm/index.docbook
+share/help/C/gdm/legal.xml
+share/help/ca/gdm/index.docbook
+share/help/ca/gdm/legal.xml
+share/help/cs/gdm/index.docbook
+share/help/cs/gdm/legal.xml
+share/help/de/gdm/index.docbook
+share/help/de/gdm/legal.xml
+share/help/el/gdm/index.docbook
+share/help/el/gdm/legal.xml
+share/help/en_GB/gdm/index.docbook
+share/help/en_GB/gdm/legal.xml
+share/help/es/gdm/index.docbook
+share/help/es/gdm/legal.xml
+share/help/fr/gdm/index.docbook
+share/help/fr/gdm/legal.xml
+share/help/gl/gdm/index.docbook
+share/help/gl/gdm/legal.xml
+share/help/hu/gdm/index.docbook
+share/help/hu/gdm/legal.xml
+share/help/id/gdm/index.docbook
+share/help/id/gdm/legal.xml
+share/help/it/gdm/index.docbook
+share/help/it/gdm/legal.xml
+share/help/ko/gdm/index.docbook
+share/help/ko/gdm/legal.xml
+share/help/oc/gdm/index.docbook
+share/help/oc/gdm/legal.xml
+share/help/pt_BR/gdm/index.docbook
+share/help/pt_BR/gdm/legal.xml
+share/help/ro/gdm/index.docbook
+share/help/ro/gdm/legal.xml
+share/help/ru/gdm/index.docbook
+share/help/ru/gdm/legal.xml
+share/help/sl/gdm/index.docbook
+share/help/sl/gdm/legal.xml
+share/help/sv/gdm/index.docbook
+share/help/sv/gdm/legal.xml
+share/help/te/gdm/index.docbook
+share/help/te/gdm/legal.xml
+share/help/tr/gdm/index.docbook
+share/help/tr/gdm/legal.xml
+share/help/uk/gdm/index.docbook
+share/help/uk/gdm/legal.xml
+share/help/zh_CN/gdm/index.docbook
+share/help/zh_CN/gdm/legal.xml
 share/icons/hicolor/16x16/apps/gdm-xnest.png
 share/icons/hicolor/32x32/apps/gdm-setup.png
 share/icons/hicolor/32x32/apps/gdm-xnest.png
@@ -163,10 +209,11 @@ share/pixmaps/nohost.png
 @postunexec rm -rf %D/etc/gdm/home/.gconf*
 @dir %%ETCDIR%%/Sessions
 @dir %%ETCDIR%%/home/.local/share/applications
+@dir etc/dm
 @dir etc/dm/Sessions
 @dir share/xsessions
-@dir /var/cache/gdm
-@dir /var/log/gdm
+@dir /var/cache/gdm/
 @dir /var/run/gdm/greeter
-@dir /var/run/gdm
+@dir /var/run/gdm/
+@dir /var/log/gdm/
 @postunexec rm -fr /var/gdm

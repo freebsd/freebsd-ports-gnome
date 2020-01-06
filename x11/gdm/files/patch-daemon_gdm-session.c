@@ -1,4 +1,4 @@
-$OpenBSD: patch-daemon_gdm-session_c,v 1.20 2019/05/08 21:58:04 ajacoutot Exp $
+$OpenBSD: patch-daemon_gdm-session_c,v 1.12 2017/05/10 10:18:15 ajacoutot Exp $
 
 REVERT - OpenBSD does not have a systemd implementation (we need ConsoleKit)
 From 9be58c9ec9a3a411492a5182ac4b0d51fdc3a323 Mon Sep 17 00:00:00 2001
@@ -12,9 +12,10 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 14:33:40 -0400
 Subject: session: drop session-type property
 
---- daemon/gdm-session.c.orig	2019-02-21 19:44:22 UTC
+Index: daemon/gdm-session.c
+--- daemon/gdm-session.c.orig
 +++ daemon/gdm-session.c
-@@ -3189,6 +3189,10 @@ gdm_session_bypasses_xsession (GdmSession *self)
+@@ -3076,6 +3076,10 @@ gdm_session_bypasses_xsession (GdmSession *self)
          g_return_val_if_fail (self != NULL, FALSE);
          g_return_val_if_fail (GDM_IS_SESSION (self), FALSE);
  
@@ -25,10 +26,10 @@ Subject: session: drop session-type property
  #ifdef ENABLE_WAYLAND_SUPPORT
          if (gdm_session_is_wayland_session (self)) {
                  bypasses_xsession = TRUE;
-@@ -3281,6 +3285,27 @@ gdm_session_select_program (GdmSession *self,
-         g_free (self->selected_program);
+@@ -3168,6 +3172,27 @@ gdm_session_select_program (GdmSession *self,
+         g_free (self->priv->selected_program);
  
-         self->selected_program = g_strdup (text);
+         self->priv->selected_program = g_strdup (text);
 +}
 +
 +void
@@ -40,7 +41,7 @@ Subject: session: drop session-type property
 +
 +        g_debug ("GdmSession: selecting session type '%s'", text);
 +
-+        g_hash_table_iter_init (&iter, self->conversations);
++        g_hash_table_iter_init (&iter, self->priv->conversations);
 +        while (g_hash_table_iter_next (&iter, &key, &value)) {
 +                GdmSessionConversation *conversation;
 +

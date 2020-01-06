@@ -6,8 +6,8 @@ From: Ray Strode <rstrode@redhat.com>
 Date: Fri, 12 Jun 2015 13:48:52 -0400
 Subject: require logind support
 
---- daemon/gdm-session-worker-job.c.orig	2019-02-21 19:44:14 UTC
-+++ daemon/gdm-session-worker-job.c
+--- daemon/gdm-session-worker-job.c.orig	Mon Sep 21 16:12:33 2015
++++ daemon/gdm-session-worker-job.c	Sun Oct 18 14:23:39 2015
 @@ -36,7 +36,9 @@
  #include <sys/prctl.h>
  #endif

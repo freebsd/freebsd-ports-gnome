@@ -1,11 +1,11 @@
---- data/dconf/defaults/00-upstream-settings.orig	2019-02-21 19:44:14 UTC
-+++ data/dconf/defaults/00-upstream-settings
-@@ -19,7 +19,7 @@ always-show-universal-access-status=true
+--- data/dconf/defaults/00-upstream-settings.orig	2015-05-29 13:27:05.000000000 +0200
++++ data/dconf/defaults/00-upstream-settings	2015-06-04 07:49:07.773567000 +0200
+@@ -13,7 +13,7 @@
  show-desktop-icons=false
  
  [org/gnome/desktop/default-applications/terminal]
 -exec='true'
 +exec='/usr/bin/true'
  
- [org/gnome/desktop/lockdown]
- disable-application-handlers=true
+ [org/gnome/desktop/interface]
+ toolkit-accessibility=true
