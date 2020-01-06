@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	eog-plugins
-PORTVERSION=	3.26.3
+PORTVERSION=	3.26.5
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -23,6 +23,7 @@ LIB_DEPENDS=	libgdata.so:devel/libgdata \
 		libclutter-1.0.so:graphics/clutter \
 		libcogl.so:graphics/cogl \
 		libjson-glib-1.0.so:devel/json-glib \
+		libgoa-1.0.so:net/gnome-online-accounts \
 		libsoup-2.4.so:devel/libsoup
 RUN_DEPENDS=	eog:graphics/eog
 
