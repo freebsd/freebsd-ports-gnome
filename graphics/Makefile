@@ -26,6 +26,7 @@
     SUBDIR += R-cran-gridBase
     SUBDIR += R-cran-gridExtra
     SUBDIR += R-cran-munsell
+    SUBDIR += R-cran-pROC
     SUBDIR += R-cran-pixmap
     SUBDIR += R-cran-png
     SUBDIR += R-cran-qcc
@@ -496,16 +497,6 @@
     SUBDIR += libzmf
     SUBDIR += lightzone
     SUBDIR += linplasma
-    SUBDIR += linux-c6-cairo
-    SUBDIR += linux-c6-dri
-    SUBDIR += linux-c6-gdk-pixbuf2
-    SUBDIR += linux-c6-glx-utils
-    SUBDIR += linux-c6-jasper
-    SUBDIR += linux-c6-jpeg
-    SUBDIR += linux-c6-png
-    SUBDIR += linux-c6-sdl_image
-    SUBDIR += linux-c6-sdl_ttf
-    SUBDIR += linux-c6-tiff
     SUBDIR += linux-c7-cairo
     SUBDIR += linux-c7-cairo-gobject
     SUBDIR += linux-c7-dri

@@ -188,7 +188,6 @@
     SUBDIR += glflow
     SUBDIR += glib-networking
     SUBDIR += glusterfs
-    SUBDIR += gnatsd
     SUBDIR += gnet2
     SUBDIR += gnetcat
     SUBDIR += gnome-nettool
@@ -415,9 +414,6 @@
     SUBDIR += liferea
     SUBDIR += linknx
     SUBDIR += linphone
-    SUBDIR += linux-c6-avahi-libs
-    SUBDIR += linux-c6-openldap
-    SUBDIR += linux-c6-tcp_wrappers-libs
     SUBDIR += linux-c7-avahi-libs
     SUBDIR += linux-c7-openldap
     SUBDIR += linux-c7-tcp_wrappers-libs
@@ -477,6 +473,7 @@
     SUBDIR += nakenchat
     SUBDIR += nanomsg
     SUBDIR += nast
+    SUBDIR += nats-server
     SUBDIR += nats-streaming-server
     SUBDIR += nats-top
     SUBDIR += nbd-server
@@ -1079,6 +1076,7 @@
     SUBDIR += py-pynmsg
     SUBDIR += py-pynsq
     SUBDIR += py-pypcap
+    SUBDIR += py-pyroute2
     SUBDIR += py-pysendfile
     SUBDIR += py-pyshark
     SUBDIR += py-pysmb
@@ -1115,7 +1113,6 @@
     SUBDIR += py-smart_open
     SUBDIR += py-smbpasswd
     SUBDIR += py-soap2py
-    SUBDIR += py-soappy
     SUBDIR += py-socketio-client
     SUBDIR += py-softlayer
     SUBDIR += py-speedtest-cli
@@ -1126,7 +1123,6 @@
     SUBDIR += py-suds-jurko
     SUBDIR += py-terminado
     SUBDIR += py-tofu
-    SUBDIR += py-tweepy
     SUBDIR += py-twitter-tools
     SUBDIR += py-txamqp
     SUBDIR += py-txrestapi
@@ -1415,6 +1411,7 @@
     SUBDIR += ssspl
     SUBDIR += ssvnc
     SUBDIR += stone
+    SUBDIR += storj
     SUBDIR += stund
     SUBDIR += subnetcalc
     SUBDIR += suckblow

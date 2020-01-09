@@ -10,6 +10,8 @@
     SUBDIR += bitcoin-daemon
     SUBDIR += bitcoin-utils
     SUBDIR += bitflu
+    SUBDIR += btpd
+    SUBDIR += c-lightning
     SUBDIR += couchpotato
     SUBDIR += cpuminer
     SUBDIR += createtorrent
