@@ -592,6 +592,7 @@
     SUBDIR += lineakd
     SUBDIR += linrename
     SUBDIR += linux-c7-lttng-ust
+    SUBDIR += linux-c7-numactl-libs
     SUBDIR += linux-c7-userspace-rcu
     SUBDIR += linux-crashplan
     SUBDIR += linux-rkbin
@@ -961,6 +962,7 @@
     SUBDIR += py-borgmatic
     SUBDIR += py-cdmi
     SUBDIR += py-cpuinfo
+    SUBDIR += py-cron-descriptor
     SUBDIR += py-croniter
     SUBDIR += py-crontab
     SUBDIR += py-diffoscope
