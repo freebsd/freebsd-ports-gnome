@@ -146,7 +146,6 @@
     SUBDIR += janet
     SUBDIR += jimtcl
     SUBDIR += jruby
-    SUBDIR += js_of_ocaml
     SUBDIR += julia
     SUBDIR += julia06
     SUBDIR += julia07
@@ -312,10 +311,10 @@
     SUBDIR += rexx-regutil
     SUBDIR += rexx-wrapper
     SUBDIR += rhino
-    SUBDIR += rubinius
     SUBDIR += ruby24
     SUBDIR += ruby25
     SUBDIR += ruby26
+    SUBDIR += ruby27
     SUBDIR += runawk
     SUBDIR += rust
     SUBDIR += rust-nightly

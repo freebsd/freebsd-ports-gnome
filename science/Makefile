@@ -70,6 +70,7 @@
     SUBDIR += dvc
     SUBDIR += eccodes
     SUBDIR += elk
+    SUBDIR += elmerfem
     SUBDIR += epte
     SUBDIR += erd
     SUBDIR += erkale
@@ -150,7 +151,6 @@
     SUBDIR += mcxtrace-comps
     SUBDIR += mdynamix
     SUBDIR += medit
-    SUBDIR += meep
     SUBDIR += metaphysicl
     SUBDIR += minc2
     SUBDIR += mmdb2
@@ -240,10 +240,12 @@
     SUBDIR += py-coards
     SUBDIR += py-dlib
     SUBDIR += py-eccodes-python
+    SUBDIR += py-geolinks
     SUBDIR += py-geomet
     SUBDIR += py-geometer
     SUBDIR += py-gpaw
     SUBDIR += py-gsd
+    SUBDIR += py-h5json
     SUBDIR += py-h5py
     SUBDIR += py-hcluster
     SUBDIR += py-kinematics
@@ -262,8 +264,10 @@
     SUBDIR += py-phonopy
     SUBDIR += py-pupynere
     SUBDIR += py-pyaixi
+    SUBDIR += py-pycsw
     SUBDIR += py-pydicom
     SUBDIR += py-pygeodesy
+    SUBDIR += py-pygeometa
     SUBDIR += py-pymatgen
     SUBDIR += py-pymol
     SUBDIR += py-pyosf

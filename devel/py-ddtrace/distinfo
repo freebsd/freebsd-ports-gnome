@@ -1,3 +1,3 @@
-TIMESTAMP = 1578584015
-SHA256 (ddtrace-0.32.0.tar.gz) = cef459c3167fbbd038c48093fb3497d2dadac3b0795c7d883dc94d0d46f914dd
-SIZE (ddtrace-0.32.0.tar.gz) = 549722
+TIMESTAMP = 1580018101
+SHA256 (ddtrace-0.33.0.tar.gz) = 26b0656498e4bc8bd637688617ce45ff4930fc6f23f734b5a16bacdf5971e24b
+SIZE (ddtrace-0.33.0.tar.gz) = 555557

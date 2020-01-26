@@ -1,9 +1,9 @@
 https://bugzilla.mozilla.org/show_bug.cgi?id=1426865
 
-Add "dumb" patch to get allow gjs to build with this spidermonkey version.
+Add "dumb" patch to fix undefined symbols when trying to build gjs against
+this spidermonkey version.
 
-The real patch is include in firefox esr 68. The reason for using this
-dumb patch is that the real fix is massive and does apply easly.
+This issue was fix in firefox and backported to esr 68.
 
 --- js/public/TypeDecls.h.orig	2019-09-01 13:09:17 UTC
 +++ js/public/TypeDecls.h

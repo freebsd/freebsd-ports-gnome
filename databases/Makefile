@@ -757,6 +757,7 @@
     SUBDIR += py-agate-sql
     SUBDIR += py-aiopg
     SUBDIR += py-aioredis
+    SUBDIR += py-aiosqlite
     SUBDIR += py-alembic
     SUBDIR += py-apsw
     SUBDIR += py-asyncpg
@@ -815,6 +816,7 @@
     SUBDIR += py-psycopg2cffi
     SUBDIR += py-pum
     SUBDIR += py-pyPgSQL
+    SUBDIR += py-pycql
     SUBDIR += py-pyhs
     SUBDIR += py-pylibmc
     SUBDIR += py-pymssql

@@ -10805,7 +10805,6 @@ math/surf||2018-12-21|Has expired: Uses obsolete glib12
 math/msieve||2018-12-21|Has expired: Broken for more than 6 months
 math/octave-forge-fl-core||2018-12-21|Has expired: Broken for more than 6 months
 math/octave-forge-pdb||2018-12-21|Has expired: Broken for more than 6 months
-math/octave-forge-audio||2018-12-21|Has expired: Broken for more than 6 months
 math/geg||2018-12-21|Has expired: Uses obsolete glib12
 x11/gdkxft||2018-12-21|Has expired: Uses obsolete glib12
 x11/gtk-theme-switch||2018-12-21|Has expired: Uses obsolete glib12
@@ -10935,7 +10934,6 @@ devel/pecl-spl_types||2018-12-30|Has expired: Works only with EOL php 5.6
 devel/pecl-jsmin2||2018-12-30|Has expired: Works only with EOL php 5.6
 devel/pecl-uri_template||2018-12-30|Has expired: Works only with EOL php 5.6
 devel/pecl-params||2018-12-30|Has expired: Works only with EOL php 5.6
-devel/pecl-expect||2018-12-30|Has expired: Works only with EOL php 5.6
 devel/php5-dav||2018-12-30|Has expired: Works only with EOL php 5.6
 devel/php5-pinba||2018-12-30|Has expired: Works only with EOL php 5.6
 devel/pecl-htscanner||2018-12-30|Has expired: Works only with EOL php 5.6
@@ -11925,7 +11923,6 @@ x11-toolkits/qt4-gui||2019-03-16|Has expired: Qt4 has been EOL since december 20
 x11-toolkits/qt4pas||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11-toolkits/qwt5||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11-toolkits/qwt5-designerplugin||2019-03-16|Has expired: Qt4 has been EOL since december 2015
-x11-toolkits/soqt||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 x11-wm/qlwm||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 audio/dream||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 audio/liblastfm||2019-03-16|Has expired: Qt4 has been EOL since december 2015
@@ -11939,7 +11936,6 @@ graphics/iccexamin||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 graphics/openfx-io||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 security/yubikey-piv-manager||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 textproc/xxdiff-scripts||2019-03-16|Has expired: Qt4 has been EOL since december 2015
-graphics/py-pivy||2019-03-16|Has expired: Qt4 has been EOL since december 2015
 security/pinentry-qt4||2019-03-17|Has expired: Qt4 has been EOL since december 2015
 www/libsocialweb||2019-03-23|Project was archived upstream
 www/vimb-gtk2|www/vimb|2019-03-24|Merged into www/vimb
@@ -13270,9 +13266,7 @@ net/librouteros||2019-10-16|Has expired: Unfetchable, unmaintained
 net/nettest||2019-10-16|Has expired: Unfetchable, unmaintained
 net/py-netstring||2019-10-16|Has expired: Unfetchable, unmaintained
 net/radiusd-cistron||2019-10-16|Has expired: Unfetchable, unmaintained
-net/rtptools||2019-10-16|Has expired: Unfetchable, unmaintained
 net/smbldap-tools||2019-10-16|Has expired: Unfetchable, unmaintained
-net/tcptrace||2019-10-16|Has expired: Unfetchable, unmaintained
 net/wackford-squeers||2019-10-16|Has expired: Unfetchable, unmaintained
 net/wmnet2||2019-10-16|Has expired: Unfetchable, unmaintained
 net-im/pidgin-birthday-reminder||2019-10-16|Has expired: Unfetchable, unmaintained
@@ -13505,7 +13499,7 @@ net-mgmt/zabbix22-frontend|net-mgmt/zabbix3-frontend|2019-12-01|Has expired: End
 net-mgmt/zabbix22-java|net-mgmt/zabbix3-java|2019-12-01|Has expired: End of Life was August, 2019
 net-mgmt/zabbix22-proxy|net-mgmt/zabbix3-proxy|2019-12-01|Has expired: End of Life was August, 2019
 net-mgmt/zabbix22-server|net-mgmt/zabbix3-server|2019-12-01|Has expired: End of Life was August, 2019
-sysutils/fusefs-ext4fuse|sysutils/fusefs-ext2|2019-12-01|Has expired: Please consider using sysutils/fusefs-ext2 as upstream development is stalled.  Contrary to what its name suggests it supports ext2, ext3, ext4 in read/write  mode
+sysutils/fusefs-ext4fuse|sysutils/fusefs-ext2|2019-12-01|Has expired: Please consider using sysutils/fusefs-ext2 as upstream development is stalled.  Contrary to what its name suggests it supports ext2, ext3, ext4 in read/write mode
 www/grafana3|www/grafana4|2019-12-01|Has expired: Depends on expired lang/phantomjs
 www/miniminiweb||2019-12-01|Has expired: Upstream no longer available
 www/py-dj21-django-extensions|www/py-dj22-django-extensions|2019-12-06|Renamed to py-dj22-django-extensions because Django 2.1 has reached its End-of-Life
@@ -13670,7 +13664,7 @@ multimedia/linux-c6-libv4l|multimedia/linux-c7-libv4l|2019-12-31|Has expired: Su
 net/linux-c6-avahi-libs|net/linux-c7-avahi-libs|2019-12-31|Has expired: Superseded by CentOS 7
 net/linux-c6-openldap|net/linux-c7-openldap|2019-12-31|Has expired: Superseded by CentOS 7
 net/linux-c6-tcp_wrappers-libs|net/linux-c7-tcp_wrappers-libs|2019-12-31|Has expired: Superseded by CentOS 7
-net/py-soappy|net/py-zeep|2019-12-31|Has expired: Please consider using net/py-zeep as upstream development is stalled  and recommends using another stalled library stud
+net/py-soappy|net/py-zeep|2019-12-31|Has expired: Please consider using net/py-zeep as upstream development is stalled and recommends using another stalled library stud
 print/linux-c6-cups-libs|print/linux-c7-cups-libs|2019-12-31|Has expired: Superseded by CentOS 7
 security/linux-c6-audit-libs||2019-12-31|Has expired: Superseded by CentOS 7
 security/linux-c6-cyrus-sasl2|security/linux-c7-cyrus-sasl2|2019-12-31|Has expired: Superseded by CentOS 7
@@ -13723,3 +13717,41 @@ devel/gperf31|devel/gperf|2020-01-04|No longer needed as devel/gperf has been up
 devel/yosys|cad/yosys|2020-01-04|Move to a proper category
 cad/ujprog|comms/ujprog|2020-01-05|Move to a proper category
 net/gnatsd|net/nats-server|2020-01-06|Renamed upstream
+astro/viking||2020-01-10|Has expired: Depends on broken and expiring graphics/mapnik
+audio/slv2||2020-01-10|Has expired: Broken for more than 5 months (last version 0.6.6 released in 2009, replaced by lilv)
+cad/brickutils||2020-01-10|Has expired: Broken for more than 3 months, unmaintained
+devel/elixir-gen_state_machine||2020-01-10|Has expired: Broken for more than 6 months
+devel/elixir-swarm||2020-01-10|Has expired: Depends on broken and expiring devel/elixir-gen_state_machine
+devel/erlang-clique||2020-01-10|Has expired: Depends on broken and expiring devel/erlang-cuttlefish
+devel/erlang-gen_rpc||2020-01-10|Has expired: Broken for more than 6 months
+devel/erlang-msgpack||2020-01-10|Has expired: Broken for more than 6 months
+devel/ocaml-deriving-ocsigen||2020-01-10|Has expired: Broken for more than 6 months
+devel/p5-rpm-build-perl||2020-01-10|Has expired: Broken for more than 7 months
+devel/shedskin||2020-01-10|Has expired: Broken for more than 3 months, unmaintained
+games/stonesoup-sdl||2020-01-10|Has expired: Broken for more than 8 months
+games/xtris||2020-01-10|Has expired: Broken for more than 3 months
+graphics/mapnik||2020-01-10|Has expired: Broken for more than 8 months
+lang/js_of_ocaml||2020-01-10|Has expired: Depends on broken and expiring devel/ocaml-deriving-ocsigen
+lang/rubinius||2020-01-10|Has expired: Broken for more than 7 months
+math/dynare||2020-01-10|Has expired: Broken for more than 9 months
+science/meep||2020-01-10|Has expired: Broken for more than 6 months
+sysutils/hfm||2020-01-10|Has expired: Broken for more than 4 months
+sysutils/u-boot-zedboard||2020-01-10|Has expired: Broken for more than 6 months
+sysutils/u-boot-zybo||2020-01-10|Has expired: Broken for more than 6 months
+x11-themes/kde-icons-kool-gorilla||2020-01-10|Has expired: Broken for more than 3 months, unmaintained
+sysutils/docker-freebsd||2020-01-11|Has expired: Broken for more than 9 months
+science/molden|biology/molden|2020-01-12|The duplicate port was removed in rev.505268
+www/web2ldap||2020-01-13|Broken: unfechable and missing dependencies
+net-mgmt/flow-extract||2020-01-14|Has expired: marked BROKEN for more than 6 months
+textproc/pootle||2020-01-14|Has expired: Unamaintained, marked BROKEN for more than 5 months
+cad/elmerfem|science/elmerfem|2020-01-15|Move to a proper category
+graphics/bugle|devel/apitrace|2020-01-15|Has expired: no longer actively developed; use devel/apitrace instead
+x11-toolkits/soqt-devel|x11-toolkits/soqt|2020-01-17|This is now the stable version
+graphics/py-pivy-devel|graphics/py-pivy|2020-01-17|This is now the stable version
+net/py-coherence||2020-01-18|fails with python-3.X, and python-2.7 is EOLed (GH bug#32)
+net/py-upnp-inspector||2020-01-18|Missing dependency: net/py-coherence is python-2.7-only
+security/py-pymacaroons-pynacl|security/py-pymacaroons|2020-01-20|Rename to match upstream naming
+math/jakarta-commons-math3|apache-commons-math|2020-01-24|Renamed upstream
+audio/py-mpd2|audio/py-python-mpd2|2020-01-25|Rename to match upstream naming
+devel/py-microversion-parse|devel/py-microversion_parse|2020-01-25|Rename to match upstream naming
+audio/gstreamer1-plugins-spc|audio/gstreamer1-plugins-gme|2020-01-26|spc was removed inflavour for the gme plugin

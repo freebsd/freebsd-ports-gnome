@@ -4,6 +4,7 @@
     COMMENT = CAD tools
 
     SUBDIR += NASTRAN-95
+    SUBDIR += PrusaSlicer
     SUBDIR += abc
     SUBDIR += admesh
     SUBDIR += adms
@@ -12,7 +13,6 @@
     SUBDIR += astk-serveur
     SUBDIR += atlc
     SUBDIR += basicdsp
-    SUBDIR += brickutils
     SUBDIR += brlcad
     SUBDIR += calculix
     SUBDIR += calculix-ccx
@@ -25,7 +25,6 @@
     SUBDIR += dinotrace
     SUBDIR += electric
     SUBDIR += electric-ng
-    SUBDIR += elmerfem
     SUBDIR += fasm
     SUBDIR += feappv
     SUBDIR += fidocadj

@@ -1032,7 +1032,7 @@ NOTPHONY?=
 FLAVORS?=
 FLAVOR?=
 OVERLAYS?=
-REWARNFILE?=	${WRKDIR}/reinplace_warnings.txt
+REWARNFILE=	${WRKDIR}/reinplace_warnings.txt
 # Disallow forced FLAVOR as make argument since we cannot change it to the
 # proper default.
 .if empty(FLAVOR) && !empty(.MAKEOVERRIDES:MFLAVOR)
@@ -2681,6 +2681,7 @@ SCRIPTS_ENV+=	BATCH=yes
 MANPREFIX?=	/usr/share
 .else
 MANPREFIX?=	${PREFIX}
+MANDIRS+=	${PREFIX}/share/man
 .endif
 
 MANDIRS+=	${MANPREFIX}/man

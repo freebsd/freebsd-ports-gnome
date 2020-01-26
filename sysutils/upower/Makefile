@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	upower
-PORTVERSION=	0.99.9
+PORTVERSION=	0.99.11
 CATEGORIES=	sysutils
-MASTER_SITES=	https://gitlab.freedesktop.org/upower/upower/uploads/2282c7c0e53fb31816b824c9d1f547e8/
-GITLAB_HASH=	2282c7c0e53fb31816b824c9d1f547e8
+MASTER_SITES=	http://upower.freedesktop.org/releases/
 
 MAINTAINER=	desktop@FreeBSD.org
 COMMENT=	D-Bus daemon for simplifying power management tasks
@@ -18,7 +17,7 @@ LIB_DEPENDS=	libpolkit-gobject-1.so:sysutils/polkit \
 
 USES=		compiler:c11 gettext gmake gnome libtool localbase \
 		pathfix pkgconfig tar:xz
-USE_GNOME=	intlhack glib20 introspection:build
+USE_GNOME=	glib20 introspection:build
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--disable-gtk-doc \

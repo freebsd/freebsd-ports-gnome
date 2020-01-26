@@ -35,6 +35,7 @@
     SUBDIR += af-aspell
     SUBDIR += aft
     SUBDIR += agrep
+    SUBDIR += aha
     SUBDIR += aiksaurus
     SUBDIR += align
     SUBDIR += am-aspell
@@ -91,6 +92,7 @@
     SUBDIR += cmark
     SUBDIR += coccigrep
     SUBDIR += code2html
+    SUBDIR += codesearch
     SUBDIR += codespell
     SUBDIR += colordiff
     SUBDIR += confetti
@@ -162,6 +164,7 @@
     SUBDIR += elasticsearch5
     SUBDIR += elasticsearch5-search-guard
     SUBDIR += elasticsearch6
+    SUBDIR += elasticsearch7
     SUBDIR += elixir-earmark
     SUBDIR += elixir-funnel
     SUBDIR += elixir-sweet_xml
@@ -1199,7 +1202,6 @@
     SUBDIR += po4a
     SUBDIR += pocketreader
     SUBDIR += pod2mdoc
-    SUBDIR += pootle
     SUBDIR += popup
     SUBDIR += popup-stacks
     SUBDIR += ppower4
@@ -1258,6 +1260,7 @@
     SUBDIR += py-excelerator
     SUBDIR += py-feedparser
     SUBDIR += py-fingerprints
+    SUBDIR += py-ftfy
     SUBDIR += py-gambit-elasticsearch
     SUBDIR += py-genshi
     SUBDIR += py-gensim
@@ -1266,10 +1269,13 @@
     SUBDIR += py-guess-language
     SUBDIR += py-hexdump
     SUBDIR += py-html2text
+    SUBDIR += py-html2text2018
     SUBDIR += py-humanfriendly
     SUBDIR += py-hunspell
     SUBDIR += py-hyperestraier-python
     SUBDIR += py-hypua2jamo
+    SUBDIR += py-isbnlib
+    SUBDIR += py-isbntools
     SUBDIR += py-jaxml
     SUBDIR += py-jsonslicer
     SUBDIR += py-jsx-lexer
@@ -1494,6 +1500,7 @@
     SUBDIR += rubygem-coderay
     SUBDIR += rubygem-colorator
     SUBDIR += rubygem-colored
+    SUBDIR += rubygem-colored2
     SUBDIR += rubygem-commonmarker
     SUBDIR += rubygem-compass
     SUBDIR += rubygem-compass-blueprint

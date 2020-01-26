@@ -255,7 +255,6 @@
     SUBDIR += docker
     SUBDIR += docker-compose
     SUBDIR += docker-credential-pass
-    SUBDIR += docker-freebsd
     SUBDIR += docker-machine
     SUBDIR += doctl
     SUBDIR += doinkd
@@ -476,7 +475,6 @@
     SUBDIR += helm
     SUBDIR += hextools
     SUBDIR += hexyl
-    SUBDIR += hfm
     SUBDIR += hfsexplorer
     SUBDIR += hfsutils
     SUBDIR += hidesvn
@@ -560,6 +558,7 @@
     SUBDIR += kfloppy
     SUBDIR += khelpcenter
     SUBDIR += kiconvtool
+    SUBDIR += kio-fuse
     SUBDIR += kldfind
     SUBDIR += kldpatch
     SUBDIR += kops
@@ -881,6 +880,7 @@
     SUBDIR += pear-Translation2
     SUBDIR += pecl-proctitle
     SUBDIR += pefs-kmod
+    SUBDIR += perp
     SUBDIR += personality
     SUBDIR += pesign
     SUBDIR += pfetch
@@ -1123,6 +1123,7 @@
     SUBDIR += rubygem-httplog
     SUBDIR += rubygem-itamae
     SUBDIR += rubygem-librarian-puppet
+    SUBDIR += rubygem-license-acceptance
     SUBDIR += rubygem-log4r
     SUBDIR += rubygem-logify
     SUBDIR += rubygem-mogilefs-client
@@ -1175,6 +1176,7 @@
     SUBDIR += safe-rm
     SUBDIR += safecat
     SUBDIR += safecopy
+    SUBDIR += samdruckerclientshell
     SUBDIR += samefile
     SUBDIR += samesame
     SUBDIR += sample
@@ -1282,6 +1284,7 @@
     SUBDIR += tclsyslog
     SUBDIR += tcplist
     SUBDIR += tdir
+    SUBDIR += tealdeer
     SUBDIR += tenshi
     SUBDIR += tentakel
     SUBDIR += terraform
@@ -1368,8 +1371,6 @@
     SUBDIR += u-boot-tools
     SUBDIR += u-boot-utilite
     SUBDIR += u-boot-wandboard
-    SUBDIR += u-boot-zedboard
-    SUBDIR += u-boot-zybo
     SUBDIR += ua
     SUBDIR += ucspi-ipc
     SUBDIR += ucspi-proxy

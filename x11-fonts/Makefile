@@ -123,6 +123,7 @@
     SUBDIR += intlfonts
     SUBDIR += iosevka
     SUBDIR += isabella
+    SUBDIR += jetbrains-mono
     SUBDIR += jmk-x11-fonts
     SUBDIR += junction
     SUBDIR += junicode
@@ -197,6 +198,7 @@
     SUBDIR += py-fontMath
     SUBDIR += py-fontmake
     SUBDIR += py-glyphsLib
+    SUBDIR += py-opentype-sanitizer
     SUBDIR += py-ufo2ft
     SUBDIR += py-ufoLib
     SUBDIR += py-ufolint
@@ -226,6 +228,7 @@
     SUBDIR += urwfonts
     SUBDIR += urwfonts-ttf
     SUBDIR += uw-ttyp0
+    SUBDIR += victor-mono-ttf
     SUBDIR += vollkorn-ttf
     SUBDIR += vtfontcvt-ng
     SUBDIR += webfonts

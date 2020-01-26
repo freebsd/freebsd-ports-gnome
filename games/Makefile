@@ -889,7 +889,6 @@
     SUBDIR += stendhal
     SUBDIR += stockfish
     SUBDIR += stonesoup
-    SUBDIR += stonesoup-sdl
     SUBDIR += stormbaancoureur
     SUBDIR += stransball2
     SUBDIR += stratagus
@@ -992,6 +991,7 @@
     SUBDIR += volleyball
     SUBDIR += vor
     SUBDIR += vultures-eye
+    SUBDIR += vvvvvv
     SUBDIR += wanderer
     SUBDIR += wargus
     SUBDIR += warmux
@@ -1114,7 +1114,6 @@
     SUBDIR += xtgyoretsu
     SUBDIR += xtic
     SUBDIR += xtriangles
-    SUBDIR += xtris
     SUBDIR += xtrojka
     SUBDIR += xtron
     SUBDIR += xtruco

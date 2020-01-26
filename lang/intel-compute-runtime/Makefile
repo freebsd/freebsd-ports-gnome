@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	compute-runtime
-DISTVERSION=	19.52.15209
+DISTVERSION=	20.03.15346
 CATEGORIES=	lang
 PKGNAMEPREFIX=	intel-
 
@@ -17,11 +17,11 @@ ONLY_FOR_ARCHS_REASON=	Only Intel GPUs on x86 are supported
 LIB_DEPENDS=	libigc.so:devel/intel-graphics-compiler \
 		libigdgmm.so:multimedia/gmmlib
 
-USES=		cmake compiler:c++14-lang pkgconfig
+USES=		cmake compiler:c++14-lang localbase:ldflags pkgconfig
 USE_GITHUB=	yes
 USE_LDCONFIG=	yes
 GH_ACCOUNT=	intel
-CMAKE_ON=	SKIP_ALL_ULT
+CMAKE_ON=	SKIP_UNIT_TESTS
 CMAKE_ARGS=	-DNEO_DRIVER_VERSION:STRING="${DISTVERSIONFULL}"
 PLIST_FILES=	etc/OpenCL/vendors/intel.icd \
 		bin/ocloc \
