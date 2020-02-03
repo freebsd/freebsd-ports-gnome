@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pooch
-<<<<<<< HEAD
-PORTVERSION=	0.7.2
-=======
 PORTVERSION=	1.0.0
->>>>>>> upstream/master
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

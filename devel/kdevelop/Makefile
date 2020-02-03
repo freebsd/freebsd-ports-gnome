@@ -4,11 +4,7 @@
 #  devel/kdev-php
 #  devel/kdev-python
 PORTNAME=	kdevelop
-<<<<<<< HEAD
-DISTVERSION=	5.4.6
-=======
 DISTVERSION=	5.5.0
->>>>>>> upstream/master
 CATEGORIES=	devel kde
 MASTER_SITES=	KDE/stable/kdevelop/${DISTVERSION}/src
 DIST_SUBDIR=	KDE/kdevelop

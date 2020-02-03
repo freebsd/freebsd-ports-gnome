@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	debhelper
-<<<<<<< HEAD
-PORTVERSION=	12.8
-=======
 PORTVERSION=	12.9
->>>>>>> upstream/master
 CATEGORIES=	sysutils
 MASTER_SITES=	DEBIAN
 DISTNAME=	${PORTNAME}_${PORTVERSION}

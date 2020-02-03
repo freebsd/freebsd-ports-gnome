@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	oci
-<<<<<<< HEAD
-PORTVERSION=	2.10.1
-=======
 PORTVERSION=	2.10.2
->>>>>>> upstream/master
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

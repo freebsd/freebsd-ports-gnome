@@ -3,11 +3,7 @@
 
 PORTNAME=	erlang
 DISTVERSIONPREFIX=	OTP-
-<<<<<<< HEAD
-DISTVERSION=	22.2.3
-=======
 DISTVERSION=	22.2.5
->>>>>>> upstream/master
 CATEGORIES=	lang parallel java
 PKGNAMESUFFIX=	-runtime22
 DIST_SUBDIR=	erlang

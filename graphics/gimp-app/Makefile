@@ -3,11 +3,7 @@
 
 PORTNAME?=	gimp-app
 PORTVERSION=	2.10.14
-<<<<<<< HEAD
-PORTREVISION=	1
-=======
 PORTREVISION=	2
->>>>>>> upstream/master
 PORTEPOCH?=	1
 CATEGORIES?=	graphics gnome
 MASTER_SITES=	GIMP/gimp/v${PORTVERSION:R}

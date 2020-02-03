@@ -2,11 +2,7 @@
 
 PORTNAME=	krita
 DISTVERSION=	4.2.8.2
-<<<<<<< HEAD
-PORTREVISION=	3
-=======
 PORTREVISION=	4
->>>>>>> upstream/master
 CATEGORIES=	graphics kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${DISTVERSION:R}
 DIST_SUBDIR=	KDE/${PORTNAME}

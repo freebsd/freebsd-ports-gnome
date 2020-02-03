@@ -3,11 +3,7 @@
 
 PORTNAME=	ibus
 PORTVERSION=	1.5.20
-<<<<<<< HEAD
-PORTREVISION=	1
-=======
 PORTREVISION=	2
->>>>>>> upstream/master
 CATEGORIES=	textproc
 
 MAINTAINER=	henry.hu.sh@gmail.com

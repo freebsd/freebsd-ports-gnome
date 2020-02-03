@@ -1621,10 +1621,7 @@
     SUBDIR += py-flask-restful
     SUBDIR += py-flask-restplus
     SUBDIR += py-flask-script
-<<<<<<< HEAD
-=======
     SUBDIR += py-flask-security
->>>>>>> upstream/master
     SUBDIR += py-flask-smorest
     SUBDIR += py-flask-socketio
     SUBDIR += py-flask-sockets

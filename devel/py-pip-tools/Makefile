@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pip-tools
-<<<<<<< HEAD
-PORTVERSION=	4.4.0
-=======
 PORTVERSION=	4.4.1
->>>>>>> upstream/master
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

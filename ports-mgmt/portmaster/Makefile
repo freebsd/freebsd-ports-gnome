@@ -2,11 +2,7 @@
 
 PORTNAME=	portmaster
 PORTVERSION=	3.19
-<<<<<<< HEAD
-PORTREVISION=	20
-=======
 PORTREVISION=	24
->>>>>>> upstream/master
 CATEGORIES=	ports-mgmt
 
 MAINTAINER=	se@FreeBSD.org

@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Type-Tiny
-<<<<<<< HEAD
-PORTVERSION=	1.008003
-=======
 PORTVERSION=	1.008005
->>>>>>> upstream/master
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:TOBYINK

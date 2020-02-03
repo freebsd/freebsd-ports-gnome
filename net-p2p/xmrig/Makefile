@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	xmrig
-<<<<<<< HEAD
-PORTVERSION=	5.5.1
-=======
 PORTVERSION=	5.5.3
->>>>>>> upstream/master
 DISTVERSIONPREFIX=	v
 CATEGORIES=	net-p2p
 

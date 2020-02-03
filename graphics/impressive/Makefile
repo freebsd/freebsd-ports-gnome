@@ -3,11 +3,7 @@
 
 PORTNAME=	impressive
 PORTVERSION=	0.12.1
-<<<<<<< HEAD
-PORTREVISION=	1
-=======
 PORTREVISION=	2
->>>>>>> upstream/master
 CATEGORIES=	graphics python
 MASTER_SITES=	SF/${PORTNAME}/Impressive/${PORTVERSION}/
 DISTNAME=	Impressive-${PORTVERSION}

@@ -1,11 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	Alien-Base-ModuleBuild
-<<<<<<< HEAD
-PORTVERSION=	1.08
-=======
 PORTVERSION=	1.11
->>>>>>> upstream/master
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-

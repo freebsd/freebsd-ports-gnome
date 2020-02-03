@@ -2,12 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	sf
-<<<<<<< HEAD
-DISTVERSION=	0.8-0
-PORTREVISION=	1
-=======
 DISTVERSION=	0.8-1
->>>>>>> upstream/master
 CATEGORIES=	math
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 

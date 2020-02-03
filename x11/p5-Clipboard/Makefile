@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Clipboard
-<<<<<<< HEAD
-PORTVERSION=	0.21
-=======
 PORTVERSION=	0.22
->>>>>>> upstream/master
 CATEGORIES=	x11 perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:SHLOMIF

@@ -3,11 +3,7 @@
 PORTNAME=	dspdfviewer
 PORTVERSION=	1.15.1
 DISTVERSIONPREFIX=	v
-<<<<<<< HEAD
-PORTREVISION=	25
-=======
 PORTREVISION=	26
->>>>>>> upstream/master
 CATEGORIES=	graphics
 
 MAINTAINER=	fox@FreeBSD.org

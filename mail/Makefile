@@ -514,10 +514,6 @@
     SUBDIR += py-milter
     SUBDIR += py-notmuch
     SUBDIR += py-postfix-mta-sts-resolver
-<<<<<<< HEAD
-    SUBDIR += py-ppolicy
-=======
->>>>>>> upstream/master
     SUBDIR += py-premailer
     SUBDIR += py-pymailq
     SUBDIR += py-pyspf

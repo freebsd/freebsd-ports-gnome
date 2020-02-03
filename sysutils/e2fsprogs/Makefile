@@ -3,11 +3,7 @@
 
 PORTNAME=	e2fsprogs
 PORTVERSION=	1.45.5
-<<<<<<< HEAD
-PORTREVISION?=	0
-=======
 PORTREVISION?=	3
->>>>>>> upstream/master
 CATEGORIES?=	sysutils
 MASTER_SITES=	KERNEL_ORG/linux/kernel/people/tytso/${PORTNAME}/v${PORTVERSION}
 

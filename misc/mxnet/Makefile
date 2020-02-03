@@ -3,11 +3,7 @@
 PORTNAME=	mxnet
 DISTVERSION=	1.6.0
 DISTVERSIONSUFFIX=	.rc0
-<<<<<<< HEAD
-PORTREVISION=	3
-=======
 PORTREVISION=	4
->>>>>>> upstream/master
 CATEGORIES=	misc # machine-learning
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/

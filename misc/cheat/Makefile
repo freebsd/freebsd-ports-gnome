@@ -1,11 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	cheat
-<<<<<<< HEAD
-DISTVERSION=	3.3.0
-=======
 DISTVERSION=	3.5.1
->>>>>>> upstream/master
 CATEGORIES=	misc
 
 MAINTAINER=	yuri@FreeBSD.org

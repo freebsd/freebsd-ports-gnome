@@ -1,11 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	natsort
-<<<<<<< HEAD
-DISTVERSION=	7.0.0
-=======
 DISTVERSION=	7.0.1
->>>>>>> upstream/master
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

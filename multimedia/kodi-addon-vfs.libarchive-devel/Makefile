@@ -1,14 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	vfs.libarchive
-<<<<<<< HEAD
-DISTVERSION=	1.1.0
-DISTVERSIONSUFFIX=	-Matrix
-PORTREVISION=	1
-=======
 DISTVERSION=	1.1.1
 DISTVERSIONSUFFIX=	-Matrix
->>>>>>> upstream/master
 CATEGORIES=	multimedia
 PKGNAMEPREFIX=	kodi-addon-
 PKGNAMESUFFIX=	-devel

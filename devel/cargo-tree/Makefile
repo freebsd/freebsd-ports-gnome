@@ -2,10 +2,7 @@
 
 PORTNAME=	cargo-tree
 DISTVERSION=	0.28.0
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	devel
 MASTER_SITES=	CRATESIO
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}

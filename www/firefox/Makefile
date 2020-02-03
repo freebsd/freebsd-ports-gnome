@@ -3,11 +3,7 @@
 
 PORTNAME=	firefox
 DISTVERSION=	72.0.2
-<<<<<<< HEAD
-PORTREVISION=	1
-=======
 PORTREVISION=	2
->>>>>>> upstream/master
 PORTEPOCH=	1
 CATEGORIES=	www
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \

@@ -3,11 +3,7 @@
 
 PORTNAME=	gourmet
 PORTVERSION=	0.17.4
-<<<<<<< HEAD
-PORTREVISION=	8
-=======
 PORTREVISION=	9
->>>>>>> upstream/master
 CATEGORIES=	deskutils gnome
 
 MAINTAINER=	rm@FreeBSD.org

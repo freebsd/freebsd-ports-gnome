@@ -3,11 +3,7 @@
 
 PORTNAME=	beets
 PORTVERSION=	1.4.9
-<<<<<<< HEAD
-PORTREVISION=	1
-=======
 PORTREVISION=	2
->>>>>>> upstream/master
 CATEGORIES=	audio python
 MASTER_SITES=	CHEESESHOP
 

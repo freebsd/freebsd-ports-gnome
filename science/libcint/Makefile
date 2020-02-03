@@ -3,10 +3,7 @@
 PORTNAME=	libcint
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.0.19
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	science
 
 MAINTAINER=	yuri@FreeBSD.org

@@ -4,11 +4,7 @@
 PORTNAME=	frescobaldi
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.0.0
-<<<<<<< HEAD
-PORTREVISION=	4
-=======
 PORTREVISION=	5
->>>>>>> upstream/master
 CATEGORIES=	print kde
 
 MAINTAINER=	m.ne@gmx.net

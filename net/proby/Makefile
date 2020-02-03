@@ -2,10 +2,7 @@
 
 PORTNAME=	proby
 DISTVERSION=	0.4.0
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	net
 
 MAINTAINER=	yuri@FreeBSD.org

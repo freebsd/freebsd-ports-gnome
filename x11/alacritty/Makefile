@@ -3,10 +3,7 @@
 PORTNAME=	alacritty
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.4.1
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	x11
 
 MAINTAINER=	tobik@FreeBSD.org

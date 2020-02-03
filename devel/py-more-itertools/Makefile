@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	more-itertools
-<<<<<<< HEAD
-PORTVERSION=	8.1.0
-=======
 PORTVERSION=	8.2.0
->>>>>>> upstream/master
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

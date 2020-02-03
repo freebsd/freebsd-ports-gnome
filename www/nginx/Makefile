@@ -3,11 +3,7 @@
 
 PORTNAME=	nginx
 PORTVERSION=	1.16.1
-<<<<<<< HEAD
-PORTREVISION?=	9
-=======
 PORTREVISION?=	10
->>>>>>> upstream/master
 PORTEPOCH=	2
 CATEGORIES=	www
 MASTER_SITES=	https://nginx.org/download/ \

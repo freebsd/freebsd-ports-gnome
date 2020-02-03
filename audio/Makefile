@@ -664,10 +664,6 @@
     SUBDIR += py-pymad
     SUBDIR += py-pysndfile
     SUBDIR += py-python-mpd2
-<<<<<<< HEAD
-    SUBDIR += py-shout
-=======
->>>>>>> upstream/master
     SUBDIR += py-soundcloud
     SUBDIR += py-sounddevice
     SUBDIR += py-soundscrape

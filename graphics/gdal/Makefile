@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
-<<<<<<< HEAD
-PORTVERSION=	3.0.3
-=======
 PORTVERSION=	3.0.4
->>>>>>> upstream/master
 PORTREVISION=	1
 CATEGORIES=	graphics geography
 MASTER_SITES=	https://download.osgeo.org/gdal/${PORTVERSION}/ \

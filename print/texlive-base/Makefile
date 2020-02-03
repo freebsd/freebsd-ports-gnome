@@ -2,11 +2,7 @@
 
 PORTNAME=	texlive
 PORTVERSION=	20150521
-<<<<<<< HEAD
-PORTREVISION=	44
-=======
 PORTREVISION=	45
->>>>>>> upstream/master
 CATEGORIES=	print
 MASTER_SITES=	TEX_CTAN/systems/texlive/Source/
 PKGNAMESUFFIX=	-base

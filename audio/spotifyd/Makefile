@@ -3,10 +3,7 @@
 PORTNAME=	spotifyd
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.2.24
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	audio
 
 MAINTAINER=	tobik@FreeBSD.org

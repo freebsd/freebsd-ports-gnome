@@ -10,11 +10,7 @@ you update your ports collection, before attempting any port upgrades.
   AUTHOR: kwm@freebsd.org
 
   In GStreamer 1.16 some files moved from the gstreamer1-plugins-bad package
-<<<<<<< HEAD
-  to the gstreamer1-plugins package. 
-=======
   to the gstreamer1-plugins package.
->>>>>>> upstream/master
 
   If your using a tool like portmaster or portupgrade delete the old -bad
   port and then follow the normal upgrade method.

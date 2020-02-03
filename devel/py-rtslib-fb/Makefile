@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rtslib-fb
-<<<<<<< HEAD
-PORTVERSION=	2.1.69
-=======
 PORTVERSION=	2.1.71
->>>>>>> upstream/master
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	File-Find-Object-Rule
-<<<<<<< HEAD
-PORTVERSION=	0.0311
-=======
 PORTVERSION=	0.0312
->>>>>>> upstream/master
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-

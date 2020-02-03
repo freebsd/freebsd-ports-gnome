@@ -2,11 +2,7 @@
 
 PORTNAME=	poppler
 PORTVERSION=	3.4.1
-<<<<<<< HEAD
-PORTREVISION=	2
-=======
 PORTREVISION=	3
->>>>>>> upstream/master
 CATEGORIES=	x11-toolkits rubygems
 MASTER_SITES=	RG
 

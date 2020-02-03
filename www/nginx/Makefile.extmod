@@ -210,11 +210,8 @@ LET_CONFIGURE_ON=	--add-module=${WRKSRC_let}
 
 LINK_GH_TUPLE=		Taymindis:nginx-link-function:3.2.1:link
 LINK_CONFIGURE_ON=	--add-module=${WRKSRC_link}
-<<<<<<< HEAD
-=======
 LINK_EXTRA_PATCHES=     ${PATCHDIR}/extra-patch-nginx-link-function-config \
 				${PATCHDIR}/extra-patch-ngx_link_func_module.c
->>>>>>> upstream/master
 
 LUA_IMPLIES=		DEVEL_KIT
 LUA_LIB_DEPENDS=	libluajit-5.1.so:lang/luajit-openresty

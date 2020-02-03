@@ -6,27 +6,13 @@ PORTVERSION?=	1.41.0
 PORTREVISION?=	0
 CATEGORIES=	lang
 MASTER_SITES=	https://static.rust-lang.org/dist/:src \
-<<<<<<< HEAD
-		https://static.rust-lang.org/dist/:bootstrap \
-		LOCAL/tobik/rust:bootstrap \
-		https://releases.llvm.org/${COMPILER_RT_VERSION}/:compiler_rt \
-		https://github.com/llvm/llvm-project/releases/download/llvmorg-${COMPILER_RT_VERSION}/:compiler_rt
-=======
 		LOCAL/tobik/rust:bootstrap \
 		https://static.rust-lang.org/dist/:bootstrap
->>>>>>> upstream/master
 DISTNAME?=	${PORTNAME}c-${PORTVERSION}-src
 DISTFILES?=	${NIGHTLY_SUBDIR}${DISTNAME}${EXTRACT_SUFX}:src \
 		${_RUSTC_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}${EXTRACT_SUFX}:bootstrap \
 		${_RUST_STD_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}${EXTRACT_SUFX}:bootstrap \
-<<<<<<< HEAD
-		${_CARGO_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}${EXTRACT_SUFX}:bootstrap \
-		${DISTFILES_${ARCH}}
-DISTFILES_armv6=	compiler-rt-${COMPILER_RT_VERSION}.src.tar.xz:compiler_rt
-DISTFILES_armv7=	compiler-rt-${COMPILER_RT_VERSION}.src.tar.xz:compiler_rt
-=======
 		${_CARGO_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}${EXTRACT_SUFX}:bootstrap
->>>>>>> upstream/master
 DIST_SUBDIR?=	rust
 EXTRACT_ONLY?=	${DISTFILES:N*\:bootstrap:C/:.*//}
 
@@ -57,11 +43,6 @@ TEST_ENV=	${MAKE_ENV} \
 		ALLOW_NONZERO_RLIMIT_CORE=1
 
 CONFLICTS_INSTALL?=	rust-nightly
-
-# lang/rust-bootstrap builds the bundled libgit2 and using the patch
-# to fix runtime with system libgit2 is incompatible with it.  Keep
-# it separate.
-EXTRA_PATCHES=	${PATCHDIR}/libgit2
 
 PLIST_FILES=	lib/rustlib/components \
 		lib/rustlib/rust-installer-version
@@ -198,21 +179,6 @@ do-configure:
 		${WRKSRC}/src/bootstrap/native.rs
 
 do-build:
-<<<<<<< HEAD
-	cd ${WRKSRC} && \
-	${SETENV} ${X_PY_ENV} \
-	${X_PY_CMD} build \
-		--config ./config.toml \
-		--jobs ${MAKE_JOBS_NUMBER}
-
-do-install:
-	cd ${WRKSRC} && \
-	${SETENV} ${X_PY_ENV} \
-		DESTDIR=${STAGEDIR} \
-	${X_PY_CMD} 'install' \
-		--config ./config.toml \
-		--jobs ${MAKE_JOBS_NUMBER}
-=======
 	@cd ${WRKSRC} && \
 		${SETENV} ${MAKE_ENV} ${PYTHON_CMD} x.py build --config=config.toml \
 		--jobs=${MAKE_JOBS_NUMBER}
@@ -223,7 +189,6 @@ do-install:
 	@cd ${WRKSRC} && \
 		${SETENV} ${MAKE_ENV} DESTDIR=${STAGEDIR} ${PYTHON_CMD} \
 		x.py install --config=config.toml --jobs=${MAKE_JOBS_NUMBER}
->>>>>>> upstream/master
 
 # In post-install, we use the manifests generated during Rust install
 # to in turn generate the PLIST. We do that, instead of the regular
@@ -270,18 +235,9 @@ post-install:
 
 # Note that make test does not work when rust is already installed.
 do-test:
-<<<<<<< HEAD
-	cd ${WRKSRC} && \
-	${SETENV} ${X_PY_ENV} \
-		ALLOW_NONZERO_RLIMIT_CORE=1 \
-	${X_PY_CMD} test \
-		--config ./config.toml \
-		--jobs ${MAKE_JOBS_NUMBER}
-=======
 	@cd ${WRKSRC} && \
 		${SETENV} ${TEST_ENV} ${PYTHON_CMD} x.py test --config=config.toml \
 		--jobs=${MAKE_JOBS_NUMBER}
->>>>>>> upstream/master
 
 .if !defined(_RUST_MAKESUM_GUARD)
 makesum:

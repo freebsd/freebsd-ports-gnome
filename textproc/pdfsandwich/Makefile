@@ -2,11 +2,7 @@
 
 PORTNAME=	pdfsandwich
 DISTVERSION=	0.1.7
-<<<<<<< HEAD
-PORTREVISION=	6
-=======
 PORTREVISION=	7
->>>>>>> upstream/master
 CATEGORIES=	textproc
 MASTER_SITES=	SF/${PORTNAME}/pdfsandwich%20${DISTVERSION}/
 

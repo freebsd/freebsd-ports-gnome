@@ -3,11 +3,7 @@
 
 PORTNAME=	recoll
 DISTVERSION=	1.25.22
-<<<<<<< HEAD
-PORTREVISION=	2
-=======
 PORTREVISION=	3
->>>>>>> upstream/master
 CATEGORIES=	deskutils
 MASTER_SITES=	https://www.lesbonscomptes.com/recoll/
 

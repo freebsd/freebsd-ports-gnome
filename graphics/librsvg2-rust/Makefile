@@ -3,10 +3,7 @@
 
 PORTNAME=	librsvg
 PORTVERSION=	2.46.4
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
 PKGNAMESUFFIX=	2-rust

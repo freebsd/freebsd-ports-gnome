@@ -2,11 +2,7 @@
 
 PORTNAME=	gemma
 DISTVERSION=	0.98.1
-<<<<<<< HEAD
-PORTREVISION=	3
-=======
 PORTREVISION=	4
->>>>>>> upstream/master
 CATEGORIES=	biology
 
 MAINTAINER=	jwb@FreeBSD.org

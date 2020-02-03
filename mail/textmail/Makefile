@@ -3,11 +3,7 @@
 
 PORTNAME=	textmail
 PORTVERSION=	20070803
-<<<<<<< HEAD
-PORTREVISION=	10
-=======
 PORTREVISION=	11
->>>>>>> upstream/master
 CATEGORIES=	mail
 MASTER_SITES=	http://raf.org/textmail/
 

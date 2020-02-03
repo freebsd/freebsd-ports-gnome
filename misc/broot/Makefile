@@ -3,10 +3,7 @@
 PORTNAME=	broot
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.12.1
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	misc
 
 MAINTAINER=	vulcan@wired.sh

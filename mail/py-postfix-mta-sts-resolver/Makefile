@@ -1,11 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	postfix-mta-sts-resolver
-<<<<<<< HEAD
-PORTVERSION=	0.7.3
-=======
 PORTVERSION=	0.7.5
->>>>>>> upstream/master
 DISTVERSIONPREFIX=v
 CATEGORIES=	mail python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

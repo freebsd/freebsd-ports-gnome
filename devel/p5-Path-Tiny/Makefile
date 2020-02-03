@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Path-Tiny
-<<<<<<< HEAD
-PORTVERSION=	0.110
-=======
 PORTVERSION=	0.112
->>>>>>> upstream/master
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 MASTER_SITE_SUBDIR=	CPAN:DAGOLDEN

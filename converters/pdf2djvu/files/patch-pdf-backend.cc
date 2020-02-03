@@ -1,9 +1,5 @@
 --- pdf-backend.cc.orig	2019-06-10 17:06:44 UTC
 +++ pdf-backend.cc
-<<<<<<< HEAD
-@@ -103,7 +103,7 @@ static void poppler_error_handler(void *data, ErrorCat
- 
-=======
 @@ -48,7 +48,7 @@
   * ======================
   */
@@ -41,17 +37,10 @@
 +	  setErrorCallback(callback1, nullptr);
 +}
 +
->>>>>>> upstream/master
  pdf::Environment::Environment()
  {
 -  globalParams = new GlobalParams();
 +  globalParams = std::unique_ptr<GlobalParams>(new GlobalParams);
-<<<<<<< HEAD
-   setErrorCallback(poppler_error_handler, nullptr);
- }
- 
-@@ -499,12 +499,11 @@ bool pdf::get_glyph(splash::Splash *splash, splash::Fo
-=======
 +#if POPPLER_VERSION >= 7000
 +    set_error_callback(poppler_error_handler, poppler_error_handler_new);
 +#else
@@ -61,7 +50,6 @@
  
  void pdf::Environment::set_antialias(bool value)
 @@ -499,12 +520,11 @@ bool pdf::get_glyph(splash::Splash *splash, splash::Fo
->>>>>>> upstream/master
  void pdf::Renderer::convert_path(pdf::gfx::State *state, splash::Path &splash_path)
  {
    /* Source was copied from <poppler/SplashOutputDev.c>. */

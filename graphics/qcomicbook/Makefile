@@ -3,11 +3,7 @@
 
 PORTNAME=	QComicBook
 PORTVERSION=	0.9.1
-<<<<<<< HEAD
-PORTREVISION=	11
-=======
 PORTREVISION=	12
->>>>>>> upstream/master
 CATEGORIES=	graphics
 
 MAINTAINER=	ports@FreeBSD.org

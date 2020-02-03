@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	redis
-<<<<<<< HEAD
-PORTVERSION=	6.0.0.20200113
-=======
 PORTVERSION=	6.0.0.20200130
->>>>>>> upstream/master
 CATEGORIES=	databases
 PKGNAMESUFFIX=	-devel
 
@@ -17,11 +13,7 @@ LICENSE=	BSD3CLAUSE
 
 USES+=		compiler:c11 gmake
 USE_GITHUB=	yes
-<<<<<<< HEAD
-GH_TUPLE= 	antirez:${PORTNAME}:2d7dc71
-=======
 GH_TUPLE= 	antirez:${PORTNAME}:53ac8c7
->>>>>>> upstream/master
 
 OPTIONS_DEFINE=	JEMALLOC TESTS TLS TRIB
 OPTIONS_RADIO=	EXTLUA

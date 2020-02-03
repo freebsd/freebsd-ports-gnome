@@ -2,10 +2,7 @@
 
 PORTNAME=	fractal
 DISTVERSION=	4.2.2
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	net-im
 MASTER_SITES=	https://gitlab.gnome.org/World/fractal/uploads/${GL_HASH}/
 

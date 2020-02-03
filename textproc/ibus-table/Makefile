@@ -3,10 +3,7 @@
 
 PORTNAME=	ibus-table
 DISTVERSION=	1.9.24
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	textproc
 
 MAINTAINER=	yuri@FreeBSD.org

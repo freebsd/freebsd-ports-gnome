@@ -3,11 +3,7 @@
 
 PORTNAME=	evince
 PORTVERSION=	3.28.5
-<<<<<<< HEAD
-PORTREVISION=	10
-=======
 PORTREVISION=	11
->>>>>>> upstream/master
 CATEGORIES=	graphics print gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3

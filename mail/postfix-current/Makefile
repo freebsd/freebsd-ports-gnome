@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	postfix
-<<<<<<< HEAD
-DISTVERSION=	3.5-20200112
-=======
 DISTVERSION=	3.5-20200126
->>>>>>> upstream/master
 PORTREVISION?=	0
 PORTEPOCH=	5
 CATEGORIES=	mail

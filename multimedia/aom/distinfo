@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-TIMESTAMP = 1579913042
-SHA256 (jbeich-aom-v1.0.0-3002-g5e87049aa_GH0.tar.gz) = aae3fc5d3cc1d3308f6d58a16d441a38b2dcd4dd1e7fe58b1c2d5e06f7b534db
-SIZE (jbeich-aom-v1.0.0-3002-g5e87049aa_GH0.tar.gz) = 3493321
-=======
 TIMESTAMP = 1580575194
 SHA256 (jbeich-aom-v1.0.0-3026-g3cd9eec38_GH0.tar.gz) = 7d1221b0ebf12661046ec2168d58ddbcf38edc15e7443932fa5f8277480f53e6
 SIZE (jbeich-aom-v1.0.0-3026-g3cd9eec38_GH0.tar.gz) = 3510834
->>>>>>> upstream/master

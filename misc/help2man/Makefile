@@ -40,10 +40,4 @@ NLS_PLIST_FILES+=	man/${lang}/man1/help2man.1.gz \
 			share/locale/${lang}/LC_MESSAGES/help2man.mo
 .endfor
 
-<<<<<<< HEAD
-post-patch:
-	@${REINPLACE_CMD} -e '/^pkglibdir/ s|/help2man$$||' ${WRKSRC}/Makefile.in
-
-=======
->>>>>>> upstream/master
 .include <bsd.port.mk>

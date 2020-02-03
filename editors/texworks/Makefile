@@ -4,11 +4,7 @@
 PORTNAME=	texworks
 DISTVERSIONPREFIX=	release-
 DISTVERSION=	0.6.2
-<<<<<<< HEAD
-PORTREVISION=	13
-=======
 PORTREVISION=	14
->>>>>>> upstream/master
 CATEGORIES=	editors
 
 MAINTAINER=	hrs@FreeBSD.org

@@ -176,11 +176,7 @@ RUBY26=			""	# PLIST_SUB helpers
 # Ruby 2.7
 #
 RUBY_VERSION=		2.7.0
-<<<<<<< HEAD
-RUBY_PORTREVISION=	0
-=======
 RUBY_PORTREVISION=	1
->>>>>>> upstream/master
 RUBY_PORTEPOCH=		1
 RUBY27=			""	# PLIST_SUB helpers
 

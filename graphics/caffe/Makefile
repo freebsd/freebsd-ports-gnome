@@ -2,11 +2,7 @@
 
 PORTNAME=	caffe
 PORTVERSION=	1.0
-<<<<<<< HEAD
-PORTREVISION=	30
-=======
 PORTREVISION=	31
->>>>>>> upstream/master
 CATEGORIES=	graphics
 
 MAINTAINER=	eric@camachat.org

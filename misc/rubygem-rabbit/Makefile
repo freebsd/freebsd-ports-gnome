@@ -3,11 +3,7 @@
 
 PORTNAME=	rabbit
 PORTVERSION=	2.2.1
-<<<<<<< HEAD
-PORTREVISION=	3
-=======
 PORTREVISION=	4
->>>>>>> upstream/master
 CATEGORIES=	misc rubygems
 MASTER_SITES=	RG
 

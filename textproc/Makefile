@@ -1271,10 +1271,6 @@
     SUBDIR += py-hypua2jamo
     SUBDIR += py-isbnlib
     SUBDIR += py-isbntools
-<<<<<<< HEAD
-    SUBDIR += py-jaxml
-=======
->>>>>>> upstream/master
     SUBDIR += py-jsonslicer
     SUBDIR += py-jsx-lexer
     SUBDIR += py-jtextfsm

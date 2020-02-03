@@ -2,12 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	csound
-<<<<<<< HEAD
-DISTVERSION=	6.13.0-244
-DISTVERSIONSUFFIX=	-gcc9851add
-=======
 DISTVERSION=	6.14.0
->>>>>>> upstream/master
 CATEGORIES=	audio lang
 
 MAINTAINER=	yuri@FreeBSD.org

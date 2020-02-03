@@ -3,10 +3,7 @@
 
 PORTNAME=	mbdyn
 PORTVERSION=	1.7.3
-<<<<<<< HEAD
-=======
 PORTREVISION=	1
->>>>>>> upstream/master
 CATEGORIES=	science
 MASTER_SITES=	https://www.mbdyn.org/userfiles/downloads/
 

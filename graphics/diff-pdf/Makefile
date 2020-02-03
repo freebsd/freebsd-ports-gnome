@@ -3,11 +3,7 @@
 PORTNAME=	diff-pdf
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.3-20190713
-<<<<<<< HEAD
-PORTREVISION=	1
-=======
 PORTREVISION=	2
->>>>>>> upstream/master
 CATEGORIES=	graphics
 
 MAINTAINER=	uzsolt@uzsolt.hu

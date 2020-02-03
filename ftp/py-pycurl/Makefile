@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pycurl
-<<<<<<< HEAD
-PORTVERSION=	7.43.0.4
-=======
 PORTVERSION=	7.43.0.5
->>>>>>> upstream/master
 CATEGORIES=	ftp python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

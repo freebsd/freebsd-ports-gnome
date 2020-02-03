@@ -3,11 +3,7 @@
 
 PORTNAME=	gegl
 PORTVERSION=	0.4.18
-<<<<<<< HEAD
-PORTREVISION=	2
-=======
 PORTREVISION=	3
->>>>>>> upstream/master
 CATEGORIES=	graphics
 MASTER_SITES=	GIMP
 

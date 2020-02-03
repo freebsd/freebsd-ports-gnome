@@ -9,21 +9,6 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Accessing and Modifying INI files
-<<<<<<< HEAD
-
-USES=		python
-USE_PYTHON=	autoplist concurrent distutils
-
-NO_ARCH=	yes
-
-PORTDOCS=	Changelog README
-
-OPTIONS_DEFINE=	DOCS
-
-post-install-DOCS-on:
-	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
-=======
 
 LICENSE=	MIT PSFL
 LICENSE_COMB=	dual
@@ -36,6 +21,5 @@ USES=		python
 USE_PYTHON=	autoplist concurrent distutils
 
 NO_ARCH=	yes
->>>>>>> upstream/master
 
 .include <bsd.port.mk>

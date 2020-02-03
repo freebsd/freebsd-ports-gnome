@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Template-Toolkit
-<<<<<<< HEAD
-PORTVERSION=	3.006
-=======
 PORTVERSION=	3.007
->>>>>>> upstream/master
 CATEGORIES=	www textproc perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
