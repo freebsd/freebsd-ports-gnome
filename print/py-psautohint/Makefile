@@ -1,8 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	psautohint
+<<<<<<< HEAD
 PORTVERSION=	1.9.1
 PORTREVISION=	4
+=======
+DISTVERSION=	2.0.0
+>>>>>>> upstream/master
 CATEGORIES=	print python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -15,7 +19,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools_scm>0:devel/py-setuptools_scm@${PY_FLAVOR}
 
-USES=		python zip
+USES=		python:3.6+ zip
 USE_PYTHON=	autoplist concurrent distutils
 
 post-install:

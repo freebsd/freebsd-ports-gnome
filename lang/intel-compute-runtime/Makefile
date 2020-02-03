@@ -1,7 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	compute-runtime
+<<<<<<< HEAD
 DISTVERSION=	20.03.15346
+=======
+DISTVERSION=	20.04.15428
+>>>>>>> upstream/master
 CATEGORIES=	lang
 PKGNAMEPREFIX=	intel-
 

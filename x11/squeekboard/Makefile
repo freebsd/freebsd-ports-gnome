@@ -3,6 +3,10 @@
 PORTNAME=	squeekboard
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1.8.0
+<<<<<<< HEAD
+=======
+PORTREVISION=	1
+>>>>>>> upstream/master
 CATEGORIES=	x11
 
 MAINTAINER=	jbeich@FreeBSD.org

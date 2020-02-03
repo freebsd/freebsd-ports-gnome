@@ -2,7 +2,11 @@
 
 PORTNAME=	ghostscript
 PORTVERSION=	9.50
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 CATEGORIES=	print
 MASTER_SITES=	https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${PORTVERSION:S/.//}/
 PKGNAMESUFFIX=	9-agpl-base

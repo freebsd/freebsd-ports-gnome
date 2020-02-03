@@ -3,7 +3,11 @@
 
 PORTNAME=	pdf2svg
 PORTVERSION=	0.2.3
+<<<<<<< HEAD
 PORTREVISION=	13
+=======
+PORTREVISION=	14
+>>>>>>> upstream/master
 DISTVERSIONPREFIX=	v
 CATEGORIES=	graphics
 

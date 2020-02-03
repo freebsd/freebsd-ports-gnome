@@ -60,5 +60,9 @@ include/coin/CoinWarmStartVector.hpp
 include/coin/Coin_C_defines.h
 lib/libCoinUtils.so
 lib/libCoinUtils.so.3
+<<<<<<< HEAD
 lib/libCoinUtils.so.3.11.3
+=======
+lib/libCoinUtils.so.3.11.4
+>>>>>>> upstream/master
 libdata/pkgconfig/coinutils.pc

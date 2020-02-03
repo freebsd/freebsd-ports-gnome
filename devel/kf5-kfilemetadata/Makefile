@@ -2,7 +2,11 @@
 
 PORTNAME=	kfilemetadata
 DISTVERSION=	${KDE_FRAMEWORKS_VERSION}
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 CATEGORIES=	devel kde kde-frameworks
 
 MAINTAINER=	kde@FreeBSD.org

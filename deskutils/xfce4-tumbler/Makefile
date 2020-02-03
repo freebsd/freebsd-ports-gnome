@@ -3,7 +3,11 @@
 
 PORTNAME=	tumbler
 PORTVERSION=	0.2.8
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 CATEGORIES=	deskutils xfce
 MASTER_SITES=	XFCE
 PKGNAMEPREFIX=	xfce4-

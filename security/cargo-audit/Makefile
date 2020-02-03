@@ -3,6 +3,10 @@
 PORTNAME=	cargo-audit
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.11.0
+<<<<<<< HEAD
+=======
+PORTREVISION=	1
+>>>>>>> upstream/master
 CATEGORIES=	security
 
 MAINTAINER=	tobik@FreeBSD.org

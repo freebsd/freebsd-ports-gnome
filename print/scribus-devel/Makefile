@@ -3,7 +3,11 @@
 
 PORTNAME=	scribus
 PORTVERSION=	1.5.5
+<<<<<<< HEAD
 PORTREVISION=	7
+=======
+PORTREVISION=	8
+>>>>>>> upstream/master
 CATEGORIES=	print editors
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}${PKGNAMESUFFIX}/${PORTVERSION}/ \
 		http://www.scribus.net/downloads/${PORTVERSION}/

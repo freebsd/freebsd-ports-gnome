@@ -3,6 +3,10 @@
 PORTNAME=	tealdeer
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1.2.0
+<<<<<<< HEAD
+=======
+PORTREVISION=	1
+>>>>>>> upstream/master
 CATEGORIES=	sysutils
 
 MAINTAINER=	vulcan@wired.sh

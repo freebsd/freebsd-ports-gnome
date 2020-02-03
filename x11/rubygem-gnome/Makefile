@@ -2,7 +2,11 @@
 
 PORTNAME=	gnome
 PORTVERSION=	3.4.1
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 CATEGORIES=	x11 gnome rubygems
 PKGNAMEPREFIX=	rubygem-
 

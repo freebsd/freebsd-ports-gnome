@@ -2,6 +2,10 @@
 
 PORTNAME=	erkale
 DISTVERSION=	g20200110
+<<<<<<< HEAD
+=======
+PORTREVISION=	1
+>>>>>>> upstream/master
 CATEGORIES=	science
 
 MAINTAINER=	yuri@FreeBSD.org

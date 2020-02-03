@@ -3,7 +3,11 @@
 
 PORTNAME=	pqiv
 PORTVERSION=	2.11
+<<<<<<< HEAD
 PORTREVISION=	5
+=======
+PORTREVISION=	6
+>>>>>>> upstream/master
 CATEGORIES=	graphics
 
 MAINTAINER=	danilo@FreeBSD.org

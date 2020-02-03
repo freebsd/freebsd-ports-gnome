@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	RgoogleMaps
+<<<<<<< HEAD
 PORTVERSION=	1.4.5.1
+=======
+PORTVERSION=	1.4.5.2
+>>>>>>> upstream/master
 CATEGORIES=	www
 DISTNAME=	${PORTNAME}_${PORTVERSION}
 

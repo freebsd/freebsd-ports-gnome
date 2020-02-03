@@ -3,7 +3,11 @@
 
 PORTNAME=	zathura-pdf-mupdf
 DISTVERSION=	0.3.5
+<<<<<<< HEAD
 PORTREVISION=	2
+=======
+PORTREVISION=	3
+>>>>>>> upstream/master
 CATEGORIES=	graphics
 MASTER_SITES=	https://pwmt.org/projects/zathura-pdf-mupdf/download/ \
 		http://freebsd.uzsolt.hu/src/

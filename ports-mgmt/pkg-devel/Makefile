@@ -1,8 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	pkg
+<<<<<<< HEAD
 DISTVERSION=	1.12.99.3
+=======
+DISTVERSION=	1.12.99.4
+>>>>>>> upstream/master
 _PKG_VERSION=	${DISTVERSION}
+PORTREVISION=	1
 CATEGORIES=	ports-mgmt
 PKGNAMESUFFIX=	-devel
 
@@ -13,7 +18,11 @@ LICENSE=	BSD2CLAUSE
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	freebsd
+<<<<<<< HEAD
 GH_TAGNAME=	6fbb16c9
+=======
+GH_TAGNAME=	72fa511f
+>>>>>>> upstream/master
 
 WITH_DEBUG=	yes
 CFLAGS+=	-O0 -g -Wno-error

@@ -4,6 +4,7 @@
 PORTNAME=	openblas
 PORTVERSION=	0.3.7
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	math
 MASTER_SITES=	NL/lapack/timing/:lapack_tmg
@@ -36,11 +37,16 @@ USE_PERL5=	build
 OPENBLAS_SVER=	0
 TEST_TARGET=	tests
 
-BUILDFLAGS=	FCOMMON_OPT=-frecursive MAKE_NB_JOBS=-1
+PLIST_SUB+=	PORTVERSION=${PORTVERSION}
 
 OPTIONS_DEFINE=			INTERFACE64 OPENMP
+<<<<<<< HEAD
 OPTIONS_DEFINE_i386=	AVX AVX2 DYNAMIC_ARCH
 OPTIONS_DEFINE_amd64=	AVX AVX2 DYNAMIC_ARCH
+=======
+OPTIONS_DEFINE_i386=		AVX AVX2 DYNAMIC_ARCH
+OPTIONS_DEFINE_amd64=		AVX AVX2 DYNAMIC_ARCH
+>>>>>>> upstream/master
 OPTIONS_DEFINE_powerpc64=	POWER6
 OPTIONS_EXCLUDE_powerpc64=	OPENMP
 
@@ -67,6 +73,7 @@ TARGET_CPU_ARCH=	PPC970
 .  endif
 .endif
 
+<<<<<<< HEAD
 .if defined(TARGET_CPU_ARCH)
 BUILDFLAGS+=	TARGET=${TARGET_CPU_ARCH}
 MAKE_ENV+=	TARGET=${TARGET_CPU_ARCH}
@@ -80,18 +87,21 @@ BUILDFLAGS+=	BINARY32=1
 .else
 BUILDFLAGS+=	BINARY64=1
 .endif
+=======
+MAXTHREADS?=	64
+>>>>>>> upstream/master
 
 .if ! ${PORT_OPTIONS:MDYNAMIC_ARCH} && ( ${ARCH} == "amd64" || ${ARCH} == "i386" )
 MANUAL_PACKAGE_BUILD=	Optimizes for the build machine.
 .endif
 
 .if ${PORT_OPTIONS:MDYNAMIC_ARCH}
-BUILDFLAGS+=	DYNAMIC_ARCH=1
 PLIST_SUB+=	DYNARCH=""
 .else
 PLIST_SUB+=	DYNARCH="@comment "
 .endif
 
+<<<<<<< HEAD
 .if ${PORT_OPTIONS:MINTERFACE64}
 BUILDFLAGS+=	INTERFACE64=1
 .endif
@@ -107,6 +117,10 @@ BUILDFLAGS+=	NO_AVX2=1
 .if ${PORT_OPTIONS:MOPENMP}
 USES+=			compiler:openmp
 BUILDFLAGS_THREAD+=	USE_OPENMP=1
+=======
+.if ${PORT_OPTIONS:MOPENMP}
+USES+=		compiler:openmp
+>>>>>>> upstream/master
 .else
 USES+=		compiler:c11
 .endif
@@ -122,6 +136,38 @@ USE_GCC=	yes
 post-extract:
 	cd ${DISTDIR}/${DIST_SUBDIR} ; \
 	${CP} ${LARGE_FILE} ${TIMING_FILE} ${WRKSRC}
+<<<<<<< HEAD
+=======
+
+post-patch:
+	@${ECHO} MAKE_NB_JOBS=-1 >> ${WRKSRC}/Makefile.rule
+	@${ECHO} NUM_THREADS=${MAXTHREADS} >> ${WRKSRC}/Makefile.rule
+	@${ECHO} USE_THREAD=1 >> ${WRKSRC}/Makefile.rule
+.if ! ${PORT_OPTIONS:MAVX}
+	@${ECHO} NO_AVX=1 >> ${WRKSRC}/Makefile.rule
+.endif
+.if ! ${PORT_OPTIONS:MAVX2}
+	@${ECHO} NO_AVX2=1 >> ${WRKSRC}/Makefile.rule
+.endif
+.if ${PORT_OPTIONS:MDYNAMIC_ARCH}
+	@${ECHO} DYNAMIC_ARCH=1 >> ${WRKSRC}/Makefile.rule
+	@${ECHO} DYNAMIC_OLDER=1 >> ${WRKSRC}/Makefile.rule
+.endif
+.if defined(TARGET_CPU_ARCH)
+	@${ECHO} TARGET=${TARGET_CPU_ARCH} >> ${WRKSRC}/Makefile.rule
+.endif
+.if ${PORT_OPTIONS:MINTERFACE64}
+	@${ECHO} INTERFACE64=1 >> ${WRKSRC}/Makefile.rule
+.endif
+.if ${PORT_OPTIONS:MOPENMP}
+	@${ECHO} USE_OPENMP=1 >> ${WRKSRC}/Makefile.rule
+.endif
+.if ${ARCH:M*64} == ""
+	@${ECHO} BINARY=32 >> ${WRKSRC}/Makefile.rule
+.else
+	@${ECHO} BINARY=64 >> ${WRKSRC}/Makefile.rule
+.endif
+>>>>>>> upstream/master
 
 post-patch-OPENMP-on:
 	@${REINPLACE_CMD} -e "s+OPENBLAS_NUM_THREADS+OMP_NUM_THREADS+g" \
@@ -136,6 +182,7 @@ BENCHMARK_THREADS_FLAG=	OPENBLAS_NUM_THREADS=${BENCHMARK_MAXTHREADS}
 .endif
 
 benchmark: build
+<<<<<<< HEAD
 	cd ${WRKSRC} ; ${SETENV} ${BUILDFLAGS} NUM_THREADS=${MAXTHREADS} \
 	USE_THREAD=1 ${MAKE_CMD} ${MAKE_ARGS} hpl
 	cd ${WRKSRC}/benchmark ; ${SETENV} ${BUILDFLAGS} NUM_THREADS=${MAXTHREADS} \
@@ -166,5 +213,12 @@ post-install:
 	${MV} ${STAGEDIR}${PREFIX}/lib/lib${PORTNAME}_*-r${PORTVERSION}.so ${STAGEDIR}${PREFIX}/lib/lib${PORTNAME}.so.${OPENBLAS_SVER}
 	${RM} ${STAGEDIR}${PREFIX}/lib/lib${PORTNAME}.so
 	${LN} -sf lib${PORTNAME}.so.${OPENBLAS_SVER} ${STAGEDIR}${PREFIX}/lib/lib${PORTNAME}.so
+=======
+	cd ${WRKSRC} ; ${SETENV} ${MAKE_CMD} ${MAKE_ARGS} hpl
+	cd ${WRKSRC}/benchmark ; ${SETENV} ${BENCHMARK_THREADS_FLAG} ${MAKE_CMD} ${MAKE_ARGS}
+
+post-install-DYNAMIC_ARCH-off:
+	cd ${STAGEDIR}${PREFIX} && ls lib/libopenblas_*p-r${PORTVERSION}.* >> ${TMPPLIST}
+>>>>>>> upstream/master
 
 .include <bsd.port.post.mk>

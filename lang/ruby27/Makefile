@@ -118,7 +118,11 @@ PKGNAMESUFFIX=	${RUBY_VER:C/\.//}
 PLIST_SUB+=	IF_DEFAULT="@comment "
 .endif
 
+<<<<<<< HEAD
 INSTALLED_SCRIPTS=	erb irb racc racc2y rdoc ri ruby y2racc
+=======
+INSTALLED_SCRIPTS=	erb irb rdoc ri ruby
+>>>>>>> upstream/master
 INSTALLED_MANUALS=	erb irb ri ruby
 
 EXTSAMPLES=	bigdecimal/sample/*.rb
@@ -133,7 +137,11 @@ RB_SET_CONF_VAR=${SH} -c '${REINPLACE_CMD} -E -e "s,(CONFIG\[\"$$0\"\][[:space:]
 
 post-patch:
 # We get these from other ports
+<<<<<<< HEAD
 .for d in bin/bundle* lib/bundler*  libexec/bundler* man/bundle* bin/gem man/gemfile* \
+=======
+.for d in bin/bundle* bin/*racc* lib/bundler* libexec/bundler* man/bundle* bin/gem man/gemfile* \
+>>>>>>> upstream/master
 	  ext/dbm ext/gdbm ext/win32ole
 	  	@${RM} -r ${BUILD_WRKSRC}/${d}
 .endfor

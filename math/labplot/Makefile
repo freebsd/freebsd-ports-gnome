@@ -3,7 +3,11 @@
 
 PORTNAME=	labplot
 PORTVERSION=	2.7.0
+<<<<<<< HEAD
 PORTREVISION=	2
+=======
+PORTREVISION=	3
+>>>>>>> upstream/master
 CATEGORIES=	math kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}
 

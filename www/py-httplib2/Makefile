@@ -1,7 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	httplib2
+<<<<<<< HEAD
 PORTVERSION=	0.16.0
+=======
+PORTVERSION=	0.17.0
+>>>>>>> upstream/master
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

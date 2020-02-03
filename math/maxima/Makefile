@@ -3,6 +3,10 @@
 
 PORTNAME=	maxima
 PORTVERSION=	5.43.1
+<<<<<<< HEAD
+=======
+PORTREVISION=	1
+>>>>>>> upstream/master
 CATEGORIES=	math lisp tk
 MASTER_SITES=	SF/maxima/Maxima-source/${PORTVERSION}-source
 

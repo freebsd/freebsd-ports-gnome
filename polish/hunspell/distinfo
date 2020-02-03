@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 TIMESTAMP = 1578923238
 SHA256 (hunspell/sjp-myspell-pl-20200108.zip) = e9ef0243820990276a2606b63bdbe232e3d0027745e820687ba11e5e1095f3db
 SIZE (hunspell/sjp-myspell-pl-20200108.zip) = 1237361
+=======
+TIMESTAMP = 1580746271
+SHA256 (hunspell/sjp-myspell-pl-20200202.zip) = 34ea2a55e3aca4cdd81b3a8cca48109fea513b623524c993ee99ee7e32043813
+SIZE (hunspell/sjp-myspell-pl-20200202.zip) = 1238690
+>>>>>>> upstream/master

@@ -5,7 +5,11 @@
 
 PORTNAME=	atril
 PORTVERSION=	1.22.3
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 CATEGORIES=	graphics print mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate

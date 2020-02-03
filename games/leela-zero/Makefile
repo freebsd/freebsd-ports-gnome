@@ -3,7 +3,11 @@
 PORTNAME=	leela-zero
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.17
+<<<<<<< HEAD
 PORTREVISION=	6
+=======
+PORTREVISION=	7
+>>>>>>> upstream/master
 CATEGORIES=	games
 
 MAINTAINER=	yuri@FreeBSD.org

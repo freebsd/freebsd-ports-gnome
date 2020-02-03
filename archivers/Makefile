@@ -173,7 +173,6 @@
     SUBDIR += py-brotlipy
     SUBDIR += py-bup
     SUBDIR += py-bz2file
-    SUBDIR += py-czipfile
     SUBDIR += py-libarchive-c
     SUBDIR += py-librtfcomp
     SUBDIR += py-lz4
@@ -207,7 +206,9 @@
     SUBDIR += rubygem-ruby-xz
     SUBDIR += rubygem-rubyzip
     SUBDIR += rubygem-rubyzip12
+    SUBDIR += rubygem-rubyzip13
     SUBDIR += rubygem-rubyzip2
+    SUBDIR += rubygem-rubyzip20
     SUBDIR += rubygem-snappy
     SUBDIR += rvm
     SUBDIR += rzip

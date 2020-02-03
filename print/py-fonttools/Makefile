@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	fonttools
+<<<<<<< HEAD
 PORTVERSION=	4.2.4
+=======
+PORTVERSION=	4.2.5
+>>>>>>> upstream/master
 CATEGORIES=	print python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

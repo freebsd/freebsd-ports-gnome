@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	Tie-File
+<<<<<<< HEAD
 PORTVERSION=	1.01
+=======
+PORTVERSION=	1.05
+>>>>>>> upstream/master
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-

@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 TIMESTAMP = 1580018147
 SHA256 (rubygem/aws-sdk-resources-2.11.424.gem) = ee447bb0a51c29e860e164baab5c5fd04e57c0d42022a05137433663239ebbd0
 SIZE (rubygem/aws-sdk-resources-2.11.424.gem) = 48640
+=======
+TIMESTAMP = 1580746251
+SHA256 (rubygem/aws-sdk-resources-2.11.428.gem) = aaee684724c92a15643b62dd6a5d3832c463a246284326b80f35dca1f64be7db
+SIZE (rubygem/aws-sdk-resources-2.11.428.gem) = 48640
+>>>>>>> upstream/master

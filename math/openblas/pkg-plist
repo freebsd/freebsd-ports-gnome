@@ -4,6 +4,7 @@ include/lapacke.h
 include/lapacke_config.h
 include/lapacke_mangling.h
 include/lapacke_utils.h
+<<<<<<< HEAD
 include/openblas/cblas.h
 include/openblas/config_last.h
 include/openblas/l1param.h
@@ -43,10 +44,17 @@ include/openblas/openblas_config_template.h
 include/openblas/openblas_param.h
 include/openblas/openblas_version.h
 include/openblas/symcopy.h
+=======
+>>>>>>> upstream/master
 include/openblas_config.h
 lib/cmake/openblas/OpenBLASConfig.cmake
 lib/cmake/openblas/OpenBLASConfigVersion.cmake
 lib/libopenblas.a
 lib/libopenblas.so
+<<<<<<< HEAD
 lib/libopenblas.so.0
+=======
+%%DYNARCH%%lib/libopenblasp-r%%PORTVERSION%%.a
+%%DYNARCH%%lib/libopenblasp-r%%PORTVERSION%%.so
+>>>>>>> upstream/master
 libdata/pkgconfig/openblas.pc

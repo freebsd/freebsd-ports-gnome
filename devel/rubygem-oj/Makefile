@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	oj
+<<<<<<< HEAD
 PORTVERSION=	3.10.1
+=======
+PORTVERSION=	3.10.2
+>>>>>>> upstream/master
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 

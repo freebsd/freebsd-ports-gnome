@@ -3,7 +3,11 @@
 
 PORTNAME=	fasttracker2
 DISTVERSIONPREFIX=	v
+<<<<<<< HEAD
 DISTVERSION=	1.06
+=======
+DISTVERSION=	1.07
+>>>>>>> upstream/master
 CATEGORIES=	audio
 
 MAINTAINER=	ehaupt@FreeBSD.org

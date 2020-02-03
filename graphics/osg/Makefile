@@ -4,7 +4,11 @@
 PORTNAME=	osg
 PORTVERSION=	3.6.4
 DISTVERSIONPREFIX=	OpenSceneGraph-
+<<<<<<< HEAD
 PORTREVISION=	3
+=======
+PORTREVISION=	4
+>>>>>>> upstream/master
 CATEGORIES=	graphics
 
 MAINTAINER=	amdmi3@FreeBSD.org

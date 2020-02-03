@@ -3,7 +3,11 @@
 PORTNAME=	kile
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.0b3
+<<<<<<< HEAD
 PORTREVISION=	2
+=======
+PORTREVISION=	3
+>>>>>>> upstream/master
 CATEGORIES=	editors kde
 
 MAINTAINER=	kde@FreeBSD.org

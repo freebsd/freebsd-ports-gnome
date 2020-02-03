@@ -3,7 +3,11 @@
 
 PORTNAME=	numpy
 PORTVERSION=	1.16.5
+<<<<<<< HEAD
 PORTREVISION=	3
+=======
+PORTREVISION=	4
+>>>>>>> upstream/master
 PORTEPOCH=	1
 CATEGORIES=	math python
 MASTER_SITES=	CHEESESHOP \

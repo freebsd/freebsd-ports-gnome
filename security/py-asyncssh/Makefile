@@ -2,6 +2,10 @@
 
 PORTNAME=	asyncssh
 PORTVERSION=	1.16.1
+<<<<<<< HEAD
+=======
+PORTREVISION=	1
+>>>>>>> upstream/master
 CATEGORIES=	security python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -20,7 +24,11 @@ USE_PYTHON=	autoplist distutils
 NO_ARCH=	yes
 
 OPTIONS_DEFINE=	BCRYPT GSSAPI LIBNACL NETTLE PYOPENSSL
+<<<<<<< HEAD
 OPTIONS_DEFAULT=BRCYPT PYOPENSSL
+=======
+OPTIONS_DEFAULT=BCRYPT PYOPENSSL
+>>>>>>> upstream/master
 BCRYPT_DESC=	OpenSSH private key encryption
 GSSAPI_DESC=	GSSAPI key exchange and authentication
 LIBNACL_DESC=	Curve25519, Ed25519 and Chacha20-Poly1305 support

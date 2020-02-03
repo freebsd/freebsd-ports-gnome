@@ -1,7 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	neatvnc
+<<<<<<< HEAD
 PORTVERSION=	s20200125
+=======
+PORTVERSION=	s20200129
+>>>>>>> upstream/master
 CATEGORIES=	net
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -18,7 +22,11 @@ USE_GITHUB=	yes
 USE_XORG=	pixman
 USE_LDCONFIG=	yes
 GH_ACCOUNT=	any1
+<<<<<<< HEAD
 GH_TAGNAME=	993ad80
+=======
+GH_TAGNAME=	1047359
+>>>>>>> upstream/master
 
 OPTIONS_DEFINE=	GNUTLS JPEG
 OPTIONS_DEFAULT=GNUTLS JPEG

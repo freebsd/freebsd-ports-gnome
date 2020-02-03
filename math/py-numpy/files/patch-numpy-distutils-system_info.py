@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 --- numpy/distutils/system_info.py.orig	2019-08-27 19:01:36 UTC
+=======
+--- numpy/distutils/system_info.py.orig	2019-08-27 21:01:36 UTC
+>>>>>>> upstream/master
 +++ numpy/distutils/system_info.py
 @@ -172,6 +172,8 @@ def _c_string_literal(s):
      Convert a python string into a literal suitable for inclusion into C code
@@ -32,6 +36,7 @@
          atlas_info = get_info('atlas_3_10_blas_threads')
          if not atlas_info:
              atlas_info = get_info('atlas_3_10_blas')
+<<<<<<< HEAD
 @@ -1742,7 +1739,7 @@ class blas_info(system_info):
                                        library_dirs=info['library_dirs'],
                                        extra_postargs=info.get('extra_link_args', []))
@@ -41,3 +46,35 @@
                  res = None
          finally:
              shutil.rmtree(tmpdir)
+=======
+@@ -1730,18 +1727,17 @@ class blas_info(system_info):
+                 # check we can link (find library)
+                 # some systems have separate cblas and blas libs. First
+                 # check for cblas lib, and if not present check for blas lib.
+-                try:
+-                    c.link_executable(obj, os.path.join(tmpdir, "a.out"),
+-                                      libraries=["cblas"],
+-                                      library_dirs=info['library_dirs'],
+-                                      extra_postargs=info.get('extra_link_args', []))
+-                    res = "cblas"
+-                except distutils.ccompiler.LinkError:
+-                    c.link_executable(obj, os.path.join(tmpdir, "a.out"),
+-                                      libraries=["blas"],
+-                                      library_dirs=info['library_dirs'],
+-                                      extra_postargs=info.get('extra_link_args', []))
+-                    res = "blas"
++                res = None
++                for libname in ['cblas', 'blas', 'openblas']:
++                    try:
++                        c.link_executable(obj, os.path.join(tmpdir, "a.out"),
++                                          libraries=[libname],
++                                          library_dirs=info['library_dirs'],
++                                          extra_postargs=info.get('extra_link_args', []))
++                        res = libname
++                        break
++                    except distutils.ccompiler.LinkError:
++                        pass
+             except distutils.ccompiler.CompileError:
+                 res = None
+         finally:
+>>>>>>> upstream/master

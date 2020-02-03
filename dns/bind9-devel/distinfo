@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 TIMESTAMP = 1579521406
 SHA256 (isc-projects-bind9-402f067fc0a478032dd3e84153991cae82c1e1f7_GL0.tar.gz) = 272e8029cadbea413cec017b55585133cb6cdd3b230f340fd3a728201e26cb47
 SIZE (isc-projects-bind9-402f067fc0a478032dd3e84153991cae82c1e1f7_GL0.tar.gz) = 6341032
+=======
+TIMESTAMP = 1580734578
+SHA256 (isc-projects-bind9-9f6e0dc94511421b16ede0baaf04598d0fc62282_GL0.tar.gz) = c5e0a40cebe1ea1d7d297da128b6be5b22146841401c6fb81834eef5a1356285
+SIZE (isc-projects-bind9-9f6e0dc94511421b16ede0baaf04598d0fc62282_GL0.tar.gz) = 6346668
+>>>>>>> upstream/master

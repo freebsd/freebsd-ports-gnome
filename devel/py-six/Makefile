@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	six
+<<<<<<< HEAD
 PORTVERSION=	1.13.0
+=======
+PORTVERSION=	1.14.0
+>>>>>>> upstream/master
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

@@ -3,6 +3,10 @@
 PORTNAME=	primme
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.0.2
+<<<<<<< HEAD
+=======
+PORTREVISION=	1
+>>>>>>> upstream/master
 CATEGORIES=	math
 
 MAINTAINER=	yuri@FreeBSD.org

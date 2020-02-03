@@ -2,14 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	iniparse
-PORTVERSION=	0.4
-PORTREVISION=	1
+PORTVERSION=	0.5
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Accessing and Modifying INI files
+<<<<<<< HEAD
 
 USES=		python
 USE_PYTHON=	autoplist concurrent distutils
@@ -23,5 +23,19 @@ OPTIONS_DEFINE=	DOCS
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	cd ${WRKSRC} && ${INSTALL_DATA} ${PORTDOCS} ${STAGEDIR}${DOCSDIR}
+=======
+
+LICENSE=	MIT PSFL
+LICENSE_COMB=	dual
+LICENSE_FILE_MIT=	${WRKSRC}/LICENSE
+LICENSE_FILE_PSFL=	${WRKSRC}/LICENSE-PSF
+
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>=0:devel/py-six@${PY_FLAVOR}
+
+USES=		python
+USE_PYTHON=	autoplist concurrent distutils
+
+NO_ARCH=	yes
+>>>>>>> upstream/master
 
 .include <bsd.port.mk>

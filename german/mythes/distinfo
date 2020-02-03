@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 TIMESTAMP = 1579531364
 SHA256 (mythes/Deutscher-Thesaurus-20200119.oxt) = 23b02ee7275f9285782f7e2ce3e3a286cb8267259e620b28b2a37c284affceb0
 SIZE (mythes/Deutscher-Thesaurus-20200119.oxt) = 9707830
+=======
+TIMESTAMP = 1580746269
+SHA256 (mythes/Deutscher-Thesaurus-20200202.oxt) = 9c9ae15b758a34a6844c50130b47b3a3a557043d9ac1f01f1508dbade04db07d
+SIZE (mythes/Deutscher-Thesaurus-20200202.oxt) = 10428251
+>>>>>>> upstream/master

@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	Astro-satpass
+<<<<<<< HEAD
 PORTVERSION=	0.111
+=======
+PORTVERSION=	0.112
+>>>>>>> upstream/master
 CATEGORIES=	astro perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-

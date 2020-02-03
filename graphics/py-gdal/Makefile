@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	gdal
+<<<<<<< HEAD
 PORTVERSION=	3.0.3
+=======
+PORTVERSION=	3.0.4
+>>>>>>> upstream/master
 CATEGORIES=	graphics python
 MASTER_SITES=	https://download.osgeo.org/gdal/${PORTVERSION}/ \
 		LOCAL/sunpoet

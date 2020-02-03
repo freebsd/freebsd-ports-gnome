@@ -2,7 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	mail-parser
+<<<<<<< HEAD
 PORTVERSION=	3.11.0
+=======
+PORTVERSION=	3.12.0
+PORTREVISION=	1
+>>>>>>> upstream/master
 CATEGORIES=	mail python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -15,14 +20,21 @@ LICENSE=	APACHE20
 RUN_DEPENDS=	msgconvert:mail/p5-Email-Outlook-Message \
 		${PY_IPADDRESS} \
 		${PYTHON_PKGNAMEPREFIX}simplejson>=3.17.0:devel/py-simplejson@${PY_FLAVOR} \
+<<<<<<< HEAD
 		${PYTHON_PKGNAMEPREFIX}six>=1.13.0:devel/py-six@${PY_FLAVOR}
+=======
+		${PYTHON_PKGNAMEPREFIX}six>=1.14.0:devel/py-six@${PY_FLAVOR}
+>>>>>>> upstream/master
 
 USES=		python
 USE_PYTHON=	autoplist concurrent distutils
 
 NO_ARCH=	yes
 
+<<<<<<< HEAD
 post-patch:
 	@${REINPLACE_CMD} -e 's|==|>=|' ${WRKSRC}/requirements.txt ${WRKSRC}/mail_parser.egg-info/requires.txt
 
+=======
+>>>>>>> upstream/master
 .include <bsd.port.mk>

@@ -1,6 +1,10 @@
 LICENSE=	GPLv2
 
+<<<<<<< HEAD
 MUNIN_VERSION=	2.0.53
+=======
+MUNIN_VERSION=	2.0.54
+>>>>>>> upstream/master
 MUNIN_SITES=	http://downloads.munin-monitoring.org/munin/stable/${MUNIN_VERSION}/
 DISTINFO_FILE=	${.CURDIR}/../../sysutils/munin-common/distinfo
 PATCHDIR=	${.CURDIR}/../../sysutils/munin-common/files

@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	rocksdb
+<<<<<<< HEAD
 PORTVERSION=	6.5.3
+=======
+PORTVERSION=	6.6.4
+>>>>>>> upstream/master
 DISTVERSIONPREFIX=	v
 CATEGORIES=	databases
 

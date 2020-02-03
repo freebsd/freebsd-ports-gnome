@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
+<<<<<<< HEAD
 PORTVERSION=	9.2.1.s20200118
+=======
+PORTVERSION=	9.2.1.s20200125
+>>>>>>> upstream/master
 CATEGORIES=	lang
 MASTER_SITES=	GCC/snapshots/${DIST_VERSION}
 PKGNAMESUFFIX=	${SUFFIX}-devel

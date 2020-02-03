@@ -3,7 +3,11 @@
 
 PORTNAME=	inkscape
 PORTVERSION=	0.92.4
+<<<<<<< HEAD
 PORTREVISION=	13
+=======
+PORTREVISION=	14
+>>>>>>> upstream/master
 CATEGORIES=	graphics gnome
 MASTER_SITES=	https://media.inkscape.org/dl/resources/file/
 

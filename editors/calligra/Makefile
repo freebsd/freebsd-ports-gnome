@@ -2,7 +2,11 @@
 
 PORTNAME=	calligra
 DISTVERSION=	3.1.0
+<<<<<<< HEAD
 PORTREVISION=	31
+=======
+PORTREVISION=	32
+>>>>>>> upstream/master
 CATEGORIES=	editors kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}
 DIST_SUBDIR=	KDE/${PORTNAME}

@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	storj
+<<<<<<< HEAD
 PORTVERSION=	0.30.5
+=======
+PORTVERSION=	0.31.12
+>>>>>>> upstream/master
 DISTVERSIONPREFIX=	v
 CATEGORIES=	net
 

@@ -1,5 +1,9 @@
 # $FreeBSD$
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 
 .include "${.CURDIR}/Makefile.common"
 

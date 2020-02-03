@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	ircd-hybrid
+<<<<<<< HEAD
 PORTVERSION=	8.2.27
+=======
+PORTVERSION=	8.2.28
+>>>>>>> upstream/master
 CATEGORIES=	irc
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTNAME}-${PORTVERSION}
 

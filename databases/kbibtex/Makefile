@@ -3,7 +3,11 @@
 
 PORTNAME=	kbibtex
 DISTVERSION=	0.9.1
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 CATEGORIES=	databases kde
 MASTER_SITES=	KDE/stable/KBibTeX/${DISTVERSION}
 

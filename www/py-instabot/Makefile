@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	instabot
+<<<<<<< HEAD
 PORTVERSION=	0.103.0
+=======
+PORTVERSION=	0.106.0
+>>>>>>> upstream/master
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

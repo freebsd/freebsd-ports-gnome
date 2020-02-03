@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 TIMESTAMP = 1578730697
 SHA256 (rust/rustc-1.40.0-src.tar.xz) = 6e2aa3a91697f4b225c6b394cbae6b97666f061dba491f666a5281698fe2aace
 SIZE (rust/rustc-1.40.0-src.tar.xz) = 92306352
@@ -45,3 +46,50 @@ SHA256 (rust/2019-11-07/rust-std-1.39.0-powerpc64-unknown-freebsd-elfv2.tar.xz) 
 SIZE (rust/2019-11-07/rust-std-1.39.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 163926244
 SHA256 (rust/2019-11-07/cargo-0.40.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 75ecd88d83e8f394ce33f0213b622a045cbcfc55973f4b5140403de298f73968
 SIZE (rust/2019-11-07/cargo-0.40.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 3268696
+=======
+TIMESTAMP = 1580240609
+SHA256 (rust/rustc-1.41.0-src.tar.xz) = 38d6742e5c4c98a835de5d6e12a209e442fb3078a03b2c01bab6ea7afb25be6f
+SIZE (rust/rustc-1.41.0-src.tar.xz) = 93763052
+SHA256 (rust/2020-01-11/rustc-1.40.0-aarch64-unknown-freebsd.tar.xz) = b73372fb30198cd9c26927f89cc96c339253038491fcb5629d88285f156f1347
+SIZE (rust/2020-01-11/rustc-1.40.0-aarch64-unknown-freebsd.tar.xz) = 26371388
+SHA256 (rust/2020-01-11/rust-std-1.40.0-aarch64-unknown-freebsd.tar.xz) = 88abe2b1e267309bc87bb0bf9ace0c7d72be21c47a0fec9858364f1ed6cd64f9
+SIZE (rust/2020-01-11/rust-std-1.40.0-aarch64-unknown-freebsd.tar.xz) = 13924444
+SHA256 (rust/2020-01-11/cargo-0.41.0-aarch64-unknown-freebsd.tar.xz) = 492827650d0cf0b796008bbc40d01fa9bbba86c542b3b84d213c6b87a4736261
+SIZE (rust/2020-01-11/cargo-0.41.0-aarch64-unknown-freebsd.tar.xz) = 3722100
+SHA256 (rust/2020-01-11/rustc-1.40.0-x86_64-unknown-freebsd.tar.xz) = e95b3c7c0fec14fb9efd23155812c61bae08e1513fb62cd15fca30fafec7cd5e
+SIZE (rust/2020-01-11/rustc-1.40.0-x86_64-unknown-freebsd.tar.xz) = 28440532
+SHA256 (rust/2020-01-11/rust-std-1.40.0-x86_64-unknown-freebsd.tar.xz) = f5aa2fddf200a701eee4fcebe43725e77333283d7714a273ae92c06de3601a9a
+SIZE (rust/2020-01-11/rust-std-1.40.0-x86_64-unknown-freebsd.tar.xz) = 14603276
+SHA256 (rust/2020-01-11/cargo-0.41.0-x86_64-unknown-freebsd.tar.xz) = 629de6db56cd659856a28679be68dfadbdb31a28a65c156d65cec769ff43a7e7
+SIZE (rust/2020-01-11/cargo-0.41.0-x86_64-unknown-freebsd.tar.xz) = 4399816
+SHA256 (rust/2020-01-11/rustc-1.40.0-armv6-unknown-freebsd.tar.xz) = 442dc33f751c79044d862d4d20e6512589d78e33712c8731b83e7b9ccded9f01
+SIZE (rust/2020-01-11/rustc-1.40.0-armv6-unknown-freebsd.tar.xz) = 27455140
+SHA256 (rust/2020-01-11/rust-std-1.40.0-armv6-unknown-freebsd.tar.xz) = bdcf05cafe9a6a5fd1d089b763cd4946d24a61049f24eff3993c1033db4af88e
+SIZE (rust/2020-01-11/rust-std-1.40.0-armv6-unknown-freebsd.tar.xz) = 13924280
+SHA256 (rust/2020-01-11/cargo-0.41.0-armv6-unknown-freebsd.tar.xz) = d04aba96a043fb798cee1f4b44a63ff83549c1c85ffaadbbda3edc28ebbb01fc
+SIZE (rust/2020-01-11/cargo-0.41.0-armv6-unknown-freebsd.tar.xz) = 3811020
+SHA256 (rust/2020-01-11/rustc-1.40.0-armv7-unknown-freebsd.tar.xz) = 9d89a89d0f441e1e074e2d0c9d255e07852971c60bd3f4e533e8d1e9fded60e0
+SIZE (rust/2020-01-11/rustc-1.40.0-armv7-unknown-freebsd.tar.xz) = 27393212
+SHA256 (rust/2020-01-11/rust-std-1.40.0-armv7-unknown-freebsd.tar.xz) = 5e4ef87f5403f273856ecfcb822d439628fc95dd7c77d2bd21ac7f33b7e4cba6
+SIZE (rust/2020-01-11/rust-std-1.40.0-armv7-unknown-freebsd.tar.xz) = 13862568
+SHA256 (rust/2020-01-11/cargo-0.41.0-armv7-unknown-freebsd.tar.xz) = a07620fe97be95523d3f915ae03c4b37fcd467fd4f141d62188670dd069e98a2
+SIZE (rust/2020-01-11/cargo-0.41.0-armv7-unknown-freebsd.tar.xz) = 3808576
+SHA256 (rust/2020-01-11/rustc-1.40.0-i686-unknown-freebsd.tar.xz) = a785bede5f78784a62e5b93557e46fed32263d0625e3abe186847f9d6bee89aa
+SIZE (rust/2020-01-11/rustc-1.40.0-i686-unknown-freebsd.tar.xz) = 29109748
+SHA256 (rust/2020-01-11/rust-std-1.40.0-i686-unknown-freebsd.tar.xz) = d44c08d8bc59eec45784c5dd53d5b5a723afa0786a33e52e23a3a169c932242d
+SIZE (rust/2020-01-11/rust-std-1.40.0-i686-unknown-freebsd.tar.xz) = 14501104
+SHA256 (rust/2020-01-11/cargo-0.41.0-i686-unknown-freebsd.tar.xz) = e4360a14e9b7bf24c273d72a0f043f276be8500974d8c00df9eb2b56abff5ae3
+SIZE (rust/2020-01-11/cargo-0.41.0-i686-unknown-freebsd.tar.xz) = 4356888
+SHA256 (rust/2020-01-11/rustc-1.40.0-powerpc64-unknown-freebsd-elfv1.tar.xz) = b68ce52ccf2a04d165ac0cc69e6eb6dd1d4b69c5334c7e20e1ada9387f34d788
+SIZE (rust/2020-01-11/rustc-1.40.0-powerpc64-unknown-freebsd-elfv1.tar.xz) = 32015204
+SHA256 (rust/2020-01-11/rust-std-1.40.0-powerpc64-unknown-freebsd-elfv1.tar.xz) = 9193a9c30fe63f8d0644c99be9c253dc0e685d994812bc22a2e35c8046a64430
+SIZE (rust/2020-01-11/rust-std-1.40.0-powerpc64-unknown-freebsd-elfv1.tar.xz) = 13903088
+SHA256 (rust/2020-01-11/cargo-0.41.0-powerpc64-unknown-freebsd-elfv1.tar.xz) = e434e724c635aadac3bd859b49504903133182fca862bdc1c2129659e2129cdd
+SIZE (rust/2020-01-11/cargo-0.41.0-powerpc64-unknown-freebsd-elfv1.tar.xz) = 4253612
+SHA256 (rust/2020-01-11/rustc-1.40.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 7ef1dcdf471b5ff8fdb106573594589978d96c39931972750e21bd4ab001e856
+SIZE (rust/2020-01-11/rustc-1.40.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 26694028
+SHA256 (rust/2020-01-11/rust-std-1.40.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 8dfaff61d5d631afb04cd7a6235dfac3a803fa1fd13def934746e69b6ec35b38
+SIZE (rust/2020-01-11/rust-std-1.40.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 13866172
+SHA256 (rust/2020-01-11/cargo-0.41.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 10e96fb30baa14a95ffede8074867209feda189af2b49f5da1caf5457c9751b2
+SIZE (rust/2020-01-11/cargo-0.41.0-powerpc64-unknown-freebsd-elfv2.tar.xz) = 3982652
+>>>>>>> upstream/master

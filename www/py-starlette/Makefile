@@ -2,7 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	starlette
+<<<<<<< HEAD
 PORTVERSION=	0.13.0
+=======
+PORTVERSION=	0.13.1
+>>>>>>> upstream/master
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

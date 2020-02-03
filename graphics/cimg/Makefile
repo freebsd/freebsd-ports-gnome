@@ -3,7 +3,11 @@
 
 PORTNAME=	cimg
 DISTVERSIONPREFIX=	v.
+<<<<<<< HEAD
 DISTVERSION=	2.8.2
+=======
+DISTVERSION=	2.8.3
+>>>>>>> upstream/master
 PORTEPOCH=	3
 CATEGORIES=	graphics devel
 

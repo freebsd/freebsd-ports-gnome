@@ -2,8 +2,12 @@
 
 PORTNAME=	libphonenumber
 DISTVERSIONPREFIX=	v
+<<<<<<< HEAD
 DISTVERSION=	8.11.2
 PORTREVISION=	2
+=======
+DISTVERSION=	8.11.3
+>>>>>>> upstream/master
 CATEGORIES=	devel
 
 MAINTAINER=	kde@FreeBSD.org

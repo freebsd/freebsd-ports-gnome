@@ -1,7 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	google-cloud-core
+<<<<<<< HEAD
 PORTVERSION=	1.2.0
+=======
+PORTVERSION=	1.3.0
+>>>>>>> upstream/master
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}

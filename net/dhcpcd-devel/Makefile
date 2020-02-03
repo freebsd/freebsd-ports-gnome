@@ -2,12 +2,20 @@
 # $FreeBSD$
 
 PORTNAME=	dhcpcd
+<<<<<<< HEAD
 PORTVERSION=	8.99.0.g20200118
+=======
+PORTVERSION=	8.99.0.g20200128
+>>>>>>> upstream/master
 CATEGORIES=	net
 MASTER_SITES=	https://roy.marples.name/cgit/dhcpcd.git/snapshot/
 PKGNAMESUFFIX=	-devel
 DISTNAME=	${PORTNAME}-${GITTAG}
+<<<<<<< HEAD
 GITTAG=		52d192b
+=======
+GITTAG=		bc88848
+>>>>>>> upstream/master
 
 MAINTAINER=	woodsb02@FreeBSD.org
 COMMENT=	DHCP/IPv4LL/IPv6RS/DHCPv6 client

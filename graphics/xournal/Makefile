@@ -3,7 +3,11 @@
 
 PORTNAME=	xournal
 PORTVERSION=	0.4.8.2016
+<<<<<<< HEAD
 PORTREVISION=	9
+=======
+PORTREVISION=	10
+>>>>>>> upstream/master
 CATEGORIES=	graphics
 MASTER_SITES=	SF
 

@@ -2,7 +2,11 @@
 
 PORTNAME=	erlang
 DISTVERSIONPREFIX=	OTP-
+<<<<<<< HEAD
 DISTVERSION=	21.3.8.12
+=======
+DISTVERSION=	21.3.8.13
+>>>>>>> upstream/master
 PORTEPOCH=	1
 CATEGORIES=	lang parallel java
 PKGNAMESUFFIX=	-java

@@ -3,7 +3,11 @@
 PORTNAME=	cfiles
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1.8
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 CATEGORIES=	deskutils
 
 MAINTAINER=	yuri@FreeBSD.org

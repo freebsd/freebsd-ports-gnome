@@ -3,7 +3,11 @@
 PORTNAME=	python-poppler-qt5
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.75.0
+<<<<<<< HEAD
 PORTREVISION=	1
+=======
+PORTREVISION=	2
+>>>>>>> upstream/master
 CATEGORIES=	graphics python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
