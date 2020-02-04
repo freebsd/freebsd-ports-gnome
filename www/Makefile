@@ -77,7 +77,6 @@
     SUBDIR += cl-lml
     SUBDIR += cl-lml-sbcl
     SUBDIR += clearsilver
-    SUBDIR += clearsilver-python
     SUBDIR += cliqz
     SUBDIR += closure-compiler
     SUBDIR += cntlm
@@ -1426,7 +1425,6 @@
     SUBDIR += py-biscuits
     SUBDIR += py-bjoern
     SUBDIR += py-bleach
-    SUBDIR += py-blogofile
     SUBDIR += py-bokeh
     SUBDIR += py-boto3
     SUBDIR += py-bottle
