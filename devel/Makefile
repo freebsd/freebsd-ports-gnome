@@ -1748,6 +1748,7 @@
     SUBDIR += p5-AutoLoader
     SUBDIR += p5-AutoXS-Header
     SUBDIR += p5-B-C
+    SUBDIR += p5-B-COW
     SUBDIR += p5-B-Compiling
     SUBDIR += p5-B-Deobfuscate
     SUBDIR += p5-B-Flags
@@ -3934,6 +3935,7 @@
     SUBDIR += pragmarcs
     SUBDIR += premake
     SUBDIR += premake4
+    SUBDIR += premake5
     SUBDIR += projectcenter
     SUBDIR += protobuf
     SUBDIR += protobuf-c
@@ -3984,9 +3986,6 @@
     SUBDIR += py-PeachPy
     SUBDIR += py-Persistence
     SUBDIR += py-Pint
-    SUBDIR += py-Products.ATContentTypes
-    SUBDIR += py-Products.ATReferenceBrowserWidget
-    SUBDIR += py-Products.Archetypes
     SUBDIR += py-Products.BTreeFolder2
     SUBDIR += py-Products.CMFActionIcons
     SUBDIR += py-Products.CMFCalendar
@@ -3998,7 +3997,6 @@
     SUBDIR += py-Products.CMFFormController
     SUBDIR += py-Products.CMFPlacefulWorkflow
     SUBDIR += py-Products.CMFQuickInstallerTool
-    SUBDIR += py-Products.CMFTestCase
     SUBDIR += py-Products.CMFUid
     SUBDIR += py-Products.DCWorkflow
     SUBDIR += py-Products.ExtendedPathIndex
@@ -4008,17 +4006,12 @@
     SUBDIR += py-Products.LDAPMultiPlugins
     SUBDIR += py-Products.LDAPUserFolder
     SUBDIR += py-Products.MIMETools
-    SUBDIR += py-Products.Marshall
     SUBDIR += py-Products.MimetypesRegistry
     SUBDIR += py-Products.OFSP
-    SUBDIR += py-Products.PasswordResetTool
     SUBDIR += py-Products.PlacelessTranslationService
     SUBDIR += py-Products.PloneLanguageTool
-    SUBDIR += py-Products.PloneTestCase
     SUBDIR += py-Products.PluginRegistry
-    SUBDIR += py-Products.PortalTransforms
     SUBDIR += py-Products.PythonScripts
-    SUBDIR += py-Products.ResourceRegistries
     SUBDIR += py-Products.StandardCacheManagers
     SUBDIR += py-Products.ZCTextIndex
     SUBDIR += py-Products.ZCatalog
@@ -4089,9 +4082,6 @@
     SUBDIR += py-applicationinsights
     SUBDIR += py-apptools
     SUBDIR += py-apscheduler
-    SUBDIR += py-archetypes.querywidget
-    SUBDIR += py-archetypes.referencebrowserwidget
-    SUBDIR += py-archetypes.schemaextender
     SUBDIR += py-argcomplete
     SUBDIR += py-argh
     SUBDIR += py-argparse
@@ -4323,6 +4313,7 @@
     SUBDIR += py-dal
     SUBDIR += py-darcsver
     SUBDIR += py-darts.util.lru
+    SUBDIR += py-dask
     SUBDIR += py-dataclasses
     SUBDIR += py-datatest
     SUBDIR += py-dateparser
@@ -4351,6 +4342,7 @@
     SUBDIR += py-dis3
     SUBDIR += py-distlib
     SUBDIR += py-distorm
+    SUBDIR += py-distributed
     SUBDIR += py-dj22-django-rq
     SUBDIR += py-django-rq
     SUBDIR += py-django-rq-dashboard
@@ -4395,7 +4387,6 @@
     SUBDIR += py-fbprophet
     SUBDIR += py-filemagic
     SUBDIR += py-first
-    SUBDIR += py-five.customerize
     SUBDIR += py-five.formlib
     SUBDIR += py-five.globalrequest
     SUBDIR += py-five.localsitemanager
@@ -4483,6 +4474,7 @@
     SUBDIR += py-gtfslib
     SUBDIR += py-gyp
     SUBDIR += py-hash_ring
+    SUBDIR += py-heapdict
     SUBDIR += py-hghooks
     SUBDIR += py-hgsubversion
     SUBDIR += py-hgtools
@@ -5200,6 +5192,7 @@
     SUBDIR += py-zc.buildout
     SUBDIR += py-zclockfile
     SUBDIR += py-zconfig
+    SUBDIR += py-zict
     SUBDIR += py-zipp
     SUBDIR += py-zope.annotation
     SUBDIR += py-zope.app.applicationcontrol
@@ -5362,6 +5355,7 @@
     SUBDIR += replxx
     SUBDIR += resolv_wrapper
     SUBDIR += rhtvision
+    SUBDIR += riscv32-unknown-elf-gcc
     SUBDIR += riscv64-gcc
     SUBDIR += riscv64-none-elf-gcc
     SUBDIR += riscv64-xtoolchain-gcc
@@ -6054,6 +6048,7 @@
     SUBDIR += rubygem-hashie
     SUBDIR += rubygem-hashie-forbidden_attributes
     SUBDIR += rubygem-hashie2
+    SUBDIR += rubygem-hashie3
     SUBDIR += rubygem-health_check
     SUBDIR += rubygem-health_check26-rails5
     SUBDIR += rubygem-health_check26-rails52
@@ -6254,6 +6249,9 @@
     SUBDIR += rubygem-puppet-resource_api
     SUBDIR += rubygem-pygments.rb
     SUBDIR += rubygem-r18n-core
+    SUBDIR += rubygem-r18n-desktop
+    SUBDIR += rubygem-r18n-rails
+    SUBDIR += rubygem-r18n-rails-api
     SUBDIR += rubygem-rabl
     SUBDIR += rubygem-rabl-rails50
     SUBDIR += rubygem-racc

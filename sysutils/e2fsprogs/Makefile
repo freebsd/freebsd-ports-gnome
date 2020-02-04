@@ -3,7 +3,11 @@
 
 PORTNAME=	e2fsprogs
 PORTVERSION=	1.45.5
+<<<<<<< HEAD
 PORTREVISION?=	2
+=======
+PORTREVISION?=	3
+>>>>>>> master
 CATEGORIES?=	sysutils
 MASTER_SITES=	KERNEL_ORG/linux/kernel/people/tytso/${PORTNAME}/v${PORTVERSION}
 
@@ -28,7 +32,10 @@ USE_CSTD=	gnu99
 USE_LDCONFIG=	${PREFIX}/lib/e2fsprogs
 .endif
 GNU_CONFIGURE=	yes
+<<<<<<< HEAD
 LLD_UNSAFE=	yes
+=======
+>>>>>>> master
 
 # while we use the system blkid, we need to --enable-libblkid
 # so that the tools get built:
@@ -43,7 +50,11 @@ CONFIGURE_ARGS?=--disable-fsck \
 		--with-root-prefix='${PREFIX}' \
 		--without-included-gettext \
 		LDFLAGS='${LDFLAGS} -L${LOCALBASE}/lib -Wl,--rpath -Wl,${LOCALBASE}/lib/e2fsprogs'
+<<<<<<< HEAD
 CONFIGURE_ENV?=	LIBS='${LIBS} -lexecinfo -lelf'
+=======
+CONFIGURE_ENV?=	LIBS='-Wl,--as-needed ${LIBS} -lexecinfo -lelf'
+>>>>>>> master
 CPPFLAGS+=	-I${WRKSRC}/lib -I${LOCALBASE}/include # -D_EXT2_USE_C_VERSIONS
 MAKE_ARGS+=	pkgconfigdir='${PREFIX}/libdata/pkgconfig'
 MAKE_ENV+=	CHECK_CMD=@true
@@ -79,7 +90,11 @@ LIB_DEPENDS+=	libss.so:devel/e2fsprogs-libss
 LIB_DEPENDS+=	libuuid.so:misc/e2fsprogs-libuuid
 
 LIBUNWIND_LIB_DEPENDS=	libunwind.so:devel/libunwind
+<<<<<<< HEAD
 LIBUNWIND_LIBS+=	-lunwind
+=======
+LIBUNWIND_LIBS+=	-L${LOCALBASE}/lib -lunwind
+>>>>>>> master
 LIBUNWIND_LDFLAGS+=	-rdynamic
 LIBUNWIND_EXTRA_PATCHES=${FILESDIR}/extrapatch-e2fsck_sigcatcher.c
 
@@ -247,12 +262,21 @@ post-build:
 # system are statically linked against anything that is outside the root fs,
 # else we're in trouble if e2fsck is needed for boot:
 # (we don't use e2fsck.static, since we can link libc.so dynamically)
+# NOTE: we need to link libgcc statically, it might be under /usr/local!
+# => do not add a -Bdynamic - but instead list the dynamic libraries
+# before the -Bstatic
 	cd ${WRKSRC}/e2fsck && ${RM} -f e2fsck \
 		&& ${MAKE_CMD} e2fsck V=1 \
+<<<<<<< HEAD
 		LIBS="../lib/libsupport.a ../lib/libext2fs.a ../lib/libcom_err.a \
 		${_staticlibs} /usr/lib/libexecinfo.a /usr/lib/libelf.a \
 		${LOCALBASE}/lib/libblkid.a ${LOCALBASE}/lib/libuuid.a ${libintl} ../lib/libe2p.a" \
 		LIBMAGIC=/usr/lib/libmagic.a\ -lz
+=======
+		LIBS="-static-libgcc -lc -Bstatic ../lib/libsupport.a ../lib/libext2fs.a ../lib/libcom_err.a \
+		${_staticlibs} /usr/lib/libexecinfo.a /usr/lib/libelf.a \
+		${LOCALBASE}/lib/libblkid.a ${LOCALBASE}/lib/libuuid.a ${libintl} ../lib/libe2p.a "
+>>>>>>> master
 # Regression check: avoid a port (not upstream!) regression from 1.40.5,
 # check that e2fsck isn't dynalinked against anything but libc.so:
 	@${ECHO_CMD} -n "===>  checking that e2fsck depends on no shared objects outside /lib: "

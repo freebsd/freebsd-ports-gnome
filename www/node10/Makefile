@@ -1,7 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	node
+<<<<<<< HEAD
 PORTVERSION=	10.18.0
+=======
+PORTVERSION=	10.18.1
+>>>>>>> master
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 MASTER_SITES=	http://nodejs.org/dist/v${PORTVERSION}/
