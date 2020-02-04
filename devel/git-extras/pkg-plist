@@ -8,6 +8,7 @@ bin/git-changelog
 bin/git-chore
 bin/git-clear
 bin/git-clear-soft
+bin/git-coauthor
 bin/git-commits-since
 bin/git-contrib
 bin/git-count
@@ -29,7 +30,6 @@ bin/git-guilt
 bin/git-ignore
 bin/git-ignore-io
 bin/git-info
-bin/git-line-summary
 bin/git-local-commits
 bin/git-lock
 bin/git-locked
@@ -38,6 +38,7 @@ bin/git-merge-repo
 bin/git-missing
 bin/git-mr
 bin/git-obliterate
+bin/git-paste
 bin/git-pr
 bin/git-psykorebase
 bin/git-pull-request
@@ -46,6 +47,7 @@ bin/git-rebase-patch
 bin/git-refactor
 bin/git-release
 bin/git-rename-branch
+bin/git-rename-remote
 bin/git-rename-tag
 bin/git-repl
 bin/git-reset-file
@@ -76,6 +78,7 @@ man/man1/git-changelog.1.gz
 man/man1/git-chore.1.gz
 man/man1/git-clear-soft.1.gz
 man/man1/git-clear.1.gz
+man/man1/git-coauthor.1.gz
 man/man1/git-commits-since.1.gz
 man/man1/git-contrib.1.gz
 man/man1/git-count.1.gz
@@ -106,6 +109,7 @@ man/man1/git-merge-repo.1.gz
 man/man1/git-missing.1.gz
 man/man1/git-mr.1.gz
 man/man1/git-obliterate.1.gz
+man/man1/git-paste.1.gz
 man/man1/git-pr.1.gz
 man/man1/git-psykorebase.1.gz
 man/man1/git-pull-request.1.gz
@@ -114,6 +118,7 @@ man/man1/git-rebase-patch.1.gz
 man/man1/git-refactor.1.gz
 man/man1/git-release.1.gz
 man/man1/git-rename-branch.1.gz
+man/man1/git-rename-remote.1.gz
 man/man1/git-rename-tag.1.gz
 man/man1/git-repl.1.gz
 man/man1/git-reset-file.1.gz

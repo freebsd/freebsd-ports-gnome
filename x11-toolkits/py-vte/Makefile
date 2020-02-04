@@ -9,13 +9,16 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Python interface for VTE (Terminal widget)
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-02-28
+
 MASTERDIR=	${.CURDIR}/../vte
 BUILD_WRKSRC=	${WRKSRC}/python
 INSTALL_WRKSRC=	${BUILD_WRKSRC}
 DESCR=		${.CURDIR}/pkg-descr
 PLIST=		${.CURDIR}/pkg-plist
 
-USES=		python:2.7
+USES=		gnome python:2.7
 USE_GNOME=	intltool pygtk2 vte
 USE_PYTHON=	flavors
 CONFIGURE_ARGS=	--enable-python \

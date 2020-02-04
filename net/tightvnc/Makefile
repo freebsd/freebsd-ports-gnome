@@ -3,7 +3,7 @@
 
 PORTNAME=	tightvnc
 PORTVERSION=	1.3.10
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	net java
 MASTER_SITES=	SF/vnc-tight/TightVNC-unix/${PORTVERSION}
 DISTNAME=	${PORTNAME}-${PORTVERSION}_unixsrc
@@ -15,7 +15,7 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENCE.TXT
 
 BROKEN_aarch64=	Fails to build: invokes x86 asm
-USES=		cpe imake jpeg shebangfix perl5 tar:bzip2
+USES=		cpe imake jpeg shebangfix perl5 tar:bzip2 xorg
 USE_XORG=	ice sm x11 xaw xext xmu xt xpm
 
 RUN_DEPENDS=	showrgb:x11/rgb \
@@ -32,8 +32,8 @@ ALL_TARGET=	World
 OPTIONS_DEFINE=	JVNC_VIEWER
 OPTIONS_SUB=	yes
 JVNC_VIEWER_DESC=	Install Java-based vnc viewer
-JVNC_VIEWER_USE_JAVA=	yes
-JVNC_VIEWER_JAVA_RUN=	yes
+JVNC_VIEWER_USE=	JAVA=yes
+JVNC_VIEWER_VARS=	JAVA_RUN=yes
 
 .ifdef(TIGHTVNC_BASE)
 PREFIX=${TIGHTVNC_BASE}

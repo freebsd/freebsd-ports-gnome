@@ -2,11 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	kicad
-PORTVERSION=	5.1.1
+PORTVERSION=	5.1.5
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	cad
 
-MAINTAINER=	thierry@FreeBSD.org
+MAINTAINER=	cmt@FreeBSD.org
 COMMENT=	Schematic and PCB editing software
 
 LICENSE=	GPLv2
@@ -26,8 +27,9 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	KiCad
 GH_PROJECT=	kicad-source-mirror
 
-USES=		cmake:noninja compiler:c++11-lib desktop-file-utils gl gnome	\
-		pkgconfig python:2.7 shared-mime-info shebangfix ssl tar:xz
+USES=		cmake:noninja compiler:c++11-lib desktop-file-utils gl \
+		gnome pkgconfig python:2.7 shared-mime-info shebangfix ssl \
+		tar:xz xorg
 SHEBANG_FILES=	pcbnew/python/plugins/touch_slider_wizard.py
 
 USE_XORG=	ice x11 xext
@@ -36,12 +38,15 @@ USE_WX=		3.0
 WX_COMPS=	python:lib wx
 USE_GNOME=	atk cairo
 CXXFLAGS+=	--std=c++11 -I${WRKSRC}/include -I${LOCALBASE}/include
-CMAKE_ARGS=	-DwxWidgets_CONFIG_EXECUTABLE=${WX_CONFIG}		\
-		-DwxWidgets_USE_UNICODE=ON -DKICAD_SCRIPTING_WXPYTHON=ON\
-		-DwxWidgets_wxrc_EXECUTABLE=${WXRC_CMD}			\
-		-DKICAD_SCRIPTING=ON -DKICAD_SCRIPTING_MODULES=ON	\
-		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=ON			\
-		-DKICAD_USE_OCE=OFF -DKICAD_USE_OCC=ON			\
+CMAKE_ARGS=	-DwxWidgets_CONFIG_EXECUTABLE=${WX_CONFIG}	\
+		-DwxWidgets_USE_UNICODE=ON			\
+		-DKICAD_SCRIPTING_WXPYTHON=ON			\
+		-DwxWidgets_wxrc_EXECUTABLE=${WXRC_CMD}		\
+		-DKICAD_SCRIPTING=ON 				\
+		-DKICAD_SCRIPTING_MODULES=ON			\
+		-DKICAD_SCRIPTING_WXPYTHON_PHOENIX=OFF		\
+		-DKICAD_USE_OCE=OFF				\
+		-DKICAD_USE_OCC=ON				\
 		-DOCC_INCLUDE_DIR=${LOCALBASE}/include/OpenCASCADE
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes

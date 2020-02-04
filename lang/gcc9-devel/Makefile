@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gcc
-PORTVERSION=	9.0.1.s20190421
+PORTVERSION=	9.2.1.s20200125
 CATEGORIES=	lang
 MASTER_SITES=	GCC/snapshots/${DIST_VERSION}
 PKGNAMESUFFIX=	${SUFFIX}-devel
@@ -29,6 +29,8 @@ USES=		compiler cpe gmake iconv libtool makeinfo perl5 tar:xz
 USE_BINUTILS=	yes
 USE_PERL5=	build
 
+CONFLICTS=	gcc9-9.*
+
 CPE_VENDOR=	gnu
 CPE_VERSION=	${GCC_VERSION}
 
@@ -43,8 +45,8 @@ SSP_UNSAFE=	yes
 CFLAGS:=	${CFLAGS:N-mretpoline}
 CXXFLAGS:=	${CXXFLAGS:N-mretpoline}
 
-OPTIONS_DEFINE=		BOOTSTRAP GRAPHITE
-OPTIONS_DEFAULT=	BOOTSTRAP
+OPTIONS_DEFINE=		BOOTSTRAP GRAPHITE PLUGINS
+OPTIONS_DEFAULT=	BOOTSTRAP PLUGINS
 BOOTSTRAP_DESC=		Build using a full bootstrap
 GRAPHITE_DESC=		Support for Graphite loop optimizations
 
@@ -59,6 +61,8 @@ MULTILIB_CONFIGURE_ENABLE=	multilib
 CONFIGURE_ARGS+=	--disable-multilib
 .endif
 
+PLUGINS_CONFIGURE_ENABLE=	plugin
+
 .include <bsd.port.pre.mk>
 
 .if ${ARCH} == amd64
@@ -66,7 +70,11 @@ CONFIGURE_TARGET=	x86_64-portbld-${OPSYS:tl}${OSREL}
 
 .elif ${ARCH} == powerpc64
 CONFIGURE_ENV+=	UNAME_m="powerpc64"
-USE_GCC=	yes
+. if defined(PPC_ABI) && ${PPC_ABI} == ELFv2
+CONFIGURE_ARGS+=	--with-abi=elfv2
+. else
+USE_GCC=	8
+. endif
 .endif
 
 LANGUAGES:=	c,c++,objc,fortran

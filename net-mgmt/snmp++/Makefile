@@ -3,12 +3,15 @@
 
 PORTNAME=	snmp++
 PORTVERSION=	3.3.0
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 MASTER_SITES=	http://www.agentpp.com/
 DISTNAME=	${PORTNAME}v${PORTVERSION}
 
 MAINTAINER=	nicolai@petri.dk
 COMMENT=	SNMP C++ library with V3 support
+
+BROKEN=		unfetchable
 
 LICENSE=	BSD3CLAUSE
 

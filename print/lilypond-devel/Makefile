@@ -3,6 +3,7 @@
 
 PORTNAME=	lilypond
 DISTVERSION=	2.19.83
+PORTREVISION=	1
 CATEGORIES=	print audio
 MASTER_SITES=	http://lilypond.org/download/source/v${DISTVERSION:R}/
 PKGNAMESUFFIX=	-devel
@@ -44,15 +45,14 @@ INFO=		internals \
 		lilypond-web \
 		music-glossary
 
-USES=		bison:build gettext ghostscript gmake pkgconfig perl5 \
-		compiler:gcc-c++11-lib python:2.7
+USES=		bison:build compiler:gcc-c++11-lib gettext ghostscript gmake \
+		gnome perl5 pkgconfig python:2.7
 USE_CXXSTD=	c++11
 USE_TEX=	latex texmf
 USE_PERL5=	build
 USE_GNOME=	pango
 
 MAKEFILE=	GNUmakefile
-GNU_MAKEFILE=	yes
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--with-texgyre-dir=${LOCALBASE}/${TEXMFDISTDIR}/fonts/opentype/public/tex-gyre \

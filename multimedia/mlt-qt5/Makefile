@@ -2,9 +2,7 @@
 
 PORTREVISION=	0
 
-CONFLICTS_INSTALL=	${PORTNAME}-qt4-*
-
-USES=	qt:5
+USES=	qt:5 xorg
 USE_CXXSTD=	c++11
 USE_QT=		core gui svg widgets xml
 USE_XORG=	x11

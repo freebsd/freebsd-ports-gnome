@@ -3,7 +3,7 @@
 
 PORTNAME=	pks
 PORTVERSION=	0.9.6.20040312
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	security www
 MASTER_SITES=	http://pks.sourceforge.net/ LOCAL/mandree
 DISTFILES=	pks-current.tgz
@@ -14,8 +14,8 @@ COMMENT=	PGP Public Key Server
 LICENSE=	BSD4CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BROKEN_SSL=	openssl111
-BROKEN_SSL_REASON_openssl111=	member access into incomplete type 'EVP_PKEY' (aka 'evp_pkey_st')
+BROKEN_SSL=	openssl
+BROKEN_SSL_REASON_openssl=	member access into incomplete type 'EVP_PKEY' (aka 'evp_pkey_st')
 
 USES=		bdb ssl
 USE_GCC=	any

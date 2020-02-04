@@ -3,10 +3,10 @@
 
 PORTNAME=	minecraft-client
 PORTVERSION=	1.7.9
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	games java
-MASTER_SITES=	http://s3.amazonaws.com/Minecraft.Download/launcher/:minecraft \
-		http://media-mcw.cursecdn.com/c/c5/:icon
+MASTER_SITES=	https://s3.amazonaws.com/Minecraft.Download/launcher/:minecraft \
+		https://media-mcw.cursecdn.com/c/c5/:icon
 DISTFILES=	Minecraft.jar:minecraft \
 		Grass.png:icon
 DIST_SUBDIR=	${PORTNAME}/${PORTVERSION}
@@ -15,7 +15,10 @@ EXTRACT_ONLY=
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Client for the block building game
 
-RUN_DEPENDS=	${JAVALIBDIR}/lwjgl/lwjgl.jar:games/lwjgl
+BROKEN=		unfetchable
+
+RUN_DEPENDS=	${JAVALIBDIR}/lwjgl/lwjgl.jar:games/lwjgl \
+		xrandr:x11/xrandr
 
 USES=		openal
 USE_JAVA=	yes

@@ -10,6 +10,7 @@
     SUBDIR += R-cran-AMORE
     SUBDIR += R-cran-DCluster
     SUBDIR += R-cran-Epi
+    SUBDIR += R-cran-FAdist
     SUBDIR += R-cran-bayesm
     SUBDIR += R-cran-cmprsk
     SUBDIR += R-cran-e1071
@@ -26,6 +27,7 @@
     SUBDIR += agrum
     SUBDIR += aircraft-datcom
     SUBDIR += antioch
+    SUBDIR += apbs
     SUBDIR += atom
     SUBDIR += atompaw
     SUBDIR += avogadro2
@@ -38,6 +40,7 @@
     SUBDIR += buddy
     SUBDIR += cdcl
     SUBDIR += cdf
+    SUBDIR += cdk
     SUBDIR += cdo
     SUBDIR += cgnslib
     SUBDIR += cgribex
@@ -68,6 +71,7 @@
     SUBDIR += dvc
     SUBDIR += eccodes
     SUBDIR += elk
+    SUBDIR += elmerfem
     SUBDIR += epte
     SUBDIR += erd
     SUBDIR += erkale
@@ -94,7 +98,6 @@
     SUBDIR += gromacs
     SUBDIR += gsmc
     SUBDIR += gtamsanalyzer
-    SUBDIR += gwyddion
     SUBDIR += h5utils
     SUBDIR += h5z-zfp
     SUBDIR += harminv
@@ -102,6 +105,7 @@
     SUBDIR += hdf5
     SUBDIR += hdf5-18
     SUBDIR += healpix
+    SUBDIR += highfive
     SUBDIR += hypre
     SUBDIR += iboview
     SUBDIR += isaac-cfd
@@ -109,6 +113,7 @@
     SUBDIR += jmol
     SUBDIR += jstrack
     SUBDIR += kalzium
+    SUBDIR += kim-api
     SUBDIR += kst2
     SUBDIR += lammps
     SUBDIR += lamprop
@@ -131,6 +136,7 @@
     SUBDIR += libssm
     SUBDIR += libsvm
     SUBDIR += libsvm-python
+    SUBDIR += libvdwxc
     SUBDIR += libxc
     SUBDIR += liggghts
     SUBDIR += lm
@@ -145,8 +151,6 @@
     SUBDIR += mcxtrace-comps
     SUBDIR += mdynamix
     SUBDIR += medit
-    SUBDIR += meep
-    SUBDIR += metaf2xml
     SUBDIR += metaphysicl
     SUBDIR += minc2
     SUBDIR += mmdb2
@@ -160,6 +164,8 @@
     SUBDIR += msms
     SUBDIR += multiwfn
     SUBDIR += namd
+    SUBDIR += ncnn
+    SUBDIR += nest
     SUBDIR += netcdf
     SUBDIR += netcdf-cxx
     SUBDIR += netcdf-fortran
@@ -169,8 +175,10 @@
     SUBDIR += octopus
     SUBDIR += openbabel
     SUBDIR += openkim
+    SUBDIR += openkim-models
     SUBDIR += openmx
     SUBDIR += opensim-core
+    SUBDIR += opensph
     SUBDIR += opsin
     SUBDIR += p5-Algorithm-SVMLight
     SUBDIR += p5-Chemistry-3DBuilder
@@ -203,11 +211,12 @@
     SUBDIR += p5-Mcstas-Tools
     SUBDIR += p5-PerlMol
     SUBDIR += p5-Physics-Unit
+    SUBDIR += packmol
+    SUBDIR += pagmo2
     SUBDIR += paje
     SUBDIR += paraview
     SUBDIR += pcmsolver
     SUBDIR += pnetcdf
-    SUBDIR += psychopy
     SUBDIR += pulseview
     SUBDIR += py-DendroPy
     SUBDIR += py-GPy
@@ -224,14 +233,19 @@
     SUBDIR += py-ase
     SUBDIR += py-avogadrolibs
     SUBDIR += py-cdo
+    SUBDIR += py-chainer
+    SUBDIR += py-chainer-chemistry
     SUBDIR += py-chempy
     SUBDIR += py-coards
     SUBDIR += py-dlib
+    SUBDIR += py-eccodes-python
+    SUBDIR += py-geolinks
+    SUBDIR += py-geomet
     SUBDIR += py-geometer
     SUBDIR += py-gpaw
     SUBDIR += py-gsd
+    SUBDIR += py-h5json
     SUBDIR += py-h5py
-    SUBDIR += py-hcluster
     SUBDIR += py-kinematics
     SUBDIR += py-lifelines
     SUBDIR += py-mdp
@@ -248,20 +262,22 @@
     SUBDIR += py-phonopy
     SUBDIR += py-pupynere
     SUBDIR += py-pyaixi
+    SUBDIR += py-pycsw
     SUBDIR += py-pydicom
     SUBDIR += py-pygeodesy
+    SUBDIR += py-pygeometa
     SUBDIR += py-pymatgen
     SUBDIR += py-pymol
     SUBDIR += py-pyosf
     SUBDIR += py-pysal
     SUBDIR += py-pyteomics
-    SUBDIR += py-pyteomics.biolccc
     SUBDIR += py-qcelemental
     SUBDIR += py-qcengine
     SUBDIR += py-qspin
     SUBDIR += py-quantities
     SUBDIR += py-rmf
     SUBDIR += py-rmsd
+    SUBDIR += py-ruffus
     SUBDIR += py-scikit-fuzzy
     SUBDIR += py-scikit-learn
     SUBDIR += py-scikit-sparse
@@ -269,10 +285,11 @@
     SUBDIR += py-scipy
     SUBDIR += py-scoria
     SUBDIR += py-spglib
+    SUBDIR += py-tensorflow
+    SUBDIR += py-tensorflow-estimator
     SUBDIR += py-veusz
     SUBDIR += py-ws2300
     SUBDIR += pybrain
-    SUBDIR += pycdf
     SUBDIR += pynn
     SUBDIR += qbox
     SUBDIR += qcl
@@ -298,9 +315,11 @@
     SUBDIR += sigrok-firmware-utils
     SUBDIR += silo
     SUBDIR += simbody
+    SUBDIR += simgrid
     SUBDIR += simint
     SUBDIR += simlib
     SUBDIR += simsmith
+    SUBDIR += smoldyn
     SUBDIR += sparta
     SUBDIR += spglib
     SUBDIR += step
@@ -315,11 +334,11 @@
     SUBDIR += vmd
     SUBDIR += voro++
     SUBDIR += wannier90
+    SUBDIR += wwplot
     SUBDIR += wxmacmolplt
     SUBDIR += xcrysden
     SUBDIR += xdrawchem
     SUBDIR += xfce4-equake-plugin
-    SUBDIR += xmakemol
     SUBDIR += yoda
 
 .include <bsd.port.subdir.mk>

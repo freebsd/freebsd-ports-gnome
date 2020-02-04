@@ -1,5 +1,5 @@
 bin/kjumpingcube
-etc/xdg/kjumpingcube.categories
+share/qlogging-categories5/kjumpingcube.categories
 share/applications/org.kde.kjumpingcube.desktop
 share/config.kcfg/kjumpingcube.kcfg
 share/icons/hicolor/128x128/apps/kjumpingcube.png
@@ -33,11 +33,13 @@ share/locale/he/LC_MESSAGES/kjumpingcube.mo
 share/locale/hi/LC_MESSAGES/kjumpingcube.mo
 share/locale/hr/LC_MESSAGES/kjumpingcube.mo
 share/locale/hu/LC_MESSAGES/kjumpingcube.mo
+share/locale/id/LC_MESSAGES/kjumpingcube.mo
 share/locale/is/LC_MESSAGES/kjumpingcube.mo
 share/locale/it/LC_MESSAGES/kjumpingcube.mo
 share/locale/ja/LC_MESSAGES/kjumpingcube.mo
 share/locale/kk/LC_MESSAGES/kjumpingcube.mo
 share/locale/km/LC_MESSAGES/kjumpingcube.mo
+share/locale/ko/LC_MESSAGES/kjumpingcube.mo
 share/locale/lt/LC_MESSAGES/kjumpingcube.mo
 share/locale/lv/LC_MESSAGES/kjumpingcube.mo
 share/locale/mr/LC_MESSAGES/kjumpingcube.mo

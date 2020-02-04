@@ -3,7 +3,7 @@
 
 PORTNAME=	sdl
 PORTVERSION=	1.2.15
-PORTREVISION=	13
+PORTREVISION=	14
 PORTEPOCH=	2
 CATEGORIES=	devel
 MASTER_SITES=	https://www.libsdl.org/release/
@@ -31,7 +31,7 @@ DOCS=		BUGS CREDITS README README-SDL.txt WhatsNew docs.html
 OPTIONS_DEFINE=		AALIB DOCS EXAMPLES LINJOY OPENGL SVGALIB X11
 OPTIONS_DEFAULT=	AALIB OPENGL OSS X11
 OPTIONS_GROUP=		AUDIO
-OPTIONS_GROUP_AUDIO=	ESOUND NAS OSS PULSEAUDIO SNDIO
+OPTIONS_GROUP_AUDIO=	NAS OSS PULSEAUDIO SNDIO
 
 AUDIO_DESC=		Audio backend
 LINJOY_DESC=		Use Linux joystick driver (via webcamd)
@@ -44,11 +44,10 @@ OPTIONS_DEFAULT+=	VGL
 
 AALIB_CONFIGURE_ENABLE=		video-aalib
 AALIB_LIB_DEPENDS=		libaa.so:graphics/aalib
-ESOUND_USE=			GNOME=esound
-ESOUND_CONFIGURE_ENABLE=	esd esdtest
 NAS_CONFIGURE_ENABLE=		nas
 NAS_LIB_DEPENDS=		libaudio.so:audio/nas
 LINJOY_VARS=			PKGMESSAGE+=pkg-message.linjoy
+LINJOY_BUILD_DEPENDS=		${LOCALBASE}/include/linux/joystick.h:devel/evdev-proto
 OPENGL_CONFIGURE_ENABLE=	video-opengl
 OPENGL_USES=			gl
 OPENGL_USE=			GL=glu
@@ -62,6 +61,7 @@ SVGALIB_LIB_DEPENDS=		libvga.so:graphics/svgalib
 VGL_CONFIGURE_ENABLE=		video-vgl
 VGL_VARS=			PKGMESSAGE+=pkg-message.vgl
 X11_CONFIGURE_ENABLE=		video-x11
+X11_USES=			xorg
 X11_USE=			XORG=x11,xrender,xrandr,xorgproto
 
 post-patch:
@@ -69,11 +69,6 @@ post-patch:
 		${WRKSRC}/configure
 
 post-patch-LINJOY-on:
-	@${MKDIR} ${WRKSRC}/include/linux/
-	@${CP} -f ${FILESDIR}/input.h ${WRKSRC}/include/linux/
-	@${CP} -f ${FILESDIR}/input-event-codes.h ${WRKSRC}/include/linux/
-	@${CP} -f ${FILESDIR}/joystick.h ${WRKSRC}/include/linux/
-	@${CP} -f ${FILESDIR}/types.h ${WRKSRC}/include/linux/
 	@${CP} -f ${WRKSRC}/src/joystick/linux/SDL_sysjoystick.c \
 	    ${WRKSRC}/src/joystick/bsd/
 	@${REINPLACE_CMD} -e 's|#ifdef SDL_JOYSTICK_LINUX|#if 1|g ; \

@@ -3,6 +3,7 @@
 
 PORTNAME=	pianod2
 PORTVERSION=	301
+PORTREVISION=	2
 CATEGORIES=	audio
 MASTER_SITES=	http://deviousfish.com/Downloads/pianod2/Devel/
 
@@ -11,6 +12,8 @@ COMMENT=	Free, multi-source, network-controlled music player daemon
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+BROKEN_i386=	fails to build
 
 LIB_DEPENDS=	libao.so:audio/libao \
 	libavcodec.so:multimedia/ffmpeg \

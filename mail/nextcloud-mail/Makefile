@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mail
-PORTVERSION=	0.14.0
+PORTVERSION=	1.0.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	mail
 MASTER_SITES=	https://github.com/${PKGNAMEPREFIX:S/-//}/${PORTNAME}/releases/download/${DISTVERSIONPREFIX}${PORTVERSION}/
@@ -15,11 +15,13 @@ MAINTAINER=	brnrd@FreeBSD.org
 COMMENT=	Mail app for Nextcloud
 
 LICENSE=	AGPLv3
+LICENSE_FILE=	${WRKSRC}/COPYING
 
-RUN_DEPENDS=	nextcloud${PHP_PKGNAMESUFFIX}>=15.9:www/nextcloud@${PHP_FLAVOR}
+RUN_DEPENDS=	nextcloud${PHP_PKGNAMESUFFIX}>=17:www/nextcloud@${PHP_FLAVOR}
 
 USES=		gettext php:flavors
 USE_PHP=	imap
+IGNORE_WITH_PHP=	74
 
 NO_BUILD=	yes
 NO_ARCH=	yes
@@ -31,6 +33,10 @@ PLIST_SUB=	NEXTCLOUD_USERNAME=${NEXTCLOUD_USERNAME} \
 		NEXTCLOUD_GROUPNAME=${NEXTCLOUD_GROUPNAME}
 
 WWWDIR=		${PREFIX}/www/nextcloud/apps-pkg/${PORTNAME}
+
+post-patch:
+	@${RM} -r ${WRKSRC}/vendor/kwi/urllinker/.git \
+		${WRKSRC}/vendor/kwi/urllinker/.hg
 
 do-install:
 	${MKDIR} ${STAGEDIR}${WWWDIR}

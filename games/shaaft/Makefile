@@ -3,7 +3,7 @@
 
 PORTNAME=	shaaft
 PORTVERSION=	0.5.0
-PORTREVISION=	23
+PORTREVISION=	24
 CATEGORIES=	games
 MASTER_SITES=	SF/criticalmass/OldFiles
 DISTNAME=	Shaaft-${PORTVERSION}
@@ -15,7 +15,7 @@ LIB_DEPENDS=	libpng.so:graphics/png
 
 CONFLICTS=	criticalmass-*
 
-USES=		tar:bzip2
+USES=		gl sdl tar:bzip2
 USE_SDL=	mixer image sdl
 USE_GL=		gl
 USE_GCC=	any

@@ -2,6 +2,7 @@
 
 PORTNAME=	caffeine-ng
 DISTVERSION=	3.4.2
+PORTREVISION=	1
 CATEGORIES=	x11 python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -13,6 +14,9 @@ LICENSE=	GPLv3+ LGPL3+
 LICENSE_COMB=	multi
 LICENSE_FILE_GPLv3+ =	${WRKSRC}/LICENCE
 LICENSE_FILE_LGPL3+ =	${WRKSRC}/LGPL
+
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-02
 
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}setuptools_scm>0:devel/py-setuptools_scm@${PY_FLAVOR}
 LIB_DEPENDS=	libappindicator3.so:devel/libappindicator \
@@ -29,7 +33,7 @@ TEST_DEPENDS=	${PYTHON_PKGNAMEPREFIX}tox>0:devel/py-tox@${PY_FLAVOR} \
 
 USES=		desktop-file-utils gettext-tools gnome python:3.3+
 USE_GNOME=	gdkpixbuf2 gtk30 pygobject3
-USE_PYTHON=	autoplist concurrent distutils
+USE_PYTHON=	autoplist distutils
 
 NO_ARCH=	yes
 

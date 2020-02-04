@@ -2,7 +2,7 @@
 
 PORTNAME=	fcitx-skk
 PORTVERSION=	0.1.4
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	japanese
 MASTER_SITES=	http://download.fcitx-im.org/${PORTNAME}/
 DIST_SUBDIR=	fcitx
@@ -17,7 +17,7 @@ LIB_DEPENDS=	libfcitx-config.so:chinese/fcitx \
 		libskk.so:japanese/libskk
 BUILD_DEPENDS=	bash:shells/bash
 
-USES=		tar:xz compiler:c++11-lang cmake gettext pkgconfig
+USES=		cmake compiler:c++11-lang gettext gnome pkgconfig tar:xz
 INSTALLS_ICONS=	yes
 CMAKE_ARGS+=	-DSKK_DEFAULT_PATH=${LOCALBASE}/share/skk/SKK-JISYO.L
 
@@ -35,7 +35,7 @@ PLIST_SUB+=	QT5=""
 LIB_DEPENDS+=	libFcitxQt5WidgetsAddons.so:textproc/fcitx-qt5
 .else
 CMAKE_ARGS+=	-DENABLE_QT=OFF
-PLIST_SUB+=	 QT5="@comment "
+PLIST_SUB+=	QT5="@comment "
 .endif
 
 .include <bsd.port.mk>

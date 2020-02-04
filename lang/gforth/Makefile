@@ -3,12 +3,12 @@
 
 PORTNAME=	gforth
 PORTVERSION=	0.7.3
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	lang
 MASTER_SITES=	http://www.complang.tuwien.ac.at/forth/gforth/ \
 		GNU
 
-MAINTAINER=	johans@FreeBSD.org
+MAINTAINER=	danfe@FreeBSD.org
 COMMENT=	Fast and portable Forth system
 
 LICENSE=	GPLv3

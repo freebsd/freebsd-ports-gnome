@@ -14,6 +14,10 @@ EXTRACT_ONLY=
 MAINTAINER=	bsdports@wayfair.com
 COMMENT=	Xen API Library for Python
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 USES=		python:2.7
 WRKSRC=		${WRKDIR}/${PORTNAME}
 PLIST_FILES=	%%PYTHON_SITELIBDIR%%/XenAPI.py \

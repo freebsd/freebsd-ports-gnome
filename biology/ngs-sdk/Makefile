@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	ngs
-DISTVERSION=	2.9.6
+DISTVERSION=	2.10.2
 CATEGORIES=	biology
 PKGNAMESUFFIX=	-sdk
 
@@ -12,6 +12,8 @@ LICENSE=	PD
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BROKEN_aarch64=		fails to configure: unsupported architecture 'FreeBSD'
+NOT_FOR_ARCHS=		powerpc64
+NOT_FOR_ARCHS_REASON=	os-arch.prl needs to be taught about powerpc64
 
 USES=		gmake perl5
 GNU_CONFIGURE=	yes

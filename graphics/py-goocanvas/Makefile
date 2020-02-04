@@ -13,6 +13,9 @@ DISTNAME=	py${PORTNAME}-${PORTVERSION}
 MAINTAINER=	kwm@FreeBSD.org
 COMMENT=	GooCanvas python bindings
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-01
+
 LIB_DEPENDS=	libgoocanvas.so:graphics/goocanvas
 
 PLIST_FILES=	%%PYTHON_SITELIBDIR%%/goocanvasmodule.so \
@@ -21,7 +24,7 @@ USE_GNOME=	pygtk2
 USE_PYTHON=	flavors
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-docs
-USES=		gmake libtool pathfix pkgconfig python:2.7 tar:bzip2
+USES=		gmake gnome libtool pathfix pkgconfig python:2.7 tar:bzip2
 INSTALL_TARGET=	install-strip
 
 post-patch:

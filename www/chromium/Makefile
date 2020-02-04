@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	chromium
-PORTVERSION=	73.0.3683.103
-PORTREVISION=	2
-CATEGORIES?=	www
+PORTVERSION=	79.0.3945.130
+CATEGORIES?=	www java
 MASTER_SITES=	https://commondatastorage.googleapis.com/chromium-browser-official/ \
 		LOCAL/cpm/chromium/:fonts
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
@@ -75,7 +74,7 @@ USES=		compiler:c++14-lang dos2unix localbase:ldflags ninja pkgconfig \
 		python:2.7,build shebangfix tar:xz
 .else
 USES=		bison cpe desktop-file-utils dos2unix gl gnome jpeg localbase:ldflags \
-		ninja perl5 pkgconfig python:2.7,build shebangfix tar:xz
+		ninja perl5 pkgconfig python:2.7,build shebangfix tar:xz xorg
 .endif
 MAKE_ARGS=	-C out/${BUILDTYPE}
 BINARY_ALIAS=	python=${PYTHON_CMD}
@@ -173,13 +172,14 @@ CUPS_VARS_OFF=		GN_ARGS+=use_cups=false
 DEBUG_VARS=		BUILDTYPE=Debug \
 			GN_ARGS+=is_debug=true \
 			GN_ARGS+=is_component_build=false \
+			GN_ARGS+=symbol_level=1 \
 			GN_BOOTSTRAP_FLAGS+=--debug \
 			WANTSPACE="lots of free disk space (~ 13GB)"
 DEBUG_VARS_OFF=		BUILDTYPE=Release \
+			GN_ARGS+=blink_symbol_level=0 \
 			GN_ARGS+=is_debug=false \
 			GN_ARGS+=is_official_build=true \
 			GN_ARGS+=symbol_level=0 \
-			GN_ARGS+=remove_webcore_debug_symbols=true \
 			WANTSPACE="a fair amount of free disk space (~ 6.5GB)"
 
 DRIVER_MAKE_ARGS=	chromedriver
@@ -293,6 +293,7 @@ do-install:
 	@${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_MAN} ${WRKSRC}/chrome/app/resources/manpage.1.in \
 		${STAGEDIR}${MANPREFIX}/man/man1/chrome.1
+	${CP} ${WRKSRC}/chrome/app/theme/chromium/product_logo_22_mono.png ${WRKSRC}/chrome/app/theme/chromium/product_logo_22.png
 .for s in 22 24 48 64 128 256
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/${s}x${s}/apps
 	${INSTALL_DATA} ${WRKSRC}/chrome/app/theme/chromium/product_logo_${s}.png \
@@ -314,14 +315,18 @@ do-install:
 	${INSTALL_SCRIPT} ${WRKSRC}/chrome/tools/build/linux/chrome-wrapper \
 		${STAGEDIR}${DATADIR}
 
-	# ANGLE
-.for f in libEGL.so libGLESv2.so
+	# ANGLE, EGL, Vk
+.for f in libEGL.so libGLESv2.so libVkICD_mock_icd.so
 	${INSTALL_LIB} ${WRKSRC}/out/${BUILDTYPE}/${f} ${STAGEDIR}${DATADIR}
 .endfor
+.if ${BUILDTYPE} == Debug
+	${INSTALL_LIB} ${WRKSRC}/out/${BUILDTYPE}/libVkLayer_khronos_validation.so ${STAGEDIR}${DATADIR}
+.endif
 
 	# SwiftShader
 .if ${ARCH} != aarch64
 	@${MKDIR} ${STAGEDIR}${DATADIR}/swiftshader
+	${INSTALL_LIB} ${WRKSRC}/out/${BUILDTYPE}/libvk_swiftshader.so ${STAGEDIR}${DATADIR}
 .for g in libEGL.so libGLESv2.so
 	${INSTALL_LIB} ${WRKSRC}/out/${BUILDTYPE}/swiftshader/${g} \
 		${STAGEDIR}${DATADIR}/swiftshader

@@ -2,7 +2,7 @@
 
 PORTNAME=	gobby
 PORTVERSION=	0.4.13
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	editors
 MASTER_SITES=	http://releases.0x539.de/gobby/
 
@@ -20,7 +20,7 @@ OPTIONS_DEFINE=	GTKSPELL NLS
 GTKSPELL_DESC=	Enable GtkSpell support
 
 USE_GNOME=	gtksourceview2 intltool
-USES=		compiler:c++11-lang gmake pkgconfig pathfix
+USES=		compiler:c++11-lang gmake gnome pathfix pkgconfig
 USE_CXXSTD=	c++11
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes

@@ -6,7 +6,11 @@ CATEGORIES=	devel
 
 MAINTAINER=	madpilot@FreeBSD.org
 COMMENT=	Geany plugin: ${${GEANY_PLUGIN}_DESC}
-USES=		gnome
+
+gtk3_LIB_DEPENDS=	libpcre2-8.so:devel/pcre2 \
+			libgnutls.so:security/gnutls
+
+USES=		gnome xorg
 
 USE_XORG=	x11 xext
 

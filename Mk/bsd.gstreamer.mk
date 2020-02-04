@@ -104,7 +104,6 @@ _GSTREAMER_PLUGINS= \
 		sidplay \
 		soundtouch \
 		soup \
-		spc \
 		speex \
 		taglib \
 		theora \
@@ -121,7 +120,6 @@ _GSTREAMER_PLUGINS+= \
 		bz2 \
 		cdaudio \
 		dvd \
-		esound \
 		ffmpeg \
 		fluendo-mp3 \
 		fluendo-mpegdemux \
@@ -136,6 +134,7 @@ _GSTREAMER_PLUGINS+= \
 		nas \
 		python \
 		schroedinger \
+		spc \
 		sdl \
 		vdpau \
 		vp8 \
@@ -169,6 +168,7 @@ _GSTREAMER_PLUGINS+= \
 		openjpeg \
 		openmpt \
 		png \
+		qt \
 		rsvg \
 		rtmp \
 		smoothstreaming \
@@ -225,9 +225,6 @@ cdparanoia_IMPL=	#
 
 chromaprint_DEPENDS=	audio/gstreamer-plugins-chromaprint
 chromeprint_IMPL=	bad
-
-esound_DEPENDS=	audio/gstreamer-plugins-esound
-esound_IMPL=	good
 
 faac_DEPENDS=	audio/gstreamer-plugins-faac
 faac_IMPL=	bad
@@ -410,6 +407,9 @@ openmpt_IMPL=		bad
 
 png_DEPENDS=	graphics/gstreamer-plugins-png
 png_IMPL=	good
+
+qt_DEPENDS=	graphics/gstreamer-plugins-qt
+qt_IMPL=	good
 
 rsvg_DEPENDS=	graphics/gstreamer-plugins-rsvg
 rsvg_IMPL=	bad

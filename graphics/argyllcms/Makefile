@@ -3,7 +3,7 @@
 
 PORTNAME=	argyllcms
 PORTVERSION=	1.9.2
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	graphics
 MASTER_SITES=	http://www.argyllcms.com/
 DISTNAME=	Argyll_V${PORTVERSION}_src
@@ -19,7 +19,7 @@ LIB_DEPENDS=	libtiff.so:graphics/tiff \
 
 WRKSRC=		${WRKDIR}/Argyll_V${PORTVERSION}
 
-USES=		compiler:c11 cpe jpeg ssl zip
+USES=		compiler:c11 cpe jpeg ssl xorg zip
 USE_XORG=	x11 xau xdmcp xext xinerama xrandr xscrnsaver xxf86vm
 
 post-patch:

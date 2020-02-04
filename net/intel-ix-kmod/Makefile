@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	ix
-PORTVERSION=	3.3.6
-PORTREVISION=	1
+PORTVERSION=	3.3.10
+PORTREVISION=	0
 PORTEPOCH=	0
 MASTER_SITE_SUBDIR=	14688/eng
 
@@ -18,5 +18,11 @@ MAX_NETMAP_OSVERSION=	1199999  # Doesn't build w/NETMAP on 12
 MASTERDIR=	${.CURDIR}/../intel-ixl-kmod
 PKGDIR=		${.CURDIR}
 DISTINFO_FILE=	${.CURDIR}/distinfo
+
+OPTIONS_DEFINE=	SRIOV
+SRIOV_DESC=	Enable SR-IOV support (experimental)
+
+post-patch-SRIOV-on:
+	@${SED} -i '' 's|SRIOV_ENABLE = 0|SRIOV_ENABLE = 1|g' ${WRKSRC}/Makefile
 
 .include "${MASTERDIR}/Makefile"

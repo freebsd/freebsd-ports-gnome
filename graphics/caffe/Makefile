@@ -2,7 +2,7 @@
 
 PORTNAME=	caffe
 PORTVERSION=	1.0
-PORTREVISION=	22
+PORTREVISION=	31
 CATEGORIES=	graphics
 
 MAINTAINER=	eric@camachat.org
@@ -14,7 +14,6 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 CONFLICTS_INSTALL=	caffe2-*
 
 BUILD_DEPENDS=	${PYNUMPY} \
-		${LOCALBASE}/include/cblas.h:math/cblas \
 		bash:shells/bash
 LIB_DEPENDS=	libsnappy.so:archivers/snappy \
 		libleveldb.so:databases/leveldb \
@@ -54,12 +53,20 @@ PLIST_SUB=	PYTHON_SITELIBDIR=${PYTHON_SITELIBDIR} DATADIR=${DATADIR}
 GH_ACCOUNT=	BVLC
 USE_GITHUB=	yes
 
+.include <bsd.port.pre.mk>
+
+.if ${CHOSEN_COMPILER_TYPE} == clang
+TRUE_CXX=	clang++
+.else
+TRUE_CXX=	g++${GCC_DEFAULT}
+.endif
+
 post-extract:
 	@${CP} -v ${.CURDIR}/files/Makefile.config ${WRKSRC}/
 
 post-patch:
 	@${REINPLACE_CMD} \
-	-e "s|%%CXX%%|clang++|g" \
+	-e "s|%%CXX%%|${TRUE_CXX}|g" \
 	-e "s|%%LOCALBASE%%|${LOCALBASE}|g" \
 	-e "s|%%DATADIR%%|${DATADIR}|g" \
 	-e "s|%%PYTHON_INCLUDEDIR%%|${PYTHON_INCLUDEDIR}|g" \
@@ -75,4 +82,4 @@ post-install:
 	@${STRIP_CMD} ${STAGEDIR}/${PREFIX}/bin/* ${STAGEDIR}/${PREFIX}/lib/*.so.* \
 	${STAGEDIR}/${PYTHON_SITELIBDIR}/${PORTNAME}/*.so
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

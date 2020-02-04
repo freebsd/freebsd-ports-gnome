@@ -32,7 +32,7 @@ include/gnutls/x509.h
 %%DANE%%lib/libgnutls-dane.so.0.4.1
 lib/libgnutls.so
 lib/libgnutls.so.30
-lib/libgnutls.so.30.23.2
+lib/libgnutls.so.30.26.2
 lib/libgnutlsxx.so
 lib/libgnutlsxx.so.28
 lib/libgnutlsxx.so.28.1.0
@@ -67,9 +67,11 @@ man/man3/dane_verify_crt.3.gz
 man/man3/dane_verify_crt_raw.3.gz
 man/man3/dane_verify_session_crt.3.gz
 man/man3/gnutls_aead_cipher_decrypt.3.gz
+man/man3/gnutls_aead_cipher_decryptv2.3.gz
 man/man3/gnutls_aead_cipher_deinit.3.gz
 man/man3/gnutls_aead_cipher_encrypt.3.gz
 man/man3/gnutls_aead_cipher_encryptv.3.gz
+man/man3/gnutls_aead_cipher_encryptv2.3.gz
 man/man3/gnutls_aead_cipher_init.3.gz
 man/man3/gnutls_alert_get.3.gz
 man/man3/gnutls_alert_get_name.3.gz
@@ -160,6 +162,8 @@ man/man3/gnutls_certificate_type_get2.3.gz
 man/man3/gnutls_certificate_type_get_id.3.gz
 man/man3/gnutls_certificate_type_get_name.3.gz
 man/man3/gnutls_certificate_type_list.3.gz
+man/man3/gnutls_certificate_verification_profile_get_id.3.gz
+man/man3/gnutls_certificate_verification_profile_get_name.3.gz
 man/man3/gnutls_certificate_verification_status_print.3.gz
 man/man3/gnutls_certificate_verify_peers.3.gz
 man/man3/gnutls_certificate_verify_peers2.3.gz
@@ -225,6 +229,7 @@ man/man3/gnutls_dh_params_import_dsa.3.gz
 man/man3/gnutls_dh_params_import_pkcs3.3.gz
 man/man3/gnutls_dh_params_import_raw.3.gz
 man/man3/gnutls_dh_params_import_raw2.3.gz
+man/man3/gnutls_dh_params_import_raw3.3.gz
 man/man3/gnutls_dh_params_init.3.gz
 man/man3/gnutls_dh_set_prime_bits.3.gz
 man/man3/gnutls_digest_get_id.3.gz
@@ -262,6 +267,7 @@ man/man3/gnutls_ext_set_data.3.gz
 man/man3/gnutls_fingerprint.3.gz
 man/man3/gnutls_fips140_mode_enabled.3.gz
 man/man3/gnutls_fips140_set_mode.3.gz
+man/man3/gnutls_get_system_config_file.3.gz
 man/man3/gnutls_global_deinit.3.gz
 man/man3/gnutls_global_init.3.gz
 man/man3/gnutls_global_set_audit_log_function.3.gz
@@ -287,6 +293,7 @@ man/man3/gnutls_handshake_set_private_extensions.3.gz
 man/man3/gnutls_handshake_set_random.3.gz
 man/man3/gnutls_handshake_set_timeout.3.gz
 man/man3/gnutls_hash.3.gz
+man/man3/gnutls_hash_copy.3.gz
 man/man3/gnutls_hash_deinit.3.gz
 man/man3/gnutls_hash_fast.3.gz
 man/man3/gnutls_hash_get_len.3.gz
@@ -304,8 +311,10 @@ man/man3/gnutls_hex_decode2.3.gz
 man/man3/gnutls_hex_encode.3.gz
 man/man3/gnutls_hex_encode2.3.gz
 man/man3/gnutls_hmac.3.gz
+man/man3/gnutls_hmac_copy.3.gz
 man/man3/gnutls_hmac_deinit.3.gz
 man/man3/gnutls_hmac_fast.3.gz
+man/man3/gnutls_hmac_get_key_size.3.gz
 man/man3/gnutls_hmac_get_len.3.gz
 man/man3/gnutls_hmac_init.3.gz
 man/man3/gnutls_hmac_output.3.gz
@@ -523,6 +532,7 @@ man/man3/gnutls_pkcs8_info.3.gz
 man/man3/gnutls_pkcs_schema_get_name.3.gz
 man/man3/gnutls_pkcs_schema_get_oid.3.gz
 man/man3/gnutls_prf.3.gz
+man/man3/gnutls_prf_early.3.gz
 man/man3/gnutls_prf_raw.3.gz
 man/man3/gnutls_prf_rfc5705.3.gz
 man/man3/gnutls_priority_certificate_type_list.3.gz
@@ -674,6 +684,7 @@ man/man3/gnutls_record_send2.3.gz
 man/man3/gnutls_record_send_early_data.3.gz
 man/man3/gnutls_record_send_range.3.gz
 man/man3/gnutls_record_set_max_early_data_size.3.gz
+man/man3/gnutls_record_set_max_recv_size.3.gz
 man/man3/gnutls_record_set_max_size.3.gz
 man/man3/gnutls_record_set_state.3.gz
 man/man3/gnutls_record_set_timeout.3.gz

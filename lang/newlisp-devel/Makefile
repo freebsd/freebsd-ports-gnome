@@ -11,17 +11,18 @@ PKGNAMESUFFIX=	-devel
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	LISP like scripting language
 
+BROKEN=		unfetchable
+
 LICENSE=	GPLv3
 
 BROKEN_mips=		fails to compile: unrecognized command line option "-m64"
 BROKEN_mips64=		fails to compile: unrecognized command line option "-m64"
-BROKEN_powerpc64=	fails to build: error: redefinition of typedef CPPFunction
 
 LIB_DEPENDS=	libffi.so:devel/libffi
 
 CONFLICTS=	newlisp-[0-9]*
 
-USES=		readline tar:tgz
+USES=		compiler:c11 readline tar:tgz
 
 HAS_CONFIGURE=	yes
 ALL_TARGET=	default
@@ -66,7 +67,7 @@ PLIST_SUB+=	GSL="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MMYSQL}
-USE_MYSQL=	yes
+USES+=		mysql
 MODULES+=	mysql
 PLIST_SUB+=	MYSQL=""
 .else

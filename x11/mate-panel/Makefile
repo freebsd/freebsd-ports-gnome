@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-panel
-PORTVERSION=	1.20.3
+PORTVERSION=	1.22.2
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -23,8 +23,8 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake libtool localbase pathfix pkgconfig \
-		tar:xz
+USES=		gettext gmake gnome libtool localbase mate pathfix pkgconfig \
+		tar:xz xorg
 USE_MATE=	desktop libmateweather menus
 USE_XORG=	ice sm x11 xau xrandr
 USE_GNOME=	cairo dconf gnomeprefix gtk30 intltool \
@@ -36,6 +36,7 @@ INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.mate.panel.applet.clock.gschema.xml \
 		org.mate.panel.applet.fish.gschema.xml \
+		org.mate.panel.applet.notification-area.gschema.xml \
 		org.mate.panel.applet.window-list.gschema.xml \
 		org.mate.panel.applet.workspace-switcher.gschema.xml \
 		org.mate.panel.enums.xml \

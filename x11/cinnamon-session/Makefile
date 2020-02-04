@@ -20,7 +20,6 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 RUN_DEPENDS=	console-kit-daemon:sysutils/consolekit2
 
 USES=		gl gnome meson pkgconfig
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
 GH_TAGNAME=	3b5759e

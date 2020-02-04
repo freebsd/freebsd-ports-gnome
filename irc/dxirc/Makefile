@@ -2,8 +2,8 @@
 
 PORTNAME=	dxirc
 PORTVERSION=	1.30.0
-PORTREVISION=	2
-CATEGORIES=	irc ipv6
+PORTREVISION=	3
+CATEGORIES=	irc
 MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}
 
 MAINTAINER=	arch_dvx@users.sourceforge.net
@@ -12,8 +12,8 @@ COMMENT=	Simple IRC client
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+USES=		cmake compiler:c++11-lang gnome pkgconfig xorg
 USE_XORG=	ice sm x11 xext
-USES=		cmake pkgconfig
 INSTALLS_ICONS=	yes
 
 OPTIONS_DEFINE=		NLS LUA ENCHANT NOTIFY

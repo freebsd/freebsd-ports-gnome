@@ -1,11 +1,11 @@
---- ui/views/window/dialog_delegate.cc.orig	2019-03-11 22:01:19 UTC
+--- ui/views/window/dialog_delegate.cc.orig	2019-12-16 21:51:34 UTC
 +++ ui/views/window/dialog_delegate.cc
-@@ -64,7 +64,7 @@ Widget::InitParams DialogDelegate::GetDialogWidgetInit
-   params.bounds = bounds;
-   DialogDelegate* dialog = delegate->AsDialogDelegate();
+@@ -58,7 +58,7 @@ Widget* DialogDelegate::CreateDialogWidget(WidgetDeleg
  
+ // static
+ bool DialogDelegate::CanSupportCustomFrame(gfx::NativeView parent) {
 -#if defined(OS_LINUX) && !defined(OS_CHROMEOS)
-+#if (defined(OS_LINUX) || defined(OS_BSD)) && !defined(OS_CHROMEOS)
++#if (defined(OS_LINUX) && !defined(OS_CHROMEOS)) || defined(OS_BSD)
    // The new style doesn't support unparented dialogs on Linux desktop.
-   if (dialog)
-     dialog->supports_custom_frame_ &= parent != NULL;
+   return parent != nullptr;
+ #elif defined(OS_WIN)

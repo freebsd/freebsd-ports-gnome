@@ -1,4 +1,3 @@
-# Created by: Alonso Cardenas Marquez <acm@FreeBSD.org>
 # $FreeBSD$
 
 CATEGORIES=	graphics lang
@@ -17,6 +16,7 @@ OPTIONS_DEFINE=	EXAMPLES OPENGL
 OPENGL_DESC=	Install opengl libraries
 OPTIONS_DEFAULT=	OPENGL
 
+OPENGL_USES=	gl
 OPENGL_USE=	GL=glut
 HAVE_EXAMPLES=	yes
 

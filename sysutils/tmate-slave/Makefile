@@ -2,11 +2,14 @@
 
 PORTNAME=	tmate-slave
 PORTVERSION=	g2018112801
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	swills@FreeBSD.org
 COMMENT=	Instant terminal sharing server
+
+BROKEN=		fails to patch
 
 LIB_DEPENDS=	libevent.so:devel/libevent \
 		libmsgpackc.so:devel/msgpack \
@@ -18,7 +21,6 @@ GH_ACCOUNT=	tmate-io
 GH_TAGNAME=	8b294f3
 
 GNU_CONFIGURE=	yes
-INSTALL_ARGET=	install-strip
 USE_LDCONFIG=	yes
 LDFLAGS+=	-lexecinfo
 

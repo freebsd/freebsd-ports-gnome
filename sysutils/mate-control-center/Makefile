@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-control-center
-PORTVERSION=	1.20.3
-PORTREVISION=	1
+PORTVERSION=	1.22.2
 CATEGORIES=	sysutils mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -28,10 +27,10 @@ LIB_DEPENDS=	libcanberra-gtk.so:audio/libcanberra \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gmake libtool localbase \
-		pathfix pkgconfig shared-mime-info tar:xz
+USES=		desktop-file-utils gettext gmake gnome libtool localbase mate \
+		pathfix pkgconfig shared-mime-info tar:xz xorg
 USE_MATE=	desktop libmatekbd marco menus settingsdaemon
-USE_XORG=	ice sm x11 xcursor xext xxf86misc xft xi xrandr xscrnsaver
+USE_XORG=	ice sm x11 xcursor xext xft xi xrandr xscrnsaver
 USE_GNOME=	cairo dconf glib20 gtk30 intlhack libxml2 librsvg2 pango
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes

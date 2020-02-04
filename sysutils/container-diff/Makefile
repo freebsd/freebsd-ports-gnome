@@ -4,6 +4,7 @@
 PORTNAME=	container-diff
 PORTVERSION=	0.15.0
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	sysutils
 
 MAINTAINER=	sunpoet@FreeBSD.org
@@ -20,8 +21,5 @@ PLIST_FILES=	bin/container-diff
 
 GH_ACCOUNT=	GoogleContainerTools
 USE_GITHUB=	yes
-
-do-install:
-	${INSTALL_PROGRAM} ${WRKDIR}/bin/container-diff ${STAGEDIR}${PREFIX}/bin/container-diff
 
 .include <bsd.port.mk>

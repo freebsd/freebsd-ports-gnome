@@ -2,16 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	musescore
-DISTVERSION=	3.0.5
+DISTVERSIONPREFIX=	v
+DISTVERSION=	3.4.1
 CATEGORIES=	audio
-MASTER_SITES=	http://ftp.osuosl.org/pub/musescore/releases/MuseScore-${DISTVERSION}/
-DISTNAME=	MuseScore-${DISTVERSION}
+# DISTNAME=	MuseScore-${DISTVERSION}
 
 MAINTAINER=	adridg@FreeBSD.org
 COMMENT=	Free music composition & notation software
 
 LICENSE=	GPLv2
-LICENSE_FILE=	${WRKSRC}/LICENSE.GPL
+# LICENSE_FILE=	LICENSE.GPL
 
 LIB_DEPENDS=	libmp3lame.so:audio/lame \
 		libsndfile.so:audio/libsndfile \
@@ -20,16 +20,19 @@ LIB_DEPENDS=	libmp3lame.so:audio/lame \
 		libfreetype.so:print/freetype2
 
 USES=		cmake compiler:c++11-lib desktop-file-utils \
-		pkgconfig qt:5 shared-mime-info zip
-USE_QT=		core declarative gui widgets opengl concurrent designer help network \
+		pkgconfig qt:5 shared-mime-info
+USE_QT=		core declarative gui widgets opengl concurrent designer help \
+		location network \
 		scripttools svg sql printsupport testlib \
-		xml xmlpatterns \
+		webchannel xml xmlpatterns \
 		buildtools_build linguisttools_build qmake_build uitools_build
+
+USE_GITHUB=	yes
+GH_ACCOUNT=	musescore
+GH_PROJECT=	MuseScore
 
 # Each release gets a subdir containing the distfiles for that release,
 # so hope that scanning the parent dir finds new ones.
-PORTSCOUT=	site:http://ftp.osuosl.org/pub/musescore/releases/
-NO_WRKSUBDIR=	yes
 DATADIR=	${PREFIX}/share/mscore-${PORTVERSION:R}
 
 ALL_TARGET=	lrelease manpages all
@@ -38,12 +41,14 @@ CMAKE_ARGS+=	-DUSE_SYSTEM_FREETYPE="ON" \
 		-DBUILD_PCH=OFF \
 		-DDOWNLOAD_SOUNDFONT=OFF
 
-# WebEngine is only available on i386/amd64; defaults to ON there.
+# WebEngine is only available on i386/amd64, amd ppc64 starting FreeBSD 13.0.
 # If enabled on arches that don't have WebEngine, the build breaks.
 OPTIONS_DEFINE=		ALSA JACK PORTAUDIO PULSEAUDIO WEBENGINE
 OPTIONS_DEFAULT=	PORTAUDIO
 OPTIONS_DEFAULT_amd64=	WEBENGINE
 OPTIONS_DEFAULT_i386=	WEBENGINE
+OPTIONS_DEFAULT_powerpc64=     ${OPTIONS_DEFAULT_powerpc64_${OSREL:R}}
+OPTIONS_DEFAULT_powerpc64_13=  WEBENGINE
 
 WEBENGINE_DESC=		Use WebEngine in the welcome panel
 

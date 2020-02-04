@@ -3,7 +3,7 @@
 
 PORTNAME=	boinc-astropulse
 PORTVERSION=	6.01
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	astro
 MASTER_SITES=	LOCAL/rene
 DISTNAME=	astropulse-svn-1702 # modified archive, see leftout in top directory
@@ -21,7 +21,7 @@ BUILD_DEPENDS=	${LOCALBASE}/include/fftw3.h:math/fftw3 \
 RUN_DEPENDS=	boinc_client:net/boinc-client
 LIB_DEPENDS=	libfftw3f.so:math/fftw3-float
 
-USES=		autoreconf gmake libtool pkgconfig tar:xz
+USES=		autoreconf compiler:c++11-lang gmake libtool pkgconfig tar:xz
 
 GNU_CONFIGURE=	yes
 
@@ -63,7 +63,7 @@ OPTIONS_SUB=	yes
 
 X11_DESC=		Build screensaver (requires net/boinc-client with X11)
 X11_BUILD_DEPENDS=	${LOCALBASE}/lib/libboinc_graphics2.a:net/boinc-client
-X11_USES=		gl jpeg
+X11_USES=		gl jpeg xorg
 X11_USE=		GL=gl,glu,glut \
 			XORG=ice,sm,x11,xau,xcb,xext,xi,xdamage,xdmcp,xfixes,xmu,xt,xxf86vm
 X11_CONFIGURE_ENABLE=	graphics

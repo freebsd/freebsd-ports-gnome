@@ -3,7 +3,7 @@
 
 PORTNAME=	hdr_tools
 PORTVERSION=	0.0.2010.11.23	# unspecified by the author, so use the date
-PORTREVISION=	5
+PORTREVISION=	7
 CATEGORIES=	graphics
 MASTER_SITES=	http://ttic.uchicago.edu/~cotter/projects/hdr_tools/archives/ \
 		http://freebsd.nsu.ru/distfiles/
@@ -19,7 +19,7 @@ LIB_DEPENDS=	libpopt.so:devel/popt \
 		libIlmImf.so:graphics/openexr \
 		libMagick++-6.so:graphics/ImageMagick6
 
-USES=		compiler:features gmake pkgconfig tar:tgz
+USES=		compiler:c++11-lang gmake pkgconfig tar:tgz
 NO_WRKSUBDIR=	yes
 
 PROGRAMS=	hdr_adjust hdr_convert hdr_create hdr_denoise hdr_fix_ca \

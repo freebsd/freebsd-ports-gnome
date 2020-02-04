@@ -3,10 +3,10 @@
 
 PORTNAME=	svn2git
 PORTVERSION=	1.0.12
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	devel kde
 
-MAINTAINER=	dbn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Imports svn repositories into git
 
 LICENSE=	GPLv3

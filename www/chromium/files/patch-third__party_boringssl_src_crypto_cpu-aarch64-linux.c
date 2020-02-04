@@ -1,5 +1,5 @@
---- third_party/boringssl/src/crypto/cpu-aarch64-linux.c.orig	2019-04-05 02:55:11.000000000 +0200
-+++ third_party/boringssl/src/crypto/cpu-aarch64-linux.c	2019-04-15 08:45:47.936052000 +0200
+--- third_party/boringssl/src/crypto/cpu-aarch64-linux.c.orig	2019-04-30 22:25:51 UTC
++++ third_party/boringssl/src/crypto/cpu-aarch64-linux.c
 @@ -14,49 +14,35 @@
  
  #include <openssl/cpu.h>
@@ -42,7 +42,7 @@
    OPENSSL_armcap_P |= ARMV7_NEON;
  
 -  if (hwcap & kAES) {
-+  if (ID_AA64ISAR0_AES(id_aa64isar0) == ID_AA64ISAR0_AES_BASE) {
++  if (ID_AA64ISAR0_AES(id_aa64isar0) >= ID_AA64ISAR0_AES_BASE) {
      OPENSSL_armcap_P |= ARMV8_AES;
    }
 -  if (hwcap & kPMULL) {
@@ -54,7 +54,7 @@
      OPENSSL_armcap_P |= ARMV8_SHA1;
    }
 -  if (hwcap & kSHA256) {
-+  if(ID_AA64ISAR0_SHA2(id_aa64isar0) == ID_AA64ISAR0_SHA2_BASE) {
++  if(ID_AA64ISAR0_SHA2(id_aa64isar0) >= ID_AA64ISAR0_SHA2_BASE) {
      OPENSSL_armcap_P |= ARMV8_SHA256;
    }
  }

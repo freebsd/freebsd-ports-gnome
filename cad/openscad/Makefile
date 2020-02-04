@@ -2,9 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	openscad
-PORTVERSION=	2019.03.03
-PORTREVISION=	2
+PORTVERSION=	2019.05.10
+PORTREVISION=	4
+#PORTREVISION=	1
 CATEGORIES=	cad
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=	b6c170cc5dd1.patch:-p1
 
 MAINTAINER=	mr@FreeBSD.org
 COMMENT=	Programmer's solid 3D CAD modeller #'
@@ -28,13 +32,13 @@ LIB_DEPENDS=	libzip.so:archivers/libzip \
 CONFLICTS=	openscad
 
 USES=		bison compiler:c++11-lib desktop-file-utils eigen:3 gettext \
-		pkgconfig qmake qt:5 shared-mime-info
+		gl gnome pkgconfig qmake qt:5 shared-mime-info xorg
 USE_GITHUB=	yes
 USE_GL=		gl glu glew
 USE_GNOME=	glib20 libxml2
 USE_QT=		buildtools_build core concurrent_build dbus gui multimedia widgets
 USE_XORG=	x11
-GH_TAGNAME=	40379b3f5c1675c59714cebbbb6a8803d8d6460e
+GH_TAGNAME=	0f6d569b57112b79f657a82b0809dc420fbff163
 QMAKE_ARGS=	CONFIG+="experimental" VERSION=${PORTVERSION}
 # Avoid overlinking: kvm, procstat, boost(thread, system), Qt5(concurrent, network, printsupport)
 LDFLAGS+=	-Wl,--as-needed

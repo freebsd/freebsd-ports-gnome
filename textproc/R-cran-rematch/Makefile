@@ -2,11 +2,11 @@
 
 PORTNAME=	rematch
 DISTVERSION=	1.0.1
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	textproc
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
-MAINTAINER=	dbn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Match Regular Expressions with a Nicer 'API'
 
 LICENSE=	MIT

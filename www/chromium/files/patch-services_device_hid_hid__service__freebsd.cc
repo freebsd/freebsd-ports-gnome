@@ -1,6 +1,6 @@
---- services/device/hid/hid_service_freebsd.cc.orig	2019-03-30 17:42:59.721025000 -0700
-+++ services/device/hid/hid_service_freebsd.cc	2019-03-30 22:02:19.316167000 -0700
-@@ -0,0 +1,373 @@
+--- services/device/hid/hid_service_freebsd.cc.orig	2019-12-17 20:07:49 UTC
++++ services/device/hid/hid_service_freebsd.cc
+@@ -0,0 +1,375 @@
 +// Copyright 2014 The Chromium Authors. All rights reserved.
 +// Use of this source code is governed by a BSD-style license that can be
 +// found in the LICENSE file.
@@ -19,6 +19,7 @@
 +#include "base/bind.h"
 +#include "base/files/file_descriptor_watcher_posix.h"
 +#include "base/files/file_enumerator.h"
++#include "base/files/file.h"
 +#include "base/location.h"
 +#include "base/logging.h"
 +#include "base/posix/eintr_wrapper.h"
@@ -46,7 +47,7 @@
 +        callback(callback),
 +        task_runner(base::ThreadTaskRunnerHandle::Get()),
 +        blocking_task_runner(
-+            base::CreateSequencedTaskRunnerWithTraits(kBlockingTaskTraits)) {}
++            base::CreateSequencedTaskRunner(kBlockingTaskTraits)) {}
 +  ~ConnectParams() {}
 +
 +  scoped_refptr<HidDeviceInfo> device_info;
@@ -111,7 +112,7 @@
 +
 +  void OnDeviceAdded(std::string device_id) {
 +    base::ScopedBlockingCall scoped_blocking_call(
-+        base::BlockingType::MAY_BLOCK);
++        FROM_HERE, base::BlockingType::MAY_BLOCK);
 +    std::string device_node = "/dev/" + device_id;
 +    uint16_t vendor_id = 0xffff;
 +    uint16_t product_id = 0xffff;
@@ -171,7 +172,7 @@
 +
 +  void OnDeviceRemoved(std::string device_id) {
 +    base::ScopedBlockingCall scoped_blocking_call(
-+        base::BlockingType::MAY_BLOCK);
++        FROM_HERE, base::BlockingType::MAY_BLOCK);
 +    task_runner_->PostTask(
 +        FROM_HERE, base::Bind(&HidServiceFreeBSD::RemoveDevice, service_,
 +                              device_id));
@@ -296,7 +297,7 @@
 +HidServiceFreeBSD::HidServiceFreeBSD()
 +    : task_runner_(base::ThreadTaskRunnerHandle::Get()),
 +      blocking_task_runner_(
-+          base::CreateSequencedTaskRunnerWithTraits(kBlockingTaskTraits)),
++          base::CreateSequencedTaskRunner(kBlockingTaskTraits)),
 +      weak_factory_(this) {
 +  helper_ = std::make_unique<BlockingTaskHelper>(weak_factory_.GetWeakPtr());
 +  blocking_task_runner_->PostTask(
@@ -315,7 +316,8 @@
 +// static
 +void HidServiceFreeBSD::OpenOnBlockingThread(
 +    std::unique_ptr<ConnectParams> params) {
-+  base::ScopedBlockingCall scoped_blocking_call(base::BlockingType::MAY_BLOCK);
++  base::ScopedBlockingCall scoped_blocking_call(
++      FROM_HERE, base::BlockingType::MAY_BLOCK);
 +  scoped_refptr<base::SequencedTaskRunner> task_runner = params->task_runner;
 +
 +  base::FilePath device_path(params->device_info->device_node());

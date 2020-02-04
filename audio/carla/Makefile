@@ -3,6 +3,7 @@
 PORTNAME=	Carla
 DISTVERSIONPREFIX=	v
 DISTVERSION=	2.0.0
+PORTREVISION=	3
 CATEGORIES=	audio
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -18,7 +19,8 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyliblo>0:audio/py-pyliblo@${PY_FLAVOR}
 CONFLICTS_BUILD=	rtaudio-* rtmidi-*
 
 USES=		compiler:c++11-lib desktop-file-utils gl gmake gnome localbase \
-		pkgconfig pyqt:5 python:3.4+ qt:5 shared-mime-info shebangfix tar:bz2
+		pkgconfig pyqt:5 python:3.4+ qt:5 shared-mime-info shebangfix \
+		tar:bz2 xorg
 USE_GITHUB=	yes
 GH_ACCOUNT=	falkTX
 USE_PYQT=	core_run gui_run sip svg_run widgets_run xml_build  # "sip" should be "sip_build", but "import PyQt5.QtCore" wants "sip". See bug#225040

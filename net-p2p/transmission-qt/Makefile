@@ -1,12 +1,10 @@
 # $FreeBSD$
 
-PORTREVISION=	8
+PORTREVISION=	9
 PKGNAMESUFFIX=	-qt5
 
 LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
-
-CONFLICTS_INSTALL=	transmission-qt4
 
 USES=		compiler:c++11-lang qt:5
 NLS_USES=	gettext-runtime:run qt:5

@@ -4,7 +4,7 @@
 PORTNAME?=	xmms2
 PORTVERSION=	0.8
 DISTVERSIONSUFFIX=	DrO_o
-PORTREVISION?=	29
+PORTREVISION?=	33
 CATEGORIES?=	audio
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/${PORTVERSION}%20${DISTVERSIONSUFFIX}
 
@@ -20,7 +20,7 @@ INSTALL_TARGET=	install --without-ldconfig
 
 .if !defined(XMMS2_SLAVE)
 USE_GNOME=	glib20
-USES+=		readline sqlite
+USES+=		gnome python:2.7,build readline sqlite
 
 USE_LDCONFIG=	yes
 
@@ -34,7 +34,7 @@ OPTIONS_DEFINE=	AIRPLAY AO APE AVCODEC CDDA CURL ET FAAD FAM FLAC \
 		SNDFILE SPEEX TREMOR VISUAL VOCODER VORBIS WAVPACK XML
 OPTIONS_SINGLE=	MDNS
 OPTIONS_SINGLE_MDNS=	MDNS_APPLE MDNS_AVAHI
-OPTIONS_DEFAULT=	CURL FAAD FLAC MAD MDNS MDNS_APPLE VORBIS
+OPTIONS_DEFAULT=	CURL FAAD FLAC MPG123 MDNS MDNS_APPLE VORBIS
 
 AIRPLAY_DESC=	Support output via Airport Express
 AVCODEC_DESC=	Avcodevc playback support
@@ -137,6 +137,7 @@ SPEEX_CONFIGURE_OFF=	--without-plugins="speex"
 TREMOR_LIB_DEPENDS=	libvorbisidec.so:audio/libtremor
 TREMOR_CONFIGURE_OFF=	--without-plugins="tremor"
 
+VISUAL_USES=		sdl
 VISUAL_USE=		SDL=sdl
 VISUAL_LIB_DEPENDS=	libvisual-0.4.so:graphics/libvisual04
 VISUAL_CONFIGURE_OFF=	--without-optionals="vistest"
@@ -199,6 +200,10 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-patch-src-clients-vistest-wscript
 .endif # !XMMS2_SLAVE
 
 .include <bsd.port.pre.mk>
+
+.if defined(XMMS2_SLAVE) && ${XMMS2_SLAVE} == perl && ${PERL_LEVEL} >= 503100
+BUILD_DEPENDS+=  p5-Pod-Parser>=0:textproc/p5-Pod-Parser
+.endif
 
 # Force to nothing to avoid bsd.openssl.mk adding definitions
 # to it when AIRPLAY option is active, waf does not understand it anyway.

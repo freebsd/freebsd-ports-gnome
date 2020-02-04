@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	Data-Perl
-PORTVERSION=	0.002009
-PORTREVISION=	1
+PORTVERSION=	0.002011
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -22,5 +21,7 @@ RUN_DEPENDS=	p5-Class-Method-Modifiers>=0:devel/p5-Class-Method-Modifiers \
 
 USES=		perl5
 USE_PERL5=	configure
+
+NO_ARCH=	yes
 
 .include <bsd.port.mk>

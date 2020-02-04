@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME=	wine-mono
-DISTVERSION=	4.7.5
+DISTVERSION=	4.9.4
 CATEGORIES=	emulators
 MASTER_SITES=	http://dl.winehq.org/wine/wine-mono/${DISTVERSION}/
 EXTRACT_SUFX=	.msi
 EXTRACT_ONLY=
 
-MAINTAINER=	dbn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Mono .NET implementation for Wine development branch (HTML support)
 
 LICENSE=	MIT GPLv2 LGPL20

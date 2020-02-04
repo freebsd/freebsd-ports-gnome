@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	solarus-quest-editor
-PORTVERSION=	1.6.0
+PORTVERSION=	1.6.2
 DISTVERSIONPREFIX=	v
-PORTREVISION=	1
 CATEGORIES=	games
 
 MAINTAINER=	danilo@FreeBSD.org
@@ -22,25 +21,17 @@ LIB_DEPENDS=	libphysfs.so:devel/physfs \
 
 BUILD_DEPENDS=	${LOCALBASE}/include/glm/glm.hpp:math/glm
 
-USES=		cmake compiler:c++11-lib openal qt:5
+USES=		cmake compiler:c++11-lib openal qt:5 sdl
 
 USE_GITLAB=	yes
 GL_ACCOUNT=	solarus-games
-GL_COMMIT=	47ebde229b805ebe076ab6ef7f8e947a06a17451
+GL_COMMIT=	a2aa91dc9bb60d3df6183b8e0a74a5d4c3b2d016
 
 CMAKE_ARGS+=	-DSOLARUS_USE_LUAJIT=OFF
 USE_SDL=	sdl2 ttf2 image2
-USE_QT=		buildtools concurrent core gui linguist qmake widgets
+USE_QT=		buildtools_build concurrent core gui linguist qmake_build widgets
 
 DESKTOP_ENTRIES=	"Solarus Quest Editor" "${COMMENT}" "${PORTNAME}" "${PORTNAME}"  \
 			"Game;" false
-
-PLIST_FILES=	bin/solarus-quest-editor \
-		share/pixmaps/${PORTNAME}.png
-
-do-install:
-	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/solarus-quest-editor ${STAGEDIR}${PREFIX}/bin
-	${INSTALL_DATA} ${WRKSRC}/images/logo/sqe-logo.png \
-		${STAGEDIR}${PREFIX}/share/pixmaps/${PORTNAME}.png
 
 .include <bsd.port.mk>

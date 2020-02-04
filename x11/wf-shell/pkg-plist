@@ -1,0 +1,4 @@
+bin/wf-background
+bin/wf-dock
+bin/wf-panel
+%%DATADIR%%/icons/wayfire.png

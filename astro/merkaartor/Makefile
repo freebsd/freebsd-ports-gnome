@@ -3,7 +3,7 @@
 
 PORTNAME=	merkaartor
 PORTVERSION=	0.18.2
-PORTREVISION=	16
+PORTREVISION=	23
 CATEGORIES=	astro
 
 MAINTAINER=	dev2@heesakkers.info
@@ -16,10 +16,12 @@ LIB_DEPENDS=	libgdal.so:graphics/gdal \
 		libproj.so:graphics/proj \
 		libquazip5.so:archivers/quazip
 
-USES=		compiler:c++11-lang pkgconfig qmake qt:5 sqlite:3
+USES=		compiler:c++11-lang gnome pkgconfig qmake qt:5 sqlite:3
 USE_GITHUB=	yes
 GH_ACCOUNT=	openstreetmap
 USE_LDCONFIG=	yes
+
+CFLAGS+=	"-DACCEPT_USE_OF_DEPRECATED_PROJ_API_H=1"
 
 QMAKE_ARGS=	SYSTEM_QUAZIP=1
 USE_QT=		buildtools_build \

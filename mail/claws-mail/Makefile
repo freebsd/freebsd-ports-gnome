@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	claws-mail
-PORTREVISION=	1
-CATEGORIES=	mail news ipv6
+PORTREVISION=	0
+CATEGORIES=	mail news
 
 COMMENT=	Lightweight and featureful GTK+ based e-mail and news client
 
@@ -21,14 +21,14 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 		libnettle.so:security/nettle
 RUN_DEPENDS=	mime-support>0:misc/mime-support
 
-USES=		autoreconf gettext-tools compiler:c++11-lang cpe desktop-file-utils gettext gnome pathfix \
-		python:3.6 shebangfix ssl
+USES=		autoreconf gettext-tools compiler:c++11-lang cpe desktop-file-utils gettext gnome pathfix pkgconfig \
+		python:3.6 shebangfix ssl xorg
 USE_XORG=	ice sm
 USE_GNOME=	cairo gtk20 librsvg2
 SHEBANG_FILES=	tools/*.pl tools/*.py tools/tb2claws-mail
 INSTALLS_ICONS=	yes
 
-OPTIONS_DEFINE=	COMPFACE DEBUG DOCS ENCHANT IPV6 JPILOT LDAP \
+OPTIONS_DEFINE=	COMPFACE DEBUG DOCS ENCHANT IPV6 LDAP \
 		NLS STARTUP THEMES
 OPTIONS_DEFAULT=COMPFACE ENCHANT STARTUP THEMES
 OPTIONS_SUB=	yes
@@ -44,11 +44,6 @@ ENCHANT_CONFIGURE_ENABLE=	enchant
 ENCHANT_LIB_DEPENDS=	libenchant.so:textproc/enchant
 
 IPV6_CONFIGURE_ENABLE=	ipv6
-
-JPILOT_DESC=		JPilot support
-JPILOT_CONFIGURE_ENABLE=	jpilot
-JPILOT_LIB_DEPENDS=	libpisock.so:palm/pilot-link
-JPILOT_RUN_DEPENDS=	jpilot:palm/jpilot
 
 LDAP_CONFIGURE_ENABLE=	ldap
 LDAP_USE=		openldap=yes

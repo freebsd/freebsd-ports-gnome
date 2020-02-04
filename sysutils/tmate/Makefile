@@ -2,7 +2,7 @@
 
 PORTNAME=	tmate
 PORTVERSION=	2.2.1
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	sysutils
 
 MAINTAINER=	swills@FreeBSD.org
@@ -17,7 +17,6 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	tmate-io
 
 GNU_CONFIGURE=	yes
-INSTALL_ARGET=	install-strip
 USE_LDCONFIG=	yes
 LDFLAGS+=	-lexecinfo
 

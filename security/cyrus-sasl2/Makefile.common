@@ -2,7 +2,7 @@
 
 PORTNAME=	cyrus-sasl
 PORTVERSION=	2.1.27
-CATEGORIES=	security ipv6
+CATEGORIES=	security
 MASTER_SITES=	https://www.cyrusimap.org/releases/ \
 		ftp://ftp.cyrusimap.org/cyrus-sasl/
 
@@ -13,7 +13,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 USES+=		gmake
 USE_LDCONFIG=	yes
-USES+=		ssl
 GNU_CONFIGURE=	yes
 
 CONFIGURE_ARGS+=--sysconfdir=${PREFIX}/etc \
@@ -74,6 +73,10 @@ PLIST_FILES+=	lib/sasl2/lib${CYRUS_BUILD_TARGET}.a \
 
 .include <bsd.port.pre.mk>
 
+.if ! ${PORT_OPTIONS:MSSL}
+OPENSSLBASE=	/usr
+.endif
+
 .if ${OPENSSLBASE} == /usr
 CONFIGURE_ARGS+=--with-openssl=yes
 .else
@@ -83,8 +86,6 @@ CONFIGURE_ARGS+=--with-openssl=${OPENSSLBASE}
 .if ${ARCH} == "amd64"
 CPPFLAGS+=	-fPIC
 .endif
-
-PORTDOCS=	*
 
 .if ${CYRUS_BUILD_TARGET} == "cyrus-sasl"
 
@@ -105,6 +106,7 @@ SUB_LIST=	CYRUS_USER=${CYRUS_USER} CYRUS_GROUP=${CYRUS_GROUP} \
 
 PLIST_SUB+=	PREFIX=${PREFIX} \
 		SASLDB=${SASLDB}
+PORTDOCS=	*
 
 post-install-DOCS-on:
 	${MKDIR} ${STAGEDIR}${DOCSDIR}
@@ -136,6 +138,7 @@ RUNPATH=	"@comment "
 
 PLIST_SUB+=	PREFIX=${PREFIX} \
 		RUNPATH=${RUNPATH}
+PORTDOCS=	*
 
 SUB_LIST+=	SASLAUTHD_RUNPATH=${SASLAUTHD_RUNPATH}
 

@@ -11,6 +11,10 @@ MASTER_SITES=	http://ports.internal.vlink.ru/distfiles/
 MAINTAINER=	dsh@wizard.volgograd.ru
 COMMENT=	Python Managesieve Server
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 

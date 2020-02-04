@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=		crystal
-DISTVERSION=		0.27.0
+DISTVERSION=		0.32.1
 CATEGORIES=		lang
 MASTER_SITES=		https://unrelentingtech.s3.dualstack.eu-west-1.amazonaws.com/crystal/:bootstrap
 DISTFILES=		${BOOTSTRAP_PATH}:bootstrap
@@ -13,14 +13,14 @@ COMMENT=	Language with Ruby-like syntax and static type checking
 
 LICENSE=	APACHE20
 
-IGNORE_FreeBSD_11_aarch64=	prebuilt bootstrap for aarch64 only built for FreeBSD >=12
+IGNORE_FreeBSD_11=	prebuilt bootstrap only built for FreeBSD >=12 (ino64)
 ONLY_FOR_ARCHS=			aarch64 amd64
 ONLY_FOR_ARCHS_REASON=		requires prebuilt bootstrap compiler
 
 LIB_DEPENDS=	libgc-threaded.so:devel/boehm-gc-threaded \
 		libevent.so:devel/libevent \
 		libpcre.so:devel/pcre \
-		libLLVM-${LLVM_VERSION:C/([1-9])([0-9])/\1.\2/}.so:devel/llvm${LLVM_VERSION}
+		libLLVM-${LLVM_VERSION:C/([1-9])([0-9])/\1/}.so:devel/llvm${LLVM_VERSION}
 BUILD_DEPENDS=	${LOCALBASE}/bin/llvm-config${LLVM_VERSION}:devel/llvm${LLVM_VERSION}
 
 USES=		compiler gmake pkgconfig
@@ -28,12 +28,13 @@ USES=		compiler gmake pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	crystal-lang
 
-LLVM_VERSION=	60
-BOOTSTRAP_PATH=	crystal-0.27.0-freebsd${BOOTSTRAP_OSREL}-${ARCH}
+LLVM_VERSION=	90
+BOOTSTRAP_PATH=	crystal-${BOOTSTRAP_VER}-freebsd12-${ARCH}
+BOOTSTRAP_VER?=	0.32.1
 
 MAKE_ARGS=	SHELL=sh \
 		LLVM_CONFIG="${LOCALBASE}/bin/llvm-config${LLVM_VERSION}" \
-		FLAGS="--release --no-debug --progress" \
+		FLAGS="--release --no-debug --progress --threads=${MAKE_JOBS_NUMBER}" \
 		EXPORTS='CRYSTAL_CONFIG_PATH="lib:${PREFIX}/lib/${PORTNAME}"' \
 		CRYSTAL_CACHE_DIR="${WRKDIR}/cache" \
 		CRYSTAL_CONFIG_VERSION="${DISTVERSION}"
@@ -47,16 +48,6 @@ OPTIONS_SUB=		yes
 
 .include <bsd.port.options.mk>
 
-.if ${OSVERSION} >= 1200000
-BOOTSTRAP_OSREL=	12
-.else
-BOOTSTRAP_OSREL=	11
-.endif
-
-.if ${ARCH} == aarch64
-LLVM_VERSION=	50
-.endif
-
 .if ${OPSYS} != FreeBSD
 IGNORE=		not supported on anything but FreeBSD
 .endif
@@ -65,7 +56,8 @@ post-extract:
 	${MKDIR} ${WRKSRC}/.build
 	${CP} ${DISTDIR}/${DIST_SUBDIR}/${BOOTSTRAP_PATH} ${WRKSRC}/.build/crystal
 	${CHMOD} +x ${WRKSRC}/.build/crystal
-	${LN} -s x86_64-portbld-freebsd ${WRKSRC}/src/lib_c/aarch64-portbld-freebsd
+	${LN} -s x86_64-freebsd ${WRKSRC}/src/lib_c/aarch64-portbld-freebsd
+	${LN} -s x86_64-freebsd ${WRKSRC}/src/lib_c/aarch64-freebsd
 
 do-build-DOCS-on:
 	cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} docs \

@@ -3,7 +3,7 @@
 
 PORTNAME=	skkinput3
 PORTVERSION=	3.0.6
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	japanese x11
 MASTER_SITES=	OSDN/${PORTNAME}/2222
 DISTNAME=	skkinput-${PORTVERSION}
@@ -11,7 +11,7 @@ DISTNAME=	skkinput-${PORTVERSION}
 MAINTAINER=	koma2@lovepeers.org
 COMMENT=	SKK-like Japanese input method for X11
 
-USES=		imake
+USES=		imake xorg
 USE_GCC=	any
 USE_CSTD=	gnu89
 USE_XORG=	ice sm x11 xext xmu xt

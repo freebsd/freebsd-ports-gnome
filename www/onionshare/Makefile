@@ -2,7 +2,7 @@
 
 PORTNAME=	onionshare
 DISTVERSIONPREFIX=	v
-DISTVERSION=	2.0
+DISTVERSION=	2.2
 CATEGORIES=	www python security
 
 MAINTAINER=	egypcio@FreeBSD.org

@@ -15,7 +15,7 @@ LIB_DEPENDS=	libcdaudio.so:audio/libcdaudio
 RUN_DEPENDS=	e16:x11-wm/e16 \
 		import:graphics/ImageMagick6
 
-USES=		gmake libtool pkgconfig
+USES=		gl gmake libtool pkgconfig xorg
 USE_XORG=	xext
 USE_GL=		glut
 USE_LDCONFIG=	yes
@@ -24,8 +24,6 @@ LDFLAGS+=	-L${LOCALBASE}/lib
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-auto-respawn \
 		--disable-esound
-
-OPTIONS_SUB=	yes
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|<machine/soundcard\.h>|<sys/soundcard.h>|g' \

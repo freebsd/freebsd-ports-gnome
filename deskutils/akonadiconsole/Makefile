@@ -28,7 +28,7 @@ USE_KDE+=	akonadi akonadicalendar akonadicontacts akonadimime \
 		akonadisearch calendarcore calendarsupport contacts \
 		identitymanagement libkdepim libkleo messagelib mime \
 		pimcommon pimtextedit
-USE_QT=		core dbus gui network printsupport sql widgets xml \
+USE_QT=		concurrent core dbus gui network printsupport sql widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 

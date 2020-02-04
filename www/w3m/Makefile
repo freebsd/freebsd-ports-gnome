@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	w3m
-PORTVERSION=	0.5.3.20190105
-CATEGORIES+=	www ipv6
+PORTVERSION=	0.5.3.${SNAPDATE}
+CATEGORIES+=	www
 
 MAINTAINER?=	nobutaka@FreeBSD.org
 COMMENT?=	Pager/text-based WWW browser
@@ -22,9 +22,10 @@ USE_GITHUB=	yes
 
 GH_ACCOUNT=	tats
 GH_PROJECT=	w3m
-GH_TAGNAME=	599f5c1
+GH_TAGNAME=	b305436
 
 MAKE_JOBS_UNSAFE=	yes
+SNAPDATE=	20190702
 
 CONFLICTS?=	ja-w3m-0.5.* ja-w3m-img-0.5.* w3m-img-0.5.*
 GNU_CONFIGURE=	yes
@@ -48,6 +49,7 @@ JAPANESE_DESC=		Japanese messages and migemo support
 KEY_LYNX_DESC=		Keymap like lynx browser
 OPTIONS_SUB=	yes
 
+INLINE_IMAGE_USES=	gnome xorg
 INLINE_IMAGE_USE=	xorg=x11 gnome=gtk20,gdkpixbuf2
 INLINE_IMAGE_CONFIGURE_ON=	--with-imagelib=gtk2 --enable-image=fb,x11
 INLINE_IMAGE_CONFIGURE_OFF=	--enable-image=no

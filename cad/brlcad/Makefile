@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	brlcad
-PORTVERSION=	7.24.0
-PORTREVISION=	8
+PORTVERSION=	7.28.0
 CATEGORIES=	cad
 MASTER_SITES=	SF/${PORTNAME}/BRL-CAD%20Source/${PORTVERSION}
 
@@ -13,25 +12,20 @@ COMMENT=	CSG modelling system from the US Ballistic Research Laboratory
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BROKEN=		fails to build
 BROKEN_sparc64=	does not compile: invokes i386 assembler
-DEPRECATED=	Broken for more than 6 months
-EXPIRATION_DATE=	2019-05-08
 
-BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/pthread-stubs.pc:devel/libpthread-stubs \
-		${LOCALBASE}/include/tnt/jama_lu.h:math/jama \
-		xsltproc:textproc/libxslt
-LIB_DEPENDS=	libdrm.so:graphics/libdrm \
+BUILD_DEPENDS=	xsltproc:textproc/libxslt
+LIB_DEPENDS=	liblz4.so:archivers/liblz4 \
+		libdrm.so:graphics/libdrm \
 		libpng.so:graphics/png \
-		librle.so:graphics/urt \
 		libfreetype.so:print/freetype2 \
 		libexpat.so:textproc/expat2 \
 		libfontconfig.so:x11-fonts/fontconfig
 
 CONFLICTS_INSTALL=	py[23][0-9]-epsilon
 
-USES=		bison cmake:insource pathfix pkgconfig python:env shebangfix \
-		tar:bzip2 tk:85
+USES=		bison cmake:insource gl pathfix pkgconfig python:env \
+		shebangfix tar:bzip2 tk xorg
 USE_GL=		gl glu
 USE_XORG=	ice sm x11 xau xcb xdamage xdmcp xext xfixes xft xi \
 		xorgproto xrender xscrnsaver xt xxf86vm
@@ -49,7 +43,10 @@ MANPREFIX=	${PREFIX}/${PORTNAME}/share
 TEST_TARGET=	check
 
 post-patch:
-	@${REINPLACE_CMD} "s+-exact Tcl 8\.5\.9+Tcl 8.5+" ${WRKSRC}/src/other/tcl/library/init.tcl
+	@${REINPLACE_CMD} -e 's+-exact Tcl 8\.5\.9+Tcl 8.5+' \
+		${WRKSRC}/src/other/tcl/library/init.tcl
+	@${REINPLACE_CMD} -e '2709s+^+include(CheckSymbolExists)+' \
+		${WRKSRC}/CMakeLists.txt
 
 pre-install:
 	${CP} ${FILESDIR}/mged.sh ${WRKSRC}

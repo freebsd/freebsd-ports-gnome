@@ -4,12 +4,15 @@
 
 PORTNAME=	gnome-schedule
 PORTVERSION=	2.1.5
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	sysutils
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-2/${PORTNAME}-${PORTVERSION}
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME GUI for configuring a users crontab
+
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-02-17
 
 LICENSE=	GPLv2
 
@@ -20,8 +23,8 @@ OPTIONS_SUB=	yes
 BUILD_DEPENDS=	yelp:x11/yelp
 RUN_DEPENDS=	yelp:x11/yelp
 
-USES=		gmake pathfix pkgconfig python:2.7
-USE_GNOME=	gnomeprefix pygnome2 gnomedocutils intltool
+USES=		gmake gnome pathfix pkgconfig python:2.7
+USE_GNOME=	gnomeprefix pygnome2 intltool
 INSTALLS_OMF=	yes
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include

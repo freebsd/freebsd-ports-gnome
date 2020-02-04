@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME?=	mariadb
-PORTVERSION=	5.5.64
+PORTVERSION=	5.5.67
 PORTREVISION?=	0
-CATEGORIES=	databases ipv6
+CATEGORIES=	databases
 MASTER_SITES=	http://ftp.osuosl.org/pub/mariadb/${PORTNAME}-${PORTVERSION}/source/ \
 		http://mirrors.supportex.net/mariadb/${PORTNAME}-${PORTVERSION}/source/ \
 		http://mirror.aarnet.edu.au/pub/MariaDB/${PORTNAME}-${PORTVERSION}/source/ \
@@ -20,10 +20,12 @@ COMMENT?=	Multithreaded SQL database (server)
 
 LICENSE=	GPLv2
 
+DEPRECATED=		Upstream end-of-life 2020-04-11, switch to a newer version
+EXPIRATION_DATE=	2020-04-11
+
 SUB_FILES=	pkg-message
 
-SLAVEDIRS=	databases/mariadb55-client
-USES+=		cmake:insource,noninja shebangfix ssl
+USES+=		cmake:insource,noninja compiler:c++11-lang shebangfix ssl
 USE_LDCONFIG=	${PREFIX}/lib/mysql
 SHEBANG_FILES=	scripts/*.sh sql-bench/[a-km-z]*
 
@@ -66,7 +68,7 @@ FASTMTX_CMAKE_ON=	-DWITH_FAST_MUTEXES=1
 .if !defined(CLIENT_ONLY)
 # MySQL-Server part
 USES+=		mysql:55m
-USE_LDCONFIG|=	${PREFIX}/lib/mysql/plugin
+USE_LDCONFIG+=	${PREFIX}/lib/mysql/plugin
 
 CONFLICTS_INSTALL=	mariadb5[0-46-9]-server-* \
 			mariadb1*-server-* \

@@ -1,8 +1,7 @@
-# Created by: Mathieu Arnold <mat@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	ExtUtils-CBuilder
-PORTVERSION=	0.280231
+PORTVERSION=	0.280234
 PORTEPOCH=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN

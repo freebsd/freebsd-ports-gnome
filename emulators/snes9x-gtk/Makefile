@@ -3,7 +3,7 @@
 
 PORTNAME=	snes9x
 PORTVERSION=	1.54.1
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	emulators
 PKGNAMESUFFIX=	-gtk
 
@@ -17,13 +17,11 @@ LICENSE_PERMS=	dist-mirror pkg-mirror auto-accept
 
 LIB_DEPENDS=	libpng.so:graphics/png
 
-BROKEN_powerpc64=	fails to configure: C compiler cannot create executables
-
 USE_GITHUB=	yes
 GH_ACCOUNT=	snes9xgit
 
-USES=		autoreconf desktop-file-utils gettext gmake \
-		localbase perl5 pkgconfig tar:bzip2
+USES=		autoreconf compiler:c11 desktop-file-utils gettext gmake gnome \
+		localbase perl5 pkgconfig sdl tar:bzip2 xorg
 USE_GNOME=	cairo gdkpixbuf2 gtk20 intltool libxml2
 USE_SDL=	sdl2
 USE_XORG=	x11 xext
@@ -49,6 +47,7 @@ NETPLAY_DESC=			Network support
 NETPLAY_CONFIGURE_WITH=		netplay
 
 OPENGL_CONFIGURE_WITH=		opengl
+OPENGL_USES=			gl
 OPENGL_USE=			GL=gl,glu
 
 XRANDR_CONFIGURE_WITH=		xrandr

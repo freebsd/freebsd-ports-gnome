@@ -16,18 +16,17 @@ BUILD_DEPENDS=	gawk:lang/gawk
 LIB_DEPENDS=	libtubo.so:x11-fm/libtubo \
 		libdbh.so:databases/dbh \
 		libzip.so:archivers/libzip \
-		librsvg-2.so:graphics/librsvg2 \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2
 
 OPTIONS_DEFINE=	NLS
 
 CONFIGURE_ARGS+=--with-pkglibdata
-MAKE_JOB_UNSAFE=yes
 INSTALLS_ICONS=	yes
-USES=		autoreconf gettext gnome gmake libtool:keepla pkgconfig tar:bzip2
+USES=		autoreconf gettext gnome gmake libtool:keepla pkgconfig \
+		tar:bzip2 xorg
 GNU_CONFIGURE=	yes
-USE_GNOME=	gtk20 intltool cairo libxml2
+USE_GNOME=	gtk20 intltool cairo libxml2 librsvg2
 USE_XORG+=	x11
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip

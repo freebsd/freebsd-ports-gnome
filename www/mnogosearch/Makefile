@@ -10,6 +10,8 @@ MASTER_SITES=	http://www.mnogosearch.org/Download/ \
 MAINTAINER=	crees@FreeBSD.org
 COMMENT=	Full featured SQL-based hypertext search engine
 
+BROKEN=		unfetchable
+
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
@@ -17,12 +19,13 @@ CONFLICTS=	dpsearch-[0-9]* udmsearch-[0-9]* mguesser-[0-9]*
 
 OPTIONS_DEFINE=	DOCS EXAMPLES THREADS SSL ASIAN SYSLOG
 
-OPTIONS_MULTI=	database
-OPTIONS_MULTI_database=	PGSQL MYSQL SQLITE2 SQLITE3
+OPTIONS_MULTI=	DATABASE
+OPTIONS_MULTI_DATABASE=	PGSQL MYSQL SQLITE2 SQLITE3
 
 OPTIONS_DEFAULT=	THREADS SSL SYSLOG SQLITE3
 
 ASIAN_DESC=	Enable asian charsets
+DATABASE_DESC=	Database backends
 SYSLOG_DESC=	Send logs to syslog
 SQLITE2_DESC=	Use SQLite 2.x
 SQLITE3_DESC=	Use SQLite 3.x
@@ -70,7 +73,7 @@ CONFIGURE_ARGS+=	--disable-syslog
 .endif
 
 .if ${PORT_OPTIONS:MMYSQL}
-USE_MYSQL=	yes
+USES+=		mysql
 CONFIGURE_ARGS+=	--with-mysql=${LOCALBASE}
 .endif
 

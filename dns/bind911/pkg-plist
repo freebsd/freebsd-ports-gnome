@@ -36,7 +36,6 @@ include/dns/dlz_dlopen.h
 include/dns/dns64.h
 include/dns/dnssec.h
 include/dns/dnstap.h
-%%DNSTAP%%include/dns/dnstap.pb-c.h
 include/dns/ds.h
 include/dns/dsdigest.h
 include/dns/dyndb.h
@@ -139,6 +138,7 @@ include/isc/counter.h
 include/isc/crc64.h
 include/isc/deprecated.h
 include/isc/dir.h
+include/isc/endian.h
 include/isc/entropy.h
 include/isc/errno.h
 include/isc/error.h
@@ -203,6 +203,7 @@ include/isc/safe.h
 include/isc/serial.h
 include/isc/sha1.h
 include/isc/sha2.h
+include/isc/siphash.h
 include/isc/sockaddr.h
 include/isc/socket.h
 include/isc/stat.h

@@ -1,6 +1,6 @@
 # $FreeBSD$
 
-PORTREVISION=	1
+PORTREVISION=	5
 CATEGORIES=	devel lang
 PKGNAMESUFFIX=	-fcl-sdo
 

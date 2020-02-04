@@ -12,8 +12,11 @@ COMMENT=	Python shell which is designed to be reliable and fun
 
 LICENSE=	GPLv3
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-02-28
+
 USE_GNOME=	pygtk2 pygtksourceview
-USES=		python:2.7
+USES=		gnome python:2.7
 USE_PYTHON=	distutils autoplist
 
 pre-patch:

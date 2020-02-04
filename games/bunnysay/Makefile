@@ -3,12 +3,14 @@
 
 PORTNAME=	bunnysay
 PORTVERSION=	1.1
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONPREFIX=	v
 CATEGORIES=	games
 
 MAINTAINER=	ben.lavery@hashbang0.com
 COMMENT=	Bunny Sign for terminals with UTF-8 support
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/LICENSE

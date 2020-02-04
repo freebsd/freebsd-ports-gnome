@@ -3,11 +3,12 @@
 
 PORTNAME=	gfan
 DISTVERSION=	0.6.2
+PORTREVISION=	1
 CATEGORIES=	math
 MASTER_SITES=	http://home.math.au.dk/jensen/software/gfan/
 DISTNAME=	${PORTNAME}${DISTVERSION}
 
-MAINTAINER=	phascolarctos@protonmail.ch
+MAINTAINER=	salvadore@FreeBSD.org
 COMMENT=	Software for computing Groebner fans and tropical varieties
 
 LICENSE=	GPLv2+
@@ -26,6 +27,9 @@ post-patch:
 	@${REINPLACE_CMD} \
 		's,ADDITIONALLINKOPTIONS = ,ADDITIONALLINKOPTIONS = -L${LOCALBASE}/lib ,' \
 		${WRKSRC}/Makefile
+	for x in ${WRKSRC}/src/*; \
+		do ${REINPLACE_CMD} 's,log2,gfan_log2,g' $$x; \
+		done
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/gfan ${STAGEDIR}${PREFIX}/bin

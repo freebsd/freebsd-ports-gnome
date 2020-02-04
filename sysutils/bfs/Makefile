@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	bfs
-DISTVERSION=	1.4
+DISTVERSION=	1.5.2
 CATEGORIES=	sysutils
 
 MAINTAINER=	tobik@FreeBSD.org
@@ -17,14 +17,10 @@ TEST_DEPENDS=	bash:shells/bash
 USES=		gmake shebangfix
 USE_GITHUB=	yes
 GH_ACCOUNT=	tavianator
-
-SHEBANG_FILES=	tests/*.sh
+SHEBANG_FILES=	tests.sh tests/*.sh
+TEST_TARGET=	check
 PLIST_FILES=	bin/bfs \
 		man/man1/bfs.1.gz
-TEST_TARGET=	check
-
-post-patch:
-	@${REINPLACE_CMD} 's,/bin/bash,${LOCALBASE}/bin/bash,g' ${WRKSRC}/tests.sh
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/bfs ${STAGEDIR}${PREFIX}/bin

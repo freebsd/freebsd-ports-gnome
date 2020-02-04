@@ -3,6 +3,7 @@
 
 PORTNAME=	freedoko
 PORTVERSION=	0.7.19
+PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	SF/free-doko/source
 DISTNAME=	FreeDoko_${PORTVERSION}.src
@@ -15,7 +16,7 @@ LICENSE_FILE=	${WRKSRC}/../doc/GPL
 
 WRKSRC=		${WRKDIR}/${DISTNAME:C/\.src$//}/src
 
-USES=		compiler:c++14-lang gettext-tools gettext-runtime gmake \
+USES=		compiler:c++14-lang gettext-runtime gettext-tools gmake gnome \
 		localbase pkgconfig zip:infozip
 
 USE_CXXSTD=	c++14

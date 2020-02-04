@@ -1,16 +1,11 @@
 # $FreeBSD$
 
 PORTNAME=	renpy
-PORTVERSION?=	7.2.2
+PORTVERSION?=	7.3.5
 DISTVERSIONSUFFIX=-sdk
 PORTREVISION?=	0
 CATEGORIES=	games devel
 MASTER_SITES=	https://www.renpy.org/dl/${PORTVERSION}/
-
-.ifndef PKGNAMESUFFIX
-PATCH_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/commit/
-PATCHFILES+=	15738d1dfb41.patch:-p1
-.endif
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Framework for developing visual-novel type games
@@ -33,7 +28,7 @@ CONFLICTS_INSTALL?=	${PORTNAME}6-*
 # Upstream tends to reroll distfiles before moving under /release/
 PORTSCOUT?=	site:http://www.renpy.org/dl/release/
 
-USES=		python:2.7 shebangfix tar:bz2
+USES=		gl python:2.7 sdl shebangfix tar:bz2
 USE_GL=		glew
 USE_PYTHON=	autoplist distutils cython
 USE_SDL?=	sdl2

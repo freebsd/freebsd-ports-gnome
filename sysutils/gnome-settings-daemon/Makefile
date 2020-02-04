@@ -3,6 +3,7 @@
 
 PORTNAME=	gnome-settings-daemon
 PORTVERSION=	3.28.1
+PORTREVISION=	1
 CATEGORIES=	sysutils gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -31,7 +32,7 @@ PORTSCOUT=	limitw:1,even
 USE_XORG=	x11 xext xi xtst
 USE_GNOME=	cairo gnomedesktop3 gtk30
 USES=		gettext gnome localbase:ldflags meson perl5 \
-		pkgconfig python:3.6+,build tar:xz
+		pkgconfig python:3.6+,build tar:xz xorg
 USE_PERL5=	build
 INSTALLS_ICONS=	yes
 #		-Dnssdb_dir=${LOCALBASE}/share/certs/ca-root-nss.crt

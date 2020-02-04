@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	sleef
-DISTVERSION=	3.3-9
+DISTVERSION=	3.4.0
 PORTREVISION=	1
-DISTVERSIONSUFFIX=	-g3998463
 CATEGORIES=	math
 
 MAINTAINER=	jmd@FreeBSD.org
@@ -18,5 +17,15 @@ USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	shibatch
+
+CFLAGS_powerpc64=	-mpower8-vector
+
+.include <bsd.port.options.mk>
+
+.if ${ARCH} == powerpc64
+PLIST_SUB+=	NO_PPC64="@comment "
+.else
+PLIST_SUB+=	NO_PPC64=""
+.endif
 
 .include <bsd.port.mk>

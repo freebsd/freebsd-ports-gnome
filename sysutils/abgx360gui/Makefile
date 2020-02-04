@@ -3,7 +3,7 @@
 
 PORTNAME=	abgx360gui
 PORTVERSION=	1.0.2
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	sysutils
 MASTER_SITES=	http://freebsd.unixfreunde.de/sources/ \
 		http://update.cooltrainer.org/abgx360/:png \
@@ -14,6 +14,8 @@ EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	root@cooltrainer.org
 COMMENT=	wxWidgets frontend for abgx360
+
+BROKEN=		unfetchable
 
 LICENSE=	NONE
 

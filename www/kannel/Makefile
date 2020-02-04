@@ -3,7 +3,7 @@
 
 PORTNAME=	kannel
 PORTVERSION=	1.4.4
-PORTREVISION=	8
+PORTREVISION=	9
 PORTEPOCH=	1
 CATEGORIES=	www
 MASTER_SITES=	http://www.kannel.org/download/${PORTVERSION}/
@@ -24,7 +24,7 @@ PORTSCOUT=	skipv:1.5.0
 USERS=		kannel
 GROUPS=		kannel
 
-USES=		gmake iconv ssl tar:bzip2
+USES=		gmake gnome iconv ssl tar:bzip2
 USE_GCC=	yes
 USE_GNOME=	libxml2
 USE_RC_SUBR=	${PORTNAME}_bearerbox ${PORTNAME}_smsbox ${PORTNAME}_wapbox

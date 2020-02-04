@@ -4,7 +4,7 @@
 
 PORTNAME=	gstreamermm
 PORTVERSION=	0.10.10.2
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	multimedia
 MASTER_SITES=	GNOME
 
@@ -13,7 +13,8 @@ COMMENT=	C++ wrapper library for the multimedia library GStreamer
 
 LICENSE=	LGPL21
 
-USES=		compiler:c++11-lang gmake libtool pathfix pkgconfig tar:xz
+USES=		compiler:c++11-lang gmake gnome libtool pathfix pkgconfig \
+		tar:xz
 USE_CXXSTD=	c++11
 USE_GSTREAMER=	theora vorbis cdparanoia gio pango
 USE_GNOME=	gnomeprefix gtkmm24

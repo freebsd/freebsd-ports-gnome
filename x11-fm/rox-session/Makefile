@@ -9,6 +9,9 @@ MASTER_SITES=	SF/rox/ROX-Session/${PORTVERSION}/
 MAINTAINER=	olgeni@FreeBSD.org
 COMMENT=	Simple session manager for the ROX desktop
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-02-16
+
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/Help/COPYING
 
@@ -20,7 +23,7 @@ RUN_DEPENDS=	${LOCALBASE}/bin/rox:x11-fm/rox-filer \
 WRKSRC=		${WRKDIR}/ROX-Session
 DATADIR=	${PREFIX}/apps/ROX-Session
 
-USES=		gettext-tools pkgconfig python:2.7 shebangfix
+USES=		gettext-tools gnome pkgconfig python:2.7 shebangfix xorg
 SHEBANG_FILES=	AutoStart.py choose_wm.py interactive.py migrate.py
 USE_GNOME=	gtk20 libxml2
 USE_XORG=	x11 xext xtst xxf86vm

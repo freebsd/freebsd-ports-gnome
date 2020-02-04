@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	Alien-Build
-PORTVERSION=	1.69
+PORTVERSION=	1.98
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -31,9 +31,9 @@ NO_ARCH=	yes
 
 .include <bsd.port.pre.mk>
 
-.if ${PERL_LEVEL} < 502501
-BUILD_DEPENDS+=	p5-Test-Simple>=1.302015:devel/p5-Test-Simple
-RUN_DEPENDS+=	p5-Test-Simple>=1.302015:devel/p5-Test-Simple
+.if ${PERL_LEVEL} < 502800
+BUILD_DEPENDS+=	p5-Test-Simple>=1.302096:devel/p5-Test-Simple
+RUN_DEPENDS+=	p5-Test-Simple>=1.302096:devel/p5-Test-Simple
 .endif
 
 .include <bsd.port.post.mk>

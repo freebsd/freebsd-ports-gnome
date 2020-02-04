@@ -3,6 +3,7 @@
 PORTNAME=	rttr
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.9.6-16
+PORTREVISION=	1
 DISTVERSIONSUFFIX=	-gb3a131c
 CATEGORIES=	devel
 
@@ -11,7 +12,7 @@ COMMENT=	Run Time Type Reflection
 
 LICENSE=	MIT
 
-USES=		cmake
+USES=		cmake compiler:c++11-lang
 USE_GITHUB=	yes
 GH_ACCOUNT=	rttrorg
 

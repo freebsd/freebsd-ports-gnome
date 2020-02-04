@@ -4,7 +4,7 @@
 PORTNAME=	colord
 PORTVERSION=	1.3.5
 CATEGORIES=	graphics
-MASTER_SITES=	http://www.freedesktop.org/software/colord/releases/
+MASTER_SITES=	https://www.freedesktop.org/software/colord/releases/
 
 MAINTAINER=	kwm@FreeBSD.org
 COMMENT=	Manage color profiles to accurately color input/output devices
@@ -20,7 +20,8 @@ RUN_DEPENDS=	spotread:graphics/argyllcms
 USERS=		colord
 GROUPS=		colord
 
-USES=		gettext gmake libtool localbase pathfix pkgconfig sqlite tar:xz
+USES=		gettext gmake gnome libtool localbase pathfix pkgconfig sqlite \
+		tar:xz
 USE_GNOME=	glib20 intlhack introspection:build
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes

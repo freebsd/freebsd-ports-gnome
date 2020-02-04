@@ -2,7 +2,7 @@
 
 PORTNAME=	solvespace
 PORTVERSION=	2.3
-PORTREVISION=	3
+PORTREVISION=	4
 DISTVERSIONPREFIX=	v
 CATEGORIES=	cad
 
@@ -23,7 +23,7 @@ GH_PROJECT=	libdxfrw:libdxfrw
 GH_TAGNAME=	8f95895:libdxfrw
 GH_SUBDIR=	extlib/libdxfrw:libdxfrw
 
-USES=		cmake compiler:c++11-lang gl gnome pkgconfig
+USES=		cmake compiler:c++11-lang gl gnome pkgconfig xorg
 USE_GL=		gl glu glew
 USE_GNOME=	atkmm gtk20 pangomm
 USE_XORG=	x11

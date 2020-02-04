@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ft2demos
-PORTVERSION=	2.9.1
+PORTVERSION=	2.10.0
 CATEGORIES=	print
 MASTER_SITES=	SAVANNAH/freetype/ \
 		SF/freetype/freetype-demos/${PORTVERSION}
@@ -16,7 +16,7 @@ LICENSE_COMB=	dual
 BUILD_DEPENDS=	${NONEXISTENT}:print/freetype2:build
 LIB_DEPENDS=	libfreetype.so:print/freetype2
 
-USES=		gmake tar:bzip2
+USES=		gmake tar:bzip2 xorg
 USE_XORG=	x11
 
 MAKE_ARGS=	EXES="${FT_PROGRAMS}" X11_PATH="${LOCALBASE}"

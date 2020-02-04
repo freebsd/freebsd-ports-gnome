@@ -75,6 +75,7 @@
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmljslexer_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmljsmemorypool_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmljsparser_p.h
+%%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmljssourcelocation_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmllist_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmllistaccessor_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmllistcompositor_p.h
@@ -105,6 +106,7 @@
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmlproxymetaobject_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmlrefcount_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmlscriptstring_p.h
+%%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmlsourcecoordinate_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmlstringconverters_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmltableinstancemodel_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qqmlthread_p.h
@@ -159,6 +161,7 @@
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qv4executableallocator_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qv4function_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qv4functionobject_p.h
+%%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qv4functiontable_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qv4generatorobject_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qv4global_p.h
 %%QT_INCDIR%%/QtQml/%%FULLVER%%/QtQml/private/qv4globalobject_p.h
@@ -291,6 +294,10 @@
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmldebugmessageclient_p.h
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlenginecontrolclient_p.h
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlenginecontrolclient_p_p.h
+%%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlenginedebugclient_p.h
+%%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlenginedebugclient_p_p.h
+%%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlinspectorclient_p.h
+%%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlinspectorclient_p_p.h
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlpreviewclient_p.h
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlpreviewclient_p_p.h
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlprofilerclient_p.h
@@ -301,6 +308,8 @@
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlprofilereventreceiver_p.h
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlprofilereventtype_p.h
 %%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qqmlprofilertypedevent_p.h
+%%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qv4debugclient_p.h
+%%QT_INCDIR%%/QtQmlDebug/%%FULLVER%%/QtQmlDebug/private/qv4debugclient_p_p.h
 %%QT_INCDIR%%/QtQmlDebug/QtQmlDebug
 %%QT_INCDIR%%/QtQmlDebug/QtQmlDebugDepends
 %%QT_INCDIR%%/QtQmlDebug/QtQmlDebugVersion
@@ -417,6 +426,7 @@
 %%QT_INCDIR%%/QtQuick/%%FULLVER%%/QtQuick/private/qquickshadereffectsource_p.h
 %%QT_INCDIR%%/QtQuick/%%FULLVER%%/QtQuick/private/qquickshortcut_p.h
 %%QT_INCDIR%%/QtQuick/%%FULLVER%%/QtQuick/private/qquicksinglepointhandler_p.h
+%%QT_INCDIR%%/QtQuick/%%FULLVER%%/QtQuick/private/qquicksinglepointhandler_p_p.h
 %%QT_INCDIR%%/QtQuick/%%FULLVER%%/QtQuick/private/qquicksmoothedanimation_p.h
 %%QT_INCDIR%%/QtQuick/%%FULLVER%%/QtQuick/private/qquicksmoothedanimation_p_p.h
 %%QT_INCDIR%%/QtQuick/%%FULLVER%%/QtQuick/private/qquickspringanimation_p.h
@@ -664,6 +674,8 @@
 %%QT_INCDIR%%/QtQuickWidgets/qquickwidget.h
 %%QT_INCDIR%%/QtQuickWidgets/qtquickwidgetsglobal.h
 %%QT_INCDIR%%/QtQuickWidgets/qtquickwidgetsversion.h
+%%QT_CMAKEDIR%%/Qt5PacketProtocol/Qt5PacketProtocolConfig.cmake
+%%QT_CMAKEDIR%%/Qt5PacketProtocol/Qt5PacketProtocolConfigVersion.cmake
 %%QT_CMAKEDIR%%/Qt5Qml/Qt5QmlConfig.cmake
 %%QT_CMAKEDIR%%/Qt5Qml/Qt5QmlConfigExtras.cmake
 %%QT_CMAKEDIR%%/Qt5Qml/Qt5QmlConfigVersion.cmake
@@ -678,9 +690,17 @@
 %%QT_CMAKEDIR%%/Qt5Qml/Qt5Qml_QQmlProfilerServiceFactory.cmake
 %%QT_CMAKEDIR%%/Qt5Qml/Qt5Qml_QQuickProfilerAdapterFactory.cmake
 %%QT_CMAKEDIR%%/Qt5Qml/Qt5Qml_QTcpServerConnectionFactory.cmake
+%%QT_CMAKEDIR%%/Qt5QmlDebug/Qt5QmlDebugConfig.cmake
+%%QT_CMAKEDIR%%/Qt5QmlDebug/Qt5QmlDebugConfigVersion.cmake
+%%QT_CMAKEDIR%%/Qt5QmlDevTools/Qt5QmlDevToolsConfig.cmake
+%%QT_CMAKEDIR%%/Qt5QmlDevTools/Qt5QmlDevToolsConfigVersion.cmake
 %%QT_CMAKEDIR%%/Qt5Quick/Qt5QuickConfig.cmake
 %%QT_CMAKEDIR%%/Qt5Quick/Qt5QuickConfigVersion.cmake
 %%QT_CMAKEDIR%%/Qt5QuickCompiler/Qt5QuickCompilerConfig.cmake
+%%QT_CMAKEDIR%%/Qt5QuickParticles/Qt5QuickParticlesConfig.cmake
+%%QT_CMAKEDIR%%/Qt5QuickParticles/Qt5QuickParticlesConfigVersion.cmake
+%%QT_CMAKEDIR%%/Qt5QuickShapes/Qt5QuickShapesConfig.cmake
+%%QT_CMAKEDIR%%/Qt5QuickShapes/Qt5QuickShapesConfigVersion.cmake
 %%QT_CMAKEDIR%%/Qt5QuickTest/Qt5QuickTestConfig.cmake
 %%QT_CMAKEDIR%%/Qt5QuickTest/Qt5QuickTestConfigVersion.cmake
 %%QT_CMAKEDIR%%/Qt5QuickWidgets/Qt5QuickWidgetsConfig.cmake

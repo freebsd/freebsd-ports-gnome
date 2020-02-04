@@ -23,7 +23,6 @@
     SUBDIR += blackbox_exporter
     SUBDIR += bpft
     SUBDIR += braa
-    SUBDIR += bsnmp-jails
     SUBDIR += bsnmp-regex
     SUBDIR += bsnmp-ucd
     SUBDIR += bwm-ng
@@ -32,7 +31,6 @@
     SUBDIR += cacti88-spine
     SUBDIR += carbon-relay-ng
     SUBDIR += carbonzipper
-    SUBDIR += ccnet-client
     SUBDIR += ccnet-server
     SUBDIR += cdpd
     SUBDIR += cdpr
@@ -43,6 +41,7 @@
     SUBDIR += check_mk_agent
     SUBDIR += check_multi
     SUBDIR += check_mysql_health
+    SUBDIR += check_nwc_health
     SUBDIR += check_ssl_cert
     SUBDIR += chillispot
     SUBDIR += choparp
@@ -71,7 +70,6 @@
     SUBDIR += ettercap
     SUBDIR += fastnetmon
     SUBDIR += fetchconfig
-    SUBDIR += flow-extract
     SUBDIR += flow-tools
     SUBDIR += flowd
     SUBDIR += flowviewer
@@ -94,14 +92,17 @@
     SUBDIR += icingaweb2-module-generictts
     SUBDIR += icingaweb2-module-grafana
     SUBDIR += icingaweb2-module-graphite
+    SUBDIR += icingaweb2-module-idoreports
     SUBDIR += icingaweb2-module-ipl
     SUBDIR += icingaweb2-module-map
+    SUBDIR += icingaweb2-module-pdfexport
+    SUBDIR += icingaweb2-module-reactbundle
+    SUBDIR += icingaweb2-module-reporting
     SUBDIR += icingaweb2-module-vsphere
     SUBDIR += icmpmonitor
     SUBDIR += icmpquery
     SUBDIR += iftop
     SUBDIR += intel-snap
-    SUBDIR += iog
     SUBDIR += ipacctd
     SUBDIR += ipaudit
     SUBDIR += ipcad
@@ -116,7 +117,6 @@
     SUBDIR += kapacitor
     SUBDIR += kismet
     SUBDIR += klg
-    SUBDIR += lanmap
     SUBDIR += lg
     SUBDIR += librenms
     SUBDIR += librenms-agent
@@ -131,6 +131,7 @@
     SUBDIR += mrtg
     SUBDIR += mrtg-ping-probe
     SUBDIR += mtrace
+    SUBDIR += mysql-snmp
     SUBDIR += mysqld_exporter
     SUBDIR += nagcon
     SUBDIR += nagios
@@ -158,7 +159,6 @@
     SUBDIR += nagios-plugins
     SUBDIR += nagios-snmp-plugins
     SUBDIR += nagios-snmp-plugins-extras
-    SUBDIR += nagios-spamd-plugin
     SUBDIR += nagios4
     SUBDIR += nagiosgraph
     SUBDIR += nagiosql
@@ -170,7 +170,6 @@
     SUBDIR += nbtscan
     SUBDIR += ndoutils
     SUBDIR += ndpmon
-    SUBDIR += nefu
     SUBDIR += net-snmp
     SUBDIR += netbox
     SUBDIR += netdata
@@ -203,8 +202,8 @@
     SUBDIR += nsca-ng-client
     SUBDIR += nsca27
     SUBDIR += nsca27-client
-    SUBDIR += nstat
     SUBDIR += nsd_exporter
+    SUBDIR += nstat
     SUBDIR += nstreams
     SUBDIR += nvidia_gpu_prometheus_exporter
     SUBDIR += observium
@@ -281,15 +280,14 @@
     SUBDIR += pandorafms_agent
     SUBDIR += pandorafms_console
     SUBDIR += pandorafms_server
-    SUBDIR += pdagent-integrations
     SUBDIR += percona-monitoring-plugins
     SUBDIR += pftabled
-    SUBDIR += php71-snmp
     SUBDIR += php72-snmp
     SUBDIR += php73-snmp
+    SUBDIR += php74-snmp
     SUBDIR += phpipam
     SUBDIR += phpweathermap
-    SUBDIR += pixilate
+    SUBDIR += ping_exporter
     SUBDIR += pktstat
     SUBDIR += pmacct
     SUBDIR += pnp
@@ -343,6 +341,11 @@
     SUBDIR += rubygem-oxidized
     SUBDIR += rubygem-oxidized-script
     SUBDIR += rubygem-oxidized-web
+    SUBDIR += rubygem-riemann-client
+    SUBDIR += rubygem-riemann-dash
+    SUBDIR += rubygem-riemann-rabbitmq
+    SUBDIR += rubygem-riemann-tail
+    SUBDIR += rubygem-riemann-tools
     SUBDIR += rubygem-snmp
     SUBDIR += rubygem-visage-app
     SUBDIR += sblim-wbemcli
@@ -356,7 +359,6 @@
     SUBDIR += sendip
     SUBDIR += sipcalc
     SUBDIR += sjitter
-    SUBDIR += slate
     SUBDIR += smokeping
     SUBDIR += snmp++
     SUBDIR += snmp4nagios
@@ -364,7 +366,6 @@
     SUBDIR += softflowd
     SUBDIR += spectools
     SUBDIR += ssgless
-    SUBDIR += statsd
     SUBDIR += statsite
     SUBDIR += subcalc
     SUBDIR += super_mediator
@@ -372,6 +373,7 @@
     SUBDIR += tcpreplay
     SUBDIR += tcptrack
     SUBDIR += telegraf
+    SUBDIR += thanos
     SUBDIR += tornova
     SUBDIR += torrus
     SUBDIR += triton-guesttools
@@ -382,18 +384,12 @@
     SUBDIR += victorops-nagios
     SUBDIR += virt-viewer
     SUBDIR += wdiag
-    SUBDIR += weplab
     SUBDIR += whatmask
     SUBDIR += wifimgr
     SUBDIR += wmi-client
     SUBDIR += xymon-client
     SUBDIR += xymon-server
     SUBDIR += yaf
-    SUBDIR += zabbix22-agent
-    SUBDIR += zabbix22-frontend
-    SUBDIR += zabbix22-java
-    SUBDIR += zabbix22-proxy
-    SUBDIR += zabbix22-server
     SUBDIR += zabbix3-agent
     SUBDIR += zabbix3-frontend
     SUBDIR += zabbix3-java
@@ -409,5 +405,10 @@
     SUBDIR += zabbix42-java
     SUBDIR += zabbix42-proxy
     SUBDIR += zabbix42-server
+    SUBDIR += zabbix44-agent
+    SUBDIR += zabbix44-frontend
+    SUBDIR += zabbix44-java
+    SUBDIR += zabbix44-proxy
+    SUBDIR += zabbix44-server
 
 .include <bsd.port.subdir.mk>

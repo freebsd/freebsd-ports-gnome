@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	ossim
-DISTVERSIONPREFIX=	Laguna-
-DISTVERSION=	2.7.0
+DISTVERSIONPREFIX=	Neptune-
+DISTVERSION=	2.10.1
 PORTREVISION=	1
 CATEGORIES=	graphics geography
 
-MAINTAINER=	lbartoletti@tuxfamily.org
+MAINTAINER=	lbartoletti@FreeBSD.org
 COMMENT=	Powerful suite of geospatial libraries and applications
 
 LICENSE=	MIT
@@ -19,7 +19,7 @@ LIB_DEPENDS=	libgeos.so:graphics/geos \
 		libtiff.so:graphics/tiff \
 		libopenjp2.so:graphics/openjpeg \
 		libfreetype.so:print/freetype2 \
-		libOpenThreads.so:graphics/osg
+		libOpenThreads.so:graphics/osg34
 
 USES=		cmake compiler:c++11-lang jpeg localbase
 USE_GITHUB=	yes
@@ -32,5 +32,10 @@ CMAKE_ARGS=	-DBUILD_LIBRARY_DIR:STRING=lib \
 		-DINSTALL_ARCHIVE_DIR:STRING=lib \
 		-DINSTALL_LIBRARY_DIR:STRING=lib \
 		-DOSSIM_INCLUDE_DIR:STRING=${WRKSRC}/include
+
+OPTIONS_DEFINE=	TEST
+OPTIONS_SUB=	yes
+
+TEST_CMAKE_BOOL=	BUILD_OSSIM_TESTS
 
 .include <bsd.port.mk>

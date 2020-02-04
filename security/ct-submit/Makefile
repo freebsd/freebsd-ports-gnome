@@ -3,6 +3,7 @@
 
 PORTNAME=	ct-submit
 PORTVERSION=	1.1.2
+PORTREVISION=	1
 CATEGORIES=	security www
 
 MAINTAINER=	jim@ohlste.in
@@ -17,5 +18,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT= grahamedgecombe
 GH_PROJECT= ct-submit
 GH_TAGNAME= 7bb2541
+
+PLIST_FILES=	bin/ct-submit
 
 .include <bsd.port.mk>

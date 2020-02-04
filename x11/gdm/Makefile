@@ -3,6 +3,7 @@
 
 PORTNAME=	gdm
 PORTVERSION=	3.28.4
+PORTREVISION=	1
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -40,7 +41,7 @@ GROUPS=		gdm video
 
 PORTSCOUT=	limitw:1,even
 
-USES=		cpe gettext gmake gnome libtool pathfix pkgconfig tar:xz
+USES=		cpe gettext gmake gnome libtool pathfix pkgconfig tar:xz xorg
 CPE_VENDOR=	gnome
 CPE_PRODUCT=	gnome_display_manager
 USE_GNOME=	cairo dconf gtk30 intltool introspection

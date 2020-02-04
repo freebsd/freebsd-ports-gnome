@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	xournalpp
-DISTVERSION=	1.0.10
+DISTVERSION=	1.0.16
+PORTREVISION=	2
 CATEGORIES=	graphics
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -15,7 +16,7 @@ LIB_DEPENDS=	libpoppler-glib.so:graphics/poppler-glib \
 		libsndfile.so:audio/libsndfile \
 		libzip.so:archivers/libzip
 
-USES=		cmake compiler:c++11-lang gettext-tools gnome pkgconfig
+USES=		cmake compiler:c++11-lang gettext-tools gnome pkgconfig xorg
 USE_GITHUB=	yes
 USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 libxml2 pango
 USE_XORG=	x11 xi

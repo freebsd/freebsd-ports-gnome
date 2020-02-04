@@ -2,6 +2,7 @@
 
 PORTNAME=	xeus-cling
 DISTVERSION=	0.5.1
+PORTREVISION=	1
 CATEGORIES=	devel
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -9,6 +10,10 @@ COMMENT=	C++ Jupyter Kernel
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
+
+.if ${/usr/bin/ld:L:tA} == /usr/bin/ld.lld
+BROKEN=		https://github.com/QuantStack/xeus-cling/issues/234
+.endif
 
 BUILD_DEPENDS=	cppzmq>0:net/cppzmq \
 		cxxopts>0:devel/cxxopts \

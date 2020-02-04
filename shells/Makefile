@@ -6,21 +6,21 @@
     SUBDIR += 44bsd-csh
     SUBDIR += ammonite
     SUBDIR += antibody
+    SUBDIR += ast-ksh
     SUBDIR += bash
     SUBDIR += bash-completion
     SUBDIR += bash-static
-    SUBDIR += bashc
     SUBDIR += bicon
     SUBDIR += ch
     SUBDIR += dash
+    SUBDIR += elvish
     SUBDIR += envy
     SUBDIR += es
     SUBDIR += esh
     SUBDIR += fd
     SUBDIR += fish
-    SUBDIR += flash
+    SUBDIR += git-prompt.zsh
     SUBDIR += heirloom-sh
-    SUBDIR += hs-shelly
     SUBDIR += ibsh
     SUBDIR += ion
     SUBDIR += jailkit
@@ -38,13 +38,14 @@
     SUBDIR += p5-Term-ShellUI
     SUBDIR += pdksh
     SUBDIR += pear-PHP_Shell
+    SUBDIR += poshinit
     SUBDIR += psh
     SUBDIR += rc
-    SUBDIR += rssh
+    SUBDIR += rush
     SUBDIR += sash
     SUBDIR += scponly
     SUBDIR += shell-include
-    SUBDIR += sparforte
+    SUBDIR += starship
     SUBDIR += tcsh_nls
     SUBDIR += tcshrc
     SUBDIR += v7sh
@@ -52,9 +53,12 @@
     SUBDIR += vshnu
     SUBDIR += wcd
     SUBDIR += xonsh
+    SUBDIR += yash
     SUBDIR += zsh
     SUBDIR += zsh-antigen
+    SUBDIR += zsh-autosuggestions
     SUBDIR += zsh-completions
     SUBDIR += zsh-navigation-tools
+    SUBDIR += zsh-syntax-highlighting
 
 .include <bsd.port.subdir.mk>

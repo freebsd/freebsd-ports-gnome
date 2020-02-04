@@ -10,9 +10,13 @@ MASTER_SITES=	http://releases.compiz.org/${PORTVERSION}/
 MAINTAINER=	freebsd-ports@dan.me.uk
 COMMENT=	Python/GTK based settings manager for CompizConfig
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/compizconfig-python.pc:x11-wm/compizconfig-python
 
-USES=		gettext gmake pkgconfig python:2.7 tar:bzip2
+USES=		gettext gmake gnome pkgconfig python:2.7 tar:bzip2
 USE_GNOME=	intltool pygtk2
 
 INSTALLS_ICONS=	yes

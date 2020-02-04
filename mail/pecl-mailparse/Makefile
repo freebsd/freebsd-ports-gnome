@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mailparse
-PORTVERSION=	3.0.3
+PORTVERSION=	3.0.4
 CATEGORIES=	mail www
 
 MAINTAINER=	dbaio@FreeBSD.org

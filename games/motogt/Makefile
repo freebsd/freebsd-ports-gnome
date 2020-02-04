@@ -16,10 +16,10 @@ LIB_DEPENDS=	libsfml1-system.so:devel/sfml1 \
 
 LICENSE=	GPLv2 CC-BY-SA-3.0
 LICENSE_COMB=	multi
-LICENSE_FILE_GPLv20=	${WRKSRC}/doc/gpl.txt
+LICENSE_FILE_GPLv2=	${WRKSRC}/doc/gpl.txt
 LICENSE_FILE_CC-BY-SA-3.0=	${WRKSRC}/doc/cc-by-sa.txt
 
-USES=		localbase:ldflags zip
+USES=		gl localbase:ldflags zip
 USE_GL=		gl
 BUILD_WRKSRC=	${WRKSRC}/src
 MAKEFILE=	Makefile.lnx

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	Catalyst-Runtime
-PORTVERSION=	5.90124
+PORTVERSION=	5.90126
 CATEGORIES=	www perl5
 MASTER_SITES=	CPAN
 PKGNAMEPREFIX=	p5-
@@ -63,17 +63,11 @@ TEST_DEPENDS=	p5-Term-Size-Any>=0:devel/p5-Term-Size-Any \
 		p5-Type-Tiny>=0:devel/p5-Type-Tiny \
 		p5-YAML>=0:textproc/p5-YAML
 
-PORTSCOUT=	limit:^[0-9\.]*$$
-
 USES=		perl5
 USE_PERL5=	configure
 
 NO_ARCH=	yes
 
-.include <bsd.port.pre.mk>
+PORTSCOUT=	limit:^[0-9\.]*$$
 
-.if ${PERL_LEVEL} < 502501
-RUN_DEPENDS+=	p5-Scalar-List-Utils>=1.45:lang/p5-Scalar-List-Utils
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

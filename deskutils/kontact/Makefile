@@ -15,8 +15,8 @@ USE_KDE=	auth codecs completion config configwidgets coreaddons crash \
 		service sonnet textwidgets widgetsaddons windowsystem xmlgui
 # pim components
 USE_KDE+=	akonadi grantleetheme kdepim-apps-libs kontactinterface libkdepim
-USE_QT=		core dbus declarative gui location network webchannel webengine \
-		widgets xml \
+USE_QT=		concurrent core dbus declarative gui location network  \
+		printsupport webchannel webengine widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 

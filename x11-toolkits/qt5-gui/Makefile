@@ -2,17 +2,22 @@
 
 PORTNAME=	gui
 DISTVERSION=	${QT5_VERSION}
+PORTREVISION=	3
 CATEGORIES=	x11-toolkits graphics
 PKGNAMEPREFIX=	qt5-
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Qt graphical user interface module
 
-BUILD_DEPENDS=	at-spi2-core>=0:accessibility/at-spi2-core
+BUILD_DEPENDS=	at-spi2-core>=0:accessibility/at-spi2-core \
+		${LOCALBASE}/include/linux/input.h:devel/evdev-proto \
+		${LOCALBASE}/include/vulkan/vulkan.h:devel/vulkan-headers
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+		libevdev.so:devel/libevdev \
 		libfontconfig.so:x11-fonts/fontconfig \
 		libfreetype.so:print/freetype2 \
 		libharfbuzz.so:print/harfbuzz \
+		libinput.so:x11/libinput \
 		libpng.so:graphics/png \
 		libxcb.so:x11/libxcb \
 		libxcb-image.so:x11/xcb-util-image \
@@ -20,20 +25,21 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libxcb-render-util.so:x11/xcb-util-renderutil \
 		libxcb-icccm.so:x11/xcb-util-wm \
 		libxkbcommon.so:x11/libxkbcommon
-RUN_DEPENDS=	xdg-open:devel/xdg-utils
+RUN_DEPENDS=	xdg-open:devel/xdg-utils \
+		${LOCALBASE}/include/vulkan/vulkan.h:devel/vulkan-headers
 
-USES=		compiler:c++11-lang jpeg localbase qmake:no_env qt-dist:5,base
+USES=		compiler:c++11-lang gl gnome jpeg localbase qmake:no_env \
+		qt-dist:5,base xorg
 USE_GL=		gl egl
 USE_GNOME=	glib20
 USE_QT=		core dbus network qmake_build buildtools_build
 USE_XORG=	ice sm x11 xi xrender
 HAS_CONFIGURE=	yes
 CONFIGURE_ARGS=	-no-eglfs \
-		-no-evdev \
 		-no-libudev \
 		-system-harfbuzz
-# Explicitely set to c++14 as to net get c++17/c++1z, as libX11's headers
-# are using the obsolete 'register' key word.
+# Explicitly set to c++14 to avoid c++17/c++1z, since libX11's headers
+# are using the obsolete 'register' keyword.
 CONFIGURE_ARGS+=	-c++std c++14
 
 USE_LDCONFIG=	${PREFIX}/${QT_LIBDIR_REL}
@@ -59,6 +65,7 @@ MORE_WRKSRCS+=	src/plugins/imageformats \
 # openglextensions is the static library to use for further things like qtcanvas3d
 MORE_WRKSRCS+=	src/openglextensions
 
+QT_BINARIES=	yes
 QT_DEFINES=	ACCESSIBILITY DBUS FONTCONFIG FREETYPE GLIB \
 		IMAGEFORMAT_PNG OPENGL SHAPE XCB XKB XKBCOMMON XRENDER
 QT_CONFIG=	accessibility accessibility-atspi-bridge dbus \
@@ -71,8 +78,6 @@ QT_CONFIG=	accessibility accessibility-atspi-bridge dbus \
 RUN_DEPENDS+=	${LOCALBASE}/share/fonts/encodings/encodings.dir:x11-fonts/encodings \
 		xorg-fonts-truetype>0:x11-fonts/xorg-fonts-truetype
 .endif
-
-CFLAGS_powerpc64=	-mminimal-toc
 
 post-configure:
 .for d in src/tools/qvkgen src/gui ${MORE_WRKSRCS}

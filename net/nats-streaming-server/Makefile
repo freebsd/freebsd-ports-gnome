@@ -1,8 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	nats-streaming-server
-PORTVERSION=	0.14.1
+PORTVERSION=	0.16.2
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	net
 
 MAINTAINER=	olgeni@FreeBSD.org
@@ -11,8 +12,7 @@ COMMENT=	Streaming system server for NATS
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		go
-GO_PKGNAME=	github.com/${GH_ACCOUNT}/${PORTNAME}
+USES=		go:modules
 USE_GITHUB=	yes
 GH_ACCOUNT=	nats-io
 

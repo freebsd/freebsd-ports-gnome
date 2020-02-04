@@ -3,7 +3,7 @@
 
 PORTNAME=	gnubiff
 PORTVERSION=	2.2.13
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	mail
 MASTER_SITES=	SF
 
@@ -14,7 +14,7 @@ LIB_DEPENDS=	libpopt.so:devel/popt
 
 OPTIONS_DEFINE=	NLS
 
-USES=		compiler:c++11-lang cpe fam gmake pathfix pkgconfig
+USES=		compiler:c++11-lang cpe fam gmake gnome pathfix pkgconfig
 USE_GNOME=	intlhack libglade2
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include

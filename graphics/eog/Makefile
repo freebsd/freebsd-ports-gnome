@@ -3,7 +3,7 @@
 
 PORTNAME=	eog
 PORTVERSION=	3.28.4
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	graphics gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -23,7 +23,8 @@ RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c++11-lang desktop-file-utils gettext gnome jpeg \
-		localbase meson pkgconfig python:build,3.4+ shebangfix tar:xz
+		localbase meson pkgconfig python:build,3.4+ shebangfix tar:xz \
+		xorg
 USE_GNOME=	cairo librsvg2 gtk30 gnomedesktop3 introspection
 USE_XORG=	x11
 INSTALLS_ICONS=	yes

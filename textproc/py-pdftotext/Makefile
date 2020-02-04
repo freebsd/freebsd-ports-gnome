@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	pdftotext
-PORTVERSION=	2.1.1
+PORTVERSION=	2.1.4
 PORTREVISION=	1
 CATEGORIES=	textproc python
 MASTER_SITES=	CHEESESHOP
@@ -17,5 +17,8 @@ LIB_DEPENDS=	libpoppler.so:graphics/poppler
 
 USES=		compiler:c11 python
 USE_PYTHON=	autoplist distutils
+
+do-test:
+	@cd ${WRKSRC} && ${PYTHON_CMD} ${PYDISTUTILS_SETUP} test
 
 .include <bsd.port.mk>

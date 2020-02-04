@@ -3,12 +3,14 @@
 
 PORTNAME=	abinit
 DISTVERSION=	8.10.3
-PORTREVISION=	2
+PORTREVISION=	5
 CATEGORIES=	science
 MASTER_SITES=	https://www.abinit.org/sites/default/files/packages/
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Full-featured atomic-scale first-principles simulation software
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/COPYING
@@ -31,7 +33,7 @@ OPTIONS_DEFINE=			OPENMP MPI
 OPTIONS_DEFAULT=		OPENMP MPI
 
 OPENMP_CONFIGURE_ENABLE=	openmp
-OPENMP_LDFLAGS=			${LOCALBASE}/lib/libomp.so
+OPENMP_LDFLAGS=			-lomp
 OPENMP_LIB_DEPENDS=		libomp.so:devel/openmp
 
 MPI_CONFIGURE_ENABLE=		mpi

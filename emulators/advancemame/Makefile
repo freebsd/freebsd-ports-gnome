@@ -3,7 +3,7 @@
 
 PORTNAME=	advancemame
 PORTVERSION=	1.4
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	emulators
 MASTER_SITES=	https://github.com/amadvance/advancemame/releases/download/${DISTNAME}/
 
@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libexpat.so:textproc/expat2
 
-USES=		gmake ncurses
+USES=		compiler:c11 gmake ncurses sdl
 USE_SDL=	sdl
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-svgalib --disable-fb --disable-alsa --enable-oss \
@@ -23,6 +23,7 @@ CONFIGURE_ARGS=	--disable-svgalib --disable-fb --disable-alsa --enable-oss \
 
 CFLAGS+=	-idirafter ${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
+MAKE_JOBS_UNSAFE=	yes
 
 DOCSDIR=	${PREFIX}/share/doc/advance
 DATADIR=	${PREFIX}/share/advance

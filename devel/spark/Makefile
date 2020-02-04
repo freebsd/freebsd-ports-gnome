@@ -12,7 +12,7 @@ PKGNAMEPREFIX=	apache-
 DISTFILES=	${PORTNAME}-${PORTVERSION}.tgz FreeBSD-${PORTNAME}-${PORTVERSION}-maven-repository.tar.gz:maven
 DIST_SUBDIR=	hadoop
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Fast big data processing engine
 
 LICENSE=	APACHE20
@@ -25,7 +25,6 @@ RUN_DEPENDS=	bash:shells/bash \
 
 USES=		python:2.7 shebangfix
 USE_JAVA=	yes
-JAVA_VERSION=	1.7+
 MAKE_ENV+=	JAVA_HOME=${JAVA_HOME} MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=512M -XX:ReservedCodeCacheSize=512m"
 SHEBANG_FILES=	bin/sparkR
 

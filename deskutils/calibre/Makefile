@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	calibre
-PORTVERSION=	3.41.3
+PORTVERSION=	4.9.1
+PORTREVISION=	1
 CATEGORIES=	deskutils python
 MASTER_SITES=	http://download.calibre-ebook.com/${PORTVERSION}/
 
@@ -18,7 +19,9 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 		libicudata.so:devel/icu \
 		libpodofo.so:graphics/podofo \
 		libmtp.so:multimedia/libmtp \
-		libfreetype.so:print/freetype2
+		libfreetype.so:print/freetype2 \
+		libhunspell-1.7.so:textproc/hunspell \
+		libhyphen.so:textproc/hyphen
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}dateutil>=0:devel/py-dateutil@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pillow>=0:graphics/py-pillow@${PY_FLAVOR} \
@@ -43,14 +46,16 @@ RUN_DEPENDS=	xdg-open:devel/xdg-utils \
 		${PYTHON_PKGNAMEPREFIX}apsw>=0:databases/py-apsw@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}msgpack>=0.3:devel/py-msgpack@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}regex>=0:textproc/py-regex@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}markdown>=0:textproc/py-markdown@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}chardet>=0:textproc/py-chardet@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}html5-parser>=0.4.3:www/py-html5-parser@${PY_FLAVOR} \
 		pdftohtml:graphics/poppler-utils
 
-USES=		desktop-file-utils gettext-runtime gl gnome localbase:ldflags pkgconfig \
-		python:2.7 pyqt:5 qt:5 shared-mime-info shebangfix ssl tar:xz
+USES=		desktop-file-utils gettext-runtime gl gnome localbase:ldflags \
+		pkgconfig python:2.7 pyqt:5 qt:5 shared-mime-info shebangfix \
+		ssl tar:xz xorg
 USE_RC_SUBR=	calibre
-USE_PYQT=	core gui network sip svg webkit widgets webkitwidgets xmlpatterns
+USE_PYQT=	core gui network sip svg webengine widgets xmlpatterns
 USE_QT=		buildtools_build core dbus gui qmake_build widgets
 USE_GL=		egl gl
 USE_GNOME=	glib20
@@ -101,12 +106,8 @@ do-install:
 		${PYSETUP} install --prefix ${PREFIX} \
 		--staging-root ${STAGEDIR}${PREFIX})
 	@${RM} ${STAGEDIR}${PREFIX}/bin/calibre-uninstall \
-		${STAGEDIR}${PREFIX}/share/applications/defaults.list \
-		${STAGEDIR}${PREFIX}/share/mime/application/* \
-		${STAGEDIR}${PREFIX}/share/mime/text/*
-	@${RMDIR} ${STAGEDIR}${PREFIX}/share/desktop-directories \
-		${STAGEDIR}${PREFIX}/share/mime/application \
-		${STAGEDIR}${PREFIX}/share/mime/text
+		${STAGEDIR}${PREFIX}/share/applications/defaults.list
+	@${RMDIR} ${STAGEDIR}${PREFIX}/share/desktop-directories
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/calibre/calibre/plugins/*
 
 .include <bsd.port.mk>

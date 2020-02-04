@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	ffmpeg
-PORTVERSION=	4.1.3
+PORTVERSION=	4.2.2
 PORTREVISION=	4
 PORTEPOCH=	1
-CATEGORIES=	multimedia audio ipv6 net
+CATEGORIES=	multimedia audio net
 MASTER_SITES=	https://ffmpeg.org/releases/
 
 MAINTAINER=	multimedia@FreeBSD.org
@@ -14,8 +14,14 @@ COMMENT=	Realtime audio/video encoder/converter and streaming server
 LICENSE=	GPLv2+ LGPL21+
 LICENSE_COMB=	multi
 
-BUILD_DEPENDS=	nasm:devel/nasm \
-		${LOCALBASE}/bin/as:devel/binutils
+BUILD_DEPENDS=	${BUILD_DEPENDS_${ARCH}}
+BUILD_DEPENDS_aarch64=	as:devel/binutils
+BUILD_DEPENDS_amd64=	nasm:devel/nasm
+BUILD_DEPENDS_armv6=	as:devel/binutils
+BUILD_DEPENDS_armv7=	as:devel/binutils
+BUILD_DEPENDS_i386=	nasm:devel/nasm
+BUILD_DEPENDS_powerpc64=as:devel/binutils
+BUILD_DEPENDS_powerpc=	as:devel/binutils
 
 HAS_CONFIGURE=	yes
 CONFIGURE_LOG=	ffbuild/config.log
@@ -29,19 +35,25 @@ NOPRECIOUSMAKEVARS=	yes # ARCH
 PORTSCOUT=	limit:^4\.
 
 # Option CHROMAPRINT disabled, it cannot work and people are baffled.
-OPTIONS_DEFINE=	ALSA AMR_NB AMR_WB AOM ASS BEIGNET BS2B CACA CDIO CELT CODEC2 DAV1D DAVS2 DC1394 \
-		DEBUG DOCS DRM FDK_AAC FLITE FONTCONFIG \
-		FREETYPE FREI0R FRIBIDI GME GSM ICONV ILBC JACK KLVANC KVAZAAR LADSPA \
-		LAME LENSFUN LIBBLURAY LIBRSVG2 LIBXML2 LV2 MODPLUG MYSOFA OPENAL OPENCL OPENCV OPENGL \
-		OPENH264 OPENJPEG OPENMPT OPTIMIZED_CFLAGS OPUS PULSEAUDIO \
-		RUBBERBAND RTCPU SDL SMB SNAPPY SNDIO SOXR SPEEX SRT SSH TENSORFLOW \
-		TESSERACT THEORA TWOLAME V4L VAAPI VAPOURSYNTH VDPAU VIDSTAB VORBIS \
-		VO_AMRWBENC VPX WAVPACK WEBP X264 X265 XAVS2 XCB XVID \
-		XVIDEO ZIMG ZMQ ZVBI
+OPTIONS_DEFINE=	ALSA AMR_NB AMR_WB AOM ARIBB24 ASS BEIGNET BS2B CACA CDIO CELT \
+		CODEC2 DAV1D DAVS2 DC1394 DEBUG DOCS DRM FDK_AAC FLITE \
+		FONTCONFIG FREETYPE FREI0R FRIBIDI GME GSM ICONV ILBC JACK \
+		KLVANC KVAZAAR LADSPA LAME LENSFUN LIBBLURAY LIBRSVG2 LIBXML2 \
+		LTO LV2 MFX MODPLUG MYSOFA OPENAL OPENCL OPENCV OPENGL OPENH264 \
+		OPENJPEG OPENMPT OPTIMIZED_CFLAGS OPUS POCKETSPHINX PULSEAUDIO \
+		RAV1E RTCPU RUBBERBAND SDL SMB SNAPPY SNDIO SOXR SPEEX SRT SSH \
+		SVTAV1 SVTHEVC SVTVP9 TENSORFLOW TESSERACT THEORA TWOLAME V4L \
+		VAAPI VAPOURSYNTH VDPAU VIDSTAB VMAF VO_AMRWBENC VORBIS VPX \
+		WAVPACK WEBP X264 X265 XAVS2 XCB XVID XVIDEO ZIMG ZMQ ZVBI
 
-OPTIONS_DEFAULT=	DAV1D FONTCONFIG FREETYPE FREI0R GMP GNUTLS ICONV \
+OPTIONS_DEFAULT=	AOM DAV1D FONTCONFIG FREETYPE FREI0R GMP GNUTLS ICONV \
 			OPENCV OPTIMIZED_CFLAGS OPUS RTCPU THEORA V4L VAAPI VDPAU \
 			VORBIS VPX X264 X265 XCB XVID
+
+.if !exists(${.CURDIR:H:H}/multimedia/aribb24)
+# https://git.ffmpeg.org/gitweb/ffmpeg.git/commitdiff/100bfac6d6ec
+OPTIONS_EXCLUDE+=	ARIBB24
+.endif
 
 .if !exists(${.CURDIR:H:H}/multimedia/davs2)
 # https://git.ffmpeg.org/gitweb/ffmpeg.git/commitdiff/5985a1bf7233
@@ -74,14 +86,15 @@ OPTIONS_RADIO_SSL=	GNUTLS MBEDTLS OPENSSL
 OPTIONS_GROUP=	LICENSE
 OPTIONS_GROUP_LICENSE=	GPL3 NONFREE
 
-OPTIONS_DEFINE_amd64=	BEIGNET MMX SSE SVTAV1 SVTHEVC SVTVP9
+OPTIONS_DEFINE_amd64=	MMX SSE
 OPTIONS_DEFINE_armv6=	VFP NEON
-OPTIONS_DEFINE_i386=	BEIGNET MMX SSE
+OPTIONS_DEFINE_i386=	MMX SSE
 OPTIONS_DEFAULT_amd64=	MMX SSE
 OPTIONS_DEFAULT_i386=	MMX SSE
 
 ASS_DESC=	Subtitles rendering via libass
 AOM_DESC=	AV1 video encoding/decoding via libaom
+ARIBB24_DESC=	ARIB text and caption decoding via libaribb24
 BEIGNET_DESC=	DRM/VAAPI to OpenCL mapping for i965 + Beignet
 BS2B_DESC=	Bauer Stereophonic-to-Binaural filter
 CHROMAPRINT_DESC=	Audio fingerprinting with chromaprint
@@ -98,12 +111,16 @@ ILBC_DESC=	Internet Low Bit Rate codec
 KLVANC_DESC=	Kernel Labs VANC processing
 KVAZAAR_DESC=	H.265 video codec support via Kvazaar
 LICENSE_DESC=	Licensing options
+LTO_DESC=	Use Link-Time Optimization
 LV2_DESC=	LV2 audio filtering
+MFX_DESC=	Intel MediaSDK (aka Quick Sync Video)
 MYSOFA_DESC=	SOFAlizer binaural filter
 NEON_DESC=	Media Processing Engine instructions
 NONFREE_DESC=	Allow use of nonfree code
 OPENMPT_DESC=	Decoding tracked files via libopenmpt
 OPENH264_DESC=	H.264 video codec support via OpenH264
+POCKETSPHINX_DESC=	Automatic Speech Recognition via PocketSphinx
+RAV1E_DESC=	AV1 encoding via librav1e
 RUBBERBAND_DESC=Time-stretching and pitch-shifting with librubberband
 RTCPU_DESC=	Detect CPU capabilities at runtime
 RTMP_DESC=	RTMP(T)E protocol support
@@ -117,6 +134,7 @@ TESSERACT_DESC=	Optical Character Recognition via Tesseract
 VAPOURSYNTH_DESC=	VapourSynth demuxer
 VFP_DESC=	Vector Floating Point instructions
 VIDSTAB_DESC=	Video stabilization filter
+VMAF_DESC=	VMAF filter via libvmaf
 XAVS2_DESC=	AVS2 encoding via libxavs2
 XCB_DESC=	X11 grabbing using XCB
 ZIMG_DESC=	"z" library video scaling filter
@@ -142,6 +160,10 @@ AMR_WB_IMPLIES=		GPL3
 # aom
 AOM_LIB_DEPENDS=	libaom.so:multimedia/aom
 AOM_CONFIGURE_ENABLE=	libaom
+
+# arib
+ARIBB24_LIB_DEPENDS=	libaribb24.so:multimedia/aribb24
+ARIBB24_CONFIGURE_ENABLE=	libaribb24
 
 # ass
 ASS_LIB_DEPENDS=	libass.so:multimedia/libass
@@ -208,6 +230,9 @@ FDK_AAC_IMPLIES=	NONFREE
 # flite
 FLITE_LIB_DEPENDS=	libflite.so:audio/flite
 FLITE_CONFIGURE_ENABLE=	libflite
+.if exists(/usr/bin/ld.lld) && (${/usr/bin/ld:L:tA} != /usr/bin/ld.lld)
+FLITE_LDFLAGS=		-fuse-ld=lld
+.endif
 
 # fontconfig
 FONTCONFIG_LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig
@@ -284,12 +309,16 @@ LIBBLURAY_LIB_DEPENDS=	libbluray.so:multimedia/libbluray
 LIBBLURAY_CONFIGURE_ENABLE=	libbluray
 
 # librsvg
-LIBRSVG2_LIB_DEPENDS=	librsvg-2.so:graphics/librsvg2
+LIBRSVG2_USES=			gnome
+LIBRSVG2_USE=			GNOME=librsvg2
 LIBRSVG2_CONFIGURE_ENABLE=	librsvg
 
 # libxml
 LIBXML2_LIB_DEPENDS=	libxml2.so:textproc/libxml2
 LIBXML2_CONFIGURE_ENABLE=	libxml2
+
+# lto
+LTO_CONFIGURE_ENABLE=	lto
 
 # lv2
 LV2_BUILD_DEPENDS=	lv2>0:audio/lv2
@@ -306,6 +335,10 @@ V4L_CONFIGURE_OFF=		--disable-indev=v4l2 \
 # mbedtls
 MBEDTLS_LIB_DEPENDS=	libmbedtls.so:security/mbedtls
 MBEDTLS_CONFIGURE_ENABLE=	mbedtls
+
+# mfx
+MFX_LIB_DEPENDS=	libmfx.so:multimedia/intel-media-sdk
+MFX_CONFIGURE_ENABLE=	libmfx
 
 # mmx support
 MMX_CONFIGURE_ENABLE=	mmx
@@ -360,9 +393,18 @@ OPTIMIZED_CFLAGS_CONFIGURE_ENABLE=	optimizations
 OPUS_LIB_DEPENDS=	libopus.so:audio/opus
 OPUS_CONFIGURE_ENABLE=	libopus
 
+# pocketsphinx
+POCKETSPHINX_LIB_DEPENDS=	libpocketsphinx.so:audio/pocketsphinx
+POCKETSPHINX_CONFIGURE_ENABLE=	pocketsphinx
+POCKETSPHINX_BROKEN=	pocketsphinx < 5prealpha is not supported
+
 # pulseaudio
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 PULSEAUDIO_CONFIGURE_ENABLE=	libpulse
+
+# rav1e
+RAV1E_LIB_DEPENDS=	librav1e.so:multimedia/librav1e
+RAV1E_CONFIGURE_ENABLE=	librav1e
 
 # rubberband
 RUBBERBAND_LIB_DEPENDS=	librubberband.so:audio/rubberband
@@ -376,6 +418,7 @@ LIBRTMP_LIB_DEPENDS=	librtmp.so:multimedia/librtmp
 LIBRTMP_CONFIGURE_ENABLE=	librtmp
 
 # sdl
+SDL_USES=		sdl
 SDL_USE=		SDL=sdl2
 SDL_CONFIGURE_ENABLE=	sdl2
 
@@ -415,8 +458,12 @@ SRT_CONFIGURE_ENABLE=	libsrt
 # svt-av1
 SVTAV1_LIB_DEPENDS=	libSvtAv1Enc.so:multimedia/svt-av1
 SVTAV1_CONFIGURE_ON=	--enable-libsvtav1
-SVTAV1_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-AV1/raw/1bd31d3c/ffmpeg_plugin/:svtav1
+SVTAV1_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-AV1/raw/v0.8.1/ffmpeg_plugin/:svtav1
 SVTAV1_PATCHFILES=	0001-Add-ability-for-ffmpeg-to-run-svt-av1.patch:-p1:svtav1
+.if exists(/usr/bin/ld.lld) && (${/usr/bin/ld:L:tA} != /usr/bin/ld.lld)
+# https://github.com/OpenVisualCloud/SVT-AV1/issues/691
+SVTAV1_LDFLAGS=		-fuse-ld=lld
+.endif
 .if make(makesum)
 .MAKEFLAGS:		WITH+=SVTAV1
 .else
@@ -427,9 +474,12 @@ SVTAV1_PREVENTS_MSG=	Only one SVT vendor patch can be applied at the same time
 # svt-hevc
 SVTHEVC_LIB_DEPENDS=	libSvtHevcEnc.so:multimedia/svt-hevc
 SVTHEVC_CONFIGURE_ON=	--enable-libsvthevc
-SVTHEVC_PATCH_SITES=	https://github.com/Intel/SVT-HEVC/raw/v1.3.0/ffmpeg_plugin/:svthevc
+SVTHEVC_PATCH_SITES=	https://github.com/Intel/SVT-HEVC/raw/v1.4.3/ffmpeg_plugin/:svthevc
 SVTHEVC_PATCHFILES=	0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch:-p1:svthevc \
 			0002-doc-Add-libsvt_hevc-encoder-docs.patch:-p1:svthevc
+.if exists(/usr/bin/ld.lld) && (${/usr/bin/ld:L:tA} != /usr/bin/ld.lld)
+SVTHEVC_LDFLAGS=	-fuse-ld=lld
+.endif
 .if make(makesum)
 .MAKEFLAGS:		WITH+=SVTHEVC
 .else
@@ -440,8 +490,11 @@ SVTHEVC_PREVENTS_MSG=	${SVTAV1_PREVENTS_MSG}
 # svt-vp9
 SVTVP9_LIB_DEPENDS=	libSvtVp9Enc.so:multimedia/svt-vp9
 SVTVP9_CONFIGURE_ON=	--enable-libsvtvp9
-SVTVP9_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-VP9/raw/ce24589/ffmpeg_plugin/:svtvp9
+SVTVP9_PATCH_SITES=	https://github.com/OpenVisualCloud/SVT-VP9/raw/v0.1.0/ffmpeg_plugin/:svtvp9
 SVTVP9_PATCHFILES=	0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch:-p1:svtvp9
+.if exists(/usr/bin/ld.lld) && (${/usr/bin/ld:L:tA} != /usr/bin/ld.lld)
+SVTVP9_LDFLAGS=		-fuse-ld=lld
+.endif
 .if make(makesum)
 .MAKEFLAGS:		WITH+=SVTVP9
 .else
@@ -474,9 +527,14 @@ VAPOURSYNTH_LIB_DEPENDS=	libvapoursynth-script.so:multimedia/vapoursynth
 VAPOURSYNTH_CONFIGURE_ENABLE=	vapoursynth
 
 # vdpau
+VDPAU_USES=		xorg
 VDPAU_USE=		XORG=x11
 VDPAU_LIB_DEPENDS=	libvdpau.so:multimedia/libvdpau
 VDPAU_CONFIGURE_ENABLE=	vdpau
+
+# vmaf
+VMAF_BUILD_DEPENDS=	${LOCALBASE}/lib/libvmaf.a:multimedia/vmaf
+VMAF_CONFIGURE_ENABLE=	libvmaf
 
 # armv6/armv7
 VFP_CONFIGURE_ENABLE=	vfp
@@ -523,6 +581,7 @@ XAVS2_LIB_DEPENDS=	libxavs2.so:multimedia/xavs2
 XAVS2_CONFIGURE_ENABLE=	libxavs2
 
 # xcb
+XCB_USES=		xorg
 XCB_USE=		XORG=xcb
 XCB_CONFIGURE_ENABLE=	libxcb
 
@@ -531,6 +590,7 @@ XVID_LIB_DEPENDS=	libxvidcore.so:multimedia/xvid
 XVID_CONFIGURE_ENABLE=	libxvid
 
 # xv
+XVIDEO_USES=		xorg
 XVIDEO_USE=		XORG=x11,xext,xv
 XVIDEO_CONFIGURE_OFF=	--disable-outdev=xv
 
@@ -550,8 +610,8 @@ ZVBI_CONFIGURE_ENABLE=	libzvbi
 # License knobs
 GPL3_CONFIGURE_ENABLE=	version3
 GPL3_VARS=		LICENSE="GPLv3+ LGPL3+"
-LICENSE_FILE_GPLv3=	${WRKSRC}/COPYING.GPLv3
-LICENSE_FILE_LGPL3=	${WRKSRC}/COPYING.LGPLv3
+LICENSE_FILE_GPLv3+ =	${WRKSRC}/COPYING.GPLv3
+LICENSE_FILE_LGPL3+ =	${WRKSRC}/COPYING.LGPLv3
 
 NONFREE_CONFIGURE_ENABLE=nonfree
 NONFREE_VARS=		RESTRICTED="enabling OPENSSL or FDK_AAC restricts redistribution"
@@ -561,8 +621,11 @@ INSTALL_TARGET=	install-progs install-doc install-data \
 
 DATADIR=	${PREFIX}/share/${PORTNAME}${PKGNAMESUFFIX}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}${PKGNAMESUFFIX}
-CONFIGURE_ENV+=	COMPILER_PATH=${LOCALBASE}/bin
-MAKE_ENV+=	COMPILER_PATH=${LOCALBASE}/bin V=1
+MAKE_ENV+=	V=1
+LDFLAGS_aarch64=-Wl,-z,notext
+LDFLAGS_armv6=	-Wl,-z,notext
+LDFLAGS_armv7=	-Wl,-z,notext
+LDFLAGS_i386=	-Wl,-z,notext
 
 CONFIGURE_ARGS+=--prefix="${PREFIX}" \
 		--mandir="${PREFIX}/man" \
@@ -571,26 +634,14 @@ CONFIGURE_ARGS+=--prefix="${PREFIX}" \
 		--enable-shared \
 		--enable-pic \
 		--enable-gpl \
-		--enable-postproc \
-		--enable-avfilter \
 		--enable-avresample \
-		--enable-pthreads \
 		--cc="${CC}"
-
-CONFIGURE_ENV_aarch64_clang=	ASFLAGS=-no-integrated-as
-CONFIGURE_ENV_armv6_clang=	ASFLAGS=-no-integrated-as
-CONFIGURE_ENV_armv7_clang=	ASFLAGS=-no-integrated-as
-CONFIGURE_ARGS_FreeBSD_10_armv6=--disable-fast-unaligned
 
 DOC_FILES=	Changelog CREDITS INSTALL.md LICENSE.md MAINTAINERS \
 		README.md RELEASE_NOTES
 # under doc subdirectory
 DOC_DOCFILES=	APIchanges *.txt
 PORTDOCS=	*
-
-# Custom helpers. FOO_${ARCH} style from bsd.port.mk
-CONFIGURE_ENV+=	${CONFIGURE_ENV_${ARCH}_${CHOSEN_COMPILER_TYPE}}
-CONFIGURE_ARGS+=${CONFIGURE_ARGS_${OPSYS}_${OSREL:R}_${ARCH}}
 
 post-patch:
 # {C,LD}FLAGS safeness

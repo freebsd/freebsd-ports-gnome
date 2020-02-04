@@ -7,7 +7,7 @@ PORTREVISION=	3
 CATEGORIES=	audio
 MASTER_SITES=	SF
 
-MAINTAINER=	koalative@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Lightweight Open Sound Control implementation
 
 LICENSE=	LGPL21
@@ -44,7 +44,7 @@ post-install:
 		${STAGEDIR}${EXAMPLESDIR}
 post-install-DOXYGEN-on:
 	(cd ${WRKSRC}/doc/man/man3 && ${INSTALL_MAN} l*.3 p*.3 \
-		${STAGEDIR}${MAN3PREFIX}/man/man3/)
+		${STAGEDIR}${PREFIX}/share/man/man3/)
 	(cd ${WRKSRC}/doc && ${COPYTREE_SHARE} html ${STAGEDIR}${DOCSDIR})
 
 .include <bsd.port.mk>

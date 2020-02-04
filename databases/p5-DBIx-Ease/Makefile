@@ -1,4 +1,3 @@
-# Created by: mat
 # $FreeBSD$
 
 PORTNAME=	DBIx-Ease
@@ -10,6 +9,8 @@ PKGNAMEPREFIX=	p5-
 
 MAINTAINER=	perl@FreeBSD.org
 COMMENT=	Less-code DBI interactions for all drivers
+
+BROKEN=		unfetchable
 
 BUILD_DEPENDS=	p5-DBI>=0:databases/p5-DBI
 RUN_DEPENDS=	p5-DBI>=0:databases/p5-DBI

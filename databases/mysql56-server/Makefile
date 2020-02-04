@@ -2,13 +2,13 @@
 # $FreeBSD$
 
 PORTNAME?=	mysql
-PORTVERSION=	5.6.44
+PORTVERSION=	5.6.47
 PORTREVISION?=	0
-CATEGORIES=	databases ipv6
+CATEGORIES=	databases
 MASTER_SITES=	MYSQL/MySQL-5.6
 PKGNAMESUFFIX?=	56-server
 
-MAINTAINER=	mmokhi@FreeBSD.org
+MAINTAINER=	joneum@FreeBSD.org
 COMMENT?=	Multithreaded SQL database (server)
 
 LICENSE=	GPLv2

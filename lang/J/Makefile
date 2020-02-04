@@ -2,6 +2,7 @@
 
 PORTNAME=	J
 PORTVERSION=	${JVERSION:S/^j//:S/-release//}
+PORTREVISION=	1
 PORTEPOCH=	1
 CATEGORIES=	lang math
 
@@ -11,7 +12,8 @@ COMMENT=	J programming language
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKDIR}/jsource-${JVERSION}/license.txt
 
-ONLY_FOR_ARCHS_REASON_amd64=	Not built or tested for other archs. i386 needs hostdefs and netdefs files to be generated.
+ONLY_FOR_ARCHS=	amd64
+ONLY_FOR_ARCHS_REASON=	Not built or tested for other archs. i386 needs hostdefs and netdefs files to be generated.
 
 BUILD_DEPENDS=	bash:shells/bash
 LIB_DEPENDS=	libpcre2-8.so:devel/pcre2 \

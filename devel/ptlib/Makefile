@@ -3,7 +3,7 @@
 
 PORTNAME=	ptlib
 PORTVERSION=	2.10.11
-PORTREVISION=	2
+PORTREVISION=	4
 CATEGORIES=	devel
 MASTER_SITES=	GNOME
 
@@ -44,7 +44,7 @@ DEBUG_DESC=	Install debug library
 
 .include <bsd.port.options.mk>
 
-.if (${OPSYS} == FreeBSD && ${OSVERSION} > 1200085 && ${SSL_DEFAULT} == base) || ${SSL_DEFAULT} == openssl111
+.if (${OPSYS} == FreeBSD && ${OSVERSION} > 1200085 && ${SSL_DEFAULT} == base) || ${SSL_DEFAULT} == openssl
 EXTRA_PATCHES+= ${FILESDIR}/extra-patch-src_ptclib_pssl.cxx-openssl111
 .else
 EXTRA_PATCHES+= ${FILESDIR}/extra-patch-src_ptclib_pssl.cxx
@@ -68,8 +68,10 @@ PLIST_SUB+=	DEBUG="@comment "
 .if ${PORT_OPTIONS:MPULSEAUDIO}
 LIB_DEPENDS+=	libpulse.so:audio/pulseaudio
 CONFIGURE_ARGS+=--enable-pulse
+PLIST_SUB+=	PULSEAUDIO=""
 .else
 CONFIGURE_ARGS+=--disable-pulse
+PLIST_SUB+=	PULSEAUDIO="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MJABBER}
@@ -122,6 +124,7 @@ PLIST_SUB+=	VIDEODIR="@comment "
 .endif
 
 .if ${PORT_OPTIONS:MSDL}
+USES+=		sdl
 USE_SDL+=	sdl
 CONFIGURE_ARGS+=--enable-sdl
 .else

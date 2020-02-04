@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xf86-video-ati
-PORTVERSION=	19.0.0
+PORTVERSION=	19.1.0
 PORTEPOCH=	1
 CATEGORIES=	x11-drivers
 
@@ -20,8 +20,8 @@ LIB_DEPENDS=	libpciaccess.so:devel/libpciaccess \
 
 CONFLICTS_INSTALL=	xf86-video-ati-legacy
 
+USES=		gl xorg xorg-cat:driver
 USE_GL=		gl
-XORG_CAT=	driver
 USE_XORG=	pciaccess
 
 CONFIGURE_ARGS+=--disable-udev

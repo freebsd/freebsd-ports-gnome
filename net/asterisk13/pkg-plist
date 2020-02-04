@@ -221,6 +221,7 @@ include/asterisk/module.h
 include/asterisk/monitor.h
 include/asterisk/multicast_rtp.h
 include/asterisk/musiconhold.h
+include/asterisk/mwi.h
 include/asterisk/named_locks.h
 include/asterisk/netsock.h
 include/asterisk/netsock2.h
@@ -261,6 +262,7 @@ include/asterisk/security_events.h
 include/asterisk/security_events_defs.h
 include/asterisk/select.h
 include/asterisk/sem.h
+include/asterisk/serializer.h
 include/asterisk/sha1.h
 include/asterisk/silk.h
 include/asterisk/sip_api.h

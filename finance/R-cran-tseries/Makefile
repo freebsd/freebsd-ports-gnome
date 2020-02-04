@@ -3,11 +3,11 @@
 
 PORTNAME=	tseries
 DISTVERSION=	0.10-45
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	finance
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
-MAINTAINER=	dbn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Time Series Analysis and Computational Finance
 
 LICENSE=	GPLv2

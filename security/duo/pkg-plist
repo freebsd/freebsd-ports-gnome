@@ -1,6 +1,9 @@
 @sample(sshd,,0600) etc/login_duo.conf.sample
 @sample(,,0600) etc/pam_duo.conf.sample
+include/duo/common_ini_test.h
 include/duo/duo.h
+include/duo/duo_private.h
+include/duo/unity.h
 include/duo/util.h
 include/duo/shell.h
 libdata/pkgconfig/libduo.pc
@@ -13,4 +16,6 @@ man/man8/pam_duo.8.gz
 %%PORTDOCS%%%%DOCSDIR%%/AUTHORS
 %%PORTDOCS%%%%DOCSDIR%%/CHANGES
 %%PORTDOCS%%%%DOCSDIR%%/LICENSE
+%%SUID%%@mode 4555
 sbin/login_duo
+%%SUID%%@mode

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	elpa
-DISTVERSION=	2018.11.001
+DISTVERSION=	2019.05.002
 PORTREVISION=	1
 CATEGORIES=	math
 MASTER_SITES=	http://elpa.mpcdf.mpg.de/html/Releases/${DISTVERSION}/
@@ -16,11 +16,13 @@ LICENSE_FILE_LGPL3=	${WRKSRC}/COPYING/lgpl.txt
 
 LIB_DEPENDS=	libopenblas.so:math/openblas
 
-USES=		fortran gmake libtool localbase perl5 shebangfix
+USES=		compiler:c11 fortran gmake libtool localbase perl5 shebangfix
 SHEBANG_GLOB=	*.pl
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-avx --disable-avx2 --disable-static
 USE_LDCONFIG=	yes
+
+INSTALL_TARGET=	install-strip
 
 BINARY_ALIAS=	make=gmake gcc=gcc${GCC_DEFAULT} g++=g++${GCC_DEFAULT} # build fails with clang: recursively calls cc
 FCFLAGS+=	-I${LOCALBASE}/include

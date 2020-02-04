@@ -3,7 +3,7 @@
 
 PORTNAME=	naev
 PORTVERSION=	0.7.0
-PORTREVISION=	6
+PORTREVISION=	8
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}-${PORTVERSION}/
 
@@ -19,7 +19,8 @@ LIB_DEPENDS=	libpng.so:graphics/png \
 		libzip.so:archivers/libzip
 RUN_DEPENDS=	${LOCALBASE}/${DATADIR_REL}/${DISTNAME}-ndata.zip:games/naev-data
 
-USES=		autoreconf:build compiler:features gmake pkgconfig tar:bzip2
+USES=		autoreconf:build compiler:features gl gmake gnome pkgconfig sdl \
+		tar:bzip2
 GNU_CONFIGURE=	yes
 USE_GL=		gl glu
 USE_GNOME=	libxml2
@@ -39,6 +40,8 @@ PLIST_FILES=	bin/${PORTNAME} man/man6/${PORTNAME}.6.gz \
 
 OPTIONS_DEFINE=	DOCS OPENAL SDL2 SDL_MIXER
 OPTIONS_DEFAULT=	LUA_JIT OPENAL SDL2 SDL_MIXER
+OPTIONS_DEFAULT_powerpc64=	LUA_SHARED
+OPTIONS_EXCLUDE_powerpc64=	LUA_JIT
 OPTIONS_SINGLE=		LUA
 OPTIONS_SINGLE_LUA=	LUA_INTERNAL LUA_SHARED LUA_JIT
 

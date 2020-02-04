@@ -2,8 +2,8 @@
 
 PORTNAME=	pulseeffects
 DISTVERSIONPREFIX=	v
-DISTVERSION=	4.5.6
-PORTREVISION=	1
+DISTVERSION=	4.6.8
+PORTREVISION=	3
 CATEGORIES=	audio
 
 MAINTAINER=	daniel@shafer.cc
@@ -26,7 +26,10 @@ LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 		libpulse.so:audio/pulseaudio \
 		librubberband.so:audio/rubberband \
 		libsamplerate.so:audio/libsamplerate \
+		libserd-0.so:devel/serd \
 		libsndfile.so:audio/libsndfile \
+		libsord-0.so:devel/sord \
+		libsratom-0.so:audio/sratom \
 		libzita-convolver.so:audio/zita-convolver
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cairo>0:graphics/py-cairo@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}gstreamer1>=1.4.0:multimedia/py-gstreamer1@${PY_FLAVOR} \
@@ -38,8 +41,9 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}cairo>0:graphics/py-cairo@${PY_FLAVOR} \
 		mda-lv2>0:audio/mda-lv2 \
 		zam-plugins-lv2>0:audio/zam-plugins-lv2
 
-USES=		desktop-file-utils libtool localbase:ldflags gettext gnome meson ninja \
-		pathfix pkgconfig python:3.6+ shebangfix
+USES=		compiler:c++17-lang desktop-file-utils libtool \
+		localbase:ldflags gettext gnome meson ninja pathfix pkgconfig \
+		python:3.6+ shebangfix
 USE_GNOME=	cairo gconf2 gtkmm30 libsigc++20 pygobject3
 USE_GSTREAMER1=	bad bs2b good ladspa lv2 pulse webrtcdsp
 USE_LDCONFIG=	yes

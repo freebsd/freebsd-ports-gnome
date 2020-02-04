@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libpng.so:graphics/png
 
-USES=		gmake jpeg libtool localbase perl5 pkgconfig
+USES=		gmake gnome jpeg libtool localbase perl5 pkgconfig xorg
 GNU_CONFIGURE=	yes
 USE_GNOME=	gtk20
 USE_PERL5=	build
@@ -40,7 +40,7 @@ LIBWMF_CONFIGURE_WITH=	libwmf
 LIBWMF_LIB_DEPENDS=	libwmf.so:graphics/libwmf
 
 LIBRSVG2_CONFIGURE_WITH=librsvg
-LIBRSVG2_LIB_DEPENDS=	librsvg-2.so:graphics/librsvg2
+LIBRSVG2_USE=		GNOME=librsvg2
 
 LIBEXIF_CONFIGURE_ENABLE=exif # bundled exif is used
 LIBEXIF_BROKEN_OFF=	does not build without libexif support

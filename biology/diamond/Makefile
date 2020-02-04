@@ -2,7 +2,7 @@
 
 PORTNAME=	diamond
 DISTVERSIONPREFIX=	v
-DISTVERSION=	0.9.24
+DISTVERSION=	0.9.30
 CATEGORIES=	biology
 
 MAINTAINER=	jrm@FreeBSD.org
@@ -18,8 +18,5 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	bbuchfink
 
 PLIST_FILES=	bin/diamond
-.if defined(PACKAGE_BUILDING)
-CFLAGS+=	-mtune=generic
-.endif
 
 .include <bsd.port.mk>

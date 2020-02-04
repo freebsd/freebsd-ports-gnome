@@ -1,13 +1,14 @@
-# Created by: Loïc BARTOLETTI <lbartoletti@tuxfamily.org>
+# Created by: Loïc BARTOLETTI <lbartoletti@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	postgis
-PORTVERSION=	2.5.2
+PORTVERSION=	2.5.3
+PORTREVISION=	2
 CATEGORIES=	databases geography
 MASTER_SITES=	https://download.osgeo.org/postgis/source/
 PKGNAMESUFFIX=	25
 
-MAINTAINER=	lbartoletti@tuxfamily.org
+MAINTAINER=	lbartoletti@FreeBSD.org
 COMMENT=	Geographic objects support for PostgreSQL databases
 
 LICENSE=	GPLv2
@@ -18,9 +19,9 @@ LIB_DEPENDS=	libproj.so:graphics/proj \
 		libjson-c.so:devel/json-c \
 		libgdal.so:graphics/gdal
 
-CONFLICTS_INSTALL=	postgis20  postgis21 postgis22 postgis23 postgis24
+CONFLICTS_INSTALL=	postgis20 postgis21 postgis22 postgis23 postgis24 postgis30
 
-USES=		alias gettext gmake gnome iconv:wchar_t libtool:keepla \
+USES=		alias compiler gettext gmake gnome iconv:wchar_t libtool:keepla \
 		localbase perl5 pkgconfig pgsql:9.4+ shebangfix
 USE_GNOME=	libxml2
 USE_LDCONFIG=	yes
@@ -56,8 +57,10 @@ VER=		${PORTVERSION:R}
 PLIST_SUB=	PORTVERSION=${PORTVERSION} \
 		VER=${VER}
 
+.include <bsd.port.pre.mk>
+
+.if ${CHOSEN_COMPILER_TYPE} == gcc
 post-patch:
-.if exists(/usr/lib/libstdc++.so)
 	${REINPLACE_CMD} -e '/^#pragma GCC diagnostic/d' \
 		${WRKSRC}/postgis/lwgeom_functions_basic.c \
 		${WRKSRC}/postgis/lwgeom_geos.c
@@ -72,4 +75,4 @@ post-install:
 	${MKDIR} ${STAGEDIR}${DATADIR}/utils
 	(cd ${WRKSRC}/utils/ && ${COPYTREE_SHARE} . ${STAGEDIR}${DATADIR}/utils/ "! ( -name *\.orig -o -name *\.bak -o -name Makefile -o -name *\.in -o -name uninstall_script )" )
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

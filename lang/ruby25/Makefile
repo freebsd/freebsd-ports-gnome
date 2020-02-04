@@ -5,7 +5,7 @@ PORTNAME=	ruby
 PORTVERSION=	${RUBY_PORTVERSION}
 PORTREVISION=	${RUBY_PORTREVISION}
 PORTEPOCH=	${RUBY_PORTEPOCH}
-CATEGORIES=	lang ruby ipv6
+CATEGORIES=	lang ruby
 MASTER_SITES=	RUBY/${MASTER_SITE_SUBDIR_RUBY}
 DISTNAME=	${RUBY_DISTNAME}
 DIST_SUBDIR=	ruby
@@ -133,7 +133,7 @@ RB_SET_CONF_VAR=${SH} -c '${REINPLACE_CMD} -E -e "s,(CONFIG\[\"$$0\"\][[:space:]
 post-patch:
 	@${FIND} ${WRKSRC}/ -name "*.orig" -delete
 # We get these from other ports
-.for d in bin/rake doc/rake lib/rake test/rake man/rake.1 lib/rake.rb ext/win32ole bin/gem ext/gdbm
+.for d in bin/rake doc/rake lib/rake test/rake man/rake.1 lib/rake.rb ext/win32ole bin/gem ext/dbm ext/gdbm
 	@${RM} -r ${BUILD_WRKSRC}/${d}
 .endfor
 

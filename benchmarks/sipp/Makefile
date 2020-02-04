@@ -3,7 +3,7 @@
 
 PORTNAME=	sipp
 PORTVERSION=	3.5.1
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	benchmarks net
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/v${PORTVERSION}/
 
@@ -12,13 +12,9 @@ COMMENT=	SIP benchmarking and testing tool
 
 LICENSE=	GPLv2
 
-BROKEN_mips=		fails to compile: stat.hpp:307: error: ISO C++ does not support long long
-BROKEN_mips64=		fails to compile: stat.hpp:307: error: ISO C++ does not support long long
-BROKEN_powerpc64=	fails to compile: stat.hpp:307: error: ISO C++ does not support long long
-
 BUILD_DEPENDS=	help2man:misc/help2man
 
-USES=		autoreconf gmake ncurses pkgconfig
+USES=		autoreconf compiler:c++11-lang gmake ncurses pkgconfig
 
 PLIST_FILES=	bin/sipp man/man1/sipp.1.gz
 

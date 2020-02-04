@@ -2,7 +2,7 @@
 
 PORTNAME=	biom-format
 PORTVERSION=	2.1.7
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	biology python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -21,7 +21,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}click>0:devel/py-click@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}h5py>=2.2.0:science/py-h5py@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}six>=1.10.0:devel/py-six@${PY_FLAVOR}
 
-USES=		python
+USES=		python:-3.6
 USE_PYTHON=	autoplist concurrent distutils
 
 .include <bsd.port.pre.mk>

@@ -1,6 +1,6 @@
 bin/vagrant
 %%GEMS_DIR%%cache/vagrant-%%PORTVERSION%%.gem
-%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/.travis.yml
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/.hashibot.hcl
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/.vimrc
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/.yardopts
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/CHANGELOG.md
@@ -37,6 +37,7 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/action/builtin/config_validate.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/action/builtin/confirm.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/action/builtin/destroy_confirm.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/action/builtin/disk.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/action/builtin/env_set.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/action/builtin/graceful_halt.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/action/builtin/handle_box.rb
@@ -144,6 +145,7 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/util/line_ending_helpers.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/util/logging_formatter.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/util/network_ip.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/util/numeric.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/util/platform.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/util/powershell.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/lib/vagrant/util/presence.rb
@@ -326,6 +328,14 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/communicators/winssh/communicator.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/communicators/winssh/config.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/communicators/winssh/plugin.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alpine/cap/change_host_name.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alpine/cap/configure_networks.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alpine/cap/halt.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alpine/cap/nfs_client.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alpine/cap/rsync.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alpine/cap/smb.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alpine/guest.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alpine/plugin.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alt/cap/change_host_name.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alt/cap/configure_networks.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/alt/cap/flavor.rb
@@ -349,9 +359,9 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/atomic/plugin.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/bsd/cap/file_system.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/bsd/cap/halt.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/bsd/cap/mount_virtualbox_shared_folder.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/bsd/cap/nfs.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/bsd/cap/public_key.rb
-%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/bsd/cap/virtualbox.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/bsd/guest.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/bsd/plugin.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/coreos/cap/change_host_name.rb
@@ -393,6 +403,7 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/fedora/plugin.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/freebsd/cap/change_host_name.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/freebsd/cap/configure_networks.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/freebsd/cap/mount_virtualbox_shared_folder.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/freebsd/cap/rsync.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/freebsd/cap/shell_expand_guest_path.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/freebsd/guest.rb
@@ -422,6 +433,7 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/linux/cap/port.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/linux/cap/public_key.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/linux/cap/read_ip_address.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/linux/cap/reboot.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/linux/cap/rsync.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/linux/cap/shell_expand_guest_path.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/guests/linux/guest.rb
@@ -543,10 +555,13 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/arch/host.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/arch/plugin.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/bsd/cap/nfs.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/bsd/cap/path.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/bsd/cap/ssh.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/bsd/host.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/bsd/plugin.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/darwin/cap/configured_ip_addresses.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/darwin/cap/nfs.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/darwin/cap/path.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/darwin/cap/provider_install_virtualbox.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/darwin/cap/rdp.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/hosts/darwin/cap/smb.rb
@@ -600,6 +615,7 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/kernel_v1/config/vagrant.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/kernel_v1/config/vm.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/kernel_v1/plugin.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/kernel_v2/config/disk.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/kernel_v2/config/package.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/kernel_v2/config/push.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/kernel_v2/config/ssh.rb
@@ -614,9 +630,11 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/build.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/compare_synced_folders.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/connect_networks.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/create.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/destroy.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/destroy_build_image.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/destroy_network.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/forwarded_ports.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/has_ssh.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/host_machine.rb
@@ -630,6 +648,7 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/is_build.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/is_host_machine_created.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/login.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/prepare_networks.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/prepare_nfs_settings.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/prepare_nfs_valid_ids.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/docker/action/prepare_ssh.rb
@@ -774,6 +793,7 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/virtualbox/driver/version_5_1.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/virtualbox/driver/version_5_2.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/virtualbox/driver/version_6_0.rb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/virtualbox/driver/version_6_1.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/virtualbox/model/forwarded_port.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/virtualbox/plugin.rb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/plugins/providers/virtualbox/provider.rb
@@ -914,6 +934,8 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/commands/winrm_config/config.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/config/messages.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/config/validation_failed.erb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/alpine/network_dhcp.erb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/alpine/network_static.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/alt/network_dhcp.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/alt/network_ipv4address.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/alt/network_ipv4route.erb
@@ -949,6 +971,7 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/slackware/network_static.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/suse/network_dhcp.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/suse/network_static.erb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/guests/suse/network_static6.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/locales/comm_winrm.yml
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/locales/command_ps.yml
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/locales/command_rdp.yml
@@ -957,8 +980,8 @@ bin/vagrant
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/locales/providers_docker.yml
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/locales/providers_hyperv.yml
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/locales/synced_folder_smb.yml
-%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/nfs/exports.erb
-%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/nfs/exports_freebsd.erb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/nfs/exports_bsd.erb
+%%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/nfs/exports_darwin.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/nfs/exports_linux.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/package_Vagrantfile.erb
 %%GEM_BASE_DIR%%/vagrant-%%PORTVERSION%%/templates/provisioners/chef_client/client.erb

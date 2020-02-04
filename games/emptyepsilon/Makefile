@@ -3,7 +3,7 @@
 
 PORTNAME=	emptyepsilon
 DISTVERSIONPREFIX=	EE-
-DISTVERSION=	2019.01.19
+DISTVERSION=	2020.01.15
 CATEGORIES=	games
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libsfml-system.so:devel/sfml
 
-USES=		cmake compiler:c++11-lib gl
+USES=		cmake compiler:c++11-lib gl xorg
 USE_GITHUB=	yes
 GH_ACCOUNT=	daid
 GH_PROJECT=	EmptyEpsilon SeriousProton:sproton

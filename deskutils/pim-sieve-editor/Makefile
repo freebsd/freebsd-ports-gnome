@@ -13,7 +13,7 @@ USE_KDE=	auth bookmarks codecs config configwidgets coreaddons crash \
 		widgetsaddons xmlgui
 # pim components
 USE_KDE+=	libksieve mailtransport pimcommon
-USE_QT=		core dbus gui network widgets xml \
+USE_QT=		concurrent core dbus gui network widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 

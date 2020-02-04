@@ -36,6 +36,7 @@
 %%WWWDIR%%/images/share.png
 %%WWWDIR%%/images/twitter.png
 %%WWWDIR%%/images/yourls-logo.png
+%%WWWDIR%%/images/yourls-logo.svg
 %%WWWDIR%%/includes/Admin/Logger.php
 %%WWWDIR%%/includes/Config/Config.php
 %%WWWDIR%%/includes/Config/Init.php
@@ -356,12 +357,13 @@
 %%WWWDIR%%/includes/vendor/composer/autoload_psr4.php
 %%WWWDIR%%/includes/vendor/composer/autoload_real.php
 %%WWWDIR%%/includes/vendor/composer/autoload_static.php
+%%WWWDIR%%/includes/vendor/composer/ca-bundle/LICENSE
 %%WWWDIR%%/includes/vendor/composer/ca-bundle/README.md
+%%WWWDIR%%/includes/vendor/composer/ca-bundle/composer.json
 %%WWWDIR%%/includes/vendor/composer/ca-bundle/res/cacert.pem
 %%WWWDIR%%/includes/vendor/composer/ca-bundle/src/CaBundle.php
 %%WWWDIR%%/includes/vendor/composer/installed.json
 %%WWWDIR%%/includes/vendor/geoip2/geoip2/README.md
-%%WWWDIR%%/includes/vendor/geoip2/geoip2/src/Compat/JsonSerializable.php
 %%WWWDIR%%/includes/vendor/geoip2/geoip2/src/Database/Reader.php
 %%WWWDIR%%/includes/vendor/geoip2/geoip2/src/Exception/AddressNotFoundException.php
 %%WWWDIR%%/includes/vendor/geoip2/geoip2/src/Exception/AuthenticationException.php
@@ -420,6 +422,7 @@
 %%WWWDIR%%/includes/vendor/pomo/pomo/README.md
 %%WWWDIR%%/includes/vendor/pomo/pomo/src/MO.php
 %%WWWDIR%%/includes/vendor/pomo/pomo/src/PO.php
+%%WWWDIR%%/includes/vendor/pomo/pomo/src/Parser/PluralForms.php
 %%WWWDIR%%/includes/vendor/pomo/pomo/src/Streams/CachedFileReader.php
 %%WWWDIR%%/includes/vendor/pomo/pomo/src/Streams/CachedIntFileReader.php
 %%WWWDIR%%/includes/vendor/pomo/pomo/src/Streams/FileReader.php
@@ -492,11 +495,14 @@
 %%WWWDIR%%/includes/vendor/rmccue/requests/library/Requests/Utility/CaseInsensitiveDictionary.php
 %%WWWDIR%%/includes/vendor/rmccue/requests/library/Requests/Utility/FilteredIterator.php
 %%WWWDIR%%/includes/vendor/rmccue/requests/library/Requests.php
+%%WWWDIR%%/includes/vendor/symfony/polyfill-mbstring/LICENSE
 %%WWWDIR%%/includes/vendor/symfony/polyfill-mbstring/Mbstring.php
 %%WWWDIR%%/includes/vendor/symfony/polyfill-mbstring/README.md
 %%WWWDIR%%/includes/vendor/symfony/polyfill-mbstring/Resources/unidata/lowerCase.php
+%%WWWDIR%%/includes/vendor/symfony/polyfill-mbstring/Resources/unidata/titleCaseRegexp.php
 %%WWWDIR%%/includes/vendor/symfony/polyfill-mbstring/Resources/unidata/upperCase.php
 %%WWWDIR%%/includes/vendor/symfony/polyfill-mbstring/bootstrap.php
+%%WWWDIR%%/includes/vendor/symfony/polyfill-mbstring/composer.json
 %%WWWDIR%%/includes/version.php
 %%WWWDIR%%/js/clipboard.min.js
 %%WWWDIR%%/js/common.js
@@ -538,6 +544,8 @@
 %%WWWDIR%%/user/plugins/random-bg/img/bg_life.png
 %%WWWDIR%%/user/plugins/random-bg/img/bg_yourls.png
 %%WWWDIR%%/user/plugins/random-bg/plugin.php
+%%WWWDIR%%/user/plugins/random-shorturls/README.md
+%%WWWDIR%%/user/plugins/random-shorturls/plugin.php
 %%WWWDIR%%/user/plugins/sample-page/README.md
 %%WWWDIR%%/user/plugins/sample-page/plugin.php
 %%WWWDIR%%/user/plugins/sample-plugin/README.md

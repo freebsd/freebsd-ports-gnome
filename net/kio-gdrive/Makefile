@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	kio-gdrive
-DISTVERSION=	1.2.5
-PORTREVISION=	2
+DISTVERSION=	1.2.7
 CATEGORIES=	net kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}/src
 DIST_SUBDIR=	KDE/${PORTNAME}
@@ -18,7 +17,7 @@ LIB_DEPENDS=	libqt5keychain.so:security/qtkeychain \
 		libkaccounts.so:net-im/kaccounts-integration
 RUN_DEPENDS=	kaccounts-providers>=0:net-im/kaccounts-providers
 
-USES=		cmake gettext kde:5 pkgconfig qt:5 tar:xz
+USES=		cmake gettext gnome kde:5 pkgconfig qt:5 tar:xz
 USE_GNOME=	intltool
 USE_KDE=	completion config coreaddons ecm i18n jobwidgets kio \
 		notifications service widgetsaddons \

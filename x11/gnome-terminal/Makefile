@@ -3,6 +3,7 @@
 
 PORTNAME=	gnome-terminal
 PORTVERSION=	3.28.2
+PORTREVISION=	1
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -25,7 +26,7 @@ RUN_DEPENDS=	gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 PORTSCOUT=	limitw:1,even
 
 USES=		cpe gettext gmake gnome libtool localbase pathfix \
-		pkgconfig tar:xz
+		pkgconfig tar:xz xorg
 USE_GNOME=	cairo dconf gdkpixbuf2 gtk30 intltool vte3
 USE_XORG=	x11
 GNU_CONFIGURE=	yes

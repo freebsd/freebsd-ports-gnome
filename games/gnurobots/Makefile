@@ -3,7 +3,7 @@
 
 PORTNAME=	gnurobots
 PORTVERSION=	1.2.0
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	games
 MASTER_SITES=	GNU \
 		SF/nemysisfreebsdp/${CATEGORIES}/:icons
@@ -19,10 +19,11 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libguile.so:lang/guile
 
-USES=		pkgconfig readline
+USES=		gnome pkgconfig readline
 USE_GNOME=	vte
 GNU_CONFIGURE=	yes
 
+CFLAGS+=	-O0
 CPPFLAGS+=	-I${LOCALBASE}/include -w
 LDFLAGS+=	-L${LOCALBASE}/lib -pthread
 

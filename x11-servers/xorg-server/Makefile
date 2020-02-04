@@ -3,7 +3,7 @@
 
 PORTNAME?=	xorg-server
 PORTVERSION?=	1.18.4
-PORTREVISION?=	11
+PORTREVISION?=	13
 PORTEPOCH?=	1
 CATEGORIES=	x11-servers
 MASTER_SITES=	XORG/individual/xserver
@@ -17,15 +17,15 @@ LICENSE=	MIT
 RUN_DEPENDS+=	xkeyboard-config>=2.5:x11/xkeyboard-config \
 		xkbcomp:x11/xkbcomp
 
-XORG_CAT=	xserver
 SLAVE_PORT?=	no
 
 OPTIONS_SUB=	yes
 OPTIONS_DEFINE=	SUID
 OPTIONS_RADIO=	CONF
-OPTIONS_RADIO_CONF=	DEVD HAL
+OPTIONS_RADIO_CONF=	DEVD HAL UDEV
 DEVD_DESC=	Use devd for autoconfiguration of input devices
 HAL_DESC=	Use hald for autoconfiguration of input devices
+UDEV_DESC=	Use udev via libudev-devd for autoconfiguration of input devices
 SUID_DESC=	Install the Xorg server with setuid bit set
 OPTIONS_DEFAULT=DEVD SUID
 
@@ -33,13 +33,27 @@ OPTIONS_EXCLUDE_sparc64=	HAL
 
 .include <bsd.port.options.mk>
 
-USES=		gmake libtool perl5 ssl tar:bzip2
+FONTPATH_ROOT?=	${LOCALBASE}/share/fonts
+FONTPATHD?=	${PREFIX}/etc/X11/fontpath.d
+DEFAULT_FONTPATH_LIST= \
+	${FONTPATH_ROOT}/misc/	\
+	${FONTPATH_ROOT}/TTF/ \
+	${FONTPATH_ROOT}/OTF/ \
+	${FONTPATH_ROOT}/Type1/ \
+	${FONTPATH_ROOT}/100dpi/ \
+	${FONTPATH_ROOT}/75dpi/ \
+	catalogue:${FONTPATHD}
+DEFAULT_FONTPATH_CMD=${ECHO_CMD} ${DEFAULT_FONTPATH_LIST} | ${TR} ' ' ,
+PLIST_SUB+=	FONTPATHD="${FONTPATHD:S,^${PREFIX}/,,}"
+
+USES=		gmake gl libtool perl5 ssl tar:bzip2 xorg xorg-cat:xserver
 USE_PERL5=	build
 USE_GL+=	gl
 USE_XORG+=	pixman xau xdmcp xfont xkbfile xorgproto xshmfence xtrans
 CONFIGURE_ARGS+=--without-doxygen --without-xmlto --without-fop \
+		--with-default-font-path="$$(${DEFAULT_FONTPATH_CMD})" \
 		--localstatedir=/var --with-shared-memory-dir=/tmp \
-		--disable-config-udev --disable-config-udev-kms \
+		--disable-config-udev-kms --disable-systemd-logind \
 		--without-dtrace --enable-glamor
 INSTALL_TARGET=	install-strip
 
@@ -77,6 +91,13 @@ LIB_DEPENDS+=	libhal.so:sysutils/hal
 CONFIGURE_ARGS+=	--enable-config-hal
 .else
 CONFIGURE_ARGS+=	--disable-config-hal
+.endif
+
+.if ${PORT_OPTIONS:MUDEV}
+LIB_DEPENDS+=	libudev.so:devel/libudev-devd
+CONFIGURE_ARGS+= --enable-config-udev
+.else
+CONFIGURE_ARGS+= --disable-config-udev
 .endif
 
 # We handle Xorg setuid in the plist. This allows to build xorg-server as a user.
@@ -127,6 +148,7 @@ post-install:
 	${INSTALL_LIB} ${WRKSRC}/hw/xfree86/dixmods/.libs/libglx.so \
 		${STAGEDIR}${PREFIX}/lib/xorg/modules/extensions/.xorg/
 	@${MKDIR} ${STAGEDIR}${PREFIX}/etc/X11/xorg.conf.d
+	@${MKDIR} ${STAGEDIR}${FONTPATHD}
 .endif # ! SLAVE_PORT
 
 .include <bsd.port.post.mk>

@@ -16,7 +16,7 @@ USE_KDE=	auth codecs completion config configwidgets coreaddons \
 # pim components
 USE_KDE+=	akonadi akonadicontacts akonadimime calendarcore calendarutils \
 		contacts identitymanagement mailtransport mime pimtextedit
-USE_QT=		core dbus gui network widgets xml \
+USE_QT=		concurrent core dbus gui network widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 

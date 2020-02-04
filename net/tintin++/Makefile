@@ -2,15 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	tintin++
-PORTVERSION=	2.01.7
+PORTVERSION=	2.02.01
 CATEGORIES+=	net games
-MASTER_SITES=	SF/tintin/TinTin%2B%2B%20Source%20Code/${PORTVERSION:R}/
+MASTER_SITES=	SF/tintin/TinTin%2B%2B%20Source%20Code/${PORTVERSION:C|.$||}/ \
+		https://github.com/scandum/tintin/releases/download/${PORTVERSION}/
 DISTNAME=	tintin-${PORTVERSION}
 
 MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	Client program to help playing MUDs
 
-LICENSE=	GPLv2
+LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/../COPYING
 
 LIB_DEPENDS=	libpcre.so:devel/pcre

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mate-terminal
-PORTVERSION=	1.20.1
+PORTVERSION=	1.22.1
 CATEGORIES=	x11 mate
 MASTER_SITES=	MATE
 DIST_SUBDIR=	mate
@@ -19,8 +19,8 @@ LIB_DEPENDS=	libgnutls.so:security/gnutls \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake localbase pathfix perl5 pkgconfig \
-		shebangfix tar:xz
+USES=		gettext gmake gnome localbase pathfix perl5 pkgconfig \
+		shebangfix tar:xz xorg
 USE_XORG=	ice sm x11
 USE_GNOME=	cairo dconf gdkpixbuf2 gtk30 intltool vte3
 SHEBANG_FILES=	mate-terminal.wrapper

@@ -3,7 +3,7 @@
 
 PORTNAME=	chemtool
 PORTVERSION=	1.7.20050716
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	science
 MASTER_SITES=	http://ruby.chemie.uni-freiburg.de/~martin/chemtool/
 PKGNAMESUFFIX=	-devel
@@ -15,7 +15,7 @@ COMMENT=	Drawing organic molecules easily and store them (developer version)
 LIB_DEPENDS=	libEMF.so:graphics/libemf
 RUN_DEPENDS=	transfig:print/transfig
 
-USES=		compiler:c++11-lang gettext gmake pkgconfig tar:tgz
+USES=		compiler:c++11-lang gettext gmake gnome pkgconfig tar:tgz xorg
 WRKSRC=		${WRKDIR}/${PORTNAME}-1.7alpha15/
 USE_GNOME=	gtk20
 USE_XORG=	x11

@@ -3,6 +3,7 @@
 
 PORTNAME=	audacious
 PORTVERSION=	3.10.1
+PORTREVISION=	1
 CATEGORIES=	multimedia audio
 MASTER_SITES=	https://distfiles.audacious-media-player.org/
 
@@ -17,7 +18,7 @@ LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
 
 USES=		compiler:c++11-lib desktop-file-utils gettext-tools gmake \
-		gnome localbase pkgconfig tar:bzip2
+		gnome localbase pkgconfig tar:bzip2 xorg
 USE_XORG=	x11 sm
 USE_GNOME=	gtk20 glib20 cairo
 USE_LDCONFIG=	yes

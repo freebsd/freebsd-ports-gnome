@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	pundit
-PORTVERSION=	2.0.1
+PORTVERSION=	2.1.0
 CATEGORIES=	security rubygems
 MASTER_SITES=	RG
 
@@ -14,8 +14,9 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	rubygem-activesupport5>=3.0.0:devel/rubygem-activesupport5
 
-NO_ARCH=	yes
-USE_RUBY=	yes
 USES=		gem
+USE_RUBY=	yes
+
+NO_ARCH=	yes
 
 .include <bsd.port.mk>

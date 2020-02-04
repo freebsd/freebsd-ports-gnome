@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	swayidle
-DISTVERSION=	1.2
+DISTVERSION=	1.6
 CATEGORIES=	x11
 
 MAINTAINER=	jbeich@FreeBSD.org
@@ -18,7 +18,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	swaywm
 PLIST_FILES=	bin/${PORTNAME} \
 		share/bash-completion/completions/${PORTNAME} \
-		share/fish/completions/${PORTNAME}.fish \
+		share/fish/vendor_completions.d/${PORTNAME}.fish \
 		share/zsh/site-functions/_${PORTNAME}
 
 OPTIONS_DEFINE=	MANPAGES

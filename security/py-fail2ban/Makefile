@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	fail2ban
-PORTVERSION=	0.10.4
+PORTVERSION=	0.11.1
 CATEGORIES=	security python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -12,8 +12,6 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
-
-OPTIONS_DEFINE=	DOCS
 
 USES=		python:patch shebangfix
 USE_GITHUB=	yes
@@ -27,9 +25,16 @@ SHEBANG_LANG=	fail2ban-python
 
 SUB_LIST+=	PYTHON_CMD=${PYTHON_CMD}
 
-PYDISTUTILS_INSTALLARGS+=	--install-data=${ETCDIR}
+PYDISTUTILS_INSTALLARGS+=	--install-data=${ETCDIR} --without-test
 
 PORTDOCS=	README.md DEVELOP
+
+OPTIONS_DEFINE=	DOCS INOTIFY
+OPTIONS_DEFAULT=INOTIFY
+
+INOTIFY_DESC=		Support for (lib)inotify to monitor filesystem changes
+
+INOTIFY_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyinotify>=0.8.3:devel/py-pyinotify@${PY_FLAVOR}
 
 FILES=		${WRKSRC}/bin/fail2ban-client \
 		${WRKSRC}/fail2ban/client/configreader.py \

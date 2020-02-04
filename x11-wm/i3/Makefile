@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	i3
-DISTVERSION=	4.16.1
+DISTVERSION=	4.17.1
 CATEGORIES=	x11-wm
 MASTER_SITES=	http://i3wm.org/downloads/
 
@@ -28,13 +28,15 @@ RUN_DEPENDS=	p5-AnyEvent-I3>=0:devel/p5-AnyEvent-I3 \
 		p5-IPC-Run>=0:devel/p5-IPC-Run \
 		p5-Try-Tiny>=0:lang/p5-Try-Tiny
 
-USES=		compiler:c11 gmake iconv localbase perl5 pkgconfig tar:bzip2
+USES=		compiler:c11 gmake iconv localbase perl5 pkgconfig tar:bzip2 \
+		xorg
 USE_XORG=	xcb
 GNU_CONFIGURE=	yes
 CONFIGURE_OUTSOURCE=	yes
 CONFIGURE_ENV=	ac_cv_path_PATH_ASCIIDOC=""
 LDFLAGS+=	${ICONV_LIB}
 INSTALL_TARGET=	install-strip
+MAKE_JOBS_UNSAFE=	yes
 
 CONFLICTS_INSTALL=	i3-gaps
 

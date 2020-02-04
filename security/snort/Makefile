@@ -2,15 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	snort
-PORTVERSION=	2.9.12
-PORTREVISION=	1
+PORTVERSION=	2.9.15
 CATEGORIES=	security
 MASTER_SITES=	https://snort.org/downloads/snort/ \
 		ZI
 
 PATCH_DIST_STRIP=	-p1
 
-MAINTAINER=	zi@FreeBSD.org
+MAINTAINER=	dvl@FreeBSD.org
 COMMENT=	Lightweight network intrusion detection system
 
 LICENSE=	GPLv2
@@ -22,7 +21,7 @@ LIB_DEPENDS=	libpcre.so:devel/pcre \
 		libpcap.so:net/libpcap
 RUN_DEPENDS=	daq>=2.0.0:net/daq
 
-USES=			cpe libtool pathfix shebangfix ssl
+USES=			bison cpe libtool pathfix shebangfix ssl
 USE_RC_SUBR=		snort
 USE_LDCONFIG=		yes
 
@@ -55,7 +54,6 @@ NONETHER_DESC=		Non-Ethernet Decoders
 NORMALIZER_DESC=	Normalizer
 PERFPROFILE_DESC=	Performance profiling
 SOURCEFIRE_DESC=	Sourcefire recommended build options
-TARGETBASED_DESC=	Targetbased support
 APPID_DESC=		Build with application id support (EXPERIMENTAL)
 HA_DESC=		Enable high-availability state sharing (EXPERIMENTAL)
 FILEINSPECT_DESC=	Build with extended file inspection features (EXPERIMENTAL)

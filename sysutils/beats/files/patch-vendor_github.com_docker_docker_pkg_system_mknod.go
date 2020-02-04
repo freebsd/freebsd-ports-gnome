@@ -1,4 +1,4 @@
---- vendor/github.com/docker/docker/pkg/system/mknod.go.orig	2019-03-12 15:33:33 UTC
+--- vendor/github.com/docker/docker/pkg/system/mknod.go.orig	2019-10-15 21:08:29 UTC
 +++ vendor/github.com/docker/docker/pkg/system/mknod.go
 @@ -9,7 +9,7 @@ import (
  // Mknod creates a filesystem node (file, device special file or named pipe) named path

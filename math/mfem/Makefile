@@ -2,7 +2,8 @@
 
 PORTNAME=	mfem
 DISTVERSIONPREFIX=	v
-DISTVERSION=	3.4
+DISTVERSION=	4.0
+PORTREVISION=	1
 CATEGORIES=	math
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -11,7 +12,7 @@ COMMENT=	Lightweight, general, scalable C++ library for finite element methods
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		cmake
+USES=		cmake compiler:c++11-lang
 USE_GITHUB=	yes
 USE_LDCONFIG=	yes
 

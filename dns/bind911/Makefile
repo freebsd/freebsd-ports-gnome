@@ -3,7 +3,7 @@
 
 PORTNAME=	bind
 PORTVERSION=	${ISCVERSION:S/-P/P/:S/b/.b/:S/a/.a/:S/rc/.rc/}
-CATEGORIES=	dns net ipv6
+CATEGORIES=	dns net
 MASTER_SITES=	ISC/bind9/${ISCVERSION}
 PKGNAMESUFFIX=	911
 DISTNAME=	${PORTNAME}-${ISCVERSION}
@@ -14,13 +14,17 @@ COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 LICENSE=	MPL20
 LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 
+# Uncomment sometime late 2020.
+# DEPRECATED=	End of life, please migrate to a newer version of BIND9
+# EXPIRATION_DATE=	2021-12-31
+
 LIB_DEPENDS=	libxml2.so:textproc/libxml2
 RUN_DEPENDS=	bind-tools>0:dns/bind-tools
 
-USES=	cpe libedit
+USES=	cpe libedit pkgconfig
 
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.11.6-P1
+ISCVERSION=	9.11.15
 
 CPE_VENDOR=	isc
 CPE_VERSION=	${ISCVERSION:C/-.*//}
@@ -51,7 +55,7 @@ PORTDOCS=	*
 OPTIONS_DEFAULT=	SSL THREADS SIGCHASE IDN GSSAPI_NONE JSON \
 			DLZ_FILESYSTEM LMDB RPZ_NSDNAME RPZ_NSIP TCP_FASTOPEN \
 			FILTER_AAAA
-OPTIONS_DEFINE=		IDN LARGE_FILE JSON \
+OPTIONS_DEFINE=		IDN LARGE_FILE JSON GEOIP \
 			FIXED_RRSET SIGCHASE IPV6 THREADS FILTER_AAAA \
 			RPZ_NSIP RPZ_NSDNAME DOCS \
 			MINCACHE PORTREVISION QUERYTRACE LMDB DNSTAP \
@@ -123,6 +127,10 @@ FILTER_AAAA_CONFIGURE_ENABLE=	filter-aaaa
 
 FIXED_RRSET_CONFIGURE_ENABLE=	fixed-rrset
 
+GEOIP_CONFIGURE_WITH=	geoip2
+GEOIP_LIB_DEPENDS=	libmaxminddb.so:net/libmaxminddb
+GEOIP_IMPLIES=		THREADS
+
 GSSAPI_BASE_CONFIGURE_ON=\
 	--with-gssapi=${GSSAPIBASEDIR} KRB5CONFIG="${KRB5CONFIG}"
 GSSAPI_BASE_USES=	gssapi
@@ -185,7 +193,7 @@ TUNING_LARGE_CONFIGURE_OFF=	--with-tuning=default
 .if defined(WITH_DEBUG)
 CONFIGURE_ARGS+=	--enable-symtable \
 			--enable-developer
-USES+=	perl5 pkgconfig
+USES+=	perl5
 USE_PERL5=	build
 BUILD_DEPENDS+=	cmocka>0:sysutils/cmocka
 # Developer mode needs ssl, always

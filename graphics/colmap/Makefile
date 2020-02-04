@@ -2,8 +2,11 @@
 
 PORTNAME=	colmap
 DISTVERSION=	3.5
-PORTREVISION=	7
+PORTREVISION=	10
 CATEGORIES=	graphics
+
+PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
+PATCHFILES+=	b5ccc54e68e3.patch:-p1
 
 MAINTAINER=	jbeich@FreeBSD.org
 COMMENT=	Structure from motion and multi-view stereo
@@ -24,17 +27,16 @@ LIB_DEPENDS=	libboost_filesystem.so:devel/boost-libs \
 		libfreeimage.so:graphics/freeimage \
 		libceres.so:math/ceres-solver
 
-USES=		cmake compiler:${OPENMP}c++11-lib eigen:3 localbase qt:5 sqlite
+USES=		cmake compiler:${OPENMP}c++11-lib eigen:3 gl localbase qt:5 \
+		sqlite
 USE_GITHUB=	yes
 USE_GL=		gl glew
 USE_QT=		qmake_build buildtools_build core gui opengl_build widgets
 EXCLUDE=	SQLite
 EXTRACT_AFTER_ARGS=	${EXCLUDE:S,^,--exclude lib/,}
 CMAKE_OFF=	BOOST_STATIC CUDA_ENABLED
-CXXFLAGS+=	-D_GLIBCXX_USE_C99 -D_GLIBCXX_USE_C99_MATH_TR1 \
-		-D_DECLARE_C99_LDBL_MATH # XXX ports/193528
 LDFLAGS+=	-Wl,--as-needed # gflags, glu, xi, xmu
-TEST_TARGET=	test ARGS="-V"
+TEST_TARGET=	test
 
 OPTIONS_DEFINE=		CGAL DOCS OPENMP SIMD TEST
 OPTIONS_DEFAULT=	CGAL OPENMP SIMD

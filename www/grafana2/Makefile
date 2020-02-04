@@ -12,15 +12,15 @@ DISTFILES=	grafana-static-${PORTVERSION}.tar.gz:static_assets
 MAINTAINER=	thomas@bartelmess.io
 COMMENT=	Dashboard and graph editor for Graphite, InfluxDB & OpenTSDB
 
-LICENSE=	APACHE20
+BROKEN=		unfetchable
 
-BUILD_DEPENDS=	${LOCALBASE}/bin/go:lang/go
+LICENSE=	APACHE20
 
 ONLY_FOR_ARCHS=	i386 amd64
 
 USE_RC_SUBR=	grafana2
 
-USES=	compiler
+USES=	compiler go
 
 USE_GITHUB=	yes
 GH_SUBDIR=	src/github.com/${PORTNAME}/${PORTNAME}

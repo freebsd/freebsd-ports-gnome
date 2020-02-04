@@ -2,7 +2,7 @@
 
 PORTNAME=	bzflag
 PORTVERSION=	2.4.10
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	games
 MASTER_SITES=	https://download.bzflag.org/bzflag/source/${PORTVERSION}/
 
@@ -20,6 +20,7 @@ USES=		compiler:c++11-lib libtool localbase tar:bzip2
 INSTALL_TARGET=	install-strip
 
 .ifndef SERVER_ONLY
+USES+=		gl sdl xorg
 USE_GL=		gl glu
 USE_SDL=	sdl
 USE_XORG=	x11 xext xxf86vm sm ice

@@ -19,6 +19,7 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libdbus-glib-1.so:devel/dbus-glib \
 		libmuffin.so:x11-wm/muffin \
 		libcjs.so:lang/cjs \
+		libjson-glib-1.0.so:devel/json-glib \
 		libcinnamon-menu-3.so:x11/cinnamon-menus \
 		libsoup-2.4.so:devel/libsoup \
 		libstartup-notification-1.so:x11/startup-notification \
@@ -49,6 +50,13 @@ USES=		autoreconf:build compiler:c11 gettext gl gmake gnome libtool pathfix \
 USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 intltool introspection libxml2 pygobject3
 
 USE_GITHUB=	yes
+USE_GL=		gl egl
+USE_GNOME=	cairo evolutiondataserver3 gconf2 gnomedesktop3 \
+		gnomeprefix gtk30 intlhack introspection
+USE_GSTREAMER1=	yes
+USE_LDCONFIG=	yes
+USE_XORG=	x11 xfixes sm xrandr xext xdamage xcomposite xi
+
 GH_ACCOUNT=	linuxmint
 
 SHEBANG_GLOB=	*.py

@@ -14,9 +14,13 @@ USE_KDE=	auth codecs completion config configwidgets coreaddons \
 		dbusaddons ecm i18n iconthemes itemviews jobwidgets kcmutils \
 		kio notifications plasma-framework service widgetsaddons \
 		windowsystem
-USE_QT=		core dbus declarative gui network widgets xml \
+USE_QT=		concurrent core dbus declarative gui network widgets xml \
 		buildtools_build qmake_build
 
 OPTIONS_DEFINE=	DOCS
+
+post-patch:
+	${REINPLACE_CMD} '/CUPS_DATADIR/s|/usr/share/cups|${LOCALBASE}/share/cups|' \
+               ${PATCH_WRKSRC}/libkcups/KCupsRequest.cpp
 
 .include <bsd.port.mk>

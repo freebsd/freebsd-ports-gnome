@@ -3,7 +3,7 @@
 
 PORTNAME=	aegisub
 PORTVERSION=	3.2.2
-PORTREVISION=	38
+PORTREVISION=	43
 CATEGORIES=	multimedia
 MASTER_SITES=	http://ftp.aegisub.org/pub/archives/releases/source/ \
 		ftp://ftp.aegisub.org/pub/archives/releases/source/ \
@@ -15,13 +15,16 @@ COMMENT=	Cross-platform subtitle editor
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENCE
 
+NOT_FOR_ARCHS=		powerpc64
+NOT_FOR_ARCHS_REASON_powerpc64=		No support for PowerPC 64 bit mode
+
 LIB_DEPENDS=	libboost_thread.so:devel/boost-libs \
 		libicui18n.so:devel/icu \
 		libass.so:multimedia/libass \
 		libfontconfig.so:x11-fonts/fontconfig
 
-USES=		compiler:c++11-lib desktop-file-utils gettext gmake iconv \
-		localbase pkgconfig tar:xz
+USES=		compiler:c++11-lib desktop-file-utils gettext gl gmake gnome \
+		iconv localbase pkgconfig tar:xz
 USE_GNOME=	intltool
 USE_WX=		3.0
 WX_CONF_ARGS=	absolute
@@ -29,7 +32,6 @@ USE_GL=		gl
 USE_CSTD=	c99
 USE_CXXSTD=	c++11
 CPPFLAGS+=	-DU_USING_ICU_NAMESPACE=1
-CXXFLAGS+=	-D_GLIBCXX_USE_C99 # XXX ports/193528
 LDFLAGS+=	-Wl,--as-needed # freetype
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ICONV_LIBS="${ICONV_LIB}" PTHREAD_LIBS="-pthread" \

@@ -2,6 +2,7 @@
 
 PORTNAME=	webhook
 PORTVERSION=	2.6.9
+PORTREVISION=	1
 CATEGORIES=	www
 
 MAINTAINER=	stb@lassitu.de
@@ -16,6 +17,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	adnanh
 USE_RC_SUBR=	webhook
 
+GO_TARGET=	:${PREFIX}/sbin/webhook
+
 PLIST_FILES=	"@sample etc/webhook.yaml.sample" sbin/webhook
 
 .include <bsd.port.options.mk>
@@ -28,8 +31,7 @@ DAEMONARGS=	-f
 
 SUB_LIST+=	DAEMONARGS="${DAEMONARGS}"
 
-do-install:
-	${INSTALL_PROGRAM} ${GO_WRKDIR_BIN}/${PORTNAME} ${STAGEDIR}${PREFIX}/sbin
+post-install:
 	${INSTALL_DATA}  ${FILESDIR}/webhook.yaml ${STAGEDIR}${PREFIX}/etc/webhook.yaml.sample
 
 .include <bsd.port.mk>

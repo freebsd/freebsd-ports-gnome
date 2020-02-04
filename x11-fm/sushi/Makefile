@@ -3,7 +3,7 @@
 
 PORTNAME=	sushi
 PORTVERSION=	3.28.3
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	x11-fm gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -31,8 +31,8 @@ RUN_DEPENDS=	nautilus:x11-fm/nautilus
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c11 gettext gmake gnome libtool localbase pathfix \
-		pkgconfig tar:xz
+USES=		compiler:c11 gettext gl gmake gnome libtool localbase pathfix \
+		pkgconfig tar:xz xorg
 USE_CSTD=	c11
 INSTALLS_ICONS=	yes
 USE_GNOME=	cairo gnomeprefix gtksourceview3 intlhack introspection

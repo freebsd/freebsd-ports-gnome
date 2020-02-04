@@ -1,17 +1,16 @@
 # $FreeBSD$
 
 PORTNAME=	php73
-DISTVERSION=	7.3.4
-PORTREVISION?=	2
+DISTVERSION=	7.3.14
+PORTREVISION?=	0
 CATEGORIES?=	lang devel www
-MASTER_SITES=   PHP/distributions
+MASTER_SITES=	PHP/distributions
 DISTNAME=	php-${DISTVERSION}
 
 MAINTAINER=	tz@FreeBSD.org
 COMMENT=	PHP Scripting Language
 
 LICENSE=	PHP301
-LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES+=		tar:xz cpe gnome
 CPE_PRODUCT=	php
@@ -30,6 +29,7 @@ CONFIGURE_ARGS+=--with-layout=GNU \
 		--with-pcre-regex=${LOCALBASE} \
 		--with-password-argon2=${LOCALBASE} \
 		--program-prefix=""
+CONFIGURE_ENV=	CPPFLAGS="-I${LOCALBASE}/include"
 USES+=		autoreconf:build
 USE_GNOME=	libxml2
 
@@ -42,6 +42,7 @@ OPTIONS_EXCLUDE_DragonFly=	DTRACE
 # ld(1) fails to link probes: Relocations in generic ELF (EM: 0)
 OPTIONS_EXCLUDE_aarch64=	DTRACE
 OPTIONS_EXCLUDE_powerpc=	DTRACE
+OPTIONS_EXCLUDE_powerpc64=	DTRACE
 # dt_modtext:opensolaris/ib/libdtrace/common/dt_link.c: arm not impemented
 OPTIONS_EXCLUDE_armv6=		DTRACE
 OPTIONS_EXCLUDE_armv7=		DTRACE

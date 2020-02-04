@@ -11,6 +11,10 @@ DISTNAME=	${PORTNAME}.v${PORTVERSION}
 MAINTAINER=	woodsb02@FreeBSD.org
 COMMENT=	C++ class library for the automatic layout of diagrams
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=		GPLv2 GPLv3
 LICENSE_COMB=		dual
 LICENSE_FILE_GPLv2=	${WRKSRC}/LICENSE_GPL_v2.txt

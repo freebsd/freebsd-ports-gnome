@@ -3,14 +3,17 @@
 
 PORTNAME=	telldus-core
 PORTVERSION=	2.1.2
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	comms
 MASTER_SITES=	http://download.telldus.se/TellStick/Software/telldus-core/
 
 MAINTAINER=	johan@stromnet.se
 COMMENT=	Tellstick Telldus daemon + library
 
+BROKEN=		unfetchable
+
 LICENSE=	LGPL21
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	help2man:misc/help2man
 LIB_DEPENDS=	libftdi.so:devel/libftdi \
@@ -20,11 +23,11 @@ LIB_DEPENDS=	libftdi.so:devel/libftdi \
 USES=		cmake compiler:c++11-lang iconv:wchar_t
 USE_LDCONFIG=	yes
 
-CMAKE_ARGS+=-DGENERATE_MAN=TRUE
+CMAKE_ARGS+=	-DGENERATE_MAN=TRUE
 # Note: these are internal defines and shall NOT contain ${STAGEDIR}
-CMAKE_ARGS+=-DSYSCONF_INSTALL_DIR="${PREFIX}/etc"
+CMAKE_ARGS+=	-DSYSCONF_INSTALL_DIR="${PREFIX}/etc"
 # Using global /var, otherwise testport complains "Warning: port uses /usr/local/var instead of /var"
-CMAKE_ARGS+=-DSTATE_INSTALL_DIR="/var/telldus"
+CMAKE_ARGS+=	-DSTATE_INSTALL_DIR="/var/telldus"
 CXXFLAGS+=	${CXXFLAGS_${CHOSEN_COMPILER_TYPE}}
 CXXFLAGS_clang=	-Wno-c++11-narrowing
 

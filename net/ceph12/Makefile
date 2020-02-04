@@ -3,7 +3,7 @@
 
 PORTNAME=	ceph
 DISTVERSIONPREFIX=	v
-DISTVERSION=	12.2.11
+DISTVERSION=	12.2.12
 PORTREVISION=	1
 CATEGORIES=	net
 PKGNAMESUFFIX=	12
@@ -54,8 +54,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	ceph:DEFAULT
 
 GH_TUPLE+=	ceph:ceph-erasure-code-corpus:2d7d78b:ceph_erasure_code_corpus/ceph-erasure-code-corpus
-GH_TUPLE+=	ceph:ceph-object-corpus:e32bf8c:ceph_object_corpus/ceph-object-corpus
-GH_TUPLE+=	ceph:civetweb:de23828:civetweb/src/civetweb
+GH_TUPLE+=	ceph:ceph-object-corpus:f0ba19f:ceph_object_corpus/ceph-object-corpus
+GH_TUPLE+=	ceph:civetweb:088b813:civetweb/src/civetweb
 GH_TUPLE+=	01org:isa-l_crypto:603529a:isa_l_crypto/src/crypto/isa-l/isa-l_crypto
 GH_TUPLE+=	ceph:gf-complete:7e61b44:gf_complete/src/erasure-code/jerasure/gf-complete
 GH_TUPLE+=	ceph:jerasure:96c76b8:jerasure/src/erasure-code/jerasure/jerasure
@@ -63,7 +63,7 @@ GH_TUPLE+=	ceph:googletest:fdb8504:googletest/src/googletest
 GH_TUPLE+=	ceph:isa-l:7e1a337:isa_l/src/isa-l
 GH_TUPLE+=	ceph:lua:1fce39c:lua/src/lua
 GH_TUPLE+=	ceph:rapidjson:f54b0e4:rapidjson/src/rapidjson
-GH_TUPLE+=	ceph:rocksdb:e15382c:rocksdb/src/rocksdb
+GH_TUPLE+=	ceph:rocksdb:b181f17:rocksdb/src/rocksdb
 GH_TUPLE+=	ceph:xxHash:1f40c65:xxHash/src/xxHash
 GH_TUPLE+=	facebook:zstd:f4340f4:zstd/src/zstd
 

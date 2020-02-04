@@ -2,7 +2,7 @@
 
 PORTNAME=	ppsspp
 DISTVERSIONPREFIX=	v
-DISTVERSION?=	1.8.0
+DISTVERSION?=	1.9.4
 PORTREVISION?=	0
 CATEGORIES=	emulators
 # XXX Get from Debian once #697821 lands
@@ -27,14 +27,14 @@ RUN_DEPENDS=	xdg-open:devel/xdg-utils
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	hrydgard
-GH_TUPLE?=	hrydgard:glslang:9983f99e:glslang/ext/glslang \
-		hrydgard:${PORTNAME}-lang:18e0d46:lang/assets/lang \
-		KhronosGroup:SPIRV-Cross:be7425e:SPIRV/ext/SPIRV-Cross \
+GH_TUPLE?=	hrydgard:glslang:7.11.3214-63-gf9d08a25:glslang/ext/glslang \
+		hrydgard:${PORTNAME}-lang:bfc3a51:lang/assets/lang \
+		KhronosGroup:SPIRV-Cross:2019-05-20-60-ga1f7c8dc:SPIRV/ext/SPIRV-Cross \
 		Kingcom:armips:v0.10.0-28-g7885552:armips/ext/armips
 
 CONFLICTS_INSTALL=	${PORTNAME}-*
 
-USES=		cmake compiler:c++11-lib localbase:ldflags pkgconfig
+USES=		cmake compiler:c++11-lib gl localbase:ldflags pkgconfig sdl
 EXCLUDE=	libzip zlib
 EXTRACT_AFTER_ARGS=${EXCLUDE:S,^,--exclude ,}
 USE_GL=		gl glew glu
@@ -92,7 +92,7 @@ do-install:
 	${LN} -sf ../${DATADIR_REL}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 
 	${INSTALL_MAN} ${_DISTDIR}/${PORTNAME}.1 \
-		${STAGEDIR}${MAN1PREFIX}/man/man1
+		${STAGEDIR}${PREFIX}/share/man/man1
 	(cd ${WRKSRC}/icons && ${COPYTREE_SHARE} \
 		"hicolor" ${STAGEDIR}${PREFIX}/share/icons)
 	${MKDIR} ${STAGEDIR}${PREFIX}/share/icons/hicolor/scalable/apps

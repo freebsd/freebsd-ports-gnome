@@ -4,7 +4,7 @@
 
 PORTNAME=	libgnomeuimm
 PORTVERSION=	2.28.0
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	x11-toolkits gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -17,10 +17,9 @@ LIB_DEPENDS=	libgnomemm-2.6.so:x11/libgnomemm26 \
 		libgconfmm-2.6.so:devel/gconfmm26 \
 		libglademm-2.4.so:devel/libglademm24 \
 		libgnomevfsmm-2.6.so:devel/gnome-vfsmm
-BUILD_DEPENDS=	gm4:devel/m4
 
-USES=		compiler:c++11-lang gmake libtool:keepla pathfix pkgconfig \
-		tar:bzip2
+USES=		compiler:c++11-lang gmake gnome libtool:keepla pathfix \
+		pkgconfig tar:bzip2 xorg
 USE_CXXSTD=	c++11
 USE_XORG=	x11
 USE_GNOME=	libgnomeui
@@ -28,6 +27,7 @@ GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--enable-static
 INSTALL_TARGET=	install-strip
+BINARY_WRAPPERS=	gm4
 
 PLIST_SUB=	VERSION="2.6" API_VERSION="2.6"
 

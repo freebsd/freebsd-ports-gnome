@@ -12,6 +12,8 @@ DISTNAME=	lua-${PORTNAME}-${PORTVERSION}
 MAINTAINER=	vanilla@FreeBSD.org
 COMMENT=	Iconv binding for Lua 5
 
+BROKEN=		unfetchable
+
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
@@ -27,6 +29,8 @@ MAKE_ARGS=	LUABIN=${LUA_CMD} CFLAGS="${CFLAGS}"
 LDFLAGS+=	-shared ${ICONV_LIB} -L${LOCALBASE}/lib
 CFLAGS_aarch64=	-fPIC
 CFLAGS_amd64=	-fPIC
+CFLAGS_armv6=	-fPIC
+CFLAGS_armv7=	-fPIC
 CFLAGS_i386=	-fPIC
 
 do-install:

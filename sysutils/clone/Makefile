@@ -2,12 +2,14 @@
 
 PORTNAME=	clone
 PORTVERSION=	1.0.7
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	sysutils
 MASTER_SITES=	http://cyclaero.com/public/clone/
 
 MAINTAINER=	cyclaero@gmail.com
 COMMENT=	File tree cloning tool
+
+BROKEN=		unfetchable
 
 LICENSE=	BSD2CLAUSE
 

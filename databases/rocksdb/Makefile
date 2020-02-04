@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	rocksdb
-PORTVERSION=	6.0.2
+PORTVERSION=	6.6.4
 DISTVERSIONPREFIX=	v
 CATEGORIES=	databases
 
@@ -72,6 +72,10 @@ PLIST_SUB+=	LITE=${PKGNAMESUFFIX}
 
 .if ${CHOSEN_COMPILER_TYPE} == clang
 CXXFLAGS+=	-Wno-inconsistent-missing-override
+# Clang 8 detects shadow enums and stops the build. This workaround adds -Wno-error=shadow to bypass it.
+.if ${COMPILER_VERSION} >= 80
+CXXFLAGS+=	-Wno-error=shadow
+.endif
 .endif
 
 post-patch:
@@ -80,7 +84,7 @@ post-patch:
 .if ${ARCH} != amd64 && ${ARCH} != i386
 	@${REINPLACE_CMD} -e 's| -march=native||' ${WRKSRC}/build_tools/build_detect_platform
 .endif
-	@${REINPLACE_CMD} -e 's|#include "gtest/gtest.h"|#include "gtest.h"|' ${WRKSRC}/third-party/gtest-1.7.0/fused-src/gtest/gtest-all.cc
+	@${REINPLACE_CMD} -e 's|#include "gtest/gtest.h"|#include "gtest.h"|' ${WRKSRC}/third-party/gtest-1.8.1/fused-src/gtest/gtest-all.cc
 .if defined(WITHOUT_PROFILE)
 	@${REINPLACE_CMD} -e '/pg = / s| -pg||' ${WRKSRC}/Makefile
 .endif

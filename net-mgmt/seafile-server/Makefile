@@ -3,8 +3,8 @@
 PORTNAME=	seafile-server
 DISTVERSIONPREFIX=	v
 DISTVERSION=	${SEAFILE_VER}
-PORTREVISION=	2
 DISTVERSIONSUFFIX=	-server
+PORTREVISION=	1
 CATEGORIES=	net-mgmt
 
 MAINTAINER=	ultima@FreeBSD.org
@@ -22,14 +22,15 @@ LIB_DEPENDS=	libsearpc.so:devel/libsearpc \
 		libccnet.so:net-mgmt/ccnet-server \
 		libevent.so:devel/libevent \
 		libuuid.so:misc/e2fsprogs-libuuid \
-		libjansson.so:devel/jansson
+		libjansson.so:devel/jansson \
+		libonig.so:devel/oniguruma
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}urllib3>0:net/py-urllib3@${PY_FLAVOR} \
 		bash:shells/bash
 
 CONFLICTS=	seafile-[0-9]*
 
-USES=		autoreconf compiler:c11 iconv libarchive libtool localbase mysql \
+USES=		autoreconf compiler:c11 gnome iconv libarchive libtool localbase mysql \
 		pathfix pgsql pkgconfig python:2.7 shebangfix sqlite ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	haiwen
@@ -96,8 +97,8 @@ post-install:
 		${STAGEDIR}${PREFIX}/${SEAFILE_SERVER}/upgrade
 	${INSTALL_DATA} ${WRKSRC}/doc/seafile-tutorial.doc \
 		${STAGEDIR}${PREFIX}/${SEAFILE_SERVER}/seafile/share/doc/seafile/
-	(cd ${WRKSRC}/scripts/upgrade && \
-		${COPYTREE_SHARE} sql ${STAGEDIR}${PREFIX}/${SEAFILE_SERVER}/upgrade)
+	(cd ${WRKSRC}/scripts && \
+		${COPYTREE_SHARE} "sql upgrade/sql" ${STAGEDIR}${PREFIX}/${SEAFILE_SERVER})
 
 makesum-all:
 .for PORT in net-mgmt/ccnet-server net-mgmt/seafile-server www/py-seafdav www/py-seafobj www/seahub

@@ -2,9 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	lftp
-PORTVERSION=	4.8.4
-PORTREVISION=	4
-CATEGORIES=	ftp ipv6
+PORTVERSION=	4.9.1
+CATEGORIES=	ftp
 MASTER_SITES=	http://lftp.tech/ftp/ \
 		http://lftp.tech/ftp/old/ \
 		http://lftp.cybermirror.org/ \
@@ -23,7 +22,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS=	libexpat.so:textproc/expat2 \
 		libidn2.so:dns/libidn2
 
-USES=		charsetfix iconv libtool localbase readline shebangfix
+USES=		compiler:c++11-lang charsetfix iconv libtool localbase \
+		readline shebangfix
 GNU_CONFIGURE=	yes
 
 PORTDOCS=	AUTHORS BUGS ChangeLog FAQ FEATURES INSTALL \
@@ -69,10 +69,6 @@ NEED_PTHREAD=	# empty
 .endif
 .if !empty(NEED_PTHREAD)
 LDFLAGS+=	-pthread
-.endif
-
-.if ${ARCH} == powerpc64
-USE_GCC=	yes
 .endif
 
 .include <bsd.port.post.mk>

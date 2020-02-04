@@ -1,8 +1,7 @@
 # Created by: David Shane Holden <dpejesh@yahoo.com>
 # $FreeBSD$
 
-PORTVERSION=		2.99.2
-PORTREVISION=	1
+PORTVERSION=		2.99.5
 PKGNAMESUFFIX=		3
 
 .include "${.CURDIR}/../corosync2/Makefile.common"

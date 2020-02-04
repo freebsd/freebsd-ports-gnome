@@ -40,7 +40,6 @@ SUBDIR += net-im
 SUBDIR += net-mgmt
 SUBDIR += net-p2p
 SUBDIR += news
-SUBDIR += palm
 SUBDIR += polish
 SUBDIR += ports-mgmt
 SUBDIR += portuguese
@@ -77,7 +76,7 @@ fetchindex: ${INDEXDIR}/${INDEXFILE}.bz2
 	chmod a+r ${INDEXDIR}/${INDEXFILE} && ${RM} ${INDEXDIR}/${INDEXFILE}.bz2
 
 ${INDEXDIR}/${INDEXFILE}.bz2: .PHONY
-	@${FETCHINDEX} ${INDEXDIR}/${INDEXFILE}.bz2 ${MASTER_SITE_INDEX}${INDEXFILE}.bz2
+	${FETCHINDEX} ${INDEXDIR}/${INDEXFILE}.bz2 ${MASTER_SITE_INDEX}${INDEXFILE}.bz2
 
 MASTER_SITE_INDEX?=	https://www.FreeBSD.org/ports/
 SETENV?=	/usr/bin/env
@@ -148,7 +147,7 @@ ${INDEXDIR}/${INDEXFILE}:
 		sed -e 's|${.CURDIR}|${PORTSDIR}|g' | \
 		(cd ${.CURDIR} ; ${MAKE_INDEX}) | \
 		sed -e 's/  */ /g' -e 's/|  */|/g' -e 's/  *|/|/g' -e 's./..g' | \
-		sort -t '|' +1 -2 | \
+		sort -t '|' -k 2,3 | \
 		sed -Ee 's../.g' -e ':a' -e 's|/[^/]+/\.\.||; ta' \
 		-e 's|${PORTSDIR}|/usr/ports|g' \
 		-e 's|${.CURDIR}|/usr/ports|g' > ${INDEXDIR}/${INDEXFILE}.tmp; \

@@ -12,14 +12,13 @@
     SUBDIR += bind-tools
     SUBDIR += bind9-devel
     SUBDIR += bind911
-    SUBDIR += bind912
-    SUBDIR += bind913
     SUBDIR += bind914
     SUBDIR += bindgraph
     SUBDIR += bundy
     SUBDIR += c-ares
     SUBDIR += checkdns
     SUBDIR += cli53
+    SUBDIR += coredns
     SUBDIR += credns
     SUBDIR += crossip
     SUBDIR += curvedns
@@ -70,7 +69,6 @@
     SUBDIR += dsp
     SUBDIR += dynip
     SUBDIR += erlang-idna
-    SUBDIR += ez-ipupdate
     SUBDIR += fastresolve
     SUBDIR += firedns
     SUBDIR += flamethrower
@@ -82,8 +80,6 @@
     SUBDIR += getdns
     SUBDIR += hesiod
     SUBDIR += hostdb
-    SUBDIR += hs-dns
-    SUBDIR += hs-gnuidn
     SUBDIR += idnkit
     SUBDIR += idnkit2
     SUBDIR += inadyn
@@ -92,6 +88,7 @@
     SUBDIR += ironsides
     SUBDIR += kadnode
     SUBDIR += kf5-kdnssd
+    SUBDIR += knock
     SUBDIR += knot-resolver
     SUBDIR += knot2
     SUBDIR += knot2-lib
@@ -105,7 +102,6 @@
     SUBDIR += libidn2
     SUBDIR += libnspsl
     SUBDIR += libpsl
-    SUBDIR += linux-c6-libasyncns
     SUBDIR += linux-c7-libasyncns
     SUBDIR += mDNSResponder_nss
     SUBDIR += maradns
@@ -113,6 +109,7 @@
     SUBDIR += mydns
     SUBDIR += mydns-ng
     SUBDIR += namesilo_ddns
+    SUBDIR += nextdns
     SUBDIR += noip
     SUBDIR += nsd
     SUBDIR += nsec3walker
@@ -196,6 +193,7 @@
     SUBDIR += py-ldns
     SUBDIR += py-localzone
     SUBDIR += py-namebench
+    SUBDIR += py-ns1-python
     SUBDIR += py-publicsuffix
     SUBDIR += py-publicsuffixlist
     SUBDIR += py-py3dns
@@ -210,9 +208,11 @@
     SUBDIR += rbldnsd
     SUBDIR += rbllookup
     SUBDIR += rbllookup-ng
+    SUBDIR += rdap
     SUBDIR += renewck
     SUBDIR += rpsl2acl
     SUBDIR += rubygem-dnsruby
+    SUBDIR += rubygem-gitlab-net-dns
     SUBDIR += rubygem-idn-ruby
     SUBDIR += rubygem-net-dns
     SUBDIR += rubygem-public_suffix
@@ -224,6 +224,7 @@
     SUBDIR += sheerdns
     SUBDIR += sleuth
     SUBDIR += sshfp
+    SUBDIR += subfinder
     SUBDIR += tinystats
     SUBDIR += totd
     SUBDIR += udns

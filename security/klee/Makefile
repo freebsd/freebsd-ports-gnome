@@ -3,6 +3,7 @@
 PORTNAME=	klee
 DISTVERSIONPREFIX=	v
 DISTVERSION=	2.0
+PORTREVISION=	1
 CATEGORIES=	security devel
 
 MAINTAINER=	arrowd@FreeBSD.org
@@ -17,7 +18,8 @@ BUILD_DEPENDS=	llvm-config${LLVM_DEFAULT}:devel/llvm${LLVM_DEFAULT} \
 RUN_DEPENDS=	llvm-config${LLVM_DEFAULT}:devel/llvm${LLVM_DEFAULT} \
 		${PYTHON_PKGNAMEPREFIX}tabulate>0:devel/py-tabulate@${PY_FLAVOR}
 
-USES=		cmake localbase pkgconfig python:3.5+,run shebangfix
+USES=		cmake compiler:c++14-lang localbase pkgconfig python:3.5+,run \
+		shebangfix
 USE_GITHUB=	yes
 SHEBANG_FILES=	tools/klee-stats/klee-stats tools/ktest-tool/ktest-tool
 USE_LDCONFIG=	yes
@@ -45,5 +47,11 @@ STP_DESC=		STP SMT solver
 STP_CMAKE_BOOL=		ENABLE_SOLVER_STP
 STP_CMAKE_ON=		-DFREEBSD_STP_STATIC_LIBRARY:STRING=${LOCALBASE}/lib/libstp.a
 STP_BUILD_DEPENDS=	stp>0:math/stp
+
+.include <bsd.port.options.mk>
+
+.if ${LLVM_DEFAULT:S,-devel,990,} >= 90
+LLVM_DEFAULT=	80
+.endif
 
 .include <bsd.port.mk>

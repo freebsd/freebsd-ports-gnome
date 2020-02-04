@@ -1,10 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	gatk
-DISTVERSION=	4.0.11.0
+DISTVERSION=	4.1.4.1
 CATEGORIES=	biology java
-MASTER_SITES=	LOCAL/yuri/:deps
-DISTFILES=	${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX}:deps
 EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -13,7 +11,7 @@ COMMENT=	Variant discovery in high-throughput sequencing data
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE.TXT
 
-BUILD_DEPENDS=	gradle4:devel/gradle4
+BUILD_DEPENDS=	gradle5:devel/gradle5
 
 USES=		gettext-runtime
 USE_GITHUB=	yes
@@ -30,13 +28,33 @@ DEPS_CACHE_DIR=	/tmp # should be ${WRKDIR}, but workaround for the gradle bug th
 PLIST_FILES=	bin/${PORTNAME} \
 		${JAVAJARDIR}/GenomeAnalysisTK-${PORTVERSION}.jar
 
-post-extract: # to rebuild the deps archive: 1. remove post-extract: 2. remove --offline 3. build 4. package ${DEPS_CACHE_DIR}/gradle-${PORTNAME} into the deps archive
+# to rebuild the deps archive:
+#   1. set DEV_UPDATE_MODE=yes
+#   2. make makesum build
+#   3. upload the *-deps archive
+#   4. set DEV_UPDATE_MODE=no
+#   5. make clean makesum
+
+DEV_UPDATE_MODE=	no
+
+.if (${DEV_UPDATE_MODE} == "yes")
+post-build:
+	@cd ${DEPS_CACHE_DIR} && ${TAR} czf ${DISTDIR}/${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX} gradle-${PORTNAME}
+	@${ECHO} "(!!!) Please upload the gradle deps archive: ${DISTDIR}/${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX}"
+.else
+MASTER_SITES=	LOCAL/yuri/:deps
+DISTFILES=	${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX}:deps
+GRADLE_ARGS=	--offline
+
+post-extract: # need a separate extract step because the cache is in /tmp, and not under work/ like with maven
 	@cd ${DEPS_CACHE_DIR} && ${TAR} xzf ${DISTDIR}/${PORTNAME}-${DISTVERSION}-deps${EXTRACT_SUFX}
+.endif
+
 
 do-build:
-	@cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} gradle4 \
+	@cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} gradle5 \
 		--gradle-user-home ${DEPS_CACHE_DIR}/gradle-${PORTNAME} --project-cache-dir ${DEPS_CACHE_DIR}/gradle-${PORTNAME} \
-		--offline --build-cache localJar
+		${GRADLE_ARGS} --build-cache localJar
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME}.sh ${STAGEDIR}${PREFIX}/bin/${PORTNAME}

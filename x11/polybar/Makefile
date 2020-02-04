@@ -1,8 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	polybar
-DISTVERSION=	3.3.1
+DISTVERSION=	3.4.2
+PORTREVISION=	1
 CATEGORIES=	x11
+MASTER_SITES=	https://github.com/polybar/polybar/releases/download/${DISTVERSION}/
 
 MAINTAINER=	rigoletto@FreeBSD.org
 COMMENT=	Fast and easy-to-use status bar
@@ -22,17 +24,12 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 
 # compiler:c++11-lang is needed for powerpc64
 USES=		cmake compiler:c++11-lang gnome localbase:ldflags \
-		pkgconfig python:2.7,build
-
-USE_GITHUB=	yes
-GH_ACCOUNT=	jaagr
-GH_TUPLE=	jaagr:i3ipcpp:v0.7.1-4-gd4e4786:i3ipcpp/lib/i3ipcpp \
-		jaagr:xpp:1.4.0-8-gab6247b:xpp/lib/xpp
+		pkgconfig python:3.5+,build tar xorg
 
 USE_GNOME=	cairo
 USE_XORG=	xcb
 
-# Needs libnl to work. Disabling completely.
+# Needs libnl to work. Disabling it completely.
 CMAKE_OFF=	ENABLE_NETWORK
 
 OPTIONS_DEFINE=		ALSA CURSOR DEBUG GITHUB I3 IPC MPD PULSEAUDIO \
@@ -79,6 +76,8 @@ TESTS_CMAKE_BOOL=	BUILD_TESTS
 
 XKEYBOARD_CMAKE_BOOL=	ENABLE_XKEYBOARD
 XKEYBOARD_LIB_DEPENDS=	libxcb-xkb.so:x11/libxcb
+
+WRKSRC=		${WRKDIR}/${PORTNAME}
 
 do-test-TESTS-on:
 	cd ${TEST_WRKSRC} && ${SETENV} BUILD_TESTS=ON \

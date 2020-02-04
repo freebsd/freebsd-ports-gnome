@@ -15,7 +15,7 @@ LICENSE=	GPLv3
 BUILD_DEPENDS=	${PY_ENUM34}
 RUN_DEPENDS=	${PY_ENUM34}
 
-USES=		python pyqt:5 qt:5
+USES=		gl python pyqt:5 qt:5
 USE_GL=		gl
 USE_PYQT=	sip_build core gui network printsupport webchannel
 USE_PYTHON=	concurrent flavors py3kplist
@@ -38,6 +38,8 @@ API_CONFIGURE_ON=	--apidir=${PYQT_APIDIR}
 API_CONFIGURE_OFF=	--no-qsci-api
 API_LIB_DEPENDS=	libqscintilla2_qt5.so:devel/qscintilla2-qt5
 DEBUG_CONFIGURE_ON=	--debug --trace
+
+PLIST_SUB=		PYQT_WEBENGINE_VERSION=${DISTVERSION}
 
 post-install-DEBUG-off:
 	${STRIP_CMD} ${STAGEDIR}${PYTHON_SITELIBDIR}/PyQt5/QtWebEngine*.so

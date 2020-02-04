@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	elasticsearch-model
-PORTVERSION=	6.0.0
+PORTVERSION=	7.0.0
 CATEGORIES=	textproc rubygems
 MASTER_SITES=	RG
 
@@ -10,6 +10,7 @@ MAINTAINER=	sunpoet@FreeBSD.org
 COMMENT=	ActiveModel/Record integrations for Elasticsearch
 
 LICENSE=	APACHE20
+LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 RUN_DEPENDS=	rubygem-activesupport5>=3:devel/rubygem-activesupport5 \
 		rubygem-elasticsearch>=1:textproc/rubygem-elasticsearch \

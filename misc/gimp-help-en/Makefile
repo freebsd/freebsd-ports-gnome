@@ -17,10 +17,14 @@ COMMENT?=	GIMP User Manual in English
 
 LICENSE=	GFDL
 
+DEPRECATED=	Outdated, uses EOLed python27
+EXPIRATION_DATE=	2020-02-08
+
 BUILD_DEPENDS=	${PYTHON_SITELIBDIR}/libxml2mod.so:textproc/py-libxml2@${PY_FLAVOR} \
 		${LOCALBASE}/share/xsl/docbook/xhtml/chunk.xsl:textproc/docbook-xsl
 
-USES=		gettext-tools gmake perl5 pkgconfig python:2.7 shebangfix tar:bzip2
+USES=		gettext-tools gmake gnome perl5 pkgconfig python:2.7 shebangfix \
+		tar:bzip2
 USE_GNOME=	libxslt:build
 USE_PERL5=	build
 GNU_CONFIGURE=	yes

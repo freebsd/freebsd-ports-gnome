@@ -2,9 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	strongswan
-PORTVERSION=	5.7.2
-PORTREVISION=	2
-CATEGORIES=	security
+PORTVERSION=	5.8.2
+PORTREVISION=	1
+CATEGORIES=	security net-vpn
 MASTER_SITES=	http://download.strongswan.org/ \
 		http://download2.strongswan.org/
 
@@ -42,14 +42,17 @@ CONFIGURE_ARGS=	--enable-kernel-pfkey \
 		--with-lib-prefix=${PREFIX}
 
 OPTIONS_DEFINE=	CURL EAPAKA3GPP2 EAPDYNAMIC EAPRADIUS EAPSIMFILE GCM IKEV1 \
-		IPSECKEY KERNELLIBIPSEC LOADTESTER LDAP MEDIATION MYSQL PKI SCEP SMP \
-		SQLITE SWANCTL TESTVECTOR TPM UNBOUND UNITY VICI XAUTH
+		IPSECKEY KERNELLIBIPSEC LOADTESTER LDAP MEDIATION MYSQL PKI \
+		PKCS11 PYTHON SCEP SMP SQLITE SWANCTL TESTVECTOR TPM UNBOUND UNITY \
+		VICI XAUTH
+OPTIONS_DEFINE_i386=	VIA
 OPTIONS_DEFAULT=	BUILTIN CURL IKEV1 PKI SWANCTL VICI
 OPTIONS_SINGLE=	PRINTF_HOOKS
 OPTIONS_SINGLE_PRINTF_HOOKS=	BUILTIN LIBC VSTR
 OPTIONS_SUB=	yes
 
 # Description of options
+BUILTIN_DESC=	Use builtin printf hooks
 CURL_DESC=	Enable CURL to fetch CRL/OCSP
 EAPAKA3GPP2_DESC=	Enable EAP AKA with 3gpp2 backend
 EAPDYNAMIC_DESC=	Enable EAP dynamic proxy module
@@ -59,9 +62,12 @@ GCM_DESC=		Enable GCM AEAD wrapper crypto plugin
 IKEV1_DESC=	Enable IKEv1 support
 IPSECKEY_DESC=	Enable authentication with IPSECKEY resource records with DNSSEC
 KERNELLIBIPSEC_DESC=	Enable IPSec userland backend
+LIBC_DESC=	Use libc printf hooks
 LOADTESTER_DESC=	Enable load testing plugin
 MEDIATION_DESC=		Enable IKEv2 Mediation Extension
+PKCS11_DESC=	Enable PKCS11 token support
 PKI_DESC=	Enable PKI tools
+PYTHON_DESC=	Python VICI protocol plugin
 SCEP_DESC=	Enable Simple Certificate Enrollment Protocol
 SMP_DESC=	Enable XML-based management protocol (DEPRECATED)
 SWANCTL_DESC=	Install swanctl (requires VICI)
@@ -69,13 +75,13 @@ TESTVECTOR_DESC=	Enable crypto test vectors
 TPM_DESC=	Enable TPM plugin
 UNBOUND_DESC=	Enable DNSSEC-enabled resolver
 UNITY_DESC=	Enable Cisco Unity extension plugin
+VIA_DESC=	Enable VIA Padlock support
 VICI_DESC=	Enable VICI management protocol
-XAUTH_DESC=	Enable XAuth password verification
-BUILTIN_DESC=	Use builtin printf hooks
-LIBC_DESC=	Use libc printf hooks
 VSTR_DESC=	Use devel/vstr printf hooks
+XAUTH_DESC=	Enable XAuth password verification
 
 # Extra options
+BUILTIN_CONFIGURE_ON=	--with-printf-hooks=builtin
 CURL_CONFIGURE_ON=	--enable-curl
 CURL_LIB_DEPENDS=	libcurl.so:ftp/curl
 EAPAKA3GPP2_CONFIGURE_ON=	--enable-eap-aka --enable-eap-aka-3gpp2
@@ -87,16 +93,21 @@ GCM_CONFIGURE_ON=	--enable-gcm
 IKEV1_CONFIGURE_OFF=	--disable-ikev1
 IPSECKEY_CONFIGURE_ON=	--enable-ipseckey
 KERNELLIBIPSEC_CONFIGURE_ON=	--enable-kernel-libipsec
-LOADTESTER_CONFIGURE_ON=--enable-load-tester
 LDAP_CONFIGURE_ON=	--enable-ldap
 LDAP_USE=		OPENLDAP=yes
+LIBC_CONFIGURE_ON=	--with-printf-hooks=glibc
+LOADTESTER_CONFIGURE_ON=--enable-load-tester
 MEDIATION_CONFIGURE_ON=	--enable-mediation
 MYSQL_CONFIGURE_ON=	--enable-mysql
 MYSQL_USES=		mysql
+PKCS11_CONFIGURE_ON=	--enable-pkcs11
 PKI_CONFIGURE_OFF=	--disable-pki
+PYTHON_IMPLIES=		VICI
+PYTHON_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}vici>0:security/py-vici@${PY_FLAVOR}
+PYTHON_USES=		python
 SCEP_CONFIGURE_OFF=	--disable-scepclient
-SMP_LIB_DEPENDS=	libxml2.so:textproc/libxml2
 SMP_CONFIGURE_ON=	--enable-smp
+SMP_LIB_DEPENDS=	libxml2.so:textproc/libxml2
 SQLITE_CONFIGURE_ON=	--enable-sqlite
 SQLITE_LIB_DEPENDS=	libsqlite3.so:databases/sqlite3
 SWANCTL_CONFIGURE_ON=	--enable-swanctl
@@ -107,14 +118,13 @@ UNBOUND_CONFIGURE_ON=	--enable-unbound
 UNBOUND_LIB_DEPENDS=	libunbound.so:dns/unbound \
 			libldns.so:dns/ldns
 UNITY_CONFIGURE_ON=	--enable-unity
+VIA_CONFIGURE_ON=	--enable-padlock
 VICI_CONFIGURE_ON=	--enable-vici
+VSTR_CONFIGURE_ON=	--with-printf-hooks=vstr
+VSTR_LIB_DEPENDS=	libvstr.so:devel/vstr
 XAUTH_CONFIGURE_ON=	--enable-xauth-eap \
 			--enable-xauth-generic \
 			--enable-xauth-pam
-BUILTIN_CONFIGURE_ON=	--with-printf-hooks=builtin
-LIBC_CONFIGURE_ON=	--with-printf-hooks=glibc
-VSTR_CONFIGURE_ON=	--with-printf-hooks=vstr
-VSTR_LIB_DEPENDS=	libvstr.so:devel/vstr
 
 .include <bsd.port.options.mk>
 
@@ -135,6 +145,12 @@ PLIST_SUB+=	SQL="@comment "
 PLIST_SUB+=	XAUTHGEN=""
 .else
 PLIST_SUB+=	XAUTHGEN="@comment "
+.endif
+
+# Hack to disable VIA in plist of unsupported architectures
+.if ! ${OPTIONS_DEFINE:MVIA}
+PLIST_SUB+=	VIA="@comment "
+.else
 .endif
 
 post-install:

@@ -2,12 +2,12 @@
 # $FreeBSD$
 
 PORTNAME=	eclipse
-PORTVERSION=	4.11
+PORTVERSION=	4.14
 CATEGORIES=	java devel
 
 # Update to git-tag on git.eclipse.org
-ECLIPSE_TAG=	R4_11
-ECLIPSE_TSTAMP=	20190321-0023
+ECLIPSE_TAG=	R4_14
+ECLIPSE_TSTAMP=	20191220-0429
 
 ECLIPSE_SUFX=	${ECLIPSE_TAG}.tar.xz
 ECLIPSE_MODULES=jdt/eclipse.jdt \
@@ -37,46 +37,46 @@ ECLIPSE_MODULES=jdt/eclipse.jdt \
 		equinox/rt.equinox.p2
 # Each Eclipse module has its own MASTER_SITE
 .for M in ${ECLIPSE_MODULES}
-MASTER_SITES+=	https://git.eclipse.org/c/${M}.git/snapshot/:${M:C/[\.\/]//g}
+MASTER_SITES+=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/releases/download/${PORTVERSION}/:${M:C/[\.\/]//g} \
+		https://git.eclipse.org/c/${M}.git/snapshot/:${M:C/[\.\/]//g}
 DISTFILES+=	${M:C/.*\///}-${ECLIPSE_SUFX}:${M:C/[\.\/]//g}
 .endfor
 
 DIST_SUBDIR=	${PORTNAME}
 
 MAINTAINER=	jonc@chen.org.nz
-COMMENT=	Eclipse IDE 2019-03
+COMMENT=	Eclipse IDE 2019-12
 
 LICENSE=	EPL
 
-ONLY_FOR_ARCHS=	amd64 power64
+ONLY_FOR_ARCHS=	amd64 powerpc64
 
 BUILD_DEPENDS=	git:devel/git-lite \
 		${LOCALBASE}/share/java/maven/bin/mvn:devel/maven
 LIB_DEPENDS=	libsecret-1.so:security/libsecret \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3
-USES=		gmake pkgconfig gnome
+USES=		compiler:c++11-lang gmake pkgconfig gnome
 USE_GNOME=	gtk30
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	daemonblade
 GH_PROJECT=	eclipse-maven-repo
-GH_TAGNAME=	${PORTVERSION}
 
-USE_JAVA=	yes
-JAVA_VERSION=	1.8
+USE_JAVA=	8
 
 DESKTOP_ENTRIES="Eclipse" \
 		"${COMMENT}" \
 		"${PORTNAME}" \
 		"${PORTNAME}" \
 		"Development;IDE;Java;" \
-		false
+		"false"
 
 SUB_FILES=	${PORTNAME}
 
-MAVEN_ENV=	MAVEN_OPTS=-Xmx1024m
+#LOCAL_P2=	file://${WRKDIR}/${GH_PROJECT}-${PORTVERSION}/${PORTVERSION}
+MAVEN_ENV=	MAVEN_OPTS=-Xmx1024m CC=${CC} JAVA_HOME=${JAVA_HOME}
 MAVEN_REPO=	-Dmaven.repo.local=${WRKDIR}/${GH_PROJECT}-${PORTVERSION}
-MAVEN_ECLIPSE=	-Dnative=gtk.freebsd.${ARCH} -Dcomparator.repo=file://${WRKDIR}/${GH_PROJECT}-${PORTVERSION}/p2-stub -DforceContextQualifier=v${ECLIPSE_TSTAMP}
+MAVEN_ECLIPSE=	-Dnative=gtk.freebsd.${ARCH} -DforceContextQualifier=v${ECLIPSE_TSTAMP}
 
 ECLIPSE_RESULT=	eclipse.platform.releng.tychoeclipsebuilder/sdk/target/products/org.eclipse.sdk.ide-freebsd.gtk.${ARCH}.tar.gz
 
@@ -91,8 +91,9 @@ do-install:
 	${TAR} -x --directory ${STAGEDIR}${DATADIR}/.. --file ${WRKSRC}/${ECLIPSE_RESULT}
 	${INSTALL_SCRIPT} ${WRKDIR}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 
-# dynamically add timestamped profiles, which should be excluded from pkg-plist
+# generate dynamic plist, to cater for different ARCHS
 post-install:
-	cd ${STAGEDIR}${PREFIX} && ${FIND} -s share/${PORTNAME} -name '*.profile.gz' >> ${TMPPLIST}
+	cd ${STAGEDIR}${PREFIX} && ${FIND} -s bin/${PORTNAME} share/${PORTNAME} -not -type d >> ${TMPPLIST}
+	cd ${STAGEDIR}${PREFIX} && ${FIND} -ds share/${PORTNAME} -type d | ${SED} -e 's,^,@dir ,' >> ${TMPPLIST}
 
 .include <bsd.port.mk>

@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	automount
-PORTVERSION=	1.5.8
+PORTVERSION=	1.7.1
 CATEGORIES=	sysutils
-MASTER_SITES=	https://raw.github.com/vermaden/automount/master/ \
-		LOCAL/madpilot/${PORTNAME}/
+MASTER_SITES=	https://raw.github.com/vermaden/automount/master/
 
 MAINTAINER=	vermaden@interia.pl
 COMMENT=	FreeBSD's devd(8) based automount solution
@@ -22,14 +21,14 @@ OPTIONS_DEFINE=		NTFS3G EXT4 EXFAT
 OPTIONS_DEFAULT=	NTFS3G EXT4
 NTFS3G_DESC=		Enable NTFS write support with ntfs-3g over FUSE
 NTFS3G_RUN_DEPENDS=	fusefs-ntfs>=0:sysutils/fusefs-ntfs
-EXT4_DESC=		Support EXT4 filesystem
-EXT4_RUN_DEPENDS=	fusefs-ext4fuse>=0:sysutils/fusefs-ext4fuse
+EXT4_DESC=		Support EXT2/3/4 filesystem
+EXT4_RUN_DEPENDS=	fusefs-ext2>=0:sysutils/fusefs-ext2
 EXFAT_DESC=		Support Microsoft exFAT filesystem
 EXFAT_RUN_DEPENDS=	fusefs-exfat>=0:sysutils/fusefs-exfat
 
 do-install:
-	${INSTALL_SCRIPT} ${WRKSRC}/automount             ${STAGEDIR}${PREFIX}/sbin
-	${INSTALL_DATA}   ${WRKSRC}/automount_devd.conf   ${STAGEDIR}${PREFIX}/etc/devd/automount_devd.conf
-	${INSTALL_DATA}   ${WRKSRC}/automount.conf.sample ${STAGEDIR}${PREFIX}/etc/automount.conf.sample
+	${INSTALL_SCRIPT} ${WRKDIR}/automount             ${STAGEDIR}${PREFIX}/sbin
+	${INSTALL_DATA}   ${WRKDIR}/automount_devd.conf   ${STAGEDIR}${PREFIX}/etc/devd/automount_devd.conf
+	${INSTALL_DATA}   ${WRKDIR}/automount.conf	  ${STAGEDIR}${PREFIX}/etc/automount.conf.sample
 
 .include <bsd.port.mk>

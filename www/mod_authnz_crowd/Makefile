@@ -3,7 +3,7 @@
 
 PORTNAME=	mod_authnz_crowd
 PORTVERSION=	2.2.2
-PORTREVISION=	10
+PORTREVISION=	11
 CATEGORIES=	www
 MASTER_SITES=	http://downloads.atlassian.com/software/crowd/downloads/cwdapache/
 DIST_SUBDIR=	apache2
@@ -23,7 +23,7 @@ RUN_DEPENDS=	${LOCALBASE}/${APACHEMODDIR}/mod_dav_svn.so:www/mod_dav_svn
 
 GNU_CONFIGURE=	yes
 LIBS+=		-L${LOCALBASE}/lib
-USES=		apache:2.2+ autoreconf libtool
+USES=		apache:2.2+ autoreconf gnome libtool
 USE_GNOME=	libxml2
 USE_GCC=	any
 

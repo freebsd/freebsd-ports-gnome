@@ -2,7 +2,7 @@
 
 PORTNAME=	faustlive
 PORTVERSION=	g20171205
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	audio
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -19,14 +19,14 @@ LIB_DEPENDS=	libLLVM-${LLVM_VERSION:C/([1-9])([0-9])/\1.\2/}.so:devel/llvm${LLVM
 		libmicrohttpd.so:www/libmicrohttpd \
 		libqrencode.so:graphics/libqrencode # audio/alsa-lib isn't really needed: https://github.com/grame-cncm/faustlive/issues/3
 
-USES=		compiler:c++11-lang gmake qt:5 ssl
+USES=		compiler:c++11-lang gl gmake qt:5 ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	grame-cncm
 GH_TAGNAME=	281fcb8
 USE_QT=		core gui network widgets buildtools_build qmake_build
 USE_GL=		gl
 
-LLVM_VERSION=	60 # llvm verion should be the same as in audio/faust
+LLVM_VERSION=	60 # llvm version should be the same as in audio/faust
 CXXFLAGS+=	$$(llvm-config${LLVM_VERSION} --cflags)
 LDFLAGS+=	-lexecinfo
 

@@ -13,10 +13,13 @@ COMMENT=	GTK+ UI debugging tool
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-01
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-static
 INSTALL_TARGET=	install-strip
-USES=		autoreconf libtool pkgconfig python:2.7
+USES=		autoreconf gnome libtool pkgconfig python:2.7
 USE_GNOME=	gtk20 pygtk2
 WRKSRC=		${WRKDIR}/chipx86-gtkparasite-a3d862d4a91ea27222e4273a6797f3e47efe6e83
 PORTDOCS=	USAGE

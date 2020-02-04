@@ -11,8 +11,11 @@ COMMENT=	Typing tutor trainer
 
 LICENSE=	MIT
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-01
+
 USE_GNOME=	pygtk2
-USES=		python:2.7
+USES=		gnome python:2.7
 USE_PYTHON=	distutils autoplist
 
 .include <bsd.port.mk>

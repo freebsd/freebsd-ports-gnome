@@ -12,6 +12,10 @@ PKGNAMEPREFIX=	trac-
 MAINTAINER=	dryice@dryice.name
 COMMENT=	Plugin to creates Gantt charts for trac
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	BSD3CLAUSE
 
 RUN_DEPENDS=	trac>=0.11:www/trac

@@ -8,11 +8,12 @@ CATEGORIES=	graphics games
 MASTER_SITES=	http://www.linuxmotors.com/founts/downloads/
 DISTFILES=	${PORTNAME}-${DISTVERSION}.tgz
 
-MAINTAINER=	koalative@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Demo/program inspired by Erics cascade
 
 LICENSE=	GPLv2
 
+USES=		sdl
 USE_SDL=	sdl
 
 PLIST_FILES=	bin/${PORTNAME} \

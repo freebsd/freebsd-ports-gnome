@@ -3,7 +3,7 @@
 
 PORTNAME=	spek
 PORTVERSION=	0.8.2
-PORTREVISION=	14
+PORTREVISION=	16
 CATEGORIES=	audio
 MASTER_SITES=	https://github.com/alexkay/${PORTNAME}/releases/download/v${PORTVERSION}/
 
@@ -14,7 +14,8 @@ LICENSE=	GPLv3+
 
 LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg
 
-USES=		compiler:c++11-lib desktop-file-utils gmake pkgconfig tar:xz
+USES=		compiler:c++11-lib desktop-file-utils gmake gnome pkgconfig \
+		tar:xz
 USE_GNOME=	intltool
 USE_WX=		3.0
 WX_CONF_ARGS=	absolute

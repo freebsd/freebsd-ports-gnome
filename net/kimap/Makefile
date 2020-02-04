@@ -16,7 +16,7 @@ USES=		cmake compiler:c++11-lib gettext kde:5 qt:5 tar:xz
 USE_KDE=	codecs config coreaddons ecm i18n kdelibs4support kio service
 # pim components
 USE_KDE+=	mime
-USE_QT=		core \
+USE_QT=		concurrent core dbus network \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 

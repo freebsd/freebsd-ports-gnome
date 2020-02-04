@@ -3,7 +3,7 @@
 
 PORTNAME=	pgplot
 PORTVERSION=	5.2.2
-PORTREVISION=	26
+PORTREVISION=	27
 CATEGORIES=	graphics
 MASTER_SITES=	ftp://ftp.astro.caltech.edu/pub/pgplot/
 DISTNAME=	${PORTNAME}${PORTVERSION:R}
@@ -15,7 +15,7 @@ LIB_DEPENDS=	libpng.so:graphics/png
 
 MAKE_JOBS_UNSAFE=	yes
 
-USES=		fortran shebangfix
+USES=		fortran shebangfix xorg
 USE_LDCONFIG=	yes
 USE_XORG=	x11 xorgproto xt
 

@@ -3,7 +3,7 @@
 
 PORTNAME=	upp
 DISTVERSION=	11873
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel x11-toolkits
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}/2018.1/
 DISTNAME=	${PORTNAME}-x11-src-${PORTVERSION}
@@ -14,7 +14,6 @@ COMMENT=	Ultimate++, a BSD-licensed, cross-platform, C/C++ RAD suite
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${BUILD_WRKSRC}/Core/Copying
 
-BROKEN_aarch64=		Does not compile on ${ARCH}: error Unknown CPU architecture
 BROKEN_powerpc=		Does not compile on ${ARCH}: error Unknown CPU architecture
 BROKEN_powerpc64=	Does not compile on ${ARCH}: error Unknown CPU architecture
 BROKEN_sparc64=		Does not compile on ${ARCH}
@@ -49,6 +48,7 @@ IDE_LIB_DEPENDS=	libexpat.so:textproc/expat2 \
 		libnotify.so:devel/libnotify \
 		libpng.so:graphics/png
 IDE_PLIST_FILES=	bin/theide ${MANPREFIX}/man/man1/theide.1.gz
+IDE_USES=	gnome xorg
 IDE_USE=	XORG=x11,xau,xcb,xcursor,xdmcp,xext,xfixes,xft,xi,xinerama,xrandr,xrender \
 		GNOME=cairo,gdkpixbuf2,gtk20
 UMK_DESC=	Build/install UMK (U++ MaKe command line utility)
@@ -58,7 +58,9 @@ USEMALLOC_VARS=	MACRO_FLAGS+=-DflagUSEMALLOC
 SCD_DESC=	Install spelling dictionaries (*.scd files)
 SCD_VARS=	PORTDATA+=*.scd
 # SDL/OPENGL/MYSQL/PGSQL dependencies are only for run-time for use by executables built by the IDE
+SDL_USES=	sdl
 SDL_USE=	SDL=sdl
+OPENGL_USES=	gl
 OPENGL_USE=	GL=gl,glu
 MYSQL_USES=	mysql
 PGSQL_USES=	pgsql

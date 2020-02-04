@@ -12,7 +12,7 @@ COMMENT=	XKB keyboard layout indicator and switcher
 
 LICENSE=	ART10
 
-USES=		iconv imake pkgconfig
+USES=		iconv imake pkgconfig xorg
 USE_XORG=	xext xpm xt
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}
 
@@ -20,8 +20,9 @@ PORTDOCS=	README CHANGES.ru README.ru
 
 OPTIONS_DEFINE=	LIBRSVG2 DOCS
 
-LIBRSVG2_LIB_DEPENDS=	librsvg-2.so:graphics/librsvg2
-LIBRSVG2_VARS=		XMKMF_ARGS=-DWITH_SVG_SUPPORT
+LIBRSVG2_USES=	gnome
+LIBRSVG2_USE=	GNOME=librsvg2
+LIBRSVG2_VARS=	XMKMF_ARGS=-DWITH_SVG_SUPPORT
 
 post-build:
 # Convert Russian language docs from archaic KOI8-R to modern UTF-8

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	godot
-PORTVERSION=	3.1
+DISTVERSION=	3.1.2
 DISTVERSIONSUFFIX=	-stable
 CATEGORIES=	devel games
 
@@ -14,11 +14,6 @@ LICENSE_COMB=		multi
 LICENSE_FILE_CC-BY-3.0=	${WRKSRC}/LOGO_LICENSE.md
 LICENSE_FILE_MIT=	${WRKSRC}/LICENSE.txt
 
-BROKEN_aarch64=		fails to build: KeyError: 'android_arch'
-BROKEN_armv6=		fails to build: KeyError: 'android_arch'
-BROKEN_armv7=		fails to build: KeyError: 'android_arch'
-BROKEN_powerpc64=	fails to compile: inv_txfm_sse2.h:14:32: emmintrin.h: No such file or directory
-
 BUILD_DEPENDS=	yasm:devel/yasm
 LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 		libpng.so:graphics/png
@@ -26,23 +21,20 @@ RUN_DEPENDS=	xdg-user-dir:devel/xdg-user-dirs \
 		xdg-open:devel/xdg-utils \
 		xmessage:x11/xmessage
 
-USES=		compiler:c++14-lang pkgconfig scons ssl
+USES=		compiler:c++14-lang gl pkgconfig scons ssl xorg
 USE_XORG=	x11 xcursor xi xinerama xrandr xrender
 USE_GL=		gl glew glu
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	godotengine
 
-MAKE_ARGS+=		platform=x11 builtin_libpng=False builtin_openssl=False
+MAKE_ARGS+=		platform=x11 builtin_libpng=False \
+			builtin_openssl=False verbose=True
 MAKE_ARGS+=		${MAKE_ARGS_${CHOSEN_COMPILER_TYPE}}
 MAKE_ARGS_clang=	use_llvm=True
 CXXFLAGS+=		-DRTAUDIO_ENABLED
 CXXFLAGS_i386=		${CXXFLAGS_i386_${CHOSEN_COMPILER_TYPE}}
 CXXFLAGS_i386_gcc=	-march=i586
-CXXFLAGS_aarch64=	-DNO_THREADS
-CXXFLAGS_sparc64=	-DNO_THREADS
-CXXFLAGS_mips=		-DNO_THREADS
-CXXFLAGS_mips64=	-DNO_THREADS
 
 # option MONO doesn't build (needs 5.12+) so for now leave it out as an option
 OPTIONS_DEFINE=		EXAMPLES TOOLS
@@ -56,8 +48,8 @@ AUDIO_DESC=		Audio support
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 ALSA_MAKE_ARGS=		alsa=True
 EXAMPLES_GH_PROJECT=	godot-demo-projects:DEMOS
-# master at 23/3
-EXAMPLES_GH_TAGNAME=	17e80079e3fc:DEMOS
+# master at 13/12
+EXAMPLES_GH_TAGNAME=	c34a2b423bcb:DEMOS
 EXAMPLES_PORTEXAMPLES=	*
 # mono support doesn't build at present
 MONO_USES=		mono:nuget
@@ -80,6 +72,14 @@ PLIST_FILES=		bin/${GODOTFILE}
 .ifmake makesum
 # Always include optional distfiles
 .MAKEFLAGS:	WITH="${OPTIONS_DEFINE}" OPTIONS_EXCLUDE=
+.endif
+
+.include <bsd.port.pre.mk>
+
+.if ${ARCH} != aarch64 && ${ARCH} != amd64 && ${ARCH} != i386 && ${ARCH} != armv6 && ${ARCH} != armv7
+# use system libvpx on archs that break with built-in
+LIB_DEPENDS+=	libvpx.so:multimedia/libvpx
+MAKE_ARGS+=		builtin_libvpx=False
 .endif
 
 post-patch:
@@ -114,4 +114,4 @@ do-install-TOOLS-on:
 	${INSTALL_DATA} ${WRKSRC}/icon.svg \
 		${STAGEDIR}${PREFIX}/share/pixmaps/${GODOTFILE}.svg
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

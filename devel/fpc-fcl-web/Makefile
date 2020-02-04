@@ -1,9 +1,8 @@
-# Created by: Alonso Cardenas Marquez <acm@FreeBSD.org>
 # $FreeBSD$
 
+PORTREVISION=	6
 CATEGORIES=	devel lang
 PKGNAMESUFFIX=	-fcl-web
-PORTREVISION=	2
 
 COMMENT=	Free Pascal web application libary (FCL)
 

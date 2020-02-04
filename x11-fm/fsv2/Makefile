@@ -2,6 +2,7 @@
 
 PORTNAME=	fsv2
 PORTVERSION=	1.1.0
+PORTREVISION=	1
 CATEGORIES=	x11-fm
 MASTER_SITES=	http://cyber.dabamos.de/pub/distfiles/
 
@@ -16,9 +17,10 @@ LIB_DEPENDS=	libgtkgl-2.0.so:x11-toolkits/gtkglarea2 \
 		libfreetype.so:print/freetype2 \
 		libftgl.so:graphics/ftgl
 
-USES=		tar:bzip2 libtool gettext-runtime pkgconfig
-USE_GNOME=	gtkmm24 atkmm glibmm pangomm cairomm libsigc++20 gtk20 atk cairo \
-		gdkpixbuf2
+USES=		compiler:c++11-lang tar:bzip2 libtool gettext-runtime gl gnome \
+		pkgconfig
+USE_GNOME=	gtkmm24 atkmm glibmm pangomm cairomm libsigc++20 gtk20 atk \
+		cairo gdkpixbuf2
 USE_GL=		gl glu
 
 USE_LDCONFIG=	yes

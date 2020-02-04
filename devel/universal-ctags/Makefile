@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	universal-ctags
-PORTVERSION=	g20190223
+PORTVERSION=	g20200105
 CATEGORIES=	devel
 
 MAINTAINER=	dereks@lifeofadishwasher.com
@@ -12,12 +12,12 @@ LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 USES=		autoreconf pkgconfig
+
 GNU_CONFIGURE=	yes
 
 USE_GITHUB=	yes
 GH_PROJECT=	ctags
-GH_TAGNAME=	0e5cfa3f4f8
-GH_TUPLE=	universal-ctags:packcc:de4991c:packcc/misc/packcc
+GH_TAGNAME=	3ddb394d
 
 OPTIONS_DEFINE=			ASPELL DEBUG ICONV JSON LIBXML2 MANPAGES YAML
 OPTIONS_DEFAULT=		ICONV JSON LIBXML2 MANPAGES YAML
@@ -49,6 +49,7 @@ JSON_LIB_DEPENDS=		libjansson.so:devel/jansson
 
 MANPAGES_BUILD_DEPENDS=		rst2man:textproc/py-docutils
 MANPAGES_PLIST_FILES=		man/man1/uctags.1.gz \
+				man/man5/utags.5.gz \
 				man/man7/uctags-incompatibilities.7.gz \
 				man/man7/uctags-optlib.7.gz
 

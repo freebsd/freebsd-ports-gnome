@@ -3,7 +3,7 @@
 
 PORTNAME=	docproj
 PORTVERSION=	2.0
-PORTREVISION=	12
+PORTREVISION=	13
 CATEGORIES=	textproc
 
 MAINTAINER=	doceng@FreeBSD.org
@@ -52,7 +52,7 @@ JING_RUN_DEPENDS=	jing:textproc/jing
 SVN_DESC=		Subversion support from ports
 SVN_RUN_DEPENDS=	${LOCALBASE}/bin/svn:devel/subversion
 TRANSLATOR_DESC=	Tools for translators
-TRANSLATOR_RUN_DEPENDS=	itstool:textproc/itstool \
+TRANSLATOR_RUN_DEPENDS=	itstool:textproc/itstool22 \
 			msgcat:devel/gettext-tools
 
 FONTS=	${LOCALBASE}/share/fonts/GentiumPlus/GentiumPlus-R.ttf:x11-fonts/gentium-plus \
@@ -60,7 +60,7 @@ FONTS=	${LOCALBASE}/share/fonts/GentiumPlus/GentiumPlus-R.ttf:x11-fonts/gentium-
 	${LOCALBASE}/share/fonts/Lohit/Lohit-Bengali.ttf:x11-fonts/lohit \
 	${LOCALBASE}/share/fonts/dejavu/DejaVuSansMono.ttf:x11-fonts/dejavu
 FONTS_CJK=${LOCALBASE}/share/fonts/TrueType/gkai00mp.ttf:chinese/arphicttf \
-	${LOCALBASE}/share/fonts/OTF/ipam.otf:japanese/font-ipa \
+	${LOCALBASE}/share/fonts/ipa/ipam.otf:japanese/font-ipa \
 	${LOCALBASE}/share/fonts/nanum-ttf/NanumBarunGothic.ttf:korean/nanumfonts-ttf
 
 .include <bsd.port.options.mk>

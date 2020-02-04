@@ -2,11 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	fasttracker2
-DISTVERSION=	0.1-b152
+DISTVERSIONPREFIX=	v
+DISTVERSION=	1.07
 CATEGORIES=	audio
-MASTER_SITES=	https://16-bits.org/ \
-		LOCAL/ehaupt
-DISTNAME=	ft2clone-${PORTVERSION:C/.*b/b/}-code
 
 MAINTAINER=	ehaupt@FreeBSD.org
 COMMENT=	Fasttracker II clone
@@ -17,10 +15,12 @@ LICENSE_COMB=	multi
 LICENSE_FILE_BSD3CLAUSE=	${WRKSRC}/src/LICENSE.txt
 LICENSE_FILE_CC-BY-NC-SA-4.0=	${WRKSRC}/src/gfxdata/bmp/LICENSE.txt
 
-USES=		dos2unix iconv:wchar_t localbase:ldflags sdl zip
+USES=		cmake compiler dos2unix iconv:wchar_t localbase:ldflags sdl
 USE_SDL=	sdl2
 
-WRKSRC=		${WRKDIR}/ft2-clone-code
+USE_GITHUB=	yes
+GH_ACCOUNT=	8bitbubsy
+GH_PROJECT=	ft2-clone
 
 DESKTOP_ENTRIES="FastTracker II" \
 		"${COMMENT}" \
@@ -42,15 +42,19 @@ ALSA_LDFLAGS+=	-lasound
 
 CFLAGS_i386+=	-msse2
 
-do-build:
-	${CC} ${CFLAGS} ${LDFLAGS} \
-		${WRKSRC}/src/rtmidi/*.cpp ${WRKSRC}/src/gfxdata/*.c ${WRKSRC}/src/*.c \
-		-o ${WRKSRC}/${PORTNAME}
+.include <bsd.port.pre.mk>
+
+# clang reports:
+# error: invalid argument '-std=c99' not allowed with 'C++'
+.if ${CHOSEN_COMPILER_TYPE} == gcc
+USE_CSTD=	c99
+.endif
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/pixmaps
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_PROGRAM} ${WRKSRC}/release/other/ft2-clone \
+		${STAGEDIR}${PREFIX}/bin/${PORTNAME}
 	${INSTALL_DATA} ${WRKSRC}/src/gfxdata/icon/ft2-clone.ico \
 		${STAGEDIR}${PREFIX}/share/pixmaps
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

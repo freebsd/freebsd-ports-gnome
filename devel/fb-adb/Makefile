@@ -3,7 +3,7 @@
 PORTNAME=	fb-adb
 DISTVERSION=	1.4.4-126
 DISTVERSIONSUFFIX=	-g6fd78ae
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel comms
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
@@ -65,9 +65,9 @@ NDK_MASTER_SITES=	https://dl.google.com/android/ndk/:7z \
 # Prefer NDK from environment
 WRKSRC_ndk=		${ANDROID_NDK}
 .else
-NDK_DISTFILES=		${NDK_DISTFILES_${LINUX_ARCH}}
+NDK_DISTFILES=		${NDK_DISTFILES_${ARCH}}
 NDK_DISTFILES_i386=	android-ndk-r10e-linux-x86.bin:7z
-NDK_DISTFILES_x86_64=	android-ndk-r12b-linux-x86_64.zip:zip
+NDK_DISTFILES_amd64=	android-ndk-r12b-linux-x86_64.zip:zip
 WRKSRC_ndk=		${WRKDIR}/${NDK_DISTFILES:R:C/(-[^-]+){2}$//}
 .endif
 NDK_USES=		7z:partial linux
@@ -76,8 +76,7 @@ NDK_SHELL=		${LINUXBASE}/bin/sh
 NDK_CONFIGURE_ENV=	ANDROID_NDK="${WRKSRC_ndk}" \
 			ANDROID_NDK_SHELL="${NDK_SHELL}" \
 			NDK_TMPDIR="${WRKDIR}"
-NDK_BUILD_DEPENDS_OFF=	${LOCALBASE}/android/ARMv7/bin/arm-aux-linux-androideabi-gcc:lang/gnatdroid-armv7 \
-			${LOCALBASE}/android-x86/x86_32/bin/i686-aux-linux-android-gcc:lang/gnatdroid-x86
+NDK_BUILD_DEPENDS_OFF=	${LOCALBASE}/android/ARMv7/bin/arm-aux-linux-androideabi-gcc:lang/gnatdroid-armv7
 NDK_CONFIGURE_ENV_OFF=	PATH="${NDK_BUILD_DEPENDS_OFF:C/:.*//:H:ts:}:$$PATH"
 NDK_CONFIGURE_OFF=	--with-android-ndk=system
 
@@ -99,5 +98,8 @@ post-patch-NDK-on:
 post-patch-NDK-off:
 	@${REINPLACE_CMD} -i '.aux.bak' -e 's/linux-android/aux-&/' \
 		${WRKSRC}/stub-*/configure
+# XXX lang/gnatdroid-x86 no longer exists
+	@${REINPLACE_CMD} -i '.x86-off.bak' -e 's/stub-x86[^,]*, //g' \
+		${WRKSRC}/configure.ac
 
 .include <bsd.port.mk>

@@ -1,5 +1,5 @@
 bin/knights
-etc/xdg/knights.categories
+share/qlogging-categories5/knights.categories
 etc/xdg/knights.knsrc
 share/applications/org.kde.knights.desktop
 share/config.kcfg/knights.kcfg
@@ -47,10 +47,12 @@ share/locale/fr/LC_MESSAGES/knights.mo
 share/locale/ga/LC_MESSAGES/knights.mo
 share/locale/gl/LC_MESSAGES/knights.mo
 share/locale/hu/LC_MESSAGES/knights.mo
+share/locale/id/LC_MESSAGES/knights.mo
 share/locale/it/LC_MESSAGES/knights.mo
 share/locale/ja/LC_MESSAGES/knights.mo
 share/locale/km/LC_MESSAGES/knights.mo
 share/locale/lt/LC_MESSAGES/knights.mo
+share/locale/ml/LC_MESSAGES/knights.mo
 share/locale/mr/LC_MESSAGES/knights.mo
 share/locale/nb/LC_MESSAGES/knights.mo
 share/locale/nds/LC_MESSAGES/knights.mo

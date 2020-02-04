@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	mg
-PORTVERSION=	20180927
+PORTVERSION=	6.6
+PORTEPOCH=	1
 CATEGORIES=	editors
 MASTER_SITES=	https://github.com/ibara/mg/releases/download/mg-${PORTVERSION}/
 

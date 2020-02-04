@@ -13,6 +13,10 @@ DISTNAME=	${PORTNAME}plugin-r${SVN_REV}
 MAINTAINER=	gaod@hychen.org
 COMMENT=	Watchlist feature for wikis and tickets of Trac
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	GPLv3+
 
 RUN_DEPENDS=	tracd:www/trac

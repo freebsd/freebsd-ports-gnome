@@ -2,9 +2,9 @@
 
 PORTNAME=	ncmpcpp
 DISTVERSION=	0.8.2
-PORTREVISION=	9
+PORTREVISION=	13
 CATEGORIES=	audio
-MASTER_SITES=	http://ncmpcpp.rybczak.net/stable/
+MASTER_SITES=	https://ncmpcpp.rybczak.net/stable/
 
 MAINTAINER=	yamagi@yamagi.org
 COMMENT=	Ncurses mpd client, clone of ncmpc with some new features
@@ -19,7 +19,8 @@ LIB_DEPENDS=	libmpdclient.so:audio/libmpdclient \
 		libboost_filesystem.so:devel/boost-libs \
 		libcurl.so:ftp/curl
 
-USES=		compiler:c++14-lang iconv libtool localbase ncurses:port pkgconfig readline tar:bzip2
+USES=		compiler:c++14-lang gnome iconv libtool localbase ncurses:port \
+		pkgconfig readline tar:bzip2
 GNU_CONFIGURE=	yes
 USE_GNOME=	glib20
 CPPFLAGS+=	-DU_USING_ICU_NAMESPACE=1

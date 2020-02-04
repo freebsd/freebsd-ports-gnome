@@ -1,13 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	pglite
-DISTVERSION=	1.0.10
-PORTREVISION=	1
+DISTVERSION=	1.0.12
 CATEGORIES=	databases python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	lbartoletti@tuxfamily.org
+MAINTAINER=	lbartoletti@FreeBSD.org
 COMMENT=	Light PostgreSQL: use PostgreSQL as a simple SQLite database
 
 LICENSE=	LGPL20+

@@ -3,7 +3,7 @@
 
 PORTNAME=	eispack
 PORTVERSION=	1.0
-PORTREVISION=	13
+PORTREVISION=	14
 CATEGORIES=	math
 MASTER_SITES=	NL
 DISTFILES=	${SRCS}
@@ -40,7 +40,7 @@ base system profiling libraries
 .endif
 PLIST_FILES+=	lib/libeispack_p.a
 .else
-MAKE_ENV+=	NO_PROFILE=yes
+MAKE_ENV+=	WITHOUT_PROFILE=yes
 .endif
 
 SRCS=	csroot.f epslon.f pythag.f bakvec.f balanc.f balbak.f bandr.f \

@@ -11,7 +11,7 @@
 %%DATADIR%%/stopwords/stopwords_ro.txt
 %%DATADIR%%/stopwords/stopwords_ru.txt
 %%DATADIR%%/stopwords/stopwords_sv.txt
-%%ETCDIR%%/README
+%%DATADIR%%/stopwords/stopwords_tr.txt
 %%ETCDIR%%/example-config/conf.d/10-auth.conf
 %%ETCDIR%%/example-config/conf.d/10-director.conf
 %%ETCDIR%%/example-config/conf.d/10-logging.conf
@@ -42,12 +42,14 @@
 %%ETCDIR%%/example-config/dovecot-ldap.conf.ext
 %%ETCDIR%%/example-config/dovecot-sql.conf.ext
 %%ETCDIR%%/example-config/dovecot.conf
+%%ETCDIR%%/README
 %%LDAP%%include/dovecot/ldap-client.h
 %%LDAP%%lib/dovecot/libdovecot-ldap.a
 %%LDAP%%lib/dovecot/libdovecot-ldap.so
 %%LDAP%%lib/dovecot/libdovecot-ldap.so.0
 %%LDAP%%lib/dovecot/libdovecot-ldap.so.0.0.0
 %%LIBWRAP%%libexec/dovecot/tcpwrap
+libexec/dovecot/health-check.sh
 %%LUA%%%%LUA_LIBDIR%%/dovecot/%%LUA_LIBDIR%%01_mail_lua_plugin.a
 %%LUA%%%%LUA_LIBDIR%%/dovecot/%%LUA_LIBDIR%%01_mail_lua_plugin.so
 %%LUA%%%%LUA_LIBDIR%%/dovecot/%%LUA_LIBDIR%%22_push_notification_lua_plugin.a
@@ -82,7 +84,6 @@ include/dovecot/auth-cache.h
 include/dovecot/auth-client-connection.h
 include/dovecot/auth-client-interface.h
 include/dovecot/auth-client-private.h
-include/dovecot/auth-client-request.h
 include/dovecot/auth-client.h
 include/dovecot/auth-common.h
 include/dovecot/auth-fields.h
@@ -90,12 +91,10 @@ include/dovecot/auth-master-connection.h
 include/dovecot/auth-master.h
 include/dovecot/auth-penalty.h
 include/dovecot/auth-policy.h
-include/dovecot/auth-postfix-connection.h
 include/dovecot/auth-request-handler.h
 include/dovecot/auth-request-stats.h
 include/dovecot/auth-request-var-expand.h
 include/dovecot/auth-request.h
-include/dovecot/auth-server-connection.h
 include/dovecot/auth-settings.h
 include/dovecot/auth-stats.h
 include/dovecot/auth-token.h
@@ -106,7 +105,6 @@ include/dovecot/backtrace-string.h
 include/dovecot/base32.h
 include/dovecot/base64.h
 include/dovecot/bits.h
-include/dovecot/bloomfilter.h
 include/dovecot/bsearch-insert-pos.h
 include/dovecot/buffer.h
 include/dovecot/byteorder.h
@@ -361,6 +359,11 @@ include/dovecot/lib-event.h
 include/dovecot/lib-signals.h
 include/dovecot/lib.h
 include/dovecot/llist.h
+include/dovecot/lmtp-client.h
+include/dovecot/lmtp-commands.h
+include/dovecot/lmtp-common.h
+include/dovecot/lmtp-recipient.h
+include/dovecot/lmtp-settings.h
 include/dovecot/log-throttle.h
 include/dovecot/login-common.h
 include/dovecot/login-proxy-state.h
@@ -490,7 +493,6 @@ include/dovecot/mmap-util.h
 include/dovecot/module-context.h
 include/dovecot/module-dir.h
 include/dovecot/mountpoint.h
-include/dovecot/murmurhash3.h
 include/dovecot/mycrypt.h
 include/dovecot/net.h
 include/dovecot/nfs-workarounds.h
@@ -585,6 +587,7 @@ include/dovecot/sha1.h
 include/dovecot/sha2.h
 include/dovecot/sha3.h
 include/dovecot/shared-storage.h
+include/dovecot/sleep.h
 include/dovecot/smtp-address.h
 include/dovecot/smtp-client-command.h
 include/dovecot/smtp-client-connection.h
@@ -857,4 +860,4 @@ man/man1/dsync.1.gz
 man/man7/doveadm-search-query.7.gz
 sbin/dovecot
 share/aclocal/dovecot.m4
-@postunexec echo "If you are removing dovecot2 permanently, you should 'rm -rf /var/db/dovecot' to clear out any remaining data."
+@postunexec echo "If you are removing dovecot permanently, you should 'rm -rf /var/db/dovecot' to clear out any remaining data."

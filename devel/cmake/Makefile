@@ -3,9 +3,10 @@
 
 PORTNAME=	cmake
 # Remember to update devel/cmake-doc and devel/cmake-gui as well.
-DISTVERSION=	3.14.3
+DISTVERSION=	3.16.3
 CATEGORIES=	devel
-MASTER_SITES=	https://www.cmake.org/files/v${PORTVERSION:R}/
+MASTER_SITES=	https://github.com/Kitware/CMake/releases/download/v${DISTVERSION}/ \
+		https://www.cmake.org/files/v${PORTVERSION}/
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Cross-platform Makefile generator
@@ -39,7 +40,7 @@ MANPAGES_BUILD_DEPENDS=	sphinx-build:textproc/py-sphinx
 MANPAGES_CONFIGURE_ON=	--sphinx-man
 
 CPACK_DESC=		Enable FreeBSD generator in CPack (experimental)
-CPACK_LIB_DEPENDS=	libpkg.so:ports-mgmt/pkg
+CPACK_LIB_DEPENDS=	libpkg.so:${PKG_ORIGIN}
 CPACK_USES_OFF=		libarchive
 # When CPACK is on, uses base libarchive and won't pass stage-qa
 
@@ -83,6 +84,8 @@ post-patch:
 		${WRKSRC}/Modules/FindKDE4.cmake
 	@${REINPLACE_CMD} -e 's,/usr/include,${LOCALBASE}/include,' \
 		${WRKSRC}/Modules/FindDCMTK.cmake
+	@${REINPLACE_CMD} -e 's|%%LOCALBASE%%|${LOCALBASE}|g' \
+		${WRKSRC}/Modules/FindFLEX.cmake
 	@${FIND} ${WRKSRC} -name "*.bak" -delete -o -name "*.orig" -delete
 
 # cmake-gui(1) is installed by devel/cmake-gui. Remove the man page's source to

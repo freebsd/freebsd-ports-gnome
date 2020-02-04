@@ -1,4 +1,4 @@
-bin/esdcompat
+bin/pa-info
 bin/pacat
 bin/pacmd
 bin/pactl
@@ -69,7 +69,7 @@ lib/libpulse-simple.so.0
 lib/libpulse-simple.so.0.1.1
 lib/libpulse.so
 lib/libpulse.so.0
-lib/libpulse.so.0.20.3
+lib/libpulse.so.0.21.1
 %%AVAHI%%lib/pulse-%%PULSE_VERSION%%/modules/libavahi-wrap.so
 lib/pulse-%%PULSE_VERSION%%/modules/module-allow-passthrough.so
 lib/pulse-%%PULSE_VERSION%%/modules/module-device-manager.so
@@ -77,7 +77,6 @@ lib/pulse-%%PULSE_VERSION%%/modules/module-device-manager.so
 lib/pulse-%%PULSE_VERSION%%/modules/libcli.so
 lib/pulse-%%PULSE_VERSION%%/modules/liboss-util.so
 lib/pulse-%%PULSE_VERSION%%/modules/libprotocol-cli.so
-lib/pulse-%%PULSE_VERSION%%/modules/libprotocol-esound.so
 lib/pulse-%%PULSE_VERSION%%/modules/libprotocol-http.so
 lib/pulse-%%PULSE_VERSION%%/modules/libprotocol-native.so
 lib/pulse-%%PULSE_VERSION%%/modules/libprotocol-simple.so
@@ -103,11 +102,6 @@ lib/pulse-%%PULSE_VERSION%%/modules/module-detect.so
 lib/pulse-%%PULSE_VERSION%%/modules/module-device-restore.so
 lib/pulse-%%PULSE_VERSION%%/modules/module-echo-cancel.so
 lib/pulse-%%PULSE_VERSION%%/modules/module-equalizer-sink.so
-lib/pulse-%%PULSE_VERSION%%/modules/module-esound-compat-spawnfd.so
-lib/pulse-%%PULSE_VERSION%%/modules/module-esound-compat-spawnpid.so
-lib/pulse-%%PULSE_VERSION%%/modules/module-esound-protocol-tcp.so
-lib/pulse-%%PULSE_VERSION%%/modules/module-esound-protocol-unix.so
-lib/pulse-%%PULSE_VERSION%%/modules/module-esound-sink.so
 lib/pulse-%%PULSE_VERSION%%/modules/module-filter-apply.so
 lib/pulse-%%PULSE_VERSION%%/modules/module-filter-heuristics.so
 %%GCONF%%lib/pulse-%%PULSE_VERSION%%/modules/module-gconf.so
@@ -170,7 +164,6 @@ libdata/pkgconfig/libpulse-simple.pc
 libdata/pkgconfig/libpulse.pc
 %%GCONF%%libexec/pulse/gconf-helper
 %%GSETTINGS%%libexec/pulse/gsettings-helper
-man/man1/esdcompat.1.gz
 man/man1/pacat.1.gz
 man/man1/pacmd.1.gz
 man/man1/pactl.1.gz
@@ -223,9 +216,12 @@ man/man5/pulse-daemon.conf.5.gz
 %%ALSA%%share/pulseaudio/alsa-mixer/paths/hdmi-output-7.conf
 %%ALSA%%share/pulseaudio/alsa-mixer/paths/iec958-stereo-input.conf
 %%ALSA%%share/pulseaudio/alsa-mixer/paths/iec958-stereo-output.conf
-%%ALSA%%share/pulseaudio/alsa-mixer/paths/steelseries-arctis-input.conf
-%%ALSA%%share/pulseaudio/alsa-mixer/paths/steelseries-arctis-output-mono.conf
-%%ALSA%%share/pulseaudio/alsa-mixer/paths/steelseries-arctis-output-stereo.conf
+%%ALSA%%share/pulseaudio/alsa-mixer/paths/steelseries-arctis-5-output-chat.conf
+%%ALSA%%share/pulseaudio/alsa-mixer/paths/steelseries-arctis-5-output-game.conf
+%%ALSA%%share/pulseaudio/alsa-mixer/paths/steelseries-arctis-7-input.conf
+%%ALSA%%share/pulseaudio/alsa-mixer/paths/steelseries-arctis-7-output-mono.conf
+%%ALSA%%share/pulseaudio/alsa-mixer/paths/steelseries-arctis-7-output-stereo.conf
+%%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/cmedia-high-speed-true-hdaudio.conf
 %%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/default.conf
 %%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/dell-dock-tb16-usb-audio.conf
 %%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/force-speaker-and-int-mic.conf
@@ -240,13 +236,16 @@ man/man5/pulse-daemon.conf.5.gz
 %%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/native-instruments-traktor-audio6.conf
 %%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/native-instruments-traktorkontrol-s4.conf
 %%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/sb-omni-surround-5.1.conf
-%%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/steelseries-arctis-usb-audio.conf
+%%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/steelseries-arctis-5-usb-audio.conf
+%%ALSA%%share/pulseaudio/alsa-mixer/profile-sets/steelseries-arctis-7-usb-audio.conf
 share/zsh/site-functions/_pulseaudio
+share/locale/af/LC_MESSAGES/pulseaudio.mo
 share/locale/as/LC_MESSAGES/pulseaudio.mo
 share/locale/be/LC_MESSAGES/pulseaudio.mo
 share/locale/bn_IN/LC_MESSAGES/pulseaudio.mo
 share/locale/ca/LC_MESSAGES/pulseaudio.mo
 share/locale/cs/LC_MESSAGES/pulseaudio.mo
+share/locale/da/LC_MESSAGES/pulseaudio.mo
 share/locale/de/LC_MESSAGES/pulseaudio.mo
 share/locale/de_CH/LC_MESSAGES/pulseaudio.mo
 share/locale/el/LC_MESSAGES/pulseaudio.mo

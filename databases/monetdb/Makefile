@@ -3,13 +3,17 @@
 
 PORTNAME=	monetdb
 PORTVERSION=	11.15.19
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	databases
 MASTER_SITES=	http://www.monetdb.org/downloads/sources/Feb2013-SP6/
 DISTNAME=	MonetDB-${PORTVERSION}
 
 MAINTAINER=	jim@ohlste.in
 COMMENT=	Multithreaded "column-oriented" SQL databasee
+
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
 
 LICENSE=	MonetDB_License
 LICENSE_NAME=	MonetDB Public License Version 1.1
@@ -20,7 +24,7 @@ LIB_DEPENDS=	libpcre.so:devel/pcre
 
 USE_GNOME=	libxml2
 
-USES=		bison iconv gmake libtool pkgconfig tar:xz
+USES=		bison gmake gnome iconv libtool pkgconfig tar:xz
 USE_LDCONFIG=	yes
 
 USE_RC_SUBR=	monetdbd

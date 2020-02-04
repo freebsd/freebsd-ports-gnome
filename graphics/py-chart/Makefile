@@ -12,6 +12,10 @@ DISTNAME=	PyChart-${PORTVERSION}
 MAINTAINER=	nivit@FreeBSD.org
 COMMENT=	Create high quality Encapsulated Postscript, PDF, or PNG charts
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	GPLv2
 
 USE_PYTHON=	distutils autoplist

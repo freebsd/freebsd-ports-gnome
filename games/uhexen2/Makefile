@@ -2,20 +2,16 @@
 # $FreeBSD$
 
 PORTNAME=	uhexen2
-PORTVERSION=	1.5.8
+PORTVERSION=	1.5.9
 PORTREVISION=	1
 CATEGORIES=	games
 MASTER_SITES=	SF/${PORTNAME}/Hammer%20of%20Thyrion/${PORTVERSION}/Source \
-		SF/${PORTNAME}/Hexen2%20GameData/gamedata-1.29a:data \
+		SF/${PORTNAME}/Hexen2%20GameData/gamedata-1.29b:data \
 		SF/${PORTNAME}/Hexen2%20GameData/hexenworld-pakfiles:hw
 DISTNAME=	hexen2source-${PORTVERSION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
-		gamedata-all-1.29a${EXTRACT_SUFX}:data
+		gamedata-all-1.29b${EXTRACT_SUFX}:data
 DIST_SUBDIR=	${PORTNAME}
-
-PATCH_SITES=	${MASTER_SITES}
-PATCHFILES=	hexen2source-${PORTVERSION}a.patch
-PATCH_DIST_STRIP=	-p1
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Hexen II source port supporting Linux/FreeBSD/Unix/Windows
@@ -23,7 +19,7 @@ COMMENT=	Hexen II source port supporting Linux/FreeBSD/Unix/Windows
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-USES=		gmake pkgconfig tar:tgz
+USES=		gl gmake pkgconfig sdl tar:tgz
 USE_GL=		gl
 USE_SDL=	sdl
 MAKE_ARGS=	X11BASE="${LOCALBASE}"
@@ -56,7 +52,7 @@ HW_MAKE_ARGS=		BUILD_HW=yes
 MAD_LIB_DEPENDS=	libmad.so:audio/libmad
 MAD_MAKE_ARGS=		MP3LIB=mad
 MIKMOD_LIB_DEPENDS=	libmikmod.so:audio/libmikmod
-MIDMOD_MAKE_ARGS=	USE_CODEC_MIKMOD=yes
+MIKMOD_MAKE_ARGS=	USE_CODEC_MIKMOD=yes
 MP3LIB_DESC=		MP3 audio codec
 MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123
 MPG123_MAKE_ARGS=	MP3LIB=mpg123

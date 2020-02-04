@@ -3,11 +3,14 @@
 
 PORTNAME=	gourmet
 PORTVERSION=	0.17.4
-PORTREVISION=	5
+PORTREVISION=	9
 CATEGORIES=	deskutils gnome
 
 MAINTAINER=	rm@FreeBSD.org
 COMMENT=	GNOME recipe manager
+
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-02-17
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/LICENSE
@@ -27,7 +30,7 @@ OPTIONS_DEFINE=		IPYTHON
 IPYTHON_DESC=		Interactive shell support
 IPYTHON_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}ipython>0:devel/ipython@${PY_FLAVOR}
 
-USES=		gettext python:-2.7
+USES=		gettext gnome python:-2.7
 USE_GNOME=	intltool pygnome2 pygtk2
 USE_PYTHON=	autoplist distutils
 PLIST_FILES+=	man/man1/gourmet.1.gz

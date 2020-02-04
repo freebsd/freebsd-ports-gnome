@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	cups-filters
-PORTVERSION=	1.22.5
+PORTVERSION=	1.27.0
+PORTREVISION=	1
 CATEGORIES=	print
 MASTER_SITES=	https://www.openprinting.org/download/cups-filters/
 
@@ -17,10 +18,14 @@ LIB_DEPENDS=	liblcms2.so:graphics/lcms2 \
 		libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
 
-CONFLICTS=	cups-pstoraster-[0-9]* foomatic-filters-[0-9]*
-
 USES=		compiler:c++11-lib cpe gmake gnome iconv libtool localbase \
 		pkgconfig shebangfix tar:xz
+USE_GNOME=	glib20
+USE_LDCONFIG=	yes
+USE_RC_SUBR=	cups_browsed
+
+CONFLICTS=	cups-pstoraster-[0-9]* foomatic-filters-[0-9]*
+
 CPE_VENDOR=	linuxfoundation
 SHEBANG_FILES=	filter/braille/drivers/generic/brftoembosser.in \
 		filter/braille/drivers/index/imageubrltoindexv3.in \
@@ -33,9 +38,7 @@ SHEBANG_FILES=	filter/braille/drivers/generic/brftoembosser.in \
 		filter/braille/filters/texttobrf.in \
 		filter/braille/filters/vectortobrf.in \
 		filter/braille/filters/vectortopdf.in
-USE_GNOME=	glib20
-USE_LDCONFIG=	yes
-USE_RC_SUBR=	cups_browsed
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-shell=/bin/sh --with-pdftops-path=${LOCALBASE}/bin/pdftops
 INSTALL_TARGET=	install-strip
@@ -85,7 +88,7 @@ MUPDF_DESC=			PDF-to-raster using MuPDF
 
 POPPLER_CONFIGURE_ENABLE=	poppler
 POPPLER_DESC=			PDF-to-raster using Poppler
-POPPLER_LIB_DEPENDS=		libpoppler.so:graphics/poppler
+POPPLER_LIB_DEPENDS=		libpoppler-cpp.so:graphics/poppler
 
 # cups-browsed(8) options
 
@@ -132,7 +135,5 @@ post-patch:
 		${WRKSRC}/utils/cups-browsed.8 \
 		${WRKSRC}/utils/cups-browsed.conf.5 \
 		${WRKSRC}/utils/driverless.1
-	@${REINPLACE_CMD} '/^texttotext_LDADD =/s/$$/ ${ICONV_LIB}/' \
-		${WRKSRC}/Makefile.in
 
 .include <bsd.port.mk>

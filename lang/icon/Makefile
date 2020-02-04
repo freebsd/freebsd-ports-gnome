@@ -3,7 +3,7 @@
 
 PORTNAME=	icon
 PORTVERSION=	9.5.1
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	lang
 MASTER_SITES=	http://www.cs.arizona.edu/icon/ftp/packages/unix/
 DISTNAME=	${PORTNAME}-v${PORTVERSION:S/.//g}src
@@ -11,6 +11,8 @@ EXTRACT_SUFX=	.tgz
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	The Icon programming language
+
+BROKEN=		unfetchable
 
 USE_GCC=	any
 ALL_TARGET=	All
@@ -29,6 +31,7 @@ OPTIONS_DEFINE=	DOCS X11
 CONFIG_CMD=	Configure
 PLIST_SUB+=	WITHOUT_X11="@comment "
 .else
+USES+=		xorg
 USE_XORG=	x11 xpm
 CFLAGS+=	-I${LOCALBASE}/include
 CONFIG_CMD=	X-Configure

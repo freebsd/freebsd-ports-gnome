@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	ircii
-PORTVERSION=	20170704
-CATEGORIES=	irc ipv6
+PORTVERSION=	20190117
+CATEGORIES=	irc
 MASTER_SITES=	http://ircii.warped.com/
 
 MAINTAINER=	andrew@tao11.riddles.org.uk
@@ -12,6 +12,7 @@ COMMENT=	Small and high extensible IRC client
 LICENSE=	BSD3CLAUSE
 
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS= --with-warnings
 DATADIR=	${PREFIX}/share/irc
 USES=		iconv ncurses tar:bzip2
 
@@ -38,7 +39,7 @@ LDFLAGS+=	-L${ICONV_PREFIX}/lib
 
 post-patch:
 	@${REINPLACE_CMD} -e '/^mandir =/s/@mandir@/$${DESTDIR}&/' \
-		-e '/^LDFLAGS =/s/$$/ -s ${ICONV_LIB}/' \
+		-e '/^LDFLAGS =/s/$$/ ${STRIP} ${ICONV_LIB}/' \
 		-e '/^INCLUDES =/s|$$| -I${ICONV_PREFIX}/include -DHAVE_ICONV_OPEN|' \
 		${WRKSRC}/Makefile.in
 	@${REINPLACE_CMD} -e 's|PREFIX/|${PREFIX}/|' ${WRKSRC}/doc/ircII.1

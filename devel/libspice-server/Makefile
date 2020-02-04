@@ -3,7 +3,7 @@
 
 PORTNAME=	libspice-server
 DISTVERSION=	0.14.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	devel
 MASTER_SITES=	https://www.spice-space.org/download/releases/
 DISTNAME=	spice-${PORTVERSION}
@@ -33,8 +33,8 @@ SASL_LIB_DEPENDS=	libsasl2.so:security/cyrus-sasl2
 
 STATISTICS_CONFIGURE_ENABLE=	statistics
 
-USES=		autoreconf compiler:c++11-lang gmake jpeg libtool \
-		localbase:ldflag pkgconfig python ssl tar:bzip2
+USES=		autoreconf compiler:c++11-lang gmake gnome jpeg libtool \
+		localbase:ldflag pkgconfig python ssl tar:bzip2 xorg
 
 USE_GNOME=	glib20
 USE_XORG=	pixman

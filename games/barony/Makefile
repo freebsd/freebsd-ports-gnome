@@ -1,9 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	barony
-DISTVERSIONPREFIX=	v
-DISTVERSION=	3.2.2
-PORTREVISION=	2
+DISTVERSION=	3.3.0
+PORTREVISION=	0
 CATEGORIES=	games
 
 MAINTAINER=	devnexen@gmail.com
@@ -17,7 +16,8 @@ LIB_DEPENDS=	libogg.so:audio/libogg \
 		libpng.so:graphics/png \
 		libvorbisfile.so:audio/libvorbis
 
-USES=		cmake:insource compiler:c++11-lib dos2unix gl localbase:ldflags openal pkgconfig
+USES=		cmake:insource compiler:c++11-lib dos2unix gl localbase:ldflags \
+		openal pkgconfig sdl
 USE_GITHUB=	yes
 GH_ACCOUNT=	TurningWheel
 GH_PROJECT=	Barony

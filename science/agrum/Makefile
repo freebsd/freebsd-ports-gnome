@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	agrum
-DISTVERSION=	0.14.3
-PORTREVISION=	2
+DISTVERSION=	0.16.4
+PORTREVISION=	1
 CATEGORIES=	science math
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -14,10 +14,11 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USES=		cmake
 USE_GITLAB=	yes
 USE_LDCONFIG=	yes
+LLD_UNSAFE=	yes
 
 GL_ACCOUNT=	agrumery
 GL_PROJECT=	aGrUM
-GL_COMMIT=	b1f2dcebfb5d99789c131cb7d06313be94119408
+GL_COMMIT=	676cfe5833f09b013f2612ee299a9025793928d8
 
 CMAKE_OFF=	USE_SWIG
 
@@ -30,6 +31,9 @@ ODBC_USES=		localbase:ldflags
 ODBC_LIB_DEPENDS=	libodbc.so:databases/unixODBC
 
 OPENMP_CMAKE_BOOL=	USE_OPENMP
+OPENMP_LIB_DEPENDS=	libomp.so:devel/llvm${LLVM_DEFAULT}
+OPENMP_LDFLAGS=		${LOCALBASE}/llvm${LLVM_DEFAULT}/lib/libomp.so # XXX it still links to libomp.so from the openmp package when it is installed
+OPENMP_CONFLICTS_BUILD=	openmp
 
 PYTHON_CMAKE_BOOL=	BUILD_PYTHON
 PYTHON_USES=		python

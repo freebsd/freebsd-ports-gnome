@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	opendnssec
-PORTVERSION=	2.1.3
+PORTVERSION=	2.1.4
+PORTREVISION=	1
 CATEGORIES=	dns
 MASTER_SITES=	http://dist.opendnssec.org/source/
 PKGNAMESUFFIX=	2
@@ -16,10 +17,9 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 BUILD_DEPENDS=	ldns>=1.6.16:dns/ldns
 LIB_DEPENDS=	libldns.so:dns/ldns
 
-USES=		ssl
+USES=		ssl gnome
 USE_RC_SUBR=	opendnssec
 USE_GNOME=	libxml2
-USE_LDCONFIG=	yes
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--localstatedir="${PREFIX}/var" \
@@ -58,8 +58,8 @@ SQLITE_USES=		sqlite
 SQLITE_CONFIGURE_ON=	--with-enforcer-database=sqlite3
 SQLITE_BUILD_DEPENDS=	sqlite3>=3.3.9:databases/sqlite3
 
-SOFTHSM_CONFIGURE_ON=	--with-pkcs11-softhsm=${LOCALBASE}/lib/softhsm/libsofthsm.so
-SOFTHSM_RUN_DEPENDS=	softhsm>=1.2.0:security/softhsm
+SOFTHSM_CONFIGURE_ON=	--with-pkcs11-softhsm=${LOCALBASE}/lib/softhsm/libsofthsm2.so
+SOFTHSM_RUN_DEPENDS=	softhsm2>=2.5.0:security/softhsm2
 
 post-patch:
 	${REINPLACE_CMD} -e "s|\(-lcrypto\)|-L${OPENSSLLIB} \1|g" \

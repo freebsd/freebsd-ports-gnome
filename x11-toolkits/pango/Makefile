@@ -3,7 +3,7 @@
 
 PORTNAME=	pango
 PORTVERSION=	1.42.4
-PORTREVISION=	1
+PORTREVISION=	3
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome2
@@ -36,14 +36,14 @@ FONTSCALE=	${LOCALBASE}/share/fonts/TTF/luximb.ttf
 FONTENCOD=	${LOCALBASE}/share/fonts/encodings/encodings.dir
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	X11 GTKDOC
+OPTIONS_DEFINE=	X11 DOCS
 OPTIONS_DEFAULT=X11
 
-GTKDOC_DESC=		Build and install gtk-doc generated documentation
-GTKDOC_MESON_TRUE=	enable_docs
-GTKDOC_BUILD_DEPENDS=	gtk-doc>=0:textproc/gtk-doc
+DOCS_MESON_TRUE=	enable_docs
+DOCS_BUILD_DEPENDS=	gtk-doc>=0:textproc/gtk-doc
 
 X11_MESON_TRUE=	xft
+X11_USES=	xorg
 X11_USE=	XORG=x11,xft,xrender
 
 pre-configure:

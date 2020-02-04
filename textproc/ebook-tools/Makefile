@@ -3,7 +3,7 @@
 
 PORTNAME=	ebook-tools
 PORTVERSION=	0.2.2
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	textproc kde
 MASTER_SITES=	SF
 
@@ -14,7 +14,7 @@ LICENSE=	MIT
 
 LIB_DEPENDS=	libzip.so:archivers/libzip
 
-USES=		cmake
+USES=		cmake gnome
 USE_LDCONFIG=	yes
 USE_GNOME=	libxml2
 

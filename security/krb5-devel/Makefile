@@ -3,13 +3,12 @@
 
 PORTNAME=		krb5
 PORTVERSION=		1.18.${MIT_COMMIT_DATE}
-PORTREVISION=		1
 CATEGORIES=		security
 .if !defined(MASTERDIR)
 PKGNAMESUFFIX=		-devel
 .endif
-HASH=			2298e5c
-MIT_COMMIT_DATE=	2019.04.25
+HASH=			a3a5c9b31
+MIT_COMMIT_DATE=	2020.01.30
 
 PATCH_SITES=		http://web.mit.edu/kerberos/advisories/
 PATCH_DIST_STRIP=	-p2
@@ -30,8 +29,8 @@ USE_PERL5=		build
 USE_LDCONFIG=		yes
 USE_CSTD=		gnu99
 GNU_CONFIGURE=		yes
-USES=			autoreconf cpe gmake localbase perl5 libtool:build \
-			gssapi:bootstrap,mit pkgconfig ssl
+USES=			autoreconf compiler:c11 cpe gmake localbase perl5 \
+			libtool:build gssapi:bootstrap,mit pkgconfig ssl
 CONFIGURE_ARGS?=	--enable-shared --without-system-verto \
 			--disable-rpath --localstatedir="${PREFIX}/var"
 CONFIGURE_ENV=		INSTALL="${INSTALL}" INSTALL_LIB="${INSTALL_LIB}" YACC="${YACC}"

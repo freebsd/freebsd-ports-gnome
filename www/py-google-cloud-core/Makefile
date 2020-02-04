@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	google-cloud-core
-PORTVERSION=	0.29.1
+PORTVERSION=	1.3.0
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,11 +12,11 @@ COMMENT=	API Client library for Google Cloud: Core Helpers
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}google-api-core>=1.0.0:www/py-google-api-core@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}grpcio>=1.8.2:devel/py-grpcio@${PY_FLAVOR}
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}google-api-core>=1.16.0<2.0:www/py-google-api-core@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}grpcio>=1.8.2<2.0:devel/py-grpcio@${PY_FLAVOR}
 
 USES=		python
-USE_PYTHON=	distutils concurrent autoplist
+USE_PYTHON=	autoplist concurrent distutils
 
 NO_ARCH=	yes
 

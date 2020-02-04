@@ -10,12 +10,16 @@ MASTER_SITES=	http://koti.kapsi.fi/ighea/wbarconf/
 MAINTAINER=	olivier@FreeBSD.org
 COMMENT=	Configuration GUI for wbar
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	GPLv3
 
 RUN_DEPENDS=	wbar:x11/wbar
 
 USE_GNOME=	pygobject pygtk2 gtk20
-USES=		gettext desktop-file-utils python:2.7 shebangfix
+USES=		desktop-file-utils gettext gnome python:2.7 shebangfix
 SHEBANG_FILES=	${WRKSRC}/wbarconf
 python_OLD_CMD=	"/usr/bin/env python2"
 NO_BUILD=	yes

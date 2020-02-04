@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ctwm
-DISTVERSION=	4.0.2
+DISTVERSION=	4.0.3
 PORTEPOCH=	1
 CATEGORIES=	x11-wm
 MASTER_SITES=	https://www.ctwm.org/dist/ \
@@ -13,7 +13,7 @@ COMMENT=	Extension to twm, with support for multiple virtual screens
 
 LICENSE=	MIT
 
-USES=		cmake jpeg tar:xz
+USES=		cmake jpeg tar:xz xorg
 USE_XORG=	x11 xext xt ice sm xpm xmu
 
 OPTIONS_DEFINE=	DOCS EXAMPLES

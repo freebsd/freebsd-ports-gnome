@@ -3,7 +3,7 @@
 
 PORTNAME=	fox
 PORTVERSION=	1.7.64
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	http://ftp.fox-toolkit.org/pub/ \
 		ftp://ftp.fox-toolkit.org/pub/
@@ -15,11 +15,13 @@ COMMENT=	Fast and extensive C++ GUI toolkit (development version)
 LICENSE=	LGPL3+
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BROKEN_powerpc=		missing __sync_bool_compare_and_swap_8()
+
 LIB_DEPENDS=	libpng.so:graphics/png \
 		libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
 
-USES=		compiler:c++11-lib libtool localbase pathfix
+USES=		compiler:c++11-lib gl libtool localbase pathfix xorg
 USE_GL=		gl glu
 USE_XORG=	ice sm x11 xcursor xext xfixes xft xi xrandr xrender
 USE_LDCONFIG=	yes
@@ -35,9 +37,6 @@ MAJORVER=	${PORTVERSION:R}
 PLIST_SUB+=	MAJORVER=${MAJORVER}
 DOCSDIR=	${PREFIX}/share/doc/${PORTNAME}-${MAJORVER}
 PORTDOCS=	*
-
-BROKEN_aarch64=		Fails to compile: cannot initialize a parameter of type void * with an lvalue of type long
-BROKEN_powerpc=		missing __sync_bool_compare_and_swap_8()
 
 OPTIONS_DEFINE=		DEBUG DOCS EXAMPLES OPTIMIZED_CFLAGS PROFILE TEST
 OPTIONS_GROUP=		IMGFMTS

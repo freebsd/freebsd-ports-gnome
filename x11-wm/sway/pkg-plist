@@ -1,6 +1,5 @@
 %%MAYBE_SUID%%bin/sway
 bin/swaybar
-bin/swaybg
 bin/swaymsg
 bin/swaynag
 @sample %%ETCDIR%%/config.sample
@@ -14,6 +13,7 @@ bin/swaynag
 %%MANPAGES%%man/man5/sway.5.gz
 %%MANPAGES%%man/man5/swaynag.5.gz
 %%MANPAGES%%man/man7/sway-ipc.7.gz
+%%MANPAGES%%man/man7/swaybar-protocol.7.gz
 share/backgrounds/sway/Sway_Wallpaper_Blue_1136x640.png
 share/backgrounds/sway/Sway_Wallpaper_Blue_1136x640_Portrait.png
 share/backgrounds/sway/Sway_Wallpaper_Blue_1366x768.png
@@ -25,9 +25,9 @@ share/backgrounds/sway/Sway_Wallpaper_Blue_768x1024_Portrait.png
 share/bash-completion/completions/sway
 share/bash-completion/completions/swaybar
 share/bash-completion/completions/swaymsg
-share/fish/completions/sway.fish
-share/fish/completions/swaymsg.fish
-share/fish/completions/swaynag.fish
+share/fish/vendor_completions.d/sway.fish
+share/fish/vendor_completions.d/swaymsg.fish
+share/fish/vendor_completions.d/swaynag.fish
 share/wayland-sessions/sway.desktop
 share/zsh/site-functions/_sway
 share/zsh/site-functions/_swaymsg

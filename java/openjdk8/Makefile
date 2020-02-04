@@ -1,18 +1,17 @@
 # $FreeBSD$
 
 PORTNAME=	openjdk
-PORTVERSION=	${JDK_MAJOR_VERSION}.${JDK_UPDATE_VERSION}.${JDK_BUILD_NUMBER:S/^0//}.${BSD_JDK_VERSION}
+PORTVERSION=	${JDK_MAJOR_VERSION}.${JDK_UPDATE_VERSION}.${JDK_BUILD_NUMBER}.${BSD_JDK_VERSION}
 CATEGORIES=	java devel
-MASTER_SITES=	https://github.com/battleblow/openjdk-jdk8u/archive/:jdk \
-		LOCAL/jkim:jtreg
+MASTER_SITES=	LOCAL/jkim:jtreg
 PKGNAMESUFFIX?=	${JDK_MAJOR_VERSION}
-DISTNAME=	jdk${JDK_MAJOR_VERSION}u${JDK_UPDATE_VERSION}-b${JDK_BUILD_NUMBER}.${BSD_JDK_VERSION}
-DISTFILES=	${DISTNAME}.tar.gz:jdk
 
 MAINTAINER=	java@FreeBSD.org
 COMMENT?=	Java Development Kit ${JDK_MAJOR_VERSION}
 
 LICENSE=	GPLv2
+
+ONLY_FOR_ARCHS=	aarch64 amd64 armv6 armv7 i386 powerpc powerpc64
 
 BUILD_DEPENDS=	zip:archivers/zip \
 		autoconf>0:devel/autoconf \
@@ -24,12 +23,12 @@ LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 RUN_DEPENDS=	javavm:java/javavmwrapper \
 		dejavu>0:x11-fonts/dejavu
 
-USES=		compiler:features gmake iconv pkgconfig shebangfix
+USES=		compiler:features gmake iconv pkgconfig
 
-ONLY_FOR_ARCHS=	aarch64 amd64 armv6 armv7 i386 powerpc powerpc64
-WRKSRC=		${WRKDIR}/${PORTNAME}-jdk${JDK_MAJOR_VERSION}u-${DISTNAME}
-
-SHEBANG_FILES=	configure
+USE_GITHUB=	yes
+GH_ACCOUNT=	battleblow
+GH_PROJECT=	openjdk-jdk8u
+GH_TAGNAME=	jdk${JDK_MAJOR_VERSION}u${JDK_UPDATE_VERSION}-b${JDK_BUILD_NUMBER}.${BSD_JDK_VERSION}
 
 _MAKE_JOBS=	#
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -52,8 +51,8 @@ INSTALLDIR=	${PREFIX}/${PKGBASE}
 NOPRECIOUSMAKEVARS=	yes
 
 JDK_MAJOR_VERSION=	8
-JDK_UPDATE_VERSION=	212
-JDK_BUILD_NUMBER=	04
+JDK_UPDATE_VERSION=	242
+JDK_BUILD_NUMBER=	07
 BSD_JDK_VERSION=	1
 JTREG_VERSION=		4.1
 JTREG_BUILD_NUMBER=	b08
@@ -109,8 +108,9 @@ X11_CONFIGURE_ON=	--with-giflib=system \
 X11_LIB_DEPENDS=	libgif.so:graphics/giflib
 X11_MAKE_ENV_OFF=	BUILD_HEADLESS_ONLY=1 \
 			MAKEFLAGS=X_CFLAGS="-I${LOCALBASE}/include"
-X11_MAKE_ENV_ON=	MAKEFLAGS=""
+X11_USES=		xorg
 X11_USE=		XORG=x11,xext,xi,xrender,xt,xtst
+FONTCONFIG_EXTRA_PATCHES=	${PATCHDIR}/fontconfig.patch
 FONTCONFIG_IMPLIES=	X11
 
 JAVAVMS_COMMENT=	OpenJDK${JDK_MAJOR_VERSION}
@@ -194,13 +194,8 @@ LIB_DEPENDS+=	libffi.so:devel/libffi
 .endif
 
 .if ${COMPILER_TYPE} == clang
-.if ${COMPILER_VERSION} >= 35
-MAKE_ENV+=	COMPILER_WARNINGS_FATAL=false
-.endif
-MAKE_ENV+=	USE_CLANG=true
-.if ${COMPILER_FEATURES:Mlibc++}
+MAKE_ENV+=	COMPILER_WARNINGS_FATAL=false USE_CLANG=true
 CONFIGURE_ENV+=	LIBCXX="-lc++"
-.endif
 .endif
 
 # GCC is broken with PCH: https://lists.freebsd.org/pipermail/svn-src-all/2015-March/101722.html
@@ -213,6 +208,11 @@ MAKE_ARGS+=	USE_PRECOMPILED_HEADER=0
 .endif
 .endif
 
+.if defined(PPC_ABI) && ${PPC_ABI} == ELFv2
+EXTRA_PATCHES+= ${FILESDIR}/extra-patch-ppc64-elfv2
+MAKE_ARGS+=	USE_PRECOMPILED_HEADER=0
+.endif
+
 .if empty(ICONV_LIB)
 ICONV_CPPFLAGS=	-DLIBICONV_PLUG
 .else
@@ -222,9 +222,6 @@ ICONV_LDFLAGS=	-L${LOCALBASE}/lib ${ICONV_LIB}
 
 post-extract-TEST-on:
 	@${LN} -sf ${WRKDIR}/jtreg/linux/bin ${WRKDIR}/jtreg/
-
-do-patch-FONTCONFIG-on:
-	@${PATCH} -d ${PATCH_WRKSRC} < ${PATCHDIR}/fontconfig.patch
 
 post-patch:
 	@${FIND} ${WRKSRC} -name '*.orig' -delete

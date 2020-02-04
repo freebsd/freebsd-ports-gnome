@@ -26,6 +26,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
 
 USE_LDCONFIG=	yes
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-profiler
 

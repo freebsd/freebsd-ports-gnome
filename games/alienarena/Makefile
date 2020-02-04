@@ -3,7 +3,7 @@
 
 PORTNAME=	alienarena
 PORTVERSION=	2013.766
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	games
 MASTER_SITES=	SF/alienarena.mirror/Alien%20Arena%207.66/ \
 		http://icculus.org/alienarena/Files/ \
@@ -48,7 +48,7 @@ LIBDIR=		${PREFIX}/lib/${PORTNAME}
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MCLIENT}
-USES+=		jpeg openal:soft,alut pkgconfig
+USES+=		gl jpeg openal:soft,alut pkgconfig xorg
 LIB_DEPENDS+=	libcurl.so:ftp/curl \
 		libfreetype.so:print/freetype2 \
 		libpng.so:graphics/png \

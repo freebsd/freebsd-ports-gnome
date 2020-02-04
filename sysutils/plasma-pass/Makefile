@@ -1,12 +1,15 @@
 # $FreeBSD$
 
 PORTNAME=	plasma-pass
-DISTVERSION=	1.0.0
+DISTVERSION=	1.1.0
 MASTER_SITES=	KDE/stable/${PORTNAME}
 CATEGORIES=	sysutils kde
 
 MAINTAINER=	kde@FreeBSD.org
 COMMENT=	Plasma applet for Pass password manager
+
+LICENSE=	LGPL21
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 RUN_DEPENDS=	pass:sysutils/password-store
 

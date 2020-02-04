@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	mgba
-DISTVERSION=	0.7.0
+DISTVERSION=	0.7.3
 CATEGORIES=	emulators
 
 MAINTAINER=	greg@unrelenting.technology
@@ -10,13 +10,16 @@ COMMENT=	Game Boy Advance (GBA) emulator/debugger
 LICENSE=	MPL20 BSD3CLAUSE LGPL21+
 LICENSE_COMB=	multi
 LICENSE_FILE_BSD3CLAUSE=	${WRKSRC}/src/third-party/inih/LICENSE.txt
-LICENSE_FILE_LGPL21+=	${WRKSRC}/src/third-party/blip_buf/license.txt
+LICENSE_FILE_LGPL21+ =	${WRKSRC}/src/third-party/blip_buf/license.txt
 LICENSE_FILE_MPL20=	${WRKSRC}/LICENSE
 
 LIB_DEPENDS=	libepoxy.so:graphics/libepoxy \
 		libpng.so:graphics/png
 
-USES=		cmake compiler:c++11-lang gl gnome localbase:ldflags pkgconfig sqlite:3
+USES=		cmake compiler:c++11-lang gl gnome localbase:ldflags pkgconfig \
+		sdl sqlite:3
+
+USE_LDCONFIG=	yes
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	mgba-emu

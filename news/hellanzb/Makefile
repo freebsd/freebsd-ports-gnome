@@ -10,6 +10,10 @@ MASTER_SITES=	http://www.hellanzb.com/distfiles/
 MAINTAINER=	pjenvey@groovie.org
 COMMENT=	Nzb downloader and post processor
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	BSD3CLAUSE
 
 RUN_DEPENDS=	par2:archivers/par2cmdline \

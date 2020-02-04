@@ -1,13 +1,13 @@
 # $FreeBSD$
 
 PORTNAME=	supercollider
-DISTVERSION=	3.9.3
-PORTREVISION=	7
+DISTVERSION=	3.10.2
+PORTREVISION=	3
 CATEGORIES=	audio
 MASTER_SITES=	https://github.com/supercollider/supercollider/releases/download/Version-${PORTVERSION}/
 DISTNAME=	SuperCollider-${PORTVERSION}-Source-linux
 
-MAINTAINER=	brittlehaus@gmail.com
+MAINTAINER=	ports@nicandneal.net
 COMMENT=	Programming language for real time audio synthesis
 
 LICENSE=	GPLv3
@@ -21,10 +21,10 @@ LIB_DEPENDS=	libavahi-client.so:net/avahi-app \
 		libfftw3f.so:math/fftw3-float
 
 USES=		cmake compiler:c++11-lang iconv localbase pkgconfig \
-		qt:5 readline shared-mime-info tar:bzip2
+		qt:5 readline shared-mime-info tar:bzip2 xorg
 USE_QT=		buildtools_build concurrent core declarative gui linguisttools location \
 		network opengl printsupport qmake_build sensors \
-		sql webkit widgets
+		sql widgets webengine websockets webchannel svg
 USE_XORG=	x11
 USE_LDCONFIG=	yes
 
@@ -50,8 +50,16 @@ SUPERNOVA_CMAKE_BOOL=	SUPERNOVA
 
 .include <bsd.port.pre.mk>
 
-.if ${ARCH:Mmips*} || ${ARCH:Mpowerpc*} || ${ARCH} == sparc64
+.if ! ${ARCH} == amd64 && ! ${ARCH} == i386
 CMAKE_ARGS+=	-DSSE:BOOL=FALSE -DSSE2:BOOL=FALSE
+.endif
+
+.if ${OPSYS} == FreeBSD
+.if ${OSVERSION} < 1200000 || \
+	(${OSVERSION} >= 1200506 && ${OSVERSION} < 1300000) || \
+	${OSVERSION} >= 1300014
+BROKEN=	fails to compile with Clang 8 due shipped Boost 1.66 libraries. Not compatible with Boost 1.70+, either
+.endif
 .endif
 
 post-patch:

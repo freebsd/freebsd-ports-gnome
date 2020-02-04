@@ -25,6 +25,7 @@ OPTIONS_DEFINE=	SDL DOCS
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MSDL}
+USES+=		sdl
 USE_SDL=	sdl
 MAKE_ENV+=	BACKEND=SDL
 CPPFLAGS+=	$$(${SDL_CONFIG} --cflags)
@@ -32,7 +33,7 @@ LDFLAGS+=	$$(${SDL_CONFIG} --libs)
 .else
 LIB_DEPENDS+=	libvga.so:graphics/svgalib
 MAKE_ENV+=	BACKEND=SVGALIB
-ONLY_FOR_ARGS=	i386 amd64
+ONLY_FOR_ARCHS=	i386 amd64
 .endif
 
 post-extract:

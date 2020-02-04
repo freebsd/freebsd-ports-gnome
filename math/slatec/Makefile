@@ -3,7 +3,7 @@
 
 PORTNAME=	slatec
 PORTVERSION=	4.1
-PORTREVISION=	11
+PORTREVISION=	12
 CATEGORIES=	math
 MASTER_SITES=	NL/slatec/:slatec NL/blas/:blas
 # Get d1mach.f, i1mach.f, r1mach.f from BLAS, rather than from Slatec:
@@ -44,7 +44,7 @@ base system profiling libraries
 .endif
 PLIST_FILES+=	lib/libslatec_p.a
 .else
-MAKE_ENV+=	NO_PROFILE=
+MAKE_ENV+=	WITHOUT_PROFILE=yes
 .endif
 
 post-extract:

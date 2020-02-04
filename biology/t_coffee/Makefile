@@ -4,13 +4,15 @@
 PORTNAME=	t_coffee
 PORTVERSION=	9.03
 DISTVERSIONSUFFIX=	.r1318
-PORTREVISION=	10
+PORTREVISION=	11
 CATEGORIES=	biology
 MASTER_SITES=	http://www.tcoffee.org/Packages/Stable/Version_${PORTVERSION}${DISTVERSIONSUFFIX}/
 DISTNAME=	T-COFFEE_distribution_Version_${PORTVERSION}${DISTVERSIONSUFFIX}
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Multiple DNA or protein sequence alignment package
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv2
 

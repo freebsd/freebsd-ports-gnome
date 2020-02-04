@@ -19,10 +19,10 @@ USE_KDE=	archive auth bookmarks codecs completion config configwidgets \
 		jobwidgets kio notifications service solid wallet \
 		widgetsaddons xmlgui
 # pim components
-USE_KDE+=	akonadi akonadicontacts akonadimime contacts \
-		identitymanagement libkdepim libkleo mailcommon mailtransport \
-		messagelib mime pimcommon pimtextedit
-USE_QT=		core dbus gui network widgets xml \
+USE_KDE+=	akonadi akonadicontacts akonadimime akonadinotes contacts \
+		identitymanagement imap libkdepim libkleo mailcommon \
+		mailtransport messagelib mime pimcommon pimtextedit
+USE_QT=		concurrent core dbus gui network widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 

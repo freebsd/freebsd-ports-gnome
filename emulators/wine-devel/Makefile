@@ -2,11 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	wine
-DISTVERSION=	4.7
+DISTVERSION=	5.0-rc6
 PORTEPOCH=	1
 CATEGORIES=	emulators
 MASTER_SITES=	SF/${PORTNAME}/Source \
-		http://mirrors.ibiblio.org/wine/source/4.x/
+		http://mirrors.ibiblio.org/wine/source/5.0/
 PKGNAMESUFFIX?=	-devel
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
@@ -77,7 +77,7 @@ DOSBOX_RUN_DEPENDS=	dosbox:emulators/dosbox
 GCC_USE=		gcc=yes
 GCC_USES_OFF=		compiler:c11
 
-GECKO_RUN_DEPENDS=	${DATADIR}/gecko/wine_gecko-2.47-x86.msi:emulators/wine-gecko-devel
+GECKO_RUN_DEPENDS=	${DATADIR}/gecko/wine-gecko-2.47.1-x86.msi:emulators/wine-gecko-devel
 
 GNUTLS_CONFIGURE_WITH=	gnutls
 GNUTLS_LIB_DEPENDS=	libgnutls.so:security/gnutls
@@ -91,7 +91,7 @@ LDAP_USE=		OPENLDAP=yes
 LIBXSLT_CONFIGURE_WITH=	xslt
 LIBXSLT_LIB_DEPENDS=	libxslt.so:textproc/libxslt
 
-MONO_RUN_DEPENDS=	${DATADIR}/mono/wine-mono-4.8.3.msi:emulators/wine-mono-devel
+MONO_RUN_DEPENDS=	${DATADIR}/mono/wine-mono-4.9.4.msi:emulators/wine-mono-devel
 
 MPG123_CONFIGURE_WITH=	mpg123
 MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123
@@ -99,9 +99,9 @@ MPG123_LIB_DEPENDS=	libmpg123.so:audio/mpg123
 OPENAL_CONFIGURE_WITH=	openal
 OPENAL_USES=		openal
 
-V4L_CONFIGURE_WITH=	v4l
+V4L_CONFIGURE_WITH=	v4l2
 V4L_BUILD_DEPENDS=	${LOCALBASE}/include/linux/videodev2.h:multimedia/v4l_compat
-V4L_LIB_DEPENDS=	libv4l1.so:multimedia/libv4l
+V4L_LIB_DEPENDS=	libv4l2.so:multimedia/libv4l
 
 VKD3D_CONFIGURE_WITH=	vkd3d
 VKD3D_USES=		pkgconfig
@@ -113,7 +113,7 @@ VULKAN_LIB_DEPENDS=	libvulkan.so:graphics/vulkan-loader
 WINEMAKER_RUN_DEPENDS=	p5-XML-LibXML>0:textproc/p5-XML-LibXML
 
 X11_CONFIGURE_WITH=	x cms fontconfig freetype glu jpeg opengl png xinerama xinput2 xrandr xrender
-X11_USES=		gl jpeg
+X11_USES=		gl jpeg xorg
 X11_USE=		GL=glu XORG=x11,xext,xcomposite,xcursor,xi,xinerama,xrandr,xrender
 X11_LIB_DEPENDS=	libfontconfig.so:x11-fonts/fontconfig \
 			libfreetype.so:print/freetype2 \

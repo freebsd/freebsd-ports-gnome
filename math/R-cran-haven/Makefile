@@ -2,10 +2,11 @@
 
 PORTNAME=	haven
 DISTVERSION=	2.1.0
+PORTREVISION=	1
 CATEGORIES=	math
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
-MAINTAINER=	dbn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Import and Export 'SPSS', 'Stata' and 'SAS' Files
 
 LICENSE=	MIT

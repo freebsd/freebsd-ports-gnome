@@ -3,7 +3,7 @@
 
 PORTNAME=	flameshot
 PORTVERSION=	0.6.0
-PORTREVISION=	2
+PORTREVISION=	3
 DISTVERSIONPREFIX=	v
 CATEGORIES=	deskutils
 
@@ -16,8 +16,6 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USES=		compiler:c++11-lang gl qmake qt:5
 
 GH_ACCOUNT=	lupoDharkael
-
-INSTALL_ICONS=	yes
 
 USE_GITHUB=	yes
 USE_GL=		gl

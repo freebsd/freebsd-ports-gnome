@@ -3,7 +3,7 @@
 PORTNAME=	wx
 PORTVERSION=	3.0.4
 DISTVERSIONPREFIX=	v
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	x11-toolkits
 PKGNAMESUFFIX=	30-gtk3
 
@@ -23,7 +23,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	wxWidgets
 GH_PROJECT=	wxWidgets
 
-USES=		compiler:c++11-lib gl gmake gnome iconv jpeg localbase pkgconfig
+USES=		compiler:c++11-lib gl gmake gnome iconv jpeg localbase \
+		pkgconfig xorg
 USE_XORG=	x11 sm xxf86vm xinerama
 USE_GL=		gl glu
 USE_GNOME=	cairo gdkpixbuf2 gtk30

@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	curtsies
-PORTVERSION=	0.3.0
-PORTREVISION=	1
+PORTVERSION=	0.3.1
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -15,16 +14,12 @@ LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}blessings>=1.5:devel/py-blessings@${PY_FLAVOR} \
+		${PY_TYPING} \
 		${PYTHON_PKGNAMEPREFIX}wcwidth>=0.1.4:devel/py-wcwidth@${PY_FLAVOR}
 
-NO_ARCH=	yes
-USE_PYTHON=	autoplist concurrent distutils
 USES=		python
+USE_PYTHON=	autoplist concurrent distutils
 
-.include <bsd.port.pre.mk>
+NO_ARCH=	yes
 
-.if ${PYTHON_REL} < 3500
-RUN_DEPENDS+=	${PYTHON_PKGNAMEPREFIX}typing>=0:devel/py-typing@${PY_FLAVOR}
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

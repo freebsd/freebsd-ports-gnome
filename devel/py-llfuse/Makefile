@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	llfuse
-PORTVERSION=	1.2
-PORTREVISION=	3
+PORTVERSION=	1.3.6
 CATEGORIES=	devel python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -12,7 +11,7 @@ COMMENT=	Python bindings for low-level FUSE API
 
 LICENSE=	LGPL20+
 
-BROKEN_powerpc64=	Does not build: error: conversion to mode_t from int may alter its value
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}contextlib2>0:devel/py-contextlib2@${PY_FLAVOR}
 
 USES=		compiler:c++11-lang fuse pkgconfig python tar:bz2
 USE_PYTHON=	autoplist distutils

@@ -1,4 +1,4 @@
---- third_party/perfetto/include/perfetto/base/build_config.h.orig	2019-03-11 22:08:02 UTC
+--- third_party/perfetto/include/perfetto/base/build_config.h.orig	2019-12-16 21:56:17 UTC
 +++ third_party/perfetto/include/perfetto/base/build_config.h
 @@ -28,6 +28,7 @@
  #define PERFETTO_BUILDFLAG_DEFINE_PERFETTO_OS_ANDROID() 1

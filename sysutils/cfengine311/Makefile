@@ -3,7 +3,7 @@
 
 PORTNAME=	cfengine
 PORTVERSION=	3.11.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	sysutils
 MASTER_SITES=	https://s3.amazonaws.com/cfengine-package-repos/tarballs/
 
@@ -32,8 +32,7 @@ USE_RC_SUBR=	cf-execd cf-serverd cf-monitord
 MAKE_JOBS_UNSAFE=	yes
 USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
-USES=		autoreconf \
-		cpe gmake localbase libtool shebangfix ssl
+USES=		autoreconf cpe gmake gnome libtool localbase shebangfix ssl
 USE_GNOME=	libxml2
 SHEBANG_FILES=	examples/remake_outputs.pl
 CFLAGS+=	-Wno-return-type
@@ -61,10 +60,12 @@ OPTIONS_DEFINE=	PGSQL MYSQL LIBVIRT
 
 PGSQL_USES=		pgsql
 PGSQL_CONFIGURE_WITH=	--with-postgresql=${LOCALBASE}
+PGSQL_CONFIGURE_OFF=	--without-postgresql
 
 MYSQL_USES=		mysql
 MYSQL_BROKEN=		configure: error: MySQL client library exports symbols (EVP_CIPHER_CTX_init) clashing with OpenSSL.
 MYSQL_CONFIGURE_WITH=	--with-mysql=${LOCALBASE}
+MYSQL_CONFIGURE_OFF=	--without-mysql
 MYSQL_LIB_DEPENDS=	libmysqlclient.so:${_MYSQL_CLIENT}
 MYSQL_LDFLAGS=		-L${LOCALBASE}/lib/mysql
 
@@ -75,8 +76,8 @@ LIBVIRT_LIB_DEPENDS+=	libvirt.so:devel/libvirt
 
 .if ${OPSYS} == "FreeBSD" && ${OSVERSION} >= 1200085
 .if ${SSL_DEFAULT} != "openssl"
-BROKEN_FreeBSD_12=	fails to build with openssl111, install security/openssl
-BROKEN_FreeBSD_13=	fails to build with openssl111, install security/openssl
+BROKEN_FreeBSD_12=	fails to build with openssl
+BROKEN_FreeBSD_13=	fails to build with openssl
 .endif
 .endif
 

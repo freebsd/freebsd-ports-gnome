@@ -5,7 +5,7 @@ PORTNAME=	db6
 PORTVERSION=	6.2.32
 PORTREVISION=	1
 CATEGORIES=	databases java
-MASTER_SITES=	http://download.oracle.com/berkeley-db/
+MASTER_SITES=	https://download.oracle.com/berkeley-db/
 PKGNAMEPREFIX?=
 #
 # the distfiles aren't named db6-* but db-*:
@@ -37,7 +37,7 @@ USE_LDCONFIG=	yes
 PLIST_SUB=	BDBMAJ=${BDBMAJ} BDBVER=${BDBVER}
 MAKE_ARGS+=	docdir=${DOCSDIR}
 
-OPTIONS_DEFINE=	CRYPTO L10N SQL JAVA TCL DOCS
+OPTIONS_DEFINE=	CRYPTO DEBUG L10N SQL JAVA TCL DOCS
 OPTIONS_DEFAULT=CRYPTO
 OPTIONS_SUB=	yes
 CRYPTO_DESC=	Cryptography support
@@ -54,12 +54,16 @@ L10N_CONFIGURE_ENABLE=	localization
 SQL_CONFIGURE_ENABLE=	sql sql_codegen
 SQL_VARS=		DBLIBS+=libdb_sql
 JAVA_USE=		java
-JAVA_VARS=		DBLIBS+=libdb_java JAVA_VERSION=1.6+
+# db6 is only compatible with openjdk 7 or 8,
+# openjdk 11 or newer and cause IllegalArgument
+# exceptions during build even if the version check
+# in dist/configure is disabled or fixed:
+JAVA_VARS=		DBLIBS+=libdb_java JAVA_VERSION="7 8"
 JAVA_CONFIGURE_ENABLE=	java
 JAVA_CPPFLAGS=		-I"${JAVA_HOME}/include"
 JAVA_CONFIGURE_ENV=	JAVAC="${JAVAC}" JAR="${JAR}" JAVA="${JAVA}"
 TCL_CONFIGURE_ENABLE=	tcl
-TCL_USES=		tcl:85+
+TCL_USES=		tcl
 TCL_CONFIGURE_WITH=	tcl=${TCL_LIBDIR}
 TCL_VARS=		DBLIBS+=libdb_tcl
 DOCS_INSTALL_TARGET=	install_docs

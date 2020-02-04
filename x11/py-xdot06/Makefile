@@ -12,10 +12,13 @@ COMMENT=	Interactive viewer for Graphviz dot files
 
 LICENSE=	LGPL3+
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-01
+
 RUN_DEPENDS=	dot:graphics/graphviz
 
 NO_ARCH=	yes
-USES=		python:2.7
+USES=		gnome python:2.7
 USE_PYTHON=	autoplist distutils
 USE_GNOME=	pygtk2
 

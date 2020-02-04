@@ -30,7 +30,7 @@ libdata/pkgconfig/weechat.pc
 %%MANPAGES%%man/pl/man1/weechat-headless.1.gz
 %%MANPAGES%%man/ru/man1/weechat.1.gz
 %%MANPAGES%%man/ru/man1/weechat-headless.1.gz
-%%ASPELL%%lib/weechat/plugins/aspell.so
+%%ASPELL%%lib/weechat/plugins/spell.so
 %%CHARSET%%lib/weechat/plugins/charset.so
 %%JAVASCRIPT%%lib/weechat/plugins/javascript.so
 %%LUA%%lib/weechat/plugins/lua.so
@@ -82,7 +82,13 @@ libdata/pkgconfig/weechat.pc
 %%DOCS%%%%DOCSDIR%%/weechat_user.it.html
 %%DOCS%%%%DOCSDIR%%/weechat_user.ja.html
 %%DOCS%%%%DOCSDIR%%/weechat_user.pl.html
+share/applications/weechat.desktop
+%%ICON%%share/icons/hicolor/128x128/apps/weechat.png
+%%ICON%%share/icons/hicolor/16x16/apps/weechat.png
+%%ICON%%share/icons/hicolor/256x256/apps/weechat.png
 %%ICON%%share/icons/hicolor/32x32/apps/weechat.png
+%%ICON%%share/icons/hicolor/512x512/apps/weechat.png
+%%ICON%%share/icons/hicolor/64x64/apps/weechat.png
 %%NLS%%share/locale/cs/LC_MESSAGES/weechat.mo
 %%NLS%%share/locale/de/LC_MESSAGES/weechat.mo
 %%NLS%%share/locale/es/LC_MESSAGES/weechat.mo

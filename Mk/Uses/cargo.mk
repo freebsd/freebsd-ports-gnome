@@ -35,15 +35,15 @@ CARGO_DIST_SUBDIR?=	rust/crates
 
 # Generate list of DISTFILES.
 .for _crate in ${CARGO_CRATES}
-MASTER_SITES+=	CRATESIO/${_crate:C/^(.*)-[0-9].*/\1/}/${_crate:C/^.*-([0-9].*)/\1/}:cargo_${_crate:S/-//g:S/.//g}
-DISTFILES+=	${CARGO_DIST_SUBDIR}/${_crate}.tar.gz:cargo_${_crate:S/-//g:S/.//g}
+MASTER_SITES+=	CRATESIO/${_crate:C/^(.*)-[0-9].*/\1/}/${_crate:C/^.*-([0-9].*)/\1/}:cargo_${_crate:C/[^a-zA-Z0-9_]//g}
+DISTFILES+=	${CARGO_DIST_SUBDIR}/${_crate}.tar.gz:cargo_${_crate:C/[^a-zA-Z0-9_]//g}
 .endfor
 
 # Build dependencies.
 
 CARGO_BUILDDEP?=	yes
 .if ${CARGO_BUILDDEP:tl} == "yes"
-BUILD_DEPENDS+=	${RUST_DEFAULT}>=1.34.0:lang/${RUST_DEFAULT}
+BUILD_DEPENDS+=	${RUST_DEFAULT}>=1.41.0:lang/${RUST_DEFAULT}
 .endif
 
 # Location of cargo binary (default to lang/rust's Cargo binary)
@@ -56,6 +56,7 @@ CARGO_TARGET_DIR?=	${WRKDIR}/target
 #  - CARGO_HOME: local cache of the registry index
 #  - CARGO_BUILD_JOBS: configure number of jobs to run
 #  - CARGO_TARGET_DIR: location of where to place all generated artifacts
+#  - RUST_BACKTRACE: produce backtraces when something in the build panics
 #  - RUSTC: path of rustc binary (default to lang/rust)
 #  - RUSTDOC: path of rustdoc binary (default to lang/rust)
 #  - RUSTFLAGS: custom flags to pass to all compiler invocations that Cargo performs
@@ -63,6 +64,7 @@ CARGO_ENV+= \
 	CARGO_HOME=${WRKDIR}/cargo-home \
 	CARGO_BUILD_JOBS=${MAKE_JOBS_NUMBER} \
 	CARGO_TARGET_DIR=${CARGO_TARGET_DIR} \
+	RUST_BACKTRACE=1 \
 	RUSTC=${LOCALBASE}/bin/rustc \
 	RUSTDOC=${LOCALBASE}/bin/rustdoc \
 	RUSTFLAGS="${RUSTFLAGS} -C linker=${CC:Q} ${LDFLAGS:C/.+/-C link-arg=&/}"
@@ -74,7 +76,7 @@ RUSTFLAGS+=	${CFLAGS:M-march=*:S/-march=/-C target-cpu=/}
 RUSTFLAGS+=	${CFLAGS:M-mcpu=*:S/-mcpu=/-C target-cpu=/}
 .endif
 
-.if ${ARCH} == powerpc64
+.if defined(PPC_ABI) && ${PPC_ABI} == ELFv1
 USE_GCC?=	yes
 .endif
 
@@ -86,6 +88,7 @@ CARGO_CARGO_RUN= \
 # User arguments for cargo targets.
 CARGO_BUILD_ARGS?=
 CARGO_INSTALL_ARGS?=
+CARGO_INSTALL_PATH?=	.
 CARGO_TEST_ARGS?=
 CARGO_UPDATE_ARGS?=
 
@@ -118,10 +121,6 @@ CARGO_TEST_ARGS+=	--release
 CARGO_INSTALL_ARGS+=	--debug
 .endif
 
-.if ${CARGO_CRATES:Mbacktrace-sys-[0-9]*}
-BUILD_DEPENDS+=	gmake:devel/gmake
-.endif
-
 .if ${CARGO_CRATES:Mcmake-[0-9]*}
 BUILD_DEPENDS+=	cmake:devel/cmake
 .endif
@@ -132,16 +131,20 @@ CARGO_ENV+=	GETTEXT_BIN_DIR=${LOCALBASE}/bin \
 		GETTEXT_LIB_DIR=${LOCALBASE}/lib
 .endif
 
+.if ${CARGO_CRATES:Mjemalloc-sys-[0-9]*}
+BUILD_DEPENDS+=	gmake:devel/gmake
+.endif
+
 .for libc in ${CARGO_CRATES:Mlibc-[0-9]*}
 # FreeBSD 12.0 changed ABI: r318736 and r320043
 # https://github.com/rust-lang/libc/commit/78f93220d70e
 # https://github.com/rust-lang/libc/commit/969ad2b73cdc
 _libc_VER=	${libc:C/.*-//}
 . if ${_libc_VER:R:R} == 0 && (${_libc_VER:R:E} < 2 || ${_libc_VER:R:E} == 2 && ${_libc_VER:E} < 38)
-DEV_WARNING+=	"CARGO_CRATES=${libc} may be unstable on FreeBSD 12.0. Consider updating to the latest version (higher than 0.2.37)."
+DEV_ERROR+=	"CARGO_CRATES=${libc} may be unstable on FreeBSD 12.0. Consider updating to the latest version \(higher than 0.2.37\)."
 . endif
 . if ${_libc_VER:R:R} == 0 && (${_libc_VER:R:E} < 2 || ${_libc_VER:R:E} == 2 && ${_libc_VER:E} < 49)
-DEV_WARNING+=	"CARGO_CRATES=${libc} may be unstable on aarch64 or not build on armv6, armv7, powerpc64. Consider updating to the latest version (higher than 0.2.49)."
+DEV_ERROR+=	"CARGO_CRATES=${libc} may be unstable on aarch64 or not build on armv6, armv7, powerpc64. Consider updating to the latest version \(higher than 0.2.49\)."
 . endif
 .undef _libc_VER
 .endfor
@@ -198,19 +201,37 @@ cargo-extract:
 	@${PRINTF} '{"package":"%s","files":{}}' \
 		$$(${SHA256} -q ${DISTDIR}/${CARGO_DIST_SUBDIR}/${_crate}.tar.gz) \
 		> ${CARGO_VENDOR_DIR}/${_crate}/.cargo-checksum.json
+	@if [ -r ${CARGO_VENDOR_DIR}/${_crate}/Cargo.toml.orig ]; then \
+		${MV} ${CARGO_VENDOR_DIR}/${_crate}/Cargo.toml.orig \
+			${CARGO_VENDOR_DIR}/${_crate}/Cargo.toml.orig-cargo; \
+	fi
 .endfor
 
 _CARGO_GIT_PATCH_CARGOTOML=
 .if ${CARGO_USE_GITHUB:tl} == "yes"
 .  for _group in ${GH_TUPLE:C@^[^:]*:[^:]*:[^:]*:(([^:/]*)?)((/.*)?)@\2@}
+.    if empty(CARGO_GIT_SUBDIR:M${_group}\:*)
 _CARGO_GIT_PATCH_CARGOTOML:= ${_CARGO_GIT_PATCH_CARGOTOML} \
-	-e 's@git = "(https|http|git)://github.com/${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}(\.git)?"@path = "${WRKSRC_${_group}}"@'
+	-e "s@git = ['\"](https|http|git)://github.com/${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}(\.git)?/?[\"']@path = \"${WRKSRC_${_group}}\"@"
+.    else
+.      for _group2 _crate _subdir in ${CARGO_GIT_SUBDIR:M${_group}\:*:S,:, ,g}
+_CARGO_GIT_PATCH_CARGOTOML:= ${_CARGO_GIT_PATCH_CARGOTOML} \
+	-e "/^${_crate} =/ s@git = ['\"](https|http|git)://github.com/${GH_ACCOUNT_${_group}}/${GH_PROJECT_${_group}}(\.git)?/?[\"']@path = \"${WRKSRC_${_group}}/${_subdir}\"@"
+.	endfor
+.    endif
 .  endfor
 .endif
 .if ${CARGO_USE_GITLAB:tl} == "yes"
 .  for _group in ${GL_TUPLE:C@^(([^:]*://[^:/]*(:[0-9]{1,5})?(/[^:]*[^/])?:)?)([^:]*):([^:]*):([^:]*)(:[^:/]*)((/.*)?)@\8@:S/^://}
+.    if empty(CARGO_GIT_SUBDIR:M${_group}\:*)
 _CARGO_GIT_PATCH_CARGOTOML:= ${_CARGO_GIT_PATCH_CARGOTOML} \
-	-e 's@git = "${GL_SITE_${_group}}/${GL_ACCOUNT_${_group}}/${GL_PROJECT_${_group}}(\.git)?"@path = "${WRKSRC_${_group}}"@'
+	-e "s@git = ['\"]${GL_SITE_${_group}}/${GL_ACCOUNT_${_group}}/${GL_PROJECT_${_group}}(\.git)?/?['\"]@path = \"${WRKSRC_${_group}}\"@"
+.    else
+.      for _group2 _crate _subdir in ${CARGO_GIT_SUBDIR:M${_group}\:*:S,:, ,g}
+_CARGO_GIT_PATCH_CARGOTOML:= ${_CARGO_GIT_PATCH_CARGOTOML} \
+	-e "/^${_crate} = / s@git = ['\"]${GL_SITE_${_group}}/${GL_ACCOUNT_${_group}}/${GL_PROJECT_${_group}}(\.git)?/?['\"]@path = \"${WRKSRC_${_group}}/${_subdir}\"@"
+.      endfor
+.    endif
 .  endfor
 .endif
 
@@ -222,10 +243,15 @@ cargo-patch-git:
 		${SED} -i.dist -E ${_CARGO_GIT_PATCH_CARGOTOML} {} +
 .endif
 
-.if !target(do-configure) && ${CARGO_CONFIGURE:tl} == "yes"
+.if ${CARGO_CONFIGURE:tl} == "yes"
+_USES_configure+=	250:cargo-configure
+
 # configure hook.  Place a config file for overriding crates-io index
 # by local source directory.
-do-configure:
+cargo-configure:
+# Check that the running kernel has COMPAT_FREEBSD11 required by lang/rust post-ino64
+	@${SETENV} CC="${CC}" OPSYS="${OPSYS}" OSVERSION="${OSVERSION}" WRKDIR="${WRKDIR}" \
+		${SH} ${SCRIPTSDIR}/rust-compat11-canary.sh
 	@${MKDIR} ${WRKDIR}/.cargo
 	@${ECHO_CMD} "[source.cargo]" > ${WRKDIR}/.cargo/config
 	@${ECHO_CMD} "directory = '${CARGO_VENDOR_DIR}'" >> ${WRKDIR}/.cargo/config
@@ -253,12 +279,14 @@ do-build:
 
 .if !target(do-install) && ${CARGO_INSTALL:tl} == "yes"
 do-install:
+.  for path in ${CARGO_INSTALL_PATH}
 	@${CARGO_CARGO_RUN} install \
-		--path . \
+		--no-track \
+		--path "${path}" \
 		--root "${STAGEDIR}${PREFIX}" \
 		--verbose \
 		${CARGO_INSTALL_ARGS}
-	@${RM} -- "${STAGEDIR}${PREFIX}/.crates.toml"
+.  endfor
 .endif
 
 .if !target(do-test) && ${CARGO_TEST:tl} == "yes"
@@ -282,7 +310,7 @@ cargo-crates: extract
 			--manifest-path ${CARGO_CARGOTOML} \
 			--verbose; \
 	fi
-	@${SETENV} USE_GITHUB=${USE_GITHUB} \
+	@${SETENV} USE_GITHUB=${USE_GITHUB} USE_GITLAB=${USE_GITLAB} GL_SITE=${GL_SITE} \
 		${AWK} -f ${SCRIPTSDIR}/cargo-crates.awk ${CARGO_CARGOLOCK}
 
 # cargo-crates-licenses will try to grab license information from

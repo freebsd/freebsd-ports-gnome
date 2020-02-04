@@ -29,6 +29,7 @@
 %%WWWDIR%%/app/controllers/CControllerDashboardWidgetEdit.php
 %%WWWDIR%%/app/controllers/CControllerDashboardWidgetRfRate.php
 %%WWWDIR%%/app/controllers/CControllerDiscoveryView.php
+%%WWWDIR%%/app/controllers/CControllerExportXml.php
 %%WWWDIR%%/app/controllers/CControllerFavouriteCreate.php
 %%WWWDIR%%/app/controllers/CControllerFavouriteDelete.php
 %%WWWDIR%%/app/controllers/CControllerMapView.php
@@ -113,6 +114,7 @@
 %%WWWDIR%%/app/views/layout.json.php
 %%WWWDIR%%/app/views/layout.warning.php
 %%WWWDIR%%/app/views/layout.widget.php
+%%WWWDIR%%/app/views/layout.xml.php
 %%WWWDIR%%/app/views/monitoring.acknowledge.edit.js.php
 %%WWWDIR%%/app/views/monitoring.acknowledge.edit.php
 %%WWWDIR%%/app/views/monitoring.dashboard.breadcrumbs.php
@@ -145,7 +147,6 @@
 %%WWWDIR%%/app/views/monitoring.widget.url.view.php
 %%WWWDIR%%/app/views/monitoring.widget.web.view.php
 %%WWWDIR%%/app/views/popup.generic.php
-%%WWWDIR%%/app/views/popup.httpstep.js.php
 %%WWWDIR%%/app/views/popup.httpstep.php
 %%WWWDIR%%/app/views/popup.media.js.php
 %%WWWDIR%%/app/views/popup.media.php
@@ -160,13 +161,19 @@
 %%WWWDIR%%/app/views/report.status.php
 %%WWWDIR%%/app/views/system.warning.php
 %%WWWDIR%%/applications.php
-%%WWWDIR%%/audio/alarm_average.wav
-%%WWWDIR%%/audio/alarm_disaster.wav
-%%WWWDIR%%/audio/alarm_high.wav
-%%WWWDIR%%/audio/alarm_information.wav
-%%WWWDIR%%/audio/alarm_ok.wav
-%%WWWDIR%%/audio/alarm_warning.wav
-%%WWWDIR%%/audio/no_sound.wav
+%%WWWDIR%%/assets/fonts/DejaVuSans.ttf
+%%WWWDIR%%/assets/img/apple-touch-icon-120x120-precomposed.png
+%%WWWDIR%%/assets/img/apple-touch-icon-152x152-precomposed.png
+%%WWWDIR%%/assets/img/apple-touch-icon-180x180-precomposed.png
+%%WWWDIR%%/assets/img/apple-touch-icon-76x76-precomposed.png
+%%WWWDIR%%/assets/img/browser-sprite.png
+%%WWWDIR%%/assets/img/icon-sprite.svg
+%%WWWDIR%%/assets/img/ms-tile-144x144.png
+%%WWWDIR%%/assets/img/touch-icon-192x192.png
+%%WWWDIR%%/assets/styles/blue-theme.css
+%%WWWDIR%%/assets/styles/dark-theme.css
+%%WWWDIR%%/assets/styles/hc-dark.css
+%%WWWDIR%%/assets/styles/hc-light.css
 %%WWWDIR%%/auditacts.php
 %%WWWDIR%%/auditlogs.php
 %%WWWDIR%%/browserwarning.php
@@ -186,7 +193,6 @@
 %%WWWDIR%%/disc_prototypes.php
 %%WWWDIR%%/discoveryconf.php
 %%WWWDIR%%/favicon.ico
-%%WWWDIR%%/fonts/DejaVuSans.ttf
 %%WWWDIR%%/graphs.php
 %%WWWDIR%%/history.php
 %%WWWDIR%%/host_discovery.php
@@ -199,22 +205,6 @@
 %%WWWDIR%%/httpconf.php
 %%WWWDIR%%/httpdetails.php
 %%WWWDIR%%/image.php
-%%WWWDIR%%/images/general/arrow_down.png
-%%WWWDIR%%/images/general/arrow_up.png
-%%WWWDIR%%/images/general/no_icon.png
-%%WWWDIR%%/images/general/tr_space.gif
-%%WWWDIR%%/images/general/tr_top_bottom.gif
-%%WWWDIR%%/images/general/tr_top_right_bottom.gif
-%%WWWDIR%%/images/general/tr_top_right.gif
-%%WWWDIR%%/images/general/tree/zero.gif
-%%WWWDIR%%/img/apple-touch-icon-120x120-precomposed.png
-%%WWWDIR%%/img/apple-touch-icon-152x152-precomposed.png
-%%WWWDIR%%/img/apple-touch-icon-180x180-precomposed.png
-%%WWWDIR%%/img/apple-touch-icon-76x76-precomposed.png
-%%WWWDIR%%/img/browser-sprite.png
-%%WWWDIR%%/img/icon-sprite.svg
-%%WWWDIR%%/img/ms-tile-144x144.png
-%%WWWDIR%%/img/touch-icon-192x192.png
 %%WWWDIR%%/imgstore.php
 %%WWWDIR%%/include/.htaccess
 %%WWWDIR%%/include/actions.inc.php
@@ -313,6 +303,7 @@
 %%WWWDIR%%/include/classes/debug/CProfiler.php
 %%WWWDIR%%/include/classes/export/CConfigurationExport.php
 %%WWWDIR%%/include/classes/export/CConfigurationExportBuilder.php
+%%WWWDIR%%/include/classes/export/CConfigurationExportException.php
 %%WWWDIR%%/include/classes/export/writers/CExportWriter.php
 %%WWWDIR%%/include/classes/export/writers/CExportWriterFactory.php
 %%WWWDIR%%/include/classes/export/writers/CJsonExportWriter.php
@@ -500,7 +491,7 @@
 %%WWWDIR%%/include/classes/parsers/CUserMacroParser.php
 %%WWWDIR%%/include/classes/parsers/CValidationRule.php
 %%WWWDIR%%/include/classes/parsers/results/CParserResult.php
-%%WWWDIR%%/include/classes/parsers/results/CTriggerExpressionParserResult.php
+%%WWWDIR%%/include/classes/parsers/results/CTriggerExprParserResult.php
 %%WWWDIR%%/include/classes/regexp/CGlobalRegexp.php
 %%WWWDIR%%/include/classes/routing/CUrl.php
 %%WWWDIR%%/include/classes/routing/CUrlFactory.php
@@ -675,7 +666,7 @@
 %%WWWDIR%%/include/views/administration.general.regularexpressions.edit.php
 %%WWWDIR%%/include/views/administration.general.regularexpressions.list.php
 %%WWWDIR%%/include/views/administration.general.trigger.options.edit.php
-%%WWWDIR%%/include/views/administration.general.triggerSeverity.edit.php
+%%WWWDIR%%/include/views/administration.general.trigseverity.edit.php
 %%WWWDIR%%/include/views/administration.general.valuemapping.edit.php
 %%WWWDIR%%/include/views/administration.general.valuemapping.list.php
 %%WWWDIR%%/include/views/administration.general.workingtime.edit.php
@@ -737,7 +728,7 @@
 %%WWWDIR%%/include/views/js/administration.general.iconmap.js.php
 %%WWWDIR%%/include/views/js/administration.general.macros.edit.js.php
 %%WWWDIR%%/include/views/js/administration.general.trigger.options.js.php
-%%WWWDIR%%/include/views/js/administration.general.triggerSeverity.js.php
+%%WWWDIR%%/include/views/js/administration.general.trigseverity.js.php
 %%WWWDIR%%/include/views/js/administration.general.valuemapping.edit.js.php
 %%WWWDIR%%/include/views/js/administration.users.edit.js.php
 %%WWWDIR%%/include/views/js/common.filter.trigger.js.php
@@ -798,7 +789,6 @@
 %%WWWDIR%%/js/class.cdate.js
 %%WWWDIR%%/js/class.cdebug.js
 %%WWWDIR%%/js/class.cmap.js
-%%WWWDIR%%/js/class.cmessages.js
 %%WWWDIR%%/js/class.cnavtree.js
 %%WWWDIR%%/js/class.cookie.js
 %%WWWDIR%%/js/class.coverride.js
@@ -810,7 +800,8 @@
 %%WWWDIR%%/js/class.curl.js
 %%WWWDIR%%/js/class.cverticalaccordion.js
 %%WWWDIR%%/js/class.cviewswitcher.js
-%%WWWDIR%%/js/class.mapWidget.js
+%%WWWDIR%%/js/class.mapwidget.js
+%%WWWDIR%%/js/class.overlaycollection.js
 %%WWWDIR%%/js/class.pmaster.js
 %%WWWDIR%%/js/class.rpc.js
 %%WWWDIR%%/js/colorpicker.js
@@ -926,10 +917,6 @@
 %%WWWDIR%%/slideconf.php
 %%WWWDIR%%/slides.php
 %%WWWDIR%%/srv_status.php
-%%WWWDIR%%/styles/blue-theme.css
-%%WWWDIR%%/styles/dark-theme.css
-%%WWWDIR%%/styles/hc-dark.css
-%%WWWDIR%%/styles/hc-light.css
 %%WWWDIR%%/sysmap.php
 %%WWWDIR%%/sysmaps.php
 %%WWWDIR%%/templates.php
@@ -940,6 +927,23 @@
 %%WWWDIR%%/usergrps.php
 %%WWWDIR%%/users.php
 %%WWWDIR%%/zabbix.php
+%%WWWDIR%%/app/controllers/CControllerNotificationsGet.php
+%%WWWDIR%%/app/controllers/CControllerNotificationsMute.php
+%%WWWDIR%%/app/controllers/CControllerNotificationsRead.php
+%%WWWDIR%%/audio/alarm_average.mp3
+%%WWWDIR%%/audio/alarm_disaster.mp3
+%%WWWDIR%%/audio/alarm_high.mp3
+%%WWWDIR%%/audio/alarm_information.mp3
+%%WWWDIR%%/audio/alarm_ok.mp3
+%%WWWDIR%%/audio/alarm_warning.mp3
+%%WWWDIR%%/audio/no_sound.mp3
+%%WWWDIR%%/js/class.browsertab.js
+%%WWWDIR%%/js/class.localstorage.js
+%%WWWDIR%%/js/class.notification.collection.js
+%%WWWDIR%%/js/class.notification.js
+%%WWWDIR%%/js/class.notifications.audio.js
+%%WWWDIR%%/js/class.notifications.js
+%%WWWDIR%%/js/class.promise.js
 @dir %%WWWDIR%%/local/app/controllers
 @dir %%WWWDIR%%/local/app/views
 @dir %%WWWDIR%%/local/conf

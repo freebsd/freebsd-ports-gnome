@@ -15,8 +15,6 @@ COMMENT=	Portable, easy to use, and efficient C++ crypto library
 LICENSE=	BSD2CLAUSE
 LICENSE_FILE=	${WRKSRC}/doc/license.txt
 
-BROKEN_aarch64=		Fails to configure: unknown or unidentifiable processor arm64
-
 OPTIONS_DEFINE=		SSL GMP DOCS
 OPTIONS_DEFAULT=	SSL GMP
 
@@ -44,7 +42,7 @@ GMP_CONFIGURE_WITH=	gnump
 
 .include <bsd.port.pre.mk>
 
-.if (${OPSYS} == FreeBSD && ${OSVERSION} > 1200084) || ${SSL_DEFAULT:Mopenssl111} || ${SSL_DEFAULT:M*-devel}
+.if (${OPSYS} == FreeBSD && ${OSVERSION} > 1200084) || ${SSL_DEFAULT:Mopenssl} || ${SSL_DEFAULT:M*-devel}
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-openssl11
 .endif
 

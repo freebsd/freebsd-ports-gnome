@@ -2,14 +2,15 @@
 # $FreeBSD$
 
 ######################################################################
-# Anytime PORTVERSION changes please bump PORTREVISION of            #
-# mail/dovecot-pigeonhole. See ports/146029 for an explanation.      #
+# Anytime PORTVERSION changes please bump PORTREVISION of:           #
+# - mail/dovecot-pigeonhole. See ports/146029 for an explanation.    #
+# - mail/dovecot-fts-xapian.                                         #
 ######################################################################
 
 PORTNAME=	dovecot
-PORTVERSION=	2.3.5.2
-CATEGORIES=	mail ipv6
-MASTER_SITES=	https://www.dovecot.org/releases/2.3/
+PORTVERSION=	2.3.9.2
+CATEGORIES=	mail
+MASTER_SITES=	https://dovecot.org/releases/2.3/
 
 MAINTAINER=	ler@FreeBSD.org
 COMMENT=	Secure, fast and powerful IMAP and POP3 server
@@ -32,8 +33,6 @@ INSTALL_TARGET=	install-strip
 
 USERS=		dovecot dovenull
 GROUPS=		${USERS}
-
-CONFLICTS_INSTALL=	dovecot22
 
 OPTIONS_DEFINE=	LIBSODIUM LIBWRAP LUA LZ4 VPOPMAIL DOCS EXAMPLES
 OPTIONS_DEFAULT=GSSAPI_NONE LIBWRAP

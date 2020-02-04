@@ -3,13 +3,15 @@
 
 PORTNAME=	pgagent
 PORTVERSION=	3.4.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	databases
 MASTER_SITES=	PGSQL/pgadmin3/release/pgagent
 DISTNAME=	pgAgent-${PORTVERSION}-Source
 
 MAINTAINER=	fjoe@FreeBSD.org
 COMMENT=	Job scheduler for PostgreSQL
+
+BROKEN=		unfetchable
 
 USES=		cmake:insource dos2unix pgsql
 DOS2UNIX_GLOB=	*.txt

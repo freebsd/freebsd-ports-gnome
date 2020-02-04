@@ -2,7 +2,7 @@
 
 PORTNAME=	gitterdone
 PORTVERSION=	201710031257
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	net-im
 
 MAINTAINER=	jt@ixsystems.com
@@ -10,7 +10,7 @@ COMMENT=	Gitter Client based on Qt5
 
 LICENSE=	BSD2CLAUSE
 
-USES=		compiler:c++11-lang qmake qt:5 shebangfix tar:xz
+USES=		compiler:c++11-lang gl qmake qt:5 shebangfix tar:xz
 USE_QT=		core gui network linguist_build \
 		buildtools_build widgets webkit svg
 USE_GL+=	gl

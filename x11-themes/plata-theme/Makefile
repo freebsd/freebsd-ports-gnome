@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	plata-theme
-PORTVERSION=	0.7.8
+PORTVERSION=	0.9.1
 CATEGORIES=	x11-themes
 
 MAINTAINER=	tagattie@yandex.com
@@ -19,11 +19,12 @@ RUN_DEPENDS=	gtk-murrine-engine>0:x11-themes/gtk-murrine-engine \
 		roboto-fonts-ttf>0:x11-fonts/roboto-fonts-ttf
 
 USES=		autoreconf gmake gnome pkgconfig shebangfix
+USE_GNOME=	gdkpixbuf2 gtk30 libxml2
 
 USE_GITLAB=	yes
 GL_SITE=	https://gitlab.com
 GL_ACCOUNT=	tista500
-GL_COMMIT=	349880a33caf4f271c8a85d906acbc305ee65fc9
+GL_COMMIT=	71dbbc322e278b6a0f837733f76a089b7773d34a
 
 NO_ARCH=	yes
 
@@ -36,10 +37,10 @@ CONFIGURE_ARGS=	--disable-gtk_next \
 		--disable-tweetdeck \
 		--disable-airforsteam
 
-USE_GNOME=	gdkpixbuf2 gtk30 libxml2
+PORTDOCS=	README.md README.window-list
 
-OPTIONS_DEFINE=	CINNAMON DOCS GNOME METACITY OPENBOX PARALLEL PLANK XFCE
-OPTIONS_DEFAULT=	CINNAMON GNOME METACITY OPENBOX PARALLEL PLANK XFCE
+OPTIONS_DEFINE=	CINNAMON DOCS GNOME MATE METACITY OPENBOX PARALLEL PLANK XFCE
+OPTIONS_DEFAULT=	CINNAMON GNOME MATE METACITY OPENBOX PARALLEL PLANK XFCE
 OPTIONS_SUB=	yes
 
 CINNAMON_DESC=	Enable Cinnamon support
@@ -47,18 +48,20 @@ CINNAMON_CONFIGURE_ENABLE=	cinnamon
 CINNAMON_IMPLIES=	METACITY
 GNOME_DESC=	Enable Gnome support
 GNOME_CONFIGURE_ENABLE=	gnome
+MATE_DESC=	Enable Mate support
+MATE_CONFIGURE_ENABLE=	mate
+MATE_IMPLIES=	METACITY
+MATE_BUILD_DEPENDS=	${LOCALBASE}/lib/libmarco-private.so:x11-wm/marco
 METACITY_DESC=	Enable Metacity support
 OPENBOX_DESC=	Enable Openbox support
 OPENBOX_CONFIGURE_ENABLE=	openbox
 PARALLEL_DESC=	Enable parallel build
 PARALLEL_BUILD_DEPENDS=	parallel:sysutils/parallel
 PARALLEL_CONFIGURE_ENABLE=	parallel
-PLANK_DESC=	Enale Plank support
+PLANK_DESC=	Enable Plank support
 PLANK_CONFIGURE_ENABLE=	plank
 XFCE_DESC=	Enable Xfce support
 XFCE_CONFIGURE_ENABLE=	xfce
-
-PORTDOCS=	README.md README.window-list
 
 post-extract:
 	${CP} ${WRKSRC}/src/shell/sass/gnome-shell/README.window-list ${WRKSRC}

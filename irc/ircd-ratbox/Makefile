@@ -3,8 +3,8 @@
 
 PORTNAME=	ircd-ratbox
 PORTVERSION=	3.0.10
-PORTREVISION=	5
-CATEGORIES=	irc ipv6
+PORTREVISION=	6
+CATEGORIES=	irc
 MASTER_SITES=	http://www.ratbox.org/download/				\
 		http://www.ratbox.org/download/old/
 
@@ -14,8 +14,6 @@ COMMENT=	Advanced, stable IRC daemon, used widely on EFnet
 LICENSE=	GPLv2
 
 CONFLICTS=	ircd-ratbox-devel-[0-9]* charybdis-[0-9]*
-
-BROKEN_aarch64=		Fails to link: missing sbrk
 
 USES=		cpe libtool sqlite tar:bzip2
 CPE_VENDOR=	ratbox

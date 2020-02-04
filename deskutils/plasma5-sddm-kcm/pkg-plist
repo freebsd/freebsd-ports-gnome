@@ -1,11 +1,12 @@
 bin/sddmthemeinstaller
-etc/dbus-1/system.d/org.kde.kcontrol.kcmsddm.conf
-etc/xdg/sddmtheme.knsrc
 lib/libexec/kauth/kcmsddm_authhelper
 %%QT_PLUGINDIR%%/kcm_sddm.so
 share/dbus-1/system-services/org.kde.kcontrol.kcmsddm.service
+share/dbus-1/system.d/org.kde.kcontrol.kcmsddm.conf
+share/knsrcfiles/sddmtheme.knsrc
 share/kservices5/kcm_sddm.desktop
 share/locale/ar/LC_MESSAGES/kcm_sddm.mo
+share/locale/ast/LC_MESSAGES/kcm_sddm.mo
 share/locale/bs/LC_MESSAGES/kcm_sddm.mo
 share/locale/ca/LC_MESSAGES/kcm_sddm.mo
 share/locale/ca@valencia/LC_MESSAGES/kcm_sddm.mo

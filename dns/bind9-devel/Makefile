@@ -9,9 +9,9 @@ PORTREVISION=	0
 .else
 # XXX: correct version
 # dns/bind9xx here
-PORTREVISION=	1
+PORTREVISION=	0
 .endif
-CATEGORIES=	dns net ipv6
+CATEGORIES=	dns net
 # XXX: put the ISC master_site
 #MASTER_SITES=	ISC/bind9/${ISCVERSION}
 MASTER_SITES=	LOCAL/mat/bind
@@ -33,21 +33,22 @@ COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 LICENSE=	MPL20
 LICENSE_FILE=	${WRKSRC}/COPYRIGHT
 
-LIB_DEPENDS=	libxml2.so:textproc/libxml2
+LIB_DEPENDS=	libxml2.so:textproc/libxml2 \
+		libuv.so:devel/libuv
 .if !defined(BIND_TOOLS_SLAVE)
 RUN_DEPENDS=	bind-tools>0:dns/bind-tools
 .endif
 
 # XXX: remove tar:bz2
-USES=	compiler:c11 cpe libedit ssl tar:bz2
+USES=	compiler:c11 cpe libedit pkgconfig ssl tar:bz2
 # ISC releases things like 9.8.0-P1, which our versioning doesn't like
-ISCVERSION=	9.15.0a0.2019.04.26
+ISCVERSION=	9.15.8a0.2020.02.03
 # XXX: Remove gitlab
 USE_GITLAB=	yes
 GL_SITE=	https://gitlab.isc.org
 GL_ACCOUNT=	isc-projects
 GL_PROJECT=	bind9
-GL_COMMIT=	cc32080278b94ad8228b2f6ff3239872d532517a
+GL_COMMIT=	9f6e0dc94511421b16ede0baaf04598d0fc62282
 
 CPE_VENDOR=	isc
 CPE_VERSION=	${ISCVERSION:C/-.*//}
@@ -57,7 +58,7 @@ CPE_UPDATE=	${ISCVERSION:C/.*-//:tl}
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--localstatedir=/var --disable-linux-caps \
-		--with-libxml2=${LOCALBASE} \
+		--with-libxml2 \
 		--with-readline="-L${LOCALBASE}/lib -ledit" \
 		--with-dlopen=yes \
 		--with-openssl=${OPENSSLBASE} \
@@ -84,7 +85,7 @@ OPTIONS_DEFAULT=	DLZ_FILESYSTEM GSSAPI_NONE IDN JSON \
 			LMDB PYTHON SIGCHASE TCP_FASTOPEN
 OPTIONS_DEFINE=		DNSTAP DOCS FIXED_RRSET IDN JSON LARGE_FILE \
 			LMDB OVERRIDECACHE PORTREVISION PYTHON QUERYTRACE \
-			SIGCHASE START_LATE TCP_FASTOPEN TUNING_LARGE
+			SIGCHASE START_LATE TCP_FASTOPEN TUNING_LARGE GEOIP
 
 OPTIONS_RADIO=	CRYPTO
 OPTIONS_RADIO_CRYPTO=	NATIVE_PKCS11
@@ -99,7 +100,7 @@ OPTIONS_SINGLE_GSSAPI=	GSSAPI_BASE GSSAPI_HEIMDAL GSSAPI_MIT GSSAPI_NONE
 .if defined(BIND_TOOLS_SLAVE)
 OPTIONS_EXCLUDE=	DOCS ${OPTIONS_GROUP_DLZ} \
 			OVERRIDECACHE PORTREVISION QUERYTRACE LMDB DNSTAP \
-			START_LATE TUNING_LARGE TCP_FASTOPEN
+			START_LATE TUNING_LARGE TCP_FASTOPEN GEOIP
 .else
 OPTIONS_EXCLUDE=	PYTHON
 .endif	# BIND_TOOLS_SLAVE
@@ -154,6 +155,10 @@ DNSTAP_LIB_DEPENDS=	libfstrm.so:devel/fstrm \
 
 FIXED_RRSET_CONFIGURE_ENABLE=	fixed-rrset
 
+GEOIP_CONFIGURE_ENABLE=	geoip
+GEOIP_CONFIGURE_WITH=	maxminddb
+GEOIP_LIB_DEPENDS=	libmaxminddb.so:net/libmaxminddb
+
 GSSAPI_BASE_CONFIGURE_ON=\
 	--with-gssapi=${GSSAPIBASEDIR} KRB5CONFIG="${KRB5CONFIG}"
 GSSAPI_BASE_USES=	gssapi
@@ -173,8 +178,9 @@ IDN_CONFIGURE_ON=	--with-libidn2=${LOCALBASE} ${ICONV_CONFIGURE_BASE}
 IDN_LIB_DEPENDS=	libidn2.so:dns/libidn2
 IDN_USES=		iconv
 
-JSON_CONFIGURE_WITH=	libjson=${LOCALBASE}
+JSON_CONFIGURE_WITH=	json-c
 JSON_LIB_DEPENDS=	libjson-c.so:devel/json-c
+JSON_LDFLAGS=		-L${LOCALBASE}/lib -ljson-c
 
 LARGE_FILE_CONFIGURE_ENABLE=	largefile
 
@@ -209,7 +215,7 @@ TUNING_LARGE_CONFIGURE_OFF=	--with-tuning=default
 .if defined(WITH_DEBUG)
 CONFIGURE_ARGS+=	--enable-symtable \
 			--enable-developer
-USES+=	perl5 pkgconfig
+USES+=	perl5
 USE_PERL5=	build
 BUILD_DEPENDS+=	cmocka>0:sysutils/cmocka
 .else

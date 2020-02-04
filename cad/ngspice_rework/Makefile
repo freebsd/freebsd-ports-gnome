@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	ngspice_rework
-PORTVERSION=	30
-PORTREVISION=	1
+PORTVERSION=	31
 CATEGORIES=	cad
 MASTER_SITES=	SF/ngspice/ng-spice-rework/${PORTVERSION}
 DISTNAME=	ngspice-${PORTVERSION}
@@ -14,8 +13,6 @@ COMMENT=	Mixed-signal circuit simulator derived from Spice and Cider
 LICENSE=	BSD3CLAUSE BSD4CLAUSE LGPL21+
 LICENSE_COMB=	multi
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-BROKEN_aarch64=	Fails to link: missing sbrk
 
 LIB_DEPENDS=	libfftw3.so:math/fftw3
 
@@ -37,6 +34,7 @@ OPTIONS_DEFINE=	DEBUG
 CONFIGURE_ARGS+=	--with-ngshared
 PLIST_SUB+=		SHLIB="" X11="@comment "
 .else
+USES+=			xorg
 USE_XORG=		ice sm x11 xaw xext xmu xt
 CONFIGURE_ARGS+=	--with-x
 PLIST_SUB+=		SHLIB="@comment " X11=""

@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	meteo
-PORTVERSION=	0.9.6
+PORTVERSION=	0.9.8
 CATEGORIES=	deskutils
 
 MAINTAINER=	tagattie@yandex.com
@@ -9,6 +9,9 @@ COMMENT=	Weather forecast application using OpenWeatherMap API
 
 LICENSE=	GPLv3+
 LICENSE_FILE=	${WRKSRC}/COPYING
+
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-02
 
 BUILD_DEPENDS=	appstream-util:devel/appstream-glib \
 		valac:lang/vala
@@ -23,7 +26,8 @@ USES=		compiler:c11 desktop-file-utils gettext gnome meson pkgconfig \
 
 USE_GITLAB=	yes
 GL_ACCOUNT=	bitseater
-GL_COMMIT=	1a36202057ddd502556afd9335a8f8d51b714537
+GL_COMMIT=	2c90bd8ab6d07c8c72e61efc03f90aa4d809e8e0
+
 USE_GNOME=	gtk30
 
 SHEBANG_FILES=	meson/post_install.py
@@ -40,8 +44,6 @@ post-extract:
 
 post-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
-.for doc in ${PORTDOCS}
-	${INSTALL_MAN} ${WRKSRC}/${doc} ${STAGEDIR}${DOCSDIR}
-.endfor
+	${INSTALL_MAN} ${PORTDOCS:S|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
 
 .include <bsd.port.mk>

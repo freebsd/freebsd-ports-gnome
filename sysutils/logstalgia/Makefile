@@ -4,7 +4,7 @@
 PORTNAME=	logstalgia
 DISTVERSIONPREFIX=	${PORTNAME}-
 DISTVERSION=	1.1.2
-PORTREVISION=	6
+PORTREVISION=	9
 CATEGORIES=	sysutils www
 
 MAINTAINER=	ehaupt@FreeBSD.org
@@ -21,13 +21,14 @@ LIB_DEPENDS=	libboost_regex.so:devel/boost-libs \
 		libftgl.so:graphics/ftgl
 
 GNU_CONFIGURE=	yes
-USES=		autoreconf compiler:c++0x gmake jpeg localbase:ldflags pkgconfig
+USES=		autoreconf compiler:c++0x gl gmake jpeg localbase:ldflags \
+		pkgconfig sdl
 USE_GL=		gl glu glew
 USE_SDL=	image2 sdl2
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	acaudwell
-GH_PROJECT=	Logstalgia:DEFAULT Core:core
+GH_PROJECT=	Logstalgia Core:core
 GH_TAGNAME=	1534074:core
 
 post-extract:

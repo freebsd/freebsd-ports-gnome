@@ -2,6 +2,7 @@
 
 PORTNAME=	cryptominisat
 DISTVERSION=	5.6.8
+PORTREVISION=	1
 CATEGORIES=	math python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
@@ -22,8 +23,6 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	msoos
 
 WRKSRC_SUBDIR=	python
-
-PYDISTUTILS_BUILDTARGET=	build_ext --include-dirs=${LOCALBASE}/include
 
 post-patch:
 	${REINPLACE_CMD} -e 's|@PROJECT_VERSION@|${PORTVERSION}|' \

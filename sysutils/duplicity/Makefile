@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	duplicity
-PORTVERSION=	0.7.18.2
-PORTREVISION=	1
+PORTVERSION=	0.7.19
 CATEGORIES=	sysutils
 MASTER_SITES=	http://launchpad.net/duplicity/0.7-series/${PORTVERSION}/+download/
 
@@ -21,6 +20,8 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}fasteners>=0:devel/py-fasteners@${PY_FLAVOR}
 USES=		python:2.7 shebangfix
 USE_PYTHON=	autoplist distutils
 USE_LDCONFIG=	yes
+
+CONFLICTS_INSTALL=	duplicity-devel
 
 SHEBANG_FILES=	bin/duplicity bin/rdiffdir
 

@@ -12,12 +12,15 @@ COMMENT=	Framework and a set of enhanced widgets based on PyGTK
 
 LICENSE=	LGPL21
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-01
+
 OPTIONS_DEFINE=	DOCS EXAMPLES
 
 NO_ARCH=	yes
 USE_GNOME=	libglade2 pygtk2
 USE_PYTHON=	autoplist distutils
-USES=		gettext python:2.7 uniquefiles:dirs
+USES=		gettext gnome python:2.7 uniquefiles:dirs
 
 PORTDOCS=	*
 PORTEXAMPLES=	*

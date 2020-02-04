@@ -10,6 +10,8 @@ DISTNAME=	dbus-${PORTVERSION}
 MAINTAINER=	tcltk@FreeBSD.org
 COMMENT=	Tcl interface to the D-Bus messaging system
 
+BROKEN=		unfetchable
+
 LICENSE=	ISCL
 
 LIB_DEPENDS=	libdbus-1.so:devel/dbus
@@ -21,7 +23,7 @@ PORTDOCS=	*
 
 TEST_TARGET=	do-test
 
-USES=		pkgconfig tcl:85+,tea
+USES=		pkgconfig tcl:tea
 
 PLIST_FILES=	lib/dbus/libdbus21.so.1 \
 		lib/dbus/pkgIndex.tcl \

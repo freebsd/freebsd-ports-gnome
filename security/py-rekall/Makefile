@@ -3,6 +3,7 @@
 
 PORTNAME=	rekall
 DISTVERSION=	1.7.2rc1-52
+PORTREVISION=	1
 DISTVERSIONSUFFIX=	-g0cba831
 CATEGORIES=	security python
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -19,7 +20,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}rekall_lib>=1.7.1:security/py-rekall_lib@${P
 USE_GITHUB=	yes
 GH_ACCOUNT=	google
 
-USES=		python shebangfix
+USES=		python:3.5+ shebangfix
 USE_PYTHON=	distutils autoplist
 
 NO_ARCH=	yes

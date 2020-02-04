@@ -4,7 +4,7 @@
 PORTNAME=	workrave
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1_10_16
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	x11
 
 MAINTAINER=	tobik@FreeBSD.org
@@ -14,8 +14,8 @@ LICENSE=	GPLv3+
 
 LIB_DEPENDS=	libgdome.so:textproc/gdome2
 
-USES=		compiler:c++11-lang autoreconf:build gettext gmake libtool \
-		localbase pathfix pkgconfig
+USES=		autoreconf:build compiler:c++11-lang gettext gmake gnome \
+		libtool localbase pathfix pkgconfig xorg
 USE_CXXSTD=	c++11
 USE_XORG=	ice xorgproto sm x11 xext xmu xscrnsaver xtst
 USE_GNOME=	intltool intlhack introspection gtkmm30

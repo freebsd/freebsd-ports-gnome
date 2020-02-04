@@ -3,11 +3,11 @@
 
 PORTNAME=	fastICA
 DISTVERSION=	1.2-1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	science math
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
-MAINTAINER=	dbn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	FastICA Algorithms to Perform ICA and Projection Pursuit
 
 LICENSE=	GPLv2 GPLv3

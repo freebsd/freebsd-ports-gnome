@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	net-http-persistent
-PORTVERSION=	3.0.0
+PORTVERSION=	3.1.0
 CATEGORIES=	www net rubygems
 MASTER_SITES=	RG
 
@@ -11,10 +11,11 @@ COMMENT=	Manages persistent connections using Net::HTTP
 
 LICENSE=	MIT
 
-RUN_DEPENDS=	rubygem-connection_pool>=2.2:net/rubygem-connection_pool
+RUN_DEPENDS=	rubygem-connection_pool>=2.2<3:net/rubygem-connection_pool
+
+USES=		gem
+USE_RUBY=	yes
 
 NO_ARCH=	yes
-USE_RUBY=	yes
-USES=		gem
 
 .include <bsd.port.mk>

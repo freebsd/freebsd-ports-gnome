@@ -4,7 +4,7 @@
 PORTNAME=	retroshare
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.6.4
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	net-p2p
 
 PATCH_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/commit/
@@ -29,7 +29,7 @@ LIB_DEPENDS=	libsqlcipher.so:databases/sqlcipher \
 		libminiupnpc.so:net/miniupnpc
 
 USES=		compiler:features desktop-file-utils dos2unix \
-		gnome pkgconfig qmake qt:5 ssl
+		gl gnome pkgconfig qmake qt:5 ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	RetroShare
 GH_PROJECT=	RetroShare

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	code_saturne
-PORTVERSION=	5.3.2
+PORTVERSION=	6.0.1
 DISTVERSIONPREFIX=	v
 PORTREVISION=	2
 CATEGORIES=	science parallel
@@ -11,13 +11,14 @@ MAINTAINER=	thierry@FreeBSD.org
 COMMENT=	EDF's general purpose Computational Fluid Dynamics (CFD) software
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libsysinfo.so:devel/libsysinfo	\
 		libcgns.so:science/cgnslib	\
 		libhdf5.so:science/hdf5		\
-		libomp.so:devel/openmp		\
 		libmedC.so:french/med
-RUN_DEPENDS=	xmgrace:math/grace	\
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}matplotlib>0:math/py-matplotlib@${PY_FLAVOR}	\
+		xmgrace:math/grace	\
 		bash:shells/bash	\
 		xterm:x11/xterm
 
@@ -25,24 +26,27 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	code-saturne
 
 USES=		autoreconf bison fortran gettext gnome gmake iconv libtool	\
-		pyqt:5 python:2.7 shebangfix
+		pyqt:5 python:3.6+ shebangfix
 
 USE_GNOME=	libxml2
 USE_PYQT=	core gui sip widgets xml_build
 SHEBANG_FILES=	install_saturne.py tests/unittests.py bin/*.py build-aux/*.py
 CPPFLAGS+=	-I${LOCALBASE}/include -I${LOCALBASE}/include/libxml2
 GNU_CONFIGURE=	yes
+CONFIGURE_ARGS=	--without-salome --without-salome-yacs --without-salome-kernel	\
+		--without-salome-gui
 USE_LDCONFIG=	yes
 BINARY_ALIAS=	python=${PYTHON_CMD} \
 		pyrcc5=pyrcc5-${PYTHON_VER} \
 		pyuic5=pyuic5-${PYTHON_VER}
 
-OPTIONS_DEFINE=		DOCS EXAMPLES ATLAS BATCH MPI
-OPTIONS_DEFAULT=	BATCH MPI METIS
+OPTIONS_DEFINE=		DOCS EXAMPLES BATCH BLAS MPI
+OPTIONS_DEFAULT=	BATCH BLAS MPI METIS
 OPTIONS_RADIO=		METIS
 OPTIONS_RADIO_METIS=	METIS PARMETIS
-ATLAS_USES=		blaslapack:atlas
-ATLAS_CONFIGURE_ON=	--with-blas=yes --with-blas-type=ATLAS
+BLAS_USES=		blaslapack
+BLAS_CONFIGURE_ON=	--with-blas=yes --with-blas-lib=${LOCALBASE}/lib --with-blas-libs=-lopenblas
+BLAS_LIB_DEPENDS=	libopenblas.so:math/openblas
 BATCH_DESC=		Use Torque to submit batches
 BATCH_RUN_DEPENDS=	pbs-config:sysutils/torque
 MPI_LIB_DEPENDS=	libmpi.so:net/mpich
@@ -71,6 +75,11 @@ TERM?=		vt100	# Default value needed for tput in jail or tinderbox
 CONFIGURE_ARGS+=	--disable-openmp
 .endif
 
+.if ${OPSYS} == FreeBSD && ((${OSREL:R} == 12 && ${OSVERSION} < 1200506)	\
+			|| (${OSREL:R} == 11 && ${OSVERSION} < 346296))
+BROKEN=	at least openmp 8.0.0 final release is needed
+.endif
+
 .if ${PORT_OPTIONS:MDOCS}
 USE_TEX=	tex:build
 BUILD_DEPENDS+=	fig2dev:print/transfig		\
@@ -91,14 +100,12 @@ pre-configure:
 	${REINPLACE_CMD} -e 's|/usr/bin/env python|${PYTHON_CMD}|'	\
 		${WRKSRC}/Makefile.am
 
-post-install:
-.if ${PORT_OPTIONS:MDOCS}
-	${MKDIR} ${STAGEDIR}${DOCSDIR}
+post-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${DOCS:C|^|${WRKSRC}/|} ${STAGEDIR}${DOCSDIR}
-.endif
-.if ${PORT_OPTIONS:MEXAMPLES}
-	${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
-	cd ${WRKSRC}/examples && ${COPYTREE_SHARE} \* ${STAGEDIR}${EXAMPLESDIR}
-.endif
+
+post-install-EXAMPLES-on:
+	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
+	@cd ${WRKSRC}/examples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 
 .include <bsd.port.mk>

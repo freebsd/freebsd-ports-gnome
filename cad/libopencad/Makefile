@@ -1,12 +1,12 @@
-# Created by: lbartoletti <lbartoletti@tuxfamily.org>
+# Created by: lbartoletti <lbartoletti@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	libopencad
 PORTVERSION=	0.2.0
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	cad graphics geography
 
-MAINTAINER=	lbartoletti@tuxfamily.org
+MAINTAINER=	lbartoletti@FreeBSD.org
 COMMENT=	Library which provides a way to read/write CAD (DWG/DXF/DXFB) files
 
 LICENSE=	MIT

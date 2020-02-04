@@ -3,7 +3,7 @@
 
 PORTNAME=	xanim
 PORTVERSION=	2.92.0
-PORTREVISION=	8
+PORTREVISION=	9
 CATEGORIES=	multimedia graphics
 MASTER_SITES=	ftp://ftp.nstu.ru/pub/mirrors/xanim.va.pubnix.com/:main \
 		LOCAL/dinoex:main,DEFAULT \
@@ -18,7 +18,7 @@ NO_CDROM=	Must be redistributed without fee
 
 # clang's cpp destroys whitespace, particularly hard tabs in makefiles,
 # which is fatal for imake.
-USES=		alias imake
+USES=		alias imake xorg
 USE_GCC=	any
 USE_XORG=	xext xt sm ice xext x11
 MAKE_ARGS+=	-j 2 # safe and helps even the single-CPU machines

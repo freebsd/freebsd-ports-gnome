@@ -2,14 +2,18 @@
 # $FreeBSD$
 
 PORTNAME=	terminator
-PORTVERSION=	1.0
+PORTVERSION=	1.91
+PORTREVISION=	1
 CATEGORIES=	x11 python
-MASTER_SITES=	http://launchpad.net/terminator/trunk/1.0/+download/
+MASTER_SITES=	http://launchpad.net/terminator/gtk3/${PORTVERSION}/+download/
 
 MAINTAINER=	tom@hur.st
 COMMENT=	Multiple GNOME terminals in one window
 
 LICENSE=	GPLv2
+
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-02-28
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}notify>=0:devel/py-notify@${PY_FLAVOR} \
 		${PYTHON_SITELIBDIR}/keybinder/_keybinder.so:x11/keybinder \
@@ -17,7 +21,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}notify>=0:devel/py-notify@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}psutil>0:sysutils/py-psutil@${PY_FLAVOR}
 
 USES=		gnome python:2.7 shebangfix
-USE_GNOME=	pygtk2 intltool
+USE_GNOME=	pygobject3 intltool vte3
 USE_PYTHON=	distutils
 
 PYDISTUTILS_PKGNAME=	Terminator
@@ -26,11 +30,8 @@ INSTALLS_ICONS=	yes
 
 SHEBANG_FILES=	terminator.wrapper
 
-OPTIONS_DEFINE=		NLS GCONF
-OPTIONS_DEFAULT=	GCONF
+OPTIONS_DEFINE=		NLS
 OPTIONS_SUB=		yes
-GCONF_DESC=		Use GNOME Terminal settings
-GCONF_USE=		GNOME=pygnome2
 NLS_USES=		gettext
 
 .include <bsd.port.pre.mk>

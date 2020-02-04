@@ -3,12 +3,15 @@
 
 PORTNAME=	mypaint
 PORTVERSION=	1.2.1
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	graphics
 MASTER_SITES=	https://github.com/mypaint/mypaint/releases/download/${PORTVERSION:S/^/v/}/
 
 MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Fast painting/scribbling program
+
+DEPRECATED=	Unmaintained, uses EOLed python27
+EXPIRATION_DATE=	2020-01-27
 
 LICENSE=	GPLv2+ ISCL
 LICENSE_COMB=	multi

@@ -3,7 +3,7 @@
 
 PORTNAME=	nautilus
 PORTVERSION=	3.28.1
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	x11-fm gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -21,7 +21,7 @@ LIB_DEPENDS=	libgnome-autoar-0.so:archivers/gnome-autoar \
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c11 desktop-file-utils gettext gnome \
-		localbase meson pkgconfig python:3.4+,build tar:xz
+		localbase meson pkgconfig python:3.4+,build tar:xz xorg
 USE_GNOME=	cairo gdkpixbuf2 gnomedesktop3
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes

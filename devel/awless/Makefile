@@ -3,15 +3,16 @@
 PORTNAME=	awless
 DISTVERSIONPREFIX=	v
 DISTVERSION=	0.1.11
+PORTREVISION=	1
 CATEGORIES=	devel
 
-MAINTAINER=	dg@syrec.org
+MAINTAINER=	dmgk@FreeBSD.org
 COMMENT=	Fast, powerful and easy-to-use CLI for AWS
 
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	go:lang/go
+USES=		go
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	wallix
@@ -21,12 +22,6 @@ OPTIONS_DEFINE=	DOCS
 
 PLIST_FILES=	bin/awless
 PORTDOCS=	README.md CHANGELOG.md
-
-do-build:
-	@(cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} GOPATH=${WRKSRC} go build -o ${PORTNAME} )
-
-do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
 
 do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}

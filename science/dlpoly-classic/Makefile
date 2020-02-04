@@ -2,7 +2,7 @@
 
 PORTNAME=	dlpoly
 PORTVERSION=	1.8
-PORTREVISION=	17
+PORTREVISION=	18
 CATEGORIES=	science java
 MASTER_SITES=	http://ccpforge.cse.rl.ac.uk/gf/download/frsrelease/238/2028/
 PKGNAMESUFFIX=	classic
@@ -10,6 +10,8 @@ DISTNAME=	dl_class_${PORTVERSION}
 
 MAINTAINER=	jwb@FreeBSD.org
 COMMENT=	Molecular dynamics simulation package
+
+BROKEN=		unfetchable
 
 BUILD_DEPENDS=	${LOCALBASE}/mpi/openmpi/bin/mpif90:net/openmpi
 RUN_DEPENDS=	${LOCALBASE}/mpi/openmpi/bin/mpirun:net/openmpi

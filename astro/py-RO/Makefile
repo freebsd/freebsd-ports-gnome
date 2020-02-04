@@ -3,7 +3,7 @@
 
 PORTNAME=	RO
 PORTVERSION=	3.6.9
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	astro python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -23,7 +23,7 @@ MATPLOTLIB_DESC=Add support for Matplotlib
 PYGAME_DESC=	Add Support for PyGame
 
 NO_ARCH=	yes
-USES=		python
+USES=		python:3.5+
 USE_PYTHON=	autoplist distutils
 
 ASTROPY_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}astropy>=0:astro/py-astropy@${PY_FLAVOR}

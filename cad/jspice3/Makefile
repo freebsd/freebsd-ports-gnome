@@ -19,6 +19,7 @@ OPTIONS_SUB=		yes
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION:R}
 
+X11_USES=	xorg
 X11_USE=	XORG=x11,xaw,xt
 
 post-patch:
@@ -27,6 +28,9 @@ post-patch:
 		 /^SPICE_HOST/s|=.*|= localhost| ; \
 		 /^CC_OPT/s|=.*|= ${CFLAGS}|' \
 		${WRKSRC}/conf/unixconf/mkheader.0
+	@cd ${WRKSRC}/src && \
+		${REINPLACE_CMD} 's,va_copy,var_copy,g' include/cpextern.h \
+		lib/fte/options.c lib/cp/variable.c
 
 post-patch-X11-off:
 	@${REINPLACE_CMD} -e \

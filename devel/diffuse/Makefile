@@ -13,9 +13,12 @@ COMMENT=	Graphical n-way diff and merge tool written in Python
 LICENSE=	GPLv2 GPLv3
 LICENSE_COMB=	dual
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-01
+
 CONFLICTS_INSTALL=	tinker-[0-9]*
 
-USES=		desktop-file-utils python:2.7 tar:bzip2
+USES=		desktop-file-utils gnome python:2.7 tar:bzip2
 USE_GNOME=	pygtk2
 
 NO_BUILD=	yes

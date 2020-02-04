@@ -3,7 +3,7 @@
 
 PORTNAME=	medit
 PORTVERSION=	1.2.92
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	editors
 MASTER_SITES=	SF/mooedit/${PORTNAME}/${PORTVERSION}
 PKGNAMESUFFIX=	-editor
@@ -14,7 +14,8 @@ COMMENT=	Programming and around-programming text editor
 
 LICENSE=	LGPL21
 
-USES=		compiler:c++11-lang gmake localbase pkgconfig python:2.7,build tar:bzip2
+USES=		compiler:c++11-lang gmake gnome localbase pkgconfig \
+		python:2.7,build tar:bzip2
 GNU_CONFIGURE=	yes
 USE_GNOME=	gtk20
 INSTALLS_ICONS=	yes

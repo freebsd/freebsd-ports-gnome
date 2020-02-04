@@ -2,10 +2,10 @@
 #   $MCom: ports/finance/gnucash/Makefile,v 1.26 2008/12/31 03:25:18 mezz Exp $
 
 PORTNAME=	gnucash
-PORTVERSION=	3.5
-PORTREVISION=	1
+PORTVERSION=	3.8
 CATEGORIES=	finance gnome
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}%20%28stable%29/${PORTVERSION}
+DISTFILES=	${PORTNAME}-${PORTVERSION}b${EXTRACT_SUFX}
 
 MAINTAINER=	madpilot@FreeBSD.org
 COMMENT=	Quicken-like money and finance manager
@@ -19,7 +19,7 @@ LIB_DEPENDS=	libgnome-keyring.so:security/libgnome-keyring \
 		libfreetype.so:print/freetype2 \
 		libsecret-1.so:security/libsecret \
 		libsoup-2.4.so:devel/libsoup \
-		libguile-2.0.so:lang/guile2 \
+		libguile-2.2.so:lang/guile2 \
 		libgc-threaded.so:devel/boehm-gc-threaded \
 		libboost_date_time.so:devel/boost-libs \
 		libicudata.so:devel/icu
@@ -27,8 +27,9 @@ RUN_DEPENDS=	p5-libwww>=0:www/p5-libwww \
 		p5-Date-Manip>=0:devel/p5-Date-Manip \
 		p5-Finance-Quote>=0:finance/p5-Finance-Quote
 
-USES=		cmake:insource compiler:c++11-lib desktop-file-utils gettext-tools gnome libtool \
-		localbase perl5 pkgconfig shebangfix tar:bzip2
+USES=		cmake:insource compiler:c++11-lib desktop-file-utils \
+		gettext-tools gnome libtool localbase perl5 pkgconfig \
+		shebangfix tar:bzip2 xorg
 USE_XORG=	x11
 USE_CXXSTD=	c++11
 USE_GNOME=	cairo gtk30 intltool libxml2 libxslt
@@ -36,7 +37,8 @@ USE_LDCONFIG=	yes
 
 INSTALLS_ICONS=	yes
 CMAKE_ARGS=	-DCOMPILE_GSCHEMAS=OFF \
-		-DENABLE_BINRELOC=OFF
+		-DENABLE_BINRELOC=OFF \
+		-DGNC_SHELL=/bin/sh
 SHEBANG_FILES=	common/gnc-test-env.pl libgnucash/quotes/gnc-fq-dump
 WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION}
 
@@ -83,13 +85,13 @@ OFX_LIB_DEPENDS=	libofx.so:finance/libofx
 OFX_VARS=		GLIB_SCHEMAS+=org.gnucash.dialogs.import.ofx.gschema.xml
 PYTHON_CMAKE_BOOL=	WITH_PYTHON
 PYTHON_USES=		python:3.3+
-TEST_BUILD_DEPENDS=	${NONEXISTENT}:devel/googlemock:build \
-			gtest-config:devel/googletest
+TEST_BUILD_DEPENDS=	${NONEXISTENT}:devel/googletest:build \
+			googletest>0:devel/googletest
 
 .include <bsd.port.pre.mk>
 
 .if ${PORT_OPTIONS:MTEST}
-GMOCK_WRKSRC!=	cd ${PORTSDIR}/devel/googlemock && ${MAKE} -V WRKSRC
+GMOCK_WRKSRC!=	cd ${PORTSDIR}/devel/googletest && ${MAKE} -V WRKSRC
 CONFIGURE_ENV+=	GMOCK_ROOT="${GMOCK_WRKSRC}"
 .endif
 
@@ -98,7 +100,7 @@ post-patch-TEST-off:
 		${FIND} . -type f -name CMakeLists.txt \
 		-exec ${REINPLACE_CMD} -e '/add_subdirectory *(test.*)/d' \
 		-e '/enable_testing()/d' -e '/include (GncAddTest)/d' \
-		-e '/gnc_gtest_configure()/d' {} +)
+		-e '/gnc_gtest_configure()/d' -e '/scm-test-core/d' {} +)
 
 post-install:
 	@(cd ${STAGEDIR}${DATADIR}/icons/hicolor && \

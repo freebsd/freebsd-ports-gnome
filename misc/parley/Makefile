@@ -10,7 +10,7 @@ COMMENT=	Vocabulary trainer for KDE
 BUILD_DEPENDS=	${LOCALBASE}/share/xsl/docbook/html/docbook.xsl:textproc/docbook-xsl \
 		docbook-xml>0:textproc/docbook-xml
 
-USES=		cmake gettext kde:5 qt:5 tar:xz
+USES=		cmake desktop-file-utils gettext gnome kde:5 qt:5 tar:xz xorg
 USE_GNOME=	libxml2 libxslt
 USE_KDE=	attica auth codecs completion configwidgets coreaddons config \
 		crash doctools ecm i18n jobwidgets kcmutils kio newstuff \
@@ -18,7 +18,7 @@ USE_KDE=	attica auth codecs completion configwidgets coreaddons config \
 		widgetsaddons xmlgui \
 		libkeduvocdocument
 USE_QT=		concurrent core dbus declarative gui location network multimedia \
-		script svg webchannel webengine widgets xml \
+		printsupport script svg webchannel webengine widgets xml \
 		buildtools_build qmake_build
 USE_XORG=	x11 xrender
 

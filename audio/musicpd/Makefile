@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	musicpd
-PORTVERSION=	0.21.8
-CATEGORIES=	audio ipv6
+PORTVERSION=	0.21.19
+CATEGORIES=	audio
 MASTER_SITES=	https://www.musicpd.org/download/mpd/${PORTVERSION:R}/
 DISTNAME=	mpd-${PORTVERSION}
 
@@ -26,6 +26,7 @@ MESON_ARGS=	-Dauto_features=disabled \
 		-Dicu=enabled \
 		-Doss=enabled \
 		-Dpipe=true \
+		-Dsyslog=enabled \
 		-Dzlib=enabled
 CFLAGS+=	-I${PREFIX}/include
 CPPFLAGS+=	-I${LOCALBASE}/include
@@ -69,14 +70,14 @@ PLAYLISTS_DESC=	Enable extra playlist support (wma, RSS)
 QOBUZ_DESC=	Streaming service support: Qobuz
 SIDPLAY2_DESC=	Sidplay support (C64 mono and stereo files)
 SOUNDCLOUD_DESC=Streaming service support: SoundCloud
-TIDAL_DESC=	Streaming service support: TIDAL
+TIDAL_DESC=	Streaming service support: TIDAL (currently defunct)
 TWOLAME_DESC=	TwoLAME support (mp2)
 VORBISENC_DESC=	Ogg Vorbis encoder
 WILDMIDI_DESC=	WildMIDI support (MIDI files)
 YAJL_DESC=	JSON support via libyajl
 ZZIP_DESC=	Support for zzip archives
 
-OPTIONS_DEFAULT=AUDIOFILE CURL FFMPEG FLAC ID3TAG MAD \
+OPTIONS_DEFAULT=CURL FFMPEG FLAC ID3TAG \
 		PLAYLISTS SNDFILE VORBIS VORBISENC
 
 # Decoder plugins
@@ -157,7 +158,7 @@ SNDIO_LIB_DEPENDS=	libsndio.so:audio/sndio
 
 # Input plugins
 CDPARANOIA_MESON_ENABLED=	cdio_paranoia
-CDPARANOIA_LIB_DEPENDS=	libcdda_paranoia.so:audio/cdparanoia
+CDPARANOIA_LIB_DEPENDS=	libcdio_paranoia.so:sysutils/libcdio-paranoia
 CURL_MESON_ENABLED=	curl
 CURL_LIB_DEPENDS=	libcurl.so:ftp/curl
 MMS_MESON_ENABLED=	mms
@@ -169,7 +170,7 @@ SMB_USES=		samba:lib
 ZZIP_MESON_ENABLED=	zzip
 ZZIP_LIB_DEPENDS=	libzzip.so:devel/zziplib
 ISO9660_MESON_ENABLED=	iso9660
-ISO9660_LIB_DEPENDS=	libcdio_paranoia.so:sysutils/libcdio-paranoia
+ISO9660_LIB_DEPENDS=	libiso9660.so:sysutils/libcdio
 
 # Database plugins
 SQLITE3_MESON_ENABLED=	sqlite

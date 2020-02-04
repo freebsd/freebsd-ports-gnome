@@ -3,6 +3,7 @@
 
 PORTNAME=	pijul
 PORTVERSION=	0.12.0
+PORTREVISION=	10
 CATEGORIES=	devel
 MASTER_SITES=	https://pijul.org/releases/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
@@ -11,8 +12,6 @@ MAINTAINER=	cs@FreeBSD.org
 COMMENT=	Distributed version control system
 
 LICENSE=	GPLv2
-
-BROKEN_aarch64=		fails to compile: aesv8-armx-linux64.S:53:2: instruction requires: crypto aese v6.16b,v0.16b
 
 BUILD_DEPENDS=	llvm${LLVM_DEFAULT}>0:devel/llvm${LLVM_DEFAULT}
 LIB_DEPENDS=	libgmp.so:math/gmp \
@@ -290,19 +289,10 @@ CARGO_CRATES=	MacTypes-sys-2.1.0 \
 		ws2_32-sys-0.2.1 \
 		xattr-0.2.2 \
 		yasna-0.1.3
-CARGO_CARGOLOCK=	${WRKSRC:H}/Cargo.lock
+
+CARGO_INSTALL_PATH=	pijul
 
 PLIST_FILES=	bin/pijul
-WRKSRC_SUBDIR=	pijul
-
-# We are using pijul/Cargo.toml for all phases and profiles are ignored
-# if specified in non root packages.  cargo.mk has no way to override
-# the Cargo.toml used for each phase, so append the release profile
-# to the root Cargo.toml.
-post-configure:
-	@${ECHO_CMD} "[profile.release]" >> ${WRKSRC:H}/Cargo.toml
-	@${ECHO_CMD} "opt-level = 2" >> ${WRKSRC:H}/Cargo.toml
-	@${ECHO_CMD} "debug = false" >> ${WRKSRC:H}/Cargo.toml
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/pijul

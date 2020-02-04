@@ -4,10 +4,10 @@
 PORTNAME=	soundkonverter
 PORTVERSION=	3.0.1
 DISTVERSIONPREFIX=	v
-PORTREVISION=	5
+PORTREVISION=	7
 CATEGORIES=	audio kde
 
-MAINTAINER=	dbn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Frontend to various audio converters (transcoder)
 
 LICENSE=	GPLv2

@@ -9,9 +9,9 @@ MASTER_SITES=	http://freebsd.hypermart.net/code/
 MAINTAINER=	email@freebsd.hypermart.net
 COMMENT=	Topic markup parser
 
-LICENSE=	BSD2CLAUSE
+BROKEN=		unfetchable
 
-BROKEN_powerpc64=	Does not build: warning: comparison is always false due to limited range of data type
+LICENSE=	BSD2CLAUSE
 
 PLIST_FILES=	bin/topic \
 		man/man1/topic.1.gz

@@ -3,7 +3,7 @@
 
 PORTNAME=	vdr-plugin-osdpip
 PORTVERSION=	0.1.2
-PORTREVISION=	7
+PORTREVISION=	9
 CATEGORIES=	multimedia
 MASTER_SITES=	http://projects.vdr-developer.org/attachments/download/961/
 DISTNAME=	${PORTNAME:S/-plugin-/-/}-${DISTVERSIONPREFIX}${DISTVERSION}${DISTVERSIONSUFFIX}
@@ -18,7 +18,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS+=	libavcodec.so:multimedia/ffmpeg
 
 USES=		pkgconfig tar:tgz
-HAVE_CONFIGURE=	yes
 PORTDOCS=	COPYING README HISTORY
 WRKSRC=		${WRKDIR}/${PLUGIN}-${DISTVERSION}
 

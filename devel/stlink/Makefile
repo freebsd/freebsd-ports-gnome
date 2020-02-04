@@ -13,6 +13,7 @@ LICENSE=	BSD3CLAUSE
 OPTIONS_DEFINE=		GTK3 DOCS
 OPTIONS_SUB=		yes
 GTK3_EXTRA_PATCHES_OFF=	${FILESDIR}/extra-pacth-turn-off-gtk
+GTK3_USES=		gnome
 GTK3_USE=		GNOME=gtk30
 
 USE_GITHUB=	yes
@@ -25,7 +26,7 @@ PORTDOCS=	README.md tested-boards.md tutorial.md
 
 .include <bsd.port.pre.mk>
 
-.if ${ARCH} == "i386" || ${ARCH} == "powerpc" || ${ARCH} == "arm" || ${ARCH} == "armv6" || ${ARCH} == "mips"
+.if ! ${ARCH:M*64*}
 EXTRA_PATCHES+=	${FILESDIR}/extra-pacth-32bit
 .endif
 

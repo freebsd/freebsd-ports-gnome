@@ -2,7 +2,7 @@
 
 PORTNAME=	filezilla
 PORTVERSION=	3.40.0
-PORTREVISION=	2
+PORTREVISION=	4
 CATEGORIES=	ftp
 MASTER_SITES=	https://download.filezilla-project.org/client/
 DISTNAME=	FileZilla_${PORTVERSION}_src
@@ -25,7 +25,8 @@ LIB_DEPENDS=	libfilezilla.so:ftp/libfilezilla \
 RUN_DEPENDS=	xdg-open:devel/xdg-utils
 
 INSTALLS_ICONS=	yes
-USES=		compiler:c++14-lang gmake iconv:wchar_t localbase pkgconfig sqlite tar:bzip2
+USES=		compiler:c++14-lang gmake gnome iconv:wchar_t localbase \
+		pkgconfig sqlite tar:bzip2
 USE_GNOME=	cairo gtk20
 USE_WX=		3.0
 WX_CONF_ARGS=	relative

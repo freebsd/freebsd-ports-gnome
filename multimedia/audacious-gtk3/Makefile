@@ -3,6 +3,7 @@
 
 PORTNAME=	audacious
 PORTVERSION=	3.10.1
+PORTREVISION=	1
 DISTVERSIONSUFFIX=	-gtk3
 CATEGORIES=	multimedia audio
 #MASTER_SITES=	http://distfiles.audacious-media-player.org/
@@ -25,7 +26,7 @@ FILESDIR=	${MASTERDIR}/files
 SUB_FILES=	pkg-message
 
 USES=		autoreconf compiler:c++11-lib desktop-file-utils \
-		gettext-tools gmake localbase pkgconfig
+		gettext-tools gmake gnome localbase pkgconfig xorg
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	audacious-media-player

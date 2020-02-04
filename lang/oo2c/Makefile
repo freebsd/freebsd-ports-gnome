@@ -3,12 +3,12 @@
 
 PORTNAME=	oo2c
 PORTVERSION=	2.1.11
-PORTREVISION=	12
+PORTREVISION=	13
 CATEGORIES=	lang
 MASTER_SITES=	SF/ooc/ooc2/${PORTVERSION}
 DISTNAME=	${PORTNAME}_${BITS}-${PORTVERSION}
 
-MAINTAINER=	johans@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Optimizing Oberon-2 compiler of University of Kaiserslautern, Germany
 
 LICENSE=	GPLv2

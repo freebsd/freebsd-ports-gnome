@@ -3,7 +3,7 @@
 
 PORTNAME=	pcmanx
 PORTVERSION=	1.3
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	chinese net gnome
 MASTER_SITES=	https://github.com/pcman-bbs/${PORTNAME}/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}-gtk2-${PORTVERSION}
@@ -14,7 +14,7 @@ COMMENT=	BBS client using GTK+ 2.x
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-USES=		compiler:c++11-lang gmake iconv pkgconfig tar:xz
+USES=		compiler:c++11-lang gmake gnome iconv pkgconfig tar:xz
 
 GNU_CONFIGURE=	yes
 USE_GNOME=	gtk20 intlhack

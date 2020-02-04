@@ -3,6 +3,7 @@
 
 PORTNAME=		libcangjie
 PORTVERSION=		1.3
+PORTREVISION=		1
 DISTVERSIONPREFIX=	v
 CATEGORIES=		chinese
 
@@ -16,12 +17,12 @@ LIB_DEPENDS=	libsqlite3.so:databases/sqlite3		\
 		libfreetype.so:print/freetype2          \
 		libdbus-1.so:devel/dbus
 
-USES=		autoreconf gmake libtool localbase pkgconfig sqlite
+USES=		autoreconf gmake libtool localbase pkgconfig sqlite xorg
 
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 
-USE_XORT=	xi
+USE_XORG=	xi
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	Cangjians

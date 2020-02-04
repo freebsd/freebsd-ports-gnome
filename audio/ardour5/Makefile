@@ -3,7 +3,7 @@
 
 PORTNAME=	ardour5
 PORTVERSION=	5.12.0
-PORTREVISION=	10
+PORTREVISION=	13
 CATEGORIES=	audio
 MASTER_SITES=	https://github.com/beerml/ardour_releases/raw/master/
 # The original master side points to the latest release only:
@@ -39,8 +39,9 @@ LIB_DEPENDS=	libserd-0.so:devel/serd \
 		libogg.so:audio/libogg \
 		libFLAC.so:audio/flac
 
-USES=		compiler:c++11-lang desktop-file-utils gettext libarchive \
-		pkgconfig python:2.7,build readline:port tar:bzip2 waf
+USES=		compiler:c++11-lang desktop-file-utils gettext gnome \
+		libarchive pkgconfig python:2.7,build readline:port tar:bzip2 \
+		waf xorg
 USE_CXXSTD=	c++11
 USE_XORG=	x11
 USE_GNOME=	atk cairo cairomm gdkpixbuf2 glib20 glibmm gtk20 gtkmm24 pango
@@ -48,7 +49,6 @@ USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 
 BROKEN_aarch64=		fails to configure: Could not find the program gas,as,gcc
-BROKEN_powerpc64=	fails to compile: configuration_variable.cc: 'strtof' is not a member of 'std'
 
 PLIST_SUB=	ARDOURVERSION=${PORTVERSION}
 
@@ -103,6 +103,8 @@ post-install:
 WITH_ARCH_FLAGS=	--arch='-msse -mfpmath=sse' --dist-target=i386
 .elif ${ARCH} == "amd64"
 WITH_ARCH_FLAGS=	--arch='-msse -mfpmath=sse' --dist-target=x86_64
+.elif ${ARCH} == "powerpc64"
+LLD_UNSAFE=	yes
 .endif
 
 .if defined(WITH_ARCH_FLAGS)

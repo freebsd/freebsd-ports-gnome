@@ -1,5 +1,6 @@
 # $FreeBSD$
 
+PORTREVISION=	1
 CATEGORIES=	mail elisp
 PKGNAMESUFFIX=	${EMACS_PKGNAMESUFFIX}
 
@@ -55,10 +56,6 @@ do-configure:
 		WITH_EMACS=1 \
 		${CONFIGURE_ARGS} \
 		> ${WRKSRC}/Makefile.config
-
-# work around race condition in Sphinx (cf. PR-227460)
-pre-build:
-	@${MKDIR} ${WRKSRC}/doc/_build/doctrees
 
 post-install:
 	@${GZIP_CMD} ${STAGEDIR}${PREFIX}/${EMACS_SITE_LISPDIR}/*.el

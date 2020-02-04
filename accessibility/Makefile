@@ -14,11 +14,12 @@
     SUBDIR += kmag
     SUBDIR += kmousetool
     SUBDIR += kmouth
-    SUBDIR += linux-c6-atk
+    SUBDIR += libqaccessibilityclient
+    SUBDIR += linux-c7-at-spi2-atk
+    SUBDIR += linux-c7-at-spi2-core
     SUBDIR += linux-c7-atk
     SUBDIR += orca
     SUBDIR += py-atspi
-    SUBDIR += py-papi
     SUBDIR += py-speech-dispatcher
     SUBDIR += qt5-speech
     SUBDIR += redshift

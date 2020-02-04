@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	yar
-DISTVERSION=	2.0.5
+DISTVERSION=	2.0.6
 CATEGORIES=	www
 
 MAINTAINER=	joneum@FreeBSD.org

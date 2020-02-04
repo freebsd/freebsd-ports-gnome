@@ -5,7 +5,9 @@ PORTVERSION=	1.1.6
 CATEGORIES=	security
 MASTER_SITES=	http://bitbucket.org/skskeyserver/sks-keyserver/downloads/
 
-MAINTAINER=	johans@FreeBSD.org
+EXTRA_PATCHES=	${FILESDIR}/debian-bug-870150:-p1
+
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Synchronizing Key Server, a fast OpenPGP keyserver
 
 LICENSE=	GPLv2+
@@ -32,9 +34,6 @@ post-extract:
 	@cd ${WRKSRC} && ${RM} .depend
 
 post-patch:
-	@${REINPLACE_CMD} -Ee '/^CC=/d; /^CFLAGS=/s/=/+=/' \
-		-e '/^install/,$$s/\$$\((PREFIX|MANDIR)\)/$$(DESTDIR)&/' \
-		-e '/patch/s/-p 0/-p0/' ${WRKSRC}/Makefile
 	@${REINPLACE_CMD} -e '/^CC=/d; /^CFLAGS=/s/=/+=/' ${WRKSRC}/bdb/Makefile
 
 pre-build:

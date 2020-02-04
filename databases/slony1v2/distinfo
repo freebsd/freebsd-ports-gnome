@@ -1,5 +1,5 @@
-TIMESTAMP = 1503914599
-SHA256 (slony1-2.2.6.tar.bz2) = 79cf246741bc3f95f6890f2dbed5712d6e5a127bf1f442cf8af102d23de0919c
-SIZE (slony1-2.2.6.tar.bz2) = 1465709
-SHA256 (slony1-2.2.6-docs.tar.bz2) = 418030209a677845127871eb37d324317acd68a5cfda1e0301ec6f0776c39118
-SIZE (slony1-2.2.6-docs.tar.bz2) = 1450956
+TIMESTAMP = 1569167427
+SHA256 (slony1-2.2.8.tar.bz2) = a35a2768aee4c10476bd01f1884d1e8b9c68b82233c4be5ead098a7f91245c3f
+SIZE (slony1-2.2.8.tar.bz2) = 1464785
+SHA256 (slony1-2.2.8-docs.tar.bz2) = d031d5474db8d435814c1cf03e6c0af3cacca1020b75e9554c6f70e5d9f9252a
+SIZE (slony1-2.2.8-docs.tar.bz2) = 1440764

@@ -1,7 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	stacks
-DISTVERSION=	2.3
+DISTVERSION=	2.4
+PORTREVISION=	1
 CATEGORIES=	biology perl5 python
 MASTER_SITES=	http://catchenlab.life.illinois.edu/stacks/source/
 
@@ -21,7 +22,8 @@ LDFLAGS+=	-lpthread
 
 .include <bsd.port.pre.mk>
 
-.if ${ARCH} != amd64 && ${ARCH} != i386
+# Force newer GCC on platforms using GCC 4.2 as base
+.if ${CHOSEN_COMPILER_TYPE} == gcc
 USE_GCC=	yes
 .endif
 

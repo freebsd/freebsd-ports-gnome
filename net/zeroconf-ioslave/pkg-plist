@@ -33,6 +33,7 @@ share/locale/km/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/ko/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/lt/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/lv/LC_MESSAGES/kio5_zeroconf.mo
+share/locale/ml/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/mr/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/nb/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/nds/LC_MESSAGES/kio5_zeroconf.mo
@@ -53,4 +54,5 @@ share/locale/ug/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/uk/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/zh_CN/LC_MESSAGES/kio5_zeroconf.mo
 share/locale/zh_TW/LC_MESSAGES/kio5_zeroconf.mo
+share/metainfo/org.kde.zeroconf-ioslave.metainfo.xml
 share/remoteview/zeroconf.desktop

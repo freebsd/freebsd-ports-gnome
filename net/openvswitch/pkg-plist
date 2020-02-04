@@ -36,7 +36,6 @@ include/openflow/openflow-1.2.h
 include/openflow/openflow-1.3.h
 include/openflow/openflow-1.4.h
 include/openflow/openflow-1.5.h
-include/openflow/openflow-1.6.h
 include/openflow/openflow-common.h
 include/openflow/openflow.h
 include/openvswitch/compiler.h
@@ -91,6 +90,7 @@ include/openvswitch/vlog.h
 include/ovn/actions.h
 include/ovn/expr.h
 include/ovn/lex.h
+include/ovn/logical-fields.h
 lib/libofproto-%%SHLIB_VER%%.so.0
 lib/libofproto-%%SHLIB_VER%%.so.0.0.0
 lib/libofproto.so

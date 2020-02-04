@@ -13,7 +13,7 @@ USES=		cmake compiler:c++11-lang gettext kde:5 qt:5 tar:xz
 USE_KDE=	auth bookmarks codecs completion config configwidgets \
 		coreaddons dnssd doctools ecm i18n iconthemes kcmutils \
 		notifications notifyconfig service wallet widgetsaddons \
-		xmlgui
+		windowsystem xmlgui
 USE_QT=		core dbus gui network widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes

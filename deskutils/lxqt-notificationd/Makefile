@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	lxqt-notificationd
-PORTVERSION=	0.14.0
+PORTVERSION=	0.14.1
 CATEGORIES=	deskutils
 MASTER_SITES=	LXQT
 

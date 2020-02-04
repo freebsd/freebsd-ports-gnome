@@ -8,7 +8,7 @@ CATEGORIES=	security python
 MASTER_SITES=	https://tarballs.openstack.org/keystone/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	alexander.nusov@nfvexpress.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	OpenStack Keystone / Identity service
 
 LICENSE=	APACHE20
@@ -51,7 +51,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pbr>=2.0.0:devel/py-pbr@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}osprofiler>=1.4.0:devel/py-osprofiler@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytz>=2013.6:devel/py-pytz@${PY_FLAVOR}
 
-USES=		python
+USES=		python:3.6+
 USE_PYTHON=	autoplist distutils
 NO_ARCH=	yes
 

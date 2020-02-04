@@ -4,16 +4,16 @@
 PORTNAME=	lemonbar
 DISTVERSIONPREFIX=v
 DISTVERSION=	1.3
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	x11
 
-MAINTAINER=	dg@syrec.org
+MAINTAINER=	dmgk@FreeBSD.org
 COMMENT=	Lightweight xcb based bar
 
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		compiler:c11 gmake localbase:ldflags perl5
+USES=		compiler:c11 gmake localbase:ldflags perl5 xorg
 USE_PERL5=	build
 USE_XORG=	xcb
 

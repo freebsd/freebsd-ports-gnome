@@ -8,12 +8,12 @@ CATEGORIES=	graphics
 MASTER_SITES=	SF
 PKGNAMESUFFIX=	2
 
-MAINTAINER=	koalative@gmail.com
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Portable framework for OpenGL development
 
 LICENSE=	ZLIB
 
-USES=		tar:bzip2
+USES=		gl tar:bzip2 xorg
 GNU_CONFIGURE=	yes
 CONFIGURE_SCRIPT=	compile.sh
 ALL_TARGET=	x11

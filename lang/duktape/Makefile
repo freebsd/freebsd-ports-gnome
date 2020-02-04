@@ -1,9 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	duktape
-PORTVERSION=	2.3.0
+PORTVERSION=	2.5.0
 CATEGORIES=	lang devel
-MASTER_SITES=	http://duktape.org/
+MASTER_SITES=	https://duktape.org/
 
 MAINTAINER=	alfix86@gmail.com
 COMMENT=	Embeddable Javascript engine
@@ -13,6 +13,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
 USES=		tar:xz
 
+MAKE_ARGS+=	CC=${CC}
 MAKEFILE=	Makefile.cmdline
 ALL_TARGET=	duk
 

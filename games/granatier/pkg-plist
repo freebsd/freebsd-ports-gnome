@@ -1,5 +1,5 @@
 bin/granatier
-etc/xdg/granatier.categories
+share/qlogging-categories5/granatier.categories
 share/applications/org.kde.granatier.desktop
 share/config.kcfg/granatier.kcfg
 %%DATADIR%%/arenas/clanbomber_Arena.desktop
@@ -135,6 +135,7 @@ share/locale/ga/LC_MESSAGES/granatier.mo
 share/locale/gl/LC_MESSAGES/granatier.mo
 share/locale/hr/LC_MESSAGES/granatier.mo
 share/locale/hu/LC_MESSAGES/granatier.mo
+share/locale/id/LC_MESSAGES/granatier.mo
 share/locale/is/LC_MESSAGES/granatier.mo
 share/locale/it/LC_MESSAGES/granatier.mo
 share/locale/ja/LC_MESSAGES/granatier.mo

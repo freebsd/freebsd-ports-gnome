@@ -1,13 +1,13 @@
-# Created by: Loïc BARTOLETTI <coder@tuxfamily.org>
+# Created by: Loïc BARTOLETTI <lbartoletti@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	virtualpg
 PORTVERSION=	1.0.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	databases geography
 MASTER_SITES=	http://www.gaia-gis.it/gaia-sins/
 
-MAINTAINER=	lbartoletti@tuxfamily.org
+MAINTAINER=	lbartoletti@FreeBSD.org
 COMMENT=	Loadable dynamic extension to both SQLite and SpatiaLite
 
 LICENSE=	MPL11 LGPL21 GPLv2

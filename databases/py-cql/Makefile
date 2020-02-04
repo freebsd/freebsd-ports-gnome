@@ -11,6 +11,10 @@ PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 MAINTAINER=	hsn@sendmail.cz
 COMMENT=	Python DB-API 2.0 client interface for Cassandra
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	APACHE20
 
 RUN_DEPENDS=	${PYTHON_SITELIBDIR}/thrift/Thrift.py:devel/py-thrift@${PY_FLAVOR}

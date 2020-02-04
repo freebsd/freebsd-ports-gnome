@@ -2,7 +2,7 @@
 
 PORTNAME=	url
 DISTVERSION=	0.4.2
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	www python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,7 +14,7 @@ LICENSE=	MIT
 
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}six>=0:devel/py-six@${PY_FLAVOR}
 
-USES=		compiler:c++11-lang python
+USES=		compiler:c++11-lang python:-3.6
 USE_PYTHON=	cython distutils autoplist
 
 post-install:

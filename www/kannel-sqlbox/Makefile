@@ -2,7 +2,7 @@
 
 PORTNAME=	kannel-sqlbox
 PORTVERSION=	1.0.1
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	www
 
 MAINTAINER=	dbaio@FreeBSD.org
@@ -21,7 +21,7 @@ LIB_DEPENDS=	libpcreposix.so:devel/pcre
 USE_GITHUB=	yes
 GH_ACCOUNT=	dbaio
 
-USES=	gmake iconv ssl
+USES=		gmake gnome iconv ssl
 USE_GCC=	yes
 GNU_CONFIGURE=	yes
 USE_GNOME=	libxml2

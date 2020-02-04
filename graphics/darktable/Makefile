@@ -2,7 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	darktable
-PORTVERSION=	2.6.2
+PORTVERSION=	3.0.0
+PORTREVISION=	1
 CATEGORIES=	graphics
 MASTER_SITES=	https://github.com/darktable-org/${PORTNAME}/releases/download/release-${PORTVERSION:C/\.rc/rc/}/
 
@@ -10,6 +11,9 @@ MAINTAINER=	dumbbell@FreeBSD.org
 COMMENT=	Virtual lighttable and darkroom for photographers
 
 LICENSE=	GPLv3
+
+ONLY_FOR_ARCHS=		amd64
+ONLY_FOR_ARCHS_REASON=	uses SSE instructions and 64-bit address space
 
 BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
 		xsltproc:textproc/libxslt \
@@ -24,11 +28,8 @@ LIB_DEPENDS=	libcurl.so:ftp/curl \
 		libsoup-2.4.so:devel/libsoup \
 		libtiff.so:graphics/tiff
 
-ONLY_FOR_ARCHS=		amd64
-ONLY_FOR_ARCHS_REASON=	uses SSE instructions and 64-bit address space
-
 USES=		cmake compiler:c++11-lib desktop-file-utils	\
-		gl gnome jpeg pkgconfig sqlite tar:xz
+		gl gnome jpeg pkgconfig sqlite tar:xz xorg
 USE_GL=		glu
 USE_GNOME=	cairo gtk30 intltool librsvg2 libxml2
 USE_XORG=	ice sm x11 xext xrandr
@@ -97,23 +98,34 @@ WEBP_CMAKE_OFF=		-DUSE_WEBP:BOOL=OFF
 
 .include <bsd.port.pre.mk>
 
+# work around CMAKE/CCACHE flaw (cmake stomps over ccache)
+.if "${WITH_CCACHE_BUILD}" == "yes" && !defined(NO_CCACHE)
+CMAKE_ARGS+=	-DCMAKE_C_COMPILER_LAUNCHER=${CCACHE_BIN} \
+		-DCMAKE_CXX_COMPILER_LAUNCHER=${CCACHE_BIN}
+.endif
+
+# Base clang may not support OpenMP, use ports clang:
 .if ${ARCH} == amd64 && ${CHOSEN_COMPILER_TYPE} == clang
-# Enable OpenMP support with Clang 6.0.
-LLVM_VER=	60
+LLVM_VER=	${LLVM_DEFAULT}
 BUILD_DEPENDS+=	clang${LLVM_VER}:devel/llvm${LLVM_VER}
 
 CPP=		clang-cpp${LLVM_VER}
 CC=		clang${LLVM_VER}
 CXX=		clang++${LLVM_VER}
 
-# Depend on devel/openmp instead of the full LLVM at runtime. Required
-# for a consistent libomp experience.
-LIB_DEPENDS+=	libomp.so.0:devel/openmp
+LIB_DEPENDS+=	libomp.so:devel/llvm${LLVM_VER}
 .endif
 
 .if defined(WITH_DEBUG)
 CMAKE_BUILD_TYPE=	RelWithDebInfo
 STRIP=
 .endif
+
+# darktable defines the __XOPEN_SOURCE preprocessor macro, which
+# restricts symbol visibility on FreeBSD and causes compilation failures
+# on, for instance, the cups_print module, because u_char remains
+# undefined. Remove _XOPEN_SOURCE maro definitions.
+post-patch:
+	${REINPLACE_CMD} '/add_definitions."-D_XOPEN_SOURCE=.*"/d' ${WRKSRC}/CMakeLists.txt
 
 .include <bsd.port.post.mk>

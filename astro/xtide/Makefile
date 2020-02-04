@@ -3,6 +3,7 @@
 
 PORTNAME=	xtide
 PORTVERSION=	2.15.2
+PORTREVISION=	2
 CATEGORIES=	astro geography
 MASTER_SITES=	https://flaterco.com/files/xtide/
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX} \
@@ -34,13 +35,14 @@ OPTIONS_SUB=		yes
 
 WVS_DESC=		Use world vector shoreline data (37MB)
 WVS_DISTFILES=		${DISTNAME_WVS}${EXTRACT_SUFX}
+X11_USES=		xorg
 X11_USE=		xorg=ice,sm,x11,xaw,xext,xmu,xpm,xt
 X11_CONFIGURE_WITH=	x
 X11_DESKTOP_ENTRIES=	"XTide" "" "xtide" "xtide" "" ""
 
 DISTNAME_TCD=	libtcd-2.2.7-r2
 WRKSRC_TCD=	${WRKDIR}/${DISTNAME_TCD:C/-r[0-9]+//}
-DISTNAME_HARM=	harmonics-dwf-20151227-free
+DISTNAME_HARM=	harmonics-dwf-20190620-free
 WRKSRC_HARM=	${WRKDIR}/${DISTNAME_HARM:C/-free//}
 DISTNAME_WVS=	wvs
 

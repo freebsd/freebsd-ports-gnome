@@ -1,20 +1,20 @@
---- ruby/Gemfile.orig	2019-04-05 16:17:09 UTC
+--- ruby/Gemfile.orig	2020-02-01 09:18:38 UTC
 +++ ruby/Gemfile
-@@ -8,7 +8,7 @@ gem 'github-linguist', '~> 6.1', require: 'linguist'
- gem 'gitlab-markup', '~> 1.7.0'
- gem 'gitaly-proto', '~> 1.19.0'
- gem 'activesupport', '~> 5.0.2'
--gem 'rdoc', '~> 4.2'
-+gem 'rdoc', '~> 6.0'
- gem 'gitlab-gollum-lib', '~> 4.2.7.7', require: false
- gem 'gitlab-gollum-rugged_adapter', '~> 0.4.4.2', require: false
- gem 'grpc', '~> 1.15.0'
-@@ -22,17 +22,3 @@ gem 'licensee', '~> 8.9.0'
+@@ -16,7 +16,7 @@ gem 'faraday', '~> 0.12'
+ gem 'rbtrace', require: false
  
- gem 'google-protobuf', '~> 3.6'
+ # Labkit provides observability functionality
+-gem 'gitlab-labkit', '~> 0.5.0'
++gem 'gitlab-labkit', '~> 0.8.0'
+ 
+ # Detects the open source license the repository includes
+ # This version needs to be in sync with GitLab CE/EE
+@@ -24,17 +24,3 @@ gem 'licensee', '~> 8.9.0'
+ 
+ gem 'google-protobuf', '~> 3.8.0'
  
 -group :development, :test do
--  gem 'rubocop', '~> 0.50', require: false
+-  gem 'rubocop', '~> 0.69', require: false
 -  gem 'rspec', require: false
 -  gem 'rspec-parameterized', require: false
 -  gem 'timecop', require: false
@@ -23,7 +23,7 @@
 -
 -  # gitlab-shell spec gems
 -  gem 'listen', '~> 0.5.0'
--  gem 'simplecov', '~> 0.9.0', require: false
+-  gem 'simplecov', '~> 0.17.1', require: false
 -  gem 'vcr', '~> 4.0.0'
 -  gem 'webmock', '~> 3.4.0'
 -end

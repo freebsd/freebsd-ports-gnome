@@ -3,7 +3,7 @@
 
 PORTNAME=	netgen
 PORTVERSION=	5.3.1
-PORTREVISION=	9
+PORTREVISION=	11
 CATEGORIES=	cad
 #MASTER_SITES=	SF/netgen-mesher/netgen-mesher/${PORTVERSION:C|\.[[:digit:]]+$||}/
 MASTER_SITES=	http://faculty.missouri.edu/~stephen/
@@ -17,7 +17,7 @@ LIB_DEPENDS=	libTix8.4.3.so:x11-toolkits/tix \
 OCC_BROKEN=	Does not compile because of issues with cad/opencascade
 
 USE_LDCONFIG=	yes
-USES=		gmake jpeg libtool localbase tk:tea
+USES=		gl gmake jpeg libtool localbase tk:tea xorg
 USE_GL=		gl glu
 USE_XORG=	x11 xmu xi
 MAKE_JOBS_UNSAFE=	yes
@@ -61,4 +61,10 @@ post-install:
 	${SH} ${FILESDIR}/netgen_copy_include_for_salome ${WRKSRC} ${STAGEDIR}${PREFIX}
 	${LN} ${STAGEDIR}${PREFIX}/lib/libnglib.so ${STAGEDIR}${PREFIX}/lib/libnglib.so.1
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} >= 1300014
+BROKEN=			does not build with recent versions of FreeBSD
+.endif
+
+.include <bsd.port.post.mk>

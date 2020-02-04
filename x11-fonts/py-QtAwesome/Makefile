@@ -1,12 +1,12 @@
 # $FreeBSD$
 
 PORTNAME=	QtAwesome
-DISTVERSION=	0.5.7
+DISTVERSION=	0.6.0
 CATEGORIES=	x11-fonts graphics python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 
-MAINTAINER=	lbartoletti@tuxfamily.org
+MAINTAINER=	lbartoletti@FreeBSD.org
 COMMENT=	Iconic fonts in PyQt and PySide applications
 
 LICENSE=	MIT

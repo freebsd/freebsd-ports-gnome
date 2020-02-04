@@ -2,11 +2,11 @@
 
 PORTNAME=	cellranger
 DISTVERSION=	1.1.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	textproc
 DISTNAME=	${PORTNAME}_${DISTVERSION}
 
-MAINTAINER=	dbn@FreeBSD.org
+MAINTAINER=	ports@FreeBSD.org
 COMMENT=	Translate Spreadsheet Cell Ranges to Rows and Columns
 
 LICENSE=	MIT

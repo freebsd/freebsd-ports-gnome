@@ -1,8 +1,7 @@
-# Created by: mat
 # $FreeBSD$
 
 PORTNAME=	DateTime-TimeZone
-PORTVERSION=	2.35
+PORTVERSION=	2.38
 PORTEPOCH=	1
 CATEGORIES=	devel perl5
 MASTER_SITES=	CPAN

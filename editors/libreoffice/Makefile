@@ -1,4 +1,5 @@
 # $FreeBSD$
+PORTREVISION=	2
 
 .include "${.CURDIR}/Makefile.common"
 
@@ -17,16 +18,16 @@ BUILD_DEPENDS=	p5-Archive-Zip>=0:archivers/p5-Archive-Zip \
 		${LOCALBASE}/include/sqlext.h:databases/unixODBC \
 		cppunit-config:devel/cppunit \
 		dmake:devel/dmake \
-		${LOCALBASE}/bin/gperf:devel/gperf \
+		gperf>=3.1:devel/gperf \
 		mdds>=1.4:devel/mdds \
-		gpatch:devel/patch \
 		ucpp:devel/ucpp \
 		${LOCALBASE}/include/sane/sane.h:graphics/sane-backends \
 		vigra-config:graphics/vigra \
 		${LOCALBASE}/include/glm/glm.hpp:math/glm \
 		bash:shells/bash \
 		gsed:textproc/gsed \
-		${PYTHON_PKGNAMEPREFIX}lxml>0:devel/py-lxml@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}lxml>0:devel/py-lxml@${PY_FLAVOR} \
+		flex>=0.26:textproc/flex
 LIB_DEPENDS=	libapr-1.so:devel/apr1 \
 		libboost_date_time.so:devel/boost-libs \
 		libicutu.so:devel/icu \
@@ -92,7 +93,7 @@ RUN_DEPENDS=	xdg-open:devel/xdg-utils \
 		${LOCALBASE}/share/fonts/LinLibertineG/LinLibertine_DR_G.ttf:x11-fonts/linuxlibertine-g
 
 DISTFILES+=	4b87018f7fff1d054939d19920b751a0-collada2gltf-master-cb1d97788a.tar.bz2:src \
-		49a64f3bcf20a7909ba2751349231d6652ded9cd2840e961b5164d09de3ffa63-opens___.ttf:ext
+		884ed41809687c3e168fc7c19b16585149ff058eca79acbf3ee784f6630704cc-opens___.ttf:ext
 
 NOT_FOR_ARCHS=		aarch64 armv6 armv7
 NOT_FOR_ARCHS_REASON=	Unsupported host_cpu
@@ -111,9 +112,10 @@ USE_GL=		gl glew glu
 USE_OPENLDAP=	yes
 USE_PERL5=	build
 USE_XORG=	ice sm x11 xaw xext xinerama xrandr xrender
-USES=		autoreconf:build bison compiler:c++14-lang cpe gmake jpeg \
-		mysql:client \
-		perl5 pkgconfig python shebangfix shared-mime-info ssl tar:xz
+USES=		autoreconf:build bison compiler:c++14-lang cpe gl gmake gnome \
+		jpeg mysql:client \
+		perl5 pkgconfig python shebangfix shared-mime-info ssl tar:xz \
+		xorg
 
 OPTIONS_DEFINE=	CUPS DOCS GNOME GTK2 GTK3 JAVA KDE5 MMEDIA PGSQL QT5 SDK \
 		SYSTRAY TEST WEBDAV
@@ -156,10 +158,10 @@ GTK3_USES=	${GTK_USES}
 GTK3_VARS=	${GTK_VARS}
 
 JAVA_BUILD_DEPENDS=	ant:devel/apache-ant \
-			${JAVAJARDIR}/commons-codec.jar:java/jakarta-commons-codec \
-			${JAVAJARDIR}/commons-httpclient.jar:java/jakarta-commons-httpclient \
-			${JAVAJARDIR}/commons-lang.jar:java/jakarta-commons-lang \
-			${JAVAJARDIR}/commons-logging.jar:java/jakarta-commons-logging \
+			${JAVAJARDIR}/commons-codec.jar:java/apache-commons-codec \
+			${JAVAJARDIR}/commons-httpclient.jar:java/apache-commons-httpclient \
+			${JAVAJARDIR}/commons-lang.jar:java/apache-commons-lang \
+			${JAVAJARDIR}/commons-logging.jar:java/apache-commons-logging \
 			${JAVAJARDIR}/junit.jar:java/junit \
 			${JAVAJARDIR}/bsh.jar:lang/bsh
 JAVA_CATEGORIES=	java
@@ -252,7 +254,6 @@ CONFIGURE_ARGS=	--disable-dependency-tracking \
 		--with-external-hyph-dir=${LOCALBASE}/share/hyphen \
 		--with-external-tar=${DISTDIR}/${DIST_SUBDIR} \
 		--with-external-thes-dir=${LOCALBASE}/share/mythes \
-		--with-gnu-patch=${LOCALBASE}/bin/gpatch \
 		--with-os-version=${OSVERSION} \
 		--with-parallelism=${MAKE_JOBS_NUMBER} \
 		--with-system-cppunit \
@@ -268,6 +269,7 @@ CONFIGURE_ARGS=	--disable-dependency-tracking \
 		--without-myspell-dicts
 
 CONFIGURE_ENV=	DMAKE=${LOCALBASE}/bin/dmake \
+		FLEX=${LOCALBASE}/bin/flex \
 		GNUTAR="${TAR}" \
 		GPERF=${LOCALBASE}/bin/gperf \
 		ICU_CFLAGS="`icu-config --cflags`" \

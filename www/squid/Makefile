@@ -1,9 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	squid
-PORTVERSION=	4.6
-PORTREVISION=	1
-CATEGORIES=	www ipv6
+PORTVERSION=	4.9
+CATEGORIES=	www
 MASTER_SITES=	http://www.squid-cache.org/Versions/v4/ \
 		http://www2.us.squid-cache.org/Versions/v4/ \
 		http://www1.at.squid-cache.org/Versions/v4/ \
@@ -24,8 +23,6 @@ COMMENT=	HTTP Caching Proxy
 
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
-
-BROKEN_powerpc64=	fails to link: ext_time_quota_acl.cc: undefined reference to std::ctype
 
 USES=		compiler:c++11-lib cpe perl5 shebangfix tar:xz
 
@@ -121,7 +118,6 @@ SSL_CRTD_IMPLIES=		SSL
 STACKTRACES_CONFIGURE_ENABLE=	stacktraces
 STACKTRACES_EXTRA_PATCHES=	${FILESDIR}/extra-patch-gen-stacktrace
 STACKTRACES_LIB_DEPENDS=	libunwind.so:devel/libunwind
-STACKTRACES_CONFIGURE_ON=	--disable-strict-error-checking
 STACKTRACES_CFLAGS=		-g
 STACKTRACES_LDFLAGS=		-lunwind -L${LOCALBASE}/lib
 STACKTRACES_VARS=		STRIP=""
@@ -233,7 +229,8 @@ CONFIGURE_ARGS=	--with-default-user=squid \
 		--disable-linux-netfilter \
 		--disable-linux-tproxy \
 		--disable-translation \
-		--disable-arch-native
+		--disable-arch-native \
+		--disable-strict-error-checking
 
 .include <bsd.port.options.mk>
 

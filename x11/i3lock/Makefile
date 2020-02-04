@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	i3lock
-PORTVERSION=	2.11.1
+PORTVERSION=	2.12
 CATEGORIES=	x11
 MASTER_SITES=	http://i3wm.org/${PORTNAME}/
 
@@ -28,7 +28,7 @@ MAKE_ARGS=	PREFIX="${PREFIX}" X11LIB="${LOCALBASE}/lib" \
 PLIST_FILES=	"@(,,4755) bin/i3lock" \
 		man/man1/i3lock.1.gz
 
-USES=		gmake iconv localbase pkgconfig tar:bzip2
+USES=		gmake iconv localbase pkgconfig tar:bzip2 xorg
 LDFLAGS+=	${ICONV_LIB}
 USE_XORG=	x11 xcb xt xorgproto xext
 USE_CSTD=	c99

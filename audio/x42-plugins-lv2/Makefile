@@ -3,6 +3,7 @@
 
 PORTNAME=	x42-plugins
 DISTVERSION=	20181103 # the version is published here: http://gareus.org/misc/x42-plugins.php
+PORTREVISION=	1
 CATEGORIES=	audio
 MASTER_SITES=	http://gareus.org/misc/x42-plugins/
 PKGNAMESUFFIX=	-lv2
@@ -24,7 +25,8 @@ LIB_DEPENDS=	libfftw3f.so:math/fftw3-float \
 		libsndfile.so:audio/libsndfile \
 		libzita-convolver.so:audio/zita-convolver
 
-USES=		compiler:c++11-lang gl gmake gnome localbase pkgconfig tar:xz shebangfix
+USES=		compiler:c++11-lang gl gmake gnome localbase pkgconfig tar:xz \
+		shebangfix xorg
 USE_GITHUB=	nodefault
 GH_TUPLE=	x42:convoLV2:f814f1e:x/convoLV2zita4
 USE_GNOME=	glib20 pango cairo

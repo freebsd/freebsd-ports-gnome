@@ -10,6 +10,10 @@ MASTER_SITES=	http://devio.us/~dereckson/software/commons-utilities/
 MAINTAINER=	dereckson@gmail.com
 COMMENT=	Wikimedia Commons (MediaWiki) utilities for bulk image uploading
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/gpl-3.0.txt
 

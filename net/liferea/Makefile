@@ -2,9 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	liferea
-DISTVERSION=	1.12.6
-PORTREVISION=	1
-DISTVERSIONSUFFIX=b
+DISTVERSION=	1.12.7
 CATEGORIES=	net gnome
 MASTER_SITES=	https://github.com/lwindolf/liferea/releases/download/v${PORTVERSION:S/.r/-rc/}/
 
@@ -26,9 +24,15 @@ USES=		compiler:c++11-lang desktop-file-utils gettext \
 		pathfix pkgconfig python:3.4+ sqlite tar:bzip2
 USE_GNOME=	cairo dconf:run gtk30 intltool introspection \
 		libxslt libxml2
+
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 CONFIGURE_ARGS=	--enable-introspection
+
+# Introspection starts the program, but it may hang or crash-abort
+# without an X server because the Webkit compositor tries to initialize
+# a graphics backend
+MAKE_ENV+= WEBKIT_DISABLE_COMPOSITING_MODE=1
 
 GLIB_SCHEMAS=	net.sf.liferea.gschema.xml
 INSTALLS_ICONS=	yes

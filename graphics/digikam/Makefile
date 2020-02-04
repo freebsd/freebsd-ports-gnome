@@ -1,8 +1,8 @@
 # $FreeBSD$
 
 PORTNAME=	digikam
-DISTVERSION=	6.0.0
-PORTREVISION=	2
+DISTVERSION=	6.4.0
+PORTREVISION=	3
 CATEGORIES=	graphics kde
 MASTER_SITES=	KDE/stable/${PORTNAME}/${PORTVERSION}
 DIST_SUBDIR=	KDE/digikam/${PORTVERSION}
@@ -18,6 +18,7 @@ LIB_DEPENDS=	libKF5KGeoMap.so:astro/libkgeomap \
 		libboost_graph.so:devel/boost-libs \
 		libexiv2.so:graphics/exiv2 \
 		libexpat.so:textproc/expat2 \
+		libMagickCore-6.so:graphics/ImageMagick6 \
 		libgphoto2.so:graphics/libgphoto2 \
 		libicalss.so:devel/libical \
 		libjasper.so:graphics/jasper \
@@ -28,10 +29,11 @@ LIB_DEPENDS=	libKF5KGeoMap.so:astro/libkgeomap \
 		libopencv_core.so:graphics/opencv-core \
 		libpgf.so:graphics/libpgf \
 		libpng.so:graphics/png \
-		libtiff.so:graphics/tiff
+		libtiff.so:graphics/tiff \
+		libx265.so:multimedia/x265
 
-USES=		bison cmake compiler:c++11-lib desktop-file-utils eigen:3 gl jpeg \
-		kde:5 pkgconfig qt:5 shebangfix tar:xz
+USES=		bison cmake compiler:c++11-lib desktop-file-utils eigen:3 gl \
+		gnome jpeg kde:5 pkgconfig qt:5 shebangfix tar:xz xorg
 USE_GL=		gl glu
 USE_GNOME=	glib20 libxml2 libxslt
 USE_KDE=	archive auth bookmarks calendarcore codecs completion config \
@@ -51,10 +53,9 @@ SHEBANG_FILES=	core/data/scripts/digitaglinktree/digitaglinktree
 
 # Disable kipiplugins, as they are built in their own port: graphics/kipiplugins.
 # Remember to keep that port in sync with this one.
-CMAKE_ON=	DIGIKAMSC_COMPILE_DIGIKAM ENABLE_OPENCV3
-CMAKE_OFF=	DIGIKAMSC_COMPILE_KIPIPLUGINS
+CMAKE_ON=	DIGIKAMSC_COMPILE_DIGIKAM
 
-OPTIONS_DEFINE=		DOCS DOXYGEN KDEPIM KVKONTAKTE MEDIAWIKI MEDIAPLAYER MYSQL NLS WEBENGINE
+OPTIONS_DEFINE=		DOCS DOXYGEN KDEPIM KVKONTAKTE MEDIAPLAYER MYSQL NLS WEBENGINE
 OPTIONS_DEFAULT=	${OPTIONS_DEFINE:NWEBENGINE}
 OPTIONS_SUB=		yes
 
@@ -77,7 +78,8 @@ MEDIAPLAYER_LIB_DEPENDS=	libavcodec.so:multimedia/ffmpeg \
 MEDIAPLAYER_CMAKE_BOOL_OFF=	CMAKE_DISABLE_FIND_PACKAGE_FFmpeg \
 				CMAKE_DISABLE_FIND_PACKAGE_QtAV
 
-MYSQL_USE=		MYSQL=server QT=sql-mysql_run
+MYSQL_USES=		mysql:server
+MYSQL_USE=		QT=sql-mysql_run
 MYSQL_CMAKE_BOOL=	ENABLE_INTERNALMYSQL \
 			ENABLE_MYSQLSUPPORT
 MYSQL_CMAKE_ON=		-DMYSQLD_PATH:PATH=${LOCALBASE}/libexec \
@@ -85,27 +87,19 @@ MYSQL_CMAKE_ON=		-DMYSQLD_PATH:PATH=${LOCALBASE}/libexec \
 MYSQL_BUILD_DEPENDS=	${LOCALBASE}/lib/mysql/libmysqld.a:${_MYSQL_SERVER}
 
 KVKONTAKTE_DESC=	vk.com Plugin
-KVKONTAKTE_CMAKE_BOOL=	DIGIKAMSC_COMPILE_LIBKVKONTAKTE
 KVKONTAKTE_LIB_DEPENDS=	libKF5Vkontakte.so:net/libkvkontakte
-
-MEDIAWIKI_DESC=		MediaWiki Plugin
-MEDIAWIKI_CMAKE_BOOL=	DIGIKAMSC_COMPILE_LIBMEDIAWIKI
-MEDIAWIKI_LIB_DEPENDS=	libKF5MediaWiki.so:net/libmediawiki
+KVKONTAKTE_CMAKE_BOOL_OFF=	CMAKE_DISABLE_FIND_PACKAGE_KF5Vkontakte
 
 NLS_DESC=		Digikam i18n translations
 NLS_CMAKE_BOOL=		DIGIKAMSC_COMPILE_PO
 NLS_USES=		gettext
 NLS_USE=		KDE=i18n
 
-WEBENGINE_DESC=		Use Qt WebEngine to render contents instead of WebKit
+WEBENGINE_DESC=		Use Qt WebEngine instead of WebKit
 WEBENGINE_USE=		QT=webengine
 WEBENGINE_USE_OFF=	QT=webkit
-WEBENGINE_CMAKE_BOOL=	ENABLE_WEBENGINE
+WEBENGINE_CMAKE_BOOL=	ENABLE_QWEBENGINE
 
 PLIST_SUB=		SHLIB_VER=${DISTVERSION}
-
-post-extract:
-# Remove localization file already installed by net/libkvkontakte.
-	${RM} ${WRKSRC}/po/*/libkvkontakte.po
 
 .include <bsd.port.mk>

@@ -10,6 +10,8 @@
 #
 # Usage
 #    qt-dist:<version>[,yes|modulename]
+#
+# MAINTAINER:	kde@FreeBSD.org
 
 .if !defined(_QT_DIST_MK_INCLUDED)
 _QT_DIST_MK_INCLUDED=	qt-dist.mk
@@ -21,13 +23,13 @@ qmake_ARGS?=	# empty
 .include "${USESDIR}/qmake.mk"
 
 # Supported distribution arguments
-_QT5_DISTS=		3d activeqt androidextras base canvas3d charts connectivity \
-			datavis3d declarative doc gamepad graphicaleffects imageformats \
-			location macextras multimedia networkauth purchasing \
-			quickcontrols2 quickcontrols remoteobjects script scxml sensors \
-			serialbus serialport speech svg tools translations \
-			virtualkeyboard wayland webchannel webengine websockets webview \
-			winextras x11extras xmlpatterns
+_QT5_DISTS=		3d activeqt androidextras base charts connectivity datavis3d \
+			declarative doc gamepad graphicaleffects imageformats location \
+			lottie macextras multimedia networkauth purchasing quickcontrols \
+			quickcontrols2 remoteobjects script scxml sensors serialbus \
+			serialport speech svg tools translations virtualkeyboard wayland \
+			webchannel webengine webglplugin websockets webview winextras \
+			x11extras xmlpatterns
 _QT_DISTS=		${_QT${_QT_VER}_DISTS}
 
 # We only accept one item as an argument. The fetch target further below works
@@ -110,7 +112,8 @@ EXTRACT_SUFX?=		.tar.xz
 # Other ports from other Qt modules will automatically build examples and
 # tests if the directories exist because of mkspecs/features/qt_parts.prf.
 EXTRACT_AFTER_ARGS?=	${DISTNAME:S,$,/examples,:S,^,--exclude ,} \
-			${DISTNAME:S,$,/tests,:S,^,--exclude ,}
+			${DISTNAME:S,$,/tests,:S,^,--exclude ,} \
+			--no-same-owner --no-same-permissions
 .  endif # ! ${_QT_VER:M5}
 
 CONFIGURE_ENV+=		MAKE="${MAKE:T}"
@@ -171,7 +174,7 @@ _EXTRA_PATCHES_QT5=	${PORTSDIR}/devel/${_QT_RELNAME}/files/extrapatch-mkspecs_fe
 			${PORTSDIR}/devel/${_QT_RELNAME}/files/extrapatch-mkspecs_features_qt__module.prf \
 			${PORTSDIR}/devel/${_QT_RELNAME}/files/extrapatch-mkspecs_common_bsd_bsd.conf \
 			${PORTSDIR}/devel/${_QT_RELNAME}/files/extrapatch-mkspecs_freebsd-clang_qmake.conf
-.        if ${ARCH:Mmips*} || ${ARCH:Mpowerpc*} || ${ARCH} == sparc64
+.        if ${ARCH:Mmips*} || (${ARCH:Mpowerpc*} && !exists(/usr/bin/clang)) || ${ARCH} == sparc64
 _EXTRA_PATCHES_QT5+=	${PORTSDIR}/devel/${_QT_RELNAME}/files/extra-patch-mkspecs_common_g++-base.conf \
 			${PORTSDIR}/devel/${_QT_RELNAME}/files/extra-patch-mkspecs_common_gcc-base.conf \
 			${PORTSDIR}/devel/${_QT_RELNAME}/files/extrapatch-mkspecs_freebsd-g++_qmake.conf
@@ -247,11 +250,12 @@ _QT_TOOLS+=		${UIC}
 # The list of QtBase components that need to be linked into WRKSRC/lib for
 # other QtBase ports. See below.
 _QT5_BASE=		core dbus gui network sql widgets
+_QT5_ADDITIONAL_LINK?=	# Ensure definition
 
 .if ${_QT_VER:M5}
 post-patch: gcc-post-patch
 gcc-post-patch:
-	${REINPLACE_CMD} 's|%%LOCALBASE%%|${LOCALBASE}|' \
+	${REINPLACE_CMD} 's|%%LOCALBASE%%|${LOCALBASE}|g' \
 		${WRKSRC}/mkspecs/common/gcc-base.conf \
 		${WRKSRC}/mkspecs/freebsd-g++/qmake.conf
 	${REINPLACE_CMD} 's|%%GCC_DEFAULT%%|${GCC_DEFAULT}|g' \
@@ -332,6 +336,16 @@ qt5-pre-configure:
 	${ECHO_CMD} 'QMAKE_DEFAULT_LIBDIRS += ${LOCALBASE}/lib /usr/lib /lib' >> ${CONFIGURE_WRKSRC}/.qmake.cache
 	${ECHO_CMD} 'QMAKE_DEFAULT_INCDIRS += ${LOCALBASE}/include /usr/include' >> ${CONFIGURE_WRKSRC}/.qmake.cache
 
+# Allow linking of further libraries to the configure directory.
+.    if !empty(_QT5_ADDITIONAL_LINK)
+.      for dep in ${_QT5_ADDITIONAL_LINK}
+	${MKDIR} ${CONFIGURE_WRKSRC}/lib
+.        if ! empty(USE_QT:M${dep})
+	${LN} -sf ${QT_LIBDIR}/${qt-${dep}_LIB} ${CONFIGURE_WRKSRC}/lib
+.        endif
+.      endfor
+.    endif
+
 post-install: qt-post-install
 qt-post-install:
 .    if ${QT_DEFINES:N-*}
@@ -370,4 +384,15 @@ qt-post-install:
 .    endif # ${QT_CONFIG:N-*}
 .  endif # M5
 
+# Handle misc/qtchooser wrapper installation and deinstallation
+# If a port installs Qt version-specific binaries (e.g. "designer" which existed as a Qt4 application
+# and exists as a Qt5 application and will probably be a Qt6 application) which should have a
+# qtchooser-based wrapper, the port should set `QT_BINARIES=yes`.
+#
+# When QT_BINARIES is set to yes, compatibility symlinks (designer -> qtchooser, so that
+# qtchooser can run designer-qt5 or whatever is the selected Qt version) are installed by the port.
+.  if defined(QT_BINARIES)
+	${ECHO_CMD} '@postexec if type update-qtchooser-wrapper >/dev/null 2>&1; then update-qtchooser-wrapper; fi' >> ${TMPPLIST}
+	${ECHO_CMD} '@postunexec if type update-qtchooser-wrapper >/dev/null 2>&1; then update-qtchooser-wrapper; fi' >> ${TMPPLIST}
+.  endif
 .endif # defined(_QT_DIST_MK_INCLUDED)

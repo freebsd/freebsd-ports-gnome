@@ -2,7 +2,7 @@
 
 PORTNAME=	oyranos
 PORTVERSION=	0.9.6
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	graphics
 
 MAINTAINER=	bsam@FreeBSD.org
@@ -30,7 +30,8 @@ LIB_DEPENDS=	libraw.so:graphics/libraw \
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	oyranos-cms
-USES=		cmake compiler:c++11-lib desktop-file-utils gettext iconv jpeg pkgconfig qt:5
+USES=		cmake compiler:c++11-lib desktop-file-utils gettext gl gnome \
+		iconv jpeg pkgconfig qt:5 xorg
 USE_GL=		gl
 USE_LDCONFIG=	yes
 USE_GNOME=	libxml2

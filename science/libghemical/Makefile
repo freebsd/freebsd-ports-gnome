@@ -3,7 +3,7 @@
 
 PORTNAME=	libghemical
 PORTVERSION=	3.0.0
-PORTREVISION=	15
+PORTREVISION=	16
 CATEGORIES=	science
 MASTER_SITES=	http://bioinformatics.org/ghemical/download/release20111012/	\
 		http://bioinformatics.org/ghemical/download/current/
@@ -23,7 +23,7 @@ LIB_DEPENDS=	libblas.so:math/blas \
 		liblapack.so:math/lapack \
 		libmpqc.so:science/mpqc
 
-USES=		fortran gettext gl gmake libtool localbase pathfix pkgconfig 
+USES=		fortran gettext gl gmake libtool localbase pathfix pkgconfig
 USE_CXXSTD=	c++98
 USE_GL=		gl
 GNU_CONFIGURE=	yes

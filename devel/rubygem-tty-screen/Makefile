@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	tty-screen
-PORTVERSION=	0.6.5
+PORTVERSION=	0.7.1
 CATEGORIES=	devel rubygems
 MASTER_SITES=	RG
 

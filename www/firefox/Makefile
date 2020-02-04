@@ -2,10 +2,9 @@
 # $FreeBSD$
 
 PORTNAME=	firefox
-DISTVERSION=	66.0.3
-PORTREVISION=	1
+DISTVERSION=	73.0
 PORTEPOCH=	1
-CATEGORIES=	www ipv6
+CATEGORIES=	www
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}/source \
 		MOZILLA/${PORTNAME}/candidates/${DISTVERSION}-candidates/build1/source
 DISTFILES=	${DISTNAME}.source${EXTRACT_SUFX}
@@ -13,26 +12,24 @@ DISTFILES=	${DISTNAME}.source${EXTRACT_SUFX}
 MAINTAINER=	gecko@FreeBSD.org
 COMMENT=	Web browser based on the browser portion of Mozilla
 
-BUILD_DEPENDS=	nspr>=4.19:devel/nspr \
-		nss>=3.42:security/nss \
-		icu>=59.1,1:devel/icu \
+BUILD_DEPENDS=	nspr>=4.24:devel/nspr \
+		nss>=3.49.2:security/nss \
+		icu>=64.1,1:devel/icu \
 		libevent>=2.1.8:devel/libevent \
-		harfbuzz>=2.3.1:print/harfbuzz \
+		harfbuzz>=2.6.4:print/harfbuzz \
 		graphite2>=1.3.13:graphics/graphite2 \
 		png>=1.6.35:graphics/png \
-		libvorbis>=1.3.6,3:audio/libvorbis \
 		libvpx>=1.5.0:multimedia/libvpx \
-		sqlite3>=3.26:databases/sqlite3 \
+		sqlite3>=3.30.1:databases/sqlite3 \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
 		v4l_compat>0:multimedia/v4l_compat \
 		autoconf-2.13:devel/autoconf213 \
-		yasm:devel/yasm \
+		nasm:devel/nasm \
 		zip:archivers/zip
 
 USE_GECKO=	gecko
 CONFLICTS_INSTALL=	firefox-esr
-MOZ_PKGCONFIG_FILES=	# empty
-USE_MOZILLA=	-hunspell -vpx
+USE_MOZILLA=	-vpx
 
 USES=		tar:xz
 
@@ -41,8 +38,6 @@ FIREFOX_ICON_SRC=	${PREFIX}/lib/${MOZILLA}/browser/chrome/icons/default/default4
 FIREFOX_DESKTOP=	${MOZSRC}/taskcluster/docker/${MOZILLA}-snap/${MOZILLA}.desktop
 MOZ_OPTIONS=	--enable-application=browser \
 		--enable-official-branding
-
-OPTIONS_EXCLUDE=	WAYLAND
 
 .include "${.CURDIR}/../../www/firefox/Makefile.options"
 

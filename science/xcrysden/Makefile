@@ -2,7 +2,7 @@
 
 PORTNAME=	xcrysden
 DISTVERSION=	1.5.60
-PORTREVISION=	7
+PORTREVISION=	8
 CATEGORIES=	science
 MASTER_SITES=	http://www.xcrysden.org/download/
 
@@ -19,7 +19,7 @@ RUN_DEPENDS=	bwidget>0:x11-toolkits/bwidget \
 		ppmtompeg:graphics/netpbm \
 		xwd:x11/xwd
 
-USES=		fortran gl gmake localbase:ldflags tcl tk
+USES=		fortran gl gmake localbase:ldflags tcl tk xorg
 USE_GL=		gl glu
 USE_XORG=	x11 xmu
 

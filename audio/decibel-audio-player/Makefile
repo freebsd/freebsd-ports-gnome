@@ -3,12 +3,17 @@
 
 PORTNAME=	decibel-audio-player
 PORTVERSION=	1.08
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	audio multimedia gnome python
 MASTER_SITES=	http://decibel.silent-blade.org/uploads/Main/
 
 MAINTAINER=	somicide@gmail.com
 COMMENT=	Fast GTK+ audio player with an clean and user friendly interface
+
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-02-17
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv2
 
@@ -18,7 +23,7 @@ BROKEN_armv7=	fails to package: Unable to access file locale/ar/LC_MESSAGES/deci
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0.80:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}mutagen>=1.11:audio/py-mutagen@${PY_FLAVOR}
 
-USES=		gmake gettext desktop-file-utils python:2.7
+USES=		desktop-file-utils gettext gmake gnome python:2.7
 USE_GNOME=	pygnome2 pygtk2
 USE_GSTREAMER=	python good bad
 NO_BUILD=	yes

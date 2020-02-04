@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	encodings
-PORTVERSION=	1.0.4
-PORTREVISION=	4
+PORTVERSION=	1.0.5
 PORTEPOCH=	1
 CATEGORIES=	x11-fonts
 MASTER_SITES=	XORG/individual/font
@@ -14,7 +13,7 @@ LICENSE=	PD
 
 BUILD_DEPENDS=	mkfontscale:x11-fonts/mkfontscale
 
-USES=		tar:bzip2
+USES=		tar:bzip2 xorg
 USE_XORG=	fontutil
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-fontrootdir=${PREFIX}/share/fonts

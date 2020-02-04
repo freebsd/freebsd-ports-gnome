@@ -3,7 +3,7 @@
 
 PORTNAME=	lilypond
 PORTVERSION=	2.18.2
-PORTREVISION=	9
+PORTREVISION=	10
 CATEGORIES=	print audio
 MASTER_SITES=	http://download.linuxaudio.org/lilypond/sources/v${PORTVERSION:R}/
 
@@ -38,7 +38,6 @@ USES=		bison:build compiler:c++11-lang gettext ghostscript gmake \
 USE_TEX=	latex
 USE_PERL5=	build
 USE_GNOME=	pango
-#MAKE_JOBS_UNSAFE=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS+=--with-ncsb-dir=${LOCALBASE}/share/ghostscript/fonts \
 		--with-python-include=${PYTHON_INCLUDEDIR}
@@ -46,7 +45,6 @@ CONFIGURE_ENV+=	ac_cv_prog_MAKEINFO="${LOCALBASE}/bin/makeinfo" \
 		FLEX=${FLEX} YACC=${YACC}
 
 MAKEFILE=	GNUmakefile
-GNU_MAKEFILE=	yes
 
 ALL_TARGET=	all
 TEST_TARGET=	test  # fails with sig11

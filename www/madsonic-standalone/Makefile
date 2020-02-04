@@ -1,7 +1,7 @@
 # Created by: Jeremie Le Hen <jlh@FreeBSD.org>
-# Based on www/subsonic-standalone
-#
 # $FreeBSD$
+#
+# Based on www/subsonic-standalone
 #
 
 PORTNAME=	madsonic-standalone
@@ -15,6 +15,8 @@ DISTNAME=	${DISTDATE}_madsonic-${PORTVERSION}${DISTVERSIONSUFFIX}-standalone
 
 MAINTAINER=	jlh@FreeBSD.org
 COMMENT=	Subsonic streaming media server, standalone version
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv3
 
@@ -50,7 +52,6 @@ NO_WRKSUBDIR=	yes
 NO_BUILD=	yes
 USE_JAVA=	yes
 USE_RC_SUBR=	madsonic
-JAVA_VERSION=	1.6+
 JAVA_RUN=	yes
 # Don't waste UID/GID and reuse Subsonic's user.
 USERS=		subsonic
@@ -70,9 +71,12 @@ SUB_LIST=	SUBSONIC_HOME="${SUBSONIC_HOME}" \
 CONFLICTS_INSTALL=	madsonic-jetty madsonic-resin3 madsonic-tomcat[678]
 
 do-install:
-	@${CAT} ${PKGDIR}/pkg-message-spacer >> ${PKGMESSAGE}
-	@${CAT} ${WRKDIR}/message-transcoding >> ${PKGMESSAGE}
-	@${CAT} ${PKGDIR}/pkg-message-spacer >> ${PKGMESSAGE}
+	${ECHO_CMD} "[" >> ${PKGMESSAGE}
+	${ECHO_CMD} "{ type: install, message: <<EOM" >> ${PKGMESSAGE}
+	${CAT} ${WRKDIR}/message-transcoding >> ${PKGMESSAGE}
+	${ECHO_CMD} "EOM" >> ${PKGMESSAGE}
+	${ECHO_CMD} "}" >> ${PKGMESSAGE}
+	${ECHO_CMD} "]" >> ${PKGMESSAGE}
 	${MKDIR} ${STAGEDIR}${DATADIR}
 	${INSTALL_DATA} ${WRKSRC}/madsonic.war ${STAGEDIR}${DATADIR}/
 	${INSTALL_DATA} ${WRKSRC}/madsonic-booter.jar ${STAGEDIR}${DATADIR}/

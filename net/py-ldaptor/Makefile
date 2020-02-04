@@ -12,6 +12,10 @@ DISTNAME=	ldaptor-${PORTVERSION}-${GITVERSION}
 MAINTAINER=	bra@fsn.hu
 COMMENT=	Pure-python LDAP module for Twisted
 
+BROKEN=		unfetchable
+DEPRECATED=	Broken, uses EOLed python27
+EXPIRATION_DATE=	2020-02-19
+
 LICENSE=	MIT LGPL21+
 LICENSE_COMB=	multi
 

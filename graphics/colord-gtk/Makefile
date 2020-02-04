@@ -4,7 +4,7 @@
 PORTNAME=	colord-gtk
 PORTVERSION=	0.1.26
 CATEGORIES=	graphics
-MASTER_SITES=	http://www.freedesktop.org/software/colord/releases/
+MASTER_SITES=	https://www.freedesktop.org/software/colord/releases/
 
 MAINTAINER=	kwm@FreeBSD.org
 COMMENT=	Manage color profiles to accurately color input/output devices
@@ -16,7 +16,7 @@ LIB_DEPENDS=	libcolord.so:graphics/colord \
 		liblcms2.so:graphics/lcms2
 
 USE_GNOME=	gtk30 intlhack introspection:build
-USES=		gettext gmake libtool pathfix pkgconfig sqlite tar:xz
+USES=		gettext gmake gnome libtool pathfix pkgconfig sqlite tar:xz
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--enable-gtk-doc-html=no

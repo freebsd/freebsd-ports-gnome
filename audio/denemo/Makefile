@@ -3,7 +3,7 @@
 
 PORTNAME=	denemo
 PORTVERSION=	2.0.6
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	audio
 MASTER_SITES=	GNU
 
@@ -31,7 +31,7 @@ EXTRACT_BEFORE_ARGS=\
 		-s '!\(/Clarinet in B\).*\(\.denemo\)$$!\1b\2!p' -xf
 
 USES=		bison compiler:c++11-lang desktop-file-utils gettext gmake \
-		pkgconfig
+		gnome pkgconfig
 USE_GNOME=	intltool librsvg2 libxml2
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-jack \

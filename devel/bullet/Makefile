@@ -3,7 +3,7 @@
 
 PORTNAME=	bullet
 PORTVERSION=	2.86.1
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	devel
 
 MAINTAINER=	acm@FreeBSD.org
@@ -16,7 +16,7 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	bulletphysics
 GH_PROJECT=	bullet3
 
-USES=		cmake compiler:c++11-lang
+USES=		cmake compiler:c++11-lang gl xorg
 USE_GL=		gl glu glut
 USE_LDCONFIG=	yes
 USE_XORG=	x11

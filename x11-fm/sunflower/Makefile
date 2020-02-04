@@ -11,6 +11,9 @@ COMMENT=	Twin-panel file manager
 
 LICENSE=	GPLv3
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-02-28
+
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}chardet>0:textproc/py-chardet@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}notify>0:devel/py-notify@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR} \
@@ -19,7 +22,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}chardet>0:textproc/py-chardet@${PY_FLAVOR} \
 
 WRKSRC=		${WRKDIR}/Sunflower
 
-USES=		desktop-file-utils gettext python:2.7 shebangfix tar:tgz
+USES=		desktop-file-utils gettext gnome python:2.7 shebangfix tar:tgz
 USE_GNOME=	gtk20 pygtk2 pygobject
 NO_ARCH=	yes
 INSTALLS_ICONS=	yes

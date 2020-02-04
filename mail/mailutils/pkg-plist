@@ -40,6 +40,7 @@ bin/movemail
 %%MH%%bin/mu-mh/whatnow
 %%MH%%bin/mu-mh/whom
 bin/popauth
+bin/putmail
 bin/readmsg
 bin/sieve
 include/mailutils/acl.h
@@ -122,6 +123,7 @@ include/mailutils/sys/auth.h
 include/mailutils/sys/body.h
 include/mailutils/sys/dbm.h
 include/mailutils/sys/debcat.h
+include/mailutils/sys/dotmail.h
 include/mailutils/sys/envelope.h
 include/mailutils/sys/file_stream.h
 include/mailutils/sys/filter.h
@@ -162,6 +164,7 @@ include/mailutils/sys/temp_file_stream.h
 include/mailutils/sys/tls-stream.h
 include/mailutils/sys/url.h
 include/mailutils/sys/xscript-stream.h
+include/mailutils/sys/wordsplit.h
 include/mailutils/syslog.h
 include/mailutils/tls.h
 include/mailutils/types.h
@@ -187,6 +190,10 @@ lib/libmu_dbm.a
 lib/libmu_dbm.so
 lib/libmu_dbm.so.%%LIBSUFX%%
 lib/libmu_dbm.so.%%LIBVERSION%%
+lib/libmu_dotmail.a
+lib/libmu_dotmail.so
+lib/libmu_dotmail.so.%%LIBSUFX%%
+lib/libmu_dotmail.so.%%LIBVERSION%%
 lib/libmu_imap.a
 lib/libmu_imap.so
 lib/libmu_imap.so.%%LIBSUFX%%
@@ -328,13 +335,13 @@ man/man1/pop3d.1.gz
 man/man1/popauth.1.gz
 sbin/comsatd
 sbin/imap4d
-@(root,mail,4755) sbin/maidag
+sbin/lmtpd
+sbin/mda
 sbin/pop3d
 share/aclocal/mailutils.m4
-%%MH%%%%EMACS%%share/emacs/site-lisp/mailutils-mh.el
-%%MH%%%%EMACS%%share/emacs/site-lisp/mailutils-mh.elc
-%%GUILE%%share/guile/site/mailutils/guile-procedures.txt
-%%GUILE%%share/guile/site/mailutils/mailutils.scm
+%%MH%%%%EMACS_SITE_LISPDIR%%/mailutils-mh.el
+%%GUILE%%share/guile/site/2.2/mailutils/guile-procedures.txt
+%%GUILE%%share/guile/site/2.2/mailutils/mailutils.scm
 %%NLS%%share/locale/ca/LC_MESSAGES/mailutils.mo
 %%NLS%%share/locale/da/LC_MESSAGES/mailutils.mo
 %%NLS%%share/locale/de/LC_MESSAGES/mailutils.mo

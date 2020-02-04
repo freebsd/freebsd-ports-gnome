@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	scala
-PORTVERSION=	2.12.8
+PORTVERSION=	2.13.1
 CATEGORIES=	lang java
 MASTER_SITES=	http://www.scala-lang.org/files/archive/
 
@@ -14,9 +14,10 @@ LICENSE_FILE=	${WRKSRC}/doc/LICENSE.md
 
 RUN_DEPENDS=	bash:shells/bash
 
+USES=		tar:tgz
+
 OPTIONS_DEFINE=	DOCS
 
-USES=		tar:tgz
 NO_ARCH=	yes
 NO_BUILD=	yes
 USE_JAVA=	yes
@@ -58,6 +59,8 @@ do-install:
 .for m in ${SCALA_MANS}
 	${INSTALL_MAN} ${WRKSRC}/man/man1/${m} ${STAGEDIR}${MANPREFIX}/man/man1/${m}
 .endfor
+
+do-install-DOCS-on:
 	@${MKDIR} ${STAGEDIR}${DOCSDIR}
 .for d in ${SCALA_DOCDIRS}
 	(cd ${WRKSRC}/doc/${d} && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}/${d})

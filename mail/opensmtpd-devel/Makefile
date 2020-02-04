@@ -4,7 +4,7 @@
 PORTNAME=	opensmtpd
 PORTVERSION=	201606220754
 DISTVERSIONSUFFIX=	p1
-PORTREVISION=	5
+PORTREVISION=	6
 PORTEPOCH=	1
 CATEGORIES=	mail
 MASTER_SITES=	http://www.opensmtpd.org/archives/ \
@@ -17,8 +17,8 @@ COMMENT=	Security- and simplicity-focused SMTP server from OpenBSD
 LICENSE=	ISCL
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BROKEN_SSL=	openssl111
-BROKEN_SSL_REASON_openssl111=		Incompatible with Openssl 1.1.x yet
+BROKEN_SSL=	openssl
+BROKEN_SSL_REASON_openssl=		Incompatible with Openssl 1.1.x yet
 
 LIB_DEPENDS=	libevent.so:devel/libevent
 
@@ -64,7 +64,7 @@ CONFIGURE_ARGS+=	--with-libasr=${LOCALBASE} \
 
 .if ${OPSYS} == FreeBSD && \
     ((${OSVERSION} > 1200084 && ${SSL_DEFAULT} == "base") || \
-    (${SSL_DEFAULT} == "openssl111"))
+    (${SSL_DEFAULT} == "openssl"))
 BROKEN=		Incompatible with Openssl 1.1.x yet
 .endif
 

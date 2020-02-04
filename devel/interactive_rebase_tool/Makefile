@@ -1,13 +1,14 @@
 # $FreeBSD$
 
 PORTNAME=	interactive_rebase_tool
-DISTVERSION=	1.0.0
+DISTVERSION=	1.1.0
+PORTREVISION=	4
 CATEGORIES=	devel
 
 MAINTAINER=	petteri.valkonen@iki.fi
 COMMENT=	Improved sequence editor for Git
 
-LICENSE=	ISCL
+LICENSE=	GPLv3+
 
 LIB_DEPENDS=	libgit2.so:devel/libgit2
 

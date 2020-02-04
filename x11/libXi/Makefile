@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libXi
-PORTVERSION=	1.7.9
-PORTREVISION=	2
+PORTVERSION=	1.7.10
 PORTEPOCH=	1
 CATEGORIES=	x11
 
@@ -12,10 +11,9 @@ COMMENT=	X Input extension library
 
 LICENSE=	MIT
 
-XORG_CAT=	lib
+USES=		cpe xorg xorg-cat:lib
 USE_XORG=	x11 xext xfixes xorgproto
 INSTALL_TARGET=	install-strip
-USES+=	cpe
 CPE_PRODUCT=	libxi
 CPE_VENDOR=	x
 

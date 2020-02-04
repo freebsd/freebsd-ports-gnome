@@ -16,7 +16,7 @@ include/qgis/TriangleInterpolator.h
 include/qgis/Triangulation.h
 include/qgis/Vector3D.h
 include/qgis/characterwidget.h
-include/qgis/mersenne-twister.h
+include/qgis/json_fwd.hpp
 include/qgis/qgis.h
 include/qgis/qgis_3d.h
 include/qgis/qgis_analysis.h
@@ -30,6 +30,7 @@ include/qgis/qgisinterface.h
 include/qgis/qgisplugin.h
 include/qgis/qgs25drenderer.h
 include/qgis/qgs25drendererwidget.h
+include/qgis/qgs3danimationsettings.h
 include/qgis/qgs3dmapscene.h
 include/qgis/qgs3dmapsettings.h
 include/qgis/qgs3drendererregistry.h
@@ -40,10 +41,13 @@ include/qgis/qgsabstract3dengine.h
 include/qgis/qgsabstract3drenderer.h
 include/qgis/qgsabstract3dsymbol.h
 include/qgis/qgsabstractcontentcache.h
+include/qgis/qgsabstractdatabaseproviderconnection.h
 include/qgis/qgsabstractdatasourcewidget.h
 include/qgis/qgsabstractgeometry.h
+include/qgis/qgsabstractgeopdfexporter.h
 include/qgis/qgsabstractlayoutiterator.h
 include/qgis/qgsabstractmetadatabase.h
+include/qgis/qgsabstractproviderconnection.h
 include/qgis/qgsabstractreportsection.h
 include/qgis/qgsabstractvaliditycheck.h
 include/qgis/qgsaction.h
@@ -52,9 +56,11 @@ include/qgis/qgsactionmenu.h
 include/qgis/qgsactionscope.h
 include/qgis/qgsactionscoperegistry.h
 include/qgis/qgsadvanceddigitizingdockwidget.h
+include/qgis/qgsadvanceddigitizingfloater.h
 include/qgis/qgsaggregatecalculator.h
 include/qgis/qgsaggregatetoolbutton.h
 include/qgis/qgsalgorithmimportphotos.h
+include/qgis/qgsalignmentcombobox.h
 include/qgis/qgsalignraster.h
 include/qgis/qgsanalysis.h
 include/qgis/qgsanimatedicon.h
@@ -63,6 +69,7 @@ include/qgis/qgsannotationmanager.h
 include/qgis/qgsannotationregistry.h
 include/qgis/qgsapplication.h
 include/qgis/qgsarchive.h
+include/qgis/qgsarrowsymbollayer.h
 include/qgis/qgsarrowsymbollayerwidget.h
 include/qgis/qgsaspectfilter.h
 include/qgis/qgsattributedialog.h
@@ -91,6 +98,7 @@ include/qgis/qgsauthconfigedit.h
 include/qgis/qgsauthconfigeditor.h
 include/qgis/qgsauthconfigidedit.h
 include/qgis/qgsauthconfigselect.h
+include/qgis/qgsauthconfigselectplugin.h
 include/qgis/qgsauthcrypto.h
 include/qgis/qgsautheditorwidgets.h
 include/qgis/qgsauthguiutils.h
@@ -117,10 +125,13 @@ include/qgis/qgsbinarywidgetwrapper.h
 include/qgis/qgsblendmodecombobox.h
 include/qgis/qgsblockingnetworkrequest.h
 include/qgis/qgsblureffect.h
+include/qgis/qgsbookmarkmanager.h
+include/qgis/qgsbookmarkmodel.h
 include/qgis/qgsbox3d.h
 include/qgis/qgsbrightnesscontrastfilter.h
 include/qgis/qgsbrowserdockwidget.h
 include/qgis/qgsbrowserdockwidget_p.h
+include/qgis/qgsbrowserguimodel.h
 include/qgis/qgsbrowsermodel.h
 include/qgis/qgsbrowserproxymodel.h
 include/qgis/qgsbrowsertreeview.h
@@ -130,6 +141,9 @@ include/qgis/qgscachedfeatureiterator.h
 include/qgis/qgscacheindex.h
 include/qgis/qgscacheindexfeatureid.h
 include/qgis/qgscadutils.h
+include/qgis/qgscallout.h
+include/qgis/qgscalloutsregistry.h
+include/qgis/qgscalloutwidget.h
 include/qgis/qgscameracontroller.h
 include/qgis/qgscamerapose.h
 include/qgis/qgscategorizedsymbolrenderer.h
@@ -138,6 +152,7 @@ include/qgis/qgscharacterselectordialog.h
 include/qgis/qgscheckablecombobox.h
 include/qgis/qgscheckablecomboboxplugin.h
 include/qgis/qgscheckboxconfigdlg.h
+include/qgis/qgscheckboxfieldformatter.h
 include/qgis/qgscheckboxsearchwidgetwrapper.h
 include/qgis/qgscheckboxwidgetfactory.h
 include/qgis/qgscheckboxwidgetwrapper.h
@@ -148,6 +163,15 @@ include/qgis/qgschunknode_p.h
 include/qgis/qgschunkqueuejob_p.h
 include/qgis/qgscircle.h
 include/qgis/qgscircularstring.h
+include/qgis/qgsclassificationcustom.h
+include/qgis/qgsclassificationequalinterval.h
+include/qgis/qgsclassificationjenks.h
+include/qgis/qgsclassificationlogarithmic.h
+include/qgis/qgsclassificationmethod.h
+include/qgis/qgsclassificationmethodregistry.h
+include/qgis/qgsclassificationprettybreaks.h
+include/qgis/qgsclassificationquantile.h
+include/qgis/qgsclassificationstandarddeviation.h
 include/qgis/qgsclassificationwidgetwrapper.h
 include/qgis/qgsclassificationwidgetwrapperfactory.h
 include/qgis/qgsclipper.h
@@ -186,6 +210,7 @@ include/qgis/qgsconfigureshortcutsdialog.h
 include/qgis/qgsconnectionpool.h
 include/qgis/qgscontrastenhancement.h
 include/qgis/qgscontrastenhancementfunction.h
+include/qgis/qgscoordinateboundspreviewmapwidget.h
 include/qgis/qgscoordinateformatter.h
 include/qgis/qgscoordinatereferencesystem.h
 include/qgis/qgscoordinatetransform.h
@@ -335,12 +360,18 @@ include/qgis/qgsfilewidgetplugin.h
 include/qgis/qgsfillsymbollayer.h
 include/qgis/qgsfilterlineedit.h
 include/qgis/qgsfilterlineeditplugin.h
+include/qgis/qgsfindfilesbypatternwidget.h
 include/qgis/qgsfloatingwidget.h
 include/qgis/qgsfocuswatcher.h
 include/qgis/qgsfontbutton.h
 include/qgis/qgsfontbuttonplugin.h
 include/qgis/qgsfontutils.h
 include/qgis/qgsformannotation.h
+include/qgis/qgsgdaldataitems.h
+include/qgis/qgsgdalguiprovider.h
+include/qgis/qgsgdalprovider.h
+include/qgis/qgsgdalsourceselect.h
+include/qgis/qgsgdalutils.h
 include/qgis/qgsgenericfeatureselectionmanager.h
 include/qgis/qgsgeometry.h
 include/qgis/qgsgeometryanglecheck.h
@@ -384,6 +415,13 @@ include/qgis/qgsgeometryutils.h
 include/qgis/qgsgeometryvalidator.h
 include/qgis/qgsgeonodeconnection.h
 include/qgis/qgsgeonoderequest.h
+include/qgis/qgsgeopackagedataitems.h
+include/qgis/qgsgeopackageitemguiprovider.h
+include/qgis/qgsgeopackageprojectstorage.h
+include/qgis/qgsgeopackageprojectstoragedialog.h
+include/qgis/qgsgeopackageprojectstorageguiprovider.h
+include/qgis/qgsgeopackageproviderconnection.h
+include/qgis/qgsgeopackagerasterwritertask.h
 include/qgis/qgsgeos.h
 include/qgis/qgsgloweffect.h
 include/qgis/qgsgml.h
@@ -420,6 +458,7 @@ include/qgis/qgshistogramwidget.h
 include/qgis/qgshstoreutils.h
 include/qgis/qgshtmlannotation.h
 include/qgis/qgshtmlutils.h
+include/qgis/qgshtmlwidgetwrapper.h
 include/qgis/qgshuesaturationfilter.h
 include/qgis/qgsidentifymenu.h
 include/qgis/qgsidwinterpolator.h
@@ -441,6 +480,7 @@ include/qgis/qgskeyvaluewidgetwrapper.h
 include/qgis/qgslabelfeature.h
 include/qgis/qgslabelingengine.h
 include/qgis/qgslabelingenginesettings.h
+include/qgis/qgslabelinggui.h
 include/qgis/qgslabelsearchtree.h
 include/qgis/qgslayerdefinition.h
 include/qgis/qgslayermetadata.h
@@ -466,11 +506,13 @@ include/qgis/qgslayertreeviewitemdelegate.h
 include/qgis/qgslayout.h
 include/qgis/qgslayoutaligner.h
 include/qgis/qgslayoutatlas.h
+include/qgis/qgslayoutcombobox.h
 include/qgis/qgslayoutcustomdrophandler.h
 include/qgis/qgslayoutdesignerinterface.h
 include/qgis/qgslayouteffect.h
 include/qgis/qgslayoutexporter.h
 include/qgis/qgslayoutframe.h
+include/qgis/qgslayoutgeopdfexporter.h
 include/qgis/qgslayoutgridsettings.h
 include/qgis/qgslayoutguidecollection.h
 include/qgis/qgslayoutitem.h
@@ -546,9 +588,11 @@ include/qgis/qgsline3dsymbol.h
 include/qgis/qgsline3dsymbol_p.h
 include/qgis/qgslinearminmaxenhancement.h
 include/qgis/qgslinearminmaxenhancementwithclip.h
+include/qgis/qgslinematerial_p.h
 include/qgis/qgslinesegment.h
 include/qgis/qgslinestring.h
 include/qgis/qgslinesymbollayer.h
+include/qgis/qgslinevertexdata_p.h
 include/qgis/qgslinuxnative.h
 include/qgis/qgslistfieldformatter.h
 include/qgis/qgslistwidget.h
@@ -596,6 +640,7 @@ include/qgis/qgsmaprenderercustompainterjob.h
 include/qgis/qgsmaprendererjob.h
 include/qgis/qgsmaprendererparalleljob.h
 include/qgis/qgsmaprenderersequentialjob.h
+include/qgis/qgsmaprendererstagedrenderjob.h
 include/qgis/qgsmaprenderertask.h
 include/qgis/qgsmapsettings.h
 include/qgis/qgsmapsettingsutils.h
@@ -604,6 +649,7 @@ include/qgis/qgsmaptip.h
 include/qgis/qgsmaptool.h
 include/qgis/qgsmaptooladvanceddigitizing.h
 include/qgis/qgsmaptoolcapture.h
+include/qgis/qgsmaptooldigitizefeature.h
 include/qgis/qgsmaptooledit.h
 include/qgis/qgsmaptoolemitpoint.h
 include/qgis/qgsmaptoolextent.h
@@ -635,6 +681,7 @@ include/qgis/qgsmeshlayerutils.h
 include/qgis/qgsmeshmemorydataprovider.h
 include/qgis/qgsmeshrenderersettings.h
 include/qgis/qgsmeshspatialindex.h
+include/qgis/qgsmeshtimesettings.h
 include/qgis/qgsmeshvectorrenderer.h
 include/qgis/qgsmessagebar.h
 include/qgis/qgsmessagebaritem.h
@@ -671,6 +718,8 @@ include/qgis/qgsnewhttpconnection.h
 include/qgis/qgsnewmemorylayerdialog.h
 include/qgis/qgsnewnamedialog.h
 include/qgis/qgsnewogrconnection.h
+include/qgis/qgsnewsfeedmodel.h
+include/qgis/qgsnewsfeedparser.h
 include/qgis/qgsnewvectorlayerdialog.h
 include/qgis/qgsninecellfilter.h
 include/qgis/qgsnmeaconnection.h
@@ -681,7 +730,19 @@ include/qgis/qgsobjectcustomproperties.h
 include/qgis/qgsofflineediting.h
 include/qgis/qgsoffscreen3dengine.h
 include/qgis/qgsogcutils.h
+include/qgis/qgsogrconnpool.h
+include/qgis/qgsogrdataitems.h
+include/qgis/qgsogrdbconnection.h
+include/qgis/qgsogrdbsourceselect.h
+include/qgis/qgsogrdbtablemodel.h
+include/qgis/qgsogrguiprovider.h
 include/qgis/qgsogrhelperfunctions.h
+include/qgis/qgsogritemguiprovider.h
+include/qgis/qgsogrprovider.h
+include/qgis/qgsogrsourceselect.h
+include/qgis/qgsogrtransaction.h
+include/qgis/qgsogrutils.h
+include/qgis/qgsonlineterraingenerator.h
 include/qgis/qgsopacitywidget.h
 include/qgis/qgsopacitywidgetplugin.h
 include/qgis/qgsoptional.h
@@ -730,6 +791,7 @@ include/qgis/qgspointxy.h
 include/qgis/qgspolygon.h
 include/qgis/qgspolygon3dsymbol.h
 include/qgis/qgspolygon3dsymbol_p.h
+include/qgis/qgspostgresstringutils.h
 include/qgis/qgspresetcolorrampdialog.h
 include/qgis/qgsprevieweffect.h
 include/qgis/qgsprintlayout.h
@@ -743,6 +805,7 @@ include/qgis/qgsprocessingcontext.h
 include/qgis/qgsprocessingfeedback.h
 include/qgis/qgsprocessinggui.h
 include/qgis/qgsprocessingguiregistry.h
+include/qgis/qgsprocessingmaplayercombobox.h
 include/qgis/qgsprocessingmatrixparameterdialog.h
 include/qgis/qgsprocessingmodelalgorithm.h
 include/qgis/qgsprocessingmodelchildalgorithm.h
@@ -751,7 +814,9 @@ include/qgis/qgsprocessingmodelcomponent.h
 include/qgis/qgsprocessingmodelerparameterwidget.h
 include/qgis/qgsprocessingmodeloutput.h
 include/qgis/qgsprocessingmodelparameter.h
+include/qgis/qgsprocessingmultipleselectiondialog.h
 include/qgis/qgsprocessingoutputs.h
+include/qgis/qgsprocessingparameterdefinitionwidget.h
 include/qgis/qgsprocessingparameters.h
 include/qgis/qgsprocessingparametertype.h
 include/qgis/qgsprocessingparametertypeimpl.h
@@ -773,9 +838,14 @@ include/qgis/qgsprojectionselectionwidgetplugin.h
 include/qgis/qgsprojectmetadata.h
 include/qgis/qgsprojectproperty.h
 include/qgis/qgsprojectstorage.h
+include/qgis/qgsprojectstorageguiprovider.h
+include/qgis/qgsprojectstorageguiregistry.h
 include/qgis/qgsprojectstorageregistry.h
+include/qgis/qgsprojectstylealgorithms.h
 include/qgis/qgsprojecttranslator.h
 include/qgis/qgsprojectversion.h
+include/qgis/qgsprojectviewsettings.h
+include/qgis/qgsprojutils.h
 include/qgis/qgsproperty.h
 include/qgis/qgsproperty_p.h
 include/qgis/qgspropertyassistantwidget.h
@@ -783,6 +853,8 @@ include/qgis/qgspropertycollection.h
 include/qgis/qgspropertyoverridebutton.h
 include/qgis/qgspropertyoverridebuttonplugin.h
 include/qgis/qgspropertytransformer.h
+include/qgis/qgsproviderguimetadata.h
+include/qgis/qgsproviderguiregistry.h
 include/qgis/qgsprovidermetadata.h
 include/qgis/qgsproviderregistry.h
 include/qgis/qgsproxyprogresstask.h
@@ -860,8 +932,10 @@ include/qgis/qgsrelationwidgetwrapper.h
 include/qgis/qgsrelief.h
 include/qgis/qgsrenderchecker.h
 include/qgis/qgsrendercontext.h
+include/qgis/qgsrenderedfeaturehandlerinterface.h
 include/qgis/qgsrenderer.h
 include/qgis/qgsrendererpropertiesdialog.h
+include/qgis/qgsrendererrange.h
 include/qgis/qgsrendererrasterpropertieswidget.h
 include/qgis/qgsrendererregistry.h
 include/qgis/qgsrendererwidget.h
@@ -925,11 +999,14 @@ include/qgis/qgssqliteutils.h
 include/qgis/qgssqlstatement.h
 include/qgis/qgsstatisticalsummary.h
 include/qgis/qgsstatusbar.h
+include/qgis/qgsstoredexpressionmanager.h
 include/qgis/qgsstringstatisticalsummary.h
 include/qgis/qgsstringutils.h
 include/qgis/qgsstyle.h
+include/qgis/qgsstyleentityvisitor.h
 include/qgis/qgsstyleexportimportdialog.h
 include/qgis/qgsstylegroupselectiondialog.h
+include/qgis/qgsstyleitemslistwidget.h
 include/qgis/qgsstylemanagerdialog.h
 include/qgis/qgsstylemodel.h
 include/qgis/qgsstylesavedialog.h
@@ -955,6 +1032,7 @@ include/qgis/qgstablewidgetitem.h
 include/qgis/qgstabwidget.h
 include/qgis/qgstaskmanager.h
 include/qgis/qgstaskmanagerwidget.h
+include/qgis/qgsterraindownloader.h
 include/qgis/qgsterrainentity_p.h
 include/qgis/qgsterraingenerator.h
 include/qgis/qgsterraintexturegenerator_p.h
@@ -977,6 +1055,7 @@ include/qgis/qgstextrenderer.h
 include/qgis/qgstextrenderer_p.h
 include/qgis/qgsthreadingutils.h
 include/qgis/qgsticksscalebarrenderer.h
+include/qgis/qgstilecache.h
 include/qgis/qgstilingscheme.h
 include/qgis/qgstininterpolator.h
 include/qgis/qgstolerance.h
@@ -1039,6 +1118,7 @@ include/qgis/qgsvectorlayerlabelprovider.h
 include/qgis/qgsvectorlayerrenderer.h
 include/qgis/qgsvectorlayersaveasdialog.h
 include/qgis/qgsvectorlayerselectionmanager.h
+include/qgis/qgsvectorlayerserverproperties.h
 include/qgis/qgsvectorlayertools.h
 include/qgis/qgsvectorlayerundocommand.h
 include/qgis/qgsvectorlayerundopassthroughcommand.h
@@ -1060,6 +1140,7 @@ include/qgis/qgswkbtypes.h
 include/qgis/qgsxmlutils.h
 include/qgis/qgsziputils.h
 include/qgis/qgszonalstatistics.h
+include/qgis/qobjectuniqueptr.h
 include/qgis/ui_qgsarcgisservicesourceselectbase.h
 include/qgis/ui_qgsauthauthoritieseditor.h
 include/qgis/ui_qgsauthcertificateinfo.h
@@ -1128,7 +1209,6 @@ lib/qgis/plugins/libdb2provider.so
 lib/qgis/plugins/libdelimitedtextprovider.so
 lib/qgis/plugins/libesritokenauthmethod.so
 lib/qgis/plugins/libevis.so
-lib/qgis/plugins/libgdalprovider.so
 lib/qgis/plugins/libgeometrycheckerplugin.so
 lib/qgis/plugins/libgeonodeprovider.so
 lib/qgis/plugins/libgeorefplugin.so
@@ -1142,7 +1222,6 @@ lib/qgis/plugins/libmdalprovider.so
 lib/qgis/plugins/libmssqlprovider.so
 lib/qgis/plugins/liboauth2authmethod.so
 lib/qgis/plugins/libofflineeditingplugin.so
-lib/qgis/plugins/libogrprovider.so
 lib/qgis/plugins/libowsprovider.so
 lib/qgis/plugins/libpkcs12authmethod.so
 lib/qgis/plugins/libpkipathsauthmethod.so
@@ -1156,12 +1235,15 @@ lib/qgis/plugins/libwmsprovider.so
 %%SERVER%%lib/qgis/server/libdummy.so
 %%SERVER%%lib/qgis/server/libwcs.so
 %%SERVER%%lib/qgis/server/libwfs.so
+lib/qgis/server/libwfs3.so
 %%SERVER%%lib/qgis/server/libwms.so
 %%SERVER%%lib/qgis/server/libwmts.so
 %%QT_PLUGINDIR%%/designer/libqgis_customwidgets.so
 %%QT_PLUGINDIR%%/designer/libqgis_customwidgets.so.%%DISTVERSION%%
+%%QT_PLUGINDIR%%/sqldrivers/libqsqlspatialite.so
 man/man1/qgis.1.gz
 share/applications/org.qgis.qgis.desktop
+share/icons/hicolor/128x128/apps/qgis.png
 share/icons/hicolor/128x128/mimetypes/qgis-mime.png
 share/icons/hicolor/128x128/mimetypes/qgis-qgs.png
 share/icons/hicolor/128x128/mimetypes/qgis-qlr.png
@@ -1173,41 +1255,49 @@ share/icons/hicolor/16x16/mimetypes/qgis-qgs.png
 share/icons/hicolor/16x16/mimetypes/qgis-qlr.png
 share/icons/hicolor/16x16/mimetypes/qgis-qml.png
 share/icons/hicolor/16x16/mimetypes/qgis-qpt.png
+share/icons/hicolor/192x192/apps/qgis.png
 share/icons/hicolor/192x192/mimetypes/qgis-mime.png
 share/icons/hicolor/192x192/mimetypes/qgis-qgs.png
 share/icons/hicolor/192x192/mimetypes/qgis-qlr.png
 share/icons/hicolor/192x192/mimetypes/qgis-qml.png
 share/icons/hicolor/192x192/mimetypes/qgis-qpt.png
+share/icons/hicolor/22x22/apps/qgis.png
 share/icons/hicolor/22x22/mimetypes/qgis-mime.png
 share/icons/hicolor/22x22/mimetypes/qgis-qgs.png
 share/icons/hicolor/22x22/mimetypes/qgis-qlr.png
 share/icons/hicolor/22x22/mimetypes/qgis-qml.png
 share/icons/hicolor/22x22/mimetypes/qgis-qpt.png
+share/icons/hicolor/24x24/apps/qgis.png
 share/icons/hicolor/24x24/mimetypes/qgis-mime.png
 share/icons/hicolor/24x24/mimetypes/qgis-qgs.png
 share/icons/hicolor/24x24/mimetypes/qgis-qlr.png
 share/icons/hicolor/24x24/mimetypes/qgis-qml.png
 share/icons/hicolor/24x24/mimetypes/qgis-qpt.png
+share/icons/hicolor/256x256/apps/qgis.png
 share/icons/hicolor/256x256/mimetypes/qgis-mime.png
 share/icons/hicolor/256x256/mimetypes/qgis-qgs.png
 share/icons/hicolor/256x256/mimetypes/qgis-qlr.png
 share/icons/hicolor/256x256/mimetypes/qgis-qml.png
 share/icons/hicolor/256x256/mimetypes/qgis-qpt.png
+share/icons/hicolor/32x32/apps/qgis.png
 share/icons/hicolor/32x32/mimetypes/qgis-mime.png
 share/icons/hicolor/32x32/mimetypes/qgis-qgs.png
 share/icons/hicolor/32x32/mimetypes/qgis-qlr.png
 share/icons/hicolor/32x32/mimetypes/qgis-qml.png
 share/icons/hicolor/32x32/mimetypes/qgis-qpt.png
+share/icons/hicolor/36x36/apps/qgis.png
 share/icons/hicolor/36x36/mimetypes/qgis-mime.png
 share/icons/hicolor/36x36/mimetypes/qgis-qgs.png
 share/icons/hicolor/36x36/mimetypes/qgis-qlr.png
 share/icons/hicolor/36x36/mimetypes/qgis-qml.png
 share/icons/hicolor/36x36/mimetypes/qgis-qpt.png
+share/icons/hicolor/42x42/apps/qgis.png
 share/icons/hicolor/42x42/mimetypes/qgis-mime.png
 share/icons/hicolor/42x42/mimetypes/qgis-qgs.png
 share/icons/hicolor/42x42/mimetypes/qgis-qlr.png
 share/icons/hicolor/42x42/mimetypes/qgis-qml.png
 share/icons/hicolor/42x42/mimetypes/qgis-qpt.png
+share/icons/hicolor/48x48/apps/qgis.png
 share/icons/hicolor/48x48/mimetypes/qgis-mime.png
 share/icons/hicolor/48x48/mimetypes/qgis-qgs.png
 share/icons/hicolor/48x48/mimetypes/qgis-qlr.png
@@ -1219,26 +1309,31 @@ share/icons/hicolor/512x512/mimetypes/qgis-qgs.png
 share/icons/hicolor/512x512/mimetypes/qgis-qlr.png
 share/icons/hicolor/512x512/mimetypes/qgis-qml.png
 share/icons/hicolor/512x512/mimetypes/qgis-qpt.png
+share/icons/hicolor/64x64/apps/qgis.png
 share/icons/hicolor/64x64/mimetypes/qgis-mime.png
 share/icons/hicolor/64x64/mimetypes/qgis-qgs.png
 share/icons/hicolor/64x64/mimetypes/qgis-qlr.png
 share/icons/hicolor/64x64/mimetypes/qgis-qml.png
 share/icons/hicolor/64x64/mimetypes/qgis-qpt.png
+share/icons/hicolor/72x72/apps/qgis.png
 share/icons/hicolor/72x72/mimetypes/qgis-mime.png
 share/icons/hicolor/72x72/mimetypes/qgis-qgs.png
 share/icons/hicolor/72x72/mimetypes/qgis-qlr.png
 share/icons/hicolor/72x72/mimetypes/qgis-qml.png
 share/icons/hicolor/72x72/mimetypes/qgis-qpt.png
+share/icons/hicolor/80x80/apps/qgis.png
 share/icons/hicolor/80x80/mimetypes/qgis-mime.png
 share/icons/hicolor/80x80/mimetypes/qgis-qgs.png
 share/icons/hicolor/80x80/mimetypes/qgis-qlr.png
 share/icons/hicolor/80x80/mimetypes/qgis-qml.png
 share/icons/hicolor/80x80/mimetypes/qgis-qpt.png
+share/icons/hicolor/8x8/apps/qgis.png
 share/icons/hicolor/8x8/mimetypes/qgis-mime.png
 share/icons/hicolor/8x8/mimetypes/qgis-qgs.png
 share/icons/hicolor/8x8/mimetypes/qgis-qlr.png
 share/icons/hicolor/8x8/mimetypes/qgis-qml.png
 share/icons/hicolor/8x8/mimetypes/qgis-qpt.png
+share/icons/hicolor/96x96/apps/qgis.png
 share/icons/hicolor/96x96/mimetypes/qgis-mime.png
 share/icons/hicolor/96x96/mimetypes/qgis-qgs.png
 share/icons/hicolor/96x96/mimetypes/qgis-qlr.png
@@ -1538,6 +1633,9 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%GRASS%%%%DATADIR%%/grass/modules/r.fillnulls.1.png
 %%GRASS%%%%DATADIR%%/grass/modules/r.fillnulls.2.png
 %%GRASS%%%%DATADIR%%/grass/modules/r.fillnulls.qgm
+%%GRASS%%%%DATADIR%%/grass/modules/r.geomorphon.1.png
+%%GRASS%%%%DATADIR%%/grass/modules/r.geomorphon.2.png
+%%GRASS%%%%DATADIR%%/grass/modules/r.geomorphon.qgm
 %%GRASS%%%%DATADIR%%/grass/modules/r.grow.1.png
 %%GRASS%%%%DATADIR%%/grass/modules/r.grow.2.png
 %%GRASS%%%%DATADIR%%/grass/modules/r.grow.distance.1.png
@@ -2376,12 +2474,10 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/i18n/qgis_da.qm
 %%DATADIR%%/i18n/qgis_de.qm
 %%DATADIR%%/i18n/qgis_el.qm
-%%DATADIR%%/i18n/qgis_eo.qm
 %%DATADIR%%/i18n/qgis_es.qm
 %%DATADIR%%/i18n/qgis_et.qm
 %%DATADIR%%/i18n/qgis_eu.qm
 %%DATADIR%%/i18n/qgis_fi.qm
-%%DATADIR%%/i18n/qgis_fr.qm
 %%DATADIR%%/i18n/qgis_gl.qm
 %%DATADIR%%/i18n/qgis_hi.qm
 %%DATADIR%%/i18n/qgis_hu.qm
@@ -2389,7 +2485,6 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/i18n/qgis_is.qm
 %%DATADIR%%/i18n/qgis_it.qm
 %%DATADIR%%/i18n/qgis_ja.qm
-%%DATADIR%%/i18n/qgis_km.qm
 %%DATADIR%%/i18n/qgis_ko.qm
 %%DATADIR%%/i18n/qgis_ky.qm
 %%DATADIR%%/i18n/qgis_lt.qm
@@ -2398,16 +2493,13 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/i18n/qgis_nl.qm
 %%DATADIR%%/i18n/qgis_pl.qm
 %%DATADIR%%/i18n/qgis_pt_BR.qm
-%%DATADIR%%/i18n/qgis_pt_PT.qm
 %%DATADIR%%/i18n/qgis_ro.qm
 %%DATADIR%%/i18n/qgis_ru.qm
 %%DATADIR%%/i18n/qgis_sl.qm
-%%DATADIR%%/i18n/qgis_sv.qm
 %%DATADIR%%/i18n/qgis_tr.qm
 %%DATADIR%%/i18n/qgis_uk.qm
 %%DATADIR%%/i18n/qgis_vi.qm
 %%DATADIR%%/i18n/qgis_zh-Hans.qm
-%%DATADIR%%/i18n/qgis_zh-Hant.qm
 %%DATADIR%%/images/icons/qbrowser-icon.png
 %%DATADIR%%/images/icons/qgis-icon-16x16.png
 %%DATADIR%%/images/icons/qgis-icon-512x512.png
@@ -2551,12 +2643,6 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/ProcessingPlugin.py
 %%DATADIR%%/python/plugins/processing/__init__.py
 %%DATADIR%%/python/plugins/processing/algs/__init__.py
-%%DATADIR%%/python/plugins/processing/algs/exampleprovider/CMakeLists.txt
-%%DATADIR%%/python/plugins/processing/algs/exampleprovider/ExampleAlgorithm.py
-%%DATADIR%%/python/plugins/processing/algs/exampleprovider/ExampleAlgorithmProvider.py
-%%DATADIR%%/python/plugins/processing/algs/exampleprovider/ProcessingExampleProviderPlugin.py
-%%DATADIR%%/python/plugins/processing/algs/exampleprovider/__init__.py
-%%DATADIR%%/python/plugins/processing/algs/exampleprovider/metadata.txt
 %%DATADIR%%/python/plugins/processing/algs/gdal/AssignProjection.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/Buffer.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/ClipRasterByExtent.py
@@ -2599,11 +2685,13 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/algs/gdal/ogr2ogrtabletopostgislist.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/ogr2ogrtopostgislist.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/ogrinfo.py
+%%DATADIR%%/python/plugins/processing/algs/gdal/pansharp.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/pct2rgb.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/polygonize.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/proximity.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/rasterize.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/rasterize_over.py
+%%DATADIR%%/python/plugins/processing/algs/gdal/rasterize_over_fixed_value.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/rearrange_bands.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/retile.py
 %%DATADIR%%/python/plugins/processing/algs/gdal/rgb2pct.py
@@ -2688,6 +2776,7 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.fill.stats.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.fillnulls.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.flow.txt
+%%DATADIR%%/python/plugins/processing/algs/grass7/description/r.geomorphon.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.grow.distance.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.grow.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.gwflow.txt
@@ -2794,7 +2883,8 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.stats.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.stats.zonal.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.stream.extract.txt
-%%DATADIR%%/python/plugins/processing/algs/grass7/description/r.sun.txt
+%%DATADIR%%/python/plugins/processing/algs/grass7/description/r.sun.incidout.txt
+%%DATADIR%%/python/plugins/processing/algs/grass7/description/r.sun.insoltime.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.sunhours.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.sunmask.datetime.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/r.sunmask.position.txt
@@ -2915,6 +3005,7 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/v.type.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/v.univar.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/v.vect.stats.txt
+%%DATADIR%%/python/plugins/processing/algs/grass7/description/v.voronoi.skeleton.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/v.voronoi.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/v.what.rast.txt
 %%DATADIR%%/python/plugins/processing/algs/grass7/description/v.what.vect.txt
@@ -3022,6 +3113,11 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/algs/help/__init__.py
 %%DATADIR%%/python/plugins/processing/algs/help/qgis.yaml
 %%DATADIR%%/python/plugins/processing/algs/help/saga.yaml
+%%DATADIR%%/python/plugins/processing/algs/otb/OtbAlgorithm.py
+%%DATADIR%%/python/plugins/processing/algs/otb/OtbAlgorithmProvider.py
+%%DATADIR%%/python/plugins/processing/algs/otb/OtbChoiceWidget.py
+%%DATADIR%%/python/plugins/processing/algs/otb/OtbUtils.py
+%%DATADIR%%/python/plugins/processing/algs/otb/__init__.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/AddTableField.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/Aggregate.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/Aspect.py
@@ -3030,6 +3126,7 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/algs/qgis/BoxPlot.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/Buffer.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/CheckValidity.py
+%%DATADIR%%/python/plugins/processing/algs/qgis/Climb.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/ConcaveHull.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/CreateAttributeIndex.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/CreateConstantRaster.py
@@ -3067,7 +3164,6 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/algs/qgis/NearestNeighbourAnalysis.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/Orthogonalize.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/PointDistance.py
-%%DATADIR%%/python/plugins/processing/algs/qgis/PointsAlongGeometry.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/PointsDisplacement.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/PointsFromLines.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/PointsFromPolygons.py
@@ -3117,6 +3213,7 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/algs/qgis/StatisticsByCategories.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/SumLines.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/TextToFloat.py
+%%DATADIR%%/python/plugins/processing/algs/qgis/TilesXYZ.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/TinInterpolation.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/TopoColors.py
 %%DATADIR%%/python/plugins/processing/algs/qgis/TruncateTable.py
@@ -3657,16 +3754,23 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/plugins/processing/script/__init__.py
 %%DATADIR%%/python/plugins/processing/tests/AlgorithmsTestBase.py
 %%DATADIR%%/python/plugins/processing/tests/CheckValidityAlgorithm.py
-%%DATADIR%%/python/plugins/processing/tests/GdalAlgorithmsTest.py
+%%DATADIR%%/python/plugins/processing/tests/GdalAlgorithmsGeneralTest.py
+%%DATADIR%%/python/plugins/processing/tests/GdalAlgorithmsRasterTest.py
+%%DATADIR%%/python/plugins/processing/tests/GdalAlgorithmsVectorTest.py
 %%DATADIR%%/python/plugins/processing/tests/Grass7AlgorithmsImageryTest.py
 %%DATADIR%%/python/plugins/processing/tests/Grass7AlgorithmsRasterTest.py
 %%DATADIR%%/python/plugins/processing/tests/Grass7AlgorithmsVectorTest.py
 %%DATADIR%%/python/plugins/processing/tests/GuiTest.py
 %%DATADIR%%/python/plugins/processing/tests/ModelerTest.py
+%%DATADIR%%/python/plugins/processing/tests/OtbAlgorithmsTest.py
 %%DATADIR%%/python/plugins/processing/tests/ProcessingGeneralTest.py
 %%DATADIR%%/python/plugins/processing/tests/ProjectProvider.py
 %%DATADIR%%/python/plugins/processing/tests/QgisAlgorithmsTest.py
+%%DATADIR%%/python/plugins/processing/tests/QgisAlgorithmsTest2.py
+%%DATADIR%%/python/plugins/processing/tests/QgisAlgorithmsTest3.py
+%%DATADIR%%/python/plugins/processing/tests/QgisAlgorithmsTest4.py
 %%DATADIR%%/python/plugins/processing/tests/SagaAlgorithmsTest.py
+%%DATADIR%%/python/plugins/processing/tests/ScriptUtilsTest.py
 %%DATADIR%%/python/plugins/processing/tests/TestData.py
 %%DATADIR%%/python/plugins/processing/tests/ToolsTest.py
 %%DATADIR%%/python/plugins/processing/tests/__init__.py
@@ -3708,10 +3812,13 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/pyplugin_installer/__init__.py
 %%DATADIR%%/python/pyplugin_installer/installer.py
 %%DATADIR%%/python/pyplugin_installer/installer_data.py
+%%DATADIR%%/python/pyplugin_installer/plugindependencies.py
+%%DATADIR%%/python/pyplugin_installer/qgsplugindependenciesdialog.py
 %%DATADIR%%/python/pyplugin_installer/qgsplugininstallerfetchingdialog.py
 %%DATADIR%%/python/pyplugin_installer/qgsplugininstallerinstallingdialog.py
 %%DATADIR%%/python/pyplugin_installer/qgsplugininstallerpluginerrordialog.py
 %%DATADIR%%/python/pyplugin_installer/qgsplugininstallerrepositorydialog.py
+%%DATADIR%%/python/pyplugin_installer/ui_qgsplugindependenciesdialogbase.py
 %%DATADIR%%/python/pyplugin_installer/ui_qgsplugininstallerfetchingbase.py
 %%DATADIR%%/python/pyplugin_installer/ui_qgsplugininstallerinstallingbase.py
 %%DATADIR%%/python/pyplugin_installer/ui_qgsplugininstallerpluginerrorbase.py
@@ -3748,9 +3855,11 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/qgis/core/additions/__init__.py
 %%DATADIR%%/python/qgis/core/additions/edit.py
 %%DATADIR%%/python/qgis/core/additions/fromfunction.py
+%%DATADIR%%/python/qgis/core/additions/markerlinesymbollayer.py
 %%DATADIR%%/python/qgis/core/additions/metaenum.py
 %%DATADIR%%/python/qgis/core/additions/processing.py
 %%DATADIR%%/python/qgis/core/additions/projectdirtyblocker.py
+%%DATADIR%%/python/qgis/core/additions/providermetadata.py
 %%DATADIR%%/python/qgis/core/additions/qgsfeature.py
 %%DATADIR%%/python/qgis/core/additions/qgsfunction.py
 %%DATADIR%%/python/qgis/core/additions/qgsgeometry.py
@@ -3778,7 +3887,7 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/python/qsci_apis/PyQGIS-2.2.api
 %%DATADIR%%/python/qsci_apis/PyQGIS.api
 %%DATADIR%%/python/qsci_apis/PyQt5.api
-%%DATADIR%%/python/qsci_apis/Python-%%PYTHON_VER%%.api
+%%DATADIR%%/python/qsci_apis/Python-3.6.api
 %%DATADIR%%/python/qsci_apis/QScintilla2-2.4.5.api
 %%DATADIR%%/python/qsci_apis/QScintilla2-2.7.2.api
 %%DATADIR%%/python/qsci_apis/pyqgis.pap
@@ -4974,17 +5083,14 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/resources/cpt-city-qgis-min/wkp/tubs/DESC.xml
 %%DATADIR%%/resources/cpt-city-qgis-min/wkp/tubs/nrwc.svg
 %%DATADIR%%/resources/customization.xml
-@mode 0666
+%%DATADIR%%/resources/data/README_world_map.md
 %%DATADIR%%/resources/data/contributors.json
 %%DATADIR%%/resources/data/contributors.qml
 %%DATADIR%%/resources/data/qgis-hackfests.json
 %%DATADIR%%/resources/data/qgis-hackfests.qml
-%%DATADIR%%/resources/data/world_map.dbf
-%%DATADIR%%/resources/data/world_map.prj
-%%DATADIR%%/resources/data/world_map.qix
-%%DATADIR%%/resources/data/world_map.qml
-%%DATADIR%%/resources/data/world_map.shp
-%%DATADIR%%/resources/data/world_map.shx
+@mode 0666
+%%DATADIR%%/resources/data/world_map.gpkg
+%%DATADIR%%/resources/data/world_map_generalize.model3
 @mode
 %%DATADIR%%/resources/metadata-ISO/LinkPropertyLookupTable.csv
 %%DATADIR%%/resources/metadata-ISO/country_code_ISO_3166.csv
@@ -4995,6 +5101,21 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/resources/palettes/new_layer_colors.gpl
 %%DATADIR%%/resources/qgis.db
 %%DATADIR%%/resources/qgis_global_settings.ini
+%%DATADIR%%/resources/server/api/ogc/schema.json
+%%DATADIR%%/resources/server/api/ogc/static/jsonFormatter.min.css
+%%DATADIR%%/resources/server/api/ogc/static/jsonFormatter.min.js
+%%DATADIR%%/resources/server/api/ogc/static/style.css
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/describeCollection.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/describeCollections.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/footer.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/getApiDescription.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/getFeature.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/getFeatures.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/getLandingPage.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/getRequirementClasses.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/header.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/leaflet_map.html
+%%DATADIR%%/resources/server/api/ogc/templates/wfs3/links.html
 %%SERVER%%%%DATADIR%%/resources/server/schemaExtension.xsd
 %%DATADIR%%/resources/spatialite.db
 %%DATADIR%%/resources/srs.db
@@ -5006,9 +5127,13 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/resources/themes/Blend of Gray/icons/close.svg
 %%DATADIR%%/resources/themes/Blend of Gray/icons/handle-horizontal.svg
 %%DATADIR%%/resources/themes/Blend of Gray/icons/handle-vertical.svg
+%%DATADIR%%/resources/themes/Blend of Gray/icons/qcheckbox-checked-disabled.svg
 %%DATADIR%%/resources/themes/Blend of Gray/icons/qcheckbox-checked.svg
+%%DATADIR%%/resources/themes/Blend of Gray/icons/qcheckbox-unchecked-disabled.svg
 %%DATADIR%%/resources/themes/Blend of Gray/icons/qcheckbox-unchecked.svg
+%%DATADIR%%/resources/themes/Blend of Gray/icons/qradiobox-checked-disabled.svg
 %%DATADIR%%/resources/themes/Blend of Gray/icons/qradiobox-checked.svg
+%%DATADIR%%/resources/themes/Blend of Gray/icons/qradiobox-unchecked-disabled.svg
 %%DATADIR%%/resources/themes/Blend of Gray/icons/qradiobox-unchecked.svg
 %%DATADIR%%/resources/themes/Blend of Gray/icons/separator-horizontal.svg
 %%DATADIR%%/resources/themes/Blend of Gray/icons/separator-vertical.svg
@@ -5025,9 +5150,13 @@ share/metainfo/org.qgis.qgis.appdata.xml
 %%DATADIR%%/resources/themes/Night Mapping/icons/eye.svg
 %%DATADIR%%/resources/themes/Night Mapping/icons/handle-horizontal.svg
 %%DATADIR%%/resources/themes/Night Mapping/icons/handle-vertical.svg
+%%DATADIR%%/resources/themes/Night Mapping/icons/qcheckbox-checked-disabled.svg
 %%DATADIR%%/resources/themes/Night Mapping/icons/qcheckbox-checked.svg
+%%DATADIR%%/resources/themes/Night Mapping/icons/qcheckbox-unchecked-disabled.svg
 %%DATADIR%%/resources/themes/Night Mapping/icons/qcheckbox-unchecked.svg
+%%DATADIR%%/resources/themes/Night Mapping/icons/qradiobox-checked-disabled.svg
 %%DATADIR%%/resources/themes/Night Mapping/icons/qradiobox-checked.svg
+%%DATADIR%%/resources/themes/Night Mapping/icons/qradiobox-unchecked-disabled.svg
 %%DATADIR%%/resources/themes/Night Mapping/icons/qradiobox-unchecked.svg
 %%DATADIR%%/resources/themes/Night Mapping/icons/separator-horizontal.svg
 %%DATADIR%%/resources/themes/Night Mapping/icons/separator-vertical.svg

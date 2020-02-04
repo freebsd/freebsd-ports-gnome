@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	doublecmd
-PORTVERSION=	0.9.2
+PORTVERSION=	0.9.7
 CATEGORIES=	x11-fm
 MASTER_SITES=	SF/${PORTNAME}/Double%20Commander%20Source
 PKGNAMESUFFIX=	${LAZARUS_PKGNAMESUFFIX}
@@ -16,7 +16,7 @@ LICENSE=	GPLv2
 
 ONLY_FOR_ARCHS=	amd64 i386
 
-USES=		dos2unix desktop-file-utils fpc gnome lazarus:flavors
+USES=		dos2unix desktop-file-utils fpc gnome lazarus:flavors xorg
 
 PORTDOCS=	*
 
@@ -40,7 +40,6 @@ LAZARUS_PROJECT_FILES+=	components/synunihighlighter/synuni.lpk
 
 LAZBUILD_ARGS=	-d --pcp=${WRKSRC}/tmppcp
 MAKE_ENV+=	LDVER=ld.bfd # for DragonFly
-LLD_UNSAFE=	yes
 
 HELPVERSION=	0.6.0
 WRKSRC=		${WRKDIR}/${PORTNAME}-${PORTVERSION}

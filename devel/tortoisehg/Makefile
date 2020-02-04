@@ -1,9 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	tortoisehg
-DISTVERSION=	4.9
+DISTVERSION=	5.1
 CATEGORIES=	devel
-MASTER_SITES=	https://bitbucket.org/tortoisehg/targz/downloads/
+MASTER_SITES=	https://bitbucket.org/tortoisehg/thg/get/
+DISTNAME=	${DISTVERSION}
 
 MAINTAINER=	arrowd@FreeBSD.org
 COMMENT=	GUI for Mercurial VCS
@@ -11,6 +12,7 @@ COMMENT=	GUI for Mercurial VCS
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING.txt
 
+BUILD_DEPENDS=	hg:devel/mercurial
 RUN_DEPENDS=	hg:devel/mercurial \
 		${PYTHON_PKGNAMEPREFIX}iniparse>=0.4:devel/py-iniparse@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pygments>=0:textproc/py-pygments@${PY_FLAVOR}
@@ -19,17 +21,20 @@ USES=		pyqt:5 python:2.7
 USE_PYQT=	core gui network qscintilla2 xml
 USE_PYTHON=	distutils
 
-NO_ARCH=	yes
-SUB_FILES=	pkg-message
-
-# Do not conflict with devel/mercurial, which also installs hgext3rd/__init__.py
-EXTRACT_AFTER_ARGS=	--exclude ${DISTNAME}/hgext3rd/__init__.py
-
 OPTIONS_DEFINE=	NAUTILUS NLS
 NAUTILUS_DESC=	Install TortoiseHG Nautilus extension
 OPTIONS_SUB=	yes
 
 NLS_USES=	gettext
+
+NO_ARCH=	yes
+SUB_FILES=	pkg-message
+DIST_SUBDIR=	${PORTNAME}
+WRKSRC=		${WRKDIR}/${PORTNAME}-thg-${TAGNAME}
+TAGNAME=	89b2d1787506
+
+# Do not conflict with devel/mercurial, which also installs hgext3rd/__init__.py
+EXTRACT_AFTER_ARGS=	--exclude ${PORTNAME}-thg-${TAGNAME}/hgext3rd/__init__.py
 
 post-patch:
 	@${REINPLACE_CMD} -e '/_path/ s|/usr|${PREFIX}|' ${WRKSRC}/${PYSETUP}

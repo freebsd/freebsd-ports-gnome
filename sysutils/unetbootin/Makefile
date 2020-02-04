@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	unetbootin
-PORTVERSION=	661
+PORTVERSION=	677
 CATEGORIES=	sysutils
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/
 DISTNAME=	${PORTNAME}-source-${PORTVERSION}
@@ -28,9 +28,9 @@ post-patch:
 		${WRKSRC}/main.cpp
 
 do-configure:
-	${LUPDATE} ${WRKSRC}/unetbootin.pro
-	${LRELEASE} ${WRKSRC}/unetbootin.pro
-	cd ${WRKSRC} && ${QMAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
+	cd ${CONFIGURE_WRKSRC} && ${LUPDATE} unetbootin.pro \
+		     && ${LRELEASE} unetbootin.pro \
+		     && ${QMAKE_ENV} ${QMAKE} ${QMAKE_ARGS}
 
 do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/unetbootin ${STAGEDIR}${PREFIX}/bin

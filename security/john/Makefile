@@ -5,7 +5,7 @@ PORTNAME=	john
 # NB: starting from the next version, community-enhanced (jumbo) patch
 # should be offered as an option (suggested by Solar Designer himself).
 DISTVERSION=	1.8.0-jumbo-1
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	security
 MASTER_SITES=	http://www.openwall.com/john/j/ \
 		http://mirrors.kernel.org/openwall/projects/john/${DISTVERSION:C/-.*//}/ \
@@ -16,10 +16,9 @@ COMMENT=	Featureful Unix password cracker
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libgmp.so:math/gmp
-
-BROKEN_aarch64=	cannot detect CPU architecture
 BROKEN_mips64=	cannot detect CPU architecture
+
+LIB_DEPENDS=	libgmp.so:math/gmp
 
 USES=		gmake shebangfix ssl tar:xz
 GNU_CONFIGURE=	yes

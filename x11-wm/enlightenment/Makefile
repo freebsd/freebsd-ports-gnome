@@ -3,6 +3,7 @@
 
 PORTNAME=	enlightenment
 PORTVERSION=	0.22.4
+PORTREVISION=	1
 PORTEPOCH=	2
 CATEGORIES=	x11-wm enlightenment
 MASTER_SITES=	http://download.enlightenment.org/rel/apps/${PORTNAME}/
@@ -19,8 +20,8 @@ LIB_DEPENDS=	libefl.so:devel/efl \
 BROKEN_sparc64=		Does not install on sparc64: signal 10
 
 GNU_CONFIGURE=	yes
-USES=		alias autoreconf desktop-file-utils gettext-tools \
-		gmake iconv libtool pathfix pkgconfig tar:xz
+USES=		alias autoreconf compiler:c11 desktop-file-utils gettext-tools \
+		gmake iconv libtool pathfix pkgconfig tar:xz xorg
 USE_XORG=	xcb
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip

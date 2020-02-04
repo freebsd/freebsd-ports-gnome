@@ -36,7 +36,7 @@ NO_ARCH=	yes
 
 # Use upstreamed patches not yet mainlined
 PATCH_DIST_STRIP=	-p1
-PATCH_SITES+=	http://patchwork.ozlabs.org/patch/
+PATCH_SITES+=	https://patchwork.ozlabs.org/patch/
 
 # Sanity checks
 .if !defined(MODEL) && !defined(BOARD_CONFIG) && !defined(FAMILY)
@@ -89,8 +89,12 @@ UBOOT_METADATA_IMX6_METHOD=	raw
 UBOOT_METADATA_IMX6_RAW_OFFSET=	2
 UBOOT_METADATA_IMX6_RAW_BS=	512
 
+# Override for RK3328 family
+UBOOT_PLIST_RK3328=	idbloader.img u-boot.itb
+UBOOT_ARCH_RK3328=	aarch64
+
 # Override for RK3399 family
-UBOOT_PLIST_RK3399=	idbspl.img u-boot.itb
+UBOOT_PLIST_RK3399=	idbloader.img u-boot.itb
 UBOOT_ARCH_RK3399=	aarch64
 
 # Override for ARMADA38X family
@@ -104,7 +108,12 @@ UBOOT_METADATA_ARMADA38X_RAW_BS=	512
 .if !defined(UBOOT_VERSION) && defined(UBOOT_VERSION_${FAMILY:tu})
 UBOOT_VERSION=${UBOOT_VERSION_${FAMILY:tu}}
 .endif
-UBOOT_VERSION?=	2019.04
+UBOOT_VERSION?=	2019.10
+
+# If a slave port defines a PORTREVISION use it
+.if defined(U_BOOT_SLAVE_PORTREVISION_${UBOOT_VERSION})
+PORTREVISION=	${U_BOOT_SLAVE_PORTREVISION_${UBOOT_VERSION}}
+.endif
 
 .if !defined(UBOOT_PLIST) && defined(UBOOT_PLIST_${FAMILY:tu})
 UBOOT_PLIST=${UBOOT_PLIST_${FAMILY:tu}}
@@ -138,6 +147,12 @@ UBOOT_MOVE=${UBOOT_MOVE_${FAMILY:tu}}
 .if defined(FAMILY) && ${FAMILY} == allwinner64
 BUILD_DEPENDS+=	${LOCALBASE}/share/atf-sun50i_a64/bl31.bin:sysutils/atf-sun50i_a64
 MAKE_ENV+=	BL31=${LOCALBASE}/share/atf-sun50i_a64/bl31.bin
+.endif
+
+.if defined(FAMILY) && ${FAMILY} == rk3328
+BUILD_DEPENDS+=	${LOCALBASE}/share/atf-rk3328/bl31.elf:sysutils/atf-rk3328 \
+		${PYTHON_PKGNAMEPREFIX}pyelftools>0:devel/py-pyelftools@${PY_FLAVOR}
+MAKE_ENV+=	BL31=${LOCALBASE}/share/atf-rk3328/bl31.elf
 .endif
 
 .if defined(FAMILY) && ${FAMILY} == rk3399
@@ -203,9 +218,6 @@ post-build:
 .for i in ${UBOOT_EXTRA_TARGETS}
 	(cd ${WRKSRC}; ${SETENV} ${CONFIGURE_ENV} ${MAKE_ENV} ${MAKE_CMD} ${MAKE_ARGS} ${i})
 .endfor
-.endif
-.if defined(FAMILY) && ${FAMILY} == rk3399
-	mkimage -n rk3399 -T rksd -d ${WRKSRC}/spl/u-boot-spl.bin ${WRKSRC}/idbspl.img
 .endif
 # If we need to put anything into WRKSRC, do so now so we can build the PLIST
 # in do-install

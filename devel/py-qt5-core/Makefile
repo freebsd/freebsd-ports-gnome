@@ -1,7 +1,6 @@
 # $FreeBSD$
 
 PORTNAME=	core
-PORTREVISION=	1
 CATEGORIES=	devel python
 
 MAINTAINER=	kde@FreeBSD.org
@@ -53,5 +52,8 @@ post-install:
 	${PYTHON_CMD} -O ${PYTHON_LIBDIR}/compileall.py \
 		-f -d ${PYTHONPREFIX_SITELIBDIR}/PyQt5 \
 		${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/PyQt5
+	# This Qt.so masks the Qt.py which is supposed to import
+	# all of the Qt submodules.
+	${RM} ${STAGEDIR}${PYTHONPREFIX_SITELIBDIR}/PyQt5/Qt.so
 
 .include <bsd.port.post.mk>

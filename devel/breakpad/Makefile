@@ -3,11 +3,13 @@
 
 PORTNAME=	breakpad
 DISTVERSION=	g20170811
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	devel
 
 MAINTAINER=	pizzamig@FreeBSD.org
 COMMENT=	Client/server based crash-reporting system
+
+BROKEN=		unfetchable
 
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE

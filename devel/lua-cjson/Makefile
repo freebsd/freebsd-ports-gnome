@@ -11,6 +11,9 @@ DISTNAME=	lua-cjson-${PORTVERSION}
 MAINTAINER=	osa@FreeBSD.org
 COMMENT?=	Fast JSON parsing and encoding support for Lua
 
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
+
 USES?=		lua
 
 MAKE_ARGS=	LUA_VERSION=${LUA_VER}

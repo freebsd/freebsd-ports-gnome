@@ -3,7 +3,7 @@
 
 PORTNAME=	squeak
 PORTVERSION=	4.10.2
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	lang
 MASTER_SITES=	http://www.squeakvm.org/unix/release/:vmsrc \
 		http://ftp.squeak.org/${IMAGE_VERSION}/:src \
@@ -21,7 +21,7 @@ COMMENT=	Full Smalltalk 80 with portability to Unix, Mac, and Windows
 LICENSE=	APACHE20 MIT
 LICENSE_COMB=	multi
 
-ONLY_FOR_ARCHS=		amd64 i386 powerpc powerpc64 powerpcspe
+ONLY_FOR_ARCHS=		aarch64 amd64 i386 powerpc powerpc64 powerpcspe
 
 BUILD_DEPENDS=	cmake:devel/cmake \
 		v4l_compat>=1.0.20120501:multimedia/v4l_compat
@@ -31,7 +31,7 @@ LIB_DEPENDS=	libaudio.so:audio/nas \
 		libpulse-simple.so:audio/pulseaudio \
 		libv4l2.so:multimedia/libv4l
 
-USES=		pkgconfig
+USES=		gl gnome pkgconfig
 USE_GNOME=	cairo pango
 USE_GL=		gl
 HAS_CONFIGURE=	yes

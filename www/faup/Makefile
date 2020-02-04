@@ -3,6 +3,7 @@
 
 PORTNAME=	faup
 DISTVERSION=	1.5-48
+PORTREVISION=	1
 DISTVERSIONPREFIX=	v
 DISTVERSIONSUFFIX=	-g88dbbe2
 CATEGORIES=	www devel
@@ -17,7 +18,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USE_GITHUB=	yes
 GH_ACCOUNT=	stricaud
 
-USES=		cmake lua
+USES=		cmake compiler:c++11-lang lua
 USE_LDCONFIG=	yes
 
 PORTDOCS=	*

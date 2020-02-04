@@ -3,7 +3,7 @@
 PORTNAME=	picpas
 PORTVERSION=	0.8.8
 DISTVERSIONPREFIX=	v
-PORTREVISION=	2
+PORTREVISION=	5
 CATEGORIES=	editors
 PKGNAMESUFFIX=	${LAZARUS_PKGNAMESUFFIX}
 
@@ -12,11 +12,10 @@ COMMENT=	Multi-platform Pascal for Microchip PIC16F microcontrollers
 
 LICENSE=	GPLv2
 
-gtk2_CONFLICTS_INSTALL=	${PORTNAME}-qt4 ${PORTNAME}-qt5
-qt4_CONFLICTS_INSTALL=	${PORTNAME}-gtk2 ${PORTNAME}-qt5
-qt5_CONFLICTS_INSTALL=	${PORTNAME}-gtk2 ${PORTNAME}-qt4
+gtk2_CONFLICTS_INSTALL=	${PORTNAME}-qt5
+qt5_CONFLICTS_INSTALL=	${PORTNAME}-gtk2
 
-USES=		dos2unix fpc lazarus:flavors
+USES=		dos2unix fpc gnome lazarus:flavors xorg
 USE_FPC=	chm fcl-base fcl-image fcl-json fcl-registry fcl-xml pasjpeg regexpr \
 		rtl-objpas x11
 USE_XORG=	x11
@@ -40,7 +39,6 @@ USE_GNOME+=	${USE_GNOME_${FLAVOR}}
 
 LAZARUS_PROJECT_FILES=	Source/PicPas.lpi
 LAZBUILD_ARGS=		-d
-LLD_UNSAFE=	yes
 
 post-patch:
 	${REINPLACE_CMD} 's|%%DATADIR%%|${DATADIR}|g' ${WRKSRC}/Source/Globales.pas

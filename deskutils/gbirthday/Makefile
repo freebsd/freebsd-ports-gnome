@@ -11,6 +11,9 @@ COMMENT=	Birthday reminder for GNOME2
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
+DEPRECATED=	Old, uses EOLed python27
+EXPIRATION_DATE=	2020-03-01
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	lafrech
 GH_TAGNAME=	7b431aa
@@ -25,7 +28,7 @@ NOTIFY_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}notify>0:devel/py-notify@${PY_FLAVOR}
 THUNDERBIRD_RUN_DEPENDS=${PYTHON_PKGNAMEPREFIX}sqlite3>0:databases/py-sqlite3@${PY_FLAVOR}
 
 NO_ARCH=	yes
-USES=		python:2.7,run
+USES=		gnome python:2.7,run
 USE_GNOME=	pygtk2
 LANGUAGES=	cs da de en es fi fr gl he it pl pt ru sk
 

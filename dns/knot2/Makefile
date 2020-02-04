@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	knot
-DISTVERSION=	2.8.1
-CATEGORIES=	dns ipv6
+DISTVERSION=	2.9.1
+CATEGORIES=	dns
 MASTER_SITES=	https://secure.nic.cz/files/knot-dns/ \
 		https://dns.company/downloads/knot-dns/
 PKGNAMESUFFIX?=	2
@@ -14,11 +14,10 @@ COMMENT?=	High performance authoritative-only DNS server
 LICENSE=	GPLv3
 
 NOT_FOR_ARCHS=	i386
-NOT_FOR_ARCHS_REASON_i386=Uses 64 bit atomics that clang cannot generate on i386 on FreeBSD >= 11.2
+NOT_FOR_ARCHS_REASON_i386=Uses 64 bit atomics that clang cannot generate on i386
 
 LIB_DEPENDS=	libgnutls.so:security/gnutls \
 		liblmdb.so:databases/lmdb \
-		libnettle.so:security/nettle \
 		liburcu.so:sysutils/liburcu
 
 CONFLICTS=	knot-1.* knot1-[0-6].*

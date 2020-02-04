@@ -3,7 +3,7 @@
 
 PORTNAME=	virtualgl
 PORTVERSION=	2.4.1
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	x11 graphics
 MASTER_SITES=	SF/${PORTNAME}/${PORTVERSION}
 DISTNAME=	VirtualGL-${PORTVERSION}
@@ -20,7 +20,7 @@ ONLY_FOR_ARCHS=	amd64 i386
 CMAKE_INSTALL_PREFIX=	${LOCALBASE}/VirtualGL
 DOCSDIR=	${LOCALBASE}/VirtualGL/doc
 
-USES=		cmake:noninja compiler:c++11-lang
+USES=		cmake:noninja compiler:c++11-lang gl xorg
 USE_GL=		gl glu
 USE_XORG=	x11 xcb xext
 CMAKE_ARGS=	-DTJPEG_INCLUDE_DIR=${LOCALBASE}/include\

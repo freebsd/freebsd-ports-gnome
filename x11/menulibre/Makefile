@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	menulibre
-PORTVERSION=	2.2.0
+PORTVERSION=	2.2.1
 CATEGORIES=	x11
 MASTER_SITES=	https://launchpad.net/menulibre/${PORTVERSION:R}/${PORTVERSION}/+download/
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -20,6 +20,7 @@ RUN_DEPENDS=	xdg-open:devel/xdg-utils \
 USES=		desktop-file-utils gettext gnome python:3.4+
 USE_GNOME=	intltool pygobject3
 USE_PYTHON=	distutils
+
 INSTALLS_ICONS=	yes
 
 OPTIONS_DEFINE=	DOCS
@@ -27,10 +28,5 @@ OPTIONS_DEFINE=	DOCS
 .include <bsd.port.pre.mk>
 
 PYDISTUTILS_INSTALLARGS:=	${PYDISTUTILS_INSTALLARGS:N--single-version-externally-managed}
-
-post-install:
-	${MV} ${STAGEDIR}${PREFIX}/share/man/man1 ${STAGEDIR}${PREFIX}/man
-	${RMDIR} ${STAGEDIR}${PREFIX}/share/man
-	${GZIP_CMD} ${STAGEDIR}${PREFIX}/man/man1/*
 
 .include <bsd.port.post.mk>

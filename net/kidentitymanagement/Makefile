@@ -15,7 +15,7 @@ USE_KDE=	auth codecs completion config configwidgets coreaddons ecm \
 		kdelibs4support kio service widgetsaddons xmlgui
 # pim components
 USE_KDE+=	pimtextedit
-USE_QT=		core dbus gui network widgets xml \
+USE_QT=		concurrent core dbus gui network widgets xml \
 		buildtools_build qmake_build
 USE_LDCONFIG=	yes
 

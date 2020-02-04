@@ -3,7 +3,7 @@
 
 PORTNAME=	rhythmbox
 PORTVERSION=	3.4.2
-PORTREVISION=	4
+PORTREVISION=	6
 CATEGORIES=	audio gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -32,7 +32,7 @@ LIB_DEPENDS=	libmusicbrainz5.so:audio/libmusicbrainz5 \
 		libtdb.so:databases/tdb
 
 USES=		desktop-file-utils gmake gnome libtool localbase \
-		pathfix pkgconfig tar:xz
+		pathfix pkgconfig tar:xz xorg
 USE_GNOME=	cairo intlhack glib20 gnomeprefix gtk30 introspection \
 		pygobject3 libxml2
 USE_XORG=	ice x11 xorgproto

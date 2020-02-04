@@ -3,7 +3,7 @@
 
 PORTNAME=	ghemical
 PORTVERSION=	3.0.0
-PORTREVISION=	18
+PORTREVISION=	19
 CATEGORIES=	science
 MASTER_SITES=	http://bioinformatics.org/ghemical/download/%SUBDIR%/
 MASTER_SITE_SUBDIR=	release20111012 current
@@ -27,7 +27,8 @@ LIB_DEPENDS=	libblas.so:math/blas \
 		libmpqc.so:science/mpqc
 RUN_DEPENDS=	xdg-open:devel/xdg-utils
 
-USES=		compiler:c++11-lang fortran gettext gl gmake gnome pathfix pkgconfig
+USES=		compiler:c++11-lang fortran gettext gl gmake gnome pathfix \
+		pkgconfig xorg
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--enable-gtk --enable-threads --enable-openbabel
 USE_GNOME=	cairo gdkpixbuf2 gtk20 libglade2 intltool pangox-compat

@@ -3,7 +3,7 @@
 PORTNAME=	praat
 PORTVERSION=	5.4.08
 DISTVERSIONPREFIX=	v
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	audio science
 
 MAINTAINER=	jwb@FreeBSD.org
@@ -11,7 +11,7 @@ COMMENT=	Phonetics by Computer
 
 LICENSE=	GPLv2
 
-USES=		compiler:c++11-lang dos2unix iconv pkgconfig
+USES=		compiler:c++11-lang dos2unix gnome iconv pkgconfig
 USE_GITHUB=	yes
 DOS2UNIX_REGEX=	.*Makefile
 USE_GNOME=	gtk20

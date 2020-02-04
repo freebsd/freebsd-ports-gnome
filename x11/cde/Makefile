@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	cde
-DISTVERSION=	2.3.0
-PORTREVISION=	1
+DISTVERSION=	2.3.1
 CATEGORIES=	x11
 MASTER_SITES=	SF/cdesktopenv/src/
 
@@ -22,19 +21,17 @@ BUILD_DEPENDS=	ksh93:shells/ksh93			\
 		${LOCALBASE}/libdata/pkgconfig/freetype2.pc:print/freetype2
 RUN_DEPENDS=	${LOCALBASE}/bin/fc-cache:x11-fonts/fontconfig \
 		${LOCALBASE}/libdata/pkgconfig/freetype2.pc:print/freetype2 \
-		ksh93:shells/ksh93 \
 		xrdb:x11/xrdb \
 		xset:x11/xset
 
-USES=		iconv:wchar_t motif perl5 shebangfix tcl:85
+USES=		iconv:wchar_t jpeg motif perl5 shebangfix tcl:86 xorg
 SHEBANG_LANG=	pl ksh tcl
-SHEBANG_FILES=	programs/dtdocbook/sgmls/sgmls.pl \
-		programs/dtinfo/tools/bin/ccdate \
+SHEBANG_FILES=	programs/dtinfo/tools/bin/ccdate \
 		programs/dtdocbook/doc2sdl/docbook.tcl \
 		programs/dtdocbook/doc2sdl/dtdocbook
 USE_LDCONFIG=	${PREFIX}/dt/lib
-USE_RC_SUBR=	dtcms dtspc
-USE_XORG=	ice sm x11 xau xdmcp xext xinerama xmu xp xscrnsaver xt
+USE_RC_SUBR=	dtcms dtspc dtlogin
+USE_XORG=	ice sm x11 xau xdmcp xext xinerama xmu xscrnsaver xt
 
 WRKSRC=		${WRKDIR}/${PORTNAME}-${DISTVERSION}
 ALL_TARGET=	World
@@ -71,8 +68,9 @@ post-patch:
 # Fix all hardcoded path
 	@${REINPLACE_CMD} -e 's|/usr/bin/perl|${LOCALBASE}/bin/perl|g' \
 		${WRKSRC}/config/cf/Imake.tmpl \
-		${WRKSRC}/programs/dtdocbook/sgmls/sgmls.pl \
 		${WRKSRC}/programs/dtinfo/tools/bin/ccdate
+	@${REINPLACE_CMD} -e 's|/bin/ksh|${LOCALBASE}/bin/ksh93|g' \
+		${WRKSRC}/programs/dtopen/dtopen.src
 	@${FIND} ${WRKSRC} -type f | ${XARGS} ${REINPLACE_CMD} -e \
 		's|/usr/dt|${LOCALBASE}/dt|g ; \
 		s|/etc/dt|${LOCALBASE}/etc/dt|g'
@@ -110,7 +108,6 @@ post-patch:
 #	@${LN} -s ${LOCALBASE}/include/Xm ${WRKSRC}/imports/x11/include
 #	@${LN} -s ${LOCALBASE}/include/fontconfig ${WRKSRC}/imports/x11/include
 #	@${LN} -s ${LOCALBASE}/include/freetype2 ${WRKSRC}/imports/x11/include
-
 
 do-install:
 	cd ${WRKSRC}/admin/IntegTools/dbTools && \

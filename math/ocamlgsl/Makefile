@@ -4,7 +4,7 @@
 PORTNAME=	ocaml-gsl
 DISTVERSIONPREFIX=v
 DISTVERSION=	1.19.1
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	math
 
 MAINTAINER=	michipili@gmail.com
@@ -14,6 +14,7 @@ LICENSE=	GPLv3
 
 LIB_DEPENDS=	libgsl.so:math/gsl
 BUILD_DEPENDS=	gawk:lang/gawk \
+		ocamlbuild:devel/ocaml-ocamlbuild \
 		${OCAMLC_DEPEND}
 RUN_DEPENDS=	ocamlfind:devel/ocaml-findlib
 

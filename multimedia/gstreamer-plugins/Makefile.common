@@ -73,7 +73,6 @@ GOOD_GST_ALL_PLUGINS+= \
 		annodex \
 		cairo \
 		dv \
-		esd \
 		flac \
 		gconf \
 		gdk_pixbuf \
@@ -248,15 +247,6 @@ gst_dvd_GST_PLUGIN_DIR=	ext/dvdread
 gst_dvd_PLIST_FILES=	${GST_LIB_DIR}/libgstdvdread.la \
 		${GST_LIB_DIR}/libgstdvdread.so
 gst_dvd_DIST=	ugly
-
-
-# esound
-gst_esound_USE_GNOME+=	esound
-gst_esound_GST_PLUGIN_DIR=	ext/esd
-gst_esound_CONFIGURE_ENV+=	ESD_CFLAGS="`pkg-config --cflags esound`" \
-		ESD_LIBS="`pkg-config --libs esound`"
-gst_esound_PLIST_FILES=	${GST_LIB_DIR}/libgstesd.so \
-		${GST_LIB_DIR}/libgstesd.la
 
 # exif
 # hmm not a real plugin, seems to be part of metadata?
@@ -459,6 +449,7 @@ gst_resindvd_PLIST_FILES=	${GST_LIB_DIR}/libresindvd.la \
 gst_resindvd_DIST=		bad
 
 # sdl
+gst_sdl_USES=		sdl
 gst_sdl_USE_SDL+=	sdl
 gst_sdl_PLIST_FILES=	${GST_LIB_DIR}/libgstsdl.la \
 		${GST_LIB_DIR}/libgstsdl.so
@@ -632,7 +623,9 @@ USES+=		${gst_${GST_PLUGIN}_USES}
 PLIST_FILES=	${gst_${GST_PLUGIN}_PLIST_FILES}
 PLIST_DIRS=	${gst_${GST_PLUGIN}_PLIST_DIRS}
 EXTRA_LIBS+=	${gst_${GST_PLUGIN}_EXTRA_LIBS}
+.if ${gst_${GST_PLUGIN}_USE_GNOME}!=""
 USE_GNOME+=	${gst_${GST_PLUGIN}_USE_GNOME}
+.endif
 CONFIGURE_ENV+=	${gst_${GST_PLUGIN}_CONFIGURE_ENV}
 .if ${gst_${GST_PLUGIN}_GCONF_SCHEMAS}!=""
 GCONF_SCHEMAS=	${gst_${GST_PLUGIN}_GCONF_SCHEMAS}

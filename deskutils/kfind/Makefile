@@ -13,7 +13,7 @@ USE_KDE=	archive auth bookmarks codecs completion config configwidgets \
 		jobwidgets kdelibs4support kio notifications parts service \
 		solid sonnet textwidgets unitconversion widgetsaddons \
 		windowsystem xmlgui
-USE_QT=		core dbus gui network printsupport widgets xml \
+USE_QT=		concurrent core dbus gui network printsupport widgets xml \
 		buildtools_build qmake_build
 
 OPTIONS_DEFINE=	DOCS

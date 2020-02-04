@@ -5,6 +5,7 @@ LLVM_COMMANDS=	\
 		dsymutil \
 		llc \
 		lli \
+		llvm-addr2line \
 		llvm-ar \
 		llvm-as \
 		llvm-bcanalyzer \
@@ -22,7 +23,11 @@ LLVM_COMMANDS=	\
 		llvm-elfabi \
 		llvm-exegesis \
 		llvm-extract \
+		llvm-ifs \
+		llvm-install-name-tool \
+		llvm-jitlink \
 		llvm-link \
+		llvm-lipo \
 		llvm-mc \
 		llvm-modextract \
 		llvm-mt \
@@ -36,6 +41,7 @@ LLVM_COMMANDS=	\
 		llvm-rc \
 		llvm-readelf \
 		llvm-readobj \
+		llvm-reduce \
 		llvm-rtdyld \
 		llvm-size \
 		llvm-split \
@@ -46,7 +52,6 @@ LLVM_COMMANDS=	\
 		llvm-tblgen \
 		llvm-undname \
 		llvm-xray \
-		macho-dump \
 		opt \
 		sancov
 
@@ -60,23 +65,27 @@ CLANG_COMMANDS=	\
 		clang-format \
 		clang-import-test \
 		clang-offload-bundler \
-		clangd \
+		clang-offload-wrapper \
+		clang-scan-deps \
 		diagtool \
 		hmaptool \
 		scan-build \
 		scan-view
 
 EXTRAS_COMMANDS= \
+		clangd \
 		clang-apply-replacements \
 		clang-change-namespace \
+		clang-doc \
 		clang-include-fixer \
-		clang-modernize \
+		clang-move \
 		clang-query \
 		clang-rename \
 		clang-reorder-fields \
 		clang-tidy \
 		find-all-symbols \
-		modularize
+		modularize \
+		pp-trace
 
 LIT_COMMANDS=	\
 		FileCheck \
@@ -94,7 +103,5 @@ LLDB_COMMANDS=	\
 		lldb \
 		lldb-argdumper \
 		lldb-instr \
-		lldb-mi \
 		lldb-server \
-		lldb-test \
 		lldb-vscode

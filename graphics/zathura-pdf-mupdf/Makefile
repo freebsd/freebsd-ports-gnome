@@ -2,10 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	zathura-pdf-mupdf
-DISTVERSION=	0.3.4
+DISTVERSION=	0.3.5
+PORTREVISION=	3
 CATEGORIES=	graphics
 MASTER_SITES=	https://pwmt.org/projects/zathura-pdf-mupdf/download/ \
-		http://www.madpilot.net/~mad/pwmt.org/
+		http://freebsd.uzsolt.hu/src/
 
 MAINTAINER=	uzsolt@uzsolt.hu
 COMMENT=	MuPDF render PDF plugin for Zathura PDF viewer

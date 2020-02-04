@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	dsbmixer
-PORTVERSION=	1.3.3
+PORTVERSION=	1.4
 CATEGORIES=	audio
 MASTER_SITES=	http://freeshell.de/~mk/download/
 

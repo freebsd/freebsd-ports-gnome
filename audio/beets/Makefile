@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	beets
-PORTVERSION=	1.4.7
-PORTREVISION=	4
+PORTVERSION=	1.4.9
+PORTREVISION=	2
 CATEGORIES=	audio python
 MASTER_SITES=	CHEESESHOP
 
@@ -13,10 +13,12 @@ COMMENT=	Media library management system for obsessive-compulsive music geeks
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}jellyfish>=0:devel/py-jellyfish@${PY_FLAVOR} \
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}confuse>=1.0.0:devel/py-confuse@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}jellyfish>=0:devel/py-jellyfish@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}munkres10>=0:math/py-munkres10@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}musicbrainzngs>=0.4:audio/py-musicbrainzngs@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}mutagen>=1.33:audio/py-mutagen@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pyacoustid>=0:audio/py-pyacoustid@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}six>=1.9:devel/py-six@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}sqlite3>=0:databases/py-sqlite3@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}unidecode>=0:converters/py-unidecode@${PY_FLAVOR} \
@@ -35,13 +37,11 @@ OPTIONS_DEFINE=	ACOUSTICBRAINZ BADFILES BEATPORT BPD CHROMA DISCOGS EMBYUPDATE \
 		LASTIMPORT LYRICS LYRICS_GOOGLE MPDSTATS METASYNC_DBUS \
 		PLEXUPDATE REPLAYGAIN SONOS_UPDATE SPOTIFY THUMBNAILS WEB \
 		WEB_CORS
-OPTIONS_DEFAULT=
 
 ACOUSTICBRAINZ_DESC=	AcousticBrainz Plugin
 BADFILES_DESC=	Bad Files Plugin
 BEATPORT_DESC=	Beatport Catalog Autotagging Support
 BPD_DESC=	MPD Compatible Music Player Plugin
-CHROMA_DESC=	Audio Fingerprinting Plugin
 DISCOGS_DESC=	Discogs Search Plugin
 EMBYUPDATE_DESC=	Emby Update Plugin
 FETCHART_DESC=	Cover Art Fetch Plugin
@@ -70,7 +70,6 @@ BEATPORT_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FL
 			${PYTHON_PKGNAMEPREFIX}requests-oauthlib>=0.6.1:www/py-requests-oauthlib@${PY_FLAVOR}
 BPD_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}gstreamer1>=0:multimedia/py-gstreamer1@${PY_FLAVOR} \
 			${PYTHON_PKGNAMEPREFIX}gobject>=0:devel/py-gobject@${PY_FLAVOR}
-CHROMA_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}pyacoustid>=0:audio/py-pyacoustid@${PY_FLAVOR}
 DISCOGS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}discogs-client>=2.2.1:audio/py-discogs-client@${PY_FLAVOR}
 EMBYUPDATE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR}
 FETCHART_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR}
@@ -84,14 +83,14 @@ LASTIMPORT_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_
 LYRICS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR}
 LYRICS_GOOGLE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}beautifulsoup>=4:www/py-beautifulsoup@${PY_FLAVOR}
 METASYNC_DBUS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0:devel/py-dbus@${PY_FLAVOR}
-MPDSTATS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}mpd2>=0.4.2:audio/py-mpd2@${PY_FLAVOR}
+MPDSTATS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}python-mpd2>=0.4.2:audio/py-python-mpd2@${PY_FLAVOR}
 PLEXUPDATE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR}
-REPLAYGAIN_RUN_DEPENDS=	mp3gain>=0:audio/mp3gain
-REPLAYGAIN_RUN_DEPENDS+=	aacgain>=0:audio/aacgain
+REPLAYGAIN_RUN_DEPENDS=	mp3gain>=0:audio/mp3gain \
+			aacgain>=0:audio/aacgain
 SONOS_UPDATE_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}soco>=0:multimedia/py-soco@${PY_FLAVOR}
 SPOTIFY_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}requests>=0:www/py-requests@${PY_FLAVOR}
-THUMBNAILS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}xdg>=0:devel/py-xdg@${PY_FLAVOR}
-THUMBNAILS_RUN_DEPENDS+=	${PY_PATHLIB}
+THUMBNAILS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}xdg>=0:devel/py-xdg@${PY_FLAVOR} \
+			${PY_PATHLIB}
 WEB_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Flask>=0:www/py-flask@${PY_FLAVOR}
 WEB_CORS_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}Flask-Cors>=0:www/py-flask-cors@${PY_FLAVOR}
 

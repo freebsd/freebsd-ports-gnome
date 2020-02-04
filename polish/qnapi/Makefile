@@ -3,7 +3,7 @@
 
 PORTNAME=	qnapi
 PORTVERSION=	0.2.3
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	polish multimedia
 
 MAINTAINER=	ports@FreeBSD.org
@@ -20,7 +20,7 @@ RUN_DEPENDS=	7z:archivers/p7zip
 
 USE_GITHUB=	yes
 
-USES=		compiler:c++11-lib pkgconfig qmake qt:5
+USES=		compiler:c++11-lib gl pkgconfig qmake qt:5
 USE_GL=		gl
 USE_QT=		buildtools_build core gui network widgets xml
 

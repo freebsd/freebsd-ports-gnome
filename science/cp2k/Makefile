@@ -3,7 +3,7 @@
 PORTNAME=	cp2k
 DISTVERSIONPREFIX=	v
 DISTVERSION=	6.1.0
-PORTREVISION=	6
+PORTREVISION=	7
 CATEGORIES=	science
 
 PATCH_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/commit/
@@ -12,6 +12,8 @@ PATCHFILES=	f03e6277feea9a65d543ca6c1184f58d3e83bc2a.patch:-p2 \
 
 MAINTAINER=	yuri@FreeBSD.org
 COMMENT=	Quantum chemistry and solid state physics software package
+
+BROKEN=		unfetchable
 
 LICENSE=	GPLv2+
 

@@ -2,8 +2,7 @@
 
 PORTNAME=	erlang
 DISTVERSIONPREFIX=	OTP-
-DISTVERSION=	19.3.6.13
-PORTREVISION=	1
+DISTVERSION=	21.3.8.13
 PORTEPOCH=	1
 CATEGORIES=	lang parallel
 PKGNAMESUFFIX=	-wx
@@ -14,17 +13,17 @@ COMMENT=	Erlang bindings for wxWindows
 
 LICENSE=	APACHE20
 
-BUILD_DEPENDS=	erlc:lang/erlang
-RUN_DEPENDS=	erl:lang/erlang
+BUILD_DEPENDS=	erlang>=21.3.8:lang/erlang
+RUN_DEPENDS=	erlang>=21.3.8:lang/erlang
 
-USES=		autoreconf:build gl gmake perl5
+USES=		autoreconf:build gl gmake perl5 xorg
 USE_GITHUB=	yes
 GH_PROJECT=	otp
 USE_GL=		gl glu
 USE_PERL5=	build
-USE_WX=		2.8+
+USE_WX=		3.1+
 
-WX_COMPS=	wx contrib
+WX_COMPS=	wx
 
 GNU_CONFIGURE=	yes
 MAKE_JOBS_UNSAFE=yes

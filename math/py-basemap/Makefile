@@ -3,7 +3,7 @@
 
 PORTNAME=	basemap
 PORTVERSION=	1.0.7
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	math python
 MASTER_SITES=	SF/matplotlib/matplotlib-toolkits/${PORTNAME}-${PORTVERSION}
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,11 +14,14 @@ COMMENT=	Plots data on map projections with boundaries
 LICENSE=	GPLv2 LGPL21 MIT
 LICENSE_COMB=	multi
 
+DEPRECATED=	Deprecated upstream
+EXPIRATION_DATE=	2020-02-14
+
 BUILD_DEPENDS=	${PYNUMPY}
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}matplotlib>0:math/py-matplotlib@${PY_FLAVOR}
 LIB_DEPENDS=	libgeos.so:graphics/geos
 
-USES=		python
+USES=		python:2.7
 USE_PYTHON=	autoplist distutils
 
 DATADIR=	${PREFIX}/share/py-${PORTNAME}-data

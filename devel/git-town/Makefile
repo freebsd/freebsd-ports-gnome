@@ -2,7 +2,8 @@
 
 PORTNAME=	git-town
 DISTVERSIONPREFIX=	v
-DISTVERSION=	7.2.0
+DISTVERSION=	7.3.0
+PORTREVISION=	1
 CATEGORIES=	devel
 
 MAINTAINER=	yuri@FreeBSD.org
@@ -11,8 +12,9 @@ COMMENT=	Git extension for generic, high-level git workflow support
 LICENSE=	MIT
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	go:lang/go
 RUN_DEPENDS=	git:devel/git
+
+USES=		go
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	Originate
@@ -23,12 +25,6 @@ PLIST_FILES=	bin/${PORTNAME}
 OPTIONS_DEFINE=	DOCS
 
 PORTDOCS=	*
-
-do-build:
-	@cd ${WRKSRC}/${GH_SUBDIR} && ${SETENV} ${MAKE_ENV} GOPATH=${WRKSRC} go build
-
-do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/${PORTNAME} ${STAGEDIR}${PREFIX}/bin/
 
 do-install-DOCS-on:
 	cd ${WRKSRC}/documentation && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}

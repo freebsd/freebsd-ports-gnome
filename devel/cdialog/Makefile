@@ -13,19 +13,19 @@ COMMENT=	Enhanced version of 'dialog' to work with ncurses
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-OPTIONS_DEFINE=	EXAMPLES
-
 USES=		libtool:build ncurses tar:tgz
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 CONFIGURE_ARGS=	--enable-widec \
 		--includedir=${PREFIX}/include/${PORTNAME} \
 		--with-libtool \
-		--with-ncursesw \
+		--with-${NCURSES_IMPL} \
 		--with-package=${PORTNAME}
 MAKEFILE=	makefile
 
 INSTALL_TARGET=	install-strip install-man install-lib
+
+OPTIONS_DEFINE=	EXAMPLES
 
 .include <bsd.port.pre.mk>
 
@@ -38,7 +38,7 @@ post-patch:
 	@${REINPLACE_CMD} -e 's|$$(INSTALL_DATA) $$(LIB)|$$(INSTALL_DATA) -s $$(LIB)|'\
 		${WRKSRC}/${MAKEFILE}.in
 
-post-install:
+post-install-EXAMPLES-on:
 	@${MKDIR} ${STAGEDIR}${EXAMPLESDIR}
 	cd ${WRKSRC}/samples && ${COPYTREE_SHARE} . ${STAGEDIR}${EXAMPLESDIR}
 

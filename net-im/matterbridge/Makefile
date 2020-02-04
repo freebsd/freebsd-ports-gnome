@@ -1,8 +1,9 @@
 # $FreeBSD$
 
 PORTNAME=	matterbridge
-PORTVERSION=	1.14.4
+PORTVERSION=	1.16.0
 DISTVERSIONPREFIX=	v
+PORTREVISION=	1
 CATEGORIES=	net-im
 
 MAINTAINER=	swills@FreeBSD.org
@@ -11,11 +12,10 @@ COMMENT=	Chat network bridge
 LICENSE=	APACHE20
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	go:lang/go
+USES=		go:modules
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	42wim
-GH_SUBDIR=	src/github.com/42wim/matterbridge
 
 USE_RC_SUBR=	matterbridge
 
@@ -30,12 +30,7 @@ PLIST_SUB=	\
 		MATTERBRIDGE_USER=${MATTERBRIDGE_USER} \
 		MATTERBRIDGE_GROUP=${MATTERBRIDGE_GROUP}
 
-do-build:
-	@cd ${WRKSRC}/src/github.com/42wim/matterbridge && \
-		${SETENV} ${MAKE_ENV} GOPATH=${WRKSRC} go build -o bin/${PORTNAME}
-
-do-install:
-	${INSTALL_PROGRAM} ${WRKSRC}/bin/${PORTNAME} ${STAGEDIR}${PREFIX}/bin
+post-install:
 	${INSTALL_DATA} ${WRKSRC}/matterbridge.toml.sample ${STAGEDIR}${PREFIX}/etc/matterbridge.toml.sample
 
 .include <bsd.port.mk>

@@ -10,14 +10,12 @@
     SUBDIR += aegisub
     SUBDIR += aom
     SUBDIR += aravis
-    SUBDIR += asdcplib
     SUBDIR += assimp
     SUBDIR += atomicparsley
     SUBDIR += audacious
     SUBDIR += audacious-gtk3
     SUBDIR += audacious-plugins
     SUBDIR += audacious-plugins-gtk3
-    SUBDIR += audiopreview
     SUBDIR += avidemux
     SUBDIR += avidemux-cli
     SUBDIR += avidemux-plugins
@@ -28,9 +26,11 @@
     SUBDIR += bitstream
     SUBDIR += blind
     SUBDIR += bsdbktr_tvtune
+    SUBDIR += butt
     SUBDIR += camserv
     SUBDIR += ccextractor
     SUBDIR += cclive
+    SUBDIR += celluloid
     SUBDIR += cheese
     SUBDIR += chilitags
     SUBDIR += cinelerra-gg
@@ -40,11 +40,9 @@
     SUBDIR += clutter-gst3
     SUBDIR += cmrt
     SUBDIR += cmrtlib
-    SUBDIR += cuse4bsd-kmod
     SUBDIR += cx88
     SUBDIR += dav1d
     SUBDIR += deforaos-player
-    SUBDIR += devede
     SUBDIR += din
     SUBDIR += dirac
     SUBDIR += dragon
@@ -59,13 +57,11 @@
     SUBDIR += dvdid
     SUBDIR += dvdrip
     SUBDIR += dvdstyler
-    SUBDIR += dvts
     SUBDIR += emby-server
     SUBDIR += emovix
     SUBDIR += ffaudioconverter
     SUBDIR += ffdec
     SUBDIR += ffmpeg
-    SUBDIR += ffmpeg0
     SUBDIR += ffmpeg2theora
     SUBDIR += ffmpegthumbnailer
     SUBDIR += ffms2
@@ -78,17 +74,13 @@
     SUBDIR += fxtv
     SUBDIR += gaupol
     SUBDIR += gavl
-    SUBDIR += gcfilms
     SUBDIR += gdialog
-    SUBDIR += gdvrecv
     SUBDIR += gmerlin
-    SUBDIR += gmerlin-avdecoder
     SUBDIR += gmimms
     SUBDIR += gmmlib
     SUBDIR += gmp-api
     SUBDIR += gmtk
     SUBDIR += gnome-mplayer
-    SUBDIR += gnome-mpv
     SUBDIR += gnome-subtitles
     SUBDIR += gnome-twitch
     SUBDIR += gpac-libgpac
@@ -142,10 +134,14 @@
     SUBDIR += gstreamer1-plugins-mpeg2dec
     SUBDIR += gstreamer1-plugins-mpeg2enc
     SUBDIR += gstreamer1-plugins-mplex
+    SUBDIR += gstreamer1-plugins-msdk
     SUBDIR += gstreamer1-plugins-openh264
     SUBDIR += gstreamer1-plugins-resindvd
     SUBDIR += gstreamer1-plugins-rtmp
     SUBDIR += gstreamer1-plugins-smoothstreaming
+    SUBDIR += gstreamer1-plugins-svt-av1
+    SUBDIR += gstreamer1-plugins-svt-hevc
+    SUBDIR += gstreamer1-plugins-svt-vp9
     SUBDIR += gstreamer1-plugins-theora
     SUBDIR += gstreamer1-plugins-ttml
     SUBDIR += gstreamer1-plugins-ugly
@@ -165,6 +161,7 @@
     SUBDIR += handbrake
     SUBDIR += harvid
     SUBDIR += imagination
+    SUBDIR += intel-media-sdk
     SUBDIR += iriverter
     SUBDIR += iso2mkv
     SUBDIR += jmref
@@ -174,12 +171,14 @@
     SUBDIR += kdemultimedia-ffmpegthumbs
     SUBDIR += kdenlive
     SUBDIR += kf5-kmediaplayer
-    SUBDIR += kissdx
     SUBDIR += kmplayer
     SUBDIR += kodi
+    SUBDIR += kodi-addon-inputstream.adaptive-devel
     SUBDIR += kodi-addon-peripheral-joystick
+    SUBDIR += kodi-addon-peripheral.joystick-devel
     SUBDIR += kodi-addon-pvr-hts
     SUBDIR += kodi-addon-pvr-iptvsimple
+    SUBDIR += kodi-addon-vfs.libarchive-devel
     SUBDIR += kodi-devel
     SUBDIR += kvazaar
     SUBDIR += l-smash
@@ -208,12 +207,14 @@
     SUBDIR += libmpeg2
     SUBDIR += libmpeg3
     SUBDIR += libmtp
+    SUBDIR += libopenshot
     SUBDIR += libquicktime
     SUBDIR += libquicktime-lame
     SUBDIR += libquvi
     SUBDIR += libquvi-scripts
     SUBDIR += libquvi-scripts09
     SUBDIR += libquvi09
+    SUBDIR += librav1e
     SUBDIR += librtmp
     SUBDIR += libsmacker
     SUBDIR += libtheora
@@ -234,8 +235,6 @@
     SUBDIR += libxine
     SUBDIR += libxspf
     SUBDIR += libzen
-    SUBDIR += linux-c6-libtheora
-    SUBDIR += linux-c6-libv4l
     SUBDIR += linux-c7-libtheora
     SUBDIR += linux-c7-libv4l
     SUBDIR += linux-tsmuxer
@@ -258,7 +257,6 @@
     SUBDIR += mkxvcd
     SUBDIR += mlt
     SUBDIR += mlt-qt5
-    SUBDIR += mmpython
     SUBDIR += mmsclient
     SUBDIR += mmsrip
     SUBDIR += motion
@@ -267,7 +265,6 @@
     SUBDIR += mpc-qt
     SUBDIR += mpeg2codec
     SUBDIR += mpeg2play
-    SUBDIR += mpeg4ip
     SUBDIR += mpeg_encode
     SUBDIR += mpeg_play
     SUBDIR += mpeg_stat
@@ -277,6 +274,7 @@
     SUBDIR += mplex
     SUBDIR += mps-youtube
     SUBDIR += mpv
+    SUBDIR += mpv-mpris
     SUBDIR += msdl
     SUBDIR += msopenh264
     SUBDIR += mswebrtc
@@ -315,7 +313,6 @@
     SUBDIR += photofilmstrip
     SUBDIR += php-pHash
     SUBDIR += pitivi
-    SUBDIR += playd
     SUBDIR += plexmediaserver
     SUBDIR += plexmediaserver-plexpass
     SUBDIR += plexwatch
@@ -330,6 +327,7 @@
     SUBDIR += py-av
     SUBDIR += py-cec
     SUBDIR += py-enzyme
+    SUBDIR += py-ffmpeg-python
     SUBDIR += py-flvlib
     SUBDIR += py-gstreamer
     SUBDIR += py-gstreamer1
@@ -344,12 +342,12 @@
     SUBDIR += py-openlp
     SUBDIR += py-periscope
     SUBDIR += py-pretty_midi
+    SUBDIR += py-pymediainfo
     SUBDIR += py-qt5-multimedia
     SUBDIR += py-qt5-multimediawidgets
     SUBDIR += py-soco
     SUBDIR += py-subliminal
     SUBDIR += py-tvnamer
-    SUBDIR += pymp
     SUBDIR += qmmp-plugin-pack-qt5
     SUBDIR += qmmp-qt5
     SUBDIR += qt-faststart
@@ -385,8 +383,8 @@
     SUBDIR += snappy
     SUBDIR += spigot
     SUBDIR += spook
+    SUBDIR += subsync
     SUBDIR += subtitlecomposer
-    SUBDIR += subtitleeditor
     SUBDIR += subtitleoffsetmodifier
     SUBDIR += subtitleripper
     SUBDIR += subtools
@@ -398,6 +396,7 @@
     SUBDIR += szap-s2
     SUBDIR += tautulli
     SUBDIR += tcmplex-panteltje
+    SUBDIR += termplay
     SUBDIR += tivodecode
     SUBDIR += totem
     SUBDIR += totem-pl-parser
@@ -406,13 +405,13 @@
     SUBDIR += tstools
     SUBDIR += tvheadend
     SUBDIR += umph
-    SUBDIR += umr
     SUBDIR += ustreamer
     SUBDIR += v4l-utils
     SUBDIR += v4l_compat
     SUBDIR += vamps
     SUBDIR += vapoursynth
     SUBDIR += vapoursynth-l-smash-works
+    SUBDIR += vapoursynth-vmaf
     SUBDIR += vcdgear
     SUBDIR += vcdimager
     SUBDIR += vcdpad
@@ -432,10 +431,8 @@
     SUBDIR += vdr-plugin-remote
     SUBDIR += vdr-plugin-skinenigmang
     SUBDIR += vdr-plugin-sleeptimer
-    SUBDIR += vdr-plugin-softhddevice
     SUBDIR += vdr-plugin-streamdev
     SUBDIR += vdr-plugin-ttxtsubs
-    SUBDIR += vdr-plugin-upnp
     SUBDIR += vdr-plugin-vdrmanager
     SUBDIR += vdr-plugin-vnsiserver
     SUBDIR += vdr-plugin-wirbelscan
@@ -444,6 +441,7 @@
     SUBDIR += vdr-plugins
     SUBDIR += vid.stab
     SUBDIR += vlc
+    SUBDIR += vmaf
     SUBDIR += vtkmpeg2encode
     SUBDIR += w_scan
     SUBDIR += webcamd
@@ -452,6 +450,7 @@
     SUBDIR += wf-recorder
     SUBDIR += win32-codecs
     SUBDIR += winff
+    SUBDIR += wlrobs
     SUBDIR += x264
     SUBDIR += x265
     SUBDIR += xanim
@@ -461,6 +460,7 @@
     SUBDIR += xporthdmv
     SUBDIR += xvid
     SUBDIR += yamdi
+    SUBDIR += zart
     SUBDIR += zoneminder
 
 .include <bsd.port.subdir.mk>

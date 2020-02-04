@@ -3,13 +3,15 @@
 
 PORTNAME=	hugs98
 PORTVERSION=	200609
-PORTREVISION=	15
+PORTREVISION=	16
 CATEGORIES=	lang haskell
 MASTER_SITES=	http://cvs.haskell.org/Hugs/downloads/2006-09/
 DISTNAME=	${PORTNAME}-plus-${HUGS_DATE}
 
 MAINTAINER=	haskell@FreeBSD.org
 COMMENT=	Interpreter for the functional programming language Haskell 98
+
+BROKEN=		unfetchable
 
 BROKEN_armv6=		fails to compile: cppinput.c: invalid preprocessing directive \#!
 BROKEN_armv7=		fails to compile: cppinput.c: invalid preprocessing directive \#!
@@ -19,7 +21,7 @@ BUILD_DEPENDS=	bash:shells/bash
 WRKSRC=		${WRKDIR}/${DISTNAME}
 
 HUGS_DATE=	Sep2006
-USES=		bison gmake openal:al,alut
+USES=		bison gl gmake openal:al,alut xorg
 USE_CSTD=	gnu89
 USE_GCC=	yes
 

@@ -5,7 +5,7 @@ PORTNAME=	freebsd-uucp
 PORTREVISION=	3
 DISTVERSIONPREFIX=	r
 DISTVERSION=	1_07_4
-CATEGORIES=	net comms ipv6
+CATEGORIES=	net comms
 PKGNAMESUFFIX?=	${PAM_SUFFIX}${PKGNAMESUFFIX2}
 
 MAINTAINER=	dinoex@FreeBSD.org
@@ -13,6 +13,8 @@ COMMENT=	FreeBSD-modified Taylor UUCP (unix-to-unix copy program)
 
 LICENSE=	GPLv2+
 LICENSE_FILE=	${WRKSRC}/uucp/COPYING
+
+PORTSCOUT=	limit:^1_
 
 USES=		fakeroot
 
