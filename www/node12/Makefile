@@ -1,11 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	node
-<<<<<<< HEAD
-PORTVERSION=	12.14.0
-=======
 PORTVERSION=	12.14.1
->>>>>>> master
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 MASTER_SITES=	http://nodejs.org/dist/v${PORTVERSION}/

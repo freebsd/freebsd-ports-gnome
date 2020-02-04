@@ -2,12 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	firefox
-<<<<<<< HEAD
-DISTVERSION=	68.4.2
-PORTREVISION=	2
-=======
 DISTVERSION=	68.5.0
->>>>>>> master
 PORTEPOCH=	1
 CATEGORIES=	www
 MASTER_SITES=	MOZILLA/${PORTNAME}/releases/${DISTVERSION}esr/source \

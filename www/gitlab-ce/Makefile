@@ -2,13 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gitlab-ce
-<<<<<<< HEAD
-PORTVERSION=	12.6.6
-PORTREVISION=	0
-=======
 PORTVERSION=	12.7.5
 PORTREVISION=	1
->>>>>>> master
 CATEGORIES=	www devel
 
 MAINTAINER=	mfechner@FreeBSD.org
@@ -20,15 +15,9 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 # the rubygems of RUN_DEPENDS matches the order of the Gemfile
 # which makes maintaining this long list much easier!
 MY_DEPENDS=	git>=2.22.2:devel/git \
-<<<<<<< HEAD
-	gitlab-shell>=10.3.0:devel/gitlab-shell \
-	gitlab-workhorse>=8.20.0:www/gitlab-workhorse \
-	gitaly>=1.77.0:devel/gitaly \
-=======
 	gitlab-shell>=11.0.0:devel/gitlab-shell \
 	gitlab-workhorse>=8.20.0:www/gitlab-workhorse \
 	gitaly>=1.83.0:devel/gitaly \
->>>>>>> master
 	gitlab-pages>=1.12.0:www/gitlab-pages \
 	redis>=3.2.12:databases/redis \
 	yarn>=1.10.0:www/yarn \
@@ -75,11 +64,7 @@ MY_DEPENDS=	git>=2.22.2:devel/git \
 	rubygem-attr_encrypted>=3.1.0<3.2.0:security/rubygem-attr_encrypted \
 	rubygem-u2f0>=0.2.1<0.3.0:net/rubygem-u2f0 \
 	rubygem-validates_hostname>=1.0.6<1.1.0:dns/rubygem-validates_hostname \
-<<<<<<< HEAD
-	rubygem-rubyzip>=2.0.0<2.1.0:archivers/rubygem-rubyzip \
-=======
 	rubygem-rubyzip20>=2.0.0<2.1.0:archivers/rubygem-rubyzip20 \
->>>>>>> master
 	rubygem-acme-client>=2.0.2<2.1.0:security/rubygem-acme-client \
 	rubygem-browser>=2.5<3.0:www/rubygem-browser \
 	rubygem-gpgme>=2.0.19<2.1.0:security/rubygem-gpgme \
@@ -257,11 +242,7 @@ USE_GITLAB=	yes
 GL_ACCOUNT=	gitlab-org
 GL_PROJECT=	gitlab-foss
 # Find the here: https://gitlab.com/gitlab-org/gitlab-foss/-/tags
-<<<<<<< HEAD
-GL_COMMIT=	114d26c615cd6305270b0f29d11b177ab9e655c0
-=======
 GL_COMMIT=	b0fe37ef58e19bc6f5d1db99f2ddc809f180a6f5
->>>>>>> master
 
 USERS=	git
 GROUPS=	git

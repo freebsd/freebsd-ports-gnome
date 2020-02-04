@@ -1,8 +1,5 @@
 --- deps/v8/src/base/platform/platform-freebsd.cc.orig	2020-01-07 22:07:49 UTC
 +++ deps/v8/src/base/platform/platform-freebsd.cc
-<<<<<<< HEAD
-@@ -94,6 +94,48 @@ std::vector<OS::SharedLibraryAddress> OS::GetSharedLib
-=======
 @@ -81,8 +81,8 @@ std::vector<OS::SharedLibraryAddress> OS::GetSharedLib
              lib_name = std::string(path);
            }
@@ -12,7 +9,6 @@
 +              lib_name, static_cast<uintptr_t>(map->kve_start),
 +              static_cast<uintptr_t>(map->kve_end)));
          }
->>>>>>> master
  
          start += ssize;
 @@ -93,6 +93,48 @@ std::vector<OS::SharedLibraryAddress> OS::GetSharedLib

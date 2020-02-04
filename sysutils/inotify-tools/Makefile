@@ -2,11 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	inotify-tools # new fork https://github.com/ericcurtin/inotify-tools
-<<<<<<< HEAD
-DISTVERSION=	3.20.2.1
-=======
 DISTVERSION=	3.20.2.2
->>>>>>> master
 CATEGORIES=	sysutils
 
 MAINTAINER=	yuri@FreeBSD.org

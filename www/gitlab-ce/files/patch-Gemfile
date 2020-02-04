@@ -1,8 +1,4 @@
-<<<<<<< HEAD
---- Gemfile.orig	2020-01-30 15:15:59 UTC
-=======
 --- Gemfile.orig	2020-01-31 21:59:11 UTC
->>>>>>> master
 +++ Gemfile
 @@ -1,6 +1,6 @@
  source 'https://rubygems.org'
