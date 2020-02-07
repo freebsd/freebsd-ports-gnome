@@ -94,6 +94,9 @@
     SUBDIR += bareos17-client
     SUBDIR += bareos17-client-static
     SUBDIR += bareos17-server
+    SUBDIR += bareos18-client
+    SUBDIR += bareos18-server
+    SUBDIR += bareos18-traymonitor
     SUBDIR += barrier
     SUBDIR += bastille
     SUBDIR += batmon
@@ -1377,7 +1380,6 @@
     SUBDIR += udfclient
     SUBDIR += uefi-edk2-bhyve
     SUBDIR += uefi-edk2-bhyve-csm
-    SUBDIR += uefi-edk2-bhyve-devel
     SUBDIR += uefi-edk2-qemu
     SUBDIR += ufetch
     SUBDIR += ufs_copy
