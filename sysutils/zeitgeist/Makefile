@@ -24,6 +24,7 @@ USES=		autoreconf gettext gmake gnome pathfix python:2.7 pkgconfig \
 USE_GNOME=	intlhack glib20 introspection:build
 
 USE_LDCONFIG=	yes
+USE_PYTHON=	py3kplist
 GNU_CONFIGURE=	yes
 INSTALL_TARGET=	install-strip
 

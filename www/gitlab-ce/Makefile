@@ -2,8 +2,8 @@
 # $FreeBSD$
 
 PORTNAME=	gitlab-ce
-PORTVERSION=	12.7.5
-PORTREVISION=	1
+PORTVERSION=	12.7.6
+PORTREVISION=	0
 CATEGORIES=	www devel
 
 MAINTAINER=	mfechner@FreeBSD.org
@@ -181,7 +181,7 @@ MY_DEPENDS=	git>=2.22.2:devel/git \
 	rubygem-rails-i18n-rails52>=5.1<6.0:devel/rubygem-rails-i18n-rails52 \
 	rubygem-gettext_i18n_rails>=1.8.0<1.9.0:devel/rubygem-gettext_i18n_rails \
 	rubygem-gettext_i18n_rails_js-rails52>=1.3<2.0:devel/rubygem-gettext_i18n_rails_js-rails52 \
-	rubygem-gettext>=3.2.2<3.3.0:devel/rubygem-gettext \
+	rubygem-gettext32>=3.2.2<3.3.0:devel/rubygem-gettext32 \
 	rubygem-batch-loader>=1.4.0<1.5.0:devel/rubygem-batch-loader \
 	rubygem-peek-rails52>=1.1.0<2.0:devel/rubygem-peek-rails52 \
 	rubygem-snowplow-tracker>=0.6.1<0.7.0:devel/rubygem-snowplow-tracker \
@@ -242,7 +242,7 @@ USE_GITLAB=	yes
 GL_ACCOUNT=	gitlab-org
 GL_PROJECT=	gitlab-foss
 # Find the here: https://gitlab.com/gitlab-org/gitlab-foss/-/tags
-GL_COMMIT=	b0fe37ef58e19bc6f5d1db99f2ddc809f180a6f5
+GL_COMMIT=	61654d25b205e5c720de4d82402ff83fd8f18849
 
 USERS=	git
 GROUPS=	git

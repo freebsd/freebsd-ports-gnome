@@ -42,6 +42,7 @@
     SUBDIR += bareos-webui
     SUBDIR += bareos16-webui
     SUBDIR += bareos17-webui
+    SUBDIR += bareos18-webui
     SUBDIR += bkmrkconv
     SUBDIR += blastbeat
     SUBDIR += bluefish
@@ -1384,7 +1385,6 @@
     SUBDIR += piwigo
     SUBDIR += planet
     SUBDIR += plasma5-plasma-browser-integration
-    SUBDIR += plexwatchweb
     SUBDIR += plugger
     SUBDIR += pmwiki
     SUBDIR += pnews
@@ -1435,7 +1435,6 @@
     SUBDIR += py-cheroot
     SUBDIR += py-cherrypy
     SUBDIR += py-clientform
-    SUBDIR += py-collective.templateengines
     SUBDIR += py-cookies
     SUBDIR += py-crossplane
     SUBDIR += py-css-parser
@@ -1454,7 +1453,6 @@
     SUBDIR += py-dj22-django-formset-js-improved
     SUBDIR += py-dj22-django-jquery-js
     SUBDIR += py-dj22-django-js-asset
-    SUBDIR += py-dj22-django-jsonfield2
     SUBDIR += py-dj22-django-model-utils
     SUBDIR += py-dj22-django-mptt
     SUBDIR += py-dj22-django-prometheus
@@ -1468,6 +1466,7 @@
     SUBDIR += py-dj22-djangoql
     SUBDIR += py-dj22-djangorestframework
     SUBDIR += py-dj22-drf-yasg
+    SUBDIR += py-dj22-jsonfield2
     SUBDIR += py-dj22-swapper
     SUBDIR += py-django
     SUBDIR += py-django-allauth
@@ -1517,7 +1516,6 @@
     SUBDIR += py-django-js-asset
     SUBDIR += py-django-json-rpc
     SUBDIR += py-django-jsonfield
-    SUBDIR += py-django-jsonfield2
     SUBDIR += py-django-ldapdb
     SUBDIR += py-django-libsass
     SUBDIR += py-django-markdownx
@@ -1674,6 +1672,7 @@
     SUBDIR += py-internetarchive
     SUBDIR += py-jonpy
     SUBDIR += py-jsonfield
+    SUBDIR += py-jsonfield2
     SUBDIR += py-kallithea
     SUBDIR += py-lektor
     SUBDIR += py-lesscpy
@@ -1853,10 +1852,12 @@
     SUBDIR += rubygem-actioncable5
     SUBDIR += rubygem-actioncable50
     SUBDIR += rubygem-actioncable52
+    SUBDIR += rubygem-actioncable60
     SUBDIR += rubygem-actionpack4
     SUBDIR += rubygem-actionpack5
     SUBDIR += rubygem-actionpack50
     SUBDIR += rubygem-actionpack52
+    SUBDIR += rubygem-actionpack60
     SUBDIR += rubygem-activeresource4
     SUBDIR += rubygem-activeresource5
     SUBDIR += rubygem-acts-as-taggable-on
@@ -1944,6 +1945,7 @@
     SUBDIR += rubygem-hamlit-rails-rails50
     SUBDIR += rubygem-hashicorp-checkpoint
     SUBDIR += rubygem-heroics
+    SUBDIR += rubygem-heroics00
     SUBDIR += rubygem-heroku-api
     SUBDIR += rubygem-heroku-nav
     SUBDIR += rubygem-hpricot
@@ -2054,6 +2056,7 @@
     SUBDIR += rubygem-rails5
     SUBDIR += rubygem-rails50
     SUBDIR += rubygem-rails52
+    SUBDIR += rubygem-rails60
     SUBDIR += rubygem-rails_12factor
     SUBDIR += rubygem-rails_autolink
     SUBDIR += rubygem-rails_serve_static_assets
@@ -2062,6 +2065,7 @@
     SUBDIR += rubygem-railties5
     SUBDIR += rubygem-railties50
     SUBDIR += rubygem-railties52
+    SUBDIR += rubygem-railties60
     SUBDIR += rubygem-raindrops
     SUBDIR += rubygem-ramaze
     SUBDIR += rubygem-raphael-rails
@@ -2079,6 +2083,7 @@
     SUBDIR += rubygem-responders
     SUBDIR += rubygem-responders-rails5
     SUBDIR += rubygem-responders-rails52
+    SUBDIR += rubygem-responders-rails60
     SUBDIR += rubygem-rest-client
     SUBDIR += rubygem-rfacebook
     SUBDIR += rubygem-rfeedfinder
@@ -2396,6 +2401,5 @@
     SUBDIR += zenphoto
     SUBDIR += zerowait-httpd
     SUBDIR += zola
-    SUBDIR += zope213
 
 .include <bsd.port.subdir.mk>

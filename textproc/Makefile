@@ -1127,6 +1127,7 @@
     SUBDIR += pcrs
     SUBDIR += pdfgrep
     SUBDIR += pdfoutline
+    SUBDIR += pdfresurrect
     SUBDIR += pdfsandwich
     SUBDIR += pdftohtml
     SUBDIR += pear-File_Fortune
@@ -1212,6 +1213,7 @@
     SUBDIR += py-QDarkStyle
     SUBDIR += py-Tempita
     SUBDIR += py-acora
+    SUBDIR += py-aeidon
     SUBDIR += py-agate
     SUBDIR += py-agate-dbf
     SUBDIR += py-agate-excel
@@ -1464,13 +1466,13 @@
     SUBDIR += rubygem-actionpack-xml_parser
     SUBDIR += rubygem-actionpack-xml_parser1
     SUBDIR += rubygem-actionpack-xml_parser52
+    SUBDIR += rubygem-actiontext60
     SUBDIR += rubygem-albino
     SUBDIR += rubygem-amatch
     SUBDIR += rubygem-asciidoctor
     SUBDIR += rubygem-asciidoctor-diagram
     SUBDIR += rubygem-asciidoctor-include-ext
     SUBDIR += rubygem-asciidoctor-plantuml
-    SUBDIR += rubygem-asciidoctor-plantuml009
     SUBDIR += rubygem-autoprefixer-rails
     SUBDIR += rubygem-babel-source
     SUBDIR += rubygem-babel-transpiler
@@ -1500,21 +1502,16 @@
     SUBDIR += rubygem-docdiff
     SUBDIR += rubygem-elasticsearch
     SUBDIR += rubygem-elasticsearch-api
-    SUBDIR += rubygem-elasticsearch-api503
     SUBDIR += rubygem-elasticsearch-api6
     SUBDIR += rubygem-elasticsearch-dsl
     SUBDIR += rubygem-elasticsearch-model
-    SUBDIR += rubygem-elasticsearch-model019
     SUBDIR += rubygem-elasticsearch-model6
     SUBDIR += rubygem-elasticsearch-persistence
     SUBDIR += rubygem-elasticsearch-rails
-    SUBDIR += rubygem-elasticsearch-rails019
     SUBDIR += rubygem-elasticsearch-rails6
     SUBDIR += rubygem-elasticsearch-transport
-    SUBDIR += rubygem-elasticsearch-transport503
     SUBDIR += rubygem-elasticsearch-transport6
     SUBDIR += rubygem-elasticsearch-xpack
-    SUBDIR += rubygem-elasticsearch503
     SUBDIR += rubygem-elasticsearch6
     SUBDIR += rubygem-emot
     SUBDIR += rubygem-escape_utils
@@ -1584,6 +1581,7 @@
     SUBDIR += rubygem-rails-dom-testing-rails5
     SUBDIR += rubygem-rails-dom-testing-rails50
     SUBDIR += rubygem-rails-dom-testing-rails52
+    SUBDIR += rubygem-rails-dom-testing-rails60
     SUBDIR += rubygem-rails-dom-testing1
     SUBDIR += rubygem-rails-html-sanitizer
     SUBDIR += rubygem-rak
@@ -1617,6 +1615,7 @@
     SUBDIR += rubygem-sass-rails-rails5
     SUBDIR += rubygem-sass-rails-rails50
     SUBDIR += rubygem-sass-rails-rails52
+    SUBDIR += rubygem-sass-rails-rails60
     SUBDIR += rubygem-sass32
     SUBDIR += rubygem-sass34
     SUBDIR += rubygem-sassc
@@ -1624,6 +1623,7 @@
     SUBDIR += rubygem-sassc-rails-rails5
     SUBDIR += rubygem-sassc-rails-rails50
     SUBDIR += rubygem-sassc-rails-rails52
+    SUBDIR += rubygem-sassc-rails-rails60
     SUBDIR += rubygem-sax-machine
     SUBDIR += rubygem-scss_lint
     SUBDIR += rubygem-shell2html

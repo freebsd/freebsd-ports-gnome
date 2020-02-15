@@ -9,7 +9,7 @@ MASTER_SITES=	https://static.rust-lang.org/dist/:src \
 		LOCAL/tobik/rust:bootstrap \
 		https://static.rust-lang.org/dist/:bootstrap
 DISTNAME?=	${PORTNAME}c-${PORTVERSION}-src
-DISTFILES?=	${NIGHTLY_SUBDIR}${DISTNAME}${EXTRACT_SUFX}:src \
+DISTFILES?=	${NIGHTLY_DATE:D${NIGHTLY_DATE}/}${DISTNAME}${EXTRACT_SUFX}:src \
 		${_RUSTC_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}${EXTRACT_SUFX}:bootstrap \
 		${_RUST_STD_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}${EXTRACT_SUFX}:bootstrap \
 		${_CARGO_BOOTSTRAP}${BOOTSTRAPS_SUFFIX}${EXTRACT_SUFX}:bootstrap
@@ -26,7 +26,7 @@ LICENSE_FILE_MIT=	${WRKSRC}/LICENSE-MIT
 
 IGNORE_FreeBSD_11_powerpc64=	is missing a bootstrap for FreeBSD 11.x powerpc64
 ONLY_FOR_ARCHS?=	aarch64 amd64 armv6 armv7 i386 powerpc64
-ONLY_FOR_ARCHS_REASON=	requires prebuilt bootstrap compiler
+ONLY_FOR_ARCHS_REASON?=	requires prebuilt bootstrap compiler
 
 BUILD_DEPENDS=	cmake:devel/cmake
 LIB_DEPENDS=	libcurl.so:ftp/curl \
@@ -125,7 +125,7 @@ post-patch:
 	@${ECHO_MSG} "Bootstrap date and version after patching:"
 	@${GREP} -E '^(date|rustc|cargo)' ${WRKSRC}/src/stage0.txt
 .if ${ARCH} == powerpc64
-# Starting with 13.0 powerpc64 is ELFv2 while 12.0 is ELFv1.  Pass the correct LLVM target triple.  
+# Starting with 13.0 powerpc64 is ELFv2 while 12.0 is ELFv1.  Pass the correct LLVM target triple.
 	@${REINPLACE_CMD} 's,powerpc64-unknown-freebsd,powerpc64-unknown-freebsd${OSREL},' \
 		${WRKSRC}/src/librustc_target/spec/powerpc64_unknown_freebsd.rs
 .endif
@@ -166,8 +166,8 @@ do-configure:
 	@${ECHO_CMD} 'cxx="${CXX}"' >> ${WRKSRC}/config.toml
 .if ${ARCH} == armv6
 # fails to link with base ld.bfd: rustc_codegen_llvm.e2557spx-cgu.11:(.text._ZN89_$LT$rustc_target..abi..call..CastTarget$u20$as$u20$rustc_codegen_llvm..abi..LlvmType$GT$9llvm_type17h1296210ab461fc57E+0x54): relocation truncated to fit: R_ARM_CALL against symbol `__aeabi_uldivmod' defined in .text.__aeabi_uldivmod section in /tmp/rustcdnGbao/libcompiler_builtins-ee65b414e4115a8f.rlib(compiler_builtins-ee65b414e4115a8f.compiler_builtins.ay8p39ey-cgu.13.rcgu.o)
-	@${PRINTF} '#!/bin/sh\nexec ${CC} -fuse-ld=lld "$$@"' > ${WRKDIR}/cc-wrapper 	 
-	@${CHMOD} +x ${WRKDIR}/cc-wrapper 	 
+	@${PRINTF} '#!/bin/sh\nexec ${CC} -fuse-ld=lld "$$@"' > ${WRKDIR}/cc-wrapper
+	@${CHMOD} +x ${WRKDIR}/cc-wrapper
 	@${ECHO_CMD} 'linker="${WRKDIR}/cc-wrapper"' >> ${WRKSRC}/config.toml
 .else
 	@${ECHO_CMD} 'linker="${CC}"' >> ${WRKSRC}/config.toml
@@ -232,6 +232,11 @@ post-install:
 	    ${STAGEDIR}${PREFIX}/lib/rustlib/uninstall.sh
 	@${FIND} ${STAGEDIR}${PREFIX}/bin -exec ${FILE} -i {} + | ${AWK} -F: \
 		'/executable|sharedlib/ { print $$1 }' | ${XARGS} ${STRIP_CMD}
+
+post-install-SOURCES-on:
+# Silence stage-qa warnings by sanitizing permissions on sources
+	@${FIND} ${STAGEDIR}${PREFIX}/lib/rustlib/src -type f -exec ${CHMOD} \
+		${SHAREMODE} {} +
 
 # Note that make test does not work when rust is already installed.
 do-test:
