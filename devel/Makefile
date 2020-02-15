@@ -463,6 +463,7 @@
     SUBDIR += deforaos-libsystem
     SUBDIR += deheader
     SUBDIR += delta
+    SUBDIR += delve
     SUBDIR += dep
     SUBDIR += deployer
     SUBDIR += derelict-sdl2
@@ -773,6 +774,7 @@
     SUBDIR += gettext-runtime
     SUBDIR += gettext-tools
     SUBDIR += gflags
+    SUBDIR += gh
     SUBDIR += ghidra
     SUBDIR += ghq
     SUBDIR += ghub
@@ -839,7 +841,6 @@
     SUBDIR += go-bindata-assetfs
     SUBDIR += go-git
     SUBDIR += go-glide
-    SUBDIR += go-godef
     SUBDIR += go-protobuf
     SUBDIR += go-tools
     SUBDIR += gob2
@@ -897,9 +898,6 @@
     SUBDIR += gwenhywfar-gtk3
     SUBDIR += gwenhywfar-qt5
     SUBDIR += gzstream
-    SUBDIR += hachoir-core
-    SUBDIR += hachoir-parser
-    SUBDIR += hachoir-regex
     SUBDIR += hadoop
     SUBDIR += hadoop2
     SUBDIR += hapy
@@ -4078,6 +4076,7 @@
     SUBDIR += py-aws-sam-translator
     SUBDIR += py-aws-xray-sdk
     SUBDIR += py-azure-batch
+    SUBDIR += py-azure-core
     SUBDIR += py-azure-cosmos
     SUBDIR += py-azure-datalake-store
     SUBDIR += py-azure-functions-devops-build
@@ -4147,6 +4146,7 @@
     SUBDIR += py-azure-multiapi-storage
     SUBDIR += py-azure-storage-blob
     SUBDIR += py-azure-storage-common
+    SUBDIR += py-b2sdk
     SUBDIR += py-babel
     SUBDIR += py-babelfish
     SUBDIR += py-backcall
@@ -4195,6 +4195,7 @@
     SUBDIR += py-canonicaljson
     SUBDIR += py-capstone
     SUBDIR += py-castellan
+    SUBDIR += py-castellan1
     SUBDIR += py-cbor
     SUBDIR += py-cbor2
     SUBDIR += py-cclib
@@ -4485,7 +4486,9 @@
     SUBDIR += py-jaraco
     SUBDIR += py-jaraco.classes
     SUBDIR += py-jaraco.context
+    SUBDIR += py-jaraco.context2
     SUBDIR += py-jaraco.functools
+    SUBDIR += py-jaraco.functools2
     SUBDIR += py-jaraco.itertools
     SUBDIR += py-jaraco.logging
     SUBDIR += py-jaraco.timing
@@ -4587,7 +4590,7 @@
     SUBDIR += py-mdv
     SUBDIR += py-medikit
     SUBDIR += py-meliae
-    SUBDIR += py-memory_profiler
+    SUBDIR += py-memory-profiler
     SUBDIR += py-microversion_parse
     SUBDIR += py-minimongo
     SUBDIR += py-minio
@@ -4658,6 +4661,7 @@
     SUBDIR += py-os-service-types
     SUBDIR += py-os-vif
     SUBDIR += py-os-win
+    SUBDIR += py-os-win4
     SUBDIR += py-osc-lib
     SUBDIR += py-oslo.cache
     SUBDIR += py-oslo.concurrency
@@ -4669,8 +4673,10 @@
     SUBDIR += py-oslo.limit
     SUBDIR += py-oslo.log
     SUBDIR += py-oslo.messaging
+    SUBDIR += py-oslo.messaging10
     SUBDIR += py-oslo.middleware
     SUBDIR += py-oslo.policy
+    SUBDIR += py-oslo.policy2
     SUBDIR += py-oslo.privsep
     SUBDIR += py-oslo.reports
     SUBDIR += py-oslo.rootwrap
@@ -4716,6 +4722,7 @@
     SUBDIR += py-pinocchio
     SUBDIR += py-pip
     SUBDIR += py-pip-api
+    SUBDIR += py-pip-run
     SUBDIR += py-pip-tools
     SUBDIR += py-pipdeptree
     SUBDIR += py-pipenv
@@ -4946,6 +4953,7 @@
     SUBDIR += py-roxlib
     SUBDIR += py-rply
     SUBDIR += py-rq
+    SUBDIR += py-rq-scheduler
     SUBDIR += py-rtree
     SUBDIR += py-rtslib-fb
     SUBDIR += py-ruamel.ordereddict
@@ -5023,6 +5031,7 @@
     SUBDIR += py-tapi
     SUBDIR += py-tarantool-queue
     SUBDIR += py-taskflow
+    SUBDIR += py-taskflow3
     SUBDIR += py-tblib
     SUBDIR += py-tconfpy
     SUBDIR += py-tempora
@@ -5046,6 +5055,7 @@
     SUBDIR += py-timelib
     SUBDIR += py-tinyarray
     SUBDIR += py-tinyrpc
+    SUBDIR += py-tinyrpc0
     SUBDIR += py-tipper
     SUBDIR += py-tokenize-rt
     SUBDIR += py-toolz
@@ -5293,7 +5303,6 @@
     SUBDIR += quilt
     SUBDIR += rabs
     SUBDIR += racer
-    SUBDIR += racerd
     SUBDIR += radare2
     SUBDIR += radian
     SUBDIR += ragel

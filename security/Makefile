@@ -212,6 +212,7 @@
     SUBDIR += hlfl
     SUBDIR += hmap
     SUBDIR += hockeypuck
+    SUBDIR += honeytrap
     SUBDIR += honggfuzz
     SUBDIR += horcrux
     SUBDIR += hotssh
@@ -1194,6 +1195,7 @@
     SUBDIR += sops
     SUBDIR += spass
     SUBDIR += spass-qt5
+    SUBDIR += spm
     SUBDIR += spybye
     SUBDIR += sqlmap
     SUBDIR += sqlninja

@@ -458,10 +458,6 @@
     SUBDIR += gstreamer-plugins-hal
     SUBDIR += gstreamer1-plugins-cdio
     SUBDIR += gtk-imonc
-    SUBDIR += hachoir-metadata
-    SUBDIR += hachoir-subfile
-    SUBDIR += hachoir-urwid
-    SUBDIR += hachoir-wx
     SUBDIR += hal
     SUBDIR += hal-info
     SUBDIR += hardlink
@@ -1380,6 +1376,7 @@
     SUBDIR += udfclient
     SUBDIR += uefi-edk2-bhyve
     SUBDIR += uefi-edk2-bhyve-csm
+    SUBDIR += uefi-edk2-bhyve-devel
     SUBDIR += uefi-edk2-qemu
     SUBDIR += ufetch
     SUBDIR += ufs_copy
