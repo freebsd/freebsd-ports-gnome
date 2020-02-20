@@ -18,6 +18,7 @@ MASTER_SITES=	LOCAL/mat/bind
 .if defined(BIND_TOOLS_SLAVE)
 PKGNAMESUFFIX=	-tools
 .else
+# XXX: correct SUFFIX.
 PKGNAMESUFFIX=	9-devel
 .endif
 # XXX: correct DISTNAME.
@@ -29,6 +30,11 @@ COMMENT=	Command line tools from BIND: delv, dig, host, nslookup...
 .else
 COMMENT=	BIND DNS suite with updated DNSSEC and DNS64
 .endif
+
+# Uncomment when bind9xx comes of age. +3 years if ESV, +1year otherwise, see
+# https://kb.isc.org/docs/aa-00896
+# DEPRECATED=	End of life, please migrate to a newer version of BIND9
+# EXPIRATION_DATE=	XXX-12-31
 
 LICENSE=	MPL20
 LICENSE_FILE=	${WRKSRC}/COPYRIGHT
@@ -77,7 +83,7 @@ EXTRA_PATCHES=		${PATCHDIR}/extrapatch-no-bind-tools
 PORTDOCS=	*
 
 # XXX: Add -devel
-CONFLICTS=	bind911 bind912 bind913 bind914
+CONFLICTS=	bind911 bind912 bind913 bind914 bind916
 .endif	# BIND_TOOLS_SLAVE
 
 MAKE_JOBS_UNSAFE=	yes
