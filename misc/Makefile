@@ -25,6 +25,7 @@
     SUBDIR += bible-kjv
     SUBDIR += bibletime
     SUBDIR += biblical-curse
+    SUBDIR += biblesync
     SUBDIR += binclock
     SUBDIR += biosfont-demos
     SUBDIR += birthday
@@ -79,6 +80,7 @@
     SUBDIR += dnetc
     SUBDIR += dtach
     SUBDIR += dvorak7min
+    SUBDIR += dynomite
     SUBDIR += e2fsprogs-libblkid
     SUBDIR += e2fsprogs-libuuid
     SUBDIR += elixir-mime
@@ -92,7 +94,6 @@
     SUBDIR += excel-writer
     SUBDIR += exercism
     SUBDIR += explosions
-    SUBDIR += fbless
     SUBDIR += felis
     SUBDIR += figlet
     SUBDIR += figlet-fonts
@@ -426,7 +427,6 @@
     SUBDIR += py-tvm
     SUBDIR += py-xgboost
     SUBDIR += py-yolk
-    SUBDIR += pylize
     SUBDIR += pyobd
     SUBDIR += qbrew
     SUBDIR += qlas
