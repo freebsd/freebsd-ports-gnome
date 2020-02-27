@@ -3,9 +3,11 @@
 
 PORTNAME=	exim
 PORTVERSION?=	${EXIM_VERSION}
+PORTREVISION?=	3
 CATEGORIES=	mail
 MASTER_SITES=	EXIM:exim
 MASTER_SITE_SUBDIR=	/exim4/:exim \
+			/exim4/fixes/:exim \
 			/exim4/old/:exim
 DISTNAME=	${PORTNAME}-${EXIM_VERSION}
 DISTFILES=	${DISTNAME}${EXTRACT_SUFX}:exim
@@ -101,9 +103,10 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-patch-Local-sa-exim.c
 EXTRA_PATCHES+=	${FILESDIR}/extra-patch-Local-sa-exim.conf
 .endif
 
-EXIM_VERSION=	4.93
+EXIM_VERSION=	4.93.0.4
 SA_EXIM_VERSION=4.2.1
 EXIM_INSTALL_ARG+=	"-no_chown" "-no_symlink"
+EXTRA_PATCHES+=	`${FIND} ${PATCHDIR} -name '74_*.patch'|${SORT} -h`
 
 .if !defined(EXIMON_ONLY)
 PLIST_SUB+=	EXIM=""
@@ -381,7 +384,6 @@ SEDLIST+=	-e 's,^\# (AUTH_CYRUS_SASL=),\1,' \
 .endif
 
 .if ${PORT_OPTIONS:MAUTH_RADIUS}
-PORTREVISION?=	1
 WITH_RADIUS_TYPE?=	RADLIB
 .if ${WITH_RADIUS_TYPE:tl} == radlib
 SEDLIST+=	-e 's,XX_RADIUS_LIBS_XX,-lradius,' \

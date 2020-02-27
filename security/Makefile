@@ -1044,13 +1044,13 @@
     SUBDIR += rubygem-devise-two-factor
     SUBDIR += rubygem-devise-two-factor-rails5
     SUBDIR += rubygem-devise-two-factor30-rails52
+    SUBDIR += rubygem-devise-two-factor30-rails60
     SUBDIR += rubygem-devise_pam_authenticatable2
     SUBDIR += rubygem-digest-crc
     SUBDIR += rubygem-doorkeeper
     SUBDIR += rubygem-doorkeeper-openid_connect
     SUBDIR += rubygem-doorkeeper-rails5
     SUBDIR += rubygem-doorkeeper-rails50
-    SUBDIR += rubygem-doorkeeper43
     SUBDIR += rubygem-ed25519
     SUBDIR += rubygem-encryptor
     SUBDIR += rubygem-ezcrypto
