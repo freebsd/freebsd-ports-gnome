@@ -15,3 +15,4 @@
  
    eject_mount_do (volume, cancellable, callback, user_data, argv);
  }
+
