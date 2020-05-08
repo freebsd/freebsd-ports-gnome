@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	muffin
-PORTVERSION=	4.4.2
+PORTVERSION=	4.4.3
 CATEGORIES=	x11-wm gnome
 DIST_SUBDIR=	gnome
 
@@ -63,6 +63,9 @@ WAYLAND_LIB_DEPENDS=	libinput.so:x11/libinput \
 			libudev.so:devel/libudev-devd \
 			libwayland-server.so:graphics/wayland
 WAYLAND_CONFIGURE_ENABLE=	wayland-egl-server
+
+post-patch:
+	@${REINPLACE_CMD} 's/--warn-error//' ${WRKSRC}/src/Makefile.am
 
 pre-configure:
 	@cd ${WRKSRC} && ${SETENV} NOCONFIGURE=yes ${SH} autogen.sh
