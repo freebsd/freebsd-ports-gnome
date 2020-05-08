@@ -19,11 +19,10 @@ BUILD_DEPENDS=	gsettings-desktop-schemas>=3.2.0:devel/gsettings-desktop-schemas 
 LIB_DEPENDS=	libaccountsservice.so:sysutils/accountsservice \
 		libcinnamon-desktop.so:x11/cinnamon-desktop \
 		libdbus-glib-1.so:devel/dbus-glib
-RUN_DEPENDS=	pam_helper:security/pam_helper \
-		${LOCALBASE}/lib/pam_gnome_keyring.so:security/gnome-keyring \
+RUN_DEPENDS=	${LOCALBASE}/lib/pam_gnome_keyring.so:security/gnome-keyring \
 		${PYTHON_PKGNAMEPREFIX}cairo>0:graphics/py-cairo@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}setproctitle>0:devel/py-setproctitle@${PY_FLAVOR} \
-		${PYTHON_PKGNAMEPREFIX}xapp>0:x11/py-xapp@${PY_FLAVOR}
+		${PYTHON_PKGNAMEPREFIX}python-xapp>0:x11/py-python-xapp@${PY_FLAVOR}
 
 USES=		autoreconf gettext-tools gmake gnome libtool pathfix pkgconfig \
 		python:3.5+ shebangfix xorg
