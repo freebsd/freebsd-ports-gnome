@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-control-center
-PORTVERSION=	4.2.2
+PORTVERSION=	4.4.0
 CATEGORIES=	sysutils gnome
 DIST_SUBDIR=	gnome
 
@@ -69,9 +69,5 @@ ONLINEACCOUNTS_CONFIGURE_ENABLE=	onlineaccounts
 WACOM_LIB_DEPENDS=	libwacom.so:x11/libwacom
 WACOM_USE=		xorg=xi
 WACOM_CONFIGURE_ENABLE=	wacom
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|/usr/share/|${PREFIX}/share/|g' \
-		${WRKSRC}/panels/common/cc-common-language.c
 
 .include <bsd.port.mk>
