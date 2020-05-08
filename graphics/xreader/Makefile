@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xreader
-PORTVERSION=	2.0.2
+PORTVERSION=	2.4.3
 CATEGORIES=	graphics print
 DIST_SUBDIR=	gnome
 
@@ -14,19 +14,19 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	itstool:textproc/itstool
 LIB_DEPENDS=	libxapp.so:x11/xapps \
 		libpoppler-glib.so:graphics/poppler-glib \
-		libspectre.so:print/libspectre
+		libsecret-1.so:security/libsecret
 
-USES=		compiler:c11 desktop-file-utils gettext-tools gnome meson pkgconfig
+USES=		compiler:c11 desktop-file-utils gettext-tools gnome meson pkgconfig xorg
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_TAGNAME=	469ad52
 
 USE_XORG=	ice sm x11
 
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection libxml2
 
 MESON_ARGS=	-Dintrospection=true \
+		-Dmathjax-directory=${PREFIX}/www/MathJax \
 		-Dpixbuf=true \
 		-Dpdf=true
 USE_LDCONFIG=	yes
@@ -34,9 +34,9 @@ INSTALLS_ICONS=	yes
 
 GLIB_SCHEMAS=	org.x.reader.gschema.xml
 
-OPTIONS_DEFINE=	COMICS DBUS DEBUG DJVU DVI EPUB PREVIEWER PS T1LIB \
+OPTIONS_DEFINE=	COMICS DBUS DEBUG DJVU DVI EPUB HELP PREVIEWER PS T1LIB \
 		THUMBNAILER TIFF XPS
-OPTIONS_DEFAULT=	COMICS DBUS DJVU EPUB PREVIEWER PS THUMBNAILER TIFF XPS
+OPTIONS_DEFAULT=	COMICS DBUS DJVU EPUB HELP PREVIEWER PS THUMBNAILER TIFF XPS
 
 OPTIONS_SUB=	yes
 
@@ -53,16 +53,23 @@ DJVU_LIB_DEPENDS=	libdjvulibre.so:graphics/djvulibre
 DJVU_MESON_TRUE=	djvu
 
 DVI_DESC=		DVI viewer support
+DVI_LIB_DEPENDS=	libspectre.so:print/libspectre
 DVI_USE=		tex=kpathsea
 DVI_MESON_TRUE=		dvi
 
 EPUB_DESC=		Epub support
 EPUB_LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3
+EPUB_RUN_DEPENDS=	MathJax>0:www/mathjax
 EPUB_MESON_TRUE=	epub
+
+HELP_DESC=		Install help files
+HELP_RUN_DEPENDS=	yelp>0:x11/yelp
+HELP_MESON_TRUE=	help_files
 
 PREVIEWER_DESC=		Print previewer support
 PREVIEWER_MESON_TRUE=	previewer
 
+PS_LIB_DEPENDS=		libspectre.so:print/libspectre
 PS_MESON_TRUE=		ps
 
 T1LIB_DESC=		T1LIB for TYPE1 fonts to DVI (Enables DVI)
