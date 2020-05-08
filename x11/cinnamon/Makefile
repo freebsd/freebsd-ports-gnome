@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon
-PORTVERSION=	4.2.4
+PORTVERSION=	4.4.8
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -42,6 +42,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pexpect>0:misc/py-pexpect@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}python-pam>0:security/py-python-pam@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}tinycss>0:textproc/py-tinycss@${PY_FLAVOR} \
+		timezonemap>0:misc/timezonemap \
 		metacity:x11-wm/metacity \
 		tint2:x11/tint
 
@@ -74,7 +75,8 @@ INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=	--with-ca-certificates=${LOCALBASE}/share/certs/ca-root-nss.crt
+CONFIGURE_ARGS=	--with-ca-certificates=${LOCALBASE}/share/certs/ca-root-nss.crt \
+		--disable-networkmanager
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.cinnamon.gschema.xml
@@ -88,31 +90,14 @@ DOCS_CONFIGURE_ENABLE=	gtk-doc
 NLS_RUN_DEPENDS=	cinnamon-translations>0:misc/cinnamon-translations
 
 post-patch:
-	@${MKDIR} ${WRKSRC}/files${PREFIX}
-.for d in bin share
-	@${MV} ${WRKSRC}/files/usr/${d} ${WRKSRC}/files${PREFIX}
-.endfor
-	@${MV} ${WRKSRC}/files/etc ${WRKSRC}/files${PREFIX}
-
 	# Remove a broken link (is applications-merge used anywhere?)
-	@${RM} ${WRKSRC}/files/${PREFIX}/etc/xdg/menus/cinnamon-applications-merged
-
-	@${REINPLACE_CMD} -e 's|find|find ${WRKSRC}/files|g' \
-		${WRKSRC}/files/Makefile.in
-
-	# is this really needed?
-	#@${REINPLACE_CMD} -e 's|const NM = imports.gi.NM;||g' \
-	#	${WRKSRC}/files${PREFIX}/share/cinnamon/applets/network\@cinnamon.org/applet.js
-
-	@${REINPLACE_CMD} -e 's|nm-applet;||g' \
-		${WRKSRC}/files${PREFIX}/share/cinnamon-session/sessions/cinnamon.session \
-		${WRKSRC}/files${PREFIX}/share/cinnamon-session/sessions/cinnamon2d.session
+	@${RM} ${WRKSRC}/files/etc/xdg/menus/cinnamon-applications-merged
 
 	@${REINPLACE_CMD} -e '/prefix/s|/usr|${PREFIX}|g ;\
 		/datadir/s|/usr|${PREFIX}|g ;\
 		/libdir/s|/usr|${PREFIX}|g ;\
 		/libexecdir/s|/usr|${PREFIX}|g' \
-			${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-menu-editor/cme/config.py
+			${WRKSRC}/files/usr/share/cinnamon/cinnamon-menu-editor/cme/config.py
 
 	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/share/cinnamon/locale" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/share/cinnamon/locale|${PREFIX}/share/locale|g"
@@ -127,10 +112,7 @@ post-patch:
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/bin|${PREFIX}/bin|g"
 
 	@${REINPLACE_CMD} -e '/cs-bluetooth/d; /cs-network/d' \
-			${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-settings/cinnamon-settings.py
-
-	#@${REINPLACE_CMD} -e 's/SIZE\/$$$$CONTEXT/CONTEXT\/$$$$SIZE/g' \
-	#		${WRKSRC}/data/icons/Makefile.am
+			${WRKSRC}/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
 
 # Some python files use #! /usr/bin/python (note the space between the bang and the python interpreter
 	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "#!.*\/usr\/bin\/python" | \
