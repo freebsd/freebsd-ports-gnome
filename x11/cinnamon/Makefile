@@ -43,6 +43,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}python-pam>0:security/py-python-pam@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}tinycss>0:textproc/py-tinycss@${PY_FLAVOR} \
 		timezonemap>0:misc/timezonemap \
+		gnome-backgrounds>0:x11-themes/gnome-backgrounds \
 		metacity:x11-wm/metacity \
 		tint2:x11/tint
 
@@ -123,5 +124,13 @@ post-patch:
 
 pre-configure:
 	@cd ${WRKSRC} && ${SETENV} NOCONFIGURE=yes ${SH} autogen.sh
+
+post-install:
+	# Ship the GNOME Backgrounds set
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/cinnamon-background-properties
+	@${LN} -s ${PREFIX}/share/gnome-background-properties/adwaita.xml \
+		${STAGEDIR}${PREFIX}/share/cinnamon-background-properties/adwaita.xml
+	@${LN} -s ${PREFIX}/share/gnome-background-properties/gnome-backgrounds.xml \
+		${STAGEDIR}${PREFIX}/share/cinnamon-background-properties/gnome-backgrounds.xml
 
 .include <bsd.port.mk>

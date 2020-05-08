@@ -67,6 +67,8 @@ share/applications/cinnamon-settings-workspaces.desktop
 share/applications/cinnamon-settings.desktop
 share/applications/cinnamon.desktop
 share/applications/cinnamon2d.desktop
+%%DATADIR%%-background-properties/adwaita.xml
+%%DATADIR%%-background-properties/gnome-backgrounds.xml
 %%DATADIR%%-session/sessions/cinnamon.session
 %%DATADIR%%-session/sessions/cinnamon2d.session
 %%DATADIR%%/applets/a11y@cinnamon.org/applet.js
