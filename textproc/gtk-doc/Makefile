@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gtk-doc
-PORTVERSION=	1.29
-PORTREVISION=	1
+PORTVERSION=	1.32
 CATEGORIES=	textproc
 MASTER_SITES=	GNOME
 
@@ -19,6 +18,7 @@ BUILD_DEPENDS=	itstool:textproc/itstool \
 		${LOCALBASE}/share/xsl/docbook/xhtml/chunk.xsl:textproc/docbook-xsl
 RUN_DEPENDS=	docbook-xml>0:textproc/docbook-xml \
 		highlight:textproc/highlight \
+		${PYTHON_PKGNAMEPREFIX}pygments>0:textproc/py-pygments \
 		${LOCALBASE}/share/xsl/docbook/xhtml/chunk.xsl:textproc/docbook-xsl
 
 DOCBOOK_VERSION=	4.1.2
@@ -28,6 +28,8 @@ USES=		gettext-tools gmake gnome pathfix perl5 pkgconfig \
 USE_GNOME=	gnomeprefix libxslt
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-xml-catalog=${LOCALBASE}/share/xml/catalog.ports
+
+NO_ARCH=	yes
 
 post-install:
 	${PYTHON_CMD} ${PYTHON_LIBDIR}/compileall.py \
