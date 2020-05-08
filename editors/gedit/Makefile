@@ -24,12 +24,11 @@ LIB_DEPENDS=	libenchant.so:textproc/enchant \
 		libsoup-2.4.so:devel/libsoup
 RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
-		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR}
 
 PORTSCOUT=	limitw:1,even
 
 USES=		compiler:c11 desktop-file-utils gettext gmake gnome libtool \
-		localbase pathfix pkgconfig python:3.4+ shebangfix tar:xz
+		localbase pathfix pkgconfig python:3.4+ shebangfix tar:xz xorg
 USE_CSTD=	c11
 USE_GNOME=	cairo gdkpixbuf2 gtksourceview3 intlhack introspection \
 		libxml2 pygobject3

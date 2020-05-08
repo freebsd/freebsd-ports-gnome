@@ -30,15 +30,14 @@ LIB_DEPENDS=	libgdata.so:devel/libgdata \
 		libzeitgeist-2.0.so:sysutils/zeitgeist \
 		libtotem-plparser.so:multimedia/totem-pl-parser
 RUN_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
-		${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR} \
 		gnome-settings-daemon>=2.91.0:sysutils/gnome-settings-daemon \
 		gnome-icon-theme-symbolic>=2.91.0:x11-themes/gnome-icon-theme-symbolic \
 		grilo-plugins>=0:net/grilo-plugins
 
 PORTSCOUT=	limitw:1,even
 
-USES=		desktop-file-utils gettext gl gnome localbase meson \
-		pkgconfig python:3.4+ tar:xz
+USES=		compiler desktop-file-utils gettext gl gnome localbase meson \
+		pkgconfig python:3.4+ tar:xz xorg
 USE_GNOME=	cairo gtk30 intlhack introspection libxml2 nautilus3 \
 		pygobject3
 USE_XORG=	x11 xorgproto xtst ice sm
@@ -76,10 +75,12 @@ pre-everything::
 	@${ECHO_MSG} "===> Define WITH_DVD_DEVICE if you want to change the default"
 	@${ECHO_MSG} "===> For example, 'make WITH_DVD_DEVICE=\"/dev/somedevice\"'"
 
-.if exists(/usr/lib/libstdc++.so)
+.include <bsd.port.pre.mk>
+
+.if ${CHOSEN_COMPILER_TYPE} == gcc
 post-patch:
 	${REINPLACE_CMD} -e '/-Wno-unused-but-set-variable/d' \
 		${WRKSRC}/src/plugins/meson.build
 .endif
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>

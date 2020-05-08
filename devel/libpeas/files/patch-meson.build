@@ -1,0 +1,56 @@
+--- meson.build.orig	2020-03-06 21:12:16 UTC
++++ meson.build
+@@ -2,7 +2,7 @@ project(
+   'libpeas', 'c',
+   version: '1.26.0',
+   license: 'LGPLv2.1+',
+-  meson_version: '>= 0.49.0',
++  meson_version: '>= 0.53.0',
+   default_options: [
+     'buildtype=debugoptimized',
+   ]
+@@ -11,6 +11,7 @@ project(
+ gnome = import('gnome')
+ i18n = import('i18n')
+ pkg = import('pkgconfig')
++python = import('python')
+ 
+ # Versioning
+ version = meson.project_version()
+@@ -109,13 +110,6 @@ gtk_dep = dependency('gtk+-3.0', version: gtk_req, req
+ gtk_doc_dep = dependency('gtk-doc', version: gtk_doc_req, required: false)
+ gladeui_dep = dependency('gladeui-2.0', required: false)
+ 
+-# From python 3.8 we neeed python3-embed
+-python3_dep = dependency('python3-embed', required: false)
+-if not python3_dep.found()
+-  python3_dep = dependency('python3', version: python3_req, required: false)
+-endif
+-
+-python2_dep = dependency('python2', version: python2_req, required: false)
+ pygobject_dep = dependency('pygobject-3.0', version: pygobject_req, required: false)
+ lua51_dep = dependency('lua51', version: lua_req, required: false)
+ if not lua51_dep.found()
+@@ -229,14 +223,18 @@ if build_lua51_loader and not lua51_found
+ endif
+ 
+ build_python2_loader = get_option('python2')
+-python2_found = python2_dep.found() and pygobject_dep.found()
+-if build_python2_loader and not python2_found
++if build_python2_loader and pygobject_dep.found()
++  python2 = python.find_installation('python2')
++  python2_dep = python2.dependency(version: python2_req)
++else
+   build_python2_loader = false
+ endif
+ 
+ build_python3_loader = get_option('python3')
+-python3_found = python3_dep.found() and pygobject_dep.found()
+-if build_python3_loader and not python3_found
++if build_python3_loader and pygobject_dep.found()
++  python3 = python.find_installation('python3')
++  python3_dep = python3.dependency(embed: true, version: python3_req)
++else
+   build_python3_loader = false
+ endif
+ 

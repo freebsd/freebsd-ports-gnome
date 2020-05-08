@@ -44,10 +44,10 @@ CHAMPLAIN_LIB_DEPENDS=	libcogl.so:graphics/cogl \
 			libclutter-1.0.so:graphics/clutter \
 			libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
 			libchamplain-0.12.so:graphics/libchamplain
+CHAMPLAIN_USES=		gl xorg
 CHAMPLAIN_USE=		GL=egl XORG=x11,xcomposite,xdamage,xext,xfixes,xi,xrandr
 
 PYTHON_CONFIGURE_ENABLE=python
-PYTHON_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR}
 PYTHON_USES=		python:3.4+
 PYTHON_VARS=		GLIB_SCHEMAS+="org.gnome.eog.plugins.export-to-folder.gschema.xml \
 				       org.gnome.eog.plugins.fullscreenbg.gschema.xml \

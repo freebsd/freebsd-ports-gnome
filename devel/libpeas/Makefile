@@ -2,57 +2,30 @@
 # $FreeBSD$
 
 PORTNAME=	libpeas
-PORTVERSION=	1.22.0
-PORTREVISION?=	0
+PORTVERSION=	1.26.0
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
 
 MAINTAINER=	gnome@FreeBSD.org
-COMMENT?=	Next evolution of the Gedit plugins engine
+COMMENT=	Next evolution of the Gedit plugins engine
 
 LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	valac:lang/vala
+BUILD_DEPENDS=	gtkdoc-scan:textproc/gtk-doc
 
-LIBPEAS_SLAVE?=	no
-
-.if ${LIBPEAS_SLAVE} == no
-PORTSCOUT=	limitw:1,even
-.else
-LIB_DEPENDS+=	libpeas-1.0.so:devel/libpeas
-PORTSCOUT=	ignore:1
-.endif
-
-USES=		gettext gmake gnome libtool pathfix pkgconfig tar:xz
-USE_GNOME=	cairo gtk30 intlhack introspection
+USES=		gettext gmake gnome meson pathfix pkgconfig python:3.5+ tar:xz
+USE_GNOME=	cairo gtk30 intlhack introspection pygobject3
+BINARY_ALIAS=	python3=${PYTHON_CMD}
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
-GNU_CONFIGURE=	yes
-INSTALL_TARGET=	install-strip
-CONFIGURE_ARGS+=--disable-glade-catalog
-PLIST=          ${.CURDIR}/pkg-plist
-
-.if ${LIBPEAS_SLAVE} == python
-USES+=		python
-USE_PYTHON=	flavors
-USE_GNOME+=	pygobject3
-.if ${FLAVOR:Upy36:Mpy2*}
-CONFIGURE_ARGS+=	--disable-python3
-BUILD_WRKSRC=	${WRKSRC}/loaders/python
-INSTALL_WRKSRC=	${WRKSRC}/loaders/python
-.else
-CONFIGURE_ARGS+=	--disable-python2 \
-			ac_cv_path_PYTHON3_CONFIG=${LOCALBASE}/bin/python${PYTHON_VER}-config
-BUILD_WRKSRC=	${WRKSRC}/loaders/python3
-INSTALL_WRKSRC=	${WRKSRC}/loaders/python3
-.endif
-.else
-CONFIGURE_ARGS+=	--disable-python2 --disable-python3
-.endif
+MESON_ARGS=	-Dglade_catalog=false \
+		-Dpython2=false \
+		-Dpython3=true \
+		-Dgtk_doc=true
 
 # lua needs lua 5.1 and devel/lua-lgi. The latter is build for lua 5.2 however..
-CONFIGURE_ARGS+=	--disable-lua5.1 --disable-luajit
+MESON_ARGS+=	-Dlua51=false
 
 .include <bsd.port.mk>
