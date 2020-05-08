@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	metacity
-PORTVERSION=	3.18.3
-PORTREVISION=	2
+PORTVERSION=	3.36.1
 CATEGORIES=	x11-wm
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome3
@@ -16,20 +15,23 @@ BUILD_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		gsettings-desktop-schemas>=3.3.0:devel/gsettings-desktop-schemas
 LIB_DEPENDS=	libstartup-notification-1.so:x11/startup-notification \
 		libgtop-2.0.so:devel/libgtop \
+		libcanberra.so:audio/libcanberra \
 		libcanberra-gtk3.so:audio/libcanberra-gtk3
 RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		gsettings-desktop-schemas>=3.3.0:devel/gsettings-desktop-schemas
 
 PORTSCOUT=	limitw:1,even
 
-USE_XORG=	x11 xcomposite xdamage xrender xcursor xinerama xext xrandr
 USES=		compiler:c11 gettext gmake gnome libtool \
-		localbase pathfix pkgconfig tar:xz
+		localbase pathfix pkgconfig tar:xz xorg
 GNU_CONFIGURE=	yes
-USE_GNOME=	gnomeprefix gtk30 intlhack libxml2:build
+USE_XORG=	ice sm x11 xcomposite xdamage xfixes xrender xcursor xinerama xext xrandr
+USE_GNOME=	cairo gdkpixbuf2 gnomeprefix gtk30 intlhack libxml2:build
 USE_LDCONFIG=	yes
 INSTALL_TARGET=	install-strip
 
-GLIB_SCHEMAS=	org.gnome.metacity.gschema.xml
+GLIB_SCHEMAS=	org.gnome.metacity.gschema.xml \
+		org.gnome.metacity.keybindings.gschema.xml \
+		org.gnome.metacity.theme.gschema.xml
 
 .include <bsd.port.mk>
