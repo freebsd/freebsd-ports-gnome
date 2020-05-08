@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-session
-PORTVERSION=	4.2.1
+PORTVERSION=	4.4.0
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -35,11 +35,11 @@ OPTIONS_DEFINE=	DOCS GCONF IPV6
 OPTIONS_DEFAULT=	DOCS IPV6
 
 DOCS_BUILD_DEPENDS=	xmlto:textproc/xmlto
-DOCS_MESON_TRUE=	with-docbook
+DOCS_MESON_TRUE=	docbook
 
 GCONF_USE=		gnome=gconf2
-GCONF_MESON_TRUE=	with-gconf
+GCONF_MESON_TRUE=	gconf
 
-IPV6_MESON_TRUE=	with-ipv6
+IPV6_MESON_TRUE=	ipv6
 
 .include <bsd.port.mk>
