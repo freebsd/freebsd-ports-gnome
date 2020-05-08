@@ -14,11 +14,14 @@ include/xapp/libxapp/xapp-statusicon-interface.h
 lib/girepository-1.0/XApp-1.0.typelib
 lib/libxapp.so
 lib/libxapp.so.1
-lib/libxapp.so.1.6.10
+lib/libxapp.so.1.8.2
+%%PYTHON_SITELIBDIR%%/gi/overrides/XApp.py
 libdata/pkgconfig/xapp.pc
 libexec/xapps/applet_constants.py
 libexec/xapps/mate-xapp-status-applet.py
+libexec/xapps/sn-watcher/xapp-sn-watcher
 share/dbus-1/services/org.mate.panel.applet.MateXAppStatusAppletFactory.service
+share/dbus-1/services/org.x.StatusNotifierWatcher.service
 share/gir-1.0/XApp-1.0.gir
 share/glade/catalogs/xapp-glade-catalog.xml
 %%PORTDOCS%%share/gtk-doc/html/libxapp/XAppGtkWindow.html

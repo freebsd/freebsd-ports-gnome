@@ -1,8 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xapps
-PORTVERSION=	1.6.10
-PORTREVISION=	1
+PORTVERSION=	1.8.2
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -12,33 +11,23 @@ COMMENT=	Cross-desktop libraries and common resources
 LICENSE=	LGPL3
 LICENSE_FILE?=	${WRKSRC}/COPYING.LESSER
 
-PORTSCOUT=	limit:^[0-9.]+$$	# ignore master.mint* tags
+BUILD_DEPENDS=	vapigen:lang/vala
+LIB_DEPENDS=	libxklavier.so:x11/libxklavier \
+		libdbusmenu-gtk3.so:devel/libdbusmenu
+RUN_DEPENDS=	bash:shells/bash
 
-USES?=		gettext-tools:build gnome meson pkgconfig python:3.5+ \
-		shebangfix
+USES=		gettext-tools:build gnome meson pkgconfig python:3.5+ \
+		shebangfix xorg
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
 
-SLAVE_PORT?=	no
-
-OPTIONS_DEFINE=	DOCS
-OPTIONS_DEFAULT=	DOCS
-
-DOCS_BUILD_DEPENDS=	gtkdocize:textproc/gtk-doc
-DOCS_MESON_TRUE=	docs
-
-.if ${SLAVE_PORT} == "no"
-BUILD_DEPENDS=	vapigen:lang/vala
-LIB_DEPENDS=	libxklavier.so:x11/libxklavier
-RUN_DEPENDS=	bash:shells/bash
-
-SHEBANG_FILES=	files libxapp schemas status-applets test-scripts
-
-USES+=	xorg
+SHEBANG_FILES=	libxapp meson-scripts schemas scripts status-applets \
+		test-scripts
+BINARY_ALIAS=	python3=${PYTHON_CMD}
 
 USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 introspection intltool \
-		libgnomekbd
+		libgnomekbd pygobject3
 
 GLIB_SCHEMAS=	org.x.apps.gschema.xml
 INSTALLS_ICONS=	yes
@@ -47,15 +36,12 @@ USE_XORG=	x11
 
 USE_LDCONFIG=	yes
 
-post-patch:
-	# pygobject split to x11/py-xapps, as consumers (which may
-	# or may not be in ports) can use either python version
-	@${REINPLACE_CMD} -e "/subdir('pygobject')/d" ${WRKSRC}/meson.build
-	# Adhere to our hier(7).
-	@${MKDIR} ${WRKSRC}/files${PREFIX}
-.	for d in bin share
-		@${MV} ${WRKSRC}/files/usr/${d} ${WRKSRC}/files${PREFIX}
-.	endfor
-.endif
+PORTSCOUT=	limit:^[0-9.]+$$	# ignore master.mint* tags
+
+OPTIONS_DEFINE=	DOCS
+OPTIONS_DEFAULT=	DOCS
+
+DOCS_BUILD_DEPENDS=	gtkdocize:textproc/gtk-doc
+DOCS_MESON_TRUE=	docs
 
 .include <bsd.port.mk>
