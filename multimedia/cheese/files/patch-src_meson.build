@@ -1,0 +1,10 @@
+--- src/meson.build.orig	2019-09-10 06:15:45 UTC
++++ src/meson.build
+@@ -8,7 +8,6 @@ sources = files(
+   'thumbview/cheese-thumbnail.c',
+   'thumbview/cheese-thumb-view.c',
+   'thumbview/eog-thumb-nav.c',
+-  'vapi/libcanberra-gtk3.vapi'
+ )
+ 
+ deps = [
