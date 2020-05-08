@@ -16,7 +16,6 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	docbook-xsl>=0:textproc/docbook-xsl
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
-		libsoup-gnome-2.4.so:devel/libsoup-gnome \
 		libsoup-2.4.so:devel/libsoup \
 		libgcrypt.so:security/libgcrypt \
 		libgcr-base-3.so:security/gcr \

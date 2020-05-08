@@ -17,7 +17,6 @@ BUILD_DEPENDS=	rsvg-convert:graphics/librsvg2 \
 LIB_DEPENDS=	libnotify.so:devel/libnotify \
 		libjson-glib-1.0.so:devel/json-glib \
 		libsoup-2.4.so:devel/libsoup \
-		libsoup-gnome-2.4.so:devel/libsoup-gnome \
 		libp11-kit.so:security/p11-kit \
 		libgcr-3.so:security/gcr \
 		libpeas-1.0.so:devel/libpeas \

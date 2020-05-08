@@ -19,8 +19,6 @@ BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas
 LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libsoup-2.4.so:devel/libsoup \
-		libsoup-gnome-2.4.so:devel/libsoup-gnome \
-		libsoup-2.4.so:devel/libsoup \
 		libgcr-3.so:security/gcr \
 		libstartup-notification-1.so:x11/startup-notification \
 		libnss3.so:security/nss \

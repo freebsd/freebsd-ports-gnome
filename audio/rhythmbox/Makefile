@@ -27,7 +27,6 @@ LIB_DEPENDS=	libmusicbrainz5.so:audio/libmusicbrainz5 \
 		libcheck.so:devel/check \
 		libpeas-1.0.so:devel/libpeas \
 		libjson-glib-1.0.so:devel/json-glib \
-		libsoup-gnome-2.4.so:devel/libsoup-gnome \
 		libsecret-1.so:security/libsecret \
 		libtdb.so:databases/tdb
 
@@ -79,7 +78,6 @@ NOTIFY_CONFIGURE_ENABLE=	libnotify
 NOTIFY_LIB_DEPENDS=	libnotify.so:devel/libnotify
 PYTHON_CONFIGURE_ENABLE=	python
 PYTHON_USES=		python:3.3+
-PYTHON_RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}libpeas>=0:devel/py-libpeas@${PY_FLAVOR}
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|{MOZILLA_PLUGINDIR|{MOZILLA_PLUGINDIR}|g' \
