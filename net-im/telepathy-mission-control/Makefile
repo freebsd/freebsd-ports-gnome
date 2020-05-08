@@ -3,18 +3,21 @@
 #    $MCom: ports/trunk/net-im/telepathy-mission-control/Makefile 19955 2014-10-15 10:15:00Z gusi $
 
 PORTNAME=	telepathy-mission-control
-PORTVERSION=	5.16.3
-PORTREVISION=	1
+PORTVERSION=	5.16.5
 CATEGORIES=	net-im devel
 MASTER_SITES=	http://telepathy.freedesktop.org/releases/telepathy-mission-control/
+PATCH_SITES=	https://gitlab.freedesktop.org/telepathy/telepathy-mission-control/commit/
+PATCHFILES+=	d8dab08f.patch:-p1
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Telepathy component to apps to abstract details of connection managers
 
 LIB_DEPENDS=	libtelepathy.so:net-im/libtelepathy \
+		libtelepathy-glib.so:net-im/telepathy-glib \
+		libdbus-1.so:devel/dbus \
 		libdbus-glib-1.so:devel/dbus-glib
 
-USES=		gmake libtool pathfix pkgconfig python:2.7,build
+USES=		gmake gnome libtool pathfix pkgconfig python:build
 USE_GNOME=	glib20 libxslt
 GNU_CONFIGURE=	yes
 CPPFLAGS+=	-I${LOCALBASE}/include
