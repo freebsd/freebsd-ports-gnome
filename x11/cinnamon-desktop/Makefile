@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-desktop
-PORTVERSION=	4.2.0
+PORTVERSION=	4.4.1
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -28,7 +28,7 @@ USE_LDCONFIG=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
 
-SHEBANG_FILES=	install-scripts/meson_install_schemas.py
+SHEBANG_FILES=	install-scripts/meson_install_schemas.py installer-test
 
 GLIB_SCHEMAS=	org.cinnamon.desktop.a11y.applications.gschema.xml \
 		org.cinnamon.desktop.a11y.keyboard.gschema.xml \
@@ -55,7 +55,7 @@ GLIB_SCHEMAS=	org.cinnamon.desktop.a11y.applications.gschema.xml \
 
 OPTIONS_DEFINE=	ALSA
 
-ALSA_LIB_DEPENDS+=	libasound.so:audio/alsa-lib
+ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 ALSA_MESON_TRUE=	alsa
 
 .include <bsd.port.mk>
