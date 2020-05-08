@@ -12,6 +12,7 @@ COMMENT=	Session component for the cinnamon desktop
 LICENSE=	GPLv2
 
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+		libdbus-glib-1.so:devel/dbus-glib \
 		libxapp.so:x11/xapps \
 		libcanberra.so:audio/libcanberra
 
