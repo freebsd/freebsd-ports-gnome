@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nemo
-PORTVERSION=	4.2.3
+PORTVERSION=	4.4.2
 CATEGORIES=	x11-fm gnome
 DIST_SUBDIR=	gnome
 
@@ -58,10 +58,6 @@ EXEMPI_MESON_TRUE=	xmp
 
 EXIF_LIB_DEPENDS=	libexif.so:graphics/libexif
 EXIF_MESON_TRUE=	exif
-
-# Requires tracker <= 1
-#TRACKER_LIB_DEPENDS=	libtracker-sparql-1.0.so:sysutils/tracker
-#TRACKER_MESON_TRUE=	tracker
 
 post-patch:
 	# malloc.h is deprecated
