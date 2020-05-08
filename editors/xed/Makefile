@@ -1,34 +1,58 @@
-# Created by: Alexey Dokuchaev <danfe@FreeBSD.org>
 # $FreeBSD$
 
 PORTNAME=	xed
-PORTVERSION=	2.4.2
-CATEGORIES=	editors
+DISTVERSION=	2.4.2
+CATEGORIES=	editors gnome
+DIST_SUBDIR=	gnome
 
-MAINTAINER=	danfe@FreeBSD.org
-COMMENT=	Small and lightweight graphical text editor
+MAINTAINER=	gnome@FreeBSD.org
+COMMENT=	Small but powerful text editor for GTK+3
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	intltool-merge:textproc/intltool \
-		itstool:textproc/itstool
-LIB_DEPENDS=	libpeas-1.0.so:devel/libpeas \
+BUILD_DEPENDS=	itstool:textproc/itstool
+LIB_DEPENDS=	libenchant-2.so:textproc/enchant2 \
+		libpeas-1.0.so:devel/libpeas \
 		libxapp.so:x11/xapps
-RUN_DEPENDS=	${LOCALBASE}/share/glib-2.0/schemas/org.gnome.desktop.interface.gschema.xml:devel/gsettings-desktop-schemas
 
-USES=		compiler:c++11-lang desktop-file-utils gettext-tools gnome meson \
-		pkgconfig xorg
+USES=		compiler:c++11-lang desktop-file-utils gettext-runtime gettext-tools \
+		gnome meson pkgconfig python:3.5+,build python:run shebangfix xorg
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-USE_GNOME=	atk cairo gdkpixbuf2 glib20 gtk30 gtksourceview3 \
-		introspection pango
+
+SHEBANG_GLOB=	*.py
+
 USE_XORG=	x11
+
+USE_LDCONFIG=	yes
+
+USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 gtksourceview3 introspection intltool \
+		libxml2 pango
 GLIB_SCHEMAS=	org.x.editor.gschema.xml \
 		org.x.editor.plugins.filebrowser.gschema.xml \
 		org.x.editor.plugins.time.gschema.xml \
 		org.x.editor.plugins.wordcompletion.gschema.xml
 
-# XXX: should become OPTIONs
-MESON_ARGS=	-Denable_spell=false
+OPTIONS_DEFINE=		DOCS GSPELL GVFS_METADATA
+OPTIONS_DEFAULT=	DOCS GSPELL GVFS_METADATA
+OPTIONS_SUB=		yes
+
+DOCS_BUILD_DEPENDS=	gtkdocize:textproc/gtk-doc
+DOCS_MESON_TRUE=	docs
+
+GSPELL_DESC=		Spell checking using gspell
+GSPELL_LIB_DEPENDS=	libgspell-1.so:textproc/gspell
+GSPELL_MESON_TRUE=	enable_spell
+
+GVFS_METADATA_DESC=	GVFS metadata
+GVFS_MESON_TRUE=	enable_gvfs_metadata
+
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MGSPELL}
+GLIB_SCHEMAS+=		org.x.editor.plugins.spell.gschema.xml
+.endif
 
 .include <bsd.port.mk>
