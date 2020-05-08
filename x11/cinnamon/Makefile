@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon
-PORTVERSION=	4.0.10
-PORTREVISION=	1
+PORTVERSION=	4.2.4
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -42,11 +41,12 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pyinotify>0:devel/py-pyinotify@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pexpect>0:misc/py-pexpect@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}python-pam>0:security/py-python-pam@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}tinycss>0:textproc/py-tinycss@${PY_FLAVOR} \
 		metacity:x11-wm/metacity \
 		tint2:x11/tint
 
 USES=		autoreconf:build compiler:c11 gettext gl gmake gnome libtool pathfix \
-		pkgconfig python:3.5+ shebangfix
+		pkgconfig python:3.5+ shebangfix xorg
 
 USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 intltool introspection libxml2 pygobject3
 

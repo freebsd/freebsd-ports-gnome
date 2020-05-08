@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	muffin
-PORTVERSION=	4.0.7
+PORTVERSION=	4.2.2
 CATEGORIES=	x11-wm gnome
 DIST_SUBDIR=	gnome
 
@@ -30,7 +30,8 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		xkeyboard-config>0:x11/xkeyboard-config
 
-USES=		autoreconf:build gettext-tools gl gmake gnome libtool pathfix pkgconfig
+USES=		autoreconf:build gettext-tools gl gmake gnome libtool pathfix pkgconfig \
+		xorg
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint

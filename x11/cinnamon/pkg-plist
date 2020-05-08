@@ -49,6 +49,7 @@ share/applications/cinnamon-settings-info.desktop
 share/applications/cinnamon-settings-keyboard.desktop
 share/applications/cinnamon-settings-mouse.desktop
 share/applications/cinnamon-settings-notifications.desktop
+share/applications/cinnamon-settings-online-accounts.desktop
 share/applications/cinnamon-settings-panel.desktop
 share/applications/cinnamon-settings-power.desktop
 share/applications/cinnamon-settings-privacy.desktop
@@ -130,6 +131,11 @@ share/applications/cinnamon2d.desktop
 %%DATADIR%%/applets/power@cinnamon.org/applet.js
 %%DATADIR%%/applets/power@cinnamon.org/metadata.json
 %%DATADIR%%/applets/power@cinnamon.org/settings-schema.json
+%%DATADIR%%/applets/printers@cinnamon.org/applet.js
+%%DATADIR%%/applets/printers@cinnamon.org/cancel-print-dialog.py
+%%DATADIR%%/applets/printers@cinnamon.org/lpstat-a.py
+%%DATADIR%%/applets/printers@cinnamon.org/metadata.json
+%%DATADIR%%/applets/printers@cinnamon.org/settings-schema.json
 %%DATADIR%%/applets/recent@cinnamon.org/applet.js
 %%DATADIR%%/applets/recent@cinnamon.org/metadata.json
 %%DATADIR%%/applets/removable-drives@cinnamon.org/applet.js
@@ -188,6 +194,7 @@ share/applications/cinnamon2d.desktop
 %%DATADIR%%/bumpmaps/frost.png
 %%DATADIR%%/bumpmaps/hex.png
 %%DATADIR%%/bumpmaps/lizard.png
+%%DATADIR%%/cinnamon-dbus-command
 %%DATADIR%%/cinnamon-desktop-editor/cinnamon-desktop-editor.py
 %%DATADIR%%/cinnamon-desktop-editor/directory-editor.ui
 %%DATADIR%%/cinnamon-desktop-editor/launcher-editor.ui
@@ -196,7 +203,6 @@ share/applications/cinnamon2d.desktop
 %%DATADIR%%/cinnamon-looking-glass/page_extensions.py
 %%DATADIR%%/cinnamon-looking-glass/page_inspect.py
 %%DATADIR%%/cinnamon-looking-glass/page_log.py
-%%DATADIR%%/cinnamon-looking-glass/page_memory.py
 %%DATADIR%%/cinnamon-looking-glass/page_results.py
 %%DATADIR%%/cinnamon-looking-glass/page_windows.py
 %%DATADIR%%/cinnamon-looking-glass/pageutils.py
@@ -225,6 +231,8 @@ share/applications/cinnamon2d.desktop
 %%DATADIR%%/cinnamon-settings/bin/eyedropper.py
 %%DATADIR%%/cinnamon-settings/bin/imtools.py
 %%DATADIR%%/cinnamon-settings/bin/proxygsettings.py
+%%DATADIR%%/cinnamon-settings/bin/scrollbar-test-widget.glade
+%%DATADIR%%/cinnamon-settings/bin/scrollbar-test-widget.py
 %%DATADIR%%/cinnamon-settings/bin/tweenEquations.py
 %%DATADIR%%/cinnamon-settings/cinnamon-online-accounts-info.ui
 %%DATADIR%%/cinnamon-settings/cinnamon-settings.py
@@ -471,6 +479,8 @@ share/desktop-directories/cinnamon-system-tools.directory
 share/desktop-directories/cinnamon-system.directory
 share/desktop-directories/cinnamon-utility-accessibility.directory
 share/desktop-directories/cinnamon-utility.directory
+%%DOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-misc-docInfo-section.html
+%%DOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-misc-docInfo.html
 %%DOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-misc-signalManager-SignalManager.html
 %%DOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-misc-signalManager-section.html
 %%DOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-misc-state-section.html

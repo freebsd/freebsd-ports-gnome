@@ -32,6 +32,8 @@ libexec/cinnamon-screensaver-pam-helper
 %%DATADIR%%/__pycache__/manager.cpython-%%PYTHON_SUFFIX%%.pyc
 %%DATADIR%%/__pycache__/monitorView.cpython-%%PYTHON_SUFFIX%%.%%PYTHON_PYOEXTENSION%%
 %%DATADIR%%/__pycache__/monitorView.cpython-%%PYTHON_SUFFIX%%.pyc
+%%DATADIR%%/__pycache__/osk.cpython-%%PYTHON_SUFFIX%%.%%PYTHON_PYOEXTENSION%%
+%%DATADIR%%/__pycache__/osk.cpython-%%PYTHON_SUFFIX%%.pyc
 %%DATADIR%%/__pycache__/passwordEntry.cpython-%%PYTHON_SUFFIX%%.%%PYTHON_PYOEXTENSION%%
 %%DATADIR%%/__pycache__/passwordEntry.cpython-%%PYTHON_SUFFIX%%.pyc
 %%DATADIR%%/__pycache__/playerControl.cpython-%%PYTHON_SUFFIX%%.%%PYTHON_PYOEXTENSION%%
@@ -102,6 +104,7 @@ libexec/cinnamon-screensaver-pam-helper
 %%DATADIR%%/infoPanel.py
 %%DATADIR%%/manager.py
 %%DATADIR%%/monitorView.py
+%%DATADIR%%/osk.py
 %%DATADIR%%/pamhelper/__pycache__/authClient.cpython-%%PYTHON_SUFFIX%%.%%PYTHON_PYOEXTENSION%%
 %%DATADIR%%/pamhelper/__pycache__/authClient.cpython-%%PYTHON_SUFFIX%%.pyc
 %%DATADIR%%/pamhelper/authClient.py

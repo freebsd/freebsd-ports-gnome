@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-screensaver
-PORTVERSION=	4.0.3
+PORTVERSION=	4.2.0
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -26,7 +26,7 @@ RUN_DEPENDS=	pam_helper:security/pam_helper \
 		${PYTHON_PKGNAMEPREFIX}xapp>0:x11/py-xapp@${PY_FLAVOR}
 
 USES=		autoreconf gettext-tools gmake gnome libtool pathfix pkgconfig \
-		python:3.5+ shebangfix
+		python:3.5+ shebangfix xorg
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
@@ -35,11 +35,14 @@ USE_XORG=	x11 xext xinerama xrandr xscrnsaver
 
 USE_GNOME=	cairo gdkpixbuf2 intltool introspection:build libgnomekbd pygobject3
 
+INSTALLS_ICONS=	yes
+
 SHEBANG_GLOB=	*.py
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-pam-prefix=${PREFIX}/etc/pam.d
 INSTALL_TARGET=	install-strip
+USE_LDCONFIG=	yes
 
 SUB_FILES+=	cinnamon-screensaver.pam
 

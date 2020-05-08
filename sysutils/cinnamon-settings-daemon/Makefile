@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-settings-daemon
-PORTVERSION=	4.0.3
-PORTREVISION=	1
+PORTVERSION=	4.2.2
 CATEGORIES=	sysutils gnome
 DIST_SUBDIR=	gnome
 
@@ -37,13 +36,12 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		librsvg-2.so:graphics/librsvg2
 RUN_DEPENDS=	cinnamon-session:x11/cinnamon-session
 
-USES=		autoreconf gettext-tools gmake gnome localbase libtool pkgconfig
+USES=		autoreconf gettext-tools gmake gnome localbase libtool pkgconfig xorg
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool libgnomekbd
 USE_XORG=	x11 xext xfixes xi xtst
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_TAGNAME=	cb07d46
 
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes

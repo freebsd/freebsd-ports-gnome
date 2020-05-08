@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cjs
-PORTVERSION=	4.0.0
+PORTVERSION=	4.2.0
 CATEGORIES=	lang gnome
 DIST_SUBDIR=	gnome
 
@@ -18,7 +18,7 @@ BUILD_DEPENDS=	gnome-autogen.sh:devel/gnome-common
 LIB_DEPENDS=	libffi.so:devel/libffi \
 		libmozjs-52.so:lang/spidermonkey52
 
-USES=		autoreconf compiler:c11 gettext libtool gmake gnome pathfix pkgconfig
+USES=		autoreconf compiler:c11 gettext libtool gmake gnome pathfix pkgconfig xorg
 USE_GNOME=	cairo gdkpixbuf2 gtk30 introspection
 USE_XORG=	x11 xext
 

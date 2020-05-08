@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nemo
-PORTVERSION=	4.0.6
+PORTVERSION=	4.2.3
 CATEGORIES=	x11-fm gnome
 DIST_SUBDIR=	gnome
 
@@ -24,7 +24,7 @@ RUN_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme \
 		gvfs>0:devel/gvfs
 
 USES=		desktop-file-utils gettext gmake gnome meson pkgconfig python:3.5+ \
-		shared-mime-info shebangfix
+		shared-mime-info shebangfix xorg
 
 SHEBANG_FILES=	generate_additional_file makepot
 SHEBANG_GLOB=	*.py
