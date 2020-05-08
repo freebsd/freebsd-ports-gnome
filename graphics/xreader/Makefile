@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xreader
-PORTVERSION=	2.4.3
+PORTVERSION=	2.4.4
 CATEGORIES=	graphics print
 DIST_SUBDIR=	gnome
 
@@ -16,10 +16,13 @@ LIB_DEPENDS=	libxapp.so:x11/xapps \
 		libpoppler-glib.so:graphics/poppler-glib \
 		libsecret-1.so:security/libsecret
 
-USES=		compiler:c11 desktop-file-utils gettext-tools gnome meson pkgconfig xorg
+USES=		compiler:c11 desktop-file-utils gettext-tools gnome meson pkgconfig \
+		python:3.5+,build shebangfix xorg
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
+
+SHEBANG_FILES=	install-scripts test
 
 USE_XORG=	ice sm x11
 
@@ -28,7 +31,8 @@ USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection libxml2
 MESON_ARGS=	-Dintrospection=true \
 		-Dmathjax-directory=${PREFIX}/www/MathJax \
 		-Dpixbuf=true \
-		-Dpdf=true
+		-Dpdf=true \
+		-Dtests=false
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 
@@ -44,7 +48,7 @@ COMICS_DESC=		Comic book archives support
 COMICS_MESON_TRUE=	comics
 
 DBUS_LIB_DEPENDS=	libdbus-1.so:devel/dbus
-DBUS_MESON_TRUE=	dbus
+DBUS_MESON_TRUE=	enable_dbus
 
 DEBUG_MESON_TRUE=	enable_debug deprecated_warnings
 
