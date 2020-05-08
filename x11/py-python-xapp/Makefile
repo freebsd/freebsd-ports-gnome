@@ -1,10 +1,10 @@
 # $FreeBSD$
 
 PORTNAME=	python-xapp
-DISTVERSION=	1.8.1
+DISTVERSION=	2.0.1
 CATEGORIES=	x11 gnome
-DIST_SUBDIR=	gnome
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@freebsd.org
 COMMENT=	Python Xapp library
@@ -22,7 +22,7 @@ SHEBANG_GLOB=	*.py
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_PROJECT=	${PORTNAME}
+GH_PROJECT=	python3-xapp
 
 NO_ARCH=	yes
 
