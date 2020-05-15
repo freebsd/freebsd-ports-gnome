@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-control-center
-PORTVERSION=	4.0.1
+PORTVERSION=	4.4.0
 CATEGORIES=	sysutils gnome
 DIST_SUBDIR=	gnome
 
@@ -29,7 +29,7 @@ LIB_DEPENDS=	libcinnamon-desktop.so:x11/cinnamon-desktop \
 RUN_DEPENDS=	iso-codes>0:misc/iso-codes \
 		cinnamon-settings-daemon>=1.0.0:sysutils/cinnamon-settings-daemon
 
-USES=		autoreconf gettext gmake gnome libtool pathfix pkgconfig
+USES=		autoreconf gettext gmake gnome libtool pathfix pkgconfig xorg
 
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool libgnomekbd libxml2
 
@@ -69,9 +69,5 @@ ONLINEACCOUNTS_CONFIGURE_ENABLE=	onlineaccounts
 WACOM_LIB_DEPENDS=	libwacom.so:x11/libwacom
 WACOM_USE=		xorg=xi
 WACOM_CONFIGURE_ENABLE=	wacom
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|/usr/share/|${PREFIX}/share/|g' \
-		${WRKSRC}/panels/common/cc-common-language.c
 
 .include <bsd.port.mk>

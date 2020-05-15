@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-desktop
-PORTVERSION=	4.0.1
+PORTVERSION=	4.4.1
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -20,7 +20,7 @@ LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 RUN_DEPENDS=	xkeyboard-config>=0:x11/xkeyboard-config \
 		libxkbfile>=0:x11/libxkbfile
 
-USES=		gettext gnome localbase meson pkgconfig python:3.5+,build shebangfix
+USES=		gettext gnome localbase meson pkgconfig python:3.5+,build shebangfix xorg
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection
 USE_XORG=	x11 xext xrandr
 USE_LDCONFIG=	yes
@@ -28,8 +28,7 @@ USE_LDCONFIG=	yes
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
 
-SHEBANG_FILES=	files/usr/bin/cinnamon-desktop-migrate-mediakeys \
-		install-scripts/meson_install_schemas.py
+SHEBANG_FILES=	install-scripts/meson_install_schemas.py installer-test
 
 GLIB_SCHEMAS=	org.cinnamon.desktop.a11y.applications.gschema.xml \
 		org.cinnamon.desktop.a11y.keyboard.gschema.xml \
@@ -56,7 +55,7 @@ GLIB_SCHEMAS=	org.cinnamon.desktop.a11y.applications.gschema.xml \
 
 OPTIONS_DEFINE=	ALSA
 
-ALSA_LIB_DEPENDS+=	libasound.so:audio/alsa-lib
+ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 ALSA_MESON_TRUE=	alsa
 
 .include <bsd.port.mk>

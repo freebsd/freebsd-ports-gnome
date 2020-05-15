@@ -5,6 +5,7 @@ bin/nemo-desktop
 bin/nemo-open-with
 include/nemo/libnemo-extension/nemo-column-provider.h
 include/nemo/libnemo-extension/nemo-column.h
+include/nemo/libnemo-extension/nemo-desktop-preferences.h
 include/nemo/libnemo-extension/nemo-extension-types.h
 include/nemo/libnemo-extension/nemo-file-info.h
 include/nemo/libnemo-extension/nemo-info-provider.h
@@ -85,12 +86,7 @@ share/icons/hicolor/48x48/status/progress-60.png
 share/icons/hicolor/48x48/status/progress-70.png
 share/icons/hicolor/48x48/status/progress-80.png
 share/icons/hicolor/48x48/status/progress-90.png
-share/icons/hicolor/scalable/actions/collapse-menu-hover-symbolic.svg
-share/icons/hicolor/scalable/actions/collapse-menu-symbolic.svg
-share/icons/hicolor/scalable/actions/expand-menu-hover-symbolic.svg
-share/icons/hicolor/scalable/actions/expand-menu-symbolic.svg
 share/icons/hicolor/scalable/actions/location-symbolic.svg
-include/nemo/libnemo-extension/nemo-desktop-preferences.h
 share/icons/hicolor/scalable/actions/mount-archive-symbolic.svg
 share/icons/hicolor/scalable/actions/nemo-auto-arrange-symbolic.svg
 share/icons/hicolor/scalable/actions/nemo-desktop-scale-symbolic.svg

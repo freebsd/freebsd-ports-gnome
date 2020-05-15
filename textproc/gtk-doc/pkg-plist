@@ -10,14 +10,16 @@ bin/gtkdoc-rebase
 bin/gtkdoc-scan
 bin/gtkdoc-scangobj
 bin/gtkdocize
-lib/cmake/GtkDoc/GtkDocConfig.cmake
-lib/cmake/GtkDoc/GtkDocConfigVersion.cmake
-lib/cmake/GtkDoc/GtkDocScanGObjWrapper.cmake
 libdata/pkgconfig/gtk-doc.pc
 share/aclocal/gtk-doc.m4
+share/cmake/GtkDoc/GtkDocConfig.cmake
+share/cmake/GtkDoc/GtkDocConfigVersion.cmake
+share/cmake/GtkDoc/GtkDocScanGObjWrapper.cmake
 %%DATADIR%%/data/devhelp2.xsd
 %%DATADIR%%/data/devhelp2.xsl
 %%DATADIR%%/data/gtk-doc.flat.make
+%%DATADIR%%/data/gtk-doc.no-xslt-flat.make
+%%DATADIR%%/data/gtk-doc.no-xslt.make
 %%DATADIR%%/data/gtk-doc.make
 %%DATADIR%%/data/gtk-doc.xsl
 %%DATADIR%%/data/home.png
@@ -40,6 +42,8 @@ share/aclocal/gtk-doc.m4
 %%DATADIR%%/python/gtkdoc/__pycache__/config.cpython-%%PYTHON_SUFFIX%%.pyc
 %%DATADIR%%/python/gtkdoc/__pycache__/fixxref.cpython-%%PYTHON_SUFFIX%%.opt-1.pyc
 %%DATADIR%%/python/gtkdoc/__pycache__/fixxref.cpython-%%PYTHON_SUFFIX%%.pyc
+%%DATADIR%%/python/gtkdoc/__pycache__/highlight.cpython-%%PYTHON_SUFFIX%%.opt-1.pyc
+%%DATADIR%%/python/gtkdoc/__pycache__/highlight.cpython-%%PYTHON_SUFFIX%%.pyc
 %%DATADIR%%/python/gtkdoc/__pycache__/md_to_db.cpython-%%PYTHON_SUFFIX%%.opt-1.pyc
 %%DATADIR%%/python/gtkdoc/__pycache__/md_to_db.cpython-%%PYTHON_SUFFIX%%.pyc
 %%DATADIR%%/python/gtkdoc/__pycache__/mkdb.cpython-%%PYTHON_SUFFIX%%.opt-1.pyc
@@ -62,6 +66,7 @@ share/aclocal/gtk-doc.m4
 %%DATADIR%%/python/gtkdoc/common.py
 %%DATADIR%%/python/gtkdoc/config.py
 %%DATADIR%%/python/gtkdoc/fixxref.py
+%%DATADIR%%/python/gtkdoc/highlight.py
 %%DATADIR%%/python/gtkdoc/md_to_db.py
 %%DATADIR%%/python/gtkdoc/mkdb.py
 %%DATADIR%%/python/gtkdoc/mkhtml.py

@@ -1,12 +1,12 @@
---- configure.ac.orig	2015-02-02 16:02:44 UTC
+--- configure.ac.orig	2019-12-28 11:54:21 UTC
 +++ configure.ac
-@@ -412,9 +412,6 @@ fi
- # For fix-meta-rectangle.py
- AM_PATH_PYTHON([2.5])
+@@ -462,9 +462,6 @@ if test "x$enable_debug" = "xyes"; then
+ 	CFLAGS="$CFLAGS -g -O"
+ fi
  
 -# Use gnome-doc-utils:
 -GNOME_DOC_INIT([0.8.0])
 -
- #### Warnings (last since -Werror can disturb other tests)
+ GTK_DOC_CHECK([1.15], [--flavour no-tmpl])
  
- # Stay command-line compatible with the gnome-common configure option. Here
+ AC_CHECK_DECL([GL_EXT_x11_sync_object],

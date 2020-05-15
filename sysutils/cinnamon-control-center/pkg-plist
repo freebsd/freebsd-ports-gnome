@@ -22,7 +22,6 @@ libdata/pkgconfig/libcinnamon-control-center.pc
 %%COLORD%%share/applications/cinnamon-color-panel.desktop
 share/applications/cinnamon-control-center.desktop
 share/applications/cinnamon-display-panel.desktop
-%%ONLINEACCOUNTS%%share/applications/cinnamon-online-accounts-panel.desktop
 share/applications/cinnamon-region-panel.desktop
 %%WACOM%%share/applications/cinnamon-wacom-panel.desktop
 %%DATADIR%%/datetime/backward

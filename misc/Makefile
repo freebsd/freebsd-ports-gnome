@@ -489,6 +489,7 @@
     SUBDIR += termatrix
     SUBDIR += teseq
     SUBDIR += thefuck
+    SUBDIR += timezonemap
     SUBDIR += tkcron
     SUBDIR += tkinfo
     SUBDIR += tkregexp

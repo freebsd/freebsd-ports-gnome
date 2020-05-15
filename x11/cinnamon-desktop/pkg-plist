@@ -1,4 +1,3 @@
-bin/cinnamon-desktop-migrate-mediakeys
 include/cinnamon-desktop/libcinnamon-desktop/cdesktop-enums.h
 include/cinnamon-desktop/libcinnamon-desktop/gnome-bg-crossfade.h
 include/cinnamon-desktop/libcinnamon-desktop/gnome-bg.h

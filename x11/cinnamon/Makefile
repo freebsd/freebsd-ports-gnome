@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon
-PORTVERSION=	4.0.10
+PORTVERSION=	4.4.8
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -41,11 +41,15 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pyinotify>0:devel/py-pyinotify@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pexpect>0:misc/py-pexpect@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}python-pam>0:security/py-python-pam@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}tinycss>0:textproc/py-tinycss@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}pytz>0:devel/py-pytz@${PY_FLAVOR} \
+		timezonemap>0:misc/timezonemap \
+		gnome-backgrounds>0:x11-themes/gnome-backgrounds \
 		metacity:x11-wm/metacity \
 		tint2:x11/tint
 
 USES=		autoreconf:build compiler:c11 gettext gl gmake gnome libtool pathfix \
-		pkgconfig python:3.5+ shebangfix
+		pkgconfig python:3.5+ shebangfix xorg
 
 USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 intltool introspection libxml2 pygobject3
 
@@ -73,7 +77,8 @@ INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
 
 GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=	--with-ca-certificates=${LOCALBASE}/share/certs/ca-root-nss.crt
+CONFIGURE_ARGS=	--with-ca-certificates=${LOCALBASE}/share/certs/ca-root-nss.crt \
+		--disable-networkmanager
 INSTALL_TARGET=	install-strip
 
 GLIB_SCHEMAS=	org.cinnamon.gschema.xml
@@ -87,31 +92,14 @@ DOCS_CONFIGURE_ENABLE=	gtk-doc
 NLS_RUN_DEPENDS=	cinnamon-translations>0:misc/cinnamon-translations
 
 post-patch:
-	@${MKDIR} ${WRKSRC}/files${PREFIX}
-.for d in bin share
-	@${MV} ${WRKSRC}/files/usr/${d} ${WRKSRC}/files${PREFIX}
-.endfor
-	@${MV} ${WRKSRC}/files/etc ${WRKSRC}/files${PREFIX}
-
 	# Remove a broken link (is applications-merge used anywhere?)
-	@${RM} ${WRKSRC}/files/${PREFIX}/etc/xdg/menus/cinnamon-applications-merged
-
-	@${REINPLACE_CMD} -e 's|find|find ${WRKSRC}/files|g' \
-		${WRKSRC}/files/Makefile.in
-
-	# is this really needed?
-	#@${REINPLACE_CMD} -e 's|const NM = imports.gi.NM;||g' \
-	#	${WRKSRC}/files${PREFIX}/share/cinnamon/applets/network\@cinnamon.org/applet.js
-
-	@${REINPLACE_CMD} -e 's|nm-applet;||g' \
-		${WRKSRC}/files${PREFIX}/share/cinnamon-session/sessions/cinnamon.session \
-		${WRKSRC}/files${PREFIX}/share/cinnamon-session/sessions/cinnamon2d.session
+	@${RM} ${WRKSRC}/files/etc/xdg/menus/cinnamon-applications-merged
 
 	@${REINPLACE_CMD} -e '/prefix/s|/usr|${PREFIX}|g ;\
 		/datadir/s|/usr|${PREFIX}|g ;\
 		/libdir/s|/usr|${PREFIX}|g ;\
 		/libexecdir/s|/usr|${PREFIX}|g' \
-			${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-menu-editor/cme/config.py
+			${WRKSRC}/files/usr/share/cinnamon/cinnamon-menu-editor/cme/config.py
 
 	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/share/cinnamon/locale" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/share/cinnamon/locale|${PREFIX}/share/locale|g"
@@ -126,10 +114,7 @@ post-patch:
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/bin|${PREFIX}/bin|g"
 
 	@${REINPLACE_CMD} -e '/cs-bluetooth/d; /cs-network/d' \
-			${WRKSRC}/files${PREFIX}/share/cinnamon/cinnamon-settings/cinnamon-settings.py
-
-	#@${REINPLACE_CMD} -e 's/SIZE\/$$$$CONTEXT/CONTEXT\/$$$$SIZE/g' \
-	#		${WRKSRC}/data/icons/Makefile.am
+			${WRKSRC}/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
 
 # Some python files use #! /usr/bin/python (note the space between the bang and the python interpreter
 	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "#!.*\/usr\/bin\/python" | \
@@ -140,5 +125,13 @@ post-patch:
 
 pre-configure:
 	@cd ${WRKSRC} && ${SETENV} NOCONFIGURE=yes ${SH} autogen.sh
+
+post-install:
+	# Ship the GNOME Backgrounds set
+	@${MKDIR} ${STAGEDIR}${PREFIX}/share/cinnamon-background-properties
+	@${LN} -s ${PREFIX}/share/gnome-background-properties/adwaita.xml \
+		${STAGEDIR}${PREFIX}/share/cinnamon-background-properties/adwaita.xml
+	@${LN} -s ${PREFIX}/share/gnome-background-properties/gnome-backgrounds.xml \
+		${STAGEDIR}${PREFIX}/share/cinnamon-background-properties/gnome-backgrounds.xml
 
 .include <bsd.port.mk>

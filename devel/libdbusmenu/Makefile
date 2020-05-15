@@ -8,7 +8,7 @@ CATEGORIES=	devel
 MASTER_SITES=	https://launchpadlibrarian.net/243440794/ \
 	https://launchpad.net/${PORTNAME}/${PORTVERSION:R}/${PORTVERSION}/+download/
 
-MAINTAINER=	ports@FreeBSD.org
+MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GLib and Gtk Implementation of the DBusMenu protocol
 
 LICENSE=	GPLv3 LGPL21 LGPL3

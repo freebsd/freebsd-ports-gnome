@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-session
-PORTVERSION=	4.0.0
-PORTREVISION=	1
+PORTVERSION=	4.4.0
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -19,10 +18,12 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 
 RUN_DEPENDS=	console-kit-daemon:sysutils/consolekit2
 
-USES=		gl gnome meson pkgconfig
+USES=		gl gnome meson pkgconfig python:3.5+,build shebangfix xorg
+
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_TAGNAME=	3b5759e
+
+SHEBANG_FILES=	data/meson_install_schemas.py
 
 USE_GNOME=	cairo gdkpixbuf2 gtk30
 USE_XORG=	ice sm x11 xau xcomposite xext xrender xtrans xtst
@@ -35,11 +36,11 @@ OPTIONS_DEFINE=	DOCS GCONF IPV6
 OPTIONS_DEFAULT=	DOCS IPV6
 
 DOCS_BUILD_DEPENDS=	xmlto:textproc/xmlto
-DOCS_MESON_TRUE=	with-docbook
+DOCS_MESON_TRUE=	docbook
 
 GCONF_USE=		gnome=gconf2
-GCONF_MESON_TRUE=	with-gconf
+GCONF_MESON_TRUE=	gconf
 
-IPV6_MESON_TRUE=	with-ipv6
+IPV6_MESON_TRUE=	ipv6
 
 .include <bsd.port.mk>
