@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xapps
-PORTVERSION=	1.8.2
+PORTVERSION=	1.8.4
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -39,7 +39,6 @@ USE_LDCONFIG=	yes
 PORTSCOUT=	limit:^[0-9.]+$$	# ignore master.mint* tags
 
 OPTIONS_DEFINE=	DOCS
-OPTIONS_DEFAULT=	DOCS
 
 DOCS_BUILD_DEPENDS=	gtkdocize:textproc/gtk-doc
 DOCS_MESON_TRUE=	docs

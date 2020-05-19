@@ -1,6 +1,7 @@
 bin/pastebin
 bin/upload-system-info
 bin/xfce4-set-wallpaper
+etc/xdg/autostart/xapp-sn-watcher.desktop
 include/xapp/libxapp/xapp-gtk-window.h
 include/xapp/libxapp/xapp-icon-chooser-button.h
 include/xapp/libxapp/xapp-icon-chooser-dialog.h
@@ -11,10 +12,11 @@ include/xapp/libxapp/xapp-stack-sidebar.h
 include/xapp/libxapp/xapp-status-icon-monitor.h
 include/xapp/libxapp/xapp-status-icon.h
 include/xapp/libxapp/xapp-statusicon-interface.h
+include/xapp/libxapp/xapp-util.h
 lib/girepository-1.0/XApp-1.0.typelib
 lib/libxapp.so
 lib/libxapp.so.1
-lib/libxapp.so.1.8.2
+lib/libxapp.so.1.8.4
 %%PYTHON_SITELIBDIR%%/gi/overrides/XApp.py
 libdata/pkgconfig/xapp.pc
 libexec/xapps/applet_constants.py
@@ -43,6 +45,7 @@ share/glade/catalogs/xapp-glade-catalog.xml
 %%PORTDOCS%%share/gtk-doc/html/libxapp/left-insensitive.png
 %%PORTDOCS%%share/gtk-doc/html/libxapp/left.png
 %%PORTDOCS%%share/gtk-doc/html/libxapp/libxapp.devhelp2
+%%PORTDOCS%%share/gtk-doc/html/libxapp/libxapp-xapp-util.html
 %%PORTDOCS%%share/gtk-doc/html/libxapp/object-tree.html
 %%PORTDOCS%%share/gtk-doc/html/libxapp/right-insensitive.png
 %%PORTDOCS%%share/gtk-doc/html/libxapp/right.png
@@ -59,13 +62,16 @@ share/icons/hicolor/scalable/actions/view-left-pane-symbolic.svg
 share/icons/hicolor/scalable/actions/view-right-pane-symbolic-rtl.svg
 share/icons/hicolor/scalable/actions/view-right-pane-symbolic.svg
 share/icons/hicolor/scalable/actions/view-top-pane-symbolic.svg
+share/icons/hicolor/scalable/actions/xapp-diaporama-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-go-history-next-symbolic-rtl.svg
 share/icons/hicolor/scalable/actions/xapp-go-history-next-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-go-history-previous-symbolic-rtl.svg
 share/icons/hicolor/scalable/actions/xapp-go-history-previous-symbolic.svg
+share/icons/hicolor/scalable/actions/xapp-pin-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-search-entire-word-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-search-wrap-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-text-case-symbolic.svg
+share/icons/hicolor/scalable/actions/xapp-unpin-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-use-regex-symbolic.svg
 share/icons/hicolor/scalable/categories/xapp-prefs-behavior-symbolic.svg
 share/icons/hicolor/scalable/categories/xapp-prefs-display-symbolic.svg
@@ -91,6 +97,8 @@ share/locale/et/LC_MESSAGES/xapp.mo
 share/locale/eu/LC_MESSAGES/xapp.mo
 share/locale/fi/LC_MESSAGES/xapp.mo
 share/locale/fr/LC_MESSAGES/xapp.mo
+share/locale/fr_CA/LC_MESSAGES/xapp.mo
+share/locale/he/LC_MESSAGES/xapp.mo
 share/locale/hi/LC_MESSAGES/xapp.mo
 share/locale/hr/LC_MESSAGES/xapp.mo
 share/locale/hu/LC_MESSAGES/xapp.mo
@@ -105,8 +113,10 @@ share/locale/kk/LC_MESSAGES/xapp.mo
 share/locale/ko/LC_MESSAGES/xapp.mo
 share/locale/ku/LC_MESSAGES/xapp.mo
 share/locale/lt/LC_MESSAGES/xapp.mo
+share/locale/mai/LC_MESSAGES/xapp.mo
 share/locale/ms/LC_MESSAGES/xapp.mo
 share/locale/nl/LC_MESSAGES/xapp.mo
+share/locale/oc/LC_MESSAGES/xapp.mo
 share/locale/pl/LC_MESSAGES/xapp.mo
 share/locale/pt/LC_MESSAGES/xapp.mo
 share/locale/pt_BR/LC_MESSAGES/xapp.mo
@@ -115,6 +125,7 @@ share/locale/ru/LC_MESSAGES/xapp.mo
 share/locale/sk/LC_MESSAGES/xapp.mo
 share/locale/sl/LC_MESSAGES/xapp.mo
 share/locale/sr/LC_MESSAGES/xapp.mo
+share/locale/sr@latin/LC_MESSAGES/xapp.mo
 share/locale/sv/LC_MESSAGES/xapp.mo
 share/locale/tr/LC_MESSAGES/xapp.mo
 share/locale/uk/LC_MESSAGES/xapp.mo
