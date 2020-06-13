@@ -16,7 +16,7 @@ include/xapp/libxapp/xapp-util.h
 lib/girepository-1.0/XApp-1.0.typelib
 lib/libxapp.so
 lib/libxapp.so.1
-lib/libxapp.so.1.8.4
+lib/libxapp.so.%%LIBVERSION%%
 %%PYTHON_SITELIBDIR%%/gi/overrides/XApp.py
 libdata/pkgconfig/xapp.pc
 libexec/xapps/applet_constants.py
@@ -62,7 +62,10 @@ share/icons/hicolor/scalable/actions/view-left-pane-symbolic.svg
 share/icons/hicolor/scalable/actions/view-right-pane-symbolic-rtl.svg
 share/icons/hicolor/scalable/actions/view-right-pane-symbolic.svg
 share/icons/hicolor/scalable/actions/view-top-pane-symbolic.svg
+share/icons/hicolor/scalable/actions/xapp-annotations-squiggly-symbolic.svg
+share/icons/hicolor/scalable/actions/xapp-annotations-text-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-diaporama-symbolic.svg
+share/icons/hicolor/scalable/actions/xapp-format-text-highlight-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-go-history-next-symbolic-rtl.svg
 share/icons/hicolor/scalable/actions/xapp-go-history-next-symbolic.svg
 share/icons/hicolor/scalable/actions/xapp-go-history-previous-symbolic-rtl.svg

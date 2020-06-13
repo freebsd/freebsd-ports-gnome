@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xapps
-PORTVERSION=	1.8.4
+PORTVERSION=	1.8.7
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -37,6 +37,8 @@ USE_XORG=	x11
 USE_LDCONFIG=	yes
 
 PORTSCOUT=	limit:^[0-9.]+$$	# ignore master.mint* tags
+
+PLIST_SUB+=	LIBVERSION=${PORTVERSION}
 
 OPTIONS_DEFINE=	DOCS
 
