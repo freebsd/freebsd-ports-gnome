@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-session
-PORTVERSION=	4.4.0
+PORTVERSION=	4.6.0
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -15,7 +15,6 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libdbus-glib-1.so:devel/dbus-glib \
 		libxapp.so:x11/xapps \
 		libcanberra.so:audio/libcanberra
-
 RUN_DEPENDS=	console-kit-daemon:sysutils/consolekit2
 
 USES=		gl gnome meson pkgconfig python:3.5+,build shebangfix xorg
@@ -33,7 +32,7 @@ INSTALLS_ICONS=	yes
 GLIB_SCHEMAS=	org.cinnamon.SessionManager.gschema.xml
 
 OPTIONS_DEFINE=	DOCS GCONF IPV6
-OPTIONS_DEFAULT=	DOCS IPV6
+OPTIONS_DEFAULT=	IPV6
 
 DOCS_BUILD_DEPENDS=	xmlto:textproc/xmlto
 DOCS_MESON_TRUE=	docbook
