@@ -4,19 +4,17 @@
 # adwaita-icon-theme, gnome-themes-standard and mate-themes
 
 PORTNAME=	gtk
-PORTVERSION=	3.24.18
+PORTVERSION=	3.24.20
 CATEGORIES=	x11-toolkits
-MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
+#MASTER_SITES=	GNOME/sources/gtk+/${PORTVERSION:C/^([0-9]+\.[0-9]+).*/\1/}
 PKGNAMESUFFIX=	3
-DISTNAME=	gtk+-${PORTVERSION}
+#DISTNAME=	gtk+-${PORTVERSION}
 DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Gimp Toolkit for X11 GUI (current stable version)
 
 LICENSE=	LGPL20
-
-PORTSCOUT=	limit:1,even
 
 BUILD_DEPENDS=	at-spi2-atk>=0:accessibility/at-spi2-atk \
 		docbook-xsl>0:textproc/docbook-xsl
@@ -30,22 +28,27 @@ RUN_DEPENDS=	hicolor-icon-theme>=0:misc/hicolor-icon-theme \
 		at-spi2-atk>=0:accessibility/at-spi2-atk \
 		librsvg2>=0:graphics/librsvg2
 
+USE_GITLAB=	yes
+GL_SITE=	https://gitlab.gnome.org
+GL_ACCOUNT=	GNOME
+GL_COMMIT=	db39ce2b1699acaf5d0ba160cf7cc68ccf6e16d6
+
 USE_PERL5=	build
 USE_LDCONFIG=	yes
 USES=		compiler:c11 gettext gnome localbase meson pathfix perl5 \
-		pkgconfig python:3.5+,build tar:xz xorg
+		pkgconfig python:3.5+,build shebangfix tar:xz
 USE_GNOME=	atk cairo gdkpixbuf2 introspection:build libxslt:build pango
-USE_XORG=	xext xrender x11 xinerama xi xrandr xcursor xfixes xdamage \
-		xcomposite
-MESON_ARGS=	-Dx11_backend=true \
-		-Dintrospection=true \
+MESON_ARGS=	-Dintrospection=true \
 		-Dman=true
 CPPFLAGS+=	-fno-omit-frame-pointer
 INSTALLS_ICONS=	yes
 
-BINARY_ALIAS=	python3=${PYTHON_CMD}
+PORTSCOUT=	limit:1,even
 
-LIBVERSION=	0.2411.7
+BINARY_ALIAS=	python3=${PYTHON_CMD}
+SHEBANG_GLOB=	*.py
+
+LIBVERSION=	0.2413.7
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
 
 GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
@@ -54,8 +57,8 @@ GLIB_SCHEMAS=	org.gtk.Demo.gschema.xml \
 		org.gtk.Settings.EmojiChooser.gschema.xml \
 		org.gtk.Settings.FileChooser.gschema.xml
 
-OPTIONS_DEFINE=	BROADWAY CUPS CLOUDPRINT COLORD DOCS WAYLAND
-OPTIONS_DEFAULT=BROADWAY CUPS COLORD WAYLAND
+OPTIONS_DEFINE=	BROADWAY CUPS CLOUDPRINT COLORD DOCS WAYLAND X11
+OPTIONS_DEFAULT=BROADWAY CUPS COLORD WAYLAND X11
 OPTIONS_SUB=	yes
 
 BROADWAY_DESC=	Enable GDK Broadway backend for showing GTK+ in the webbrowser using HTML5 and web sockets.
@@ -86,6 +89,10 @@ WAYLAND_RUN_DEPENDS=	wayland-protocols>=0:graphics/wayland-protocols
 WAYLAND_USES=		gl
 WAYLAND_USE=		GL=egl
 
+X11_MESON_TRUE=	x11_backend
+X11_USES=	xorg
+X11_USE=	XORG=xext,xrender,x11,xinerama,xi,xrandr,xcursor,xfixes,xdamage,xcomposite
+
 .include <bsd.port.options.mk>
 
 .if ${PORT_OPTIONS:MCUPS}
@@ -104,9 +111,6 @@ pre-configure:
 		${ECHO_MSG} "${PKGNAME}: Needs cairo with X11 support enabled."; \
 		${FALSE}; \
 	fi
-
-post-patch:
-	@${REINPLACE_CMD} 's/3.24.17/3.24.18/' ${WRKSRC}/meson.build
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/gtk-3.0/modules
