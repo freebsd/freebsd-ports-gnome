@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	muffin
-PORTVERSION=	4.4.3
+PORTVERSION=	4.6.0
 CATEGORIES=	x11-wm gnome
 DIST_SUBDIR=	gnome
 
@@ -26,7 +26,8 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libjson-glib-1.0.so:devel/json-glib \
 		libstartup-notification-1.so:x11/startup-notification \
 		libwacom.so:x11/libwacom \
-		libxkbcommon.so:x11/libxkbcommon
+		libxkbcommon.so:x11/libxkbcommon \
+		libharfbuzz.so:print/harfbuzz
 RUN_DEPENDS=	zenity>=3.0.0:x11/zenity \
 		xkeyboard-config>0:x11/xkeyboard-config
 
