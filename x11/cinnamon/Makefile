@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon
-PORTVERSION=	4.4.8
+PORTVERSION=	4.6.3
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -19,7 +19,6 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libdbus-glib-1.so:devel/dbus-glib \
 		libmuffin.so:x11-wm/muffin \
 		libcjs.so:lang/cjs \
-		libjson-glib-1.0.so:devel/json-glib \
 		libcinnamon-menu-3.so:x11/cinnamon-menus \
 		libsoup-2.4.so:devel/libsoup \
 		libstartup-notification-1.so:x11/startup-notification \
@@ -28,7 +27,8 @@ LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 		libcroco-0.6.so:textproc/libcroco \
 		libcinnamon-desktop.so:x11/cinnamon-desktop \
 		libjson-glib-1.0.so:devel/json-glib \
-		libdrm.so:graphics/libdrm
+		libdrm.so:graphics/libdrm \
+		libharfbuzz.so:print/harfbuzz
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		ca_root_nss>0:security/ca_root_nss \
 		gnome-themes-extra>3.0.0:x11-themes/gnome-themes-extra \
@@ -36,13 +36,14 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		cinnamon-control-center:sysutils/cinnamon-control-center \
 		cinnamon-screensaver:x11/cinnamon-screensaver \
 		nemo:x11-fm/nemo \
-		${PYTHON_PKGNAMEPREFIX}pillow>0:graphics/py-pillow@${PY_FLAVOR} \
+		${PY_PILLOW} \
 		${PYTHON_PKGNAMEPREFIX}lxml>0:devel/py-lxml@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pyinotify>0:devel/py-pyinotify@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pexpect>0:misc/py-pexpect@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}python-pam>0:security/py-python-pam@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}tinycss>0:textproc/py-tinycss@${PY_FLAVOR} \
 		${PYTHON_PKGNAMEPREFIX}pytz>0:devel/py-pytz@${PY_FLAVOR} \
+		${PYTHON_PKGNAMEPREFIX}distro>0:sysutils/py-distro@${PY_FLAVOR} \
 		timezonemap>0:misc/timezonemap \
 		gnome-backgrounds>0:x11-themes/gnome-backgrounds \
 		metacity:x11-wm/metacity \
@@ -54,13 +55,6 @@ USES=		autoreconf:build compiler:c11 gettext gl gmake gnome libtool pathfix \
 USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 intltool introspection libxml2 pygobject3
 
 USE_GITHUB=	yes
-USE_GL=		gl egl
-USE_GNOME=	cairo evolutiondataserver3 gconf2 gnomedesktop3 \
-		gnomeprefix gtk30 intlhack introspection
-USE_GSTREAMER1=	yes
-USE_LDCONFIG=	yes
-USE_XORG=	x11 xfixes sm xrandr xext xdamage xcomposite xi
-
 GH_ACCOUNT=	linuxmint
 
 SHEBANG_GLOB=	*.py
@@ -101,27 +95,28 @@ post-patch:
 		/libexecdir/s|/usr|${PREFIX}|g' \
 			${WRKSRC}/files/usr/share/cinnamon/cinnamon-menu-editor/cme/config.py
 
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/share/cinnamon/locale" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "/usr/share/cinnamon/locale" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/share/cinnamon/locale|${PREFIX}/share/locale|g"
 
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/share" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "/usr/share" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/share|${PREFIX}/share|g"
 
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/lib" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "/usr/lib" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/lib|${PREFIX}/lib|g"
 
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/bin" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "/usr/bin" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/bin|${PREFIX}/bin|g"
 
 	@${REINPLACE_CMD} -e '/cs-bluetooth/d; /cs-network/d' \
 			${WRKSRC}/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
 
-# Some python files use #! /usr/bin/python (note the space between the bang and the python interpreter
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "#!.*\/usr\/bin\/python" | \
+	# Some python files use #! /usr/bin/python (note the space between the bang and the python interpreter
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "#!.*\/usr\/bin\/python" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|#!.*python.*|#!/usr/bin/env python|g"
 
-	@${FIND} ${WRKSRC} -name '*.orig' -delete
-	@${FIND} ${WRKSRC} -name '*.bak' -delete
+	# gtk-doc builds erroneous documentation files otherwise
+	@${FIND} ${WRKSRC} -name '*.orig' -type f -delete
+	@${FIND} ${WRKSRC} -name '*.bak' -type f -delete
 
 pre-configure:
 	@cd ${WRKSRC} && ${SETENV} NOCONFIGURE=yes ${SH} autogen.sh

@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-control-center
-PORTVERSION=	4.4.0
+PORTVERSION=	4.6.0
 CATEGORIES=	sysutils gnome
 DIST_SUBDIR=	gnome
 
@@ -25,7 +25,8 @@ LIB_DEPENDS=	libcinnamon-desktop.so:x11/cinnamon-desktop \
 		libfreetype.so:print/freetype2 \
 		libnotify.so:devel/libnotify \
 		libpolkit-gobject-1.so:sysutils/polkit \
-		libxklavier.so:x11/libxklavier
+		libxklavier.so:x11/libxklavier \
+		libharfbuzz.so:print/harfbuzz
 RUN_DEPENDS=	iso-codes>0:misc/iso-codes \
 		cinnamon-settings-daemon>=1.0.0:sysutils/cinnamon-settings-daemon
 
@@ -44,14 +45,11 @@ USE_LDCONFIG=	yes
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-networkmanager \
-		--disable-modemmanager \
-		--disable-documentation
-CFLAGS+=	-I${LOCALBASE}/include
-CPPFLAGS+=	-I${LOCALBASE}/include
+		--disable-modemmanager
 INSTALL_TARGET=	install-strip
 
-OPTIONS_DEFINE=	COLORD CUPS ONLINEACCOUNTS WACOM
-OPTIONS_DEFAULT=COLORD CUPS ONLINEACCOUNTS WACOM
+OPTIONS_DEFINE=	COLORD ONLINEACCOUNTS WACOM
+OPTIONS_DEFAULT=COLORD ONLINEACCOUNTS WACOM
 OPTIONS_SUB=	yes
 
 ONLINEACCOUNTS_DESC=	GNOME Online Accounts panel support
@@ -59,9 +57,6 @@ WACOM_DESC=	Wacom management panel support
 
 COLORD_LIB_DEPENDS=	libcolord.so:graphics/colord
 COLORD_CONFIGURE_ENABLE=	color
-
-CUPS_LIB_DEPENDS=	libcups.so:print/cups
-CUPS_CONFIGURE_ENABLE=	cups
 
 ONLINEACCOUNTS_LIB_DEPENDS=	libgoa-1.0.so:net/gnome-online-accounts
 ONLINEACCOUNTS_CONFIGURE_ENABLE=	onlineaccounts

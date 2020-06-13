@@ -1,4 +1,3 @@
-etc/dbus-1/system.d/org.cinnamon.SettingsDaemon.DateTimeMechanism.conf
 etc/xdg/autostart/cinnamon-settings-daemon-a11y-keyboard.desktop
 etc/xdg/autostart/cinnamon-settings-daemon-a11y-settings.desktop
 etc/xdg/autostart/cinnamon-settings-daemon-automount.desktop
@@ -16,7 +15,7 @@ etc/xdg/autostart/cinnamon-settings-daemon-power.desktop
 etc/xdg/autostart/cinnamon-settings-daemon-screensaver-proxy.desktop
 %%SMARTCARD%%etc/xdg/autostart/cinnamon-settings-daemon-smartcard.desktop
 etc/xdg/autostart/cinnamon-settings-daemon-sound.desktop
-etc/xdg/autostart/cinnamon-settings-daemon-wacom.desktop
+%%WACOM%%etc/xdg/autostart/cinnamon-settings-daemon-wacom.desktop
 etc/xdg/autostart/cinnamon-settings-daemon-xrandr.desktop
 etc/xdg/autostart/cinnamon-settings-daemon-xsettings.desktop
 include/cinnamon-settings-daemon-3.0/cinnamon-settings-daemon/csd-enums.h
@@ -36,7 +35,7 @@ libexec/csd-dummy
 libexec/csd-housekeeping
 libexec/csd-input-helper
 libexec/csd-keyboard
-libexec/csd-list-wacom
+%%WACOM%%libexec/csd-list-wacom
 libexec/csd-locate-pointer
 libexec/csd-media-keys
 libexec/csd-mouse
@@ -47,9 +46,9 @@ libexec/csd-power
 libexec/csd-screensaver-proxy
 %%SMARTCARD%%libexec/csd-smartcard
 libexec/csd-sound
-libexec/csd-wacom
-libexec/csd-wacom-led-helper
-libexec/csd-wacom-osd
+%%WACOM%%libexec/csd-wacom
+%%WACOM%%libexec/csd-wacom-led-helper
+%%WACOM%%libexec/csd-wacom-osd
 libexec/csd-xrandr
 libexec/csd-xsettings
 share/applications/csd-automount.desktop
@@ -62,8 +61,9 @@ share/applications/csd-automount.desktop
 %%DATADIR%%/icons/hicolor/64x64/devices/kbd-scrolllock-off.png
 %%DATADIR%%/icons/hicolor/64x64/devices/kbd-scrolllock-on.png
 share/dbus-1/system-services/org.cinnamon.SettingsDaemon.DateTimeMechanism.service
+share/dbus-1/system.d/org.cinnamon.SettingsDaemon.DateTimeMechanism.conf
 share/polkit-1/actions/org.cinnamon.settings-daemon.plugins.power.policy
-share/polkit-1/actions/org.cinnamon.settings-daemon.plugins.wacom.policy
+%%WACOM%%share/polkit-1/actions/org.cinnamon.settings-daemon.plugins.wacom.policy
 share/polkit-1/actions/org.cinnamon.settingsdaemon.datetimemechanism.policy
 share/icons/hicolor/16x16/apps/csd-a11y-keyboard.png
 share/icons/hicolor/16x16/apps/csd-a11y-settings.png

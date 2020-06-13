@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	nemo
-PORTVERSION=	4.4.2
+PORTVERSION=	4.6.3
 CATEGORIES=	x11-fm gnome
 DIST_SUBDIR=	gnome
 
@@ -23,7 +23,7 @@ RUN_DEPENDS=	gnome-icon-theme>=0:misc/gnome-icon-theme \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
 		gvfs>0:devel/gvfs
 
-USES=		desktop-file-utils gettext gmake gnome meson pkgconfig python:3.5+ \
+USES=		desktop-file-utils gettext gnome meson pkgconfig python:3.5+ \
 		shared-mime-info shebangfix xorg
 
 SHEBANG_FILES=	generate_additional_file makepot
@@ -42,7 +42,7 @@ INSTALLS_ICONS=	yes
 
 USE_LDCONFIG=	yes
 
-OPTIONS_DEFINE=		DOCS EXEMPI EXIF
+OPTIONS_DEFINE=		DOCS EXEMPI EXIF TRACKER
 OPTIONS_DEFAULT=	DOCS EXEMPI EXIF
 OPTIONS_SUB=		yes
 
@@ -58,6 +58,9 @@ EXEMPI_MESON_TRUE=	xmp
 
 EXIF_LIB_DEPENDS=	libexif.so:graphics/libexif
 EXIF_MESON_TRUE=	exif
+
+TRACKER_LIB_DEPENDS=	libtracker-sparql-2.0.so:sysutils/tracker
+TRACKER_MESON_TRUE=	tracker
 
 post-patch:
 	# malloc.h is deprecated

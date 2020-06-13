@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xreader
-PORTVERSION=	2.4.4
+PORTVERSION=	2.6.2
 CATEGORIES=	graphics print
 DIST_SUBDIR=	gnome
 
@@ -31,8 +31,7 @@ USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection libxml2
 MESON_ARGS=	-Dintrospection=true \
 		-Dmathjax-directory=${PREFIX}/www/MathJax \
 		-Dpixbuf=true \
-		-Dpdf=true \
-		-Dtests=false
+		-Dpdf=true
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 
