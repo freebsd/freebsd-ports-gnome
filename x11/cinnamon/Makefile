@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon
-PORTVERSION=	4.6.0
+PORTVERSION=	4.6.3
 CATEGORIES=	x11 gnome
 DIST_SUBDIR=	gnome
 
@@ -56,7 +56,6 @@ USE_GNOME=	cairo gdkpixbuf2 glib20 gtk30 intltool introspection libxml2 pygobjec
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	linuxmint
-GH_TAGNAME=	1ccef7d
 
 SHEBANG_GLOB=	*.py
 SHEBANG_FILES=	files/*
@@ -96,28 +95,28 @@ post-patch:
 		/libexecdir/s|/usr|${PREFIX}|g' \
 			${WRKSRC}/files/usr/share/cinnamon/cinnamon-menu-editor/cme/config.py
 
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/share/cinnamon/locale" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "/usr/share/cinnamon/locale" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/share/cinnamon/locale|${PREFIX}/share/locale|g"
 
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/share" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "/usr/share" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/share|${PREFIX}/share|g"
 
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/lib" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "/usr/lib" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/lib|${PREFIX}/lib|g"
 
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "/usr/bin" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "/usr/bin" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|/usr/bin|${PREFIX}/bin|g"
 
 	@${REINPLACE_CMD} -e '/cs-bluetooth/d; /cs-network/d' \
 			${WRKSRC}/files/usr/share/cinnamon/cinnamon-settings/cinnamon-settings.py
 
 	# Some python files use #! /usr/bin/python (note the space between the bang and the python interpreter
-	@${FIND} ${WRKSRC} -name \* | ${XARGS} ${EGREP} -l "#!.*\/usr\/bin\/python" | \
+	@${FIND} ${WRKSRC} -name \* -type f | ${XARGS} ${EGREP} -l "#!.*\/usr\/bin\/python" | \
 		${XARGS} ${REINPLACE_CMD} -e "s|#!.*python.*|#!/usr/bin/env python|g"
 
 	# gtk-doc builds erroneous documentation files otherwise
-	@${FIND} ${WRKSRC} -name '*.orig' -delete
-	@${FIND} ${WRKSRC} -name '*.bak' -delete
+	@${FIND} ${WRKSRC} -name '*.orig' -type f -delete
+	@${FIND} ${WRKSRC} -name '*.bak' -type f -delete
 
 pre-configure:
 	@cd ${WRKSRC} && ${SETENV} NOCONFIGURE=yes ${SH} autogen.sh
