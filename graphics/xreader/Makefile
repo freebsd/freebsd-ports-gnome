@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	xreader
-PORTVERSION=	2.6.0
+PORTVERSION=	2.6.2
 CATEGORIES=	graphics print
 DIST_SUBDIR=	gnome
 
