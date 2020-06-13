@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cjs
-PORTVERSION=	4.4.0
+PORTVERSION=	4.6.0
 CATEGORIES=	lang gnome
 DIST_SUBDIR=	gnome
 
@@ -16,6 +16,7 @@ LICENSE_FILE_LGPL20+ =	${WRKSRC}/COPYING.LGPL
 
 BUILD_DEPENDS=	gnome-autogen.sh:devel/gnome-common
 LIB_DEPENDS=	libffi.so:devel/libffi \
+		libharfbuzz.so:print/harfbuzz \
 		libmozjs-52.so:lang/spidermonkey52
 
 USES=		autoreconf compiler:c11 gettext libtool gmake gnome pathfix pkgconfig xorg
@@ -31,5 +32,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-profiler
 
 INSTALL_TARGET=	install-strip
+
+PORTSCOUT=	limit:^[0-9.]+$$	# ignore master.mint* tags
 
 .include <bsd.port.mk>
