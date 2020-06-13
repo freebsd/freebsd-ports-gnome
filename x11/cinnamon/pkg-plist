@@ -353,7 +353,6 @@ share/applications/cinnamon2d.desktop
 %%DATADIR%%/js/ui/checkBox.js
 %%DATADIR%%/js/ui/cinnamonDBus.js
 %%DATADIR%%/js/ui/cinnamonEntry.js
-%%DATADIR%%/js/ui/cinnamonMountOperation.js
 %%DATADIR%%/js/ui/dbusMenu.js
 %%DATADIR%%/js/ui/desklet.js
 %%DATADIR%%/js/ui/deskletManager.js
@@ -366,7 +365,6 @@ share/applications/cinnamon2d.desktop
 %%DATADIR%%/js/ui/extensionSystem.js
 %%DATADIR%%/js/ui/flashspot.js
 %%DATADIR%%/js/ui/hotCorner.js
-%%DATADIR%%/js/ui/indicatorManager.js
 %%DATADIR%%/js/ui/keybindings.js
 %%DATADIR%%/js/ui/keyboard.js
 %%DATADIR%%/js/ui/layout.js
@@ -520,11 +518,6 @@ share/desktop-directories/cinnamon-utility.directory
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-dnd.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-extension-section.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-extension.html
-%%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-indicatorManager-AppIndicator.html
-%%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-indicatorManager-IconCache.html
-%%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-indicatorManager-IndicatorActor.html
-%%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-indicatorManager-XmlLessDBusProxy.html
-%%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-indicatorManager-section.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-layout-LayoutManager.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-layout-section.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-lightbox-section.html
@@ -533,6 +526,8 @@ share/desktop-directories/cinnamon-utility.directory
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-magnifierDBus.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-main-section.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-main.html
+%%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-messageTray-Notification.html
+%%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-messageTray-section.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-modalDialog-ConfirmDialog.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-modalDialog-InfoOSD.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon-js/cinnamon-js-ui-modalDialog-ModalDialog.html
@@ -647,8 +642,6 @@ share/desktop-directories/cinnamon-utility.directory
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/CinnamonGenericContainer.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/CinnamonGlobal.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/CinnamonGtkEmbed.html
-%%PORTDOCS%%share/gtk-doc/html/cinnamon/CinnamonMountOperation.html
-%%PORTDOCS%%share/gtk-doc/html/cinnamon/CinnamonRecorder.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/CinnamonSlicer.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/CinnamonStack.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/CinnamonTrayIcon.html
@@ -662,7 +655,6 @@ share/desktop-directories/cinnamon-utility.directory
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/ch03.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/ch04.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/ch05.html
-%%PORTDOCS%%share/gtk-doc/html/cinnamon/ch06.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/cinnamon-cinnamon-util.html
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/cinnamon.devhelp2
 %%PORTDOCS%%share/gtk-doc/html/cinnamon/deprecated-api-index.html
