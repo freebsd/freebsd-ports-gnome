@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	cinnamon-settings-daemon
-PORTVERSION=	4.4.0
+PORTVERSION=	4.6.0
 CATEGORIES=	sysutils gnome
 DIST_SUBDIR=	gnome
 
@@ -32,8 +32,8 @@ LIB_DEPENDS=	libcanberra.so:audio/libcanberra \
 		libupower-glib.so:sysutils/upower \
 		libpulse.so:audio/pulseaudio \
 		libnotify.so:devel/libnotify \
-		libwacom.so:x11/libwacom \
-		librsvg-2.so:graphics/librsvg2
+		librsvg-2.so:graphics/librsvg2 \
+		libharfbuzz.so:print/harfbuzz
 RUN_DEPENDS=	cinnamon-session:x11/cinnamon-session
 
 USES=		autoreconf gettext-tools gmake gnome localbase libtool pkgconfig xorg
@@ -59,8 +59,8 @@ GLIB_SCHEMAS=	org.cinnamon.settings-daemon.enums.xml \
 		org.cinnamon.settings-daemon.plugins.xsettings.gschema.xml
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	CUPS SMARTCARD
-OPTIONS_DEFAULT=CUPS SMARTCARD
+OPTIONS_DEFINE=	CUPS SMARTCARD WACOM
+OPTIONS_DEFAULT=CUPS SMARTCARD WACOM
 OPTIONS_SUB=	yes
 
 CUPS_CONFIGURE_ENABLE=	cups
@@ -70,9 +70,11 @@ SMARTCARD_DESC=	Smartcard support
 SMARTCARD_CONFIGURE_ENABLE=	smartcard-support
 SMARTCARD_LIB_DEPENDS=	libnss3.so:security/nss
 
+WACOM_DESC=	Tablet support with libwacom
+WACOM_CONFIGURE_ENABLE=	wacom
+WACOM_LIB_DEPENDS=	libwacom.so:x11/libwacom
+
 post-patch:
-	@${REINPLACE_CMD} -e 's|/etc/gnome|${PREFIX}/etc/gnome|g' \
-		${WRKSRC}/data/org.cinnamon.settings-daemon.plugins.xrandr.gschema.xml.in.in
 	# Adhere to our hier(7).
 	@${MKDIR} -p ${WRKSRC}/files${PREFIX}
 	@${MV} ${WRKSRC}/files/usr/share ${WRKSRC}/files${PREFIX}
