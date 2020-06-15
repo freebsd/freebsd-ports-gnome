@@ -80,13 +80,13 @@ EXTRA_PATCHES+=	${FILESDIR}/extra-arch-powerpc64
 .endif
 
 post-patch:
-	@${REINPLACE_CMD} -e 's|/usr/local|${PREFIX}|' \
+	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \
 		${WRKSRC}/gio/xdgmime/xdgmime.c
-	@${REINPLACE_CMD} -e 's|/usr|${PREFIX}|g' \
+	@${REINPLACE_CMD} -e 's|/usr|${LOCALBASE}|g' \
 		${WRKSRC}/gio/tests/desktop-app-info.c \
 		${WRKSRC}/glib/gcharset.c
-	@${REINPLACE_CMD} -e 's|:/usr/bin|:${PREFIX}/bin:/usr/bin|' \
-	-e 's|/etc/xdg|${PREFIX}/etc/xdg|' \
+	@${REINPLACE_CMD} -e 's|:/usr/bin|:${LOCALBASE}/bin:/usr/bin|' \
+	-e 's|/etc/xdg|${LOCALBASE}/etc/xdg|' \
 		${WRKSRC}/glib/gspawn.c \
 		${WRKSRC}/glib/gutils.c
 	@${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|g' \
