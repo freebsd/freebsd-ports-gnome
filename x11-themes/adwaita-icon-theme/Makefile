@@ -18,6 +18,8 @@ CONFIGURE_ENV=	ac_cv_path_GTK_ENCODE_SYMBOLIC_SVG="false"
 NO_ARCH=	yes
 INSTALLS_ICONS=	yes
 
+PORTSCOUT=	limitw:1,even
+
 post-install:
 	@${RM} -r ${STAGEDIR}${PREFIX}/lib/locale
 	@${RM} -r ${STAGEDIR}${PREFIX}/locale
