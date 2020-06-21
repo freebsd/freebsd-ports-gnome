@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	gjs
-PORTVERSION=	1.64.2
+PORTVERSION=	1.64.3
 CATEGORIES=	lang gnome
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
@@ -25,5 +25,7 @@ USE_XORG=	x11 xext
 MESON_ARGS=	-Dprofiler=disabled \
 		-Dinstalled_tests=false
 USE_LDCONFIG=	yes
+
+PORTSCOUT=	limitw:1,even
 
 .include <bsd.port.mk>
