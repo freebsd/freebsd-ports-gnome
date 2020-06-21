@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-desktop
-PORTVERSION=	3.28.2
+PORTVERSION=	3.36.3.1
 CATEGORIES=	x11 gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Additional UI API for GNOME 3
@@ -14,8 +14,6 @@ LICENSE=	GPLv2+ LGPL20+
 LICENSE_COMB=	multi
 LICENSE_FILE_GPLv2+ =	${WRKSRC}/COPYING
 LICENSE_FILE_LGPL20+ =	${WRKSRC}/COPYING.LIB
-
-PORTSCOUT=	limitw:1,even
 
 BUILD_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		gsettings-desktop-schemas>=0:devel/gsettings-desktop-schemas \
@@ -26,20 +24,15 @@ RUN_DEPENDS=	iso-codes>=0:misc/iso-codes \
 		cantarell-fonts>=0:x11-fonts/cantarell-fonts \
 		xkeyboard-config>=0:x11/xkeyboard-config
 
-USES=		bison gettext gmake gnome libtool localbase pathfix \
-		pkgconfig python:3.4+ tar:xz
+USES=		bison gettext gnome localbase meson \
+		pkgconfig python:3.4+ tar:xz xorg
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool introspection:build
 USE_XORG=	x11
 USE_LDCONFIG=	yes
-GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-gnome-distributor="FreeBSD GNOME Project" \
-		--disable-udev
-INSTALL_TARGET=	install-strip
 
-post-patch:
-	@${REINPLACE_CMD} -e 's|xsltproc -o| xsltproc --nonet -o|g' \
-		${WRKSRC}/desktop-docs/fdl/Makefile.in \
-		${WRKSRC}/desktop-docs/gpl/Makefile.in \
-		${WRKSRC}/desktop-docs/lgpl/Makefile.in
+PORTSCOUT=	limitw:1,even
+# XXX: udev_hwdb_unref not implemented in devel/libudev-devd
+MESON_ARGS=	-Dgnome_distributor="FreeBSD GNOME Project" \
+		-Dudev=disabled -Dsystemd=disabled
 
 .include <bsd.port.mk>

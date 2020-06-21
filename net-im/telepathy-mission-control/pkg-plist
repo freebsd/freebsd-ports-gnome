@@ -31,11 +31,8 @@ share/doc/telepathy-mission-control/mission-control-plugins/ch03.html
 share/doc/telepathy-mission-control/mission-control-plugins/ch04.html
 share/doc/telepathy-mission-control/mission-control-plugins/home.png
 share/doc/telepathy-mission-control/mission-control-plugins/index.html
-share/doc/telepathy-mission-control/mission-control-plugins/index.sgml
 share/doc/telepathy-mission-control/mission-control-plugins/left.png
 share/doc/telepathy-mission-control/mission-control-plugins/mission-control-plugins-McpAccountStorage.html
-share/doc/telepathy-mission-control/mission-control-plugins/mission-control-plugins-McpDispatchOperationPolicy.html
-share/doc/telepathy-mission-control/mission-control-plugins/mission-control-plugins-McpRequestPolicy.html
 share/doc/telepathy-mission-control/mission-control-plugins/mission-control-plugins-Plugin-loader-and-global-functions.html
 share/doc/telepathy-mission-control/mission-control-plugins/mission-control-plugins.devhelp2
 share/doc/telepathy-mission-control/mission-control-plugins/object-tree.html

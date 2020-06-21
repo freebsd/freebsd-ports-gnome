@@ -1,2 +1,5 @@
-SHA256 (telepathy-mission-control-5.16.3.tar.gz) = 71575d2ff8aa7337aca355e3d921eba5cd2ff050fabc01e51577343093e98b7d
-SIZE (telepathy-mission-control-5.16.3.tar.gz) = 1096019
+TIMESTAMP = 1588678260
+SHA256 (telepathy-mission-control-5.16.5.tar.gz) = 4c6b433b8b9079fd7df3e29aefcad6755a2081a9a634ffb6b33936c7d0d8bd03
+SIZE (telepathy-mission-control-5.16.5.tar.gz) = 1125142
+SHA256 (d8dab08f.patch) = 04c21b987679f2aefe1084140b51338e2b71a614e68da61b3417876912ae8ab1
+SIZE (d8dab08f.patch) = 1065

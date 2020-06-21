@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gnome-online-accounts
-PORTVERSION=	3.28.0
-PORTREVISION=	2
+PORTVERSION=	3.36.0
 CATEGORIES=	net
 MASTER_SITES=	GNOME
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Interface provider to access the user's online accounts
@@ -32,19 +32,10 @@ GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 INSTALLS_ICONS=	yes
 INSTALL_TARGET=	install-strip
-CONFIGURE_ARGS=	--enable-lastfm
+CONFIGURE_ARGS=	--enable-lastfm \
+		--enable-kerberos=no \
+		--enable-fedora=no
 
 GLIB_SCHEMAS=	org.gnome.online-accounts.gschema.xml
-
-CONFIGURE_ARGS+=--enable-kerberos=no
-
-OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	TELEPATHY
-
-TELEPATHY_DESC=			Telepathy data provider
-TELEPATHY_CONFIGURE_ENABLE=	telepathy
-TELEPATHY_LIB_DEPENDS=		libtelepathy-glib.so:net-im/telepathy-glib
-
-# + flickr
 
 .include <bsd.port.mk>

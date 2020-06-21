@@ -13,6 +13,7 @@ LICENSE=	LGPL21
 LICENSE_FILE=	${WRKSRC}/COPYING
 
 BUILD_DEPENDS=	ca_root_nss>0:security/ca_root_nss
+LIB_DEPENDS=	libsoup-2.4.so:devel/libsoup
 RUN_DEPENDS:=	${BUILD_DEPENDS}
 
 USES=		gmake libtool pathfix pkgconfig tar:xz
@@ -27,9 +28,7 @@ PORTEXAMPLES=	*.c
 OPTIONS_DEFINE=	GNOME EXAMPLES
 OPTIONS_DEFAULT=	GNOME
 
-GNOME_LIB_DEPENDS=	libsoup-gnome-2.4.so:devel/libsoup-gnome
 GNOME_CONFIGURE_OFF=	--without-gnome
-GNOME_LIB_DEPENDS_OFF=	libsoup-2.4.so:devel/libsoup
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/lib/librest-0.7.so.0

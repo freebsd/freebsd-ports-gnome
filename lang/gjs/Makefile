@@ -2,11 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	gjs
-PORTVERSION=	1.52.4
-PORTREVISION=	3
+PORTVERSION=	1.64.3
 CATEGORIES=	lang gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME Javascript binding
@@ -16,17 +15,17 @@ LICENSE_COMB=	multi
 LICENSE_FILE_MPL11=	${WRKSRC}/COPYING
 LICENSE_FILE_LGPL20+ =	${WRKSRC}/COPYING.LGPL
 
-LIB_DEPENDS=	libmozjs-52.so:lang/spidermonkey52 \
+LIB_DEPENDS=	libmozjs-68.so:lang/spidermonkey68 \
 		libffi.so:devel/libffi
 
-USES=		compiler:c++11-lib gettext gmake gnome libtool \
-		localbase pathfix pkgconfig python:build readline tar:xz
+USES=		compiler:c++14-lang gettext gnome localbase meson \
+		pathfix pkgconfig readline tar:xz xorg
 USE_GNOME=	cairo gdkpixbuf2 gtk30 introspection
 USE_XORG=	x11 xext
-GNU_CONFIGURE=	yes
-CONFIGURE_ARGS=	--with-pkgconfigdir=${PREFIX}/libdata/pkgconfig
-CONFIGURE_ARGS+=--disable-profiler
+MESON_ARGS=	-Dprofiler=disabled \
+		-Dinstalled_tests=false
 USE_LDCONFIG=	yes
-INSTALL_TARGET=	install-strip
+
+PORTSCOUT=	limitw:1,even
 
 .include <bsd.port.mk>

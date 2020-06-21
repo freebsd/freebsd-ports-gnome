@@ -2,20 +2,23 @@
 # $FreeBSD$
 
 PORTNAME=	adwaita-icon-theme
-PORTVERSION=	3.28.0
+PORTVERSION=	3.36.1
 CATEGORIES=	x11-themes gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	GNOME Symbolic Icons
 
-NO_ARCH=	yes
 USES=		gettext-tools gmake gnome pathfix pkgconfig tar:xz
 USE_GNOME=	intltool gtk-update-icon-cache
+
 GNU_CONFIGURE=	yes
 CONFIGURE_ENV=	ac_cv_path_GTK_ENCODE_SYMBOLIC_SVG="false"
+NO_ARCH=	yes
 INSTALLS_ICONS=	yes
+
+PORTSCOUT=	limitw:1,even
 
 post-install:
 	@${RM} -r ${STAGEDIR}${PREFIX}/lib/locale

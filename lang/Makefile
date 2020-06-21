@@ -359,6 +359,7 @@
     SUBDIR += spidermonkey185
     SUBDIR += spidermonkey24
     SUBDIR += spidermonkey52
+    SUBDIR += spidermonkey68
     SUBDIR += spl
     SUBDIR += squeak
     SUBDIR += squirrel

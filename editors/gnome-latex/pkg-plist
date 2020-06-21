@@ -140,14 +140,13 @@ share/help/uk/gnome-latex/projects.page
 share/help/uk/gnome-latex/spell_checking.page
 share/help/uk/gnome-latex/structure.page
 share/help/uk/gnome-latex/synctex.page
-share/icons/hicolor/128x128/apps/gnome-latex.png
 share/icons/hicolor/16x16/apps/gnome-latex.png
 share/icons/hicolor/22x22/apps/gnome-latex.png
 share/icons/hicolor/24x24/apps/gnome-latex.png
 share/icons/hicolor/256x256/apps/gnome-latex.png
 share/icons/hicolor/32x32/apps/gnome-latex.png
 share/icons/hicolor/48x48/apps/gnome-latex.png
-share/icons/hicolor/scalable/apps/gnome-latex.svg
+share/icons/hicolor/symbolic/apps/gnome-latex-symbolic.svg
 %%NLS%%share/locale/bs/LC_MESSAGES/gnome-latex.mo
 %%NLS%%share/locale/ca/LC_MESSAGES/gnome-latex.mo
 %%NLS%%share/locale/cs/LC_MESSAGES/gnome-latex.mo
@@ -170,6 +169,7 @@ share/icons/hicolor/scalable/apps/gnome-latex.svg
 %%NLS%%share/locale/pl/LC_MESSAGES/gnome-latex.mo
 %%NLS%%share/locale/pt/LC_MESSAGES/gnome-latex.mo
 %%NLS%%share/locale/pt_BR/LC_MESSAGES/gnome-latex.mo
+%%NLS%%share/locale/ro/LC_MESSAGES/gnome-latex.mo
 %%NLS%%share/locale/ru/LC_MESSAGES/gnome-latex.mo
 %%NLS%%share/locale/sl/LC_MESSAGES/gnome-latex.mo
 %%NLS%%share/locale/sr/LC_MESSAGES/gnome-latex.mo

@@ -2,10 +2,14 @@
 # $FreeBSD$
 
 PORTNAME=	pango
-PORTVERSION=	1.44.5
+PORTVERSION=	1.44.7
 CATEGORIES=	x11-toolkits
 MASTER_SITES=	GNOME
 DIST_SUBDIR=	gnome
+
+PATCH_SITES=	https://gitlab.gnome.org/GNOME/pango/commit/
+PATCHFILES+=	3981fff79b368ab007cb1e977741a7fd7bb96821.diff:-p1 \
+		0b3cd20be5249c51ec981a66c07a39d54d1d1c9d.diff:-p1
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Open-source framework for the layout and rendering of i18n text
@@ -21,16 +25,16 @@ LIB_DEPENDS=	libfreetype.so:print/freetype2 \
 RUN_DEPENDS=	xorg-fonts-truetype>0:x11-fonts/xorg-fonts-truetype \
 		${FONTENCOD}:x11-fonts/encodings
 
-PORTSCOUT=	limitw:1,even
-
-USES=		compiler:c11 gettext gnome localbase meson pkgconfig tar:xz
+USES=		compiler:c11 gettext gnome localbase meson pkgconfig tar:xz xorg
 USE_LDCONFIG=	yes
 USE_GNOME=	cairo glib20 introspection:build
 USE_XORG=	x11 xft xrender
 
 VERSION=	1.8.0
-LIBVERSION=	0.4400.5
-PLIST_SUB+=     VERSION=${VERSION} LIBVERSION=${LIBVERSION}
+LIBVERSION=	0.4400.7
+PLIST_SUB+=	VERSION=${VERSION} LIBVERSION=${LIBVERSION}
+
+PORTSCOUT=	limitw:1,even
 
 FONTSCALE=	${LOCALBASE}/share/fonts/TTF/luximb.ttf
 FONTENCOD=	${LOCALBASE}/share/fonts/encodings/encodings.dir
@@ -41,9 +45,5 @@ pre-configure:
 		${ECHO_MSG} "${PKGNAME}: Needs cairo with GLIB (GObject) support enabled."; \
 		${FALSE}; \
 	fi
-
-post-install:
-	@${RM} -r ${STAGEDIR}${PREFIX}/libexec/installed-tests
-	@${RM} -r ${STAGEDIR}${PREFIX}/share/installed-tests
 
 .include <bsd.port.mk>

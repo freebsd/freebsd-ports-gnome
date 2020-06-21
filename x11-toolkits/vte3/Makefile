@@ -2,12 +2,11 @@
 # $FreeBSD$
 
 PORTNAME=	vte
-PORTVERSION=	0.52.2
-PORTREVISION=	3
+PORTVERSION=	0.60.3
 CATEGORIES=	x11-toolkits gnome
 MASTER_SITES=	GNOME
 PKGNAMESUFFIX=	3
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Terminal widget with improved accessibility and I18N support
@@ -22,16 +21,19 @@ LIB_DEPENDS=	libgnutls.so:security/gnutls \
 
 PORTSCOUT=	limitw:1,even
 
-USES=		compiler:c++11-lang gettext gmake gnome gperf libtool localbase \
+USES=		compiler:c++17-lang gettext gnome gperf localbase meson \
 		pathfix pkgconfig tar:xz
 USE_LDCONFIG=	yes
-GNU_CONFIGURE=	yes
 USE_GNOME=	cairo gdkpixbuf2 gtk30 intltool referencehack \
 		introspection:build
-CONFIGURE_ARGS=	--enable-introspection \
-		--disable-static
-INSTALL_TARGET=	install-strip
+MESON_ARGS=	-Dgir=true \
+		-D_systemd=false
 
 PLIST_SUB=	VERSION=2.91
+
+OPTIONS_DEFINE=	DOCS
+
+DOCS_BUILD_DEPENDS=	gtkdoc-scan:textproc/gtk-doc
+DOCS_MESON_TRUE=	docs
 
 .include <bsd.port.mk>

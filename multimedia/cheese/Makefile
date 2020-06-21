@@ -2,10 +2,10 @@
 # $FreeBSD$
 
 PORTNAME=	cheese
-PORTVERSION=	3.28.0
+PORTVERSION=	3.34.0
 CATEGORIES=	multimedia gnome
 MASTER_SITES=	GNOME
-DIST_SUBDIR=	gnome3
+DIST_SUBDIR=	gnome
 
 MAINTAINER=	gnome@FreeBSD.org
 COMMENT=	Photobooth-inspired app for taking pictures and videos from webcam
@@ -22,15 +22,13 @@ LIB_DEPENDS=	libcanberra-gtk3.so:audio/libcanberra-gtk3 \
 		libclutter-1.0.so:graphics/clutter \
 		libcogl.so:graphics/cogl \
 		libjson-glib-1.0.so:devel/json-glib \
-		libhal.so:sysutils/hal \
 		libclutter-gtk-1.0.so:graphics/clutter-gtk3 \
 		libclutter-gst-3.0.so:multimedia/clutter-gst3
 RUN_DEPENDS=	gnome-video-effects>=0:graphics/gnome-video-effects
 
 PORTSCOUT=	limitw:1,even
 
-USES=		gettext gmake gnome libtool localbase pathfix \
-		pkgconfig tar:xz
+USES=		gettext gl gnome localbase meson pathfix pkgconfig tar:xz xorg
 USE_GNOME=	cairo intlhack evolutiondataserver3 librsvg2 \
 		gnomedesktop3 libxml2:build introspection:build
 USE_GL=		egl
@@ -38,18 +36,20 @@ USE_XORG=	xi xext xdamage xfixes xcomposite xrandr xxf86vm x11
 USE_GSTREAMER1=	bad good jpeg ogg theora v4l2 vorbis vpx
 INSTALLS_ICONS=	yes
 USE_LDCONFIG=	yes
-GNU_CONFIGURE=	yes
 CPPFLAGS+=	-Wno-format-nonliteral
-INSTALL_TARGET=	install-strip
 
 DOCS=		AUTHORS COPYING ChangeLog NEWS README
 GLIB_SCHEMAS=	org.gnome.Cheese.gschema.xml
 
 OPTIONS_SUB=	yes
-OPTIONS_DEFINE=	MANPAGES DOCS
-OPTIONS_DEFAULT=MANPAGES
+OPTIONS_DEFINE=	DOCS MANPAGES
+#OPTIONS_DEFAULT=MANPAGES
+OPTIONS_EXCLUDE=	MANPAGES # broken for now
 
-MANPAGES_CONFIGURE_ENABLE=	man
+DOCS_MESON_TRUE=	gtk_doc
+DOCS_BUILD_DEPENDS=	gtkdoc-scan:textproc/gtk-doc
+
+MANPAGES_MESON_TRUE=	man
 MANPAGES_BUILD_DEPENDS=	docbook-xml>=0:textproc/docbook-xml \
 			docbook-xsl>=0:textproc/docbook-xsl
 MANPAGES_USE=	GNOME=libxslt:build

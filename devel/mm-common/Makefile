@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	mm-common
-PORTVERSION=	0.9.12
+PORTVERSION=	1.0.0
 CATEGORIES=	devel gnome
 MASTER_SITES=	GNOME
 
@@ -12,9 +12,12 @@ COMMENT=	Common build infrastructure for the GNOME C++ binding libraries
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-LIB_DEPENDS=	libcurl.so:ftp/curl
+USES=		meson pathfix python:3.5+ shebangfix tar:xz
 
-USES=		gmake pathfix tar:xz
-GNU_CONFIGURE=	yes
+SHEBANG_GLOB=	*.py
+SHEBANG_FILES=	util/mm-common-get.in
+BINARY_ALIAS=	python3=${PYTHON_CMD}
+
+NO_ARCH=	yes
 
 .include <bsd.port.mk>

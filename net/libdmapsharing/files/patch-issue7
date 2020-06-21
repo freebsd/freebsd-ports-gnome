@@ -1,0 +1,24 @@
+https://gitlab.gnome.org/GNOME/libdmapsharing/-/issues/7
+
+--- tests/vala-dmap-db.vala.orig	2014-05-03 09:31:12 UTC
++++ tests/vala-dmap-db.vala
+@@ -24,7 +24,7 @@ private class ValaDMAPDb : GLib.Object, DMAP.Db {
+ 	// A dumb database that stores everything in an array
+ 
+ 	/* FIXME: What is with this unowned? */
+-	private Gee.ArrayList<unowned DMAP.Record> db = new Gee.ArrayList<DMAP.Record> ();
++	private Gee.ArrayList<unowned DMAP.Record> db = new Gee.ArrayList<unowned DMAP.Record> ();
+ 
+ 	public uint add (DMAP.Record record) {
+ 		db.add (((DMAP.Record) record));
+--- tests/vala-dmap-container-db.vala.orig	2014-05-03 09:31:12 UTC
++++ tests/vala-dmap-container-db.vala
+@@ -24,7 +24,7 @@ private class ValaDMAPContainerDb : GLib.Object, DMAP.
+ 	// A dumb database that stores everything in an array
+ 
+ 	/* FIXME: What is with this unowned? */
+-	private Gee.ArrayList<unowned DMAP.Record> db = new Gee.ArrayList<DMAP.Record> ();
++	private Gee.ArrayList<unowned DMAP.Record> db = new Gee.ArrayList<unowned DMAP.Record> ();
+ 
+ 	public int64 count () {
+ 		return db.size;

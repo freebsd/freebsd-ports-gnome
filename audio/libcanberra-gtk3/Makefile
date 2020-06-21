@@ -20,6 +20,9 @@ do-build:
 do-install:
 	${INSTALL_DATA} ${WRKSRC}/libcanberra-gtk3.pc \
 		${STAGEDIR}${PREFIX}/libdata/pkgconfig/
+	${MKDIR} ${STAGEDIR}${PREFIX}/share/vala/vapi
+	${LN} -s ${PREFIX}/share/vala/vapi/libcanberra-gtk.vapi \
+		${STAGEDIR}${PREFIX}/share/vala/vapi/libcanberra-gtk3.vapi
 .for i in .so .so.0 .so.0.1.9
 	${INSTALL_LIB} ${WRKSRC}/src/.libs/libcanberra-gtk3${i} \
 		${STAGEDIR}${PREFIX}/lib/

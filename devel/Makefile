@@ -1363,7 +1363,6 @@
     SUBDIR += libsmpp34
     SUBDIR += libsmraw
     SUBDIR += libsoup
-    SUBDIR += libsoup-gnome
     SUBDIR += libspark2012
     SUBDIR += libspice-server
     SUBDIR += libstatgrab
@@ -4625,7 +4624,6 @@
     SUBDIR += py-libioc
     SUBDIR += py-libiocage
     SUBDIR += py-liblarch
-    SUBDIR += py-libpeas
     SUBDIR += py-libplist
     SUBDIR += py-libtaxii
     SUBDIR += py-libtmux

@@ -6,6 +6,7 @@
     SUBDIR += SoXt
     SUBDIR += Xaw3d
     SUBDIR += Xmt
+    SUBDIR += amtk
     SUBDIR += blt
     SUBDIR += bwidget
     SUBDIR += c++-gtk-utils
@@ -56,7 +57,6 @@
     SUBDIR += gtksourceview2
     SUBDIR += gtksourceview2-reference
     SUBDIR += gtksourceview3
-    SUBDIR += gtksourceview3-reference
     SUBDIR += gtksourceview4
     SUBDIR += gtksourceviewmm3
     SUBDIR += hippo-canvas

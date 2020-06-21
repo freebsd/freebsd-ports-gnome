@@ -12957,3 +12957,5 @@ devel/xfce4-vala||2019-09-20|Deprecated, functionality moved to xfce libraries w
 irc/iroffer-lamm||2019-09-23|obsolete
 java/openjdk6|java/openjdk8|2019-09-23|Has expired: EOLed upstream since December 2018
 java/openjdk6-jre|java/openjdk8-jre|2019-09-23|Has expired: EOLed upstream since December 2018
+devel/libsoup-gnome|devel/libsoup|2020-04-04|Consolidate the GNOME bits into the main port after meson switch
+devel/py-libpeas|devel/libpeas|2020-04-04|Consolidate Python bits into the main port after meson switch and Python 2 EOL
