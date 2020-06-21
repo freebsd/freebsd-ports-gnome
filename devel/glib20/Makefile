@@ -27,11 +27,11 @@ LIB_DEPENDS+=	libpcre.so:devel/pcre \
 USE_LDCONFIG=	yes
 # iconv:wchar_t - our iconv in base doesn't support utf-8 -> wchar_t (boooo)
 # (wchar_t is used by glibmm, rawtherapee triggered this)
-USES+=		compiler:c11 gettext gnome iconv:wchar_t localbase:ldflags meson perl5 \
-		pathfix pkgconfig python:3.4+ shebangfix
-USE_PERL5=	build
-MESON_ARGS=	-Ddefault_library=both \
-		-Diconv=external \
+USES+=		compiler:c11 gettext gnome iconv:wchar_t localbase:ldflags \
+		meson pkgconfig python:3.4+ shebangfix
+MESON_ARGS=	-Diconv=external
+
+MESON_ARGS+=	-Ddefault_library=both \
 		-Dselinux=disabled \
 		-Dlibmount=disabled \
 		-Dgtk_doc=false \
@@ -39,7 +39,7 @@ MESON_ARGS=	-Ddefault_library=both \
 		-Dfam=false \
 		-Dinstalled_tests=false
 
-BINARY_ALIAS=	python3=${PYTHON_VERSION}
+BINARY_ALIAS=	python3=${PYTHON_CMD}
 python_OLD_CMD=	"/usr/bin/env @PYTHON@"
 SHEBANG_FILES=	gio/gdbus-2.0/codegen/gdbus-codegen.in \
 		glib/gtester-report.in \
@@ -48,6 +48,7 @@ SHEBANG_FILES=	gio/gdbus-2.0/codegen/gdbus-codegen.in \
 
 LIBVERSION=	0.6400.3
 PLIST_SUB+=	LIBVERSION=${LIBVERSION}
+CODEGENDIR=	${PREFIX}/share/glib-2.0/codegen
 
 glib_MAN=	gtester.1 gtester-report.1 glib-gettextize.1
 gio_MAN=	gdbus.1 gsettings.1 gio-querymodules.1 gio.1 \
@@ -62,22 +63,22 @@ OPTIONS_SUB=	yes
 MANPAGES_BUILD_DEPENDS=		docbook-xml>4.1.2:textproc/docbook-xml \
 				docbook-xsl>0:textproc/docbook-xsl
 MANPAGES_USE=			GNOME=libxslt:build
-MANPAGES_MESON_TRUE=	man
+MANPAGES_MESON_TRUE=		man
 
 .include <bsd.port.pre.mk>
 
 # doesn't build yet
-MESON_ARGS+=	-Ddtrace=false
+MESON_ARGS+=		-Ddtrace=false
+
+.if ${ARCH} == powerpc64
+EXTRA_PATCHES+=	${FILESDIR}/extra-arch-powerpc64
+.endif
 
 # -Wl,--no-undefined seems to be causing issues: undefined reference to environ
 #  both with lld and newer binutils
 #
 post-configure:
 	@${REINPLACE_CMD} -e 's/-Wl,--no-undefined//g' ${WRKSRC}/_build/build.ninja
-
-.if ${ARCH} == powerpc64
-EXTRA_PATCHES+=	${FILESDIR}/extra-arch-powerpc64
-.endif
 
 post-patch:
 	@${REINPLACE_CMD} -e 's|/usr/local|${LOCALBASE}|' \
@@ -86,13 +87,11 @@ post-patch:
 		${WRKSRC}/gio/tests/desktop-app-info.c \
 		${WRKSRC}/glib/gcharset.c
 	@${REINPLACE_CMD} -e 's|:/usr/bin|:${LOCALBASE}/bin:/usr/bin|' \
-	-e 's|/etc/xdg|${LOCALBASE}/etc/xdg|' \
+		-e 's|/etc/xdg|${LOCALBASE}/etc/xdg|' \
 		${WRKSRC}/glib/gspawn.c \
 		${WRKSRC}/glib/gutils.c
 	@${REINPLACE_CMD} -e 's|%%PREFIX%%|${PREFIX}|g' \
 		${WRKSRC}/docs/reference/gio/glib-compile-schemas.xml
-
-CODEGENDIR=	${PREFIX}/share/glib-2.0/codegen
 
 post-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/share/GConf/gsettings
