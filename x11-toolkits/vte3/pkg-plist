@@ -14,7 +14,7 @@ include/vte-%%VERSION%%/vte/vteversion.h
 lib/girepository-1.0/Vte-%%VERSION%%.typelib
 lib/libvte-%%VERSION%%.so
 lib/libvte-%%VERSION%%.so.0
-lib/libvte-%%VERSION%%.so.0.6000.2
+lib/libvte-%%VERSION%%.so.0.6000.3
 libdata/pkgconfig/vte-%%VERSION%%.pc
 libexec/vte-urlencode-cwd
 share/gir-1.0/Vte-%%VERSION%%.gir
@@ -67,6 +67,7 @@ share/locale/bn_IN/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/bs/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/ca/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/ca@valencia/LC_MESSAGES/vte-%%VERSION%%.mo
+share/locale/ckb/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/cs/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/cy/LC_MESSAGES/vte-%%VERSION%%.mo
 share/locale/da/LC_MESSAGES/vte-%%VERSION%%.mo
