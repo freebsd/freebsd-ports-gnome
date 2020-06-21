@@ -2,8 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	libsecret
-PORTVERSION=	0.18.6
-PORTREVISION=	1
+PORTVERSION=	0.20.3
 CATEGORIES=	security gnome
 MASTER_SITES=	GNOME
 
@@ -13,16 +12,14 @@ COMMENT=	Library to access the secret service API
 LICENSE=	LGPL21
 
 BUILD_DEPENDS=	docbook-xsl>=0:textproc/docbook-xsl \
+		gtkdoc-scan:textproc/gtk-doc \
 		vala:lang/vala
-LIB_DEPENDS=	libgcrypt.so:security/libgcrypt \
-		libgpg-error.so:security/libgpg-error
+LIB_DEPENDS=	libgcrypt.so:security/libgcrypt
 
-USES=		gettext gmake gnome libtool localbase pkgconfig tar:xz
+USES=		gettext gnome localbase meson pkgconfig tar:xz
 USE_GNOME=	glib20 libxslt:build intltool \
 		introspection:build
 USE_LDCONFIG=	yes
-GNU_CONFIGURE=	yes
-CONFIGURE_ARGS+=--enable-introspection
-INSTALL_TARGET=	install-strip
+MESON_ARGS=	-Ddefault_library=both
 
 .include <bsd.port.mk>
